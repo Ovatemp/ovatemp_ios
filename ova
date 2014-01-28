@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+if [ ! -d "Ovatemp.xcworkspace" ]; then
+  pod install
+fi
+open Ovatemp.xcworkspace/
+
