@@ -13,12 +13,14 @@
 
 ### Open the project
 
-There's a shortcut executable in the root project directory you can use to make sure you always open the correct workspace (this will also install Cocoapods for the first time, if need be).
+There's a shortcut executable in the root project directory you can use to make sure you always open the correct workspace (this will also install Cocoapods for the first time, if need be):
 
-### Install the Pods
+	./ova
 
-  pod install
+### Run the tests
 
-### Open the Pod-enabled workspace
+	⌘ + U
 
-  open Ovatemp.xcworkspace/
+### Run the app
+
+	⌘ + R
