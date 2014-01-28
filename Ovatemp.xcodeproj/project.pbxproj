@@ -18,27 +18,11 @@
 		C36C510B189028190053A884 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C36C510A189028190053A884 /* main.m */; };
 		C36C510F189028190053A884 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C36C510E189028190053A884 /* AppDelegate.m */; };
 		C36C5111189028190053A884 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C36C5110189028190053A884 /* Images.xcassets */; };
-		C36C5118189028190053A884 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C5117189028190053A884 /* XCTest.framework */; };
-		C36C5119189028190053A884 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C50FE189028190053A884 /* Foundation.framework */; };
-		C36C511A189028190053A884 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C5102189028190053A884 /* UIKit.framework */; };
-		C36C5122189028190053A884 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C36C5120189028190053A884 /* InfoPlist.strings */; };
-		C36C5124189028190053A884 /* OvatempTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C36C5123189028190053A884 /* OvatempTests.m */; };
 		C3D4F34E1898357F00CBB91A /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3D4F34D1898357F00CBB91A /* TodayViewController.xib */; };
 		C3D4F351189835CC00CBB91A /* UIViewController+WithNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D4F350189835CC00CBB91A /* UIViewController+WithNavigation.m */; };
 		C3D4F35418983B9C00CBB91A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D4F35318983B9C00CBB91A /* Constants.m */; };
-		C662397BB6CE41FE8EE717F1 /* libPods-OvatempTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */; };
 		D18C51F548DA4E59B785DE16 /* libPods-Ovatemp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		C36C511B189028190053A884 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C36C50F3189028190053A884 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C36C50FA189028190053A884;
-			remoteInfo = Ovatemp;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		803928D684F54DB4A5F86E42 /* Pods-OvatempTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.xcconfig"; path = "Pods/Pods-OvatempTests.xcconfig"; sourceTree = "<group>"; };
@@ -60,11 +44,7 @@
 		C36C510D189028190053A884 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C36C510E189028190053A884 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C36C5110189028190053A884 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C36C5116189028190053A884 /* OvatempTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OvatempTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C36C5117189028190053A884 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C36C511F189028190053A884 /* OvatempTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OvatempTests-Info.plist"; sourceTree = "<group>"; };
-		C36C5121189028190053A884 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C36C5123189028190053A884 /* OvatempTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OvatempTests.m; sourceTree = "<group>"; };
 		C3D4F34D1898357F00CBB91A /* TodayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
 		C3D4F34F189835CC00CBB91A /* UIViewController+WithNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WithNavigation.h"; sourceTree = "<group>"; };
 		C3D4F350189835CC00CBB91A /* UIViewController+WithNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WithNavigation.m"; sourceTree = "<group>"; };
@@ -84,17 +64,6 @@
 				C36C5103189028190053A884 /* UIKit.framework in Frameworks */,
 				C36C50FF189028190053A884 /* Foundation.framework in Frameworks */,
 				D18C51F548DA4E59B785DE16 /* libPods-Ovatemp.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C36C5113189028190053A884 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C36C5118189028190053A884 /* XCTest.framework in Frameworks */,
-				C36C511A189028190053A884 /* UIKit.framework in Frameworks */,
-				C36C5119189028190053A884 /* Foundation.framework in Frameworks */,
-				C662397BB6CE41FE8EE717F1 /* libPods-OvatempTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				C36C5104189028190053A884 /* Ovatemp */,
-				C36C511D189028190053A884 /* OvatempTests */,
 				C36C50FD189028190053A884 /* Frameworks */,
 				C36C50FC189028190053A884 /* Products */,
 				DA450FC5E9904FF093E24AC1 /* Pods-Ovatemp.xcconfig */,
@@ -162,7 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				C36C50FB189028190053A884 /* Ovatemp.app */,
-				C36C5116189028190053A884 /* OvatempTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -209,24 +176,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C36C511D189028190053A884 /* OvatempTests */ = {
-			isa = PBXGroup;
-			children = (
-				C36C5123189028190053A884 /* OvatempTests.m */,
-				C36C511E189028190053A884 /* Supporting Files */,
-			);
-			path = OvatempTests;
-			sourceTree = "<group>";
-		};
-		C36C511E189028190053A884 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C36C511F189028190053A884 /* OvatempTests-Info.plist */,
-				C36C5120189028190053A884 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -249,26 +198,6 @@
 			productReference = C36C50FB189028190053A884 /* Ovatemp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C36C5115189028190053A884 /* OvatempTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C36C512A189028190053A884 /* Build configuration list for PBXNativeTarget "OvatempTests" */;
-			buildPhases = (
-				DEF24301C750400EA3768749 /* Check Pods Manifest.lock */,
-				C36C5112189028190053A884 /* Sources */,
-				C36C5113189028190053A884 /* Frameworks */,
-				C36C5114189028190053A884 /* Resources */,
-				E1AACDA38D9C4D008092F493 /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C36C511C189028190053A884 /* PBXTargetDependency */,
-			);
-			name = OvatempTests;
-			productName = OvatempTests;
-			productReference = C36C5116189028190053A884 /* OvatempTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -277,11 +206,6 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Back Forty";
-				TargetAttributes = {
-					C36C5115189028190053A884 = {
-						TestTargetID = C36C50FA189028190053A884;
-					};
-				};
 			};
 			buildConfigurationList = C36C50F6189028190053A884 /* Build configuration list for PBXProject "Ovatemp" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -296,7 +220,6 @@
 			projectRoot = "";
 			targets = (
 				C36C50FA189028190053A884 /* Ovatemp */,
-				C36C5115189028190053A884 /* OvatempTests */,
 			);
 		};
 /* End PBXProject section */
@@ -310,14 +233,6 @@
 				C36C5109189028190053A884 /* InfoPlist.strings in Resources */,
 				C308706418980A2E00DC4364 /* .gitkeep in Resources */,
 				C36C5111189028190053A884 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C36C5114189028190053A884 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C36C5122189028190053A884 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,36 +269,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Pods-Ovatemp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DEF24301C750400EA3768749 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E1AACDA38D9C4D008092F493 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-OvatempTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -401,37 +286,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C36C5112189028190053A884 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C36C5124189028190053A884 /* OvatempTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C36C511C189028190053A884 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C36C50FA189028190053A884 /* Ovatemp */;
-			targetProxy = C36C511B189028190053A884 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C36C5107189028190053A884 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C36C5108189028190053A884 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		C36C5120189028190053A884 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C36C5121189028190053A884 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -541,50 +402,6 @@
 			};
 			name = Release;
 		};
-		C36C512B189028190053A884 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 803928D684F54DB4A5F86E42 /* Pods-OvatempTests.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Ovatemp.app/Ovatemp";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "OvatempTests/OvatempTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		C36C512C189028190053A884 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 803928D684F54DB4A5F86E42 /* Pods-OvatempTests.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Ovatemp.app/Ovatemp";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
-				INFOPLIST_FILE = "OvatempTests/OvatempTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -602,15 +419,6 @@
 			buildConfigurations = (
 				C36C5128189028190053A884 /* Debug */,
 				C36C5129189028190053A884 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C36C512A189028190053A884 /* Build configuration list for PBXNativeTarget "OvatempTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C36C512B189028190053A884 /* Debug */,
-				C36C512C189028190053A884 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
