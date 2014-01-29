@@ -28,6 +28,9 @@
                     </label>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                <accessibility key="accessibilityConfiguration" label="Session Instructions">
+                    <bool key="isElement" value="YES"/>
+                </accessibility>
                 <constraints>
                     <constraint firstItem="Trn-hY-qYp" firstAttribute="centerX" secondItem="bj7-C1-TFg" secondAttribute="centerX" id="qEY-ag-Ytr"/>
                     <constraint firstItem="Trn-hY-qYp" firstAttribute="top" secondItem="bj7-C1-TFg" secondAttribute="top" constant="20" symbolic="YES" id="xUb-h9-H4F"/>

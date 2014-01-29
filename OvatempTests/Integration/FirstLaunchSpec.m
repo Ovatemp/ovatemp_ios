@@ -8,12 +8,14 @@
 
 #import "OvatempTestHelpers.h"
 
+#import "SessionViewController.h"
+
 SpecBegin(FirstLaunch)
 
 describe(@"at first launch", ^{
   it(@"should show a login or register screen", ^{
-    [tester waitForViewWithAccessibilityLabel:@"Register View"];
-//    expect(activeViewController).to.beKindOf(
+    [tester waitForViewWithAccessibilityLabel:@"Session Instructions"];
+    expect(activeViewController).to.beKindOf([SessionViewController class]);
   });
 });
 
