@@ -1,0 +1,22 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#ifdef __OBJC__
+  #import <UIKit/UIKit.h>
+  #import <Foundation/Foundation.h>
+
+  // Unit testing
+  #define EXP_SHORTHAND
+  #import <Expecta/Expecta.h>
+  #import <Specta/Specta.h>
+
+  // Integration test
+  #import <KIF/KIF.h>
+
+  // Mocking & stubbing
+  #import <OCMock/OCMock.h>
+  #import <Nocilla/Nocilla.h>
+#endif

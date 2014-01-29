@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C36C5115189028190053A884"
+               BlueprintIdentifier = "C3BF8FBC1898409C00572F43"
                BuildableName = "OvatempTests.xctest"
                BlueprintName = "OvatempTests"
                ReferencedContainer = "container:Ovatemp.xcodeproj">

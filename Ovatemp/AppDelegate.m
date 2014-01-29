@@ -8,24 +8,33 @@
 
 #import "AppDelegate.h"
 
+#import "SessionViewController.h"
 #import "TodayViewController.h"
-#import "UIViewController+Alerts.h"
-#import "UIViewController+WithNavigation.h"
+#import "User.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+  // Configure standard UI appearance
+  [self configureTabBarAppearance];
 
+  // Build the main window
+  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   UITabBarController *tabController = [[UITabBarController alloc] init];
+  self.window.rootViewController = tabController;
+
+  // Set up the today controller
   TodayViewController *todayController = [[TodayViewController alloc] initWithNibName:@"TodayViewController" bundle:nil];
   [tabController addChildViewController:todayController.withNavigation];
 
-  self.window.rootViewController = tabController;
-
+  // Display the app!
   [self.window makeKeyAndVisible];
 
-  [self configureTabBarAppearance];
+  // Require a user to log in or register
+  if (!User.current) {
+    SessionViewController *sessionController = [[SessionViewController alloc] initWithNibName:@"SessionViewController" bundle:nil];
+    [self.window.rootViewController presentViewController:sessionController animated:YES completion:nil];
+  }
 
   return YES;
 }

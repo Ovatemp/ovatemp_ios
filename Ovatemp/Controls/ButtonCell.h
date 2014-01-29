@@ -1,5 +1,5 @@
 //
-//  TodayViewController.h
+//  ButtonCell.h
 //  Ovatemp
 //
 //  Created by Flip Sasser on 1/28/14.
@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "UIViewController+WithNavigation.h"
+#define BUTTON_CELL_IDENTIFIER @"ButtonCell"
 
-@interface TodayViewController : UITableViewController
+@interface ButtonCell : UITableViewCell
 
-@property NSDate *date;
+@property UIButton *button;
 
 @end

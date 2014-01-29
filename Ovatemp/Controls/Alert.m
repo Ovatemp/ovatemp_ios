@@ -17,9 +17,6 @@
 }
 @end
 
-static const CGFloat kStandardSuperviewSpacing = 20.0f;
-static const CGFloat kStandardSiblingSpacing = 8.0f;
-
 @implementation Alert
 
 #pragma mark - Setup
@@ -76,21 +73,21 @@ static const CGFloat kStandardSiblingSpacing = 8.0f;
     [_containerView addSubview:_messageView];
   }
 
-  CGSize containerSize = CGSizeMake(newSuperview.frame.size.width - kStandardSuperviewSpacing * 2, CGFLOAT_MAX);
-  CGFloat textWidth = containerSize.width - kStandardSuperviewSpacing * 2;
+  CGSize containerSize = CGSizeMake(newSuperview.frame.size.width - SUPERVIEW_SPACING * 2, CGFLOAT_MAX);
+  CGFloat textWidth = containerSize.width - SUPERVIEW_SPACING * 2;
   CGSize textSize = CGSizeMake(textWidth, CGFLOAT_MAX);
 
   _titleView.text = self.title;
   CGSize idealTitleSize = [_titleView sizeThatFits:textSize];
-  _titleView.frame = CGRectMake(kStandardSuperviewSpacing, 0, textWidth, idealTitleSize.height);
+  _titleView.frame = CGRectMake(SUPERVIEW_SPACING, 0, textWidth, idealTitleSize.height);
 
   _messageView.text = self.message;
   CGSize idealMessageSize = [_messageView sizeThatFits:textSize];
-  _messageView.frame = CGRectMake(_titleView.frame.origin.x, CGRectGetMaxY(_titleView.frame) + kStandardSiblingSpacing, textWidth, idealMessageSize.height);
+  _messageView.frame = CGRectMake(_titleView.frame.origin.x, CGRectGetMaxY(_titleView.frame) + SIBLING_SPACING, textWidth, idealMessageSize.height);
 
-  containerSize.height = CGRectGetMaxY(_messageView.frame) + kStandardSuperviewSpacing;
+  containerSize.height = CGRectGetMaxY(_messageView.frame) + SUPERVIEW_SPACING;
   CGFloat containerTop = (newSuperview.frame.size.height - containerSize.height) / 2.0;
-  _containerView.frame = CGRectMake(containerTop, kStandardSuperviewSpacing, containerSize.width, containerSize.height);
+  _containerView.frame = CGRectMake(containerTop, SUPERVIEW_SPACING, containerSize.width, containerSize.height);
 
   NSLog(@"%@ %@ %@", newSuperview, NSStringFromCGRect(_containerView.frame), NSStringFromCGRect(newSuperview.frame));
 }
