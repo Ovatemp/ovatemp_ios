@@ -15,7 +15,7 @@
 
 There's a shortcut executable in the root project directory you can use to make sure you always open the correct workspace (this will also install Cocoapods for the first time, if need be):
 
-	./ova
+	./bin/work
 
 ### Run the tests
 
