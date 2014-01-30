@@ -7,6 +7,7 @@
 //
 
 #import "BaseModel.h"
+#import <objc/runtime.h>
 
 static NSMutableDictionary *_instances;
 
@@ -95,6 +96,45 @@ static NSMutableDictionary *_instances;
 
     [self setValue:value forKey:camelKey];
   }
+}
+
+- (void)setValue:(id)value forKey:(NSString *)key {
+  if ([value isEqual:[NSNull null]]) {
+    [super setValue:nil forKey:key];
+  } else {
+    NSString *className = [self classForKey:key];
+    if ([className rangeOfString:@"NSDate"].location != NSNotFound) {
+      value = [self dateForValue:value];
+    }
+    [super setValue:value forKey:key];
+  }
+}
+
+- (NSString *)classForKey:(NSString *)key {
+  objc_property_t property = class_getProperty([self class], [key UTF8String]);
+  if (property != NULL) {
+    const char *attributes = property_getAttributes(property);
+    if (attributes != NULL) {
+      static char buffer[256];
+      const char *e = strchr(attributes, ',');
+      if (e != NULL) {
+        int len = (int)(e - attributes);
+        memcpy(buffer, attributes, len);
+        buffer[len] = '\0';
+        return [NSString stringWithUTF8String:buffer];
+      }
+    }
+  }
+  return nil;
+}
+
+- (NSDate *)dateForValue:(id)value {
+  if ([value isKindOfClass:[NSString class]]) {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
+    return [dateFormatter dateFromString:value];
+  }
+  return value;
 }
 
 @end

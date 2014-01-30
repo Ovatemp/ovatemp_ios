@@ -9,14 +9,18 @@
 #import "ConnectionManager.h"
 
 static ConnectionManager *kSharedConnectionManager;
-static const NSString *kConnectionKey = @"Connection";
-static const NSString *kDataKey = @"Data";
-static const NSString *kFailureBlockKey = @"FailureBlock";
-static const NSString *kFailureSelectorKey = @"FailureSelector";
-static const NSString *kFormatKey = @"Format";
-static const NSString *kSuccessBlockKey = @"SuccessBlock";
-static const NSString *kSuccessSelectorKey = @"SuccessSelector";
-static const NSString *kTargetKey = @"Target";
+static NSString * const kConnectionKey = @"Connection";
+static NSString * const kDataKey = @"Data";
+static NSString * const kDeviceIDParam = @"device_id";
+static NSString * const kErrorMessageKey = @"error";
+static NSString * const kFailureBlockKey = @"FailureBlock";
+static NSString * const kFailureSelectorKey = @"FailureSelector";
+static NSString * const kFormatKey = @"Format";
+static NSString * const kStatusKey = @"Status";
+static NSString * const kSuccessBlockKey = @"SuccessBlock";
+static NSString * const kSuccessSelectorKey = @"SuccessSelector";
+static NSString * const kTargetKey = @"Target";
+static NSString * const kTokenParam = @"token";
 
 @interface ConnectionManager () {
   NSMutableDictionary *_requests;
@@ -44,27 +48,41 @@ static const NSString *kTargetKey = @"Target";
 }
 
 + (void)get:(NSString *)url params:(NSDictionary *)params success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure {
-
+  [[self sharedConnectionManager] get:url
+                               params:params
+                              success:onSuccess
+                              failure:onFailure];
 }
 
 + (void)get:(NSString *)url params:(NSDictionary *)params target:(id)target success:(SEL)onSuccess failure:(SEL)onFailure {
-
+  [[self sharedConnectionManager] get:url
+                               params:params
+                               target:target
+                              success:onSuccess
+                              failure:onFailure];
 }
 
 + (void)get:(NSString *)url success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure {
-
+  [self get:url params:nil success:onSuccess failure:onFailure];
 }
 
 + (void)get:(NSString *)url target:(id)target success:(SEL)onSuccess failure:(SEL)onFailure {
-
+  [self get:url params:nil target:target success:onSuccess failure:onFailure];
 }
 
 + (void)post:(NSString *)url params:(NSDictionary *)params success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure {
-
+  [[self sharedConnectionManager] post:url
+                                params:params
+                               success:onSuccess
+                               failure:onFailure];
 }
 
 + (void)post:(NSString *)url params:(NSDictionary *)params target:(id)target success:(SEL)onSuccess failure:(SEL)onFailure {
-
+  [[self sharedConnectionManager] post:url
+                                params:params
+                                target:target
+                               success:onSuccess
+                               failure:onFailure];
 }
 
 # pragma mark - Request management
@@ -77,7 +95,7 @@ static const NSString *kTargetKey = @"Target";
   NSString *identifier = [self identifierForRequest:request];
   NSMutableDictionary *config = [_requests objectForKey:identifier];
   if (!config) {
-    config = [NSMutableDictionary dictionaryWithCapacity:6];
+    config = [NSMutableDictionary dictionaryWithCapacity:9];
     [_requests setObject:config forKey:identifier];
   }
   return config;
@@ -105,32 +123,37 @@ static const NSString *kTargetKey = @"Target";
 
 # pragma mark - Building requests
 
+- (NSMutableURLRequest *)buildRequestForURL:(NSString *)url {
+  NSRange protocolRange = [url rangeOfString:@"http"];
+  if (protocolRange.location != 0) {
+    url = [API_URL stringByAppendingString:url];
+  }
+  return [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+}
+
 - (NSMutableURLRequest *)getRequestForURL:(NSString *)url params:(NSDictionary *)params {
-  if (params) {
-    NSString *queryString = [self queryStringForDictionary:params];
-    NSRange queryStringRange = [url rangeOfString:@"?"];
-    if (queryStringRange.location == NSNotFound) {
-      url = [url stringByAppendingFormat:@"?%@", queryString];
-    } else {
-      url = [url stringByAppendingFormat:@"&%@", queryString];
-    }
+  NSString *queryString = [self queryStringForDictionary:params];
+  NSRange queryStringRange = [url rangeOfString:@"?"];
+  if (queryStringRange.location == NSNotFound) {
+    url = [url stringByAppendingFormat:@"?%@", queryString];
+  } else {
+    url = [url stringByAppendingFormat:@"&%@", queryString];
   }
 
-  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+  NSMutableURLRequest *request = [self buildRequestForURL:url];
   request.HTTPMethod = @"GET";
   return request;
 }
 
 - (NSMutableURLRequest *)postRequestForURL:(NSString *)url params:(NSDictionary *)params {
-  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+  NSMutableURLRequest *request = [self buildRequestForURL:url];
   request.HTTPMethod = @"POST";
   [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
 
-  if (params) {
-    NSString *queryString = [self queryStringForDictionary:params];
-    NSData *data = [queryString dataUsingEncoding:NSUTF8StringEncoding];
-    request.HTTPBody = data;
-  }
+  NSString *queryString = [self queryStringForDictionary:params];
+  NSData *data = [queryString dataUsingEncoding:NSUTF8StringEncoding];
+  request.HTTPBody = data;
+
   return request;
 }
 
@@ -179,12 +202,26 @@ static const NSString *kTargetKey = @"Target";
 }
 
 - (NSString *)queryStringForDictionary:(NSDictionary *)params {
+  NSMutableDictionary *extraParams = [@{kDeviceIDParam: DEVICE_ID} mutableCopy];
+  NSString *token = [Configuration sharedConfiguration].token;
+  if (token) {
+    [extraParams setObject:token forKey:kTokenParam];
+  }
+
+  NSMutableDictionary *newParams;
+  if (params) {
+    newParams = [params mutableCopy];
+    [newParams addEntriesFromDictionary:newParams];
+  } else {
+    newParams = extraParams;
+  }
+
   NSMutableString *queryString = [NSMutableString string];
-  for (NSString *key in params) {
+  for (NSString *key in newParams) {
     if (queryString.length) {
       [queryString appendString:@"&"];
     }
-    [queryString appendString:[self paramForKey:key value:params[key]]];
+    [queryString appendString:[self paramForKey:key value:newParams[key]]];
   }
   return queryString;
 }
@@ -254,6 +291,14 @@ static const NSString *kTargetKey = @"Target";
     response = data;
   }
 
+  NSInteger status = [[config objectForKey:kStatusKey] integerValue];
+  if (status >= 400 && !parseError) {
+    if (response && ![response isKindOfClass:[NSDictionary class]]) {
+      response = @{@"response": response};
+    }
+    parseError = [[NSError alloc] initWithDomain:@"OvatempAPIErrorDomain" code:status userInfo:response];
+  }
+
   if (parseError) {
     [self connection:connection didFailWithError:parseError];
   } else {
@@ -297,6 +342,10 @@ static const NSString *kTargetKey = @"Target";
     NSDictionary *headers = [(NSHTTPURLResponse *)response allHeaderFields];
     NSString *contentType = [headers objectForKey:@"Content-Type"];
     [config setObject:contentType forKey:kFormatKey];
+  }
+  if (![config objectForKey:kStatusKey]) {
+    NSInteger status = ((NSHTTPURLResponse *)response).statusCode;
+    [config setObject:@(status) forKey:kStatusKey];
   }
 }
 

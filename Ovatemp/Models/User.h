@@ -11,7 +11,12 @@
 @interface User : BaseModel
 
 + (User *)current;
++ (void)setCurrent:(User *)user;
 
 @property NSString *email;
+@property NSString *firstName;
+@property NSString *lastName;
+@property NSString *mailchimpLeid;
+@property NSString *passwordDigest;
 
 @end

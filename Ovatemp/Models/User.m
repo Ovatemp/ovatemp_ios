@@ -8,10 +8,16 @@
 
 #import "User.h"
 
+static User *_currentUser;
+
 @implementation User
 
 + (User *)current {
-  return nil;
+  return _currentUser;
+}
+
++ (void)setCurrent:(User *)user {
+  _currentUser = user;
 }
 
 @end

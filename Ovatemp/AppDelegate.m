@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 
+#import "Alert.h"
 #import "SessionViewController.h"
 #import "TodayViewController.h"
 #import "User.h"
@@ -16,6 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Configure standard UI appearance
+  [self configureAlertAppearance];
   [self configureTabBarAppearance];
 
   // Build the main window
@@ -31,9 +33,8 @@
   [self.window makeKeyAndVisible];
 
   // Require a user to log in or register
-  if (!User.current) {
-    SessionViewController *sessionController = [[SessionViewController alloc] initWithNibName:@"SessionViewController" bundle:nil];
-    [self.window.rootViewController presentViewController:sessionController animated:YES completion:nil];
+  if (![Configuration sharedConfiguration].token) {
+    [self performSelector:@selector(presentSessionController) withObject:nil afterDelay:0];
   }
 
   return YES;
@@ -63,10 +64,21 @@
 
 # pragma mark - UIAppearance helpers
 
+- (void)configureAlertAppearance {
+//  [[UIButton appearanceWhenContainedIn:[Alert class], [UIView class], nil] setBackgroundColor:DARK_BLUE];
+}
+
 - (void)configureTabBarAppearance {
   [[UITabBar appearance] setBackgroundColor:LIGHT];
   [[UITabBar appearance] setTintColor:PURPLE];
   [[UITabBar appearance] setSelectedImageTintColor:PURPLE];
+}
+
+# pragma mark - Session methods
+
+- (void)presentSessionController {
+  SessionViewController *sessionController = [[SessionViewController alloc] initWithNibName:@"SessionViewController" bundle:nil];
+  [self.window.rootViewController presentViewController:sessionController animated:YES completion:nil];
 }
 
 @end

@@ -11,6 +11,7 @@
 		C3066C6818983537003F8B84 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3066C6618983537003F8B84 /* TodayViewController.m */; };
 		C308706818980A4900DC4364 /* UIViewController+Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = C308706718980A4900DC4364 /* UIViewController+Alerts.m */; };
 		C308706B18980B1A00DC4364 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = C308706A18980B1A00DC4364 /* Alert.m */; };
+		C31220241899BB8E0027C4B3 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = C31220231899BB8E0027C4B3 /* Configuration.m */; };
 		C32C4A89189856C100B05009 /* ButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C32C4A88189856C100B05009 /* ButtonCell.m */; };
 		C32C4A8C18985A4D00B05009 /* UIViewController+ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C32C4A8B18985A4D00B05009 /* UIViewController+ConnectionManager.m */; };
 		C32C4A8F18985A7800B05009 /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C32C4A8E18985A7800B05009 /* ConnectionManager.m */; };
@@ -57,6 +58,8 @@
 		C308706718980A4900DC4364 /* UIViewController+Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alerts.m"; sourceTree = "<group>"; };
 		C308706918980B1A00DC4364 /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
 		C308706A18980B1A00DC4364 /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
+		C31220221899BB8E0027C4B3 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
+		C31220231899BB8E0027C4B3 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
 		C32C4A87189856C100B05009 /* ButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonCell.h; sourceTree = "<group>"; };
 		C32C4A88189856C100B05009 /* ButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonCell.m; sourceTree = "<group>"; };
 		C32C4A8A18985A4D00B05009 /* UIViewController+ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ConnectionManager.h"; sourceTree = "<group>"; };
@@ -173,6 +176,8 @@
 				C3BF8FE4189848CE00572F43 /* BaseModel.m */,
 				C3BF8FE618984AC200572F43 /* User.h */,
 				C3BF8FE718984AC200572F43 /* User.m */,
+				C31220221899BB8E0027C4B3 /* Configuration.h */,
+				C31220231899BB8E0027C4B3 /* Configuration.m */,
 				C32C4A8D18985A7800B05009 /* ConnectionManager.h */,
 				C32C4A8E18985A7800B05009 /* ConnectionManager.m */,
 			);
@@ -472,6 +477,7 @@
 				C3D4F351189835CC00CBB91A /* UIViewController+WithNavigation.m in Sources */,
 				C32C4A89189856C100B05009 /* ButtonCell.m in Sources */,
 				C308706B18980B1A00DC4364 /* Alert.m in Sources */,
+				C31220241899BB8E0027C4B3 /* Configuration.m in Sources */,
 				C36C510B189028190053A884 /* main.m in Sources */,
 				C32C4A8C18985A4D00B05009 /* UIViewController+ConnectionManager.m in Sources */,
 				C3D4F35418983B9C00CBB91A /* Constants.m in Sources */,

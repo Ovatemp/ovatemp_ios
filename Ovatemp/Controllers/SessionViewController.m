@@ -10,10 +10,14 @@
 
 #import "ButtonCell.h"
 #import "TextFieldCell.h"
+#import "User.h"
 
 #import "UIViewController+ConnectionManager.h"
 
-@interface SessionViewController ()
+@interface SessionViewController () {
+  UITextField *_emailField;
+  UITextField *_passwordField;
+}
 
 @property SessionType sessionType;
 
@@ -25,27 +29,58 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.sessionType = SessionRegister;
+  self.sessionType = SessionLogin;
 }
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
 }
 
-# pragma mark - Registration
+# pragma mark - Registration, login, password reset
 
 - (IBAction)submit:(id)sender {
+  [self.tableView endEditing:YES];
   switch (self.sessionType) {
     case SessionRegister:
       [self startLoadingWithMessage:@"Creating your account..."];
+      [ConnectionManager post:@"/users"
+                       params:@{
+                                @"user":
+                                  @{
+                                    @"email": _emailField.text,
+                                    @"password": _passwordField.text,
+                                    @"password_confirmation": _passwordField.text
+                                    }
+                                }
+                       target:self
+                      success:@selector(loggedIn:)
+                      failure:@selector(presentError:)
+       ];
       break;
     case SessionLogin:
       [self startLoadingWithMessage:@"Logging you in..."];
+      [ConnectionManager post:@"/sessions"
+                       params:@{
+                                @"email": _emailField.text,
+                                @"password": _passwordField.text
+                                }
+                       target:self
+                      success:@selector(loggedIn:)
+                      failure:@selector(presentError:)
+       ];
       break;
     case SessionResetPassword:
       [self startLoadingWithMessage:@"Resetting your password..."];
       break;
   }
+}
+
+
+- (void)loggedIn:(NSDictionary *)response {
+  User *user = [User withAttributes:response[@"user"]];
+  [User setCurrent:user];
+  [Configuration sharedConfiguration].token = [[response objectForKey:@"token"] objectForKey:@"token"];
+  [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Table view data source
@@ -95,11 +130,13 @@
       cell.textField.placeholder = @"Email Address";
       cell.textField.returnKeyType = UIReturnKeyNext;
       cell.textField.secureTextEntry = NO;
+      _emailField = cell.textField;
     } else {
       cell.textField.keyboardType = UIKeyboardTypeDefault;
       cell.textField.placeholder = @"Password";
       cell.textField.returnKeyType = UIReturnKeyGo;
       cell.textField.secureTextEntry = YES;
+      _passwordField = cell.textField;
     }
   }
 
@@ -128,7 +165,6 @@
   } else {
     cell = [self textFieldCellForIndexPath:indexPath];
   }
-  NSLog(@"%@", cell);
   return cell;
 }
 

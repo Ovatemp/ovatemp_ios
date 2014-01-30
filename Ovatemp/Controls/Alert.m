@@ -45,6 +45,24 @@
 
 #pragma mark - Rendering
 
+- (void)hide {
+  [self hide:nil];
+}
+
+- (void)hide:(id)sender {
+  [self removeFromSuperview];
+}
+
+- (void)show {
+  id<UIApplicationDelegate> app = [UIApplication sharedApplication].delegate;
+  UIWindow *window = app.window;
+  self.frame = window.bounds;
+  for (UIView *view in window.subviews) {
+    [view endEditing:YES];
+  }
+  [window addSubview:self];
+}
+
 - (void)willMoveToSuperview:(UIView *)newSuperview {
   [super willMoveToSuperview:newSuperview];
 
@@ -59,17 +77,23 @@
   // Lay out container
   if (!_containerView) {
     _containerView = [[UIView alloc] init];
-    _containerView.backgroundColor = [UIColor whiteColor];
+    _containerView.backgroundColor = [UIColor clearColor];
+    _containerView.layer.backgroundColor = LIGHT.CGColor;
+    _containerView.layer.cornerRadius = 3.0f;
     [self addSubview:_containerView];
   }
 
   if (!_titleView) {
     _titleView = [[UILabel alloc] init];
+    _titleView.lineBreakMode = NSLineBreakByWordWrapping;
+    _titleView.numberOfLines = 0;
     [_containerView addSubview:_titleView];
   }
 
   if (!_messageView) {
     _messageView = [[UILabel alloc] init];
+    _messageView.lineBreakMode = NSLineBreakByWordWrapping;
+    _messageView.numberOfLines = 0;
     [_containerView addSubview:_messageView];
   }
 
@@ -78,25 +102,30 @@
   CGSize textSize = CGSizeMake(textWidth, CGFLOAT_MAX);
 
   _titleView.text = self.title;
+  [_titleView sizeToFit];
   CGSize idealTitleSize = [_titleView sizeThatFits:textSize];
-  _titleView.frame = CGRectMake(SUPERVIEW_SPACING, 0, textWidth, idealTitleSize.height);
+  _titleView.frame = CGRectMake(SUPERVIEW_SPACING, SUPERVIEW_SPACING, textWidth, idealTitleSize.height);
 
   _messageView.text = self.message;
+  [_messageView sizeToFit];
   CGSize idealMessageSize = [_messageView sizeThatFits:textSize];
   _messageView.frame = CGRectMake(_titleView.frame.origin.x, CGRectGetMaxY(_titleView.frame) + SIBLING_SPACING, textWidth, idealMessageSize.height);
 
-  containerSize.height = CGRectGetMaxY(_messageView.frame) + SUPERVIEW_SPACING;
+  CGFloat buttonWidth = containerSize.width / _buttons.count;
+  CGFloat buttonTop = CGRectGetMaxY(_messageView.frame) + SIBLING_SPACING;
+
+  for (NSInteger i = 0; i < _buttons.count; i++) {
+    UIButton *button = _buttons[i];
+    [button sizeToFit];
+    button.frame = CGRectMake(i * buttonWidth, buttonTop, buttonWidth, button.frame.size.height);
+    if (!button.superview) {
+      [_containerView addSubview:button];
+    }
+    containerSize.height = CGRectGetMaxY(button.frame) + SUPERVIEW_SPACING;
+  }
+
   CGFloat containerTop = (newSuperview.frame.size.height - containerSize.height) / 2.0;
-  _containerView.frame = CGRectMake(containerTop, SUPERVIEW_SPACING, containerSize.width, containerSize.height);
-
-  NSLog(@"%@ %@ %@", newSuperview, NSStringFromCGRect(_containerView.frame), NSStringFromCGRect(newSuperview.frame));
-}
-
-- (void)show {
-  id<UIApplicationDelegate> app = [UIApplication sharedApplication].delegate;
-  UIWindow *window = app.window;
-  self.frame = window.bounds;
-  [window addSubview:self];
+  _containerView.frame = CGRectMake(SUPERVIEW_SPACING, containerTop, containerSize.width, containerSize.height);
 }
 
 #pragma mark - Buttons
@@ -110,8 +139,13 @@
     _buttons = [NSMutableArray array];
   }
 
-  UIButton *button = [[UIButton alloc] init];
-  button.titleLabel.text = text;
+  UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+  [button setTitle:text forState:UIControlStateNormal];
+  [button addTarget:self action:@selector(hide:) forControlEvents:UIControlEventTouchUpInside];
+  if (target && action) {
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+  }
+
   CGFloat red, green, blue;
   red = 1.0;
   green = 1.0;
@@ -129,9 +163,6 @@
       break;
   }
   button.backgroundColor = backgroundColor;
-  if (target && action) {
-    [button addTarget:target action:action forControlEvents:UIControlEventAllEvents];
-  }
 
   [_buttons addObject:button];
 }

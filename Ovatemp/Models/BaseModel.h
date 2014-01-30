@@ -13,6 +13,9 @@
 @property NSNumber *id;
 @property NSDictionary *attributes;
 
+@property NSDate *createdAt;
+@property NSDate *updatedAt;
+
 + (NSMutableDictionary *)instances;
 + (BOOL)isLoaded;
 + (NSString *)key;
