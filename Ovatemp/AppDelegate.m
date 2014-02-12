@@ -35,7 +35,7 @@
   // Require a user to log in or register
   if (![Configuration sharedConfiguration].token) {
     [self performSelector:@selector(presentSessionController) withObject:nil afterDelay:0];
-  }
+  } 
 
   return YES;
 }
