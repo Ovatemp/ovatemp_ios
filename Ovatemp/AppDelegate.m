@@ -28,7 +28,7 @@
 
   UIViewController *currentController;
   // Set up the today controller
-  TodayViewController *todayController = [[TodayViewController alloc] initWithNibName:@"TodayViewController" bundle:nil];
+  TodayViewController *todayController = [[TodayViewController alloc] init];
   [tabController addChildViewController:todayController.withNavigation];
 
   currentController = [tabController.childViewControllers lastObject];

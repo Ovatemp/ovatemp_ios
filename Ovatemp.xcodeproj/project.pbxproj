@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8328B75718ABFD6D00DA7A5E /* TemperatureDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8328B75618ABFD6D00DA7A5E /* TemperatureDayCell.xib */; };
+		8328B75A18ABFD9400DA7A5E /* TemperatureDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328B75918ABFD9400DA7A5E /* TemperatureDayCell.m */; };
 		839A345D18ABCBAD007CD657 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345C18ABCBAD007CD657 /* Calendar.m */; };
 		839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345F18ABCFB6007CD657 /* NavigationViewController.m */; };
 		839A346218ABCFB6007CD657 /* NavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346018ABCFB6007CD657 /* NavigationViewController.xib */; };
+		839A346818ABF385007CD657 /* PeriodDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A346718ABF385007CD657 /* PeriodDayCell.m */; };
+		839A346A18ABF3B3007CD657 /* PeriodDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346918ABF3B3007CD657 /* PeriodDayCell.xib */; };
 		9C4D13D86AB546AD9A46ADE4 /* libPods-OvatempTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */; };
 		C3066C6818983537003F8B84 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3066C6618983537003F8B84 /* TodayViewController.m */; };
 		C308706818980A4900DC4364 /* UIViewController+Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = C308706718980A4900DC4364 /* UIViewController+Alerts.m */; };
@@ -37,7 +41,6 @@
 		C3BF8FE5189848CE00572F43 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FE4189848CE00572F43 /* BaseModel.m */; };
 		C3BF8FE818984AC200572F43 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FE718984AC200572F43 /* User.m */; };
 		C3BF8FEB18984B9700572F43 /* TextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FEA18984B9700572F43 /* TextFieldCell.m */; };
-		C3D4F34E1898357F00CBB91A /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3D4F34D1898357F00CBB91A /* TodayViewController.xib */; };
 		C3D4F351189835CC00CBB91A /* UIViewController+WithNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D4F350189835CC00CBB91A /* UIViewController+WithNavigation.m */; };
 		C3D4F35418983B9C00CBB91A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D4F35318983B9C00CBB91A /* Constants.m */; };
 		D18C51F548DA4E59B785DE16 /* libPods-Ovatemp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */; };
@@ -55,11 +58,17 @@
 
 /* Begin PBXFileReference section */
 		803928D684F54DB4A5F86E42 /* Pods-OvatempTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.xcconfig"; path = "Pods/Pods-OvatempTests.xcconfig"; sourceTree = "<group>"; };
+		8328B75618ABFD6D00DA7A5E /* TemperatureDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemperatureDayCell.xib; sourceTree = "<group>"; };
+		8328B75818ABFD9400DA7A5E /* TemperatureDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemperatureDayCell.h; sourceTree = "<group>"; };
+		8328B75918ABFD9400DA7A5E /* TemperatureDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureDayCell.m; sourceTree = "<group>"; };
 		839A345B18ABCBAD007CD657 /* Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Calendar.h; path = Shared/Calendar.h; sourceTree = "<group>"; };
 		839A345C18ABCBAD007CD657 /* Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Calendar.m; path = Shared/Calendar.m; sourceTree = "<group>"; };
 		839A345E18ABCFB6007CD657 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		839A345F18ABCFB6007CD657 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
 		839A346018ABCFB6007CD657 /* NavigationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NavigationViewController.xib; path = ../Controllers/NavigationViewController.xib; sourceTree = "<group>"; };
+		839A346618ABF385007CD657 /* PeriodDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeriodDayCell.h; sourceTree = "<group>"; };
+		839A346718ABF385007CD657 /* PeriodDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeriodDayCell.m; sourceTree = "<group>"; };
+		839A346918ABF3B3007CD657 /* PeriodDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeriodDayCell.xib; sourceTree = "<group>"; };
 		C3066C6518983537003F8B84 /* TodayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		C3066C6618983537003F8B84 /* TodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		C308706618980A4900DC4364 /* UIViewController+Alerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alerts.h"; sourceTree = "<group>"; };
@@ -104,7 +113,6 @@
 		C3BF8FE718984AC200572F43 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		C3BF8FE918984B9700572F43 /* TextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldCell.h; sourceTree = "<group>"; };
 		C3BF8FEA18984B9700572F43 /* TextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldCell.m; sourceTree = "<group>"; };
-		C3D4F34D1898357F00CBB91A /* TodayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
 		C3D4F34F189835CC00CBB91A /* UIViewController+WithNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WithNavigation.h"; sourceTree = "<group>"; };
 		C3D4F350189835CC00CBB91A /* UIViewController+WithNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WithNavigation.m"; sourceTree = "<group>"; };
 		C3D4F35218983B9C00CBB91A /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -140,11 +148,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		839A345518ABCB14007CD657 /* TodayCells */ = {
+		839A345518ABCB14007CD657 /* DayCells */ = {
 			isa = PBXGroup;
 			children = (
+				839A346618ABF385007CD657 /* PeriodDayCell.h */,
+				839A346718ABF385007CD657 /* PeriodDayCell.m */,
+				839A346918ABF3B3007CD657 /* PeriodDayCell.xib */,
+				8328B75618ABFD6D00DA7A5E /* TemperatureDayCell.xib */,
+				8328B75818ABFD9400DA7A5E /* TemperatureDayCell.h */,
+				8328B75918ABFD9400DA7A5E /* TemperatureDayCell.m */,
 			);
-			name = TodayCells;
+			name = DayCells;
 			sourceTree = "<group>";
 		};
 		839A345918ABCB91007CD657 /* Shared */ = {
@@ -214,9 +228,8 @@
 			isa = PBXGroup;
 			children = (
 				839A346018ABCFB6007CD657 /* NavigationViewController.xib */,
-				839A345518ABCB14007CD657 /* TodayCells */,
+				839A345518ABCB14007CD657 /* DayCells */,
 				C3BF8FE11898454300572F43 /* SessionViewController.xib */,
-				C3D4F34D1898357F00CBB91A /* TodayViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -412,7 +425,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3BF8FE21898454300572F43 /* SessionViewController.xib in Resources */,
-				C3D4F34E1898357F00CBB91A /* TodayViewController.xib in Resources */,
+				8328B75718ABFD6D00DA7A5E /* TemperatureDayCell.xib in Resources */,
+				839A346A18ABF3B3007CD657 /* PeriodDayCell.xib in Resources */,
 				C36C5109189028190053A884 /* InfoPlist.strings in Resources */,
 				839A346218ABCFB6007CD657 /* NavigationViewController.xib in Resources */,
 				C36C5111189028190053A884 /* Images.xcassets in Resources */,
@@ -510,8 +524,10 @@
 				C31220241899BB8E0027C4B3 /* Configuration.m in Sources */,
 				C36C510B189028190053A884 /* main.m in Sources */,
 				C32C4A8C18985A4D00B05009 /* UIViewController+ConnectionManager.m in Sources */,
+				8328B75A18ABFD9400DA7A5E /* TemperatureDayCell.m in Sources */,
 				839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */,
 				C3D4F35418983B9C00CBB91A /* Constants.m in Sources */,
+				839A346818ABF385007CD657 /* PeriodDayCell.m in Sources */,
 				C3066C6818983537003F8B84 /* TodayViewController.m in Sources */,
 				839A345D18ABCBAD007CD657 /* Calendar.m in Sources */,
 			);
