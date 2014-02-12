@@ -7,17 +7,15 @@
 //
 
 #import "UIViewController+WithNavigation.h"
+#import "NavigationViewController.h"
 
 @implementation UIViewController (WithNavigation)
 
 #pragma mark - Navigation controller wrapping
 
-- (UINavigationController *)withNavigation {
-  UINavigationController *navigationController = self.navigationController;
-  if (!navigationController) {
-    navigationController = [[UINavigationController alloc] initWithRootViewController:self];
-  }
-  return navigationController;
+- (NavigationViewController *)withNavigation {
+  NavigationViewController *controller = [[NavigationViewController alloc] initWithContentViewController:self];
+  return controller;
 }
 
 @end

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		839A345D18ABCBAD007CD657 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345C18ABCBAD007CD657 /* Calendar.m */; };
+		839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345F18ABCFB6007CD657 /* NavigationViewController.m */; };
+		839A346218ABCFB6007CD657 /* NavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346018ABCFB6007CD657 /* NavigationViewController.xib */; };
 		9C4D13D86AB546AD9A46ADE4 /* libPods-OvatempTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */; };
 		C3066C6818983537003F8B84 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3066C6618983537003F8B84 /* TodayViewController.m */; };
 		C308706818980A4900DC4364 /* UIViewController+Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = C308706718980A4900DC4364 /* UIViewController+Alerts.m */; };
@@ -52,6 +55,11 @@
 
 /* Begin PBXFileReference section */
 		803928D684F54DB4A5F86E42 /* Pods-OvatempTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.xcconfig"; path = "Pods/Pods-OvatempTests.xcconfig"; sourceTree = "<group>"; };
+		839A345B18ABCBAD007CD657 /* Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Calendar.h; path = Shared/Calendar.h; sourceTree = "<group>"; };
+		839A345C18ABCBAD007CD657 /* Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Calendar.m; path = Shared/Calendar.m; sourceTree = "<group>"; };
+		839A345E18ABCFB6007CD657 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
+		839A345F18ABCFB6007CD657 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
+		839A346018ABCFB6007CD657 /* NavigationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NavigationViewController.xib; path = ../Controllers/NavigationViewController.xib; sourceTree = "<group>"; };
 		C3066C6518983537003F8B84 /* TodayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		C3066C6618983537003F8B84 /* TodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		C308706618980A4900DC4364 /* UIViewController+Alerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alerts.h"; sourceTree = "<group>"; };
@@ -132,6 +140,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		839A345518ABCB14007CD657 /* TodayCells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = TodayCells;
+			sourceTree = "<group>";
+		};
+		839A345918ABCB91007CD657 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				839A345B18ABCBAD007CD657 /* Calendar.h */,
+				839A345C18ABCBAD007CD657 /* Calendar.m */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
 		C308705918980A2E00DC4364 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +176,8 @@
 				C3BF8FDF1898452F00572F43 /* SessionViewController.m */,
 				C3066C6518983537003F8B84 /* TodayViewController.h */,
 				C3066C6618983537003F8B84 /* TodayViewController.m */,
+				839A345E18ABCFB6007CD657 /* NavigationViewController.h */,
+				839A345F18ABCFB6007CD657 /* NavigationViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -187,6 +213,8 @@
 		C308706018980A2E00DC4364 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				839A346018ABCFB6007CD657 /* NavigationViewController.xib */,
+				839A345518ABCB14007CD657 /* TodayCells */,
 				C3BF8FE11898454300572F43 /* SessionViewController.xib */,
 				C3D4F34D1898357F00CBB91A /* TodayViewController.xib */,
 			);
@@ -230,6 +258,7 @@
 		C36C5104189028190053A884 /* Ovatemp */ = {
 			isa = PBXGroup;
 			children = (
+				839A345918ABCB91007CD657 /* Shared */,
 				C308705918980A2E00DC4364 /* Categories */,
 				C308705A18980A2E00DC4364 /* Controllers */,
 				C308705C18980A2E00DC4364 /* Controls */,
@@ -385,6 +414,7 @@
 				C3BF8FE21898454300572F43 /* SessionViewController.xib in Resources */,
 				C3D4F34E1898357F00CBB91A /* TodayViewController.xib in Resources */,
 				C36C5109189028190053A884 /* InfoPlist.strings in Resources */,
+				839A346218ABCFB6007CD657 /* NavigationViewController.xib in Resources */,
 				C36C5111189028190053A884 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,8 +510,10 @@
 				C31220241899BB8E0027C4B3 /* Configuration.m in Sources */,
 				C36C510B189028190053A884 /* main.m in Sources */,
 				C32C4A8C18985A4D00B05009 /* UIViewController+ConnectionManager.m in Sources */,
+				839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */,
 				C3D4F35418983B9C00CBB91A /* Constants.m in Sources */,
 				C3066C6818983537003F8B84 /* TodayViewController.m in Sources */,
+				839A345D18ABCBAD007CD657 /* Calendar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

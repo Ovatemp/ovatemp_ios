@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class NavigationViewController;
+
 @interface UIViewController (WithNavigation)
 
-- (UINavigationController *)withNavigation;
+- (NavigationViewController *)withNavigation;
 
 @end

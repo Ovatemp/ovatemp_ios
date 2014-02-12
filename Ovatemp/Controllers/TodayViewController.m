@@ -18,11 +18,6 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-
-  self.date = [NSDate date];
-
-  self.navigationController.tabBarItem.image = [UIImage imageNamed:@"IconToday.png"];
-  self.navigationController.tabBarItem.title = @"Today";
 }
 
 - (void)didReceiveMemoryWarning {

@@ -11,6 +11,7 @@
 #import "Alert.h"
 #import "SessionViewController.h"
 #import "TodayViewController.h"
+#import "NavigationViewController.h"
 #import "User.h"
 
 @implementation AppDelegate
@@ -25,9 +26,14 @@
   UITabBarController *tabController = [[UITabBarController alloc] init];
   self.window.rootViewController = tabController;
 
+  UIViewController *currentController;
   // Set up the today controller
   TodayViewController *todayController = [[TodayViewController alloc] initWithNibName:@"TodayViewController" bundle:nil];
   [tabController addChildViewController:todayController.withNavigation];
+
+  currentController = [tabController.childViewControllers lastObject];
+  currentController.tabBarItem.image = [UIImage imageNamed:@"IconToday.png"];
+  currentController.tabBarItem.title = @"Today";
 
   // Display the app!
   [self.window makeKeyAndVisible];
