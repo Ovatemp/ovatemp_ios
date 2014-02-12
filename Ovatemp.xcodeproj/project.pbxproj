@@ -272,8 +272,8 @@
 			children = (
 				8328B77418AC034900DA7A5E /* DayCell.h */,
 				8328B77518AC034900DA7A5E /* DayCell.m */,
-				839A346018ABCFB6007CD657 /* NavigationViewController.xib */,
 				839A345518ABCB14007CD657 /* DayCells */,
+				839A346018ABCFB6007CD657 /* NavigationViewController.xib */,
 				C3BF8FE11898454300572F43 /* SessionViewController.xib */,
 			);
 			path = Views;
