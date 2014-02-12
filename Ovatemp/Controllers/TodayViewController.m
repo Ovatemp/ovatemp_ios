@@ -7,8 +7,7 @@
 //
 
 #import "TodayViewController.h"
-#import "PeriodDayCell.h"
-#import "TemperatureDayCell.h"
+#import "Calendar.h"
 
 @interface TodayViewController ()
 
@@ -35,13 +34,29 @@
   // Don't show separators after the last item
   table.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
-  self.rowIdentifiers = @[@"TemperatureDayCell", @"PeriodDayCell"];
+  [[Calendar sharedInstance] addObserver: self
+                              forKeyPath: @"date"
+                                 options: NSKeyValueObservingOptionNew
+                                 context: NULL];
+
+
+  self.rowIdentifiers = @[@"TemperatureDayCell", @"PeriodDayCell", @"FluidDayCell", @"IntercourseDayCell", @"SymptomsDayCell", @"SupplementsDayCell", @"SignsDayCell"];
   self.rowExemplars = [NSMutableArray array];
 
   for(NSString *name in self.rowIdentifiers) {
     [table registerNib:[UINib nibWithNibName:name bundle:nil] forCellReuseIdentifier:name];
     UIView *cellView = [[[NSBundle mainBundle] loadNibNamed:name owner:self options:nil] objectAtIndex:0];
     [self.rowExemplars addObject:cellView];
+  }
+}
+
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
+                       change:(NSDictionary *)change context:(void *)context
+{
+  if([keyPath isEqualToString:@"date"] && [[Calendar sharedInstance] class] == [object class]) {
+    NSLog(@"new date, refresh page");
+    [(UITableView*)self.view reloadData];
   }
 }
 
@@ -90,27 +105,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView dayCellForRow:(NSUInteger)row {
-  UITableViewCell *cell;
-
-  switch (row) {
-    case 0: {
-      TemperatureDayCell *tempCell = [tableView dequeueReusableCellWithIdentifier:@"TemperatureDayCell"];
-      tempCell.temperatureLabel.text = @"0C";
-
-      cell = tempCell;
-      break;
-    }
-    case 1: {
-      PeriodDayCell *periodCell = [tableView dequeueReusableCellWithIdentifier:@"PeriodDayCell"];
-      periodCell.periodLabel.text = @"Minimal";
-
-      cell = periodCell;
-      break;
-    }
-    default: {
-      break;
-    }
-  }
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.rowIdentifiers[row]];
 
   return cell;
 }

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DayCell.h"
 
-@interface TemperatureDayCell : UITableViewCell
+@interface TemperatureDayCell : DayCell
 
 @property (nonatomic, weak) IBOutlet UILabel *temperatureLabel;
 @property (nonatomic, weak) IBOutlet UIView *graphView;

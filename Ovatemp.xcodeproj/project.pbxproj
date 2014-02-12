@@ -9,6 +9,17 @@
 /* Begin PBXBuildFile section */
 		8328B75718ABFD6D00DA7A5E /* TemperatureDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8328B75618ABFD6D00DA7A5E /* TemperatureDayCell.xib */; };
 		8328B75A18ABFD9400DA7A5E /* TemperatureDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328B75918ABFD9400DA7A5E /* TemperatureDayCell.m */; };
+		8328B75D18AC002800DA7A5E /* FluidDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328B75C18AC002800DA7A5E /* FluidDayCell.m */; };
+		8328B75F18AC003700DA7A5E /* FluidDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8328B75E18AC003700DA7A5E /* FluidDayCell.xib */; };
+		8328B76118AC004300DA7A5E /* IntercourseDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8328B76018AC004300DA7A5E /* IntercourseDayCell.xib */; };
+		8328B76318AC005A00DA7A5E /* SymptomsDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8328B76218AC005A00DA7A5E /* SymptomsDayCell.xib */; };
+		8328B76518AC006C00DA7A5E /* SupplementsDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8328B76418AC006C00DA7A5E /* SupplementsDayCell.xib */; };
+		8328B76718AC008700DA7A5E /* SignsDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8328B76618AC008700DA7A5E /* SignsDayCell.xib */; };
+		8328B76A18AC009C00DA7A5E /* IntercourseDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328B76918AC009C00DA7A5E /* IntercourseDayCell.m */; };
+		8328B76D18AC00A800DA7A5E /* SignsDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328B76C18AC00A800DA7A5E /* SignsDayCell.m */; };
+		8328B77018AC00B500DA7A5E /* SupplementsDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328B76F18AC00B500DA7A5E /* SupplementsDayCell.m */; };
+		8328B77318AC00CD00DA7A5E /* SymptomsDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328B77218AC00CD00DA7A5E /* SymptomsDayCell.m */; };
+		8328B77618AC034900DA7A5E /* DayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328B77518AC034900DA7A5E /* DayCell.m */; };
 		839A345D18ABCBAD007CD657 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345C18ABCBAD007CD657 /* Calendar.m */; };
 		839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345F18ABCFB6007CD657 /* NavigationViewController.m */; };
 		839A346218ABCFB6007CD657 /* NavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346018ABCFB6007CD657 /* NavigationViewController.xib */; };
@@ -61,6 +72,23 @@
 		8328B75618ABFD6D00DA7A5E /* TemperatureDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemperatureDayCell.xib; sourceTree = "<group>"; };
 		8328B75818ABFD9400DA7A5E /* TemperatureDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemperatureDayCell.h; sourceTree = "<group>"; };
 		8328B75918ABFD9400DA7A5E /* TemperatureDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureDayCell.m; sourceTree = "<group>"; };
+		8328B75B18AC002800DA7A5E /* FluidDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluidDayCell.h; sourceTree = "<group>"; };
+		8328B75C18AC002800DA7A5E /* FluidDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FluidDayCell.m; sourceTree = "<group>"; };
+		8328B75E18AC003700DA7A5E /* FluidDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FluidDayCell.xib; sourceTree = "<group>"; };
+		8328B76018AC004300DA7A5E /* IntercourseDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntercourseDayCell.xib; sourceTree = "<group>"; };
+		8328B76218AC005A00DA7A5E /* SymptomsDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SymptomsDayCell.xib; sourceTree = "<group>"; };
+		8328B76418AC006C00DA7A5E /* SupplementsDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SupplementsDayCell.xib; sourceTree = "<group>"; };
+		8328B76618AC008700DA7A5E /* SignsDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignsDayCell.xib; sourceTree = "<group>"; };
+		8328B76818AC009C00DA7A5E /* IntercourseDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntercourseDayCell.h; sourceTree = "<group>"; };
+		8328B76918AC009C00DA7A5E /* IntercourseDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntercourseDayCell.m; sourceTree = "<group>"; };
+		8328B76B18AC00A800DA7A5E /* SignsDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignsDayCell.h; sourceTree = "<group>"; };
+		8328B76C18AC00A800DA7A5E /* SignsDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignsDayCell.m; sourceTree = "<group>"; };
+		8328B76E18AC00B500DA7A5E /* SupplementsDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplementsDayCell.h; sourceTree = "<group>"; };
+		8328B76F18AC00B500DA7A5E /* SupplementsDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplementsDayCell.m; sourceTree = "<group>"; };
+		8328B77118AC00CD00DA7A5E /* SymptomsDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymptomsDayCell.h; sourceTree = "<group>"; };
+		8328B77218AC00CD00DA7A5E /* SymptomsDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymptomsDayCell.m; sourceTree = "<group>"; };
+		8328B77418AC034900DA7A5E /* DayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayCell.h; sourceTree = "<group>"; };
+		8328B77518AC034900DA7A5E /* DayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayCell.m; sourceTree = "<group>"; };
 		839A345B18ABCBAD007CD657 /* Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Calendar.h; path = Shared/Calendar.h; sourceTree = "<group>"; };
 		839A345C18ABCBAD007CD657 /* Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Calendar.m; path = Shared/Calendar.m; sourceTree = "<group>"; };
 		839A345E18ABCFB6007CD657 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
@@ -151,12 +179,27 @@
 		839A345518ABCB14007CD657 /* DayCells */ = {
 			isa = PBXGroup;
 			children = (
+				8328B75B18AC002800DA7A5E /* FluidDayCell.h */,
+				8328B75C18AC002800DA7A5E /* FluidDayCell.m */,
+				8328B75E18AC003700DA7A5E /* FluidDayCell.xib */,
+				8328B76818AC009C00DA7A5E /* IntercourseDayCell.h */,
+				8328B76918AC009C00DA7A5E /* IntercourseDayCell.m */,
+				8328B76018AC004300DA7A5E /* IntercourseDayCell.xib */,
 				839A346618ABF385007CD657 /* PeriodDayCell.h */,
 				839A346718ABF385007CD657 /* PeriodDayCell.m */,
 				839A346918ABF3B3007CD657 /* PeriodDayCell.xib */,
-				8328B75618ABFD6D00DA7A5E /* TemperatureDayCell.xib */,
+				8328B76B18AC00A800DA7A5E /* SignsDayCell.h */,
+				8328B76C18AC00A800DA7A5E /* SignsDayCell.m */,
+				8328B76618AC008700DA7A5E /* SignsDayCell.xib */,
+				8328B76E18AC00B500DA7A5E /* SupplementsDayCell.h */,
+				8328B76F18AC00B500DA7A5E /* SupplementsDayCell.m */,
+				8328B76418AC006C00DA7A5E /* SupplementsDayCell.xib */,
+				8328B77118AC00CD00DA7A5E /* SymptomsDayCell.h */,
+				8328B77218AC00CD00DA7A5E /* SymptomsDayCell.m */,
+				8328B76218AC005A00DA7A5E /* SymptomsDayCell.xib */,
 				8328B75818ABFD9400DA7A5E /* TemperatureDayCell.h */,
 				8328B75918ABFD9400DA7A5E /* TemperatureDayCell.m */,
+				8328B75618ABFD6D00DA7A5E /* TemperatureDayCell.xib */,
 			);
 			name = DayCells;
 			sourceTree = "<group>";
@@ -227,6 +270,8 @@
 		C308706018980A2E00DC4364 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8328B77418AC034900DA7A5E /* DayCell.h */,
+				8328B77518AC034900DA7A5E /* DayCell.m */,
 				839A346018ABCFB6007CD657 /* NavigationViewController.xib */,
 				839A345518ABCB14007CD657 /* DayCells */,
 				C3BF8FE11898454300572F43 /* SessionViewController.xib */,
@@ -424,11 +469,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8328B76118AC004300DA7A5E /* IntercourseDayCell.xib in Resources */,
 				C3BF8FE21898454300572F43 /* SessionViewController.xib in Resources */,
 				8328B75718ABFD6D00DA7A5E /* TemperatureDayCell.xib in Resources */,
+				8328B76518AC006C00DA7A5E /* SupplementsDayCell.xib in Resources */,
+				8328B76318AC005A00DA7A5E /* SymptomsDayCell.xib in Resources */,
 				839A346A18ABF3B3007CD657 /* PeriodDayCell.xib in Resources */,
+				8328B75F18AC003700DA7A5E /* FluidDayCell.xib in Resources */,
 				C36C5109189028190053A884 /* InfoPlist.strings in Resources */,
 				839A346218ABCFB6007CD657 /* NavigationViewController.xib in Resources */,
+				8328B76718AC008700DA7A5E /* SignsDayCell.xib in Resources */,
 				C36C5111189028190053A884 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,9 +562,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3BF8FE818984AC200572F43 /* User.m in Sources */,
+				8328B76D18AC00A800DA7A5E /* SignsDayCell.m in Sources */,
 				C3BF8FEB18984B9700572F43 /* TextFieldCell.m in Sources */,
 				C3BF8FE5189848CE00572F43 /* BaseModel.m in Sources */,
 				C308706818980A4900DC4364 /* UIViewController+Alerts.m in Sources */,
+				8328B77018AC00B500DA7A5E /* SupplementsDayCell.m in Sources */,
 				C3BF8FE01898452F00572F43 /* SessionViewController.m in Sources */,
 				C32C4A8F18985A7800B05009 /* ConnectionManager.m in Sources */,
 				C36C510F189028190053A884 /* AppDelegate.m in Sources */,
@@ -523,9 +575,13 @@
 				C308706B18980B1A00DC4364 /* Alert.m in Sources */,
 				C31220241899BB8E0027C4B3 /* Configuration.m in Sources */,
 				C36C510B189028190053A884 /* main.m in Sources */,
+				8328B77318AC00CD00DA7A5E /* SymptomsDayCell.m in Sources */,
 				C32C4A8C18985A4D00B05009 /* UIViewController+ConnectionManager.m in Sources */,
+				8328B77618AC034900DA7A5E /* DayCell.m in Sources */,
 				8328B75A18ABFD9400DA7A5E /* TemperatureDayCell.m in Sources */,
+				8328B76A18AC009C00DA7A5E /* IntercourseDayCell.m in Sources */,
 				839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */,
+				8328B75D18AC002800DA7A5E /* FluidDayCell.m in Sources */,
 				C3D4F35418983B9C00CBB91A /* Constants.m in Sources */,
 				839A346818ABF385007CD657 /* PeriodDayCell.m in Sources */,
 				C3066C6818983537003F8B84 /* TodayViewController.m in Sources */,

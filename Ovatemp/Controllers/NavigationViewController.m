@@ -23,6 +23,7 @@
     self = [super initWithNibName:@"NavigationViewController" bundle:nil];
     if (self) {
       self.contentViewController = contentViewController;
+      self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     return self;
 }
@@ -33,7 +34,7 @@
     // Do any additional setup after loading the view from its nib.
 
   UIView *content = self.contentViewController.view;
-  content.frame = CGRectMake(0, 0, content.frame.size.width, content.frame.size.height);
+  content.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
 
   [self.contentView addSubview:self.contentViewController.view];
 

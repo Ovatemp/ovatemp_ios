@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DayCell.h"
 
-@interface PeriodDayCell : UITableViewCell
+@interface PeriodDayCell : DayCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *periodImage;
 @property (weak, nonatomic) IBOutlet UILabel *periodLabel;
