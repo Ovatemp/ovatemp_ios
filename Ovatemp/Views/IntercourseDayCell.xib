@@ -13,15 +13,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="640" height="103"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OnG-N2-SKU">
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OnG-N2-SKU">
                         <rect key="frame" x="0.0" y="0.0" width="640" height="103"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zBS-w6-dsQ" userLabel="Page 1">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBS-w6-dsQ" userLabel="Page 1">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="103"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Intercourse" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMU-My-vJD">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intercourse" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMU-My-vJD">
                                         <rect key="frame" x="8" y="5" width="87" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
@@ -29,12 +29,17 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="hMU-My-vJD" firstAttribute="leading" secondItem="zBS-w6-dsQ" secondAttribute="leading" constant="8" id="6J6-cI-yVY"/>
+                                    <constraint firstAttribute="width" constant="320" id="AP5-Vo-Ki4"/>
+                                    <constraint firstItem="hMU-My-vJD" firstAttribute="top" secondItem="zBS-w6-dsQ" secondAttribute="top" constant="5" id="AjI-Hu-EwE"/>
+                                </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oHZ-Wx-uHb">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oHZ-Wx-uHb" userLabel="Page 2">
                                 <rect key="frame" x="320" y="0.0" width="320" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Intercourse" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7o-Z6-YJh">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intercourse" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7o-Z6-YJh">
                                         <rect key="frame" x="9" y="7" width="87" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
@@ -43,10 +48,31 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Z7o-Z6-YJh" firstAttribute="top" secondItem="oHZ-Wx-uHb" secondAttribute="top" constant="7" id="9i6-Ve-cxv"/>
+                                    <constraint firstAttribute="width" constant="320" id="Oq9-jt-ebz"/>
+                                    <constraint firstItem="Z7o-Z6-YJh" firstAttribute="leading" secondItem="oHZ-Wx-uHb" secondAttribute="leading" constant="9" id="WJQ-I8-W6F"/>
+                                </constraints>
                             </view>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="oHZ-Wx-uHb" firstAttribute="leading" secondItem="zBS-w6-dsQ" secondAttribute="trailing" id="2G5-VK-wQb"/>
+                            <constraint firstItem="oHZ-Wx-uHb" firstAttribute="top" secondItem="OnG-N2-SKU" secondAttribute="top" id="Gl2-Z3-Jf5"/>
+                            <constraint firstItem="oHZ-Wx-uHb" firstAttribute="centerY" secondItem="OnG-N2-SKU" secondAttribute="centerY" id="Nqu-ka-hKo"/>
+                            <constraint firstItem="zBS-w6-dsQ" firstAttribute="leading" secondItem="OnG-N2-SKU" secondAttribute="leading" id="c7E-21-50F"/>
+                            <constraint firstItem="zBS-w6-dsQ" firstAttribute="bottom" secondItem="oHZ-Wx-uHb" secondAttribute="bottom" id="eqH-XU-5bw"/>
+                            <constraint firstAttribute="trailing" secondItem="oHZ-Wx-uHb" secondAttribute="trailing" id="oNu-WO-HJx"/>
+                            <constraint firstItem="zBS-w6-dsQ" firstAttribute="top" secondItem="oHZ-Wx-uHb" secondAttribute="top" id="s7W-84-o1R"/>
+                            <constraint firstAttribute="bottom" secondItem="oHZ-Wx-uHb" secondAttribute="bottom" id="zQ5-u4-HaG"/>
+                        </constraints>
                     </scrollView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="OnG-N2-SKU" firstAttribute="top" secondItem="xPv-a0-0Ld" secondAttribute="top" id="EUu-tT-FXf"/>
+                    <constraint firstAttribute="trailing" secondItem="OnG-N2-SKU" secondAttribute="trailing" id="Pkz-v9-Crb"/>
+                    <constraint firstAttribute="bottom" secondItem="OnG-N2-SKU" secondAttribute="bottom" id="RaO-YV-zdW"/>
+                    <constraint firstItem="OnG-N2-SKU" firstAttribute="leading" secondItem="xPv-a0-0Ld" secondAttribute="leading" id="ZtE-wU-emR"/>
+                </constraints>
             </tableViewCellContentView>
         </tableViewCell>
     </objects>
