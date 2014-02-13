@@ -9,6 +9,7 @@
 #import "SessionViewController.h"
 
 #import "User.h"
+#import "SessionController.h"
 
 #import "UIViewController+ConnectionManager.h"
 
@@ -67,10 +68,9 @@
   [self startLoadingWithMessage:@"Resetting your password..."];
 }
 
-- (void)loggedIn:(NSDictionary *)response {
-  User *user = [User withAttributes:response[@"user"]];
-  [User setCurrent:user];
-  [Configuration sharedConfiguration].token = [[response objectForKey:@"token"] objectForKey:@"token"];
+- (void)loggedIn:(NSDictionary *)response {  
+  [SessionController loggedInWithUser:response[@"user"] andToken:response[@"token"]];
+
   [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -35,13 +35,38 @@
   currentController.tabBarItem.image = [UIImage imageNamed:@"IconToday.png"];
   currentController.tabBarItem.title = @"Today";
 
+
+
+  // Calendar
+
+  // Coaching
+
+  // Community
+
+
+  // More
+  UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"MoreStoryboard" bundle:nil];
+  UIViewController* moreViewController = [storyboard instantiateInitialViewController];
+  [tabController addChildViewController:moreViewController];
+
+  currentController = [tabController.childViewControllers lastObject];
+  currentController.tabBarItem.image = [UIImage imageNamed:@"IconMore.png"];
+  currentController.tabBarItem.title = @"More";
+  
+
   // Display the app!
   [self.window makeKeyAndVisible];
 
   // Require a user to log in or register
   if (![Configuration sharedConfiguration].token) {
     [self performSelector:@selector(presentSessionController) withObject:nil afterDelay:0];
-  } 
+  }
+
+
+  [[Configuration sharedConfiguration] addObserver: self
+                              forKeyPath: @"token"
+                                 options: NSKeyValueObservingOptionNew
+                                 context: NULL];
 
   return YES;
 }
@@ -85,6 +110,16 @@
 - (void)presentSessionController {
   SessionViewController *sessionController = [[SessionViewController alloc] initWithNibName:@"SessionViewController" bundle:nil];
   [self.window.rootViewController presentViewController:sessionController animated:YES completion:nil];
+}
+
+# pragma mark - Observers
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
+                       change:(NSDictionary *)change context:(void *)context
+{
+  if([keyPath isEqualToString:@"token"] && [[Configuration sharedConfiguration] class] == [object class]) {
+    [self presentSessionController];
+  }
 }
 
 @end

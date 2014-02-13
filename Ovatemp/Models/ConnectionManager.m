@@ -211,7 +211,7 @@ static NSString * const kTokenParam = @"token";
   NSMutableDictionary *newParams;
   if (params) {
     newParams = [params mutableCopy];
-    [newParams addEntriesFromDictionary:newParams];
+    [newParams addEntriesFromDictionary:extraParams];
   } else {
     newParams = extraParams;
   }

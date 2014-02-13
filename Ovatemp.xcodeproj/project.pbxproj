@@ -20,6 +20,9 @@
 		8328B77018AC00B500DA7A5E /* SupplementsDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328B76F18AC00B500DA7A5E /* SupplementsDayCell.m */; };
 		8328B77318AC00CD00DA7A5E /* SymptomsDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328B77218AC00CD00DA7A5E /* SymptomsDayCell.m */; };
 		8328B77618AC034900DA7A5E /* DayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328B77518AC034900DA7A5E /* DayCell.m */; };
+		834BD63218AD1363003B6808 /* MoreStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */; };
+		834BD63518AD1519003B6808 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63418AD1519003B6808 /* MoreViewController.m */; };
+		834BD63818AD164E003B6808 /* SessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63718AD164E003B6808 /* SessionController.m */; };
 		839A345D18ABCBAD007CD657 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345C18ABCBAD007CD657 /* Calendar.m */; };
 		839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345F18ABCFB6007CD657 /* NavigationViewController.m */; };
 		839A346218ABCFB6007CD657 /* NavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346018ABCFB6007CD657 /* NavigationViewController.xib */; };
@@ -89,6 +92,11 @@
 		8328B77218AC00CD00DA7A5E /* SymptomsDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymptomsDayCell.m; sourceTree = "<group>"; };
 		8328B77418AC034900DA7A5E /* DayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayCell.h; sourceTree = "<group>"; };
 		8328B77518AC034900DA7A5E /* DayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayCell.m; sourceTree = "<group>"; };
+		834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MoreStoryboard.storyboard; sourceTree = "<group>"; };
+		834BD63318AD1519003B6808 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
+		834BD63418AD1519003B6808 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
+		834BD63618AD164E003B6808 /* SessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionController.h; sourceTree = "<group>"; };
+		834BD63718AD164E003B6808 /* SessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionController.m; sourceTree = "<group>"; };
 		839A345B18ABCBAD007CD657 /* Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Calendar.h; path = Shared/Calendar.h; sourceTree = "<group>"; };
 		839A345C18ABCBAD007CD657 /* Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Calendar.m; path = Shared/Calendar.m; sourceTree = "<group>"; };
 		839A345E18ABCFB6007CD657 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
@@ -235,6 +243,10 @@
 				C3066C6618983537003F8B84 /* TodayViewController.m */,
 				839A345E18ABCFB6007CD657 /* NavigationViewController.h */,
 				839A345F18ABCFB6007CD657 /* NavigationViewController.m */,
+				834BD63318AD1519003B6808 /* MoreViewController.h */,
+				834BD63418AD1519003B6808 /* MoreViewController.m */,
+				834BD63618AD164E003B6808 /* SessionController.h */,
+				834BD63718AD164E003B6808 /* SessionController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -275,6 +287,7 @@
 				839A345518ABCB14007CD657 /* DayCells */,
 				839A346018ABCFB6007CD657 /* NavigationViewController.xib */,
 				C3BF8FE11898454300572F43 /* SessionViewController.xib */,
+				834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -473,6 +486,7 @@
 				C3BF8FE21898454300572F43 /* SessionViewController.xib in Resources */,
 				8328B75718ABFD6D00DA7A5E /* TemperatureDayCell.xib in Resources */,
 				8328B76518AC006C00DA7A5E /* SupplementsDayCell.xib in Resources */,
+				834BD63218AD1363003B6808 /* MoreStoryboard.storyboard in Resources */,
 				8328B76318AC005A00DA7A5E /* SymptomsDayCell.xib in Resources */,
 				839A346A18ABF3B3007CD657 /* PeriodDayCell.xib in Resources */,
 				8328B75F18AC003700DA7A5E /* FluidDayCell.xib in Resources */,
@@ -568,6 +582,7 @@
 				C308706818980A4900DC4364 /* UIViewController+Alerts.m in Sources */,
 				8328B77018AC00B500DA7A5E /* SupplementsDayCell.m in Sources */,
 				C3BF8FE01898452F00572F43 /* SessionViewController.m in Sources */,
+				834BD63518AD1519003B6808 /* MoreViewController.m in Sources */,
 				C32C4A8F18985A7800B05009 /* ConnectionManager.m in Sources */,
 				C36C510F189028190053A884 /* AppDelegate.m in Sources */,
 				C3D4F351189835CC00CBB91A /* UIViewController+WithNavigation.m in Sources */,
@@ -585,6 +600,7 @@
 				C3D4F35418983B9C00CBB91A /* Constants.m in Sources */,
 				839A346818ABF385007CD657 /* PeriodDayCell.m in Sources */,
 				C3066C6818983537003F8B84 /* TodayViewController.m in Sources */,
+				834BD63818AD164E003B6808 /* SessionController.m in Sources */,
 				839A345D18ABCBAD007CD657 /* Calendar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
