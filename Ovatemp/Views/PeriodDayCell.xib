@@ -59,11 +59,11 @@
                                     <constraint firstItem="AD1-eF-hid" firstAttribute="centerY" secondItem="BjW-xq-nSn" secondAttribute="centerY" id="yFA-DY-bF6"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TKV-7k-ZHl" userLabel="Page 1">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TKV-7k-ZHl" userLabel="Page 2">
                                 <rect key="frame" x="320" y="0.0" width="320" height="117"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Period" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wa-z2-hon">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Period" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wa-z2-hon">
                                         <rect key="frame" x="8" y="5" width="86" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
@@ -73,23 +73,55 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Controls" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rul-gr-ACy">
-                                        <rect key="frame" x="99" y="50" width="135" height="31"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctg-WD-gRW" customClass="DayToggleButton">
+                                        <rect key="frame" x="19" y="38" width="65" height="65"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="Spotting">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="spottingTapped:" destination="WI6-ai-8B4" eventType="touchUpInside" id="duP-5r-RX1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJw-jd-3XR" customClass="DayToggleButton">
+                                        <rect key="frame" x="92" y="38" width="65" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="Light">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="lightTapped:" destination="WI6-ai-8B4" eventType="touchUpInside" id="VbO-79-kar"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QrJ-Y7-Y5d" customClass="DayToggleButton">
+                                        <rect key="frame" x="169" y="38" width="65" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="Medium">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="mediumTapped:" destination="WI6-ai-8B4" eventType="touchUpInside" id="HFd-06-PGb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDy-6g-w1g" customClass="DayToggleButton">
+                                        <rect key="frame" x="242" y="38" width="65" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="Heavy">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="heavyTapped:" destination="WI6-ai-8B4" eventType="touchUpInside" id="CG2-ub-aGt"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="6wa-z2-hon" secondAttribute="bottom" constant="91" id="2Nk-5n-wJo"/>
-                                    <constraint firstItem="rul-gr-ACy" firstAttribute="leading" secondItem="TKV-7k-ZHl" secondAttribute="leading" constant="99" id="8Ss-Dh-eER"/>
                                     <constraint firstItem="6wa-z2-hon" firstAttribute="top" secondItem="TKV-7k-ZHl" secondAttribute="top" constant="5" id="GJz-o1-5Yr"/>
-                                    <constraint firstAttribute="trailing" secondItem="rul-gr-ACy" secondAttribute="trailing" constant="86" id="Ldu-7W-1kx"/>
-                                    <constraint firstAttribute="bottom" secondItem="rul-gr-ACy" secondAttribute="bottom" constant="36" id="XGf-UL-Tfk"/>
-                                    <constraint firstItem="6wa-z2-hon" firstAttribute="leading" secondItem="TKV-7k-ZHl" secondAttribute="leading" constant="8" id="g3i-M9-NFS"/>
-                                    <constraint firstItem="rul-gr-ACy" firstAttribute="top" secondItem="TKV-7k-ZHl" secondAttribute="top" constant="50" id="gvX-Xi-dYd"/>
                                     <constraint firstAttribute="width" constant="320" id="vwI-MX-rva"/>
                                 </constraints>
                             </view>
@@ -114,8 +146,12 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="heavyButton" destination="XDy-6g-w1g" id="3IK-rL-3II"/>
+                <outlet property="lightButton" destination="FJw-jd-3XR" id="WAx-nq-a3z"/>
+                <outlet property="mediumButton" destination="QrJ-Y7-Y5d" id="lhG-oz-s4A"/>
                 <outlet property="periodImage" destination="AD1-eF-hid" id="TZx-Ou-Lsw"/>
-                <outlet property="periodLabel" destination="BjW-xq-nSn" id="yvr-KB-9RY"/>
+                <outlet property="periodLabel" destination="BjW-xq-nSn" id="EtN-KR-R63"/>
+                <outlet property="spottingButton" destination="ctg-WD-gRW" id="tvk-KK-xUz"/>
             </connections>
         </tableViewCell>
     </objects>

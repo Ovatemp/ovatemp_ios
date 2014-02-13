@@ -14,4 +14,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *periodImage;
 @property (weak, nonatomic) IBOutlet UILabel *periodLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *spottingButton;
+@property (weak, nonatomic) IBOutlet UIButton *lightButton;
+@property (weak, nonatomic) IBOutlet UIButton *mediumButton;
+@property (weak, nonatomic) IBOutlet UIButton *heavyButton;
+
 @end

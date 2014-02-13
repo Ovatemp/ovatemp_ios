@@ -11,11 +11,11 @@
 
 @implementation Day
 
-static NSDictionary *validTypes;
+static NSDictionary *propertyOptions;
 
 - (void)setValue:(id)value forKey:(NSString *)key {
-  if(!validTypes) {
-    validTypes = @{
+  if(!propertyOptions) {
+    propertyOptions = @{
                    @"cervicalFluid": kCervicalFluidTypes,
                    @"cervicalPosition": kCervicalPositionTypes,
                    @"vaginalSensation": kVaginalSensationTypes,
@@ -27,8 +27,8 @@ static NSDictionary *validTypes;
                    };
   }
 
-  if(validTypes[key]) {
-    NSArray *possibleValues = validTypes[key];
+  if(propertyOptions[key]) {
+    NSArray *possibleValues = propertyOptions[key];
 
     // If we have a value outside of the possible values (such as null),
     // set the value to "unset"
@@ -48,6 +48,28 @@ static NSDictionary *validTypes;
 + (Day *)forDate:(NSDate *)date {
   Day *day = [Day instances][[date shortDate]];
   return day;
+}
+
+- (void)updateProperty:(NSString *)key withIndex:(NSInteger)index {
+  NSArray *enumeratedStrings = propertyOptions[key];
+
+  if(!enumeratedStrings) {
+    NSLog(@"FAIL: %@ with index %ld", key, (long)index);
+    abort();
+  }
+
+  [self setValue:enumeratedStrings[index] forKey:key];
+  [self scheduleSave];
+}
+
+- (BOOL)isProperty:(NSString *)key ofType:(NSInteger)type {
+  NSArray *enumeratedStrings = propertyOptions[key];
+
+  return [[self valueForKey:key] isEqualToString:enumeratedStrings[type]];
+}
+
+- (void)scheduleSave {
+  NSLog(@"we will save someday!");
 }
 
 @end

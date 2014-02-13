@@ -25,6 +25,7 @@
 		834BD63818AD164E003B6808 /* SessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63718AD164E003B6808 /* SessionController.m */; };
 		834BD63B18AD29EA003B6808 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63A18AD29EA003B6808 /* Day.m */; };
 		834BD63E18AD4B5B003B6808 /* NSDate+ShortDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63D18AD4B5B003B6808 /* NSDate+ShortDate.m */; };
+		834BD64118AD6590003B6808 /* DayToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD64018AD6590003B6808 /* DayToggleButton.m */; };
 		839A345D18ABCBAD007CD657 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345C18ABCBAD007CD657 /* Calendar.m */; };
 		839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345F18ABCFB6007CD657 /* NavigationViewController.m */; };
 		839A346218ABCFB6007CD657 /* NavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346018ABCFB6007CD657 /* NavigationViewController.xib */; };
@@ -103,6 +104,8 @@
 		834BD63A18AD29EA003B6808 /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
 		834BD63C18AD4B5B003B6808 /* NSDate+ShortDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ShortDate.h"; sourceTree = "<group>"; };
 		834BD63D18AD4B5B003B6808 /* NSDate+ShortDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ShortDate.m"; sourceTree = "<group>"; };
+		834BD63F18AD6590003B6808 /* DayToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayToggleButton.h; sourceTree = "<group>"; };
+		834BD64018AD6590003B6808 /* DayToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayToggleButton.m; sourceTree = "<group>"; };
 		839A345B18ABCBAD007CD657 /* Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Calendar.h; path = Shared/Calendar.h; sourceTree = "<group>"; };
 		839A345C18ABCBAD007CD657 /* Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Calendar.m; path = Shared/Calendar.m; sourceTree = "<group>"; };
 		839A345E18ABCFB6007CD657 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
@@ -268,6 +271,8 @@
 				C32C4A88189856C100B05009 /* ButtonCell.m */,
 				C3BF8FE918984B9700572F43 /* TextFieldCell.h */,
 				C3BF8FEA18984B9700572F43 /* TextFieldCell.m */,
+				834BD63F18AD6590003B6808 /* DayToggleButton.h */,
+				834BD64018AD6590003B6808 /* DayToggleButton.m */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -597,6 +602,7 @@
 				C36C510F189028190053A884 /* AppDelegate.m in Sources */,
 				C3D4F351189835CC00CBB91A /* UIViewController+WithNavigation.m in Sources */,
 				C32C4A89189856C100B05009 /* ButtonCell.m in Sources */,
+				834BD64118AD6590003B6808 /* DayToggleButton.m in Sources */,
 				C308706B18980B1A00DC4364 /* Alert.m in Sources */,
 				834BD63E18AD4B5B003B6808 /* NSDate+ShortDate.m in Sources */,
 				C31220241899BB8E0027C4B3 /* Configuration.m in Sources */,
