@@ -10,8 +10,10 @@
 
 #import "UIViewController+WithNavigation.h"
 
+@class Day;
+
 @interface TodayViewController : UITableViewController
 
-@property NSDate *date;
+@property Day *day;
 
 @end

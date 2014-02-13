@@ -14,4 +14,8 @@
   self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
+- (void)setDay:(Day *)day {
+  NSLog(@"Set day not implemented for: %@", [self class]);
+}
+
 @end

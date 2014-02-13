@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Day.h"
 
 @interface DayCell : UITableViewCell
+
+@property (nonatomic, weak) Day *day;
 
 @end

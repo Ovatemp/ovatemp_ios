@@ -8,6 +8,10 @@
 
 #import "TodayViewController.h"
 #import "Calendar.h"
+#import "UIViewController+ConnectionManager.h"
+#import "Day.h"
+#import "DayCell.h"
+#import "NSDate+ShortDate.h"
 
 @interface TodayViewController ()
 
@@ -48,6 +52,9 @@
     UIView *cellView = [[[NSBundle mainBundle] loadNibNamed:name owner:self options:nil] objectAtIndex:0];
     [self.rowExemplars addObject:cellView];
   }
+
+  [self dateChanged];
+
 }
 
 
@@ -55,8 +62,7 @@
                        change:(NSDictionary *)change context:(void *)context
 {
   if([keyPath isEqualToString:@"date"] && [[Calendar sharedInstance] class] == [object class]) {
-    NSLog(@"new date, refresh page");
-    [(UITableView*)self.view reloadData];
+    [self dateChanged];
   }
 }
 
@@ -65,6 +71,35 @@
 }
 
 #pragma mark - Table view data source
+
+- (void)dateChanged {
+  self.day = [Day forDate:[Calendar date]];
+
+  if(!self.day) {
+    // Create day response
+    [ConnectionManager get:@"/days"
+                    params:@{
+                             @"day": @{
+                                  @"date": [[Calendar date] shortDate],
+                                 },
+                             }
+                    target:self
+                   success:@selector(dayLoaded:)
+                   failure:@selector(presentError:)
+     ];
+
+    NSLog(@"loading ...");
+  } else {
+    [(UITableView*)self.view reloadData];
+  }
+}
+
+- (void)dayLoaded:(NSDictionary *)response {
+  self.day = [Day withAttributes:response[@"day"]];
+
+  NSLog(@"loaded!");
+  [(UITableView*)self.view reloadData];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   return 2;
@@ -105,7 +140,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView dayCellForRow:(NSUInteger)row {
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.rowIdentifiers[row]];
+  DayCell *cell = (DayCell *)[tableView dequeueReusableCellWithIdentifier:self.rowIdentifiers[row]];
+  cell.day = self.day;
 
   return cell;
 }

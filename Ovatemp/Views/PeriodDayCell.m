@@ -10,4 +10,12 @@
 
 @implementation PeriodDayCell
 
+- (void)setDay:(Day *)day {
+  if(day.period) {
+    self.periodLabel.text = [day.period capitalizedString];
+  } else {
+    self.periodLabel.text = @"Swipe to edit";
+  }
+}
+
 @end

@@ -23,6 +23,8 @@
 		834BD63218AD1363003B6808 /* MoreStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */; };
 		834BD63518AD1519003B6808 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63418AD1519003B6808 /* MoreViewController.m */; };
 		834BD63818AD164E003B6808 /* SessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63718AD164E003B6808 /* SessionController.m */; };
+		834BD63B18AD29EA003B6808 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63A18AD29EA003B6808 /* Day.m */; };
+		834BD63E18AD4B5B003B6808 /* NSDate+ShortDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63D18AD4B5B003B6808 /* NSDate+ShortDate.m */; };
 		839A345D18ABCBAD007CD657 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345C18ABCBAD007CD657 /* Calendar.m */; };
 		839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345F18ABCFB6007CD657 /* NavigationViewController.m */; };
 		839A346218ABCFB6007CD657 /* NavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346018ABCFB6007CD657 /* NavigationViewController.xib */; };
@@ -97,6 +99,10 @@
 		834BD63418AD1519003B6808 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		834BD63618AD164E003B6808 /* SessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionController.h; sourceTree = "<group>"; };
 		834BD63718AD164E003B6808 /* SessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionController.m; sourceTree = "<group>"; };
+		834BD63918AD29EA003B6808 /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
+		834BD63A18AD29EA003B6808 /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
+		834BD63C18AD4B5B003B6808 /* NSDate+ShortDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ShortDate.h"; sourceTree = "<group>"; };
+		834BD63D18AD4B5B003B6808 /* NSDate+ShortDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ShortDate.m"; sourceTree = "<group>"; };
 		839A345B18ABCBAD007CD657 /* Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Calendar.h; path = Shared/Calendar.h; sourceTree = "<group>"; };
 		839A345C18ABCBAD007CD657 /* Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Calendar.m; path = Shared/Calendar.m; sourceTree = "<group>"; };
 		839A345E18ABCFB6007CD657 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
@@ -230,6 +236,8 @@
 				C32C4A8B18985A4D00B05009 /* UIViewController+ConnectionManager.m */,
 				C3D4F34F189835CC00CBB91A /* UIViewController+WithNavigation.h */,
 				C3D4F350189835CC00CBB91A /* UIViewController+WithNavigation.m */,
+				834BD63C18AD4B5B003B6808 /* NSDate+ShortDate.h */,
+				834BD63D18AD4B5B003B6808 /* NSDate+ShortDate.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -275,6 +283,8 @@
 				C31220231899BB8E0027C4B3 /* Configuration.m */,
 				C32C4A8D18985A7800B05009 /* ConnectionManager.h */,
 				C32C4A8E18985A7800B05009 /* ConnectionManager.m */,
+				834BD63918AD29EA003B6808 /* Day.h */,
+				834BD63A18AD29EA003B6808 /* Day.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -588,7 +598,9 @@
 				C3D4F351189835CC00CBB91A /* UIViewController+WithNavigation.m in Sources */,
 				C32C4A89189856C100B05009 /* ButtonCell.m in Sources */,
 				C308706B18980B1A00DC4364 /* Alert.m in Sources */,
+				834BD63E18AD4B5B003B6808 /* NSDate+ShortDate.m in Sources */,
 				C31220241899BB8E0027C4B3 /* Configuration.m in Sources */,
+				834BD63B18AD29EA003B6808 /* Day.m in Sources */,
 				C36C510B189028190053A884 /* main.m in Sources */,
 				8328B77318AC00CD00DA7A5E /* SymptomsDayCell.m in Sources */,
 				C32C4A8C18985A4D00B05009 /* UIViewController+ConnectionManager.m in Sources */,
