@@ -33,7 +33,9 @@
 - (void)updateControls {
   if(self.day.period) {
     self.periodLabel.text = [self.day.period capitalizedString];
+    self.periodImageView.hidden = FALSE;
   } else {
+    self.periodImageView.hidden = TRUE;
     self.periodLabel.text = @"Swipe to edit";
   }
 
@@ -44,7 +46,7 @@
 
   for(UIButton *button in @[self.spottingButton, self.lightButton, self.mediumButton, self.heavyButton]) {
     if(button.selected) {
-      self.periodImage.image = button.imageView.image;
+      self.periodImageView.image = [button imageForState:UIControlStateNormal];
     }
   }
 }

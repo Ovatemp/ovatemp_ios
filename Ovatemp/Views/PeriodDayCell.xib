@@ -36,7 +36,7 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AD1-eF-hid">
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Spotting.png" translatesAutoresizingMaskIntoConstraints="NO" id="AD1-eF-hid">
                                         <rect key="frame" x="54" y="28" width="75" height="76"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
@@ -166,10 +166,13 @@
                 <outlet property="heavyButton" destination="XDy-6g-w1g" id="3IK-rL-3II"/>
                 <outlet property="lightButton" destination="FJw-jd-3XR" id="WAx-nq-a3z"/>
                 <outlet property="mediumButton" destination="QrJ-Y7-Y5d" id="lhG-oz-s4A"/>
-                <outlet property="periodImage" destination="AD1-eF-hid" id="TZx-Ou-Lsw"/>
+                <outlet property="periodImageView" destination="AD1-eF-hid" id="OK0-Ax-Dce"/>
                 <outlet property="periodLabel" destination="BjW-xq-nSn" id="EtN-KR-R63"/>
                 <outlet property="spottingButton" destination="ctg-WD-gRW" id="tvk-KK-xUz"/>
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Spotting.png" width="38" height="38"/>
+    </resources>
 </document>

@@ -12,7 +12,8 @@
 
 @interface PeriodDayCell : DayCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *periodImage;
+
+@property (weak, nonatomic) IBOutlet UIImageView *periodImageView;
 @property (weak, nonatomic) IBOutlet UILabel *periodLabel;
 
 @property (weak, nonatomic) IBOutlet DayToggleButton *spottingButton;
