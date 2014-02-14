@@ -19,7 +19,7 @@ static NSDictionary *propertyOptions;
     return nil;
   }
 
-  self.ignoredAttributes = [NSSet setWithArray:@[@"createdAt", @"updatedAt", @"cycleId", @"userId"]];
+  self.ignoredAttributes = [NSSet setWithArray:@[@"createdAt", @"updatedAt", @"cycleId", @"userId", @"disturbance", @"medicines", @"supplements"]];
 
   return self;
 }
@@ -92,7 +92,7 @@ static NSDictionary *propertyOptions;
 
 - (void)save {
   Day *day = self;
-  [ConnectionManager post:@"/days/"
+  [ConnectionManager put:@"/days/"
                    params:@{
                             @"day": day.attributes
                             }

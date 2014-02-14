@@ -87,14 +87,14 @@ static NSString * const kTokenParam = @"token";
 }
 
 + (void)put:(NSString *)url params:(NSDictionary *)params success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure {
-  [[self sharedConnectionManager] post:url
+  [[self sharedConnectionManager] put:url
                                 params:params
                                success:onSuccess
                                failure:onFailure];
 }
 
 + (void)put:(NSString *)url params:(NSDictionary *)params target:(id)target success:(SEL)onSuccess failure:(SEL)onFailure {
-  [[self sharedConnectionManager] post:url
+  [[self sharedConnectionManager] put:url
                                 params:params
                                 target:target
                                success:onSuccess
