@@ -7,25 +7,18 @@
 //
 
 #import "DayToggleButton.h"
+#import "QuartzCore/QuartzCore.h"
+
 #define kDayToggleButtonTextPadding 10.0f
 
 @implementation DayToggleButton
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-  self = [super initWithCoder:aDecoder];
-
-  if (self) {
-    UIImage *selectedImage = [UIImage imageNamed:@"MPArrowLeft"];
-    UIImage *normalImage = [UIImage imageNamed:@"MPArrowRight.png"];
-
-    [self setImage:selectedImage forState:UIControlStateSelected];
-    [self setImage:normalImage forState:UIControlStateNormal];
-  }
-  return self;
-}
-
--(void)layoutSubviews {
+- (void)layoutSubviews {
   [super layoutSubviews];
+
+  self.imageView.layer.cornerRadius = 5.0f;
+  self.imageView.layer.masksToBounds = TRUE;
+  self.imageView.contentMode = UIViewContentModeCenter;
 
   // Move the image to the top and center it horizontally
   CGRect imageFrame = self.imageView.frame;
@@ -46,13 +39,15 @@
   self.titleLabel.frame = titleLabelFrame;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+
+- (void)setSelected:(BOOL)selected {
+  [super setSelected:selected];
+
+  if(self.selected) {
+    self.imageView.backgroundColor = [UIColor whiteColor];
+  } else {
+    self.imageView.backgroundColor = [UIColor clearColor];
+  }
 }
-*/
 
 @end

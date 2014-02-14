@@ -12,16 +12,22 @@
 
 - (void)awakeFromNib{
   self.selectionStyle = UITableViewCellSelectionStyleNone;
+
+  [self initializeControls];
 }
 
 - (void)setDay:(Day *)day {
     _day = day;
     
-    [self updateControls];
+  [self updateControls];
 }
 
 - (void)updateControls {
-  NSLog(@"Update controls not implemented for: %@", [self class]);
+  NSLog(@"updateControls not implemented for: %@", [self class]);
+}
+
+- (void)initializeControls {
+  NSLog(@"initializeControls not implemented for %@", [self class]);
 }
 
 @end

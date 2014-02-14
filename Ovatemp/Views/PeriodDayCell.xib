@@ -73,8 +73,8 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctg-WD-gRW" customClass="DayToggleButton">
-                                        <rect key="frame" x="19" y="38" width="65" height="65"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctg-WD-gRW" userLabel="Spotting" customClass="DayToggleButton">
+                                        <rect key="frame" x="19" y="34" width="75" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <state key="normal" title="Spotting">
@@ -84,8 +84,8 @@
                                             <action selector="spottingTapped:" destination="WI6-ai-8B4" eventType="touchUpInside" id="duP-5r-RX1"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJw-jd-3XR" customClass="DayToggleButton">
-                                        <rect key="frame" x="92" y="38" width="65" height="65"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJw-jd-3XR" userLabel="Light" customClass="DayToggleButton">
+                                        <rect key="frame" x="92" y="34" width="75" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <state key="normal" title="Light">
@@ -95,8 +95,8 @@
                                             <action selector="lightTapped:" destination="WI6-ai-8B4" eventType="touchUpInside" id="VbO-79-kar"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QrJ-Y7-Y5d" customClass="DayToggleButton">
-                                        <rect key="frame" x="169" y="38" width="65" height="65"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QrJ-Y7-Y5d" userLabel="Medium" customClass="DayToggleButton">
+                                        <rect key="frame" x="169" y="34" width="75" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <state key="normal" title="Medium">
@@ -106,8 +106,8 @@
                                             <action selector="mediumTapped:" destination="WI6-ai-8B4" eventType="touchUpInside" id="HFd-06-PGb"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDy-6g-w1g" customClass="DayToggleButton">
-                                        <rect key="frame" x="242" y="38" width="65" height="65"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDy-6g-w1g" userLabel="Heavy" customClass="DayToggleButton">
+                                        <rect key="frame" x="238" y="34" width="75" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <state key="normal" title="Heavy">

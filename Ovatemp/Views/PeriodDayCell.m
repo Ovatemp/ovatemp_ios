@@ -36,11 +36,18 @@
   } else {
     self.periodLabel.text = @"Swipe to edit";
   }
-  
+
   self.spottingButton.selected = [self.day isProperty:@"period" ofType:PERIOD_SPOTTING];
   self.lightButton.selected = [self.day isProperty:@"period" ofType:PERIOD_LIGHT];
   self.mediumButton.selected = [self.day isProperty:@"period" ofType:PERIOD_MEDIUM];
   self.heavyButton.selected = [self.day isProperty:@"period" ofType:PERIOD_HEAVY];
+}
+
+- (void)initializeControls {
+  [self.spottingButton setImage:[UIImage imageNamed:@"Spotting"] forState:UIControlStateNormal];
+  [self.lightButton    setImage:[UIImage imageNamed:@"Light"] forState:UIControlStateNormal];
+  [self.mediumButton   setImage:[UIImage imageNamed:@"Medium"] forState:UIControlStateNormal];
+  [self.heavyButton    setImage:[UIImage imageNamed:@"Heavy"] forState:UIControlStateNormal];
 }
 
 @end
