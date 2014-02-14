@@ -15,7 +15,13 @@
 }
 
 - (void)setDay:(Day *)day {
-  NSLog(@"Set day not implemented for: %@", [self class]);
+    _day = day;
+    
+    [self updateControls];
+}
+
+- (void)updateControls {
+  NSLog(@"Update controls not implemented for: %@", [self class]);
 }
 
 @end

@@ -72,6 +72,11 @@ static NSDictionary *propertyOptions;
   [self scheduleSave];
 }
 
+- (void)updateProperty:(NSString *)key withValue:(id)value {
+  [self setValue:value forKey:key];
+  [self scheduleSave];
+}
+
 - (BOOL)isProperty:(NSString *)key ofType:(NSInteger)type {
   NSArray *enumeratedStrings = propertyOptions[key];
 

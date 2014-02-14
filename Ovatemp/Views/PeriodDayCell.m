@@ -10,41 +10,33 @@
 
 @implementation PeriodDayCell
 
-@synthesize day = _day;
-
-- (void)setDay:(Day *)day {
-  if(day.period) {
-    self.periodLabel.text = [day.period capitalizedString];
-  } else {
-    self.periodLabel.text = @"Swipe to edit";
-  }
-
-  _day = day;
-
-  [self updateButtons];
-}
-
 - (IBAction)spottingTapped:(id)sender {
   [self.day updateProperty:@"period" withIndex:PERIOD_SPOTTING];
-  [self updateButtons];
+  [self updateControls];
 }
 
 - (IBAction)lightTapped:(id)sender {
   [self.day updateProperty:@"period" withIndex:PERIOD_LIGHT];
-  [self updateButtons];
+  [self updateControls];
 }
 
 - (IBAction)mediumTapped:(id)sender {
   [self.day updateProperty:@"period" withIndex:PERIOD_MEDIUM];
-  [self updateButtons];
+  [self updateControls];
 }
 
 - (IBAction)heavyTapped:(id)sender {
   [self.day updateProperty:@"period" withIndex:PERIOD_HEAVY];
-  [self updateButtons];
+  [self updateControls];
 }
 
-- (void)updateButtons {
+- (void)updateControls {
+  if(self.day.period) {
+    self.periodLabel.text = [self.day.period capitalizedString];
+  } else {
+    self.periodLabel.text = @"Swipe to edit";
+  }
+  
   self.spottingButton.selected = [self.day isProperty:@"period" ofType:PERIOD_SPOTTING];
   self.lightButton.selected = [self.day isProperty:@"period" ofType:PERIOD_LIGHT];
   self.mediumButton.selected = [self.day isProperty:@"period" ofType:PERIOD_MEDIUM];

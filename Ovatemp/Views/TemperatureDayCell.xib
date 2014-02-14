@@ -74,10 +74,20 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ILt-U0-D4S">
-                                        <rect key="frame" x="18" y="42" width="284" height="34"/>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="90" minValue="90" maxValue="105" translatesAutoresizingMaskIntoConstraints="NO" id="ILt-U0-D4S">
+                                        <rect key="frame" x="18" y="65" width="284" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="sliderChanged:" destination="GTW-9h-YIY" eventType="valueChanged" id="8bH-n4-IcZ"/>
+                                        </connections>
                                     </slider>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="97.4 F" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8X-pk-Ekk">
+                                        <rect key="frame" x="95" y="36" width="131" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -86,10 +96,23 @@
                                     <constraint firstAttribute="width" constant="320" id="ERc-F6-sD3"/>
                                     <constraint firstItem="BR6-uZ-7Ba" firstAttribute="top" secondItem="opr-ha-I24" secondAttribute="top" constant="7" id="SNP-Xq-2Sc"/>
                                     <constraint firstItem="BR6-uZ-7Ba" firstAttribute="leading" secondItem="opr-ha-I24" secondAttribute="leading" constant="12" id="UZk-hf-2Rs"/>
-                                    <constraint firstItem="ILt-U0-D4S" firstAttribute="top" secondItem="BR6-uZ-7Ba" secondAttribute="bottom" constant="14" id="kI9-Q5-2OJ"/>
-                                    <constraint firstItem="ILt-U0-D4S" firstAttribute="centerY" secondItem="opr-ha-I24" secondAttribute="centerY" id="zE0-Nk-WnF"/>
+                                    <constraint firstItem="ILt-U0-D4S" firstAttribute="top" secondItem="BR6-uZ-7Ba" secondAttribute="bottom" constant="37" id="kI9-Q5-2OJ"/>
+                                    <constraint firstItem="ILt-U0-D4S" firstAttribute="centerY" secondItem="opr-ha-I24" secondAttribute="centerY" constant="23" id="zE0-Nk-WnF"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dlq-A3-sIY">
+                                <rect key="frame" x="378" y="44" width="204" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Set Temperature">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="setTemperaturePressed:" destination="GTW-9h-YIY" eventType="touchUpInside" id="Fe6-Lz-fWb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="0Vq-He-dBR" firstAttribute="top" secondItem="WHX-WF-rO6" secondAttribute="top" id="0QS-RY-xFW"/>
@@ -111,7 +134,10 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="editTemperatureLabel" destination="z8X-pk-Ekk" id="Eok-es-8Gd"/>
                 <outlet property="graphView" destination="1ZG-Lq-vnI" id="Od5-64-b1d"/>
+                <outlet property="setTemperatureButton" destination="Dlq-A3-sIY" id="SBA-4C-Nuy"/>
+                <outlet property="slider" destination="ILt-U0-D4S" id="Atb-tS-5wB"/>
                 <outlet property="temperatureLabel" destination="G9F-7c-h9L" id="gpR-Af-u5I"/>
             </connections>
         </tableViewCell>
