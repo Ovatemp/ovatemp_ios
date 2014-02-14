@@ -41,6 +41,12 @@
   self.lightButton.selected = [self.day isProperty:@"period" ofType:PERIOD_LIGHT];
   self.mediumButton.selected = [self.day isProperty:@"period" ofType:PERIOD_MEDIUM];
   self.heavyButton.selected = [self.day isProperty:@"period" ofType:PERIOD_HEAVY];
+
+  for(UIButton *button in @[self.spottingButton, self.lightButton, self.mediumButton, self.heavyButton]) {
+    if(button.selected) {
+      self.periodImage.image = button.imageView.image;
+    }
+  }
 }
 
 - (void)initializeControls {
