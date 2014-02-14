@@ -23,6 +23,9 @@ typedef void (^ConnectionManagerSuccess) (id response);
 + (void)post:(NSString *)url params:(NSDictionary *)params success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure;
 + (void)post:(NSString *)url params:(NSDictionary *)params target:(id)target success:(SEL)onSuccess failure:(SEL)onFailure;
 
++ (void)put:(NSString *)url params:(NSDictionary *)params success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure;
++ (void)put:(NSString *)url params:(NSDictionary *)params target:(id)target success:(SEL)onSuccess failure:(SEL)onFailure;
+
 # pragma mark - Building query strings
 
 - (NSString *)queryStringForDictionary:(NSDictionary *)params;
@@ -32,5 +35,7 @@ typedef void (^ConnectionManagerSuccess) (id response);
 - (void)get:(NSString *)url params:(NSDictionary *)params target:(id)target success:(SEL)onSuccess failure:(SEL)onFailure;
 - (void)post:(NSString *)url params:(NSDictionary *)params success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure;
 - (void)post:(NSString *)url params:(NSDictionary *)params target:(id)target success:(SEL)onSuccess failure:(SEL)onFailure;
+- (void)put:(NSString *)url params:(NSDictionary *)params success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure;
+- (void)put:(NSString *)url params:(NSDictionary *)params target:(id)target success:(SEL)onSuccess failure:(SEL)onFailure;
 
 @end

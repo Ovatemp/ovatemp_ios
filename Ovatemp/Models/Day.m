@@ -7,11 +7,22 @@
 //
 
 #import "Day.h"
-#import "NSDate+ShortDate.h"
+#import "ConnectionManager.h"
 
 @implementation Day
 
 static NSDictionary *propertyOptions;
+
+- (id)init {
+  self = [super init];
+  if(!self) {
+    return nil;
+  }
+
+  self.ignoredAttributes = [NSSet setWithArray:@[@"createdAt", @"updatedAt", @"cycleId", @"userId"]];
+
+  return self;
+}
 
 - (void)setValue:(id)value forKey:(NSString *)key {
   if(!propertyOptions) {
@@ -37,7 +48,6 @@ static NSDictionary *propertyOptions;
     }
   }
 
-  NSLog(@"setting value %@ for key %@", value, key);
   [super setValue:value forKey:key];
 }
 
@@ -69,7 +79,33 @@ static NSDictionary *propertyOptions;
 }
 
 - (void)scheduleSave {
-  NSLog(@"we will save someday!");
+  Day *day = self;
+  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, DELAY_BEFORE_SAVE * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+    [day save];
+  });
+}
+
+- (void)save {
+  Day *day = self;
+  [ConnectionManager post:@"/days/"
+                   params:@{
+                            @"day": day.attributes
+                            }
+                   target:self
+                  success:@selector(didSave:)
+                  failure:@selector(saveError:)];
+}
+
+- (void)didSave:(NSDictionary *)response {
+  NSLog(@"saved day: %@", response);
+}
+
+- (void)saveError:(NSError *)error {
+  NSLog(@"day save error: %@", error);
+}
+
+- (NSString *)description {
+  return [NSString stringWithFormat:@"Day (%@)", [self.date shortDate]];
 }
 
 @end

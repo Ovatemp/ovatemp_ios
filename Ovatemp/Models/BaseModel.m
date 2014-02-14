@@ -12,7 +12,7 @@
 static NSMutableDictionary *_instances;
 
 @interface BaseModel () {
-  NSMutableDictionary *_attributes;
+  NSMutableSet *_serializedKeys;
 }
 @end
 
@@ -61,7 +61,15 @@ static NSMutableDictionary *_instances;
 #pragma mark - Key value storage
 
 - (NSDictionary *)attributes {
-  return [NSDictionary dictionaryWithDictionary:_attributes];
+  NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+
+  for(NSString *key in _serializedKeys) {
+    if([self valueForKey:key]) {
+      attributes[key] = [self valueForKey:key];
+    }
+  }
+
+  return attributes;
 }
 
 - (NSString *)camelCase:(NSString *)string {
@@ -81,12 +89,14 @@ static NSMutableDictionary *_instances;
   return camelString;
 }
 
-- (void)setAttributes:(NSDictionary *)attributes {
-  if (!_attributes) {
-    _attributes = [NSMutableDictionary dictionary];
-  }
+- (BOOL)shouldIgnoreKey:(NSString *)key {
+  return self.ignoredAttributes && [self.ignoredAttributes member:key];
+}
 
-  [_attributes addEntriesFromDictionary:attributes];
+- (void)setAttributes:(NSDictionary *)attributes {
+  if (!_serializedKeys) {
+    _serializedKeys = [NSMutableSet set];
+  }
 
   for (NSString *snakeKey in attributes) {
     id value = [attributes objectForKey:snakeKey];
@@ -99,6 +109,8 @@ static NSMutableDictionary *_instances;
 }
 
 - (void)setValue:(id)value forKey:(NSString *)key {
+  if([self shouldIgnoreKey:key]) return;
+
   if ([value isEqual:[NSNull null]]) {
     [super setValue:nil forKey:key];
   } else {
@@ -108,6 +120,8 @@ static NSMutableDictionary *_instances;
     }
     [super setValue:value forKey:key];
   }
+
+  [_serializedKeys addObject:key];
 }
 
 - (NSString *)classForKey:(NSString *)key {
@@ -131,7 +145,7 @@ static NSMutableDictionary *_instances;
 - (NSDate *)dateForValue:(id)value {
   if ([value isKindOfClass:[NSString class]]) {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZ";
+    dateFormatter.dateFormat = @"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS'Z'";
     return [dateFormatter dateFromString:value];
   }
   return value;

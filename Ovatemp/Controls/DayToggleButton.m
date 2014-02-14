@@ -18,8 +18,6 @@
     UIImage *selectedImage = [UIImage imageNamed:@"MPArrowLeft"];
     UIImage *normalImage = [UIImage imageNamed:@"MPArrowRight.png"];
 
-    NSLog(@"selected %@ normal %@", selectedImage, normalImage);
-
     [self setImage:selectedImage forState:UIControlStateSelected];
     [self setImage:normalImage forState:UIControlStateNormal];
   }

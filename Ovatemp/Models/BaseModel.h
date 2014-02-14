@@ -16,6 +16,8 @@
 @property NSDate *createdAt;
 @property NSDate *updatedAt;
 
+@property (nonatomic, strong) NSSet *ignoredAttributes;
+
 + (NSMutableDictionary *)instances;
 + (BOOL)isLoaded;
 + (NSString *)key;

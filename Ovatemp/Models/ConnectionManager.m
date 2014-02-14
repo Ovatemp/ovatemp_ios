@@ -33,6 +33,7 @@ static NSString * const kTokenParam = @"token";
 
 - (NSMutableURLRequest *)getRequestForURL:(NSString *)url params:(NSDictionary *)params;
 - (NSMutableURLRequest *)postRequestForURL:(NSString *)url params:(NSDictionary *)params;
+- (NSMutableURLRequest *)putRequestForURL:(NSString *)url params:(NSDictionary *)params;
 
 @end
 
@@ -84,6 +85,22 @@ static NSString * const kTokenParam = @"token";
                                success:onSuccess
                                failure:onFailure];
 }
+
++ (void)put:(NSString *)url params:(NSDictionary *)params success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure {
+  [[self sharedConnectionManager] post:url
+                                params:params
+                               success:onSuccess
+                               failure:onFailure];
+}
+
++ (void)put:(NSString *)url params:(NSDictionary *)params target:(id)target success:(SEL)onSuccess failure:(SEL)onFailure {
+  [[self sharedConnectionManager] post:url
+                                params:params
+                                target:target
+                               success:onSuccess
+                               failure:onFailure];
+}
+
 
 # pragma mark - Request management
 
@@ -157,6 +174,13 @@ static NSString * const kTokenParam = @"token";
   return request;
 }
 
+- (NSMutableURLRequest *)putRequestForURL:(NSString *)url params:(NSDictionary *)params {
+  NSMutableURLRequest *request = [self postRequestForURL:url params:params];
+  request.HTTPMethod = @"PUT";
+
+  return request;
+}
+
 # pragma mark - Building query strings
 
 - (NSString *)arrayParamForKey:(NSString *)key value:(NSArray *)value {
@@ -195,7 +219,18 @@ static NSString * const kTokenParam = @"token";
     return [self dictionaryParamForKey:key value:value];
   } else if ([value isKindOfClass:[NSArray class]]) {
     return [self arrayParamForKey:key value:value];
+  } else if ([value isKindOfClass:[NSNumber class]]) {
+    value = [value stringValue];
+  } else if ([value isKindOfClass:[NSDate class]]) {
+    value = [((NSDate *)value) shortDate];
   }
+
+  // By now, value should be a string
+  if(![value isKindOfClass:[NSString class]]) {
+    NSLog(@"There might be a crash in less than a microsecond on:");
+    NSLog(@"ConnectionManager paramForKey:%@ value:%@", key, value);
+  }
+
   key = [key stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
   value = [value stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
   return [NSString stringWithFormat:@"%@=%@", key, value];
@@ -251,6 +286,22 @@ static NSString * const kTokenParam = @"token";
 
 - (void)post:(NSString *)url params:(NSDictionary *)params target:(id)target success:(SEL)onSuccess failure:(SEL)onFailure {
   NSMutableURLRequest *request = [self postRequestForURL:url params:params];
+  NSString *onSuccessValue = NSStringFromSelector(onSuccess);
+  NSString *onFailureValue = NSStringFromSelector(onFailure);
+  [self startRequest:request withOptions:@{
+                                           kFailureSelectorKey: onFailureValue,
+                                           kSuccessSelectorKey: onSuccessValue,
+                                           kTargetKey: target
+                                           }];
+}
+
+- (void)put:(NSString *)url params:(NSDictionary *)params success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure {
+  NSMutableURLRequest *request = [self putRequestForURL:url params:params];
+  [self startRequest:request withOptions:@{kFailureBlockKey: onFailure, kSuccessBlockKey: onSuccess}];
+}
+
+- (void)put:(NSString *)url params:(NSDictionary *)params target:(id)target success:(SEL)onSuccess failure:(SEL)onFailure {
+  NSMutableURLRequest *request = [self putRequestForURL:url params:params];
   NSString *onSuccessValue = NSStringFromSelector(onSuccess);
   NSString *onFailureValue = NSStringFromSelector(onFailure);
   [self startRequest:request withOptions:@{

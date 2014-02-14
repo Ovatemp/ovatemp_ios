@@ -11,7 +11,6 @@
 #import "UIViewController+ConnectionManager.h"
 #import "Day.h"
 #import "DayCell.h"
-#import "NSDate+ShortDate.h"
 
 @interface TodayViewController ()
 
