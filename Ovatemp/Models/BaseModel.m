@@ -124,6 +124,10 @@ static NSMutableDictionary *_instances;
   [_serializedKeys addObject:key];
 }
 
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+  NSLog(@"Could not set value \"%@\" for undefined key \"%@\"", value, key);
+}
+
 - (NSString *)classForKey:(NSString *)key {
   objc_property_t property = class_getProperty([self class], [key UTF8String]);
   if (property != NULL) {
