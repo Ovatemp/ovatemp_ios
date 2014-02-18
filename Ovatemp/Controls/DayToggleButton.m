@@ -9,7 +9,7 @@
 #import "DayToggleButton.h"
 #import "QuartzCore/QuartzCore.h"
 
-#define kDayToggleButtonTextPadding 10.0f
+#define kDayToggleButtonTextPadding 4.0f
 
 @implementation DayToggleButton
 
@@ -22,6 +22,8 @@
 
   // Move the image to the top and center it horizontally
   CGRect imageFrame = self.imageView.frame;
+  imageFrame.size.width = 50;
+  imageFrame.size.height = 50;
   imageFrame.origin.y = 0;
   imageFrame.origin.x = (self.frame.size.width / 2) - (imageFrame.size.width / 2);
   self.imageView.frame = imageFrame;

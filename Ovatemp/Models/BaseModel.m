@@ -99,11 +99,12 @@ static NSMutableDictionary *_instances;
   }
 
   for (NSString *snakeKey in attributes) {
-    id value = [attributes objectForKey:snakeKey];
-
     NSString *camelKey = [self camelCase:snakeKey];
     camelKey = [camelKey stringByReplacingOccurrencesOfString:@"Url" withString:@"URL"];
 
+    if([self shouldIgnoreKey:snakeKey]) continue;
+
+    id value = [attributes objectForKey:snakeKey];
     [self setValue:value forKey:camelKey];
   }
 }
@@ -125,6 +126,8 @@ static NSMutableDictionary *_instances;
 }
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+  if([self shouldIgnoreKey:key]) return;
+
   NSLog(@"Could not set value \"%@\" for undefined key \"%@\"", value, key);
 }
 

@@ -102,7 +102,7 @@ static NSDictionary *propertyOptions;
 }
 
 - (void)didSave:(NSDictionary *)response {
-  NSLog(@"saved day: %@", response);
+  // NSLog(@"saved day: %@", response);
 }
 
 - (void)saveError:(NSError *)error {
