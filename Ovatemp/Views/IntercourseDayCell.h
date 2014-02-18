@@ -10,5 +10,9 @@
 #import "DayCell.h"
 
 @interface IntercourseDayCell : DayCell
+@property (weak, nonatomic) IBOutlet UILabel *intercourseLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *intercourseImageView;
+@property (weak, nonatomic) IBOutlet DayToggleButton *protectedButton;
+@property (weak, nonatomic) IBOutlet DayToggleButton *unprotectedButton;
 
 @end
