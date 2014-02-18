@@ -28,7 +28,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vaginal Sensation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8d-92-JnT">
-                                        <rect key="frame" x="176" y="11" width="137" height="22"/>
+                                        <rect key="frame" x="170" y="11" width="137" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                         <nil key="highlightedColor"/>
@@ -50,13 +50,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lube" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuA-yy-OEb">
-                                        <rect key="frame" x="248" y="56" width="72" height="21"/>
+                                        <rect key="frame" x="233" y="56" width="72" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lube.png" translatesAutoresizingMaskIntoConstraints="NO" id="bgo-QZ-6eR">
-                                        <rect key="frame" x="176" y="41" width="55" height="52"/>
+                                        <rect key="frame" x="170" y="41" width="55" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="55" id="Dyg-of-6Cq"/>
@@ -65,25 +65,25 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="fuA-yy-OEb" secondAttribute="trailing" id="03s-Bs-wWx"/>
+                                    <constraint firstAttribute="trailing" secondItem="fuA-yy-OEb" secondAttribute="trailing" constant="15" id="03s-Bs-wWx"/>
                                     <constraint firstItem="FHA-C9-P0H" firstAttribute="leading" secondItem="M68-tk-SFS" secondAttribute="leading" id="0U0-q3-9Wx"/>
                                     <constraint firstItem="M68-tk-SFS" firstAttribute="baseline" secondItem="y8d-92-JnT" secondAttribute="baseline" id="0yh-Af-M8I"/>
                                     <constraint firstItem="y8d-92-JnT" firstAttribute="leading" secondItem="bgo-QZ-6eR" secondAttribute="leading" id="1Ds-Cu-xHr"/>
-                                    <constraint firstItem="fuA-yy-OEb" firstAttribute="leading" secondItem="bgo-QZ-6eR" secondAttribute="trailing" constant="17" id="8ag-Xa-yVn"/>
-                                    <constraint firstItem="y8d-92-JnT" firstAttribute="leading" secondItem="M68-tk-SFS" secondAttribute="trailing" constant="60" id="8gb-He-eLn"/>
+                                    <constraint firstItem="fuA-yy-OEb" firstAttribute="leading" secondItem="bgo-QZ-6eR" secondAttribute="trailing" constant="8" id="8ag-Xa-yVn"/>
+                                    <constraint firstItem="y8d-92-JnT" firstAttribute="leading" secondItem="M68-tk-SFS" secondAttribute="trailing" constant="54" id="8gb-He-eLn"/>
                                     <constraint firstItem="bgo-QZ-6eR" firstAttribute="top" secondItem="y8d-92-JnT" secondAttribute="bottom" constant="8" symbolic="YES" id="Aza-ce-CYw"/>
-                                    <constraint firstItem="bgo-QZ-6eR" firstAttribute="leading" secondItem="wZb-Ln-Pse" secondAttribute="trailing" constant="28" id="L4k-yh-cGJ"/>
+                                    <constraint firstItem="bgo-QZ-6eR" firstAttribute="leading" secondItem="wZb-Ln-Pse" secondAttribute="trailing" constant="22" id="L4k-yh-cGJ"/>
                                     <constraint firstItem="bgo-QZ-6eR" firstAttribute="bottom" secondItem="FHA-C9-P0H" secondAttribute="bottom" id="RO1-FX-f3X"/>
                                     <constraint firstItem="wZb-Ln-Pse" firstAttribute="top" secondItem="fuA-yy-OEb" secondAttribute="top" id="Vyn-uW-QkA"/>
                                     <constraint firstAttribute="bottom" secondItem="FHA-C9-P0H" secondAttribute="bottom" constant="25" id="geW-tY-crE"/>
-                                    <constraint firstAttribute="trailing" secondItem="y8d-92-JnT" secondAttribute="trailing" constant="7" id="hhT-Fs-eHU"/>
+                                    <constraint firstAttribute="trailing" secondItem="y8d-92-JnT" secondAttribute="trailing" constant="13" id="hhT-Fs-eHU"/>
                                     <constraint firstItem="M68-tk-SFS" firstAttribute="leading" secondItem="dWI-cN-18Z" secondAttribute="leading" constant="13" id="huc-zb-Hop"/>
                                     <constraint firstItem="wZb-Ln-Pse" firstAttribute="top" secondItem="M68-tk-SFS" secondAttribute="bottom" constant="23" id="ixr-Ya-kWR"/>
                                     <constraint firstAttribute="bottom" secondItem="wZb-Ln-Pse" secondAttribute="bottom" constant="41" id="oSD-Iv-wDd"/>
                                     <constraint firstItem="wZb-Ln-Pse" firstAttribute="leading" secondItem="FHA-C9-P0H" secondAttribute="trailing" constant="8" symbolic="YES" id="pCN-jh-icn"/>
                                     <constraint firstItem="wZb-Ln-Pse" firstAttribute="baseline" secondItem="fuA-yy-OEb" secondAttribute="baseline" id="pCk-T9-bLb"/>
                                     <constraint firstItem="FHA-C9-P0H" firstAttribute="top" secondItem="M68-tk-SFS" secondAttribute="bottom" constant="8" symbolic="YES" id="qDS-oA-90c"/>
-                                    <constraint firstAttribute="trailing" secondItem="fuA-yy-OEb" secondAttribute="trailing" id="rpv-91-2v1"/>
+                                    <constraint firstAttribute="trailing" secondItem="fuA-yy-OEb" secondAttribute="trailing" constant="15" id="rpv-91-2v1"/>
                                     <constraint firstItem="M68-tk-SFS" firstAttribute="top" secondItem="dWI-cN-18Z" secondAttribute="top" constant="11" id="s2R-ne-nlk"/>
                                 </constraints>
                             </view>
