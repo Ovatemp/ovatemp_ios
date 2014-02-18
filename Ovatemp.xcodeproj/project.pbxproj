@@ -755,6 +755,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Back Forty";
 				TargetAttributes = {
+					C36C50FA189028190053A884 = {
+						DevelopmentTeam = MC934XNWAV;
+					};
 					C3BF8FBC1898409C00572F43 = {
 						TestTargetID = C36C50FA189028190053A884;
 					};
