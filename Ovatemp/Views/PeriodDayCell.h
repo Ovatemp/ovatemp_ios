@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "DayCell.h"
-#import "DayToggleButton.h"
 
 @interface PeriodDayCell : DayCell
 

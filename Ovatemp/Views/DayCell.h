@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Day.h"
+#import "DayToggleButton.h"
 
 @interface DayCell : UITableViewCell
 
