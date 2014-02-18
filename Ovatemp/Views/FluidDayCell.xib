@@ -112,9 +112,12 @@
                                             <action selector="stickyTapped:" destination="UaP-rE-Ftf" eventType="touchUpInside" id="SzB-yl-5Cn"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RP-cj-kpR" customClass="DayToggleButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RP-cj-kpR" customClass="DayToggleButton">
                                         <rect key="frame" x="216" y="34" width="75" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="FBo-Nt-JVC"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <state key="normal" title="Eggwhite">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -192,9 +195,12 @@
                                             <action selector="wetTapped:" destination="UaP-rE-Ftf" eventType="touchUpInside" id="S8v-98-cve"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Za1-ld-HtV" customClass="DayToggleButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Za1-ld-HtV" customClass="DayToggleButton">
                                         <rect key="frame" x="206" y="34" width="75" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="5Ki-5z-tXU"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <state key="normal" title="Lube">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
