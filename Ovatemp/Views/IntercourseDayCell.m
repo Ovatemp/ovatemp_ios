@@ -14,11 +14,13 @@
   if(self.day.intercourse) {
     self.intercourseLabel.text = [self.day.intercourse capitalizedString];
     self.intercourseImageView.hidden = FALSE;
+  } else {
+    self.intercourseImageView.hidden = TRUE;
+    self.intercourseLabel.text = @"Swipe to edit";
   }
 
   self.unprotectedButton.selected = [self.day isProperty:@"intercourse" ofType:INTERCOURSE_UNPROTECTED];
   self.protectedButton.selected = [self.day isProperty:@"intercourse" ofType:INTERCOURSE_PROTECTED];
-
 
   for(UIButton *button in @[self.unprotectedButton, self.protectedButton]) {
     if(button.selected) {
