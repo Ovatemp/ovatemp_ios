@@ -73,7 +73,7 @@
   self.dateLabel.text = [self.dateFormatter stringFromDate:[Calendar date]];
   self.titleLabel.text = [NSString stringWithFormat:titleFormat, [self.dayFormatter stringFromDate:[Calendar date]]];
 
-  self.dayForwardButton.enabled = ![Calendar isOnToday];
+  self.dayForwardButton.hidden = [Calendar isOnToday];
 }
 
 - (IBAction)moveDayForward:(id)sender {
