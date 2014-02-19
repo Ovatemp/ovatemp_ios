@@ -75,7 +75,6 @@
 }
 
 - (void)refresh {
-  NSLog(@"refreshing button");
   [self setSelected:[self.dayCell isDayProperty:self.propKey ofType:self.propValueIndex]];
 }
 

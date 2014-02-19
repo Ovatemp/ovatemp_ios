@@ -20,8 +20,6 @@
   self.opkImageView.hidden = self.day.opk == nil;
   self.ferningImageView.hidden = self.day.ferning == nil;
 
-  NSLog(@"refreshing controls");
-
   for(DayToggleButton *button in @[self.opkNegativeButton, self.opkPositiveButton]) {
     [button refresh];
     if(button.selected) {
