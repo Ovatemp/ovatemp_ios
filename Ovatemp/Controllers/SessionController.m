@@ -9,6 +9,7 @@
 #import "SessionController.h"
 #import "User.h"
 #import "Configuration.h"
+#import "Day.h"
 
 @implementation SessionController
 
@@ -21,6 +22,7 @@
 + (void)logOut {
   [User setCurrent:nil];
   [Configuration sharedConfiguration].token = nil;
+  [Day resetInstances];
 }
 
 @end
