@@ -21,11 +21,13 @@
 // API configuration
 #ifdef DEBUG
 #define API_URL @"http://localhost:3000/api"
+#define DEVICE_ID @"DUMMYDEVICE"
 #else
 #define API_URL @"http://ovatemp-rails-staging.herokuapp.com/api"
+#define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
 #endif
 
-#define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
+
 
 // The are Apple's standard spacing defaults. Don't change
 // these unless the defaults change!
