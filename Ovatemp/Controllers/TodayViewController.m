@@ -53,7 +53,12 @@
   }
 
   [self dateChanged];
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+
+  [self dateChanged];
 }
 
 
@@ -98,6 +103,10 @@
 
   NSLog(@"loaded!");
   [(UITableView*)self.view reloadData];
+}
+
+- (void)presentError:(NSError *)error {
+  NSLog(@"done loading! error: %@", error);
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
