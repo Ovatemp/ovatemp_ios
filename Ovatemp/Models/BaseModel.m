@@ -12,7 +12,7 @@
 static NSMutableDictionary *_instances;
 
 @interface BaseModel () {
-  NSMutableSet *_serializedKeys;
+  NSMutableDictionary *_serializedKeys;
 }
 @end
 
@@ -60,12 +60,19 @@ static NSMutableDictionary *_instances;
 
 #pragma mark - Key value storage
 
-- (NSDictionary *)attributes {
+- (NSDictionary *)attributes:(BOOL)camelCase {
   NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
 
   for(NSString *key in _serializedKeys) {
-    if([self valueForKey:key]) {
-      attributes[key] = [self valueForKey:key];
+    id value = [self valueForKey:key];
+    if(value == nil) {
+      value = [NSNull null];
+    }
+
+    if(camelCase) {
+      attributes[key] = value;
+    } else {
+      attributes[_serializedKeys[key]] = value;
     }
   }
 
@@ -95,14 +102,16 @@ static NSMutableDictionary *_instances;
 
 - (void)setAttributes:(NSDictionary *)attributes {
   if (!_serializedKeys) {
-    _serializedKeys = [NSMutableSet set];
+    _serializedKeys = [NSMutableDictionary dictionary];
   }
 
   for (NSString *snakeKey in attributes) {
     NSString *camelKey = [self camelCase:snakeKey];
     camelKey = [camelKey stringByReplacingOccurrencesOfString:@"Url" withString:@"URL"];
 
-    if([self shouldIgnoreKey:snakeKey]) continue;
+    if([self shouldIgnoreKey:camelKey]) continue;
+
+    _serializedKeys[camelKey] = snakeKey;
 
     id value = [attributes objectForKey:snakeKey];
     [self setValue:value forKey:camelKey];
@@ -121,8 +130,6 @@ static NSMutableDictionary *_instances;
     }
     [super setValue:value forKey:key];
   }
-
-  [_serializedKeys addObject:key];
 }
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {

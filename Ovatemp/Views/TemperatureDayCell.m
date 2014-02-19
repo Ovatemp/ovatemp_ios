@@ -13,15 +13,15 @@
 - (IBAction)sliderChanged:(id)sender {
   NSLog(@"slider changed: %f", self.slider.value);
   [self.day updateProperty:@"temperature" withValue:[NSNumber numberWithFloat:self.slider.value]];
-  [self updateControls];
+  [self refreshControls];
 }
 
 - (IBAction)setTemperaturePressed:(id)sender {
   [self.day updateProperty:@"temperature" withValue:[NSNumber numberWithFloat:98.6]];
-  [self updateControls];
+  [self refreshControls];
 }
 
-- (void)updateControls {
+- (void)refreshControls {
   BOOL temperatureSet = (self.day.temperature != nil);
   self.slider.hidden = !temperatureSet;
   self.temperatureLabel.hidden = !temperatureSet;

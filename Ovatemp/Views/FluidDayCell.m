@@ -10,7 +10,7 @@
 
 @implementation FluidDayCell
 
-- (void)updateControls {
+- (void)refreshControls {
   if(self.day.cervicalFluid) {
     self.fluidLabel.text = [self.day.cervicalFluid capitalizedString];
     self.fluidImageView.hidden = FALSE;
@@ -27,65 +27,37 @@
     self.sensationImageView.hidden = TRUE;
   }
 
-  self.stickyButton.selected = [self.day isProperty:@"cervicalFluid" ofType:CERVICAL_FLUID_STICKY];
-  self.creamyButton.selected = [self.day isProperty:@"cervicalFluid" ofType:CERVICAL_FLUID_CREAMY];
-  self.eggwhiteButton.selected = [self.day isProperty:@"cervicalFluid" ofType:CERVICAL_FLUID_EGGWHITE];
-
-  self.dryButton.selected = [self.day isProperty:@"vaginalSensation" ofType:VAGINAL_SENSATION_DRY];
-  self.wetButton.selected = [self.day isProperty:@"vaginalSensation" ofType:VAGINAL_SENSATION_WET];
-  self.lubeButton.selected = [self.day isProperty:@"vaginalSensation" ofType:VAGINAL_SENSATION_LUBE];
-
-  for(UIButton *button in @[self.stickyButton, self.creamyButton, self.eggwhiteButton]) {
+  for(DayToggleButton *button in @[self.stickyButton, self.creamyButton, self.eggwhiteButton]) {
+    [button refresh];
     if(button.selected) {
       self.fluidImageView.image = [button imageForState:UIControlStateNormal];
     }
   }
 
-  for(UIButton *button in @[self.dryButton, self.wetButton, self.lubeButton]) {
+  for(DayToggleButton *button in @[self.dryButton, self.wetButton, self.lubeButton]) {
+    [button refresh];
     if(button.selected) {
       self.sensationImageView.image = [button imageForState:UIControlStateNormal];
     }
   }
 }
 
-- (IBAction)stickyTapped:(id)sender {
-  [self.day updateProperty:@"cervicalFluid" withIndex:CERVICAL_FLUID_STICKY];
-  [self updateControls];
-}
-
-- (IBAction)creamyTapped:(id)sender {
-  [self.day updateProperty:@"cervicalFluid" withIndex:CERVICAL_FLUID_CREAMY];
-  [self updateControls];
-}
-
-- (IBAction)eggwhiteTapped:(id)sender {
-  [self.day updateProperty:@"cervicalFluid" withIndex:CERVICAL_FLUID_EGGWHITE];
-  [self updateControls];
-}
-
-- (IBAction)dryTapped:(id)sender {
-  [self.day updateProperty:@"vaginalSensation" withIndex:VAGINAL_SENSATION_DRY];
-  [self updateControls];
-}
-
-- (IBAction)wetTapped:(id)sender {
-  [self.day updateProperty:@"vaginalSensation" withIndex:VAGINAL_SENSATION_WET];
-  [self updateControls];
-}
-
-- (IBAction)lubeTapped:(id)sender {
-  [self.day updateProperty:@"vaginalSensation" withIndex:VAGINAL_SENSATION_LUBE];
-  [self updateControls];
-}
-
 - (void)initializeControls {
-  [self.stickyButton setImage:[UIImage imageNamed:@"Sticky"] forState:UIControlStateNormal];
-  [self.creamyButton    setImage:[UIImage imageNamed:@"Creamy"] forState:UIControlStateNormal];
+  [self.stickyButton     setImage:[UIImage imageNamed:@"Sticky"] forState:UIControlStateNormal];
+  [self.creamyButton     setImage:[UIImage imageNamed:@"Creamy"] forState:UIControlStateNormal];
   [self.eggwhiteButton   setImage:[UIImage imageNamed:@"Eggwhite"] forState:UIControlStateNormal];
 
-  [self.dryButton   setImage:[UIImage imageNamed:@"Dry"] forState:UIControlStateNormal];
-  [self.wetButton   setImage:[UIImage imageNamed:@"Wet"] forState:UIControlStateNormal];
+  [self.stickyButton     setDayCell:self property:@"cervicalFluid" index:CERVICAL_FLUID_STICKY];
+  [self.creamyButton     setDayCell:self property:@"cervicalFluid" index:CERVICAL_FLUID_CREAMY];
+  [self.eggwhiteButton   setDayCell:self property:@"cervicalFluid" index:CERVICAL_FLUID_EGGWHITE];
+
+  [self.dryButton    setImage:[UIImage imageNamed:@"Dry"] forState:UIControlStateNormal];
+  [self.wetButton    setImage:[UIImage imageNamed:@"Wet"] forState:UIControlStateNormal];
   [self.lubeButton   setImage:[UIImage imageNamed:@"Lube"] forState:UIControlStateNormal];
+
+  [self.dryButton   setDayCell:self property:@"vaginalSensation" index:VAGINAL_SENSATION_DRY];
+  [self.wetButton   setDayCell:self property:@"vaginalSensation" index:VAGINAL_SENSATION_WET];
+  [self.lubeButton  setDayCell:self property:@"vaginalSensation" index:VAGINAL_SENSATION_LUBE];
 }
 
 @end

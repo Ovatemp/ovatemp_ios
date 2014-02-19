@@ -10,27 +10,7 @@
 
 @implementation PeriodDayCell
 
-- (IBAction)spottingTapped:(id)sender {
-  [self.day updateProperty:@"period" withIndex:PERIOD_SPOTTING];
-  [self updateControls];
-}
-
-- (IBAction)lightTapped:(id)sender {
-  [self.day updateProperty:@"period" withIndex:PERIOD_LIGHT];
-  [self updateControls];
-}
-
-- (IBAction)mediumTapped:(id)sender {
-  [self.day updateProperty:@"period" withIndex:PERIOD_MEDIUM];
-  [self updateControls];
-}
-
-- (IBAction)heavyTapped:(id)sender {
-  [self.day updateProperty:@"period" withIndex:PERIOD_HEAVY];
-  [self updateControls];
-}
-
-- (void)updateControls {
+- (void)refreshControls {
   if(self.day.period) {
     self.periodLabel.text = [self.day.period capitalizedString];
     self.periodImageView.hidden = FALSE;
@@ -39,12 +19,8 @@
     self.periodLabel.text = @"Swipe to edit";
   }
 
-  self.spottingButton.selected = [self.day isProperty:@"period" ofType:PERIOD_SPOTTING];
-  self.lightButton.selected = [self.day isProperty:@"period" ofType:PERIOD_LIGHT];
-  self.mediumButton.selected = [self.day isProperty:@"period" ofType:PERIOD_MEDIUM];
-  self.heavyButton.selected = [self.day isProperty:@"period" ofType:PERIOD_HEAVY];
-
-  for(UIButton *button in @[self.spottingButton, self.lightButton, self.mediumButton, self.heavyButton]) {
+  for(DayToggleButton *button in @[self.spottingButton, self.lightButton, self.mediumButton, self.heavyButton]) {
+    [button refresh];
     if(button.selected) {
       self.periodImageView.image = [button imageForState:UIControlStateNormal];
     }
@@ -56,6 +32,11 @@
   [self.lightButton    setImage:[UIImage imageNamed:@"Light"] forState:UIControlStateNormal];
   [self.mediumButton   setImage:[UIImage imageNamed:@"Medium"] forState:UIControlStateNormal];
   [self.heavyButton    setImage:[UIImage imageNamed:@"Heavy"] forState:UIControlStateNormal];
+
+  [self.spottingButton setDayCell:self property:@"period" index:PERIOD_SPOTTING];
+  [self.lightButton setDayCell:self property:@"period" index:PERIOD_LIGHT];
+  [self.mediumButton setDayCell:self property:@"period" index:PERIOD_MEDIUM];
+  [self.heavyButton setDayCell:self property:@"period" index:PERIOD_HEAVY];
 }
 
 @end

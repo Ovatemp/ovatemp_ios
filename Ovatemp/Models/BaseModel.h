@@ -11,7 +11,6 @@
 @interface BaseModel : NSObject
 
 @property NSNumber *id;
-@property NSDictionary *attributes;
 
 @property NSDate *createdAt;
 @property NSDate *updatedAt;
@@ -23,5 +22,7 @@
 + (NSString *)key;
 + (void)resetInstances;
 + (id)withAttributes:(NSDictionary *)attributes;
+- (void)setAttributes:(NSDictionary *)attributes;
+- (NSDictionary *)attributes:(BOOL)camelCase;
 
 @end

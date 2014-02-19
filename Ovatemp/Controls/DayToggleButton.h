@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class DayCell;
+
 @interface DayToggleButton : UIButton
+
+- (void)setDayCell:(DayCell *)dayCell property:(NSString *)key index:(NSInteger)index;
+- (void)refresh;
 
 @end

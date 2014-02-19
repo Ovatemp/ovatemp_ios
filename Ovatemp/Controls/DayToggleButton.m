@@ -7,9 +7,19 @@
 //
 
 #import "DayToggleButton.h"
+#import "DayCell.h"
 #import "QuartzCore/QuartzCore.h"
 
 #define kDayToggleButtonTextPadding 4.0f
+
+@interface DayToggleButton () {
+}
+
+@property (nonatomic, strong) NSString *propKey;
+@property (nonatomic, assign) NSInteger propValueIndex;
+@property (nonatomic, weak) DayCell *dayCell;
+
+@end
 
 @implementation DayToggleButton
 
@@ -50,6 +60,23 @@
   } else {
     self.imageView.backgroundColor = [UIColor clearColor];
   }
+}
+
+- (void)setDayCell:(DayCell *)dayCell property:(NSString *)key index:(NSInteger)index {
+  [self addTarget:self action:@selector(toggle:) forControlEvents:UIControlEventTouchUpInside];
+
+  self.propKey = key;
+  self.propValueIndex = index;
+  self.dayCell = dayCell;
+}
+
+- (void)toggle:(UIButton *)sender {
+  [self.dayCell toggleDayProperty:self.propKey withIndex:self.propValueIndex];
+}
+
+- (void)refresh {
+  NSLog(@"refreshing button");
+  [self setSelected:[self.dayCell isDayProperty:self.propKey ofType:self.propValueIndex]];
 }
 
 @end

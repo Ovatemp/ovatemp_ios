@@ -60,15 +60,17 @@ static NSDictionary *propertyOptions;
   return day;
 }
 
-- (void)updateProperty:(NSString *)key withIndex:(NSInteger)index {
+- (void)toggleProperty:(NSString *)key withIndex:(NSInteger)index {
   NSArray *enumeratedStrings = propertyOptions[key];
+  NSString *value = enumeratedStrings[index];
 
-  if(!enumeratedStrings) {
-    NSLog(@"FAIL: %@ with index %ld", key, (long)index);
-    abort();
+  NSLog(@"toggling: %@", value);
+  if([[self valueForKey:key] isEqualToString:value]) {
+    [self setValue:nil forKey:key];
+  } else {
+    [self setValue:value forKey:key];
   }
-
-  [self setValue:enumeratedStrings[index] forKey:key];
+  
   [self scheduleSave];
 }
 
@@ -94,7 +96,7 @@ static NSDictionary *propertyOptions;
   Day *day = self;
   [ConnectionManager put:@"/days/"
                    params:@{
-                            @"day": day.attributes
+                            @"day": [day attributes:FALSE],
                             }
                    target:self
                   success:@selector(didSave:)

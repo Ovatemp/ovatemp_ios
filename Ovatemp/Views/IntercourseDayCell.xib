@@ -79,9 +79,6 @@
                                         <state key="normal" title="Protected">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="protectedTapped:" destination="tvb-Ig-Z1S" eventType="touchUpInside" id="CRm-z0-bm7"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PlO-7t-evn" customClass="DayToggleButton">
                                         <rect key="frame" x="184" y="34" width="75" height="75"/>
@@ -93,9 +90,6 @@
                                         <state key="normal" title="Unprotected">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="unprotectedTapped:" destination="tvb-Ig-Z1S" eventType="touchUpInside" id="VX3-hz-9ad"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>

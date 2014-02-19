@@ -10,7 +10,7 @@
 
 @implementation IntercourseDayCell
 
-- (void)updateControls {
+- (void)refreshControls {
   if(self.day.intercourse) {
     self.intercourseLabel.text = [self.day.intercourse capitalizedString];
     self.intercourseImageView.hidden = FALSE;
@@ -19,30 +19,21 @@
     self.intercourseLabel.text = @"Swipe to edit";
   }
 
-  self.unprotectedButton.selected = [self.day isProperty:@"intercourse" ofType:INTERCOURSE_UNPROTECTED];
-  self.protectedButton.selected = [self.day isProperty:@"intercourse" ofType:INTERCOURSE_PROTECTED];
+  for(DayToggleButton *button in @[self.unprotectedButton, self.protectedButton]) {
+    [button refresh];
 
-  for(UIButton *button in @[self.unprotectedButton, self.protectedButton]) {
     if(button.selected) {
       self.intercourseImageView.image = [button imageForState:UIControlStateNormal];
     }
   }
 }
 
-- (IBAction)protectedTapped:(id)sender {
-  [self.day updateProperty:@"intercourse" withIndex:INTERCOURSE_PROTECTED];
-  [self updateControls];
-
-}
-
-- (IBAction)unprotectedTapped:(id)sender {
-  [self.day updateProperty:@"intercourse" withIndex:INTERCOURSE_UNPROTECTED];
-  [self updateControls];
-}
-
 - (void)initializeControls {
-  [self.protectedButton setImage:[UIImage imageNamed:@"Protected"] forState:UIControlStateNormal];
+  [self.protectedButton      setImage:[UIImage imageNamed:@"Protected"] forState:UIControlStateNormal];
   [self.unprotectedButton    setImage:[UIImage imageNamed:@"Unprotected"] forState:UIControlStateNormal];
+
+  [self.unprotectedButton setDayCell:self property:@"intercourse" index:INTERCOURSE_UNPROTECTED];
+  [self.protectedButton   setDayCell:self property:@"intercourse" index:INTERCOURSE_PROTECTED];
 }
 
 @end

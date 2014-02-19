@@ -223,6 +223,8 @@ static NSString * const kTokenParam = @"token";
     value = [value stringValue];
   } else if ([value isKindOfClass:[NSDate class]]) {
     value = [((NSDate *)value) shortDate];
+  } else if ([value isEqual:[NSNull null]]) {
+    value = @"";  
   }
 
   // By now, value should be a string

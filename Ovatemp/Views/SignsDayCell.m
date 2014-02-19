@@ -10,7 +10,7 @@
 
 @implementation SignsDayCell
 
-- (void)updateControls {
+- (void)refreshControls {
   if(self.day.opk) {
     self.opkImageView.hidden = FALSE;
   } else {
@@ -20,19 +20,17 @@
   self.opkImageView.hidden = self.day.opk == nil;
   self.ferningImageView.hidden = self.day.ferning == nil;
 
-  self.opkNegativeButton.selected = [self.day isProperty:@"opk" ofType:OPK_NEGATIVE];
-  self.opkPositiveButton.selected = [self.day isProperty:@"opk" ofType:OPK_POSITIVE];
+  NSLog(@"refreshing controls");
 
-  self.ferningNegativeButton.selected = [self.day isProperty:@"ferning" ofType:FERNING_NEGATIVE];
-  self.ferningPositiveButton.selected = [self.day isProperty:@"ferning" ofType:FERNING_POSITIVE];
-
-  for(UIButton *button in @[self.opkNegativeButton, self.opkPositiveButton]) {
+  for(DayToggleButton *button in @[self.opkNegativeButton, self.opkPositiveButton]) {
+    [button refresh];
     if(button.selected) {
       self.opkImageView.image = [button imageForState:UIControlStateNormal];
     }
   }
 
-  for(UIButton *button in @[self.ferningNegativeButton, self.ferningPositiveButton]) {
+  for(DayToggleButton *button in @[self.ferningNegativeButton, self.ferningPositiveButton]) {
+    [button refresh];
     if(button.selected) {
       self.ferningImageView.image = [button imageForState:UIControlStateNormal];
     }
@@ -40,27 +38,10 @@
 }
 
 - (void)initializeControls {
-  // noop
-}
-
-- (IBAction)negativeOpkTapped:(id)sender {
-  [self.day updateProperty:@"opk" withIndex:OPK_NEGATIVE];
-  [self updateControls];
-}
-
-- (IBAction)positiveOpkTapped:(id)sender {
-  [self.day updateProperty:@"opk" withIndex:OPK_POSITIVE];
-  [self updateControls];
-}
-
-- (IBAction)negativeFerningTapped:(id)sender {
-  [self.day updateProperty:@"ferning" withIndex:FERNING_NEGATIVE];
-  [self updateControls];
-}
-
-- (IBAction)positiveFerningTapped:(id)sender {
-  [self.day updateProperty:@"ferning" withIndex:FERNING_POSITIVE];
-  [self updateControls];
+  [self.opkNegativeButton setDayCell:self property:@"opk" index:OPK_NEGATIVE];
+  [self.opkPositiveButton setDayCell:self property:@"opk" index:OPK_POSITIVE];
+  [self.ferningNegativeButton setDayCell:self property:@"ferning" index:FERNING_NEGATIVE];
+  [self.ferningPositiveButton setDayCell:self property:@"ferning" index:FERNING_POSITIVE];
 }
 
 @end

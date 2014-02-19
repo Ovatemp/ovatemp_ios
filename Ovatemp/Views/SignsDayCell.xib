@@ -100,9 +100,6 @@
                                         <state key="normal" image="Positive.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="positiveOpkTapped:" destination="YnB-LR-w44" eventType="touchUpInside" id="9UN-Bf-Mda"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EcW-dQ-auM" customClass="DayToggleButton">
                                         <rect key="frame" x="31" y="52" width="45" height="45"/>
@@ -113,9 +110,6 @@
                                         <state key="normal" image="Negative.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="negativeOpkTapped:" destination="YnB-LR-w44" eventType="touchUpInside" id="leU-ME-MXZ"/>
-                                        </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ovulation Prediction Kit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ogn-dg-sOz">
                                         <rect key="frame" x="20" y="27" width="115" height="21"/>
@@ -133,9 +127,6 @@
                                         <state key="normal" image="Positive.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="positiveFerningTapped:" destination="YnB-LR-w44" eventType="touchUpInside" id="JYF-UK-cHn"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ioJ-X4-WCW" customClass="DayToggleButton">
                                         <rect key="frame" x="190" y="53" width="45" height="45"/>
@@ -146,9 +137,6 @@
                                         <state key="normal" image="Negative.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="negativeFerningTapped:" destination="YnB-LR-w44" eventType="touchUpInside" id="6AQ-fn-SGW"/>
-                                        </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ferning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k9t-hF-ZLi">
                                         <rect key="frame" x="179" y="28" width="115" height="21"/>
