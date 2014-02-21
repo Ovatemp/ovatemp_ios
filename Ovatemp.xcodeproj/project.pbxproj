@@ -26,6 +26,10 @@
 		834BD63B18AD29EA003B6808 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63A18AD29EA003B6808 /* Day.m */; };
 		834BD63E18AD4B5B003B6808 /* NSDate+ShortDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63D18AD4B5B003B6808 /* NSDate+ShortDate.m */; };
 		834BD64118AD6590003B6808 /* DayToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD64018AD6590003B6808 /* DayToggleButton.m */; };
+		835AE58618B7A36000FEAF98 /* CheckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 835AE58518B7A36000FEAF98 /* CheckCell.m */; };
+		835AE58818B7A3B500FEAF98 /* CheckCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 835AE58718B7A3B500FEAF98 /* CheckCell.xib */; };
+		835AE58B18B7A51700FEAF98 /* CheckBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 835AE58918B7A51700FEAF98 /* CheckBox.png */; };
+		835AE58C18B7A51700FEAF98 /* CheckBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835AE58A18B7A51700FEAF98 /* CheckBox@2x.png */; };
 		839A345D18ABCBAD007CD657 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345C18ABCBAD007CD657 /* Calendar.m */; };
 		839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345F18ABCFB6007CD657 /* NavigationViewController.m */; };
 		839A346218ABCFB6007CD657 /* NavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346018ABCFB6007CD657 /* NavigationViewController.xib */; };
@@ -177,6 +181,11 @@
 		834BD63D18AD4B5B003B6808 /* NSDate+ShortDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ShortDate.m"; sourceTree = "<group>"; };
 		834BD63F18AD6590003B6808 /* DayToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayToggleButton.h; sourceTree = "<group>"; };
 		834BD64018AD6590003B6808 /* DayToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayToggleButton.m; sourceTree = "<group>"; };
+		835AE58418B7A36000FEAF98 /* CheckCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckCell.h; sourceTree = "<group>"; };
+		835AE58518B7A36000FEAF98 /* CheckCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckCell.m; sourceTree = "<group>"; };
+		835AE58718B7A3B500FEAF98 /* CheckCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckCell.xib; sourceTree = "<group>"; };
+		835AE58918B7A51700FEAF98 /* CheckBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckBox.png; sourceTree = "<group>"; };
+		835AE58A18B7A51700FEAF98 /* CheckBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckBox@2x.png"; sourceTree = "<group>"; };
 		839A345B18ABCBAD007CD657 /* Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Calendar.h; path = Shared/Calendar.h; sourceTree = "<group>"; };
 		839A345C18ABCBAD007CD657 /* Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Calendar.m; path = Shared/Calendar.m; sourceTree = "<group>"; };
 		839A345E18ABCFB6007CD657 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
@@ -339,6 +348,8 @@
 		834BD64318AEA1A4003B6808 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				835AE58918B7A51700FEAF98 /* CheckBox.png */,
+				835AE58A18B7A51700FEAF98 /* CheckBox@2x.png */,
 				83EB3E3318AEA7D500EA91AC /* CervicalFluid */,
 				83EB3E4718AEA7D500EA91AC /* FertilityProfile */,
 				83EB3E5718AEA7D500EA91AC /* Intercourse */,
@@ -584,9 +595,12 @@
 				8328B77418AC034900DA7A5E /* DayCell.h */,
 				8328B77518AC034900DA7A5E /* DayCell.m */,
 				839A345518ABCB14007CD657 /* DayCells */,
+				835AE58418B7A36000FEAF98 /* CheckCell.h */,
+				835AE58518B7A36000FEAF98 /* CheckCell.m */,
 				839A346018ABCFB6007CD657 /* NavigationViewController.xib */,
 				C3BF8FE11898454300572F43 /* SessionViewController.xib */,
 				834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */,
+				835AE58718B7A3B500FEAF98 /* CheckCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -791,12 +805,14 @@
 				83EB3F0C18AEA7D500EA91AC /* Medium@2x.png in Resources */,
 				83EB3F0E18AEA7D500EA91AC /* Spotting@2x.png in Resources */,
 				83EB3ED118AEA7D500EA91AC /* Hydrate-01.png in Resources */,
+				835AE58818B7A3B500FEAF98 /* CheckCell.xib in Resources */,
 				83EB3EDD18AEA7D500EA91AC /* Protected.png in Resources */,
 				83EB3F2518AEA7D500EA91AC /* community_selected.png in Resources */,
 				8328B76118AC004300DA7A5E /* IntercourseDayCell.xib in Resources */,
 				83EB3F2C18AEA7D500EA91AC /* more_unselect.png in Resources */,
 				83EB3F1B18AEA7D500EA91AC /* Positive.png in Resources */,
 				83EB3F0D18AEA7D500EA91AC /* Spotting.png in Resources */,
+				835AE58C18B7A51700FEAF98 /* CheckBox@2x.png in Resources */,
 				83EB3F1718AEA7D500EA91AC /* Self Massage@2x.png in Resources */,
 				C3BF8FE21898454300572F43 /* SessionViewController.xib in Resources */,
 				83EB3F1018AEA7D500EA91AC /* Acupressure@2x.png in Resources */,
@@ -835,6 +851,7 @@
 				83EB3F1918AEA7D500EA91AC /* Negative.png in Resources */,
 				83EB3F2E18AEA7D500EA91AC /* today_selected.png in Resources */,
 				8328B75F18AC003700DA7A5E /* FluidDayCell.xib in Resources */,
+				835AE58B18B7A51700FEAF98 /* CheckBox.png in Resources */,
 				83EB3F0A18AEA7D500EA91AC /* Light@2x.png in Resources */,
 				83EB3F2318AEA7D500EA91AC /* coaching_unselect.png in Resources */,
 				C36C5109189028190053A884 /* InfoPlist.strings in Resources */,
@@ -972,6 +989,7 @@
 				8328B77618AC034900DA7A5E /* DayCell.m in Sources */,
 				8328B75A18ABFD9400DA7A5E /* TemperatureDayCell.m in Sources */,
 				8328B76A18AC009C00DA7A5E /* IntercourseDayCell.m in Sources */,
+				835AE58618B7A36000FEAF98 /* CheckCell.m in Sources */,
 				839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */,
 				8328B75D18AC002800DA7A5E /* FluidDayCell.m in Sources */,
 				C3D4F35418983B9C00CBB91A /* Constants.m in Sources */,

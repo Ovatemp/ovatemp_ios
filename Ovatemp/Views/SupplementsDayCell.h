@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "DayCell.h"
+#import "CheckCell.h"
 
-@interface SupplementsDayCell : DayCell
+@interface SupplementsDayCell : DayCell <UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITextView *supplementsTextView;
+@property (weak, nonatomic) IBOutlet UITableView *supplementsTableView;
+
+@property (weak, nonatomic) IBOutlet UITextView *medicinesTextView;
+@property (weak, nonatomic) IBOutlet UITableView *medicinesTableView;
+
 
 @end

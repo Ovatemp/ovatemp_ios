@@ -87,6 +87,9 @@ typedef enum vaginalSensationTypesEnum
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) NSNumber *temperature;
 
+@property (nonatomic, strong) NSArray *medicines;
+@property (nonatomic, strong) NSArray *supplements;
+
 + (Day *)forDate:(NSDate *)date;
 
 - (BOOL)isProperty:(NSString *)key ofType:(NSInteger)type;
