@@ -20,6 +20,20 @@
 		8328B77018AC00B500DA7A5E /* SupplementsDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328B76F18AC00B500DA7A5E /* SupplementsDayCell.m */; };
 		8328B77318AC00CD00DA7A5E /* SymptomsDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328B77218AC00CD00DA7A5E /* SymptomsDayCell.m */; };
 		8328B77618AC034900DA7A5E /* DayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328B77518AC034900DA7A5E /* DayCell.m */; };
+		832934C718B7D93200F6875B /* Amazing.png in Resources */ = {isa = PBXBuildFile; fileRef = 832934B918B7D93200F6875B /* Amazing.png */; };
+		832934C818B7D93200F6875B /* Amazing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 832934BA18B7D93200F6875B /* Amazing@2x.png */; };
+		832934C918B7D93200F6875B /* Good.png in Resources */ = {isa = PBXBuildFile; fileRef = 832934BB18B7D93200F6875B /* Good.png */; };
+		832934CA18B7D93200F6875B /* Good@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 832934BC18B7D93200F6875B /* Good@2x.png */; };
+		832934CB18B7D93200F6875B /* Medicines.png in Resources */ = {isa = PBXBuildFile; fileRef = 832934BD18B7D93200F6875B /* Medicines.png */; };
+		832934CC18B7D93200F6875B /* Medicines@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 832934BE18B7D93200F6875B /* Medicines@2x.png */; };
+		832934CD18B7D93200F6875B /* Sad.png in Resources */ = {isa = PBXBuildFile; fileRef = 832934BF18B7D93200F6875B /* Sad.png */; };
+		832934CE18B7D93200F6875B /* Sad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 832934C018B7D93200F6875B /* Sad@2x.png */; };
+		832934CF18B7D93200F6875B /* Supplements.png in Resources */ = {isa = PBXBuildFile; fileRef = 832934C118B7D93200F6875B /* Supplements.png */; };
+		832934D018B7D93200F6875B /* Supplements@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 832934C218B7D93200F6875B /* Supplements@2x.png */; };
+		832934D118B7D93200F6875B /* Symptoms.png in Resources */ = {isa = PBXBuildFile; fileRef = 832934C318B7D93200F6875B /* Symptoms.png */; };
+		832934D218B7D93200F6875B /* Symptoms@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 832934C418B7D93200F6875B /* Symptoms@2x.png */; };
+		832934D318B7D93200F6875B /* Worried.png in Resources */ = {isa = PBXBuildFile; fileRef = 832934C518B7D93200F6875B /* Worried.png */; };
+		832934D418B7D93200F6875B /* Worried@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 832934C618B7D93200F6875B /* Worried@2x.png */; };
 		834BD63218AD1363003B6808 /* MoreStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */; };
 		834BD63518AD1519003B6808 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63418AD1519003B6808 /* MoreViewController.m */; };
 		834BD63818AD164E003B6808 /* SessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63718AD164E003B6808 /* SessionController.m */; };
@@ -170,6 +184,20 @@
 		8328B77218AC00CD00DA7A5E /* SymptomsDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymptomsDayCell.m; sourceTree = "<group>"; };
 		8328B77418AC034900DA7A5E /* DayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayCell.h; sourceTree = "<group>"; };
 		8328B77518AC034900DA7A5E /* DayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayCell.m; sourceTree = "<group>"; };
+		832934B918B7D93200F6875B /* Amazing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Amazing.png; sourceTree = "<group>"; };
+		832934BA18B7D93200F6875B /* Amazing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Amazing@2x.png"; sourceTree = "<group>"; };
+		832934BB18B7D93200F6875B /* Good.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Good.png; sourceTree = "<group>"; };
+		832934BC18B7D93200F6875B /* Good@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Good@2x.png"; sourceTree = "<group>"; };
+		832934BD18B7D93200F6875B /* Medicines.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Medicines.png; sourceTree = "<group>"; };
+		832934BE18B7D93200F6875B /* Medicines@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Medicines@2x.png"; sourceTree = "<group>"; };
+		832934BF18B7D93200F6875B /* Sad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sad.png; sourceTree = "<group>"; };
+		832934C018B7D93200F6875B /* Sad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sad@2x.png"; sourceTree = "<group>"; };
+		832934C118B7D93200F6875B /* Supplements.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Supplements.png; sourceTree = "<group>"; };
+		832934C218B7D93200F6875B /* Supplements@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Supplements@2x.png"; sourceTree = "<group>"; };
+		832934C318B7D93200F6875B /* Symptoms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Symptoms.png; sourceTree = "<group>"; };
+		832934C418B7D93200F6875B /* Symptoms@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Symptoms@2x.png"; sourceTree = "<group>"; };
+		832934C518B7D93200F6875B /* Worried.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Worried.png; sourceTree = "<group>"; };
+		832934C618B7D93200F6875B /* Worried@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Worried@2x.png"; sourceTree = "<group>"; };
 		834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MoreStoryboard.storyboard; sourceTree = "<group>"; };
 		834BD63318AD1519003B6808 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		834BD63418AD1519003B6808 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
@@ -345,9 +373,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		832934B818B7D93200F6875B /* MedsMoodsSupplements */ = {
+			isa = PBXGroup;
+			children = (
+				832934B918B7D93200F6875B /* Amazing.png */,
+				832934BA18B7D93200F6875B /* Amazing@2x.png */,
+				832934BB18B7D93200F6875B /* Good.png */,
+				832934BC18B7D93200F6875B /* Good@2x.png */,
+				832934BD18B7D93200F6875B /* Medicines.png */,
+				832934BE18B7D93200F6875B /* Medicines@2x.png */,
+				832934BF18B7D93200F6875B /* Sad.png */,
+				832934C018B7D93200F6875B /* Sad@2x.png */,
+				832934C118B7D93200F6875B /* Supplements.png */,
+				832934C218B7D93200F6875B /* Supplements@2x.png */,
+				832934C318B7D93200F6875B /* Symptoms.png */,
+				832934C418B7D93200F6875B /* Symptoms@2x.png */,
+				832934C518B7D93200F6875B /* Worried.png */,
+				832934C618B7D93200F6875B /* Worried@2x.png */,
+			);
+			path = MedsMoodsSupplements;
+			sourceTree = "<group>";
+		};
 		834BD64318AEA1A4003B6808 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				832934B818B7D93200F6875B /* MedsMoodsSupplements */,
 				835AE58918B7A51700FEAF98 /* CheckBox.png */,
 				835AE58A18B7A51700FEAF98 /* CheckBox@2x.png */,
 				83EB3E3318AEA7D500EA91AC /* CervicalFluid */,
@@ -803,6 +853,7 @@
 				83EB3EBE18AEA7D500EA91AC /* Eggwhite@2x.png in Resources */,
 				83EB3F0618AEA7D500EA91AC /* Heavy.png in Resources */,
 				83EB3F0C18AEA7D500EA91AC /* Medium@2x.png in Resources */,
+				832934C818B7D93200F6875B /* Amazing@2x.png in Resources */,
 				83EB3F0E18AEA7D500EA91AC /* Spotting@2x.png in Resources */,
 				83EB3ED118AEA7D500EA91AC /* Hydrate-01.png in Resources */,
 				835AE58818B7A3B500FEAF98 /* CheckCell.xib in Resources */,
@@ -811,6 +862,7 @@
 				8328B76118AC004300DA7A5E /* IntercourseDayCell.xib in Resources */,
 				83EB3F2C18AEA7D500EA91AC /* more_unselect.png in Resources */,
 				83EB3F1B18AEA7D500EA91AC /* Positive.png in Resources */,
+				832934C918B7D93200F6875B /* Good.png in Resources */,
 				83EB3F0D18AEA7D500EA91AC /* Spotting.png in Resources */,
 				835AE58C18B7A51700FEAF98 /* CheckBox@2x.png in Resources */,
 				83EB3F1718AEA7D500EA91AC /* Self Massage@2x.png in Resources */,
@@ -834,8 +886,11 @@
 				83EB3F3318AEA7D500EA91AC /* Dry@2x.png in Resources */,
 				83EB3F2818AEA7D500EA91AC /* community_unselect@2x.png in Resources */,
 				834BD63218AD1363003B6808 /* MoreStoryboard.storyboard in Resources */,
+				832934D218B7D93200F6875B /* Symptoms@2x.png in Resources */,
 				83EB3F1C18AEA7D500EA91AC /* Positive@2x.png in Resources */,
+				832934D318B7D93200F6875B /* Worried.png in Resources */,
 				83EB3F3218AEA7D500EA91AC /* Dry.png in Resources */,
+				832934CF18B7D93200F6875B /* Supplements.png in Resources */,
 				83EB3EDF18AEA7D500EA91AC /* Unprotected.png in Resources */,
 				83EB3EDB18AEA7D500EA91AC /* Ventilate-01@2x.png in Resources */,
 				8328B76318AC005A00DA7A5E /* SymptomsDayCell.xib in Resources */,
@@ -846,9 +901,13 @@
 				83EB3F2D18AEA7D500EA91AC /* more_unselect@2x.png in Resources */,
 				839A346A18ABF3B3007CD657 /* PeriodDayCell.xib in Resources */,
 				83EB3EBC18AEA7D500EA91AC /* Creamy@2x.png in Resources */,
+				832934D418B7D93200F6875B /* Worried@2x.png in Resources */,
 				83EB3EBB18AEA7D500EA91AC /* Creamy.png in Resources */,
+				832934CE18B7D93200F6875B /* Sad@2x.png in Resources */,
 				83EB3ED418AEA7D500EA91AC /* Nourish-01.png in Resources */,
 				83EB3F1918AEA7D500EA91AC /* Negative.png in Resources */,
+				832934D018B7D93200F6875B /* Supplements@2x.png in Resources */,
+				832934CB18B7D93200F6875B /* Medicines.png in Resources */,
 				83EB3F2E18AEA7D500EA91AC /* today_selected.png in Resources */,
 				8328B75F18AC003700DA7A5E /* FluidDayCell.xib in Resources */,
 				835AE58B18B7A51700FEAF98 /* CheckBox.png in Resources */,
@@ -861,15 +920,20 @@
 				839A346218ABCFB6007CD657 /* NavigationViewController.xib in Resources */,
 				83EB3ED218AEA7D500EA91AC /* Hydrate-01@2x.png in Resources */,
 				83EB3ED518AEA7D500EA91AC /* Nourish-01@2x.png in Resources */,
+				832934CC18B7D93200F6875B /* Medicines@2x.png in Resources */,
 				83EB3F2B18AEA7D500EA91AC /* more_selected@2x.png in Resources */,
 				83EB3F3718AEA7D500EA91AC /* Wet.png in Resources */,
 				83EB3ED718AEA7D500EA91AC /* Refresh-01@2x.png in Resources */,
 				83EB3F2F18AEA7D500EA91AC /* today_selected@2x.png in Resources */,
 				83EB3F2A18AEA7D500EA91AC /* more_selected.png in Resources */,
 				83EB3F3118AEA7D500EA91AC /* today_unselect@2x.png in Resources */,
+				832934C718B7D93200F6875B /* Amazing.png in Resources */,
+				832934D118B7D93200F6875B /* Symptoms.png in Resources */,
 				83EB3F2118AEA7D500EA91AC /* coaching_selected.png in Resources */,
 				8328B76718AC008700DA7A5E /* SignsDayCell.xib in Resources */,
+				832934CD18B7D93200F6875B /* Sad.png in Resources */,
 				83EB3F0718AEA7D500EA91AC /* Heavy@2x.png in Resources */,
+				832934CA18B7D93200F6875B /* Good@2x.png in Resources */,
 				83EB3F0F18AEA7D500EA91AC /* Acupressure.png in Resources */,
 				83EB3F3018AEA7D500EA91AC /* today_unselect.png in Resources */,
 				83EB3F1218AEA7D500EA91AC /* Lifestyle .png in Resources */,

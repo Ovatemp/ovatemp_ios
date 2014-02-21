@@ -36,8 +36,16 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Supplements.png" translatesAutoresizingMaskIntoConstraints="NO" id="Kt1-rs-pN4">
+                                        <rect key="frame" x="13" y="33" width="41" height="74"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Medicines.png" translatesAutoresizingMaskIntoConstraints="NO" id="7PA-4D-VhO">
+                                        <rect key="frame" x="179" y="33" width="27" height="74"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1Z-xA-QHE">
-                                        <rect key="frame" x="38" y="40" width="122" height="101"/>
+                                        <rect key="frame" x="56" y="36" width="104" height="101"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <string key="text">Prenatals, Calcium, DIM, Magnesium, 
@@ -46,7 +54,7 @@ Neuromins, Zinc</string>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQO-Az-R0u">
-                                        <rect key="frame" x="214" y="33" width="101" height="101"/>
+                                        <rect key="frame" x="214" y="36" width="101" height="101"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <string key="text">Aleve, Metformin, 
@@ -54,14 +62,6 @@ Progesterone</string>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Creamy.png" translatesAutoresizingMaskIntoConstraints="NO" id="Kt1-rs-pN4">
-                                        <rect key="frame" x="13" y="40" width="22" height="74"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Creamy.png" translatesAutoresizingMaskIntoConstraints="NO" id="7PA-4D-VhO">
-                                        <rect key="frame" x="179" y="36" width="27" height="74"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
@@ -159,6 +159,7 @@ Progesterone</string>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Creamy.png" width="38" height="38"/>
+        <image name="Medicines.png" width="28" height="48"/>
+        <image name="Supplements.png" width="36" height="48"/>
     </resources>
 </document>
