@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "DayCell.h"
 
-@interface SymptomsDayCell : DayCell
+@interface SymptomsDayCell : DayCell <UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITextView *symptomsTextView;
+@property (weak, nonatomic) IBOutlet UITableView *symptomsTableView;
 
 @end

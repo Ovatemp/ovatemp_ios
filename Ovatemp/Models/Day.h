@@ -89,6 +89,7 @@ typedef enum vaginalSensationTypesEnum
 
 @property (nonatomic, strong) NSArray *medicines;
 @property (nonatomic, strong) NSArray *supplements;
+@property (nonatomic, strong) NSArray *symptoms;
 
 @property (nonatomic, assign) BOOL disturbance;
 
