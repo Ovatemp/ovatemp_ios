@@ -89,7 +89,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.21960784310000001" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstItem="ILt-U0-D4S" firstAttribute="leading" secondItem="opr-ha-I24" secondAttribute="leading" constant="20" symbolic="YES" id="AhU-59-bHU"/>
                                     <constraint firstAttribute="trailing" secondItem="ILt-U0-D4S" secondAttribute="trailing" constant="20" symbolic="YES" id="BlC-w6-df3"/>
@@ -136,6 +136,8 @@
             <connections>
                 <outlet property="editTemperatureLabel" destination="z8X-pk-Ekk" id="Eok-es-8Gd"/>
                 <outlet property="graphView" destination="1ZG-Lq-vnI" id="Od5-64-b1d"/>
+                <outlet property="page1" destination="0Vq-He-dBR" id="tcI-8n-iIy"/>
+                <outlet property="page2" destination="opr-ha-I24" id="C55-nu-ex5"/>
                 <outlet property="setTemperatureButton" destination="Dlq-A3-sIY" id="SBA-4C-Nuy"/>
                 <outlet property="slider" destination="ILt-U0-D4S" id="Atb-tS-5wB"/>
                 <outlet property="temperatureLabel" destination="G9F-7c-h9L" id="gpR-Af-u5I"/>

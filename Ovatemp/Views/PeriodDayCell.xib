@@ -106,7 +106,7 @@
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.21960784310000001" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstItem="QrJ-Y7-Y5d" firstAttribute="top" secondItem="XDy-6g-w1g" secondAttribute="top" id="3n0-3C-Opf"/>
                                     <constraint firstAttribute="bottom" secondItem="ctg-WD-gRW" secondAttribute="bottom" constant="8" id="55c-dp-f4t"/>
@@ -154,6 +154,8 @@
                 <outlet property="heavyButton" destination="XDy-6g-w1g" id="3IK-rL-3II"/>
                 <outlet property="lightButton" destination="FJw-jd-3XR" id="WAx-nq-a3z"/>
                 <outlet property="mediumButton" destination="QrJ-Y7-Y5d" id="lhG-oz-s4A"/>
+                <outlet property="page1" destination="waL-NL-bFb" id="Oql-fx-iZe"/>
+                <outlet property="page2" destination="TKV-7k-ZHl" id="7yg-51-SbA"/>
                 <outlet property="periodImageView" destination="AD1-eF-hid" id="OK0-Ax-Dce"/>
                 <outlet property="periodLabel" destination="BjW-xq-nSn" id="EtN-KR-R63"/>
                 <outlet property="spottingButton" destination="ctg-WD-gRW" id="tvk-KK-xUz"/>

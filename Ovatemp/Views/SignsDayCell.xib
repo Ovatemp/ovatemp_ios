@@ -149,7 +149,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.21960784310000001" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstItem="EcW-dQ-auM" firstAttribute="top" secondItem="FV8-cI-igr" secondAttribute="bottom" constant="24" id="0M2-M8-Dgj"/>
                                     <constraint firstAttribute="bottom" secondItem="EcW-dQ-auM" secondAttribute="bottom" constant="28" id="2oY-mf-jEd"/>
@@ -202,6 +202,8 @@
                 <outlet property="opkImageView" destination="EUa-SE-91Y" id="4sN-Sv-S2n"/>
                 <outlet property="opkNegativeButton" destination="EcW-dQ-auM" id="LGL-Lk-eEt"/>
                 <outlet property="opkPositiveButton" destination="yr0-06-f51" id="cf6-1e-Lsz"/>
+                <outlet property="page1" destination="S77-DB-z3Q" id="soZ-UW-a8I"/>
+                <outlet property="page2" destination="PU4-85-ZVF" id="3Dq-Om-ufy"/>
             </connections>
         </tableViewCell>
     </objects>

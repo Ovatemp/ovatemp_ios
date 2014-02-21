@@ -14,8 +14,14 @@
 
 @property (nonatomic, weak) Day *day;
 
+@property (nonatomic, weak) IBOutlet UIView *page1;
+@property (nonatomic, weak) IBOutlet UIView *page2;
+@property (nonatomic, weak) IBOutlet UIView *page3;
+
 - (void)toggleDayProperty:(NSString *)key withIndex:(NSInteger)index;
 - (BOOL)isDayProperty:(NSString *)key ofType:(NSInteger)index;
 - (void)refreshControls;
+
+
 
 @end

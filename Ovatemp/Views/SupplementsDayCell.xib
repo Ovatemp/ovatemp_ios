@@ -90,7 +90,7 @@ Progesterone</string>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.2196078431372549" green="0.24313725490196078" blue="0.24313725490196078" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstItem="Qxz-vj-x7A" firstAttribute="leading" secondItem="GCb-ua-KTK" secondAttribute="leading" constant="13" id="LpW-EM-kGe"/>
                                     <constraint firstItem="Qxz-vj-x7A" firstAttribute="top" secondItem="GCb-ua-KTK" secondAttribute="top" constant="6" id="xdt-7t-9aS"/>
@@ -116,7 +116,7 @@ Progesterone</string>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.21960784310000001" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="Pa5-Mu-eiy"/>
                                     <constraint firstItem="xaq-vn-3uR" firstAttribute="leading" secondItem="Cte-Ih-ed8" secondAttribute="leading" constant="11" id="Qry-Vo-xtQ"/>
@@ -150,6 +150,9 @@ Progesterone</string>
             <connections>
                 <outlet property="medicinesTableView" destination="C2v-4r-RzK" id="nQw-sV-ODF"/>
                 <outlet property="medicinesTextView" destination="NQO-Az-R0u" id="OdO-M2-p0S"/>
+                <outlet property="page1" destination="cI7-st-VQB" id="O2X-x7-GwB"/>
+                <outlet property="page2" destination="GCb-ua-KTK" id="eR1-OG-yGb"/>
+                <outlet property="page3" destination="Cte-Ih-ed8" id="l5C-Sh-vkm"/>
                 <outlet property="supplementsTableView" destination="n4h-dd-FRi" id="3Tg-fs-78V"/>
                 <outlet property="supplementsTextView" destination="x1Z-xA-QHE" id="Qos-eW-nWF"/>
             </connections>

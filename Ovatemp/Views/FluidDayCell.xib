@@ -132,7 +132,7 @@
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.21960784310000001" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstItem="60Q-xF-Ywe" firstAttribute="top" secondItem="8k7-bt-RuJ" secondAttribute="top" constant="6" id="A4N-qr-Ifh"/>
                                     <constraint firstItem="5RP-cj-kpR" firstAttribute="bottom" secondItem="1J0-Ke-gKl" secondAttribute="bottom" id="G0w-xm-XRw"/>
@@ -192,7 +192,7 @@
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.21960784310000001" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstItem="Za1-ld-HtV" firstAttribute="top" secondItem="7oK-lX-EaG" secondAttribute="top" id="1RJ-DM-uzb"/>
                                     <constraint firstItem="Za1-ld-HtV" firstAttribute="bottom" secondItem="7oK-lX-EaG" secondAttribute="bottom" id="6cc-ux-qyo"/>
@@ -238,6 +238,9 @@
                 <outlet property="fluidImageView" destination="FHA-C9-P0H" id="pqe-un-SNS"/>
                 <outlet property="fluidLabel" destination="wZb-Ln-Pse" id="IyT-2r-ARV"/>
                 <outlet property="lubeButton" destination="Za1-ld-HtV" id="Xkc-0C-GXo"/>
+                <outlet property="page1" destination="dWI-cN-18Z" id="qaT-Nm-h2R"/>
+                <outlet property="page2" destination="8k7-bt-RuJ" id="WYM-Ar-spP"/>
+                <outlet property="page3" destination="RjG-kr-2nJ" id="Jjd-Nr-tLx"/>
                 <outlet property="sensationImageView" destination="bgo-QZ-6eR" id="yWG-sw-pX3"/>
                 <outlet property="sensationLabel" destination="fuA-yy-OEb" id="xBG-nr-aNZ"/>
                 <outlet property="stickyButton" destination="Tae-Wb-p1T" id="mOa-Yo-3PA"/>

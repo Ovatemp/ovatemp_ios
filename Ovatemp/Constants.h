@@ -17,6 +17,7 @@
 #define DARK_BLUE Color(31, 108, 114)
 
 #define PURPLE Color(124, 65, 160)
+#define DAY_EDIT_PAGE_COLOR Color(56, 62, 62)
 
 // API configuration
 #ifdef DEBUG

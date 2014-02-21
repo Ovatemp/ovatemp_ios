@@ -13,6 +13,10 @@
 - (void)awakeFromNib{
   self.selectionStyle = UITableViewCellSelectionStyleNone;
 
+  self.page1.backgroundColor = [UIColor whiteColor];
+  self.page2.backgroundColor = DAY_EDIT_PAGE_COLOR;
+  self.page3.backgroundColor = DAY_EDIT_PAGE_COLOR;
+
   [self initializeControls];
 }
 
