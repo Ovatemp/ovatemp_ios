@@ -19,7 +19,7 @@ static NSDictionary *propertyOptions;
     return nil;
   }
 
-  self.ignoredAttributes = [NSSet setWithArray:@[@"createdAt", @"updatedAt", @"cycleId", @"userId", @"disturbance", @"medicines", @"supplements"]];
+  self.ignoredAttributes = [NSSet setWithArray:@[@"createdAt", @"updatedAt", @"cycleId", @"userId", @"medicines", @"supplements"]];
 
   self.medicines = @[@"Painkillers", @"Metamorphin", @"Clomid", @"Progestin", @"Claritin", @"Albuterol", @"Parasol"];
   self.supplements = @[@"Prenatal", @"Calcium", @"The Biggest Horse Pill", @"The Second Biggest Horse Pill", @"Healing Breath", @"Mint Tea", @"Nettle tea", @"Pine tea", @"Green tea extract"];

@@ -16,6 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *editTemperatureLabel;
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 @property (weak, nonatomic) IBOutlet UIButton *setTemperatureButton;
-
+@property (weak, nonatomic) IBOutlet UISwitch *disturbanceSwitch;
 
 @end

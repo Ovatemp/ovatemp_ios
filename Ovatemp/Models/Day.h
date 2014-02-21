@@ -90,6 +90,8 @@ typedef enum vaginalSensationTypesEnum
 @property (nonatomic, strong) NSArray *medicines;
 @property (nonatomic, strong) NSArray *supplements;
 
+@property (nonatomic, assign) BOOL disturbance;
+
 + (Day *)forDate:(NSDate *)date;
 
 - (BOOL)isProperty:(NSString *)key ofType:(NSInteger)type;

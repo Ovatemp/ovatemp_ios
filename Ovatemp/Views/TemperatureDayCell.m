@@ -21,6 +21,10 @@
   [self refreshControls];
 }
 
+- (IBAction)disturbanceToggled:(UISwitch *)sender {
+  self.day.disturbance = sender.on;
+}
+
 - (void)refreshControls {
   BOOL temperatureSet = (self.day.temperature != nil);
   self.slider.hidden = !temperatureSet;
@@ -32,6 +36,13 @@
   self.temperatureLabel.text = temperatureString;
   self.editTemperatureLabel.text = temperatureString;
   self.slider.value = [self.day.temperature floatValue];
+
+  self.disturbanceSwitch.on = self.day.disturbance;
+}
+
+- (void)initializeControls {
+  self.slider.minimumValue = 95.0;
+  self.slider.maximumValue = 105.0;
 }
 
 @end

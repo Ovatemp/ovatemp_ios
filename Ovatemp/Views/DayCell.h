@@ -21,7 +21,7 @@
 - (void)toggleDayProperty:(NSString *)key withIndex:(NSInteger)index;
 - (BOOL)isDayProperty:(NSString *)key ofType:(NSInteger)index;
 - (void)refreshControls;
-
+- (void)initializeControls;
 
 
 @end
