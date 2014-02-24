@@ -30,8 +30,6 @@
   NSString *className = [[self description] lowercaseString];
   NSString *classNamePlural = [className stringByAppendingString:@"s"];
 
-  NSLog(@"attempting to create: %@", className);
-
   [ConnectionManager post:[@"/" stringByAppendingString:classNamePlural]
                    params:@{
                             className:
