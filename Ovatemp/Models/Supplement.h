@@ -6,10 +6,8 @@
 //  Copyright (c) 2014 Back Forty. All rights reserved.
 //
 
-#import "BaseModel.h"
+#import "SharedRelation.h"
 
-@interface Supplement : BaseModel
-
-@property (nonatomic, strong) NSString* name;
+@interface Supplement : SharedRelation
 
 @end

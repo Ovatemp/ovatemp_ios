@@ -18,7 +18,7 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
   NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
 
   self.symptoms = [[Symptom all] sortedArrayUsingDescriptors:@[sort]];
-  self.symptomsTextView.text = [self.day.symptoms componentsJoinedByString:@", "];
+  self.symptomsTextView.text = [[self.day.symptoms valueForKey:@"name"] componentsJoinedByString:@", "];
 
   [self.symptomsTableView reloadData];
 }

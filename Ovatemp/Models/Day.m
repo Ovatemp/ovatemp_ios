@@ -19,7 +19,7 @@ static NSDictionary *propertyOptions;
     return nil;
   }
 
-  self.ignoredAttributes = [NSSet setWithArray:@[@"createdAt", @"updatedAt", @"cycleId", @"userId"]];
+  self.ignoredAttributes = [NSSet setWithArray:@[@"createdAt", @"updatedAt", @"cycleId", @"userId", @"supplements", @"symptoms", @"medicines"]];
 
   self.medicineIds = [NSMutableSet setWithArray:@[]];
   self.supplementIds = [NSMutableSet setWithArray:@[]];
@@ -108,7 +108,7 @@ static NSDictionary *propertyOptions;
 }
 
 - (void)didSave:(NSDictionary *)response {
-  // NSLog(@"saved day: %@", response);
+  NSLog(@"saved day: %@", response);
 }
 
 - (void)saveError:(NSError *)error {
@@ -169,6 +169,8 @@ static NSDictionary *propertyOptions;
   } else {
     [self.medicineIds addObject:medicine.id];
   }
+
+  [self scheduleSave];
 }
 
 - (void)toggleSupplement:(Supplement *)supplement {
@@ -177,6 +179,8 @@ static NSDictionary *propertyOptions;
   } else {
     [self.supplementIds addObject:supplement.id];
   }
+
+  [self scheduleSave];
 }
 
 - (void)toggleSymptom:(Symptom *)symptom {
@@ -185,6 +189,8 @@ static NSDictionary *propertyOptions;
   } else {
     [self.symptomIds addObject:symptom.id];
   }
+
+  [self scheduleSave];
 }
 
 @end

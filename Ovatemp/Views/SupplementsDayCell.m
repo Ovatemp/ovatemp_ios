@@ -20,8 +20,8 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
   self.medicines = [[Medicine all] sortedArrayUsingDescriptors:@[sort]];
   self.supplements = [[Supplement all] sortedArrayUsingDescriptors:@[sort]];
 
-  self.medicinesTextView.text = [self.day.medicines componentsJoinedByString:@", "];
-  self.supplementsTextView.text = [self.day.supplements componentsJoinedByString:@", "];
+  self.medicinesTextView.text = [[self.day.medicines valueForKey:@"name"] componentsJoinedByString:@", "];
+  self.supplementsTextView.text = [[self.day.supplements valueForKey:@"name"] componentsJoinedByString:@", "];
 
   [self.supplementsTableView reloadData];
   [self.medicinesTableView reloadData];

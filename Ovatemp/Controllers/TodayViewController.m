@@ -58,6 +58,7 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
 
+  self.day = nil;
   [self dateChanged];
 }
 
