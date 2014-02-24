@@ -72,7 +72,7 @@ static NSMutableDictionary *_instances;
   NSString *classPrefix = [self description];
   NSString *identifier = [attributes objectForKey:self.key];
   NSString *instanceLocator = [NSString stringWithFormat:@"%@:%@", classPrefix, [identifier description]];
-  NSLog(@"instance locator: %@", instanceLocator);
+  
   BaseModel *instance = [self.instances objectForKey:instanceLocator];
   if (instance) {
     instance.attributes = attributes;

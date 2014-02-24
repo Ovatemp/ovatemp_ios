@@ -16,6 +16,7 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
 
 - (void)refreshControls {
   NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+
   self.medicines = [[Medicine all] sortedArrayUsingDescriptors:@[sort]];
   self.supplements = [[Supplement all] sortedArrayUsingDescriptors:@[sort]];
 
@@ -73,8 +74,6 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  NSLog(@"selected table view row: %@", [NSString stringWithFormat:@"%d-%d",indexPath.section,indexPath.row]);
-
   if(tableView == self.medicinesTableView) {
     Medicine *medicine = self.medicines[indexPath.row];
     [self.day toggleMedicine:medicine];
@@ -83,6 +82,8 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
     Supplement *supplement = self.supplements[indexPath.row];
     [self.day toggleSupplement:supplement];
   }
+
+  [self refreshControls];
   [tableView reloadData];
 }
 

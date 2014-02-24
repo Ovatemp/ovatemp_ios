@@ -20,7 +20,7 @@ static NSDictionary *propertyOptions;
   }
 
   self.ignoredAttributes = [NSSet setWithArray:@[@"createdAt", @"updatedAt", @"cycleId", @"userId"]];
-  
+
   self.medicineIds = [NSMutableSet setWithArray:@[]];
   self.supplementIds = [NSMutableSet setWithArray:@[]];
   self.symptomIds = [NSMutableSet setWithArray:@[]];
@@ -125,7 +125,7 @@ static NSDictionary *propertyOptions;
   NSMutableArray *accum = [[NSMutableArray alloc] initWithCapacity:self.medicineIds.count];
 
   for(NSNumber *id in self.medicineIds) {
-    [Medicine findByKey:[id description]];
+    [accum addObject:[Medicine findByKey:[id description]]];
   }
 
   return accum;
@@ -135,7 +135,7 @@ static NSDictionary *propertyOptions;
   NSMutableArray *accum = [[NSMutableArray alloc] initWithCapacity:self.supplementIds.count];
 
   for(NSNumber *id in self.supplementIds) {
-    [Supplement findByKey:[id description]];
+    [accum addObject:[Supplement findByKey:[id description]]];
   }
 
   return accum;
@@ -145,7 +145,7 @@ static NSDictionary *propertyOptions;
   NSMutableArray *accum = [[NSMutableArray alloc] initWithCapacity:self.symptomIds.count];
 
   for(NSNumber *id in self.symptomIds) {
-    [Symptom findByKey:[id description]];
+    [accum addObject:[Symptom findByKey:[id description]]];
   }
 
   return accum;
@@ -183,7 +183,7 @@ static NSDictionary *propertyOptions;
   if([self hasSymptom:symptom]) {
     [self.symptomIds removeObject:symptom.id];
   } else {
-    [self.supplementIds addObject:symptom.id];
+    [self.symptomIds addObject:symptom.id];
   }
 }
 

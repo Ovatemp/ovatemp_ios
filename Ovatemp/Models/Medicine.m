@@ -10,4 +10,8 @@
 
 @implementation Medicine
 
+- (NSString *)description {
+  return self.name;
+}
+
 @end

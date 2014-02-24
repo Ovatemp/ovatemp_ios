@@ -16,8 +16,8 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
 
 - (void)refreshControls {
   NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+
   self.symptoms = [[Symptom all] sortedArrayUsingDescriptors:@[sort]];
-  
   self.symptomsTextView.text = [self.day.symptoms componentsJoinedByString:@", "];
 
   [self.symptomsTableView reloadData];
@@ -64,8 +64,10 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  Supplement *supplement = self.symptoms[indexPath.row];
-  [self.day toggleSupplement:supplement];
+  Symptom *symptom = self.symptoms[indexPath.row];
+  [self.day toggleSymptom:symptom];
+
+  [self refreshControls];
   [tableView reloadData];
 }
 
