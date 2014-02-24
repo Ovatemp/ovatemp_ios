@@ -21,9 +21,34 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
   self.symptomsTextView.text = [[self.day.symptoms valueForKey:@"name"] componentsJoinedByString:@", "];
 
   [self.symptomsTableView reloadData];
+
+  if(self.day.mood) {
+    self.moodLabel.text = [self.day.mood capitalizedString];
+    self.moodImageView.hidden = FALSE;
+  } else {
+    self.moodImageView.hidden = TRUE;
+    self.moodLabel.text = @"Swipe to edit";
+  }
+
+  for(DayToggleButton *button in @[self.sadButton, self.worriedButton, self.goodButton, self.amazingButton]) {
+    [button refresh];
+    if(button.selected) {
+      self.moodImageView.image = [button imageForState:UIControlStateNormal];
+    }
+  }
 }
 
 - (void)initializeControls {
+  [self.sadButton setImage:[UIImage imageNamed:@"Sad"] forState:UIControlStateNormal];
+  [self.worriedButton    setImage:[UIImage imageNamed:@"Worried"] forState:UIControlStateNormal];
+  [self.goodButton   setImage:[UIImage imageNamed:@"Good"] forState:UIControlStateNormal];
+  [self.amazingButton    setImage:[UIImage imageNamed:@"Amazing"] forState:UIControlStateNormal];
+
+  [self.sadButton setDayCell:self property:@"mood" index:MOOD_SAD];
+  [self.worriedButton setDayCell:self property:@"mood" index:MOOD_WORRIED];
+  [self.goodButton setDayCell:self property:@"mood" index:MOOD_GOOD];
+  [self.amazingButton setDayCell:self property:@"mood" index:MOOD_AMAZING];
+
   UINib *cellNib = [UINib nibWithNibName:kCheckCellIdentifier bundle:nil];
   UIView *cellView = [[[NSBundle mainBundle] loadNibNamed:kCheckCellIdentifier owner:self options:nil]
                       objectAtIndex:0];
@@ -86,5 +111,6 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
 - (IBAction)createSymptom:(id)sender {
   [self showCreateFormWithTitle:@"Add new symptom" andClass:[Symptom class]];
 }
+
 
 @end

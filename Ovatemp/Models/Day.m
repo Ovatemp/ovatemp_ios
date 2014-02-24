@@ -36,6 +36,7 @@ static NSDictionary *propertyOptions;
                    @"vaginalSensation": kVaginalSensationTypes,
                    @"intercourse": kIntercourseTypes,
                    @"ferning": kFerningTypes,
+                   @"mood": kMoodTypes,
                    @"pregnancyTest": kPregnancyTestTypes,
                    @"opk": kOpkTypes,
                    @"period": kPeriodTypes

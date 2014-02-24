@@ -117,12 +117,66 @@ Neuromins, Zinc</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLM-m8-5iC" customClass="DayToggleButton">
+                                        <rect key="frame" x="5" y="40" width="75" height="76"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="65d-ho-fw4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="Sad">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ss-db-bcz" customClass="DayToggleButton">
+                                        <rect key="frame" x="87" y="40" width="75" height="76"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="VgG-5P-NoO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="Worried">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aoH-Ei-nkm" customClass="DayToggleButton">
+                                        <rect key="frame" x="164" y="40" width="75" height="76"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="kII-hS-xOO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="Good">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6y-I9-cpP" customClass="DayToggleButton">
+                                        <rect key="frame" x="242" y="40" width="75" height="76"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="Amazing">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.21960784310000001" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
+                                    <constraint firstItem="Y6y-I9-cpP" firstAttribute="leading" secondItem="aoH-Ei-nkm" secondAttribute="trailing" constant="3" id="7k5-ko-eot"/>
+                                    <constraint firstItem="fLM-m8-5iC" firstAttribute="top" secondItem="9ss-db-bcz" secondAttribute="top" id="8En-pd-6ew"/>
                                     <constraint firstItem="UnJ-9W-0VY" firstAttribute="top" secondItem="IQB-om-v2m" secondAttribute="top" constant="6" id="9nG-4V-S69"/>
+                                    <constraint firstItem="fLM-m8-5iC" firstAttribute="leading" secondItem="IQB-om-v2m" secondAttribute="leading" constant="5" id="H2u-OL-kP5"/>
+                                    <constraint firstItem="aoH-Ei-nkm" firstAttribute="leading" secondItem="9ss-db-bcz" secondAttribute="trailing" constant="2" id="HJF-eA-gO2"/>
+                                    <constraint firstItem="9ss-db-bcz" firstAttribute="top" secondItem="aoH-Ei-nkm" secondAttribute="top" id="KOH-xB-d6I"/>
+                                    <constraint firstItem="aoH-Ei-nkm" firstAttribute="bottom" secondItem="Y6y-I9-cpP" secondAttribute="bottom" id="PCd-qD-xAe"/>
+                                    <constraint firstItem="fLM-m8-5iC" firstAttribute="top" secondItem="UnJ-9W-0VY" secondAttribute="bottom" constant="12" id="PbN-QJ-z8g"/>
+                                    <constraint firstItem="Y6y-I9-cpP" firstAttribute="top" secondItem="aoH-Ei-nkm" secondAttribute="top" id="W3M-09-vnC"/>
                                     <constraint firstItem="UnJ-9W-0VY" firstAttribute="leading" secondItem="IQB-om-v2m" secondAttribute="leading" constant="11" id="ZMC-VA-C5D"/>
+                                    <constraint firstAttribute="bottom" secondItem="fLM-m8-5iC" secondAttribute="bottom" constant="39" id="bah-07-sCw"/>
+                                    <constraint firstItem="9ss-db-bcz" firstAttribute="bottom" secondItem="aoH-Ei-nkm" secondAttribute="bottom" id="fNZ-K2-qnv"/>
                                     <constraint firstAttribute="width" constant="320" id="i2u-Sm-gIY"/>
+                                    <constraint firstAttribute="trailing" secondItem="Y6y-I9-cpP" secondAttribute="trailing" constant="3" id="luN-g0-BWj"/>
+                                    <constraint firstItem="9ss-db-bcz" firstAttribute="leading" secondItem="fLM-m8-5iC" secondAttribute="trailing" constant="7" id="rSF-MV-2qn"/>
+                                    <constraint firstItem="fLM-m8-5iC" firstAttribute="bottom" secondItem="9ss-db-bcz" secondAttribute="bottom" id="xOb-JX-15n"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -150,11 +204,17 @@ Neuromins, Zinc</string>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="amazingButton" destination="Y6y-I9-cpP" id="edD-9I-Fpm"/>
+                <outlet property="goodButton" destination="aoH-Ei-nkm" id="Y2f-EE-Qpe"/>
+                <outlet property="moodImageView" destination="bYi-VE-QTo" id="G7h-Fs-ZO6"/>
+                <outlet property="moodLabel" destination="p4a-VG-uN1" id="9Jf-dx-jug"/>
                 <outlet property="page1" destination="IUr-tX-Hof" id="F4B-gS-lwe"/>
                 <outlet property="page2" destination="2B3-rW-hBH" id="RFk-n7-Bl5"/>
                 <outlet property="page3" destination="IQB-om-v2m" id="bwn-ZT-ejw"/>
+                <outlet property="sadButton" destination="fLM-m8-5iC" id="bti-lO-GBa"/>
                 <outlet property="symptomsTableView" destination="dPn-lw-RiF" id="2ny-pL-wa6"/>
                 <outlet property="symptomsTextView" destination="wRi-OV-LgR" id="PXA-Kj-iPZ"/>
+                <outlet property="worriedButton" destination="9ss-db-bcz" id="yLB-Yj-ncw"/>
             </connections>
         </tableViewCell>
     </objects>

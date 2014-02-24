@@ -51,6 +51,16 @@ typedef enum ferningTypesEnum
 } FerningType;
 @property (nonatomic, retain) NSString* ferning;
 
+#define kMoodTypes @[@"sad", @"worried", @"good", @"amazing"]
+typedef enum moodTypesEnum
+{
+  MOOD_SAD,
+  MOOD_WORRIED,
+  MOOD_GOOD,
+  MOOD_AMAZING
+} MoodType;
+@property (nonatomic, retain) NSString* mood;
+
 #define kOpkTypes @[@"positive", @"negative"]
 typedef enum opkTypesEnum
 {
