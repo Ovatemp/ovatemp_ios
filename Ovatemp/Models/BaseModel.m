@@ -158,6 +158,8 @@ static NSMutableDictionary *_instances;
     NSString *className = [self classForKey:key];
     if ([className rangeOfString:@"NSDate"].location != NSNotFound) {
       value = [self dateForValue:value];
+    } else if ([className rangeOfString:@"NSMutableArray"].location != NSNotFound) {
+      value = [value mutableCopy];
     }
     [super setValue:value forKey:key];
   }

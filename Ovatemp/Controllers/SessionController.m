@@ -43,7 +43,6 @@
 }
 
 + (void)loadSupplementsEtc:(NSDictionary *)response {
-  NSLog(@"loading supplements from response: %@", response);
   [Supplement resetInstancesWithArray:response[@"supplements"]];
   [Medicine resetInstancesWithArray:response[@"medicines"]];
   [Symptom resetInstancesWithArray:response[@"symptoms"]];

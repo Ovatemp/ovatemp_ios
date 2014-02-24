@@ -19,11 +19,7 @@ static NSDictionary *propertyOptions;
     return nil;
   }
 
-  self.ignoredAttributes = [NSSet setWithArray:@[@"createdAt", @"updatedAt", @"cycleId", @"userId", @"supplements", @"symptoms", @"medicines"]];
-
-  self.medicineIds = [NSMutableSet setWithArray:@[]];
-  self.supplementIds = [NSMutableSet setWithArray:@[]];
-  self.symptomIds = [NSMutableSet setWithArray:@[]];
+  self.ignoredAttributes = [NSSet setWithArray:@[@"createdAt", @"updatedAt", @"cycleId", @"userId"]];
 
   return self;
 }

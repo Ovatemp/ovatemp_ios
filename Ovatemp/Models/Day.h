@@ -100,9 +100,9 @@ typedef enum vaginalSensationTypesEnum
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) NSNumber *temperature;
 
-@property (nonatomic, strong) NSMutableSet *medicineIds;
-@property (nonatomic, strong) NSMutableSet *supplementIds;
-@property (nonatomic, strong) NSMutableSet *symptomIds;
+@property (nonatomic, strong) NSMutableArray *medicineIds;
+@property (nonatomic, strong) NSMutableArray *supplementIds;
+@property (nonatomic, strong) NSMutableArray *symptomIds;
 
 @property (nonatomic, assign) BOOL disturbance;
 
