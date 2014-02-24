@@ -7,6 +7,7 @@
 //
 
 #import "SessionController.h"
+#import "ConnectionManager.h"
 #import "User.h"
 #import "Configuration.h"
 #import "Day.h"
@@ -22,10 +23,23 @@
   [Configuration sharedConfiguration].token = token;
 }
 
++ (void)refreshToken {
+  [ConnectionManager put:@"/sessions/refresh"
+                  params:nil
+                  target:self
+                 success:@selector(loadSupplementsEtc:)
+                 failure:@selector(presentError:)
+   ];
+}
+
 + (void)logOut {
   [User setCurrent:nil];
   [Configuration sharedConfiguration].token = nil;
   [Day resetInstances];
+}
+
++ (void)presentError:(NSError *)error {
+  NSLog(@"couldn't refresh token: %@", error);
 }
 
 + (void)loadSupplementsEtc:(NSDictionary *)response {

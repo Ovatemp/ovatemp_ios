@@ -12,6 +12,7 @@
 
 + (void)loggedInWithUser:(NSDictionary *)user andToken:(NSString *)token;
 + (void)loadSupplementsEtc:(NSDictionary *)response;
++ (void)refreshToken;
 + (void)logOut;
 
 @end
