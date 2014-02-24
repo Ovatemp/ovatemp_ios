@@ -18,11 +18,14 @@
 @property (nonatomic, strong) NSSet *ignoredAttributes;
 
 + (NSMutableDictionary *)instances;
++ (NSArray *)all;
 + (BOOL)isLoaded;
 + (NSString *)key;
 + (void)resetInstances;
++ (void)resetInstancesWithArray:(NSArray *)array;
 + (id)withAttributes:(NSDictionary *)attributes;
 - (void)setAttributes:(NSDictionary *)attributes;
 - (NSDictionary *)attributes:(BOOL)camelCase;
++ (id)findByKey:(NSString *)identifier;
 
 @end

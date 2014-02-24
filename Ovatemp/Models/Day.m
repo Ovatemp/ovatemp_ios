@@ -19,11 +19,11 @@ static NSDictionary *propertyOptions;
     return nil;
   }
 
-  self.ignoredAttributes = [NSSet setWithArray:@[@"createdAt", @"updatedAt", @"cycleId", @"userId", @"medicines", @"supplements", @"symptoms"]];
-
-  self.medicines = @[@"Painkillers", @"Metamorphin", @"Clomid", @"Progestin", @"Claritin", @"Albuterol", @"Parasol"];
-  self.supplements = @[@"Prenatal", @"Calcium", @"The Biggest Horse Pill", @"The Second Biggest Horse Pill", @"Healing Breath", @"Mint Tea", @"Nettle tea", @"Pine tea", @"Green tea extract"];
-  self.symptoms = @[@"Nausea", @"Hallucinations", @"Cramps", @"Runny Nose", @"Fervour", @"Fever", @"Ardour", @"Odor", @"Mordor"];
+  self.ignoredAttributes = [NSSet setWithArray:@[@"createdAt", @"updatedAt", @"cycleId", @"userId"]];
+  
+  self.medicineIds = [NSMutableSet setWithArray:@[]];
+  self.supplementIds = [NSMutableSet setWithArray:@[]];
+  self.symptomIds = [NSMutableSet setWithArray:@[]];
 
   return self;
 }
@@ -117,6 +117,74 @@ static NSDictionary *propertyOptions;
 
 - (NSString *)description {
   return [NSString stringWithFormat:@"Day (%@)", [self.date shortDate]];
+}
+
+# pragma mark - Relations
+
+- (NSArray *)medicines {
+  NSMutableArray *accum = [[NSMutableArray alloc] initWithCapacity:self.medicineIds.count];
+
+  for(NSNumber *id in self.medicineIds) {
+    [Medicine findByKey:[id description]];
+  }
+
+  return accum;
+}
+
+- (NSArray *)supplements {
+  NSMutableArray *accum = [[NSMutableArray alloc] initWithCapacity:self.supplementIds.count];
+
+  for(NSNumber *id in self.supplementIds) {
+    [Supplement findByKey:[id description]];
+  }
+
+  return accum;
+}
+
+- (NSArray *)symptoms {
+  NSMutableArray *accum = [[NSMutableArray alloc] initWithCapacity:self.symptomIds.count];
+
+  for(NSNumber *id in self.symptomIds) {
+    [Symptom findByKey:[id description]];
+  }
+
+  return accum;
+}
+
+- (BOOL)hasMedicine:(Medicine *)medicine {
+  return [self.medicineIds containsObject:medicine.id];
+}
+
+- (BOOL)hasSupplement:(Supplement *)supplement {
+  return [self.supplementIds containsObject:supplement.id];
+}
+
+- (BOOL)hasSymptom:(Symptom *)symptom {
+  return [self.symptomIds containsObject:symptom.id];
+}
+
+- (void)toggleMedicine:(Medicine *)medicine {
+  if([self hasMedicine:medicine]) {
+    [self.medicineIds removeObject:medicine.id];
+  } else {
+    [self.medicineIds addObject:medicine.id];
+  }
+}
+
+- (void)toggleSupplement:(Supplement *)supplement {
+  if([self hasSupplement:supplement]) {
+    [self.supplementIds removeObject:supplement.id];
+  } else {
+    [self.supplementIds addObject:supplement.id];
+  }
+}
+
+- (void)toggleSymptom:(Symptom *)symptom {
+  if([self hasSymptom:symptom]) {
+    [self.symptomIds removeObject:symptom.id];
+  } else {
+    [self.supplementIds addObject:symptom.id];
+  }
 }
 
 @end

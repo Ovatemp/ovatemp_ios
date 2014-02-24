@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseModel.h"
+#import "Medicine.h"
+#import "Supplement.h"
+#import "Symptom.h"
 
 @interface Day : BaseModel
 
@@ -87,9 +90,9 @@ typedef enum vaginalSensationTypesEnum
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) NSNumber *temperature;
 
-@property (nonatomic, strong) NSArray *medicines;
-@property (nonatomic, strong) NSArray *supplements;
-@property (nonatomic, strong) NSArray *symptoms;
+@property (nonatomic, strong) NSMutableSet *medicineIds;
+@property (nonatomic, strong) NSMutableSet *supplementIds;
+@property (nonatomic, strong) NSMutableSet *symptomIds;
 
 @property (nonatomic, assign) BOOL disturbance;
 
@@ -98,5 +101,17 @@ typedef enum vaginalSensationTypesEnum
 - (BOOL)isProperty:(NSString *)key ofType:(NSInteger)type;
 - (void)updateProperty:(NSString *)key withValue:(id)value;
 - (void)toggleProperty:(NSString *)key withIndex:(NSInteger)index;
+
+- (BOOL)hasMedicine:(Medicine *)medicine;
+- (BOOL)hasSupplement:(Supplement *)supplement;
+- (BOOL)hasSymptom:(Symptom *)symptom;
+
+- (NSArray *)medicines;
+- (NSArray *)supplements;
+- (NSArray *)symptoms;
+
+- (void)toggleMedicine:(Medicine *)medicine;
+- (void)toggleSupplement:(Supplement *)supplement;
+- (void)toggleSymptom:(Symptom *)symptom;
 
 @end

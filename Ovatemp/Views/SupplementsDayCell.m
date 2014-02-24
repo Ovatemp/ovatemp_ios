@@ -7,13 +7,17 @@
 //
 
 #import "SupplementsDayCell.h"
+#import "Medicine.h"
+#import "Supplement.h"
 
 @implementation SupplementsDayCell
 
 static NSString * const kCheckCellIdentifier = @"CheckCell";
 
 - (void)refreshControls {
-  NSLog(@"refreshControls not implemented for: %@", [self class]);
+  NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+  self.medicines = [[Medicine all] sortedArrayUsingDescriptors:@[sort]];
+  self.supplements = [[Supplement all] sortedArrayUsingDescriptors:@[sort]];
 
   self.medicinesTextView.text = [self.day.medicines componentsJoinedByString:@", "];
   self.supplementsTextView.text = [self.day.supplements componentsJoinedByString:@", "];
@@ -23,8 +27,6 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
 }
 
 - (void)initializeControls {
-  NSLog(@"initializeControls not implemented for %@", [self class]);
-
   UINib *cellNib = [UINib nibWithNibName:kCheckCellIdentifier bundle:nil];
   UIView *cellView = [[[NSBundle mainBundle] loadNibNamed:kCheckCellIdentifier owner:self options:nil]
           objectAtIndex:0];
@@ -40,7 +42,6 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
     // Don't show separators after the last item
     table.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
-
     [table registerNib:cellNib forCellReuseIdentifier:kCheckCellIdentifier];
     table.rowHeight = cellView.frame.size.height;
   }
@@ -52,10 +53,10 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   if(tableView == self.medicinesTableView) {
-    return self.day.medicines.count;
+    return self.medicines.count;
   }
   if(tableView == self.supplementsTableView) {
-    return self.day.supplements.count;
+    return self.supplements.count;
   }
   return 0;
 }
@@ -73,16 +74,26 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   NSLog(@"selected table view row: %@", [NSString stringWithFormat:@"%d-%d",indexPath.section,indexPath.row]);
+
+  if(tableView == self.medicinesTableView) {
+    Medicine *medicine = self.medicines[indexPath.row];
+    [self.day toggleMedicine:medicine];
+  }
+  if(tableView == self.supplementsTableView) {
+    Supplement *supplement = self.supplements[indexPath.row];
+    [self.day toggleSupplement:supplement];
+  }
+  [tableView reloadData];
 }
 
 - (UITableViewCell *)medicineCellForRow:(NSUInteger)row {
   CheckCell *cell = [self.medicinesTableView dequeueReusableCellWithIdentifier:kCheckCellIdentifier];
 
-  NSString *medicine = self.day.medicines[row];
+  Medicine *medicine = self.medicines[row];
 
   cell.backgroundColor = [UIColor clearColor];
-  cell.checkImage.hidden = TRUE;
-  cell.label.text = medicine;
+  cell.checkImage.hidden = ![self.day hasMedicine:medicine];
+  cell.label.text = medicine.name;
 
   return cell;
 }
@@ -90,11 +101,11 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
 - (UITableViewCell *)supplementCellForRow:(NSUInteger)row {
   CheckCell *cell = [self.supplementsTableView dequeueReusableCellWithIdentifier:kCheckCellIdentifier];
 
-  NSString *supplement = self.day.supplements[row];
+  Supplement *supplement = self.supplements[row];
 
   cell.backgroundColor = [UIColor clearColor];
-  cell.checkImage.hidden = FALSE;
-  cell.label.text = supplement;
+  cell.checkImage.hidden = ![self.day hasSupplement:supplement];
+  cell.label.text = supplement.name;
 
   return cell;
 }

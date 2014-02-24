@@ -71,6 +71,8 @@
 - (void)loggedIn:(NSDictionary *)response {  
   [SessionController loggedInWithUser:response[@"user"] andToken:response[@"token"]];
 
+  [SessionController loadSupplementsEtc:response];
+
   [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 

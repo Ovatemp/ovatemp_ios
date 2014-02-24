@@ -11,6 +11,7 @@
 @interface SessionController : NSObject
 
 + (void)loggedInWithUser:(NSDictionary *)user andToken:(NSString *)token;
++ (void)loadSupplementsEtc:(NSDictionary *)response;
 + (void)logOut;
 
 @end

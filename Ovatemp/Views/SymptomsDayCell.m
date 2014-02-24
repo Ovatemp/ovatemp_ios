@@ -8,22 +8,22 @@
 
 #import "SymptomsDayCell.h"
 #import "CheckCell.h"
+#import "Symptom.h"
 
 @implementation SymptomsDayCell
 
 static NSString * const kCheckCellIdentifier = @"CheckCell";
 
 - (void)refreshControls {
-  NSLog(@"refreshControls not implemented for: %@", [self class]);
-
+  NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+  self.symptoms = [[Symptom all] sortedArrayUsingDescriptors:@[sort]];
+  
   self.symptomsTextView.text = [self.day.symptoms componentsJoinedByString:@", "];
 
   [self.symptomsTableView reloadData];
 }
 
 - (void)initializeControls {
-  NSLog(@"initializeControls not implemented for %@", [self class]);
-
   UINib *cellNib = [UINib nibWithNibName:kCheckCellIdentifier bundle:nil];
   UIView *cellView = [[[NSBundle mainBundle] loadNibNamed:kCheckCellIdentifier owner:self options:nil]
                       objectAtIndex:0];
@@ -50,31 +50,33 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   if(tableView == self.symptomsTableView) {
-    return self.day.symptoms.count;
+    return self.symptoms.count;
   }
   return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   if(tableView == self.symptomsTableView) {
-    return [self medicineCellForRow:indexPath.row];
+    return [self symptomCellForRow:indexPath.row];
   }
 
   return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  NSLog(@"selected table view row: %@", [NSString stringWithFormat:@"%d-%d",indexPath.section,indexPath.row]);
+  Supplement *supplement = self.symptoms[indexPath.row];
+  [self.day toggleSupplement:supplement];
+  [tableView reloadData];
 }
 
-- (UITableViewCell *)medicineCellForRow:(NSUInteger)row {
+- (UITableViewCell *)symptomCellForRow:(NSUInteger)row {
   CheckCell *cell = [self.symptomsTableView dequeueReusableCellWithIdentifier:kCheckCellIdentifier];
 
-  NSString *medicine = self.day.symptoms[row];
+  Symptom *symptom = self.symptoms[row];
 
   cell.backgroundColor = [UIColor clearColor];
-  cell.checkImage.hidden = TRUE;
-  cell.label.text = medicine;
+  cell.checkImage.hidden = ![self.day hasSymptom:symptom];
+  cell.label.text = symptom.name;
 
   return cell;
 }

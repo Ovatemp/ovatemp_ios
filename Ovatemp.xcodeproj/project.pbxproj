@@ -34,6 +34,9 @@
 		832934D218B7D93200F6875B /* Symptoms@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 832934C418B7D93200F6875B /* Symptoms@2x.png */; };
 		832934D318B7D93200F6875B /* Worried.png in Resources */ = {isa = PBXBuildFile; fileRef = 832934C518B7D93200F6875B /* Worried.png */; };
 		832934D418B7D93200F6875B /* Worried@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 832934C618B7D93200F6875B /* Worried@2x.png */; };
+		8329353518B7F85B00F6875B /* Supplement.m in Sources */ = {isa = PBXBuildFile; fileRef = 8329353418B7F85B00F6875B /* Supplement.m */; };
+		8329353818B7FD1700F6875B /* Medicine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8329353718B7FD1700F6875B /* Medicine.m */; };
+		8329353B18B7FD2600F6875B /* Symptom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8329353A18B7FD2600F6875B /* Symptom.m */; };
 		834BD63218AD1363003B6808 /* MoreStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */; };
 		834BD63518AD1519003B6808 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63418AD1519003B6808 /* MoreViewController.m */; };
 		834BD63818AD164E003B6808 /* SessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63718AD164E003B6808 /* SessionController.m */; };
@@ -198,6 +201,12 @@
 		832934C418B7D93200F6875B /* Symptoms@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Symptoms@2x.png"; sourceTree = "<group>"; };
 		832934C518B7D93200F6875B /* Worried.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Worried.png; sourceTree = "<group>"; };
 		832934C618B7D93200F6875B /* Worried@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Worried@2x.png"; sourceTree = "<group>"; };
+		8329353318B7F85B00F6875B /* Supplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Supplement.h; sourceTree = "<group>"; };
+		8329353418B7F85B00F6875B /* Supplement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Supplement.m; sourceTree = "<group>"; };
+		8329353618B7FD1700F6875B /* Medicine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Medicine.h; sourceTree = "<group>"; };
+		8329353718B7FD1700F6875B /* Medicine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Medicine.m; sourceTree = "<group>"; };
+		8329353918B7FD2600F6875B /* Symptom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Symptom.h; sourceTree = "<group>"; };
+		8329353A18B7FD2600F6875B /* Symptom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Symptom.m; sourceTree = "<group>"; };
 		834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MoreStoryboard.storyboard; sourceTree = "<group>"; };
 		834BD63318AD1519003B6808 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		834BD63418AD1519003B6808 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
@@ -635,6 +644,12 @@
 				C32C4A8E18985A7800B05009 /* ConnectionManager.m */,
 				834BD63918AD29EA003B6808 /* Day.h */,
 				834BD63A18AD29EA003B6808 /* Day.m */,
+				8329353318B7F85B00F6875B /* Supplement.h */,
+				8329353418B7F85B00F6875B /* Supplement.m */,
+				8329353618B7FD1700F6875B /* Medicine.h */,
+				8329353718B7FD1700F6875B /* Medicine.m */,
+				8329353918B7FD2600F6875B /* Symptom.h */,
+				8329353A18B7FD2600F6875B /* Symptom.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1041,6 +1056,7 @@
 				C32C4A8F18985A7800B05009 /* ConnectionManager.m in Sources */,
 				C36C510F189028190053A884 /* AppDelegate.m in Sources */,
 				C3D4F351189835CC00CBB91A /* UIViewController+WithNavigation.m in Sources */,
+				8329353B18B7FD2600F6875B /* Symptom.m in Sources */,
 				C32C4A89189856C100B05009 /* ButtonCell.m in Sources */,
 				834BD64118AD6590003B6808 /* DayToggleButton.m in Sources */,
 				C308706B18980B1A00DC4364 /* Alert.m in Sources */,
@@ -1050,7 +1066,9 @@
 				C36C510B189028190053A884 /* main.m in Sources */,
 				8328B77318AC00CD00DA7A5E /* SymptomsDayCell.m in Sources */,
 				C32C4A8C18985A4D00B05009 /* UIViewController+ConnectionManager.m in Sources */,
+				8329353518B7F85B00F6875B /* Supplement.m in Sources */,
 				8328B77618AC034900DA7A5E /* DayCell.m in Sources */,
+				8329353818B7FD1700F6875B /* Medicine.m in Sources */,
 				8328B75A18ABFD9400DA7A5E /* TemperatureDayCell.m in Sources */,
 				8328B76A18AC009C00DA7A5E /* IntercourseDayCell.m in Sources */,
 				835AE58618B7A36000FEAF98 /* CheckCell.m in Sources */,

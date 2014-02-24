@@ -91,8 +91,6 @@
                    success:@selector(dayLoaded:)
                    failure:@selector(presentError:)
      ];
-
-    NSLog(@"loading ...");
   } else {
     [(UITableView*)self.view reloadData];
   }
@@ -101,7 +99,6 @@
 - (void)dayLoaded:(NSDictionary *)response {
   self.day = [Day withAttributes:response[@"day"]];
 
-  NSLog(@"loaded!");
   [(UITableView*)self.view reloadData];
 }
 

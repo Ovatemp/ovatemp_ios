@@ -18,5 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *medicinesTextView;
 @property (weak, nonatomic) IBOutlet UITableView *medicinesTableView;
 
+@property (strong, nonatomic) NSArray *supplements;
+@property (strong, nonatomic) NSArray *medicines;
 
 @end

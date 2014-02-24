@@ -10,6 +10,9 @@
 #import "User.h"
 #import "Configuration.h"
 #import "Day.h"
+#import "Supplement.h"
+#import "Medicine.h"
+#import "Symptom.h"
 
 @implementation SessionController
 
@@ -23,6 +26,13 @@
   [User setCurrent:nil];
   [Configuration sharedConfiguration].token = nil;
   [Day resetInstances];
+}
+
++ (void)loadSupplementsEtc:(NSDictionary *)response {
+  NSLog(@"loading supplements from response: %@", response);
+  [Supplement resetInstancesWithArray:response[@"supplements"]];
+  [Medicine resetInstancesWithArray:response[@"medicines"]];
+  [Symptom resetInstancesWithArray:response[@"symptoms"]];
 }
 
 @end

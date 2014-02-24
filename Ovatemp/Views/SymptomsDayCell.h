@@ -14,4 +14,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *symptomsTextView;
 @property (weak, nonatomic) IBOutlet UITableView *symptomsTableView;
 
+@property (strong, nonatomic) NSArray *symptoms;
+
 @end

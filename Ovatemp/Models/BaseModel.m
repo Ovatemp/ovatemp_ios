@@ -31,6 +31,17 @@ static NSMutableDictionary *_instances;
   return _instances[className];
 }
 
++ (NSArray *)all {
+  NSMutableDictionary *instances = [self instances];
+  NSMutableArray *all = [[NSMutableArray alloc] initWithCapacity:instances.count];
+
+  for(id instance in instances) {
+    [all addObject:instances[instance]];
+  }
+
+  return all;
+}
+
 + (BOOL)isLoaded {
   return [self.instances count] > 0;
 }
@@ -43,10 +54,25 @@ static NSMutableDictionary *_instances;
   [_instances removeObjectForKey:NSStringFromClass([self class])];
 }
 
++ (void)resetInstancesWithArray:(NSArray *)array {
+  if(!array) {
+    return;
+  }
+
+  [self resetInstances];
+
+  for(NSDictionary *instance in array) {
+    NSLog(@"%@: %@", [self description], instance);
+
+    [self withAttributes:instance];
+  }
+}
+
 + (id)withAttributes:(NSDictionary *)attributes {
   NSString *classPrefix = [self description];
-  NSString *key = [attributes objectForKey:self.key];
-  NSString *instanceLocator = [NSString stringWithFormat:@"%@:%@", classPrefix, key];
+  NSString *identifier = [attributes objectForKey:self.key];
+  NSString *instanceLocator = [NSString stringWithFormat:@"%@:%@", classPrefix, [identifier description]];
+  NSLog(@"instance locator: %@", instanceLocator);
   BaseModel *instance = [self.instances objectForKey:instanceLocator];
   if (instance) {
     instance.attributes = attributes;
@@ -56,6 +82,13 @@ static NSMutableDictionary *_instances;
     [self.instances setObject:instance forKey:instanceLocator];
   }
   return instance;
+}
+
++ (id)findByKey:(NSString *)identifier {
+  NSString *classPrefix = [self description];
+  NSString *instanceLocator = [NSString stringWithFormat:@"%@:%@", classPrefix, identifier];
+
+  return [self.instances objectForKey:instanceLocator];
 }
 
 #pragma mark - Key value storage
