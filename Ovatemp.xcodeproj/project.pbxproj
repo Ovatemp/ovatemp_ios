@@ -49,6 +49,8 @@
 		835AE58C18B7A51700FEAF98 /* CheckBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835AE58A18B7A51700FEAF98 /* CheckBox@2x.png */; };
 		835BA2B318BBCB8300C64350 /* SharedRelation.m in Sources */ = {isa = PBXBuildFile; fileRef = 835BA2B218BBCB8300C64350 /* SharedRelation.m */; };
 		835BA2B618BBDC0200C64350 /* UIAlertView+WithBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 835BA2B518BBDC0200C64350 /* UIAlertView+WithBlock.m */; };
+		835BA2B918BBEFBF00C64350 /* +.png in Resources */ = {isa = PBXBuildFile; fileRef = 835BA2B718BBEFBF00C64350 /* +.png */; };
+		835BA2BA18BBEFBF00C64350 /* +@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835BA2B818BBEFBF00C64350 /* +@2x.png */; };
 		839A345D18ABCBAD007CD657 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345C18ABCBAD007CD657 /* Calendar.m */; };
 		839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345F18ABCFB6007CD657 /* NavigationViewController.m */; };
 		839A346218ABCFB6007CD657 /* NavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346018ABCFB6007CD657 /* NavigationViewController.xib */; };
@@ -229,6 +231,8 @@
 		835BA2B218BBCB8300C64350 /* SharedRelation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedRelation.m; sourceTree = "<group>"; };
 		835BA2B418BBDC0200C64350 /* UIAlertView+WithBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+WithBlock.h"; sourceTree = "<group>"; };
 		835BA2B518BBDC0200C64350 /* UIAlertView+WithBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+WithBlock.m"; sourceTree = "<group>"; };
+		835BA2B718BBEFBF00C64350 /* +.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+.png"; sourceTree = "<group>"; };
+		835BA2B818BBEFBF00C64350 /* +@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+@2x.png"; sourceTree = "<group>"; };
 		839A345B18ABCBAD007CD657 /* Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Calendar.h; path = Shared/Calendar.h; sourceTree = "<group>"; };
 		839A345C18ABCBAD007CD657 /* Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Calendar.m; path = Shared/Calendar.m; sourceTree = "<group>"; };
 		839A345E18ABCFB6007CD657 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
@@ -391,6 +395,8 @@
 		832934B818B7D93200F6875B /* MedsMoodsSupplements */ = {
 			isa = PBXGroup;
 			children = (
+				835BA2B718BBEFBF00C64350 /* +.png */,
+				835BA2B818BBEFBF00C64350 /* +@2x.png */,
 				832934B918B7D93200F6875B /* Amazing.png */,
 				832934BA18B7D93200F6875B /* Amazing@2x.png */,
 				832934BB18B7D93200F6875B /* Good.png */,
@@ -903,9 +909,11 @@
 				83EB3F2418AEA7D500EA91AC /* coaching_unselect@2x.png in Resources */,
 				83EB3ECF18AEA7D500EA91AC /* Energize-01.png in Resources */,
 				83EB3EC018AEA7D500EA91AC /* Sticky.png in Resources */,
+				835BA2BA18BBEFBF00C64350 /* +@2x.png in Resources */,
 				8328B75718ABFD6D00DA7A5E /* TemperatureDayCell.xib in Resources */,
 				83EB3ED018AEA7D500EA91AC /* Energize-01@2x.png in Resources */,
 				83EB3F3818AEA7D500EA91AC /* Wet@2x.png in Resources */,
+				835BA2B918BBEFBF00C64350 /* +.png in Resources */,
 				8328B76518AC006C00DA7A5E /* SupplementsDayCell.xib in Resources */,
 				83EB3F2218AEA7D500EA91AC /* coaching_selected@2x.png in Resources */,
 				83EB3F3318AEA7D500EA91AC /* Dry@2x.png in Resources */,
