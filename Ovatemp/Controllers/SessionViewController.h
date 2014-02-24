@@ -14,7 +14,7 @@ typedef enum SessionType {
   SessionResetPassword
 } SessionType;
 
-@interface SessionViewController : UIViewController
+@interface SessionViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
