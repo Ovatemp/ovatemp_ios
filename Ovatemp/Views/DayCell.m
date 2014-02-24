@@ -7,6 +7,7 @@
 //
 
 #import "DayCell.h"
+#import "UIAlertView+WithBlock.h"
 
 @implementation DayCell
 
@@ -42,6 +43,21 @@
 
 - (BOOL)isDayProperty:(NSString *)key ofType:(NSInteger)index {
   return [self.day isProperty:key ofType:index];
+}
+
+- (void)showCreateFormWithTitle:(NSString *)title andClass:(id)class {
+  UIAlertView *form = [[UIAlertView alloc] initWithTitle:title message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Save", nil];
+
+  [form setAlertViewStyle:UIAlertViewStylePlainTextInput];
+  [form showWithCompletion:^(UIAlertView *alertView, NSInteger buttonIndex) {
+    NSString *inputText = [[alertView textFieldAtIndex:0] text];
+    NSString *buttonTitle = [alertView buttonTitleAtIndex:buttonIndex];
+    if([buttonTitle isEqualToString:@"Save"]) {
+      [class createWithName:inputText success:^(NSDictionary *response) {
+        [self refreshControls];
+      }];
+    }
+  }];
 }
 
 @end

@@ -25,4 +25,30 @@
   return [NSString stringWithFormat:@"%@ (%@): %@ [%@ to all users]", [self class], self.id, self.name, self.belongsToAllUsers ? @"belongs" : @"doesn't belong"];
 }
 
++ (void)createWithName:(NSString *)name success:(ConnectionManagerSuccess)onSuccess
+{
+  NSString *className = [[self description] lowercaseString];
+  NSString *classNamePlural = [className stringByAppendingString:@"s"];
+
+  NSLog(@"attempting to create: %@", className);
+
+  [ConnectionManager post:[@"/" stringByAppendingString:classNamePlural]
+                   params:@{
+                            className:
+                              @{
+                                @"name":name
+                                }
+                            }
+                  success:^(NSDictionary *response) {
+                    [self.class withAttributes:response[className]];
+                    if(onSuccess) {
+                      onSuccess(response);
+                    }
+                  }
+                  failure:^(NSError *error) {
+                    NSLog(@"failed to create %@", className);
+                  }
+   ];
+}
+
 @end

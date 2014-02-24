@@ -62,8 +62,6 @@ static NSMutableDictionary *_instances;
   [self resetInstances];
 
   for(NSDictionary *instance in array) {
-    NSLog(@"%@: %@", [self description], instance);
-
     [self withAttributes:instance];
   }
 }

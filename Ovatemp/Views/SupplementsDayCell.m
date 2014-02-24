@@ -84,7 +84,6 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
   }
 
   [self refreshControls];
-  [tableView reloadData];
 }
 
 - (UITableViewCell *)medicineCellForRow:(NSUInteger)row {
@@ -109,6 +108,14 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
   cell.label.text = supplement.name;
 
   return cell;
+}
+
+- (IBAction)createSupplement:(id)sender {
+  [self showCreateFormWithTitle:@"Add new supplement" andClass:[Supplement class]];
+}
+
+- (IBAction)createMedicine:(id)sender {
+  [self showCreateFormWithTitle:@"Add new medicine" andClass:[Medicine class]];
 }
 
 @end

@@ -83,4 +83,8 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
   return cell;
 }
 
+- (IBAction)createSymptom:(id)sender {
+  [self showCreateFormWithTitle:@"Add new symptom" andClass:[Symptom class]];
+}
+
 @end

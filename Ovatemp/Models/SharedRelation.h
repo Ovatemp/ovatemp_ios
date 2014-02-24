@@ -7,10 +7,13 @@
 //
 
 #import "BaseModel.h"
+#import "ConnectionManager.h"
 
 @interface SharedRelation : BaseModel
 
 @property (nonatomic, strong) NSString* name;
 @property (nonatomic, assign) BOOL belongsToAllUsers;
+
++ (void)createWithName:(NSString *)name success:(ConnectionManagerSuccess)onSuccess;
 
 @end

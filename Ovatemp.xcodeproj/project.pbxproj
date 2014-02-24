@@ -48,6 +48,7 @@
 		835AE58B18B7A51700FEAF98 /* CheckBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 835AE58918B7A51700FEAF98 /* CheckBox.png */; };
 		835AE58C18B7A51700FEAF98 /* CheckBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835AE58A18B7A51700FEAF98 /* CheckBox@2x.png */; };
 		835BA2B318BBCB8300C64350 /* SharedRelation.m in Sources */ = {isa = PBXBuildFile; fileRef = 835BA2B218BBCB8300C64350 /* SharedRelation.m */; };
+		835BA2B618BBDC0200C64350 /* UIAlertView+WithBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 835BA2B518BBDC0200C64350 /* UIAlertView+WithBlock.m */; };
 		839A345D18ABCBAD007CD657 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345C18ABCBAD007CD657 /* Calendar.m */; };
 		839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345F18ABCFB6007CD657 /* NavigationViewController.m */; };
 		839A346218ABCFB6007CD657 /* NavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346018ABCFB6007CD657 /* NavigationViewController.xib */; };
@@ -226,6 +227,8 @@
 		835AE58A18B7A51700FEAF98 /* CheckBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckBox@2x.png"; sourceTree = "<group>"; };
 		835BA2B118BBCB8300C64350 /* SharedRelation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedRelation.h; sourceTree = "<group>"; };
 		835BA2B218BBCB8300C64350 /* SharedRelation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedRelation.m; sourceTree = "<group>"; };
+		835BA2B418BBDC0200C64350 /* UIAlertView+WithBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+WithBlock.h"; sourceTree = "<group>"; };
+		835BA2B518BBDC0200C64350 /* UIAlertView+WithBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+WithBlock.m"; sourceTree = "<group>"; };
 		839A345B18ABCBAD007CD657 /* Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Calendar.h; path = Shared/Calendar.h; sourceTree = "<group>"; };
 		839A345C18ABCBAD007CD657 /* Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Calendar.m; path = Shared/Calendar.m; sourceTree = "<group>"; };
 		839A345E18ABCFB6007CD657 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
@@ -598,6 +601,8 @@
 				C3D4F350189835CC00CBB91A /* UIViewController+WithNavigation.m */,
 				834BD63C18AD4B5B003B6808 /* NSDate+ShortDate.h */,
 				834BD63D18AD4B5B003B6808 /* NSDate+ShortDate.m */,
+				835BA2B418BBDC0200C64350 /* UIAlertView+WithBlock.h */,
+				835BA2B518BBDC0200C64350 /* UIAlertView+WithBlock.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1055,6 +1060,7 @@
 				C3BF8FEB18984B9700572F43 /* TextFieldCell.m in Sources */,
 				C3BF8FE5189848CE00572F43 /* BaseModel.m in Sources */,
 				C308706818980A4900DC4364 /* UIViewController+Alerts.m in Sources */,
+				835BA2B618BBDC0200C64350 /* UIAlertView+WithBlock.m in Sources */,
 				8328B77018AC00B500DA7A5E /* SupplementsDayCell.m in Sources */,
 				C3BF8FE01898452F00572F43 /* SessionViewController.m in Sources */,
 				834BD63518AD1519003B6808 /* MoreViewController.m in Sources */,

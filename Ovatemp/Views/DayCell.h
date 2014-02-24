@@ -23,5 +23,6 @@
 - (void)refreshControls;
 - (void)initializeControls;
 
+- (void)showCreateFormWithTitle:(NSString *)title andClass:(id)class;
 
 @end
