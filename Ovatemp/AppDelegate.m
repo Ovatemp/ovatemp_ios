@@ -27,33 +27,39 @@
   UITabBarController *tabController = [[UITabBarController alloc] init];
   self.window.rootViewController = tabController;
 
-  UIViewController *currentController;
-  // Set up the today controller
-  TodayViewController *todayController = [[TodayViewController alloc] init];
-  [tabController addChildViewController:todayController.withNavigation];
-
-  currentController = [tabController.childViewControllers lastObject];
-  currentController.tabBarItem.image = [UIImage imageNamed:@"IconToday.png"];
-  currentController.tabBarItem.title = @"Today";
+  UIViewController *todayController = [[TodayViewController alloc] init].withNavigation;
+  UIViewController *calendarController = [[UIViewController alloc] init];
+  UIViewController *coachingController = [[UIViewController alloc] init];
+  UIViewController *communityController = [[UIViewController alloc] init];
+  UIViewController* moreViewController = [[UIStoryboard storyboardWithName:@"MoreStoryboard" bundle:nil] instantiateInitialViewController];
 
 
+  // Add controllers to the tab bar controller
+  [tabController addChildViewController:todayController];
+  todayController.tabBarItem.image = [UIImage imageNamed:@"today_unselect"];
+  todayController.tabBarItem.selectedImage = [UIImage imageNamed:@"today_select"];
+  todayController.tabBarItem.title = @"Today";
 
-  // Calendar
+  [tabController addChildViewController:calendarController];
+  calendarController.tabBarItem.image = [UIImage imageNamed:@"cal_unselected"];
+  calendarController.tabBarItem.selectedImage = [UIImage imageNamed:@"cal_selected"];
+  calendarController.tabBarItem.title = @"Calendar";
 
-  // Coaching
+  [tabController addChildViewController:coachingController];
+  coachingController.tabBarItem.image = [UIImage imageNamed:@"coaching_unselect"];
+  coachingController.tabBarItem.selectedImage = [UIImage imageNamed:@"coaching_select"];
 
-  // Community
+  coachingController.tabBarItem.title = @"Coaching";
 
+  [tabController addChildViewController:communityController];
+  communityController.tabBarItem.image = [UIImage imageNamed:@"community_unselect"];
+  communityController.tabBarItem.selectedImage = [UIImage imageNamed:@"community_select"];
+  communityController.tabBarItem.title = @"Community";
 
-  // More
-  UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"MoreStoryboard" bundle:nil];
-  UIViewController* moreViewController = [storyboard instantiateInitialViewController];
   [tabController addChildViewController:moreViewController];
-
-  currentController = [tabController.childViewControllers lastObject];
-  currentController.tabBarItem.image = [UIImage imageNamed:@"IconMore.png"];
-  currentController.tabBarItem.title = @"More";
-  
+  moreViewController.tabBarItem.image = [UIImage imageNamed:@"more_unselect"];
+  moreViewController.tabBarItem.selectedImage = [UIImage imageNamed:@"more_select"];
+  moreViewController.tabBarItem.title = @"More";
 
   // Display the app!
   [self.window makeKeyAndVisible];
