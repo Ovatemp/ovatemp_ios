@@ -18,7 +18,22 @@
   self.page2.backgroundColor = DAY_EDIT_PAGE_COLOR;
   self.page3.backgroundColor = DAY_EDIT_PAGE_COLOR;
 
+  self.scrollView.delegate = self;
+  [self scrollViewDidEndDecelerating:self.scrollView];
+
   [self initializeControls];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)sender {
+  uint pages = self.scrollView.contentSize.width / self.scrollView.frame.size.width;
+  uint page = sender.contentOffset.x / sender.frame.size.width;
+  BOOL hidden = (pages < 3 || page < 1);
+
+  // We pretend there are only two pages
+  self.pageControl.numberOfPages = pages - 1;
+  self.pageControl.currentPage = page - 1;
+
+  self.pageControl.hidden = hidden;
 }
 
 - (void)setDay:(Day *)day {

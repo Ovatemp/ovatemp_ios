@@ -159,10 +159,19 @@ Progesterone</string>
                             <constraint firstItem="GCb-ua-KTK" firstAttribute="top" secondItem="cI7-st-VQB" secondAttribute="top" id="wuC-ux-MHs"/>
                         </constraints>
                     </scrollView>
+                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="aml-no-yJg">
+                        <rect key="frame" x="0.0" y="125" width="320" height="37"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="320" id="fFS-lD-J8t"/>
+                        </constraints>
+                    </pageControl>
                 </subviews>
                 <constraints>
                     <constraint firstItem="haa-Sb-YGy" firstAttribute="top" secondItem="dd9-Yf-fTL" secondAttribute="top" id="BSZ-mh-MxK"/>
                     <constraint firstAttribute="bottom" secondItem="haa-Sb-YGy" secondAttribute="bottom" constant="-1" id="HV4-zI-DZb"/>
+                    <constraint firstAttribute="bottom" secondItem="aml-no-yJg" secondAttribute="bottom" constant="-9" id="Q14-IU-fBL"/>
+                    <constraint firstItem="aml-no-yJg" firstAttribute="leading" secondItem="dd9-Yf-fTL" secondAttribute="leading" id="fIQ-VG-BFp"/>
                     <constraint firstItem="haa-Sb-YGy" firstAttribute="leading" secondItem="dd9-Yf-fTL" secondAttribute="leading" id="mN3-tv-p1I"/>
                     <constraint firstAttribute="trailing" secondItem="haa-Sb-YGy" secondAttribute="trailing" id="p6c-W5-xzU"/>
                 </constraints>
@@ -173,6 +182,8 @@ Progesterone</string>
                 <outlet property="page1" destination="cI7-st-VQB" id="O2X-x7-GwB"/>
                 <outlet property="page2" destination="GCb-ua-KTK" id="eR1-OG-yGb"/>
                 <outlet property="page3" destination="Cte-Ih-ed8" id="l5C-Sh-vkm"/>
+                <outlet property="pageControl" destination="aml-no-yJg" id="8z0-nP-vqt"/>
+                <outlet property="scrollView" destination="haa-Sb-YGy" id="sUj-pc-HM8"/>
                 <outlet property="supplementsTableView" destination="n4h-dd-FRi" id="3Tg-fs-78V"/>
                 <outlet property="supplementsTextView" destination="x1Z-xA-QHE" id="Qos-eW-nWF"/>
             </connections>

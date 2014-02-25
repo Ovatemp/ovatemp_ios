@@ -195,10 +195,19 @@ Neuromins, Zinc</string>
                             <constraint firstItem="2B3-rW-hBH" firstAttribute="top" secondItem="IUr-tX-Hof" secondAttribute="top" id="ssw-t1-Iwu"/>
                         </constraints>
                     </scrollView>
+                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="kIP-wv-jIr">
+                        <rect key="frame" x="0.0" y="125" width="320" height="37"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="320" id="dzt-lD-gmg"/>
+                        </constraints>
+                    </pageControl>
                 </subviews>
                 <constraints>
                     <constraint firstItem="oLp-WT-50h" firstAttribute="top" secondItem="5sj-TM-UvC" secondAttribute="top" constant="1" id="Moi-da-HOj"/>
                     <constraint firstAttribute="bottom" secondItem="oLp-WT-50h" secondAttribute="bottom" constant="-2" id="NSA-TT-nXC"/>
+                    <constraint firstAttribute="bottom" secondItem="kIP-wv-jIr" secondAttribute="bottom" constant="-8" id="YZr-aL-eCE"/>
+                    <constraint firstItem="kIP-wv-jIr" firstAttribute="leading" secondItem="5sj-TM-UvC" secondAttribute="leading" id="YhE-QV-zZS"/>
                     <constraint firstItem="oLp-WT-50h" firstAttribute="leading" secondItem="5sj-TM-UvC" secondAttribute="leading" id="gnk-2X-AdS"/>
                     <constraint firstAttribute="trailing" secondItem="oLp-WT-50h" secondAttribute="trailing" id="rhF-yD-fRT"/>
                 </constraints>
@@ -211,7 +220,9 @@ Neuromins, Zinc</string>
                 <outlet property="page1" destination="IUr-tX-Hof" id="F4B-gS-lwe"/>
                 <outlet property="page2" destination="2B3-rW-hBH" id="RFk-n7-Bl5"/>
                 <outlet property="page3" destination="IQB-om-v2m" id="bwn-ZT-ejw"/>
+                <outlet property="pageControl" destination="kIP-wv-jIr" id="ynh-aB-8Vb"/>
                 <outlet property="sadButton" destination="fLM-m8-5iC" id="bti-lO-GBa"/>
+                <outlet property="scrollView" destination="oLp-WT-50h" id="VCf-M3-PJX"/>
                 <outlet property="symptomsTableView" destination="dPn-lw-RiF" id="2ny-pL-wa6"/>
                 <outlet property="symptomsTextView" destination="wRi-OV-LgR" id="PXA-Kj-iPZ"/>
                 <outlet property="worriedButton" destination="9ss-db-bcz" id="yLB-Yj-ncw"/>

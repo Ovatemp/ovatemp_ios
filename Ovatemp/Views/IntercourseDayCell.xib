@@ -132,6 +132,7 @@
                 <outlet property="page1" destination="zBS-w6-dsQ" id="c9V-e6-bZI"/>
                 <outlet property="page2" destination="oHZ-Wx-uHb" id="OUR-ur-PS6"/>
                 <outlet property="protectedButton" destination="Jt6-TW-mAg" id="S50-Qg-oR6"/>
+                <outlet property="scrollView" destination="OnG-N2-SKU" id="HQN-8h-SsE"/>
                 <outlet property="unprotectedButton" destination="PlO-7t-evn" id="rTJ-s6-SFZ"/>
             </connections>
         </tableViewCell>

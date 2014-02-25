@@ -13,7 +13,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="640" height="117"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHX-WF-rO6">
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHX-WF-rO6">
                         <rect key="frame" x="0.0" y="0.0" width="640" height="117"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
@@ -171,6 +171,7 @@
                 <outlet property="graphView" destination="1ZG-Lq-vnI" id="Od5-64-b1d"/>
                 <outlet property="page1" destination="0Vq-He-dBR" id="tcI-8n-iIy"/>
                 <outlet property="page2" destination="opr-ha-I24" id="C55-nu-ex5"/>
+                <outlet property="scrollView" destination="WHX-WF-rO6" id="RnQ-hJ-lRG"/>
                 <outlet property="setTemperatureButton" destination="Dlq-A3-sIY" id="SBA-4C-Nuy"/>
                 <outlet property="slider" destination="ILt-U0-D4S" id="Atb-tS-5wB"/>
                 <outlet property="temperatureLabel" destination="G9F-7c-h9L" id="gpR-Af-u5I"/>

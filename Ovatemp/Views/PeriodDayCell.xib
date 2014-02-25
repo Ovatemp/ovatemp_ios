@@ -158,6 +158,7 @@
                 <outlet property="page2" destination="TKV-7k-ZHl" id="7yg-51-SbA"/>
                 <outlet property="periodImageView" destination="AD1-eF-hid" id="OK0-Ax-Dce"/>
                 <outlet property="periodLabel" destination="BjW-xq-nSn" id="EtN-KR-R63"/>
+                <outlet property="scrollView" destination="WPd-F9-PWV" id="It8-zv-2QM"/>
                 <outlet property="spottingButton" destination="ctg-WD-gRW" id="tvk-KK-xUz"/>
             </connections>
         </tableViewCell>

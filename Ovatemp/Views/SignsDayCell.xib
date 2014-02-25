@@ -204,6 +204,7 @@
                 <outlet property="opkPositiveButton" destination="yr0-06-f51" id="cf6-1e-Lsz"/>
                 <outlet property="page1" destination="S77-DB-z3Q" id="soZ-UW-a8I"/>
                 <outlet property="page2" destination="PU4-85-ZVF" id="3Dq-Om-ufy"/>
+                <outlet property="scrollView" destination="dgW-h9-Yfh" id="w1U-va-enq"/>
             </connections>
         </tableViewCell>
     </objects>
