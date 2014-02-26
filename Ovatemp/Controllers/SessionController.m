@@ -14,6 +14,7 @@
 #import "Supplement.h"
 #import "Medicine.h"
 #import "Symptom.h"
+#import "Calendar.h"
 
 @implementation SessionController
 
@@ -21,6 +22,7 @@
   User *user = [User withAttributes:userDict];
   [User setCurrent:user];
   [Configuration sharedConfiguration].token = token;
+  [Calendar resetDate];
 }
 
 + (void)refreshToken {

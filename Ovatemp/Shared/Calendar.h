@@ -12,6 +12,7 @@
 
 + (NSDate *)date;
 + (void)setDate:(NSDate *)date;
++ (void)resetDate;
 + (Calendar *)sharedInstance;
 + (void)stepDay:(NSInteger)offset;
 + (BOOL)isOnToday;

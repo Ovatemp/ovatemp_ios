@@ -40,6 +40,11 @@ static Calendar *sharedObject = nil;
   cal.date = date;
 }
 
++ (void)resetDate {
+  Calendar *cal = [Calendar sharedInstance];
+  cal.date = [NSDate date];
+}
+
 + (void)stepDay:(NSInteger)offset {
   NSDate *date = [Calendar date];
 
