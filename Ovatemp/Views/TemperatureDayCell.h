@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "DayCell.h"
+#import "CycleChartView.h"
 
 @interface TemperatureDayCell : DayCell
 
 @property (nonatomic, weak) IBOutlet UILabel *temperatureLabel;
-@property (nonatomic, weak) IBOutlet UIView *graphView;
+@property (nonatomic, weak) IBOutlet CycleChartView *cycleChartView;
 @property (weak, nonatomic) IBOutlet UILabel *editTemperatureLabel;
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 @property (weak, nonatomic) IBOutlet UIButton *setTemperatureButton;

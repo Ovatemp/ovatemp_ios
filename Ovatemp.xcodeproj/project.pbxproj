@@ -51,6 +51,7 @@
 		835BA2B618BBDC0200C64350 /* UIAlertView+WithBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 835BA2B518BBDC0200C64350 /* UIAlertView+WithBlock.m */; };
 		835BA2B918BBEFBF00C64350 /* +.png in Resources */ = {isa = PBXBuildFile; fileRef = 835BA2B718BBEFBF00C64350 /* +.png */; };
 		835BA2BA18BBEFBF00C64350 /* +@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835BA2B818BBEFBF00C64350 /* +@2x.png */; };
+		836A6C9D18BF819E0068F1D2 /* CycleChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 836A6C9C18BF819E0068F1D2 /* CycleChartView.m */; };
 		839A345D18ABCBAD007CD657 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345C18ABCBAD007CD657 /* Calendar.m */; };
 		839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345F18ABCFB6007CD657 /* NavigationViewController.m */; };
 		839A346218ABCFB6007CD657 /* NavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346018ABCFB6007CD657 /* NavigationViewController.xib */; };
@@ -233,6 +234,8 @@
 		835BA2B518BBDC0200C64350 /* UIAlertView+WithBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+WithBlock.m"; sourceTree = "<group>"; };
 		835BA2B718BBEFBF00C64350 /* +.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+.png"; sourceTree = "<group>"; };
 		835BA2B818BBEFBF00C64350 /* +@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+@2x.png"; sourceTree = "<group>"; };
+		836A6C9B18BF819E0068F1D2 /* CycleChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleChartView.h; sourceTree = "<group>"; };
+		836A6C9C18BF819E0068F1D2 /* CycleChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleChartView.m; sourceTree = "<group>"; };
 		839A345B18ABCBAD007CD657 /* Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Calendar.h; path = Shared/Calendar.h; sourceTree = "<group>"; };
 		839A345C18ABCBAD007CD657 /* Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Calendar.m; path = Shared/Calendar.m; sourceTree = "<group>"; };
 		839A345E18ABCFB6007CD657 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
@@ -682,6 +685,8 @@
 				C3BF8FE11898454300572F43 /* SessionViewController.xib */,
 				834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */,
 				835AE58718B7A3B500FEAF98 /* CheckCell.xib */,
+				836A6C9B18BF819E0068F1D2 /* CycleChartView.h */,
+				836A6C9C18BF819E0068F1D2 /* CycleChartView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1094,6 +1099,7 @@
 				835AE58618B7A36000FEAF98 /* CheckCell.m in Sources */,
 				839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */,
 				8328B75D18AC002800DA7A5E /* FluidDayCell.m in Sources */,
+				836A6C9D18BF819E0068F1D2 /* CycleChartView.m in Sources */,
 				C3D4F35418983B9C00CBB91A /* Constants.m in Sources */,
 				839A346818ABF385007CD657 /* PeriodDayCell.m in Sources */,
 				C3066C6818983537003F8B84 /* TodayViewController.m in Sources */,

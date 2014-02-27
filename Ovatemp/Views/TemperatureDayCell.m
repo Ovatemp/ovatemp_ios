@@ -28,15 +28,20 @@
 - (void)refreshControls {
   BOOL temperatureSet = (self.day.temperature != nil);
   self.slider.hidden = !temperatureSet;
-  self.temperatureLabel.hidden = !temperatureSet;
   self.editTemperatureLabel.hidden = !temperatureSet;
   self.setTemperatureButton.hidden = temperatureSet;
-  
-  NSString *temperatureString = [NSString stringWithFormat:@"%.1fºF", [self.day.temperature floatValue]];
-  self.temperatureLabel.text = temperatureString;
-  self.editTemperatureLabel.text = temperatureString;
-  self.slider.value = [self.day.temperature floatValue];
 
+  [self.cycleChartView generateDays];
+
+  if(temperatureSet) {
+    NSString *temperatureString = [NSString stringWithFormat:@"%.1fºF", [self.day.temperature floatValue]];
+    self.temperatureLabel.text = temperatureString;
+    self.editTemperatureLabel.text = temperatureString;
+  } else {
+    self.temperatureLabel.text = @"Swipe to edit";
+  }
+
+  self.slider.value = [self.day.temperature floatValue];
   self.disturbanceSwitch.on = self.day.disturbance;
 }
 
