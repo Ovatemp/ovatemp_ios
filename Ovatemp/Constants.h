@@ -20,7 +20,7 @@
 #define DAY_EDIT_PAGE_COLOR Color(56, 62, 62)
 
 // API configuration
-#ifdef DEBUG
+#if TARGET_IPHONE_SIMULATOR
 #define API_URL @"http://localhost:3000/api"
 #define DEVICE_ID @"DUMMYDEVICE"
 #else
