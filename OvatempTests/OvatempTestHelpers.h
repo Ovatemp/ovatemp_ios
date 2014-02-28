@@ -8,8 +8,8 @@
 
 #import "XCTestCase+KIF.h"
 
-#define window [[UIApplication sharedApplication] windows].firstObject
-#define rootViewController [window rootViewController]
-#define activeViewController TopMostViewController(rootViewController)
+#define WINDOW [[UIApplication sharedApplication] windows].firstObject
+#define ROOT_VIEW_CONTROLLER [WINDOW rootViewController]
+#define ACTIVE_VIEW_CONTROLLER TopMostViewController(ROOT_VIEW_CONTROLLER)
 
 UIViewController *TopMostViewController(UIViewController *aViewController);

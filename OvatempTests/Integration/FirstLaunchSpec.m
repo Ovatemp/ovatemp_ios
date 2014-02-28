@@ -13,9 +13,12 @@
 SpecBegin(FirstLaunch)
 
 describe(@"at first launch", ^{
+  beforeAll(^{
+    [self logOut];
+  });
+
   it(@"should show a login or register screen", ^{
-    [tester waitForViewWithAccessibilityLabel:@"Session Instructions"];
-    expect(activeViewController).to.beKindOf([SessionViewController class]);
+    expect(ACTIVE_VIEW_CONTROLLER).to.beKindOf([SessionViewController class]);
   });
 });
 

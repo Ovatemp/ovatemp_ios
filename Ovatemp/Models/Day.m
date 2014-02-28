@@ -65,7 +65,6 @@ static NSDictionary *propertyOptions;
   NSArray *enumeratedStrings = propertyOptions[key];
   NSString *value = enumeratedStrings[index];
 
-  NSLog(@"toggling: %@", value);
   if([[self valueForKey:key] isEqualToString:value]) {
     [self setValue:nil forKey:key];
   } else {

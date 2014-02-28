@@ -1,7 +1,7 @@
 PODS:
   - Expecta (0.2.3)
   - HockeySDK (3.5.1)
-  - KIF (2.0.0)
+  - KIF (2.0.3)
   - Mixpanel (2.2.3)
   - Nocilla (0.8.0)
   - OCMock (2.2.2)
@@ -10,16 +10,20 @@ PODS:
 DEPENDENCIES:
   - Expecta
   - HockeySDK
-  - KIF
+  - KIF (from `Podspecs/Kif.podspec`)
   - Mixpanel
   - Nocilla
   - OCMock
   - Specta
 
+EXTERNAL SOURCES:
+  KIF:
+    :podspec: Podspecs/Kif.podspec
+
 SPEC CHECKSUMS:
   Expecta: dbc4a27fabb853bdd2e907e33f11ee43a9a47d0c
   HockeySDK: 7dfbfa6cdbae199d66eef638e9682b93b00acb95
-  KIF: ff3b46deb62ce3f8e99c6a2c786729e1eea241ba
+  KIF: d7094a64d90e0e8b9f88b9902b192fa22254a0d0
   Mixpanel: 9f2546f781dee6dfb6871fc148202815a7e55448
   Nocilla: 6cb913e67bb7b3ccb0858670d64fc3ead6cab81e
   OCMock: ffba68873fd32cfd35d885bddad23bfa816da4a3

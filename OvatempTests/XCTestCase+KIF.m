@@ -7,6 +7,10 @@
 //
 
 #import "XCTestCase+KIF.h"
+#import "OvatempTestHelpers.h"
+#import "SessionViewController.h"
+#import "ConnectionManager.h"
+#import "UIAccessibilityElement-KIFAdditions.h"
 
 @implementation XCTestCase (KIF)
 
@@ -23,6 +27,44 @@
     NSException *exception = exceptions.firstObject;
     [exception raise];
   }
+}
+
+# pragma mark - Session helpers
+
+- (void)logIn {
+  [ConnectionManager post:@"/test_actions/reset_users"
+                   params:@{}
+                  success:^(NSDictionary *response) { NSLog(@"reset server's users"); }
+                  failure:^(NSError *error) { NSLog(@"couldn't reset server's users"); }];
+
+  if (![ACTIVE_VIEW_CONTROLLER isKindOfClass:[SessionViewController class]]) {
+    [self logOut];
+  }
+  [tester waitForViewWithAccessibilityLabel:@"New Session Screen"];
+
+  [tester enterText:@"test@example.com" intoViewWithAccessibilityLabel:@"Email Field"];
+  [tester enterText:@"password" intoViewWithAccessibilityLabel:@"Password Field"];
+  [tester tapViewWithAccessibilityLabel:@"Sign Up Button"];
+
+  [tester waitForViewWithAccessibilityLabel:@"More"];
+}
+
+- (void)logOut {
+/*
+  UIAccessibilityElement *sessionScreen = [UIAccessibilityElement accessibilityElementWithLabel:@"Session Screen" value:nil traits:UIAccessibilityTraitNone tappable:NO];*/
+  
+  if (![ACTIVE_VIEW_CONTROLLER isKindOfClass:[SessionViewController class]]) {
+    NSLog(@"Logging out because %@ is not a SessionViewController", ACTIVE_VIEW_CONTROLLER);
+    // Navigate to the "More" tab
+    
+    [tester waitForViewWithAccessibilityLabel:@"More"];
+    [tester tapViewWithAccessibilityLabel:@"More"];
+
+    // Log the user out
+    [tester waitForViewWithAccessibilityLabel:@"Log Out Button"];
+    [tester tapViewWithAccessibilityLabel:@"Log Out Button"];
+  }
+  [tester waitForViewWithAccessibilityLabel:@"New Session Screen"];
 }
 
 @end

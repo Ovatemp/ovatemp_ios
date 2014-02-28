@@ -30,6 +30,8 @@
   [super viewDidLoad];
 
   UITableView *table = (UITableView *)self.view;
+  table.isAccessibilityElement = TRUE;
+  table.accessibilityIdentifier = @"Checklist";
 
   // Align separators left
   table.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -54,14 +56,6 @@
 
   [self dateChanged];
 }
-
-- (void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
-
-  self.day = nil;
-  [self dateChanged];
-}
-
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
                        change:(NSDictionary *)change context:(void *)context

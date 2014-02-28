@@ -11,4 +11,7 @@
 
 @interface XCTestCase (KIF)<KIFTestActorDelegate>
 
+- (void)logIn;
+- (void)logOut;
+
 @end

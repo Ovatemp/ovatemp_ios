@@ -21,6 +21,8 @@
   self.scrollView.delegate = self;
   [self scrollViewDidEndDecelerating:self.scrollView];
 
+  self.isAccessibilityElement = FALSE;
+
   [self initializeControls];
 }
 

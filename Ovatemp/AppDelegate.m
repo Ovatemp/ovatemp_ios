@@ -56,10 +56,11 @@
   communityController.tabBarItem.selectedImage = [UIImage imageNamed:@"community_select"];
   communityController.tabBarItem.title = @"Community";
 
-  [tabController addChildViewController:moreViewController];
   moreViewController.tabBarItem.image = [UIImage imageNamed:@"more_unselect"];
   moreViewController.tabBarItem.selectedImage = [UIImage imageNamed:@"more_select"];
   moreViewController.tabBarItem.title = @"More";
+
+  [tabController addChildViewController:moreViewController];
 
   // Display the app!
   [self.window makeKeyAndVisible];

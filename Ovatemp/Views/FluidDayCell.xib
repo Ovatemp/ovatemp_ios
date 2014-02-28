@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -36,6 +36,7 @@
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eggwhite" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZb-Ln-Pse">
                                         <rect key="frame" x="76" y="56" width="72" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" label="Cervical Fluid Selection"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -49,6 +50,7 @@
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lube" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuA-yy-OEb">
                                         <rect key="frame" x="233" y="56" width="72" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" label="Vaginal Sensation Selection"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -61,6 +63,9 @@
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" label="Fluid Response Page">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstItem="wZb-Ln-Pse" firstAttribute="centerY" secondItem="dWI-cN-18Z" secondAttribute="centerY" id="0Co-UO-qII"/>
                                     <constraint firstItem="FHA-C9-P0H" firstAttribute="bottom" secondItem="bgo-QZ-6eR" secondAttribute="bottom" id="3m4-hP-fPS"/>
@@ -74,6 +79,7 @@
                                     <constraint firstItem="wZb-Ln-Pse" firstAttribute="top" secondItem="fuA-yy-OEb" secondAttribute="top" id="Lpb-WT-2f5"/>
                                     <constraint firstItem="wZb-Ln-Pse" firstAttribute="top" secondItem="M68-tk-SFS" secondAttribute="bottom" constant="23" id="MTi-Iv-fHv"/>
                                     <constraint firstAttribute="trailing" secondItem="fuA-yy-OEb" secondAttribute="trailing" constant="15" id="SqH-Sd-dgb"/>
+                                    <constraint firstAttribute="width" constant="320" id="XGf-cC-YcT"/>
                                     <constraint firstAttribute="bottom" secondItem="FHA-C9-P0H" secondAttribute="bottom" constant="40" id="Xqp-eW-CEv"/>
                                     <constraint firstItem="y8d-92-JnT" firstAttribute="leading" secondItem="bgo-QZ-6eR" secondAttribute="leading" id="YqK-2b-qBL"/>
                                     <constraint firstItem="M68-tk-SFS" firstAttribute="leading" secondItem="dWI-cN-18Z" secondAttribute="leading" constant="13" id="h50-Ph-Qcb"/>
@@ -121,6 +127,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1J0-Ke-gKl" customClass="DayToggleButton">
                                         <rect key="frame" x="128" y="34" width="75" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" label="Cervical Fluid Creamy Button"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="75" id="bua-xv-VNR"/>
                                             <constraint firstAttribute="height" constant="75" id="vFq-7r-6lm"/>
@@ -132,6 +139,9 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.21960784310000001" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="deviceRGB"/>
+                                <accessibility key="accessibilityConfiguration" label="Fluid Edit Page 1">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstItem="1J0-Ke-gKl" firstAttribute="leading" secondItem="Tae-Wb-p1T" secondAttribute="trailing" constant="23" id="CQp-CV-4pa"/>
                                     <constraint firstItem="1J0-Ke-gKl" firstAttribute="top" secondItem="8k7-bt-RuJ" secondAttribute="top" constant="34" id="H3N-JG-Fyt"/>
@@ -182,6 +192,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Za1-ld-HtV" customClass="DayToggleButton">
                                         <rect key="frame" x="206" y="34" width="75" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" label="Vaginal Sensation Lube Button"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="75" id="GLp-L8-1BH"/>
                                             <constraint firstAttribute="height" constant="75" id="dkg-jJ-nAg"/>
@@ -193,11 +204,15 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.21960784310000001" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="deviceRGB"/>
+                                <accessibility key="accessibilityConfiguration" label="Fluid Edit Page 2">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstItem="7oK-lX-EaG" firstAttribute="top" secondItem="RjG-kr-2nJ" secondAttribute="top" constant="34" id="0dM-Ch-KvH"/>
                                     <constraint firstItem="dwN-s3-p3t" firstAttribute="leading" secondItem="RjG-kr-2nJ" secondAttribute="leading" constant="11" id="6M4-CO-RNv"/>
                                     <constraint firstItem="7oK-lX-EaG" firstAttribute="leading" secondItem="IaB-c6-t74" secondAttribute="trailing" constant="15" id="9II-h8-ALl"/>
                                     <constraint firstItem="IaB-c6-t74" firstAttribute="top" secondItem="dwN-s3-p3t" secondAttribute="bottom" constant="6" id="BJ8-i6-XEu"/>
+                                    <constraint firstAttribute="width" constant="320" id="E3s-hv-e37"/>
                                     <constraint firstAttribute="trailing" secondItem="Za1-ld-HtV" secondAttribute="trailing" constant="39" id="GIA-y1-77o"/>
                                     <constraint firstItem="Za1-ld-HtV" firstAttribute="baseline" secondItem="7oK-lX-EaG" secondAttribute="baseline" id="HcB-PN-mFM"/>
                                     <constraint firstItem="IaB-c6-t74" firstAttribute="leading" secondItem="RjG-kr-2nJ" secondAttribute="leading" constant="25" id="Ugq-As-UJH"/>
