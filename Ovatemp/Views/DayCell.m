@@ -53,7 +53,6 @@
 }
 
 - (void)toggleDayProperty:(NSString *)key withIndex:(NSInteger)index {
-  NSLog(@"cell toggling day: %@ with key %@ and index: %d", self.day, key, index);
   [self.day toggleProperty:key withIndex:index];
   [self refreshControls];
 }
