@@ -70,11 +70,14 @@
     [self performSelector:@selector(presentSessionController) withObject:nil afterDelay:0];
   }
 
-
   [[Configuration sharedConfiguration] addObserver: self
                               forKeyPath: @"token"
                                  options: NSKeyValueObservingOptionNew
                                  context: NULL];
+
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(logOutWithUnauthorized)
+                                               name:kUnauthorizedRequestNotification object:nil];
 
   return YES;
 }
@@ -120,6 +123,22 @@
 - (void)presentSessionController {
   SessionViewController *sessionController = [[SessionViewController alloc] initWithNibName:@"SessionViewController" bundle:nil];
   [self.window.rootViewController presentViewController:sessionController animated:YES completion:nil];
+}
+
+- (void)logOutWithUnauthorized {
+  if(![Configuration sharedConfiguration].token) {
+    return;
+  }
+
+  if(self.lastForcedLogout && [[NSDate date] timeIntervalSinceDate:self.lastForcedLogout] < 1) {
+    return;
+  }
+
+  self.lastForcedLogout = [NSDate date];
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry for the trouble!" message:@"You've been logged you out of your account. Please log in again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+
+  [alert show];
+  [SessionController logOut];
 }
 
 # pragma mark - Observers

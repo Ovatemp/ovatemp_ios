@@ -380,6 +380,11 @@ static NSString * const kTokenParam = @"token";
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
   NSMutableDictionary *config = [self configForRequest:connection.originalRequest];
   [self endRequest:connection.originalRequest];
+
+  if(error.code == kUnauthorizedRequestCode) {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kUnauthorizedRequestNotification object:nil];
+  }
+
   if ([config objectForKey:kFailureBlockKey]) {
     ConnectionManagerFailure onFailure = [config objectForKey:kFailureBlockKey];
     onFailure(error);

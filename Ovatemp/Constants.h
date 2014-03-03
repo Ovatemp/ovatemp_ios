@@ -28,7 +28,8 @@
 #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
 #endif
 
-
+static NSInteger const kUnauthorizedRequestCode = 401;
+static NSString * const kUnauthorizedRequestNotification = @"401UnauthorizedRequestEncountered";
 
 // The are Apple's standard spacing defaults. Don't change
 // these unless the defaults change!
