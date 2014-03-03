@@ -26,6 +26,7 @@
 + (id)withAttributes:(NSDictionary *)attributes;
 - (void)setAttributes:(NSDictionary *)attributes;
 - (NSDictionary *)attributes:(BOOL)camelCase;
+- (NSDictionary *)attributesForKeys:(NSSet *)keys camelCase:(BOOL)camelCase;
 + (id)findByKey:(NSString *)identifier;
 
 @end

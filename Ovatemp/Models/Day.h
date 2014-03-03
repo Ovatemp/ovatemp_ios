@@ -124,4 +124,6 @@ typedef enum vaginalSensationTypesEnum
 - (void)toggleSupplement:(Supplement *)supplement;
 - (void)toggleSymptom:(Symptom *)symptom;
 
+- (void)save;
+
 @end

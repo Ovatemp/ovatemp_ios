@@ -38,4 +38,4 @@
 UIColor * Color(int red, int green, int blue);
 UIColor * Darken(UIColor *color, CGFloat amount);
 
-#define DELAY_BEFORE_SAVE 2
+#define DELAY_BEFORE_SAVE 5

@@ -55,6 +55,23 @@
   }
 
   [self dateChanged];
+
+  [[NSNotificationCenter defaultCenter]
+   addObserver:self
+   selector:@selector(applicationWillResign)
+   name:UIApplicationWillResignActiveNotification
+   object:NULL];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+  [super viewWillDisappear:animated];
+
+  // Make sure to save the day before we leave
+  [self.day save];
+}
+
+- (void)applicationWillResign {
+  [self.day save];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
@@ -72,6 +89,9 @@
 #pragma mark - Table view data source
 
 - (void)dateChanged {
+  // Make sure to save the day before we leave
+  [self.day save];
+  
   self.day = [Day forDate:[Calendar date]];
 
   if(!self.day) {

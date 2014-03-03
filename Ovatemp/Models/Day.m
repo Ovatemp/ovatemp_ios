@@ -9,6 +9,11 @@
 #import "Day.h"
 #import "ConnectionManager.h"
 
+@interface Day() {
+  NSMutableSet *dirtyAttributes;
+}
+@end
+
 @implementation Day
 
 static NSDictionary *propertyOptions;
@@ -20,6 +25,8 @@ static NSDictionary *propertyOptions;
   }
 
   self.ignoredAttributes = [NSSet setWithArray:@[@"createdAt", @"updatedAt", @"cycleId", @"userId"]];
+
+  self->dirtyAttributes = [NSMutableSet set];
 
   return self;
 }
@@ -70,13 +77,13 @@ static NSDictionary *propertyOptions;
   } else {
     [self setValue:value forKey:key];
   }
-  
-  [self scheduleSave];
+
+  [self addDirtyAttribute:key];
 }
 
 - (void)updateProperty:(NSString *)key withValue:(id)value {
   [self setValue:value forKey:key];
-  [self scheduleSave];
+  [self addDirtyAttribute:key];
 }
 
 - (BOOL)isProperty:(NSString *)key ofType:(NSInteger)type {
@@ -85,18 +92,37 @@ static NSDictionary *propertyOptions;
   return [[self valueForKey:key] isEqualToString:enumeratedStrings[type]];
 }
 
-- (void)scheduleSave {
-  Day *day = self;
-  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, DELAY_BEFORE_SAVE * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-    [day save];
-  });
+- (void)addDirtyAttribute:(NSString *)key {
+  @synchronized(self->dirtyAttributes) {
+    // If we haven't already scheduled a save, schedule one to happen after the delay
+    if([self->dirtyAttributes count] < 1) {
+      Day *day = self;
+      dispatch_after(dispatch_time(DISPATCH_TIME_NOW, DELAY_BEFORE_SAVE * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [day save];
+      });
+    }
+
+    [self->dirtyAttributes addObject:key];
+  }
 }
 
+// This may get called many times in rapid succession, so we want to make it cheap
 - (void)save {
-  Day *day = self;
+  NSDictionary *attributes;
+
+  @synchronized(self->dirtyAttributes) {
+    if([self->dirtyAttributes count] < 1) {
+      return;
+    }
+    [self->dirtyAttributes addObject:self.key];
+
+    attributes = [self attributesForKeys:self->dirtyAttributes camelCase:FALSE];
+    [self->dirtyAttributes removeAllObjects];
+  }
+
   [ConnectionManager put:@"/days/"
                    params:@{
-                            @"day": [day attributes:FALSE],
+                            @"day": attributes,
                             }
                    target:self
                   success:@selector(didSave:)
@@ -166,7 +192,7 @@ static NSDictionary *propertyOptions;
     [self.medicineIds addObject:medicine.id];
   }
 
-  [self scheduleSave];
+  [self addDirtyAttribute:@"medicineIds"];
 }
 
 - (void)toggleSupplement:(Supplement *)supplement {
@@ -176,7 +202,7 @@ static NSDictionary *propertyOptions;
     [self.supplementIds addObject:supplement.id];
   }
 
-  [self scheduleSave];
+  [self addDirtyAttribute:@"supplementIds"];
 }
 
 - (void)toggleSymptom:(Symptom *)symptom {
@@ -186,7 +212,7 @@ static NSDictionary *propertyOptions;
     [self.symptomIds addObject:symptom.id];
   }
 
-  [self scheduleSave];
+  [self addDirtyAttribute:@"symptomIds"];
 }
 
 @end

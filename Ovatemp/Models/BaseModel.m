@@ -92,9 +92,13 @@ static NSMutableDictionary *_instances;
 #pragma mark - Key value storage
 
 - (NSDictionary *)attributes:(BOOL)camelCase {
+  return [self attributesForKeys:[NSSet setWithArray:[_serializedKeys allKeys]] camelCase:camelCase];
+}
+
+- (NSDictionary *)attributesForKeys:(NSSet *)keys camelCase:(BOOL)camelCase {
   NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
 
-  for(NSString *key in _serializedKeys) {
+  for(NSString *key in keys) {
     id value = [self valueForKey:key];
     if(value == nil) {
       value = [NSNull null];
