@@ -13,7 +13,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="640" height="117"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHX-WF-rO6">
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHX-WF-rO6" customClass="TemperatureScrollView">
                         <rect key="frame" x="0.0" y="0.0" width="640" height="117"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
@@ -37,10 +37,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="98.3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9F-7c-h9L">
-                                        <rect key="frame" x="132" y="0.0" width="702" height="31"/>
+                                        <rect key="frame" x="132" y="0.0" width="188" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" label="Temperature Selection"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="702" id="Niy-h8-tM6"/>
+                                            <constraint firstAttribute="width" constant="188" id="Niy-h8-tM6"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="21"/>
                                         <nil key="highlightedColor"/>
@@ -102,20 +103,42 @@
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="90" minValue="90" maxValue="105" translatesAutoresizingMaskIntoConstraints="NO" id="ILt-U0-D4S">
                                         <rect key="frame" x="20" y="34" width="282" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" label="Temperature"/>
                                         <connections>
                                             <action selector="sliderChanged:" destination="GTW-9h-YIY" eventType="valueChanged" id="8bH-n4-IcZ"/>
                                         </connections>
                                     </slider>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dlq-A3-sIY">
+                                        <rect key="frame" x="58" y="44" width="204" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <accessibility key="accessibilityConfiguration" label="Set Temperature"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="8GM-fu-CiH"/>
+                                            <constraint firstAttribute="width" constant="204" id="YI7-9w-4bT"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Set Temperature">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="setTemperaturePressed:" destination="GTW-9h-YIY" eventType="touchUpInside" id="Fe6-Lz-fWb"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.21960784310000001" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstItem="ILt-U0-D4S" firstAttribute="leading" secondItem="opr-ha-I24" secondAttribute="leading" constant="22" id="CfH-IO-gnf"/>
+                                    <constraint firstItem="Dlq-A3-sIY" firstAttribute="leading" secondItem="opr-ha-I24" secondAttribute="leading" constant="58" id="Grh-yq-Dke"/>
                                     <constraint firstAttribute="trailing" secondItem="ILt-U0-D4S" secondAttribute="trailing" constant="20" symbolic="YES" id="JK2-eT-X6w"/>
                                     <constraint firstItem="BR6-uZ-7Ba" firstAttribute="top" secondItem="opr-ha-I24" secondAttribute="top" constant="7" id="Kc2-J7-cGm"/>
                                     <constraint firstItem="z8X-pk-Ekk" firstAttribute="leading" secondItem="BR6-uZ-7Ba" secondAttribute="trailing" constant="85" id="P4k-7r-jNS"/>
+                                    <constraint firstItem="Dlq-A3-sIY" firstAttribute="centerX" secondItem="opr-ha-I24" secondAttribute="centerX" id="Pdq-fG-bxI"/>
                                     <constraint firstAttribute="trailing" secondItem="z8X-pk-Ekk" secondAttribute="trailing" constant="-18" id="Rqw-4u-kPb"/>
                                     <constraint firstItem="P1Z-y6-AfI" firstAttribute="top" secondItem="ILt-U0-D4S" secondAttribute="bottom" constant="13" id="SMy-K7-UjD"/>
                                     <constraint firstItem="P1Z-y6-AfI" firstAttribute="leading" secondItem="opr-ha-I24" secondAttribute="leading" constant="96" id="VSE-dc-ymm"/>
+                                    <constraint firstItem="P1Z-y6-AfI" firstAttribute="top" secondItem="Dlq-A3-sIY" secondAttribute="bottom" constant="6" id="bvO-bd-I8U"/>
                                     <constraint firstItem="3jn-aE-Xk7" firstAttribute="leading" secondItem="BR6-uZ-7Ba" secondAttribute="leading" id="ehu-Hj-ZNU"/>
                                     <constraint firstItem="BR6-uZ-7Ba" firstAttribute="leading" secondItem="opr-ha-I24" secondAttribute="leading" constant="12" id="lzY-gY-HWf"/>
                                     <constraint firstItem="z8X-pk-Ekk" firstAttribute="top" secondItem="opr-ha-I24" secondAttribute="top" constant="8" id="mWi-zt-6z1"/>
@@ -125,31 +148,11 @@
                                     <constraint firstItem="P1Z-y6-AfI" firstAttribute="centerY" secondItem="3jn-aE-Xk7" secondAttribute="centerY" id="z9o-4i-9rw"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dlq-A3-sIY">
-                                <rect key="frame" x="378" y="38" width="204" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="204" id="YI7-9w-4bT"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Set Temperature">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="setTemperaturePressed:" destination="GTW-9h-YIY" eventType="touchUpInside" id="Fe6-Lz-fWb"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="0Vq-He-dBR" firstAttribute="leading" secondItem="WHX-WF-rO6" secondAttribute="leading" id="9Zc-iT-TdU"/>
-                            <constraint firstItem="Dlq-A3-sIY" firstAttribute="top" secondItem="WHX-WF-rO6" secondAttribute="top" constant="38" id="OUG-L6-rd1"/>
-                            <constraint firstItem="opr-ha-I24" firstAttribute="centerX" secondItem="Dlq-A3-sIY" secondAttribute="centerX" id="P3U-nF-Tet"/>
                             <constraint firstItem="opr-ha-I24" firstAttribute="top" secondItem="WHX-WF-rO6" secondAttribute="top" id="TZs-fb-pvv"/>
                             <constraint firstItem="0Vq-He-dBR" firstAttribute="bottom" secondItem="opr-ha-I24" secondAttribute="bottom" id="Vdx-5A-Quf"/>
-                            <constraint firstAttribute="bottom" secondItem="Dlq-A3-sIY" secondAttribute="bottom" constant="49" id="ZKR-7H-tCy"/>
-                            <constraint firstItem="Dlq-A3-sIY" firstAttribute="leading" secondItem="0Vq-He-dBR" secondAttribute="trailing" constant="58" id="ZZ8-XC-ev0"/>
                             <constraint firstItem="opr-ha-I24" firstAttribute="top" secondItem="0Vq-He-dBR" secondAttribute="top" id="eco-Ta-DIh"/>
                             <constraint firstItem="opr-ha-I24" firstAttribute="leading" secondItem="0Vq-He-dBR" secondAttribute="trailing" id="nLa-oY-OtG"/>
                             <constraint firstItem="opr-ha-I24" firstAttribute="centerY" secondItem="WHX-WF-rO6" secondAttribute="centerY" id="ofQ-4a-yBw"/>

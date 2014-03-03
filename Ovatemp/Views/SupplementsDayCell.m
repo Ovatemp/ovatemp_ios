@@ -46,6 +46,10 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
     [table registerNib:cellNib forCellReuseIdentifier:kCheckCellIdentifier];
     table.rowHeight = cellView.frame.size.height;
   }
+  self.supplementsTableView.accessibilityIdentifier = @"Supplements Options";
+  self.medicinesTableView.accessibilityIdentifier = @"Medicine Options";
+  self.page2.accessibilityIdentifier = @"Supplements Options Page";
+  self.page3.accessibilityIdentifier = @"Medicine Options Page";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

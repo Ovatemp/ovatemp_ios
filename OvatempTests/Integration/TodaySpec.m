@@ -20,6 +20,30 @@ describe(@"Today screen", ^{
       [tester tapViewWithAccessibilityLabel:@"Today"];
     });
 
+    it(@"has a functioning temperature cell", ^{
+      // Scroll to the right row
+      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] inTableViewWithAccessibilityIdentifier:@"Checklist"];
+
+      UILabel *temperatureLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Temperature Selection"];
+      expect(temperatureLabel.text).to.equal(@"Swipe to edit");
+
+      [tester tapViewWithAccessibilityLabel:@"Set Temperature" traits:UIAccessibilityTraitButton];
+      expect(temperatureLabel.text).to.equal(@"98.6ºF");
+
+      [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Set Temperature"];
+      UISlider *slider = (UISlider *)[tester waitForViewWithAccessibilityLabel:@"Temperature"];
+      [tester setValue:99.5 forSliderWithAccessibilityLabel:@"Temperature"];
+
+      NSLog(@"slider: %@", slider);
+
+      [tester waitForTimeInterval:.5];
+
+      // Sometimes the test scroller is off by a tenth of a degree, so just
+      // skip that
+      expect([temperatureLabel.text substringToIndex:3]).to.equal(@"99.");
+      expect([temperatureLabel.text substringFromIndex:4]).to.equal(@"ºF");
+    });
+
     it(@"has a functioning period cell", ^{
       // Scroll to the right row
       [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1] inTableViewWithAccessibilityIdentifier:@"Checklist"];
@@ -93,6 +117,54 @@ describe(@"Today screen", ^{
       [tester tapViewWithAccessibilityLabel:@"Mood Amazing Button"];
 
       expect(periodLabel.text).to.equal(@"Swipe to edit");
+
+      UITextView *symptomsTextView = (UITextView*)[tester waitForViewWithAccessibilityLabel:@"Symptoms Selection"];
+      expect(symptomsTextView.text).to.equal(@"");
+
+      [tester waitForAccessibilityElement:nil view:nil withIdentifier:@"Symptoms Options Page" tappable:NO];
+
+      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] inTableViewWithAccessibilityIdentifier:@"Symptoms Options"];
+      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] inTableViewWithAccessibilityIdentifier:@"Symptoms Options"];
+
+      [tester waitForTimeInterval:1];
+      expect(symptomsTextView.text).to.equal(@"Bloating, Breast tenderness");
+    });
+
+    it(@"has a functioning supplements/medicine cell", ^{
+      // Scroll to the right row
+      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:1] inTableViewWithAccessibilityIdentifier:@"Checklist"];
+
+      UITextView *supplementsTextView = (UITextView*)[tester waitForViewWithAccessibilityLabel:@"Supplements Selection"];
+      expect(supplementsTextView.text).to.equal(@"");
+
+      UITextView *medicineTextView = (UITextView*)[tester waitForViewWithAccessibilityLabel:@"Medicine Selection"];
+      expect(medicineTextView.text).to.equal(@"");
+
+      [tester waitForAccessibilityElement:nil view:nil withIdentifier:@"Supplements Options Page" tappable:NO];
+      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] inTableViewWithAccessibilityIdentifier:@"Supplements Options"];
+      [tester waitForAccessibilityElement:nil view:nil withIdentifier:@"Medicine Options Page" tappable:NO];
+      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] inTableViewWithAccessibilityIdentifier:@"Medicine Options"];
+
+      [tester waitForTimeInterval:0.5];
+      expect(supplementsTextView.text).to.equal(@"Calcium");
+      expect(medicineTextView.text).to.equal(@"Albuterol");
+    });
+
+    it(@"has a functioning secondary signs cell", ^{
+      // Scroll to the right row
+      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:1] inTableViewWithAccessibilityIdentifier:@"Checklist"];
+
+      [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Ovulation Prediction Kit Selection"];
+      [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Ferning Selection"];
+
+      [tester tapViewWithAccessibilityLabel:@"Ovulation Prediction Kit Positive"];
+      [tester tapViewWithAccessibilityLabel:@"Ferning Positive"];
+
+      UIImageView *opkImageView = (UIImageView*)[tester waitForViewWithAccessibilityLabel:@"Ovulation Prediction Kit Selection"];
+      UIImageView *ferningImageView = (UIImageView*)[tester waitForViewWithAccessibilityLabel:@"Ferning Selection"];
+
+      expect(opkImageView.accessibilityValue).to.equal(@"Ovulation Prediction Kit Positive");
+      expect(ferningImageView.accessibilityValue).to.equal(@"Ferning Positive");
     });
   });
 });

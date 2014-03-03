@@ -53,20 +53,21 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
   UIView *cellView = [[[NSBundle mainBundle] loadNibNamed:kCheckCellIdentifier owner:self options:nil]
                       objectAtIndex:0];
 
-  for(UITableView* table in @[self.symptomsTableView]) {
-    table.delegate = self;
-    table.dataSource = self;
-    table.backgroundColor = [UIColor clearColor];
+  UITableView *table = self.symptomsTableView;
+  table.accessibilityIdentifier = @"Symptoms Options";
+  self.page2.accessibilityIdentifier = @"Symptoms Options Page";
+  table.delegate = self;
+  table.dataSource = self;
+  table.backgroundColor = [UIColor clearColor];
 
-    // Align separators left
-    table.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+  // Align separators left
+  table.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
 
-    // Don't show separators after the last item
-    table.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+  // Don't show separators after the last item
+  table.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
-    [table registerNib:cellNib forCellReuseIdentifier:kCheckCellIdentifier];
-    table.rowHeight = cellView.frame.size.height;
-  }
+  [table registerNib:cellNib forCellReuseIdentifier:kCheckCellIdentifier];
+  table.rowHeight = cellView.frame.size.height;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

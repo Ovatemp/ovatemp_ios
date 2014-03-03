@@ -24,6 +24,7 @@
     [button refresh];
     if(button.selected) {
       self.opkImageView.image = [button imageForState:UIControlStateNormal];
+      self.opkImageView.accessibilityValue = button.accessibilityLabel;
     }
   }
 
@@ -31,6 +32,7 @@
     [button refresh];
     if(button.selected) {
       self.ferningImageView.image = [button imageForState:UIControlStateNormal];
+      self.ferningImageView.accessibilityValue = button.accessibilityLabel;
     }
   }
 }

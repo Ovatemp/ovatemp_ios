@@ -11,7 +11,6 @@
 @implementation TemperatureDayCell
 
 - (IBAction)sliderChanged:(id)sender {
-  NSLog(@"slider changed: %f", self.slider.value);
   [self.day updateProperty:@"temperature" withValue:[NSNumber numberWithFloat:self.slider.value]];
   [self refreshControls];
 }
