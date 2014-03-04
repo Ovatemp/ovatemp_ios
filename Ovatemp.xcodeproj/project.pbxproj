@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8315E49B18C13F9B00DA935A /* TemperatureScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49A18C13F9B00DA935A /* TemperatureScrollView.m */; };
 		8315E49E18C521A800DA935A /* SessionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49D18C521A800DA935A /* SessionSpec.m */; };
+		8315E4A618C6300800DA935A /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E4A518C6300800DA935A /* CalendarCell.m */; };
 		8328B75718ABFD6D00DA7A5E /* TemperatureDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8328B75618ABFD6D00DA7A5E /* TemperatureDayCell.xib */; };
 		8328B75A18ABFD9400DA7A5E /* TemperatureDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328B75918ABFD9400DA7A5E /* TemperatureDayCell.m */; };
 		8328B75D18AC002800DA7A5E /* FluidDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328B75C18AC002800DA7A5E /* FluidDayCell.m */; };
@@ -54,6 +55,8 @@
 		835BA2B618BBDC0200C64350 /* UIAlertView+WithBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 835BA2B518BBDC0200C64350 /* UIAlertView+WithBlock.m */; };
 		835BA2B918BBEFBF00C64350 /* +.png in Resources */ = {isa = PBXBuildFile; fileRef = 835BA2B718BBEFBF00C64350 /* +.png */; };
 		835BA2BA18BBEFBF00C64350 /* +@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835BA2B818BBEFBF00C64350 /* +@2x.png */; };
+		83686EA018C6323600A5329C /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83686E9F18C6323600A5329C /* CalendarCell.xib */; };
+		83686EA318C6335000A5329C /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83686EA218C6335000A5329C /* CalendarViewController.m */; };
 		836A6C9D18BF819E0068F1D2 /* CycleChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 836A6C9C18BF819E0068F1D2 /* CycleChartView.m */; };
 		839A345D18ABCBAD007CD657 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345C18ABCBAD007CD657 /* Calendar.m */; };
 		839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345F18ABCFB6007CD657 /* NavigationViewController.m */; };
@@ -178,6 +181,8 @@
 		8315E49918C13F9B00DA935A /* TemperatureScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemperatureScrollView.h; sourceTree = "<group>"; };
 		8315E49A18C13F9B00DA935A /* TemperatureScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureScrollView.m; sourceTree = "<group>"; };
 		8315E49D18C521A800DA935A /* SessionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionSpec.m; sourceTree = "<group>"; };
+		8315E4A418C6300800DA935A /* CalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarCell.h; sourceTree = "<group>"; };
+		8315E4A518C6300800DA935A /* CalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarCell.m; sourceTree = "<group>"; };
 		8328B75618ABFD6D00DA7A5E /* TemperatureDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemperatureDayCell.xib; sourceTree = "<group>"; };
 		8328B75818ABFD9400DA7A5E /* TemperatureDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemperatureDayCell.h; sourceTree = "<group>"; };
 		8328B75918ABFD9400DA7A5E /* TemperatureDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureDayCell.m; sourceTree = "<group>"; };
@@ -241,6 +246,9 @@
 		835BA2B518BBDC0200C64350 /* UIAlertView+WithBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+WithBlock.m"; sourceTree = "<group>"; };
 		835BA2B718BBEFBF00C64350 /* +.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+.png"; sourceTree = "<group>"; };
 		835BA2B818BBEFBF00C64350 /* +@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+@2x.png"; sourceTree = "<group>"; };
+		83686E9F18C6323600A5329C /* CalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
+		83686EA118C6335000A5329C /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		83686EA218C6335000A5329C /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
 		836A6C9B18BF819E0068F1D2 /* CycleChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleChartView.h; sourceTree = "<group>"; };
 		836A6C9C18BF819E0068F1D2 /* CycleChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleChartView.m; sourceTree = "<group>"; };
 		839A345B18ABCBAD007CD657 /* Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Calendar.h; path = Shared/Calendar.h; sourceTree = "<group>"; };
@@ -636,6 +644,8 @@
 				834BD63418AD1519003B6808 /* MoreViewController.m */,
 				834BD63618AD164E003B6808 /* SessionController.h */,
 				834BD63718AD164E003B6808 /* SessionController.m */,
+				83686EA118C6335000A5329C /* CalendarViewController.h */,
+				83686EA218C6335000A5329C /* CalendarViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -696,6 +706,9 @@
 				835AE58718B7A3B500FEAF98 /* CheckCell.xib */,
 				836A6C9B18BF819E0068F1D2 /* CycleChartView.h */,
 				836A6C9C18BF819E0068F1D2 /* CycleChartView.m */,
+				8315E4A418C6300800DA935A /* CalendarCell.h */,
+				8315E4A518C6300800DA935A /* CalendarCell.m */,
+				83686E9F18C6323600A5329C /* CalendarCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -942,6 +955,7 @@
 				832934CF18B7D93200F6875B /* Supplements.png in Resources */,
 				83EB3EDF18AEA7D500EA91AC /* Unprotected.png in Resources */,
 				83EB3EDB18AEA7D500EA91AC /* Ventilate-01@2x.png in Resources */,
+				83686EA018C6323600A5329C /* CalendarCell.xib in Resources */,
 				8328B76318AC005A00DA7A5E /* SymptomsDayCell.xib in Resources */,
 				83EB3EE018AEA7D500EA91AC /* Unprotected@2x.png in Resources */,
 				83EB3F1418AEA7D500EA91AC /* Meditation.png in Resources */,
@@ -1098,6 +1112,7 @@
 				834BD63E18AD4B5B003B6808 /* NSDate+ShortDate.m in Sources */,
 				C31220241899BB8E0027C4B3 /* Configuration.m in Sources */,
 				834BD63B18AD29EA003B6808 /* Day.m in Sources */,
+				8315E4A618C6300800DA935A /* CalendarCell.m in Sources */,
 				835BA2B318BBCB8300C64350 /* SharedRelation.m in Sources */,
 				C36C510B189028190053A884 /* main.m in Sources */,
 				8328B77318AC00CD00DA7A5E /* SymptomsDayCell.m in Sources */,
@@ -1106,6 +1121,7 @@
 				8328B77618AC034900DA7A5E /* DayCell.m in Sources */,
 				8329353818B7FD1700F6875B /* Medicine.m in Sources */,
 				8328B75A18ABFD9400DA7A5E /* TemperatureDayCell.m in Sources */,
+				83686EA318C6335000A5329C /* CalendarViewController.m in Sources */,
 				8328B76A18AC009C00DA7A5E /* IntercourseDayCell.m in Sources */,
 				835AE58618B7A36000FEAF98 /* CheckCell.m in Sources */,
 				839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */,
@@ -1248,7 +1264,7 @@
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1DB1C37C-F85F-4E63-BABA-D5725E291E21";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1265,7 +1281,7 @@
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1DB1C37C-F85F-4E63-BABA-D5725E291E21";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

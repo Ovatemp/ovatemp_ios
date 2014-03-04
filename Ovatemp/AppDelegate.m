@@ -11,6 +11,7 @@
 #import "Alert.h"
 #import "SessionViewController.h"
 #import "TodayViewController.h"
+#import "CalendarViewController.h"
 #import "NavigationViewController.h"
 #import "SessionController.h"
 #import "User.h"
@@ -28,8 +29,8 @@
   self.window.rootViewController = tabController;
 
   UIViewController *todayController = [[TodayViewController alloc] init].withNavigation;
-  UIViewController *calendarController = [[UIViewController alloc] init];
-  UIViewController *coachingController = [[UIViewController alloc] init];
+  UIViewController *calendarController = [[CalendarViewController alloc] initWithDefaultLayoutAndFrameHint:self.window.frame].withNavigation;
+  UIViewController *coachingController = [[UIViewController alloc] init]; 
   UIViewController *communityController = [[UIViewController alloc] init];
   UIViewController* moreViewController = [[UIStoryboard storyboardWithName:@"MoreStoryboard" bundle:nil] instantiateInitialViewController];
 

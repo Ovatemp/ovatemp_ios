@@ -36,6 +36,7 @@
   UIView *content = self.contentViewController.view;
   content.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
 
+  NSLog(@"content container: %@ content view: %@", self.contentView, self.contentViewController);
   [self.contentView addSubview:self.contentViewController.view];
 
   [[Calendar sharedInstance] addObserver: self
