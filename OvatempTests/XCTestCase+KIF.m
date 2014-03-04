@@ -31,15 +31,18 @@
 
 # pragma mark - Session helpers
 
-- (void)logIn {
+- (void)resetUsers {
   [ConnectionManager post:@"/test_actions/reset_users"
                    params:@{}
                   success:^(NSDictionary *response) { NSLog(@"reset server's users"); }
                   failure:^(NSError *error) { NSLog(@"couldn't reset server's users"); }];
+}
 
+- (void)logIn {
   if (![ACTIVE_VIEW_CONTROLLER isKindOfClass:[SessionViewController class]]) {
     [self logOut];
   }
+  [self resetUsers];
   [tester waitForViewWithAccessibilityLabel:@"New Session Screen"];
 
   [tester enterText:@"test@example.com" intoViewWithAccessibilityLabel:@"Email Field"];

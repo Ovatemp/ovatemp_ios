@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8315E49B18C13F9B00DA935A /* TemperatureScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49A18C13F9B00DA935A /* TemperatureScrollView.m */; };
+		8315E49E18C521A800DA935A /* SessionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49D18C521A800DA935A /* SessionSpec.m */; };
 		8328B75718ABFD6D00DA7A5E /* TemperatureDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8328B75618ABFD6D00DA7A5E /* TemperatureDayCell.xib */; };
 		8328B75A18ABFD9400DA7A5E /* TemperatureDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328B75918ABFD9400DA7A5E /* TemperatureDayCell.m */; };
 		8328B75D18AC002800DA7A5E /* FluidDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328B75C18AC002800DA7A5E /* FluidDayCell.m */; };
@@ -176,6 +177,7 @@
 		803928D684F54DB4A5F86E42 /* Pods-OvatempTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.xcconfig"; path = "Pods/Pods-OvatempTests.xcconfig"; sourceTree = "<group>"; };
 		8315E49918C13F9B00DA935A /* TemperatureScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemperatureScrollView.h; sourceTree = "<group>"; };
 		8315E49A18C13F9B00DA935A /* TemperatureScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureScrollView.m; sourceTree = "<group>"; };
+		8315E49D18C521A800DA935A /* SessionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionSpec.m; sourceTree = "<group>"; };
 		8328B75618ABFD6D00DA7A5E /* TemperatureDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemperatureDayCell.xib; sourceTree = "<group>"; };
 		8328B75818ABFD9400DA7A5E /* TemperatureDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemperatureDayCell.h; sourceTree = "<group>"; };
 		8328B75918ABFD9400DA7A5E /* TemperatureDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureDayCell.m; sourceTree = "<group>"; };
@@ -790,6 +792,7 @@
 			children = (
 				C3BF8FD21898415E00572F43 /* FirstLaunchSpec.m */,
 				83548FF118BD24450016B53A /* TodaySpec.m */,
+				8315E49D18C521A800DA935A /* SessionSpec.m */,
 			);
 			path = Integration;
 			sourceTree = "<group>";
@@ -1121,6 +1124,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8315E49E18C521A800DA935A /* SessionSpec.m in Sources */,
 				C3BF8FD31898415E00572F43 /* FirstLaunchSpec.m in Sources */,
 				C3BF8FD91898421700572F43 /* XCTestCase+KIF.m in Sources */,
 				C3BF8FDD1898449D00572F43 /* OvatempTestHelpers.m in Sources */,

@@ -11,6 +11,7 @@
 
 @interface XCTestCase (KIF)<KIFTestActorDelegate>
 
+- (void)resetUsers;
 - (void)logIn;
 - (void)logOut;
 
