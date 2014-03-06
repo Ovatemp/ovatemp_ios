@@ -1,5 +1,5 @@
 //
-//  NSDate+ShortDate.h
+//  NSDate+Formatters.h
 //  Ovatemp
 //
 //  Created by Chris Cahoon on 2/13/14.
@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSDate (ShortDate)
+@interface NSDate (Formatters)
 
 - (NSString *)shortDate;
+- (NSString *)shortMonth;
 
 @end

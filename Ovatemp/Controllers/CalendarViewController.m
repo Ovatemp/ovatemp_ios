@@ -8,12 +8,18 @@
 
 #import "CalendarViewController.h"
 #import "CalendarCell.h"
+#import "Calendar.h"
+#import "NSDate+CalendarOps.h"
 
 static NSString * const kCalendarCellIdentifier = @"CalendarCell";
 
 @interface CalendarViewController () {
 
 }
+
+@property (nonatomic, assign) NSInteger totalDays;
+@property (nonatomic, strong) NSDate *firstDate;
+@property (nonatomic, strong) NSDate *lastDate;
 
 @end
 
@@ -24,6 +30,7 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
 
   layout.minimumInteritemSpacing = 0;
   layout.minimumLineSpacing = 0;
+  layout.sectionInset = UIEdgeInsetsMake(3,10,0,10);  // top, left, bottom, right
 
   CGFloat itemWidth = frame.size.width / 8;
   layout.itemSize = CGSizeMake(itemWidth, itemWidth * 1.2);
@@ -33,6 +40,11 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
     return nil;
   }
 
+  self.collectionView.showsVerticalScrollIndicator = FALSE;
+  self.collectionView.scrollsToTop = FALSE;
+
+  [self setDateRange];
+
   return self;
 }
 
@@ -41,30 +53,102 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
   [super viewDidLoad];
 
   [self.collectionView registerNib:[UINib nibWithNibName:kCalendarCellIdentifier bundle:nil] forCellWithReuseIdentifier:kCalendarCellIdentifier];
-
   [self.collectionView setBackgroundColor:[UIColor whiteColor]];
-  NSLog(@"frame: %@, collection view frame: %@", NSStringFromCGRect(self.view.frame), NSStringFromCGRect(self.collectionView.frame));
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+
+  NSInteger todayIndex = [self.firstDate daysTilDate:[Calendar date]];
+  NSIndexPath *todayIndexPath = [NSIndexPath indexPathForItem:todayIndex inSection:0];
+
+  [self.collectionView scrollToItemAtIndexPath:todayIndexPath
+                              atScrollPosition:UICollectionViewScrollPositionCenteredVertically
+                                      animated:NO];
+}
+
+# pragma mark - Helpers
+
+- (void)setDateRange {
+  NSDate *today = [NSDate date];
+  NSCalendar* calendar = [NSCalendar currentCalendar];
+  NSDateComponents* comps = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:today];
+
+  // Go to the end of two months from now
+  [comps setMonth:[comps month]+3];
+  [comps setDay:0];
+  self.lastDate = [calendar dateFromComponents:comps];
+
+  [comps setYear:1980];
+  self.firstDate = [calendar dateFromComponents:comps];
+  self.totalDays = [[[NSCalendar currentCalendar] components:NSDayCalendarUnit
+                                                    fromDate:self.firstDate
+                                                      toDate:self.lastDate
+                                                     options:0] day];
+}
+
+- (NSDate *)dateForItemAtIndexPath:(NSIndexPath *)indexPath {
+  return [self.firstDate addDays:indexPath.item];
+}
+
+# pragma mark - UICollectionViewDataSource/Delegate methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-  return 70;
+  return self.totalDays;
 }
 
-// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+  NSDate *date = [self dateForItemAtIndexPath:indexPath];
+
+  if([[NSDate date] compare:date] != NSOrderedDescending) {
+    NSLog(@"can't go into the future");
+    return;
+  }
+
+  [Calendar setDate:date];
+
+  // Go to day view controller
+  [self.tabBarController setSelectedIndex:0];
+}
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+  NSCalendar *cal = [NSCalendar currentCalendar];
   CalendarCell *cell= (CalendarCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"CalendarCell" forIndexPath:indexPath];
 
-  NSLog(@"index path section: %ld", (long)indexPath.section);
-  cell.dateLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.item];
-  cell.imageView.image = [UIImage imageNamed:@"Light"];
-  
-  return cell;
-}
+  NSDate *date = [self dateForItemAtIndexPath:indexPath];
+  NSDateComponents *comps = [cal components:NSEraCalendarUnit | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
+  date = [cal dateFromComponents:comps];
 
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-  return UIEdgeInsetsMake(0,10,0,10);  // top, left, bottom, right
+  cell.imageView.image = [UIImage imageNamed:@"Light"];
+
+  // Dummy for now
+  BOOL inFertilityWindow = indexPath.item % 4 == 0;
+  cell.fertilityWindowView.hidden = !inFertilityWindow;
+
+  NSDateComponents *todayComps = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:[NSDate date]];
+  NSDate *today = [cal dateFromComponents:todayComps];
+
+  // If the cell is today
+  if([today isEqualToDate:date]) {
+    cell.dateLabel.backgroundColor = [UIColor grayColor];
+    [cell.dateLabel.layer setMasksToBounds:YES];
+  } else {
+    cell.dateLabel.backgroundColor = [UIColor clearColor];
+  }
+
+  // If the cell is the first day of the month
+  if(comps.day == 1) {
+    cell.dateLabel.text = [date shortMonth];
+    cell.leftBorder.hidden = FALSE;
+  } else {
+    cell.dateLabel.text = [NSString stringWithFormat:@"%ld", (long)comps.day];
+    cell.leftBorder.hidden = TRUE;
+  }
+
+  return cell;
 }
 
 @end
