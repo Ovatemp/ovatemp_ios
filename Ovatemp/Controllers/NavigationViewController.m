@@ -36,7 +36,10 @@
   UIView *content = self.contentViewController.view;
   content.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
 
+  // Adopt the content view controller
   [self.contentView addSubview:self.contentViewController.view];
+  [self addChildViewController:self.contentViewController];
+  [self.contentViewController didMoveToParentViewController:self];
 
   [[Calendar sharedInstance] addObserver: self
          forKeyPath: @"date"
