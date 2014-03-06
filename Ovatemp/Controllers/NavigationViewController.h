@@ -18,6 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *dayNavigationView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UIView *fertilityStatusView;
 
 @property (strong, nonatomic) UIViewController *contentViewController;
 

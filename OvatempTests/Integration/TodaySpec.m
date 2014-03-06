@@ -60,6 +60,21 @@ describe(@"Today screen", ^{
       expect(periodLabel.text).to.equal(@"Swipe to edit");
     });
 
+    it(@"it saves when going to the calendar and coming back", ^{
+      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1] inTableViewWithAccessibilityIdentifier:@"Checklist"];
+
+      UILabel *periodLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Period Selection"];
+      expect(periodLabel.text).to.equal(@"Swipe to edit");
+
+      [tester tapViewWithAccessibilityLabel:@"Period Spotting Button" traits:UIAccessibilityTraitButton];
+      expect(periodLabel.text).to.equal(@"Spotting");
+
+      [tester tapViewWithAccessibilityLabel:@"Go to Previous Day"];
+      expect(periodLabel.text).to.equal(@"Swipe to edit");
+
+      [tester tapViewWithAccessibilityLabel:@"Go to Next Day"];
+      expect(periodLabel.text).to.equal(@"Spotting");
+    });
 
     it(@"has a functioning cervical fluid/vaginal sensation cell", ^{
       [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1] inTableViewWithAccessibilityIdentifier:@"Checklist"];
