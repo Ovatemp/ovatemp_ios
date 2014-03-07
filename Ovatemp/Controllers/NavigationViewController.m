@@ -85,13 +85,14 @@
 }
 
 - (void)updateFertilityWindow {
+  /*
   [Day loadDate:[NSDate date]
         success:^(NSDictionary *response) {
           [self.fertilityStatusView updateWithDay:[Day withAttributes:response[@"day"]]];
         }
         failure:^(NSError *error) {
           NSLog(@"couldn't load day %@", error);
-        }];
+        }];*/
 }
 
 - (IBAction)moveDayForward:(id)sender {
