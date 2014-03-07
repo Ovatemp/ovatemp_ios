@@ -8,6 +8,7 @@
 
 #import "NavigationViewController.h"
 #import "Calendar.h"
+#import "Day.h"
 
 @interface NavigationViewController ()
 
@@ -55,6 +56,10 @@
   [self updateLabels];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+  [self updateFertilityWindow];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -77,8 +82,16 @@
   self.titleLabel.text = [NSString stringWithFormat:titleFormat, [self.dayFormatter stringFromDate:[Calendar date]]];
 
   self.dayForwardButton.hidden = [Calendar isOnToday];
+}
 
-  self.fertilityStatusView.backgroundColor = [UIColor redColor];
+- (void)updateFertilityWindow {
+  [Day loadDate:[NSDate date]
+        success:^(NSDictionary *response) {
+          [self.fertilityStatusView updateWithDay:[Day withAttributes:response[@"day"]]];
+        }
+        failure:^(NSError *error) {
+          NSLog(@"couldn't load day %@", error);
+        }];
 }
 
 - (IBAction)moveDayForward:(id)sender {

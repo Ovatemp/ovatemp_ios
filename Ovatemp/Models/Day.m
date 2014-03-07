@@ -35,7 +35,7 @@ static NSDictionary *propertyOptions;
   if(!propertyOptions) {
     propertyOptions = @{
                    @"cervicalFluid": kCervicalFluidTypes,
-                   @"cervicalPosition": kCervicalPositionTypes,
+                   @"cyclePhase": kCyclePhaseTypes,
                    @"vaginalSensation": kVaginalSensationTypes,
                    @"intercourse": kIntercourseTypes,
                    @"ferning": kFerningTypes,

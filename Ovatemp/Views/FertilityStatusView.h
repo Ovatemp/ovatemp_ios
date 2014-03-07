@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Day.h"
 
 @interface FertilityStatusView : UIView
 
 @property (nonatomic, strong) UILabel *label;
+- (void)updateWithDay:(Day *)day;
 
 @end

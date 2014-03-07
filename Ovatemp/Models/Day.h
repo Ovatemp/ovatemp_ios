@@ -26,14 +26,15 @@ typedef enum cervicalFluidTypesEnum
 #define kCervicalFluidTypes @[@"sticky", @"creamy", @"eggwhite"]
 @property (nonatomic, retain) NSString* cervicalFluid;
 
-#define kCervicalPositionTypes @[@"firm", @"medium", @"soft"]
-typedef enum cervicalPositionTypesEnum
+#define kCyclePhaseTypes @[@"period", @"preovulation", @"ovulation", @"postovulation"]
+typedef enum cyclePhaseTypesEnum
 {
-  CERVICAL_POSITION_FIRM,
-  CERVICAL_POSITION_MEDIUM,
-  CERVICAL_POSITION_SOFT,
-} CervicalPositionType;
-@property (nonatomic, retain) NSString* cervicalPosition;
+  CYCLE_PHASE_PERIOD,
+  CYCLE_PHASE_PREOVULATION,
+  CYCLE_PHASE_OVULATION,
+  CYCLE_PHASE_POSTOVULATION
+} CyclePhaseType;
+@property (nonatomic, retain) NSString* cyclePhase;
 
 #define kIntercourseTypes @[@"protected", @"unprotected"]
 typedef enum intercourseTypesEnum
