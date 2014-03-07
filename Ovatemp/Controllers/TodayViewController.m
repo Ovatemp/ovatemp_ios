@@ -94,85 +94,40 @@
   
   self.day = [Day forDate:[Calendar date]];
 
-  if(!self.day) {
-    // Create day response
-    [ConnectionManager get:@"/days"
-                    params:@{
-                             @"day": @{
-                                  @"date": [[Calendar date] shortDate],
-                                 },
-                             }
-                    target:self
-                   success:@selector(dayLoaded:)
-                   failure:@selector(presentError:)
-     ];
-  } else {
+  if(self.day) {
     [(UITableView*)self.view reloadData];
+  } else {
+    [Day loadDate:[Calendar date]
+          success:^(NSDictionary *response) {
+            self.day = [Day withAttributes:response[@"day"]];
+            [(UITableView*)self.view reloadData];
+
+          }
+          failure:^(NSError *error) {
+            NSLog(@"done loading! error: %@", error);
+          }];
   }
-}
-
-- (void)dayLoaded:(NSDictionary *)response {
-  self.day = [Day withAttributes:response[@"day"]];
-
-  [(UITableView*)self.view reloadData];
-}
-
-- (void)presentError:(NSError *)error {
-  NSLog(@"done loading! error: %@", error);
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  return 2;
+  return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  switch(section) {
-    case 0:
-      return 0;
-      break;
-    case 1:
-      return [self.rowExemplars count];
-      break;
-    default:
-      return 0;
-  }
+  return [self.rowExemplars count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  if(indexPath.section == 1) {
-    return [self tableView:tableView dayCellForRow:indexPath.row];
-  }
-
-  static NSString *FertileCellIdentifier = @"FertileCell";
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FertileCellIdentifier];
-  if (cell == nil) {
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:FertileCellIdentifier];
-
-    cell.textLabel.text = @"You're fertile! Go have sex!";
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    cell.backgroundColor = [UIColor blueColor];
-    cell.textLabel.textColor = [UIColor whiteColor];
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:14.0f];
-  }
-
-  return cell;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView dayCellForRow:(NSUInteger)row {
-  DayCell *cell = (DayCell *)[tableView dequeueReusableCellWithIdentifier:self.rowIdentifiers[row]];
+  DayCell *cell = (DayCell *)[tableView dequeueReusableCellWithIdentifier:self.rowIdentifiers[indexPath.row]];
   cell.day = self.day;
 
   return cell;
 }
 
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  if(indexPath.section == 0) {
-    return kFertilityRowHeight;
-  } else {
-    UIView *exemplar = self.rowExemplars[indexPath.row];
-    return exemplar.frame.size.height;
-  }
+  UIView *exemplar = self.rowExemplars[indexPath.row];
+  return exemplar.frame.size.height;
 }
 
 @end

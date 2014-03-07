@@ -107,6 +107,7 @@ typedef enum vaginalSensationTypesEnum
 @property (nonatomic, assign) BOOL disturbance;
 
 + (Day *)forDate:(NSDate *)date;
++ (void)loadDate:(NSDate *)date success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure;
 
 - (BOOL)isProperty:(NSString *)key ofType:(NSInteger)type;
 - (void)updateProperty:(NSString *)key withValue:(id)value;

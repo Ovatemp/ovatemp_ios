@@ -65,7 +65,19 @@ static NSDictionary *propertyOptions;
 
 + (Day *)forDate:(NSDate *)date {
   Day *day = [Day instances][[date shortDate]];
+
   return day;
+}
+
++ (void)loadDate:(NSDate *)date success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure {
+  [ConnectionManager get:@"/days"
+                  params:@{
+                           @"day": @{
+                               @"date": [date shortDate],
+                               },
+                           }
+                 success:onSuccess
+                 failure:onFailure];
 }
 
 - (void)toggleProperty:(NSString *)key withIndex:(NSInteger)index {

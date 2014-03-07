@@ -55,6 +55,7 @@
 		835BA2B918BBEFBF00C64350 /* +.png in Resources */ = {isa = PBXBuildFile; fileRef = 835BA2B718BBEFBF00C64350 /* +.png */; };
 		835BA2BA18BBEFBF00C64350 /* +@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835BA2B818BBEFBF00C64350 /* +@2x.png */; };
 		836A6C9D18BF819E0068F1D2 /* CycleChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 836A6C9C18BF819E0068F1D2 /* CycleChartView.m */; };
+		8387261018CA12C800A3277C /* FertilityStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8387260F18CA12C800A3277C /* FertilityStatusView.m */; };
 		839A345D18ABCBAD007CD657 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345C18ABCBAD007CD657 /* Calendar.m */; };
 		839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345F18ABCFB6007CD657 /* NavigationViewController.m */; };
 		839A346218ABCFB6007CD657 /* NavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346018ABCFB6007CD657 /* NavigationViewController.xib */; };
@@ -247,6 +248,8 @@
 		835BA2B818BBEFBF00C64350 /* +@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+@2x.png"; sourceTree = "<group>"; };
 		836A6C9B18BF819E0068F1D2 /* CycleChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleChartView.h; sourceTree = "<group>"; };
 		836A6C9C18BF819E0068F1D2 /* CycleChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleChartView.m; sourceTree = "<group>"; };
+		8387260E18CA12C800A3277C /* FertilityStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FertilityStatusView.h; sourceTree = "<group>"; };
+		8387260F18CA12C800A3277C /* FertilityStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FertilityStatusView.m; sourceTree = "<group>"; };
 		839A345B18ABCBAD007CD657 /* Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Calendar.h; path = Shared/Calendar.h; sourceTree = "<group>"; };
 		839A345C18ABCBAD007CD657 /* Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Calendar.m; path = Shared/Calendar.m; sourceTree = "<group>"; };
 		839A345E18ABCFB6007CD657 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
@@ -708,6 +711,8 @@
 				835AE58718B7A3B500FEAF98 /* CheckCell.xib */,
 				836A6C9B18BF819E0068F1D2 /* CycleChartView.h */,
 				836A6C9C18BF819E0068F1D2 /* CycleChartView.m */,
+				8387260E18CA12C800A3277C /* FertilityStatusView.h */,
+				8387260F18CA12C800A3277C /* FertilityStatusView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1113,6 +1118,7 @@
 				C308706B18980B1A00DC4364 /* Alert.m in Sources */,
 				834BD63E18AD4B5B003B6808 /* NSDate+ShortDate.m in Sources */,
 				C31220241899BB8E0027C4B3 /* Configuration.m in Sources */,
+				8387261018CA12C800A3277C /* FertilityStatusView.m in Sources */,
 				834BD63B18AD29EA003B6808 /* Day.m in Sources */,
 				835BA2B318BBCB8300C64350 /* SharedRelation.m in Sources */,
 				C36C510B189028190053A884 /* main.m in Sources */,

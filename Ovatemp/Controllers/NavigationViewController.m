@@ -77,6 +77,8 @@
   self.titleLabel.text = [NSString stringWithFormat:titleFormat, [self.dayFormatter stringFromDate:[Calendar date]]];
 
   self.dayForwardButton.hidden = [Calendar isOnToday];
+
+  self.fertilityStatusView.backgroundColor = [UIColor redColor];
 }
 
 - (IBAction)moveDayForward:(id)sender {

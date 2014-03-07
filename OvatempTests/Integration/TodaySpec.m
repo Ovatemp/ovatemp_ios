@@ -22,7 +22,7 @@ describe(@"Today screen", ^{
 
     it(@"has a functioning temperature cell", ^{
       // Scroll to the right row
-      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] inTableViewWithAccessibilityIdentifier:@"Checklist"];
+      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
 
       UILabel *temperatureLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Temperature Selection"];
       expect(temperatureLabel.text).to.equal(@"Swipe to edit");
@@ -46,7 +46,7 @@ describe(@"Today screen", ^{
 
     it(@"has a functioning period cell", ^{
       // Scroll to the right row
-      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1] inTableViewWithAccessibilityIdentifier:@"Checklist"];
+      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
 
       UILabel *periodLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Period Selection"];
       expect(periodLabel.text).to.equal(@"Swipe to edit");
@@ -61,7 +61,7 @@ describe(@"Today screen", ^{
     });
 
     it(@"it saves when going to the calendar and coming back", ^{
-      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1] inTableViewWithAccessibilityIdentifier:@"Checklist"];
+      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
 
       UILabel *periodLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Period Selection"];
       expect(periodLabel.text).to.equal(@"Swipe to edit");
@@ -77,7 +77,7 @@ describe(@"Today screen", ^{
     });
 
     it(@"has a functioning cervical fluid/vaginal sensation cell", ^{
-      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1] inTableViewWithAccessibilityIdentifier:@"Checklist"];
+      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
 
       UILabel *cervicalLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Cervical Fluid Selection"];
       expect(cervicalLabel.text).to.equal(@"Swipe to edit");
@@ -104,7 +104,7 @@ describe(@"Today screen", ^{
 
     it(@"has a functioning intercourse cell", ^{
       // Scroll to the right row
-      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:1] inTableViewWithAccessibilityIdentifier:@"Checklist"];
+      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
 
       UILabel *periodLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Intercourse Selection"];
       expect(periodLabel.text).to.equal(@"Swipe to edit");
@@ -120,7 +120,7 @@ describe(@"Today screen", ^{
 
     it(@"has a functioning symptoms/mood cell", ^{
       // Scroll to the right row
-      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:1] inTableViewWithAccessibilityIdentifier:@"Checklist"];
+      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
 
       UILabel *periodLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Mood Selection"];
       expect(periodLabel.text).to.equal(@"Swipe to edit");
@@ -147,7 +147,7 @@ describe(@"Today screen", ^{
 
     it(@"has a functioning supplements/medicine cell", ^{
       // Scroll to the right row
-      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:1] inTableViewWithAccessibilityIdentifier:@"Checklist"];
+      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
 
       UITextView *supplementsTextView = (UITextView*)[tester waitForViewWithAccessibilityLabel:@"Supplements Selection"];
       expect(supplementsTextView.text).to.equal(@"");
@@ -167,7 +167,7 @@ describe(@"Today screen", ^{
 
     it(@"has a functioning secondary signs cell", ^{
       // Scroll to the right row
-      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:1] inTableViewWithAccessibilityIdentifier:@"Checklist"];
+      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
 
       [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Ovulation Prediction Kit Selection"];
       [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Ferning Selection"];

@@ -77,7 +77,7 @@
                                 <action selector="moveDayForward:" destination="-1" eventType="touchUpInside" id="vXA-Jd-ygo"/>
                             </connections>
                         </button>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQr-yN-3sD">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQr-yN-3sD" customClass="FertilityStatusView">
                             <rect key="frame" x="0.0" y="93" width="320" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
