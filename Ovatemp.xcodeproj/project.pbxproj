@@ -222,7 +222,7 @@
 		8329353718B7FD1700F6875B /* Medicine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Medicine.m; sourceTree = "<group>"; };
 		8329353918B7FD2600F6875B /* Symptom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Symptom.h; sourceTree = "<group>"; };
 		8329353A18B7FD2600F6875B /* Symptom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Symptom.m; sourceTree = "<group>"; };
-		834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MoreStoryboard.storyboard; sourceTree = "<group>"; };
+		834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MoreStoryboard.storyboard; path = ../Views/MoreStoryboard.storyboard; sourceTree = "<group>"; };
 		834BD63318AD1519003B6808 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		834BD63418AD1519003B6808 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		834BD63618AD164E003B6808 /* SessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionController.h; sourceTree = "<group>"; };
@@ -253,7 +253,7 @@
 		839A345C18ABCBAD007CD657 /* Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Calendar.m; path = Shared/Calendar.m; sourceTree = "<group>"; };
 		839A345E18ABCFB6007CD657 /* OTDayNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTDayNavigationController.h; sourceTree = "<group>"; };
 		839A345F18ABCFB6007CD657 /* OTDayNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTDayNavigationController.m; sourceTree = "<group>"; };
-		839A346018ABCFB6007CD657 /* OTDayNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OTDayNavigationController.xib; path = ../Controllers/OTDayNavigationController.xib; sourceTree = "<group>"; };
+		839A346018ABCFB6007CD657 /* OTDayNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OTDayNavigationController.xib; sourceTree = "<group>"; };
 		839A346618ABF385007CD657 /* PeriodDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeriodDayCell.h; sourceTree = "<group>"; };
 		839A346718ABF385007CD657 /* PeriodDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeriodDayCell.m; sourceTree = "<group>"; };
 		839A346918ABF3B3007CD657 /* PeriodDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeriodDayCell.xib; sourceTree = "<group>"; };
@@ -369,7 +369,7 @@
 		C3BF8FDC1898449D00572F43 /* OvatempTestHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OvatempTestHelpers.m; sourceTree = "<group>"; };
 		C3BF8FDE1898452F00572F43 /* SessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionViewController.h; sourceTree = "<group>"; };
 		C3BF8FDF1898452F00572F43 /* SessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionViewController.m; sourceTree = "<group>"; };
-		C3BF8FE11898454300572F43 /* SessionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SessionViewController.xib; sourceTree = "<group>"; };
+		C3BF8FE11898454300572F43 /* SessionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SessionViewController.xib; path = ../Views/SessionViewController.xib; sourceTree = "<group>"; };
 		C3BF8FE3189848CE00572F43 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		C3BF8FE4189848CE00572F43 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		C3BF8FE618984AC200572F43 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -458,10 +458,23 @@
 		838752EA18CE4F2B00E8ED4A /* Containers */ = {
 			isa = PBXGroup;
 			children = (
+				839A346018ABCFB6007CD657 /* OTDayNavigationController.xib */,
 				839A345E18ABCFB6007CD657 /* OTDayNavigationController.h */,
 				839A345F18ABCFB6007CD657 /* OTDayNavigationController.m */,
 			);
 			name = Containers;
+			sourceTree = "<group>";
+		};
+		838752EB18CE502600E8ED4A /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				C3066C6518983537003F8B84 /* TodayViewController.h */,
+				C3066C6618983537003F8B84 /* TodayViewController.m */,
+				834BD63318AD1519003B6808 /* MoreViewController.h */,
+				834BD63418AD1519003B6808 /* MoreViewController.m */,
+				834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */,
+			);
+			name = Tabs;
 			sourceTree = "<group>";
 		};
 		839A345518ABCB14007CD657 /* DayCells */ = {
@@ -645,13 +658,11 @@
 		C308705A18980A2E00DC4364 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				838752EA18CE4F2B00E8ED4A /* Containers */,
+				838752EB18CE502600E8ED4A /* Tabs */,
+				C3BF8FE11898454300572F43 /* SessionViewController.xib */,
 				C3BF8FDE1898452F00572F43 /* SessionViewController.h */,
 				C3BF8FDF1898452F00572F43 /* SessionViewController.m */,
-				C3066C6518983537003F8B84 /* TodayViewController.h */,
-				C3066C6618983537003F8B84 /* TodayViewController.m */,
-				838752EA18CE4F2B00E8ED4A /* Containers */,
-				834BD63318AD1519003B6808 /* MoreViewController.h */,
-				834BD63418AD1519003B6808 /* MoreViewController.m */,
 				834BD63618AD164E003B6808 /* SessionController.h */,
 				834BD63718AD164E003B6808 /* SessionController.m */,
 			);
@@ -708,9 +719,6 @@
 				839A345518ABCB14007CD657 /* DayCells */,
 				835AE58418B7A36000FEAF98 /* CheckCell.h */,
 				835AE58518B7A36000FEAF98 /* CheckCell.m */,
-				839A346018ABCFB6007CD657 /* OTDayNavigationController.xib */,
-				C3BF8FE11898454300572F43 /* SessionViewController.xib */,
-				834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */,
 				835AE58718B7A3B500FEAF98 /* CheckCell.xib */,
 				836A6C9B18BF819E0068F1D2 /* CycleChartView.h */,
 				836A6C9C18BF819E0068F1D2 /* CycleChartView.m */,
