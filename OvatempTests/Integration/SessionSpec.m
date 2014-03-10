@@ -12,13 +12,14 @@
 #import "UIApplication-KIFAdditions.h"
 #import "Configuration.h"
 #import "SessionViewController.h"
+#import "Alert.h"
 
 SpecBegin(SessionSpec)
 
 describe(@"Authentication failures", ^{
   context(@"Logged in", ^{
     beforeEach(^{
-      [self logIn];
+      [self registerUser];
       [tester tapViewWithAccessibilityLabel:@"Today"];
     });
 
@@ -38,6 +39,34 @@ describe(@"Authentication failures", ^{
       [tester tapViewWithAccessibilityLabel:@"OK"];
 
       expect(ACTIVE_VIEW_CONTROLLER).to.beKindOf([SessionViewController class]);
+    });
+
+    it(@"should allow you to reset your password", ^{
+      [self logOut];
+
+      // This should match the registration email
+      [tester enterText:@"test@example.com" intoViewWithAccessibilityLabel:@"Email Field"];
+      [tester tapViewWithAccessibilityLabel:@"Reset Password"];
+      // Confirm
+      [tester tapViewWithAccessibilityLabel:@"Reset password"];
+
+
+      Alert *alert = (Alert *)[tester waitForViewWithAccessibilityLabel:@"Alert Message"];
+      NSString *message = alert.accessibilityValue;
+      expect([message hasPrefix:@"Please check your email"]).to.beTruthy;
+      [tester tapViewWithAccessibilityLabel:@"OK"];
+
+      // This should NOT match the registration email
+      [tester clearTextFromAndThenEnterText:@"INCORRECT@example.com" intoViewWithAccessibilityLabel:@"Email Field"];
+      [tester tapViewWithAccessibilityLabel:@"Reset Password"];
+      // Confirm
+      [tester tapViewWithAccessibilityLabel:@"Reset password"];
+
+      alert = (Alert *)[tester waitForViewWithAccessibilityLabel:@"Alert Message"];
+      message = alert.accessibilityValue;
+      expect([message hasPrefix:@"Sorry, we couldn't reset your password"]).to.beTruthy;
+
+      [tester tapViewWithAccessibilityLabel:@"OK"];
     });
   });
 });

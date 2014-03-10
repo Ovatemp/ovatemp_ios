@@ -38,15 +38,15 @@
                   failure:^(NSError *error) { NSLog(@"couldn't reset server's users"); }];
 }
 
-- (void)logIn {
+- (void)registerUser {
   if (![ACTIVE_VIEW_CONTROLLER isKindOfClass:[SessionViewController class]]) {
     [self logOut];
   }
   [self resetUsers];
   [tester waitForViewWithAccessibilityLabel:@"New Session Screen"];
 
-  [tester enterText:@"test@example.com" intoViewWithAccessibilityLabel:@"Email Field"];
-  [tester enterText:@"password" intoViewWithAccessibilityLabel:@"Password Field"];
+  [tester clearTextFromAndThenEnterText:@"test@example.com" intoViewWithAccessibilityLabel:@"Email Field"];
+  [tester clearTextFromAndThenEnterText:@"password" intoViewWithAccessibilityLabel:@"Password Field"];
   [tester tapViewWithAccessibilityLabel:@"Sign Up Button"];
 
   [tester waitForViewWithAccessibilityLabel:@"More"];

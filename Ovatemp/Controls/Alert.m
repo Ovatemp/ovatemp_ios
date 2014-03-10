@@ -110,6 +110,9 @@
   [_messageView sizeToFit];
   CGSize idealMessageSize = [_messageView sizeThatFits:textSize];
   _messageView.frame = CGRectMake(_titleView.frame.origin.x, CGRectGetMaxY(_titleView.frame) + SIBLING_SPACING, textWidth, idealMessageSize.height);
+  _messageView.isAccessibilityElement = TRUE;
+  _messageView.accessibilityLabel = @"Alert Message";
+  _messageView.accessibilityValue = self.message;
 
   CGFloat buttonWidth = containerSize.width / _buttons.count;
   CGFloat buttonTop = CGRectGetMaxY(_messageView.frame) + SIBLING_SPACING;
@@ -141,6 +144,8 @@
 
   UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
   [button setTitle:text forState:UIControlStateNormal];
+  button.isAccessibilityElement = TRUE;
+  button.accessibilityLabel = text;
   [button addTarget:self action:@selector(hide:) forControlEvents:UIControlEventTouchUpInside];
   if (target && action) {
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];

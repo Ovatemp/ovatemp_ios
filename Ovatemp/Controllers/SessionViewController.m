@@ -12,6 +12,8 @@
 #import "SessionController.h"
 
 #import "UIViewController+ConnectionManager.h"
+#import "UIViewController+Alerts.h"
+#import "UIAlertView+WithBlock.h"
 
 @interface SessionViewController () {
 }
@@ -64,11 +66,38 @@
    ];
 }
 
-- (IBAction)sessionReset:(id)sender {
-  [self startLoadingWithMessage:@"Resetting your password..."];
+- (IBAction)showResetPasswordForm:(id)sender {
+  UIAlertView *form = [[UIAlertView alloc] initWithTitle:@"Reset Password" message:@"Please enter the email address you log in with" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Reset password", nil];
+
+  [form setAlertViewStyle:UIAlertViewStylePlainTextInput];
+  UITextField *input = [form textFieldAtIndex:0];
+  [input setText:self.emailField.text];
+
+  [form showWithCompletion:^(UIAlertView *alertView, NSInteger buttonIndex) {
+    NSString *buttonTitle = [alertView buttonTitleAtIndex:buttonIndex];
+
+    if([buttonTitle isEqualToString:@"Reset password"]) {
+      UITextField *input = [form textFieldAtIndex:0];
+      NSString *email = input.text;
+      [self resetPassword:email];
+    }
+  }];
 }
 
-- (void)loggedIn:(NSDictionary *)response {  
+- (void)resetPassword:(NSString *)email {
+  [ConnectionManager post:@"/password_resets"
+                   params:@{
+                            @"email": email,
+                            }
+                  success:^(NSDictionary *response) {
+                    [self showNotificationWithTitle:nil message:@"We've sent you an email! Please check your email and complete the password reset process."];
+                  }
+                  failure:^(NSError *error) {
+                    [self showNotificationWithTitle:nil message:@"Sorry, we couldn't reset your password. Please make sure you used the right email address and that you are connected to the internet."];
+                  }];
+}
+
+- (void)loggedIn:(NSDictionary *)response {
   [SessionController loggedInWithUser:response[@"user"] andToken:response[@"token"]];
 
   [SessionController loadSupplementsEtc:response];

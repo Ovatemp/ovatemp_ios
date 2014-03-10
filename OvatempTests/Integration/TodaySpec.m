@@ -16,7 +16,7 @@ SpecBegin(TodaySpec)
 describe(@"Today screen", ^{
   context(@"Logged in", ^{
     beforeAll(^{
-      [self logIn];
+      [self registerUser];
       [tester tapViewWithAccessibilityLabel:@"Today"];
     });
 
