@@ -1,14 +1,14 @@
 //
-//  TemperatureScrollView.m
+//  OTScrollView.m
 //  Ovatemp
 //
 //  Created by Chris Cahoon on 2/28/14.
 //  Copyright (c) 2014 Back Forty. All rights reserved.
 //
 
-#import "TemperatureScrollView.h"
+#import "OTScrollView.h"
 
-@implementation TemperatureScrollView
+@implementation OTScrollView
 
 - (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event
 {

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8315E49B18C13F9B00DA935A /* TemperatureScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49A18C13F9B00DA935A /* TemperatureScrollView.m */; };
+		8315E49B18C13F9B00DA935A /* OTScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49A18C13F9B00DA935A /* OTScrollView.m */; };
 		8315E49E18C521A800DA935A /* SessionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49D18C521A800DA935A /* SessionSpec.m */; };
 		8328B75718ABFD6D00DA7A5E /* TemperatureDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8328B75618ABFD6D00DA7A5E /* TemperatureDayCell.xib */; };
 		8328B75A18ABFD9400DA7A5E /* TemperatureDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328B75918ABFD9400DA7A5E /* TemperatureDayCell.m */; };
@@ -180,8 +180,8 @@
 
 /* Begin PBXFileReference section */
 		803928D684F54DB4A5F86E42 /* Pods-OvatempTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.xcconfig"; path = "Pods/Pods-OvatempTests.xcconfig"; sourceTree = "<group>"; };
-		8315E49918C13F9B00DA935A /* TemperatureScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemperatureScrollView.h; sourceTree = "<group>"; };
-		8315E49A18C13F9B00DA935A /* TemperatureScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureScrollView.m; sourceTree = "<group>"; };
+		8315E49918C13F9B00DA935A /* OTScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTScrollView.h; sourceTree = "<group>"; };
+		8315E49A18C13F9B00DA935A /* OTScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTScrollView.m; sourceTree = "<group>"; };
 		8315E49D18C521A800DA935A /* SessionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionSpec.m; sourceTree = "<group>"; };
 		8328B75618ABFD6D00DA7A5E /* TemperatureDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemperatureDayCell.xib; sourceTree = "<group>"; };
 		8328B75818ABFD9400DA7A5E /* TemperatureDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemperatureDayCell.h; sourceTree = "<group>"; };
@@ -666,8 +666,8 @@
 				C3BF8FEA18984B9700572F43 /* TextFieldCell.m */,
 				834BD63F18AD6590003B6808 /* DayToggleButton.h */,
 				834BD64018AD6590003B6808 /* DayToggleButton.m */,
-				8315E49918C13F9B00DA935A /* TemperatureScrollView.h */,
-				8315E49A18C13F9B00DA935A /* TemperatureScrollView.m */,
+				8315E49918C13F9B00DA935A /* OTScrollView.h */,
+				8315E49A18C13F9B00DA935A /* OTScrollView.m */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -1133,7 +1133,7 @@
 				839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */,
 				8328B75D18AC002800DA7A5E /* FluidDayCell.m in Sources */,
 				836A6C9D18BF819E0068F1D2 /* CycleChartView.m in Sources */,
-				8315E49B18C13F9B00DA935A /* TemperatureScrollView.m in Sources */,
+				8315E49B18C13F9B00DA935A /* OTScrollView.m in Sources */,
 				C3D4F35418983B9C00CBB91A /* Constants.m in Sources */,
 				839A346818ABF385007CD657 /* PeriodDayCell.m in Sources */,
 				C3066C6818983537003F8B84 /* TodayViewController.m in Sources */,

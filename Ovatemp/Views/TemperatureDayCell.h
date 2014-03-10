@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "DayCell.h"
 #import "CycleChartView.h"
-#import "TemperatureScrollView.h"
+#import "OTScrollView.h"
 
 @interface TemperatureDayCell : DayCell
 
-@property (weak, nonatomic) IBOutlet TemperatureScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet OTScrollView *scrollView;
 @property (nonatomic, weak) IBOutlet UILabel *temperatureLabel;
 @property (nonatomic, weak) IBOutlet CycleChartView *cycleChartView;
 @property (weak, nonatomic) IBOutlet UILabel *editTemperatureLabel;

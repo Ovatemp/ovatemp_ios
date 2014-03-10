@@ -1,5 +1,5 @@
 //
-//  TemperatureScrollView.h
+//  OTScrollView.h
 //  Ovatemp
 //
 //  Created by Chris Cahoon on 2/28/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TemperatureScrollView : UIScrollView
+@interface OTScrollView : UIScrollView
 
 @end
