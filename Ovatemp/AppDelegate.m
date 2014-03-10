@@ -11,7 +11,7 @@
 #import "Alert.h"
 #import "SessionViewController.h"
 #import "TodayViewController.h"
-#import "NavigationViewController.h"
+#import "OTDayNavigationController.h"
 #import "SessionController.h"
 #import "User.h"
 
@@ -27,7 +27,9 @@
   UITabBarController *tabController = [[UITabBarController alloc] init];
   self.window.rootViewController = tabController;
 
-  UIViewController *todayController = [[TodayViewController alloc] init].withNavigation;
+  UIViewController *todayController = [[TodayViewController alloc] init];
+  todayController = [[OTDayNavigationController alloc] initWithContentViewController:todayController];
+
   UIViewController *calendarController = [[UIViewController alloc] init];
   UIViewController *coachingController = [[UIViewController alloc] init];
   UIViewController *communityController = [[UIViewController alloc] init];

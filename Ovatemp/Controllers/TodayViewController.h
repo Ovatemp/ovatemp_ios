@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "UIViewController+WithNavigation.h"
-
 @class Day;
 
 @interface TodayViewController : UITableViewController

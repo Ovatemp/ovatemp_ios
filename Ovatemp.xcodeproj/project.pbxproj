@@ -57,8 +57,8 @@
 		836A6C9D18BF819E0068F1D2 /* CycleChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 836A6C9C18BF819E0068F1D2 /* CycleChartView.m */; };
 		8387261018CA12C800A3277C /* FertilityStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8387260F18CA12C800A3277C /* FertilityStatusView.m */; };
 		839A345D18ABCBAD007CD657 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345C18ABCBAD007CD657 /* Calendar.m */; };
-		839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345F18ABCFB6007CD657 /* NavigationViewController.m */; };
-		839A346218ABCFB6007CD657 /* NavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346018ABCFB6007CD657 /* NavigationViewController.xib */; };
+		839A346118ABCFB6007CD657 /* OTDayNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345F18ABCFB6007CD657 /* OTDayNavigationController.m */; };
+		839A346218ABCFB6007CD657 /* OTDayNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346018ABCFB6007CD657 /* OTDayNavigationController.xib */; };
 		839A346818ABF385007CD657 /* PeriodDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A346718ABF385007CD657 /* PeriodDayCell.m */; };
 		839A346A18ABF3B3007CD657 /* PeriodDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346918ABF3B3007CD657 /* PeriodDayCell.xib */; };
 		83C6511418C91B7500F35CE5 /* BackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6511018C91B7500F35CE5 /* BackArrow.png */; };
@@ -163,7 +163,6 @@
 		C3BF8FE5189848CE00572F43 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FE4189848CE00572F43 /* BaseModel.m */; };
 		C3BF8FE818984AC200572F43 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FE718984AC200572F43 /* User.m */; };
 		C3BF8FEB18984B9700572F43 /* TextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FEA18984B9700572F43 /* TextFieldCell.m */; };
-		C3D4F351189835CC00CBB91A /* UIViewController+WithNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D4F350189835CC00CBB91A /* UIViewController+WithNavigation.m */; };
 		C3D4F35418983B9C00CBB91A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D4F35318983B9C00CBB91A /* Constants.m */; };
 		D18C51F548DA4E59B785DE16 /* libPods-Ovatemp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */; };
 /* End PBXBuildFile section */
@@ -252,9 +251,9 @@
 		8387260F18CA12C800A3277C /* FertilityStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FertilityStatusView.m; sourceTree = "<group>"; };
 		839A345B18ABCBAD007CD657 /* Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Calendar.h; path = Shared/Calendar.h; sourceTree = "<group>"; };
 		839A345C18ABCBAD007CD657 /* Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Calendar.m; path = Shared/Calendar.m; sourceTree = "<group>"; };
-		839A345E18ABCFB6007CD657 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
-		839A345F18ABCFB6007CD657 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
-		839A346018ABCFB6007CD657 /* NavigationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NavigationViewController.xib; path = ../Controllers/NavigationViewController.xib; sourceTree = "<group>"; };
+		839A345E18ABCFB6007CD657 /* OTDayNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTDayNavigationController.h; sourceTree = "<group>"; };
+		839A345F18ABCFB6007CD657 /* OTDayNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTDayNavigationController.m; sourceTree = "<group>"; };
+		839A346018ABCFB6007CD657 /* OTDayNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OTDayNavigationController.xib; path = ../Controllers/OTDayNavigationController.xib; sourceTree = "<group>"; };
 		839A346618ABF385007CD657 /* PeriodDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeriodDayCell.h; sourceTree = "<group>"; };
 		839A346718ABF385007CD657 /* PeriodDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeriodDayCell.m; sourceTree = "<group>"; };
 		839A346918ABF3B3007CD657 /* PeriodDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeriodDayCell.xib; sourceTree = "<group>"; };
@@ -377,8 +376,6 @@
 		C3BF8FE718984AC200572F43 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		C3BF8FE918984B9700572F43 /* TextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldCell.h; sourceTree = "<group>"; };
 		C3BF8FEA18984B9700572F43 /* TextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldCell.m; sourceTree = "<group>"; };
-		C3D4F34F189835CC00CBB91A /* UIViewController+WithNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WithNavigation.h"; sourceTree = "<group>"; };
-		C3D4F350189835CC00CBB91A /* UIViewController+WithNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WithNavigation.m"; sourceTree = "<group>"; };
 		C3D4F35218983B9C00CBB91A /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C3D4F35318983B9C00CBB91A /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		DA450FC5E9904FF093E24AC1 /* Pods-Ovatemp.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.xcconfig"; path = "Pods/Pods-Ovatemp.xcconfig"; sourceTree = "<group>"; };
@@ -456,6 +453,15 @@
 				83EB3EB318AEA7D500EA91AC /* VaginalSensation */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		838752EA18CE4F2B00E8ED4A /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				839A345E18ABCFB6007CD657 /* OTDayNavigationController.h */,
+				839A345F18ABCFB6007CD657 /* OTDayNavigationController.m */,
+			);
+			name = Containers;
 			sourceTree = "<group>";
 		};
 		839A345518ABCB14007CD657 /* DayCells */ = {
@@ -628,8 +634,6 @@
 				C308706718980A4900DC4364 /* UIViewController+Alerts.m */,
 				C32C4A8A18985A4D00B05009 /* UIViewController+ConnectionManager.h */,
 				C32C4A8B18985A4D00B05009 /* UIViewController+ConnectionManager.m */,
-				C3D4F34F189835CC00CBB91A /* UIViewController+WithNavigation.h */,
-				C3D4F350189835CC00CBB91A /* UIViewController+WithNavigation.m */,
 				834BD63C18AD4B5B003B6808 /* NSDate+ShortDate.h */,
 				834BD63D18AD4B5B003B6808 /* NSDate+ShortDate.m */,
 				835BA2B418BBDC0200C64350 /* UIAlertView+WithBlock.h */,
@@ -645,8 +649,7 @@
 				C3BF8FDF1898452F00572F43 /* SessionViewController.m */,
 				C3066C6518983537003F8B84 /* TodayViewController.h */,
 				C3066C6618983537003F8B84 /* TodayViewController.m */,
-				839A345E18ABCFB6007CD657 /* NavigationViewController.h */,
-				839A345F18ABCFB6007CD657 /* NavigationViewController.m */,
+				838752EA18CE4F2B00E8ED4A /* Containers */,
 				834BD63318AD1519003B6808 /* MoreViewController.h */,
 				834BD63418AD1519003B6808 /* MoreViewController.m */,
 				834BD63618AD164E003B6808 /* SessionController.h */,
@@ -705,7 +708,7 @@
 				839A345518ABCB14007CD657 /* DayCells */,
 				835AE58418B7A36000FEAF98 /* CheckCell.h */,
 				835AE58518B7A36000FEAF98 /* CheckCell.m */,
-				839A346018ABCFB6007CD657 /* NavigationViewController.xib */,
+				839A346018ABCFB6007CD657 /* OTDayNavigationController.xib */,
 				C3BF8FE11898454300572F43 /* SessionViewController.xib */,
 				834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */,
 				835AE58718B7A3B500FEAF98 /* CheckCell.xib */,
@@ -983,7 +986,7 @@
 				83EB3F1E18AEA7D500EA91AC /* cal_selected@2x.png in Resources */,
 				83EB3F2718AEA7D500EA91AC /* community_unselect.png in Resources */,
 				83EB3F1518AEA7D500EA91AC /* Meditation@2x.png in Resources */,
-				839A346218ABCFB6007CD657 /* NavigationViewController.xib in Resources */,
+				839A346218ABCFB6007CD657 /* OTDayNavigationController.xib in Resources */,
 				83EB3ED218AEA7D500EA91AC /* Hydrate-01@2x.png in Resources */,
 				83EB3ED518AEA7D500EA91AC /* Nourish-01@2x.png in Resources */,
 				832934CC18B7D93200F6875B /* Medicines@2x.png in Resources */,
@@ -1111,7 +1114,6 @@
 				834BD63518AD1519003B6808 /* MoreViewController.m in Sources */,
 				C32C4A8F18985A7800B05009 /* ConnectionManager.m in Sources */,
 				C36C510F189028190053A884 /* AppDelegate.m in Sources */,
-				C3D4F351189835CC00CBB91A /* UIViewController+WithNavigation.m in Sources */,
 				8329353B18B7FD2600F6875B /* Symptom.m in Sources */,
 				C32C4A89189856C100B05009 /* ButtonCell.m in Sources */,
 				834BD64118AD6590003B6808 /* DayToggleButton.m in Sources */,
@@ -1130,7 +1132,7 @@
 				8328B75A18ABFD9400DA7A5E /* TemperatureDayCell.m in Sources */,
 				8328B76A18AC009C00DA7A5E /* IntercourseDayCell.m in Sources */,
 				835AE58618B7A36000FEAF98 /* CheckCell.m in Sources */,
-				839A346118ABCFB6007CD657 /* NavigationViewController.m in Sources */,
+				839A346118ABCFB6007CD657 /* OTDayNavigationController.m in Sources */,
 				8328B75D18AC002800DA7A5E /* FluidDayCell.m in Sources */,
 				836A6C9D18BF819E0068F1D2 /* CycleChartView.m in Sources */,
 				8315E49B18C13F9B00DA935A /* OTScrollView.m in Sources */,

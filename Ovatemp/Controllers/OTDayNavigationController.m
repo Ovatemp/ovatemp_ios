@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Back Forty. All rights reserved.
 //
 
-#import "NavigationViewController.h"
+#import "OTDayNavigationController.h"
 #import "Calendar.h"
 #import "Day.h"
 
-@interface NavigationViewController ()
+@interface OTDayNavigationController ()
 
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
@@ -18,10 +18,10 @@
 @property (nonatomic, strong) NSDateFormatter *dayFormatter;
 @end
 
-@implementation NavigationViewController
+@implementation OTDayNavigationController
 
 - (id)initWithContentViewController:(UIViewController *)contentViewController {
-    self = [super initWithNibName:@"NavigationViewController" bundle:nil];
+    self = [super initWithNibName:@"OTDayNavigationController" bundle:nil];
     if (self) {
       self.contentViewController = contentViewController;
       self.edgesForExtendedLayout = UIRectEdgeNone;

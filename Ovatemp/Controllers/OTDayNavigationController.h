@@ -1,5 +1,5 @@
 //
-//  NavigationViewController.h
+//  OTDayNavigationController.h
 //  Ovatemp
 //
 //  Created by Chris Cahoon on 2/12/14.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FertilityStatusView.h"
 
-@interface NavigationViewController : UIViewController
+@interface OTDayNavigationController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;

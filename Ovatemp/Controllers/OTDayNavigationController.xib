@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NavigationViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OTDayNavigationController">
             <connections>
                 <outlet property="contentView" destination="MfW-Ml-1k3" id="2cc-Z3-BVV"/>
                 <outlet property="dateLabel" destination="OT6-cc-AiV" id="xiK-hp-lBj"/>
