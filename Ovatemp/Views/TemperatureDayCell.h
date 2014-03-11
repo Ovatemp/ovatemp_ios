@@ -15,7 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet OTScrollView *scrollView;
 @property (nonatomic, weak) IBOutlet UILabel *temperatureLabel;
-@property (nonatomic, weak) IBOutlet CycleChartView *cycleChartView;
+@property (nonatomic, weak) IBOutlet UIImageView *cycleImageView;
 @property (weak, nonatomic) IBOutlet UILabel *editTemperatureLabel;
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 @property (weak, nonatomic) IBOutlet UIButton *setTemperatureButton;

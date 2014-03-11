@@ -1,0 +1,86 @@
+//
+//  CycleViewController.m
+//  Ovatemp
+//
+//  Created by Chris Cahoon on 3/10/14.
+//  Copyright (c) 2014 Back Forty. All rights reserved.
+//
+
+#import "CycleViewController.h"
+#import "CycleChartView.h"
+
+@interface CycleViewController ()
+
+@end
+
+@implementation CycleViewController
+
+- (id)init {
+  self = [super initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationVertical options:nil];
+  if (self) {
+    self.delegate = self;
+    self.dataSource = self;
+  }
+  return self;
+}
+
+- (BOOL)prefersStatusBarHidden {
+  return YES;
+}
+
+- (void)setDay:(Day *)day {
+  Cycle *cycle = [[Cycle alloc] initWithDay:day];
+  UIViewController *vc = [self viewControllerWithCycle:cycle];
+
+  [self setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+}
+
+- (void)viewDidLoad
+{
+  [super viewDidLoad];
+	// Do any additional setup after loading the view.
+}
+
+- (void)didReceiveMemoryWarning
+{
+  [super didReceiveMemoryWarning];
+  // Dispose of any resources that can be recreated.
+}
+
+- (UIViewController *)viewControllerWithCycle:(Cycle *)cycle {
+  CycleChartView *chart = [[[NSBundle mainBundle] loadNibNamed:@"CycleChartView" owner:self options:nil] lastObject];
+
+  chart.cycle = cycle;
+  chart.landscape = TRUE;
+  [chart generateDays];
+
+  UIViewController *vc = [[UIViewController alloc] init];
+
+  CGSize landscapeSize = CGSizeMake(self.view.bounds.size.height, self.view.bounds.size.width);
+  vc.view = chart;
+
+  UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+  if(orientation == UIInterfaceOrientationLandscapeRight) {
+    vc.view.transform = CGAffineTransformMakeRotation(M_PI/2);
+  } else {
+    vc.view.transform = CGAffineTransformMakeRotation(3 * M_PI/2);
+  }
+
+  return vc;
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+  CycleChartView *otherChart = (CycleChartView *)viewController.view;
+  Cycle *cycle = [otherChart.cycle nextCycle];
+
+  return [self viewControllerWithCycle:otherChart.cycle];
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+  CycleChartView *otherChart = (CycleChartView *)viewController.view;
+  Cycle *cycle = [otherChart.cycle previousCycle];
+
+  return [self viewControllerWithCycle:otherChart.cycle];
+}
+
+@end

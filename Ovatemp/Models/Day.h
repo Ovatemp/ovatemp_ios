@@ -109,6 +109,8 @@ typedef enum vaginalSensationTypesEnum
 
 + (Day *)forDate:(NSDate *)date;
 + (void)loadDate:(NSDate *)date success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure;
+- (Day *)nextDay;
+- (Day *)previousDay;
 
 - (BOOL)isProperty:(NSString *)key ofType:(NSInteger)type;
 - (void)updateProperty:(NSString *)key withValue:(id)value;

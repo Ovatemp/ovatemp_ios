@@ -7,11 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Cycle.h"
 
 @interface CycleChartView : UIView
 
 @property NSArray *days;
+@property (nonatomic, strong) Cycle *cycle;
+@property (nonatomic, assign) BOOL landscape;
+
+@property (weak, nonatomic) IBOutlet UIImageView *chartImageView;
+
+@property (weak, nonatomic) IBOutlet UILabel *dateRangeLabel;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *iconsContainerLeadingSpace;
+@property (weak, nonatomic) IBOutlet UIView *iconsContainerView;
+@property (weak, nonatomic) IBOutlet UIView *periodIconsView;
+@property (weak, nonatomic) IBOutlet UIView *opkIconsView;
+@property (weak, nonatomic) IBOutlet UIView *sexIconsView;
+@property (weak, nonatomic) IBOutlet UIView *cervicalFluidIconsView;
 
 - (void)generateDays;
+- (UIImage *)drawChart:(CGSize)size;
+- (void)calculateStyle:(CGSize)size;
 
 @end

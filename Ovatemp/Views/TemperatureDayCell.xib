@@ -21,10 +21,22 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="117"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ZG-Lq-vnI" customClass="CycleChartView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ZG-Lq-vnI" customClass="UIImageView">
                                         <rect key="frame" x="0.0" y="29" width="320" height="88"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v2Y-Yx-2YA">
+                                                <rect key="frame" x="5" y="0.0" width="310" height="88"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="v2Y-Yx-2YA" secondAttribute="trailing" constant="5" id="2yU-jS-02Z"/>
+                                            <constraint firstAttribute="bottom" secondItem="v2Y-Yx-2YA" secondAttribute="bottom" id="BSH-VA-HbE"/>
+                                            <constraint firstItem="v2Y-Yx-2YA" firstAttribute="leading" secondItem="1ZG-Lq-vnI" secondAttribute="leading" constant="5" id="D6Z-tv-uRG"/>
+                                            <constraint firstItem="v2Y-Yx-2YA" firstAttribute="top" secondItem="1ZG-Lq-vnI" secondAttribute="top" id="hEc-T9-DC8"/>
+                                        </constraints>
                                     </view>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrs-fd-YpP">
                                         <rect key="frame" x="8" y="5" width="110" height="21"/>
@@ -169,7 +181,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="cycleChartView" destination="1ZG-Lq-vnI" id="GSb-OM-vY3"/>
+                <outlet property="cycleImageView" destination="v2Y-Yx-2YA" id="0d2-zv-HyQ"/>
                 <outlet property="disturbanceSwitch" destination="P1Z-y6-AfI" id="5CT-eu-pVb"/>
                 <outlet property="editTemperatureLabel" destination="z8X-pk-Ekk" id="Eok-es-8Gd"/>
                 <outlet property="page1" destination="0Vq-He-dBR" id="tcI-8n-iIy"/>

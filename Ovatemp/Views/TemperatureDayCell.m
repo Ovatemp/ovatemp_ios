@@ -30,7 +30,10 @@
   self.editTemperatureLabel.hidden = !temperatureSet;
   self.setTemperatureButton.hidden = temperatureSet;
 
-  [self.cycleChartView generateDays];
+  CycleChartView *ccv = [[CycleChartView alloc] init];
+  [ccv generateDays];
+  [ccv calculateStyle:self.cycleImageView.bounds.size];
+  [self.cycleImageView setImage:[ccv drawChart:self.cycleImageView.bounds.size]];
 
   if(temperatureSet) {
     NSString *temperatureString = [NSString stringWithFormat:@"%.1fºF", [self.day.temperature floatValue]];

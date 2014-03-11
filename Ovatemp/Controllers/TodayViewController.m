@@ -11,11 +11,14 @@
 #import "UIViewController+ConnectionManager.h"
 #import "Day.h"
 #import "DayCell.h"
+#import "CycleViewController.h"
 
 @interface TodayViewController ()
 
 @property NSArray *rowIdentifiers;
 @property NSMutableArray *rowExemplars;
+@property BOOL isShowingLandscapeView;
+@property CycleViewController *cycleViewController;
 
 @end
 
@@ -61,7 +64,48 @@
    selector:@selector(applicationWillResign)
    name:UIApplicationWillResignActiveNotification
    object:NULL];
+
+  [self setupLandscape];
 }
+
+- (void)setupLandscape {
+  self.cycleViewController = [[CycleViewController alloc] init];
+  self.isShowingLandscapeView = NO;
+
+  [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(orientationChanged:)
+                                               name:UIDeviceOrientationDidChangeNotification
+                                             object:nil];
+
+
+}
+
+- (void)orientationChanged:(NSNotification *)notification
+{
+  if([self isCorrectOrientation]) {
+    return;
+  }
+
+  UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+  if(UIDeviceOrientationIsLandscape(deviceOrientation)) {
+    [self.cycleViewController setDay:self.day];
+
+    [self presentViewController:self.cycleViewController animated:NO completion:nil];
+    self.isShowingLandscapeView = YES;
+  } else {
+    [self dismissViewControllerAnimated:NO completion:nil];
+    self.isShowingLandscapeView = NO;
+  }
+}
+
+- (BOOL)isCorrectOrientation {
+  UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+
+  return (UIDeviceOrientationIsLandscape(deviceOrientation) && self.isShowingLandscapeView) ||
+         (UIDeviceOrientationIsPortrait(deviceOrientation) && !self.isShowingLandscapeView);
+}
+
 
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
@@ -95,18 +139,22 @@
   self.day = [Day forDate:[Calendar date]];
 
   if(self.day) {
-    [(UITableView*)self.view reloadData];
+    [self dayChanged];
   } else {
     [Day loadDate:[Calendar date]
           success:^(NSDictionary *response) {
             self.day = [Day withAttributes:response[@"day"]];
-            [(UITableView*)self.view reloadData];
-
+            [self dayChanged];
           }
           failure:^(NSError *error) {
             NSLog(@"done loading! error: %@", error);
           }];
   }
+}
+
+- (void)dayChanged {
+  [(UITableView*)self.view reloadData];
+  [self.cycleViewController setDay:self.day];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

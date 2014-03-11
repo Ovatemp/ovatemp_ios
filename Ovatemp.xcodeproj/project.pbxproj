@@ -56,6 +56,9 @@
 		835BA2BA18BBEFBF00C64350 /* +@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835BA2B818BBEFBF00C64350 /* +@2x.png */; };
 		836A6C9D18BF819E0068F1D2 /* CycleChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 836A6C9C18BF819E0068F1D2 /* CycleChartView.m */; };
 		8387261018CA12C800A3277C /* FertilityStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8387260F18CA12C800A3277C /* FertilityStatusView.m */; };
+		838752F118CE5F9300E8ED4A /* CycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 838752F018CE5F9300E8ED4A /* CycleViewController.m */; };
+		838752F418CF44BC00E8ED4A /* Cycle.m in Sources */ = {isa = PBXBuildFile; fileRef = 838752F318CF44BC00E8ED4A /* Cycle.m */; };
+		838752FA18CF8E2E00E8ED4A /* CycleChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 838752F918CF8E2E00E8ED4A /* CycleChartView.xib */; };
 		839A345D18ABCBAD007CD657 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345C18ABCBAD007CD657 /* Calendar.m */; };
 		839A346118ABCFB6007CD657 /* OTDayNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345F18ABCFB6007CD657 /* OTDayNavigationController.m */; };
 		839A346218ABCFB6007CD657 /* OTDayNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346018ABCFB6007CD657 /* OTDayNavigationController.xib */; };
@@ -249,6 +252,11 @@
 		836A6C9C18BF819E0068F1D2 /* CycleChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleChartView.m; sourceTree = "<group>"; };
 		8387260E18CA12C800A3277C /* FertilityStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FertilityStatusView.h; sourceTree = "<group>"; };
 		8387260F18CA12C800A3277C /* FertilityStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FertilityStatusView.m; sourceTree = "<group>"; };
+		838752EF18CE5F9300E8ED4A /* CycleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleViewController.h; sourceTree = "<group>"; };
+		838752F018CE5F9300E8ED4A /* CycleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleViewController.m; sourceTree = "<group>"; };
+		838752F218CF44BC00E8ED4A /* Cycle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cycle.h; sourceTree = "<group>"; };
+		838752F318CF44BC00E8ED4A /* Cycle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cycle.m; sourceTree = "<group>"; };
+		838752F918CF8E2E00E8ED4A /* CycleChartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CycleChartView.xib; sourceTree = "<group>"; };
 		839A345B18ABCBAD007CD657 /* Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Calendar.h; path = Shared/Calendar.h; sourceTree = "<group>"; };
 		839A345C18ABCBAD007CD657 /* Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Calendar.m; path = Shared/Calendar.m; sourceTree = "<group>"; };
 		839A345E18ABCFB6007CD657 /* OTDayNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTDayNavigationController.h; sourceTree = "<group>"; };
@@ -665,6 +673,8 @@
 				C3BF8FDF1898452F00572F43 /* SessionViewController.m */,
 				834BD63618AD164E003B6808 /* SessionController.h */,
 				834BD63718AD164E003B6808 /* SessionController.m */,
+				838752EF18CE5F9300E8ED4A /* CycleViewController.h */,
+				838752F018CE5F9300E8ED4A /* CycleViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -707,6 +717,8 @@
 				8329353A18B7FD2600F6875B /* Symptom.m */,
 				835BA2B118BBCB8300C64350 /* SharedRelation.h */,
 				835BA2B218BBCB8300C64350 /* SharedRelation.m */,
+				838752F218CF44BC00E8ED4A /* Cycle.h */,
+				838752F318CF44BC00E8ED4A /* Cycle.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -724,6 +736,7 @@
 				836A6C9C18BF819E0068F1D2 /* CycleChartView.m */,
 				8387260E18CA12C800A3277C /* FertilityStatusView.h */,
 				8387260F18CA12C800A3277C /* FertilityStatusView.m */,
+				838752F918CF8E2E00E8ED4A /* CycleChartView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -896,6 +909,11 @@
 				TargetAttributes = {
 					C36C50FA189028190053A884 = {
 						DevelopmentTeam = MC934XNWAV;
+						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+						};
 					};
 					C3BF8FBC1898409C00572F43 = {
 						TestTargetID = C36C50FA189028190053A884;
@@ -953,6 +971,7 @@
 				83EB3F2418AEA7D500EA91AC /* coaching_unselect@2x.png in Resources */,
 				83EB3ECF18AEA7D500EA91AC /* Energize-01.png in Resources */,
 				83EB3EC018AEA7D500EA91AC /* Sticky.png in Resources */,
+				838752FA18CF8E2E00E8ED4A /* CycleChartView.xib in Resources */,
 				835BA2BA18BBEFBF00C64350 /* +@2x.png in Resources */,
 				8328B75718ABFD6D00DA7A5E /* TemperatureDayCell.xib in Resources */,
 				83EB3ED018AEA7D500EA91AC /* Energize-01@2x.png in Resources */,
@@ -1113,6 +1132,8 @@
 			files = (
 				C3BF8FE818984AC200572F43 /* User.m in Sources */,
 				8328B76D18AC00A800DA7A5E /* SignsDayCell.m in Sources */,
+				838752F418CF44BC00E8ED4A /* Cycle.m in Sources */,
+				838752F118CE5F9300E8ED4A /* CycleViewController.m in Sources */,
 				C3BF8FEB18984B9700572F43 /* TextFieldCell.m in Sources */,
 				C3BF8FE5189848CE00572F43 /* BaseModel.m in Sources */,
 				C308706818980A4900DC4364 /* UIViewController+Alerts.m in Sources */,

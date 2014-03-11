@@ -80,6 +80,14 @@ static NSDictionary *propertyOptions;
                  failure:onFailure];
 }
 
+- (Day *)nextDay {
+  return [Day forDate:[self.date dateByAddingTimeInterval:1 * 60 * 60 * 24]];
+}
+
+- (Day *)previousDay {
+  return [Day forDate:[self.date dateByAddingTimeInterval:-1 * 60 * 60 * 24]];
+}
+
 - (void)toggleProperty:(NSString *)key withIndex:(NSInteger)index {
   NSArray *enumeratedStrings = propertyOptions[key];
   NSString *value = enumeratedStrings[index];
