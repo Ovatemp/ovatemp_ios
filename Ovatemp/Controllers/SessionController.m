@@ -23,6 +23,8 @@
   [User setCurrent:user];
   [Configuration sharedConfiguration].token = token;
   [Calendar resetDate];
+
+  [[NSNotificationCenter defaultCenter] postNotificationName:kSessionChangedNotificationName object:self];
 }
 
 + (void)refreshToken {
@@ -34,10 +36,16 @@
    ];
 }
 
++ (BOOL)loggedIn {
+  return [Configuration sharedConfiguration].token != nil;
+}
+
 + (void)logOut {
   [User setCurrent:nil];
   [Configuration sharedConfiguration].token = nil;
   [Day resetInstances];
+
+  [[NSNotificationCenter defaultCenter] postNotificationName:kSessionChangedNotificationName object:self];
 }
 
 + (void)presentError:(NSError *)error {

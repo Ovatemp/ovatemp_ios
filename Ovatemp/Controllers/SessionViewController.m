@@ -101,8 +101,6 @@
   [SessionController loggedInWithUser:response[@"user"] andToken:response[@"token"]];
 
   [SessionController loadSupplementsEtc:response];
-
-  [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

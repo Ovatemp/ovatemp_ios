@@ -23,14 +23,6 @@ describe(@"Authentication failures", ^{
       [tester tapViewWithAccessibilityLabel:@"Today"];
     });
 
-    it(@"should kick you out if your token changes", ^{
-      [Configuration sharedConfiguration].token = @"BOGUS";
-
-      [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Go to Previous Day"];
-
-      expect(ACTIVE_VIEW_CONTROLLER).to.beKindOf([SessionViewController class]);
-    });
-
     it(@"should kick you out if your token becomes invalid and you make a request", ^{
       [self resetUsers];
       [tester tapViewWithAccessibilityLabel:@"Go to Previous Day"];

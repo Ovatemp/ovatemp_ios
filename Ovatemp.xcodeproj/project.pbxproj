@@ -64,6 +64,9 @@
 		839A346218ABCFB6007CD657 /* OTDayNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346018ABCFB6007CD657 /* OTDayNavigationController.xib */; };
 		839A346818ABF385007CD657 /* PeriodDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A346718ABF385007CD657 /* PeriodDayCell.m */; };
 		839A346A18ABF3B3007CD657 /* PeriodDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346918ABF3B3007CD657 /* PeriodDayCell.xib */; };
+		83BD853818D0B23900890EDA /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BD853718D0B23900890EDA /* RootViewController.m */; };
+		83BD853A18D0B7A900890EDA /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83BD853918D0B7A900890EDA /* RootViewController.xib */; };
+		83BD853C18D0B82300890EDA /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 83BD853B18D0B82300890EDA /* LaunchImage.png */; };
 		83C6511418C91B7500F35CE5 /* BackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6511018C91B7500F35CE5 /* BackArrow.png */; };
 		83C6511518C91B7500F35CE5 /* BackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6511118C91B7500F35CE5 /* BackArrow@2x.png */; };
 		83C6511618C91B7500F35CE5 /* ForwardArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6511218C91B7500F35CE5 /* ForwardArrow.png */; };
@@ -265,6 +268,10 @@
 		839A346618ABF385007CD657 /* PeriodDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeriodDayCell.h; sourceTree = "<group>"; };
 		839A346718ABF385007CD657 /* PeriodDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeriodDayCell.m; sourceTree = "<group>"; };
 		839A346918ABF3B3007CD657 /* PeriodDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeriodDayCell.xib; sourceTree = "<group>"; };
+		83BD853618D0B23900890EDA /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		83BD853718D0B23900890EDA /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		83BD853918D0B7A900890EDA /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		83BD853B18D0B82300890EDA /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
 		83C6511018C91B7500F35CE5 /* BackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackArrow.png; sourceTree = "<group>"; };
 		83C6511118C91B7500F35CE5 /* BackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackArrow@2x.png"; sourceTree = "<group>"; };
 		83C6511218C91B7500F35CE5 /* ForwardArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ForwardArrow.png; sourceTree = "<group>"; };
@@ -444,6 +451,7 @@
 		834BD64318AEA1A4003B6808 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				83BD853B18D0B82300890EDA /* LaunchImage.png */,
 				83C6511018C91B7500F35CE5 /* BackArrow.png */,
 				83C6511118C91B7500F35CE5 /* BackArrow@2x.png */,
 				83C6511218C91B7500F35CE5 /* ForwardArrow.png */,
@@ -675,6 +683,9 @@
 				834BD63718AD164E003B6808 /* SessionController.m */,
 				838752EF18CE5F9300E8ED4A /* CycleViewController.h */,
 				838752F018CE5F9300E8ED4A /* CycleViewController.m */,
+				83BD853618D0B23900890EDA /* RootViewController.h */,
+				83BD853718D0B23900890EDA /* RootViewController.m */,
+				83BD853918D0B7A900890EDA /* RootViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1035,7 +1046,9 @@
 				83EB3F3018AEA7D500EA91AC /* today_unselect.png in Resources */,
 				83EB3F1218AEA7D500EA91AC /* Lifestyle .png in Resources */,
 				83EB3ECD18AEA7D500EA91AC /* Activate.png in Resources */,
+				83BD853C18D0B82300890EDA /* LaunchImage.png in Resources */,
 				83C6511418C91B7500F35CE5 /* BackArrow.png in Resources */,
+				83BD853A18D0B7A900890EDA /* RootViewController.xib in Resources */,
 				83EB3EDE18AEA7D500EA91AC /* Protected@2x.png in Resources */,
 				83C6511518C91B7500F35CE5 /* BackArrow@2x.png in Resources */,
 				83EB3EDA18AEA7D500EA91AC /* Ventilate-01.png in Resources */,
@@ -1138,6 +1151,7 @@
 				C3BF8FE5189848CE00572F43 /* BaseModel.m in Sources */,
 				C308706818980A4900DC4364 /* UIViewController+Alerts.m in Sources */,
 				835BA2B618BBDC0200C64350 /* UIAlertView+WithBlock.m in Sources */,
+				83BD853818D0B23900890EDA /* RootViewController.m in Sources */,
 				8328B77018AC00B500DA7A5E /* SupplementsDayCell.m in Sources */,
 				C3BF8FE01898452F00572F43 /* SessionViewController.m in Sources */,
 				834BD63518AD1519003B6808 /* MoreViewController.m in Sources */,

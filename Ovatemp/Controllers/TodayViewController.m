@@ -94,7 +94,7 @@
     [self presentViewController:self.cycleViewController animated:NO completion:nil];
     self.isShowingLandscapeView = YES;
   } else {
-    [self dismissViewControllerAnimated:NO completion:nil];
+    [self.cycleViewController dismissViewControllerAnimated:NO completion:nil];
     self.isShowingLandscapeView = NO;
   }
 }

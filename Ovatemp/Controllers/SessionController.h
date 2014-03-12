@@ -14,5 +14,6 @@
 + (void)loadSupplementsEtc:(NSDictionary *)response;
 + (void)refreshToken;
 + (void)logOut;
++ (BOOL)loggedIn;
 
 @end
