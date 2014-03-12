@@ -55,8 +55,6 @@
   [chart generateDays];
 
   UIViewController *vc = [[UIViewController alloc] init];
-
-  CGSize landscapeSize = CGSizeMake(self.view.bounds.size.height, self.view.bounds.size.width);
   vc.view = chart;
 
   UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
@@ -71,14 +69,14 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
   CycleChartView *otherChart = (CycleChartView *)viewController.view;
-  Cycle *cycle = [otherChart.cycle nextCycle];
+  // Cycle *cycle = [otherChart.cycle nextCycle];
 
   return [self viewControllerWithCycle:otherChart.cycle];
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
   CycleChartView *otherChart = (CycleChartView *)viewController.view;
-  Cycle *cycle = [otherChart.cycle previousCycle];
+  // Cycle *cycle = [otherChart.cycle previousCycle];
 
   return [self viewControllerWithCycle:otherChart.cycle];
 }

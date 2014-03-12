@@ -18,5 +18,6 @@
 @property NSString *lastName;
 @property NSString *mailchimpLeid;
 @property NSString *passwordDigest;
+@property BOOL *hasCycles;
 
 @end
