@@ -69,6 +69,7 @@
 
 - (void)setupLandscape {
   self.cycleViewController = [[CycleViewController alloc] init];
+  self.cycleViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
   self.isShowingLandscapeView = NO;
 
   [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
@@ -88,10 +89,9 @@
 
   UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
   if(UIDeviceOrientationIsLandscape(deviceOrientation)) {
-    [self.cycleViewController setDay:self.day];
-
-    [self presentViewController:self.cycleViewController animated:NO completion:nil];
+    [self.cycleViewController setCycle:self.day.cycle];
     self.isShowingLandscapeView = YES;
+    [self presentViewController:self.cycleViewController animated:NO completion:nil];
   } else {
     [self.cycleViewController dismissViewControllerAnimated:NO completion:nil];
     self.isShowingLandscapeView = NO;
@@ -181,7 +181,7 @@
 
 - (void)dayChanged {
   [(UITableView*)self.view reloadData];
-  [self.cycleViewController setDay:self.day];
+  [self.cycleViewController setCycle:self.day.cycle];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

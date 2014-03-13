@@ -8,6 +8,9 @@
 
 #import "CycleChartView.h"
 
+@implementation DayDot
+@end
+
 @interface CycleChartView () {
   NSUInteger daysToShow;
   CGFloat pointWidth;
@@ -20,24 +23,11 @@
   CGFloat height;
 }
 
-
 @end
 
 @implementation CycleChartView
 
 CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
-
-- (void)generateDays {
-  NSMutableArray *days = [NSMutableArray array];
-
-  CGFloat val;
-  for(int i=0; i < 17; i++) {
-    val = 95.0 + ((arc4random() % 100) / 10.0f);
-
-    days[i] = [NSNumber numberWithFloat:val];
-  }
-  self.days = days;
-}
 
 - (BOOL)isFlipped {
   return TRUE;
@@ -49,17 +39,9 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
   [self setNeedsDisplay];
 }
 
-typedef struct DayDot {
-  CGPoint point;
-  CGFloat fertility;
-  BOOL disturbance;
-  BOOL unset;
-} DayDot;
-
 - (void)layoutSubviews {
   [super layoutSubviews];
 
-  [self generateDays];
   [self calculateStyle:self.chartImageView.frame.size];
 
   for(UIView *view in @[self.cervicalFluidIconsView, self.periodIconsView, self.opkIconsView, self.sexIconsView]) {
@@ -76,10 +58,10 @@ typedef struct DayDot {
 
     [self.periodIconsView addSubview:[self imageViewWithName:@"Medium" andFrame:iconFrame]];
 
-     [self.opkIconsView addSubview:[self imageViewWithName:@"Positive" andFrame:iconFrame]];
+    [self.opkIconsView addSubview:[self imageViewWithName:@"Positive" andFrame:iconFrame]];
 
-     [self.sexIconsView addSubview:[self imageViewWithName:@"Unprotected" andFrame:iconFrame]];
-      }
+    [self.sexIconsView addSubview:[self imageViewWithName:@"Unprotected" andFrame:iconFrame]];
+  }
 
   self.chartImageView.image = [self drawChart:self.chartImageView.frame.size];
 }
@@ -116,9 +98,13 @@ typedef struct DayDot {
 }
 
 - (UIImage *)drawChart:(CGSize)size {
+  NSArray *days = self.cycle.days;
+
   CGFloat minValue = 400, maxValue = 0, val;
-  for(NSNumber *day in self.days) {
-    val = [day floatValue];
+  for(Day *day in days) {
+    if(![day temperature]) continue;
+
+    val = [day.temperature floatValue];
     if(val < minValue) {
       minValue = val;
     }
@@ -132,12 +118,9 @@ typedef struct DayDot {
   UIGraphicsBeginImageContextWithOptions(size, YES, 0);   // 0 means let iOS deal with scale for you (for Retina)
   CGContextRef context = UIGraphicsGetCurrentContext();
 
-  DayDot dots[self.days.count];
-
   CGFloat tempRange = maxValue - minValue;
   CGFloat lowValue = minValue + (tempRange * .25);
   CGFloat highValue = minValue + (tempRange * .75);
-  CGFloat coverlineValue = minValue + (tempRange * .33);
 
   UIFont* font = [UIFont systemFontOfSize:pointWidth * 0.8];
   UIColor* textColor = [UIColor blackColor];
@@ -235,7 +218,6 @@ typedef struct DayDot {
 #pragma mark - Drawing data points and x-axis label
   font = [UIFont systemFontOfSize:pointWidth * .7];
   CGPoint point;
-  BOOL contiguous = FALSE;
   for(int i=0; i < daysToShow; i++) {
     point.x = pointWidth * i + leftPadding;
 
@@ -244,25 +226,34 @@ typedef struct DayDot {
     NSAttributedString* attrStr = [[NSAttributedString alloc] initWithString:[[NSNumber numberWithInt:i+1] description] attributes:stringAttrs];
 
     [attrStr drawAtPoint:CGPointMake(point.x - 2, canvasHeight - pointWidth)];
+  }
 
+  BOOL lastDayHadTemperature = FALSE;
+  NSMutableSet *dots = [[NSMutableSet alloc] init];
+  for(int i=0; i < days.count; i++) {
     // Build the line and store the location for the day
-    if(i < self.days.count) {
-      CGFloat ratio = ([self.days[i] floatValue] - minValue) / tempRange;
-      point.y = (1 - ratio) * height + topPadding;
+    point.x = pointWidth * i + leftPadding;
 
-      dots[i].point = point;
-      dots[i].fertility = (arc4random() % 30) / 30.0;
-
-      int tmp = (arc4random() % 30)+1;
-      dots[i].disturbance = tmp % 5 == 0;
-
-      if(contiguous) {
-        [path addLineToPoint:point];
-      } else {
-        [path moveToPoint:point];
-        contiguous = TRUE;
-      }
+    Day *day = days[i];
+    if(day.temperature == nil) {
+      lastDayHadTemperature = FALSE;
+      continue;
     }
+
+    CGFloat ratio = ([day.temperature floatValue] - minValue) / tempRange;
+    point.y = (1 - ratio) * height + topPadding;
+
+    DayDot *dot = [[DayDot alloc] init];
+    dot.point = point;
+    dot.day = day;
+    [dots addObject:dot];
+
+    if(lastDayHadTemperature) {
+      [path addLineToPoint:point];
+    } else {
+      [path moveToPoint:point];
+    }
+    lastDayHadTemperature = TRUE;
   }
 
   // Draw the line for the data points
@@ -271,16 +262,16 @@ typedef struct DayDot {
   [path removeAllPoints];
 
   // Draw dots at the data points
-  for(int i=0; i < self.days.count; i++) {
-    CGFloat col = (dots[i].fertility * 50) * 255.0;
+  for(DayDot *dot in dots) {
+    // CGFloat col = (dot.day.fertility * 50) * 255.0;
 
-    if(dots[i].disturbance) {
+    if(dot.day.disturbance || TRUE) {
       [[UIColor redColor] set];
     } else {
       [[UIColor colorWithRed:col green:.5 blue:.5 alpha:1] set];
     }
 
-    [[UIBezierPath bezierPathWithOvalInRect:CGRectMake(dots[i].point.x - dotRadius, dots[i].point.y - dotRadius, dotRadius * 2, dotRadius * 2)] fill];
+    [[UIBezierPath bezierPathWithOvalInRect:CGRectMake(dot.point.x - dotRadius, dot.point.y - dotRadius, dotRadius * 2, dotRadius * 2)] fill];
   }
 
 #pragma mark - Drawing analysis outcomes (cover line, fertility window, cycle day indicator)
@@ -288,27 +279,36 @@ typedef struct DayDot {
   [[UIColor colorWithRed:(144/255.0) green:(65/255.0) blue:(160/255.0) alpha:1] set];
   [path setLineWidth:2];
 
-  ratio = (coverlineValue - minValue) / tempRange;
-  lineY = (1 - ratio) * height + topPadding;
-  CGFloat coverlineY = lineY;
+  if(self.cycle.coverline) {
+    CGFloat coverlineValue = [self.cycle.coverline floatValue];
 
-  [path moveToPoint:CGPointMake(leftPadding, lineY)];
-  [path addLineToPoint:CGPointMake(canvasWidth - rightPadding, lineY)];
+    ratio = (coverlineValue - minValue) / tempRange;
+    lineY = (1 - ratio) * height + topPadding;
+    CGFloat coverlineY = lineY;
 
-  [path stroke];
-  [path removeAllPoints];
+    [path moveToPoint:CGPointMake(leftPadding, coverlineY)];
+    [path addLineToPoint:CGPointMake(canvasWidth - rightPadding, coverlineY)];
+
+    [path stroke];
+    [path removeAllPoints];
+  }
 
   if(self.landscape) {
     [[UIColor colorWithRed:(56/255.0) green:(192/255.0) blue:(191/255.0) alpha:0.16] set];
 
-    CGRect fertilityWindow = CGRectMake(dots[6].point.x - dotRadius, topPadding, dots[14].point.x - dots[6].point.x + dotRadius, canvasHeight - topPadding - bottomPadding);
-    CGContextFillRect(context, fertilityWindow);
+    if(self.cycle.fertilityWindow) {
+      CGPoint begin;
+      CGPoint end;
+      CGRect fertilityWindow = CGRectMake(begin.x - dotRadius, topPadding, end.x - point.x + dotRadius, canvasHeight - topPadding - bottomPadding);
+      CGContextFillRect(context, fertilityWindow);
+    }
 
     // Draw cycle day indicator
     [[UIColor redColor] set];
-    point = dots[self.days.count - 1].point;
 
-    CGRect dayIndicator = CGRectMake(point.x - dotRadius / 2, coverlineY + 2, dotRadius, dotRadius * 3);
+    CGPoint todayPoint = point;
+
+    CGRect dayIndicator = CGRectMake(todayPoint.x - dotRadius / 2, todayPoint.y, dotRadius, dotRadius * 3);
     CGContextFillRect(context, dayIndicator);
 
     [path setLineWidth:.5];

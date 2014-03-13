@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Cycle.h"
 
+@interface DayDot : NSObject
+
+@property (nonatomic, assign) CGPoint point;
+@property (nonatomic, weak) Day *day;
+
+@end
+
 @interface CycleChartView : UIView
 
 @property NSArray *days;
@@ -26,7 +33,6 @@
 @property (weak, nonatomic) IBOutlet UIView *sexIconsView;
 @property (weak, nonatomic) IBOutlet UIView *cervicalFluidIconsView;
 
-- (void)generateDays;
 - (UIImage *)drawChart:(CGSize)size;
 - (void)calculateStyle:(CGSize)size;
 

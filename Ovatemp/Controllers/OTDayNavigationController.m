@@ -79,7 +79,7 @@
   NSString *titleFormat = @"Cycle Day: #%@";
 
   self.dateLabel.text = [self.dateFormatter stringFromDate:[Calendar date]];
-  self.titleLabel.text = [NSString stringWithFormat:titleFormat, [self.dayFormatter stringFromDate:[Calendar date]]];
+  self.titleLabel.text = [NSString stringWithFormat:titleFormat, [[Day findByKey:[[Calendar date] dateId]] cycleDay]];
 
   self.dayForwardButton.hidden = [Calendar isOnToday];
 }

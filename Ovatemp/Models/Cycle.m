@@ -34,7 +34,7 @@
                  success:^(NSDictionary *response) {
                    NSArray *days = response[@"days"];
                    [Cycle cycleFromDaysArray:days];
-                   
+
                    if(onSuccess) onSuccess(response);
                  }
                  failure:^(NSError *error) {
@@ -60,6 +60,8 @@
   cycle.days = [days sortedArrayUsingComparator:^(Day* day1, Day* day2) {
     return [day1.date compare:day2.date];
   }];
+
+  cycle.coverline = [NSNumber numberWithFloat:94];
 
   return cycle;
 }

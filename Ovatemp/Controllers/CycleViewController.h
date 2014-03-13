@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Day.h"
+#import "Cycle.h"
 
 @interface CycleViewController : UIPageViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
-- (void)setDay:(Day *)day;
+- (void)setCycle:(Cycle *)cycle;
 
 @end

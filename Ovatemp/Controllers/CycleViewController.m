@@ -28,8 +28,7 @@
   return YES;
 }
 
-- (void)setDay:(Day *)day {
-  Cycle *cycle = [[Cycle alloc] initWithDay:day];
+- (void)setCycle:(Cycle *)cycle {
   UIViewController *vc = [self viewControllerWithCycle:cycle];
 
   [self setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
@@ -52,7 +51,6 @@
 
   chart.cycle = cycle;
   chart.landscape = TRUE;
-  [chart generateDays];
 
   UIViewController *vc = [[UIViewController alloc] init];
   vc.view = chart;

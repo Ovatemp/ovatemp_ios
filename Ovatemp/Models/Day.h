@@ -114,7 +114,7 @@ typedef enum vaginalSensationTypesEnum
 
 @property (nonatomic, assign) BOOL disturbance;
 
-@property (nonatomic, weak) Cycle *cycle;
+@property (nonatomic, strong) Cycle *cycle;
 
 + (Day *)forDate:(NSDate *)date;
 + (void)loadDate:(NSDate *)date success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure;
