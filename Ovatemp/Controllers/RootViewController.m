@@ -10,6 +10,7 @@
 #import "SessionViewController.h"
 #import "TodayViewController.h"
 #import "OTDayNavigationController.h"
+#import "CalendarViewController.h"
 #import "SessionController.h"
 #import "User.h"
 
@@ -76,6 +77,7 @@
   // Require a user to log in or register
   if([SessionController loggedIn]) {
     launching = mainViewController;
+    [mainViewController setSelectedIndex:0];
   } else {
     launching = [self createSessionViewController];
   }
@@ -110,7 +112,9 @@
   UIViewController *todayController = [[TodayViewController alloc] init];
   todayController = [[OTDayNavigationController alloc] initWithContentViewController:todayController];
 
-  UIViewController *calendarController = [[UIViewController alloc] init];
+  UIViewController *calendarController = [[CalendarViewController alloc] initWithDefaultLayoutAndFrameHint:self.view.frame];
+  calendarController = [[OTDayNavigationController alloc] initWithContentViewController:calendarController];
+
   UIViewController *coachingController = [[UIViewController alloc] init];
   UIViewController *communityController = [[UIViewController alloc] init];
   UIViewController* moreViewController = [[UIStoryboard storyboardWithName:@"MoreStoryboard" bundle:nil] instantiateInitialViewController];

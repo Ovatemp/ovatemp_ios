@@ -112,6 +112,7 @@ describe(@"Today screen", ^{
 
     it(@"has a functioning intercourse cell", ^{
       // Scroll to the right row
+      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
       [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
 
       UILabel *periodLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Intercourse Selection"];

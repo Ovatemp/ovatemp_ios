@@ -11,7 +11,7 @@
 
 @implementation DayCell
 
-- (void)awakeFromNib{
+- (void)awakeFromNib {
   self.selectionStyle = UITableViewCellSelectionStyleNone;
 
   self.page1.backgroundColor = [UIColor whiteColor];
@@ -19,8 +19,7 @@
   self.page3.backgroundColor = DAY_EDIT_PAGE_COLOR;
 
   self.scrollView.delegate = self;
-  [self scrollViewDidEndDecelerating:self.scrollView];
-
+  self.pageControl.hidden = TRUE;
   self.isAccessibilityElement = FALSE;
 
   [self initializeControls];
