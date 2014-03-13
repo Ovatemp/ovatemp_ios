@@ -43,7 +43,7 @@
 		834BD63518AD1519003B6808 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63418AD1519003B6808 /* MoreViewController.m */; };
 		834BD63818AD164E003B6808 /* SessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63718AD164E003B6808 /* SessionController.m */; };
 		834BD63B18AD29EA003B6808 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63A18AD29EA003B6808 /* Day.m */; };
-		834BD63E18AD4B5B003B6808 /* NSDate+ShortDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63D18AD4B5B003B6808 /* NSDate+ShortDate.m */; };
+		834BD63E18AD4B5B003B6808 /* NSDate+DateID.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63D18AD4B5B003B6808 /* NSDate+DateID.m */; };
 		834BD64118AD6590003B6808 /* DayToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD64018AD6590003B6808 /* DayToggleButton.m */; };
 		83548FF218BD24450016B53A /* TodaySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 83548FF118BD24450016B53A /* TodaySpec.m */; };
 		835AE58618B7A36000FEAF98 /* CheckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 835AE58518B7A36000FEAF98 /* CheckCell.m */; };
@@ -235,8 +235,8 @@
 		834BD63718AD164E003B6808 /* SessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionController.m; sourceTree = "<group>"; };
 		834BD63918AD29EA003B6808 /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
 		834BD63A18AD29EA003B6808 /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
-		834BD63C18AD4B5B003B6808 /* NSDate+ShortDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ShortDate.h"; sourceTree = "<group>"; };
-		834BD63D18AD4B5B003B6808 /* NSDate+ShortDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ShortDate.m"; sourceTree = "<group>"; };
+		834BD63C18AD4B5B003B6808 /* NSDate+DateID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateID.h"; sourceTree = "<group>"; };
+		834BD63D18AD4B5B003B6808 /* NSDate+DateID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateID.m"; sourceTree = "<group>"; };
 		834BD63F18AD6590003B6808 /* DayToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayToggleButton.h; sourceTree = "<group>"; };
 		834BD64018AD6590003B6808 /* DayToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayToggleButton.m; sourceTree = "<group>"; };
 		83548FF118BD24450016B53A /* TodaySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodaySpec.m; sourceTree = "<group>"; };
@@ -663,8 +663,8 @@
 				C308706718980A4900DC4364 /* UIViewController+Alerts.m */,
 				C32C4A8A18985A4D00B05009 /* UIViewController+ConnectionManager.h */,
 				C32C4A8B18985A4D00B05009 /* UIViewController+ConnectionManager.m */,
-				834BD63C18AD4B5B003B6808 /* NSDate+ShortDate.h */,
-				834BD63D18AD4B5B003B6808 /* NSDate+ShortDate.m */,
+				834BD63C18AD4B5B003B6808 /* NSDate+DateID.h */,
+				834BD63D18AD4B5B003B6808 /* NSDate+DateID.m */,
 				835BA2B418BBDC0200C64350 /* UIAlertView+WithBlock.h */,
 				835BA2B518BBDC0200C64350 /* UIAlertView+WithBlock.m */,
 			);
@@ -1161,7 +1161,7 @@
 				C32C4A89189856C100B05009 /* ButtonCell.m in Sources */,
 				834BD64118AD6590003B6808 /* DayToggleButton.m in Sources */,
 				C308706B18980B1A00DC4364 /* Alert.m in Sources */,
-				834BD63E18AD4B5B003B6808 /* NSDate+ShortDate.m in Sources */,
+				834BD63E18AD4B5B003B6808 /* NSDate+DateID.m in Sources */,
 				C31220241899BB8E0027C4B3 /* Configuration.m in Sources */,
 				8387261018CA12C800A3277C /* FertilityStatusView.m in Sources */,
 				834BD63B18AD29EA003B6808 /* Day.m in Sources */,

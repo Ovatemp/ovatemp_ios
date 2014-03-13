@@ -25,6 +25,10 @@ describe(@"Authentication failures", ^{
 
     it(@"should kick you out if your token becomes invalid and you make a request", ^{
       [self resetUsers];
+
+      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
+      [tester tapViewWithAccessibilityLabel:@"Set Temperature" traits:UIAccessibilityTraitButton];
+
       [tester tapViewWithAccessibilityLabel:@"Go to Previous Day"];
       [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Go to Previous Day"];
 

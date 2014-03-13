@@ -12,6 +12,8 @@
 #import "Supplement.h"
 #import "Symptom.h"
 
+@class Cycle;
+
 @interface Day : BaseModel
 
 // The first element of all of these arrays/enums is the value for "null" or "unset"
@@ -98,6 +100,7 @@ typedef enum vaginalSensationTypesEnum
 } VaginalSensationType;
 @property (nonatomic, retain) NSString* vaginalSensation;
 
+@property (nonatomic, strong) NSString *idate;
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) NSNumber *temperature;
 
@@ -106,8 +109,12 @@ typedef enum vaginalSensationTypesEnum
 @property (nonatomic, strong) NSMutableArray *symptomIds;
 
 @property (nonatomic, strong) NSNumber *cycleDay;
+@property (nonatomic, strong) NSNumber *cycleId;
+
 
 @property (nonatomic, assign) BOOL disturbance;
+
+@property (nonatomic, weak) Cycle *cycle;
 
 + (Day *)forDate:(NSDate *)date;
 + (void)loadDate:(NSDate *)date success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure;

@@ -12,6 +12,7 @@
 #import "Day.h"
 #import "DayCell.h"
 #import "CycleViewController.h"
+#import "Cycle.h"
 
 @interface TodayViewController ()
 
@@ -56,8 +57,6 @@
     UIView *cellView = [[[NSBundle mainBundle] loadNibNamed:name owner:self options:nil] objectAtIndex:0];
     [self.rowExemplars addObject:cellView];
   }
-
-  [self dateChanged];
 
   [[NSNotificationCenter defaultCenter]
    addObserver:self
@@ -106,17 +105,33 @@
          (UIDeviceOrientationIsPortrait(deviceOrientation) && !self.isShowingLandscapeView);
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+
+  self.day = nil;
+  [Day resetInstances];
+
+  [self dateChanged];
+}
 
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
 
   // Make sure to save the day before we leave
   [self.day save];
+  self.day = nil;
 }
 
 - (void)applicationWillResign {
   [self.day save];
+  self.day = nil;
 }
+
+
+- (void)didReceiveMemoryWarning {
+  [super didReceiveMemoryWarning];
+}
+
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
                        change:(NSDictionary *)change context:(void *)context
@@ -126,30 +141,42 @@
   }
 }
 
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-}
-
 #pragma mark - Table view data source
 
 - (void)dateChanged {
   // Make sure to save the day before we leave
   [self.day save];
-  
-  self.day = [Day forDate:[Calendar date]];
 
+  self.day = [Day forDate:[Calendar date]];
   if(self.day) {
     [self dayChanged];
-  } else {
-    [Day loadDate:[Calendar date]
+    return;
+  }
+
+  [Cycle loadDate:[Calendar date]
           success:^(NSDictionary *response) {
-            self.day = [Day withAttributes:response[@"day"]];
+            NSLog(@"finished loading date from today view controller");
+            self.day = [Day forDate:[Calendar date]];
             [self dayChanged];
           }
           failure:^(NSError *error) {
-            NSLog(@"done loading! error: %@", error);
+            if(error.code == 422) {
+              NSLog(@"we need to ask for the beginning of the cycle");
+              [ConnectionManager put:@"/days/"
+                              params:@{
+                                       @"day": @{@"date": @"2014-03-07",
+                                                 @"period": @"light"}}
+                             success:^(NSDictionary *response) {
+                               [self dateChanged];
+                             }
+                             failure:^(NSError *error) {
+                               NSLog(@"error: %@", error);
+                             }];
+
+            } else {
+              NSLog(@"done loading! error: %@", error);
+            }
           }];
-  }
 }
 
 - (void)dayChanged {

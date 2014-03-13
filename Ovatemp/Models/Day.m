@@ -59,12 +59,12 @@ static NSDictionary *propertyOptions;
   [super setValue:value forKey:key];
 }
 
-- (NSString *)key {
-  return @"date";
++ (NSString *)key {
+  return @"idate";
 }
 
 + (Day *)forDate:(NSDate *)date {
-  Day *day = [Day instances][[date shortDate]];
+  Day *day = [Day findByKey:[date dateId]];
 
   return day;
 }
@@ -73,7 +73,7 @@ static NSDictionary *propertyOptions;
   [ConnectionManager get:@"/days"
                   params:@{
                            @"day": @{
-                               @"date": [date shortDate],
+                               @"date": [date dateId],
                                },
                            }
                  success:onSuccess
@@ -134,7 +134,9 @@ static NSDictionary *propertyOptions;
     if([self->dirtyAttributes count] < 1) {
       return;
     }
-    [self->dirtyAttributes addObject:self.key];
+
+    // Make sure we send back the date, since we are using a different local identifier
+    [self->dirtyAttributes addObject:@"date"];
 
     attributes = [self attributesForKeys:self->dirtyAttributes camelCase:FALSE];
     [self->dirtyAttributes removeAllObjects];
@@ -158,7 +160,7 @@ static NSDictionary *propertyOptions;
 }
 
 - (NSString *)description {
-  return [NSString stringWithFormat:@"Day (%@)", [self.date shortDate]];
+  return [NSString stringWithFormat:@"Day (%@)", self.idate];
 }
 
 # pragma mark - Relations

@@ -56,6 +56,8 @@
   [Supplement resetInstancesWithArray:response[@"supplements"]];
   [Medicine resetInstancesWithArray:response[@"medicines"]];
   [Symptom resetInstancesWithArray:response[@"symptoms"]];
+
+  // HAS CYCLE???
 }
 
 @end

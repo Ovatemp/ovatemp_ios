@@ -222,7 +222,7 @@ static NSString * const kTokenParam = @"token";
   } else if ([value isKindOfClass:[NSNumber class]]) {
     value = [value stringValue];
   } else if ([value isKindOfClass:[NSDate class]]) {
-    value = [((NSDate *)value) shortDate];
+    value = [((NSDate *)value) dateId];
   } else if ([value isEqual:[NSNull null]]) {
     value = @"";  
   }

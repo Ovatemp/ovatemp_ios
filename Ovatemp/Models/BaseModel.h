@@ -28,5 +28,6 @@
 - (NSDictionary *)attributes:(BOOL)camelCase;
 - (NSDictionary *)attributesForKeys:(NSSet *)keys camelCase:(BOOL)camelCase;
 + (id)findByKey:(NSString *)identifier;
+- (NSDate *)dateForValue:(id)value;
 
 @end

@@ -11,9 +11,11 @@
 
 @interface Cycle : NSObject
 
++ (void)loadDate:(NSDate *)date success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure;
 - (Cycle *)initWithDay:(Day *)day;
 - (Cycle *)previousCycle;
 - (Cycle *)nextCycle;
-- (NSArray *)days;
+
+@property (nonatomic, strong) NSArray *days;
 
 @end

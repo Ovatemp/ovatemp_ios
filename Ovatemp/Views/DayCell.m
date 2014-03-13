@@ -40,7 +40,8 @@
 
 - (void)setDay:(Day *)day {
     _day = day;
-    
+
+  [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
   [self refreshControls];
 }
 

@@ -14,7 +14,17 @@
 SpecBegin(TodaySpec)
 
 describe(@"Today screen", ^{
-  context(@"Logged in", ^{
+  context(@"without an existing cycle", ^{
+    beforeAll(^{
+      [self registerUser];
+    });
+
+    xit(@"presents the beginning of most recent cycle interface", ^{
+      [tester waitForViewWithAccessibilityLabel:@"First day of current or most recent period"];
+    });
+  });
+
+  context(@"with an existing cycle", ^{
     beforeAll(^{
       [self registerUser];
       [tester tapViewWithAccessibilityLabel:@"Today"];
@@ -33,8 +43,6 @@ describe(@"Today screen", ^{
       [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Set Temperature"];
       UISlider *slider = (UISlider *)[tester waitForViewWithAccessibilityLabel:@"Temperature"];
       [tester setValue:99.5 forSliderWithAccessibilityLabel:@"Temperature"];
-
-      NSLog(@"slider: %@", slider);
 
       [tester waitForTimeInterval:.5];
 
