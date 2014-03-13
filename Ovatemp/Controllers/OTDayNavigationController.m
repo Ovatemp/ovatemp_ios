@@ -43,7 +43,7 @@
   [self.contentViewController didMoveToParentViewController:self];
 
   [[Calendar sharedInstance] addObserver: self
-         forKeyPath: @"date"
+         forKeyPath: @"day"
             options: NSKeyValueObservingOptionNew
             context: NULL];
 
@@ -56,10 +56,6 @@
   [self updateLabels];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-  [self updateFertilityWindow];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -70,7 +66,7 @@
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
                         change:(NSDictionary *)change context:(void *)context
 {
-  if([keyPath isEqualToString:@"date"] && [[Calendar sharedInstance] class] == [object class]) {
+  if([keyPath isEqualToString:@"day"] && [[Calendar sharedInstance] class] == [object class]) {
     [self updateLabels];
   }
 }
@@ -78,21 +74,11 @@
 - (void)updateLabels {
   NSString *titleFormat = @"Cycle Day: #%@";
 
-  self.dateLabel.text = [self.dateFormatter stringFromDate:[Calendar date]];
-  self.titleLabel.text = [NSString stringWithFormat:titleFormat, [[Day findByKey:[[Calendar date] dateId]] cycleDay]];
+  self.dateLabel.text = [self.dateFormatter stringFromDate:Calendar.day.date];
+  self.titleLabel.text = [NSString stringWithFormat:titleFormat, Calendar.day.cycleDay];
 
   self.dayForwardButton.hidden = [Calendar isOnToday];
-}
-
-- (void)updateFertilityWindow {
-  /*
-  [Day loadDate:[NSDate date]
-        success:^(NSDictionary *response) {
-          [self.fertilityStatusView updateWithDay:[Day withAttributes:response[@"day"]]];
-        }
-        failure:^(NSError *error) {
-          NSLog(@"couldn't load day %@", error);
-        }];*/
+  [self.fertilityStatusView updateWithDay:Calendar.day];
 }
 
 - (IBAction)moveDayForward:(id)sender {

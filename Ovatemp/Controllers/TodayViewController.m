@@ -44,7 +44,7 @@
   table.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
   [[Calendar sharedInstance] addObserver: self
-                              forKeyPath: @"date"
+                              forKeyPath: @"day"
                                  options: NSKeyValueObservingOptionNew
                                  context: NULL];
 
@@ -136,7 +136,7 @@
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
                        change:(NSDictionary *)change context:(void *)context
 {
-  if([keyPath isEqualToString:@"date"] && [[Calendar sharedInstance] class] == [object class]) {
+  if([keyPath isEqualToString:@"day"] && [[Calendar sharedInstance] class] == [object class]) {
     [self dateChanged];
   }
 }
@@ -146,37 +146,9 @@
 - (void)dateChanged {
   // Make sure to save the day before we leave
   [self.day save];
+  self.day = [Calendar day];
 
-  self.day = [Day forDate:[Calendar date]];
-  if(self.day) {
-    [self dayChanged];
-    return;
-  }
-
-  [Cycle loadDate:[Calendar date]
-          success:^(NSDictionary *response) {
-            NSLog(@"finished loading date from today view controller");
-            self.day = [Day forDate:[Calendar date]];
-            [self dayChanged];
-          }
-          failure:^(NSError *error) {
-            if(error.code == 422) {
-              NSLog(@"we need to ask for the beginning of the cycle");
-              [ConnectionManager put:@"/days/"
-                              params:@{
-                                       @"day": @{@"date": @"2014-03-07",
-                                                 @"period": @"light"}}
-                             success:^(NSDictionary *response) {
-                               [self dateChanged];
-                             }
-                             failure:^(NSError *error) {
-                               NSLog(@"error: %@", error);
-                             }];
-
-            } else {
-              NSLog(@"done loading! error: %@", error);
-            }
-          }];
+  [self dayChanged];
 }
 
 - (void)dayChanged {

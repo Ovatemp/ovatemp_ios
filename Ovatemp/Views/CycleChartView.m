@@ -7,6 +7,7 @@
 //
 
 #import "CycleChartView.h"
+#import "Calendar.h"
 
 @implementation DayDot
 @end
@@ -220,12 +221,11 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
   CGPoint point;
   for(int i=0; i < daysToShow; i++) {
     point.x = pointWidth * i + leftPadding;
-
     // Draw the x axis label for this point
     NSDictionary* stringAttrs = @{NSFontAttributeName: font, NSForegroundColorAttributeName: textColor};
     NSAttributedString* attrStr = [[NSAttributedString alloc] initWithString:[[NSNumber numberWithInt:i+1] description] attributes:stringAttrs];
 
-    [attrStr drawAtPoint:CGPointMake(point.x - 2, canvasHeight - pointWidth)];
+    [attrStr drawAtPoint:CGPointMake(point.x, canvasHeight - pointWidth)];
   }
 
   BOOL lastDayHadTemperature = FALSE;
@@ -235,6 +235,16 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
     point.x = pointWidth * i + leftPadding;
 
     Day *day = days[i];
+
+    // Draw the cycle day line
+    if(day == [Calendar day]) {
+      UIBezierPath *cycleDay = [[UIBezierPath alloc] init];
+      [cycleDay setLineWidth:.5];
+      [cycleDay moveToPoint:CGPointMake(point.x + dotRadius / 2, topPadding)];
+      [cycleDay addLineToPoint:CGPointMake(point.x + dotRadius / 2, canvasHeight - bottomPadding)];
+      [cycleDay stroke];
+    }
+
     if(day.temperature == nil) {
       lastDayHadTemperature = FALSE;
       continue;
@@ -275,12 +285,21 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
   }
 
 #pragma mark - Drawing analysis outcomes (cover line, fertility window, cycle day indicator)
-  // Draw the cover line
-  [[UIColor colorWithRed:(144/255.0) green:(65/255.0) blue:(160/255.0) alpha:1] set];
-  [path setLineWidth:2];
-
   if(self.cycle.coverline) {
     CGFloat coverlineValue = [self.cycle.coverline floatValue];
+
+    // Draw the cover line
+    [[UIColor colorWithRed:(144/255.0) green:(65/255.0) blue:(160/255.0) alpha:1] set];
+    [path setLineWidth:2];
+
+    // TODO figure out when we should draw the red rectangle. I think it's calendar day when we have
+    // a coverline
+    if(false) {
+      // Draw cycle day indicator
+      [[UIColor redColor] set];
+      CGRect dayIndicator = CGRectMake(point.x - dotRadius / 2, point.y, dotRadius, dotRadius * 3);
+      CGContextFillRect(context, dayIndicator);
+    }
 
     ratio = (coverlineValue - minValue) / tempRange;
     lineY = (1 - ratio) * height + topPadding;
@@ -302,25 +321,6 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
       CGRect fertilityWindow = CGRectMake(begin.x - dotRadius, topPadding, end.x - point.x + dotRadius, canvasHeight - topPadding - bottomPadding);
       CGContextFillRect(context, fertilityWindow);
     }
-
-    // Draw cycle day indicator
-    [[UIColor redColor] set];
-
-    CGPoint todayPoint = point;
-
-    CGRect dayIndicator = CGRectMake(todayPoint.x - dotRadius / 2, todayPoint.y, dotRadius, dotRadius * 3);
-    CGContextFillRect(context, dayIndicator);
-
-    [path setLineWidth:.5];
-    [path moveToPoint:CGPointMake(point.x, topPadding)];
-    [path addLineToPoint:CGPointMake(point.x, canvasHeight - bottomPadding)];
-    [path stroke];
-
-    // Draw cycle day indicator line
-    [path setLineWidth:.5];
-    [path moveToPoint:CGPointMake(point.x, topPadding)];
-    [path addLineToPoint:CGPointMake(point.x, canvasHeight - bottomPadding)];
-    [path stroke];
   }
 
   UIImage *chart = UIGraphicsGetImageFromCurrentImageContext();

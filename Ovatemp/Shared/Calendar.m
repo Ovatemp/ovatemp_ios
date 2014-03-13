@@ -8,10 +8,10 @@
 
 #import "Calendar.h"
 
-
 @interface Calendar ()
 
 @property (strong, nonatomic) NSDate *date;
+@property (strong, nonatomic) Day *day;
 
 @end
 
@@ -24,7 +24,7 @@ static Calendar *sharedObject = nil;
   static dispatch_once_t _singletonPredicate;
 
   dispatch_once(&_singletonPredicate, ^{
-    sharedObject = [[super allocWithZone:nil] init];
+    sharedObject = [[super alloc] init];
     sharedObject.date = [NSDate date];
   });
 
@@ -35,14 +35,50 @@ static Calendar *sharedObject = nil;
   return [[Calendar sharedInstance] date];
 }
 
++ (Day *)day {
+  return [[Calendar sharedInstance] day];
+}
+
 + (void)setDate:(NSDate *)date {
   Calendar *cal = [Calendar sharedInstance];
   cal.date = date;
+  [cal updateDay];
+}
+
+- (void)updateDay {
+  self.day = [Day forDate:self.date];
+  if(self.day) return;
+
+  [Cycle loadDate:self.date
+          success:^(NSDictionary *response) {
+            self.day = [Day forDate:self.date];
+          }
+          failure:^(NSError *error) {
+            if(error.code == 422) {
+              NSLog(@"we need to ask for the beginning of the cycle");
+              [self createFakeStartDay];
+            } else {
+              NSLog(@"done loading! error: %@", error);
+            }
+          }];
+}
+
+- (void)createFakeStartDay {
+  [ConnectionManager put:@"/days/"
+                  params:@{
+                           @"day": @{@"date": [[self.date dateByAddingTimeInterval:-60 * 60 * 24 * 20] dateId],
+                                     @"period": @"light"}}
+                 success:^(NSDictionary *response) {
+                   [self updateDay];
+                 }
+                 failure:^(NSError *error) {
+                   NSLog(@"error: %@", error);
+                 }];
+
 }
 
 + (void)resetDate {
-  Calendar *cal = [Calendar sharedInstance];
-  cal.date = [NSDate date];
+  [Calendar setDate:[NSDate date]];
 }
 
 + (void)stepDay:(NSInteger)offset {
@@ -68,11 +104,5 @@ static Calendar *sharedObject = nil;
          [comp1 month] == [comp2 month] &&
          [comp1 year] == [comp2 year];
 }
-
-+ (id)allocWithZone:(NSZone *)zone
-{
-  return [self sharedInstance];
-}
-
 
 @end

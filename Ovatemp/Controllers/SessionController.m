@@ -22,6 +22,7 @@
   User *user = [User withAttributes:userDict];
   [User setCurrent:user];
   [Configuration sharedConfiguration].token = token;
+
   [Calendar resetDate];
 
   [[NSNotificationCenter defaultCenter] postNotificationName:kSessionChangedNotificationName object:self];

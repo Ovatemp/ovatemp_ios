@@ -31,8 +31,9 @@
   self.setTemperatureButton.hidden = temperatureSet;
 
   CycleChartView *ccv = [[CycleChartView alloc] init];
-  ccv.cycle = self.day.cycle;
+
   [ccv calculateStyle:self.cycleImageView.bounds.size];
+  ccv.cycle = self.day.cycle;
   [self.cycleImageView setImage:[ccv drawChart:self.cycleImageView.bounds.size]];
 
   if(temperatureSet) {

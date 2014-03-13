@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Cycle.h"
 
 @interface Calendar : NSObject
 
-+ (NSDate *)date;
++ (Day *)day;
 + (void)setDate:(NSDate *)date;
 + (void)resetDate;
 + (Calendar *)sharedInstance;
