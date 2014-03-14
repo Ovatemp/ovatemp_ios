@@ -43,11 +43,11 @@
     [self logOut];
   }
   [self resetUsers];
-  [tester waitForViewWithAccessibilityLabel:@"New Session Screen"];
+  [tester waitForViewWithAccessibilityLabel:@"Email"];
 
-  [tester clearTextFromAndThenEnterText:@"test@example.com" intoViewWithAccessibilityLabel:@"Email Field"];
-  [tester clearTextFromAndThenEnterText:@"password" intoViewWithAccessibilityLabel:@"Password Field"];
-  [tester tapViewWithAccessibilityLabel:@"Sign Up Button"];
+  [tester clearTextFromAndThenEnterText:@"test@example.com" intoViewWithAccessibilityLabel:@"Email"];
+  [tester clearTextFromAndThenEnterText:@"password" intoViewWithAccessibilityLabel:@"Password"];
+  [tester tapViewWithAccessibilityLabel:@"Sign Up"];
 
   [tester waitForViewWithAccessibilityLabel:@"More"];
 }
@@ -67,7 +67,7 @@
     [tester waitForViewWithAccessibilityLabel:@"Log Out Button"];
     [tester tapViewWithAccessibilityLabel:@"Log Out Button"];
   }
-  [tester waitForViewWithAccessibilityLabel:@"New Session Screen"];
+  [tester waitForViewWithAccessibilityLabel:@"Email"];
 }
 
 @end

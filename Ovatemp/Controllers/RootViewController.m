@@ -155,7 +155,8 @@
 # pragma mark - Session Handling
 
 - (SessionViewController *)createSessionViewController {
-  SessionViewController *sessionViewController = [[SessionViewController alloc] initWithNibName:@"SessionViewController" bundle:nil];
+  SessionViewController* sessionViewController = [[UIStoryboard storyboardWithName:@"SessionStoryboard" bundle:nil] instantiateInitialViewController];
+
   return sessionViewController;
 }
 

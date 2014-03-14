@@ -41,8 +41,8 @@ describe(@"Authentication failures", ^{
       [self logOut];
 
       // This should match the registration email
-      [tester enterText:@"test@example.com" intoViewWithAccessibilityLabel:@"Email Field"];
-      [tester tapViewWithAccessibilityLabel:@"Reset Password"];
+      [tester enterText:@"test@example.com" intoViewWithAccessibilityLabel:@"Email"];
+      [tester tapViewWithAccessibilityLabel:@"Forgot Password"];
       // Confirm
       [tester tapViewWithAccessibilityLabel:@"Reset password"];
 
@@ -53,8 +53,8 @@ describe(@"Authentication failures", ^{
       [tester tapViewWithAccessibilityLabel:@"OK"];
 
       // This should NOT match the registration email
-      [tester clearTextFromAndThenEnterText:@"INCORRECT@example.com" intoViewWithAccessibilityLabel:@"Email Field"];
-      [tester tapViewWithAccessibilityLabel:@"Reset Password"];
+      [tester clearTextFromAndThenEnterText:@"INCORRECT@example.com" intoViewWithAccessibilityLabel:@"Email"];
+      [tester tapViewWithAccessibilityLabel:@"Forgot Password"];
       // Confirm
       [tester tapViewWithAccessibilityLabel:@"Reset password"];
 

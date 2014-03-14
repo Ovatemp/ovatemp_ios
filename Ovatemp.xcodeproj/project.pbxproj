@@ -68,6 +68,9 @@
 		839A346218ABCFB6007CD657 /* OTDayNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346018ABCFB6007CD657 /* OTDayNavigationController.xib */; };
 		839A346818ABF385007CD657 /* PeriodDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A346718ABF385007CD657 /* PeriodDayCell.m */; };
 		839A346A18ABF3B3007CD657 /* PeriodDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346918ABF3B3007CD657 /* PeriodDayCell.xib */; };
+		83A1FDF518D35C3B0030D331 /* SessionStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83A1FDF418D35C3B0030D331 /* SessionStoryboard.storyboard */; };
+		83A1FDF818D35C820030D331 /* OvatempIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A1FDF618D35C820030D331 /* OvatempIcon.png */; };
+		83A1FDF918D35C820030D331 /* OvatempIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A1FDF718D35C820030D331 /* OvatempIcon@2x.png */; };
 		83BD853818D0B23900890EDA /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BD853718D0B23900890EDA /* RootViewController.m */; };
 		83BD853A18D0B7A900890EDA /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83BD853918D0B7A900890EDA /* RootViewController.xib */; };
 		83BD853C18D0B82300890EDA /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 83BD853B18D0B82300890EDA /* LaunchImage.png */; };
@@ -170,7 +173,6 @@
 		C3BF8FD91898421700572F43 /* XCTestCase+KIF.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FD81898421700572F43 /* XCTestCase+KIF.m */; };
 		C3BF8FDD1898449D00572F43 /* OvatempTestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FDC1898449D00572F43 /* OvatempTestHelpers.m */; };
 		C3BF8FE01898452F00572F43 /* SessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FDF1898452F00572F43 /* SessionViewController.m */; };
-		C3BF8FE21898454300572F43 /* SessionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3BF8FE11898454300572F43 /* SessionViewController.xib */; };
 		C3BF8FE5189848CE00572F43 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FE4189848CE00572F43 /* BaseModel.m */; };
 		C3BF8FE818984AC200572F43 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FE718984AC200572F43 /* User.m */; };
 		C3BF8FEB18984B9700572F43 /* TextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FEA18984B9700572F43 /* TextFieldCell.m */; };
@@ -280,6 +282,9 @@
 		839A346618ABF385007CD657 /* PeriodDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeriodDayCell.h; sourceTree = "<group>"; };
 		839A346718ABF385007CD657 /* PeriodDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeriodDayCell.m; sourceTree = "<group>"; };
 		839A346918ABF3B3007CD657 /* PeriodDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeriodDayCell.xib; sourceTree = "<group>"; };
+		83A1FDF418D35C3B0030D331 /* SessionStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SessionStoryboard.storyboard; sourceTree = "<group>"; };
+		83A1FDF618D35C820030D331 /* OvatempIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OvatempIcon.png; sourceTree = "<group>"; };
+		83A1FDF718D35C820030D331 /* OvatempIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OvatempIcon@2x.png"; sourceTree = "<group>"; };
 		83BD853618D0B23900890EDA /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		83BD853718D0B23900890EDA /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		83BD853918D0B7A900890EDA /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
@@ -398,7 +403,6 @@
 		C3BF8FDC1898449D00572F43 /* OvatempTestHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OvatempTestHelpers.m; sourceTree = "<group>"; };
 		C3BF8FDE1898452F00572F43 /* SessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionViewController.h; sourceTree = "<group>"; };
 		C3BF8FDF1898452F00572F43 /* SessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionViewController.m; sourceTree = "<group>"; };
-		C3BF8FE11898454300572F43 /* SessionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SessionViewController.xib; path = ../Views/SessionViewController.xib; sourceTree = "<group>"; };
 		C3BF8FE3189848CE00572F43 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		C3BF8FE4189848CE00572F43 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		C3BF8FE618984AC200572F43 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -465,6 +469,8 @@
 		834BD64318AEA1A4003B6808 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				83A1FDF618D35C820030D331 /* OvatempIcon.png */,
+				83A1FDF718D35C820030D331 /* OvatempIcon@2x.png */,
 				83BD853B18D0B82300890EDA /* LaunchImage.png */,
 				83C6511018C91B7500F35CE5 /* BackArrow.png */,
 				83C6511118C91B7500F35CE5 /* BackArrow@2x.png */,
@@ -694,7 +700,6 @@
 			children = (
 				838752EA18CE4F2B00E8ED4A /* Containers */,
 				838752EB18CE502600E8ED4A /* Tabs */,
-				C3BF8FE11898454300572F43 /* SessionViewController.xib */,
 				C3BF8FDE1898452F00572F43 /* SessionViewController.h */,
 				C3BF8FDF1898452F00572F43 /* SessionViewController.m */,
 				834BD63618AD164E003B6808 /* SessionController.h */,
@@ -706,6 +711,7 @@
 				83BD853918D0B7A900890EDA /* RootViewController.xib */,
 				83686EA118C6335000A5329C /* CalendarViewController.h */,
 				83686EA218C6335000A5329C /* CalendarViewController.m */,
+				83A1FDF418D35C3B0030D331 /* SessionStoryboard.storyboard */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -981,6 +987,7 @@
 				83EB3F0618AEA7D500EA91AC /* Heavy.png in Resources */,
 				83EB3F0C18AEA7D500EA91AC /* Medium@2x.png in Resources */,
 				832934C818B7D93200F6875B /* Amazing@2x.png in Resources */,
+				83A1FDF918D35C820030D331 /* OvatempIcon@2x.png in Resources */,
 				83EB3F0E18AEA7D500EA91AC /* Spotting@2x.png in Resources */,
 				83EB3ED118AEA7D500EA91AC /* Hydrate-01.png in Resources */,
 				835AE58818B7A3B500FEAF98 /* CheckCell.xib in Resources */,
@@ -993,7 +1000,6 @@
 				83EB3F0D18AEA7D500EA91AC /* Spotting.png in Resources */,
 				835AE58C18B7A51700FEAF98 /* CheckBox@2x.png in Resources */,
 				83EB3F1718AEA7D500EA91AC /* Self Massage@2x.png in Resources */,
-				C3BF8FE21898454300572F43 /* SessionViewController.xib in Resources */,
 				83EB3F1018AEA7D500EA91AC /* Acupressure@2x.png in Resources */,
 				83EB3F3518AEA7D500EA91AC /* Lube.png in Resources */,
 				83EB3F1D18AEA7D500EA91AC /* cal_selected.png in Resources */,
@@ -1046,6 +1052,7 @@
 				83EB3F2318AEA7D500EA91AC /* coaching_unselect.png in Resources */,
 				C36C5109189028190053A884 /* InfoPlist.strings in Resources */,
 				83EB3F1E18AEA7D500EA91AC /* cal_selected@2x.png in Resources */,
+				83A1FDF818D35C820030D331 /* OvatempIcon.png in Resources */,
 				83EB3F2718AEA7D500EA91AC /* community_unselect.png in Resources */,
 				83EB3F1518AEA7D500EA91AC /* Meditation@2x.png in Resources */,
 				839A346218ABCFB6007CD657 /* OTDayNavigationController.xib in Resources */,
@@ -1053,6 +1060,7 @@
 				83EB3ED518AEA7D500EA91AC /* Nourish-01@2x.png in Resources */,
 				832934CC18B7D93200F6875B /* Medicines@2x.png in Resources */,
 				83EB3F2B18AEA7D500EA91AC /* more_selected@2x.png in Resources */,
+				83A1FDF518D35C3B0030D331 /* SessionStoryboard.storyboard in Resources */,
 				83C6511618C91B7500F35CE5 /* ForwardArrow.png in Resources */,
 				83EB3F3718AEA7D500EA91AC /* Wet.png in Resources */,
 				83EB3ED718AEA7D500EA91AC /* Refresh-01@2x.png in Resources */,
