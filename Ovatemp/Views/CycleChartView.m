@@ -248,8 +248,6 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
     }
 
     if(self.landscape) {
-      if(i % 4 == 0) { day.inFertilityWindow = TRUE; }
-      
       if(day.inFertilityWindow) {
         [FERTILITY_WINDOW_COLOR set];
 

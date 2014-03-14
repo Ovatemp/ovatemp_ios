@@ -7,6 +7,7 @@
 //
 
 #import "Day.h"
+#import "Cycle.h"
 #import "ConnectionManager.h"
 
 @interface Day() {
@@ -157,17 +158,12 @@ static NSDictionary *propertyOptions;
                    params:@{
                             @"day": attributes,
                             }
-                   target:self
-                  success:@selector(didSave:)
-                  failure:@selector(saveError:)];
-}
-
-- (void)didSave:(NSDictionary *)response {
-  // NSLog(@"saved day: %@", response);
-}
-
-- (void)saveError:(NSError *)error {
-  NSLog(@"day save error: %@", error);
+                 success:^(NSDictionary *response) {
+                   [Cycle cycleFromResponse:response];
+                 }
+                 failure:^(NSError *error) {
+                    NSLog(@"day save error: %@", error);
+                 }];
 }
 
 - (NSString *)description {

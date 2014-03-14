@@ -19,5 +19,6 @@
 @property (nonatomic, strong) NSArray *days;
 @property (nonatomic, strong) NSNumber *coverline;
 @property (nonatomic, strong) NSString *fertilityWindow;
++ (Cycle *)cycleFromResponse:(NSDictionary *)cycleResponse;
 
 @end

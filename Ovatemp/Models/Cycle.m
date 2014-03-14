@@ -32,8 +32,7 @@
                            @"date": [date dateId],
                            }
                  success:^(NSDictionary *response) {
-                   NSArray *days = response[@"days"];
-                   [Cycle cycleFromDaysArray:days];
+                   [Cycle cycleFromResponse:response];
 
                    if(onSuccess) onSuccess(response);
                  }
@@ -45,9 +44,10 @@
                  }];
 }
 
-+ (Cycle *)cycleFromDaysArray:(NSArray *)daysResponse {
++ (Cycle *)cycleFromResponse:(NSDictionary *)cycleResponse {
   Cycle *cycle = [[Cycle alloc] init];
 
+  NSArray *daysResponse = cycleResponse[@"days"];
   NSMutableArray *days = [[NSMutableArray alloc] initWithCapacity:daysResponse.count];
 
   Day *day;
@@ -61,7 +61,11 @@
     return [day1.date compare:day2.date];
   }];
 
-  cycle.coverline = [NSNumber numberWithFloat:94];
+  if([cycleResponse[@"coverline"] isEqual:[NSNull null]]) {
+    cycle.coverline = nil;
+  } else {
+    cycle.coverline = cycleResponse[@"coverline"];
+  }
 
   return cycle;
 }

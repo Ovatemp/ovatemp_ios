@@ -65,6 +65,7 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
 
+  [self.collectionView reloadData];
   [self scrollToCurrentDay];
 }
 
@@ -155,10 +156,7 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
       cell.imageView.image = [UIImage imageNamed:imageName];
     }
 
-    // if(day.inFertilityWindow) {
-    if(indexPath.item % 4 == 0) {
-      inFertilityWindow = TRUE;
-    }
+    inFertilityWindow = day.inFertilityWindow;
   }
 
   cell.fertilityWindowView.hidden = !inFertilityWindow;
