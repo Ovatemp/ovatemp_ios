@@ -12,7 +12,7 @@
 
 + (void)loggedInWithUser:(NSDictionary *)user andToken:(NSString *)token;
 + (void)loadSupplementsEtc:(NSDictionary *)response;
-+ (void)refreshToken;
++ (void)refresh;
 + (void)logOut;
 + (BOOL)loggedIn;
 

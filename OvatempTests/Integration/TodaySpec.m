@@ -176,7 +176,7 @@ describe(@"Today screen", ^{
 
     it(@"has a functioning secondary signs cell", ^{
       // Scroll to the right row
-      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
+      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:6 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
 
       [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Ovulation Prediction Kit Selection"];
       [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Ferning Selection"];

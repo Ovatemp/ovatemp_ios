@@ -23,18 +23,20 @@
   [User setCurrent:user];
   [Configuration sharedConfiguration].token = token;
 
-  [Calendar resetDate];
-
   [[NSNotificationCenter defaultCenter] postNotificationName:kSessionChangedNotificationName object:self];
 }
 
-+ (void)refreshToken {
-  [ConnectionManager put:@"/sessions/refresh"
-                  params:nil
-                  target:self
-                 success:@selector(loadSupplementsEtc:)
-                 failure:@selector(presentError:)
-   ];
++ (void)refresh {
+  if([Configuration sharedConfiguration].token != nil) {
+    [ConnectionManager put:@"/sessions/refresh"
+                    params:nil
+                    target:self
+                   success:@selector(loadSupplementsEtc:)
+                   failure:@selector(presentError:)
+     ];
+  }
+
+  [Day resetInstances];
 }
 
 + (BOOL)loggedIn {

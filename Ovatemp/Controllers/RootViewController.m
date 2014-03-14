@@ -13,6 +13,7 @@
 #import "CalendarViewController.h"
 #import "SessionController.h"
 #import "User.h"
+#import "Calendar.h"
 
 @interface RootViewController () {
   UITabBarController *mainViewController;
@@ -78,6 +79,7 @@
   if([SessionController loggedIn]) {
     launching = mainViewController;
     [mainViewController setSelectedIndex:0];
+    [Calendar resetDate];
   } else {
     launching = [self createSessionViewController];
   }

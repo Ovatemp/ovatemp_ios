@@ -43,11 +43,10 @@
   // Don't show separators after the last item
   table.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
-  [[Calendar sharedInstance] addObserver: self
-                              forKeyPath: @"day"
-                                 options: NSKeyValueObservingOptionNew
-                                 context: NULL];
-
+  [[Calendar sharedInstance] addObserver:self
+                              forKeyPath:@"day"
+                                 options:NSKeyValueObservingOptionNew
+                                 context:NULL];
 
   self.rowIdentifiers = @[@"TemperatureDayCell", @"PeriodDayCell", @"FluidDayCell", @"IntercourseDayCell", @"SymptomsDayCell", @"SupplementsDayCell", @"SignsDayCell"];
   self.rowExemplars = [NSMutableArray array];
@@ -109,8 +108,6 @@
   [super viewWillAppear:animated];
 
   self.day = nil;
-  [Day resetInstances];
-
   [self dateChanged];
 }
 
