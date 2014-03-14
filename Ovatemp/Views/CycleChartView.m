@@ -239,11 +239,23 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 
     // Draw the cycle day line
     if(day == [Calendar day]) {
+      [[UIColor blackColor] set];
       UIBezierPath *cycleDay = [[UIBezierPath alloc] init];
       [cycleDay setLineWidth:.5];
       [cycleDay moveToPoint:CGPointMake(point.x + dotRadius / 2, topPadding)];
       [cycleDay addLineToPoint:CGPointMake(point.x + dotRadius / 2, canvasHeight - bottomPadding)];
       [cycleDay stroke];
+    }
+
+    if(self.landscape) {
+      if(i % 4 == 0) { day.inFertilityWindow = TRUE; }
+      
+      if(day.inFertilityWindow) {
+        [FERTILITY_WINDOW_COLOR set];
+
+        CGRect fertilityWindow = CGRectMake(pointWidth * i + leftPadding, topPadding, pointWidth, canvasHeight - topPadding - bottomPadding);
+        CGContextFillRect(context, fertilityWindow);
+      }
     }
 
     if(day.temperature == nil) {
@@ -311,18 +323,6 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 
     [path stroke];
     [path removeAllPoints];
-  }
-
-  if(self.landscape) {
-
-    if(self.cycle.fertilityWindow) {
-      [FERTILITY_WINDOW_COLOR set];
-
-      CGPoint begin;
-      CGPoint end;
-      CGRect fertilityWindow = CGRectMake(begin.x - dotRadius, topPadding, end.x - point.x + dotRadius, canvasHeight - topPadding - bottomPadding);
-      CGContextFillRect(context, fertilityWindow);
-    }
   }
 
   UIImage *chart = UIGraphicsGetImageFromCurrentImageContext();

@@ -20,7 +20,7 @@
 #define DAY_EDIT_PAGE_COLOR Color(56, 62, 62)
 
 #define CALENDAR_FUTURE_COLOR Color(212, 212, 212)
-#define FERTILITY_WINDOW_COLOR Color(223, 245, 245)
+#define FERTILITY_WINDOW_COLOR ColorA(56, 192, 191, 0.16)
 #define CALENDAR_TODAY_COLOR Color(124, 65, 160)
 
 
@@ -44,6 +44,7 @@ static NSString * const kSessionChangedNotificationName = @"SessionChanged";
 #define SUPERVIEW_SPACING 20.0f
 
 UIColor * Color(int red, int green, int blue);
+UIColor * ColorA(int red, int green, int blue, CGFloat alpha);
 UIColor * Darken(UIColor *color, CGFloat amount);
 
 #define DELAY_BEFORE_SAVE 5

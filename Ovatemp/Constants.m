@@ -9,7 +9,11 @@
 #import "Constants.h"
 
 UIColor * Color(int red, int green, int blue) {
-  return [UIColor colorWithRed:red / 255.0f green:green / 255.0f blue:blue / 255.0f alpha:1];
+  return ColorA(red, green, blue, 1);
+}
+
+UIColor * ColorA(int red, int green, int blue, CGFloat alpha) {
+  return [UIColor colorWithRed:red / 255.0f green:green / 255.0f blue:blue / 255.0f alpha:alpha];
 }
 
 UIColor * Darken(UIColor *color, CGFloat amount) {
