@@ -41,7 +41,7 @@ describe(@"Today screen", ^{
       expect(temperatureLabel.text).to.equal(@"98.6ºF");
 
       [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Set Temperature"];
-      UISlider *slider = (UISlider *)[tester waitForViewWithAccessibilityLabel:@"Temperature"];
+      [tester waitForViewWithAccessibilityLabel:@"Temperature"];
       [tester setValue:99.5 forSliderWithAccessibilityLabel:@"Temperature"];
 
       [tester waitForTimeInterval:.5];

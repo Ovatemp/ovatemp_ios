@@ -19,7 +19,7 @@
 // The first element of all of these arrays/enums is the value for "null" or "unset"
 #define kUnset 0
 
-typedef enum cervicalFluidTypesEnum
+typedef enum cervicalFluidTypesEnum : NSUInteger
 {
   CERVICAL_FLUID_STICKY,
   CERVICAL_FLUID_CREAMY,
@@ -29,7 +29,7 @@ typedef enum cervicalFluidTypesEnum
 @property (nonatomic, retain) NSString* cervicalFluid;
 
 #define kCyclePhaseTypes @[@"period", @"preovulation", @"ovulation", @"postovulation"]
-typedef enum cyclePhaseTypesEnum
+typedef enum cyclePhaseTypesEnum : NSUInteger
 {
   CYCLE_PHASE_PERIOD,
   CYCLE_PHASE_PREOVULATION,
@@ -39,7 +39,7 @@ typedef enum cyclePhaseTypesEnum
 @property (nonatomic, retain) NSString* cyclePhase;
 
 #define kIntercourseTypes @[@"protected", @"unprotected"]
-typedef enum intercourseTypesEnum
+typedef enum intercourseTypesEnum : NSUInteger
 {
   INTERCOURSE_PROTECTED,
   INTERCOURSE_UNPROTECTED,
@@ -47,7 +47,7 @@ typedef enum intercourseTypesEnum
 @property (nonatomic, retain) NSString* intercourse;
 
 #define kFerningTypes @[@"positive", @"negative"]
-typedef enum ferningTypesEnum
+typedef enum ferningTypesEnum : NSUInteger
 {
   FERNING_POSITIVE,
   FERNING_NEGATIVE,
@@ -55,7 +55,7 @@ typedef enum ferningTypesEnum
 @property (nonatomic, retain) NSString* ferning;
 
 #define kMoodTypes @[@"sad", @"worried", @"good", @"amazing"]
-typedef enum moodTypesEnum
+typedef enum moodTypesEnum : NSUInteger
 {
   MOOD_SAD,
   MOOD_WORRIED,
@@ -65,7 +65,7 @@ typedef enum moodTypesEnum
 @property (nonatomic, retain) NSString* mood;
 
 #define kOpkTypes @[@"positive", @"negative"]
-typedef enum opkTypesEnum
+typedef enum opkTypesEnum : NSUInteger
 {
   OPK_POSITIVE,
   OPK_NEGATIVE,
@@ -73,7 +73,7 @@ typedef enum opkTypesEnum
 @property (nonatomic, retain) NSString* opk;
 
 #define kPeriodTypes @[@"none", @"spotting", @"light", @"medium", @"heavy"]
-typedef enum periodTypesEnum
+typedef enum periodTypesEnum : NSUInteger
 {
   PERIOD_NONE,
   PERIOD_SPOTTING,
@@ -84,7 +84,7 @@ typedef enum periodTypesEnum
 @property (nonatomic, retain) NSString* period;
 
 #define kPregnancyTestTypes @[@"positive", @"negative"]
-typedef enum pregnancyTestTypesEnum
+typedef enum pregnancyTestTypesEnum : NSUInteger
 {
   PREGNANCY_TEST_POSITIVE,
   PREGNANCY_TEST_NEGATIVE,
@@ -92,7 +92,7 @@ typedef enum pregnancyTestTypesEnum
 @property (nonatomic, retain ) NSString* pregnancyTest;
 
 #define kVaginalSensationTypes @[@"dry", @"wet", @"lube"]
-typedef enum vaginalSensationTypesEnum
+typedef enum vaginalSensationTypesEnum : NSUInteger
 {
   VAGINAL_SENSATION_DRY,
   VAGINAL_SENSATION_WET,

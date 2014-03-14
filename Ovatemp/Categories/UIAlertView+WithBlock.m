@@ -54,8 +54,6 @@
 
 @end
 
-static const char kAlertWrapper;
-
 @implementation UIAlertView (WithBlock)
 
 #pragma mark - Class Public
