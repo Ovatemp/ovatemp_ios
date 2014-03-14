@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -22,26 +22,26 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2T-pU-WtY" userLabel="Icons Container">
-                    <rect key="frame" x="39" y="211" width="519" height="103"/>
+                    <rect key="frame" x="37" y="211" width="521" height="103"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VhP-Xu-hIG" userLabel="Period Icon View">
-                            <rect key="frame" x="0.0" y="0.0" width="519" height="25"/>
+                            <rect key="frame" x="0.0" y="0.0" width="521" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3IC-tj-wDe" userLabel="Cervical Fluid Icons View">
-                            <rect key="frame" x="0.0" y="26" width="529" height="25"/>
+                            <rect key="frame" x="0.0" y="26" width="531" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Er-6l-lXI" userLabel="Sex Icons View">
-                            <rect key="frame" x="0.0" y="52" width="519" height="25"/>
+                            <rect key="frame" x="0.0" y="52" width="521" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J7i-NG-VvM" userLabel="OPK Icons View">
-                            <rect key="frame" x="0.0" y="78" width="524" height="25"/>
+                            <rect key="frame" x="0.0" y="78" width="526" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
@@ -121,7 +121,7 @@
                 <constraint firstItem="zG7-fI-P3e" firstAttribute="top" secondItem="Chw-6E-r1T" secondAttribute="bottom" constant="8" symbolic="YES" id="S4N-Az-bjq"/>
                 <constraint firstItem="rWF-q6-rov" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="10" id="WO9-uV-D5k"/>
                 <constraint firstItem="zG7-fI-P3e" firstAttribute="trailing" secondItem="jTZ-2Z-WB2" secondAttribute="trailing" id="Z2p-BM-KHo"/>
-                <constraint firstItem="e2T-pU-WtY" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="39" id="bVy-ER-cPu"/>
+                <constraint firstItem="e2T-pU-WtY" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="37" id="bVy-ER-cPu"/>
                 <constraint firstAttribute="bottom" secondItem="e2T-pU-WtY" secondAttribute="bottom" constant="6" id="bqw-9x-YCh"/>
                 <constraint firstItem="rWF-q6-rov" firstAttribute="centerX" secondItem="I5t-rn-7fy" secondAttribute="centerX" id="gRu-Zo-wiw"/>
                 <constraint firstItem="Chw-6E-r1T" firstAttribute="trailing" secondItem="ffE-Gv-8fy" secondAttribute="trailing" id="hvK-jf-CHl"/>
@@ -136,6 +136,7 @@
                 <outlet property="cervicalFluidIconsView" destination="3IC-tj-wDe" id="0hv-z7-6yL"/>
                 <outlet property="chartImageView" destination="rWF-q6-rov" id="MN2-7p-Rvx"/>
                 <outlet property="dateRangeLabel" destination="I5t-rn-7fy" id="6s0-2f-dce"/>
+                <outlet property="iconsContainerLeadingSpace" destination="bVy-ER-cPu" id="adJ-Rw-0Cc"/>
                 <outlet property="iconsContainerView" destination="e2T-pU-WtY" id="BRs-FY-IcI"/>
                 <outlet property="opkIconsView" destination="J7i-NG-VvM" id="apy-mS-oKt"/>
                 <outlet property="periodIconsView" destination="VhP-Xu-hIG" id="zJb-Rm-JER"/>

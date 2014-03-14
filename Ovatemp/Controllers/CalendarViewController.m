@@ -65,20 +65,25 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
 
+  [self scrollToCurrentDay];
+}
+
+- (void)scrollToCurrentDay {
+  if([Calendar day] == nil) { return; }
+
+  NSInteger todayIndex = [self.firstDate daysTilDate:[Calendar day].date];
+  NSIndexPath *todayIndexPath = [NSIndexPath indexPathForItem:todayIndex inSection:0];
+
+  [self.collectionView scrollToItemAtIndexPath:todayIndexPath
+                              atScrollPosition:UICollectionViewScrollPositionCenteredVertically
+                                      animated:NO];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
                        change:(NSDictionary *)change context:(void *)context
 {
   if([keyPath isEqualToString:@"day"] && [[Calendar sharedInstance] class] == [object class]) {
-    if([Calendar day] == nil) { return; }
-
-    NSInteger todayIndex = [self.firstDate daysTilDate:[Calendar day].date];
-    NSIndexPath *todayIndexPath = [NSIndexPath indexPathForItem:todayIndex inSection:0];
-
-    [self.collectionView scrollToItemAtIndexPath:todayIndexPath
-                                atScrollPosition:UICollectionViewScrollPositionCenteredVertically
-                                        animated:NO];
+    [self scrollToCurrentDay];
   }
 }
 
@@ -137,22 +142,30 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
   NSDateComponents *comps = [cal components:NSEraCalendarUnit | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
   date = [cal dateFromComponents:comps];
 
-  cell.imageView.image = [UIImage imageNamed:@"Light"];
+  Day *day = [Day forDate:date];
+  BOOL inFertilityWindow = FALSE;
+  if(day) {
+    NSString *imageName;
+    if(day.cervicalFluid) {
+      imageName = [day imageNameForProperty:@"cervicalFluid"];
+    } else if(day.period) {
+      imageName = [day imageNameForProperty:@"period"];
+    }
+    if(imageName) {
+      cell.imageView.image = [UIImage imageNamed:imageName];
+    }
 
-  // Dummy for now
-  BOOL inFertilityWindow = indexPath.item % 4 == 0;
+    // if(day.inFertilityWindow) {
+    if(indexPath.item % 4 == 0) {
+      inFertilityWindow = TRUE;
+    }
+  }
+
   cell.fertilityWindowView.hidden = !inFertilityWindow;
+  cell.fertilityWindowView.backgroundColor = FERTILITY_WINDOW_COLOR;
 
   NSDateComponents *todayComps = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:[NSDate date]];
   NSDate *today = [cal dateFromComponents:todayComps];
-
-  // If the cell is today
-  if([today isEqualToDate:date]) {
-    cell.dateLabel.backgroundColor = [UIColor grayColor];
-    [cell.dateLabel.layer setMasksToBounds:YES];
-  } else {
-    cell.dateLabel.backgroundColor = [UIColor clearColor];
-  }
 
   // If the cell is the first day of the month
   if(comps.day == 1) {
@@ -163,6 +176,20 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
     cell.leftBorder.hidden = TRUE;
   }
 
+  // If the cell is today
+  [cell.dateLabel sizeToFit];
+
+  if([today isEqualToDate:date]) {
+    cell.dateLabel.backgroundColor = CALENDAR_TODAY_COLOR;
+    [cell.dateLabel.layer setMasksToBounds:YES];
+    cell.dateLabel.layer.cornerRadius = 8;
+    cell.dateLabel.textColor = [UIColor whiteColor];
+  } else {
+    cell.dateLabel.textColor = [UIColor blackColor];
+    cell.dateLabel.backgroundColor = [UIColor clearColor];
+  }
+
+  [cell needsUpdateConstraints];
   return cell;
 }
 

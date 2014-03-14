@@ -137,6 +137,8 @@ typedef enum vaginalSensationTypesEnum
 - (void)toggleSupplement:(Supplement *)supplement;
 - (void)toggleSymptom:(Symptom *)symptom;
 
+- (NSString *)imageNameForProperty:(NSString *)key;
+
 - (void)save;
 
 @end

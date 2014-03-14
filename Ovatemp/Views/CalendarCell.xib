@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -26,9 +26,10 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="19v-0h-t7u">
-                        <rect key="frame" x="0.0" y="0.0" width="38" height="21"/>
+                        <rect key="frame" x="1" y="0.0" width="37" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
+                            <constraint firstAttribute="width" constant="37" id="9M4-IL-4E2"/>
                             <constraint firstAttribute="height" constant="21" id="sda-XT-wrI"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -36,7 +37,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AwK-mk-RaT" userLabel="Top border">
-                        <rect key="frame" x="-20" y="0.0" width="100" height="0.5"/>
+                        <rect key="frame" x="-20" y="0.0" width="100" height="1"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -55,15 +56,14 @@
                 <constraint firstAttribute="trailing" secondItem="ALW-XD-JW1" secondAttribute="trailing" id="1RS-NX-YNY"/>
                 <constraint firstItem="8JH-b6-nrl" firstAttribute="top" secondItem="hbY-9S-gCk" secondAttribute="top" id="4GQ-k2-489"/>
                 <constraint firstItem="8JH-b6-nrl" firstAttribute="leading" secondItem="hbY-9S-gCk" secondAttribute="leading" id="L6n-c9-bkJ"/>
+                <constraint firstAttribute="centerX" secondItem="19v-0h-t7u" secondAttribute="centerX" id="Q9n-ZE-Ax2"/>
+                <constraint firstAttribute="centerX" secondItem="2C9-ns-6Bc" secondAttribute="centerX" id="Xvw-Yc-e85"/>
                 <constraint firstAttribute="bottom" secondItem="8JH-b6-nrl" secondAttribute="bottom" id="Xx5-f6-CDZ"/>
                 <constraint firstAttribute="bottom" secondItem="ALW-XD-JW1" secondAttribute="bottom" id="eCh-hf-LQA"/>
-                <constraint firstItem="19v-0h-t7u" firstAttribute="leading" secondItem="hbY-9S-gCk" secondAttribute="leading" id="g32-fg-9lI"/>
                 <constraint firstItem="19v-0h-t7u" firstAttribute="top" secondItem="hbY-9S-gCk" secondAttribute="top" id="gds-Nz-j0k"/>
                 <constraint firstItem="2C9-ns-6Bc" firstAttribute="top" secondItem="19v-0h-t7u" secondAttribute="bottom" constant="5" id="jvS-9c-754"/>
                 <constraint firstItem="ALW-XD-JW1" firstAttribute="top" secondItem="19v-0h-t7u" secondAttribute="bottom" constant="-1" id="kZD-in-9xG"/>
                 <constraint firstAttribute="bottom" secondItem="2C9-ns-6Bc" secondAttribute="bottom" constant="7" id="pDn-wr-SoA"/>
-                <constraint firstAttribute="trailing" secondItem="19v-0h-t7u" secondAttribute="trailing" id="sEg-uh-4Wa"/>
-                <constraint firstItem="2C9-ns-6Bc" firstAttribute="centerX" secondItem="19v-0h-t7u" secondAttribute="centerX" id="tGQ-Sc-6CJ"/>
                 <constraint firstItem="ALW-XD-JW1" firstAttribute="leading" secondItem="hbY-9S-gCk" secondAttribute="leading" id="z6W-ez-SX7"/>
             </constraints>
             <size key="customSize" width="38" height="54"/>

@@ -41,9 +41,9 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 }
 
 - (void)layoutSubviews {
-  [super layoutSubviews];
-
   [self calculateStyle:self.chartImageView.frame.size];
+
+  [super layoutSubviews];
 
   for(UIView *view in @[self.cervicalFluidIconsView, self.periodIconsView, self.opkIconsView, self.sexIconsView]) {
     for(UIView *subview in view.subviews) {
@@ -51,23 +51,25 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
     }
   }
 
+  NSLog(@"hey%@", self.iconsContainerLeadingSpace);
+
   CGRect iconFrame;
-  for(int i=0; i < daysToShow; i++) {
-    iconFrame = CGRectMake(i * pointWidth, pointWidth / 2, pointWidth, pointWidth);
+  for(Day *day in self.cycle.days) {
+    NSInteger dayIndex = [day.cycleDay intValue] - 1;
+    iconFrame = CGRectMake(dayIndex * pointWidth + (pointWidth * (.25 / 2)), pointWidth / 2, pointWidth * 0.75, pointWidth * 0.75);
 
-    [self.cervicalFluidIconsView addSubview:[self imageViewWithName:@"Creamy" andFrame:iconFrame]];
-
-    [self.periodIconsView addSubview:[self imageViewWithName:@"Medium" andFrame:iconFrame]];
-
-    [self.opkIconsView addSubview:[self imageViewWithName:@"Positive" andFrame:iconFrame]];
-
-    [self.sexIconsView addSubview:[self imageViewWithName:@"Unprotected" andFrame:iconFrame]];
+    [self.cervicalFluidIconsView addSubview:[self imageViewWithName:[day imageNameForProperty:@"cervicalFluid"] andFrame:iconFrame]];
+    [self.periodIconsView addSubview:[self imageViewWithName:[day imageNameForProperty:@"period"] andFrame:iconFrame]];
+    [self.opkIconsView addSubview:[self imageViewWithName:[day imageNameForProperty:@"opk"] andFrame:iconFrame]];
+    [self.sexIconsView addSubview:[self imageViewWithName:[day imageNameForProperty:@"intercourse"] andFrame:iconFrame]];
   }
 
   self.chartImageView.image = [self drawChart:self.chartImageView.frame.size];
 }
 
 - (UIImageView *)imageViewWithName:(NSString *)name andFrame:(CGRect)frame {
+  if(!name) { return nil; }
+
   UIImageView *imageView;
   imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:name]];
   imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -87,15 +89,13 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
   daysToShow = 30;
   pointWidth = canvasWidth / ((CGFloat)daysToShow + leftPaddingPoints + rightPaddingPoints);
 
-  if(self.iconsContainerLeadingSpace) {
-    leftPadding = self.iconsContainerLeadingSpace.constant;
-  } else {
-    leftPadding = leftPaddingPoints * pointWidth;
-  }
+  leftPadding = leftPaddingPoints * pointWidth;
   topPadding = pointWidth * .45;
   rightPadding = rightPaddingPoints * pointWidth;
   bottomPadding = bottomPaddingPoints * pointWidth;
   height = canvasHeight - bottomPadding - topPadding;
+
+  self.iconsContainerLeadingSpace.constant = self.chartImageView.frame.origin.x + leftPadding;
 }
 
 - (UIImage *)drawChart:(CGSize)size {
@@ -220,10 +220,11 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
   font = [UIFont systemFontOfSize:pointWidth * .7];
   CGPoint point;
   for(int i=0; i < daysToShow; i++) {
-    point.x = pointWidth * i + leftPadding;
     // Draw the x axis label for this point
     NSDictionary* stringAttrs = @{NSFontAttributeName: font, NSForegroundColorAttributeName: textColor};
     NSAttributedString* attrStr = [[NSAttributedString alloc] initWithString:[[NSNumber numberWithInt:i+1] description] attributes:stringAttrs];
+
+    point.x = pointWidth * i + leftPadding + (pointWidth - [attrStr size].width) / 2;
 
     [attrStr drawAtPoint:CGPointMake(point.x, canvasHeight - pointWidth)];
   }
@@ -232,7 +233,7 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
   NSMutableSet *dots = [[NSMutableSet alloc] init];
   for(int i=0; i < days.count; i++) {
     // Build the line and store the location for the day
-    point.x = pointWidth * i + leftPadding;
+    point.x = pointWidth * i + leftPadding + pointWidth / 2;
 
     Day *day = days[i];
 
@@ -281,7 +282,7 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
       [[UIColor colorWithRed:col green:.5 blue:.5 alpha:1] set];
     }
 
-    [[UIBezierPath bezierPathWithOvalInRect:CGRectMake(dot.point.x - dotRadius, dot.point.y - dotRadius, dotRadius * 2, dotRadius * 2)] fill];
+    [[UIBezierPath bezierPathWithOvalInRect:CGRectMake(dot.point.x - dotRadius / 2, dot.point.y - dotRadius, dotRadius * 2, dotRadius * 2)] fill];
   }
 
 #pragma mark - Drawing analysis outcomes (cover line, fertility window, cycle day indicator)
@@ -297,7 +298,7 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
     if(false) {
       // Draw cycle day indicator
       [[UIColor redColor] set];
-      CGRect dayIndicator = CGRectMake(point.x - dotRadius / 2, point.y, dotRadius, dotRadius * 3);
+      CGRect dayIndicator = CGRectMake(point.x - dotRadius, point.y, dotRadius, dotRadius * 3);
       CGContextFillRect(context, dayIndicator);
     }
 
@@ -313,9 +314,10 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
   }
 
   if(self.landscape) {
-    [[UIColor colorWithRed:(56/255.0) green:(192/255.0) blue:(191/255.0) alpha:0.16] set];
 
     if(self.cycle.fertilityWindow) {
+      [FERTILITY_WINDOW_COLOR set];
+
       CGPoint begin;
       CGPoint end;
       CGRect fertilityWindow = CGRectMake(begin.x - dotRadius, topPadding, end.x - point.x + dotRadius, canvasHeight - topPadding - bottomPadding);

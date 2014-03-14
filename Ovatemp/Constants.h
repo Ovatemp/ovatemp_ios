@@ -19,6 +19,11 @@
 #define PURPLE Color(124, 65, 160)
 #define DAY_EDIT_PAGE_COLOR Color(56, 62, 62)
 
+#define CALENDAR_FUTURE_COLOR Color(212, 212, 212)
+#define FERTILITY_WINDOW_COLOR Color(223, 245, 245)
+#define CALENDAR_TODAY_COLOR Color(124, 65, 160)
+
+
 // API configuration
 #if TARGET_IPHONE_SIMULATOR
 #define API_URL @"http://localhost:3000/api"

@@ -101,16 +101,27 @@ static NSDictionary *propertyOptions;
   [self addDirtyAttribute:key];
 }
 
+- (NSString *)imageNameForProperty:(NSString *)key {
+  NSString *value = [self valueForKey:key];
+
+  return [value capitalizedString];
+}
+
 - (void)updateProperty:(NSString *)key withValue:(id)value {
   [self setValue:value forKey:key];
   [self addDirtyAttribute:key];
 }
 
 - (BOOL)isProperty:(NSString *)key ofType:(NSInteger)type {
+  return [[self valueForKey:key] isEqualToString:[self property:key ofType:type]];
+}
+
+- (NSString*)property:(NSString *)key ofType:(NSInteger)type {
   NSArray *enumeratedStrings = propertyOptions[key];
 
-  return [[self valueForKey:key] isEqualToString:enumeratedStrings[type]];
+  return enumeratedStrings[type];
 }
+
 
 - (void)addDirtyAttribute:(NSString *)key {
   @synchronized(self->dirtyAttributes) {
