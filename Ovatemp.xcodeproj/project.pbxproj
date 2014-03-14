@@ -73,7 +73,6 @@
 		83A1FDF918D35C820030D331 /* OvatempIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A1FDF718D35C820030D331 /* OvatempIcon@2x.png */; };
 		83BD853818D0B23900890EDA /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BD853718D0B23900890EDA /* RootViewController.m */; };
 		83BD853A18D0B7A900890EDA /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83BD853918D0B7A900890EDA /* RootViewController.xib */; };
-		83BD853C18D0B82300890EDA /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 83BD853B18D0B82300890EDA /* LaunchImage.png */; };
 		83C6510F18C9015000F35CE5 /* NSDate+CalendarOps.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C6510E18C9015000F35CE5 /* NSDate+CalendarOps.m */; };
 		83C6511418C91B7500F35CE5 /* BackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6511018C91B7500F35CE5 /* BackArrow.png */; };
 		83C6511518C91B7500F35CE5 /* BackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6511118C91B7500F35CE5 /* BackArrow@2x.png */; };
@@ -177,6 +176,16 @@
 		C3BF8FE818984AC200572F43 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FE718984AC200572F43 /* User.m */; };
 		C3BF8FEB18984B9700572F43 /* TextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FEA18984B9700572F43 /* TextFieldCell.m */; };
 		C3D4F35418983B9C00CBB91A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D4F35318983B9C00CBB91A /* Constants.m */; };
+		C3E58C2C18D39AAC0026301A /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C2A18D39AAC0026301A /* LaunchImage.png */; };
+		C3E58C2D18D39AAC0026301A /* LaunchImageR4.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C2B18D39AAC0026301A /* LaunchImageR4.png */; };
+		C3E58C3618D39B7B0026301A /* Icon29.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C2E18D39B7B0026301A /* Icon29.png */; };
+		C3E58C3718D39B7B0026301A /* Icon29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C2F18D39B7B0026301A /* Icon29@2x.png */; };
+		C3E58C3818D39B7B0026301A /* Icon40.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C3018D39B7B0026301A /* Icon40.png */; };
+		C3E58C3918D39B7B0026301A /* Icon40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C3118D39B7B0026301A /* Icon40@2x.png */; };
+		C3E58C3A18D39B7B0026301A /* Icon60.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C3218D39B7B0026301A /* Icon60.png */; };
+		C3E58C3B18D39B7B0026301A /* Icon60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C3318D39B7B0026301A /* Icon60@2x.png */; };
+		C3E58C3C18D39B7B0026301A /* Icon76.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C3418D39B7B0026301A /* Icon76.png */; };
+		C3E58C3D18D39B7B0026301A /* Icon76@x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C3518D39B7B0026301A /* Icon76@x.png */; };
 		D18C51F548DA4E59B785DE16 /* libPods-Ovatemp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */; };
 /* End PBXBuildFile section */
 
@@ -288,7 +297,6 @@
 		83BD853618D0B23900890EDA /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		83BD853718D0B23900890EDA /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		83BD853918D0B7A900890EDA /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
-		83BD853B18D0B82300890EDA /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
 		83C6510D18C9015000F35CE5 /* NSDate+CalendarOps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CalendarOps.h"; sourceTree = "<group>"; };
 		83C6510E18C9015000F35CE5 /* NSDate+CalendarOps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CalendarOps.m"; sourceTree = "<group>"; };
 		83C6511018C91B7500F35CE5 /* BackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackArrow.png; sourceTree = "<group>"; };
@@ -411,6 +419,16 @@
 		C3BF8FEA18984B9700572F43 /* TextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldCell.m; sourceTree = "<group>"; };
 		C3D4F35218983B9C00CBB91A /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C3D4F35318983B9C00CBB91A /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		C3E58C2A18D39AAC0026301A /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
+		C3E58C2B18D39AAC0026301A /* LaunchImageR4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImageR4.png; sourceTree = "<group>"; };
+		C3E58C2E18D39B7B0026301A /* Icon29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon29.png; sourceTree = "<group>"; };
+		C3E58C2F18D39B7B0026301A /* Icon29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon29@2x.png"; sourceTree = "<group>"; };
+		C3E58C3018D39B7B0026301A /* Icon40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon40.png; sourceTree = "<group>"; };
+		C3E58C3118D39B7B0026301A /* Icon40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon40@2x.png"; sourceTree = "<group>"; };
+		C3E58C3218D39B7B0026301A /* Icon60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon60.png; sourceTree = "<group>"; };
+		C3E58C3318D39B7B0026301A /* Icon60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon60@2x.png"; sourceTree = "<group>"; };
+		C3E58C3418D39B7B0026301A /* Icon76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon76.png; sourceTree = "<group>"; };
+		C3E58C3518D39B7B0026301A /* Icon76@x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon76@x.png"; sourceTree = "<group>"; };
 		DA450FC5E9904FF093E24AC1 /* Pods-Ovatemp.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.xcconfig"; path = "Pods/Pods-Ovatemp.xcconfig"; sourceTree = "<group>"; };
 		F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ovatemp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OvatempTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -469,19 +487,28 @@
 		834BD64318AEA1A4003B6808 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				83A1FDF618D35C820030D331 /* OvatempIcon.png */,
-				83A1FDF718D35C820030D331 /* OvatempIcon@2x.png */,
-				83BD853B18D0B82300890EDA /* LaunchImage.png */,
 				83C6511018C91B7500F35CE5 /* BackArrow.png */,
 				83C6511118C91B7500F35CE5 /* BackArrow@2x.png */,
-				83C6511218C91B7500F35CE5 /* ForwardArrow.png */,
-				83C6511318C91B7500F35CE5 /* ForwardArrow@2x.png */,
-				832934B818B7D93200F6875B /* MedsMoodsSupplements */,
 				835AE58918B7A51700FEAF98 /* CheckBox.png */,
 				835AE58A18B7A51700FEAF98 /* CheckBox@2x.png */,
+				83C6511218C91B7500F35CE5 /* ForwardArrow.png */,
+				83C6511318C91B7500F35CE5 /* ForwardArrow@2x.png */,
+				C3E58C2E18D39B7B0026301A /* Icon29.png */,
+				C3E58C2F18D39B7B0026301A /* Icon29@2x.png */,
+				C3E58C3018D39B7B0026301A /* Icon40.png */,
+				C3E58C3118D39B7B0026301A /* Icon40@2x.png */,
+				C3E58C3218D39B7B0026301A /* Icon60.png */,
+				C3E58C3318D39B7B0026301A /* Icon60@2x.png */,
+				C3E58C3418D39B7B0026301A /* Icon76.png */,
+				C3E58C3518D39B7B0026301A /* Icon76@x.png */,
+				C3E58C2A18D39AAC0026301A /* LaunchImage.png */,
+				C3E58C2B18D39AAC0026301A /* LaunchImageR4.png */,
+				83A1FDF618D35C820030D331 /* OvatempIcon.png */,
+				83A1FDF718D35C820030D331 /* OvatempIcon@2x.png */,
 				83EB3E3318AEA7D500EA91AC /* CervicalFluid */,
 				83EB3E4718AEA7D500EA91AC /* FertilityProfile */,
 				83EB3E5718AEA7D500EA91AC /* Intercourse */,
+				832934B818B7D93200F6875B /* MedsMoodsSupplements */,
 				83EB3E8318AEA7D500EA91AC /* PeriodIcons */,
 				83EB3E8D18AEA7D500EA91AC /* PlanActivities */,
 				83EB3E9718AEA7D500EA91AC /* PositiveNegative */,
@@ -1002,6 +1029,7 @@
 				83EB3F1718AEA7D500EA91AC /* Self Massage@2x.png in Resources */,
 				83EB3F1018AEA7D500EA91AC /* Acupressure@2x.png in Resources */,
 				83EB3F3518AEA7D500EA91AC /* Lube.png in Resources */,
+				C3E58C2D18D39AAC0026301A /* LaunchImageR4.png in Resources */,
 				83EB3F1D18AEA7D500EA91AC /* cal_selected.png in Resources */,
 				83EB3F1618AEA7D500EA91AC /* Self Massage.png in Resources */,
 				83EB3EC118AEA7D500EA91AC /* Sticky@2x.png in Resources */,
@@ -1016,6 +1044,7 @@
 				8328B75718ABFD6D00DA7A5E /* TemperatureDayCell.xib in Resources */,
 				83EB3ED018AEA7D500EA91AC /* Energize-01@2x.png in Resources */,
 				83EB3F3818AEA7D500EA91AC /* Wet@2x.png in Resources */,
+				C3E58C3818D39B7B0026301A /* Icon40.png in Resources */,
 				835BA2B918BBEFBF00C64350 /* +.png in Resources */,
 				8328B76518AC006C00DA7A5E /* SupplementsDayCell.xib in Resources */,
 				83EB3F2218AEA7D500EA91AC /* coaching_selected@2x.png in Resources */,
@@ -1029,9 +1058,11 @@
 				832934CF18B7D93200F6875B /* Supplements.png in Resources */,
 				83EB3EDF18AEA7D500EA91AC /* Unprotected.png in Resources */,
 				83EB3EDB18AEA7D500EA91AC /* Ventilate-01@2x.png in Resources */,
+				C3E58C3718D39B7B0026301A /* Icon29@2x.png in Resources */,
 				83686EA018C6323600A5329C /* CalendarCell.xib in Resources */,
 				8328B76318AC005A00DA7A5E /* SymptomsDayCell.xib in Resources */,
 				83EB3EE018AEA7D500EA91AC /* Unprotected@2x.png in Resources */,
+				C3E58C3D18D39B7B0026301A /* Icon76@x.png in Resources */,
 				83EB3F1418AEA7D500EA91AC /* Meditation.png in Resources */,
 				83EB3EBD18AEA7D500EA91AC /* Eggwhite.png in Resources */,
 				83EB3F2018AEA7D500EA91AC /* cal_unselected@2x.png in Resources */,
@@ -1040,8 +1071,10 @@
 				83EB3EBC18AEA7D500EA91AC /* Creamy@2x.png in Resources */,
 				832934D418B7D93200F6875B /* Worried@2x.png in Resources */,
 				83EB3EBB18AEA7D500EA91AC /* Creamy.png in Resources */,
+				C3E58C3A18D39B7B0026301A /* Icon60.png in Resources */,
 				832934CE18B7D93200F6875B /* Sad@2x.png in Resources */,
 				83EB3ED418AEA7D500EA91AC /* Nourish-01.png in Resources */,
+				C3E58C3918D39B7B0026301A /* Icon40@2x.png in Resources */,
 				83EB3F1918AEA7D500EA91AC /* Negative.png in Resources */,
 				832934D018B7D93200F6875B /* Supplements@2x.png in Resources */,
 				832934CB18B7D93200F6875B /* Medicines.png in Resources */,
@@ -1055,14 +1088,17 @@
 				83A1FDF818D35C820030D331 /* OvatempIcon.png in Resources */,
 				83EB3F2718AEA7D500EA91AC /* community_unselect.png in Resources */,
 				83EB3F1518AEA7D500EA91AC /* Meditation@2x.png in Resources */,
+				C3E58C3B18D39B7B0026301A /* Icon60@2x.png in Resources */,
 				839A346218ABCFB6007CD657 /* OTDayNavigationController.xib in Resources */,
 				83EB3ED218AEA7D500EA91AC /* Hydrate-01@2x.png in Resources */,
 				83EB3ED518AEA7D500EA91AC /* Nourish-01@2x.png in Resources */,
 				832934CC18B7D93200F6875B /* Medicines@2x.png in Resources */,
 				83EB3F2B18AEA7D500EA91AC /* more_selected@2x.png in Resources */,
+				C3E58C3C18D39B7B0026301A /* Icon76.png in Resources */,
 				83A1FDF518D35C3B0030D331 /* SessionStoryboard.storyboard in Resources */,
 				83C6511618C91B7500F35CE5 /* ForwardArrow.png in Resources */,
 				83EB3F3718AEA7D500EA91AC /* Wet.png in Resources */,
+				C3E58C2C18D39AAC0026301A /* LaunchImage.png in Resources */,
 				83EB3ED718AEA7D500EA91AC /* Refresh-01@2x.png in Resources */,
 				83EB3F2F18AEA7D500EA91AC /* today_selected@2x.png in Resources */,
 				83EB3F2A18AEA7D500EA91AC /* more_selected.png in Resources */,
@@ -1074,11 +1110,11 @@
 				832934CD18B7D93200F6875B /* Sad.png in Resources */,
 				83EB3F0718AEA7D500EA91AC /* Heavy@2x.png in Resources */,
 				832934CA18B7D93200F6875B /* Good@2x.png in Resources */,
+				C3E58C3618D39B7B0026301A /* Icon29.png in Resources */,
 				83EB3F0F18AEA7D500EA91AC /* Acupressure.png in Resources */,
 				83EB3F3018AEA7D500EA91AC /* today_unselect.png in Resources */,
 				83EB3F1218AEA7D500EA91AC /* Lifestyle .png in Resources */,
 				83EB3ECD18AEA7D500EA91AC /* Activate.png in Resources */,
-				83BD853C18D0B82300890EDA /* LaunchImage.png in Resources */,
 				83C6511418C91B7500F35CE5 /* BackArrow.png in Resources */,
 				83BD853A18D0B7A900890EDA /* RootViewController.xib in Resources */,
 				83EB3EDE18AEA7D500EA91AC /* Protected@2x.png in Resources */,
@@ -1349,7 +1385,7 @@
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1DB1C37C-F85F-4E63-BABA-D5725E291E21";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1366,7 +1402,7 @@
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1DB1C37C-F85F-4E63-BABA-D5725E291E21";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
