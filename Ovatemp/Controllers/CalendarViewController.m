@@ -149,6 +149,8 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
 
   Day *day = [Day forDate:date];
   BOOL inFertilityWindow = FALSE;
+  cell.imageView.image = nil;
+  
   if(day) {
     NSString *imageName;
     if(day.cervicalFluid) {
@@ -190,6 +192,12 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
   } else {
     cell.dateLabel.textColor = [UIColor blackColor];
     cell.dateLabel.backgroundColor = [UIColor clearColor];
+  }
+
+  if([date compare:today] == NSOrderedDescending) {
+    cell.backgroundColor = CALENDAR_FUTURE_COLOR;
+  } else {
+    cell.backgroundColor = [UIColor clearColor];
   }
   cell.dateLabel.center = CGPointMake(cell.imageView.center.x, cell.dateLabel.center.y);
 

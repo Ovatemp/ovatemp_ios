@@ -13,6 +13,5 @@
 - (NSDate *)addDays:(NSUInteger)days;
 - (NSInteger)daysInMonth;
 - (NSInteger)daysTilDate:(NSDate*)toDateTime;
-- (NSDateComponents *)differenceWithDate:(NSDate *)to ofUnit:(NSCalendarUnit)unit;
 
 @end

@@ -48,21 +48,4 @@
   return days.length;
 }
 
-- (NSDateComponents *)differenceWithDate:(NSDate *)to ofUnit:(NSCalendarUnit)unit  {
-  NSDate *fromDate;
-  NSDate *toDate;
-
-  NSCalendar *calendar = [NSCalendar currentCalendar];
-
-  [calendar rangeOfUnit:unit startDate:&fromDate
-               interval:NULL forDate:self];
-  [calendar rangeOfUnit:unit startDate:&toDate
-               interval:NULL forDate:to];
-
-  NSDateComponents *difference = [calendar components:unit
-                                             fromDate:fromDate toDate:toDate options:0];
-
-  return difference;
-}
-
 @end
