@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalendarViewController">
+            <connections>
+                <outlet property="collectionView" destination="GLM-3q-jnf" id="MJs-79-Ne9"/>
+                <outlet property="fertilityStatusView" destination="xE4-8T-IyO" id="YWr-Wa-Mxj"/>
+                <outlet property="headerView" destination="hja-P0-IVh" id="dWI-KV-6hV"/>
+                <outlet property="view" destination="iN0-l3-epB" id="UTG-Ox-Hoi"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hja-P0-IVh" userLabel="Days of the week view">
+                    <rect key="frame" x="0.0" y="64" width="320" height="20"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="GLM-3q-jnf">
+                    <rect key="frame" x="0.0" y="84" width="320" height="484"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qr4-Zv-zav">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <cells/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="faa-Ir-ty7"/>
+                        <outlet property="delegate" destination="-1" id="1w4-eo-xF0"/>
+                    </connections>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xE4-8T-IyO" customClass="FertilityStatusView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're fertile!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elf-pA-15h">
+                            <rect key="frame" x="20" y="29" width="280" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="elf-pA-15h" firstAttribute="top" secondItem="xE4-8T-IyO" secondAttribute="top" constant="29" id="Wjx-pM-dBr"/>
+                        <constraint firstAttribute="height" constant="64" id="bTz-MR-H4x"/>
+                        <constraint firstAttribute="trailing" secondItem="elf-pA-15h" secondAttribute="trailing" constant="20" symbolic="YES" id="dse-gb-hCI"/>
+                        <constraint firstAttribute="width" constant="320" id="oPn-ej-71A"/>
+                        <constraint firstItem="elf-pA-15h" firstAttribute="leading" secondItem="xE4-8T-IyO" secondAttribute="leading" constant="20" symbolic="YES" id="whA-Bl-ojp"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="xE4-8T-IyO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6zv-DB-obo"/>
+                <constraint firstItem="hja-P0-IVh" firstAttribute="trailing" secondItem="xE4-8T-IyO" secondAttribute="trailing" id="AA0-fE-VYR"/>
+                <constraint firstItem="GLM-3q-jnf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="F00-jh-oqu"/>
+                <constraint firstItem="GLM-3q-jnf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="84" id="GPO-ea-JjH"/>
+                <constraint firstItem="hja-P0-IVh" firstAttribute="leading" secondItem="GLM-3q-jnf" secondAttribute="leading" id="Hoa-rt-oxK"/>
+                <constraint firstItem="hja-P0-IVh" firstAttribute="top" secondItem="xE4-8T-IyO" secondAttribute="bottom" id="M0H-zy-U6F"/>
+                <constraint firstItem="GLM-3q-jnf" firstAttribute="top" secondItem="hja-P0-IVh" secondAttribute="bottom" id="MES-DK-a1K"/>
+                <constraint firstItem="xE4-8T-IyO" firstAttribute="leading" secondItem="hja-P0-IVh" secondAttribute="leading" id="WPS-4L-fWH"/>
+                <constraint firstAttribute="trailing" secondItem="GLM-3q-jnf" secondAttribute="trailing" id="ak4-Vu-Buj"/>
+                <constraint firstAttribute="bottom" secondItem="GLM-3q-jnf" secondAttribute="bottom" id="uhn-Em-SOk"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+</document>

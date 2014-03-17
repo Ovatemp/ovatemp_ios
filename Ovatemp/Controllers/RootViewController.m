@@ -114,9 +114,8 @@
   UIViewController *todayController = [[TodayViewController alloc] init];
   todayController = [[OTDayNavigationController alloc] initWithContentViewController:todayController];
 
-  UIViewController *calendarController = [[CalendarViewController alloc] initWithDefaultLayoutAndFrameHint:self.view.frame];
-  calendarController = [[OTDayNavigationController alloc] initWithContentViewController:calendarController];
-
+  UIViewController *calendarController = [[CalendarViewController alloc] initWithNibName:@"CalendarViewController" bundle:nil];
+ 
   UIViewController *coachingController = [[UIViewController alloc] init];
   UIViewController *communityController = [[UIViewController alloc] init];
   UIViewController* moreViewController = [[UIStoryboard storyboardWithName:@"MoreStoryboard" bundle:nil] instantiateInitialViewController];

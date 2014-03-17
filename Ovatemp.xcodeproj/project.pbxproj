@@ -71,6 +71,7 @@
 		83A1FDF518D35C3B0030D331 /* SessionStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83A1FDF418D35C3B0030D331 /* SessionStoryboard.storyboard */; };
 		83A1FDF818D35C820030D331 /* OvatempIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A1FDF618D35C820030D331 /* OvatempIcon.png */; };
 		83A1FDF918D35C820030D331 /* OvatempIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A1FDF718D35C820030D331 /* OvatempIcon@2x.png */; };
+		83A1FE0418D74C8E0030D331 /* CalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A1FE0318D74C8E0030D331 /* CalendarViewController.xib */; };
 		83BD853818D0B23900890EDA /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BD853718D0B23900890EDA /* RootViewController.m */; };
 		83BD853A18D0B7A900890EDA /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83BD853918D0B7A900890EDA /* RootViewController.xib */; };
 		83C6510F18C9015000F35CE5 /* NSDate+CalendarOps.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C6510E18C9015000F35CE5 /* NSDate+CalendarOps.m */; };
@@ -294,6 +295,7 @@
 		83A1FDF418D35C3B0030D331 /* SessionStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SessionStoryboard.storyboard; sourceTree = "<group>"; };
 		83A1FDF618D35C820030D331 /* OvatempIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OvatempIcon.png; sourceTree = "<group>"; };
 		83A1FDF718D35C820030D331 /* OvatempIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OvatempIcon@2x.png"; sourceTree = "<group>"; };
+		83A1FE0318D74C8E0030D331 /* CalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarViewController.xib; sourceTree = "<group>"; };
 		83BD853618D0B23900890EDA /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		83BD853718D0B23900890EDA /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		83BD853918D0B7A900890EDA /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
@@ -739,6 +741,7 @@
 				83686EA118C6335000A5329C /* CalendarViewController.h */,
 				83686EA218C6335000A5329C /* CalendarViewController.m */,
 				83A1FDF418D35C3B0030D331 /* SessionStoryboard.storyboard */,
+				83A1FE0318D74C8E0030D331 /* CalendarViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1026,6 +1029,7 @@
 				832934C918B7D93200F6875B /* Good.png in Resources */,
 				83EB3F0D18AEA7D500EA91AC /* Spotting.png in Resources */,
 				835AE58C18B7A51700FEAF98 /* CheckBox@2x.png in Resources */,
+				83A1FE0418D74C8E0030D331 /* CalendarViewController.xib in Resources */,
 				83EB3F1718AEA7D500EA91AC /* Self Massage@2x.png in Resources */,
 				83EB3F1018AEA7D500EA91AC /* Acupressure@2x.png in Resources */,
 				83EB3F3518AEA7D500EA91AC /* Lube.png in Resources */,

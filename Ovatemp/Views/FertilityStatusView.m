@@ -19,14 +19,11 @@ NSArray *seekingPregnancyColors;
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-      self.label = [[UILabel alloc] initWithFrame:self.bounds];
-      [self addSubview:self.label];
+      self.label = self.subviews.firstObject;
 
       self.label.font = [UIFont systemFontOfSize:16];
       self.label.textColor = [UIColor whiteColor];
       self.label.textAlignment = NSTextAlignmentCenter;
-
-      [self addSubview:self.label];
 
       NSMutableArray *messages = [NSMutableArray array];
       NSMutableArray *colors = [NSMutableArray array];

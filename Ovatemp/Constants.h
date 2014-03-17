@@ -48,3 +48,5 @@ UIColor * ColorA(int red, int green, int blue, CGFloat alpha);
 UIColor * Darken(UIColor *color, CGFloat amount);
 
 #define DELAY_BEFORE_SAVE 5
+
+#define STATUS_BAR_HEIGHT 20

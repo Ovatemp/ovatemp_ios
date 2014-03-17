@@ -26,11 +26,11 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="19v-0h-t7u">
-                        <rect key="frame" x="1" y="0.0" width="37" height="21"/>
+                        <rect key="frame" x="1" y="2" width="37" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="37" id="9M4-IL-4E2"/>
-                            <constraint firstAttribute="height" constant="21" id="sda-XT-wrI"/>
+                            <constraint firstAttribute="height" constant="19" id="sda-XT-wrI"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -60,7 +60,7 @@
                 <constraint firstAttribute="centerX" secondItem="2C9-ns-6Bc" secondAttribute="centerX" id="Xvw-Yc-e85"/>
                 <constraint firstAttribute="bottom" secondItem="8JH-b6-nrl" secondAttribute="bottom" id="Xx5-f6-CDZ"/>
                 <constraint firstAttribute="bottom" secondItem="ALW-XD-JW1" secondAttribute="bottom" id="eCh-hf-LQA"/>
-                <constraint firstItem="19v-0h-t7u" firstAttribute="top" secondItem="hbY-9S-gCk" secondAttribute="top" id="gds-Nz-j0k"/>
+                <constraint firstItem="19v-0h-t7u" firstAttribute="top" secondItem="hbY-9S-gCk" secondAttribute="top" constant="2" id="gds-Nz-j0k"/>
                 <constraint firstItem="2C9-ns-6Bc" firstAttribute="top" secondItem="19v-0h-t7u" secondAttribute="bottom" constant="5" id="jvS-9c-754"/>
                 <constraint firstItem="ALW-XD-JW1" firstAttribute="top" secondItem="19v-0h-t7u" secondAttribute="bottom" constant="-1" id="kZD-in-9xG"/>
                 <constraint firstAttribute="bottom" secondItem="2C9-ns-6Bc" secondAttribute="bottom" constant="7" id="pDn-wr-SoA"/>

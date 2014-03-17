@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FertilityStatusView.h"
 
-@interface CalendarViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface CalendarViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
-- (id)initWithDefaultLayoutAndFrameHint:(CGRect)frame;
+@property (weak, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet FertilityStatusView *fertilityStatusView;
 
 @end

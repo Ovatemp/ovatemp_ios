@@ -25,23 +25,24 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
 
 @implementation CalendarViewController
 
-- (id)initWithDefaultLayoutAndFrameHint:(CGRect)frame {
+- (void)viewDidLoad
+{
+  [super viewDidLoad];
+  self.edgesForExtendedLayout = UIRectEdgeNone;
+  
   UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-
+  CGFloat itemWidth = self.view.frame.size.width / 8;
+  layout.itemSize = CGSizeMake(itemWidth, itemWidth * 1.2);
   layout.minimumInteritemSpacing = 0;
   layout.minimumLineSpacing = 0;
-  layout.sectionInset = UIEdgeInsetsMake(3,10,0,10);  // top, left, bottom, right
 
-  CGFloat itemWidth = frame.size.width / 8;
-  layout.itemSize = CGSizeMake(itemWidth, itemWidth * 1.2);
-
-  self = [super initWithCollectionViewLayout:layout];
-  if(!self) {
-    return nil;
-  }
-
+  layout.sectionInset = UIEdgeInsetsMake(3, itemWidth / 2, 0, itemWidth / 2);  // top, left, bottom, right
+  [self.collectionView setCollectionViewLayout:layout];
   self.collectionView.showsVerticalScrollIndicator = FALSE;
   self.collectionView.scrollsToTop = FALSE;
+
+  [self.collectionView registerNib:[UINib nibWithNibName:kCalendarCellIdentifier bundle:nil] forCellWithReuseIdentifier:kCalendarCellIdentifier];
+  [self.collectionView setBackgroundColor:[UIColor whiteColor]];
 
 
   [[Calendar sharedInstance] addObserver: self
@@ -51,22 +52,25 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
 
   [self setDateRange];
 
-  return self;
-}
+  NSArray *weekdays = [@"S M T W R F S" componentsSeparatedByString:@" "];
+  for(int i=0; i < 7; i++) {
+    CGRect frame = CGRectMake(i * itemWidth + layout.sectionInset.left, 0, itemWidth, self.headerView.frame.size.height);
 
-- (void)viewDidLoad
-{
-  [super viewDidLoad];
-
-  [self.collectionView registerNib:[UINib nibWithNibName:kCalendarCellIdentifier bundle:nil] forCellWithReuseIdentifier:kCalendarCellIdentifier];
-  [self.collectionView setBackgroundColor:[UIColor whiteColor]];
+    UILabel *label = [[UILabel alloc] initWithFrame:frame];
+    label.text = weekdays[i];
+    label.textAlignment = NSTextAlignmentCenter;
+    [self.headerView addSubview:label];
+  }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
 
   [self.collectionView reloadData];
+
   [self scrollToCurrentDay];
+
+  [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];
 }
 
 - (void)scrollToCurrentDay {
@@ -168,11 +172,12 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
   // If the cell is the first day of the month
   if(comps.day == 1) {
     cell.dateLabel.text = [date shortMonth];
-    cell.leftBorder.hidden = FALSE;
+    //cell.leftBorder.hidden = FALSE;
   } else {
     cell.dateLabel.text = [NSString stringWithFormat:@"%ld", (long)comps.day];
-    cell.leftBorder.hidden = TRUE;
+    //cell.leftBorder.hidden = TRUE;
   }
+  cell.leftBorder.hidden = TRUE;
 
   // If the cell is today
   [cell.dateLabel sizeToFit];
@@ -186,6 +191,7 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
     cell.dateLabel.textColor = [UIColor blackColor];
     cell.dateLabel.backgroundColor = [UIColor clearColor];
   }
+  cell.dateLabel.center = CGPointMake(cell.imageView.center.x, cell.dateLabel.center.y);
 
   [cell needsUpdateConstraints];
   return cell;
