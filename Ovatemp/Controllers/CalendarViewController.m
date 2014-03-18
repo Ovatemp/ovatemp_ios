@@ -67,7 +67,6 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
   [super viewDidAppear:animated];
 
   [self.collectionView reloadData];
-
   [self scrollToCurrentDay];
 
   [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];

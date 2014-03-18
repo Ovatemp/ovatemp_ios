@@ -53,6 +53,12 @@
   self.dayFormatter = [[NSDateFormatter alloc] init];
   [self.dayFormatter setDateFormat:@"d"];
 
+
+  [[Calendar sharedInstance] addObserver: self
+                              forKeyPath: @"day"
+                                 options: NSKeyValueObservingOptionNew
+                                 context: NULL];
+  
   [self updateLabels];
 }
 
@@ -72,13 +78,27 @@
 }
 
 - (void)updateLabels {
-  NSString *titleFormat = @"Cycle Day: #%@";
+  if(Calendar.day) {
+    self.dayBackwardButton.hidden = FALSE;
+    self.dayForwardButton.hidden = [Calendar isOnToday];
+    self.fertilityStatusView.hidden = FALSE;
 
-  self.dateLabel.text = [self.dateFormatter stringFromDate:Calendar.day.date];
-  self.titleLabel.text = [NSString stringWithFormat:titleFormat, Calendar.day.cycleDay];
+    [self.fertilityStatusView updateWithDay:Calendar.day];
+    self.dateLabel.text = [self.dateFormatter stringFromDate:Calendar.day.date];
 
-  self.dayForwardButton.hidden = [Calendar isOnToday];
-  [self.fertilityStatusView updateWithDay:Calendar.day];
+    if(Calendar.day.cycle) {
+      self.titleLabel.text = [NSString stringWithFormat: @"Cycle Day: #%@", Calendar.day.cycleDay];
+    } else {
+      self.titleLabel.text = @"No cycle found.";
+    }
+  } else {
+    self.dayBackwardButton.hidden = TRUE;
+    self.dayForwardButton.hidden = TRUE;
+    self.fertilityStatusView.hidden = TRUE;
+
+    self.dateLabel.text = @"Loading...";
+    self.titleLabel.text = @"";
+  }
 }
 
 - (IBAction)moveDayForward:(id)sender {

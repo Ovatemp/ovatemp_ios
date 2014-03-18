@@ -54,27 +54,8 @@ static Calendar *sharedObject = nil;
             self.day = [Day forDate:self.date];
           }
           failure:^(NSError *error) {
-            if(error.code == 422) {
-              NSLog(@"we need to ask for the beginning of the cycle");
-              [self createFakeStartDay];
-            } else {
-              NSLog(@"done loading! error: %@", error);
-            }
+            NSLog(@"done loading! error: %@", error);
           }];
-}
-
-- (void)createFakeStartDay {
-  [ConnectionManager put:@"/days/"
-                  params:@{
-                           @"day": @{@"date": [[self.date dateByAddingTimeInterval:-60 * 60 * 24 * 20] dateId],
-                                     @"period": @"light"}}
-                 success:^(NSDictionary *response) {
-                   [self updateDay];
-                 }
-                 failure:^(NSError *error) {
-                   NSLog(@"error: %@", error);
-                 }];
-
 }
 
 + (void)resetDate {

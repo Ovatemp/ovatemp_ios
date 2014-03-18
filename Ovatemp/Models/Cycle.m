@@ -48,6 +48,17 @@
   Cycle *cycle = [[Cycle alloc] init];
 
   NSArray *daysResponse = cycleResponse[@"days"];
+
+  if(!daysResponse) {
+    if(!cycleResponse[@"day"]) {
+      NSLog(@"no day or days in: %@", cycleResponse);
+    }
+
+    [Day withAttributes:cycleResponse[@"day"]];
+
+    return nil;
+  }
+
   NSMutableArray *days = [[NSMutableArray alloc] initWithCapacity:daysResponse.count];
 
   Day *day;
