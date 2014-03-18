@@ -10,4 +10,8 @@
 
 @interface MoreViewController : UITableViewController
 
+@property (weak, nonatomic) IBOutlet UISwitch *tryingToConceive;
+@property (weak, nonatomic) IBOutlet UISwitch *tryingToAvoid;
+@property (weak, nonatomic) IBOutlet UILabel *fullNameLabel;
+
 @end

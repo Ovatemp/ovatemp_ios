@@ -56,6 +56,8 @@
 }
 
 + (void)loadSupplementsEtc:(NSDictionary *)response {
+  [UserProfile setCurrent:[UserProfile withAttributes:response[@"user_profile"]]];
+
   [Supplement resetInstancesWithArray:response[@"supplements"]];
   [Medicine resetInstancesWithArray:response[@"medicines"]];
   [Symptom resetInstancesWithArray:response[@"symptoms"]];

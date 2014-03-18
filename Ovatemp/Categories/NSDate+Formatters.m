@@ -20,5 +20,14 @@ static NSDateFormatter *__monthDateFormatter;
   return [__monthDateFormatter stringFromDate:self];
 }
 
+static NSDateFormatter *__classicDateFormatter;
+- (NSString *)classicDate {
+  if(!__classicDateFormatter){
+    __classicDateFormatter = [[NSDateFormatter alloc] init];
+    [__classicDateFormatter setDateFormat:@"MM/dd/yyyy"];
+  }
+
+  return [__classicDateFormatter stringFromDate:self];
+}
 
 @end

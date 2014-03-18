@@ -72,6 +72,9 @@
 		83A1FDF818D35C820030D331 /* OvatempIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A1FDF618D35C820030D331 /* OvatempIcon.png */; };
 		83A1FDF918D35C820030D331 /* OvatempIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A1FDF718D35C820030D331 /* OvatempIcon@2x.png */; };
 		83A1FE0418D74C8E0030D331 /* CalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A1FE0318D74C8E0030D331 /* CalendarViewController.xib */; };
+		83A1FE0718D778F80030D331 /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A1FE0618D778F80030D331 /* UserProfile.m */; };
+		83A1FE0A18D78B2C0030D331 /* FAMSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A1FE0918D78B2C0030D331 /* FAMSettingsViewController.m */; };
+		83A1FE0D18D78FAC0030D331 /* ProfileSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A1FE0C18D78FAC0030D331 /* ProfileSettingsViewController.m */; };
 		83BD853818D0B23900890EDA /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BD853718D0B23900890EDA /* RootViewController.m */; };
 		83BD853A18D0B7A900890EDA /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83BD853918D0B7A900890EDA /* RootViewController.xib */; };
 		83C6510F18C9015000F35CE5 /* NSDate+CalendarOps.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C6510E18C9015000F35CE5 /* NSDate+CalendarOps.m */; };
@@ -296,6 +299,12 @@
 		83A1FDF618D35C820030D331 /* OvatempIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OvatempIcon.png; sourceTree = "<group>"; };
 		83A1FDF718D35C820030D331 /* OvatempIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OvatempIcon@2x.png"; sourceTree = "<group>"; };
 		83A1FE0318D74C8E0030D331 /* CalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarViewController.xib; sourceTree = "<group>"; };
+		83A1FE0518D778F80030D331 /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
+		83A1FE0618D778F80030D331 /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
+		83A1FE0818D78B2C0030D331 /* FAMSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAMSettingsViewController.h; sourceTree = "<group>"; };
+		83A1FE0918D78B2C0030D331 /* FAMSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAMSettingsViewController.m; sourceTree = "<group>"; };
+		83A1FE0B18D78FAC0030D331 /* ProfileSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSettingsViewController.h; sourceTree = "<group>"; };
+		83A1FE0C18D78FAC0030D331 /* ProfileSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileSettingsViewController.m; sourceTree = "<group>"; };
 		83BD853618D0B23900890EDA /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		83BD853718D0B23900890EDA /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		83BD853918D0B7A900890EDA /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
@@ -742,6 +751,10 @@
 				83686EA218C6335000A5329C /* CalendarViewController.m */,
 				83A1FDF418D35C3B0030D331 /* SessionStoryboard.storyboard */,
 				83A1FE0318D74C8E0030D331 /* CalendarViewController.xib */,
+				83A1FE0818D78B2C0030D331 /* FAMSettingsViewController.h */,
+				83A1FE0918D78B2C0030D331 /* FAMSettingsViewController.m */,
+				83A1FE0B18D78FAC0030D331 /* ProfileSettingsViewController.h */,
+				83A1FE0C18D78FAC0030D331 /* ProfileSettingsViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -786,6 +799,8 @@
 				835BA2B218BBCB8300C64350 /* SharedRelation.m */,
 				838752F218CF44BC00E8ED4A /* Cycle.h */,
 				838752F318CF44BC00E8ED4A /* Cycle.m */,
+				83A1FE0518D778F80030D331 /* UserProfile.h */,
+				83A1FE0618D778F80030D331 /* UserProfile.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1253,9 +1268,12 @@
 				835AE58618B7A36000FEAF98 /* CheckCell.m in Sources */,
 				839A346118ABCFB6007CD657 /* OTDayNavigationController.m in Sources */,
 				8328B75D18AC002800DA7A5E /* FluidDayCell.m in Sources */,
+				83A1FE0718D778F80030D331 /* UserProfile.m in Sources */,
 				836A6C9D18BF819E0068F1D2 /* CycleChartView.m in Sources */,
 				8315E49B18C13F9B00DA935A /* OTScrollView.m in Sources */,
 				C3D4F35418983B9C00CBB91A /* Constants.m in Sources */,
+				83A1FE0A18D78B2C0030D331 /* FAMSettingsViewController.m in Sources */,
+				83A1FE0D18D78FAC0030D331 /* ProfileSettingsViewController.m in Sources */,
 				839A346818ABF385007CD657 /* PeriodDayCell.m in Sources */,
 				C3066C6818983537003F8B84 /* TodayViewController.m in Sources */,
 				834BD63818AD164E003B6808 /* SessionController.m in Sources */,

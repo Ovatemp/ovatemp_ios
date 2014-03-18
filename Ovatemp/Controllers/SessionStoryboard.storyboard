@@ -66,6 +66,9 @@
                                         <accessibility key="accessibilityConfiguration" label="Email"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="3Re-AB-8d5" id="jY9-SH-l0b"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UXe-Cs-1RT">
                                         <rect key="frame" x="102" y="44" width="198" height="30"/>
@@ -73,6 +76,9 @@
                                         <accessibility key="accessibilityConfiguration" label="Password"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="3Re-AB-8d5" id="Xrf-z2-ab1"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

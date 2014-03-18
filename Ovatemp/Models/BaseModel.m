@@ -90,7 +90,7 @@ static NSMutableDictionary *_instances;
 
 #pragma mark - Key value storage
 
-- (NSDictionary *)attributes:(BOOL)camelCase {
+- (NSDictionary *)attributesCamelCased:(BOOL)camelCase {
   return [self attributesForKeys:[NSSet setWithArray:[_serializedKeys allKeys]] camelCase:camelCase];
 }
 
@@ -195,7 +195,11 @@ static NSMutableDictionary *_instances;
 - (NSDate *)dateForValue:(id)value {
   if ([value isKindOfClass:[NSString class]]) {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS'Z'";
+    if([value length] > 10) {
+      dateFormatter.dateFormat = @"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS'Z'";
+    } else {
+      dateFormatter.dateFormat = @"yyyy'-'MM'-'dd";
+    }
     return [dateFormatter dateFromString:value];
   }
   return value;

@@ -25,7 +25,7 @@
 + (void)resetInstancesWithArray:(NSArray *)array;
 + (id)withAttributes:(NSDictionary *)attributes;
 - (void)setAttributes:(NSDictionary *)attributes;
-- (NSDictionary *)attributes:(BOOL)camelCase;
+- (NSDictionary *)attributesCamelCased:(BOOL)camelCase;
 - (NSDictionary *)attributesForKeys:(NSSet *)keys camelCase:(BOOL)camelCase;
 + (id)findByKey:(NSString *)identifier;
 - (NSDate *)dateForValue:(id)value;

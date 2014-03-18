@@ -8,6 +8,7 @@
 
 #import "MoreViewController.h"
 #import "SessionController.h"
+#import "User.h"
 
 @interface MoreViewController ()
 
@@ -15,8 +16,32 @@
 
 @implementation MoreViewController
 
+- (void)viewWillLayoutSubviews {
+  [self updateControls];
+}
+
 - (IBAction)logoutTapped:(id)sender {
   [SessionController logOut];
+}
+
+- (IBAction)tryingToConceiveChanged:(UISwitch *)toggle {
+  [UserProfile current].tryingToConceive = [NSNumber numberWithBool:self.tryingToConceive.on];
+  [[UserProfile current] save];
+
+  [self updateControls];
+}
+
+- (IBAction)tryingToAvoidChanged:(UISwitch *)toggle {
+  [UserProfile current].tryingToConceive = [NSNumber numberWithBool:!self.tryingToAvoid.on];
+  [[UserProfile current] save];
+
+  [self updateControls];
+}
+
+-(void)updateControls {
+  self.tryingToConceive.on = [[UserProfile current].tryingToConceive boolValue];
+  self.tryingToAvoid.on =   ![[UserProfile current].tryingToConceive boolValue];
+  self.fullNameLabel.text = [[UserProfile current] fullName];
 }
 
 @end

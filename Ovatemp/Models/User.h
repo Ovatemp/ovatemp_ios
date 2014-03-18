@@ -7,6 +7,7 @@
 //
 
 #import "BaseModel.h"
+#import "UserProfile.h"
 
 @interface User : BaseModel
 
@@ -14,10 +15,8 @@
 + (void)setCurrent:(User *)user;
 
 @property NSString *email;
-@property NSString *firstName;
-@property NSString *lastName;
 @property NSString *mailchimpLeid;
 @property NSString *passwordDigest;
-@property BOOL *hasCycles;
+@property UserProfile *profile;
 
 @end
