@@ -84,6 +84,7 @@
     launching = [self createSessionViewController];
   }
 
+  launching.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
   [self presentViewController:launching animated:YES completion:^{
     launching = nil;
   }];
