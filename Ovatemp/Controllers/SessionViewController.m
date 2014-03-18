@@ -31,6 +31,17 @@
   self.sessionType = SessionLogin;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
 }
@@ -107,6 +118,11 @@
   [self.passwordField resignFirstResponder];
 }
 
+- (void)observeKeyboard {
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
   if (textField == self.emailField) {
     [self.passwordField becomeFirstResponder];
@@ -117,6 +133,34 @@
   }
 
   return YES;
+}
+
+// The callback for frame-changing of keyboard
+- (void)keyboardDidShow:(NSNotification *)notification {
+  CGFloat height = [self keyboardHeight:notification];
+
+  [UIView animateWithDuration:.2 animations:^{
+    CGRect frame = self.view.frame;
+    frame.origin.y -= height / 2;
+    self.view.frame = frame;
+  }];
+}
+
+- (CGFloat)keyboardHeight:(NSNotification *)notification {
+  NSDictionary *info = [notification userInfo];
+  NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+  CGRect keyboardFrame = [kbFrame CGRectValue];
+  
+  return keyboardFrame.size.height;
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+  [UIView animateWithDuration:.2 animations:^{
+    CGRect frame = self.view.frame;
+    NSLog(@"frame: %@", NSStringFromCGRect(self.view.frame));
+    frame.origin.y = 0;
+    self.view.frame = frame;
+  }];
 }
 
 @end

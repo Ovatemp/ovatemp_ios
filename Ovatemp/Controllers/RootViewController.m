@@ -97,17 +97,6 @@
 
 # pragma mark - Main View Controller
 
-- (void)presentMainViewController {
-  if(!mainViewController) {
-    [self createMainViewController];
-  }
-
-  launching = mainViewController;
-  [self presentViewController:mainViewController animated:YES completion:^{
-    launching = nil;
-  }];
-}
-
 - (void)createMainViewController {
   UITabBarController *tabController = [[UITabBarController alloc] init];
 
