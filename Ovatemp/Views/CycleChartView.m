@@ -116,6 +116,11 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
   maxValue = ceil(maxValue);
   minValue = floor(minValue);
 
+  if(days.count == 0) {
+    minValue = 96;
+    maxValue = 100;
+  }
+
   UIGraphicsBeginImageContextWithOptions(size, YES, 0);   // 0 means let iOS deal with scale for you (for Retina)
   CGContextRef context = UIGraphicsGetCurrentContext();
 
