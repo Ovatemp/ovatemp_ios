@@ -26,7 +26,7 @@
 
   [UIView animateWithDuration:.2 animations:^{
     CGRect frame = self.view.frame;
-    frame.origin.y = -height / 2;
+    frame.origin.y = -height / 3;
     self.view.frame = frame;
   }];
 }

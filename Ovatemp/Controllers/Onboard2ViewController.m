@@ -66,6 +66,7 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   [self.dateOfBirthTextField resignFirstResponder];
+  [self.fullNameTextField resignFirstResponder];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
