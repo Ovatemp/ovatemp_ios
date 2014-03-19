@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Back Forty. All rights reserved.
 //
 
-#import "OvatempTestHelpers.h"
+#import "KIFUITestActor+OTAdditions.h"
 #import "AppDelegate.h"
 #import "UIAccessibilityElement-KIFAdditions.h"
 #import "UIApplication-KIFAdditions.h"
@@ -16,7 +16,7 @@ SpecBegin(TodaySpec)
 describe(@"Today screen", ^{
   context(@"without an existing cycle", ^{
     beforeAll(^{
-      [self registerUser];
+      [tester registerUser];
     });
 
     xit(@"presents the beginning of most recent cycle interface", ^{
@@ -26,7 +26,7 @@ describe(@"Today screen", ^{
 
   context(@"with an existing cycle", ^{
     beforeAll(^{
-      [self registerUser];
+      [tester registerUser];
       [tester tapViewWithAccessibilityLabel:@"Today"];
     });
 

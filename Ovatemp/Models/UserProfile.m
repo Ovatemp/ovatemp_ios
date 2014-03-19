@@ -46,9 +46,7 @@ static UserProfile *_currentUserProfile;
     [ConnectionManager put:@"/user_profiles"
                     params:@{@"user_profile": [self attributesCamelCased:FALSE]}
                    success:^(NSDictionary *response) {
-                     NSLog(@"response: %@", response);
                      self.attributes = response[@"user_profile"];
-
                    }
                    failure:^(NSError *error) {
                      NSLog(@"couldn't save");

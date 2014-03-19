@@ -89,7 +89,7 @@ static NSDictionary *propertyOptions;
   return [Day forDate:[self.date dateByAddingTimeInterval:-1 * 60 * 60 * 24]];
 }
 
-- (void)toggleProperty:(NSString *)key withIndex:(NSInteger)index {
+- (void)selectProperty:(NSString *)key withindex:(NSInteger)index {
   NSArray *enumeratedStrings = propertyOptions[key];
   NSString *value = enumeratedStrings[index];
 

@@ -11,7 +11,6 @@
 #import "TodayViewController.h"
 #import "OTDayNavigationController.h"
 #import "CalendarViewController.h"
-#import "SessionController.h"
 #import "User.h"
 #import "Calendar.h"
 
@@ -48,35 +47,15 @@
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(logOutWithUnauthorized)
                                                name:kUnauthorizedRequestNotification object:nil];
-
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(launchAppropriateViewController)
-                                               name:kSessionChangedNotificationName
-                                             object:nil
-   ];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-  [super viewDidAppear:animated];
-
   [self launchAppropriateViewController];
 }
 
 - (void)launchAppropriateViewController {
-  if(launching) {
-    return;
-  }
-
-  if(self.presentedViewController) {
-    [self dismissViewControllerAnimated:TRUE completion:^{
-      [self launchAppropriateViewController];
-    }];
-
-    return;
-  }
-
   // Require a user to log in or register
-  if([SessionController loggedIn]) {
+  if([Configuration loggedIn]) {
     launching = mainViewController;
     [mainViewController setSelectedIndex:0];
     [Calendar resetDate];
@@ -85,6 +64,7 @@
   }
 
   launching.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+
   [self presentViewController:launching animated:YES completion:^{
     launching = nil;
   }];
@@ -138,6 +118,8 @@
 
   [tabController addChildViewController:moreViewController];
 
+  tabController.delegate = self;
+  
   mainViewController = tabController;
 }
 
@@ -149,8 +131,23 @@
   return sessionViewController;
 }
 
+- (void)refreshToken {
+  if([Configuration sharedConfiguration].token != nil) {
+    [ConnectionManager put:@"/sessions/refresh"
+                    params:nil
+                   success:^(NSDictionary *response) {
+                     [Configuration loggedInWithResponse:response];
+                   }
+                   failure:^(NSError *error) {
+                     [self logOutWithUnauthorized];
+                   }
+     ];
+  }
+}
+
 - (void)logOutWithUnauthorized {
-  if(![SessionController loggedIn]) {
+  NSLog(@"unauthorized");
+  if(![Configuration loggedIn]) {
     return;
   }
 
@@ -162,7 +159,10 @@
   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry for the trouble!" message:@"You've been logged you out of your account. Please log in again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 
   [alert show];
-  [SessionController logOut];
+  [Configuration logOut];
+  [self.presentedViewController dismissViewControllerAnimated:false completion:^{
+    [self launchAppropriateViewController];
+  }];
 }
 
 # pragma mark - UIAppearance helpers

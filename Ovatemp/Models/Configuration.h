@@ -13,5 +13,8 @@
 @property NSString *token;
 
 + (Configuration *)sharedConfiguration;
++ (void)loggedInWithResponse:(NSDictionary *)response;
++ (BOOL)loggedIn;
++ (void)logOut;
 
 @end

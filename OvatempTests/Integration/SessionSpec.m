@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Back Forty. All rights reserved.
 //
 
-#import "OvatempTestHelpers.h"
+#import "KIFUITestActor+OTAdditions.h"
 #import "AppDelegate.h"
 #import "UIAccessibilityElement-KIFAdditions.h"
 #import "UIApplication-KIFAdditions.h"
@@ -19,12 +19,12 @@ SpecBegin(SessionSpec)
 describe(@"Authentication failures", ^{
   context(@"Logged in", ^{
     beforeEach(^{
-      [self registerUser];
+      [tester registerUser];
       [tester tapViewWithAccessibilityLabel:@"Today"];
     });
 
     it(@"should kick you out if your token becomes invalid and you make a request", ^{
-      [self resetUsers];
+      [tester resetUsers];
 
       [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
       [tester tapViewWithAccessibilityLabel:@"Set Temperature" traits:UIAccessibilityTraitButton];
@@ -38,7 +38,7 @@ describe(@"Authentication failures", ^{
     });
 
     it(@"should allow you to reset your password", ^{
-      [self logOut];
+      [tester logOut];
 
       // This should match the registration email
       [tester enterText:@"test@example.com" intoViewWithAccessibilityLabel:@"Email"];

@@ -7,6 +7,8 @@
 //
 
 #import "Configuration.h"
+#import "User.h"
+#import "Day.h"
 
 static Configuration *_sharedConfiguration;
 
@@ -37,5 +39,31 @@ static Configuration *_sharedConfiguration;
   [userDefaults setObject:value forKey:keyPath];
   [userDefaults synchronize];
 }
+
++ (void)loggedInWithResponse:(NSDictionary *)response {
+  NSDictionary *userDict = response[@"user"];
+  User *user = [User withAttributes:userDict];
+  [User setCurrent:user];
+
+  [Configuration sharedConfiguration].token = response[@"token"];
+  [UserProfile setCurrent:[UserProfile withAttributes:response[@"user_profile"]]];
+
+  [Supplement resetInstancesWithArray:response[@"supplements"]];
+  [Medicine resetInstancesWithArray:response[@"medicines"]];
+  [Symptom resetInstancesWithArray:response[@"symptoms"]];
+
+  [Day resetInstances];
+}
+
++ (BOOL)loggedIn {
+  return [Configuration sharedConfiguration].token != nil;
+}
+
++ (void)logOut {
+  [User setCurrent:nil];
+  [UserProfile setCurrent:nil];
+  [Configuration sharedConfiguration].token = nil;
+}
+
 
 @end

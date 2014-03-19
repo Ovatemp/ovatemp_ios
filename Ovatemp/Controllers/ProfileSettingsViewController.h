@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ProfileSettingsViewController : UITableViewController
+
 @property (weak, nonatomic) IBOutlet UITextField *fullNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *dateOfBirthTextField;
+
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 @end

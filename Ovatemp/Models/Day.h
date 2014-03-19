@@ -124,7 +124,7 @@ typedef enum vaginalSensationTypesEnum : NSUInteger
 
 - (BOOL)isProperty:(NSString *)key ofType:(NSInteger)type;
 - (void)updateProperty:(NSString *)key withValue:(id)value;
-- (void)toggleProperty:(NSString *)key withIndex:(NSInteger)index;
+- (void)selectProperty:(NSString *)key withindex:(NSInteger)index;
 
 - (BOOL)hasMedicine:(Medicine *)medicine;
 - (BOOL)hasSupplement:(Supplement *)supplement;

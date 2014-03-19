@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "RootViewController.h"
 #import "Alert.h"
-#import "SessionController.h"
 
 @implementation AppDelegate
 
@@ -43,7 +42,8 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 
-  [SessionController refresh];
+  RootViewController *rvc = (RootViewController *)self.window.rootViewController;
+  [rvc refreshToken];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

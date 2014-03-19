@@ -9,11 +9,11 @@
 #import "SessionViewController.h"
 
 #import "User.h"
-#import "SessionController.h"
 
 #import "UIViewController+ConnectionManager.h"
 #import "UIViewController+Alerts.h"
 #import "UIAlertView+WithBlock.h"
+#import "UIViewController+KeyboardObservers.h"
 
 @interface SessionViewController () {
 }
@@ -32,14 +32,12 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+  [self addKeyboardObservers];
 
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+  [self removeKeyboardObservers];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,12 +58,13 @@
                                 }
                             }
                    target:self
-                  success:@selector(loggedIn:)
+                  success:@selector(signedUp:)
                   failure:@selector(presentError:)];
 }
 
 - (IBAction)sessionLogin:(id)sender {
   [self startLoadingWithMessage:@"Logging you in..."];
+  
   [ConnectionManager post:@"/sessions"
                    params:@{
                             @"email": self.emailField.text,
@@ -109,8 +108,14 @@
 }
 
 - (void)loggedIn:(NSDictionary *)response {
-  [SessionController loggedInWithUser:response[@"user"] andToken:response[@"token"]];
-  [SessionController loadSupplementsEtc:response];
+  [Configuration loggedInWithResponse:response];
+  [self dismissViewControllerAnimated:TRUE completion:nil];
+}
+
+- (void)signedUp:(NSDictionary *)response {
+  [Configuration loggedInWithResponse:response];
+
+  [self performSegueWithIdentifier:@"SignUpToProfile1" sender:nil];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -118,10 +123,6 @@
   [self.passwordField resignFirstResponder];
 }
 
-- (void)observeKeyboard {
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
   if (textField == self.emailField) {
@@ -135,32 +136,5 @@
   return YES;
 }
 
-// The callback for frame-changing of keyboard
-- (void)keyboardDidShow:(NSNotification *)notification {
-  CGFloat height = [self keyboardHeight:notification];
-
-  [UIView animateWithDuration:.2 animations:^{
-    CGRect frame = self.view.frame;
-    frame.origin.y -= height / 2;
-    self.view.frame = frame;
-  }];
-}
-
-- (CGFloat)keyboardHeight:(NSNotification *)notification {
-  NSDictionary *info = [notification userInfo];
-  NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
-  CGRect keyboardFrame = [kbFrame CGRectValue];
-  
-  return keyboardFrame.size.height;
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-  [UIView animateWithDuration:.2 animations:^{
-    CGRect frame = self.view.frame;
-    NSLog(@"frame: %@", NSStringFromCGRect(self.view.frame));
-    frame.origin.y = 0;
-    self.view.frame = frame;
-  }];
-}
 
 @end

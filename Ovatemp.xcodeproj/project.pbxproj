@@ -44,7 +44,6 @@
 		8329353B18B7FD2600F6875B /* Symptom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8329353A18B7FD2600F6875B /* Symptom.m */; };
 		834BD63218AD1363003B6808 /* MoreStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */; };
 		834BD63518AD1519003B6808 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63418AD1519003B6808 /* MoreViewController.m */; };
-		834BD63818AD164E003B6808 /* SessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63718AD164E003B6808 /* SessionController.m */; };
 		834BD63B18AD29EA003B6808 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63A18AD29EA003B6808 /* Day.m */; };
 		834BD64118AD6590003B6808 /* DayToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD64018AD6590003B6808 /* DayToggleButton.m */; };
 		83548FF218BD24450016B53A /* TodaySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 83548FF118BD24450016B53A /* TodaySpec.m */; };
@@ -77,6 +76,11 @@
 		83A1FE0D18D78FAC0030D331 /* ProfileSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A1FE0C18D78FAC0030D331 /* ProfileSettingsViewController.m */; };
 		83BD853818D0B23900890EDA /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BD853718D0B23900890EDA /* RootViewController.m */; };
 		83BD853A18D0B7A900890EDA /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83BD853918D0B7A900890EDA /* RootViewController.xib */; };
+		83C31B1D18D9D05000DC2022 /* Onboard1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C31B1C18D9D05000DC2022 /* Onboard1ViewController.m */; };
+		83C4D20F18D9D9F7008C523C /* UIViewController+UserProfileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4D20E18D9D9F7008C523C /* UIViewController+UserProfileHelpers.m */; };
+		83C4D21618D9E0F6008C523C /* Onboard2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4D21518D9E0F6008C523C /* Onboard2ViewController.m */; };
+		83C4D21918D9E744008C523C /* UIViewController+KeyboardObservers.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4D21818D9E744008C523C /* UIViewController+KeyboardObservers.m */; };
+		83C4D21C18D9F1CF008C523C /* KIFUITestActor+OTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4D21B18D9F1CF008C523C /* KIFUITestActor+OTAdditions.m */; };
 		83C6510F18C9015000F35CE5 /* NSDate+CalendarOps.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C6510E18C9015000F35CE5 /* NSDate+CalendarOps.m */; };
 		83C6511418C91B7500F35CE5 /* BackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6511018C91B7500F35CE5 /* BackArrow.png */; };
 		83C6511518C91B7500F35CE5 /* BackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6511118C91B7500F35CE5 /* BackArrow@2x.png */; };
@@ -257,8 +261,6 @@
 		834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MoreStoryboard.storyboard; path = ../Views/MoreStoryboard.storyboard; sourceTree = "<group>"; };
 		834BD63318AD1519003B6808 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		834BD63418AD1519003B6808 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
-		834BD63618AD164E003B6808 /* SessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionController.h; sourceTree = "<group>"; };
-		834BD63718AD164E003B6808 /* SessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionController.m; sourceTree = "<group>"; };
 		834BD63918AD29EA003B6808 /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
 		834BD63A18AD29EA003B6808 /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
 		834BD63F18AD6590003B6808 /* DayToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayToggleButton.h; sourceTree = "<group>"; };
@@ -308,6 +310,16 @@
 		83BD853618D0B23900890EDA /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		83BD853718D0B23900890EDA /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		83BD853918D0B7A900890EDA /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		83C31B1B18D9D05000DC2022 /* Onboard1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Onboard1ViewController.h; sourceTree = "<group>"; };
+		83C31B1C18D9D05000DC2022 /* Onboard1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Onboard1ViewController.m; sourceTree = "<group>"; };
+		83C4D20D18D9D9F7008C523C /* UIViewController+UserProfileHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+UserProfileHelpers.h"; sourceTree = "<group>"; };
+		83C4D20E18D9D9F7008C523C /* UIViewController+UserProfileHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+UserProfileHelpers.m"; sourceTree = "<group>"; };
+		83C4D21418D9E0F6008C523C /* Onboard2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Onboard2ViewController.h; sourceTree = "<group>"; };
+		83C4D21518D9E0F6008C523C /* Onboard2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Onboard2ViewController.m; sourceTree = "<group>"; };
+		83C4D21718D9E744008C523C /* UIViewController+KeyboardObservers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KeyboardObservers.h"; sourceTree = "<group>"; };
+		83C4D21818D9E744008C523C /* UIViewController+KeyboardObservers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KeyboardObservers.m"; sourceTree = "<group>"; };
+		83C4D21A18D9F1CF008C523C /* KIFUITestActor+OTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFUITestActor+OTAdditions.h"; sourceTree = "<group>"; };
+		83C4D21B18D9F1CF008C523C /* KIFUITestActor+OTAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFUITestActor+OTAdditions.m"; sourceTree = "<group>"; };
 		83C6510D18C9015000F35CE5 /* NSDate+CalendarOps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CalendarOps.h"; sourceTree = "<group>"; };
 		83C6510E18C9015000F35CE5 /* NSDate+CalendarOps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CalendarOps.m"; sourceTree = "<group>"; };
 		83C6511018C91B7500F35CE5 /* BackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackArrow.png; sourceTree = "<group>"; };
@@ -529,28 +541,6 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		838752EA18CE4F2B00E8ED4A /* Containers */ = {
-			isa = PBXGroup;
-			children = (
-				839A346018ABCFB6007CD657 /* OTDayNavigationController.xib */,
-				839A345E18ABCFB6007CD657 /* OTDayNavigationController.h */,
-				839A345F18ABCFB6007CD657 /* OTDayNavigationController.m */,
-			);
-			name = Containers;
-			sourceTree = "<group>";
-		};
-		838752EB18CE502600E8ED4A /* Tabs */ = {
-			isa = PBXGroup;
-			children = (
-				C3066C6518983537003F8B84 /* TodayViewController.h */,
-				C3066C6618983537003F8B84 /* TodayViewController.m */,
-				834BD63318AD1519003B6808 /* MoreViewController.h */,
-				834BD63418AD1519003B6808 /* MoreViewController.m */,
-				834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */,
-			);
-			name = Tabs;
-			sourceTree = "<group>";
-		};
 		839A345518ABCB14007CD657 /* DayCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -586,6 +576,21 @@
 				839A345C18ABCBAD007CD657 /* Calendar.m */,
 			);
 			name = Shared;
+			sourceTree = "<group>";
+		};
+		83C4D21018D9DFCA008C523C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				83A1FE0818D78B2C0030D331 /* FAMSettingsViewController.h */,
+				83A1FE0918D78B2C0030D331 /* FAMSettingsViewController.m */,
+				83A1FE0B18D78FAC0030D331 /* ProfileSettingsViewController.h */,
+				83A1FE0C18D78FAC0030D331 /* ProfileSettingsViewController.m */,
+				83C31B1B18D9D05000DC2022 /* Onboard1ViewController.h */,
+				83C31B1C18D9D05000DC2022 /* Onboard1ViewController.m */,
+				83C4D21418D9E0F6008C523C /* Onboard2ViewController.h */,
+				83C4D21518D9E0F6008C523C /* Onboard2ViewController.m */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		83EB3E3318AEA7D500EA91AC /* CervicalFluid */ = {
@@ -729,6 +734,10 @@
 				835BA2B518BBDC0200C64350 /* UIAlertView+WithBlock.m */,
 				83C6510D18C9015000F35CE5 /* NSDate+CalendarOps.h */,
 				83C6510E18C9015000F35CE5 /* NSDate+CalendarOps.m */,
+				83C4D20D18D9D9F7008C523C /* UIViewController+UserProfileHelpers.h */,
+				83C4D20E18D9D9F7008C523C /* UIViewController+UserProfileHelpers.m */,
+				83C4D21718D9E744008C523C /* UIViewController+KeyboardObservers.h */,
+				83C4D21818D9E744008C523C /* UIViewController+KeyboardObservers.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -736,25 +745,26 @@
 		C308705A18980A2E00DC4364 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				838752EA18CE4F2B00E8ED4A /* Containers */,
-				838752EB18CE502600E8ED4A /* Tabs */,
-				C3BF8FDE1898452F00572F43 /* SessionViewController.h */,
-				C3BF8FDF1898452F00572F43 /* SessionViewController.m */,
-				834BD63618AD164E003B6808 /* SessionController.h */,
-				834BD63718AD164E003B6808 /* SessionController.m */,
+				83686EA118C6335000A5329C /* CalendarViewController.h */,
+				83686EA218C6335000A5329C /* CalendarViewController.m */,
+				83A1FE0318D74C8E0030D331 /* CalendarViewController.xib */,
 				838752EF18CE5F9300E8ED4A /* CycleViewController.h */,
 				838752F018CE5F9300E8ED4A /* CycleViewController.m */,
+				834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */,
+				834BD63318AD1519003B6808 /* MoreViewController.h */,
+				834BD63418AD1519003B6808 /* MoreViewController.m */,
+				839A345E18ABCFB6007CD657 /* OTDayNavigationController.h */,
+				839A345F18ABCFB6007CD657 /* OTDayNavigationController.m */,
+				839A346018ABCFB6007CD657 /* OTDayNavigationController.xib */,
 				83BD853618D0B23900890EDA /* RootViewController.h */,
 				83BD853718D0B23900890EDA /* RootViewController.m */,
 				83BD853918D0B7A900890EDA /* RootViewController.xib */,
-				83686EA118C6335000A5329C /* CalendarViewController.h */,
-				83686EA218C6335000A5329C /* CalendarViewController.m */,
 				83A1FDF418D35C3B0030D331 /* SessionStoryboard.storyboard */,
-				83A1FE0318D74C8E0030D331 /* CalendarViewController.xib */,
-				83A1FE0818D78B2C0030D331 /* FAMSettingsViewController.h */,
-				83A1FE0918D78B2C0030D331 /* FAMSettingsViewController.m */,
-				83A1FE0B18D78FAC0030D331 /* ProfileSettingsViewController.h */,
-				83A1FE0C18D78FAC0030D331 /* ProfileSettingsViewController.m */,
+				C3BF8FDE1898452F00572F43 /* SessionViewController.h */,
+				C3BF8FDF1898452F00572F43 /* SessionViewController.m */,
+				83C4D21018D9DFCA008C523C /* Settings */,
+				C3066C6518983537003F8B84 /* TodayViewController.h */,
+				C3066C6618983537003F8B84 /* TodayViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -937,6 +947,8 @@
 				C3BF8FD81898421700572F43 /* XCTestCase+KIF.m */,
 				C3BF8FDB1898449D00572F43 /* OvatempTestHelpers.h */,
 				C3BF8FDC1898449D00572F43 /* OvatempTestHelpers.m */,
+				83C4D21A18D9F1CF008C523C /* KIFUITestActor+OTAdditions.h */,
+				83C4D21B18D9F1CF008C523C /* KIFUITestActor+OTAdditions.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1251,6 +1263,7 @@
 				C308706B18980B1A00DC4364 /* Alert.m in Sources */,
 				C31220241899BB8E0027C4B3 /* Configuration.m in Sources */,
 				8387261018CA12C800A3277C /* FertilityStatusView.m in Sources */,
+				83C4D21618D9E0F6008C523C /* Onboard2ViewController.m in Sources */,
 				834BD63B18AD29EA003B6808 /* Day.m in Sources */,
 				8315E4A618C6300800DA935A /* CalendarCell.m in Sources */,
 				835BA2B318BBCB8300C64350 /* SharedRelation.m in Sources */,
@@ -1265,7 +1278,9 @@
 				830E351518D2505C00884F0E /* NSDate+DateID.m in Sources */,
 				83686EA318C6335000A5329C /* CalendarViewController.m in Sources */,
 				8328B76A18AC009C00DA7A5E /* IntercourseDayCell.m in Sources */,
+				83C4D20F18D9D9F7008C523C /* UIViewController+UserProfileHelpers.m in Sources */,
 				835AE58618B7A36000FEAF98 /* CheckCell.m in Sources */,
+				83C4D21918D9E744008C523C /* UIViewController+KeyboardObservers.m in Sources */,
 				839A346118ABCFB6007CD657 /* OTDayNavigationController.m in Sources */,
 				8328B75D18AC002800DA7A5E /* FluidDayCell.m in Sources */,
 				83A1FE0718D778F80030D331 /* UserProfile.m in Sources */,
@@ -1275,8 +1290,8 @@
 				83A1FE0A18D78B2C0030D331 /* FAMSettingsViewController.m in Sources */,
 				83A1FE0D18D78FAC0030D331 /* ProfileSettingsViewController.m in Sources */,
 				839A346818ABF385007CD657 /* PeriodDayCell.m in Sources */,
+				83C31B1D18D9D05000DC2022 /* Onboard1ViewController.m in Sources */,
 				C3066C6818983537003F8B84 /* TodayViewController.m in Sources */,
-				834BD63818AD164E003B6808 /* SessionController.m in Sources */,
 				839A345D18ABCBAD007CD657 /* Calendar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1290,6 +1305,7 @@
 				C3BF8FD91898421700572F43 /* XCTestCase+KIF.m in Sources */,
 				C3BF8FDD1898449D00572F43 /* OvatempTestHelpers.m in Sources */,
 				83548FF218BD24450016B53A /* TodaySpec.m in Sources */,
+				83C4D21C18D9F1CF008C523C /* KIFUITestActor+OTAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

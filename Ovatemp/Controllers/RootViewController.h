@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SessionViewController.h"
 
-@interface RootViewController : UIViewController
+@interface RootViewController : UIViewController <UITabBarControllerDelegate>
+
+- (void)refreshToken;
 
 @end

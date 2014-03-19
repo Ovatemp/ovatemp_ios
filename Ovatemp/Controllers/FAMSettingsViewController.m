@@ -13,16 +13,41 @@
 
 @end
 
+/* NOTE
+ 
+ 
+  This is probably out of date. It's here for reference.
+ 
+ 
+ 
+ 
+ 
+ 
+ */
+
 @implementation FAMSettingsViewController
 
 - (void)viewWillLayoutSubviews {
   [self updateControls];
 }
 
+- (void)commit {
+  [[UserProfile current] save];
+  [self updateControls];
+}
+
+- (void)updateControls {
+  self.fiveDayRuleSwitch.on =   [[UserProfile current].fiveDayRule boolValue];
+  self.dryDayRuleSwitch.on =    [[UserProfile current].dryDayRule boolValue];
+  self.tempShiftRuleSwitch.on = [[UserProfile current].temperatureShiftRule boolValue];
+  self.peakDayRuleSwitch.on =   [[UserProfile current].peakDayRule boolValue];
+}
+
 - (IBAction)fiveDayRuleSwitched:(id)sender {
   [UserProfile current].fiveDayRule = [NSNumber numberWithBool:self.fiveDayRuleSwitch.on];
   [self commit];
 }
+
 - (IBAction)dryDayRuleSwitched:(id)sender {
   [UserProfile current].dryDayRule = [NSNumber numberWithBool:self.dryDayRuleSwitch.on];
   [self commit];
@@ -36,18 +61,6 @@
 - (IBAction)peakDayRuleSwitched:(id)sender {
   [UserProfile current].peakDayRule = [NSNumber numberWithBool:self.peakDayRuleSwitch.on];
   [self commit];
-}
-
-- (void)commit {
-  [[UserProfile current] save];
-  [self updateControls];
-}
-
-- (void)updateControls {
-  self.fiveDayRuleSwitch.on =   [[UserProfile current].fiveDayRule boolValue];
-  self.dryDayRuleSwitch.on =    [[UserProfile current].dryDayRule boolValue];
-  self.tempShiftRuleSwitch.on = [[UserProfile current].temperatureShiftRule boolValue];
-  self.peakDayRuleSwitch.on =   [[UserProfile current].peakDayRule boolValue];
 }
 
 @end

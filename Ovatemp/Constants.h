@@ -35,8 +35,6 @@
 
 static NSInteger const kUnauthorizedRequestCode = 401;
 static NSString * const kUnauthorizedRequestNotification = @"401UnauthorizedRequestEncountered";
-static NSString * const kSessionChangedNotificationName = @"SessionChanged";
-
 
 // The are Apple's standard spacing defaults. Don't change
 // these unless the defaults change!

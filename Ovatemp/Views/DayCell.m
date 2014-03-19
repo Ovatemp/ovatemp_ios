@@ -53,7 +53,7 @@
 }
 
 - (void)toggleDayProperty:(NSString *)key withIndex:(NSInteger)index {
-  [self.day toggleProperty:key withIndex:index];
+  [self.day selectProperty:key withindex:index];
   [self refreshControls];
 }
 

@@ -7,7 +7,6 @@
 //
 
 #import "MoreViewController.h"
-#import "SessionController.h"
 #import "User.h"
 
 @interface MoreViewController ()
@@ -21,7 +20,8 @@
 }
 
 - (IBAction)logoutTapped:(id)sender {
-  [SessionController logOut];
+  [Configuration logOut];
+  [self dismissViewControllerAnimated:TRUE completion:nil];
 }
 
 - (IBAction)tryingToConceiveChanged:(UISwitch *)toggle {
