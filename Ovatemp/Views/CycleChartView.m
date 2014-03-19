@@ -252,13 +252,11 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
       [cycleDay stroke];
     }
 
-    if(self.landscape) {
-      if(day.inFertilityWindow) {
-        [FERTILITY_WINDOW_COLOR set];
+    if(day.inFertilityWindow) {
+      [FERTILITY_WINDOW_COLOR set];
 
-        CGRect fertilityWindow = CGRectMake(pointWidth * i + leftPadding, topPadding, pointWidth, canvasHeight - topPadding - bottomPadding);
-        CGContextFillRect(context, fertilityWindow);
-      }
+      CGRect fertilityWindow = CGRectMake(pointWidth * i + leftPadding, topPadding, pointWidth, canvasHeight - topPadding - bottomPadding);
+      CGContextFillRect(context, fertilityWindow);
     }
 
     if(day.temperature == nil) {

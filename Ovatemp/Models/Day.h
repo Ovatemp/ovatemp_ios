@@ -113,7 +113,7 @@ typedef enum vaginalSensationTypesEnum : NSUInteger
 
 
 @property (nonatomic, assign) BOOL disturbance;
-@property (nonatomic, strong) NSNumber *inFertilityWindow;
+@property (nonatomic, assign) BOOL inFertilityWindow;
 
 @property (nonatomic, strong) Cycle *cycle;
 
