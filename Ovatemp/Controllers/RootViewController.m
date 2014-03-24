@@ -123,6 +123,8 @@
   mainViewController = tabController;
 }
 
+
+
 # pragma mark - Session Handling
 
 - (SessionViewController *)createSessionViewController {
@@ -163,6 +165,16 @@
   [self.presentedViewController dismissViewControllerAnimated:false completion:^{
     [self launchAppropriateViewController];
   }];
+}
+
+# pragma mark - Tab Controller Delegate Methods
+
+- (void)tabBarController:(UITabBarController *)tabBarController
+ didSelectViewController:(UIViewController *)viewController
+{
+  if(tabBarController.selectedIndex == 0) {
+    [Calendar setDate:[NSDate date]];
+  }
 }
 
 # pragma mark - UIAppearance helpers

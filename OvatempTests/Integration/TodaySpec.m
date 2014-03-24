@@ -190,6 +190,25 @@ describe(@"Today screen", ^{
       expect(opkImageView.accessibilityValue).to.equal(@"Ovulation Prediction Kit Positive");
       expect(ferningImageView.accessibilityValue).to.equal(@"Ferning Positive");
     });
+
+    it(@"returns to today when the Today button is tapped in the navigation bar", ^{
+      [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Go to Next Day"];
+
+      [tester tapViewWithAccessibilityLabel:@"Go to Previous Day"];
+      [tester waitForViewWithAccessibilityLabel:@"Go to Next Day"];
+
+      [tester tapViewWithAccessibilityLabel:@"Go to Previous Day"];
+      [tester waitForViewWithAccessibilityLabel:@"Go to Next Day"];
+      [tester tapViewWithAccessibilityLabel:@"Go to Previous Day"];
+      [tester waitForViewWithAccessibilityLabel:@"Go to Next Day"];
+
+      [tester tapViewWithAccessibilityLabel:@"Today"];
+      [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Go to Next Day"];
+      [tester tapViewWithAccessibilityLabel:@"Go to Previous Day"];
+      [tester waitForViewWithAccessibilityLabel:@"Go to Next Day"];
+      [tester tapViewWithAccessibilityLabel:@"Today"];
+      [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Go to Next Day"];
+    });
   });
 });
 
