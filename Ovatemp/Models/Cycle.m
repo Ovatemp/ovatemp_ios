@@ -32,6 +32,8 @@
                            @"date": [date dateId],
                            }
                  success:^(NSDictionary *response) {
+                   [Day resetInstances];
+
                    [Cycle cycleFromResponse:response];
 
                    if(onSuccess) onSuccess(response);
@@ -43,6 +45,37 @@
                    if(onFailure) onFailure(error);
                  }];
 }
+
+
++ (void)loadDatesFrom:(NSDate *)startDate to:(NSDate *)endDate success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure {
+  [ConnectionManager get:@"/days"
+                  params:@{
+                           @"start_date": [startDate dateId],
+                           @"end_date": [endDate dateId]
+                           }
+                 success:^(NSDictionary *response) {
+                   [Day resetInstances];
+
+                   NSArray *orphanDays = response[@"days"];
+                   NSArray *cycles = response[@"cycles"];
+
+                   if(orphanDays) {
+                     for(NSDictionary *dayResponse in orphanDays) {
+                       [Day withAttributes:dayResponse];
+                     }
+                   }
+
+                   if(cycles) {
+                     for(NSDictionary *cycleResponse in cycles) {
+                       [Cycle cycleFromResponse:cycleResponse];
+                     }
+                   }
+
+                   if(onSuccess) onSuccess(response);
+                 }
+                 failure:onFailure];
+}
+
 
 + (Cycle *)cycleFromResponse:(NSDictionary *)cycleResponse {
   Cycle *cycle = [[Cycle alloc] init];
@@ -64,6 +97,7 @@
   Day *day;
   for(NSDictionary *dayAttrs in daysResponse) {
     day = [Day withAttributes:dayAttrs];
+
     day.cycle = cycle;
     [days addObject:day];
   }

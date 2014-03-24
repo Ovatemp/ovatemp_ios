@@ -66,8 +66,12 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
 
-  [self.collectionView reloadData];
-  [self scrollToCurrentDay];
+  [Cycle loadDatesFrom:self.firstDate to:self.lastDate success:^(NSDictionary *response){
+    [self.collectionView reloadData];
+    [self scrollToCurrentDay];
+  } failure:^(NSError *error) {
+    NSLog(@"couldn't refresh page");
+  }];
 
   [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];
 }

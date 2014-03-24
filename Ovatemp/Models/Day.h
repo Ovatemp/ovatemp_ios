@@ -118,7 +118,6 @@ typedef enum vaginalSensationTypesEnum : NSUInteger
 @property (nonatomic, strong) Cycle *cycle;
 
 + (Day *)forDate:(NSDate *)date;
-+ (void)loadDate:(NSDate *)date success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure;
 - (Day *)nextDay;
 - (Day *)previousDay;
 

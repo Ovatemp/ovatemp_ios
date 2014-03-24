@@ -51,8 +51,6 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
     }
   }
 
-  NSLog(@"hey%@", self.iconsContainerLeadingSpace);
-
   CGRect iconFrame;
   for(Day *day in self.cycle.days) {
     NSInteger dayIndex = [day.cycleDay intValue] - 1;

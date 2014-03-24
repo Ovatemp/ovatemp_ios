@@ -14,16 +14,6 @@
 SpecBegin(TodaySpec)
 
 describe(@"Today screen", ^{
-  context(@"without an existing cycle", ^{
-    beforeAll(^{
-      [tester registerUser];
-    });
-
-    xit(@"presents the beginning of most recent cycle interface", ^{
-      [tester waitForViewWithAccessibilityLabel:@"First day of current or most recent period"];
-    });
-  });
-
   context(@"with an existing cycle", ^{
     beforeAll(^{
       [tester registerUser];

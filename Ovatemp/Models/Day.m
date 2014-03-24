@@ -70,17 +70,6 @@ static NSDictionary *propertyOptions;
   return day;
 }
 
-+ (void)loadDate:(NSDate *)date success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure {
-  [ConnectionManager get:@"/days"
-                  params:@{
-                           @"day": @{
-                               @"date": [date dateId],
-                               },
-                           }
-                 success:onSuccess
-                 failure:onFailure];
-}
-
 - (Day *)nextDay {
   return [Day forDate:[self.date dateByAddingTimeInterval:1 * 60 * 60 * 24]];
 }

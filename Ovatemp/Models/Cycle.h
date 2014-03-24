@@ -12,6 +12,7 @@
 @interface Cycle : NSObject
 
 + (void)loadDate:(NSDate *)date success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure;
++ (void)loadDatesFrom:(NSDate *)startDate to:(NSDate *)endDate success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure;
 - (Cycle *)initWithDay:(Day *)day;
 - (Cycle *)previousCycle;
 - (Cycle *)nextCycle;
