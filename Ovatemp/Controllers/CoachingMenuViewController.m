@@ -12,6 +12,7 @@
 @interface CoachingMenuViewController ()
 
 @property (nonatomic, strong) NSArray *rowNames;
+@property (nonatomic, strong) NSArray *rowColors;
 
 @end
 
@@ -20,7 +21,8 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
   self = [super initWithCoder:aDecoder];
   if (self) {
-    self.rowNames = @[@"Acupressure", @"Lifestyle", @"Massage", @"Meditation"];
+    self.rowNames = @[@"Acupressure",        @"Lifestyle",        @"Massage",           @"Meditation"];
+    self.rowColors = @[Color(125, 205, 200), Color(84, 194, 187), Color(61, 175, 168), Color(37, 145, 138)];
 
     self.edgesForExtendedLayout=UIRectEdgeNone;
     self.extendedLayoutIncludesOpaqueBars=NO;
@@ -50,8 +52,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   CoachingMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CoachingMenuCell"];
   cell.titleLabel.text = self.rowNames[indexPath.row];
-  cell.iconImageView.image = [UIImage imageNamed:@"Sticky"];
-  cell.backgroundColor = [UIColor grayColor];
+  cell.iconImageView.image = [UIImage imageNamed:self.rowNames[indexPath.row]];
+  cell.backgroundColor = self.rowColors[indexPath.row];
 
   return cell;
 }

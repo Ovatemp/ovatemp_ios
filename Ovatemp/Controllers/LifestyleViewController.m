@@ -52,6 +52,7 @@
 {
   CoachingWebViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"CoachingWebViewController"];
   vc.titleLabel.text = self.itemNames[indexPath.row];
+  
 
   NSString *htmlFilePath = [[NSBundle mainBundle] pathForResource:@"example" ofType:@"html"];
   NSString *contents = [NSString stringWithContentsOfFile:htmlFilePath
@@ -72,6 +73,9 @@
   cell.titleLabel.text = self.itemNames[indexPath.row];
 
   return cell;
+}
+- (IBAction)backButtonTapped:(id)sender {
+  [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

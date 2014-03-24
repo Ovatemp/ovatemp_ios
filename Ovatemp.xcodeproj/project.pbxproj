@@ -49,6 +49,14 @@
 		8333B98F18E0BD8600C64231 /* LifestyleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8333B98E18E0BD8600C64231 /* LifestyleCell.m */; };
 		8333B99218E0C25500C64231 /* example.html in Resources */ = {isa = PBXBuildFile; fileRef = 8333B99118E0C25500C64231 /* example.html */; };
 		8333B99518E0C36800C64231 /* CoachingWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8333B99418E0C36800C64231 /* CoachingWebViewController.m */; };
+		8333B9A118E0D1B800C64231 /* Acupressure.png in Resources */ = {isa = PBXBuildFile; fileRef = 8333B99918E0D1B800C64231 /* Acupressure.png */; };
+		8333B9A218E0D1B800C64231 /* Acupressure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8333B99A18E0D1B800C64231 /* Acupressure@2x.png */; };
+		8333B9A318E0D1B800C64231 /* Lifestyle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8333B99B18E0D1B800C64231 /* Lifestyle.png */; };
+		8333B9A418E0D1B800C64231 /* Lifestyle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8333B99C18E0D1B800C64231 /* Lifestyle@2x.png */; };
+		8333B9AB18E0D32000C64231 /* Massage.png in Resources */ = {isa = PBXBuildFile; fileRef = 8333B9A918E0D32000C64231 /* Massage.png */; };
+		8333B9AC18E0D32000C64231 /* Massage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8333B9AA18E0D32000C64231 /* Massage@2x.png */; };
+		8333B9AF18E0D39800C64231 /* Meditation.png in Resources */ = {isa = PBXBuildFile; fileRef = 8333B9AD18E0D39800C64231 /* Meditation.png */; };
+		8333B9B018E0D39800C64231 /* Meditation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8333B9AE18E0D39800C64231 /* Meditation@2x.png */; };
 		834BD63218AD1363003B6808 /* MoreStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */; };
 		834BD63518AD1519003B6808 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63418AD1519003B6808 /* MoreViewController.m */; };
 		834BD63B18AD29EA003B6808 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63A18AD29EA003B6808 /* Day.m */; };
@@ -279,6 +287,14 @@
 		8333B99118E0C25500C64231 /* example.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = example.html; sourceTree = "<group>"; };
 		8333B99318E0C36800C64231 /* CoachingWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoachingWebViewController.h; sourceTree = "<group>"; };
 		8333B99418E0C36800C64231 /* CoachingWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoachingWebViewController.m; sourceTree = "<group>"; };
+		8333B99918E0D1B800C64231 /* Acupressure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Acupressure.png; sourceTree = "<group>"; };
+		8333B99A18E0D1B800C64231 /* Acupressure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Acupressure@2x.png"; sourceTree = "<group>"; };
+		8333B99B18E0D1B800C64231 /* Lifestyle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lifestyle.png; sourceTree = "<group>"; };
+		8333B99C18E0D1B800C64231 /* Lifestyle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Lifestyle@2x.png"; sourceTree = "<group>"; };
+		8333B9A918E0D32000C64231 /* Massage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Massage.png; sourceTree = "<group>"; };
+		8333B9AA18E0D32000C64231 /* Massage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Massage@2x.png"; sourceTree = "<group>"; };
+		8333B9AD18E0D39800C64231 /* Meditation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Meditation.png; sourceTree = "<group>"; };
+		8333B9AE18E0D39800C64231 /* Meditation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Meditation@2x.png"; sourceTree = "<group>"; };
 		834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MoreStoryboard.storyboard; path = ../Views/MoreStoryboard.storyboard; sourceTree = "<group>"; };
 		834BD63318AD1519003B6808 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		834BD63418AD1519003B6808 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
@@ -545,9 +561,25 @@
 			name = Coaching;
 			sourceTree = "<group>";
 		};
+		8333B99818E0D1B800C64231 /* Coaching */ = {
+			isa = PBXGroup;
+			children = (
+				8333B9AD18E0D39800C64231 /* Meditation.png */,
+				8333B9AE18E0D39800C64231 /* Meditation@2x.png */,
+				8333B9A918E0D32000C64231 /* Massage.png */,
+				8333B9AA18E0D32000C64231 /* Massage@2x.png */,
+				8333B99918E0D1B800C64231 /* Acupressure.png */,
+				8333B99A18E0D1B800C64231 /* Acupressure@2x.png */,
+				8333B99B18E0D1B800C64231 /* Lifestyle.png */,
+				8333B99C18E0D1B800C64231 /* Lifestyle@2x.png */,
+			);
+			path = Coaching;
+			sourceTree = "<group>";
+		};
 		834BD64318AEA1A4003B6808 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8333B99818E0D1B800C64231 /* Coaching */,
 				83C6511018C91B7500F35CE5 /* BackArrow.png */,
 				83C6511118C91B7500F35CE5 /* BackArrow@2x.png */,
 				835AE58918B7A51700FEAF98 /* CheckBox.png */,
@@ -1121,6 +1153,7 @@
 				8333B99218E0C25500C64231 /* example.html in Resources */,
 				83EB3EC018AEA7D500EA91AC /* Sticky.png in Resources */,
 				838752FA18CF8E2E00E8ED4A /* CycleChartView.xib in Resources */,
+				8333B9A118E0D1B800C64231 /* Acupressure.png in Resources */,
 				835BA2BA18BBEFBF00C64350 /* +@2x.png in Resources */,
 				8328B75718ABFD6D00DA7A5E /* TemperatureDayCell.xib in Resources */,
 				83EB3ED018AEA7D500EA91AC /* Energize-01@2x.png in Resources */,
@@ -1152,9 +1185,11 @@
 				83EB3EBC18AEA7D500EA91AC /* Creamy@2x.png in Resources */,
 				832934D418B7D93200F6875B /* Worried@2x.png in Resources */,
 				83EB3EBB18AEA7D500EA91AC /* Creamy.png in Resources */,
+				8333B9B018E0D39800C64231 /* Meditation@2x.png in Resources */,
 				C3E58C3A18D39B7B0026301A /* Icon60.png in Resources */,
 				832934CE18B7D93200F6875B /* Sad@2x.png in Resources */,
 				83EB3ED418AEA7D500EA91AC /* Nourish-01.png in Resources */,
+				8333B9AF18E0D39800C64231 /* Meditation.png in Resources */,
 				C3E58C3918D39B7B0026301A /* Icon40@2x.png in Resources */,
 				83EB3F1918AEA7D500EA91AC /* Negative.png in Resources */,
 				832934D018B7D93200F6875B /* Supplements@2x.png in Resources */,
@@ -1179,6 +1214,7 @@
 				83A1FDF518D35C3B0030D331 /* SessionStoryboard.storyboard in Resources */,
 				83C6511618C91B7500F35CE5 /* ForwardArrow.png in Resources */,
 				83EB3F3718AEA7D500EA91AC /* Wet.png in Resources */,
+				8333B9A218E0D1B800C64231 /* Acupressure@2x.png in Resources */,
 				C3E58C2C18D39AAC0026301A /* LaunchImage.png in Resources */,
 				83EB3ED718AEA7D500EA91AC /* Refresh-01@2x.png in Resources */,
 				83EB3F2F18AEA7D500EA91AC /* today_selected@2x.png in Resources */,
@@ -1188,9 +1224,12 @@
 				8333B98218E0A7C900C64231 /* CoachingStoryboard.storyboard in Resources */,
 				832934D118B7D93200F6875B /* Symptoms.png in Resources */,
 				83EB3F2118AEA7D500EA91AC /* coaching_selected.png in Resources */,
+				8333B9A318E0D1B800C64231 /* Lifestyle.png in Resources */,
 				8328B76718AC008700DA7A5E /* SignsDayCell.xib in Resources */,
+				8333B9AB18E0D32000C64231 /* Massage.png in Resources */,
 				832934CD18B7D93200F6875B /* Sad.png in Resources */,
 				83EB3F0718AEA7D500EA91AC /* Heavy@2x.png in Resources */,
+				8333B9A418E0D1B800C64231 /* Lifestyle@2x.png in Resources */,
 				832934CA18B7D93200F6875B /* Good@2x.png in Resources */,
 				C3E58C3618D39B7B0026301A /* Icon29.png in Resources */,
 				83EB3F0F18AEA7D500EA91AC /* Acupressure.png in Resources */,
@@ -1211,6 +1250,7 @@
 				83EB3F0918AEA7D500EA91AC /* Light.png in Resources */,
 				83EB3F1A18AEA7D500EA91AC /* Negative@2x.png in Resources */,
 				83EB3ED818AEA7D500EA91AC /* Revitalize-01.png in Resources */,
+				8333B9AC18E0D32000C64231 /* Massage@2x.png in Resources */,
 				83EB3F1318AEA7D500EA91AC /* Lifestyle @2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

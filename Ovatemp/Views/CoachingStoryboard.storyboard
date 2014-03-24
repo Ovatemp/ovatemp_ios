@@ -130,10 +130,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sticky.png" translatesAutoresizingMaskIntoConstraints="NO" id="vl5-6M-9fp">
-                                                    <rect key="frame" x="45" y="23" width="42" height="61"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vl5-6M-9fp">
+                                                    <rect key="frame" x="15" y="23" width="82" height="61"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="width" constant="82" id="03G-3g-K42"/>
                                                         <constraint firstAttribute="height" constant="61" id="z8e-TS-e85"/>
                                                     </constraints>
                                                 </imageView>
@@ -148,16 +149,17 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="De0-y0-kfk" secondAttribute="bottom" id="FuJ-KI-imJ"/>
-                                                <constraint firstItem="vl5-6M-9fp" firstAttribute="leading" secondItem="Syk-mp-Nl8" secondAttribute="leading" constant="45" id="JkK-V7-n97"/>
-                                                <constraint firstItem="De0-y0-kfk" firstAttribute="leading" secondItem="vl5-6M-9fp" secondAttribute="trailing" constant="57" id="ePa-dx-ZUo"/>
+                                                <constraint firstItem="vl5-6M-9fp" firstAttribute="leading" secondItem="Syk-mp-Nl8" secondAttribute="leading" constant="15" id="JkK-V7-n97"/>
+                                                <constraint firstItem="De0-y0-kfk" firstAttribute="leading" secondItem="vl5-6M-9fp" secondAttribute="trailing" constant="47" id="ePa-dx-ZUo"/>
                                                 <constraint firstItem="De0-y0-kfk" firstAttribute="top" secondItem="Syk-mp-Nl8" secondAttribute="top" id="p3O-dH-gqZ"/>
                                                 <constraint firstItem="vl5-6M-9fp" firstAttribute="centerY" secondItem="De0-y0-kfk" secondAttribute="centerY" id="uQY-lV-iSf"/>
                                                 <constraint firstAttribute="trailing" secondItem="De0-y0-kfk" secondAttribute="trailing" id="zHF-hD-g85"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="iconImageView" destination="vl5-6M-9fp" id="4mz-Ta-Hgt"/>
                                             <outlet property="titleLabel" destination="De0-y0-kfk" id="uRF-93-uZd"/>
@@ -266,16 +268,30 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lifestyle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1T-9W-S3O">
-                                        <rect key="frame" x="126" y="32" width="174" height="48"/>
+                                        <rect key="frame" x="146" y="32" width="174" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="28"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Light.png" translatesAutoresizingMaskIntoConstraints="NO" id="nm8-BN-vzU">
-                                        <rect key="frame" x="36" y="25" width="51" height="55"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Lifestyle.png" translatesAutoresizingMaskIntoConstraints="NO" id="nm8-BN-vzU">
+                                        <rect key="frame" x="78" y="25" width="51" height="55"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMn-OY-kBo">
+                                        <rect key="frame" x="20" y="44" width="14" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="14" id="P2o-wU-pjy"/>
+                                        </constraints>
+                                        <state key="normal" image="BackArrow.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonTapped:" destination="N4C-8D-lNp" eventType="touchUpInside" id="8nl-ZF-5Cj"/>
+                                            <action selector="backButtonTapped:" destination="qLJ-YO-OgI" eventType="touchUpInside" id="KNk-1o-0g5"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -398,8 +414,8 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5t-9F-SFI">
-                                        <rect key="frame" x="20" y="30" width="14" height="34"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5t-9F-SFI">
+                                        <rect key="frame" x="20" y="35" width="14" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="14" id="Swr-na-Ule"/>
@@ -454,8 +470,8 @@
     </scenes>
     <resources>
         <image name="BackArrow.png" width="19" height="34"/>
+        <image name="Lifestyle.png" width="39" height="49"/>
         <image name="Light.png" width="26" height="38"/>
-        <image name="Sticky.png" width="31" height="31"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
