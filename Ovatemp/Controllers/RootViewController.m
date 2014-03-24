@@ -86,7 +86,8 @@
 
   UIViewController *calendarController = [[CalendarViewController alloc] initWithNibName:@"CalendarViewController" bundle:nil];
  
-  UIViewController *coachingController = [[UIViewController alloc] init];
+  UIViewController *coachingController = [[UIStoryboard storyboardWithName:@"CoachingStoryboard" bundle:nil] instantiateInitialViewController];
+
   UIViewController *communityController = [[UIViewController alloc] init];
   UIViewController* moreViewController = [[UIStoryboard storyboardWithName:@"MoreStoryboard" bundle:nil] instantiateInitialViewController];
 

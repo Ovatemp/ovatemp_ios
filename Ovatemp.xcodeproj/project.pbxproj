@@ -42,6 +42,13 @@
 		8329353518B7F85B00F6875B /* Supplement.m in Sources */ = {isa = PBXBuildFile; fileRef = 8329353418B7F85B00F6875B /* Supplement.m */; };
 		8329353818B7FD1700F6875B /* Medicine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8329353718B7FD1700F6875B /* Medicine.m */; };
 		8329353B18B7FD2600F6875B /* Symptom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8329353A18B7FD2600F6875B /* Symptom.m */; };
+		8333B98218E0A7C900C64231 /* CoachingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8333B98118E0A7C900C64231 /* CoachingStoryboard.storyboard */; };
+		8333B98618E0B77000C64231 /* CoachingMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8333B98518E0B77000C64231 /* CoachingMenuViewController.m */; };
+		8333B98918E0B86E00C64231 /* CoachingMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8333B98818E0B86E00C64231 /* CoachingMenuCell.m */; };
+		8333B98C18E0BD4200C64231 /* LifestyleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8333B98B18E0BD4200C64231 /* LifestyleViewController.m */; };
+		8333B98F18E0BD8600C64231 /* LifestyleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8333B98E18E0BD8600C64231 /* LifestyleCell.m */; };
+		8333B99218E0C25500C64231 /* example.html in Resources */ = {isa = PBXBuildFile; fileRef = 8333B99118E0C25500C64231 /* example.html */; };
+		8333B99518E0C36800C64231 /* CoachingWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8333B99418E0C36800C64231 /* CoachingWebViewController.m */; };
 		834BD63218AD1363003B6808 /* MoreStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */; };
 		834BD63518AD1519003B6808 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63418AD1519003B6808 /* MoreViewController.m */; };
 		834BD63B18AD29EA003B6808 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63A18AD29EA003B6808 /* Day.m */; };
@@ -260,6 +267,18 @@
 		8329353718B7FD1700F6875B /* Medicine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Medicine.m; sourceTree = "<group>"; };
 		8329353918B7FD2600F6875B /* Symptom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Symptom.h; sourceTree = "<group>"; };
 		8329353A18B7FD2600F6875B /* Symptom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Symptom.m; sourceTree = "<group>"; };
+		8333B98118E0A7C900C64231 /* CoachingStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CoachingStoryboard.storyboard; path = ../Views/CoachingStoryboard.storyboard; sourceTree = "<group>"; };
+		8333B98418E0B77000C64231 /* CoachingMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoachingMenuViewController.h; sourceTree = "<group>"; };
+		8333B98518E0B77000C64231 /* CoachingMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoachingMenuViewController.m; sourceTree = "<group>"; };
+		8333B98718E0B86E00C64231 /* CoachingMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoachingMenuCell.h; sourceTree = "<group>"; };
+		8333B98818E0B86E00C64231 /* CoachingMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoachingMenuCell.m; sourceTree = "<group>"; };
+		8333B98A18E0BD4200C64231 /* LifestyleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifestyleViewController.h; sourceTree = "<group>"; };
+		8333B98B18E0BD4200C64231 /* LifestyleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifestyleViewController.m; sourceTree = "<group>"; };
+		8333B98D18E0BD8600C64231 /* LifestyleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifestyleCell.h; sourceTree = "<group>"; };
+		8333B98E18E0BD8600C64231 /* LifestyleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifestyleCell.m; sourceTree = "<group>"; };
+		8333B99118E0C25500C64231 /* example.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = example.html; sourceTree = "<group>"; };
+		8333B99318E0C36800C64231 /* CoachingWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoachingWebViewController.h; sourceTree = "<group>"; };
+		8333B99418E0C36800C64231 /* CoachingWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoachingWebViewController.m; sourceTree = "<group>"; };
 		834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MoreStoryboard.storyboard; path = ../Views/MoreStoryboard.storyboard; sourceTree = "<group>"; };
 		834BD63318AD1519003B6808 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		834BD63418AD1519003B6808 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
@@ -513,6 +532,19 @@
 			path = MedsMoodsSupplements;
 			sourceTree = "<group>";
 		};
+		8333B98318E0B6D800C64231 /* Coaching */ = {
+			isa = PBXGroup;
+			children = (
+				8333B98418E0B77000C64231 /* CoachingMenuViewController.h */,
+				8333B98518E0B77000C64231 /* CoachingMenuViewController.m */,
+				8333B98A18E0BD4200C64231 /* LifestyleViewController.h */,
+				8333B98B18E0BD4200C64231 /* LifestyleViewController.m */,
+				8333B99318E0C36800C64231 /* CoachingWebViewController.h */,
+				8333B99418E0C36800C64231 /* CoachingWebViewController.m */,
+			);
+			name = Coaching;
+			sourceTree = "<group>";
+		};
 		834BD64318AEA1A4003B6808 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -755,6 +787,7 @@
 		C308705A18980A2E00DC4364 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8333B98318E0B6D800C64231 /* Coaching */,
 				83686EA118C6335000A5329C /* CalendarViewController.h */,
 				83686EA218C6335000A5329C /* CalendarViewController.m */,
 				83A1FE0318D74C8E0030D331 /* CalendarViewController.xib */,
@@ -769,6 +802,7 @@
 				83BD853618D0B23900890EDA /* RootViewController.h */,
 				83BD853718D0B23900890EDA /* RootViewController.m */,
 				83BD853918D0B7A900890EDA /* RootViewController.xib */,
+				8333B98118E0A7C900C64231 /* CoachingStoryboard.storyboard */,
 				83A1FDF418D35C3B0030D331 /* SessionStoryboard.storyboard */,
 				C3BF8FDE1898452F00572F43 /* SessionViewController.h */,
 				C3BF8FDF1898452F00572F43 /* SessionViewController.m */,
@@ -842,6 +876,10 @@
 				8315E4A418C6300800DA935A /* CalendarCell.h */,
 				8315E4A518C6300800DA935A /* CalendarCell.m */,
 				83686E9F18C6323600A5329C /* CalendarCell.xib */,
+				8333B98718E0B86E00C64231 /* CoachingMenuCell.h */,
+				8333B98818E0B86E00C64231 /* CoachingMenuCell.m */,
+				8333B98D18E0BD8600C64231 /* LifestyleCell.h */,
+				8333B98E18E0BD8600C64231 /* LifestyleCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -908,6 +946,7 @@
 				C36C5107189028190053A884 /* InfoPlist.strings */,
 				C36C510A189028190053A884 /* main.m */,
 				C36C510C189028190053A884 /* Ovatemp-Prefix.pch */,
+				8333B99118E0C25500C64231 /* example.html */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1079,6 +1118,7 @@
 				83EB3ED918AEA7D500EA91AC /* Revitalize-01@2x.png in Resources */,
 				83EB3F2418AEA7D500EA91AC /* coaching_unselect@2x.png in Resources */,
 				83EB3ECF18AEA7D500EA91AC /* Energize-01.png in Resources */,
+				8333B99218E0C25500C64231 /* example.html in Resources */,
 				83EB3EC018AEA7D500EA91AC /* Sticky.png in Resources */,
 				838752FA18CF8E2E00E8ED4A /* CycleChartView.xib in Resources */,
 				835BA2BA18BBEFBF00C64350 /* +@2x.png in Resources */,
@@ -1145,6 +1185,7 @@
 				83EB3F2A18AEA7D500EA91AC /* more_selected.png in Resources */,
 				83EB3F3118AEA7D500EA91AC /* today_unselect@2x.png in Resources */,
 				832934C718B7D93200F6875B /* Amazing.png in Resources */,
+				8333B98218E0A7C900C64231 /* CoachingStoryboard.storyboard in Resources */,
 				832934D118B7D93200F6875B /* Symptoms.png in Resources */,
 				83EB3F2118AEA7D500EA91AC /* coaching_selected.png in Resources */,
 				8328B76718AC008700DA7A5E /* SignsDayCell.xib in Resources */,
@@ -1255,16 +1296,20 @@
 				C3BF8FE818984AC200572F43 /* User.m in Sources */,
 				8328B76D18AC00A800DA7A5E /* SignsDayCell.m in Sources */,
 				838752F418CF44BC00E8ED4A /* Cycle.m in Sources */,
+				8333B98618E0B77000C64231 /* CoachingMenuViewController.m in Sources */,
 				838752F118CE5F9300E8ED4A /* CycleViewController.m in Sources */,
 				C3BF8FEB18984B9700572F43 /* TextFieldCell.m in Sources */,
 				C3BF8FE5189848CE00572F43 /* BaseModel.m in Sources */,
 				C308706818980A4900DC4364 /* UIViewController+Alerts.m in Sources */,
 				835BA2B618BBDC0200C64350 /* UIAlertView+WithBlock.m in Sources */,
+				8333B98918E0B86E00C64231 /* CoachingMenuCell.m in Sources */,
 				83BD853818D0B23900890EDA /* RootViewController.m in Sources */,
 				8328B77018AC00B500DA7A5E /* SupplementsDayCell.m in Sources */,
 				C3BF8FE01898452F00572F43 /* SessionViewController.m in Sources */,
 				C30B84D418E324260078EDE3 /* UIColor+Traits.m in Sources */,
 				834BD63518AD1519003B6808 /* MoreViewController.m in Sources */,
+				8333B98C18E0BD4200C64231 /* LifestyleViewController.m in Sources */,
+				8333B99518E0C36800C64231 /* CoachingWebViewController.m in Sources */,
 				830E351818D2506B00884F0E /* NSDate+Formatters.m in Sources */,
 				C32C4A8F18985A7800B05009 /* ConnectionManager.m in Sources */,
 				C36C510F189028190053A884 /* AppDelegate.m in Sources */,
@@ -1289,6 +1334,7 @@
 				8328B75A18ABFD9400DA7A5E /* TemperatureDayCell.m in Sources */,
 				830E351518D2505C00884F0E /* NSDate+DateID.m in Sources */,
 				83686EA318C6335000A5329C /* CalendarViewController.m in Sources */,
+				8333B98F18E0BD8600C64231 /* LifestyleCell.m in Sources */,
 				8328B76A18AC009C00DA7A5E /* IntercourseDayCell.m in Sources */,
 				83C4D20F18D9D9F7008C523C /* UIViewController+UserProfileHelpers.m in Sources */,
 				835AE58618B7A36000FEAF98 /* CheckCell.m in Sources */,

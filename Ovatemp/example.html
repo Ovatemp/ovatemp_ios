@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>Call Youtube with function that checks for iOS devices</title>
+    <script type="text/javascript">
+      // generate different youtube embed code for iOS Devices
+      function youTubeEmbed(youtubeID, width, height, autoPlay){
+        if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
+          // This is an iOS device, hide the added params or Youtube might choke
+          var embedCode = '<iframe width="'+width+'" height="'+height+'" src="http://www.youtube.com/embed/' + youtubeID + '" frameborder="0" allowfullscreen></iframe>';
+        } else {
+          // Regular userAgent, params are probable OK.
+          var embedCode = '<iframe width="'+width+'" height="'+height+'" src="http://www.youtube.com/embed/' + youtubeID + '?rel=0&controls=1&modestbranding=1&autohide=1autoplay='+autoPlay+'" frameborder="0"></iframe>';
+        }
+        return document.write(embedCode);
+      }
+    </script>
+
+  </head>
+  <body>
+    <p>Embedded Video</p>
+    <p id="video">
+    <script type="text/javascript">
+      // Call function with Youtube ID, Width, Height and Autoplay
+      youTubeEmbed("tmNxugj1_AY", 300, 200, 0);
+      </script>
+    </p>
+  </body>
+</html>
