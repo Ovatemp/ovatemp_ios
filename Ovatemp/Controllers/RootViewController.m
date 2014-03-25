@@ -179,6 +179,19 @@
   }
 }
 
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
+{
+  UIViewController* selected = [tabBarController selectedViewController];
+  if (viewController == selected) {
+    // Don't reset to the root of the Coaching view's navigation controller
+    if(tabBarController.selectedIndex == 2) {
+      return NO;
+    }
+  }
+
+  return YES;
+}
+
 # pragma mark - UIAppearance helpers
 
 - (void)configureTabBarAppearance {
