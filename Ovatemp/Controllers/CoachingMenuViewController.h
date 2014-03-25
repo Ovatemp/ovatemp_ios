@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FertilityStatusView.h"
 
 @interface CoachingMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet FertilityStatusView *fertilityStatusView;
 
 @end

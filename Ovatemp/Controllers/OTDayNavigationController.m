@@ -85,7 +85,7 @@
     self.dayForwardButton.hidden = [Calendar isOnToday];
     self.fertilityStatusView.hidden = FALSE;
 
-    [self.fertilityStatusView updateWithDay:Calendar.day];
+    [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];
     self.dateLabel.text = [self.dateFormatter stringFromDate:Calendar.day.date];
 
     if(Calendar.day.cycle) {

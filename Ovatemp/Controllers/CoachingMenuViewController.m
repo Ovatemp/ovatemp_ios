@@ -8,6 +8,7 @@
 
 #import "CoachingMenuViewController.h"
 #import "CoachingMenuCell.h"
+#import "Day.h"
 
 @interface CoachingMenuViewController ()
 
@@ -29,6 +30,10 @@
     self.automaticallyAdjustsScrollViewInsets=NO;
   }
   return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

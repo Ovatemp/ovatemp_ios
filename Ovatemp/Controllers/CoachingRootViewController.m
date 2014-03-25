@@ -31,6 +31,8 @@
 }
 
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+  [viewController viewWillAppear:animated];
+
   if(viewController != self) {
     return;
   }
