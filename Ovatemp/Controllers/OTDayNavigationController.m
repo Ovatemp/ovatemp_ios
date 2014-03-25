@@ -58,7 +58,9 @@
                               forKeyPath: @"day"
                                  options: NSKeyValueObservingOptionNew
                                  context: NULL];
-  
+}
+
+- (void)viewWillAppear:(BOOL)animated {
   [self updateLabels];
 }
 
