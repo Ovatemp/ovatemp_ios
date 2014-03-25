@@ -26,18 +26,19 @@
   UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
 
   CGRect container = self.collectionView.frame;
-  CGFloat itemWidth = container.size.width / 2;
+  CGFloat itemWidth = container.size.width / 2 - .5;
   CGFloat itemHeight = container.size.height / 2;
   layout.itemSize = CGSizeMake(itemWidth, itemHeight);
-  layout.minimumInteritemSpacing = 0;
-  layout.minimumLineSpacing = 0;
+  layout.minimumInteritemSpacing = .5;
+  layout.minimumLineSpacing = .5;
 
   layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);  // top, left, bottom, right
   [self.collectionView setCollectionViewLayout:layout];
   self.collectionView.showsVerticalScrollIndicator = FALSE;
   self.collectionView.scrollsToTop = FALSE;
+  self.collectionView.backgroundColor = [UIColor blackColor];
 
-  self.itemNames = @[@"Diet", @"Supplements", @"Exercise", @"Meditation"];
+  self.itemNames = @[@"Diet", @"Supplements", @"Exercise", @"Habits"];
 
 }
 
@@ -52,7 +53,6 @@
 {
   CoachingWebViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"CoachingWebViewController"];
   vc.titleLabel.text = self.itemNames[indexPath.row];
-  
 
   NSString *htmlFilePath = [[NSBundle mainBundle] pathForResource:@"example" ofType:@"html"];
   NSString *contents = [NSString stringWithContentsOfFile:htmlFilePath
@@ -69,7 +69,7 @@
 {
   LifestyleCell *cell= (LifestyleCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"LifestyleCell" forIndexPath:indexPath];
 
-  cell.imageView.image = [UIImage imageNamed:@"Sticky"];
+  cell.imageView.image = [UIImage imageNamed:self.itemNames[indexPath.row]];
   cell.titleLabel.text = self.itemNames[indexPath.row];
 
   return cell;

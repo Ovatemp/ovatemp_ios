@@ -161,11 +161,12 @@
   lastForcedLogout = [NSDate date];
   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry for the trouble!" message:@"You've been logged you out of your account. Please log in again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 
-  [alert show];
   [Configuration logOut];
-  [self.presentedViewController dismissViewControllerAnimated:false completion:^{
+  [self.presentedViewController dismissViewControllerAnimated:FALSE completion:^{
     [self launchAppropriateViewController];
   }];
+
+  [alert show];
 }
 
 # pragma mark - Tab Controller Delegate Methods
