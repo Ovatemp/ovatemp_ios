@@ -34,6 +34,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];
+  self.profileImageView.image = [UIImage imageNamed:@"Refresh"];
+  self.profileLabel.text = @"Refresh";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

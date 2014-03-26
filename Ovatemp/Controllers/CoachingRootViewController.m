@@ -49,7 +49,7 @@
     return;
   }
 
-  BOOL hasFertilityProfile = FALSE;
+  BOOL hasFertilityProfile = TRUE;
   BOOL hasSeenIntro = [[Configuration sharedConfiguration].hasSeenProfileIntroScreen boolValue];
 
   if(hasFertilityProfile && hasSeenIntro) {

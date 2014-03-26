@@ -123,6 +123,21 @@
 		83C6511518C91B7500F35CE5 /* BackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6511118C91B7500F35CE5 /* BackArrow@2x.png */; };
 		83C6511618C91B7500F35CE5 /* ForwardArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6511218C91B7500F35CE5 /* ForwardArrow.png */; };
 		83C6511718C91B7500F35CE5 /* ForwardArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6511318C91B7500F35CE5 /* ForwardArrow@2x.png */; };
+		83D8CD9118E3509D00D0AC72 /* FertilityProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D8CD9018E3509D00D0AC72 /* FertilityProfile.m */; };
+		83D8CDA018E353F300D0AC72 /* Activate.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D8CD9218E353F300D0AC72 /* Activate.png */; };
+		83D8CDA118E353F300D0AC72 /* Activate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D8CD9318E353F300D0AC72 /* Activate@2x.png */; };
+		83D8CDA218E353F300D0AC72 /* Energize.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D8CD9418E353F300D0AC72 /* Energize.png */; };
+		83D8CDA318E353F300D0AC72 /* Energize@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D8CD9518E353F300D0AC72 /* Energize@2x.png */; };
+		83D8CDA418E353F300D0AC72 /* Hydrate.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D8CD9618E353F300D0AC72 /* Hydrate.png */; };
+		83D8CDA518E353F300D0AC72 /* Hydrate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D8CD9718E353F300D0AC72 /* Hydrate@2x.png */; };
+		83D8CDA618E353F300D0AC72 /* Nourish.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D8CD9818E353F300D0AC72 /* Nourish.png */; };
+		83D8CDA718E353F300D0AC72 /* Nourish@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D8CD9918E353F300D0AC72 /* Nourish@2x.png */; };
+		83D8CDA818E353F300D0AC72 /* Refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D8CD9A18E353F300D0AC72 /* Refresh.png */; };
+		83D8CDA918E353F300D0AC72 /* Refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D8CD9B18E353F300D0AC72 /* Refresh@2x.png */; };
+		83D8CDAA18E353F300D0AC72 /* Revitalize.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D8CD9C18E353F300D0AC72 /* Revitalize.png */; };
+		83D8CDAB18E353F300D0AC72 /* Revitalize@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D8CD9D18E353F300D0AC72 /* Revitalize@2x.png */; };
+		83D8CDAC18E353F300D0AC72 /* Ventilate.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D8CD9E18E353F300D0AC72 /* Ventilate.png */; };
+		83D8CDAD18E353F300D0AC72 /* Ventilate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D8CD9F18E353F300D0AC72 /* Ventilate@2x.png */; };
 		83DF332F18E32269002119CE /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DF332E18E32269002119CE /* Question.m */; };
 		83DF333218E324DA002119CE /* QuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DF333118E324DA002119CE /* QuizViewController.m */; };
 		83EB3EBB18AEA7D500EA91AC /* Creamy.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EB3E3418AEA7D500EA91AC /* Creamy.png */; };
@@ -388,6 +403,22 @@
 		83C6511118C91B7500F35CE5 /* BackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackArrow@2x.png"; sourceTree = "<group>"; };
 		83C6511218C91B7500F35CE5 /* ForwardArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ForwardArrow.png; sourceTree = "<group>"; };
 		83C6511318C91B7500F35CE5 /* ForwardArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ForwardArrow@2x.png"; sourceTree = "<group>"; };
+		83D8CD8F18E3509D00D0AC72 /* FertilityProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FertilityProfile.h; sourceTree = "<group>"; };
+		83D8CD9018E3509D00D0AC72 /* FertilityProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FertilityProfile.m; sourceTree = "<group>"; };
+		83D8CD9218E353F300D0AC72 /* Activate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Activate.png; sourceTree = "<group>"; };
+		83D8CD9318E353F300D0AC72 /* Activate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Activate@2x.png"; sourceTree = "<group>"; };
+		83D8CD9418E353F300D0AC72 /* Energize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Energize.png; sourceTree = "<group>"; };
+		83D8CD9518E353F300D0AC72 /* Energize@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Energize@2x.png"; sourceTree = "<group>"; };
+		83D8CD9618E353F300D0AC72 /* Hydrate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hydrate.png; sourceTree = "<group>"; };
+		83D8CD9718E353F300D0AC72 /* Hydrate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Hydrate@2x.png"; sourceTree = "<group>"; };
+		83D8CD9818E353F300D0AC72 /* Nourish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Nourish.png; sourceTree = "<group>"; };
+		83D8CD9918E353F300D0AC72 /* Nourish@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nourish@2x.png"; sourceTree = "<group>"; };
+		83D8CD9A18E353F300D0AC72 /* Refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Refresh.png; sourceTree = "<group>"; };
+		83D8CD9B18E353F300D0AC72 /* Refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Refresh@2x.png"; sourceTree = "<group>"; };
+		83D8CD9C18E353F300D0AC72 /* Revitalize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Revitalize.png; sourceTree = "<group>"; };
+		83D8CD9D18E353F300D0AC72 /* Revitalize@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Revitalize@2x.png"; sourceTree = "<group>"; };
+		83D8CD9E18E353F300D0AC72 /* Ventilate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ventilate.png; sourceTree = "<group>"; };
+		83D8CD9F18E353F300D0AC72 /* Ventilate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ventilate@2x.png"; sourceTree = "<group>"; };
 		83DF332D18E32269002119CE /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
 		83DF332E18E32269002119CE /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
 		83DF333018E324DA002119CE /* QuizViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizViewController.h; sourceTree = "<group>"; };
@@ -606,6 +637,20 @@
 		8333B9C418E2156B00C64231 /* FertilityProfile */ = {
 			isa = PBXGroup;
 			children = (
+				83D8CD9218E353F300D0AC72 /* Activate.png */,
+				83D8CD9318E353F300D0AC72 /* Activate@2x.png */,
+				83D8CD9418E353F300D0AC72 /* Energize.png */,
+				83D8CD9518E353F300D0AC72 /* Energize@2x.png */,
+				83D8CD9618E353F300D0AC72 /* Hydrate.png */,
+				83D8CD9718E353F300D0AC72 /* Hydrate@2x.png */,
+				83D8CD9818E353F300D0AC72 /* Nourish.png */,
+				83D8CD9918E353F300D0AC72 /* Nourish@2x.png */,
+				83D8CD9A18E353F300D0AC72 /* Refresh.png */,
+				83D8CD9B18E353F300D0AC72 /* Refresh@2x.png */,
+				83D8CD9C18E353F300D0AC72 /* Revitalize.png */,
+				83D8CD9D18E353F300D0AC72 /* Revitalize@2x.png */,
+				83D8CD9E18E353F300D0AC72 /* Ventilate.png */,
+				83D8CD9F18E353F300D0AC72 /* Ventilate@2x.png */,
 				8333B9C518E2156B00C64231 /* ActivateSmall.png */,
 				8333B9C618E2156B00C64231 /* ActivateSmall@2x.png */,
 				8333B9C718E2156B00C64231 /* EnergizeSmall.png */,
@@ -899,6 +944,8 @@
 				83A1FE0618D778F80030D331 /* UserProfile.m */,
 				83DF332D18E32269002119CE /* Question.h */,
 				83DF332E18E32269002119CE /* Question.m */,
+				83D8CD8F18E3509D00D0AC72 /* FertilityProfile.h */,
+				83D8CD9018E3509D00D0AC72 /* FertilityProfile.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1139,11 +1186,13 @@
 				8333B9DD18E2156B00C64231 /* VentilateSmall.png in Resources */,
 				83EB3F0618AEA7D500EA91AC /* Heavy.png in Resources */,
 				83EB3F0C18AEA7D500EA91AC /* Medium@2x.png in Resources */,
+				83D8CDA018E353F300D0AC72 /* Activate.png in Resources */,
 				832934C818B7D93200F6875B /* Amazing@2x.png in Resources */,
 				83A1FDF918D35C820030D331 /* OvatempIcon@2x.png in Resources */,
 				83EB3F0E18AEA7D500EA91AC /* Spotting@2x.png in Resources */,
 				835AE58818B7A3B500FEAF98 /* CheckCell.xib in Resources */,
 				83EB3EDD18AEA7D500EA91AC /* Protected.png in Resources */,
+				83D8CDA518E353F300D0AC72 /* Hydrate@2x.png in Resources */,
 				83EB3F2518AEA7D500EA91AC /* community_selected.png in Resources */,
 				8328B76118AC004300DA7A5E /* IntercourseDayCell.xib in Resources */,
 				8333B9BD18E1BD7A00C64231 /* Exercise@2x.png in Resources */,
@@ -1161,13 +1210,16 @@
 				83EB3F1F18AEA7D500EA91AC /* cal_unselected.png in Resources */,
 				83EB3F2418AEA7D500EA91AC /* coaching_unselect@2x.png in Resources */,
 				8333B99218E0C25500C64231 /* example.html in Resources */,
+				83D8CDA118E353F300D0AC72 /* Activate@2x.png in Resources */,
 				83EB3EC018AEA7D500EA91AC /* Sticky.png in Resources */,
 				838752FA18CF8E2E00E8ED4A /* CycleChartView.xib in Resources */,
 				8333B9A118E0D1B800C64231 /* Acupressure.png in Resources */,
+				83D8CDA318E353F300D0AC72 /* Energize@2x.png in Resources */,
 				835BA2BA18BBEFBF00C64350 /* +@2x.png in Resources */,
 				8328B75718ABFD6D00DA7A5E /* TemperatureDayCell.xib in Resources */,
 				83EB3F3818AEA7D500EA91AC /* Wet@2x.png in Resources */,
 				8333B9D518E2156B00C64231 /* HydrateSmall.png in Resources */,
+				83D8CDAC18E353F300D0AC72 /* Ventilate.png in Resources */,
 				C3E58C3818D39B7B0026301A /* Icon40.png in Resources */,
 				835BA2B918BBEFBF00C64350 /* +.png in Resources */,
 				8328B76518AC006C00DA7A5E /* SupplementsDayCell.xib in Resources */,
@@ -1176,6 +1228,7 @@
 				83EB3F2818AEA7D500EA91AC /* community_unselect@2x.png in Resources */,
 				834BD63218AD1363003B6808 /* MoreStoryboard.storyboard in Resources */,
 				832934D218B7D93200F6875B /* Symptoms@2x.png in Resources */,
+				83D8CDAB18E353F300D0AC72 /* Revitalize@2x.png in Resources */,
 				83EB3F1C18AEA7D500EA91AC /* Positive@2x.png in Resources */,
 				832934D318B7D93200F6875B /* Worried.png in Resources */,
 				83EB3F3218AEA7D500EA91AC /* Dry.png in Resources */,
@@ -1205,6 +1258,7 @@
 				8333B9AF18E0D39800C64231 /* Meditation.png in Resources */,
 				C3E58C3918D39B7B0026301A /* Icon40@2x.png in Resources */,
 				83EB3F1918AEA7D500EA91AC /* Negative.png in Resources */,
+				83D8CDA218E353F300D0AC72 /* Energize.png in Resources */,
 				832934D018B7D93200F6875B /* DaySupplements@2x.png in Resources */,
 				832934CB18B7D93200F6875B /* Medicines.png in Resources */,
 				83EB3F2E18AEA7D500EA91AC /* today_selected.png in Resources */,
@@ -1219,12 +1273,14 @@
 				83EB3F2718AEA7D500EA91AC /* community_unselect.png in Resources */,
 				8333B9D618E2156B00C64231 /* HydrateSmall@2x.png in Resources */,
 				C3E58C3B18D39B7B0026301A /* Icon60@2x.png in Resources */,
+				83D8CDA718E353F300D0AC72 /* Nourish@2x.png in Resources */,
 				839A346218ABCFB6007CD657 /* OTDayNavigationController.xib in Resources */,
 				832934CC18B7D93200F6875B /* Medicines@2x.png in Resources */,
 				83EB3F2B18AEA7D500EA91AC /* more_selected@2x.png in Resources */,
 				C3E58C3C18D39B7B0026301A /* Icon76.png in Resources */,
 				83A1FDF518D35C3B0030D331 /* SessionStoryboard.storyboard in Resources */,
 				83C6511618C91B7500F35CE5 /* ForwardArrow.png in Resources */,
+				83D8CDA918E353F300D0AC72 /* Refresh@2x.png in Resources */,
 				8333B9D818E2156B00C64231 /* NourishSmall@2x.png in Resources */,
 				83EB3F3718AEA7D500EA91AC /* Wet.png in Resources */,
 				8333B9A218E0D1B800C64231 /* Acupressure@2x.png in Resources */,
@@ -1232,6 +1288,7 @@
 				83EB3F2F18AEA7D500EA91AC /* today_selected@2x.png in Resources */,
 				83EB3F2A18AEA7D500EA91AC /* more_selected.png in Resources */,
 				83EB3F3118AEA7D500EA91AC /* today_unselect@2x.png in Resources */,
+				83D8CDA418E353F300D0AC72 /* Hydrate.png in Resources */,
 				832934C718B7D93200F6875B /* Amazing.png in Resources */,
 				8333B98218E0A7C900C64231 /* CoachingStoryboard.storyboard in Resources */,
 				8333B9BF18E1BD7A00C64231 /* Habits@2x.png in Resources */,
@@ -1244,7 +1301,10 @@
 				8333B9BA18E1BD7A00C64231 /* Diet.png in Resources */,
 				8333B9DB18E2156B00C64231 /* RevitalizeSmall.png in Resources */,
 				8333B9AB18E0D32000C64231 /* Massage.png in Resources */,
+				83D8CDAD18E353F300D0AC72 /* Ventilate@2x.png in Resources */,
+				83D8CDAA18E353F300D0AC72 /* Revitalize.png in Resources */,
 				832934CD18B7D93200F6875B /* Sad.png in Resources */,
+				83D8CDA618E353F300D0AC72 /* Nourish.png in Resources */,
 				83EB3F0718AEA7D500EA91AC /* Heavy@2x.png in Resources */,
 				8333B9A418E0D1B800C64231 /* Lifestyle@2x.png in Resources */,
 				832934CA18B7D93200F6875B /* Good@2x.png in Resources */,
@@ -1252,6 +1312,7 @@
 				83EB3F3018AEA7D500EA91AC /* today_unselect.png in Resources */,
 				83C6511418C91B7500F35CE5 /* BackArrow.png in Resources */,
 				83BD853A18D0B7A900890EDA /* RootViewController.xib in Resources */,
+				83D8CDA818E353F300D0AC72 /* Refresh.png in Resources */,
 				83EB3EDE18AEA7D500EA91AC /* Protected@2x.png in Resources */,
 				83C6511518C91B7500F35CE5 /* BackArrow@2x.png in Resources */,
 				C36C5111189028190053A884 /* Images.xcassets in Resources */,
@@ -1352,6 +1413,7 @@
 				C3BF8FEB18984B9700572F43 /* TextFieldCell.m in Sources */,
 				C3BF8FE5189848CE00572F43 /* BaseModel.m in Sources */,
 				C308706818980A4900DC4364 /* UIViewController+Alerts.m in Sources */,
+				83D8CD9118E3509D00D0AC72 /* FertilityProfile.m in Sources */,
 				835BA2B618BBDC0200C64350 /* UIAlertView+WithBlock.m in Sources */,
 				8333B98918E0B86E00C64231 /* CoachingMenuCell.m in Sources */,
 				83DF333218E324DA002119CE /* QuizViewController.m in Sources */,
