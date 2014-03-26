@@ -19,7 +19,7 @@ static Configuration *_sharedConfiguration;
 + (Configuration *)sharedConfiguration {
   if (!_sharedConfiguration) {
     _sharedConfiguration = [[self alloc] init];
-    [_sharedConfiguration observeKeys:@[@"token"]];
+    [_sharedConfiguration observeKeys:@[@"token", @"hasSeenProfileIntroScreen"]];
   }
   return _sharedConfiguration;
 }

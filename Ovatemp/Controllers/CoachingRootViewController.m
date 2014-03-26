@@ -9,7 +9,7 @@
 #import "CoachingRootViewController.h"
 
 @interface CoachingRootViewController ()
-
+@property BOOL purchased;
 @end
 
 @implementation CoachingRootViewController
@@ -18,6 +18,7 @@
 {
   [super viewDidLoad];
 
+  self.purchased = FALSE;
   self.navigationController.delegate = self;
 }
 
@@ -28,6 +29,9 @@
 }
 - (IBAction)buyTapped:(id)sender {
   NSLog(@"buy tapped");
+  _purchased = TRUE;
+
+  [self pushAppropriateController];
 }
 
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
@@ -37,15 +41,27 @@
     return;
   }
 
+  [self pushAppropriateController];
+}
+
+- (void)pushAppropriateController {
   if([self showPurchaseScreen]) {
     return;
   }
 
-  [navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"CoachingMenuViewController"] animated:FALSE];
+  BOOL hasSeenIntro = [[Configuration sharedConfiguration].hasSeenProfileIntroScreen boolValue];
+
+  if(hasSeenIntro) {
+    [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"CoachingMenuViewController"] animated:FALSE];
+  } else {
+    [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"ProfileIntroScreen"] animated:FALSE];
+
+    [Configuration sharedConfiguration].hasSeenProfileIntroScreen = [NSNumber numberWithBool:TRUE];
+  }
 }
 
 - (BOOL)showPurchaseScreen {
-  return FALSE;
+  return !self.purchased;
 }
 
 

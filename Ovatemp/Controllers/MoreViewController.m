@@ -44,4 +44,9 @@
   self.fullNameLabel.text = [[UserProfile current] fullName];
 }
 
+- (IBAction)resetFertilityProfile:(id)sender {
+
+  [Configuration sharedConfiguration].hasSeenProfileIntroScreen = nil;
+}
+
 @end

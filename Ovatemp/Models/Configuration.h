@@ -11,6 +11,7 @@
 @interface Configuration : NSObject
 
 @property NSString *token;
+@property NSNumber *hasSeenProfileIntroScreen;
 
 + (Configuration *)sharedConfiguration;
 + (void)loggedInWithResponse:(NSDictionary *)response;

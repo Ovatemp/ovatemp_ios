@@ -22,7 +22,7 @@
         <!--Fertility Profile Splash-->
         <scene sceneID="PFC-4i-7do">
             <objects>
-                <viewController id="uxV-wV-6CH" userLabel="Fertility Profile Splash" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileIntroScreen" id="uxV-wV-6CH" userLabel="Fertility Profile Splash" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xuq-qP-XZy"/>
                         <viewControllerLayoutGuide type="bottom" id="UgF-00-Yff"/>
@@ -73,6 +73,9 @@
                                 <state key="normal" title="Next >">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="cb8-ud-Y2f" kind="push" id="WIX-Qa-vWv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -320,11 +323,11 @@
                         <viewControllerLayoutGuide type="bottom" id="7dZ-Tb-b2F"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="708-ls-3pn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="107" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="B8t-gm-hvs">
-                                <rect key="frame" x="0.0" y="126" width="320" height="442"/>
+                                <rect key="frame" x="0.0" y="126" width="320" height="393"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
