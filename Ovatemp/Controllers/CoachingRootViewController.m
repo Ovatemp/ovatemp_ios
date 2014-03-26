@@ -49,14 +49,27 @@
     return;
   }
 
+  BOOL hasFertilityProfile = FALSE;
   BOOL hasSeenIntro = [[Configuration sharedConfiguration].hasSeenProfileIntroScreen boolValue];
 
-  if(hasSeenIntro) {
+  if(hasFertilityProfile && hasSeenIntro) {
     [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"CoachingMenuViewController"] animated:FALSE];
-  } else {
+    return;
+  }
+
+  if(!hasFertilityProfile) {
+    // Show quiz
+    [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"QuizViewController"] animated:FALSE];
+
+    return;
+  }
+
+  if(!hasSeenIntro) {
     [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"ProfileIntroScreen"] animated:FALSE];
 
     [Configuration sharedConfiguration].hasSeenProfileIntroScreen = [NSNumber numberWithBool:TRUE];
+
+    return;
   }
 }
 

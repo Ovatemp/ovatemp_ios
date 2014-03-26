@@ -123,6 +123,8 @@
 		83C6511518C91B7500F35CE5 /* BackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6511118C91B7500F35CE5 /* BackArrow@2x.png */; };
 		83C6511618C91B7500F35CE5 /* ForwardArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6511218C91B7500F35CE5 /* ForwardArrow.png */; };
 		83C6511718C91B7500F35CE5 /* ForwardArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6511318C91B7500F35CE5 /* ForwardArrow@2x.png */; };
+		83DF332F18E32269002119CE /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DF332E18E32269002119CE /* Question.m */; };
+		83DF333218E324DA002119CE /* QuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DF333118E324DA002119CE /* QuizViewController.m */; };
 		83EB3EBB18AEA7D500EA91AC /* Creamy.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EB3E3418AEA7D500EA91AC /* Creamy.png */; };
 		83EB3EBC18AEA7D500EA91AC /* Creamy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EB3E3518AEA7D500EA91AC /* Creamy@2x.png */; };
 		83EB3EBD18AEA7D500EA91AC /* Eggwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EB3E3618AEA7D500EA91AC /* Eggwhite.png */; };
@@ -386,6 +388,10 @@
 		83C6511118C91B7500F35CE5 /* BackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackArrow@2x.png"; sourceTree = "<group>"; };
 		83C6511218C91B7500F35CE5 /* ForwardArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ForwardArrow.png; sourceTree = "<group>"; };
 		83C6511318C91B7500F35CE5 /* ForwardArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ForwardArrow@2x.png"; sourceTree = "<group>"; };
+		83DF332D18E32269002119CE /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
+		83DF332E18E32269002119CE /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
+		83DF333018E324DA002119CE /* QuizViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizViewController.h; sourceTree = "<group>"; };
+		83DF333118E324DA002119CE /* QuizViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizViewController.m; sourceTree = "<group>"; };
 		83EB3E3418AEA7D500EA91AC /* Creamy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Creamy.png; sourceTree = "<group>"; };
 		83EB3E3518AEA7D500EA91AC /* Creamy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Creamy@2x.png"; sourceTree = "<group>"; };
 		83EB3E3618AEA7D500EA91AC /* Eggwhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eggwhite.png; sourceTree = "<group>"; };
@@ -560,6 +566,8 @@
 				8333B99418E0C36800C64231 /* CoachingWebViewController.m */,
 				8333B9E318E2193700C64231 /* CoachingRootViewController.h */,
 				8333B9E418E2193700C64231 /* CoachingRootViewController.m */,
+				83DF333018E324DA002119CE /* QuizViewController.h */,
+				83DF333118E324DA002119CE /* QuizViewController.m */,
 			);
 			name = Coaching;
 			sourceTree = "<group>";
@@ -889,6 +897,8 @@
 				838752F318CF44BC00E8ED4A /* Cycle.m */,
 				83A1FE0518D778F80030D331 /* UserProfile.h */,
 				83A1FE0618D778F80030D331 /* UserProfile.m */,
+				83DF332D18E32269002119CE /* Question.h */,
+				83DF332E18E32269002119CE /* Question.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1344,10 +1354,12 @@
 				C308706818980A4900DC4364 /* UIViewController+Alerts.m in Sources */,
 				835BA2B618BBDC0200C64350 /* UIAlertView+WithBlock.m in Sources */,
 				8333B98918E0B86E00C64231 /* CoachingMenuCell.m in Sources */,
+				83DF333218E324DA002119CE /* QuizViewController.m in Sources */,
 				83BD853818D0B23900890EDA /* RootViewController.m in Sources */,
 				8328B77018AC00B500DA7A5E /* SupplementsDayCell.m in Sources */,
 				C3BF8FE01898452F00572F43 /* SessionViewController.m in Sources */,
 				C30B84D418E324260078EDE3 /* UIColor+Traits.m in Sources */,
+				83DF332F18E32269002119CE /* Question.m in Sources */,
 				834BD63518AD1519003B6808 /* MoreViewController.m in Sources */,
 				8333B98C18E0BD4200C64231 /* LifestyleViewController.m in Sources */,
 				8333B99518E0C36800C64231 /* CoachingWebViewController.m in Sources */,
