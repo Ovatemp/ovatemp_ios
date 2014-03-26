@@ -161,6 +161,8 @@
 		C3066C6818983537003F8B84 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3066C6618983537003F8B84 /* TodayViewController.m */; };
 		C308706818980A4900DC4364 /* UIViewController+Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = C308706718980A4900DC4364 /* UIViewController+Alerts.m */; };
 		C308706B18980B1A00DC4364 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = C308706A18980B1A00DC4364 /* Alert.m */; };
+		C30B84D118E3206A0078EDE3 /* UIViewController+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = C30B84D018E3206A0078EDE3 /* UIViewController+Loading.m */; };
+		C30B84D418E324260078EDE3 /* UIColor+Traits.m in Sources */ = {isa = PBXBuildFile; fileRef = C30B84D318E324260078EDE3 /* UIColor+Traits.m */; };
 		C31220241899BB8E0027C4B3 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = C31220231899BB8E0027C4B3 /* Configuration.m */; };
 		C32C4A89189856C100B05009 /* ButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C32C4A88189856C100B05009 /* ButtonCell.m */; };
 		C32C4A8C18985A4D00B05009 /* UIViewController+ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C32C4A8B18985A4D00B05009 /* UIViewController+ConnectionManager.m */; };
@@ -403,6 +405,10 @@
 		C308706718980A4900DC4364 /* UIViewController+Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alerts.m"; sourceTree = "<group>"; };
 		C308706918980B1A00DC4364 /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
 		C308706A18980B1A00DC4364 /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
+		C30B84CF18E3206A0078EDE3 /* UIViewController+Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Loading.h"; sourceTree = "<group>"; };
+		C30B84D018E3206A0078EDE3 /* UIViewController+Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Loading.m"; sourceTree = "<group>"; };
+		C30B84D218E324260078EDE3 /* UIColor+Traits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Traits.h"; sourceTree = "<group>"; };
+		C30B84D318E324260078EDE3 /* UIColor+Traits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Traits.m"; sourceTree = "<group>"; };
 		C31220221899BB8E0027C4B3 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
 		C31220231899BB8E0027C4B3 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
 		C32C4A87189856C100B05009 /* ButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonCell.h; sourceTree = "<group>"; };
@@ -734,10 +740,14 @@
 				835BA2B518BBDC0200C64350 /* UIAlertView+WithBlock.m */,
 				83C6510D18C9015000F35CE5 /* NSDate+CalendarOps.h */,
 				83C6510E18C9015000F35CE5 /* NSDate+CalendarOps.m */,
+				C30B84D218E324260078EDE3 /* UIColor+Traits.h */,
+				C30B84D318E324260078EDE3 /* UIColor+Traits.m */,
 				83C4D20D18D9D9F7008C523C /* UIViewController+UserProfileHelpers.h */,
 				83C4D20E18D9D9F7008C523C /* UIViewController+UserProfileHelpers.m */,
 				83C4D21718D9E744008C523C /* UIViewController+KeyboardObservers.h */,
 				83C4D21818D9E744008C523C /* UIViewController+KeyboardObservers.m */,
+				C30B84CF18E3206A0078EDE3 /* UIViewController+Loading.h */,
+				C30B84D018E3206A0078EDE3 /* UIViewController+Loading.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1253,6 +1263,7 @@
 				83BD853818D0B23900890EDA /* RootViewController.m in Sources */,
 				8328B77018AC00B500DA7A5E /* SupplementsDayCell.m in Sources */,
 				C3BF8FE01898452F00572F43 /* SessionViewController.m in Sources */,
+				C30B84D418E324260078EDE3 /* UIColor+Traits.m in Sources */,
 				834BD63518AD1519003B6808 /* MoreViewController.m in Sources */,
 				830E351818D2506B00884F0E /* NSDate+Formatters.m in Sources */,
 				C32C4A8F18985A7800B05009 /* ConnectionManager.m in Sources */,
@@ -1265,6 +1276,7 @@
 				8387261018CA12C800A3277C /* FertilityStatusView.m in Sources */,
 				83C4D21618D9E0F6008C523C /* Onboard2ViewController.m in Sources */,
 				834BD63B18AD29EA003B6808 /* Day.m in Sources */,
+				C30B84D118E3206A0078EDE3 /* UIViewController+Loading.m in Sources */,
 				8315E4A618C6300800DA935A /* CalendarCell.m in Sources */,
 				835BA2B318BBCB8300C64350 /* SharedRelation.m in Sources */,
 				C36C510B189028190053A884 /* main.m in Sources */,
