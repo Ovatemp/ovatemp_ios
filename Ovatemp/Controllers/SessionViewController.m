@@ -47,7 +47,6 @@
 # pragma mark - Registration, login, password reset
 
 - (IBAction)sessionRegister:(id)sender {
-  [self startLoadingWithMessage:@"Creating your account..."];
   [ConnectionManager post:@"/users"
                    params:@{
                             @"user":
@@ -63,8 +62,6 @@
 }
 
 - (IBAction)sessionLogin:(id)sender {
-  [self startLoadingWithMessage:@"Logging you in..."];
-  
   [ConnectionManager post:@"/sessions"
                    params:@{
                             @"email": self.emailField.text,

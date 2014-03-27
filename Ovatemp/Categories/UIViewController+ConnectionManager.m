@@ -39,12 +39,4 @@
   [self showErrorWithTitle:title message:message];
 }
 
-- (void)startLoadingWithMessage:(NSString *)message {
-    
-}
-
-- (void)stopLoading {
-    
-}
-
 @end

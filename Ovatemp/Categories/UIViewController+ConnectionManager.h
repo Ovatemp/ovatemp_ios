@@ -13,7 +13,5 @@
 @interface UIViewController (ConnectionManager)
 
 - (void)presentError:(NSError *)error;
-- (void)startLoadingWithMessage:(NSString *)message;
-- (void)stopLoading;
 
 @end
