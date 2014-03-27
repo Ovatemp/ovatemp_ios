@@ -53,6 +53,13 @@
   BOOL hasFertilityProfile = [User current].fertilityProfileName != nil;
   BOOL hasSeenIntro = [[Configuration sharedConfiguration].hasSeenProfileIntroScreen boolValue];
 
+  if(!hasFertilityProfile) {
+    // Show quiz
+    [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"QuizViewController"] animated:FALSE];
+
+    return;
+  }
+
   if(!hasSeenIntro) {
     [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"ProfileIntroScreen"] animated:FALSE];
 
@@ -61,19 +68,10 @@
     return;
   }
 
-  if(!hasFertilityProfile) {
-    // Show quiz
-    [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"QuizViewController"] animated:FALSE];
-
-    return;
-  }
-
   if(hasFertilityProfile && hasSeenIntro) {
     [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"CoachingMenuViewController"] animated:FALSE];
     return;
   }
-
-
 }
 
 - (BOOL)showPurchaseScreen {

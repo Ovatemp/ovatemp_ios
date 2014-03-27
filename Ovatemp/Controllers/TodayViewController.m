@@ -43,11 +43,6 @@
   // Don't show separators after the last item
   table.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
-  [[Calendar sharedInstance] addObserver:self
-                              forKeyPath:@"day"
-                                 options:NSKeyValueObservingOptionNew
-                                 context:NULL];
-
   self.rowIdentifiers = @[@"TemperatureDayCell", @"PeriodDayCell", @"FluidDayCell", @"IntercourseDayCell", @"SymptomsDayCell", @"SupplementsDayCell", @"SignsDayCell"];
   self.rowExemplars = [NSMutableArray array];
 
@@ -56,12 +51,6 @@
     UIView *cellView = [[[NSBundle mainBundle] loadNibNamed:name owner:self options:nil] objectAtIndex:0];
     [self.rowExemplars addObject:cellView];
   }
-
-  [[NSNotificationCenter defaultCenter]
-   addObserver:self
-   selector:@selector(applicationWillResign)
-   name:UIApplicationWillResignActiveNotification
-   object:NULL];
 
   [self setupLandscape];
 }
@@ -111,12 +100,36 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
 
+  [[Calendar sharedInstance] addObserver:self
+                              forKeyPath:@"day"
+                                 options:NSKeyValueObservingOptionNew
+                                 context:NULL];
+
+
+  [[NSNotificationCenter defaultCenter]
+   addObserver:self
+   selector:@selector(applicationWillResign)
+   name:UIApplicationWillResignActiveNotification
+   object:NULL];
+
   self.day = nil;
   [self dateChanged];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
+
+  [[NSNotificationCenter defaultCenter]
+   removeObserver:self
+   name:UIDeviceOrientationDidChangeNotification
+   object:nil];
+
+  [[NSNotificationCenter defaultCenter]
+   removeObserver:self
+   name:UIApplicationWillResignActiveNotification
+   object:nil];
+
+  [[Calendar sharedInstance] removeObserver:self forKeyPath:@"day"];
 
   // Make sure to save the day before we leave
   [self.day save];

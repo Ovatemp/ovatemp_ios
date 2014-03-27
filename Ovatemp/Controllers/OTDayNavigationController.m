@@ -42,26 +42,23 @@
   [self addChildViewController:self.contentViewController];
   [self.contentViewController didMoveToParentViewController:self];
 
-  [[Calendar sharedInstance] addObserver: self
-         forKeyPath: @"day"
-            options: NSKeyValueObservingOptionNew
-            context: NULL];
-
   self.dateFormatter = [[NSDateFormatter alloc] init];
   [self.dateFormatter setDateFormat:@"E, MMM d y"];
 
   self.dayFormatter = [[NSDateFormatter alloc] init];
   [self.dayFormatter setDateFormat:@"d"];
+}
 
-
+- (void)viewWillAppear:(BOOL)animated {
+  [self updateLabels];
   [[Calendar sharedInstance] addObserver: self
                               forKeyPath: @"day"
                                  options: NSKeyValueObservingOptionNew
                                  context: NULL];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-  [self updateLabels];
+- (void)viewWillDisappear:(BOOL)animated {
+  [[Calendar sharedInstance] removeObserver:self forKeyPath:@"day"];
 }
 
 - (void)didReceiveMemoryWarning

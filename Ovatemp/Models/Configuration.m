@@ -63,6 +63,8 @@ static Configuration *_sharedConfiguration;
   [User setCurrent:nil];
   [UserProfile setCurrent:nil];
   [Configuration sharedConfiguration].token = nil;
+  [Configuration sharedConfiguration].coachingContentUrls = nil;
+  [Configuration sharedConfiguration].hasSeenProfileIntroScreen = nil;
 }
 
 

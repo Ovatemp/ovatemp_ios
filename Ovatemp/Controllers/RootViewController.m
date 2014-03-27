@@ -43,8 +43,6 @@
   [self configureAlertAppearance];
   [self configureTabBarAppearance];
 
-  [self createMainViewController];
-  
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(logOutWithUnauthorized)
                                                name:kUnauthorizedRequestNotification object:nil];
@@ -57,6 +55,8 @@
 - (void)launchAppropriateViewController {
   // Require a user to log in or register
   if([Configuration loggedIn]) {
+    [self createMainViewController];
+
     launching = mainViewController;
     [mainViewController setSelectedIndex:0];
     [Calendar resetDate];

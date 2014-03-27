@@ -45,11 +45,6 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
   [self.collectionView setBackgroundColor:[UIColor whiteColor]];
 
 
-  [[Calendar sharedInstance] addObserver: self
-                              forKeyPath: @"day"
-                                 options: NSKeyValueObservingOptionNew
-                                 context: NULL];
-
   [self setDateRange];
 
   NSArray *weekdays = [@"S M T W R F S" componentsSeparatedByString:@" "];
@@ -66,6 +61,12 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
 
+  [[Calendar sharedInstance] addObserver: self
+                              forKeyPath: @"day"
+                                 options: NSKeyValueObservingOptionNew
+                                 context: NULL];
+
+
   [Cycle loadDatesFrom:self.firstDate to:self.lastDate success:^(NSDictionary *response){
     [self.collectionView reloadData];
     [self scrollToCurrentDay];
@@ -74,6 +75,10 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
   }];
 
   [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+  [[Calendar sharedInstance] removeObserver:self forKeyPath:@"day"];
 }
 
 - (BOOL)shouldAutorotate {
