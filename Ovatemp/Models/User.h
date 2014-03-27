@@ -15,6 +15,7 @@
 + (void)setCurrent:(User *)user;
 
 @property NSString *email;
+@property NSNumber *fertilityProfileId;
 @property NSString *mailchimpLeid;
 @property NSString *passwordDigest;
 @property UserProfile *profile;

@@ -10,6 +10,16 @@
 
 @implementation Question
 
+- (id)init {
+  self = [super init];
+  if(!self) { return nil; }
+
+
+  self.ignoredAttributes = [NSSet setWithArray:[@"createdAt updatedAt energize hydrate category nourish position refresh ventilate revitalize activate" componentsSeparatedByString:@" "]];
+
+  return self;
+}
+
 - (void)answer:(BOOL)yes success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure {
   NSLog(@"answered");
   

@@ -8,6 +8,7 @@
 
 #import "QuizViewController.h"
 #import "Question.h"
+#import "UIViewController+Loading.h"
 
 @interface QuizViewController ()
 
@@ -36,15 +37,36 @@
   }
 
   self.questionQueue = [[NSMutableArray alloc] initWithCapacity:10];
-  for(int i=0; i < 10; i++) {
-    Question *question = [[Question alloc] init];
-    question.text = [NSString stringWithFormat:@"Do you have %d friends?", i];
-    [self.questionQueue addObject:question];
-  }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-  [self popQuestion];
+  if(self.questionQueue.count < 1) {
+    self.questionLabel.text = @"Loading...";
+    self.yesButton.hidden = TRUE;
+    self.noButton.hidden = TRUE;
+
+    [self startLoading];
+    [ConnectionManager get:@"/fertility_profiles" params:@{}
+                   success:^(id response) {
+                     NSArray *questions = response[@"questions"];
+                     if(questions) {
+                       for(NSDictionary *q in questions) {
+                         [self.questionQueue addObject:[Question withAttributes:q]];
+                       }
+
+                       [self popQuestion];
+                     }
+
+                     [self stopLoading];
+                   }
+                   failure:^(NSError *error) {
+                     NSLog(@"couldn't load questions");
+
+                     [self stopLoading];
+                   }];
+  } else {
+    [self popQuestion];
+  }
 }
 
 - (Question *)popQuestion {
@@ -53,6 +75,9 @@
     [self.navigationController popViewControllerAnimated:NO];
     return nil;
   }
+
+  self.yesButton.hidden = FALSE;
+  self.noButton.hidden = FALSE;
 
   self.question = self.questionQueue[0];
   [self.questionQueue removeObjectAtIndex:0];

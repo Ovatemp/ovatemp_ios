@@ -7,6 +7,7 @@
 //
 
 #import "CoachingRootViewController.h"
+#import "User.h"
 
 @interface CoachingRootViewController ()
 @property BOOL purchased;
@@ -49,7 +50,7 @@
     return;
   }
 
-  BOOL hasFertilityProfile = TRUE;
+  BOOL hasFertilityProfile = [User current].fertilityProfileId != nil;
   BOOL hasSeenIntro = [[Configuration sharedConfiguration].hasSeenProfileIntroScreen boolValue];
 
   if(hasFertilityProfile && hasSeenIntro) {
