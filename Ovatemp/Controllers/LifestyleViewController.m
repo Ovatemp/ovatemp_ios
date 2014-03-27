@@ -9,6 +9,8 @@
 #import "LifestyleViewController.h"
 #import "LifestyleCell.h"
 #import "CoachingWebViewController.h"
+#import "UIViewController+Loading.h"
+#import "ConnectionManager.h"
 
 @interface LifestyleViewController ()
 
@@ -52,17 +54,29 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
   CoachingWebViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"CoachingWebViewController"];
-  vc.titleLabel.text = self.itemNames[indexPath.row];
 
-  NSString *htmlFilePath = [[NSBundle mainBundle] pathForResource:@"example" ofType:@"html"];
-  NSString *contents = [NSString stringWithContentsOfFile:htmlFilePath
-                                                 encoding:NSUTF8StringEncoding
-                                                    error:NULL];
+  NSString *name = self.itemNames[indexPath.row];
+  vc.titleLabel.text = name;
 
-  NSLog(@"contents: %@", vc);
+  [self startLoading];
 
-  vc.webViewContents = contents;
-  [self.navigationController pushViewController:vc animated:YES];
+  NSLog(@"name: %@ name", name);
+
+  NSString *url = [Configuration sharedConfiguration].coachingContentUrls[name];
+
+  [ConnectionManager get:url params:@{}
+                 success:^(NSData *response) {
+                   NSString *content = [[NSString alloc] initWithData:response
+                                                             encoding:NSUTF8StringEncoding];
+                   vc.webViewContents = content;
+                   [self.navigationController pushViewController:vc animated:YES];
+                   [self stopLoading];
+                 }
+                 failure:^(NSError *error) {
+                   NSLog(@"failed to load");
+                   [self stopLoading];
+                 }];
+
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
