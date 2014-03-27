@@ -16,6 +16,7 @@
 
 @property NSString *email;
 @property NSNumber *fertilityProfileId;
+@property NSString *fertilityProfileName;
 @property NSString *mailchimpLeid;
 @property NSString *passwordDigest;
 @property UserProfile *profile;

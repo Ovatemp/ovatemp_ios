@@ -12,6 +12,7 @@
 
 @property NSString *token;
 @property NSNumber *hasSeenProfileIntroScreen;
+@property NSDictionary *coachingContentUrls;
 
 + (Configuration *)sharedConfiguration;
 + (void)loggedInWithResponse:(NSDictionary *)response;

@@ -124,7 +124,6 @@
 		83C6511518C91B7500F35CE5 /* BackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6511118C91B7500F35CE5 /* BackArrow@2x.png */; };
 		83C6511618C91B7500F35CE5 /* ForwardArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6511218C91B7500F35CE5 /* ForwardArrow.png */; };
 		83C6511718C91B7500F35CE5 /* ForwardArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6511318C91B7500F35CE5 /* ForwardArrow@2x.png */; };
-		83D8CD9118E3509D00D0AC72 /* FertilityProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D8CD9018E3509D00D0AC72 /* FertilityProfile.m */; };
 		83D8CDA018E353F300D0AC72 /* Activate.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D8CD9218E353F300D0AC72 /* Activate.png */; };
 		83D8CDA118E353F300D0AC72 /* Activate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D8CD9318E353F300D0AC72 /* Activate@2x.png */; };
 		83D8CDA218E353F300D0AC72 /* Energize.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D8CD9418E353F300D0AC72 /* Energize.png */; };
@@ -406,8 +405,6 @@
 		83C6511118C91B7500F35CE5 /* BackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackArrow@2x.png"; sourceTree = "<group>"; };
 		83C6511218C91B7500F35CE5 /* ForwardArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ForwardArrow.png; sourceTree = "<group>"; };
 		83C6511318C91B7500F35CE5 /* ForwardArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ForwardArrow@2x.png"; sourceTree = "<group>"; };
-		83D8CD8F18E3509D00D0AC72 /* FertilityProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FertilityProfile.h; sourceTree = "<group>"; };
-		83D8CD9018E3509D00D0AC72 /* FertilityProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FertilityProfile.m; sourceTree = "<group>"; };
 		83D8CD9218E353F300D0AC72 /* Activate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Activate.png; sourceTree = "<group>"; };
 		83D8CD9318E353F300D0AC72 /* Activate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Activate@2x.png"; sourceTree = "<group>"; };
 		83D8CD9418E353F300D0AC72 /* Energize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Energize.png; sourceTree = "<group>"; };
@@ -949,8 +946,6 @@
 				83A1FE0618D778F80030D331 /* UserProfile.m */,
 				83DF332D18E32269002119CE /* Question.h */,
 				83DF332E18E32269002119CE /* Question.m */,
-				83D8CD8F18E3509D00D0AC72 /* FertilityProfile.h */,
-				83D8CD9018E3509D00D0AC72 /* FertilityProfile.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1418,7 +1413,6 @@
 				C3BF8FEB18984B9700572F43 /* TextFieldCell.m in Sources */,
 				C3BF8FE5189848CE00572F43 /* BaseModel.m in Sources */,
 				C308706818980A4900DC4364 /* UIViewController+Alerts.m in Sources */,
-				83D8CD9118E3509D00D0AC72 /* FertilityProfile.m in Sources */,
 				835BA2B618BBDC0200C64350 /* UIAlertView+WithBlock.m in Sources */,
 				8333B98918E0B86E00C64231 /* CoachingMenuCell.m in Sources */,
 				83DF333218E324DA002119CE /* QuizViewController.m in Sources */,

@@ -50,11 +50,14 @@
     return;
   }
 
-  BOOL hasFertilityProfile = [User current].fertilityProfileId != nil;
+  BOOL hasFertilityProfile = [User current].fertilityProfileName != nil;
   BOOL hasSeenIntro = [[Configuration sharedConfiguration].hasSeenProfileIntroScreen boolValue];
 
-  if(hasFertilityProfile && hasSeenIntro) {
-    [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"CoachingMenuViewController"] animated:FALSE];
+  if(!hasSeenIntro) {
+    [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"ProfileIntroScreen"] animated:FALSE];
+
+    [Configuration sharedConfiguration].hasSeenProfileIntroScreen = [NSNumber numberWithBool:TRUE];
+
     return;
   }
 
@@ -65,13 +68,12 @@
     return;
   }
 
-  if(!hasSeenIntro) {
-    [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"ProfileIntroScreen"] animated:FALSE];
-
-    [Configuration sharedConfiguration].hasSeenProfileIntroScreen = [NSNumber numberWithBool:TRUE];
-
+  if(hasFertilityProfile && hasSeenIntro) {
+    [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"CoachingMenuViewController"] animated:FALSE];
     return;
   }
+
+
 }
 
 - (BOOL)showPurchaseScreen {

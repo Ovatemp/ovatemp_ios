@@ -9,6 +9,7 @@
 #import "CoachingMenuViewController.h"
 #import "CoachingMenuCell.h"
 #import "Day.h"
+#import "User.h"
 
 @interface CoachingMenuViewController ()
 
@@ -34,8 +35,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];
-  self.profileImageView.image = [UIImage imageNamed:@"Refresh"];
-  self.profileLabel.text = @"Refresh";
+
+  NSString *profileName = [[User current].fertilityProfileName capitalizedString];
+  self.profileLabel.text = profileName;
+  self.profileImageView.image = [UIImage imageNamed:profileName];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

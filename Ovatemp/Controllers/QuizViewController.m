@@ -9,6 +9,7 @@
 #import "QuizViewController.h"
 #import "Question.h"
 #import "UIViewController+Loading.h"
+#import "User.h"
 
 @interface QuizViewController ()
 
@@ -53,10 +54,19 @@
                        for(NSDictionary *q in questions) {
                          [self.questionQueue addObject:[Question withAttributes:q]];
                        }
-
-                       [self popQuestion];
                      }
 
+                     NSString *fertility_profile_name = response[@"fertility_profile_name"];
+                     if(fertility_profile_name) {
+                       [User current].fertilityProfileName = fertility_profile_name;
+                     }
+
+                     NSDictionary *coaching_content_urls = response[@"coaching_content_urls"];
+                     if(coaching_content_urls) {
+                       [Configuration sharedConfiguration].coachingContentUrls = coaching_content_urls;
+                     }
+
+                     [self popQuestion];
                      [self stopLoading];
                    }
                    failure:^(NSError *error) {
@@ -71,7 +81,6 @@
 
 - (Question *)popQuestion {
   if(self.questionQueue.count < 1) {
-    NSLog(@"stop this quiz.");
     [self.navigationController popViewControllerAnimated:NO];
     return nil;
   }
@@ -86,7 +95,7 @@
 }
 
 - (void)answerQuestion:(BOOL)yes {
-  [self.question answer:yes success:nil failure:nil];
+  [self.question answer:yes success:^(id response){} failure:^(id error){} ];
   [self popQuestion];
 }
 
