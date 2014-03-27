@@ -79,4 +79,8 @@
   return [self viewControllerWithCycle:otherChart.cycle];
 }
 
+- (BOOL)shouldAutorotate {
+  return FALSE;
+}
+
 @end

@@ -96,4 +96,8 @@
   [self dismissViewControllerAnimated:TRUE completion:nil];
 }
 
+- (BOOL)shouldAutorotate {
+  return FALSE;
+}
+
 @end

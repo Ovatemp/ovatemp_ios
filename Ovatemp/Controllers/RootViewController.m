@@ -12,6 +12,7 @@
 #import "OTDayNavigationController.h"
 #import "CalendarViewController.h"
 #import "User.h"
+#import "UITabBarController+Rotations.h"
 #import "Calendar.h"
 
 @interface RootViewController () {
@@ -123,8 +124,6 @@
   
   mainViewController = tabController;
 }
-
-
 
 # pragma mark - Session Handling
 

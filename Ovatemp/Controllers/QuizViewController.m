@@ -79,4 +79,8 @@
   [self answerQuestion:NO];
 }
 
+- (BOOL)shouldAutorotate {
+  return FALSE;
+}
+
 @end

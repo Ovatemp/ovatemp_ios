@@ -84,6 +84,7 @@
 		834BD63B18AD29EA003B6808 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63A18AD29EA003B6808 /* Day.m */; };
 		834BD64118AD6590003B6808 /* DayToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD64018AD6590003B6808 /* DayToggleButton.m */; };
 		83548FF218BD24450016B53A /* TodaySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 83548FF118BD24450016B53A /* TodaySpec.m */; };
+		835512F418E3708700894728 /* UITabBarController+Rotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 835512F318E3708700894728 /* UITabBarController+Rotations.m */; };
 		835AE58618B7A36000FEAF98 /* CheckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 835AE58518B7A36000FEAF98 /* CheckCell.m */; };
 		835AE58818B7A3B500FEAF98 /* CheckCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 835AE58718B7A3B500FEAF98 /* CheckCell.xib */; };
 		835AE58B18B7A51700FEAF98 /* CheckBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 835AE58918B7A51700FEAF98 /* CheckBox.png */; };
@@ -343,6 +344,8 @@
 		834BD63F18AD6590003B6808 /* DayToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayToggleButton.h; sourceTree = "<group>"; };
 		834BD64018AD6590003B6808 /* DayToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayToggleButton.m; sourceTree = "<group>"; };
 		83548FF118BD24450016B53A /* TodaySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodaySpec.m; sourceTree = "<group>"; };
+		835512F218E3708700894728 /* UITabBarController+Rotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+Rotations.h"; sourceTree = "<group>"; };
+		835512F318E3708700894728 /* UITabBarController+Rotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+Rotations.m"; sourceTree = "<group>"; };
 		835AE58418B7A36000FEAF98 /* CheckCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckCell.h; sourceTree = "<group>"; };
 		835AE58518B7A36000FEAF98 /* CheckCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckCell.m; sourceTree = "<group>"; };
 		835AE58718B7A3B500FEAF98 /* CheckCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckCell.xib; sourceTree = "<group>"; };
@@ -867,6 +870,8 @@
 				83C4D21818D9E744008C523C /* UIViewController+KeyboardObservers.m */,
 				C30B84CF18E3206A0078EDE3 /* UIViewController+Loading.h */,
 				C30B84D018E3206A0078EDE3 /* UIViewController+Loading.m */,
+				835512F218E3708700894728 /* UITabBarController+Rotations.h */,
+				835512F318E3708700894728 /* UITabBarController+Rotations.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1426,6 +1431,7 @@
 				8333B98C18E0BD4200C64231 /* LifestyleViewController.m in Sources */,
 				8333B99518E0C36800C64231 /* CoachingWebViewController.m in Sources */,
 				830E351818D2506B00884F0E /* NSDate+Formatters.m in Sources */,
+				835512F418E3708700894728 /* UITabBarController+Rotations.m in Sources */,
 				C32C4A8F18985A7800B05009 /* ConnectionManager.m in Sources */,
 				C36C510F189028190053A884 /* AppDelegate.m in Sources */,
 				8329353B18B7FD2600F6875B /* Symptom.m in Sources */,

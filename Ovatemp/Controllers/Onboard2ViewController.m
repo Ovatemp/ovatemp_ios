@@ -91,4 +91,8 @@
   [self.navigationController popViewControllerAnimated:TRUE];
 }
 
+- (BOOL)shouldAutorotate {
+  return FALSE;
+}
+
 @end

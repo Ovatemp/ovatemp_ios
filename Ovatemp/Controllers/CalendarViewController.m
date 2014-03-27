@@ -76,6 +76,10 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
   [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];
 }
 
+- (BOOL)shouldAutorotate {
+  return FALSE;
+}
+
 - (void)scrollToCurrentDay {
   if([Calendar day] == nil) { return; }
 

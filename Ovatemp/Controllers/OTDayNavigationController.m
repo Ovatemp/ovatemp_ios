@@ -111,4 +111,16 @@
   [Calendar stepDay:-1];
 }
 
+- (BOOL)shouldAutorotate {
+  return [self.contentViewController shouldAutorotate];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+  return [self.contentViewController shouldAutorotateToInterfaceOrientation:toInterfaceOrientation];
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
+  return [self.contentViewController supportedInterfaceOrientations];
+}
+
 @end

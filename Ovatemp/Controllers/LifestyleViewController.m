@@ -74,8 +74,13 @@
 
   return cell;
 }
+
 - (IBAction)backButtonTapped:(id)sender {
   [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (BOOL)shouldAutorotate {
+  return FALSE;
 }
 
 @end

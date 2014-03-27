@@ -63,4 +63,8 @@
   [self commit];
 }
 
+- (BOOL)shouldAutorotate {
+  return FALSE;
+}
+
 @end

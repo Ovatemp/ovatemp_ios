@@ -49,4 +49,8 @@
   [Configuration sharedConfiguration].hasSeenProfileIntroScreen = nil;
 }
 
+- (BOOL)shouldAutorotate {
+  return FALSE;
+}
+
 @end

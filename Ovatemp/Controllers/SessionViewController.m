@@ -136,5 +136,8 @@
   return YES;
 }
 
+- (BOOL)shouldAutorotate {
+  return FALSE;
+}
 
 @end

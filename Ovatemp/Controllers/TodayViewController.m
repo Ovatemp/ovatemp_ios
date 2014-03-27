@@ -82,6 +82,10 @@
 
 - (void)orientationChanged:(NSNotification *)notification
 {
+  if(self.tabBarController.selectedIndex != 0) {
+    return;
+  }
+
   if([self isCorrectOrientation]) {
     return;
   }
@@ -168,10 +172,13 @@
   return cell;
 }
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
   UIView *exemplar = self.rowExemplars[indexPath.row];
   return exemplar.frame.size.height;
+}
+
+- (BOOL)shouldAutorotate {
+  return FALSE;
 }
 
 @end
