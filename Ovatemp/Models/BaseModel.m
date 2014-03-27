@@ -171,7 +171,7 @@ static NSMutableDictionary *_instances;
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
   if([self shouldIgnoreKey:key]) return;
 
-  NSLog(@"Could not set value \"%@\" for undefined key \"%@\"", value, key);
+  NSLog(@"%@: Could not set value \"%@\" for undefined key \"%@\"", [self class], value, key);
 }
 
 - (NSString *)classForKey:(NSString *)key {
