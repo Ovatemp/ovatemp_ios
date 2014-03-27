@@ -85,6 +85,7 @@
 		834BD64118AD6590003B6808 /* DayToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD64018AD6590003B6808 /* DayToggleButton.m */; };
 		83548FF218BD24450016B53A /* TodaySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 83548FF118BD24450016B53A /* TodaySpec.m */; };
 		835512F418E3708700894728 /* UITabBarController+Rotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 835512F318E3708700894728 /* UITabBarController+Rotations.m */; };
+		835512F718E4C0BD00894728 /* FertilityProfileIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835512F618E4C0BD00894728 /* FertilityProfileIntroViewController.m */; };
 		835AE58618B7A36000FEAF98 /* CheckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 835AE58518B7A36000FEAF98 /* CheckCell.m */; };
 		835AE58818B7A3B500FEAF98 /* CheckCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 835AE58718B7A3B500FEAF98 /* CheckCell.xib */; };
 		835AE58B18B7A51700FEAF98 /* CheckBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 835AE58918B7A51700FEAF98 /* CheckBox.png */; };
@@ -345,6 +346,8 @@
 		83548FF118BD24450016B53A /* TodaySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodaySpec.m; sourceTree = "<group>"; };
 		835512F218E3708700894728 /* UITabBarController+Rotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+Rotations.h"; sourceTree = "<group>"; };
 		835512F318E3708700894728 /* UITabBarController+Rotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+Rotations.m"; sourceTree = "<group>"; };
+		835512F518E4C0BD00894728 /* FertilityProfileIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FertilityProfileIntroViewController.h; sourceTree = "<group>"; };
+		835512F618E4C0BD00894728 /* FertilityProfileIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FertilityProfileIntroViewController.m; sourceTree = "<group>"; };
 		835AE58418B7A36000FEAF98 /* CheckCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckCell.h; sourceTree = "<group>"; };
 		835AE58518B7A36000FEAF98 /* CheckCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckCell.m; sourceTree = "<group>"; };
 		835AE58718B7A3B500FEAF98 /* CheckCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckCell.xib; sourceTree = "<group>"; };
@@ -898,6 +901,8 @@
 				83C4D21018D9DFCA008C523C /* Settings */,
 				C3066C6518983537003F8B84 /* TodayViewController.h */,
 				C3066C6618983537003F8B84 /* TodayViewController.m */,
+				835512F518E4C0BD00894728 /* FertilityProfileIntroViewController.h */,
+				835512F618E4C0BD00894728 /* FertilityProfileIntroViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1413,6 +1418,7 @@
 				C3BF8FEB18984B9700572F43 /* TextFieldCell.m in Sources */,
 				C3BF8FE5189848CE00572F43 /* BaseModel.m in Sources */,
 				C308706818980A4900DC4364 /* UIViewController+Alerts.m in Sources */,
+				835512F718E4C0BD00894728 /* FertilityProfileIntroViewController.m in Sources */,
 				835BA2B618BBDC0200C64350 /* UIAlertView+WithBlock.m in Sources */,
 				8333B98918E0B86E00C64231 /* CoachingMenuCell.m in Sources */,
 				83DF333218E324DA002119CE /* QuizViewController.m in Sources */,
