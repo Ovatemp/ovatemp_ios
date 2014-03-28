@@ -12,5 +12,6 @@
 
 - (NSString *)shortMonth;
 - (NSString *)classicDate;
+- (NSString *)dateId;
 
 @end

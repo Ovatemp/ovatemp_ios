@@ -14,8 +14,6 @@
 
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
-// Temporary, until we get the actual cycle day
-@property (nonatomic, strong) NSDateFormatter *dayFormatter;
 @end
 
 @implementation OTDayNavigationController
@@ -44,9 +42,6 @@
 
   self.dateFormatter = [[NSDateFormatter alloc] init];
   [self.dateFormatter setDateFormat:@"E, MMM d y"];
-
-  self.dayFormatter = [[NSDateFormatter alloc] init];
-  [self.dayFormatter setDateFormat:@"d"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

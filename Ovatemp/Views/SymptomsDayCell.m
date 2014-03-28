@@ -78,6 +78,7 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
   if(tableView == self.symptomsTableView) {
     return self.symptoms.count;
   }
+  
   return 0;
 }
 

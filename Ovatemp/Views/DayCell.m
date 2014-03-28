@@ -26,8 +26,12 @@
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)sender {
+  [self updatePageControl];
+}
+
+- (void)updatePageControl {
   uint pages = self.scrollView.contentSize.width / self.scrollView.frame.size.width;
-  uint page = sender.contentOffset.x / sender.frame.size.width;
+  uint page = self.scrollView.contentOffset.x / self.scrollView.frame.size.width;
   BOOL hidden = (pages < 3 || page < 1);
 
   // We pretend there are only two pages

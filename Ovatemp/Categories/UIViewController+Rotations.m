@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Back Forty. All rights reserved.
 //
 
-#import "UITabBarController+Rotations.h"
+#import "UIViewController+Rotations.h"
 
-@implementation UITabBarController (Rotations)
+@implementation UITabBarController (TabRotations)
 
 - (BOOL)shouldAutorotate
 {
@@ -27,7 +27,7 @@
 
 @end
 
-@implementation UINavigationController (navrotations)
+@implementation UINavigationController (NavRotations)
 
 - (BOOL)shouldAutorotate {
 

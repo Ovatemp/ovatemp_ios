@@ -22,11 +22,12 @@
 
 - (void)answer:(BOOL)yes success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure {
   [ConnectionManager post:@"/answers"
-                   params:@{@"answer": @{
-                                @"question_id": self.id,
-                                @"response": [NSNumber numberWithBool:yes],
-                                }
+                   params:@{@"answer":
+                            @{
+                              @"question_id": self.id,
+                              @"response": [NSNumber numberWithBool:yes],
                             }
+                   }
                    success:onSuccess
                   failure:onFailure];
 }

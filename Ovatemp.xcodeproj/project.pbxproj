@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		830E351518D2505C00884F0E /* NSDate+DateID.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E351418D2505C00884F0E /* NSDate+DateID.m */; };
 		830E351818D2506B00884F0E /* NSDate+Formatters.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E351718D2506B00884F0E /* NSDate+Formatters.m */; };
 		8315E49B18C13F9B00DA935A /* OTScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49A18C13F9B00DA935A /* OTScrollView.m */; };
 		8315E49E18C521A800DA935A /* SessionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49D18C521A800DA935A /* SessionSpec.m */; };
@@ -84,7 +83,7 @@
 		834BD63B18AD29EA003B6808 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63A18AD29EA003B6808 /* Day.m */; };
 		834BD64118AD6590003B6808 /* DayToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD64018AD6590003B6808 /* DayToggleButton.m */; };
 		83548FF218BD24450016B53A /* TodaySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 83548FF118BD24450016B53A /* TodaySpec.m */; };
-		835512F418E3708700894728 /* UITabBarController+Rotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 835512F318E3708700894728 /* UITabBarController+Rotations.m */; };
+		835512F418E3708700894728 /* UIViewController+Rotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 835512F318E3708700894728 /* UIViewController+Rotations.m */; };
 		835512F718E4C0BD00894728 /* FertilityProfileIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835512F618E4C0BD00894728 /* FertilityProfileIntroViewController.m */; };
 		835AE58618B7A36000FEAF98 /* CheckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 835AE58518B7A36000FEAF98 /* CheckCell.m */; };
 		835AE58818B7A3B500FEAF98 /* CheckCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 835AE58718B7A3B500FEAF98 /* CheckCell.xib */; };
@@ -244,8 +243,6 @@
 
 /* Begin PBXFileReference section */
 		803928D684F54DB4A5F86E42 /* Pods-OvatempTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.xcconfig"; path = "Pods/Pods-OvatempTests.xcconfig"; sourceTree = "<group>"; };
-		830E351318D2505C00884F0E /* NSDate+DateID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateID.h"; sourceTree = "<group>"; };
-		830E351418D2505C00884F0E /* NSDate+DateID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateID.m"; sourceTree = "<group>"; };
 		830E351618D2506B00884F0E /* NSDate+Formatters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Formatters.h"; sourceTree = "<group>"; };
 		830E351718D2506B00884F0E /* NSDate+Formatters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Formatters.m"; sourceTree = "<group>"; };
 		8315E49918C13F9B00DA935A /* OTScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTScrollView.h; sourceTree = "<group>"; };
@@ -344,8 +341,8 @@
 		834BD63F18AD6590003B6808 /* DayToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayToggleButton.h; sourceTree = "<group>"; };
 		834BD64018AD6590003B6808 /* DayToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayToggleButton.m; sourceTree = "<group>"; };
 		83548FF118BD24450016B53A /* TodaySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodaySpec.m; sourceTree = "<group>"; };
-		835512F218E3708700894728 /* UITabBarController+Rotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+Rotations.h"; sourceTree = "<group>"; };
-		835512F318E3708700894728 /* UITabBarController+Rotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+Rotations.m"; sourceTree = "<group>"; };
+		835512F218E3708700894728 /* UIViewController+Rotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Rotations.h"; sourceTree = "<group>"; };
+		835512F318E3708700894728 /* UIViewController+Rotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Rotations.m"; sourceTree = "<group>"; };
 		835512F518E4C0BD00894728 /* FertilityProfileIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FertilityProfileIntroViewController.h; sourceTree = "<group>"; };
 		835512F618E4C0BD00894728 /* FertilityProfileIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FertilityProfileIntroViewController.m; sourceTree = "<group>"; };
 		835AE58418B7A36000FEAF98 /* CheckCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckCell.h; sourceTree = "<group>"; };
@@ -852,8 +849,6 @@
 			children = (
 				830E351618D2506B00884F0E /* NSDate+Formatters.h */,
 				830E351718D2506B00884F0E /* NSDate+Formatters.m */,
-				830E351318D2505C00884F0E /* NSDate+DateID.h */,
-				830E351418D2505C00884F0E /* NSDate+DateID.m */,
 				C308706618980A4900DC4364 /* UIViewController+Alerts.h */,
 				C308706718980A4900DC4364 /* UIViewController+Alerts.m */,
 				C32C4A8A18985A4D00B05009 /* UIViewController+ConnectionManager.h */,
@@ -870,8 +865,8 @@
 				83C4D21818D9E744008C523C /* UIViewController+KeyboardObservers.m */,
 				C30B84CF18E3206A0078EDE3 /* UIViewController+Loading.h */,
 				C30B84D018E3206A0078EDE3 /* UIViewController+Loading.m */,
-				835512F218E3708700894728 /* UITabBarController+Rotations.h */,
-				835512F318E3708700894728 /* UITabBarController+Rotations.m */,
+				835512F218E3708700894728 /* UIViewController+Rotations.h */,
+				835512F318E3708700894728 /* UIViewController+Rotations.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1431,7 +1426,7 @@
 				8333B98C18E0BD4200C64231 /* LifestyleViewController.m in Sources */,
 				8333B99518E0C36800C64231 /* CoachingWebViewController.m in Sources */,
 				830E351818D2506B00884F0E /* NSDate+Formatters.m in Sources */,
-				835512F418E3708700894728 /* UITabBarController+Rotations.m in Sources */,
+				835512F418E3708700894728 /* UIViewController+Rotations.m in Sources */,
 				C32C4A8F18985A7800B05009 /* ConnectionManager.m in Sources */,
 				C36C510F189028190053A884 /* AppDelegate.m in Sources */,
 				8329353B18B7FD2600F6875B /* Symptom.m in Sources */,
@@ -1454,7 +1449,6 @@
 				8329353818B7FD1700F6875B /* Medicine.m in Sources */,
 				8328B75A18ABFD9400DA7A5E /* TemperatureDayCell.m in Sources */,
 				8333B9E518E2193700C64231 /* CoachingRootViewController.m in Sources */,
-				830E351518D2505C00884F0E /* NSDate+DateID.m in Sources */,
 				83686EA318C6335000A5329C /* CalendarViewController.m in Sources */,
 				8333B98F18E0BD8600C64231 /* LifestyleCell.m in Sources */,
 				8328B76A18AC009C00DA7A5E /* IntercourseDayCell.m in Sources */,

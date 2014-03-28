@@ -17,18 +17,18 @@
 
 @implementation Calendar
 
-static Calendar *sharedObject = nil;
+static Calendar *sharedCalendar = nil;
 
 + (Calendar *)sharedInstance
 {
   static dispatch_once_t _singletonPredicate;
 
   dispatch_once(&_singletonPredicate, ^{
-    sharedObject = [[super alloc] init];
-    sharedObject.date = [NSDate date];
+    sharedCalendar = [[super alloc] init];
+    sharedCalendar.date = [NSDate date];
   });
 
-  return sharedObject;
+  return sharedCalendar;
 }
 
 + (NSDate *)date {

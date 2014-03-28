@@ -30,4 +30,14 @@ static NSDateFormatter *__classicDateFormatter;
   return [__classicDateFormatter stringFromDate:self];
 }
 
+static NSDateFormatter *__dateIdDateFormatter;
+- (NSString *)dateId {
+  if(!__dateIdDateFormatter){
+    __dateIdDateFormatter = [[NSDateFormatter alloc] init];
+    [__dateIdDateFormatter setDateFormat:@"y-MM-dd"];
+  }
+
+  return [__dateIdDateFormatter stringFromDate:self];
+}
+
 @end

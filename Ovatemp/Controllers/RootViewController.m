@@ -12,7 +12,7 @@
 #import "OTDayNavigationController.h"
 #import "CalendarViewController.h"
 #import "User.h"
-#import "UITabBarController+Rotations.h"
+#import "UIViewController+Rotations.h"
 #import "Calendar.h"
 
 @interface RootViewController () {
@@ -25,15 +25,6 @@
 @end
 
 @implementation RootViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-  if (self) {
-    // Custom initialization
-  }
-  return self;
-}
 
 - (void)viewDidLoad
 {
@@ -55,6 +46,8 @@
 - (void)launchAppropriateViewController {
   // Require a user to log in or register
   if([Configuration loggedIn]) {
+    // Create a new main view controller every time so the
+    // views get reset
     [self createMainViewController];
 
     launching = mainViewController;
@@ -69,12 +62,6 @@
   [self presentViewController:launching animated:YES completion:^{
     launching = nil;
   }];
-}
-
-- (void)didReceiveMemoryWarning
-{
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
 }
 
 # pragma mark - Main View Controller
@@ -173,6 +160,7 @@
 - (void)tabBarController:(UITabBarController *)tabBarController
  didSelectViewController:(UIViewController *)viewController
 {
+  // When user presses Today tab, set date to today
   if(tabBarController.selectedIndex == 0) {
     [Calendar setDate:[NSDate date]];
   }

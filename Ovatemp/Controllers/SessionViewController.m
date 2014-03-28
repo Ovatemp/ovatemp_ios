@@ -40,10 +40,6 @@
   [self removeKeyboardObservers];
 }
 
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-}
-
 # pragma mark - Registration, login, password reset
 
 - (IBAction)sessionRegister:(id)sender {

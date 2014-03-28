@@ -19,6 +19,9 @@ NSArray *seekingPregnancyColors;
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
+      // This is a bit of a hack, but it lets us use the view
+      // class multiple times without having to deal with the rigamaroles
+      // of a) connecting it in IB b) building it manually in code for each case
       self.label = self.subviews.firstObject;
 
       self.label.font = [UIFont systemFontOfSize:16];

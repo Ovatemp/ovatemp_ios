@@ -46,6 +46,7 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
     [table registerNib:cellNib forCellReuseIdentifier:kCheckCellIdentifier];
     table.rowHeight = cellView.frame.size.height;
   }
+
   self.supplementsTableView.accessibilityIdentifier = @"Supplements Options";
   self.medicinesTableView.accessibilityIdentifier = @"Medicine Options";
   self.page2.accessibilityIdentifier = @"Supplements Options Page";
@@ -70,6 +71,7 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
   if(tableView == self.medicinesTableView) {
     return [self medicineCellForRow:indexPath.row];
   }
+  
   if(tableView == self.supplementsTableView) {
     return [self supplementCellForRow:indexPath.row];
   }
@@ -82,6 +84,7 @@ static NSString * const kCheckCellIdentifier = @"CheckCell";
     Medicine *medicine = self.medicines[indexPath.row];
     [self.day toggleMedicine:medicine];
   }
+
   if(tableView == self.supplementsTableView) {
     Supplement *supplement = self.supplements[indexPath.row];
     [self.day toggleSupplement:supplement];

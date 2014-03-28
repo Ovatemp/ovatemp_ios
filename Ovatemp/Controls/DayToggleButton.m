@@ -51,7 +51,6 @@
   self.titleLabel.frame = titleLabelFrame;
 }
 
-
 - (void)setSelected:(BOOL)selected {
   [super setSelected:selected];
 

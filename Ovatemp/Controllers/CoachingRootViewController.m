@@ -23,11 +23,6 @@
   self.navigationController.delegate = self;
 }
 
-- (void)didReceiveMemoryWarning
-{
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
-}
 - (IBAction)buyTapped:(id)sender {
   NSLog(@"buy tapped");
   _purchased = TRUE;

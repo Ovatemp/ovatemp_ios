@@ -41,7 +41,6 @@
   self.collectionView.backgroundColor = [UIColor blackColor];
 
   self.itemNames = @[@"Diet", @"Supplements", @"Exercise", @"Habits"];
-
 }
 
 # pragma mark - UICollectionViewDataSource/Delegate methods
@@ -59,8 +58,6 @@
   vc.titleLabel.text = name;
 
   [self startLoading];
-
-  NSLog(@"name: %@ name", name);
 
   NSString *url = [Configuration sharedConfiguration].coachingContentUrls[name];
 
