@@ -52,6 +52,7 @@
     [self.rowExemplars addObject:cellView];
   }
 
+
   [self setupLandscape];
 }
 - (void)viewWillAppear:(BOOL)animated {
@@ -78,11 +79,6 @@
 
   [[NSNotificationCenter defaultCenter]
    removeObserver:self
-   name:UIDeviceOrientationDidChangeNotification
-   object:nil];
-
-  [[NSNotificationCenter defaultCenter]
-   removeObserver:self
    name:UIApplicationWillResignActiveNotification
    object:nil];
 
@@ -91,6 +87,13 @@
   // Make sure to save the day before we leave
   [self.day save];
   self.day = nil;
+}
+
+- (void)dealloc {
+  [[NSNotificationCenter defaultCenter]
+   removeObserver:self
+   name:UIDeviceOrientationDidChangeNotification
+   object:nil];
 }
 
 - (void)applicationWillResign {
@@ -136,8 +139,6 @@
                                            selector:@selector(orientationChanged:)
                                                name:UIDeviceOrientationDidChangeNotification
                                              object:nil];
-
-
 }
 
 - (BOOL)shouldAutorotate {
