@@ -54,49 +54,6 @@
 
   [self setupLandscape];
 }
-
-- (void)setupLandscape {
-  self.cycleViewController = [[CycleViewController alloc] init];
-  self.cycleViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-  self.isShowingLandscapeView = NO;
-
-  [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(orientationChanged:)
-                                               name:UIDeviceOrientationDidChangeNotification
-                                             object:nil];
-
-
-}
-
-- (void)orientationChanged:(NSNotification *)notification
-{
-  if(self.tabBarController.selectedIndex != 0) {
-    return;
-  }
-
-  if([self isCorrectOrientation]) {
-    return;
-  }
-
-  UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
-  if(UIDeviceOrientationIsLandscape(deviceOrientation)) {
-    [self.cycleViewController setCycle:self.day.cycle];
-    self.isShowingLandscapeView = YES;
-    [self presentViewController:self.cycleViewController animated:NO completion:nil];
-  } else {
-    [self.cycleViewController dismissViewControllerAnimated:NO completion:nil];
-    self.isShowingLandscapeView = NO;
-  }
-}
-
-- (BOOL)isCorrectOrientation {
-  UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
-
-  return (UIDeviceOrientationIsLandscape(deviceOrientation) && self.isShowingLandscapeView) ||
-         (UIDeviceOrientationIsPortrait(deviceOrientation) && !self.isShowingLandscapeView);
-}
-
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
 
@@ -141,11 +98,7 @@
   self.day = nil;
 }
 
-
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-}
-
+# pragma mark - Reactions to date changes
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
                        change:(NSDictionary *)change context:(void *)context
@@ -154,8 +107,6 @@
     [self dateChanged];
   }
 }
-
-#pragma mark - Table view data source
 
 - (void)dateChanged {
   // Make sure to save the day before we leave
@@ -169,6 +120,61 @@
   [(UITableView*)self.view reloadData];
   [self.cycleViewController setCycle:self.day.cycle];
 }
+
+
+#pragma mark - Rotation
+
+// We are using a custom rotation technique, presenting a modal view controller of the
+// chart when appropriate.
+- (void)setupLandscape {
+  self.cycleViewController = [[CycleViewController alloc] init];
+  self.cycleViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+  self.isShowingLandscapeView = NO;
+
+  [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(orientationChanged:)
+                                               name:UIDeviceOrientationDidChangeNotification
+                                             object:nil];
+
+
+}
+
+- (BOOL)shouldAutorotate {
+  return FALSE;
+}
+
+- (void)orientationChanged:(NSNotification *)notification
+{
+  // We can still present a modal even if we aren't the active tab,
+  // prevent that
+  if(self.tabBarController.selectedIndex != 0) {
+    return;
+  }
+
+  if([self isCorrectOrientation]) {
+    return;
+  }
+
+  UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+  if(UIDeviceOrientationIsLandscape(deviceOrientation)) {
+    [self.cycleViewController setCycle:self.day.cycle];
+    self.isShowingLandscapeView = YES;
+    [self presentViewController:self.cycleViewController animated:NO completion:nil];
+  } else {
+    [self.cycleViewController dismissViewControllerAnimated:NO completion:nil];
+    self.isShowingLandscapeView = NO;
+  }
+}
+
+- (BOOL)isCorrectOrientation {
+  UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+
+  return (UIDeviceOrientationIsLandscape(deviceOrientation) && self.isShowingLandscapeView) ||
+  (UIDeviceOrientationIsPortrait(deviceOrientation) && !self.isShowingLandscapeView);
+}
+
+#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   return 1;
@@ -186,12 +192,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  // Get the height directly from the xib, so we only have to change it in one place
+  // The overhead is one extra copy of the view per row.
   UIView *exemplar = self.rowExemplars[indexPath.row];
   return exemplar.frame.size.height;
 }
 
-- (BOOL)shouldAutorotate {
-  return FALSE;
-}
 
 @end
