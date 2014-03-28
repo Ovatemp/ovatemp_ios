@@ -23,6 +23,10 @@
 
 @implementation DayToggleButton
 
+// This button currently has its image frame size hard coded, but that could be remedied
+// Generally, you want to size the button so that it can fit everything you want (the label
+// text and the icon). Since this is pretty rigid with the current Today screen, I haven't
+// made it more dynamic or flexible yet.
 - (void)layoutSubviews {
   [super layoutSubviews];
 
