@@ -96,6 +96,10 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
   self.iconsContainerLeadingSpace.constant = self.chartImageView.frame.origin.x + leftPadding;
 }
 
+// NOTE: This method gets used in two places.
+// a) Directly on the Today chart in the temperature cell
+// b) In a modal that gets launched when the device is rotated to landscape on the today screen.
+//    this gets drawn into a UIImageView.
 - (UIImage *)drawChart:(CGSize)size {
   NSArray *days = self.cycle.days;
 
