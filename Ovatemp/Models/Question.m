@@ -15,7 +15,17 @@
   if(!self) { return nil; }
 
 
-  self.ignoredAttributes = [NSSet setWithArray:[@"createdAt updatedAt energize hydrate category nourish position refresh ventilate revitalize activate" componentsSeparatedByString:@" "]];
+  NSMutableSet *ignore = [[NSMutableSet alloc] init];
+
+  NSString *fertilityProfiles = @"energize hydrate category nourish position refresh ventilate revitalize activate";
+  for(NSString *name in [fertilityProfiles componentsSeparatedByString:@" "]) {
+    [ignore addObject:[name stringByAppendingString:@"Yes"]];
+    [ignore addObject:[name stringByAppendingString:@"No"]];
+  }
+
+  [ignore addObjectsFromArray:[@"createdAt updatedAt category position" componentsSeparatedByString:@" "]];
+
+  self.ignoredAttributes = [ignore copy];
 
   return self;
 }
