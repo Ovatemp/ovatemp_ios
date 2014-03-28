@@ -128,6 +128,7 @@
                      [Configuration loggedInWithResponse:response];
                    }
                    failure:^(NSError *error) {
+                     // HANDLEERROR
                      [self logOutWithUnauthorized];
                    }
      ];

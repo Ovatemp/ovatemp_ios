@@ -39,8 +39,7 @@
                    if(onSuccess) onSuccess(response);
                  }
                  failure:^(NSError *error) {
-                   if(error)
-                   NSLog(@"cycle failure: %@", error);
+                  // HANDLEERROR
 
                    if(onFailure) onFailure(error);
                  }];

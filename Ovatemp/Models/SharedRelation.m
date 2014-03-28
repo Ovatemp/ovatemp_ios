@@ -44,6 +44,7 @@
                     }
                   }
                   failure:^(NSError *error) {
+                    // HANDLEERROR
                     NSLog(@"failed to create %@", className);
                   }
    ];

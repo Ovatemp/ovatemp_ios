@@ -70,7 +70,7 @@
                    [self stopLoading];
                  }
                  failure:^(NSError *error) {
-                   NSLog(@"failed to load");
+                   // HANDLEERROR
                    [self stopLoading];
                  }];
 

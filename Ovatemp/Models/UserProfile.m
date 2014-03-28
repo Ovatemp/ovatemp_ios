@@ -38,6 +38,7 @@ static UserProfile *_currentUserProfile;
                    if(onSuccess) onSuccess(response);
                  }
                  failure:^(NSError *error) {
+                   // HANDLEERROR
                    if(onFailure) onFailure(error);
                  }];
 }
@@ -49,6 +50,7 @@ static UserProfile *_currentUserProfile;
                      self.attributes = response[@"user_profile"];
                    }
                    failure:^(NSError *error) {
+                     // HANDLEERROR
                      NSLog(@"couldn't save");
                    }];
 }

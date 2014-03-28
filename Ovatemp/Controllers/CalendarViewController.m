@@ -71,6 +71,7 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
     [self.collectionView reloadData];
     [self scrollToCurrentDay];
   } failure:^(NSError *error) {
+    // HANDLEERROR
     NSLog(@"couldn't refresh page");
   }];
 

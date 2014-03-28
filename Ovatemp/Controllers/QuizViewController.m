@@ -70,7 +70,7 @@
                      [self stopLoading];
                    }
                    failure:^(NSError *error) {
-                     NSLog(@"couldn't load questions");
+                     // HANDLEERROR
 
                      [self stopLoading];
                    }];
@@ -95,7 +95,9 @@
 }
 
 - (void)answerQuestion:(BOOL)yes {
-  [self.question answer:yes success:^(id response){} failure:^(id error){} ];
+  [self.question answer:yes success:^(id response){} failure:^(id error){
+    // HANDLEERROR
+  }];
   [self popQuestion];
 }
 

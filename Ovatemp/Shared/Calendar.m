@@ -54,6 +54,7 @@ static Calendar *sharedCalendar = nil;
             self.day = [Day forDate:self.date];
           }
           failure:^(NSError *error) {
+            // HANDLEERROR
             NSLog(@"done loading! error: %@", error);
           }];
 }
