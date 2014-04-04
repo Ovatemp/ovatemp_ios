@@ -112,10 +112,10 @@
             </objects>
             <point key="canvasLocation" x="2011" y="-257"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Delegating Navigation View Controller-->
         <scene sceneID="rL4-bP-iVe">
             <objects>
-                <navigationController definesPresentationContext="YES" id="VLW-X0-yQy" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="VLW-X0-yQy" customClass="DelegatingNavigationViewController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TvY-Mu-QAl">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

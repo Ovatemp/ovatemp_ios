@@ -50,11 +50,6 @@
 
 # pragma Web view delegate methods
 
-- (void)configureButtons {
-  self.backButton.enabled = self.webView.canGoBack;
-  self.forwardButton.enabled = self.webView.canGoBack;
-}
-
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
   [self webViewDidFinishLoad:webView];
   [self presentError:error];
@@ -62,11 +57,6 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
   [self stopLoading];
-  [self configureButtons];
-}
-
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-  [self configureButtons];
 }
 
 @end
