@@ -22,6 +22,12 @@
   return [UIColor colorWithHue:hue saturation:saturation brightness:brightness - amount alpha:alpha];
 }
 
+- (UIColor *)desaturateBy:(CGFloat)amount {
+  CGFloat hue, saturation, brightness, alpha;
+  [self reliablyGetHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
+  return [UIColor colorWithHue:hue saturation:saturation - amount brightness:brightness alpha:alpha];
+}
+
 - (void)reliablyGetHue:(CGFloat *)hue saturation:(CGFloat *)saturation brightness:(CGFloat *)brightness alpha:(CGFloat *)alpha {
   [self getHue:hue saturation:saturation brightness:brightness alpha:alpha];
   if (hue < 0 || saturation < 0 || brightness < 0 || alpha < 0) {

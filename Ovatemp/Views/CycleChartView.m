@@ -172,8 +172,14 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
   CGFloat ratio = (minValue - minValue) / tempRange;
   lineY = (1 - ratio) * height + topPadding;
 
-  [path moveToPoint:CGPointMake(leftPadding, lineY)];
-  [path addLineToPoint:CGPointMake(canvasWidth - rightPadding, lineY)];
+  if (!isnormal(lineY)) {
+    NSLog(@"lineY is invalid\nminValue: %f\nratio: %f\nheight: %f\ntopPadding: %f",
+          minValue, ratio, height, topPadding);
+  } else {
+    [path moveToPoint:CGPointMake(leftPadding, lineY)];
+    NSLog(@"%f - %f (%i)", canvasWidth - rightPadding, lineY, isnormal(lineY));
+    [path addLineToPoint:CGPointMake(canvasWidth - rightPadding, lineY)];
+  }
 
   [path stroke];
   [path removeAllPoints];
@@ -193,8 +199,14 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
   ratio = (lowValue - minValue) / tempRange;
   lineY = (1 - ratio) * height + topPadding;
 
-  [path moveToPoint:CGPointMake(leftPadding, lineY)];
-  [path addLineToPoint:CGPointMake(canvasWidth - rightPadding, lineY)];
+  if (!isnormal(lineY)) {
+    NSLog(@"lineY is invalid\nlowValue: %f\nminValue: %f\nratio: %f\nheight: %f\ntopPadding: %f",
+          lowValue, minValue, ratio, height, topPadding);
+  } else {
+    [path moveToPoint:CGPointMake(leftPadding, lineY)];
+    [path addLineToPoint:CGPointMake(canvasWidth - rightPadding, lineY)];
+  }
+  
 
   [path stroke];
   [path removeAllPoints];
@@ -211,8 +223,13 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
   ratio = (highValue - minValue) / tempRange;
   lineY = (1 - ratio) * height + topPadding;
 
-  [path moveToPoint:CGPointMake(leftPadding, lineY)];
-  [path addLineToPoint:CGPointMake(canvasWidth - rightPadding, lineY)];
+  if (!isnormal(lineY)) {
+    NSLog(@"lineY is invalid\nhighValue: %f\nminValue: %f\nratio: %f\nheight: %f\ntopPadding: %f",
+          highValue, minValue, ratio, height, topPadding);
+  } else {
+    [path moveToPoint:CGPointMake(leftPadding, lineY)];
+    [path addLineToPoint:CGPointMake(canvasWidth - rightPadding, lineY)];
+  }
 
   [path stroke];
   [path removeAllPoints];

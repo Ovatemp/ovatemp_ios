@@ -73,11 +73,9 @@
   todayController = [[OTDayNavigationController alloc] initWithContentViewController:todayController];
 
   UIViewController *calendarController = [[CalendarViewController alloc] initWithNibName:@"CalendarViewController" bundle:nil];
- 
   UIViewController *coachingController = [[UIStoryboard storyboardWithName:@"CoachingStoryboard" bundle:nil] instantiateInitialViewController];
-
-  UIViewController *communityController = [[UIViewController alloc] init];
-  UIViewController* moreViewController = [[UIStoryboard storyboardWithName:@"MoreStoryboard" bundle:nil] instantiateInitialViewController];
+  UIViewController *communityController = [[UIStoryboard storyboardWithName:@"CommunityStoryboard" bundle:nil] instantiateInitialViewController];
+  UIViewController *moreViewController = [[UIStoryboard storyboardWithName:@"MoreStoryboard" bundle:nil] instantiateInitialViewController];
 
   // Add controllers to the tab bar controller
   [tabController addChildViewController:todayController];

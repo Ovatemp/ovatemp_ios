@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="VLW-X0-yQy">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Community Forums View Controller - Community-->
+        <scene sceneID="lqu-ah-bnr">
+            <objects>
+                <tableViewController title="Community" id="Kn6-2s-e9E" customClass="CommunityForumsViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="my2-Yq-rmi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommunityForumCell" rowHeight="85" id="iqz-jd-Ul2">
+                                <rect key="frame" x="0.0" y="86" width="320" height="85"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iqz-jd-Ul2" id="DfE-6M-akQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="85"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="t1X-GA-9Zh" kind="push" trigger="accessoryAction" id="kMk-wW-CFS"/>
+                                    <segue destination="t1X-GA-9Zh" kind="push" id="jJo-v9-fT7"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Kn6-2s-e9E" id="cV8-T8-zOr"/>
+                            <outlet property="delegate" destination="Kn6-2s-e9E" id="KV2-Gn-PAR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Community" id="Xye-IC-UPL">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="TPV-li-WFP"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rzr-q5-us4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1586" y="-257"/>
+        </scene>
+        <!--Community Forum View Controller-->
+        <scene sceneID="gJE-vf-7X0">
+            <objects>
+                <viewController id="t1X-GA-9Zh" customClass="CommunityForumViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="p7o-4c-rkn"/>
+                        <viewControllerLayoutGuide type="bottom" id="M9D-Sw-CGK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qhY-yi-FpS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4aK-Uo-uyl">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="t1X-GA-9Zh" id="iyn-PM-uRP"/>
+                                </connections>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iyO-GG-kxB">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="sV8-mH-BYb"/>
+                                    <barButtonItem image="BackArrow.png" id="rLr-3V-af1">
+                                        <connections>
+                                            <action selector="goBack" destination="4aK-Uo-uyl" id="ZLH-7f-BP4"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Ihe-3w-yEw"/>
+                                    <barButtonItem systemItem="refresh" id="6bL-SS-bD7">
+                                        <connections>
+                                            <action selector="reload" destination="4aK-Uo-uyl" id="pCE-3g-xka"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="c3g-H5-lUn"/>
+                                    <barButtonItem image="ForwardArrow.png" id="VIS-Cu-yKO">
+                                        <connections>
+                                            <action selector="goForward" destination="4aK-Uo-uyl" id="f79-l4-Jv8"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Nat-rQ-BAV"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iyO-GG-kxB" firstAttribute="leading" secondItem="4aK-Uo-uyl" secondAttribute="leading" id="2Aj-vg-f0x"/>
+                            <constraint firstAttribute="bottom" secondItem="iyO-GG-kxB" secondAttribute="bottom" id="A7H-d7-rdN"/>
+                            <constraint firstItem="4aK-Uo-uyl" firstAttribute="top" secondItem="qhY-yi-FpS" secondAttribute="top" id="AiA-kT-H2a"/>
+                            <constraint firstItem="4aK-Uo-uyl" firstAttribute="trailing" secondItem="iyO-GG-kxB" secondAttribute="trailing" id="URF-1V-RDX"/>
+                            <constraint firstItem="iyO-GG-kxB" firstAttribute="leading" secondItem="qhY-yi-FpS" secondAttribute="leading" id="V8Z-1E-pII"/>
+                            <constraint firstAttribute="trailing" secondItem="iyO-GG-kxB" secondAttribute="trailing" id="fSJ-HU-p3l"/>
+                            <constraint firstItem="4aK-Uo-uyl" firstAttribute="bottom" secondItem="iyO-GG-kxB" secondAttribute="bottom" id="p2q-qG-Tg8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="3yl-cg-NtY"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="backButton" destination="rLr-3V-af1" id="OJk-hT-Tqh"/>
+                        <outlet property="forwardButton" destination="VIS-Cu-yKO" id="WSz-Q1-h8D"/>
+                        <outlet property="reloadButton" destination="6bL-SS-bD7" id="CVB-zZ-GnK"/>
+                        <outlet property="webToolbar" destination="iyO-GG-kxB" id="jUz-it-X5y"/>
+                        <outlet property="webView" destination="4aK-Uo-uyl" id="cTz-GD-Ftu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9sn-wi-eM2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2011" y="-257"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rL4-bP-iVe">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="VLW-X0-yQy" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TvY-Mu-QAl">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Kn6-2s-e9E" kind="relationship" relationship="rootViewController" id="rtd-Mz-Z3X"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zi9-CP-ZDm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1052" y="-257"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BackArrow.png" width="19" height="34"/>
+        <image name="ForwardArrow.png" width="19" height="34"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="kMk-wW-CFS"/>
+    </inferredMetricsTieBreakers>
+</document>

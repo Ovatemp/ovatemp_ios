@@ -46,7 +46,11 @@ static Configuration *_sharedConfiguration;
   [User setCurrent:user];
 
   [Configuration sharedConfiguration].token = response[@"token"];
-  [UserProfile setCurrent:[UserProfile withAttributes:response[@"user_profile"]]];
+  if (![response[@"user_profile"] isNull]) {
+    [UserProfile setCurrent:[UserProfile withAttributes:response[@"user_profile"]]];
+  } else {
+    [UserProfile setCurrent:nil];
+  }
 
   [Supplement resetInstancesWithArray:response[@"supplements"]];
   [Medicine resetInstancesWithArray:response[@"medicines"]];

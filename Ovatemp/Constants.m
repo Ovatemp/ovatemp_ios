@@ -15,9 +15,3 @@ UIColor * Color(int red, int green, int blue) {
 UIColor * ColorA(int red, int green, int blue, CGFloat alpha) {
   return [UIColor colorWithRed:red / 255.0f green:green / 255.0f blue:blue / 255.0f alpha:alpha];
 }
-
-UIColor * Darken(UIColor *color, CGFloat amount) {
-  CGFloat hue, saturation, brightness, alpha;
-  [color getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
-  return [UIColor colorWithHue:hue saturation:saturation brightness:brightness - amount alpha:1];
-}

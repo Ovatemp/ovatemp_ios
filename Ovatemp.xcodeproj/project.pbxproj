@@ -198,6 +198,20 @@
 		C31220241899BB8E0027C4B3 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = C31220231899BB8E0027C4B3 /* Configuration.m */; };
 		C32C4A8C18985A4D00B05009 /* UIViewController+ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C32C4A8B18985A4D00B05009 /* UIViewController+ConnectionManager.m */; };
 		C32C4A8F18985A7800B05009 /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C32C4A8E18985A7800B05009 /* ConnectionManager.m */; };
+		C350899218EDFD0C004D6A2F /* CommunityStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C350899118EDFD0C004D6A2F /* CommunityStoryboard.storyboard */; };
+		C350899718EDFD74004D6A2F /* CommunityForumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C350899618EDFD74004D6A2F /* CommunityForumsViewController.m */; };
+		C350899A18EDFDA8004D6A2F /* CommunityForumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C350899918EDFDA8004D6A2F /* CommunityForumViewController.m */; };
+		C35089A718EDFF40004D6A2F /* FertilityQuestions.png in Resources */ = {isa = PBXBuildFile; fileRef = C350899D18EDFF40004D6A2F /* FertilityQuestions.png */; };
+		C35089A818EDFF40004D6A2F /* FertilityQuestions@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C350899E18EDFF40004D6A2F /* FertilityQuestions@2x.png */; };
+		C35089A918EDFF40004D6A2F /* OvatempSupport.png in Resources */ = {isa = PBXBuildFile; fileRef = C350899F18EDFF40004D6A2F /* OvatempSupport.png */; };
+		C35089AA18EDFF40004D6A2F /* OvatempSupport@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C35089A018EDFF40004D6A2F /* OvatempSupport@2x.png */; };
+		C35089AB18EDFF40004D6A2F /* ShareTheNews.png in Resources */ = {isa = PBXBuildFile; fileRef = C35089A118EDFF40004D6A2F /* ShareTheNews.png */; };
+		C35089AC18EDFF40004D6A2F /* ShareTheNews@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C35089A218EDFF40004D6A2F /* ShareTheNews@2x.png */; };
+		C35089AD18EDFF40004D6A2F /* TryingToAvoid.png in Resources */ = {isa = PBXBuildFile; fileRef = C35089A318EDFF40004D6A2F /* TryingToAvoid.png */; };
+		C35089AE18EDFF40004D6A2F /* TryingToAvoid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C35089A418EDFF40004D6A2F /* TryingToAvoid@2x.png */; };
+		C35089AF18EDFF40004D6A2F /* TryingToConceive.png in Resources */ = {isa = PBXBuildFile; fileRef = C35089A518EDFF40004D6A2F /* TryingToConceive.png */; };
+		C35089B018EDFF40004D6A2F /* TryingToConceive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C35089A618EDFF40004D6A2F /* TryingToConceive@2x.png */; };
+		C35CF95518EF2DF6004D47EA /* NSObject+IsNull.m in Sources */ = {isa = PBXBuildFile; fileRef = C35CF95418EF2DF6004D47EA /* NSObject+IsNull.m */; };
 		C36C50FF189028190053A884 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C50FE189028190053A884 /* Foundation.framework */; };
 		C36C5101189028190053A884 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C5100189028190053A884 /* CoreGraphics.framework */; };
 		C36C5103189028190053A884 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C5102189028190053A884 /* UIKit.framework */; };
@@ -486,6 +500,23 @@
 		C32C4A8B18985A4D00B05009 /* UIViewController+ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ConnectionManager.m"; sourceTree = "<group>"; };
 		C32C4A8D18985A7800B05009 /* ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionManager.h; sourceTree = "<group>"; };
 		C32C4A8E18985A7800B05009 /* ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManager.m; sourceTree = "<group>"; };
+		C350899118EDFD0C004D6A2F /* CommunityStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CommunityStoryboard.storyboard; sourceTree = "<group>"; };
+		C350899518EDFD74004D6A2F /* CommunityForumsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityForumsViewController.h; sourceTree = "<group>"; };
+		C350899618EDFD74004D6A2F /* CommunityForumsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityForumsViewController.m; sourceTree = "<group>"; };
+		C350899818EDFDA8004D6A2F /* CommunityForumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityForumViewController.h; sourceTree = "<group>"; };
+		C350899918EDFDA8004D6A2F /* CommunityForumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityForumViewController.m; sourceTree = "<group>"; };
+		C350899D18EDFF40004D6A2F /* FertilityQuestions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FertilityQuestions.png; sourceTree = "<group>"; };
+		C350899E18EDFF40004D6A2F /* FertilityQuestions@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FertilityQuestions@2x.png"; sourceTree = "<group>"; };
+		C350899F18EDFF40004D6A2F /* OvatempSupport.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OvatempSupport.png; sourceTree = "<group>"; };
+		C35089A018EDFF40004D6A2F /* OvatempSupport@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OvatempSupport@2x.png"; sourceTree = "<group>"; };
+		C35089A118EDFF40004D6A2F /* ShareTheNews.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShareTheNews.png; sourceTree = "<group>"; };
+		C35089A218EDFF40004D6A2F /* ShareTheNews@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShareTheNews@2x.png"; sourceTree = "<group>"; };
+		C35089A318EDFF40004D6A2F /* TryingToAvoid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TryingToAvoid.png; sourceTree = "<group>"; };
+		C35089A418EDFF40004D6A2F /* TryingToAvoid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TryingToAvoid@2x.png"; sourceTree = "<group>"; };
+		C35089A518EDFF40004D6A2F /* TryingToConceive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TryingToConceive.png; sourceTree = "<group>"; };
+		C35089A618EDFF40004D6A2F /* TryingToConceive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TryingToConceive@2x.png"; sourceTree = "<group>"; };
+		C35CF95318EF2DF6004D47EA /* NSObject+IsNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+IsNull.h"; sourceTree = "<group>"; };
+		C35CF95418EF2DF6004D47EA /* NSObject+IsNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+IsNull.m"; sourceTree = "<group>"; };
 		C36C50FB189028190053A884 /* Ovatemp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ovatemp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C36C50FE189028190053A884 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C36C5100189028190053A884 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -674,6 +705,7 @@
 				835AE58918B7A51700FEAF98 /* CheckBox.png */,
 				835AE58A18B7A51700FEAF98 /* CheckBox@2x.png */,
 				8333B99818E0D1B800C64231 /* Coaching */,
+				C350899C18EDFF40004D6A2F /* Community */,
 				8333B9C418E2156B00C64231 /* FertilityProfile */,
 				83C6511218C91B7500F35CE5 /* ForwardArrow.png */,
 				83C6511318C91B7500F35CE5 /* ForwardArrow@2x.png */,
@@ -867,6 +899,8 @@
 				C30B84D018E3206A0078EDE3 /* UIViewController+Loading.m */,
 				835512F218E3708700894728 /* UIViewController+Rotations.h */,
 				835512F318E3708700894728 /* UIViewController+Rotations.m */,
+				C35CF95318EF2DF6004D47EA /* NSObject+IsNull.h */,
+				C35CF95418EF2DF6004D47EA /* NSObject+IsNull.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -875,6 +909,7 @@
 			isa = PBXGroup;
 			children = (
 				8333B98318E0B6D800C64231 /* Coaching */,
+				C350899418EDFD4D004D6A2F /* Community */,
 				83686EA118C6335000A5329C /* CalendarViewController.h */,
 				83686EA218C6335000A5329C /* CalendarViewController.m */,
 				83A1FE0318D74C8E0030D331 /* CalendarViewController.xib */,
@@ -963,6 +998,35 @@
 				8333B98E18E0BD8600C64231 /* LifestyleCell.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		C350899418EDFD4D004D6A2F /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				C350899118EDFD0C004D6A2F /* CommunityStoryboard.storyboard */,
+				C350899518EDFD74004D6A2F /* CommunityForumsViewController.h */,
+				C350899618EDFD74004D6A2F /* CommunityForumsViewController.m */,
+				C350899818EDFDA8004D6A2F /* CommunityForumViewController.h */,
+				C350899918EDFDA8004D6A2F /* CommunityForumViewController.m */,
+			);
+			name = Community;
+			sourceTree = "<group>";
+		};
+		C350899C18EDFF40004D6A2F /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				C350899D18EDFF40004D6A2F /* FertilityQuestions.png */,
+				C350899E18EDFF40004D6A2F /* FertilityQuestions@2x.png */,
+				C350899F18EDFF40004D6A2F /* OvatempSupport.png */,
+				C35089A018EDFF40004D6A2F /* OvatempSupport@2x.png */,
+				C35089A118EDFF40004D6A2F /* ShareTheNews.png */,
+				C35089A218EDFF40004D6A2F /* ShareTheNews@2x.png */,
+				C35089A318EDFF40004D6A2F /* TryingToAvoid.png */,
+				C35089A418EDFF40004D6A2F /* TryingToAvoid@2x.png */,
+				C35089A518EDFF40004D6A2F /* TryingToConceive.png */,
+				C35089A618EDFF40004D6A2F /* TryingToConceive@2x.png */,
+			);
+			path = Community;
 			sourceTree = "<group>";
 		};
 		C36C50F2189028190053A884 = {
@@ -1178,6 +1242,7 @@
 				83EB3F0C18AEA7D500EA91AC /* Medium@2x.png in Resources */,
 				83D8CDA018E353F300D0AC72 /* Activate.png in Resources */,
 				832934C818B7D93200F6875B /* Amazing@2x.png in Resources */,
+				C35089AC18EDFF40004D6A2F /* ShareTheNews@2x.png in Resources */,
 				83A1FDF918D35C820030D331 /* OvatempIcon@2x.png in Resources */,
 				83EB3F0E18AEA7D500EA91AC /* Spotting@2x.png in Resources */,
 				835AE58818B7A3B500FEAF98 /* CheckCell.xib in Resources */,
@@ -1188,6 +1253,7 @@
 				8333B9BD18E1BD7A00C64231 /* Exercise@2x.png in Resources */,
 				83EB3F2C18AEA7D500EA91AC /* more_unselect.png in Resources */,
 				83EB3F1B18AEA7D500EA91AC /* Positive.png in Resources */,
+				C350899218EDFD0C004D6A2F /* CommunityStoryboard.storyboard in Resources */,
 				832934C918B7D93200F6875B /* Good.png in Resources */,
 				83EB3F0D18AEA7D500EA91AC /* Spotting.png in Resources */,
 				835AE58C18B7A51700FEAF98 /* CheckBox@2x.png in Resources */,
@@ -1229,6 +1295,7 @@
 				83686EA018C6323600A5329C /* CalendarCell.xib in Resources */,
 				8328B76318AC005A00DA7A5E /* SymptomsDayCell.xib in Resources */,
 				8333B9D918E2156B00C64231 /* RefreshSmall.png in Resources */,
+				C35089AB18EDFF40004D6A2F /* ShareTheNews.png in Resources */,
 				83EB3EE018AEA7D500EA91AC /* Unprotected@2x.png in Resources */,
 				8333B9D418E2156B00C64231 /* EnergizeSmall.png in Resources */,
 				C3E58C3D18D39B7B0026301A /* Icon76@x.png in Resources */,
@@ -1255,6 +1322,7 @@
 				8328B75F18AC003700DA7A5E /* FluidDayCell.xib in Resources */,
 				835AE58B18B7A51700FEAF98 /* CheckBox.png in Resources */,
 				8333B9D218E2156B00C64231 /* ActivateSmall.png in Resources */,
+				C35089B018EDFF40004D6A2F /* TryingToConceive@2x.png in Resources */,
 				83EB3F0A18AEA7D500EA91AC /* Light@2x.png in Resources */,
 				83EB3F2318AEA7D500EA91AC /* coaching_unselect.png in Resources */,
 				C36C5109189028190053A884 /* InfoPlist.strings in Resources */,
@@ -1262,11 +1330,14 @@
 				83A1FDF818D35C820030D331 /* OvatempIcon.png in Resources */,
 				83EB3F2718AEA7D500EA91AC /* community_unselect.png in Resources */,
 				8333B9D618E2156B00C64231 /* HydrateSmall@2x.png in Resources */,
+				C35089AA18EDFF40004D6A2F /* OvatempSupport@2x.png in Resources */,
 				C3E58C3B18D39B7B0026301A /* Icon60@2x.png in Resources */,
 				83D8CDA718E353F300D0AC72 /* Nourish@2x.png in Resources */,
 				839A346218ABCFB6007CD657 /* OTDayNavigationController.xib in Resources */,
 				832934CC18B7D93200F6875B /* Medicines@2x.png in Resources */,
 				83EB3F2B18AEA7D500EA91AC /* more_selected@2x.png in Resources */,
+				C35089AF18EDFF40004D6A2F /* TryingToConceive.png in Resources */,
+				C35089A918EDFF40004D6A2F /* OvatempSupport.png in Resources */,
 				C3E58C3C18D39B7B0026301A /* Icon76.png in Resources */,
 				83A1FDF518D35C3B0030D331 /* SessionStoryboard.storyboard in Resources */,
 				83C6511618C91B7500F35CE5 /* ForwardArrow.png in Resources */,
@@ -1281,6 +1352,7 @@
 				83D8CDA418E353F300D0AC72 /* Hydrate.png in Resources */,
 				832934C718B7D93200F6875B /* Amazing.png in Resources */,
 				8333B98218E0A7C900C64231 /* CoachingStoryboard.storyboard in Resources */,
+				C35089A718EDFF40004D6A2F /* FertilityQuestions.png in Resources */,
 				8333B9BF18E1BD7A00C64231 /* Habits@2x.png in Resources */,
 				832934D118B7D93200F6875B /* Symptoms.png in Resources */,
 				8333B9BE18E1BD7A00C64231 /* Habits.png in Resources */,
@@ -1305,14 +1377,17 @@
 				83D8CDA818E353F300D0AC72 /* Refresh.png in Resources */,
 				83EB3EDE18AEA7D500EA91AC /* Protected@2x.png in Resources */,
 				83C6511518C91B7500F35CE5 /* BackArrow@2x.png in Resources */,
+				C35089AE18EDFF40004D6A2F /* TryingToAvoid@2x.png in Resources */,
 				C36C5111189028190053A884 /* Images.xcassets in Resources */,
 				83C6511718C91B7500F35CE5 /* ForwardArrow@2x.png in Resources */,
+				C35089AD18EDFF40004D6A2F /* TryingToAvoid.png in Resources */,
 				8333B9BB18E1BD7A00C64231 /* Diet@2x.png in Resources */,
 				83EB3F2618AEA7D500EA91AC /* community_selected@2x.png in Resources */,
 				83EB3F0B18AEA7D500EA91AC /* Medium.png in Resources */,
 				83EB3F0918AEA7D500EA91AC /* Light.png in Resources */,
 				83EB3F1A18AEA7D500EA91AC /* Negative@2x.png in Resources */,
 				8333B9AC18E0D32000C64231 /* Massage@2x.png in Resources */,
+				C35089A818EDFF40004D6A2F /* FertilityQuestions@2x.png in Resources */,
 				8333B9D718E2156B00C64231 /* NourishSmall.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1421,6 +1496,7 @@
 				8329353B18B7FD2600F6875B /* Symptom.m in Sources */,
 				834BD64118AD6590003B6808 /* DayToggleButton.m in Sources */,
 				C308706B18980B1A00DC4364 /* Alert.m in Sources */,
+				C350899718EDFD74004D6A2F /* CommunityForumsViewController.m in Sources */,
 				C31220241899BB8E0027C4B3 /* Configuration.m in Sources */,
 				8387261018CA12C800A3277C /* FertilityStatusView.m in Sources */,
 				83C4D21618D9E0F6008C523C /* Onboard2ViewController.m in Sources */,
@@ -1430,6 +1506,7 @@
 				835BA2B318BBCB8300C64350 /* SharedRelation.m in Sources */,
 				C36C510B189028190053A884 /* main.m in Sources */,
 				8328B77318AC00CD00DA7A5E /* SymptomsDayCell.m in Sources */,
+				C35CF95518EF2DF6004D47EA /* NSObject+IsNull.m in Sources */,
 				C32C4A8C18985A4D00B05009 /* UIViewController+ConnectionManager.m in Sources */,
 				8329353518B7F85B00F6875B /* Supplement.m in Sources */,
 				83C6510F18C9015000F35CE5 /* NSDate+CalendarOps.m in Sources */,
@@ -1448,6 +1525,7 @@
 				83A1FE0718D778F80030D331 /* UserProfile.m in Sources */,
 				836A6C9D18BF819E0068F1D2 /* CycleChartView.m in Sources */,
 				8315E49B18C13F9B00DA935A /* OTScrollView.m in Sources */,
+				C350899A18EDFDA8004D6A2F /* CommunityForumViewController.m in Sources */,
 				C3D4F35418983B9C00CBB91A /* Constants.m in Sources */,
 				83A1FE0A18D78B2C0030D331 /* FAMSettingsViewController.m in Sources */,
 				83A1FE0D18D78FAC0030D331 /* ProfileSettingsViewController.m in Sources */,

@@ -16,6 +16,8 @@
 #define BLUE Color(37, 152, 158)
 #define DARK_BLUE Color(31, 108, 114)
 
+#define COMMUNITY_BLUE Color(16, 85, 120)
+
 #define PURPLE Color(124, 65, 160)
 #define DAY_EDIT_PAGE_COLOR Color(56, 62, 62)
 
@@ -43,7 +45,6 @@ static NSString * const kUnauthorizedRequestNotification = @"401UnauthorizedRequ
 
 UIColor * Color(int red, int green, int blue);
 UIColor * ColorA(int red, int green, int blue, CGFloat alpha);
-UIColor * Darken(UIColor *color, CGFloat amount);
 
 #define DELAY_BEFORE_SAVE 5
 

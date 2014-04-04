@@ -13,5 +13,6 @@
 @property (readonly) CGFloat brightness;
 
 - (UIColor *)darkenBy:(CGFloat)amount;
+- (UIColor *)desaturateBy:(CGFloat)amount;
 
 @end
