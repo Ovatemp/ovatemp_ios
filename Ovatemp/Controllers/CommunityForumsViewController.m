@@ -18,6 +18,9 @@ static NSString * const kForumName = @"name";
 static NSString * const kForumIcon = @"icon";
 static NSString * const kForumURL = @"url";
 
+static CGFloat const kDarkenBy = -0.075;
+static CGFloat const kDesaturateBy = 0.22;
+
 @interface CommunityForumsViewController () {
   NSDictionary *_selectedForum;
 }
@@ -47,6 +50,11 @@ static NSString * const kForumURL = @"url";
                            kForumURL: @"/category/ovatemp-support"},
                          ];
   }
+
+  NSInteger colorOffset = kCommunityForums.count;
+  UIColor *blue = [COMMUNITY_BLUE darkenBy:kDarkenBy * colorOffset];
+  blue = [blue desaturateBy:kDesaturateBy * colorOffset];
+  self.view.backgroundColor = blue;
 }
 
 
@@ -76,8 +84,8 @@ static NSString * const kForumURL = @"url";
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCommunityForumCellIdentifier forIndexPath:indexPath];
   
   NSDictionary *forum = kCommunityForums[indexPath.row];
-  UIColor *blue = [COMMUNITY_BLUE darkenBy:-0.075 * indexPath.row];
-  blue = [blue desaturateBy:0.22 * indexPath.row];
+  UIColor *blue = [COMMUNITY_BLUE darkenBy:kDarkenBy * indexPath.row];
+  blue = [blue desaturateBy:kDesaturateBy * indexPath.row];
   cell.backgroundColor = blue;
   cell.imageView.image = [UIImage imageNamed:forum[kForumIcon]];
   cell.textLabel.text = forum[kForumName];
