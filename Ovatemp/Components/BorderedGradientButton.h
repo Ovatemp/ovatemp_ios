@@ -1,17 +1,16 @@
 //
-//  RoundedButton.h
+//  BorderedGradientButton.h
 //  Ovatemp
 //
 //  Created by Flip Sasser on 4/7/14.
 //  Copyright (c) 2014 Back Forty. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "GradientButton.h"
 
-@interface RoundedButton : UIButton
+@interface BorderedGradientButton : GradientButton
 
+@property CGFloat borderWidth;
 @property CGFloat cornerRadius;
-@property NSInteger index;
-@property NSInteger siblings;
 
 @end

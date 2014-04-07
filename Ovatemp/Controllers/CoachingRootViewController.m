@@ -41,7 +41,7 @@
 }
 
 - (void)pushAppropriateController {
-  if([self showPurchaseScreen]) {
+  if ([self showPurchaseScreen]) {
     return;
   }
 
@@ -58,7 +58,7 @@
   if(!hasSeenIntro) {
     [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"ProfileIntroScreen"] animated:FALSE];
 
-    [Configuration sharedConfiguration].hasSeenProfileIntroScreen = [NSNumber numberWithBool:TRUE];
+    [Configuration sharedConfiguration].hasSeenProfileIntroScreen = @YES;
 
     return;
   }

@@ -8,8 +8,11 @@
 
 #import "QuizViewController.h"
 #import "Question.h"
+#import "UIViewController+ConnectionManager.h"
 #import "UIViewController+Loading.h"
 #import "User.h"
+
+#import "BorderedGradientButton.h"
 
 @interface QuizViewController ()
 
@@ -26,15 +29,14 @@
 {
   [super viewDidLoad];
 
-  for(UIButton *button in @[self.yesButton, self.noButton]) {
+  for(BorderedGradientButton *button in @[self.yesButton, self.noButton]) {
     button.clipsToBounds = YES;
 
     CGRect rect = button.frame;
     rect.size.height = rect.size.width;
     button.frame = rect;
-    button.layer.cornerRadius = button.frame.size.width / 2;
-    button.layer.borderColor =[UIColor redColor].CGColor;
-    button.layer.borderWidth= 2.0f;
+    button.cornerRadius = button.frame.size.width / 2;
+    button.borderWidth = 2.0f;
   }
 
   self.questionQueue = [[NSMutableArray alloc] initWithCapacity:10];
@@ -46,37 +48,60 @@
     self.yesButton.hidden = TRUE;
     self.noButton.hidden = TRUE;
 
-    [self startLoading];
-    [ConnectionManager get:@"/fertility_profiles" params:@{}
-                   success:^(id response) {
-                     NSArray *questions = response[@"questions"];
-                     if(questions) {
-                       for(NSDictionary *q in questions) {
-                         [self.questionQueue addObject:[Question withAttributes:q]];
-                       }
-                     }
-
-                     NSString *fertility_profile_name = response[@"fertility_profile_name"];
-                     if(fertility_profile_name) {
-                       [User current].fertilityProfileName = fertility_profile_name;
-                     }
-
-                     NSDictionary *coaching_content_urls = response[@"coaching_content_urls"];
-                     if(coaching_content_urls) {
-                       [Configuration sharedConfiguration].coachingContentUrls = coaching_content_urls;
-                     }
-
-                     [self popQuestion];
-                     [self stopLoading];
-                   }
-                   failure:^(NSError *error) {
-                     // HANDLEERROR
-
-                     [self stopLoading];
-                   }];
+    [self loadQuestions];
   } else {
     [self popQuestion];
   }
+}
+
+# pragma mark - Load questions
+
+- (void)loadQuestions:(id)sender {
+  [self loadQuestions];
+}
+
+- (void)loadQuestions {
+  [ConnectionManager get:@"/fertility_profiles"
+                  target:self
+                 success:@selector(questionsLoaded:)
+                 failure:@selector(questionsLoadFailed:)];
+}
+
+- (void)questionsLoaded:(NSDictionary *)response {
+  NSLog(@"LOADED");
+  NSArray *questions = response[@"questions"];
+  if(questions) {
+    for(NSDictionary *q in questions) {
+      [self.questionQueue addObject:[Question withAttributes:q]];
+    }
+  }
+
+  NSString *fertility_profile_name = response[@"fertility_profile_name"];
+  if(fertility_profile_name) {
+    [User current].fertilityProfileName = fertility_profile_name;
+  }
+
+  NSDictionary *coaching_content_urls = response[@"coaching_content_urls"];
+  if(coaching_content_urls) {
+    [Configuration sharedConfiguration].coachingContentUrls = coaching_content_urls;
+  }
+
+  [self popQuestion];
+  [self stopLoading];
+}
+
+- (void)questionsLoadFailed:(NSError *)error {
+  [self stopLoading];
+  Alert *alert = [self alertForError:error];
+  [alert addButtonWithText:@"Ok"
+                      type:AlertButtonOK
+                    target:self
+                    action:@selector(loadQuestions:)];
+  [alert addButtonWithText:@"Retry"
+                      type:AlertButtonError
+                    target:self
+                    action:@selector(loadQuestions:)];
+  [alert show];
 }
 
 - (Question *)popQuestion {

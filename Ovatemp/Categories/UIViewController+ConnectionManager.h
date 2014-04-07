@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Alert.h"
 #import "ConnectionManager.h"
 
 @interface UIViewController (ConnectionManager)
 
+- (Alert *)alertForError:(NSError *)error;
 - (void)presentError:(NSError *)error;
 
 @end

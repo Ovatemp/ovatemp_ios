@@ -12,10 +12,8 @@
 
 @interface RoundedButton () {
   UIColor *_backgroundColor;
+  UIBezierPath *_backgroundPath;
 }
-
-- (void)buildPaths;
-- (void)setupDefaults;
 
 @end
 
@@ -28,7 +26,7 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
   self = [super initWithCoder:aDecoder];
   if (self) {
-    [self setupDefaults];
+    [self buildPath];
   }
   return self;
 }
@@ -36,14 +34,9 @@
 - (id)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
   if (self) {
-    [self setupDefaults];
+    [self buildPath];
   }
   return self;
-}
-
-- (void)setupDefaults {
-  self.clipsToBounds = NO;
-  self.layer.shadowRadius = 0;
 }
 
 # pragma mark - Properties
@@ -54,29 +47,19 @@
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor {
   _backgroundColor = backgroundColor;
-  _borderColor = [backgroundColor darkenBy:0.2];
-
-  if (backgroundColor.brightness >= 0.5f) {
-    self.tintColor = DARK;
-    self.titleLabel.textColor = DARK;
-  } else {
-    self.tintColor = LIGHT;
-    self.titleLabel.textColor = LIGHT;
-  }
+  [self buildPath];
 }
 
 # pragma mark - Drawing
 
-- (void)buildPaths {
-  self.layer.shadowRadius = 0;
-  [self buildDefaultPath];
-}
+- (void)buildPath {
+  CGRect bounds = self.bounds;
+  bounds.origin.x += 0.5;
+  bounds.origin.y += 0.5;
+  bounds.size.height -= 1;
+  bounds.size.width -= 1;
 
-- (void)buildDefaultPath {
-  _backgroundPath = [self pathForRect:self.bounds];
-}
-
-- (UIBezierPath *)pathForRect:(CGRect)rect {
+  // Build the path
   UIRectCorner corners = 0;
   if (!self.index) {
     corners |= UIRectCornerBottomLeft;
@@ -84,8 +67,11 @@
   if (self.index == self.siblings - 1) {
     corners |= UIRectCornerBottomRight;
   }
-  UIBezierPath *buttonPath = [UIBezierPath bezierPathWithRoundedRect:rect byRoundingCorners:corners cornerRadii:CGSizeMake(self.cornerRadius, self.cornerRadius)];
-  return buttonPath;
+
+  _backgroundPath = [UIBezierPath bezierPathWithRoundedRect:bounds
+                                          byRoundingCorners:corners
+                                                cornerRadii:CGSizeMake(self.cornerRadius, self.cornerRadius)];
+  _backgroundPath.lineWidth = 1.0;
 }
 
 # pragma mark - Drawing
@@ -95,10 +81,12 @@
 - (void)drawRect:(CGRect)rect {
   if (_backgroundColor) {
     if (!_backgroundPath) {
-      [self buildPaths];
+      [self buildPath];
     }
-    [_backgroundColor setFill];
-    [_backgroundPath fill];
+    [_backgroundColor setStroke];
+    [_backgroundPath stroke];
+  } else {
+    [super drawRect:rect];
   }
 }
 

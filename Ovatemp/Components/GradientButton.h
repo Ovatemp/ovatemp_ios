@@ -10,4 +10,6 @@
 
 @interface GradientButton : UIButton
 
+- (void)configureDefaults;
+
 @end

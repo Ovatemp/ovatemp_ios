@@ -221,6 +221,7 @@
 		C382F1DC18F31CBE005E0CAF /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C382F1D718F31CBE005E0CAF /* GradientButton.m */; };
 		C382F1DD18F31CBE005E0CAF /* OTScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C382F1D918F31CBE005E0CAF /* OTScrollView.m */; };
 		C382F1E318F323E5005E0CAF /* RoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C382F1E218F323E5005E0CAF /* RoundedButton.m */; };
+		C382F1E618F33801005E0CAF /* BorderedGradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C382F1E518F33801005E0CAF /* BorderedGradientButton.m */; };
 		C38C2D5B18EF4F0700449F89 /* DelegatingNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C38C2D5A18EF4F0700449F89 /* DelegatingNavigationViewController.m */; };
 		C3BF8FBF1898409C00572F43 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BF8FBE1898409C00572F43 /* XCTest.framework */; };
 		C3BF8FC01898409C00572F43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C50FE189028190053A884 /* Foundation.framework */; };
@@ -535,6 +536,8 @@
 		C382F1D918F31CBE005E0CAF /* OTScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTScrollView.m; sourceTree = "<group>"; };
 		C382F1E118F323E5005E0CAF /* RoundedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedButton.h; sourceTree = "<group>"; };
 		C382F1E218F323E5005E0CAF /* RoundedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedButton.m; sourceTree = "<group>"; };
+		C382F1E418F33801005E0CAF /* BorderedGradientButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderedGradientButton.h; sourceTree = "<group>"; };
+		C382F1E518F33801005E0CAF /* BorderedGradientButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderedGradientButton.m; sourceTree = "<group>"; };
 		C38C2D5918EF4F0700449F89 /* DelegatingNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegatingNavigationViewController.h; sourceTree = "<group>"; };
 		C38C2D5A18EF4F0700449F89 /* DelegatingNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegatingNavigationViewController.m; sourceTree = "<group>"; };
 		C3BF8FBD1898409C00572F43 /* OvatempTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OvatempTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1099,6 +1102,8 @@
 			children = (
 				C382F1D218F31CBE005E0CAF /* Alert.h */,
 				C382F1D318F31CBE005E0CAF /* Alert.m */,
+				C382F1E418F33801005E0CAF /* BorderedGradientButton.h */,
+				C382F1E518F33801005E0CAF /* BorderedGradientButton.m */,
 				C382F1D418F31CBE005E0CAF /* DayToggleButton.h */,
 				C382F1D518F31CBE005E0CAF /* DayToggleButton.m */,
 				C382F1D618F31CBE005E0CAF /* GradientButton.h */,
@@ -1487,6 +1492,7 @@
 			files = (
 				C3BF8FE818984AC200572F43 /* User.m in Sources */,
 				8328B76D18AC00A800DA7A5E /* SignsDayCell.m in Sources */,
+				C382F1E618F33801005E0CAF /* BorderedGradientButton.m in Sources */,
 				838752F418CF44BC00E8ED4A /* Cycle.m in Sources */,
 				8333B98618E0B77000C64231 /* CoachingMenuViewController.m in Sources */,
 				838752F118CE5F9300E8ED4A /* CycleViewController.m in Sources */,

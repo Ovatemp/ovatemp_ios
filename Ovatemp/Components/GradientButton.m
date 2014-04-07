@@ -37,7 +37,7 @@ static UIColor *kPressedEndColor;
 - (id)initWithCoder:(NSCoder *)aDecoder {
   self = [super initWithCoder:aDecoder];
   if (self) {
-    [self configureTextSizes];
+    [self configureDefaults];
   }
   return self;
 }
@@ -45,19 +45,19 @@ static UIColor *kPressedEndColor;
 - (id)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
   if (self) {
-    [self configureTextSizes];
+    [self configureDefaults];
   }
   return self;
 }
 
 - (void)setFrame:(CGRect)frame {
   [super setFrame:frame];
-  [self configureTextSizes];
+  [self configureDefaults];
 }
 
 - (void)sizeToFit {
   [super sizeToFit];
-  [self configureTextSizes];
+  [self configureDefaults];
 }
 
 # pragma mark - Detecting highlighted state
@@ -78,7 +78,7 @@ static UIColor *kPressedEndColor;
 
 # pragma mark - Drawing gradient text colors
 
-- (void)configureTextSizes {
+- (void)configureDefaults {
   if (!self.titleLabel.text.length) {
     return;
   }

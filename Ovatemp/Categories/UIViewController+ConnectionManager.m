@@ -8,11 +8,9 @@
 
 #import "UIViewController+ConnectionManager.h"
 
-#import "UIViewController+Alerts.h"
-
 @implementation UIViewController (ConnectionManager)
 
-- (void)presentError:(NSError *)error {
+- (Alert *)alertForError:(NSError *)error {
   NSString *title = @"Something Went Wrong!";
 
   NSString *message = [error.userInfo objectForKey:@"error"];
@@ -21,7 +19,13 @@
     message = error.localizedDescription;
   }
 
-  [self showErrorWithTitle:title message:message];
+  return [Alert errorWithTitle:title message:message];
+}
+
+- (void)presentError:(NSError *)error {
+  Alert *alert = [self alertForError:error];
+  [alert addButtonWithText:@"Okay" type:AlertButtonError];
+  [alert show];
 }
 
 @end

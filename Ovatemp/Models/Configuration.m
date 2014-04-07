@@ -24,6 +24,8 @@ static Configuration *_sharedConfiguration;
   return _sharedConfiguration;
 }
 
+# pragma mark - KVO
+
 - (void)observeKeys:(NSArray *)keys {
   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
   for (NSString *key in keys) {
@@ -39,6 +41,8 @@ static Configuration *_sharedConfiguration;
   [userDefaults setObject:value forKey:keyPath];
   [userDefaults synchronize];
 }
+
+# pragma mark - Session management
 
 + (void)loggedInWithResponse:(NSDictionary *)response {
   NSDictionary *userDict = response[@"user"];
@@ -68,7 +72,7 @@ static Configuration *_sharedConfiguration;
   [UserProfile setCurrent:nil];
   [Configuration sharedConfiguration].token = nil;
   [Configuration sharedConfiguration].coachingContentUrls = nil;
-  [Configuration sharedConfiguration].hasSeenProfileIntroScreen = nil;
+  [Configuration sharedConfiguration].hasSeenProfileIntroScreen = @NO;
 }
 
 

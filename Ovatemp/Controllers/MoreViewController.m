@@ -46,7 +46,7 @@
 
 - (IBAction)resetFertilityProfile:(id)sender {
 
-  [Configuration sharedConfiguration].hasSeenProfileIntroScreen = nil;
+  [Configuration sharedConfiguration].hasSeenProfileIntroScreen = @NO;
 }
 
 - (BOOL)shouldAutorotate {
