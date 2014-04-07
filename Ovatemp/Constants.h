@@ -43,8 +43,8 @@ static NSString * const kUnauthorizedRequestNotification = @"401UnauthorizedRequ
 
 // The are Apple's standard spacing defaults. Don't change
 // these unless the defaults change!
-#define SIBLING_SPACING 8.0f
-#define SUPERVIEW_SPACING 20.0f
+static const CGFloat SIBLING_SPACING = 8.0f;
+static const CGFloat SUPERVIEW_SPACING = 20.0f;
 
 UIColor * Color(int red, int green, int blue);
 UIColor * ColorA(int red, int green, int blue, CGFloat alpha);

@@ -20,6 +20,8 @@
 - (void)viewDidLoad {
   self.cycleDatePicker = [self useDatePickerForTextField:self.cycleDateTextField];
   self.cycleDatePicker.maximumDate = [NSDate date];
+  int cycleDays = 40;
+  self.cycleDatePicker.minimumDate = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * cycleDays];
   [self.cycleDatePicker addTarget:self
                            action:@selector(cycleDateChanged:)
                  forControlEvents:UIControlEventValueChanged];

@@ -19,7 +19,7 @@ typedef enum AlertButtonType {
   AlertButtonOK
 } AlertButtonType;
 
-@interface Alert : UIView
+@interface Alert : UIToolbar
 
 @property AlertType alertType;
 @property NSString *title;
@@ -31,6 +31,9 @@ typedef enum AlertButtonType {
 
 - (void)addButtonWithText:(NSString *)text type:(AlertButtonType)type;
 - (void)addButtonWithText:(NSString *)text type:(AlertButtonType)type target:(id)target action:(SEL)action;
+
+- (void)hide;
+- (IBAction)hide:(id)sender;
 - (void)show;
 
 @end

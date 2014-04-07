@@ -8,10 +8,9 @@
 
 #import "Alert.h"
 
-#import "GradientButton.h"
+#import "RoundedButton.h"
 
 @interface Alert () {
-  UIToolbar *_backgroundView;
   NSMutableArray *_buttons;
   UIView *_containerView;
   UILabel *_messageView;
@@ -62,19 +61,12 @@
   for (UIView *view in window.subviews) {
     [view endEditing:YES];
   }
+  self.alpha = 0;
   [window addSubview:self];
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
   [super willMoveToSuperview:newSuperview];
-
-  // Set up a background
-  if (!_backgroundView) {
-    _backgroundView = [[UIToolbar alloc] init];
-    _backgroundView.barStyle = UIBarStyleBlackTranslucent;
-    [self addSubview:_backgroundView];
-  }
-  _backgroundView.frame = newSuperview.bounds;
 
   // Lay out container
   if (!_containerView) {
@@ -82,13 +74,23 @@
     _containerView.backgroundColor = [UIColor clearColor];
     _containerView.layer.backgroundColor = LIGHT.CGColor;
     _containerView.layer.cornerRadius = 3.0f;
+    _containerView.layer.shadowColor = DARK.CGColor;
+    _containerView.layer.shadowOffset = CGSizeMake(0, 1.0f);
+    _containerView.layer.shadowOpacity = 0.5f;
+    _containerView.layer.shadowRadius = 2.0f;
     [self addSubview:_containerView];
   }
 
   if (!_titleView) {
     _titleView = [[UILabel alloc] init];
-    _titleView.lineBreakMode = NSLineBreakByWordWrapping;
+    _titleView.adjustsFontSizeToFitWidth = YES;
+//    _titleView.backgroundColor = self.alertType == AlertError ? RED : GREEN;
+    _titleView.font = [UIFont boldSystemFontOfSize:17.0f];
+    _titleView.minimumScaleFactor = 0.5;
     _titleView.numberOfLines = 0;
+    _titleView.lineBreakMode = NSLineBreakByWordWrapping;
+    _titleView.textAlignment = NSTextAlignmentLeft;
+    _titleView.textColor = DARK;
     [_containerView addSubview:_titleView];
   }
 
@@ -106,31 +108,42 @@
   _titleView.text = self.title;
   [_titleView sizeToFit];
   CGSize idealTitleSize = [_titleView sizeThatFits:textSize];
-  _titleView.frame = CGRectMake(SUPERVIEW_SPACING, SUPERVIEW_SPACING, textWidth, idealTitleSize.height);
+  idealTitleSize.height += SUPERVIEW_SPACING;
+  _titleView.frame = CGRectMake(SUPERVIEW_SPACING, SUPERVIEW_SPACING,
+                                idealTitleSize.width, idealTitleSize.height);
 
   _messageView.text = self.message;
   [_messageView sizeToFit];
   CGSize idealMessageSize = [_messageView sizeThatFits:textSize];
-  _messageView.frame = CGRectMake(_titleView.frame.origin.x, CGRectGetMaxY(_titleView.frame) + SIBLING_SPACING, textWidth, idealMessageSize.height);
+  _messageView.frame = CGRectMake(SUPERVIEW_SPACING,
+                                  CGRectGetMaxY(_titleView.frame) + SIBLING_SPACING,
+                                  textWidth, idealMessageSize.height);
   _messageView.isAccessibilityElement = TRUE;
   _messageView.accessibilityLabel = @"Alert Message";
   _messageView.accessibilityValue = self.message;
 
   CGFloat buttonWidth = containerSize.width / _buttons.count;
-  CGFloat buttonTop = CGRectGetMaxY(_messageView.frame) + SIBLING_SPACING;
+  CGFloat buttonTop = CGRectGetMaxY(_messageView.frame) + SUPERVIEW_SPACING;
 
   for (NSInteger i = 0; i < _buttons.count; i++) {
-    UIButton *button = _buttons[i];
+    RoundedButton *button = _buttons[i];
     [button sizeToFit];
     button.frame = CGRectMake(i * buttonWidth, buttonTop, buttonWidth, button.frame.size.height);
     if (!button.superview) {
       [_containerView addSubview:button];
     }
-    containerSize.height = CGRectGetMaxY(button.frame) + SUPERVIEW_SPACING;
+    containerSize.height = CGRectGetMaxY(button.frame);
   }
 
   CGFloat containerTop = (newSuperview.frame.size.height - containerSize.height) / 2.0;
   _containerView.frame = CGRectMake(SUPERVIEW_SPACING, containerTop, containerSize.width, containerSize.height);
+}
+
+- (void)didMoveToSuperview {
+  [super didMoveToSuperview];
+  [UIView animateWithDuration:0.3 animations:^{
+    self.alpha = 1;
+  }];
 }
 
 #pragma mark - Buttons
@@ -144,10 +157,11 @@
     _buttons = [NSMutableArray array];
   }
 
-  UIButton *button = [GradientButton buttonWithType:UIButtonTypeSystem];
+  RoundedButton *button = [[RoundedButton alloc] initWithFrame:CGRectZero];
   [button setTitle:text forState:UIControlStateNormal];
   button.isAccessibilityElement = TRUE;
   button.accessibilityLabel = text;
+  button.cornerRadius = 3.0f;
   [button addTarget:self action:@selector(hide:) forControlEvents:UIControlEventTouchUpInside];
   if (target && action) {
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
@@ -160,18 +174,27 @@
   UIColor *backgroundColor;
   switch (type) {
     case AlertButtonDefault:
-//      backgroundColor = SweeponYellow;
+      backgroundColor = BLUE;
       break;
     case AlertButtonError:
-//      backgroundColor = SweeponRed;
+      backgroundColor = LIGHT;
       break;
     case AlertButtonOK:
-//      backgroundColor = SweeponGreen;
+      backgroundColor = DARK_BLUE;
       break;
   }
   button.backgroundColor = backgroundColor;
 
   [_buttons addObject:button];
+  [self resetButtonIndices];
+}
+
+- (void)resetButtonIndices {
+  for (NSInteger i = 0; i < _buttons.count; i++) {
+    RoundedButton *button = _buttons[i];
+    button.index = i;
+    button.siblings = _buttons.count;
+  }
 }
 
 @end
