@@ -7,7 +7,7 @@
 //
 
 #import "DayCell.h"
-#import "UIAlertView+WithBlock.h"
+#import "Alert.h"
 
 @implementation DayCell
 
@@ -66,18 +66,18 @@
 }
 
 - (void)showCreateFormWithTitle:(NSString *)title andClass:(id)class {
-  UIAlertView *form = [[UIAlertView alloc] initWithTitle:title message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Save", nil];
+  __weak Alert *alert = [Alert alertWithTitle:title message:nil];
+  alert.alertViewStyle = UIAlertViewStylePlainTextInput;
 
-  [form setAlertViewStyle:UIAlertViewStylePlainTextInput];
-  [form showWithCompletion:^(UIAlertView *alertView, NSInteger buttonIndex) {
-    NSString *inputText = [[alertView textFieldAtIndex:0] text];
-    NSString *buttonTitle = [alertView buttonTitleAtIndex:buttonIndex];
-    if([buttonTitle isEqualToString:@"Save"]) {
-      [class createWithName:inputText success:^(NSDictionary *response) {
-        [self refreshControls];
-      }];
-    }
+  [alert addButtonWithTitle:@"Cancel"];
+  [alert addButtonWithTitle:@"Save" callback:^{
+    NSString *inputText = [alert.view textFieldAtIndex:0].text;
+    [class createWithName:inputText success:^(NSDictionary *response) {
+      [self refreshControls];
+    }];
   }];
+
+  [alert show];
 }
 
 @end

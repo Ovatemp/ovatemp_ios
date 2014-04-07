@@ -87,7 +87,6 @@
 		835AE58B18B7A51700FEAF98 /* CheckBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 835AE58918B7A51700FEAF98 /* CheckBox.png */; };
 		835AE58C18B7A51700FEAF98 /* CheckBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835AE58A18B7A51700FEAF98 /* CheckBox@2x.png */; };
 		835BA2B318BBCB8300C64350 /* SharedRelation.m in Sources */ = {isa = PBXBuildFile; fileRef = 835BA2B218BBCB8300C64350 /* SharedRelation.m */; };
-		835BA2B618BBDC0200C64350 /* UIAlertView+WithBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 835BA2B518BBDC0200C64350 /* UIAlertView+WithBlock.m */; };
 		835BA2B918BBEFBF00C64350 /* +.png in Resources */ = {isa = PBXBuildFile; fileRef = 835BA2B718BBEFBF00C64350 /* +.png */; };
 		835BA2BA18BBEFBF00C64350 /* +@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835BA2B818BBEFBF00C64350 /* +@2x.png */; };
 		83686EA018C6323600A5329C /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83686E9F18C6323600A5329C /* CalendarCell.xib */; };
@@ -188,11 +187,9 @@
 		83EB3F3A18AEAD2600EA91AC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EB3F3918AEAD2600EA91AC /* QuartzCore.framework */; };
 		9C4D13D86AB546AD9A46ADE4 /* libPods-OvatempTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */; };
 		C3066C6818983537003F8B84 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3066C6618983537003F8B84 /* TodayViewController.m */; };
-		C308706818980A4900DC4364 /* UIViewController+Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = C308706718980A4900DC4364 /* UIViewController+Alerts.m */; };
 		C30B84D118E3206A0078EDE3 /* UIViewController+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = C30B84D018E3206A0078EDE3 /* UIViewController+Loading.m */; };
 		C30B84D418E324260078EDE3 /* UIColor+Traits.m in Sources */ = {isa = PBXBuildFile; fileRef = C30B84D318E324260078EDE3 /* UIColor+Traits.m */; };
 		C31220241899BB8E0027C4B3 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = C31220231899BB8E0027C4B3 /* Configuration.m */; };
-		C32C4A8C18985A4D00B05009 /* UIViewController+ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C32C4A8B18985A4D00B05009 /* UIViewController+ConnectionManager.m */; };
 		C32C4A8F18985A7800B05009 /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C32C4A8E18985A7800B05009 /* ConnectionManager.m */; };
 		C350899218EDFD0C004D6A2F /* CommunityStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C350899118EDFD0C004D6A2F /* CommunityStoryboard.storyboard */; };
 		C350899718EDFD74004D6A2F /* CommunityForumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C350899618EDFD74004D6A2F /* CommunityForumsViewController.m */; };
@@ -373,8 +370,6 @@
 		835AE58A18B7A51700FEAF98 /* CheckBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckBox@2x.png"; sourceTree = "<group>"; };
 		835BA2B118BBCB8300C64350 /* SharedRelation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedRelation.h; sourceTree = "<group>"; };
 		835BA2B218BBCB8300C64350 /* SharedRelation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedRelation.m; sourceTree = "<group>"; };
-		835BA2B418BBDC0200C64350 /* UIAlertView+WithBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+WithBlock.h"; sourceTree = "<group>"; };
-		835BA2B518BBDC0200C64350 /* UIAlertView+WithBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+WithBlock.m"; sourceTree = "<group>"; };
 		835BA2B718BBEFBF00C64350 /* +.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+.png"; sourceTree = "<group>"; };
 		835BA2B818BBEFBF00C64350 /* +@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+@2x.png"; sourceTree = "<group>"; };
 		83686E9F18C6323600A5329C /* CalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
@@ -495,16 +490,12 @@
 		83EB3F3918AEAD2600EA91AC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C3066C6518983537003F8B84 /* TodayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		C3066C6618983537003F8B84 /* TodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
-		C308706618980A4900DC4364 /* UIViewController+Alerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alerts.h"; sourceTree = "<group>"; };
-		C308706718980A4900DC4364 /* UIViewController+Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alerts.m"; sourceTree = "<group>"; };
 		C30B84CF18E3206A0078EDE3 /* UIViewController+Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Loading.h"; sourceTree = "<group>"; };
 		C30B84D018E3206A0078EDE3 /* UIViewController+Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Loading.m"; sourceTree = "<group>"; };
 		C30B84D218E324260078EDE3 /* UIColor+Traits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Traits.h"; sourceTree = "<group>"; };
 		C30B84D318E324260078EDE3 /* UIColor+Traits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Traits.m"; sourceTree = "<group>"; };
 		C31220221899BB8E0027C4B3 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
 		C31220231899BB8E0027C4B3 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
-		C32C4A8A18985A4D00B05009 /* UIViewController+ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ConnectionManager.h"; sourceTree = "<group>"; };
-		C32C4A8B18985A4D00B05009 /* UIViewController+ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ConnectionManager.m"; sourceTree = "<group>"; };
 		C32C4A8D18985A7800B05009 /* ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionManager.h; sourceTree = "<group>"; };
 		C32C4A8E18985A7800B05009 /* ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManager.m; sourceTree = "<group>"; };
 		C350899118EDFD0C004D6A2F /* CommunityStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CommunityStoryboard.storyboard; sourceTree = "<group>"; };
@@ -923,12 +914,6 @@
 			children = (
 				830E351618D2506B00884F0E /* NSDate+Formatters.h */,
 				830E351718D2506B00884F0E /* NSDate+Formatters.m */,
-				C308706618980A4900DC4364 /* UIViewController+Alerts.h */,
-				C308706718980A4900DC4364 /* UIViewController+Alerts.m */,
-				C32C4A8A18985A4D00B05009 /* UIViewController+ConnectionManager.h */,
-				C32C4A8B18985A4D00B05009 /* UIViewController+ConnectionManager.m */,
-				835BA2B418BBDC0200C64350 /* UIAlertView+WithBlock.h */,
-				835BA2B518BBDC0200C64350 /* UIAlertView+WithBlock.m */,
 				83C6510D18C9015000F35CE5 /* NSDate+CalendarOps.h */,
 				83C6510E18C9015000F35CE5 /* NSDate+CalendarOps.m */,
 				C30B84D218E324260078EDE3 /* UIColor+Traits.h */,
@@ -1544,9 +1529,7 @@
 				838752F118CE5F9300E8ED4A /* CycleViewController.m in Sources */,
 				C382F1E318F323E5005E0CAF /* RoundedButton.m in Sources */,
 				C3BF8FE5189848CE00572F43 /* BaseModel.m in Sources */,
-				C308706818980A4900DC4364 /* UIViewController+Alerts.m in Sources */,
 				835512F718E4C0BD00894728 /* FertilityProfileIntroViewController.m in Sources */,
-				835BA2B618BBDC0200C64350 /* UIAlertView+WithBlock.m in Sources */,
 				8333B98918E0B86E00C64231 /* CoachingMenuCell.m in Sources */,
 				83DF333218E324DA002119CE /* QuizViewController.m in Sources */,
 				83BD853818D0B23900890EDA /* RootViewController.m in Sources */,
@@ -1577,7 +1560,6 @@
 				8328B77318AC00CD00DA7A5E /* SymptomsDayCell.m in Sources */,
 				C35CF95518EF2DF6004D47EA /* NSObject+IsNull.m in Sources */,
 				C382F1DB18F31CBE005E0CAF /* DayToggleButton.m in Sources */,
-				C32C4A8C18985A4D00B05009 /* UIViewController+ConnectionManager.m in Sources */,
 				C382F1DD18F31CBE005E0CAF /* OTScrollView.m in Sources */,
 				8329353518B7F85B00F6875B /* Supplement.m in Sources */,
 				C382F1DA18F31CBE005E0CAF /* Alert.m in Sources */,

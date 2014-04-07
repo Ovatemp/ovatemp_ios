@@ -7,12 +7,13 @@
 //
 
 #import "QuizViewController.h"
+
+#import "Alert.h"
+#import "BorderedGradientButton.h"
 #import "Question.h"
-#import "UIViewController+ConnectionManager.h"
-#import "UIViewController+Loading.h"
 #import "User.h"
 
-#import "BorderedGradientButton.h"
+#import "UIViewController+Loading.h"
 
 @interface QuizViewController ()
 
@@ -57,6 +58,10 @@
 
 # pragma mark - Load questions
 
+- (void)cancelLoadQuestions:(id)sender {
+  [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)loadQuestions:(id)sender {
   [self loadQuestions];
 }
@@ -87,13 +92,11 @@
 
 - (void)questionsLoadFailed:(NSError *)error {
   [self stopLoading];
-  Alert *alert = [self alertForError:error];
-  [alert addButtonWithText:@"Ok"
-                      type:AlertButtonOK
+  Alert *alert = [Alert alertForError:error];
+  [alert addButtonWithTitle:@"Cancel"
                     target:self
-                    action:@selector(loadQuestions:)];
-  [alert addButtonWithText:@"Retry"
-                      type:AlertButtonError
+                    action:@selector(cancelLoadQuestions:)];
+  [alert addButtonWithTitle:@"Retry"
                     target:self
                     action:@selector(loadQuestions:)];
   [alert show];

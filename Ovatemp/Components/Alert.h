@@ -8,29 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum AlertType {
-  AlertError,
-  AlertNotification
-} AlertType;
+typedef void (^AlertCallback) ();
 
-typedef enum AlertButtonType {
-  AlertButtonError,
-  AlertButtonDefault,
-  AlertButtonOK
-} AlertButtonType;
+@interface Alert : NSObject <UIAlertViewDelegate>
 
-@interface Alert : UIToolbar
-
-@property AlertType alertType;
+@property UIAlertViewStyle alertViewStyle;
 @property NSString *title;
 @property NSString *message;
+@property UIAlertView *view;
 
-+ (Alert *)errorWithTitle:(NSString *)title message:(NSString *)message;
-+ (Alert *)notificationWithTitle:(NSString *)title message:(NSString *)message;
-- (id)initWithAlertType:(AlertType)alertType;
++ (Alert *)alertForError:(NSError *)error;
++ (Alert *)alertWithTitle:(NSString *)title message:(NSString *)message;
++ (Alert *)presentError:(NSError *)error;
++ (Alert *)showAlertWithTitle:(NSString *)title message:(NSString *)message;
 
-- (void)addButtonWithText:(NSString *)text type:(AlertButtonType)type;
-- (void)addButtonWithText:(NSString *)text type:(AlertButtonType)type target:(id)target action:(SEL)action;
+- (void)addButtonWithTitle:(NSString *)title;
+- (void)addButtonWithTitle:(NSString *)title callback:(AlertCallback)callback;
+- (void)addButtonWithTitle:(NSString *)title target:(id)target action:(SEL)action;
 
 - (void)hide;
 - (IBAction)hide:(id)sender;

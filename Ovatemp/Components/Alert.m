@@ -8,193 +8,148 @@
 
 #import "Alert.h"
 
-#import "RoundedButton.h"
-
 @interface Alert () {
   NSMutableArray *_buttons;
-  UIView *_containerView;
-  UILabel *_messageView;
-  UILabel *_titleView;
 }
+
+@property (readonly) NSMutableArray *buttons;
+
 @end
+
+static NSMutableDictionary *kAlerts;
+
+static NSString * const kCallbackKey = @"callback";
+static NSString * const kSelectorKey = @"selector";
+static NSString * const kTargetKey = @"target";
+static NSString * const kTitleKey = @"title";
 
 @implementation Alert
 
-#pragma mark - Setup
+# pragma mark - Setup
 
-+ (Alert *)errorWithTitle:(NSString *)title message:(NSString *)message {
-  Alert *alert = [[self alloc] initWithAlertType:AlertError];
-  alert.title = title;
-  alert.message = message;
-  return alert;
-}
++ (Alert *)alertForError:(NSError *)error {
+  NSString *title = @"Something Went Wrong!";
 
-+ (Alert *)notificationWithTitle:(NSString *)title message:(NSString *)message {
-  Alert *alert = [[self alloc] initWithAlertType:AlertNotification];
-  alert.title = title;
-  alert.message = message;
-  return alert;
-}
+  NSString *message = [error.userInfo objectForKey:@"error"];
 
-- (id)initWithAlertType:(AlertType)alertType {
-  self = [self init];
-  if (self) {
-    self.alertType = alertType;
+  if (!message) {
+    message = error.localizedDescription;
   }
-  return self;
+  
+  return [Alert alertWithTitle:title message:message];
 }
 
-#pragma mark - Rendering
++ (Alert *)alertWithTitle:(NSString *)title message:(NSString *)message {
+  Alert *alert = [[self alloc] init];
+  alert.title = title;
+  alert.message = message;
+  if (!kAlerts) {
+    kAlerts = [NSMutableDictionary dictionary];
+  }
+  kAlerts[alert.description] = alert;
+  return alert;
+}
+
++ (Alert *)presentError:(NSError *)error {
+  Alert *alert = [self alertForError:error];
+  [alert addButtonWithTitle:@"Okay"];
+  [alert show];
+  return alert;
+}
+
++ (Alert *)showAlertWithTitle:(NSString *)title message:(NSString *)message {
+  Alert *alert = [self alertWithTitle:title message:message];
+  [alert show];
+  return alert;
+}
+
+# pragma mark - Rendering
 
 - (void)hide {
   [self hide:nil];
 }
 
 - (void)hide:(id)sender {
-  [self removeFromSuperview];
+  [self.view dismissWithClickedButtonIndex:0 animated:NO];
 }
 
 - (void)show {
-  id<UIApplicationDelegate> app = [UIApplication sharedApplication].delegate;
-  UIWindow *window = app.window;
-  self.frame = window.bounds;
-  for (UIView *view in window.subviews) {
-    [view endEditing:YES];
+  NSString *cancelButton = @"Okay";
+  if (_buttons.count) {
+    NSDictionary *button = _buttons.firstObject;
+    cancelButton = button[kTitleKey];
   }
-  self.alpha = 0;
-  [window addSubview:self];
+  
+  self.view = [[UIAlertView alloc] initWithTitle:self.title
+                                              message:self.message
+                                             delegate:self
+                                    cancelButtonTitle:cancelButton
+                                    otherButtonTitles:nil];
+  for (NSInteger i = 1; i < _buttons.count; i++) {
+    NSDictionary *button = _buttons[i];
+    [self.view addButtonWithTitle:button[kTitleKey]];
+  }
+
+  self.view.alertViewStyle = self.alertViewStyle;
+
+  [self.view show];
 }
 
-- (void)willMoveToSuperview:(UIView *)newSuperview {
-  [super willMoveToSuperview:newSuperview];
+# pragma mark - Buttons
 
-  // Lay out container
-  if (!_containerView) {
-    _containerView = [[UIView alloc] init];
-    _containerView.backgroundColor = [UIColor clearColor];
-    _containerView.layer.backgroundColor = LIGHT.CGColor;
-    _containerView.layer.cornerRadius = 3.0f;
-    _containerView.layer.shadowColor = DARK.CGColor;
-    _containerView.layer.shadowOffset = CGSizeMake(0, 1.0f);
-    _containerView.layer.shadowOpacity = 0.5f;
-    _containerView.layer.shadowRadius = 2.0f;
-    [self addSubview:_containerView];
-  }
-
-  if (!_titleView) {
-    _titleView = [[UILabel alloc] init];
-    _titleView.adjustsFontSizeToFitWidth = YES;
-//    _titleView.backgroundColor = self.alertType == AlertError ? RED : GREEN;
-    _titleView.font = [UIFont boldSystemFontOfSize:17.0f];
-    _titleView.minimumScaleFactor = 0.5;
-    _titleView.numberOfLines = 0;
-    _titleView.lineBreakMode = NSLineBreakByWordWrapping;
-    _titleView.textAlignment = NSTextAlignmentLeft;
-    _titleView.textColor = DARK;
-    [_containerView addSubview:_titleView];
-  }
-
-  if (!_messageView) {
-    _messageView = [[UILabel alloc] init];
-    _messageView.lineBreakMode = NSLineBreakByWordWrapping;
-    _messageView.numberOfLines = 0;
-    [_containerView addSubview:_messageView];
-  }
-
-  CGSize containerSize = CGSizeMake(newSuperview.frame.size.width - SUPERVIEW_SPACING * 2, CGFLOAT_MAX);
-  CGFloat textWidth = containerSize.width - SUPERVIEW_SPACING * 2;
-  CGSize textSize = CGSizeMake(textWidth, CGFLOAT_MAX);
-
-  _titleView.text = self.title;
-  [_titleView sizeToFit];
-  CGSize idealTitleSize = [_titleView sizeThatFits:textSize];
-  idealTitleSize.height += SUPERVIEW_SPACING;
-  _titleView.frame = CGRectMake(SUPERVIEW_SPACING, SUPERVIEW_SPACING,
-                                idealTitleSize.width, idealTitleSize.height);
-
-  _messageView.text = self.message;
-  [_messageView sizeToFit];
-  CGSize idealMessageSize = [_messageView sizeThatFits:textSize];
-  _messageView.frame = CGRectMake(SUPERVIEW_SPACING,
-                                  CGRectGetMaxY(_titleView.frame) + SIBLING_SPACING,
-                                  textWidth, idealMessageSize.height);
-  _messageView.isAccessibilityElement = TRUE;
-  _messageView.accessibilityLabel = @"Alert Message";
-  _messageView.accessibilityValue = self.message;
-
-  CGFloat buttonWidth = containerSize.width / _buttons.count;
-  CGFloat buttonTop = CGRectGetMaxY(_messageView.frame) + SUPERVIEW_SPACING;
-
-  for (NSInteger i = 0; i < _buttons.count; i++) {
-    RoundedButton *button = _buttons[i];
-    [button sizeToFit];
-    button.frame = CGRectMake(i * buttonWidth, buttonTop, buttonWidth, button.frame.size.height);
-    if (!button.superview) {
-      [_containerView addSubview:button];
-    }
-    containerSize.height = CGRectGetMaxY(button.frame);
-  }
-
-  CGFloat containerTop = (newSuperview.frame.size.height - containerSize.height) / 2.0;
-  _containerView.frame = CGRectMake(SUPERVIEW_SPACING, containerTop, containerSize.width, containerSize.height);
+- (void)addButtonWithTitle:(NSString *)title {
+  [self addButtonWithTitle:title callback:nil];
 }
 
-- (void)didMoveToSuperview {
-  [super didMoveToSuperview];
-  [UIView animateWithDuration:0.3 animations:^{
-    self.alpha = 1;
-  }];
+- (void)addButtonWithTitle:(NSString *)title callback:(AlertCallback)callback {
+  NSMutableDictionary *button = [self buttonWithTitle:title];
+  
+  if (callback) {
+    button[kCallbackKey] = callback;
+  }
+  
+  [self.buttons addObject:button];
 }
 
-#pragma mark - Buttons
-
-- (void)addButtonWithText:(NSString *)text type:(AlertButtonType)type {
-  [self addButtonWithText:text type:type target:nil action:nil];
+- (void)addButtonWithTitle:(NSString *)title target:(id)target action:(SEL)action {
+  NSMutableDictionary *button = [self buttonWithTitle:title];
+  
+  if (target && action) {
+    button[kTargetKey] = target;
+    button[kSelectorKey] = NSStringFromSelector(action);
+  }
+  
+  [self.buttons addObject:button];
 }
 
-- (void)addButtonWithText:(NSString *)text type:(AlertButtonType)type target:(id)target action:(SEL)action {
+- (NSMutableDictionary *)buttonWithTitle:(NSString *)title {
+  NSMutableDictionary *button = [NSMutableDictionary dictionaryWithCapacity:3];
+  button[kTitleKey] = title;
+  return button;
+}
+
+- (NSMutableArray *)buttons {
   if (!_buttons) {
     _buttons = [NSMutableArray array];
   }
-
-  RoundedButton *button = [[RoundedButton alloc] initWithFrame:CGRectZero];
-  [button setTitle:text forState:UIControlStateNormal];
-  button.isAccessibilityElement = TRUE;
-  button.accessibilityLabel = text;
-  button.cornerRadius = 3.0f;
-  [button addTarget:self action:@selector(hide:) forControlEvents:UIControlEventTouchUpInside];
-  if (target && action) {
-    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
-  }
-
-  CGFloat red, green, blue;
-  red = 1.0;
-  green = 1.0;
-  blue = 1.0;
-  UIColor *backgroundColor;
-  switch (type) {
-    case AlertButtonDefault:
-      backgroundColor = BLUE;
-      break;
-    case AlertButtonError:
-      backgroundColor = BLUE;
-      break;
-    case AlertButtonOK:
-      backgroundColor = DARK_BLUE;
-      break;
-  }
-  button.backgroundColor = backgroundColor;
-
-  [_buttons addObject:button];
-  [self resetButtonIndices];
+  return _buttons;
 }
 
-- (void)resetButtonIndices {
-  for (NSInteger i = 0; i < _buttons.count; i++) {
-    RoundedButton *button = _buttons[i];
-    button.index = i;
-    button.siblings = _buttons.count;
+# pragma mark - Alert view delegate methods
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+  if (self.buttons.count) {
+    NSDictionary *button = [self.buttons objectAtIndex:buttonIndex];
+    if (button[kTargetKey]) {
+      id target = button[kTargetKey];
+      SEL action = NSSelectorFromString(button[kSelectorKey]);
+      [target performSelector:action withObject:alertView];
+    } else if (button[kCallbackKey]) {
+      AlertCallback callback = button[kCallbackKey];
+      callback();
+    }
   }
+  [kAlerts removeObjectForKey:self.description];
 }
 
 @end

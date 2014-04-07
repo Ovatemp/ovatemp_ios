@@ -8,11 +8,10 @@
 
 #import "TodayViewController.h"
 #import "Calendar.h"
-#import "UIViewController+ConnectionManager.h"
+#import "Cycle.h"
+#import "CycleViewController.h"
 #import "Day.h"
 #import "DayCell.h"
-#import "CycleViewController.h"
-#import "Cycle.h"
 
 @interface TodayViewController ()
 

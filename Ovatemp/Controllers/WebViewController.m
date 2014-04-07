@@ -8,9 +8,8 @@
 
 #import "WebViewController.h"
 
-#import "ConnectionManager.h"
+#import "Alert.h"
 
-#import "UIViewController+ConnectionManager.h"
 #import "UIViewController+Loading.h"
 
 @interface WebViewController ()
@@ -52,7 +51,7 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
   [self webViewDidFinishLoad:webView];
-  [self presentError:error];
+  [Alert presentError:error];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {

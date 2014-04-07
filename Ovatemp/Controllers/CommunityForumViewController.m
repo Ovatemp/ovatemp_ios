@@ -10,7 +10,6 @@
 
 #import "ConnectionManager.h"
 
-#import "UIViewController+ConnectionManager.h"
 #import "UIViewController+Loading.h"
 
 @interface CommunityForumViewController ()

@@ -7,13 +7,16 @@
 //
 
 #import "RootViewController.h"
+
+#import "Alert.h"
+#import "Calendar.h"
+#import "CalendarViewController.h"
+#import "OTDayNavigationController.h"
 #import "SessionViewController.h"
 #import "TodayViewController.h"
-#import "OTDayNavigationController.h"
-#import "CalendarViewController.h"
 #import "User.h"
+
 #import "UIViewController+Rotations.h"
-#import "Calendar.h"
 
 @interface RootViewController () {
   UITabBarController *mainViewController;
@@ -144,8 +147,10 @@
   }
 
   lastForcedLogout = [NSDate date];
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry for the trouble!" message:@"You've been logged you out of your account. Please log in again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-
+  
+  Alert *alert = [Alert alertWithTitle:@"Sorry for the trouble!"
+                               message:@"You've been logged you out of your account. Please log in again."];
+  
   [Configuration logOut];
   [self.presentedViewController dismissViewControllerAnimated:FALSE completion:^{
     [self launchAppropriateViewController];
