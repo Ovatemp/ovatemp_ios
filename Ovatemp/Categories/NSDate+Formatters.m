@@ -14,7 +14,7 @@ static NSDateFormatter *__monthDateFormatter;
 - (NSString *)shortMonth {
   if(!__monthDateFormatter){
     __monthDateFormatter = [[NSDateFormatter alloc] init];
-    [__monthDateFormatter setDateFormat:@"MMM d"];
+    [__monthDateFormatter setDateFormat:@"MMM"];
   }
 
   return [__monthDateFormatter stringFromDate:self];

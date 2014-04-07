@@ -184,19 +184,17 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
   NSDateComponents *todayComps = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:[NSDate date]];
   NSDate *today = [cal dateFromComponents:todayComps];
 
+  cell.dateLabel.text = [NSString stringWithFormat:@"%ld", (long)comps.day];
+
   // If the cell is the first day of the month
   if(comps.day == 1) {
-    cell.dateLabel.text = [date shortMonth];
-    //cell.leftBorder.hidden = FALSE;
+    cell.monthLabel.text = [date shortMonth];
   } else {
-    cell.dateLabel.text = [NSString stringWithFormat:@"%ld", (long)comps.day];
-    //cell.leftBorder.hidden = TRUE;
+    cell.monthLabel.text = nil;
   }
   cell.leftBorder.hidden = TRUE;
 
   // If the cell is today
-  [cell.dateLabel sizeToFit];
-
   if([today isEqualToDate:date]) {
     cell.dateLabel.backgroundColor = CALENDAR_TODAY_COLOR;
     [cell.dateLabel.layer setMasksToBounds:YES];
@@ -212,7 +210,6 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
   } else {
     cell.backgroundColor = [UIColor clearColor];
   }
-  cell.dateLabel.center = CGPointMake(cell.imageView.center.x, cell.dateLabel.center.y);
 
   [cell needsUpdateConstraints];
   return cell;

@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIView *leftBorder;
 @property (weak, nonatomic) IBOutlet UIView *fertilityWindowView;
+@property (weak, nonatomic) IBOutlet UILabel *monthLabel;
 
 @end
