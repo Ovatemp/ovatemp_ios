@@ -8,8 +8,14 @@
 
 #import "CoachingMenuViewController.h"
 #import "CoachingMenuCell.h"
+
+#import "LifestyleViewController.h"
+#import "UINavigationItem+IconLabel.h"
+
+#import "Configuration.h"
 #import "Day.h"
 #import "User.h"
+#import "WebViewController.h"
 
 @interface CoachingMenuViewController ()
 
@@ -29,22 +35,47 @@
     self.edgesForExtendedLayout=UIRectEdgeNone;
     self.extendedLayoutIncludesOpaqueBars=NO;
     self.automaticallyAdjustsScrollViewInsets=NO;
+
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backButton;
   }
   return self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-  [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];
-
+  [super viewWillAppear:animated];
+  self.navigationItem.hidesBackButton = YES;
   NSString *profileName = [[User current].fertilityProfileName capitalizedString];
-  self.profileLabel.text = profileName;
-  self.profileImageView.image = [UIImage imageNamed:profileName];
+  self.navigationItem.title = profileName;
+  self.navigationItem.titleIcon = [UIImage imageNamed:[profileName stringByAppendingString:@"Small"]];
+  self.navigationItem.iconLabel.textColor = DARK;
+
+  self.navigationController.navigationBarHidden = NO;
+  self.navigationController.navigationBar.barTintColor = LIGHT;
+  self.navigationController.navigationBar.tintColor = DARK;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  if([self.rowNames[indexPath.row] isEqualToString:@"Lifestyle"]) {
-    [self performSegueWithIdentifier:@"PushLifestyleMenu" sender:self];
+  UIViewController *viewController;
+  NSString *categoryName = self.rowNames[indexPath.row];
+
+  if ([self.rowNames[indexPath.row] isEqualToString:@"Lifestyle"]) {
+    viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LifestyleMenu"];
+  } else {
+    NSString *url = [Configuration sharedConfiguration].coachingContentUrls[categoryName];
+    viewController = [WebViewController withURL:url];
   }
+
+  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:nil action:nil];
+  viewController.navigationItem.backBarButtonItem = backButton;
+  viewController.navigationItem.title = categoryName;
+  viewController.navigationItem.titleIcon = [UIImage imageNamed:[categoryName stringByAppendingString:@"Small"]];
+  viewController.navigationItem.iconLabel.textColor = LIGHT;
+
+  UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+  self.navigationController.navigationBar.barTintColor = cell.backgroundColor;
+  self.navigationController.navigationBar.tintColor = LIGHT;
+  [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

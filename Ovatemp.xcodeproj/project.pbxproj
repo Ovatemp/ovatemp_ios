@@ -46,7 +46,6 @@
 		8333B98C18E0BD4200C64231 /* LifestyleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8333B98B18E0BD4200C64231 /* LifestyleViewController.m */; };
 		8333B98F18E0BD8600C64231 /* LifestyleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8333B98E18E0BD8600C64231 /* LifestyleCell.m */; };
 		8333B99218E0C25500C64231 /* example.html in Resources */ = {isa = PBXBuildFile; fileRef = 8333B99118E0C25500C64231 /* example.html */; };
-		8333B99518E0C36800C64231 /* CoachingWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8333B99418E0C36800C64231 /* CoachingWebViewController.m */; };
 		8333B9A118E0D1B800C64231 /* Acupressure.png in Resources */ = {isa = PBXBuildFile; fileRef = 8333B99918E0D1B800C64231 /* Acupressure.png */; };
 		8333B9A218E0D1B800C64231 /* Acupressure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8333B99A18E0D1B800C64231 /* Acupressure@2x.png */; };
 		8333B9A318E0D1B800C64231 /* Lifestyle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8333B99B18E0D1B800C64231 /* Lifestyle.png */; };
@@ -208,6 +207,15 @@
 		C35089AE18EDFF40004D6A2F /* TryingToAvoid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C35089A418EDFF40004D6A2F /* TryingToAvoid@2x.png */; };
 		C35089AF18EDFF40004D6A2F /* TryingToConceive.png in Resources */ = {isa = PBXBuildFile; fileRef = C35089A518EDFF40004D6A2F /* TryingToConceive.png */; };
 		C35089B018EDFF40004D6A2F /* TryingToConceive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C35089A618EDFF40004D6A2F /* TryingToConceive@2x.png */; };
+		C3513A4D18F72D4900E90517 /* UINavigationItem+IconLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C3513A4C18F72D4900E90517 /* UINavigationItem+IconLabel.m */; };
+		C3513A5218F7326C00E90517 /* AcupressureSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3513A4E18F7326C00E90517 /* AcupressureSmall@2x.png */; };
+		C3513A5318F7326C00E90517 /* LifestyleSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3513A4F18F7326C00E90517 /* LifestyleSmall@2x.png */; };
+		C3513A5418F7326C00E90517 /* MassageSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3513A5018F7326C00E90517 /* MassageSmall@2x.png */; };
+		C3513A5518F7326C00E90517 /* MeditationSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3513A5118F7326C00E90517 /* MeditationSmall@2x.png */; };
+		C3513A5A18F739A100E90517 /* DietSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3513A5618F739A100E90517 /* DietSmall@2x.png */; };
+		C3513A5B18F739A100E90517 /* ExerciseSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3513A5718F739A100E90517 /* ExerciseSmall@2x.png */; };
+		C3513A5C18F739A100E90517 /* HabitsSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3513A5818F739A100E90517 /* HabitsSmall@2x.png */; };
+		C3513A5D18F739A100E90517 /* SupplementsSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3513A5918F739A100E90517 /* SupplementsSmall@2x.png */; };
 		C35CF95518EF2DF6004D47EA /* NSObject+IsNull.m in Sources */ = {isa = PBXBuildFile; fileRef = C35CF95418EF2DF6004D47EA /* NSObject+IsNull.m */; };
 		C36C50FF189028190053A884 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C50FE189028190053A884 /* Foundation.framework */; };
 		C36C5101189028190053A884 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C5100189028190053A884 /* CoreGraphics.framework */; };
@@ -233,6 +241,8 @@
 		C3BF8FE01898452F00572F43 /* SessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FDF1898452F00572F43 /* SessionViewController.m */; };
 		C3BF8FE5189848CE00572F43 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FE4189848CE00572F43 /* BaseModel.m */; };
 		C3BF8FE818984AC200572F43 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FE718984AC200572F43 /* User.m */; };
+		C3C1766718F4DF5E0099DA42 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C1766518F4DF5E0099DA42 /* WebViewController.m */; };
+		C3C1766818F4DF5E0099DA42 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3C1766618F4DF5E0099DA42 /* WebViewController.xib */; };
 		C3D4F35418983B9C00CBB91A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D4F35318983B9C00CBB91A /* Constants.m */; };
 		C3E58C2C18D39AAC0026301A /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C2A18D39AAC0026301A /* LaunchImage.png */; };
 		C3E58C2D18D39AAC0026301A /* LaunchImageR4.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C2B18D39AAC0026301A /* LaunchImageR4.png */; };
@@ -244,6 +254,7 @@
 		C3E58C3B18D39B7B0026301A /* Icon60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C3318D39B7B0026301A /* Icon60@2x.png */; };
 		C3E58C3C18D39B7B0026301A /* Icon76.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C3418D39B7B0026301A /* Icon76.png */; };
 		C3E58C3D18D39B7B0026301A /* Icon76@x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C3518D39B7B0026301A /* Icon76@x.png */; };
+		C3EC024218F61DCD00AA38D5 /* IconLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EC024118F61DCD00AA38D5 /* IconLabel.m */; };
 		D18C51F548DA4E59B785DE16 /* libPods-Ovatemp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */; };
 /* End PBXBuildFile section */
 
@@ -314,8 +325,6 @@
 		8333B98D18E0BD8600C64231 /* LifestyleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifestyleCell.h; sourceTree = "<group>"; };
 		8333B98E18E0BD8600C64231 /* LifestyleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifestyleCell.m; sourceTree = "<group>"; };
 		8333B99118E0C25500C64231 /* example.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = example.html; sourceTree = "<group>"; };
-		8333B99318E0C36800C64231 /* CoachingWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoachingWebViewController.h; sourceTree = "<group>"; };
-		8333B99418E0C36800C64231 /* CoachingWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoachingWebViewController.m; sourceTree = "<group>"; };
 		8333B99918E0D1B800C64231 /* Acupressure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Acupressure.png; sourceTree = "<group>"; };
 		8333B99A18E0D1B800C64231 /* Acupressure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Acupressure@2x.png"; sourceTree = "<group>"; };
 		8333B99B18E0D1B800C64231 /* Lifestyle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lifestyle.png; sourceTree = "<group>"; };
@@ -513,6 +522,16 @@
 		C35089A418EDFF40004D6A2F /* TryingToAvoid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TryingToAvoid@2x.png"; sourceTree = "<group>"; };
 		C35089A518EDFF40004D6A2F /* TryingToConceive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TryingToConceive.png; sourceTree = "<group>"; };
 		C35089A618EDFF40004D6A2F /* TryingToConceive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TryingToConceive@2x.png"; sourceTree = "<group>"; };
+		C3513A4B18F72D4900E90517 /* UINavigationItem+IconLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+IconLabel.h"; sourceTree = "<group>"; };
+		C3513A4C18F72D4900E90517 /* UINavigationItem+IconLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+IconLabel.m"; sourceTree = "<group>"; };
+		C3513A4E18F7326C00E90517 /* AcupressureSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AcupressureSmall@2x.png"; sourceTree = "<group>"; };
+		C3513A4F18F7326C00E90517 /* LifestyleSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LifestyleSmall@2x.png"; sourceTree = "<group>"; };
+		C3513A5018F7326C00E90517 /* MassageSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MassageSmall@2x.png"; sourceTree = "<group>"; };
+		C3513A5118F7326C00E90517 /* MeditationSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MeditationSmall@2x.png"; sourceTree = "<group>"; };
+		C3513A5618F739A100E90517 /* DietSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DietSmall@2x.png"; sourceTree = "<group>"; };
+		C3513A5718F739A100E90517 /* ExerciseSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ExerciseSmall@2x.png"; sourceTree = "<group>"; };
+		C3513A5818F739A100E90517 /* HabitsSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HabitsSmall@2x.png"; sourceTree = "<group>"; };
+		C3513A5918F739A100E90517 /* SupplementsSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SupplementsSmall@2x.png"; sourceTree = "<group>"; };
 		C35CF95318EF2DF6004D47EA /* NSObject+IsNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+IsNull.h"; sourceTree = "<group>"; };
 		C35CF95418EF2DF6004D47EA /* NSObject+IsNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+IsNull.m"; sourceTree = "<group>"; };
 		C36C50FB189028190053A884 /* Ovatemp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ovatemp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -556,6 +575,9 @@
 		C3BF8FE4189848CE00572F43 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		C3BF8FE618984AC200572F43 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		C3BF8FE718984AC200572F43 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		C3C1766418F4DF5E0099DA42 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		C3C1766518F4DF5E0099DA42 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		C3C1766618F4DF5E0099DA42 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		C3D4F35218983B9C00CBB91A /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C3D4F35318983B9C00CBB91A /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		C3E58C2A18D39AAC0026301A /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
@@ -568,6 +590,8 @@
 		C3E58C3318D39B7B0026301A /* Icon60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon60@2x.png"; sourceTree = "<group>"; };
 		C3E58C3418D39B7B0026301A /* Icon76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon76.png; sourceTree = "<group>"; };
 		C3E58C3518D39B7B0026301A /* Icon76@x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon76@x.png"; sourceTree = "<group>"; };
+		C3EC024018F61DCD00AA38D5 /* IconLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconLabel.h; sourceTree = "<group>"; };
+		C3EC024118F61DCD00AA38D5 /* IconLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconLabel.m; sourceTree = "<group>"; };
 		DA450FC5E9904FF093E24AC1 /* Pods-Ovatemp.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.xcconfig"; path = "Pods/Pods-Ovatemp.xcconfig"; sourceTree = "<group>"; };
 		F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ovatemp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OvatempTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -633,8 +657,6 @@
 				8333B98518E0B77000C64231 /* CoachingMenuViewController.m */,
 				8333B98A18E0BD4200C64231 /* LifestyleViewController.h */,
 				8333B98B18E0BD4200C64231 /* LifestyleViewController.m */,
-				8333B99318E0C36800C64231 /* CoachingWebViewController.h */,
-				8333B99418E0C36800C64231 /* CoachingWebViewController.m */,
 				8333B9E318E2193700C64231 /* CoachingRootViewController.h */,
 				8333B9E418E2193700C64231 /* CoachingRootViewController.m */,
 				83DF333018E324DA002119CE /* QuizViewController.h */,
@@ -655,6 +677,10 @@
 				8333B99A18E0D1B800C64231 /* Acupressure@2x.png */,
 				8333B99B18E0D1B800C64231 /* Lifestyle.png */,
 				8333B99C18E0D1B800C64231 /* Lifestyle@2x.png */,
+				C3513A4E18F7326C00E90517 /* AcupressureSmall@2x.png */,
+				C3513A4F18F7326C00E90517 /* LifestyleSmall@2x.png */,
+				C3513A5018F7326C00E90517 /* MassageSmall@2x.png */,
+				C3513A5118F7326C00E90517 /* MeditationSmall@2x.png */,
 			);
 			path = Coaching;
 			sourceTree = "<group>";
@@ -670,6 +696,10 @@
 				8333B9B718E1BD7A00C64231 /* Habits@2x.png */,
 				8333B9B818E1BD7A00C64231 /* Supplements.png */,
 				8333B9B918E1BD7A00C64231 /* Supplements@2x.png */,
+				C3513A5618F739A100E90517 /* DietSmall@2x.png */,
+				C3513A5718F739A100E90517 /* ExerciseSmall@2x.png */,
+				C3513A5818F739A100E90517 /* HabitsSmall@2x.png */,
+				C3513A5918F739A100E90517 /* SupplementsSmall@2x.png */,
 			);
 			path = Lifestyle;
 			sourceTree = "<group>";
@@ -913,6 +943,8 @@
 				835512F318E3708700894728 /* UIViewController+Rotations.m */,
 				C35CF95318EF2DF6004D47EA /* NSObject+IsNull.h */,
 				C35CF95418EF2DF6004D47EA /* NSObject+IsNull.m */,
+				C3513A4B18F72D4900E90517 /* UINavigationItem+IconLabel.h */,
+				C3513A4C18F72D4900E90517 /* UINavigationItem+IconLabel.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -941,6 +973,9 @@
 				83C4D21018D9DFCA008C523C /* MoreAndSettings */,
 				C3066C6518983537003F8B84 /* TodayViewController.h */,
 				C3066C6618983537003F8B84 /* TodayViewController.m */,
+				C3C1766418F4DF5E0099DA42 /* WebViewController.h */,
+				C3C1766518F4DF5E0099DA42 /* WebViewController.m */,
+				C3C1766618F4DF5E0099DA42 /* WebViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1108,6 +1143,8 @@
 				C382F1D518F31CBE005E0CAF /* DayToggleButton.m */,
 				C382F1D618F31CBE005E0CAF /* GradientButton.h */,
 				C382F1D718F31CBE005E0CAF /* GradientButton.m */,
+				C3EC024018F61DCD00AA38D5 /* IconLabel.h */,
+				C3EC024118F61DCD00AA38D5 /* IconLabel.m */,
 				C382F1D818F31CBE005E0CAF /* OTScrollView.h */,
 				C382F1D918F31CBE005E0CAF /* OTScrollView.m */,
 				C382F1E118F323E5005E0CAF /* RoundedButton.h */,
@@ -1257,8 +1294,10 @@
 				8333B9C018E1BD7A00C64231 /* Supplements.png in Resources */,
 				83EB3EBE18AEA7D500EA91AC /* Eggwhite@2x.png in Resources */,
 				8333B9BC18E1BD7A00C64231 /* Exercise.png in Resources */,
+				C3C1766818F4DF5E0099DA42 /* WebViewController.xib in Resources */,
 				8333B9DD18E2156B00C64231 /* VentilateSmall.png in Resources */,
 				83EB3F0618AEA7D500EA91AC /* Heavy.png in Resources */,
+				C3513A5418F7326C00E90517 /* MassageSmall@2x.png in Resources */,
 				83EB3F0C18AEA7D500EA91AC /* Medium@2x.png in Resources */,
 				83D8CDA018E353F300D0AC72 /* Activate.png in Resources */,
 				832934C818B7D93200F6875B /* Amazing@2x.png in Resources */,
@@ -1280,6 +1319,7 @@
 				83A1FE0418D74C8E0030D331 /* CalendarViewController.xib in Resources */,
 				83EB3F3518AEA7D500EA91AC /* Lube.png in Resources */,
 				C3E58C2D18D39AAC0026301A /* LaunchImageR4.png in Resources */,
+				C3513A5218F7326C00E90517 /* AcupressureSmall@2x.png in Resources */,
 				83EB3F1D18AEA7D500EA91AC /* cal_selected.png in Resources */,
 				83EB3EC118AEA7D500EA91AC /* Sticky@2x.png in Resources */,
 				83EB3F3618AEA7D500EA91AC /* Lube@2x.png in Resources */,
@@ -1319,6 +1359,8 @@
 				83EB3EE018AEA7D500EA91AC /* Unprotected@2x.png in Resources */,
 				8333B9D418E2156B00C64231 /* EnergizeSmall.png in Resources */,
 				C3E58C3D18D39B7B0026301A /* Icon76@x.png in Resources */,
+				C3513A5B18F739A100E90517 /* ExerciseSmall@2x.png in Resources */,
+				C3513A5D18F739A100E90517 /* SupplementsSmall@2x.png in Resources */,
 				83EB3EBD18AEA7D500EA91AC /* Eggwhite.png in Resources */,
 				8333B9DE18E2156B00C64231 /* VentilateSmall@2x.png in Resources */,
 				83EB3F2018AEA7D500EA91AC /* cal_unselected@2x.png in Resources */,
@@ -1338,6 +1380,7 @@
 				83D8CDA218E353F300D0AC72 /* Energize.png in Resources */,
 				832934D018B7D93200F6875B /* DaySupplements@2x.png in Resources */,
 				832934CB18B7D93200F6875B /* Medicines.png in Resources */,
+				C3513A5318F7326C00E90517 /* LifestyleSmall@2x.png in Resources */,
 				83EB3F2E18AEA7D500EA91AC /* today_selected.png in Resources */,
 				8328B75F18AC003700DA7A5E /* FluidDayCell.xib in Resources */,
 				835AE58B18B7A51700FEAF98 /* CheckBox.png in Resources */,
@@ -1345,6 +1388,7 @@
 				C35089B018EDFF40004D6A2F /* TryingToConceive@2x.png in Resources */,
 				83EB3F0A18AEA7D500EA91AC /* Light@2x.png in Resources */,
 				83EB3F2318AEA7D500EA91AC /* coaching_unselect.png in Resources */,
+				C3513A5C18F739A100E90517 /* HabitsSmall@2x.png in Resources */,
 				C36C5109189028190053A884 /* InfoPlist.strings in Resources */,
 				83EB3F1E18AEA7D500EA91AC /* cal_selected@2x.png in Resources */,
 				83A1FDF818D35C820030D331 /* OvatempIcon.png in Resources */,
@@ -1361,6 +1405,7 @@
 				C3E58C3C18D39B7B0026301A /* Icon76.png in Resources */,
 				83A1FDF518D35C3B0030D331 /* SessionStoryboard.storyboard in Resources */,
 				83C6511618C91B7500F35CE5 /* ForwardArrow.png in Resources */,
+				C3513A5A18F739A100E90517 /* DietSmall@2x.png in Resources */,
 				83D8CDA918E353F300D0AC72 /* Refresh@2x.png in Resources */,
 				8333B9D818E2156B00C64231 /* NourishSmall@2x.png in Resources */,
 				83EB3F3718AEA7D500EA91AC /* Wet.png in Resources */,
@@ -1372,6 +1417,7 @@
 				83D8CDA418E353F300D0AC72 /* Hydrate.png in Resources */,
 				832934C718B7D93200F6875B /* Amazing.png in Resources */,
 				8333B98218E0A7C900C64231 /* CoachingStoryboard.storyboard in Resources */,
+				C3513A5518F7326C00E90517 /* MeditationSmall@2x.png in Resources */,
 				C35089A718EDFF40004D6A2F /* FertilityQuestions.png in Resources */,
 				8333B9BF18E1BD7A00C64231 /* Habits@2x.png in Resources */,
 				832934D118B7D93200F6875B /* Symptoms.png in Resources */,
@@ -1509,8 +1555,8 @@
 				C30B84D418E324260078EDE3 /* UIColor+Traits.m in Sources */,
 				83DF332F18E32269002119CE /* Question.m in Sources */,
 				834BD63518AD1519003B6808 /* MoreViewController.m in Sources */,
+				C3EC024218F61DCD00AA38D5 /* IconLabel.m in Sources */,
 				8333B98C18E0BD4200C64231 /* LifestyleViewController.m in Sources */,
-				8333B99518E0C36800C64231 /* CoachingWebViewController.m in Sources */,
 				830E351818D2506B00884F0E /* NSDate+Formatters.m in Sources */,
 				835512F418E3708700894728 /* UIViewController+Rotations.m in Sources */,
 				C382F1DC18F31CBE005E0CAF /* GradientButton.m in Sources */,
@@ -1521,6 +1567,7 @@
 				C31220241899BB8E0027C4B3 /* Configuration.m in Sources */,
 				8387261018CA12C800A3277C /* FertilityStatusView.m in Sources */,
 				83C4D21618D9E0F6008C523C /* Onboard2ViewController.m in Sources */,
+				C3513A4D18F72D4900E90517 /* UINavigationItem+IconLabel.m in Sources */,
 				834BD63B18AD29EA003B6808 /* Day.m in Sources */,
 				C30B84D118E3206A0078EDE3 /* UIViewController+Loading.m in Sources */,
 				8315E4A618C6300800DA935A /* CalendarCell.m in Sources */,
@@ -1549,6 +1596,7 @@
 				8328B75D18AC002800DA7A5E /* FluidDayCell.m in Sources */,
 				83A1FE0718D778F80030D331 /* UserProfile.m in Sources */,
 				836A6C9D18BF819E0068F1D2 /* CycleChartView.m in Sources */,
+				C3C1766718F4DF5E0099DA42 /* WebViewController.m in Sources */,
 				C350899A18EDFDA8004D6A2F /* CommunityForumViewController.m in Sources */,
 				C3D4F35418983B9C00CBB91A /* Constants.m in Sources */,
 				83A1FE0A18D78B2C0030D331 /* FAMSettingsViewController.m in Sources */,

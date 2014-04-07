@@ -16,6 +16,9 @@
 @implementation FertilityProfileIntroViewController
 
 - (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  self.navigationController.navigationBarHidden = NO;
+
   NSString *profileName = [[User current].fertilityProfileName capitalizedString];
   self.profileLabel.text = profileName;
   self.profileImageView.image = [UIImage imageNamed:profileName];

@@ -177,7 +177,7 @@
       backgroundColor = BLUE;
       break;
     case AlertButtonError:
-      backgroundColor = LIGHT;
+      backgroundColor = BLUE;
       break;
     case AlertButtonOK:
       backgroundColor = DARK_BLUE;

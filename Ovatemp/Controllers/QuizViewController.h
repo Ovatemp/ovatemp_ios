@@ -8,10 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class BorderedGradientButton, GradientButton;
+
 @interface QuizViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIButton *yesButton;
-@property (weak, nonatomic) IBOutlet UIButton *noButton;
+@property (weak, nonatomic) IBOutlet BorderedGradientButton *yesButton;
+@property (weak, nonatomic) IBOutlet BorderedGradientButton *noButton;
 @property (weak, nonatomic) IBOutlet UILabel *questionLabel;
+
+@property IBOutlet GradientButton *backButton;
+@property IBOutlet GradientButton *skipButton;
+
+- (IBAction)nextQuestion:(id)sender;
+- (IBAction)previousQuestion:(id)sender;
 
 @end

@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LifestyleViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
-
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
+@interface LifestyleViewController : UICollectionViewController
 
 @end

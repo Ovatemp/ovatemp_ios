@@ -10,6 +10,7 @@
 
 #import "CommunityForumViewController.h"
 
+#import "ConnectionManager.h"
 #import "UIColor+Traits.h"
 
 static NSString * const kCommunityForumCellIdentifier = @"CommunityForumCell";
@@ -98,21 +99,18 @@ static CGFloat const kDesaturateBy = 0.22;
   return 85.0f;
 }
 
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   _selectedForum = kCommunityForums[indexPath.row];
-  return indexPath;
- }
 
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-  CommunityForumViewController *forumViewController = [segue destinationViewController];
+  NSString *redirectURL = _selectedForum[kForumURL];
+  NSString *apiParams = [[ConnectionManager sharedConnectionManager] queryStringForDictionary:@{@"return_path": redirectURL}];
+  NSString *url = [API_URL stringByAppendingFormat:@"/community?%@", apiParams];
+  CommunityForumViewController *forumViewController = [CommunityForumViewController withURL:url];
   forumViewController.navigationItem.title = _selectedForum[kForumName];
-  forumViewController.URL = _selectedForum[kForumURL];
-  self.navigationController.navigationBar.barTintColor = [sender backgroundColor];
+  self.navigationController.navigationBar.barTintColor = [tableView cellForRowAtIndexPath:indexPath].backgroundColor;
   self.navigationController.navigationBar.tintColor = LIGHT;
   self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: LIGHT};
+  [self.navigationController pushViewController:forumViewController animated:YES];
 }
 
 @end

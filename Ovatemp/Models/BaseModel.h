@@ -15,6 +15,7 @@
 @property NSDate *createdAt;
 @property NSDate *updatedAt;
 
+@property (nonatomic, strong) NSSet *boolAttributes;
 @property (nonatomic, strong) NSSet *ignoredAttributes;
 
 + (NSMutableDictionary *)instances;

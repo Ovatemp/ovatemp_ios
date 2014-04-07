@@ -11,7 +11,10 @@
 
 @interface Question : BaseModel
 
+@property BOOL answer;
+@property BOOL answered;
 @property (nonatomic, strong) NSString *text;
+
 - (void)answer:(BOOL)yes success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure;
 
 @end

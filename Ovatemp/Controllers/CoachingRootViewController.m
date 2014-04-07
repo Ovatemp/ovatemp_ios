@@ -15,16 +15,16 @@
 
 @implementation CoachingRootViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
   [super viewDidLoad];
 
-  self.purchased = FALSE;
+  // TODO: Remove the 30 day free trial and update this
+  self.purchased = [[Configuration sharedConfiguration].hasSeenProfileIntroScreen boolValue];
   self.navigationController.delegate = self;
+  self.navigationController.navigationBarHidden = YES;
 }
 
 - (IBAction)buyTapped:(id)sender {
-  NSLog(@"buy tapped");
   _purchased = TRUE;
 
   [self pushAppropriateController];

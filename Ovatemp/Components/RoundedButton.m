@@ -79,15 +79,8 @@
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
-  if (_backgroundColor) {
-    if (!_backgroundPath) {
-      [self buildPath];
-    }
-    [_backgroundColor setStroke];
-    [_backgroundPath stroke];
-  } else {
-    [super drawRect:rect];
-  }
+  [_backgroundColor setStroke];
+  [_backgroundPath stroke];
 }
 
 @end

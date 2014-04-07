@@ -26,11 +26,13 @@
   [ignore addObjectsFromArray:[@"createdAt updatedAt category position" componentsSeparatedByString:@" "]];
 
   self.ignoredAttributes = [ignore copy];
+  self.boolAttributes = [NSSet setWithObjects:@"answer", nil];
 
   return self;
 }
 
 - (void)answer:(BOOL)yes success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure {
+  self.answered = YES;
   [ConnectionManager post:@"/answers"
                    params:@{@"answer":
                             @{
@@ -38,8 +40,9 @@
                               @"response": [NSNumber numberWithBool:yes],
                             }
                    }
-                   success:onSuccess
+                  success:onSuccess
                   failure:onFailure];
 }
+
 
 @end

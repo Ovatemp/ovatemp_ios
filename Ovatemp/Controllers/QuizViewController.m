@@ -16,8 +16,9 @@
 
 @interface QuizViewController ()
 
+@property NSInteger currentQuestion;
 @property (nonatomic, strong) Question *question;
-@property (nonatomic, strong) NSMutableArray *questionQueue;
+@property (nonatomic, strong) NSMutableArray *questions;
 
 @property BOOL loadedOnce;
 
@@ -29,7 +30,7 @@
 {
   [super viewDidLoad];
 
-  for(BorderedGradientButton *button in @[self.yesButton, self.noButton]) {
+  for (BorderedGradientButton *button in @[self.yesButton, self.noButton]) {
     button.clipsToBounds = YES;
 
     CGRect rect = button.frame;
@@ -39,18 +40,18 @@
     button.borderWidth = 2.0f;
   }
 
-  self.questionQueue = [[NSMutableArray alloc] initWithCapacity:10];
+  self.questions = [[NSMutableArray alloc] initWithCapacity:10];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-  if(self.questionQueue.count < 1) {
+  if(self.questions.count < 1) {
     self.questionLabel.text = @"Loading...";
     self.yesButton.hidden = TRUE;
     self.noButton.hidden = TRUE;
 
-    [self loadQuestions];
+    [self loadFertilityProfile];
   } else {
-    [self popQuestion];
+    [self loadNextQuestion];
   }
 }
 
@@ -61,32 +62,26 @@
 }
 
 - (void)loadQuestions {
-  [ConnectionManager get:@"/fertility_profiles"
+  [ConnectionManager get:@"/questions"
                   target:self
                  success:@selector(questionsLoaded:)
                  failure:@selector(questionsLoadFailed:)];
 }
 
 - (void)questionsLoaded:(NSDictionary *)response {
-  NSLog(@"LOADED");
   NSArray *questions = response[@"questions"];
   if(questions) {
-    for(NSDictionary *q in questions) {
-      [self.questionQueue addObject:[Question withAttributes:q]];
+    for (NSInteger i = 0; i < questions.count; i++) {
+      NSDictionary *attributes = questions[i];
+      Question *question = [Question withAttributes:attributes];
+      [self.questions addObject:question];
+      if (!question.answered && !isnormal(self.currentQuestion)) {
+        self.currentQuestion = i;
+      }
     }
   }
 
-  NSString *fertility_profile_name = response[@"fertility_profile_name"];
-  if(fertility_profile_name) {
-    [User current].fertilityProfileName = fertility_profile_name;
-  }
-
-  NSDictionary *coaching_content_urls = response[@"coaching_content_urls"];
-  if(coaching_content_urls) {
-    [Configuration sharedConfiguration].coachingContentUrls = coaching_content_urls;
-  }
-
-  [self popQuestion];
+  [self loadNextQuestion];
   [self stopLoading];
 }
 
@@ -104,26 +99,42 @@
   [alert show];
 }
 
-- (Question *)popQuestion {
-  if(self.questionQueue.count < 1) {
-    [self.navigationController popViewControllerAnimated:NO];
-    return nil;
+# pragma mark - Question navigation
+
+- (void)nextQuestion:(id)sender {
+  self.currentQuestion++;
+  [self loadNextQuestion];
+}
+
+- (void)previousQuestion:(id)sender {
+  self.currentQuestion--;
+  [self loadNextQuestion];
+}
+
+- (void)loadNextQuestion {
+  if (self.currentQuestion >= self.questions.count) {
+    [self loadFertilityProfile];
+    return;
+  } else if (self.currentQuestion < 0) {
+    self.currentQuestion = 0;
   }
 
   self.yesButton.hidden = FALSE;
   self.noButton.hidden = FALSE;
 
-  self.question = self.questionQueue[0];
-  [self.questionQueue removeObjectAtIndex:0];
-
-  return self.question;
+  self.question = self.questions[self.currentQuestion];
+  
+  self.backButton.hidden = self.currentQuestion == 0;
+  self.skipButton.hidden = !self.question.answered;
 }
 
 - (void)answerQuestion:(BOOL)yes {
   [self.question answer:yes success:^(id response){} failure:^(id error){
     // HANDLEERROR
+    NSLog(@"Could not answer question: %@", error);
   }];
-  [self popQuestion];
+  self.currentQuestion++;
+  [self loadNextQuestion];
 }
 
 - (void)setQuestion:(Question *)question {
@@ -142,6 +153,34 @@
 
 - (BOOL)shouldAutorotate {
   return FALSE;
+}
+
+# pragma mark - Loading fertility profile at end of quiz
+
+- (void)loadFertilityProfile {
+  [self startLoading];
+  [ConnectionManager get:@"/fertility_profiles" target:self success:@selector(fertilityProfileLoaded:) failure:@selector(fertilityProfileLoadFailed:)];
+}
+
+- (void)fertilityProfileLoaded:(id)response {
+  [self stopLoading];
+
+  NSString *fertility_profile_name = response[@"fertility_profile_name"];
+  if(fertility_profile_name) {
+    [User current].fertilityProfileName = fertility_profile_name;
+    NSDictionary *coaching_content_urls = response[@"coaching_content_urls"];
+    if(coaching_content_urls) {
+      [Configuration sharedConfiguration].coachingContentUrls = coaching_content_urls;
+    }
+    
+    [self.navigationController popViewControllerAnimated:NO];
+  } else {
+    [self loadQuestions];
+  }
+}
+
+- (void)fertilityProfileLoadFailed:(NSError *)error {
+  [self loadQuestions];
 }
 
 @end

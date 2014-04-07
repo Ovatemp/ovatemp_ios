@@ -16,6 +16,8 @@
 #define BLUE Color(37, 152, 158)
 #define DARK_BLUE Color(31, 108, 114)
 
+#define GREEN Color(133, 244, 221)
+
 #define COMMUNITY_BLUE Color(16, 85, 120)
 
 #define PURPLE Color(124, 65, 160)
@@ -27,7 +29,6 @@
 #define CALENDAR_FUTURE_COLOR Color(212, 212, 212)
 #define FERTILITY_WINDOW_COLOR ColorA(56, 192, 191, 0.16)
 #define CALENDAR_TODAY_COLOR Color(124, 65, 160)
-
 
 // API configuration
 #if TARGET_IPHONE_SIMULATOR
