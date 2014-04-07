@@ -8,6 +8,8 @@
 
 #import "Alert.h"
 
+#import "GradientButton.h"
+
 @interface Alert () {
   UIToolbar *_backgroundView;
   NSMutableArray *_buttons;
@@ -142,7 +144,7 @@
     _buttons = [NSMutableArray array];
   }
 
-  UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+  UIButton *button = [GradientButton buttonWithType:UIButtonTypeSystem];
   [button setTitle:text forState:UIControlStateNormal];
   button.isAccessibilityElement = TRUE;
   button.accessibilityLabel = text;

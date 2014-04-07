@@ -13,26 +13,11 @@
 @implementation UIViewController (ConnectionManager)
 
 - (void)presentError:(NSError *)error {
-  NSString *title = [error.userInfo objectForKey:@"error"];
-  if (!title) {
-    title = @"Something Went Wrong";
-  }
+  NSString *title = @"Something Went Wrong!";
 
-  NSString *message;
+  NSString *message = [error.userInfo objectForKey:@"error"];
 
-  NSDictionary *errors = [error.userInfo objectForKey:@"errors"];
-  if (errors && errors.count) {
-    NSMutableString *errorMessages = [NSMutableString string];
-    for (NSString *key in errors) {
-      if (errorMessages.length) {
-        [errorMessages appendString:@"\n"];
-      }
-      for (NSString *errorMessage in errors[key]) {
-        [errorMessages appendFormat:@"- %@ %@", key, errorMessage];
-      }
-    }
-    message = errorMessages;
-  } else {
+  if (!message) {
     message = error.localizedDescription;
   }
 

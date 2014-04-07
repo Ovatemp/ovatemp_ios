@@ -12,6 +12,12 @@
 
 @property (readonly) CGFloat brightness;
 
++ (UIColor *)gradientWithSize:(CGSize)size
+                    fromColor:(UIColor *)fromColor
+                startPosition:(CGPoint)startPosition
+                      toColor:(UIColor *)toColor
+                  endPosition:(CGPoint)endPosition;
+
 - (UIColor *)darkenBy:(CGFloat)amount;
 - (UIColor *)desaturateBy:(CGFloat)amount;
 

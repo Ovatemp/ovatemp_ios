@@ -10,6 +10,59 @@
 
 @implementation UIColor (Traits)
 
+static NSMutableDictionary *__cachedGradients;
+
++ (UIColor *)gradientWithSize:(CGSize)size
+                     fromColor:(UIColor *)fromColor
+                 startPosition:(CGPoint)startPosition
+                       toColor:(UIColor *)toColor
+                   endPosition:(CGPoint)endPosition {
+  if (!__cachedGradients) {
+    __cachedGradients = [NSMutableDictionary dictionary];
+  }
+
+  // Determine how we'll cache this gradient
+  NSString *gradientKey = [NSString stringWithFormat:@"%@%@%@%@%@", NSStringFromCGSize(size), NSStringFromCGPoint(startPosition), NSStringFromCGPoint(endPosition), fromColor.description, toColor.description];
+  UIColor *color = [__cachedGradients objectForKey:gradientKey];
+
+  // Build the gradient if it doesn't exist yet
+  if (!color) {
+    color = [self makeGradientWithSize:size
+                             fromColor:fromColor
+                         startPosition:startPosition
+                               toColor:toColor
+                           endPosition:endPosition];
+
+    if (color) {
+      // Cache the gradient for next time
+      [__cachedGradients setObject:color forKey:gradientKey];
+    }
+  }
+  return color;
+}
+
++ (UIColor *)makeGradientWithSize:(CGSize)size
+                        fromColor:(UIColor *)fromColor
+                    startPosition:(CGPoint)startPosition
+                          toColor:(UIColor *)toColor
+                      endPosition:(CGPoint)endPosition {
+  UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+  CGContextRef context = UIGraphicsGetCurrentContext();
+  CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
+
+  NSArray *colors = @[(id)fromColor.CGColor, (id)toColor.CGColor];
+  CGGradientRef gradient = CGGradientCreateWithColors(colorspace, (CFArrayRef)colors, NULL);
+  CGContextDrawLinearGradient(context, gradient, startPosition, endPosition, 0);
+
+  UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+
+  CGGradientRelease(gradient);
+  CGColorSpaceRelease(colorspace);
+  UIGraphicsEndImageContext();
+
+  return [UIColor colorWithPatternImage:image];
+}
+
 - (CGFloat)brightness {
   CGFloat hue, saturation, brightness, alpha;
   [self reliablyGetHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];

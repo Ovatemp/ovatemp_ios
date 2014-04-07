@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		830E351818D2506B00884F0E /* NSDate+Formatters.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E351718D2506B00884F0E /* NSDate+Formatters.m */; };
-		8315E49B18C13F9B00DA935A /* OTScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49A18C13F9B00DA935A /* OTScrollView.m */; };
 		8315E49E18C521A800DA935A /* SessionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49D18C521A800DA935A /* SessionSpec.m */; };
 		8315E4A618C6300800DA935A /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E4A518C6300800DA935A /* CalendarCell.m */; };
 		8328B75718ABFD6D00DA7A5E /* TemperatureDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8328B75618ABFD6D00DA7A5E /* TemperatureDayCell.xib */; };
@@ -81,7 +80,6 @@
 		834BD63218AD1363003B6808 /* MoreStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */; };
 		834BD63518AD1519003B6808 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63418AD1519003B6808 /* MoreViewController.m */; };
 		834BD63B18AD29EA003B6808 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63A18AD29EA003B6808 /* Day.m */; };
-		834BD64118AD6590003B6808 /* DayToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD64018AD6590003B6808 /* DayToggleButton.m */; };
 		83548FF218BD24450016B53A /* TodaySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 83548FF118BD24450016B53A /* TodaySpec.m */; };
 		835512F418E3708700894728 /* UIViewController+Rotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 835512F318E3708700894728 /* UIViewController+Rotations.m */; };
 		835512F718E4C0BD00894728 /* FertilityProfileIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835512F618E4C0BD00894728 /* FertilityProfileIntroViewController.m */; };
@@ -192,7 +190,6 @@
 		9C4D13D86AB546AD9A46ADE4 /* libPods-OvatempTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */; };
 		C3066C6818983537003F8B84 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3066C6618983537003F8B84 /* TodayViewController.m */; };
 		C308706818980A4900DC4364 /* UIViewController+Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = C308706718980A4900DC4364 /* UIViewController+Alerts.m */; };
-		C308706B18980B1A00DC4364 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = C308706A18980B1A00DC4364 /* Alert.m */; };
 		C30B84D118E3206A0078EDE3 /* UIViewController+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = C30B84D018E3206A0078EDE3 /* UIViewController+Loading.m */; };
 		C30B84D418E324260078EDE3 /* UIColor+Traits.m in Sources */ = {isa = PBXBuildFile; fileRef = C30B84D318E324260078EDE3 /* UIColor+Traits.m */; };
 		C31220241899BB8E0027C4B3 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = C31220231899BB8E0027C4B3 /* Configuration.m */; };
@@ -219,6 +216,10 @@
 		C36C510B189028190053A884 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C36C510A189028190053A884 /* main.m */; };
 		C36C510F189028190053A884 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C36C510E189028190053A884 /* AppDelegate.m */; };
 		C36C5111189028190053A884 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C36C5110189028190053A884 /* Images.xcassets */; };
+		C382F1DA18F31CBE005E0CAF /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = C382F1D318F31CBE005E0CAF /* Alert.m */; };
+		C382F1DB18F31CBE005E0CAF /* DayToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C382F1D518F31CBE005E0CAF /* DayToggleButton.m */; };
+		C382F1DC18F31CBE005E0CAF /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C382F1D718F31CBE005E0CAF /* GradientButton.m */; };
+		C382F1DD18F31CBE005E0CAF /* OTScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C382F1D918F31CBE005E0CAF /* OTScrollView.m */; };
 		C38C2D5B18EF4F0700449F89 /* DelegatingNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C38C2D5A18EF4F0700449F89 /* DelegatingNavigationViewController.m */; };
 		C3BF8FBF1898409C00572F43 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BF8FBE1898409C00572F43 /* XCTest.framework */; };
 		C3BF8FC01898409C00572F43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C50FE189028190053A884 /* Foundation.framework */; };
@@ -258,8 +259,6 @@
 		803928D684F54DB4A5F86E42 /* Pods-OvatempTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.xcconfig"; path = "Pods/Pods-OvatempTests.xcconfig"; sourceTree = "<group>"; };
 		830E351618D2506B00884F0E /* NSDate+Formatters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Formatters.h"; sourceTree = "<group>"; };
 		830E351718D2506B00884F0E /* NSDate+Formatters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Formatters.m"; sourceTree = "<group>"; };
-		8315E49918C13F9B00DA935A /* OTScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTScrollView.h; sourceTree = "<group>"; };
-		8315E49A18C13F9B00DA935A /* OTScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTScrollView.m; sourceTree = "<group>"; };
 		8315E49D18C521A800DA935A /* SessionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionSpec.m; sourceTree = "<group>"; };
 		8315E4A418C6300800DA935A /* CalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarCell.h; sourceTree = "<group>"; };
 		8315E4A518C6300800DA935A /* CalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarCell.m; sourceTree = "<group>"; };
@@ -351,8 +350,6 @@
 		834BD63418AD1519003B6808 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		834BD63918AD29EA003B6808 /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
 		834BD63A18AD29EA003B6808 /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
-		834BD63F18AD6590003B6808 /* DayToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayToggleButton.h; sourceTree = "<group>"; };
-		834BD64018AD6590003B6808 /* DayToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayToggleButton.m; sourceTree = "<group>"; };
 		83548FF118BD24450016B53A /* TodaySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodaySpec.m; sourceTree = "<group>"; };
 		835512F218E3708700894728 /* UIViewController+Rotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Rotations.h"; sourceTree = "<group>"; };
 		835512F318E3708700894728 /* UIViewController+Rotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Rotations.m"; sourceTree = "<group>"; };
@@ -489,8 +486,6 @@
 		C3066C6618983537003F8B84 /* TodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		C308706618980A4900DC4364 /* UIViewController+Alerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alerts.h"; sourceTree = "<group>"; };
 		C308706718980A4900DC4364 /* UIViewController+Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alerts.m"; sourceTree = "<group>"; };
-		C308706918980B1A00DC4364 /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
-		C308706A18980B1A00DC4364 /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
 		C30B84CF18E3206A0078EDE3 /* UIViewController+Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Loading.h"; sourceTree = "<group>"; };
 		C30B84D018E3206A0078EDE3 /* UIViewController+Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Loading.m"; sourceTree = "<group>"; };
 		C30B84D218E324260078EDE3 /* UIColor+Traits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Traits.h"; sourceTree = "<group>"; };
@@ -529,6 +524,14 @@
 		C36C510D189028190053A884 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C36C510E189028190053A884 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C36C5110189028190053A884 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C382F1D218F31CBE005E0CAF /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
+		C382F1D318F31CBE005E0CAF /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
+		C382F1D418F31CBE005E0CAF /* DayToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayToggleButton.h; sourceTree = "<group>"; };
+		C382F1D518F31CBE005E0CAF /* DayToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayToggleButton.m; sourceTree = "<group>"; };
+		C382F1D618F31CBE005E0CAF /* GradientButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientButton.h; sourceTree = "<group>"; };
+		C382F1D718F31CBE005E0CAF /* GradientButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientButton.m; sourceTree = "<group>"; };
+		C382F1D818F31CBE005E0CAF /* OTScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTScrollView.h; sourceTree = "<group>"; };
+		C382F1D918F31CBE005E0CAF /* OTScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTScrollView.m; sourceTree = "<group>"; };
 		C38C2D5918EF4F0700449F89 /* DelegatingNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegatingNavigationViewController.h; sourceTree = "<group>"; };
 		C38C2D5A18EF4F0700449F89 /* DelegatingNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegatingNavigationViewController.m; sourceTree = "<group>"; };
 		C3BF8FBD1898409C00572F43 /* OvatempTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OvatempTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -936,19 +939,6 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		C308705C18980A2E00DC4364 /* Controls */ = {
-			isa = PBXGroup;
-			children = (
-				C308706918980B1A00DC4364 /* Alert.h */,
-				C308706A18980B1A00DC4364 /* Alert.m */,
-				834BD63F18AD6590003B6808 /* DayToggleButton.h */,
-				834BD64018AD6590003B6808 /* DayToggleButton.m */,
-				8315E49918C13F9B00DA935A /* OTScrollView.h */,
-				8315E49A18C13F9B00DA935A /* OTScrollView.m */,
-			);
-			path = Controls;
-			sourceTree = "<group>";
-		};
 		C308705E18980A2E00DC4364 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1076,9 +1066,9 @@
 				839A345918ABCB91007CD657 /* Shared */,
 				C308705918980A2E00DC4364 /* Categories */,
 				C308705A18980A2E00DC4364 /* Controllers */,
-				C308705C18980A2E00DC4364 /* Controls */,
 				C308705E18980A2E00DC4364 /* Models */,
 				C308706018980A2E00DC4364 /* Views */,
+				C382F1D118F31CBE005E0CAF /* Components */,
 				C36C510D189028190053A884 /* AppDelegate.h */,
 				C36C510E189028190053A884 /* AppDelegate.m */,
 				C3D4F35218983B9C00CBB91A /* Constants.h */,
@@ -1099,6 +1089,21 @@
 				8333B99118E0C25500C64231 /* example.html */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C382F1D118F31CBE005E0CAF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C382F1D218F31CBE005E0CAF /* Alert.h */,
+				C382F1D318F31CBE005E0CAF /* Alert.m */,
+				C382F1D418F31CBE005E0CAF /* DayToggleButton.h */,
+				C382F1D518F31CBE005E0CAF /* DayToggleButton.m */,
+				C382F1D618F31CBE005E0CAF /* GradientButton.h */,
+				C382F1D718F31CBE005E0CAF /* GradientButton.m */,
+				C382F1D818F31CBE005E0CAF /* OTScrollView.h */,
+				C382F1D918F31CBE005E0CAF /* OTScrollView.m */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		C3BF8FC21898409C00572F43 /* OvatempTests */ = {
@@ -1496,11 +1501,10 @@
 				8333B99518E0C36800C64231 /* CoachingWebViewController.m in Sources */,
 				830E351818D2506B00884F0E /* NSDate+Formatters.m in Sources */,
 				835512F418E3708700894728 /* UIViewController+Rotations.m in Sources */,
+				C382F1DC18F31CBE005E0CAF /* GradientButton.m in Sources */,
 				C32C4A8F18985A7800B05009 /* ConnectionManager.m in Sources */,
 				C36C510F189028190053A884 /* AppDelegate.m in Sources */,
 				8329353B18B7FD2600F6875B /* Symptom.m in Sources */,
-				834BD64118AD6590003B6808 /* DayToggleButton.m in Sources */,
-				C308706B18980B1A00DC4364 /* Alert.m in Sources */,
 				C350899718EDFD74004D6A2F /* CommunityForumsViewController.m in Sources */,
 				C31220241899BB8E0027C4B3 /* Configuration.m in Sources */,
 				8387261018CA12C800A3277C /* FertilityStatusView.m in Sources */,
@@ -1513,8 +1517,11 @@
 				C36C510B189028190053A884 /* main.m in Sources */,
 				8328B77318AC00CD00DA7A5E /* SymptomsDayCell.m in Sources */,
 				C35CF95518EF2DF6004D47EA /* NSObject+IsNull.m in Sources */,
+				C382F1DB18F31CBE005E0CAF /* DayToggleButton.m in Sources */,
 				C32C4A8C18985A4D00B05009 /* UIViewController+ConnectionManager.m in Sources */,
+				C382F1DD18F31CBE005E0CAF /* OTScrollView.m in Sources */,
 				8329353518B7F85B00F6875B /* Supplement.m in Sources */,
+				C382F1DA18F31CBE005E0CAF /* Alert.m in Sources */,
 				83C6510F18C9015000F35CE5 /* NSDate+CalendarOps.m in Sources */,
 				8328B77618AC034900DA7A5E /* DayCell.m in Sources */,
 				8329353818B7FD1700F6875B /* Medicine.m in Sources */,
@@ -1530,7 +1537,6 @@
 				8328B75D18AC002800DA7A5E /* FluidDayCell.m in Sources */,
 				83A1FE0718D778F80030D331 /* UserProfile.m in Sources */,
 				836A6C9D18BF819E0068F1D2 /* CycleChartView.m in Sources */,
-				8315E49B18C13F9B00DA935A /* OTScrollView.m in Sources */,
 				C350899A18EDFDA8004D6A2F /* CommunityForumViewController.m in Sources */,
 				C3D4F35418983B9C00CBB91A /* Constants.m in Sources */,
 				83A1FE0A18D78B2C0030D331 /* FAMSettingsViewController.m in Sources */,

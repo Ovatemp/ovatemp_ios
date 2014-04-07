@@ -21,6 +21,9 @@
 #define PURPLE Color(124, 65, 160)
 #define DAY_EDIT_PAGE_COLOR Color(56, 62, 62)
 
+#define GRADIENT_BLUE Color(53, 18, 215)
+#define GRADIENT_PINK Color(249, 0, 91)
+
 #define CALENDAR_FUTURE_COLOR Color(212, 212, 212)
 #define FERTILITY_WINDOW_COLOR ColorA(56, 192, 191, 0.16)
 #define CALENDAR_TODAY_COLOR Color(124, 65, 160)
