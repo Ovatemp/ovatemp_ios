@@ -12,11 +12,12 @@
 #define DARK Color(56, 62, 62)
 #define LIGHT Color(255, 255, 255)
 
-#define LIGHT_BLUE Color(87, 198, 191)
 #define BLUE Color(37, 152, 158)
+#define LIGHT_BLUE Color(87, 198, 191)
 #define DARK_BLUE Color(31, 108, 114)
 
 #define GREEN Color(133, 244, 221)
+#define GREY Color(127, 167, 180)
 
 #define COMMUNITY_BLUE Color(16, 85, 120)
 

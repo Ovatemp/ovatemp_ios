@@ -35,6 +35,8 @@
   UIView *content = self.contentViewController.view;
   content.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
 
+  self.dayNavigationView.backgroundColor = GREY;
+  
   // Adopt the content view controller
   [self.contentView addSubview:self.contentViewController.view];
   [self addChildViewController:self.contentViewController];
