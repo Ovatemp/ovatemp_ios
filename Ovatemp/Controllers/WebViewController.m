@@ -26,6 +26,11 @@
   return controller;
 }
 
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  self.webView.delegate = self;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [self startLoading];
