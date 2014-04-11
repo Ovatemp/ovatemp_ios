@@ -52,7 +52,7 @@
                             }
                    target:self
                   success:@selector(signedUp:)
-                  failure:@selector(presentError:)];
+                  failure:@selector(signupFailed:)];
 }
 
 - (IBAction)sessionLogin:(id)sender {
@@ -63,7 +63,7 @@
                             }
                    target:self
                   success:@selector(loggedIn:)
-                  failure:@selector(presentError:)
+                  failure:@selector(loginFailed:)
    ];
 }
 
@@ -102,10 +102,18 @@
   [self dismissViewControllerAnimated:TRUE completion:nil];
 }
 
+- (void)loginFailed:(NSError *)error {
+  [Alert presentError:error];
+}
+
 - (void)signedUp:(NSDictionary *)response {
   [Configuration loggedInWithResponse:response];
 
   [self performSegueWithIdentifier:@"SignUpToProfile1" sender:nil];
+}
+
+- (void)signupFailed:(NSError *)error {
+  [Alert presentError:error];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
