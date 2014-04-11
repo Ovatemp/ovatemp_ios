@@ -18,7 +18,15 @@
 
 - (void)viewDidLoad {
   self.dateOfBirthPicker = [self useDatePickerForTextField:self.dateOfBirthTextField];
-  self.dateOfBirthPicker.maximumDate = [NSDate date];
+  NSInteger minAgeInYears = 12;
+  NSInteger day = 60 * 60 * 24;
+  NSInteger year = day * 365;
+  NSDate *maximumDate = [NSDate dateWithTimeIntervalSinceNow:-minAgeInYears * year];
+  NSDate *minimumDate = [NSDate dateWithTimeIntervalSinceNow:-100 * year];
+
+  self.dateOfBirthPicker.maximumDate = maximumDate;
+  self.dateOfBirthPicker.minimumDate = minimumDate;
+
   [self.dateOfBirthPicker addTarget:self
                            action:@selector(dateOfBirthPickerChanged:)
                  forControlEvents:UIControlEventValueChanged];
