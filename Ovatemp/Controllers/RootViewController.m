@@ -34,7 +34,6 @@
   [super viewDidLoad];
 
   // Configure standard UI appearance
-  [self configureAlertAppearance];
   [self configureTabBarAppearance];
 
   [[NSNotificationCenter defaultCenter] addObserver:self
@@ -189,10 +188,6 @@
   [[UITabBar appearance] setBackgroundColor:LIGHT];
   [[UITabBar appearance] setTintColor:PURPLE];
   [[UITabBar appearance] setSelectedImageTintColor:PURPLE];
-}
-
-- (void)configureAlertAppearance {
-  //  [[UIButton appearanceWhenContainedIn:[Alert class], [UIView class], nil] setBackgroundColor:DARK_BLUE];
 }
 
 @end

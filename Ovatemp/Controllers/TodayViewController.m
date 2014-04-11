@@ -24,29 +24,25 @@
 
 @implementation TodayViewController
 
-#define kFertilityRowHeight 28;
-#define kDayRowHeight 139;
-
 #pragma mark - Setup
 
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  UITableView *table = (UITableView *)self.view;
-  table.isAccessibilityElement = TRUE;
-  table.accessibilityIdentifier = @"Checklist";
+  self.tableView.isAccessibilityElement = TRUE;
+  self.tableView.accessibilityIdentifier = @"Checklist";
 
   // Align separators left
-  table.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+  self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
 
   // Don't show separators after the last item
-  table.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+  self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
   self.rowIdentifiers = @[@"TemperatureDayCell", @"PeriodDayCell", @"FluidDayCell", @"IntercourseDayCell", @"SymptomsDayCell", @"SupplementsDayCell", @"SignsDayCell"];
   self.rowExemplars = [NSMutableArray array];
 
   for(NSString *name in self.rowIdentifiers) {
-    [table registerNib:[UINib nibWithNibName:name bundle:nil] forCellReuseIdentifier:name];
+    [self.tableView registerNib:[UINib nibWithNibName:name bundle:nil] forCellReuseIdentifier:name];
     UIView *cellView = [[[NSBundle mainBundle] loadNibNamed:name owner:self options:nil] objectAtIndex:0];
     [self.rowExemplars addObject:cellView];
   }
@@ -119,7 +115,7 @@
 }
 
 - (void)dayChanged {
-  [(UITableView*)self.view reloadData];
+  [self.tableView reloadData];
   [self.cycleViewController setCycle:self.day.cycle];
 }
 
