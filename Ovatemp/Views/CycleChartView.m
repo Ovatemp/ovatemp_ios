@@ -84,7 +84,7 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
   CGFloat leftPaddingPoints = 2.5;
   CGFloat rightPaddingPoints = 1;
 
-  daysToShow = 30;
+  daysToShow = MAX(30, self.cycle.days.count);
   pointWidth = canvasWidth / ((CGFloat)daysToShow + leftPaddingPoints + rightPaddingPoints);
 
   leftPadding = leftPaddingPoints * pointWidth;
@@ -102,26 +102,20 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 //    this gets drawn into a UIImageView.
 - (UIImage *)drawChart:(CGSize)size {
   NSArray *days = self.cycle.days;
+  CGFloat minValue = 96, maxValue = 100;
 
-  CGFloat minValue = 400, maxValue = 0, val;
   for(Day *day in days) {
     if(![day temperature]) continue;
-
-    val = [day.temperature floatValue];
-    if(val < minValue) {
-      minValue = val;
-    }
-    if(val > maxValue) {
-      maxValue = val;
-    }
+    
+    CGFloat temperature = [day.temperature floatValue];
+    if (temperature == 0) continue;
+    
+    minValue = MIN(minValue, temperature);
+    maxValue = MAX(maxValue, temperature);
   }
+
   maxValue = ceil(maxValue);
   minValue = floor(minValue);
-
-  if(days.count == 0) {
-    minValue = 96;
-    maxValue = 100;
-  }
 
   UIGraphicsBeginImageContextWithOptions(size, YES, 0);   // 0 means let iOS deal with scale for you (for Retina)
   CGContextRef context = UIGraphicsGetCurrentContext();
@@ -172,14 +166,8 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
   CGFloat ratio = (minValue - minValue) / tempRange;
   lineY = (1 - ratio) * height + topPadding;
 
-  if (!isnormal(lineY)) {
-    NSLog(@"lineY is invalid\nminValue: %f\nratio: %f\nheight: %f\ntopPadding: %f",
-          minValue, ratio, height, topPadding);
-  } else {
-    [path moveToPoint:CGPointMake(leftPadding, lineY)];
-    NSLog(@"%f - %f (%i)", canvasWidth - rightPadding, lineY, isnormal(lineY));
-    [path addLineToPoint:CGPointMake(canvasWidth - rightPadding, lineY)];
-  }
+  [path moveToPoint:CGPointMake(leftPadding, lineY)];
+  [path addLineToPoint:CGPointMake(canvasWidth - rightPadding, lineY)];
 
   [path stroke];
   [path removeAllPoints];
@@ -199,13 +187,8 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
   ratio = (lowValue - minValue) / tempRange;
   lineY = (1 - ratio) * height + topPadding;
 
-  if (!isnormal(lineY)) {
-    NSLog(@"lineY is invalid\nlowValue: %f\nminValue: %f\nratio: %f\nheight: %f\ntopPadding: %f",
-          lowValue, minValue, ratio, height, topPadding);
-  } else {
-    [path moveToPoint:CGPointMake(leftPadding, lineY)];
-    [path addLineToPoint:CGPointMake(canvasWidth - rightPadding, lineY)];
-  }
+  [path moveToPoint:CGPointMake(leftPadding, lineY)];
+  [path addLineToPoint:CGPointMake(canvasWidth - rightPadding, lineY)];
   
 
   [path stroke];
@@ -223,13 +206,8 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
   ratio = (highValue - minValue) / tempRange;
   lineY = (1 - ratio) * height + topPadding;
 
-  if (!isnormal(lineY)) {
-    NSLog(@"lineY is invalid\nhighValue: %f\nminValue: %f\nratio: %f\nheight: %f\ntopPadding: %f",
-          highValue, minValue, ratio, height, topPadding);
-  } else {
-    [path moveToPoint:CGPointMake(leftPadding, lineY)];
-    [path addLineToPoint:CGPointMake(canvasWidth - rightPadding, lineY)];
-  }
+  [path moveToPoint:CGPointMake(leftPadding, lineY)];
+  [path addLineToPoint:CGPointMake(canvasWidth - rightPadding, lineY)];
 
   [path stroke];
   [path removeAllPoints];
