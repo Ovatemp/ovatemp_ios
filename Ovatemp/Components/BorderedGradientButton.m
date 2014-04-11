@@ -41,10 +41,7 @@
 
 - (void)buildBorderPath {
   CGRect bounds = self.bounds;
-  bounds.origin.x += 0.5;
-  bounds.origin.y += 0.5;
-  bounds.size.width -= 2.5;
-  bounds.size.height -= 2.5;
+  bounds = CGRectInset(bounds, self.borderWidth + 0.5, self.borderWidth + 0.5);
   borderPath = [UIBezierPath bezierPathWithRoundedRect:bounds cornerRadius:self.cornerRadius];
   borderPath.lineWidth = self.borderWidth;
 }
@@ -73,8 +70,17 @@
 - (void)drawRect:(CGRect)rect {
   [super drawRect:rect];
 
-  [gradient setStroke];
-  [borderPath stroke];
+  if (active) {
+    [gradient setFill];
+    [borderPath fill];
+  } else {
+    [gradient setStroke];
+    [borderPath stroke];
+  }
+}
+
+- (void)setHighlightedTextColor {
+  self.titleLabel.textColor = LIGHT;
 }
 
 @end

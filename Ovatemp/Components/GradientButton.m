@@ -67,13 +67,17 @@ static UIColor *kPressedEndColor;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+  active = YES;
   [self setHighlightedTextColor];
   [super touchesBegan:touches withEvent:event];
+  [self setNeedsDisplay];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+  active = NO;
   [self setTextColor];
   [super touchesEnded:touches withEvent:event];
+  [self setNeedsDisplay];
 }
 
 # pragma mark - Drawing gradient text colors

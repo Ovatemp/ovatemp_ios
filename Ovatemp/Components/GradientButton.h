@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GradientButton : UIButton
+@interface GradientButton : UIButton {
+  BOOL active;
+}
 
 - (void)configureDefaults;
 
