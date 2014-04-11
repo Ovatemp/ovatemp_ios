@@ -143,7 +143,7 @@ static NSString * const kTitleKey = @"title";
     if (button[kTargetKey]) {
       id target = button[kTargetKey];
       SEL action = NSSelectorFromString(button[kSelectorKey]);
-      [target performSelector:action withObject:alertView];
+      [target performSelectorOnMainThread:action withObject:alertView waitUntilDone:YES];
     } else if (button[kCallbackKey]) {
       AlertCallback callback = button[kCallbackKey];
       callback();
