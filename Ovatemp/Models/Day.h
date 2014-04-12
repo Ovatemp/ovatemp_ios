@@ -16,15 +16,6 @@
 
 @interface Day : BaseModel
 
-// The first element of all of these arrays/enums is the value for "null" or "unset"
-#define kUnset 0
-
-typedef enum cervicalFluidTypesEnum : NSUInteger
-{
-  CERVICAL_FLUID_STICKY,
-  CERVICAL_FLUID_CREAMY,
-  CERVICAL_FLUID_EGGWHITE,
-} CervicalFluidType;
 #define kCervicalFluidTypes @[@"sticky", @"creamy", @"eggwhite"]
 @property (nonatomic, retain) NSString* cervicalFluid;
 
@@ -39,40 +30,18 @@ typedef enum cyclePhaseTypesEnum : NSUInteger
 @property (nonatomic, retain) NSString* cyclePhase;
 
 #define kIntercourseTypes @[@"protected", @"unprotected"]
-typedef enum intercourseTypesEnum : NSUInteger
-{
-  INTERCOURSE_PROTECTED,
-  INTERCOURSE_UNPROTECTED,
-} IntercourseType;
 @property (nonatomic, retain) NSString* intercourse;
 
 #define kFerningTypes @[@"positive", @"negative"]
-typedef enum ferningTypesEnum : NSUInteger
-{
-  FERNING_POSITIVE,
-  FERNING_NEGATIVE,
-} FerningType;
 @property (nonatomic, retain) NSString* ferning;
 
-#define kMoodTypes @[@"sad", @"worried", @"good", @"amazing"]
-typedef enum moodTypesEnum : NSUInteger
-{
-  MOOD_SAD,
-  MOOD_WORRIED,
-  MOOD_GOOD,
-  MOOD_AMAZING
-} MoodType;
+#define kMoodTypes @[@"sad", @"moody", @"good", @"amazing"]
 @property (nonatomic, retain) NSString* mood;
 
 #define kOpkTypes @[@"positive", @"negative"]
-typedef enum opkTypesEnum : NSUInteger
-{
-  OPK_POSITIVE,
-  OPK_NEGATIVE,
-} OpkType;
 @property (nonatomic, retain) NSString* opk;
 
-#define kPeriodTypes @[@"none", @"spotting", @"light", @"medium", @"heavy"]
+#define kPeriodTypes @[@"spotting", @"light", @"medium", @"heavy"]
 typedef enum periodTypesEnum : NSUInteger
 {
   PERIOD_NONE,
@@ -84,20 +53,9 @@ typedef enum periodTypesEnum : NSUInteger
 @property (nonatomic, retain) NSString* period;
 
 #define kPregnancyTestTypes @[@"positive", @"negative"]
-typedef enum pregnancyTestTypesEnum : NSUInteger
-{
-  PREGNANCY_TEST_POSITIVE,
-  PREGNANCY_TEST_NEGATIVE,
-} PregnancyTestType;
 @property (nonatomic, retain ) NSString* pregnancyTest;
 
 #define kVaginalSensationTypes @[@"dry", @"wet", @"lube"]
-typedef enum vaginalSensationTypesEnum : NSUInteger
-{
-  VAGINAL_SENSATION_DRY,
-  VAGINAL_SENSATION_WET,
-  VAGINAL_SENSATION_LUBE,
-} VaginalSensationType;
 @property (nonatomic, retain) NSString* vaginalSensation;
 
 @property (nonatomic, strong) NSString *idate;
@@ -121,9 +79,11 @@ typedef enum vaginalSensationTypesEnum : NSUInteger
 - (Day *)nextDay;
 - (Day *)previousDay;
 
-- (BOOL)isProperty:(NSString *)key ofType:(NSInteger)type;
-- (void)updateProperty:(NSString *)key withValue:(id)value;
+- (NSInteger)selectedPropertyForKey:(NSString *)key;
 - (void)selectProperty:(NSString *)key withindex:(NSInteger)index;
+- (void)selectProperty:(NSString *)key withindex:(NSInteger)index then:(ConnectionManagerSuccess)callback;
+- (void)updateProperty:(NSString *)key withValue:(id)value;
+- (void)updateProperty:(NSString *)key withValue:(id)value then:(ConnectionManagerSuccess)callback;
 
 - (BOOL)hasMedicine:(Medicine *)medicine;
 - (BOOL)hasSupplement:(Supplement *)supplement;

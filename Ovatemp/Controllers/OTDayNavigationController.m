@@ -19,18 +19,16 @@
 @implementation OTDayNavigationController
 
 - (id)initWithContentViewController:(UIViewController *)contentViewController {
-    self = [super initWithNibName:@"OTDayNavigationController" bundle:nil];
-    if (self) {
-      self.contentViewController = contentViewController;
-      self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
-    return self;
+  self = [super initWithNibName:@"OTDayNavigationController" bundle:nil];
+  if (self) {
+    self.contentViewController = contentViewController;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+  }
+  return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+- (void)viewDidLoad {
+  [super viewDidLoad];
 
   UIView *content = self.contentViewController.view;
   content.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
@@ -58,29 +56,28 @@
   [[Calendar sharedInstance] removeObserver:self forKeyPath:@"day"];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
-                        change:(NSDictionary *)change context:(void *)context
-{
-  if([keyPath isEqualToString:@"day"] && [[Calendar sharedInstance] class] == [object class]) {
+                        change:(NSDictionary *)change context:(void *)context {
+  if ([keyPath isEqualToString:@"day"] && [[Calendar sharedInstance] class] == [object class]) {
     [self updateLabels];
   }
 }
 
 - (void)updateLabels {
-  if(Calendar.day) {
-    self.dayBackwardButton.hidden = FALSE;
+  CATransition *animation = [CATransition animation];
+  animation.duration = 0.15;
+  animation.type = kCATransitionFade;
+  animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+  [self.dateLabel.layer addAnimation:animation forKey:@"changeTextTransition"];
+  self.dateLabel.text = [self.dateFormatter stringFromDate:Calendar.day.date];
+
+  if (Calendar.day) {
+    self.dayBackwardButton.enabled = YES;
+    self.dayForwardButton.enabled = YES;
     self.dayForwardButton.hidden = [Calendar isOnToday];
     self.fertilityStatusView.hidden = FALSE;
 
     [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];
-    self.dateLabel.text = [self.dateFormatter stringFromDate:Calendar.day.date];
 
     if(Calendar.day.cycle) {
       self.titleLabel.text = [NSString stringWithFormat: @"Cycle Day: #%@", Calendar.day.cycleDay];
@@ -88,12 +85,11 @@
       self.titleLabel.text = @"No cycle found.";
     }
   } else {
-    self.dayBackwardButton.hidden = TRUE;
-    self.dayForwardButton.hidden = TRUE;
+    self.dayBackwardButton.enabled = NO;
+    self.dayForwardButton.enabled = NO;
     self.fertilityStatusView.hidden = TRUE;
 
-    self.dateLabel.text = @"Loading...";
-    self.titleLabel.text = @"";
+    self.titleLabel.text = @"Loading...";
   }
 }
 

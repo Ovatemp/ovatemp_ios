@@ -55,7 +55,7 @@ static Calendar *sharedCalendar = nil;
           }
           failure:^(NSError *error) {
             // HANDLEERROR
-            NSLog(@"done loading! error: %@", error);
+            NSLog(@"calendar load error: %@", error);
           }];
 }
 

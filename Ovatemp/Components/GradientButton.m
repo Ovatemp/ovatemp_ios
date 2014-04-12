@@ -60,26 +60,6 @@ static UIColor *kPressedEndColor;
   [self configureDefaults];
 }
 
-# pragma mark - Detecting highlighted state
-
-- (void)setHighlighted:(BOOL)highlighted {
-  // NOOP
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-  active = YES;
-  [self setHighlightedTextColor];
-  [super touchesBegan:touches withEvent:event];
-  [self setNeedsDisplay];
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-  active = NO;
-  [self setTextColor];
-  [super touchesEnded:touches withEvent:event];
-  [self setNeedsDisplay];
-}
-
 # pragma mark - Drawing gradient text colors
 
 - (void)configureDefaults {
@@ -92,16 +72,20 @@ static UIColor *kPressedEndColor;
   start = CGPointZero;
   end = CGPointMake(targetSize.width, targetSize.height);
   [self setTextColor];
+  [self setHighlightedTextColor];
 }
 
 - (void)setHighlightedTextColor {
-  self.titleLabel.textColor = [self gradientFrom:kPressedStartColor
-                                              to:kPressedEndColor];
+  UIColor *gradient = [self gradientFrom:kPressedStartColor
+                                      to:kPressedEndColor];
+  [self setTitleColor:gradient forState:UIControlStateSelected];
+  [self setTitleColor:gradient forState:UIControlStateHighlighted];
 }
 
 - (void)setTextColor {
-  self.titleLabel.textColor = [self gradientFrom:kStartColor
-                                              to:kEndColor];
+  UIColor *gradient = [self gradientFrom:kStartColor
+                                      to:kEndColor];
+  [self setTitleColor:gradient forState:UIControlStateNormal];
 }
 
 - (UIColor *)gradientFrom:(UIColor *)startColor to:(UIColor *)endColor {

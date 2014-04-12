@@ -38,9 +38,9 @@
                                 }
                             }
                   success:^(NSDictionary *response) {
-                    [self.class withAttributes:response[className]];
+                    SharedRelation *newInstance = [self.class withAttributes:response[className]];
                     if(onSuccess) {
-                      onSuccess(response);
+                      onSuccess(newInstance);
                     }
                   }
                   failure:^(NSError *error) {

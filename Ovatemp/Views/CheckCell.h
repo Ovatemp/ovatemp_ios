@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+static NSString * const kCheckCellIdentifier = @"CheckCell";
+
 @interface CheckCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *label;

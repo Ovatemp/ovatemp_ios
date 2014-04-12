@@ -15,7 +15,6 @@
 @interface DayToggleButton () {
 }
 
-@property (nonatomic, strong) NSString *propKey;
 @property (nonatomic, assign) NSInteger propValueIndex;
 @property (nonatomic, weak) DayCell *dayCell;
 
@@ -58,27 +57,11 @@
 - (void)setSelected:(BOOL)selected {
   [super setSelected:selected];
 
-  if(self.selected) {
+  if (self.selected) {
     self.imageView.backgroundColor = [UIColor whiteColor];
   } else {
     self.imageView.backgroundColor = [UIColor clearColor];
   }
-}
-
-- (void)setDayCell:(DayCell *)dayCell property:(NSString *)key index:(NSInteger)index {
-  [self addTarget:self action:@selector(toggle:) forControlEvents:UIControlEventTouchUpInside];
-
-  self.propKey = key;
-  self.propValueIndex = index;
-  self.dayCell = dayCell;
-}
-
-- (void)toggle:(UIButton *)sender {
-  [self.dayCell toggleDayProperty:self.propKey withIndex:self.propValueIndex];
-}
-
-- (void)refresh {
-  [self setSelected:[self.dayCell isDayProperty:self.propKey ofType:self.propValueIndex]];
 }
 
 @end

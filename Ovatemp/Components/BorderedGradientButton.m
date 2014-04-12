@@ -11,15 +11,14 @@
 #import "UIColor+Traits.h"
 
 @interface BorderedGradientButton () {
+  CGFloat _borderWidth;
   UIBezierPath *borderPath;
+  CGFloat _cornerRadius;
   UIColor *gradient;
 }
 @end
 
 @implementation BorderedGradientButton
-
-@synthesize borderWidth = _borderWidth;
-@synthesize cornerRadius = _cornerRadius;
 
 # pragma mark - Setup
 
@@ -30,13 +29,7 @@
                          startPosition:CGPointZero
                                toColor:GRADIENT_PINK
                            endPosition:CGPointMake(self.bounds.size.width, self.bounds.size.height)];
-  if (!isnormal(self.cornerRadius)) {
-    self.cornerRadius = 3.0f;
-  }
-
-  if (!isnormal(self.borderWidth)) {
-    self.borderWidth = 1.0f;
-  }
+  [self buildBorderPath];
 }
 
 - (void)buildBorderPath {
@@ -47,7 +40,11 @@
 }
 
 - (CGFloat)borderWidth {
-  return _borderWidth;
+  if (!isnormal(_borderWidth)) {
+    return 1.0f;
+  } else {
+    return _borderWidth;
+  }
 }
 
 - (void)setBorderWidth:(CGFloat)borderWidth {
@@ -56,7 +53,11 @@
 }
 
 - (CGFloat)cornerRadius {
-  return _cornerRadius;
+  if (!isnormal(_cornerRadius)) {
+    return 3.0f;
+  } else {
+    return _cornerRadius;
+  }
 }
 
 - (void)setCornerRadius:(CGFloat)cornerRadius {
@@ -64,23 +65,28 @@
   [self buildBorderPath];
 }
 
+- (void)setHighlighted:(BOOL)highlighted {
+  [super setHighlighted:highlighted];
+  [self setNeedsDisplay];
+}
+
+- (void)setHighlightedTextColor {
+  [self setTitleColor:LIGHT forState:UIControlStateHighlighted];
+  [self setTitleColor:LIGHT forState:UIControlStateSelected];
+}
 
 # pragma mark - Drawing
 
 - (void)drawRect:(CGRect)rect {
   [super drawRect:rect];
 
-  if (active) {
+  if (self.isHighlighted) {
     [gradient setFill];
     [borderPath fill];
   } else {
     [gradient setStroke];
     [borderPath stroke];
   }
-}
-
-- (void)setHighlightedTextColor {
-  self.titleLabel.textColor = LIGHT;
 }
 
 @end

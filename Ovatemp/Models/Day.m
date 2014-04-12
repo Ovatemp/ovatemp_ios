@@ -7,6 +7,8 @@
 //
 
 #import "Day.h"
+
+#import "Alert.h"
 #import "Cycle.h"
 #import "ConnectionManager.h"
 
@@ -18,6 +20,8 @@
 @implementation Day
 
 static NSDictionary *propertyOptions;
+
+# pragma mark - Setup
 
 - (id)init {
   self = [super init];
@@ -32,34 +36,6 @@ static NSDictionary *propertyOptions;
   return self;
 }
 
-- (void)setValue:(id)value forKey:(NSString *)key {
-  if(!propertyOptions) {
-    propertyOptions = @{
-                   @"cervicalFluid": kCervicalFluidTypes,
-                   @"cyclePhase": kCyclePhaseTypes,
-                   @"vaginalSensation": kVaginalSensationTypes,
-                   @"intercourse": kIntercourseTypes,
-                   @"ferning": kFerningTypes,
-                   @"mood": kMoodTypes,
-                   @"pregnancyTest": kPregnancyTestTypes,
-                   @"opk": kOpkTypes,
-                   @"period": kPeriodTypes
-                   };
-  }
-
-  if(propertyOptions[key]) {
-    NSArray *possibleValues = propertyOptions[key];
-
-    // If we have a value outside of the possible values (such as null),
-    // set the value to "unset"
-    if(![possibleValues containsObject:value]) {
-      value = nil;
-    }
-  }
-
-  [super setValue:value forKey:key];
-}
-
 + (NSString *)key {
   return @"idate";
 }
@@ -70,6 +46,12 @@ static NSDictionary *propertyOptions;
   return day;
 }
 
+- (NSString *)description {
+  return [NSString stringWithFormat:@"Day (%@)", self.idate];
+}
+
+# pragma mark - Navigating days
+
 - (Day *)nextDay {
   return [Day forDate:[self.date dateByAddingTimeInterval:1 * 60 * 60 * 24]];
 }
@@ -78,40 +60,77 @@ static NSDictionary *propertyOptions;
   return [Day forDate:[self.date dateByAddingTimeInterval:-1 * 60 * 60 * 24]];
 }
 
-- (void)selectProperty:(NSString *)key withindex:(NSInteger)index {
-  NSArray *enumeratedStrings = propertyOptions[key];
-  NSString *value = enumeratedStrings[index];
-
-  if([[self valueForKey:key] isEqualToString:value]) {
-    [self setValue:nil forKey:key];
-  } else {
-    [self setValue:value forKey:key];
-  }
-
-  [self addDirtyAttribute:key];
-}
+# pragma mark - Generating images
 
 - (NSString *)imageNameForProperty:(NSString *)key {
   NSString *value = [self valueForKey:key];
-
+  
   return [value capitalizedString];
 }
 
+# pragma mark - Massaged property values
+
+- (NSInteger)selectedPropertyForKey:(NSString *)key {
+  NSArray *enumeratedStrings = propertyOptions[key];
+  id value = [self valueForKey:key];
+  return [enumeratedStrings indexOfObject:value];
+}
+
+- (void)selectProperty:(NSString *)key withindex:(NSInteger)index {
+  [self selectProperty:key withindex:index then:nil];
+}
+
+- (void)selectProperty:(NSString *)key withindex:(NSInteger)index then:(ConnectionManagerSuccess)callback {
+  id value;
+  if (index == NSNotFound) {
+    value = nil;
+  } else {
+    NSArray *enumeratedStrings = propertyOptions[key];
+    value = enumeratedStrings[index];
+  }
+  
+  [self updateProperty:key withValue:value then:callback];
+}
+
 - (void)updateProperty:(NSString *)key withValue:(id)value {
+  [self updateProperty:key withValue:value then:nil];
+}
+
+- (void)updateProperty:(NSString *)key withValue:(id)value then:(ConnectionManagerSuccess)callback {
   [self setValue:value forKey:key];
   [self addDirtyAttribute:key];
+  [self saveAndThen:callback];
 }
 
-- (BOOL)isProperty:(NSString *)key ofType:(NSInteger)type {
-  return [[self valueForKey:key] isEqualToString:[self property:key ofType:type]];
+- (void)setValue:(id)value forKey:(NSString *)key {
+  if(!propertyOptions) {
+    propertyOptions = @{
+                        @"cervicalFluid": kCervicalFluidTypes,
+                        @"cyclePhase": kCyclePhaseTypes,
+                        @"vaginalSensation": kVaginalSensationTypes,
+                        @"intercourse": kIntercourseTypes,
+                        @"ferning": kFerningTypes,
+                        @"mood": kMoodTypes,
+                        @"pregnancyTest": kPregnancyTestTypes,
+                        @"opk": kOpkTypes,
+                        @"period": kPeriodTypes
+                        };
+  }
+  
+  if(propertyOptions[key]) {
+    NSArray *possibleValues = propertyOptions[key];
+    
+    // If we have a value outside of the possible values (such as null),
+    // set the value to "unset"
+    if(![possibleValues containsObject:value]) {
+      value = nil;
+    }
+  }
+  
+  [super setValue:value forKey:key];
 }
 
-- (NSString*)property:(NSString *)key ofType:(NSInteger)type {
-  NSArray *enumeratedStrings = propertyOptions[key];
-
-  return enumeratedStrings[type];
-}
-
+# pragma mark - Tracking dirty attributes
 
 - (void)addDirtyAttribute:(NSString *)key {
   @synchronized(self->dirtyAttributes) {
@@ -129,35 +148,37 @@ static NSDictionary *propertyOptions;
 
 // This may get called many times in rapid succession, so we want to make it cheap
 - (void)save {
-  NSDictionary *attributes;
+  [self saveAndThen:nil];
+}
 
+- (void)saveAndThen:(ConnectionManagerSuccess)onSuccess {
+  NSDictionary *attributes;
+  
   @synchronized(self->dirtyAttributes) {
     if([self->dirtyAttributes count] < 1) {
       return;
     }
-
+    
     // Make sure we send back the date, since we are using a different local identifier
     [self->dirtyAttributes addObject:@"date"];
-
+    
     attributes = [self attributesForKeys:self->dirtyAttributes camelCase:FALSE];
     [self->dirtyAttributes removeAllObjects];
   }
-
+  
   [ConnectionManager put:@"/days/"
-                   params:@{
-                            @"day": attributes,
-                            }
+                  params:@{
+                           @"day": attributes,
+                           }
                  success:^(NSDictionary *response) {
                    [Cycle cycleFromResponse:response];
+                   if (onSuccess) onSuccess(response);
                  }
                  failure:^(NSError *error) {
                    // HANDLEERROR
-                    NSLog(@"day save error: %@", error);
+                   NSLog(@"day save error: %@", error);
                  }];
-}
 
-- (NSString *)description {
-  return [NSString stringWithFormat:@"Day (%@)", self.idate];
 }
 
 # pragma mark - Relations
@@ -186,7 +207,12 @@ static NSDictionary *propertyOptions;
   NSMutableArray *accum = [[NSMutableArray alloc] initWithCapacity:self.symptomIds.count];
 
   for(NSNumber *id in self.symptomIds) {
-    [accum addObject:[Symptom findByKey:[id description]]];
+    Symptom *symptom = [Symptom findByKey:[id description]];
+    if (symptom) {
+      [accum addObject:symptom];
+    } else {
+      NSLog(@"Could not find symptom for %@", id);
+    }
   }
 
   return accum;

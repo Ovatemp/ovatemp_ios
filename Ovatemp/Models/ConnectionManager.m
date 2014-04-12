@@ -185,15 +185,20 @@ static NSString * const kTokenParam = @"token";
 
 - (NSString *)arrayParamForKey:(NSString *)key value:(NSArray *)value {
   NSMutableString *keyValuePairs = [NSMutableString string];
+  
+  if (value.count) {
+    for (id subvalue in value) {
+      if (keyValuePairs.length) {
+        [keyValuePairs appendString:@"&"];
+      }
 
-  for (id subvalue in value) {
-    if (keyValuePairs.length) {
-      [keyValuePairs appendString:@"&"];
+      NSString *nestedKey = [key stringByAppendingString:@"[]"];
+      NSString *nestedKeyValue = [self paramForKey:nestedKey value:subvalue];
+      [keyValuePairs appendString:nestedKeyValue];
     }
-
-    NSString *nestedKey = [key stringByAppendingString:@"[]"];
-    NSString *nestedKeyValue = [self paramForKey:nestedKey value:subvalue];
-    [keyValuePairs appendString:nestedKeyValue];
+  } else {
+    NSString *emptyKey = [key stringByAppendingString:@"[]="];
+    [keyValuePairs appendString:emptyKey];
   }
   return keyValuePairs;
 }
@@ -225,12 +230,6 @@ static NSString * const kTokenParam = @"token";
     value = [((NSDate *)value) dateId];
   } else if ([value isEqual:[NSNull null]]) {
     value = @"";  
-  }
-
-  // By now, value should be a string
-  if(![value isKindOfClass:[NSString class]]) {
-    NSLog(@"There might be a crash in less than a microsecond on:");
-    NSLog(@"ConnectionManager paramForKey:%@ value:%@", key, value);
   }
 
   key = [key stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
