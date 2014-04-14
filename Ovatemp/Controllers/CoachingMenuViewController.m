@@ -55,6 +55,9 @@
   self.navigationController.navigationBar.tintColor = DARK;
 
   [self trackScreenView:@"Coaching Menu"];
+
+  // TODO: Have FertilityStatusView bind itself to today's value all the time
+  [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
