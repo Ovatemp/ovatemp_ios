@@ -78,7 +78,7 @@
 - (void)drawRect:(CGRect)rect {
   [super drawRect:rect];
 
-  if (self.isHighlighted) {
+  if (self.isHighlighted || self.isSelected) {
     [gradient setFill];
     [borderPath fill];
   } else {

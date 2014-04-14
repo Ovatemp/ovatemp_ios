@@ -33,6 +33,7 @@
 
 - (void)answer:(BOOL)yes success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure {
   self.answered = YES;
+  self.answer = yes;
   [ConnectionManager post:@"/answers"
                    params:@{@"answer":
                             @{

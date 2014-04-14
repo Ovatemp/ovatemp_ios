@@ -129,6 +129,19 @@
 
   self.question = self.questions[self.currentQuestion];
   
+  if (self.question.answered) {
+    if (self.question.answer) {
+      self.noButton.selected = NO;
+      self.yesButton.selected = YES;
+    } else {
+      self.noButton.selected = YES;
+      self.yesButton.selected = NO;
+    }
+  } else {
+    self.noButton.selected = NO;
+    self.yesButton.selected = NO;
+  }
+
   self.backButton.hidden = self.currentQuestion == 0;
   self.skipButton.hidden = !self.question.answered;
 }
