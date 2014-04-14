@@ -219,6 +219,12 @@
 		C382F1DB18F31CBE005E0CAF /* DayToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C382F1D518F31CBE005E0CAF /* DayToggleButton.m */; };
 		C382F1DC18F31CBE005E0CAF /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C382F1D718F31CBE005E0CAF /* GradientButton.m */; };
 		C382F1E618F33801005E0CAF /* BorderedGradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C382F1E518F33801005E0CAF /* BorderedGradientButton.m */; };
+		C388C73518FC459B00B622FB /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C388C73418FC459B00B622FB /* libGoogleAnalyticsServices.a */; };
+		C388C73718FC45AA00B622FB /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C388C73618FC45AA00B622FB /* AdSupport.framework */; };
+		C388C73918FC45B100B622FB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C388C73818FC45B100B622FB /* CoreData.framework */; };
+		C388C73B18FC45B800B622FB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C388C73A18FC45B800B622FB /* SystemConfiguration.framework */; };
+		C388C73D18FC45BD00B622FB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C388C73C18FC45BD00B622FB /* libz.dylib */; };
+		C388C74018FC46BD00B622FB /* UIViewController+Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = C388C73F18FC46BD00B622FB /* UIViewController+Analytics.m */; };
 		C38C2D5B18EF4F0700449F89 /* DelegatingNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C38C2D5A18EF4F0700449F89 /* DelegatingNavigationViewController.m */; };
 		C3BF8FBF1898409C00572F43 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BF8FBE1898409C00572F43 /* XCTest.framework */; };
 		C3BF8FC01898409C00572F43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C50FE189028190053A884 /* Foundation.framework */; };
@@ -531,6 +537,13 @@
 		C382F1D718F31CBE005E0CAF /* GradientButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientButton.m; sourceTree = "<group>"; };
 		C382F1E418F33801005E0CAF /* BorderedGradientButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderedGradientButton.h; sourceTree = "<group>"; };
 		C382F1E518F33801005E0CAF /* BorderedGradientButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderedGradientButton.m; sourceTree = "<group>"; };
+		C388C73418FC459B00B622FB /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = Ovatemp/Frameworks/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		C388C73618FC45AA00B622FB /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		C388C73818FC45B100B622FB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C388C73A18FC45B800B622FB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C388C73C18FC45BD00B622FB /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		C388C73E18FC46BD00B622FB /* UIViewController+Analytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Analytics.h"; sourceTree = "<group>"; };
+		C388C73F18FC46BD00B622FB /* UIViewController+Analytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Analytics.m"; sourceTree = "<group>"; };
 		C38C2D5918EF4F0700449F89 /* DelegatingNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegatingNavigationViewController.h; sourceTree = "<group>"; };
 		C38C2D5A18EF4F0700449F89 /* DelegatingNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegatingNavigationViewController.m; sourceTree = "<group>"; };
 		C3BF8FBD1898409C00572F43 /* OvatempTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OvatempTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -576,11 +589,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C388C73D18FC45BD00B622FB /* libz.dylib in Frameworks */,
+				C388C73B18FC45B800B622FB /* SystemConfiguration.framework in Frameworks */,
+				C388C73918FC45B100B622FB /* CoreData.framework in Frameworks */,
+				C388C73718FC45AA00B622FB /* AdSupport.framework in Frameworks */,
 				83EB3F3A18AEAD2600EA91AC /* QuartzCore.framework in Frameworks */,
 				C36C5101189028190053A884 /* CoreGraphics.framework in Frameworks */,
 				C36C5103189028190053A884 /* UIKit.framework in Frameworks */,
 				C36C50FF189028190053A884 /* Foundation.framework in Frameworks */,
 				D18C51F548DA4E59B785DE16 /* libPods-Ovatemp.a in Frameworks */,
+				C388C73518FC459B00B622FB /* libGoogleAnalyticsServices.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -864,6 +882,8 @@
 				C35CF95418EF2DF6004D47EA /* NSObject+IsNull.m */,
 				C30B84D218E324260078EDE3 /* UIColor+Traits.h */,
 				C30B84D318E324260078EDE3 /* UIColor+Traits.m */,
+				C388C73E18FC46BD00B622FB /* UIViewController+Analytics.h */,
+				C388C73F18FC46BD00B622FB /* UIViewController+Analytics.m */,
 				83C4D21718D9E744008C523C /* UIViewController+KeyboardObservers.h */,
 				83C4D21818D9E744008C523C /* UIViewController+KeyboardObservers.m */,
 				C30B84CF18E3206A0078EDE3 /* UIViewController+Loading.h */,
@@ -1030,6 +1050,11 @@
 		C36C50FD189028190053A884 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C388C73C18FC45BD00B622FB /* libz.dylib */,
+				C388C73A18FC45B800B622FB /* SystemConfiguration.framework */,
+				C388C73818FC45B100B622FB /* CoreData.framework */,
+				C388C73618FC45AA00B622FB /* AdSupport.framework */,
+				C388C73418FC459B00B622FB /* libGoogleAnalyticsServices.a */,
 				83EB3F3918AEAD2600EA91AC /* QuartzCore.framework */,
 				C36C50FE189028190053A884 /* Foundation.framework */,
 				C36C5100189028190053A884 /* CoreGraphics.framework */,
@@ -1525,6 +1550,7 @@
 				8328B77618AC034900DA7A5E /* DayCell.m in Sources */,
 				8329353818B7FD1700F6875B /* Medicine.m in Sources */,
 				8333B9E518E2193700C64231 /* CoachingRootViewController.m in Sources */,
+				C388C74018FC46BD00B622FB /* UIViewController+Analytics.m in Sources */,
 				83686EA318C6335000A5329C /* CalendarViewController.m in Sources */,
 				C322F8CD18F8AA8900902C9D /* GradientLabel.m in Sources */,
 				8333B98F18E0BD8600C64231 /* LifestyleCell.m in Sources */,
@@ -1674,6 +1700,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Ovatemp/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -1691,6 +1721,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Ovatemp/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

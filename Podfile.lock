@@ -1,5 +1,6 @@
 PODS:
   - Expecta (0.2.3)
+  - GoogleAnalytics-iOS-SDK (3.0.6)
   - HockeySDK (3.5.1)
   - KIF (2.0.3)
   - Mixpanel (2.2.3)
@@ -9,6 +10,7 @@ PODS:
 
 DEPENDENCIES:
   - Expecta
+  - GoogleAnalytics-iOS-SDK
   - HockeySDK
   - KIF (from `Podspecs/Kif.podspec`)
   - Mixpanel
@@ -21,12 +23,13 @@ EXTERNAL SOURCES:
     :podspec: Podspecs/Kif.podspec
 
 SPEC CHECKSUMS:
-  Expecta: dbc4a27fabb853bdd2e907e33f11ee43a9a47d0c
+  Expecta: 2434bb2e2b3b1814280ec5d9a11359433d035975
+  GoogleAnalytics-iOS-SDK: 16dfcc0c4491148bf372edc85a8470cc405ffb72
   HockeySDK: 7dfbfa6cdbae199d66eef638e9682b93b00acb95
   KIF: d7094a64d90e0e8b9f88b9902b192fa22254a0d0
   Mixpanel: 9f2546f781dee6dfb6871fc148202815a7e55448
   Nocilla: 6cb913e67bb7b3ccb0858670d64fc3ead6cab81e
-  OCMock: ffba68873fd32cfd35d885bddad23bfa816da4a3
+  OCMock: 233db993fabda22597349856ee3d3c6f4fcfa87f
   Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
 
 COCOAPODS: 0.29.0

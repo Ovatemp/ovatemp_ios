@@ -43,6 +43,7 @@
 static NSInteger const kUnauthorizedRequestCode = 401;
 static NSString * const kUnauthorizedRequestNotification = @"401UnauthorizedRequestEncountered";
 
+// UI configuration
 // The are Apple's standard spacing defaults. Don't change
 // these unless the defaults change!
 static const CGFloat SIBLING_SPACING = 8.0f;
@@ -51,6 +52,7 @@ static const CGFloat SUPERVIEW_SPACING = 20.0f;
 UIColor * Color(int red, int green, int blue);
 UIColor * ColorA(int red, int green, int blue, CGFloat alpha);
 
-#define DELAY_BEFORE_SAVE 5
-
 #define STATUS_BAR_HEIGHT 20
+
+// 3rd party API keys
+static NSString * const kGoogleAnalyticsTrackingID = @"UA-32219902-1";

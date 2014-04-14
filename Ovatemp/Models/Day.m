@@ -135,13 +135,6 @@ static NSDictionary *propertyOptions;
 - (void)addDirtyAttribute:(NSString *)key {
   @synchronized(self->dirtyAttributes) {
     // If we haven't already scheduled a save, schedule one to happen after the delay
-    if([self->dirtyAttributes count] < 1) {
-      Day *day = self;
-      dispatch_after(dispatch_time(DISPATCH_TIME_NOW, DELAY_BEFORE_SAVE * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [day save];
-      });
-    }
-
     [self->dirtyAttributes addObject:key];
   }
 }

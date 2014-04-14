@@ -1,6 +1,7 @@
 platform :ios, "6.0"
 
 target :Ovatemp do
+  pod "GoogleAnalytics-iOS-SDK", inhibit_warnings: true
   pod "HockeySDK", inhibit_warnings: true
   pod "Mixpanel", inhibit_warnings: true
 end
