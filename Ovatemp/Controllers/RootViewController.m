@@ -11,6 +11,7 @@
 #import "Alert.h"
 #import "Calendar.h"
 #import "CalendarViewController.h"
+#import "MainTabBarViewController.h"
 #import "OTDayNavigationController.h"
 #import "SessionViewController.h"
 #import "TodayViewController.h"
@@ -18,11 +19,13 @@
 
 #import "UIViewController+Rotations.h"
 
+static CGFloat const kDissolveDuration = 0.2;
+
 @interface RootViewController () {
-  UITabBarController *mainViewController;
+  UIViewController *activeViewController;
+  MainTabBarViewController *mainViewController;
   NSDate *lastForcedLogout;
   BOOL loggedIn;
-  UIViewController *launching;
 }
 
 @end
@@ -42,7 +45,9 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-  [self launchAppropriateViewController];
+  if (!activeViewController) {
+    [self launchAppropriateViewController];
+  }
 }
 
 - (void)launchAppropriateViewController {
@@ -52,24 +57,26 @@
     // views get reset
     [self createMainViewController];
 
-    launching = mainViewController;
+    activeViewController = mainViewController;
     [mainViewController setSelectedIndex:0];
     [Calendar resetDate];
   } else {
-    launching = [self createSessionViewController];
+    activeViewController = [self createSessionViewController];
   }
 
-  launching.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+  activeViewController.view.alpha = 0;
+  [self.view addSubview:activeViewController.view];
 
-  [self presentViewController:launching animated:YES completion:^{
-    launching = nil;
+  [self addChildViewController:activeViewController];
+  [UIView animateWithDuration:kDissolveDuration animations:^{
+    activeViewController.view.alpha = 1.0;
   }];
 }
 
 # pragma mark - Main View Controller
 
 - (void)createMainViewController {
-  UITabBarController *tabController = [[UITabBarController alloc] init];
+  MainTabBarViewController *tabController = [[MainTabBarViewController alloc] init];
 
   UIViewController *todayController = [[TodayViewController alloc] init];
   todayController = [[OTDayNavigationController alloc] initWithContentViewController:todayController];
@@ -93,7 +100,6 @@
   [tabController addChildViewController:coachingController];
   coachingController.tabBarItem.image = [UIImage imageNamed:@"coaching_unselect"];
   coachingController.tabBarItem.selectedImage = [UIImage imageNamed:@"coaching_select"];
-
   coachingController.tabBarItem.title = @"Coaching";
 
   [tabController addChildViewController:communityController];
@@ -151,7 +157,12 @@
                                message:@"You've been logged you out of your account. Please log in again."];
   
   [Configuration logOut];
-  [self.presentedViewController dismissViewControllerAnimated:FALSE completion:^{
+
+  [activeViewController removeFromParentViewController];
+  [UIView animateWithDuration:kDissolveDuration animations:^{
+    activeViewController.view.alpha = 0;
+  } completion:^(BOOL finished) {
+    activeViewController = nil;
     [self launchAppropriateViewController];
   }];
 
@@ -160,17 +171,14 @@
 
 # pragma mark - Tab Controller Delegate Methods
 
-- (void)tabBarController:(UITabBarController *)tabBarController
- didSelectViewController:(UIViewController *)viewController
-{
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
   // When user presses Today tab, set date to today
   if(tabBarController.selectedIndex == 0) {
     [Calendar setDate:[NSDate date]];
   }
 }
 
-- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
-{
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
   UIViewController* selected = [tabBarController selectedViewController];
   if (viewController == selected) {
     // Don't reset to the root of the Coaching view's navigation controller
@@ -188,6 +196,11 @@
   [[UITabBar appearance] setBackgroundColor:LIGHT];
   [[UITabBar appearance] setTintColor:PURPLE];
   [[UITabBar appearance] setSelectedImageTintColor:PURPLE];
+}
+
+
+- (BOOL)shouldAutorotate {
+  return NO;
 }
 
 @end

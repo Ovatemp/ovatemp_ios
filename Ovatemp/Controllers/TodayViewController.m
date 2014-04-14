@@ -8,8 +8,6 @@
 
 #import "TodayViewController.h"
 #import "Calendar.h"
-#import "Cycle.h"
-#import "CycleViewController.h"
 #import "Day.h"
 #import "DayCell.h"
 
@@ -20,9 +18,6 @@
 @interface TodayViewController ()
 
 @property NSArray *rows;
-
-@property BOOL isShowingLandscapeView;
-@property CycleViewController *cycleViewController;
 
 @end
 
@@ -42,7 +37,6 @@
   // Don't show separators after the last item
   self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
-  [self setupLandscape];
   [self setupRows];
 }
 
@@ -147,11 +141,10 @@
                                  context:NULL];
 
 
-  [[NSNotificationCenter defaultCenter]
-   addObserver:self
-   selector:@selector(applicationWillResign)
-   name:UIApplicationWillResignActiveNotification
-   object:NULL];
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(applicationWillResign)
+                                               name:UIApplicationWillResignActiveNotification
+                                             object:NULL];
 
   self.day = nil;
   [self dateChanged];
@@ -171,13 +164,6 @@
   // Make sure to save the day before we leave
   [self.day save];
   self.day = nil;
-}
-
-- (void)dealloc {
-  [[NSNotificationCenter defaultCenter]
-   removeObserver:self
-   name:UIDeviceOrientationDidChangeNotification
-   object:nil];
 }
 
 - (void)applicationWillResign {
@@ -205,58 +191,7 @@
 - (void)dayChanged {
   [self.tableView setContentOffset:CGPointZero animated:NO];
   [self.tableView reloadData];
-  [self.cycleViewController setCycle:self.day.cycle];
-}
-
-
-#pragma mark - Rotation
-
-// We are using a custom rotation technique, presenting a modal view controller of the
-// chart when appropriate.
-- (void)setupLandscape {
-  self.cycleViewController = [[CycleViewController alloc] init];
-  self.cycleViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-  self.isShowingLandscapeView = NO;
-
-  [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(orientationChanged:)
-                                               name:UIDeviceOrientationDidChangeNotification
-                                             object:nil];
-}
-
-- (BOOL)shouldAutorotate {
-  return FALSE;
-}
-
-- (void)orientationChanged:(NSNotification *)notification
-{
-  // We can still present a modal even if we aren't the active tab,
-  // prevent that
-  if(self.tabBarController.selectedIndex != 0) {
-    return;
-  }
-
-  if([self isCorrectOrientation]) {
-    return;
-  }
-
-  UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
-  if(UIDeviceOrientationIsLandscape(deviceOrientation)) {
-    [self.cycleViewController setCycle:self.day.cycle];
-    self.isShowingLandscapeView = YES;
-    [self presentViewController:self.cycleViewController animated:NO completion:nil];
-  } else {
-    [self.cycleViewController dismissViewControllerAnimated:NO completion:nil];
-    self.isShowingLandscapeView = NO;
-  }
-}
-
-- (BOOL)isCorrectOrientation {
-  UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
-
-  return (UIDeviceOrientationIsLandscape(deviceOrientation) && self.isShowingLandscapeView) ||
-  (UIDeviceOrientationIsPortrait(deviceOrientation) && !self.isShowingLandscapeView);
+//  [self.cycleViewController setCycle:self.day.cycle];
 }
 
 #pragma mark - Table view data source

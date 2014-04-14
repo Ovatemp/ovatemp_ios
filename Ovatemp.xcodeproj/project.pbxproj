@@ -240,6 +240,7 @@
 		C3C1766718F4DF5E0099DA42 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C1766518F4DF5E0099DA42 /* WebViewController.m */; };
 		C3C1766818F4DF5E0099DA42 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3C1766618F4DF5E0099DA42 /* WebViewController.xib */; };
 		C3D4F35418983B9C00CBB91A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D4F35318983B9C00CBB91A /* Constants.m */; };
+		C3E1299A18FC8C89004288D8 /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E1299918FC8C89004288D8 /* MainTabBarViewController.m */; };
 		C3E58C2C18D39AAC0026301A /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C2A18D39AAC0026301A /* LaunchImage.png */; };
 		C3E58C2D18D39AAC0026301A /* LaunchImageR4.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C2B18D39AAC0026301A /* LaunchImageR4.png */; };
 		C3E58C3618D39B7B0026301A /* Icon29.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C2E18D39B7B0026301A /* Icon29.png */; };
@@ -569,6 +570,8 @@
 		C3C1766618F4DF5E0099DA42 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebViewController.xib; path = ../Controllers/WebViewController.xib; sourceTree = "<group>"; };
 		C3D4F35218983B9C00CBB91A /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C3D4F35318983B9C00CBB91A /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		C3E1299818FC8C89004288D8 /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
+		C3E1299918FC8C89004288D8 /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
 		C3E58C2A18D39AAC0026301A /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
 		C3E58C2B18D39AAC0026301A /* LaunchImageR4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImageR4.png; sourceTree = "<group>"; };
 		C3E58C2E18D39B7B0026301A /* Icon29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon29.png; sourceTree = "<group>"; };
@@ -912,6 +915,8 @@
 				838752F018CE5F9300E8ED4A /* CycleViewController.m */,
 				C38C2D5918EF4F0700449F89 /* DelegatingNavigationViewController.h */,
 				C38C2D5A18EF4F0700449F89 /* DelegatingNavigationViewController.m */,
+				C3E1299818FC8C89004288D8 /* MainTabBarViewController.h */,
+				C3E1299918FC8C89004288D8 /* MainTabBarViewController.m */,
 				839A345E18ABCFB6007CD657 /* OTDayNavigationController.h */,
 				839A345F18ABCFB6007CD657 /* OTDayNavigationController.m */,
 				83BD853618D0B23900890EDA /* RootViewController.h */,
@@ -1526,6 +1531,7 @@
 				C30B84D418E324260078EDE3 /* UIColor+Traits.m in Sources */,
 				83DF332F18E32269002119CE /* Question.m in Sources */,
 				834BD63518AD1519003B6808 /* MoreViewController.m in Sources */,
+				C3E1299A18FC8C89004288D8 /* MainTabBarViewController.m in Sources */,
 				C3EC024218F61DCD00AA38D5 /* IconLabel.m in Sources */,
 				8333B98C18E0BD4200C64231 /* LifestyleViewController.m in Sources */,
 				830E351818D2506B00884F0E /* NSDate+Formatters.m in Sources */,
