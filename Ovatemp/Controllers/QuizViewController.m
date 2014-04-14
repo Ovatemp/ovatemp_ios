@@ -13,8 +13,6 @@
 #import "Question.h"
 #import "User.h"
 
-#import "UIViewController+Loading.h"
-
 @interface QuizViewController ()
 
 @property NSInteger currentQuestion;

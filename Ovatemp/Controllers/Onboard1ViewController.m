@@ -9,7 +9,6 @@
 #import "Onboard1ViewController.h"
 #import "UserProfile.h"
 #import "UIViewController+UserProfileHelpers.h"
-#import "UIViewController+KeyboardObservers.h"
 
 @interface Onboard1ViewController ()
 

@@ -8,7 +8,6 @@
 
 #import "Onboard2ViewController.h"
 #import "UserProfile.h"
-#import "UIViewController+KeyboardObservers.h"
 
 @interface Onboard2ViewController ()
 

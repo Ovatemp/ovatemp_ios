@@ -11,7 +11,6 @@
 #import "CommunityForumViewController.h"
 
 #import "ConnectionManager.h"
-#import "UIColor+Traits.h"
 
 static NSString * const kCommunityForumCellIdentifier = @"CommunityForumCell";
 static NSArray const *kCommunityForums;

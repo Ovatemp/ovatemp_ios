@@ -8,9 +8,7 @@
 
 #import "LifestyleViewController.h"
 #import "LifestyleCell.h"
-#import "UIColor+Traits.h"
 #import "UINavigationItem+IconLabel.h"
-#import "UIViewController+Loading.h"
 #import "ConnectionManager.h"
 #import "WebViewController.h"
 

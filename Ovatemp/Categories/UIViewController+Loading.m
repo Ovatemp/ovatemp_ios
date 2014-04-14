@@ -8,8 +8,6 @@
 
 #import "UIViewController+Loading.h"
 
-#import "UIColor+Traits.h"
-
 static const NSInteger kLoadingViewTag = 1337;
 
 @interface UIViewController ()

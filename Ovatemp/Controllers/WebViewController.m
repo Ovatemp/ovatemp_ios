@@ -10,8 +10,6 @@
 
 #import "Alert.h"
 
-#import "UIViewController+Loading.h"
-
 @interface WebViewController ()
 
 @end

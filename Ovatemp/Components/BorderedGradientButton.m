@@ -8,8 +8,6 @@
 
 #import "BorderedGradientButton.h"
 
-#import "UIColor+Traits.h"
-
 @interface BorderedGradientButton () {
   CGFloat _borderWidth;
   UIBezierPath *borderPath;

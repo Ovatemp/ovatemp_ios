@@ -8,8 +8,6 @@
 
 #import "GradientButton.h"
 
-#import "UIColor+Traits.h"
-
 static UIColor *kStartColor;
 static UIColor *kEndColor;
 static UIColor *kPressedStartColor;

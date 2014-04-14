@@ -11,7 +11,6 @@
 #import "User.h"
 
 #import "Alert.h"
-#import "UIViewController+KeyboardObservers.h"
 
 @interface SessionViewController () {
 }
