@@ -37,7 +37,7 @@ static const CGFloat kIconSize = 75.0f;
 - (id)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
   if (self) {
-    self.backgroundColor = DAY_EDIT_PAGE_COLOR;
+    self.backgroundColor = DARK_GREY;
     self.hasLabel = YES;
   }
   return self;

@@ -73,9 +73,9 @@
     NSInteger page = 1;
     for (DayCellEditView *editView in self.editViews) {
       CGRect frame = editView.frame;
-      height = MAX(height, editView.frame.size.height);
       editView.delegate = self;
       if (!editView.superview) {
+        height = MAX(height, editView.frame.size.height);
         frame.origin.x = page++ * self.width;
         editView.frame = frame;
         [self.scrollView addSubview:editView];
@@ -152,11 +152,19 @@
 
 # pragma mark - Edit views
 
+- (DayCellEditView *)buildEditViewForAttribute:(DayAttribute *)attribute {
+  CGRect frame = CGRectMake(0, 0, self.width, 0);
+  DayCellEditView *editView = [[DayCellEditView alloc] initWithFrame:frame];
+  editView.attribute = attribute;
+  editView.delegate = self;
+  return editView;
+}
+
 - (void)buildEditViews {
   _editViews = [NSMutableArray arrayWithCapacity:self.attributes.count];
   
   for (DayAttribute *attribute in self.attributes) {
-    DayCellEditView *editView = [self editViewForAttribute:attribute];
+    DayCellEditView *editView = [self buildEditViewForAttribute:attribute];
     [self.editViews addObject:editView];
   }
 }
@@ -167,15 +175,27 @@
       return editView;
     }
   }
-
-  CGRect frame = CGRectMake(0, 0, self.width, 0);
-  DayCellEditView *editView = [[DayCellEditView alloc] initWithFrame:frame];
-  editView.attribute = attribute;
-  editView.delegate = self;
-  return editView;
+  return nil;
 }
 
 # pragma mark - Static views
+
+- (DayCellStaticView *)buildStaticViewForAttribute:(DayAttribute *)attribute {
+  NSInteger index = [self.attributes indexOfObject:attribute];
+  NSInteger count = self.attributes.count;
+  CGRect frame;
+  if (count > 1) {
+    CGFloat width = self.width - SUPERVIEW_SPACING * 2;
+    CGFloat spacing = (width / self.attributes.count);
+    frame = CGRectMake(SUPERVIEW_SPACING + spacing * index, SUPERVIEW_SPACING, spacing - SIBLING_SPACING, 0);
+  } else {
+    frame = CGRectInset(self.bounds, SUPERVIEW_SPACING, SUPERVIEW_SPACING);
+  }
+  DayCellStaticView *staticView = [[DayCellStaticView alloc] initWithFrame:frame];
+  staticView.attribute = attribute;
+  staticView.solitary = count == 1;
+  return staticView;
+}
 
 - (UIView *)staticContainerView {
   if (!_staticViews) {
@@ -190,7 +210,7 @@
 
     if (!self.staticViews.count) {
       for (DayAttribute *attribute in self.attributes) {
-        DayCellStaticView *staticView = [self staticViewForAttribute:attribute];
+        DayCellStaticView *staticView = [self buildStaticViewForAttribute:attribute];
         height = MAX(height, CGRectGetMaxY(staticView.frame) + SUPERVIEW_SPACING);
         [self.staticViews addObject:staticView];
         [_staticContainerView addSubview:staticView];
@@ -218,20 +238,7 @@
     }
   }
 
-  NSInteger index = [self.attributes indexOfObject:attribute];
-  NSInteger count = self.attributes.count;
-  CGRect frame;
-  if (count > 1) {
-    CGFloat width = self.width - SUPERVIEW_SPACING * 2;
-    CGFloat spacing = (width / self.attributes.count);
-    frame = CGRectMake(SUPERVIEW_SPACING + spacing * index, SUPERVIEW_SPACING, spacing - SIBLING_SPACING, 0);
-  } else {
-    frame = CGRectInset(self.bounds, SUPERVIEW_SPACING, SUPERVIEW_SPACING);
-  }
-  DayCellStaticView *staticView = [[DayCellStaticView alloc] initWithFrame:frame];
-  staticView.attribute = attribute;
-  staticView.solitary = count == 1;
-  return staticView;
+  return nil;
 }
 
 # pragma mark - Propagating changes
@@ -261,6 +268,9 @@
 
 - (void)attributeValueChanged:(DayAttribute *)attribute newValue:(id)value {
   DayCellStaticView *staticView = [self staticViewForAttribute:attribute];
+  if (!staticView) {
+    staticView = self.staticViews.lastObject;
+  }
   if (staticView) {
     staticView.value = value;
   }

@@ -69,7 +69,6 @@
                                   temperatureEditView.frame.size.height - SUPERVIEW_SPACING * 2);
   DayCellStaticView *temperatureStaticView = [[TemperatureCellStaticView alloc] initWithFrame:staticFrame];
   temperatureStaticView.attribute = temperature;
-  
 
   DayCell *temperatureCell = [DayCell withAttributes:@[temperature, disturbance]];
   temperatureCell.editViews = [@[temperatureEditView, disturbanceEditView] mutableCopy];

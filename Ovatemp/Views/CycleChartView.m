@@ -283,13 +283,15 @@ CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
   [path removeAllPoints];
 
   // Draw dots at the data points
-  for(DayDot *dot in dots) {
+  for (DayDot *dot in dots) {
     // CGFloat col = (dot.day.fertility * 50) * 255.0;
 
-    if(dot.day.disturbance || TRUE) {
-      [[UIColor redColor] set];
+    if (dot.day.disturbance) {
+      [LIGHT_GREY set];
+    } else if (dot.day.inFertilityWindow) {
+      [DARK_GREEN set];
     } else {
-      [[UIColor colorWithRed:col green:.5 blue:.5 alpha:1] set];
+      [LIGHT_GREEN set];
     }
 
     [[UIBezierPath bezierPathWithOvalInRect:CGRectMake(dot.point.x - dotRadius / 2, dot.point.y - dotRadius, dotRadius * 2, dotRadius * 2)] fill];

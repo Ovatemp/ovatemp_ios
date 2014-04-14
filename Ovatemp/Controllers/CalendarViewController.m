@@ -197,7 +197,7 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
 
   // If the cell is today
   if([today isEqualToDate:date]) {
-    cell.dateLabel.backgroundColor = CALENDAR_TODAY_COLOR;
+    cell.dateLabel.backgroundColor = PURPLE;
     [cell.dateLabel.layer setMasksToBounds:YES];
     cell.dateLabel.layer.cornerRadius = 8;
     cell.dateLabel.textColor = [UIColor whiteColor];
@@ -207,7 +207,7 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
   }
 
   if([date compare:today] == NSOrderedDescending) {
-    cell.backgroundColor = CALENDAR_FUTURE_COLOR;
+    cell.backgroundColor = LIGHT_GREY;
   } else {
     cell.backgroundColor = [UIColor clearColor];
   }
