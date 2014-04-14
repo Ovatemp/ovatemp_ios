@@ -121,8 +121,8 @@
   }
 
   self.countLabel.text = [NSString stringWithFormat:@"%i of %i",
-                          self.currentQuestion + 1,
-                          self.questions.count];
+                          (int)self.currentQuestion + 1,
+                          (int)self.questions.count];
   
   self.yesButton.hidden = FALSE;
   self.noButton.hidden = FALSE;
