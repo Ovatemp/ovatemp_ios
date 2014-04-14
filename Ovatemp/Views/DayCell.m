@@ -284,6 +284,7 @@
 - (UIPageControl *)pageControl {
   if (!_pageControl) {
     _pageControl = [[UIPageControl alloc] init];
+    _pageControl.enabled = NO;
     _pageControl.numberOfPages = self.scrollView.subviews.count - 1;
     [_pageControl sizeToFit];
     CGRect frame = _pageControl.frame;
