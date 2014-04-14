@@ -10,6 +10,7 @@
 #import "RootViewController.h"
 
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleConversionTracking/ACTReporter.h>
 
 @implementation AppDelegate
 
@@ -58,6 +59,11 @@
   [GAI sharedInstance].trackUncaughtExceptions = YES;
   [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
   [[GAI sharedInstance] trackerWithTrackingId:kGoogleAnalyticsTrackingID];
+
+  [ACTConversionReporter reportWithConversionID:kGoogleAdwordsConversionID
+                                          label:kGoogleAdwordsConversionLabel
+                                          value:@"0.000000"
+                                   isRepeatable:NO];
 }
 
 @end

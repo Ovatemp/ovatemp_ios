@@ -181,6 +181,7 @@
 		C322F8C918F8727C00902C9D /* DayCellEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = C322F8C818F8727C00902C9D /* DayCellEditView.m */; };
 		C322F8CD18F8AA8900902C9D /* GradientLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C322F8CC18F8AA8900902C9D /* GradientLabel.m */; };
 		C32C4A8F18985A7800B05009 /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C32C4A8E18985A7800B05009 /* ConnectionManager.m */; };
+		C34AE14318FC4C64003209B2 /* libGoogleConversionTracking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C34AE14218FC4C64003209B2 /* libGoogleConversionTracking.a */; };
 		C350899218EDFD0C004D6A2F /* CommunityStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C350899118EDFD0C004D6A2F /* CommunityStoryboard.storyboard */; };
 		C350899718EDFD74004D6A2F /* CommunityForumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C350899618EDFD74004D6A2F /* CommunityForumsViewController.m */; };
 		C350899A18EDFDA8004D6A2F /* CommunityForumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C350899918EDFDA8004D6A2F /* CommunityForumViewController.m */; };
@@ -483,6 +484,7 @@
 		C322F8CC18F8AA8900902C9D /* GradientLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientLabel.m; sourceTree = "<group>"; };
 		C32C4A8D18985A7800B05009 /* ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionManager.h; sourceTree = "<group>"; };
 		C32C4A8E18985A7800B05009 /* ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManager.m; sourceTree = "<group>"; };
+		C34AE14218FC4C64003209B2 /* libGoogleConversionTracking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleConversionTracking.a; path = Ovatemp/Frameworks/libGoogleConversionTracking.a; sourceTree = "<group>"; };
 		C350899118EDFD0C004D6A2F /* CommunityStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CommunityStoryboard.storyboard; path = ../Controllers/CommunityStoryboard.storyboard; sourceTree = "<group>"; };
 		C350899518EDFD74004D6A2F /* CommunityForumsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityForumsViewController.h; sourceTree = "<group>"; };
 		C350899618EDFD74004D6A2F /* CommunityForumsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityForumsViewController.m; sourceTree = "<group>"; };
@@ -590,6 +592,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C388C73D18FC45BD00B622FB /* libz.dylib in Frameworks */,
+				C34AE14318FC4C64003209B2 /* libGoogleConversionTracking.a in Frameworks */,
 				C388C73B18FC45B800B622FB /* SystemConfiguration.framework in Frameworks */,
 				C388C73918FC45B100B622FB /* CoreData.framework in Frameworks */,
 				C388C73718FC45AA00B622FB /* AdSupport.framework in Frameworks */,
@@ -1050,6 +1053,7 @@
 		C36C50FD189028190053A884 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C34AE14218FC4C64003209B2 /* libGoogleConversionTracking.a */,
 				C388C73C18FC45BD00B622FB /* libz.dylib */,
 				C388C73A18FC45B800B622FB /* SystemConfiguration.framework */,
 				C388C73818FC45B100B622FB /* CoreData.framework */,

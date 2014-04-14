@@ -1,6 +1,7 @@
 PODS:
   - Expecta (0.2.3)
   - GoogleAnalytics-iOS-SDK (3.0.6)
+  - GoogleConversionTracking (3.0.0)
   - HockeySDK (3.5.1)
   - KIF (2.0.3)
   - Mixpanel (2.2.3)
@@ -11,6 +12,7 @@ PODS:
 DEPENDENCIES:
   - Expecta
   - GoogleAnalytics-iOS-SDK
+  - GoogleConversionTracking
   - HockeySDK
   - KIF (from `Podspecs/Kif.podspec`)
   - Mixpanel
@@ -25,6 +27,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Expecta: 2434bb2e2b3b1814280ec5d9a11359433d035975
   GoogleAnalytics-iOS-SDK: 16dfcc0c4491148bf372edc85a8470cc405ffb72
+  GoogleConversionTracking: 10e556aa1908c56689fedd6033b378e9a80e8fce
   HockeySDK: 7dfbfa6cdbae199d66eef638e9682b93b00acb95
   KIF: d7094a64d90e0e8b9f88b9902b192fa22254a0d0
   Mixpanel: 9f2546f781dee6dfb6871fc148202815a7e55448

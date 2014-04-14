@@ -56,3 +56,6 @@ UIColor * ColorA(int red, int green, int blue, CGFloat alpha);
 
 // 3rd party API keys
 static NSString * const kGoogleAnalyticsTrackingID = @"UA-32219902-1";
+static NSString * const kGoogleAdwordsConversionID = @"1009399358";
+static NSString * const kGoogleAdwordsConversionLabel = @"Xn3pCKKe1gcQvuyo4QM";
+
