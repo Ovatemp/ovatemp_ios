@@ -57,7 +57,6 @@
 
 - (void)configureAnalytics {
   [GAI sharedInstance].trackUncaughtExceptions = YES;
-  [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
   [[GAI sharedInstance] trackerWithTrackingId:kGoogleAnalyticsTrackingID];
 
   [ACTConversionReporter reportWithConversionID:kGoogleAdwordsConversionID
