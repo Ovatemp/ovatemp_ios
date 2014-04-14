@@ -38,8 +38,6 @@
     button.cornerRadius = button.frame.size.width / 2;
     button.borderWidth = 2.0f;
   }
-
-  self.questions = [[NSMutableArray alloc] initWithCapacity:10];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -75,6 +73,7 @@
 - (void)questionsLoaded:(NSDictionary *)response {
   NSArray *questions = response[@"questions"];
   if(questions) {
+    self.questions = [[NSMutableArray alloc] initWithCapacity:questions.count];
     for (NSInteger i = 0; i < questions.count; i++) {
       NSDictionary *attributes = questions[i];
       Question *question = [Question withAttributes:attributes];
@@ -135,12 +134,15 @@
 }
 
 - (void)answerQuestion:(BOOL)yes {
-  [self.question answer:yes success:^(id response){} failure:^(id error){
-    // HANDLEERROR
-    NSLog(@"Could not answer question: %@", error);
+  [self startLoading];
+  [self.question answer:yes success:^(id response){
+    [self stopLoading];
+    self.currentQuestion++;
+    [self loadNextQuestion];
+  } failure:^(id error){
+    [self stopLoading];
+    [Alert presentError:error];
   }];
-  self.currentQuestion++;
-  [self loadNextQuestion];
 }
 
 - (void)setQuestion:(Question *)question {
@@ -188,6 +190,7 @@
 }
 
 - (void)fertilityProfileLoadFailed:(NSError *)error {
+  [Alert presentError:error];
   [self loadQuestions];
 }
 
