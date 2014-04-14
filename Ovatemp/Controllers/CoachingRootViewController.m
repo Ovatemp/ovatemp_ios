@@ -24,9 +24,15 @@
   self.navigationController.navigationBarHidden = YES;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  [self trackScreenView:@"CoachingIntro"];
+}
+
 - (IBAction)buyTapped:(id)sender {
   _purchased = TRUE;
 
+  [self trackEvent:@"ui_action" action:@"tap" label:@"buy_button" value:@(29.99)];
   [self pushAppropriateController];
 }
 

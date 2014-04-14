@@ -62,7 +62,7 @@
   webViewController.navigationItem.titleIcon = image;
   webViewController.navigationItem.iconLabel.tintColor = LIGHT;
   webViewController.navigationItem.iconLabel.textColor = LIGHT;
-  
+  [self trackScreenView:[@"Coaching Content: " stringByAppendingString:name]];
   [self.navigationController pushViewController:webViewController animated:YES];
 }
 

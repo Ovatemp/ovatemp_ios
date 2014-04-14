@@ -155,6 +155,7 @@
 
   self.day = nil;
   [self dateChanged];
+  [self trackScreenView:@"Today"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

@@ -53,6 +53,8 @@
   self.navigationController.navigationBarHidden = NO;
   self.navigationController.navigationBar.barTintColor = LIGHT;
   self.navigationController.navigationBar.tintColor = DARK;
+
+  [self trackScreenView:@"Coaching Menu"];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -64,6 +66,7 @@
   } else {
     NSString *url = [Configuration sharedConfiguration].coachingContentUrls[categoryName];
     viewController = [WebViewController withURL:url];
+    [self trackScreenView:[@"Coaching Content: " stringByAppendingString:categoryName]];
   }
 
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:nil action:nil];

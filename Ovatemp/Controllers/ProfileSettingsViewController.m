@@ -21,6 +21,10 @@
   self.datePicker.maximumDate = [NSDate date];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+  [self trackScreenView:@"Profile Settings"];
+}
+
 - (void)viewWillLayoutSubviews {
   [self updateControls];
 }

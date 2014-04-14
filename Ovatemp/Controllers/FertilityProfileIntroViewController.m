@@ -22,6 +22,7 @@
   NSString *profileName = [[User current].fertilityProfileName capitalizedString];
   self.profileLabel.text = profileName;
   self.profileImageView.image = [UIImage imageNamed:profileName];
+  [self trackScreenView:@"Fertility Profile Intro"];
 }
 
 - (IBAction)nextTapped:(id)sender {

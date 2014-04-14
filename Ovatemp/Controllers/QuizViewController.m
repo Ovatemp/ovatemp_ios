@@ -52,6 +52,7 @@
   } else {
     [self loadNextQuestion];
   }
+  [self trackScreenView:@"Quiz"];
 }
 
 # pragma mark - Load questions
@@ -150,10 +151,12 @@
 
 - (IBAction)yesTapped:(id)sender {
   [self answerQuestion:YES];
+  [self trackEvent:@"ui_action" action:@"tap" label:@"yes_button" value:nil];
 }
 
 - (IBAction)noTapped:(id)sender {
   [self answerQuestion:NO];
+  [self trackEvent:@"ui_action" action:@"tap" label:@"no_button" value:nil];
 }
 
 - (BOOL)shouldAutorotate {

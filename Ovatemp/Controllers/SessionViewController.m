@@ -30,7 +30,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
   [self addKeyboardObservers];
-
+  [self trackScreenView:@"Login"];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

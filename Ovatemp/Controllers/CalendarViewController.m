@@ -76,6 +76,7 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
   }];
 
   [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];
+  [self trackScreenView:@"Calendar"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
