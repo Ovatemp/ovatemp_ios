@@ -99,6 +99,7 @@
 
   DayAttribute *supplements = [DayAttribute withName:@"supplements" type:DayAttributeList];
   supplements.choiceClass = [Supplement class];
+  supplements.imageName = @"DaySupplements";
   DayAttribute *medicines = [DayAttribute withName:@"medicines" type:DayAttributeList];
   medicines.choiceClass = [Medicine class];
   DayCell *drugCell = [DayCell withAttributes:@[supplements, medicines]];

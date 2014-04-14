@@ -21,6 +21,7 @@ typedef enum DayAttributeInterfaceType : NSInteger {
 @property Class choiceClass;
 @property NSArray *choices;
 @property NSString *name;
+@property NSString *imageName;
 @property NSString *title;
 @property DayAttributeInterfaceType type;
 

@@ -146,7 +146,6 @@
     self.choiceLabel.frame = CGRectMake(left, top,
                                         self.frame.size.width - left,
                                         _choiceLabel.frame.size.height);
-    
   } else {
     self.imageView.image = nil;
     self.choiceLabel.text = nil;
@@ -156,9 +155,24 @@
 
 - (void)setSelectedChoices:(NSArray *)selectedChoices {
   if (selectedChoices.count) {
+    CGRect imageFrame = self.imageView.frame;
+    CGFloat left = CGRectGetMaxX(self.imageView.frame);
+    CGFloat top = CGRectGetMaxY(self.label.frame) + SIBLING_SPACING;
+
+    self.imageView.image = [UIImage imageNamed:self.attribute.imageName];
+
+    // Center the image view in the available whitespace
+    imageFrame.origin.y = (self.frame.size.height - imageFrame.size.height) / 2 + CGRectGetMaxY(self.label.frame);
+    self.imageView.frame = imageFrame;
+
+    self.textView.frame = CGRectMake(left, top,
+                                     self.frame.size.width - left,
+                                     self.frame.size.height - top - SUPERVIEW_SPACING);
+
     self.textView.text = [[selectedChoices valueForKey:@"name"] componentsJoinedByString:@", "];
     [self hideSlideToEdit];
   } else {
+    self.imageView.image = nil;
     self.textView.text = nil;
     [self showSlideToEdit];
   }

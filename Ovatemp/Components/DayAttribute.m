@@ -9,6 +9,7 @@
 #import "DayAttribute.h"
 
 @interface DayAttribute () {
+  NSString *_imageName;
   NSString *_title;
 }
 @end
@@ -20,6 +21,17 @@
   attribute.name = name;
   attribute.type = type;
   return attribute;
+}
+
+- (NSString *)imageName {
+  if (!_imageName) {
+    return self.name.capitalizedString;
+  }
+  return _imageName;
+}
+
+- (void)setImageName:(NSString *)imageName {
+  _imageName = imageName;
 }
 
 - (NSString *)title {
