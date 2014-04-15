@@ -98,7 +98,7 @@
 
 - (void)loggedIn:(NSDictionary *)response {
   [Configuration loggedInWithResponse:response];
-  [self dismissViewControllerAnimated:TRUE completion:nil];
+  [self backOutToRootViewController];
 }
 
 - (void)loginFailed:(NSError *)error {

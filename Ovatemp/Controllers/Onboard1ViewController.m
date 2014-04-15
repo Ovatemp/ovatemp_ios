@@ -97,7 +97,7 @@
 }
 
 - (IBAction)skipOnboard:(id)sender {
-  [self dismissViewControllerAnimated:TRUE completion:nil];
+  [self backOutToRootViewController];
 }
 
 - (BOOL)shouldAutorotate {

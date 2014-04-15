@@ -68,7 +68,6 @@
 		834BD63518AD1519003B6808 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63418AD1519003B6808 /* MoreViewController.m */; };
 		834BD63B18AD29EA003B6808 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 834BD63A18AD29EA003B6808 /* Day.m */; };
 		83548FF218BD24450016B53A /* TodaySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 83548FF118BD24450016B53A /* TodaySpec.m */; };
-		835512F418E3708700894728 /* UIViewController+Rotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 835512F318E3708700894728 /* UIViewController+Rotations.m */; };
 		835512F718E4C0BD00894728 /* FertilityProfileIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835512F618E4C0BD00894728 /* FertilityProfileIntroViewController.m */; };
 		835AE58618B7A36000FEAF98 /* CheckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 835AE58518B7A36000FEAF98 /* CheckCell.m */; };
 		835AE58818B7A3B500FEAF98 /* CheckCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 835AE58718B7A3B500FEAF98 /* CheckCell.xib */; };
@@ -176,6 +175,7 @@
 		C30B84D118E3206A0078EDE3 /* UIViewController+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = C30B84D018E3206A0078EDE3 /* UIViewController+Loading.m */; };
 		C30B84D418E324260078EDE3 /* UIColor+Traits.m in Sources */ = {isa = PBXBuildFile; fileRef = C30B84D318E324260078EDE3 /* UIColor+Traits.m */; };
 		C31220241899BB8E0027C4B3 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = C31220231899BB8E0027C4B3 /* Configuration.m */; };
+		C31A3FEF18FCA251004E3BA4 /* UIViewController+Session.m in Sources */ = {isa = PBXBuildFile; fileRef = C31A3FEE18FCA251004E3BA4 /* UIViewController+Session.m */; };
 		C322F8C018F8644400902C9D /* DayCellStaticView.m in Sources */ = {isa = PBXBuildFile; fileRef = C322F8BF18F8644400902C9D /* DayCellStaticView.m */; };
 		C322F8C318F8648A00902C9D /* DayAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = C322F8C218F8648A00902C9D /* DayAttribute.m */; };
 		C322F8C918F8727C00902C9D /* DayCellEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = C322F8C818F8727C00902C9D /* DayCellEditView.m */; };
@@ -341,8 +341,6 @@
 		834BD63918AD29EA003B6808 /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
 		834BD63A18AD29EA003B6808 /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
 		83548FF118BD24450016B53A /* TodaySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodaySpec.m; sourceTree = "<group>"; };
-		835512F218E3708700894728 /* UIViewController+Rotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Rotations.h"; sourceTree = "<group>"; };
-		835512F318E3708700894728 /* UIViewController+Rotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Rotations.m"; sourceTree = "<group>"; };
 		835512F518E4C0BD00894728 /* FertilityProfileIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FertilityProfileIntroViewController.h; sourceTree = "<group>"; };
 		835512F618E4C0BD00894728 /* FertilityProfileIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FertilityProfileIntroViewController.m; sourceTree = "<group>"; };
 		835AE58418B7A36000FEAF98 /* CheckCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckCell.h; path = ../Views/CheckCell.h; sourceTree = "<group>"; };
@@ -475,6 +473,8 @@
 		C30B84D318E324260078EDE3 /* UIColor+Traits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Traits.m"; sourceTree = "<group>"; };
 		C31220221899BB8E0027C4B3 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
 		C31220231899BB8E0027C4B3 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
+		C31A3FED18FCA251004E3BA4 /* UIViewController+Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Session.h"; sourceTree = "<group>"; };
+		C31A3FEE18FCA251004E3BA4 /* UIViewController+Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Session.m"; sourceTree = "<group>"; };
 		C322F8BE18F8644400902C9D /* DayCellStaticView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayCellStaticView.h; sourceTree = "<group>"; };
 		C322F8BF18F8644400902C9D /* DayCellStaticView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayCellStaticView.m; sourceTree = "<group>"; };
 		C322F8C118F8648A00902C9D /* DayAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayAttribute.h; sourceTree = "<group>"; };
@@ -888,6 +888,8 @@
 				C35CF95418EF2DF6004D47EA /* NSObject+IsNull.m */,
 				C30B84D218E324260078EDE3 /* UIColor+Traits.h */,
 				C30B84D318E324260078EDE3 /* UIColor+Traits.m */,
+				C3513A4B18F72D4900E90517 /* UINavigationItem+IconLabel.h */,
+				C3513A4C18F72D4900E90517 /* UINavigationItem+IconLabel.m */,
 				C388C73E18FC46BD00B622FB /* UIViewController+Analytics.h */,
 				C388C73F18FC46BD00B622FB /* UIViewController+Analytics.m */,
 				83C4D21718D9E744008C523C /* UIViewController+KeyboardObservers.h */,
@@ -896,10 +898,8 @@
 				C30B84D018E3206A0078EDE3 /* UIViewController+Loading.m */,
 				83C4D20D18D9D9F7008C523C /* UIViewController+UserProfileHelpers.h */,
 				83C4D20E18D9D9F7008C523C /* UIViewController+UserProfileHelpers.m */,
-				835512F218E3708700894728 /* UIViewController+Rotations.h */,
-				835512F318E3708700894728 /* UIViewController+Rotations.m */,
-				C3513A4B18F72D4900E90517 /* UINavigationItem+IconLabel.h */,
-				C3513A4C18F72D4900E90517 /* UINavigationItem+IconLabel.m */,
+				C31A3FED18FCA251004E3BA4 /* UIViewController+Session.h */,
+				C31A3FEE18FCA251004E3BA4 /* UIViewController+Session.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1515,6 +1515,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3BF8FE818984AC200572F43 /* User.m in Sources */,
+				C31A3FEF18FCA251004E3BA4 /* UIViewController+Session.m in Sources */,
 				C374AAD218F9D9CE0064341A /* TemperatureCellEditView.m in Sources */,
 				C382F1E618F33801005E0CAF /* BorderedGradientButton.m in Sources */,
 				838752F418CF44BC00E8ED4A /* Cycle.m in Sources */,
@@ -1535,7 +1536,6 @@
 				C3EC024218F61DCD00AA38D5 /* IconLabel.m in Sources */,
 				8333B98C18E0BD4200C64231 /* LifestyleViewController.m in Sources */,
 				830E351818D2506B00884F0E /* NSDate+Formatters.m in Sources */,
-				835512F418E3708700894728 /* UIViewController+Rotations.m in Sources */,
 				C382F1DC18F31CBE005E0CAF /* GradientButton.m in Sources */,
 				C32C4A8F18985A7800B05009 /* ConnectionManager.m in Sources */,
 				C36C510F189028190053A884 /* AppDelegate.m in Sources */,

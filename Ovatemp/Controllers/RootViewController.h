@@ -11,6 +11,7 @@
 
 @interface RootViewController : UIViewController <UITabBarControllerDelegate>
 
+- (void)launchAppropriateViewController;
 - (void)refreshToken;
 
 @end

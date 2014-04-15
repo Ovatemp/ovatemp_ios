@@ -24,8 +24,7 @@
 }
 
 - (IBAction)logoutTapped:(id)sender {
-  [Configuration logOut];
-  [self dismissViewControllerAnimated:TRUE completion:nil];
+  [self logout];
 }
 
 - (IBAction)tryingToConceiveChanged:(UISwitch *)toggle {

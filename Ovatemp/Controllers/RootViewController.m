@@ -17,8 +17,6 @@
 #import "TodayViewController.h"
 #import "User.h"
 
-#import "UIViewController+Rotations.h"
-
 static CGFloat const kDissolveDuration = 0.2;
 
 @interface RootViewController () {
@@ -32,8 +30,7 @@ static CGFloat const kDissolveDuration = 0.2;
 
 @implementation RootViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
   [super viewDidLoad];
 
   // Configure standard UI appearance
@@ -51,8 +48,13 @@ static CGFloat const kDissolveDuration = 0.2;
 }
 
 - (void)launchAppropriateViewController {
+  if (activeViewController) {
+    [activeViewController.view removeFromSuperview];
+    [activeViewController removeFromParentViewController];
+  }
+
   // Require a user to log in or register
-  if([Configuration loggedIn]) {
+  if ([Configuration loggedIn]) {
     // Create a new main view controller every time so the
     // views get reset
     [self createMainViewController];

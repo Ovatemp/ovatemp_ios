@@ -90,7 +90,7 @@
 - (IBAction)letsChartTapped:(id)sender {
   [self textFieldShouldReturn:self.fullNameTextField];
 
-  [self dismissViewControllerAnimated:TRUE completion:nil];
+  [self backOutToRootViewController];
 }
 
 - (IBAction)backTapped:(id)sender {
