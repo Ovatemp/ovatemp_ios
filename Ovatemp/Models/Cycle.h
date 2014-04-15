@@ -16,6 +16,7 @@
 - (Cycle *)initWithDay:(Day *)day;
 - (Cycle *)previousCycle;
 - (Cycle *)nextCycle;
+- (NSString *)rangeString;
 
 @property (nonatomic, strong) NSArray *days;
 @property (nonatomic, strong) NSNumber *coverline;

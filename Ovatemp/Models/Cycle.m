@@ -114,6 +114,21 @@
   return cycle;
 }
 
+- (NSString *)rangeString {
+  Day *firstDay = [self.days firstObject];
+  Day *lastDay = [self.days lastObject];
+
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+
+  NSMutableString *rangeString = [[NSMutableString alloc] init];
+  [rangeString appendString: [dateFormatter stringFromDate: firstDay.date]];
+  [rangeString appendString: @" to "];
+  [rangeString appendString: [dateFormatter stringFromDate: lastDay.date]];
+
+  return rangeString;
+}
+
 - (Cycle *)previousCycle {
   if(!_day) {
     return nil;

@@ -40,6 +40,8 @@
   chart.cycle = cycle;
   chart.landscape = TRUE;
 
+  chart.dateRangeLabel.text = cycle.rangeString;
+
   UIViewController *vc = [[UIViewController alloc] init];
   vc.view = chart;
 
