@@ -11,6 +11,4 @@
 
 @interface CycleViewController : UIPageViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
-- (void)setCycle:(Cycle *)cycle;
-
 @end

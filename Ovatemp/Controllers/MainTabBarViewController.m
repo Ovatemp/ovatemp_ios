@@ -8,7 +8,6 @@
 
 #import "MainTabBarViewController.h"
 
-#import "Calendar.h"
 #import "CycleViewController.h"
 
 @interface MainTabBarViewController ()
@@ -47,8 +46,6 @@
   
   UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
   if (UIDeviceOrientationIsLandscape(deviceOrientation)) {
-    Day *day = [Calendar day];
-    [self.cycleViewController setCycle:day.cycle];
     if (!self.cycleViewController.isBeingPresented && !self.cycleViewController.isBeingDismissed) {
       [self presentViewController:self.cycleViewController animated:YES completion:nil];
     }

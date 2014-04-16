@@ -17,10 +17,6 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
 
 }
 
-@property (nonatomic, assign) NSInteger totalDays;
-@property (nonatomic, strong) NSDate *firstDate;
-@property (nonatomic, strong) NSDate *lastDate;
-
 @end
 
 @implementation CalendarViewController
@@ -44,9 +40,6 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
   [self.collectionView registerNib:[UINib nibWithNibName:kCalendarCellIdentifier bundle:nil] forCellWithReuseIdentifier:kCalendarCellIdentifier];
   [self.collectionView setBackgroundColor:[UIColor whiteColor]];
 
-
-  [self setDateRange];
-
   NSArray *weekdays = [@"S M T W R F S" componentsSeparatedByString:@" "];
   for(int i=0; i < 7; i++) {
     CGRect frame = CGRectMake(i * itemWidth + layout.sectionInset.left, 0, itemWidth, self.headerView.frame.size.height);
@@ -66,15 +59,19 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
                                  options: NSKeyValueObservingOptionNew
                                  context: NULL];
 
+  if (![Cycle fullyLoaded]) {
+    [Cycle loadAllAnd:^(id response) {
+      [self refresh];
+    } failure:^(NSError *error) {
+      // HANDLEERROR
+      NSLog(@"couldn't refresh page");
+    }];
+  }
+}
 
-  [Cycle loadDatesFrom:self.firstDate to:self.lastDate success:^(NSDictionary *response){
-    [self.collectionView reloadData];
-    [self scrollToCurrentDay];
-  } failure:^(NSError *error) {
-    // HANDLEERROR
-    NSLog(@"couldn't refresh page");
-  }];
-
+- (void)refresh {
+  [self.collectionView reloadData];
+  [self scrollToCurrentDay];
   [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];
   [self trackScreenView:@"Calendar"];
 }
@@ -90,7 +87,7 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
 - (void)scrollToCurrentDay {
   if([Calendar day] == nil) { return; }
 
-  NSInteger todayIndex = [self.firstDate daysTilDate:[Calendar day].date];
+  NSInteger todayIndex = [[Cycle firstDate] daysTilDate:[Calendar day].date];
   NSIndexPath *todayIndexPath = [NSIndexPath indexPathForItem:todayIndex inSection:0];
 
   [self.collectionView scrollToItemAtIndexPath:todayIndexPath
@@ -108,33 +105,15 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
 
 # pragma mark - Helpers
 
-- (void)setDateRange {
-  NSDate *today = [NSDate date];
-  NSCalendar* calendar = [NSCalendar currentCalendar];
-  NSDateComponents* comps = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:today];
-
-  // Go to the end of two months from now
-  [comps setMonth:[comps month]+3];
-  [comps setDay:0];
-  self.lastDate = [calendar dateFromComponents:comps];
-
-  [comps setYear:1980];
-  self.firstDate = [calendar dateFromComponents:comps];
-  self.totalDays = [[[NSCalendar currentCalendar] components:NSDayCalendarUnit
-                                                    fromDate:self.firstDate
-                                                      toDate:self.lastDate
-                                                     options:0] day];
-}
-
 - (NSDate *)dateForItemAtIndexPath:(NSIndexPath *)indexPath {
-  return [self.firstDate addDays:indexPath.item];
+  return [[Cycle firstDate] addDays:indexPath.item];
 }
 
 # pragma mark - UICollectionViewDataSource/Delegate methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-  return self.totalDays;
+  return [Cycle totalDays];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath

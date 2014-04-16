@@ -14,14 +14,20 @@ typedef void (^CycleDateLoadFailure) (NSError *error);
 
 @interface Cycle : NSObject
 
++ (NSArray *)all;
++ (BOOL)fullyLoaded;
++ (void)loadAllAnd:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure;
 + (void)loadDate:(NSDate *)date success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure;
-+ (void)loadDatesFrom:(NSDate *)startDate to:(NSDate *)endDate success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure;
-- (Cycle *)initWithDay:(Day *)day;
++ (NSDate *)firstDate;
++ (NSDate *)lastDate;
++ (NSInteger)totalDays;
+
 - (Cycle *)previousCycle;
 - (Cycle *)nextCycle;
 - (NSString *)rangeString;
-- (void)loadDatesAndOnSuccess:(CycleDateLoadSuccess)onSuccess failure:(CycleDateLoadFailure)onFailure;
 
+@property (readonly) NSDate *endDate;
+@property (readonly) NSDate *startDate;
 @property (nonatomic, strong) NSArray *days;
 @property (nonatomic, strong) NSNumber *coverline;
 @property (nonatomic, strong) NSString *fertilityWindow;

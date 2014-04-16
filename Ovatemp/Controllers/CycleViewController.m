@@ -7,6 +7,8 @@
 //
 
 #import "CycleViewController.h"
+
+#import "Calendar.h"
 #import "CycleChartView.h"
 
 @interface CycleViewController ()
@@ -28,9 +30,28 @@
   return YES;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+  self.view.backgroundColor = LIGHT;
+  if ([Cycle fullyLoaded]) {
+    [self loadCycle];
+  } else {
+    [self startLoading];
+    [Cycle loadAllAnd:^(id response) {
+      [self stopLoading];
+      [self loadCycle];
+    } failure:^(NSError *error) {
+      [self stopLoading];
+    }];
+  }
+}
+
+- (void)loadCycle {
+  Day *day = [Calendar day];
+  [self setCycle:day.cycle];
+}
+
 - (void)setCycle:(Cycle *)cycle {
   UIViewController *vc = [self viewControllerWithCycle:cycle];
-
   [self setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 }
 
@@ -58,13 +79,8 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
   CycleChartView *otherChart = (CycleChartView *)viewController.view;
   Cycle *cycle = [otherChart.cycle nextCycle];
-  
+
   if (cycle) {
-    [cycle loadDatesAndOnSuccess:^{
-      [self setCycle: cycle];
-    } failure:^(NSError *error) {
-      otherChart.dateRangeLabel.text = @"No cycle data";
-    }];
 //    return [self viewControllerWithCycle:cycle];
   }
   return nil;
@@ -75,12 +91,7 @@
   Cycle *cycle = [otherChart.cycle previousCycle];
   
   if (cycle) {
-    [cycle loadDatesAndOnSuccess:^{
-      [self setCycle: cycle];
-    } failure:^(NSError *error) {
-      otherChart.dateRangeLabel.text = @"No cycle data";
-    }];
-//    return [self viewControllerWithCycle:cycle];
+    return [self viewControllerWithCycle:cycle];
   }
   return nil;
 }

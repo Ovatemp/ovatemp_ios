@@ -398,11 +398,15 @@ static NSString * const kTokenParam = @"token";
   if (![config objectForKey:kFormatKey]) {
     NSDictionary *headers = [(NSHTTPURLResponse *)response allHeaderFields];
     NSString *contentType = [headers objectForKey:@"Content-Type"];
-    [config setObject:contentType forKey:kFormatKey];
+    if (contentType) {
+      [config setObject:contentType forKey:kFormatKey];
+    }
   }
   if (![config objectForKey:kStatusKey]) {
     NSInteger status = ((NSHTTPURLResponse *)response).statusCode;
-    [config setObject:@(status) forKey:kStatusKey];
+    if (status) {
+      [config setObject:@(status) forKey:kStatusKey];
+    }
   }
 }
 
