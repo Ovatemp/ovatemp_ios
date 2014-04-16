@@ -58,8 +58,14 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
   CycleChartView *otherChart = (CycleChartView *)viewController.view;
   Cycle *cycle = [otherChart.cycle nextCycle];
+  
   if (cycle) {
-    return [self viewControllerWithCycle:cycle];
+    [cycle loadDatesAndOnSuccess:^{
+      [self setCycle: cycle];
+    } failure:^(NSError *error) {
+      otherChart.dateRangeLabel.text = @"No cycle data";
+    }];
+//    return [self viewControllerWithCycle:cycle];
   }
   return nil;
 }
@@ -67,8 +73,14 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
   CycleChartView *otherChart = (CycleChartView *)viewController.view;
   Cycle *cycle = [otherChart.cycle previousCycle];
+  
   if (cycle) {
-    return [self viewControllerWithCycle:cycle];
+    [cycle loadDatesAndOnSuccess:^{
+      [self setCycle: cycle];
+    } failure:^(NSError *error) {
+      otherChart.dateRangeLabel.text = @"No cycle data";
+    }];
+//    return [self viewControllerWithCycle:cycle];
   }
   return nil;
 }

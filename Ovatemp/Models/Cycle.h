@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "Day.h"
 
+typedef void (^CycleDateLoadSuccess) ();
+typedef void (^CycleDateLoadFailure) (NSError *error);
+
 @interface Cycle : NSObject
 
 + (void)loadDate:(NSDate *)date success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure;
@@ -17,6 +20,7 @@
 - (Cycle *)previousCycle;
 - (Cycle *)nextCycle;
 - (NSString *)rangeString;
+- (void)loadDatesAndOnSuccess:(CycleDateLoadSuccess)onSuccess failure:(CycleDateLoadFailure)onFailure;
 
 @property (nonatomic, strong) NSArray *days;
 @property (nonatomic, strong) NSNumber *coverline;

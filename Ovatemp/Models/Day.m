@@ -53,11 +53,15 @@ static NSDictionary *propertyOptions;
 # pragma mark - Navigating days
 
 - (Day *)nextDay {
-  return [Day forDate:[self.date dateByAddingTimeInterval:1 * 60 * 60 * 24]];
+  Day *next = [[Day alloc] init];
+  next.date = [self.date dateByAddingTimeInterval:1 * 60 * 60 * 24];
+  return next;
 }
 
 - (Day *)previousDay {
-  return [Day forDate:[self.date dateByAddingTimeInterval:-1 * 60 * 60 * 24]];
+  Day *previous = [[Day alloc] init];
+  previous.date = [self.date dateByAddingTimeInterval:-1 * 60 * 60 * 24];
+  return previous;
 }
 
 # pragma mark - Generating images

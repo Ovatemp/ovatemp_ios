@@ -21,9 +21,23 @@
   if(!self) { return nil; }
 
   _day = day;
-  // create all the days and have them update from the server
 
   return self;
+}
+
+- (void)loadDatesAndOnSuccess:(CycleDateLoadSuccess)onSuccess failure:(CycleDateLoadFailure)onFailure {
+  [ConnectionManager get:@"/cycles"
+                  params:@{
+                           @"date": [[_day date] dateId],
+                           }
+                 success:^(NSDictionary *response) {
+                   [Day resetInstances];
+                   [self loadFromResponse: response];
+                   if(onSuccess) onSuccess();
+                 }
+                 failure:^(NSError *error) {
+                   if(onFailure) onFailure(error);
+                 }];
 }
 
 + (void)loadDate:(NSDate *)date success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure {
@@ -75,46 +89,52 @@
                  failure:onFailure];
 }
 
+- (void)loadFromResponse:(NSDictionary *)cycleResponse {
+  NSArray *daysResponse = cycleResponse[@"days"];
+  
+  NSMutableArray *days = [[NSMutableArray alloc] initWithCapacity:daysResponse.count];
+  
+  Day *day;
+  for(NSDictionary *dayAttrs in daysResponse) {
+    day = [Day withAttributes:dayAttrs];
+    
+    day.cycle = self;
+    [days addObject:day];
+  }
+  
+  self.days = [days sortedArrayUsingComparator:^(Day* day1, Day* day2) {
+    return [day1.date compare:day2.date];
+  }];
+  
+  if([cycleResponse[@"coverline"] isEqual:[NSNull null]]) {
+    self.coverline = nil;
+  } else {
+    self.coverline = cycleResponse[@"coverline"];
+  }
+}
 
 + (Cycle *)cycleFromResponse:(NSDictionary *)cycleResponse {
   Cycle *cycle = [[Cycle alloc] init];
-
   NSArray *daysResponse = cycleResponse[@"days"];
-
+  
   if(!daysResponse) {
     if(!cycleResponse[@"day"]) {
       NSLog(@"no day or days in: %@", cycleResponse);
     }
-
+    
     [Day withAttributes:cycleResponse[@"day"]];
-
+    
     return nil;
   }
-
-  NSMutableArray *days = [[NSMutableArray alloc] initWithCapacity:daysResponse.count];
-
-  Day *day;
-  for(NSDictionary *dayAttrs in daysResponse) {
-    day = [Day withAttributes:dayAttrs];
-
-    day.cycle = cycle;
-    [days addObject:day];
-  }
-
-  cycle.days = [days sortedArrayUsingComparator:^(Day* day1, Day* day2) {
-    return [day1.date compare:day2.date];
-  }];
-
-  if([cycleResponse[@"coverline"] isEqual:[NSNull null]]) {
-    cycle.coverline = nil;
-  } else {
-    cycle.coverline = cycleResponse[@"coverline"];
-  }
+  
+  [cycle loadFromResponse: cycleResponse];
 
   return cycle;
 }
 
 - (NSString *)rangeString {
+  if([self.days count] == 0) {return @"";}
+  
   Day *firstDay = [self.days firstObject];
   Day *lastDay = [self.days lastObject];
 
@@ -130,19 +150,21 @@
 }
 
 - (Cycle *)previousCycle {
-  if(!_day) {
+  if(!_day && [self.days count] == 0) {
     return nil;
   }
 
-  return [[Cycle alloc] initWithDay:[_day previousDay]];
+  Day *previousDay = [[self.days firstObject] previousDay];
+  return [[Cycle alloc] initWithDay:previousDay];
 }
 
 - (Cycle *)nextCycle {
-  if(!_day) {
+  if(!_day && [self.days count] == 0) {
     return nil;
   }
-
-  return [[Cycle alloc] initWithDay:[[self.days lastObject] nextDay]];
+  
+  Day *nextDay = [[self.days lastObject] nextDay];
+  return [[Cycle alloc] initWithDay: nextDay];
 }
 
 @end
