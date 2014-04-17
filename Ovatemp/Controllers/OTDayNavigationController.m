@@ -79,7 +79,7 @@
 
     [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];
 
-    if(Calendar.day.cycle) {
+    if(Calendar.day.cycleDay) {
       self.titleLabel.text = [NSString stringWithFormat: @"Cycle Day: #%@", Calendar.day.cycleDay];
     } else {
       self.titleLabel.text = @"No cycle found.";

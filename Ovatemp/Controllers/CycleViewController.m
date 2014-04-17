@@ -46,6 +46,7 @@
 }
 
 - (void)loadCycle {
+  [Calendar resetDate];
   Day *day = [Calendar day];
   [self setCycle:day.cycle];
 }
@@ -81,7 +82,7 @@
   Cycle *cycle = [otherChart.cycle nextCycle];
 
   if (cycle) {
-//    return [self viewControllerWithCycle:cycle];
+    return [self viewControllerWithCycle:cycle];
   }
   return nil;
 }

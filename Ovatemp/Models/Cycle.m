@@ -21,6 +21,10 @@ static NSInteger kTotalDays;
 
 @implementation Cycle
 
+- (NSString *)description {
+  return [NSString stringWithFormat:@"%@ - %@", self.startDate, self.endDate];
+}
+
 + (void)initialize {
   [super initialize];
   [self calculateDates];
@@ -28,7 +32,9 @@ static NSInteger kTotalDays;
 
 + (NSArray *)all {
   if (kAllCycles) {
-    return [kAllCycles sortedArrayUsingSelector:@selector(startDate)];
+    return [kAllCycles sortedArrayUsingComparator:^NSComparisonResult(Cycle *cycle1, Cycle *cycle2) {
+      return [cycle1.startDate compare:cycle2.startDate];
+    }];
   } else {
     return @[];
   }
@@ -37,7 +43,7 @@ static NSInteger kTotalDays;
 + (Cycle *)atIndex:(NSInteger)index {
   NSArray *allCycles = [Cycle all];
   if (index >= 0 && index < allCycles.count - 1) {
-    return [allCycles objectAtIndex:index + 1];
+    return [allCycles objectAtIndex:index];
   }
   return nil;
 }
@@ -55,10 +61,10 @@ static NSInteger kTotalDays;
   [comps setYear:1980];
   kFirstDate = [calendar dateFromComponents:comps];
   
-  kTotalDays = [[[NSCalendar currentCalendar] components:NSDayCalendarUnit
-                                                fromDate:kFirstDate
-                                                  toDate:kLastDate
-                                                 options:0] day];
+  kTotalDays = [[calendar components:NSDayCalendarUnit
+                            fromDate:kFirstDate
+                              toDate:kLastDate
+                             options:0] day];
 
 }
 
@@ -140,7 +146,9 @@ static NSInteger kTotalDays;
       [currentDays addObject:day];
     }
   }
-  self.days = [currentDays sortedArrayUsingSelector:@selector(date)];
+  self.days = [currentDays sortedArrayUsingComparator:^NSComparisonResult(Day *day1, Day *day2) {
+    return [day1.date compare:day2.date];
+  }];
 }
 
 + (Cycle *)cycleFromResponse:(NSDictionary *)cycleResponse {
@@ -153,12 +161,20 @@ static NSInteger kTotalDays;
   for (NSDictionary *dayAttributes in daysResponse) {
     [days addObject:[Day withAttributes:dayAttributes]];
   }
-  [days sortUsingSelector:@selector(date)];
 
+  NSDate *start = [days.firstObject date];
+  NSDate *end = [days.lastObject date];
+  
   NSArray *allCycles = [Cycle all];
   Cycle *cycle;
+
   for (Cycle *preexistingCycle in allCycles) {
-    if (preexistingCycle.startDate >= days.firstObject && preexistingCycle.endDate <= days.lastObject) {
+    BOOL startIsAfterCycleStart = [preexistingCycle.startDate laterDate:start] == start;
+    BOOL endIsBeforeCycleEnd = [preexistingCycle.endDate earlierDate:end] == end;
+    BOOL inCycle = startIsAfterCycleStart && endIsBeforeCycleEnd;
+    inCycle = inCycle || [preexistingCycle.startDate isEqualToDate:start];
+    inCycle = inCycle || [preexistingCycle.endDate isEqualToDate:end];
+    if (inCycle) {
       cycle = preexistingCycle;
       break;
     }
@@ -208,7 +224,7 @@ static NSInteger kTotalDays;
 }
 
 - (Cycle *)nextCycle {
-  return [Cycle atIndex:self.index - 1];
+  return [Cycle atIndex:self.index + 1];
 }
 
 - (NSDate *)endDate {
