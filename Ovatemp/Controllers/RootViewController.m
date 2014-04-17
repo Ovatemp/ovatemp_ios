@@ -156,7 +156,7 @@ static CGFloat const kDissolveDuration = 0.2;
   lastForcedLogout = [NSDate date];
   
   Alert *alert = [Alert alertWithTitle:@"Sorry for the trouble!"
-                               message:@"You've been logged you out of your account. Please log in again."];
+                               message:@"You've been logged out of your account. Please log in again."];
   
   [Configuration logOut];
 
