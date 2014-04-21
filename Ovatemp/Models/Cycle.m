@@ -111,6 +111,7 @@ static NSInteger kTotalDays;
                      }
                    }
                    
+                   kFullyLoaded = YES;
                    if(onSuccess) onSuccess(response);
                  }
                  failure:onFailure];
