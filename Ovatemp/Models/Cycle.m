@@ -22,7 +22,7 @@ static NSInteger kTotalDays;
 @implementation Cycle
 
 - (NSString *)description {
-  return [NSString stringWithFormat:@"%@ - %@", self.startDate, self.endDate];
+  return [NSString stringWithFormat:@"Cycle %@ - %@", self.startDate.dateId, self.endDate.dateId];
 }
 
 + (void)initialize {
@@ -42,7 +42,7 @@ static NSInteger kTotalDays;
 
 + (Cycle *)atIndex:(NSInteger)index {
   NSArray *allCycles = [Cycle all];
-  if (index >= 0 && index < allCycles.count - 1) {
+  if (index >= 0 && index < allCycles.count) {
     return [allCycles objectAtIndex:index];
   }
   return nil;

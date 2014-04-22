@@ -18,7 +18,7 @@
 @implementation CycleViewController
 
 - (id)init {
-  self = [super initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationVertical options:nil];
+  self = [super initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
   if (self) {
     self.delegate = self;
     self.dataSource = self;
@@ -67,14 +67,11 @@
   UIViewController *vc = [[UIViewController alloc] init];
   vc.view = chart;
 
-  UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-  if(orientation == UIInterfaceOrientationLandscapeRight) {
-    vc.view.transform = CGAffineTransformMakeRotation(M_PI/2);
-  } else {
-    vc.view.transform = CGAffineTransformMakeRotation(3 * M_PI/2);
-  }
-
   return vc;
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
+  return UIInterfaceOrientationMaskLandscape;
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {

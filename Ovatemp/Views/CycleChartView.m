@@ -28,12 +28,6 @@
 
 @implementation CycleChartView
 
-CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
-
-- (BOOL)isFlipped {
-  return TRUE;
-}
-
 - (void)setCycle:(Cycle *)cycle {
   _cycle = cycle;
 
