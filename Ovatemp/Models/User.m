@@ -20,4 +20,10 @@ static User *_currentUser;
   _currentUser = user;
 }
 
+- (id)init {
+  self = [super init];
+  self.ignoredAttributes = [NSSet setWithArray:@[@"admin"]];
+  return self;
+}
+
 @end
