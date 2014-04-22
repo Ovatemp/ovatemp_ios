@@ -32,7 +32,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   self.view.backgroundColor = LIGHT;
-  if (![Cycle fullyLoaded]) {
+  if ([Cycle fullyLoaded]) {
     [self loadCycle];
   } else {
     [self startLoading];

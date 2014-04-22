@@ -66,6 +66,8 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
       // HANDLEERROR
       NSLog(@"couldn't refresh page");
     }];
+  } else {
+    [self refresh];
   }
 }
 
