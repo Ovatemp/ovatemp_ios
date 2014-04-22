@@ -10,7 +10,9 @@
 
 #import "CycleViewController.h"
 
-@interface MainTabBarViewController ()
+@interface MainTabBarViewController () {
+  BOOL inLandscape;
+}
 
 @property CycleViewController *cycleViewController;
 
@@ -41,19 +43,39 @@
 - (void)orientationChanged:(NSNotification *)notification {
   if (!self.cycleViewController) {
     self.cycleViewController = [[CycleViewController alloc] init];
-    self.cycleViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    self.cycleViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
   }
-  
+
+  BOOL isAnimating = self.cycleViewController.isBeingPresented || self.cycleViewController.isBeingDismissed;
+
   UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
   if (UIDeviceOrientationIsLandscape(deviceOrientation)) {
-    if (!self.cycleViewController.isBeingPresented && !self.cycleViewController.isBeingDismissed) {
-      [self presentViewController:self.cycleViewController animated:YES completion:nil];
+    inLandscape = YES;
+    if (!isAnimating) {
+      [self showCycleViewController];
     }
   } else {
-    if (!self.cycleViewController.isBeingPresented && !self.cycleViewController.isBeingDismissed) {
-      [self.cycleViewController dismissViewControllerAnimated:YES completion:nil];
+    inLandscape = NO;
+    if (!isAnimating) {
+      [self hideCycleViewController];
     }
   }
+}
+
+- (void)hideCycleViewController {
+  [self dismissViewControllerAnimated:YES completion:^{
+    if (inLandscape) {
+      [self showCycleViewController];
+    }
+  }];
+}
+
+- (void)showCycleViewController {
+  [self presentViewController:self.cycleViewController animated:YES completion:^{
+    if (!inLandscape) {
+      [self hideCycleViewController];
+    }
+  }];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
