@@ -35,6 +35,9 @@ static NSString * const kTitleKey = @"title";
   if (!message) {
     message = error.localizedDescription;
   }
+  if (!message || message.isNull) {
+    message = @"We're not 100% sure what, but we've been notified and will fix it shortly.";
+  }
   
   return [Alert alertWithTitle:title message:message];
 }

@@ -8,6 +8,8 @@
 
 #import "Calendar.h"
 
+#import "Alert.h"
+
 @interface Calendar ()
 
 @property (strong, nonatomic) NSDate *date;
@@ -54,8 +56,7 @@ static Calendar *sharedCalendar = nil;
             self.day = [Day forDate:self.date];
           }
           failure:^(NSError *error) {
-            // HANDLEERROR
-            NSLog(@"calendar load error: %@", error);
+            [Alert presentError:error];
           }];
 }
 

@@ -52,7 +52,7 @@ static NSInteger kTotalDays;
   NSDate *today = [NSDate date];
   NSCalendar *calendar = [NSCalendar currentCalendar];
   NSDateComponents *comps = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:today];
-  
+
   // Go to the end of two months from now
   [comps setMonth:[comps month]+3];
   [comps setDay:0];
@@ -60,7 +60,7 @@ static NSInteger kTotalDays;
 
   [comps setYear:1980];
   kFirstDate = [calendar dateFromComponents:comps];
-  
+
   kTotalDays = [[calendar components:NSDayCalendarUnit
                             fromDate:kFirstDate
                               toDate:kLastDate
@@ -94,23 +94,21 @@ static NSInteger kTotalDays;
                            @"end_date": [kLastDate dateId]
                            }
                  success:^(NSDictionary *response) {
-                   [Day resetInstances];
-                   
                    NSArray *orphanDays = response[@"days"];
                    NSArray *cycles = response[@"cycles"];
-                   
+
                    if(orphanDays) {
                      for(NSDictionary *dayResponse in orphanDays) {
                        [Day withAttributes:dayResponse];
                      }
                    }
-                   
+
                    if(cycles) {
                      for(NSDictionary *cycleResponse in cycles) {
                        [Cycle cycleFromResponse:cycleResponse];
                      }
                    }
-                   
+
                    kFullyLoaded = YES;
                    if(onSuccess) onSuccess(response);
                  }
@@ -123,15 +121,11 @@ static NSInteger kTotalDays;
                            @"date": [date dateId],
                            }
                  success:^(NSDictionary *response) {
-                   [Day resetInstances];
-
                    [Cycle cycleFromResponse:response];
 
                    if(onSuccess) onSuccess(response);
                  }
                  failure:^(NSError *error) {
-                  // HANDLEERROR
-
                    if(onFailure) onFailure(error);
                  }];
 }
@@ -165,7 +159,7 @@ static NSInteger kTotalDays;
 
   NSDate *start = [days.firstObject date];
   NSDate *end = [days.lastObject date];
-  
+
   NSArray *allCycles = [Cycle all];
   Cycle *cycle;
 
@@ -201,7 +195,7 @@ static NSInteger kTotalDays;
 
 - (NSString *)rangeString {
   if([self.days count] == 0) {return @"";}
-  
+
   Day *firstDay = [self.days firstObject];
   Day *lastDay = [self.days lastObject];
 

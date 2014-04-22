@@ -7,6 +7,8 @@
 //
 
 #import "CalendarViewController.h"
+
+#import "Alert.h"
 #import "CalendarCell.h"
 #import "Calendar.h"
 #import "NSDate+CalendarOps.h"
@@ -64,7 +66,7 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
       [self refresh];
     } failure:^(NSError *error) {
       // HANDLEERROR
-      NSLog(@"couldn't refresh page");
+      [Alert presentError:error];
     }];
   } else {
     [self refresh];
