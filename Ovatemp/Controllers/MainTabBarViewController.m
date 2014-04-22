@@ -56,4 +56,8 @@
   }
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+  return self.selectedViewController.preferredStatusBarStyle;
+}
+
 @end

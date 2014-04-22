@@ -113,4 +113,8 @@
   return [self.contentViewController supportedInterfaceOrientations];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+  return self.contentViewController.preferredStatusBarStyle;
+}
+
 @end

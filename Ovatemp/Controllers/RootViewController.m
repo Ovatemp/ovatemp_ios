@@ -72,6 +72,7 @@ static CGFloat const kDissolveDuration = 0.2;
   [self addChildViewController:activeViewController];
   [UIView animateWithDuration:kDissolveDuration animations:^{
     activeViewController.view.alpha = 1.0;
+    [self setNeedsStatusBarAppearanceUpdate];
   }];
 }
 
@@ -200,6 +201,13 @@ static CGFloat const kDissolveDuration = 0.2;
   [[UITabBar appearance] setSelectedImageTintColor:PURPLE];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+  if (activeViewController) {
+    return activeViewController.preferredStatusBarStyle;
+  } else {
+    return [super preferredStatusBarStyle];
+  }
+}
 
 - (BOOL)shouldAutorotate {
   return NO;

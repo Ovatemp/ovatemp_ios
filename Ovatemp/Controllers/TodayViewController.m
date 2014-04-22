@@ -219,4 +219,10 @@
   return self.rows.count;
 }
 
+# pragma mark - UI configuration
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+  return UIStatusBarStyleLightContent;
+}
+
 @end
