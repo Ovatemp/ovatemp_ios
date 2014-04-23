@@ -242,6 +242,8 @@
 		C3D4F35418983B9C00CBB91A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D4F35318983B9C00CBB91A /* Constants.m */; };
 		C3D8911A1908141500E21627 /* EnergizeSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3D891181908141500E21627 /* EnergizeSmall@2x.png */; };
 		C3D8911D19083DEC00E21627 /* FertilityProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D8911C19083DEC00E21627 /* FertilityProfile.m */; };
+		C3D8912119084CB800E21627 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D8912019084CB800E21627 /* StoreKit.framework */; };
+		C3D8912319084D9F00E21627 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D8912219084D9F00E21627 /* GameKit.framework */; };
 		C3E1299A18FC8C89004288D8 /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E1299918FC8C89004288D8 /* MainTabBarViewController.m */; };
 		C3E58C2C18D39AAC0026301A /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C2A18D39AAC0026301A /* LaunchImage.png */; };
 		C3E58C2D18D39AAC0026301A /* LaunchImageR4.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C2B18D39AAC0026301A /* LaunchImageR4.png */; };
@@ -575,6 +577,8 @@
 		C3D891181908141500E21627 /* EnergizeSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EnergizeSmall@2x.png"; sourceTree = "<group>"; };
 		C3D8911B19083DEC00E21627 /* FertilityProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FertilityProfile.h; sourceTree = "<group>"; };
 		C3D8911C19083DEC00E21627 /* FertilityProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FertilityProfile.m; sourceTree = "<group>"; };
+		C3D8912019084CB800E21627 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		C3D8912219084D9F00E21627 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		C3E1299818FC8C89004288D8 /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
 		C3E1299918FC8C89004288D8 /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
 		C3E58C2A18D39AAC0026301A /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
@@ -602,6 +606,8 @@
 				C388C73D18FC45BD00B622FB /* libz.dylib in Frameworks */,
 				C34AE14318FC4C64003209B2 /* libGoogleConversionTracking.a in Frameworks */,
 				C388C73B18FC45B800B622FB /* SystemConfiguration.framework in Frameworks */,
+				C3D8912119084CB800E21627 /* StoreKit.framework in Frameworks */,
+				C3D8912319084D9F00E21627 /* GameKit.framework in Frameworks */,
 				C388C73918FC45B100B622FB /* CoreData.framework in Frameworks */,
 				C388C73718FC45AA00B622FB /* AdSupport.framework in Frameworks */,
 				83EB3F3A18AEAD2600EA91AC /* QuartzCore.framework in Frameworks */,
@@ -1066,6 +1072,8 @@
 		C36C50FD189028190053A884 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C3D8912219084D9F00E21627 /* GameKit.framework */,
+				C3D8912019084CB800E21627 /* StoreKit.framework */,
 				C34AE14218FC4C64003209B2 /* libGoogleConversionTracking.a */,
 				C388C73C18FC45BD00B622FB /* libz.dylib */,
 				C388C73A18FC45B800B622FB /* SystemConfiguration.framework */,
@@ -1251,6 +1259,12 @@
 					C36C50FA189028190053A884 = {
 						DevelopmentTeam = MC934XNWAV;
 						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
 							com.apple.InterAppAudio = {
 								enabled = 0;
 							};
