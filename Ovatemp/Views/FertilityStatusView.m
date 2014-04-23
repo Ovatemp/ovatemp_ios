@@ -57,7 +57,7 @@ NSArray *seekingPregnancyColors;
       messages[CYCLE_PHASE_OVULATION] = @"Peak fertility! Today is the day!";
       colors  [CYCLE_PHASE_OVULATION] = Color(41, 109, 131);
 
-      messages[CYCLE_PHASE_POSTOVULATION] = @"Peak fertility! Today is the day!";
+      messages[CYCLE_PHASE_POSTOVULATION] = @"Hang in there! The two week wait will be over soon.";
       colors  [CYCLE_PHASE_POSTOVULATION] = Color(155,155,155);
 
       seekingPregnancyMessages = [messages copy];
