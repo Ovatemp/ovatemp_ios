@@ -16,13 +16,12 @@
 #define LIGHT_BLUE Color(87, 198, 191)
 #define DARK_BLUE Color(31, 108, 114)
 
-#define GREEN Color(133, 244, 221)
+#define GREEN Color(56, 192, 191)
 #define LIGHT_GREEN Color(103, 230, 223)
 #define DARK_GREEN Color(16, 115, 136)
 
 #define GREY Color(42, 109, 131)
 #define LIGHT_GREY Color(214, 214, 214)
-#define DARK_GREY Color(56, 62, 62)
 
 #define COMMUNITY_BLUE Color(16, 85, 120)
 

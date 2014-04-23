@@ -61,6 +61,8 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
                                  options: NSKeyValueObservingOptionNew
                                  context: NULL];
 
+  [self refresh];
+
   if (![Cycle fullyLoaded]) {
     [Cycle loadAllAnd:^(id response) {
       [self refresh];
@@ -68,8 +70,6 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
       // HANDLEERROR
       [Alert presentError:error];
     }];
-  } else {
-    [self refresh];
   }
 }
 
