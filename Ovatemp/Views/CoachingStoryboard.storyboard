@@ -613,7 +613,7 @@
     </scenes>
     <resources>
         <image name="ActivateSmall.png" width="21" height="24"/>
-        <image name="EnergizeSmall.png" width="41" height="69"/>
+        <image name="EnergizeSmall.png" width="21" height="35"/>
         <image name="HydrateSmall.png" width="19" height="29"/>
         <image name="Light.png" width="26" height="38"/>
         <image name="NourishSmall.png" width="24" height="19"/>

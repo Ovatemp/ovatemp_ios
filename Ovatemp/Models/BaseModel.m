@@ -9,7 +9,7 @@
 #import "BaseModel.h"
 #import <objc/runtime.h>
 
-static NSMutableDictionary *_instances;
+static __strong NSMutableDictionary *_instances;
 
 @interface BaseModel () {
   NSMutableDictionary *_serializedKeys;
