@@ -7,7 +7,9 @@
 //
 
 #import "MoreViewController.h"
+
 #import "User.h"
+#import "WebViewController.h"
 
 @interface MoreViewController ()
 
@@ -54,6 +56,14 @@
 
 - (BOOL)shouldAutorotate {
   return FALSE;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  if (indexPath.section == 2 && indexPath.row == 0) {
+    NSString *url = [ROOT_URL stringByAppendingString:@"/terms"];
+    WebViewController *webViewController = [WebViewController withURL:url];
+    [self.navigationController pushViewController:webViewController animated:YES];
+  }
 }
 
 @end

@@ -33,6 +33,7 @@
   [super viewWillAppear:animated];
   [self startLoading];
   self.tabBarController.tabBar.hidden = YES;
+  self.webView.hidden = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -55,10 +56,12 @@
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
   [self webViewDidFinishLoad:webView];
   [Alert presentError:error];
+  self.webView.hidden = NO;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
   [self stopLoading];
+  self.webView.hidden = NO;
 }
 
 @end

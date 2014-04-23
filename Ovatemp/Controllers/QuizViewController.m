@@ -10,10 +10,13 @@
 
 #import "Alert.h"
 #import "BorderedGradientButton.h"
+#import "FertilityProfile.h"
 #import "Question.h"
 #import "User.h"
 
-@interface QuizViewController ()
+@interface QuizViewController () {
+  BOOL appeared;
+}
 
 @property NSInteger currentQuestion;
 @property (nonatomic, strong) Question *question;
@@ -41,16 +44,20 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-  if(self.questions.count < 1) {
-    self.questionLabel.text = @"Loading...";
-    self.yesButton.hidden = TRUE;
-    self.noButton.hidden = TRUE;
+  if (!appeared) {
+    appeared = YES;
 
-    [self loadFertilityProfile];
-  } else {
-    [self loadNextQuestion];
+    if (self.questions.count < 1) {
+      self.questionLabel.text = @"Loading...";
+      self.yesButton.hidden = TRUE;
+      self.noButton.hidden = TRUE;
+
+      [self loadQuestions];
+      [self trackScreenView:@"Quiz"];
+    } else {
+      [self loadNextQuestion];
+    }
   }
-  [self trackScreenView:@"Quiz"];
 }
 
 # pragma mark - Load questions
@@ -74,11 +81,14 @@
   NSArray *questions = response[@"questions"];
   if(questions) {
     self.questions = [[NSMutableArray alloc] initWithCapacity:questions.count];
+    self.currentQuestion = 0;
+    BOOL setCurrentQuestion = NO;
     for (NSInteger i = 0; i < questions.count; i++) {
       NSDictionary *attributes = questions[i];
       Question *question = [Question withAttributes:attributes];
       [self.questions addObject:question];
-      if (!question.answered && !isnormal(self.currentQuestion)) {
+      if (!question.answered && !setCurrentQuestion) {
+        setCurrentQuestion = YES;
         self.currentQuestion = i;
       }
     }
@@ -123,12 +133,12 @@
   self.countLabel.text = [NSString stringWithFormat:@"%i of %i",
                           (int)self.currentQuestion + 1,
                           (int)self.questions.count];
-  
+
   self.yesButton.hidden = FALSE;
   self.noButton.hidden = FALSE;
 
   self.question = self.questions[self.currentQuestion];
-  
+
   if (self.question.answered) {
     if (self.question.answer) {
       self.noButton.selected = NO;
@@ -147,7 +157,7 @@
 }
 
 - (void)answerQuestion:(BOOL)yes {
-  [self startLoading];
+  [self startLoadingWithBackground:[UIColor colorWithWhite:1 alpha:0] spinnerColor:GREEN];
   [self.question answer:yes success:^(id response){
     [self stopLoading];
     self.currentQuestion++;
@@ -182,20 +192,17 @@
 
 - (void)loadFertilityProfile {
   [self startLoading];
-  [ConnectionManager get:@"/fertility_profiles" target:self success:@selector(fertilityProfileLoaded:) failure:@selector(fertilityProfileLoadFailed:)];
+  [FertilityProfile loadAndThen:^(id response) {
+    [self fertilityProfileLoaded:response];
+  } failure:^(NSError *error) {
+    [self fertilityProfileLoadFailed:error];
+  }];
 }
 
 - (void)fertilityProfileLoaded:(id)response {
   [self stopLoading];
 
-  NSString *fertility_profile_name = response[@"fertility_profile_name"];
-  if(fertility_profile_name) {
-    [User current].fertilityProfileName = fertility_profile_name;
-    NSDictionary *coaching_content_urls = response[@"coaching_content_urls"];
-    if(coaching_content_urls) {
-      [Configuration sharedConfiguration].coachingContentUrls = coaching_content_urls;
-    }
-    
+  if ([User current].fertilityProfileName) {
     [self.navigationController popViewControllerAnimated:NO];
   } else {
     [self loadQuestions];

@@ -9,6 +9,7 @@
 #import "Configuration.h"
 #import "User.h"
 #import "Day.h"
+#import "FertilityProfile.h"
 
 static Configuration *_sharedConfiguration;
 
@@ -61,6 +62,10 @@ static Configuration *_sharedConfiguration;
   [Symptom resetInstancesWithArray:response[@"symptoms"]];
 
   [Day resetInstances];
+
+  if (user.fertilityProfileId && !user.fertilityProfileId.isNull) {
+    [FertilityProfile loadAll];
+  }
 }
 
 + (BOOL)loggedIn {

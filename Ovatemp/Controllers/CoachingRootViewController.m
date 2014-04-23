@@ -56,7 +56,8 @@
 
   if(!hasFertilityProfile) {
     // Show quiz
-    [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"QuizViewController"] animated:FALSE];
+    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"QuizViewController"];
+    [self.navigationController pushViewController:controller animated:FALSE];
 
     return;
   }

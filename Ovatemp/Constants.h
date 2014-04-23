@@ -34,12 +34,14 @@
 
 // API configuration
 #if TARGET_IPHONE_SIMULATOR
-#define API_URL @"http://localhost:3000/api"
+#define ROOT_URL @"http://localhost:3000"
 #define DEVICE_ID @"DUMMYDEVICE"
 #else
-#define API_URL @"http://ovatemp-rails-staging.herokuapp.com/api"
+#define ROOT_URL @"http://ovatemp-rails-staging.herokuapp.com"
 #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
 #endif
+
+# define API_URL [ROOT_URL stringByAppendingString:@"/api"]
 
 static NSInteger const kUnauthorizedRequestCode = 401;
 static NSString * const kUnauthorizedRequestNotification = @"401UnauthorizedRequestEncountered";
