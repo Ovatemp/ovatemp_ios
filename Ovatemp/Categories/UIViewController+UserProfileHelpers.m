@@ -15,6 +15,13 @@
   datePicker.datePickerMode = UIDatePickerModeDate;
   textField.inputView = datePicker;
 
+  UIToolbar *doneToolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];
+  [doneToolbar sizeToFit];
+  UIBarButtonItem *flexArea = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+  UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.view action:@selector(endEditing:)];
+  doneToolbar.items = @[flexArea, doneButton];
+  textField.inputAccessoryView = doneToolbar;
+
   return datePicker;
 }
 

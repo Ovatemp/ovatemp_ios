@@ -122,7 +122,7 @@
 
   DayCell *opkFerningCell = [DayCell withAttributes:@[opk, ferning]];
   opkFerningCell.editViews = [@[editOPK, editFerning] mutableCopy];
-  
+
   self.rows = @[temperatureCell,
                 periodCell,
                 vaginalCell,
@@ -137,7 +137,7 @@
 
   [[Calendar sharedInstance] addObserver:self
                               forKeyPath:@"day"
-                                 options:NSKeyValueObservingOptionNew
+                                 options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
                                  context:NULL];
 
 
@@ -177,7 +177,11 @@
                        change:(NSDictionary *)change context:(void *)context
 {
   if([keyPath isEqualToString:@"day"] && [[Calendar sharedInstance] class] == [object class]) {
-    [self dateChanged];
+    Day *oldDay = change[@"old"];
+    Day *newDay = change[@"new"];
+    if (oldDay.isNull || newDay.isNull || ![oldDay.idate isEqualToString:newDay.idate]) {
+      [self dateChanged];
+    }
   }
 }
 
@@ -191,7 +195,6 @@
 - (void)dayChanged {
   [self.tableView setContentOffset:CGPointZero animated:NO];
   [self.tableView reloadData];
-//  [self.cycleViewController setCycle:self.day.cycle];
 }
 
 #pragma mark - Table view data source

@@ -67,7 +67,6 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
     [Cycle loadAllAnd:^(id response) {
       [self refresh];
     } failure:^(NSError *error) {
-      // HANDLEERROR
       [Alert presentError:error];
     }];
   }

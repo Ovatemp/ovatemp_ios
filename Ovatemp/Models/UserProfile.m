@@ -13,6 +13,17 @@ static UserProfile *_currentUserProfile;
 @implementation UserProfile
 
 + (UserProfile *)current {
+  if (!_currentUserProfile) {
+    _currentUserProfile = [UserProfile withAttributes:@{
+                                                        @"full_name": @"",
+                                                        @"date_of_birth": [NSNull null],
+                                                        @"trying_to_conceive": @YES,
+                                                        @"five_day_rule": [NSNull null],
+                                                        @"dry_day_rule": [NSNull null],
+                                                        @"temperature_shift_rule": [NSNull null],
+                                                        @"peak_day_rule": [NSNull null]
+                                                        }];
+  }
   return _currentUserProfile;
 }
 

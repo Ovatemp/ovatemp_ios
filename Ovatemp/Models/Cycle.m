@@ -122,8 +122,12 @@ static NSInteger kTotalDays;
                            }
                  success:^(NSDictionary *response) {
                    [Cycle cycleFromResponse:response];
+                   Day *day = [Day forDate:date];
+                   if (!day) {
+                     day = [Day withAttributes:@{@"idate": date.dateId}];
+                   }
 
-                   if(onSuccess) onSuccess(response);
+                   if (onSuccess) onSuccess(response);
                  }
                  failure:^(NSError *error) {
                    if(onFailure) onFailure(error);

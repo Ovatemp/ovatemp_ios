@@ -137,7 +137,6 @@ static CGFloat const kDissolveDuration = 0.2;
                      [Configuration loggedInWithResponse:response];
                    }
                    failure:^(NSError *error) {
-                     // HANDLEERROR
                      [self logOutWithUnauthorized];
                    }
      ];
@@ -145,7 +144,6 @@ static CGFloat const kDissolveDuration = 0.2;
 }
 
 - (void)logOutWithUnauthorized {
-  NSLog(@"unauthorized");
   if(![Configuration loggedIn]) {
     return;
   }

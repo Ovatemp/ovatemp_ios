@@ -229,6 +229,7 @@ static const CGFloat kIconSize = 75.0f;
       _choices = [[self.attribute.choiceClass all] sortedArrayUsingDescriptors:@[sort]];
       [_selectedChoices addObject:newChoice];
       [self.tableView reloadData];
+      [self.delegate attributeSelectionChanged:self.attribute selected:_selectedChoices];
     }];
   }];
   

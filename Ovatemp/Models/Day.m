@@ -9,6 +9,7 @@
 #import "Day.h"
 
 #import "Alert.h"
+#import "Calendar.h"
 #import "Cycle.h"
 #import "ConnectionManager.h"
 
@@ -169,6 +170,7 @@ static NSDictionary *propertyOptions;
                            }
                  success:^(NSDictionary *response) {
                    [Cycle cycleFromResponse:response];
+                   [Calendar setDate:self.date];
                    if (onSuccess) onSuccess(response);
                  }
                  failure:^(NSError *error) {
