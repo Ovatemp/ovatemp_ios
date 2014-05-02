@@ -103,10 +103,17 @@ static __strong NSMutableDictionary *_instances;
       value = [NSNull null];
     }
 
-    if(camelCase) {
-      attributes[key] = value;
+    NSLog(@"%@: %@", key, value);
+
+    NSString *actualKey = key;
+    if (!camelCase && _serializedKeys[key]) {
+      actualKey = _serializedKeys[key];
+    }
+
+    if (actualKey) {
+      attributes[actualKey] = value;
     } else {
-      attributes[_serializedKeys[key]] = value;
+      NSLog(@"%@ can't be serialized in %@", key, _serializedKeys);
     }
   }
 
