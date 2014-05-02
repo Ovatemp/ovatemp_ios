@@ -48,6 +48,9 @@ static Calendar *sharedCalendar = nil;
 }
 
 - (void)updateDay {
+  NSLog(@"Fetching day for date %@", self.date);
+  NSLog(@"Searching through %@", [Day instances]);
+  NSLog(@"%@", [Day forDate:self.date]);
   self.day = [Day forDate:self.date];
   if(self.day) return;
 
