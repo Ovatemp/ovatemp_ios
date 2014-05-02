@@ -75,6 +75,9 @@ static Configuration *_sharedConfiguration;
 + (void)logOut {
   [User setCurrent:nil];
   [UserProfile setCurrent:nil];
+  [Day resetInstances];
+  [User resetInstances];
+  [UserProfile resetInstances];
   [Configuration sharedConfiguration].token = nil;
   [Configuration sharedConfiguration].coachingContentUrls = nil;
   [Configuration sharedConfiguration].hasSeenProfileIntroScreen = @NO;

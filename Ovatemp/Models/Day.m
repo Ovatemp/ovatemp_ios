@@ -149,6 +149,10 @@ static NSDictionary *propertyOptions;
   [self saveAndThen:nil];
 }
 
+- (BOOL)isEqual:(id)object {
+  return [self.idate isEqualToString:[object idate]];
+}
+
 - (void)saveAndThen:(ConnectionManagerSuccess)onSuccess {
   NSDictionary *attributes;
   
