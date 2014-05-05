@@ -12,6 +12,8 @@
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleConversionTracking/ACTReporter.h>
 
+#import <HockeySDK/HockeySDK.h>
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -19,8 +21,9 @@
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   self.window.rootViewController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
 
-  // Setup Google Analytics
+  // Setup 3rd party libraries
   [self configureAnalytics];
+  [self configureHockey];
   
   // Display the app!
   [self.window makeKeyAndVisible];
@@ -63,6 +66,13 @@
                                           label:kGoogleAdwordsConversionLabel
                                           value:@"0.000000"
                                    isRepeatable:NO];
+}
+
+- (void)configureHockey {
+  BITHockeyManager *hockey = [BITHockeyManager sharedHockeyManager];
+  [hockey configureWithIdentifier:kHockeyIdentifier];
+  [hockey startManager];
+  [hockey.authenticator authenticateInstallation];
 }
 
 @end
