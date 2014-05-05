@@ -150,7 +150,10 @@ static NSDictionary *propertyOptions;
 }
 
 - (BOOL)isEqual:(id)object {
-  return [self.idate isEqualToString:[object idate]];
+  if ([object isKindOfClass:[self class]]) {
+    return [self.idate isEqualToString:[object idate]];
+  }
+  return NO;
 }
 
 - (void)saveAndThen:(ConnectionManagerSuccess)onSuccess {

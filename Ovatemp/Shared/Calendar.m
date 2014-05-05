@@ -51,8 +51,12 @@ static Calendar *sharedCalendar = nil;
   NSLog(@"Fetching day for date %@", self.date);
   NSLog(@"Searching through %@", [Day instances]);
   NSLog(@"%@", [Day forDate:self.date]);
-  self.day = [Day forDate:self.date];
-  if(self.day) return;
+  Day *day = [Day forDate:self.date];
+  if (day) {
+    self.day = day;
+    return;
+  }
+  NSLog(@"No day found");
 
   [Cycle loadDate:self.date
           success:^(NSDictionary *response) {
