@@ -116,12 +116,12 @@
 - (void)setChoice:(NSString *)choice {
   if (choice.length) {
     [self hideSlideToEdit];
-    self.imageView.image = [UIImage imageNamed:choice];
+    self.imageView.image = [UIImage imageNamed:choice.capitalizedString];
     self.choiceLabel.text = choice.capitalizedString;
-    
+
     CGRect imageFrame = self.imageView.frame;
     CGFloat left;
-    
+
     if (self.solitary) {
       self.choiceLabel.font = [UIFont systemFontOfSize:17.0f];
       [self.choiceLabel sizeToFit];
