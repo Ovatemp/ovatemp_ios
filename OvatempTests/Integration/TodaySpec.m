@@ -24,20 +24,16 @@ describe(@"Today screen", ^{
       // Scroll to the right row
       [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
 
-      UILabel *temperatureLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Temperature Selection"];
-      expect(temperatureLabel.text).to.equal(@"Swipe to edit");
+      UILabel *slideLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Slide to edit temperature"];
+      expect(slideLabel.text).to.equal(@"❮ slide to change");
 
-      [tester tapViewWithAccessibilityLabel:@"Set Temperature" traits:UIAccessibilityTraitButton];
-      expect(temperatureLabel.text).to.equal(@"98.6ºF");
-
-      [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Set Temperature"];
-      [tester waitForViewWithAccessibilityLabel:@"Temperature"];
-      [tester setValue:99.5 forSliderWithAccessibilityLabel:@"Temperature"];
+      [tester setValue:99.5 forSliderWithAccessibilityLabel:@"Change Temperature"];
 
       [tester waitForTimeInterval:.5];
 
       // Sometimes the test scroller is off by a tenth of a degree, so just
       // skip that
+      UILabel *temperatureLabel = (UILabel *)[tester waitForViewWithAccessibilityLabel:@"Temperature Value"];
       expect([temperatureLabel.text substringToIndex:3]).to.equal(@"99.");
       expect([temperatureLabel.text substringFromIndex:4]).to.equal(@"ºF");
     });
@@ -46,16 +42,16 @@ describe(@"Today screen", ^{
       // Scroll to the right row
       [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
 
-      UILabel *periodLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Period Selection"];
-      expect(periodLabel.text).to.equal(@"Swipe to edit");
+      UILabel *slideLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Slide to edit period"];
+      expect(slideLabel.text).to.equal(@"❮ slide to change");
 
-      [tester tapViewWithAccessibilityLabel:@"Period Spotting Button" traits:UIAccessibilityTraitButton];
+      [tester tapViewWithAccessibilityLabel:@"Period: Spotting" traits:UIAccessibilityTraitButton];
 
+      UILabel *periodLabel = (UILabel *)[tester waitForViewWithAccessibilityLabel:@"Period"];
       expect(periodLabel.text).to.equal(@"Spotting");
 
-      [tester tapViewWithAccessibilityLabel:@"Period Spotting Button"];
-
-      expect(periodLabel.text).to.equal(@"Swipe to edit");
+      [tester tapViewWithAccessibilityLabel:@"Period: Spotting"];
+      expect(periodLabel.text).to.beNil();
     });
 
     it(@"it saves when going to the calendar and coming back", ^{

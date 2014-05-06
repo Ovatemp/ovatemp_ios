@@ -47,6 +47,7 @@
   if (!_choiceLabel) {
     _choiceLabel = [[UILabel alloc] init];
     _choiceLabel.font = [UIFont systemFontOfSize:18.0f];
+    _choiceLabel.accessibilityLabel = self.attribute.title;
     _choiceLabel.adjustsFontSizeToFitWidth = YES;
     _choiceLabel.minimumScaleFactor = 0.5;
     _choiceLabel.text = @"!_jGjH08";
@@ -69,6 +70,7 @@
 - (UILabel *)label {
   if (!_label) {
     _label = [[UILabel alloc] init];
+    _label.accessibilityLabel = [NSString stringWithFormat:@"Edit %@", self.attribute.title];
     _label.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0f];
     _label.textColor = DARK;
     [self addSubview:_label];
@@ -81,6 +83,7 @@
     _slideToEditLabel = [[GradientLabel alloc] init];
     _slideToEditLabel.font = [UIFont systemFontOfSize:17.0f];
     _slideToEditLabel.adjustsFontSizeToFitWidth = YES;
+    _slideToEditLabel.accessibilityLabel = [NSString stringWithFormat:@"Slide to edit %@", self.attribute.title.lowercaseString];
     _slideToEditLabel.minimumScaleFactor = 0.5;
     _slideToEditLabel.text = @"❮ slide to change";
     _slideToEditLabel.textAlignment = NSTextAlignmentCenter;

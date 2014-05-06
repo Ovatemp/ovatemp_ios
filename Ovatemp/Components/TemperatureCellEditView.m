@@ -19,6 +19,7 @@
 
 - (CGRect)buildCustomUI:(CGRect)frame {
   UILabel *temperatureLabel = [[UILabel alloc] init];
+  temperatureLabel.accessibilityLabel = @"Temperature Value";
   temperatureLabel.font = [UIFont boldSystemFontOfSize:41.0f];
   temperatureLabel.text = @"8008.900º F";
   temperatureLabel.textAlignment = NSTextAlignmentCenter;
@@ -32,6 +33,7 @@
   self.temperatureLabel = temperatureLabel;
 
   UISlider *slider = [[UISlider alloc] init];
+  slider.accessibilityLabel = @"Change Temperature";
   slider.minimumValue = 90.0f;
   slider.maximumValue = 105.0f;
   CGRect sliderFrame = slider.frame;

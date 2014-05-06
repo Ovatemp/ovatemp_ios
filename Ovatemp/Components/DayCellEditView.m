@@ -161,6 +161,7 @@ static const CGFloat kIconSize = 75.0f;
 
   NSString *choice = self.attribute.choices[index];
   [button setTitle:choice.capitalizedString forState:UIControlStateNormal];
+  button.accessibilityLabel = [NSString stringWithFormat:@"%@: %@", self.attribute.title, choice.capitalizedString];
 
   NSString *imageName = [choice.capitalizedString stringByAppendingString:@".png"];
   UIImage *image = [UIImage imageNamed:imageName];
