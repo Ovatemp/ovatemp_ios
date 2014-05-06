@@ -23,16 +23,19 @@ describe(@"Authentication failures", ^{
       [tester tapViewWithAccessibilityLabel:@"Today"];
     });
 
-    it(@"should kick you out if your token becomes invalid and you make a request", ^{
+    fit(@"should kick you out if your token becomes invalid and you make a request", ^{
       [tester resetUsers];
 
-      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
-      [tester tapViewWithAccessibilityLabel:@"Set Temperature" traits:UIAccessibilityTraitButton];
+//      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
+//      [tester tapViewWithAccessibilityLabel:@"Set Temperature" traits:UIAccessibilityTraitButton];
 
       [tester tapViewWithAccessibilityLabel:@"Go to Previous Day"];
-      [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Go to Previous Day"];
 
-      [tester tapViewWithAccessibilityLabel:@"OK"];
+      // Wait for the error message to appear
+      [tester waitForViewWithAccessibilityLabel:@"Okay"];
+      [tester tapViewWithAccessibilityLabel:@"Okay"];
+
+      [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Go to Previous Day"];
 
       expect(ACTIVE_VIEW_CONTROLLER).to.beKindOf([SessionViewController class]);
     });

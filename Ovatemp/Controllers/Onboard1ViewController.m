@@ -10,8 +10,9 @@
 #import "UserProfile.h"
 #import "UIViewController+UserProfileHelpers.h"
 
-@interface Onboard1ViewController ()
-
+@interface Onboard1ViewController () {
+  BOOL _cycleDateSet;
+}
 @end
 
 @implementation Onboard1ViewController
@@ -53,6 +54,7 @@
 }
 
 - (void)cycleDateChanged:(id)sender {
+  _cycleDateSet = YES;
   self.cycleDateTextField.text = [self.cycleDatePicker.date classicDate];
 }
 
@@ -82,11 +84,11 @@
 # pragma mark - View Navigation
 
 - (IBAction)pushToNext:(id)sender {
-  if(self.cycleDatePicker.date) {
+  if (_cycleDateSet) {
     self.firstDay = [Day forDate:self.cycleDatePicker.date];
     if(!self.firstDay) {
       self.firstDay = [Day withAttributes:@{@"date": self.cycleDatePicker.date,
-                                            @"idate": [self.cycleDatePicker.date classicDate],
+                                            @"idate": [self.cycleDatePicker.date dateId],
                                             @"period": @""}];
     }
     [self.firstDay selectProperty:@"period" withindex:PERIOD_LIGHT];

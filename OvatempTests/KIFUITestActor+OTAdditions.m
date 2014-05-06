@@ -63,6 +63,7 @@
 - (UITextField *)enterDate:(NSDate*)date intoDatePickerTextFieldWithAccessibilityLabel:(NSString*)label
 {
   UITextField *textField =  (UITextField*)[tester waitForViewWithAccessibilityLabel:label];
+  [textField becomeFirstResponder];
 
   UIDatePicker *picker = (UIDatePicker *)textField.inputView;
   [picker setDate:date animated:YES];

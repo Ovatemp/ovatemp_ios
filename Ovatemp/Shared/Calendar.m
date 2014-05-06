@@ -48,7 +48,7 @@ static Calendar *sharedCalendar = nil;
 - (void)updateDay {
   NSLog(@"Fetching day for date %@", self.date);
   NSLog(@"Searching through %@", [Day instances]);
-  NSLog(@"%@", [Day forDate:self.date]);
+  NSLog(@"Result: %@", [Day forDate:self.date]);
   Day *day = [Day forDate:self.date];
   if (day) {
     self.day = day;
@@ -58,10 +58,11 @@ static Calendar *sharedCalendar = nil;
 
   [Cycle loadDate:self.date
           success:^(NSDictionary *response) {
+            NSLog(@"Now has days %@", [Day instances]);
             self.day = [Day forDate:self.date];
           }
           failure:^(NSError *error) {
-            [Alert presentError:error];
+            NSLog(@"Failed to do a thing");
           }];
 }
 

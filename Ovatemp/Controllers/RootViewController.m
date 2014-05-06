@@ -20,7 +20,6 @@
 static CGFloat const kDissolveDuration = 0.2;
 
 @interface RootViewController () {
-  UIViewController *activeViewController;
   MainTabBarViewController *mainViewController;
   NSDate *lastForcedLogout;
   BOOL loggedIn;
@@ -42,15 +41,15 @@ static CGFloat const kDissolveDuration = 0.2;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-  if (!activeViewController) {
+  if (!self.activeViewController) {
     [self launchAppropriateViewController];
   }
 }
 
 - (void)launchAppropriateViewController {
-  if (activeViewController) {
-    [activeViewController.view removeFromSuperview];
-    [activeViewController removeFromParentViewController];
+  if (self.activeViewController) {
+    [self.activeViewController.view removeFromSuperview];
+    [self.activeViewController removeFromParentViewController];
   }
 
   // Require a user to log in or register
@@ -59,19 +58,19 @@ static CGFloat const kDissolveDuration = 0.2;
     // views get reset
     [self createMainViewController];
 
-    activeViewController = mainViewController;
+    self.activeViewController = mainViewController;
     [mainViewController setSelectedIndex:0];
     [Calendar resetDate];
   } else {
-    activeViewController = [self createSessionViewController];
+    self.activeViewController = [self createSessionViewController];
   }
 
-  activeViewController.view.alpha = 0;
-  [self.view addSubview:activeViewController.view];
+  self.activeViewController.view.alpha = 0;
+  [self.view addSubview:self.activeViewController.view];
 
-  [self addChildViewController:activeViewController];
+  [self addChildViewController:self.activeViewController];
   [UIView animateWithDuration:kDissolveDuration animations:^{
-    activeViewController.view.alpha = 1.0;
+    self.activeViewController.view.alpha = 1.0;
     [self setNeedsStatusBarAppearanceUpdate];
   }];
 }
@@ -159,11 +158,12 @@ static CGFloat const kDissolveDuration = 0.2;
   
   [Configuration logOut];
 
-  [activeViewController removeFromParentViewController];
+  [self.activeViewController removeFromParentViewController];
   [UIView animateWithDuration:kDissolveDuration animations:^{
-    activeViewController.view.alpha = 0;
+    self.activeViewController.view.alpha = 0;
   } completion:^(BOOL finished) {
-    activeViewController = nil;
+    [self.activeViewController.view removeFromSuperview];
+    self.activeViewController = nil;
     [self launchAppropriateViewController];
   }];
 
@@ -200,8 +200,8 @@ static CGFloat const kDissolveDuration = 0.2;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-  if (activeViewController) {
-    return activeViewController.preferredStatusBarStyle;
+  if (self.activeViewController) {
+    return self.activeViewController.preferredStatusBarStyle;
   } else {
     return [super preferredStatusBarStyle];
   }

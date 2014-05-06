@@ -124,7 +124,7 @@ static NSInteger kTotalDays;
                    [Cycle cycleFromResponse:response];
                    Day *day = [Day forDate:date];
                    if (!day) {
-                     day = [Day withAttributes:@{@"idate": date.dateId}];
+                     day = [Day withAttributes:@{@"date": date, @"idate": date.dateId}];
                    }
 
                    if (onSuccess) onSuccess(response);

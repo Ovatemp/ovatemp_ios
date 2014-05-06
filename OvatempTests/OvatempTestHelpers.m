@@ -8,6 +8,8 @@
 
 #import "OvatempTestHelpers.h"
 
+#import "RootViewController.h"
+
 UIViewController *TopMostViewController(UIViewController *aViewController) {
   if ([aViewController isKindOfClass:[UITabBarController class]]) {
     UITabBarController* tabBarController = (UITabBarController*)aViewController;
@@ -18,6 +20,9 @@ UIViewController *TopMostViewController(UIViewController *aViewController) {
   } else if (aViewController.presentedViewController) {
     UIViewController* presentedViewController = aViewController.presentedViewController;
     return TopMostViewController(presentedViewController);
+  } else if ([aViewController respondsToSelector:@selector(activeViewController)]) {
+    id temporaryViewController = aViewController;
+    return TopMostViewController([temporaryViewController performSelector:@selector(activeViewController) withObject:nil]);
   } else {
     return aViewController;
   }

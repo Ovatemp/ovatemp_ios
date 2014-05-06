@@ -14,4 +14,6 @@
 - (void)launchAppropriateViewController;
 - (void)refreshToken;
 
+@property UIViewController *activeViewController;
+
 @end
