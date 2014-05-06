@@ -88,6 +88,12 @@ static NSString * const kTitleKey = @"title";
                                              delegate:self
                                     cancelButtonTitle:cancelButton
                                     otherButtonTitles:nil];
+
+  self.view.isAccessibilityElement = YES;
+
+  if (!self.title) {
+    self.view.accessibilityLabel = @"Alert Message";
+  }
   for (NSInteger i = 1; i < _buttons.count; i++) {
     NSDictionary *button = _buttons[i];
     [self.view addButtonWithTitle:button[kTitleKey]];

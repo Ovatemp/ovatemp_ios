@@ -77,6 +77,7 @@
   }];
   alert.alertViewStyle = UIAlertViewStylePlainTextInput;
   [alert show];
+  [alert.view textFieldAtIndex:0].text = self.emailField.text;
 
   // TODO: Restore defaults
   //  UITextField *input = [form textFieldAtIndex:0];

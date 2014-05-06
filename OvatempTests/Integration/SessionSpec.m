@@ -23,7 +23,7 @@ describe(@"Authentication failures", ^{
       [tester tapViewWithAccessibilityLabel:@"Today"];
     });
 
-    fit(@"should kick you out if your token becomes invalid and you make a request", ^{
+    it(@"should kick you out if your token becomes invalid and you make a request", ^{
       [tester resetUsers];
 
 //      [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
@@ -49,11 +49,8 @@ describe(@"Authentication failures", ^{
       // Confirm
       [tester tapViewWithAccessibilityLabel:@"Reset password"];
 
-
-      Alert *alert = (Alert *)[tester waitForViewWithAccessibilityLabel:@"Alert Message"];
-      NSString *message = alert.accessibilityValue;
-      expect([message hasPrefix:@"Please check your email"]).to.beTruthy;
-      [tester tapViewWithAccessibilityLabel:@"OK"];
+      [tester waitForViewWithAccessibilityLabel:@"Okay"];
+      [tester tapViewWithAccessibilityLabel:@"Okay"];
 
       // This should NOT match the registration email
       [tester clearTextFromAndThenEnterText:@"INCORRECT@example.com" intoViewWithAccessibilityLabel:@"Email"];
@@ -61,11 +58,8 @@ describe(@"Authentication failures", ^{
       // Confirm
       [tester tapViewWithAccessibilityLabel:@"Reset password"];
 
-      alert = (Alert *)[tester waitForViewWithAccessibilityLabel:@"Alert Message"];
-      message = alert.accessibilityValue;
-      expect([message hasPrefix:@"Sorry, we couldn't reset your password"]).to.beTruthy;
-
-      [tester tapViewWithAccessibilityLabel:@"OK"];
+      [tester waitForViewWithAccessibilityLabel:@"Okay"];
+      [tester tapViewWithAccessibilityLabel:@"Okay"];
     });
   });
 });
