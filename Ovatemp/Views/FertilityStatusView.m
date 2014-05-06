@@ -8,6 +8,14 @@
 
 #import "FertilityStatusView.h"
 
+#import "UserProfile.h"
+
+@interface FertilityStatusView ()
+
+@property Day *day;
+
+@end
+
 @implementation FertilityStatusView
 
 NSArray *avoidingPregnancyMessages;
@@ -66,17 +74,26 @@ NSArray *seekingPregnancyColors;
     return self;
 }
 
+- (void)layoutSubviews {
+  [super layoutSubviews];
+  [self update];
+}
+
 - (void)updateWithDay:(Day *)day {
-  if(!day.cyclePhase) {
+  self.day = day;
+  [self update];
+}
+
+- (void)update {
+  if (!self.day.cyclePhase) {
     self.label.text = @"Keep tracking!";
     self.backgroundColor = Color(115, 115, 115);
     return;
   }
 
-  CyclePhaseType phaseType = [kCyclePhaseTypes indexOfObject:day.cyclePhase];
+  CyclePhaseType phaseType = [kCyclePhaseTypes indexOfObject:self.day.cyclePhase];
 
-  BOOL seekingPregnancy = TRUE;
-  if(seekingPregnancy) {
+  if ([UserProfile current].tryingToConceive.boolValue) {
     self.label.text = seekingPregnancyMessages[phaseType];
     self.backgroundColor = seekingPregnancyColors[phaseType];
   } else {
