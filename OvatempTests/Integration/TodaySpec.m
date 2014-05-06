@@ -57,43 +57,50 @@ describe(@"Today screen", ^{
     it(@"it saves when going to the calendar and coming back", ^{
       [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
 
-      UILabel *periodLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Period Selection"];
-      expect(periodLabel.text).to.equal(@"Swipe to edit");
+      UILabel *slideLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Slide to edit period"];
+      expect(slideLabel.text).to.equal(@"❮ slide to change");
 
-      [tester tapViewWithAccessibilityLabel:@"Period Spotting Button" traits:UIAccessibilityTraitButton];
+      UILabel *periodLabel = (UILabel *)[tester waitForViewWithAccessibilityLabel:@"Period"];
+
+      [tester tapViewWithAccessibilityLabel:@"Period: Spotting" traits:UIAccessibilityTraitButton];
       expect(periodLabel.text).to.equal(@"Spotting");
 
       [tester tapViewWithAccessibilityLabel:@"Go to Previous Day"];
-      expect(periodLabel.text).to.equal(@"Swipe to edit");
+      expect(periodLabel.text).to.beNil();
 
       [tester tapViewWithAccessibilityLabel:@"Go to Next Day"];
       expect(periodLabel.text).to.equal(@"Spotting");
     });
 
-    it(@"has a functioning cervical fluid/vaginal sensation cell", ^{
+    fit(@"has a functioning cervical fluid/vaginal sensation cell", ^{
       [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
 
-      UILabel *cervicalLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Cervical Fluid Selection"];
-      expect(cervicalLabel.text).to.equal(@"Swipe to edit");
-      UILabel *vaginalLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Vaginal Sensation Selection"];
-      expect(vaginalLabel.text).to.equal(@"Swipe to edit");
+      UILabel *slideLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Slide to edit cervical fluid"];
+      expect(slideLabel.text).to.equal(@"❮ slide to change");
 
-      [tester waitForViewWithAccessibilityLabel:@"Cervical Fluid Creamy Button"];
-      [tester tapViewWithAccessibilityLabel:@"Cervical Fluid Creamy Button"];
+      slideLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Slide to edit vaginal sensation"];
+      expect(slideLabel.text).to.equal(@"❮ slide to change");
 
-      [tester waitForViewWithAccessibilityLabel:@"Vaginal Sensation Lube Button"];
-      [tester tapViewWithAccessibilityLabel:@"Vaginal Sensation Lube Button"];
+      UILabel *cervicalLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Cervical Fluid"];
+
+      UILabel *vaginalLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Vaginal Sensation"];
+
+      [tester waitForViewWithAccessibilityLabel:@"Cervical Fluid: Creamy"];
+      [tester tapViewWithAccessibilityLabel:@"Cervical Fluid: Creamy"];
+
+      [tester waitForViewWithAccessibilityLabel:@"Vaginal Sensation: Lube"];
+      [tester tapViewWithAccessibilityLabel:@"Vaginal Sensation: Lube"];
 
       expect(cervicalLabel.text).to.equal(@"Creamy");
       expect(vaginalLabel.text).to.equal(@"Lube");
 
-      [tester tapViewWithAccessibilityLabel:@"Vaginal Sensation Lube Button"];
+      [tester tapViewWithAccessibilityLabel:@"Vaginal Sensation: Lube"];
 
-      [tester waitForViewWithAccessibilityLabel:@"Cervical Fluid Creamy Button"];
-      [tester tapViewWithAccessibilityLabel:@"Cervical Fluid Creamy Button"];
+      [tester waitForViewWithAccessibilityLabel:@"Cervical Fluid: Creamy"];
+      [tester tapViewWithAccessibilityLabel:@"Cervical Fluid: Creamy"];
 
-      expect(cervicalLabel.text).to.equal(@"Swipe to edit");
-      expect(vaginalLabel.text).to.equal(@"Swipe to edit");
+      expect(cervicalLabel.text).to.beNil();
+      expect(vaginalLabel.text).to.beNil();
     });
 
     it(@"has a functioning intercourse cell", ^{
