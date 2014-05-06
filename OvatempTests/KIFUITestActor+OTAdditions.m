@@ -44,11 +44,10 @@
 
 - (void)logOut {
   if (![ACTIVE_VIEW_CONTROLLER isKindOfClass:[SessionViewController class]]) {
-    NSLog(@"Logging out because %@ is not a SessionViewController", ACTIVE_VIEW_CONTROLLER);
     // Navigate to the "More" tab
-
     [self waitForViewWithAccessibilityLabel:@"More"];
     [self tapViewWithAccessibilityLabel:@"More"];
+
     // Make sure we get to the root of the navigation controller
     [self tapViewWithAccessibilityLabel:@"More"];
 

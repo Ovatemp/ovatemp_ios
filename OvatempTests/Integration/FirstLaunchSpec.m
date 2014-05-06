@@ -44,7 +44,6 @@ describe(@"at first launch", ^{
 
 
     NSDate *cycleDate = [[NSDate date] addDays:-2];
-    NSLog(@"Cycle date %@", cycleDate);
     UITextField *dateField = (UITextField *)[tester enterDate:cycleDate intoDatePickerTextFieldWithAccessibilityLabel:@"Last Cycle Date"];
 
     expect(dateField.text).to.equal([cycleDate classicDate]);
