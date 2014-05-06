@@ -61,4 +61,4 @@ UIColor * ColorA(int red, int green, int blue, CGFloat alpha);
 static NSString * const kGoogleAnalyticsTrackingID = @"UA-32219902-1";
 static NSString * const kGoogleAdwordsConversionID = @"1009399358";
 static NSString * const kGoogleAdwordsConversionLabel = @"Xn3pCKKe1gcQvuyo4QM";
-static NSString * const kHockeyIdentifier = @"17db64d93ee5613a74de821a290d4792";
+static NSString * const kHockeyIdentifier = @"6e19f3154c79a220e01f3820bf0f0f06";
