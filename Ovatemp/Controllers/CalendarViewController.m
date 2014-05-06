@@ -124,7 +124,6 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
   NSDate *date = [self dateForItemAtIndexPath:indexPath];
 
   if([[NSDate date] compare:date] != NSOrderedDescending) {
-    NSLog(@"can't go into the future");
     return;
   }
 

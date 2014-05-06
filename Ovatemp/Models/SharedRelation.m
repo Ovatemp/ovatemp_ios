@@ -8,6 +8,8 @@
 
 #import "SharedRelation.h"
 
+#import "Alert.h"
+
 @implementation SharedRelation
 
 - (id)init {
@@ -44,8 +46,7 @@
                     }
                   }
                   failure:^(NSError *error) {
-                    // HANDLEERROR
-                    NSLog(@"failed to create %@", className);
+                    [Alert presentError:error];
                   }
    ];
 }

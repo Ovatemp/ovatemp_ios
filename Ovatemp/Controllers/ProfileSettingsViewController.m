@@ -24,7 +24,6 @@
   NSDate *maximumDate = [NSDate dateWithTimeIntervalSinceNow:-minAgeInYears * year];
   NSDate *minimumDate = [NSDate dateWithTimeIntervalSinceNow:-50 * year];
 
-  NSLog(@"%@ - %@", minimumDate, maximumDate);
   self.datePicker.minimumDate = minimumDate;
   self.datePicker.maximumDate = maximumDate;
 

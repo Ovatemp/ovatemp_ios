@@ -103,8 +103,6 @@ static __strong NSMutableDictionary *_instances;
       value = [NSNull null];
     }
 
-    NSLog(@"%@: %@", key, value);
-
     NSString *actualKey = key;
     if (!camelCase && _serializedKeys[key]) {
       actualKey = _serializedKeys[key];

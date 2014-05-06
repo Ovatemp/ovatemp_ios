@@ -26,7 +26,6 @@
         [Configuration sharedConfiguration].coachingContentUrls = coaching_content_urls;
       }
     } else {
-      NSLog(@"No fertility profile");
       [User current].fertilityProfileName = nil;
     }
     if (success) {

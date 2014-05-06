@@ -181,8 +181,7 @@ static NSDictionary *propertyOptions;
                    if (onSuccess) onSuccess(response);
                  }
                  failure:^(NSError *error) {
-                   // HANDLEERROR
-                   NSLog(@"day save error: %@", error);
+                   [Alert presentError:error];
                  }];
 
 }
