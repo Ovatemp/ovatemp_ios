@@ -72,7 +72,7 @@ describe(@"Today screen", ^{
       expect(periodLabel.text).to.equal(@"Spotting");
     });
 
-    fit(@"has a functioning cervical fluid/vaginal sensation cell", ^{
+    it(@"has a functioning cervical fluid/vaginal sensation cell", ^{
       [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
 
       UILabel *slideLabel = (UILabel*)[tester waitForViewWithAccessibilityLabel:@"Slide to edit cervical fluid"];
@@ -103,7 +103,7 @@ describe(@"Today screen", ^{
       expect(vaginalLabel.text).to.beNil();
     });
 
-    it(@"has a functioning intercourse cell", ^{
+    xit(@"has a functioning intercourse cell", ^{
       // Scroll to the right row
       [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
       [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
@@ -120,7 +120,7 @@ describe(@"Today screen", ^{
       expect(periodLabel.text).to.equal(@"Swipe to edit");
     });
 
-    it(@"has a functioning symptoms/mood cell", ^{
+    xit(@"has a functioning symptoms/mood cell", ^{
       // Scroll to the right row
       [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
 
@@ -147,7 +147,7 @@ describe(@"Today screen", ^{
       expect(symptomsTextView.text).to.equal(@"Bloating, Breast tenderness");
     });
 
-    it(@"has a functioning supplements/medicine cell", ^{
+    xit(@"has a functioning supplements/medicine cell", ^{
       // Scroll to the right row
       [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
 
@@ -167,7 +167,7 @@ describe(@"Today screen", ^{
       expect(medicineTextView.text).to.equal(@"Albuterol");
     });
 
-    it(@"has a functioning secondary signs cell", ^{
+    xit(@"has a functioning secondary signs cell", ^{
       // Scroll to the right row
       [tester tapRowAtIndexPath:[NSIndexPath indexPathForRow:6 inSection:0] inTableViewWithAccessibilityIdentifier:@"Checklist"];
 
@@ -184,7 +184,7 @@ describe(@"Today screen", ^{
       expect(ferningImageView.accessibilityValue).to.equal(@"Ferning Positive");
     });
 
-    it(@"returns to today when the Today button is tapped in the navigation bar", ^{
+    xit(@"returns to today when the Today button is tapped in the navigation bar", ^{
       [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Go to Next Day"];
 
       [tester tapViewWithAccessibilityLabel:@"Go to Previous Day"];
