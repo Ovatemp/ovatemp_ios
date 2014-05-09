@@ -64,9 +64,12 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
   [self refresh];
 
   if (![Cycle fullyLoaded]) {
+    [self startLoading];
     [Cycle loadAllAnd:^(id response) {
+      [self stopLoading];
       [self refresh];
     } failure:^(NSError *error) {
+      [self stopLoading];
       [Alert presentError:error];
     }];
   }
@@ -181,9 +184,9 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
     cell.dateLabel.backgroundColor = PURPLE;
     [cell.dateLabel.layer setMasksToBounds:YES];
     cell.dateLabel.layer.cornerRadius = 8;
-    cell.dateLabel.textColor = [UIColor whiteColor];
+    cell.dateLabel.textColor = LIGHT;
   } else {
-    cell.dateLabel.textColor = [UIColor blackColor];
+    cell.dateLabel.textColor = DARK;
     cell.dateLabel.backgroundColor = [UIColor clearColor];
   }
 
