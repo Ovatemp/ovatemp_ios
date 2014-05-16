@@ -37,7 +37,7 @@
 #define ROOT_URL @"http://localhost:3000"
 #define DEVICE_ID @"DUMMYDEVICE"
 #else
-#define ROOT_URL @"http://ovatemp-rails-staging.herokuapp.com"
+#define ROOT_URL @"http://api.ovatemp.com"
 #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
 #endif
 
