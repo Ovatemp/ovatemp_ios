@@ -59,6 +59,7 @@
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
                         change:(NSDictionary *)change context:(void *)context {
   if ([keyPath isEqualToString:@"day"] && [[Calendar sharedInstance] class] == [object class]) {
+    [self stopLoading];
     [self updateLabels];
   }
 }
@@ -94,10 +95,21 @@
 }
 
 - (IBAction)moveDayForward:(id)sender {
+  Day *day = [Calendar day];
+  NSString *dateID = day.date.dateId;
+  NSDate *lastDate = day.cycle.endDate;
+  NSString *lastDateID = lastDate.dateId;
+  
+  if ([dateID isEqualToString:lastDateID]) {
+    [self startLoading];
+  }
   [Calendar stepDay:1];
 }
 
 - (IBAction)moveDayBackward:(id)sender {
+  if (Calendar.day.cycleDay.intValue == 1){
+    [self startLoading];
+  }
   [Calendar stepDay:-1];
 }
 

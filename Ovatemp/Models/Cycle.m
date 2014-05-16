@@ -168,7 +168,6 @@ static NSInteger kTotalDays;
 
   NSMutableArray *days = [NSMutableArray arrayWithCapacity:daysResponse.count];
   for (NSDictionary *dayAttributes in daysResponse) {
-    NSLog(@"Adding day %@", dayAttributes);
     [days addObject:[Day withAttributes:dayAttributes]];
   }
 

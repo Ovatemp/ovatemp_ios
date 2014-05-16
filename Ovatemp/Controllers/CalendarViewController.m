@@ -102,8 +102,7 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
-                       change:(NSDictionary *)change context:(void *)context
-{
+                       change:(NSDictionary *)change context:(void *)context {
   if([keyPath isEqualToString:@"day"] && [[Calendar sharedInstance] class] == [object class]) {
     [self scrollToCurrentDay];
   }

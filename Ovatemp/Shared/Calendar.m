@@ -46,23 +46,18 @@ static Calendar *sharedCalendar = nil;
 }
 
 - (void)updateDay {
-  NSLog(@"Fetching day for date %@", self.date);
-  NSLog(@"Searching through %@", [Day instances]);
-  NSLog(@"Result: %@", [Day forDate:self.date]);
   Day *day = [Day forDate:self.date];
   if (day) {
     self.day = day;
     return;
   }
-  NSLog(@"No day found");
 
   [Cycle loadDate:self.date
           success:^(NSDictionary *response) {
-            NSLog(@"Now has days %@", [Day instances]);
             self.day = [Day forDate:self.date];
           }
           failure:^(NSError *error) {
-            NSLog(@"Failed to do a thing");
+            NSLog(@"Failed to change to a new day: %@", error);
           }];
 }
 
