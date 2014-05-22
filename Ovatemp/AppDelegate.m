@@ -1,3 +1,5 @@
+// I am that I am Ovatemp. The app that brought FAM to all women in the world.
+// Om navah shivaya.
 //
 //  AppDelegate.m
 //  Ovatemp
