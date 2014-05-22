@@ -148,7 +148,7 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
 
   if (loaded && comps.year != year) {
     year = comps.year;
-    [self flashStatus:[NSString stringWithFormat:@"%i", year]];
+    [self flashStatus:@(year).stringValue];
   }
 
   Day *day = [Day forDate:date];
