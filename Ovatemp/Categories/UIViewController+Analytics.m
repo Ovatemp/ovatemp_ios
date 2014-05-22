@@ -24,6 +24,9 @@
                                                         value:value] build]];
 
   NSString *mixpanelEvent = [NSString stringWithFormat:@"%@: %@", category, action];
+  if (!value) {
+    value = @(0);
+  }
   [[Mixpanel sharedInstance] track:mixpanelEvent properties:@{@"Value": value}];
 }
 
