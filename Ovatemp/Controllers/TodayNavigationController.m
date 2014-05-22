@@ -94,6 +94,8 @@
   }
 }
 
+# pragma mark - Moving days
+
 - (IBAction)moveDayForward:(id)sender {
   Day *day = [Calendar day];
   NSString *dateID = day.date.dateId;
@@ -102,6 +104,8 @@
 
   if ([dateID isEqualToString:lastDateID]) {
     [self startLoading];
+  } else {
+    [self scheduleLoading];
   }
   [Calendar stepDay:1];
 }
@@ -109,9 +113,22 @@
 - (IBAction)moveDayBackward:(id)sender {
   if (Calendar.day.cycleDay.intValue == 1){
     [self startLoading];
+  } else {
+    [self scheduleLoading];
   }
   [Calendar stepDay:-1];
 }
+
+- (void)scheduleLoading {
+  [self performSelector:@selector(startLoading) withObject:nil afterDelay:0.5];
+}
+
+- (void)stopLoading {
+  [super stopLoading];
+  [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(startLoading) object:nil];
+}
+
+# pragma mark - Autorotation delegation
 
 - (BOOL)shouldAutorotate {
   return [self.contentViewController shouldAutorotate];

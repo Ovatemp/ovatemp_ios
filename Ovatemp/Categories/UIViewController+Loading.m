@@ -57,7 +57,7 @@ static const NSInteger kLoadingViewTag = 1337;
   } else {
     background = LIGHT;
   }
-  [self startLoadingWithBackground:[background colorWithAlphaComponent:0.75] spinnerColor:spinnerColor];
+  [self startLoadingWithBackground:[background colorWithAlphaComponent:0.6] spinnerColor:spinnerColor];
 }
 
 - (void)stopLoading {
