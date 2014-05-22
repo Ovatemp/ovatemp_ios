@@ -48,4 +48,10 @@
   return days.length;
 }
 
+- (NSInteger)year {
+  NSCalendar *calendar = [NSCalendar currentCalendar];
+  NSDateComponents *dateComponents = [calendar components:NSYearCalendarUnit fromDate:self];
+  return dateComponents.year;
+}
+
 @end

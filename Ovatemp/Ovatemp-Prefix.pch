@@ -21,4 +21,5 @@
   #import "UIViewController+KeyboardObservers.h"
   #import "UIViewController+Loading.h"
   #import "UIViewController+Session.h"
+  #import "UIViewController+Status.h"
 #endif

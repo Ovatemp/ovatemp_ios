@@ -16,7 +16,8 @@
 static NSString * const kCalendarCellIdentifier = @"CalendarCell";
 
 @interface CalendarViewController () {
-
+  BOOL loaded;
+  NSInteger year;
 }
 
 @end
@@ -68,6 +69,7 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
     [Cycle loadAllAnd:^(id response) {
       [self stopLoading];
       [self refresh];
+      loaded = YES;
     } failure:^(NSError *error) {
       [self stopLoading];
       [Alert presentError:error];
@@ -143,6 +145,11 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
   NSDate *date = [self dateForItemAtIndexPath:indexPath];
   NSDateComponents *comps = [cal components:NSEraCalendarUnit | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
   date = [cal dateFromComponents:comps];
+
+  if (loaded && comps.year != year) {
+    year = comps.year;
+    [self flashStatus:[NSString stringWithFormat:@"%i", year]];
+  }
 
   Day *day = [Day forDate:date];
   BOOL inFertilityWindow = FALSE;

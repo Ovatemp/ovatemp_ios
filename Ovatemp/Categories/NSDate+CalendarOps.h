@@ -13,5 +13,6 @@
 - (NSDate *)addDays:(NSUInteger)days;
 - (NSInteger)daysInMonth;
 - (NSInteger)daysTilDate:(NSDate*)toDateTime;
+- (NSInteger)year;
 
 @end

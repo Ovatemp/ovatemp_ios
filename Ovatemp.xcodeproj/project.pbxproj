@@ -227,6 +227,7 @@
 		C388C73D18FC45BD00B622FB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C388C73C18FC45BD00B622FB /* libz.dylib */; };
 		C388C74018FC46BD00B622FB /* UIViewController+Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = C388C73F18FC46BD00B622FB /* UIViewController+Analytics.m */; };
 		C38C2D5B18EF4F0700449F89 /* DelegatingNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C38C2D5A18EF4F0700449F89 /* DelegatingNavigationViewController.m */; };
+		C391ECBE192E7F4500D21FBC /* UIViewController+Status.m in Sources */ = {isa = PBXBuildFile; fileRef = C391ECBD192E7F4500D21FBC /* UIViewController+Status.m */; };
 		C3BF8FBF1898409C00572F43 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BF8FBE1898409C00572F43 /* XCTest.framework */; };
 		C3BF8FC01898409C00572F43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C50FE189028190053A884 /* Foundation.framework */; };
 		C3BF8FC11898409C00572F43 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C5102189028190053A884 /* UIKit.framework */; };
@@ -553,6 +554,8 @@
 		C388C73F18FC46BD00B622FB /* UIViewController+Analytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Analytics.m"; sourceTree = "<group>"; };
 		C38C2D5918EF4F0700449F89 /* DelegatingNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegatingNavigationViewController.h; sourceTree = "<group>"; };
 		C38C2D5A18EF4F0700449F89 /* DelegatingNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegatingNavigationViewController.m; sourceTree = "<group>"; };
+		C391ECBC192E7F4500D21FBC /* UIViewController+Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Status.h"; sourceTree = "<group>"; };
+		C391ECBD192E7F4500D21FBC /* UIViewController+Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Status.m"; sourceTree = "<group>"; };
 		C3BF8FBD1898409C00572F43 /* OvatempTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OvatempTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3BF8FBE1898409C00572F43 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C3BF8FC41898409C00572F43 /* OvatempTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OvatempTests-Info.plist"; sourceTree = "<group>"; };
@@ -912,6 +915,8 @@
 				83C4D20E18D9D9F7008C523C /* UIViewController+UserProfileHelpers.m */,
 				C31A3FED18FCA251004E3BA4 /* UIViewController+Session.h */,
 				C31A3FEE18FCA251004E3BA4 /* UIViewController+Session.m */,
+				C391ECBC192E7F4500D21FBC /* UIViewController+Status.h */,
+				C391ECBD192E7F4500D21FBC /* UIViewController+Status.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1573,6 +1578,7 @@
 				C30B84D118E3206A0078EDE3 /* UIViewController+Loading.m in Sources */,
 				8315E4A618C6300800DA935A /* CalendarCell.m in Sources */,
 				835BA2B318BBCB8300C64350 /* SharedRelation.m in Sources */,
+				C391ECBE192E7F4500D21FBC /* UIViewController+Status.m in Sources */,
 				C38C2D5B18EF4F0700449F89 /* DelegatingNavigationViewController.m in Sources */,
 				C36C510B189028190053A884 /* main.m in Sources */,
 				C35CF95518EF2DF6004D47EA /* NSObject+IsNull.m in Sources */,
