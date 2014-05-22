@@ -31,8 +31,8 @@
 
   CycleChartView *ccv = [[CycleChartView alloc] init];
 
-  [ccv calculateStyle:self.cycleImageView.bounds.size];
   ccv.cycle = [Calendar day].cycle;
+  [ccv calculateStyle:self.cycleImageView.bounds.size];
   [self.cycleImageView setImage:[ccv drawChart:self.cycleImageView.bounds.size]];
 
   if (value) {

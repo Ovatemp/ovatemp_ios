@@ -78,7 +78,11 @@
   CGFloat leftPaddingPoints = 2.5;
   CGFloat rightPaddingPoints = 1;
 
-  daysToShow = MAX(30, self.cycle.days.count);
+  if (self.cycle.days.count < 30) {
+    daysToShow = 30;
+  } else {
+    daysToShow = MIN(40, self.cycle.days.count);
+  }
   pointWidth = canvasWidth / ((CGFloat)daysToShow + leftPaddingPoints + rightPaddingPoints);
 
   leftPadding = leftPaddingPoints * pointWidth;
