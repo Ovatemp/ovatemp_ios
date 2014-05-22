@@ -9,6 +9,7 @@
 #import "User.h"
 
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <Mixpanel/Mixpanel.h>
 
 static User *_currentUser;
 
@@ -20,8 +21,15 @@ static User *_currentUser;
 
 + (void)setCurrent:(User *)user {
   _currentUser = user;
-  id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-  [tracker set:@"&uid" value:user.id.stringValue];
+
+  if (user.id && !user.id.isNull) {
+    // Log user id in Google Analytics
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:@"&uid" value:user.id.stringValue];
+
+    // Log user id in Mixpanel
+    [[Mixpanel sharedInstance] registerSuperProperties:@{@"User ID": user.id.stringValue}];
+  }
 }
 
 - (id)init {

@@ -4,6 +4,7 @@ PODS:
   - GoogleConversionTracking (3.0.0)
   - HockeySDK (3.5.1)
   - KIF (2.0.3)
+  - Mixpanel (2.3.6)
   - Nocilla (0.8.0)
   - OCMock (2.2.2)
   - Specta (0.2.1)
@@ -14,6 +15,7 @@ DEPENDENCIES:
   - GoogleConversionTracking
   - HockeySDK
   - KIF (from `Podspecs/Kif.podspec`)
+  - Mixpanel
   - Nocilla
   - OCMock
   - Specta
@@ -23,13 +25,14 @@ EXTERNAL SOURCES:
     :podspec: Podspecs/Kif.podspec
 
 SPEC CHECKSUMS:
-  Expecta: 2434bb2e2b3b1814280ec5d9a11359433d035975
-  GoogleAnalytics-iOS-SDK: 16dfcc0c4491148bf372edc85a8470cc405ffb72
-  GoogleConversionTracking: 8e767c5033aa9802d661970e733f31b9d4e0731a
-  HockeySDK: 7dfbfa6cdbae199d66eef638e9682b93b00acb95
+  Expecta: 578e0c29df79a96a159187599e2def686ef6a66c
+  GoogleAnalytics-iOS-SDK: 4577fb25381a71c5beac455b18ebb288fc4f44e9
+  GoogleConversionTracking: 9397f655f58f115d0494bb4648dbfd68c1ab11a4
+  HockeySDK: 87745306d9ab72d0e02847c2e4aa2fcd8f4a463f
   KIF: d7094a64d90e0e8b9f88b9902b192fa22254a0d0
-  Nocilla: 6cb913e67bb7b3ccb0858670d64fc3ead6cab81e
-  OCMock: 233db993fabda22597349856ee3d3c6f4fcfa87f
-  Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
+  Mixpanel: 9aba38257fc4d2777ab5db1afc55e22bdfd57a4a
+  Nocilla: 6620f0fbd453bb9849b871c2545145cce85443b5
+  OCMock: ee92ff671156212865397cd6fbae60a2d3698fb8
+  Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
 
 COCOAPODS: 0.32.1

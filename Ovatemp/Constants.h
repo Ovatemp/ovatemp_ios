@@ -62,3 +62,4 @@ static NSString * const kGoogleAnalyticsTrackingID = @"UA-32219902-2";
 static NSString * const kGoogleAdwordsConversionID = @"1009399358";
 static NSString * const kGoogleAdwordsConversionLabel = @"Xn3pCKKe1gcQvuyo4QM";
 static NSString * const kHockeyIdentifier = @"6e19f3154c79a220e01f3820bf0f0f06";
+static NSString * const kMixpanelToken = @"fc5f08cf07825041f4741d2c20860f54";

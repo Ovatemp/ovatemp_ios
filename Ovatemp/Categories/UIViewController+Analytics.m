@@ -12,6 +12,8 @@
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 
+#import <Mixpanel/Mixpanel.h>
+
 @implementation UIViewController (Analytics)
 
 - (void)trackEvent:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)value {
@@ -20,6 +22,9 @@
                                                        action:action
                                                         label:label
                                                         value:value] build]];
+
+  NSString *mixpanelEvent = [NSString stringWithFormat:@"%@: %@", category, action];
+  [[Mixpanel sharedInstance] track:mixpanelEvent properties:@{@"Value": value}];
 }
 
 - (void)trackScreenView {
@@ -41,6 +46,9 @@
          value:@"Home Screen"];
   
   [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+
+  // Mixpanel tracking
+  [[Mixpanel sharedInstance] track:@"Screen View" properties:@{@"Screen": name}];
 }
 
 @end

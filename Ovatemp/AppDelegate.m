@@ -14,6 +14,8 @@
 
 #import <HockeySDK/HockeySDK.h>
 
+#import <Mixpanel/Mixpanel.h>
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -66,6 +68,8 @@
                                           label:kGoogleAdwordsConversionLabel
                                           value:@"0.000000"
                                    isRepeatable:NO];
+
+  [Mixpanel sharedInstanceWithToken:kMixpanelToken];
 }
 
 - (void)configureHockey {
