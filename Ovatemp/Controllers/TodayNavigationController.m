@@ -6,20 +6,20 @@
 //  Copyright (c) 2014 Back Forty. All rights reserved.
 //
 
-#import "OTDayNavigationController.h"
+#import "TodayNavigationController.h"
 #import "Calendar.h"
 #import "Day.h"
 
-@interface OTDayNavigationController ()
+@interface TodayNavigationController ()
 
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 @end
 
-@implementation OTDayNavigationController
+@implementation TodayNavigationController
 
 - (id)initWithContentViewController:(UIViewController *)contentViewController {
-  self = [super initWithNibName:@"OTDayNavigationController" bundle:nil];
+  self = [super initWithNibName:@"TodayNavigationController" bundle:nil];
   if (self) {
     self.contentViewController = contentViewController;
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -99,7 +99,7 @@
   NSString *dateID = day.date.dateId;
   NSDate *lastDate = day.cycle.endDate;
   NSString *lastDateID = lastDate.dateId;
-  
+
   if ([dateID isEqualToString:lastDateID]) {
     [self startLoading];
   }

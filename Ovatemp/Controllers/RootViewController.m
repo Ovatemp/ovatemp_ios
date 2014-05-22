@@ -12,7 +12,7 @@
 #import "Calendar.h"
 #import "CalendarViewController.h"
 #import "MainTabBarViewController.h"
-#import "OTDayNavigationController.h"
+#import "TodayNavigationController.h"
 #import "SessionViewController.h"
 #import "TodayViewController.h"
 #import "User.h"
@@ -81,7 +81,7 @@ static CGFloat const kDissolveDuration = 0.2;
   MainTabBarViewController *tabController = [[MainTabBarViewController alloc] init];
 
   UIViewController *todayController = [[TodayViewController alloc] init];
-  todayController = [[OTDayNavigationController alloc] initWithContentViewController:todayController];
+  todayController = [[TodayNavigationController alloc] initWithContentViewController:todayController];
 
   UIViewController *calendarController = [[CalendarViewController alloc] initWithNibName:@"CalendarViewController" bundle:nil];
   UIViewController *coachingController = [[UIStoryboard storyboardWithName:@"CoachingStoryboard" bundle:nil] instantiateInitialViewController];

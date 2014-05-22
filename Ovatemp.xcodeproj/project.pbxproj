@@ -84,8 +84,8 @@
 		838752F418CF44BC00E8ED4A /* Cycle.m in Sources */ = {isa = PBXBuildFile; fileRef = 838752F318CF44BC00E8ED4A /* Cycle.m */; };
 		838752FA18CF8E2E00E8ED4A /* CycleChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 838752F918CF8E2E00E8ED4A /* CycleChartView.xib */; };
 		839A345D18ABCBAD007CD657 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345C18ABCBAD007CD657 /* Calendar.m */; };
-		839A346118ABCFB6007CD657 /* OTDayNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345F18ABCFB6007CD657 /* OTDayNavigationController.m */; };
-		839A346218ABCFB6007CD657 /* OTDayNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346018ABCFB6007CD657 /* OTDayNavigationController.xib */; };
+		839A346118ABCFB6007CD657 /* TodayNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839A345F18ABCFB6007CD657 /* TodayNavigationController.m */; };
+		839A346218ABCFB6007CD657 /* TodayNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 839A346018ABCFB6007CD657 /* TodayNavigationController.xib */; };
 		83A1FDF518D35C3B0030D331 /* SessionStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83A1FDF418D35C3B0030D331 /* SessionStoryboard.storyboard */; };
 		83A1FDF818D35C820030D331 /* OvatempIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A1FDF618D35C820030D331 /* OvatempIcon.png */; };
 		83A1FDF918D35C820030D331 /* OvatempIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A1FDF718D35C820030D331 /* OvatempIcon@2x.png */; };
@@ -370,9 +370,9 @@
 		838752F918CF8E2E00E8ED4A /* CycleChartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CycleChartView.xib; sourceTree = "<group>"; };
 		839A345B18ABCBAD007CD657 /* Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Calendar.h; path = ../Shared/Calendar.h; sourceTree = "<group>"; };
 		839A345C18ABCBAD007CD657 /* Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Calendar.m; path = ../Shared/Calendar.m; sourceTree = "<group>"; };
-		839A345E18ABCFB6007CD657 /* OTDayNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTDayNavigationController.h; sourceTree = "<group>"; };
-		839A345F18ABCFB6007CD657 /* OTDayNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTDayNavigationController.m; sourceTree = "<group>"; };
-		839A346018ABCFB6007CD657 /* OTDayNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OTDayNavigationController.xib; path = ../Controllers/OTDayNavigationController.xib; sourceTree = "<group>"; };
+		839A345E18ABCFB6007CD657 /* TodayNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayNavigationController.h; sourceTree = "<group>"; };
+		839A345F18ABCFB6007CD657 /* TodayNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayNavigationController.m; sourceTree = "<group>"; };
+		839A346018ABCFB6007CD657 /* TodayNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TodayNavigationController.xib; path = ../Controllers/TodayNavigationController.xib; sourceTree = "<group>"; };
 		83A1FDF418D35C3B0030D331 /* SessionStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SessionStoryboard.storyboard; path = ../Controllers/SessionStoryboard.storyboard; sourceTree = "<group>"; };
 		83A1FDF618D35C820030D331 /* OvatempIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OvatempIcon.png; sourceTree = "<group>"; };
 		83A1FDF718D35C820030D331 /* OvatempIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OvatempIcon@2x.png"; sourceTree = "<group>"; };
@@ -929,8 +929,8 @@
 				C38C2D5A18EF4F0700449F89 /* DelegatingNavigationViewController.m */,
 				C3E1299818FC8C89004288D8 /* MainTabBarViewController.h */,
 				C3E1299918FC8C89004288D8 /* MainTabBarViewController.m */,
-				839A345E18ABCFB6007CD657 /* OTDayNavigationController.h */,
-				839A345F18ABCFB6007CD657 /* OTDayNavigationController.m */,
+				839A345E18ABCFB6007CD657 /* TodayNavigationController.h */,
+				839A345F18ABCFB6007CD657 /* TodayNavigationController.m */,
 				83BD853618D0B23900890EDA /* RootViewController.h */,
 				83BD853718D0B23900890EDA /* RootViewController.m */,
 				C3BF8FDE1898452F00572F43 /* SessionViewController.h */,
@@ -988,7 +988,7 @@
 				C350899118EDFD0C004D6A2F /* CommunityStoryboard.storyboard */,
 				838752F918CF8E2E00E8ED4A /* CycleChartView.xib */,
 				834BD63118AD1363003B6808 /* MoreStoryboard.storyboard */,
-				839A346018ABCFB6007CD657 /* OTDayNavigationController.xib */,
+				839A346018ABCFB6007CD657 /* TodayNavigationController.xib */,
 				83BD853918D0B7A900890EDA /* RootViewController.xib */,
 				83A1FDF418D35C3B0030D331 /* SessionStoryboard.storyboard */,
 				C3C1766618F4DF5E0099DA42 /* WebViewController.xib */,
@@ -1399,7 +1399,7 @@
 				C35089AA18EDFF40004D6A2F /* OvatempSupport@2x.png in Resources */,
 				C3E58C3B18D39B7B0026301A /* Icon60@2x.png in Resources */,
 				83D8CDA718E353F300D0AC72 /* Nourish@2x.png in Resources */,
-				839A346218ABCFB6007CD657 /* OTDayNavigationController.xib in Resources */,
+				839A346218ABCFB6007CD657 /* TodayNavigationController.xib in Resources */,
 				832934CC18B7D93200F6875B /* Medicines@2x.png in Resources */,
 				83EB3F2B18AEA7D500EA91AC /* more_selected@2x.png in Resources */,
 				C35089AF18EDFF40004D6A2F /* TryingToConceive.png in Resources */,
@@ -1592,7 +1592,7 @@
 				835AE58618B7A36000FEAF98 /* CheckCell.m in Sources */,
 				C322F8C018F8644400902C9D /* DayCellStaticView.m in Sources */,
 				83C4D21918D9E744008C523C /* UIViewController+KeyboardObservers.m in Sources */,
-				839A346118ABCFB6007CD657 /* OTDayNavigationController.m in Sources */,
+				839A346118ABCFB6007CD657 /* TodayNavigationController.m in Sources */,
 				83A1FE0718D778F80030D331 /* UserProfile.m in Sources */,
 				836A6C9D18BF819E0068F1D2 /* CycleChartView.m in Sources */,
 				C3C1766718F4DF5E0099DA42 /* WebViewController.m in Sources */,
