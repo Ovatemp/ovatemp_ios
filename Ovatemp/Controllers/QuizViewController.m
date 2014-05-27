@@ -192,6 +192,7 @@
 # pragma mark - Loading fertility profile at end of quiz
 
 - (void)loadFertilityProfile {
+  [self trackEvent:@"Finished Quiz" action:nil label:nil value:nil];
   [self startLoading];
   [FertilityProfile loadAndThen:^(id response) {
     [self fertilityProfileLoaded:response];
