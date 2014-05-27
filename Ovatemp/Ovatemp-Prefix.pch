@@ -15,6 +15,7 @@
   #import <Foundation/Foundation.h>
   #import "Constants.h"
   #import "NSDate+Formatters.h"
+  #import "NSObject+Analytics.h"
   #import "NSObject+IsNull.h"
   #import "UIColor+Traits.h"
   #import "UIViewController+Analytics.h"

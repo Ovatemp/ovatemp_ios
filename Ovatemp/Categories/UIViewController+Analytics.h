@@ -10,7 +10,6 @@
 
 @interface UIViewController (Analytics)
 
-- (void)trackEvent:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)value;
 - (void)trackScreenView;
 - (void)trackScreenView:(NSString *)name;
 

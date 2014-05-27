@@ -228,6 +228,7 @@
 		C388C74018FC46BD00B622FB /* UIViewController+Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = C388C73F18FC46BD00B622FB /* UIViewController+Analytics.m */; };
 		C38C2D5B18EF4F0700449F89 /* DelegatingNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C38C2D5A18EF4F0700449F89 /* DelegatingNavigationViewController.m */; };
 		C391ECBE192E7F4500D21FBC /* UIViewController+Status.m in Sources */ = {isa = PBXBuildFile; fileRef = C391ECBD192E7F4500D21FBC /* UIViewController+Status.m */; };
+		C3A145C319351F4800FA2D5F /* NSObject+Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A145C219351F4800FA2D5F /* NSObject+Analytics.m */; };
 		C3BF8FBF1898409C00572F43 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BF8FBE1898409C00572F43 /* XCTest.framework */; };
 		C3BF8FC01898409C00572F43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C50FE189028190053A884 /* Foundation.framework */; };
 		C3BF8FC11898409C00572F43 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C5102189028190053A884 /* UIKit.framework */; };
@@ -556,6 +557,8 @@
 		C38C2D5A18EF4F0700449F89 /* DelegatingNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegatingNavigationViewController.m; sourceTree = "<group>"; };
 		C391ECBC192E7F4500D21FBC /* UIViewController+Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Status.h"; sourceTree = "<group>"; };
 		C391ECBD192E7F4500D21FBC /* UIViewController+Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Status.m"; sourceTree = "<group>"; };
+		C3A145C119351F4800FA2D5F /* NSObject+Analytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Analytics.h"; sourceTree = "<group>"; };
+		C3A145C219351F4800FA2D5F /* NSObject+Analytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Analytics.m"; sourceTree = "<group>"; };
 		C3BF8FBD1898409C00572F43 /* OvatempTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OvatempTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3BF8FBE1898409C00572F43 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C3BF8FC41898409C00572F43 /* OvatempTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OvatempTests-Info.plist"; sourceTree = "<group>"; };
@@ -895,10 +898,12 @@
 		C308705918980A2E00DC4364 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				830E351618D2506B00884F0E /* NSDate+Formatters.h */,
-				830E351718D2506B00884F0E /* NSDate+Formatters.m */,
 				83C6510D18C9015000F35CE5 /* NSDate+CalendarOps.h */,
 				83C6510E18C9015000F35CE5 /* NSDate+CalendarOps.m */,
+				830E351618D2506B00884F0E /* NSDate+Formatters.h */,
+				830E351718D2506B00884F0E /* NSDate+Formatters.m */,
+				C3A145C119351F4800FA2D5F /* NSObject+Analytics.h */,
+				C3A145C219351F4800FA2D5F /* NSObject+Analytics.m */,
 				C35CF95318EF2DF6004D47EA /* NSObject+IsNull.h */,
 				C35CF95418EF2DF6004D47EA /* NSObject+IsNull.m */,
 				C30B84D218E324260078EDE3 /* UIColor+Traits.h */,
@@ -1578,6 +1583,7 @@
 				C30B84D118E3206A0078EDE3 /* UIViewController+Loading.m in Sources */,
 				8315E4A618C6300800DA935A /* CalendarCell.m in Sources */,
 				835BA2B318BBCB8300C64350 /* SharedRelation.m in Sources */,
+				C3A145C319351F4800FA2D5F /* NSObject+Analytics.m in Sources */,
 				C391ECBE192E7F4500D21FBC /* UIViewController+Status.m in Sources */,
 				C38C2D5B18EF4F0700449F89 /* DelegatingNavigationViewController.m in Sources */,
 				C36C510B189028190053A884 /* main.m in Sources */,

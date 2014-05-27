@@ -16,20 +16,6 @@
 
 @implementation UIViewController (Analytics)
 
-- (void)trackEvent:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)value {
-  id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-  [tracker send:[[GAIDictionaryBuilder createEventWithCategory:category
-                                                       action:action
-                                                        label:label
-                                                        value:value] build]];
-
-  NSString *mixpanelEvent = [NSString stringWithFormat:@"%@: %@", category, action];
-  if (!value) {
-    value = @(0);
-  }
-  [[Mixpanel sharedInstance] track:mixpanelEvent properties:@{@"Value": value}];
-}
-
 - (void)trackScreenView {
   NSString *screenName = self.title;
   if (!screenName.length) {

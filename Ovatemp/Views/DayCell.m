@@ -245,7 +245,7 @@
 
 - (void)attributeToggled:(DayAttribute *)attribute choice:(NSInteger)choice {
   DayCellStaticView *staticView = [self staticViewForAttribute:attribute];
-  
+
   if (choice == NSNotFound) {
     staticView.choice = nil;
   } else {
@@ -253,6 +253,7 @@
   }
 
   [self.day selectProperty:attribute.name withindex:choice];
+  [self trackAttributeChange:attribute];
 }
 
 - (void)attributeSelectionChanged:(DayAttribute *)attribute selected:(NSArray *)selection {
@@ -264,6 +265,7 @@
   NSArray *selectedIDs = [selection valueForKey:@"id"];
 
   [self.day updateProperty:key withValue:selectedIDs.copy];
+  [self trackAttributeChange:attribute];
 }
 
 - (void)attributeValueChanged:(DayAttribute *)attribute newValue:(id)value {
@@ -279,6 +281,11 @@
       staticView.value = value;
     }
   }];
+  [self trackAttributeChange:attribute];
+}
+
+- (void)trackAttributeChange:(DayAttribute *)attribute {
+  [self trackEvent:@"Updated Symptoms" action:@"Attribute" label:attribute.title value:nil];
 }
 
 # pragma mark - Paging UI
