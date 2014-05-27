@@ -114,6 +114,8 @@
 
   [Configuration loggedInWithResponse:response];
 
+  [self trackEvent:@"Signed Up" action:nil label:nil value:nil];
+
   [self performSegueWithIdentifier:@"SignUpToProfile1" sender:nil];
 }
 
@@ -125,7 +127,6 @@
   [self.emailField resignFirstResponder];
   [self.passwordField resignFirstResponder];
 }
-
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
   if (textField == self.emailField) {
