@@ -54,6 +54,7 @@
 
       [self loadQuestions];
       [self trackScreenView:@"Quiz"];
+      [self trackEvent:@"Started Quiz" action:nil label:nil value:nil];
     } else {
       [self loadNextQuestion];
     }
