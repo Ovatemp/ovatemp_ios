@@ -27,8 +27,37 @@ static User *_currentUser;
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:@"&uid" value:user.id.stringValue];
 
-    // Log user id in Mixpanel
-    [[Mixpanel sharedInstance] registerSuperProperties:@{@"User ID": user.id.stringValue}];
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel identify:user.id.stringValue];
+
+    NSMutableDictionary *profileProperties = [NSMutableDictionary dictionaryWithCapacity:5];
+    profileProperties[@"User ID"] = user.id.stringValue;
+
+    if (user.profile.fullName) {
+      profileProperties[@"Name"] = user.profile.fullName;
+    }
+
+    if (user.createdAt) {
+      profileProperties[@"Signed Up"] = user.createdAt.dateId;
+    }
+
+    if (user.email) {
+      profileProperties[@"Email"] = user.email;
+    }
+
+    if (user.profile.dateOfBirth) {
+      NSDateComponents* ageComponents = [[NSCalendar currentCalendar]
+                                         components:NSYearCalendarUnit
+                                         fromDate:user.profile.dateOfBirth
+                                         toDate:[NSDate date]
+                                         options:0];
+      NSInteger age = [ageComponents year];
+      profileProperties[@"Age"] = @(age).stringValue;
+    }
+
+    if (profileProperties.count) {
+      [mixpanel.people set:profileProperties];
+    }
   }
 }
 

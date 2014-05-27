@@ -8,9 +8,10 @@
 
 #import "SessionViewController.h"
 
+#import "Alert.h"
 #import "User.h"
 
-#import "Alert.h"
+#import <Mixpanel/Mixpanel.h>
 
 @interface SessionViewController () {
 }
@@ -107,6 +108,10 @@
 }
 
 - (void)signedUp:(NSDictionary *)response {
+  NSNumber *userID = response[@"user"][@"id"];
+  Mixpanel *mixpanel = [Mixpanel sharedInstance];
+  [mixpanel createAlias:userID.stringValue forDistinctID:mixpanel.distinctId];
+
   [Configuration loggedInWithResponse:response];
 
   [self performSegueWithIdentifier:@"SignUpToProfile1" sender:nil];
