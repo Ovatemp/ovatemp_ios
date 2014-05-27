@@ -63,6 +63,7 @@
   webViewController.navigationItem.iconLabel.tintColor = LIGHT;
   webViewController.navigationItem.iconLabel.textColor = LIGHT;
   [self trackScreenView:[@"Coaching Content: " stringByAppendingString:name]];
+  [self trackEvent:@"Started Coaching Program" action:@"Category" label:name value:nil];
   [self.navigationController pushViewController:webViewController animated:YES];
 }
 

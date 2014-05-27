@@ -70,6 +70,7 @@
     NSString *url = [Configuration sharedConfiguration].coachingContentUrls[categoryName];
     viewController = [WebViewController withURL:url];
     [self trackScreenView:[@"Coaching Content: " stringByAppendingString:categoryName]];
+    [self trackEvent:@"Started Coaching Program" action:@"Category" label:categoryName value:nil];
   }
 
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:nil action:nil];
