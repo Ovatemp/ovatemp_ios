@@ -29,7 +29,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <items>
-                        <barButtonItem image="BackArrow.png" id="EZY-Q1-nzS">
+                        <barButtonItem image="BackArrowSmall.png" id="EZY-Q1-nzS">
                             <connections>
                                 <action selector="goBack" destination="8e5-ze-yb0" id="99a-pX-84p"/>
                             </connections>
@@ -41,7 +41,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="j4I-sM-SWs"/>
-                        <barButtonItem image="ForwardArrow.png" id="utI-BP-aIl">
+                        <barButtonItem image="ForwardArrowSmall.png" id="utI-BP-aIl">
                             <connections>
                                 <action selector="goForward" destination="8e5-ze-yb0" id="Aww-lh-iMu"/>
                             </connections>
@@ -62,7 +62,7 @@
         </view>
     </objects>
     <resources>
-        <image name="BackArrow.png" width="19" height="34"/>
-        <image name="ForwardArrow.png" width="19" height="34"/>
+        <image name="BackArrowSmall.png" width="30" height="19"/>
+        <image name="ForwardArrowSmall.png" width="30" height="19"/>
     </resources>
 </document>

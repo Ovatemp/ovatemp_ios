@@ -3,11 +3,14 @@ PODS:
   - GoogleAnalytics-iOS-SDK (3.0.6)
   - GoogleConversionTracking (3.0.0)
   - HockeySDK (3.5.1)
+  - Inflections (1.0.0):
+    - RegexKitLite
   - KIF (2.0.3)
   - Mixpanel (2.3.6)
   - Nocilla (0.8.0)
   - OCMock (2.2.2)
   - Reachability (3.1.1)
+  - RegexKitLite (4.0)
   - Specta (0.2.1)
 
 DEPENDENCIES:
@@ -15,11 +18,13 @@ DEPENDENCIES:
   - GoogleAnalytics-iOS-SDK
   - GoogleConversionTracking
   - HockeySDK
+  - Inflections
   - KIF (from `Podspecs/Kif.podspec`)
   - Mixpanel
   - Nocilla
   - OCMock
   - Reachability
+  - RegexKitLite
   - Specta
 
 EXTERNAL SOURCES:
@@ -31,11 +36,13 @@ SPEC CHECKSUMS:
   GoogleAnalytics-iOS-SDK: 4577fb25381a71c5beac455b18ebb288fc4f44e9
   GoogleConversionTracking: 9397f655f58f115d0494bb4648dbfd68c1ab11a4
   HockeySDK: 87745306d9ab72d0e02847c2e4aa2fcd8f4a463f
+  Inflections: 38689e8c1b1d0064566a865e8a8229f80a4bee87
   KIF: d7094a64d90e0e8b9f88b9902b192fa22254a0d0
   Mixpanel: 9aba38257fc4d2777ab5db1afc55e22bdfd57a4a
   Nocilla: 6620f0fbd453bb9849b871c2545145cce85443b5
   OCMock: ee92ff671156212865397cd6fbae60a2d3698fb8
   Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
+  RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
 
 COCOAPODS: 0.33.1

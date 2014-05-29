@@ -47,6 +47,10 @@ static NSDictionary *propertyOptions;
   return day;
 }
 
++ (Day *)today {
+  return [self forDate:[NSDate date]];
+}
+
 - (NSString *)description {
   return [NSString stringWithFormat:@"Day (%@)", self.idate];
 }

@@ -20,10 +20,10 @@ static UserProfile *_currentUserProfile;
                                                         @"full_name": @"",
                                                         @"date_of_birth": [NSNull null],
                                                         @"trying_to_conceive": @YES,
-                                                        @"five_day_rule": [NSNull null],
-                                                        @"dry_day_rule": [NSNull null],
-                                                        @"temperature_shift_rule": [NSNull null],
-                                                        @"peak_day_rule": [NSNull null]
+                                                        @"five_day_rule": @NO,
+                                                        @"dry_day_rule": @NO,
+                                                        @"temperature_shift_rule": @NO,
+                                                        @"peak_day_rule": @NO
                                                         }];
   }
   return _currentUserProfile;

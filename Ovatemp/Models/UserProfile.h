@@ -17,11 +17,11 @@
 @property (nonatomic, strong) NSString *fullName;
 @property (nonatomic, strong) NSDate *dateOfBirth;
 
-@property (nonatomic, assign) NSNumber *tryingToConceive;
-@property (nonatomic, assign) NSNumber *fiveDayRule;
-@property (nonatomic, assign) NSNumber *dryDayRule;
-@property (nonatomic, assign) NSNumber *temperatureShiftRule;
-@property (nonatomic, assign) NSNumber *peakDayRule;
+@property (nonatomic, assign) BOOL tryingToConceive;
+@property (nonatomic, assign) BOOL fiveDayRule;
+@property (nonatomic, assign) BOOL dryDayRule;
+@property (nonatomic, assign) BOOL temperatureShiftRule;
+@property (nonatomic, assign) BOOL peakDayRule;
 
 - (void)refresh:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure;
 - (void)save;

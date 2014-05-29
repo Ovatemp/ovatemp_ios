@@ -59,20 +59,20 @@
 }
 
 - (IBAction)tryingToConceiveChanged:(UISwitch *)toggle {
-  [UserProfile current].tryingToConceive = [NSNumber numberWithBool:self.tryingToConceive.on];
+  [UserProfile current].tryingToConceive = self.tryingToConceive.on;
 
   [self commit];
 }
 
 - (IBAction)tryingToAvoidChanged:(UISwitch *)toggle {
-  [UserProfile current].tryingToConceive = [NSNumber numberWithBool:!self.tryingToAvoid.on];
+  [UserProfile current].tryingToConceive = !self.tryingToAvoid.on;
 
   [self commit];
 }
 
 - (void)updateControls {
-  self.tryingToConceive.on = [[UserProfile current].tryingToConceive boolValue];
-  self.tryingToAvoid.on =   ![[UserProfile current].tryingToConceive boolValue];
+  self.tryingToConceive.on = [UserProfile current].tryingToConceive;
+  self.tryingToAvoid.on =   ![UserProfile current].tryingToConceive;
 }
 
 # pragma mark - Closing text inputs

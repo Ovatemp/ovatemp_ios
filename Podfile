@@ -4,8 +4,10 @@ target :Ovatemp do
   pod "GoogleAnalytics-iOS-SDK", inhibit_warnings: true
   pod "GoogleConversionTracking", inhibit_warnings: true
   pod "HockeySDK", inhibit_warnings: true
+  pod "Inflections", inhibit_warnings: true
   pod "Mixpanel", inhibit_warnings: true
   pod "Reachability", inhibit_warnings: true
+  pod "RegexKitLite", inhibit_warnings: true
 end
 
 target :OvatempTests, exclusive: true do

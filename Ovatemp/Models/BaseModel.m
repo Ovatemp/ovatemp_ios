@@ -7,7 +7,7 @@
 //
 
 #import "BaseModel.h"
-#import <objc/runtime.h>
+#import "NSObject+ClassForProperty.h"
 
 static __strong NSMutableDictionary *_instances;
 
@@ -160,41 +160,23 @@ static __strong NSMutableDictionary *_instances;
 - (void)setValue:(id)value forKey:(NSString *)key {
   if([self shouldIgnoreKey:key]) return;
 
+  NSString *className = [self typeNameForKeyPath:key];
   if ([value isEqual:[NSNull null]]) {
-    [super setValue:nil forKey:key];
-  } else {
-    NSString *className = [self classForKey:key];
-    if ([className rangeOfString:@"NSDate"].location != NSNotFound) {
-      value = [self dateForValue:value];
-    } else if ([className rangeOfString:@"NSMutableArray"].location != NSNotFound) {
-      value = [value mutableCopy];
+    if ([className isEqualToString:@"BOOL"]) {
+      value = @(NO);
+    } else {
+      return [super setValue:nil forKey:key];
     }
-    [super setValue:value forKey:key];
+  } else if ([className rangeOfString:@"NSDate"].location != NSNotFound) {
+    value = [self dateForValue:value];
+  } else if ([className rangeOfString:@"NSMutableArray"].location != NSNotFound) {
+    value = [value mutableCopy];
   }
+  [super setValue:value forKey:key];
 }
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
   if([self shouldIgnoreKey:key]) return;
-
-  NSLog(@"%@: Could not set value \"%@\" for undefined key \"%@\"", [self class], value, key);
-}
-
-- (NSString *)classForKey:(NSString *)key {
-  objc_property_t property = class_getProperty([self class], [key UTF8String]);
-  if (property != NULL) {
-    const char *attributes = property_getAttributes(property);
-    if (attributes != NULL) {
-      static char buffer[256];
-      const char *e = strchr(attributes, ',');
-      if (e != NULL) {
-        int len = (int)(e - attributes);
-        memcpy(buffer, attributes, len);
-        buffer[len] = '\0';
-        return [NSString stringWithUTF8String:buffer];
-      }
-    }
-  }
-  return nil;
 }
 
 - (NSDate *)dateForValue:(id)value {

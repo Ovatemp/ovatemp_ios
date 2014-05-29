@@ -11,11 +11,13 @@
 #import "Day.h"
 #import "DayCell.h"
 
+#import "Alert.h"
 #import "DisturbanceCellEditView.h"
+#import "ONDO.h"
 #import "TemperatureCellEditView.h"
 #import "TemperatureCellStaticView.h"
 
-@interface TodayViewController ()
+@interface TodayViewController () <ONDODelegate>
 
 @property NSArray *rows;
 
@@ -45,7 +47,7 @@
   DayAttribute *disturbance = [DayAttribute withName:@"disturbance" type:DayAttributeCustom];
 
   CGRect editFrame = CGRectMake(0, 0, self.tableView.frame.size.width, 0);
-  DayCellEditView *temperatureEditView = [[TemperatureCellEditView alloc] initWithFrame:editFrame];
+  TemperatureCellEditView *temperatureEditView = [[TemperatureCellEditView alloc] initWithFrame:editFrame];
   temperatureEditView.attribute = temperature;
 
   editFrame.origin.y = CGRectGetMaxY(temperatureEditView.frame) - SUPERVIEW_SPACING + SIBLING_SPACING;
@@ -152,6 +154,10 @@
   self.day = nil;
   [self dateChanged];
   [self trackScreenView:@"Today"];
+
+  if ([ONDO sharedInstance].devices.count > 0) {
+    [ONDO startWithDelegate:self];
+  }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -222,6 +228,34 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   return self.rows.count;
+}
+
+# pragma mark - ONDO delegate methods
+
+- (void)ONDOsaysBluetoothIsDisabled:(ONDO *)ondo {
+  [Alert showAlertWithTitle:@"Bluetooth is Off"
+                    message:@"Bluetooth is off, so we can't detect a thing"];
+}
+
+- (void)ONDOsaysLEBluetoothIsUnavailable:(ONDO *)ondo {
+  [Alert showAlertWithTitle:@"LE Bluetooth Unavailable"
+                    message:@"Your device does not support low-energy Bluetooth, so it can't connect to your ONDO"];
+}
+
+- (void)ONDO:(ONDO *)ondo didEncounterError:(NSError *)error {
+  [Alert presentError:error];
+}
+
+- (void)ONDO:(ONDO *)ondo didReceiveTemperature:(CGFloat)temperature {
+  temperature = temperature * 9.0f / 5.0f + 32.0f;
+
+  // Save the temperature
+  Day *day = [Day today];
+  [day updateProperty:@"temperature" withValue:@(temperature)];
+
+  // Tell the user what's up
+  NSString *temperatureString = [NSString stringWithFormat:@"Recorded a temperature of %.2f for today", temperature];
+  [Alert showAlertWithTitle:@"Temperature Recorded" message:temperatureString];
 }
 
 # pragma mark - UI configuration

@@ -69,4 +69,12 @@ static User *_currentUser;
   return self;
 }
 
+- (void)setProfile:(UserProfile *)profile {
+  [UserProfile setCurrent:profile];
+}
+
+- (UserProfile *)profile {
+  return [UserProfile current];
+}
+
 @end

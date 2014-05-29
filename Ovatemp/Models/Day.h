@@ -76,6 +76,7 @@ typedef enum periodTypesEnum : NSUInteger
 @property (nonatomic, strong) Cycle *cycle;
 
 + (Day *)forDate:(NSDate *)date;
++ (Day *)today;
 - (Day *)nextDay;
 - (Day *)previousDay;
 
