@@ -192,7 +192,12 @@ static NSDictionary *propertyOptions;
   NSMutableArray *accum = [[NSMutableArray alloc] initWithCapacity:self.medicineIds.count];
 
   for(NSNumber *id in self.medicineIds) {
-    [accum addObject:[Medicine findByKey:[id description]]];
+    Medicine *medicine = [Medicine findByKey:[id description]];
+    if (medicine) {
+      [accum addObject:medicine];
+    } else {
+      NSLog(@"Could not find medicine for %@", id);
+    }
   }
 
   return accum;
@@ -201,8 +206,13 @@ static NSDictionary *propertyOptions;
 - (NSArray *)supplements {
   NSMutableArray *accum = [[NSMutableArray alloc] initWithCapacity:self.supplementIds.count];
 
-  for(NSNumber *id in self.supplementIds) {
-    [accum addObject:[Supplement findByKey:[id description]]];
+  for (NSNumber *id in self.supplementIds) {
+    Supplement *supplement = [Supplement findByKey:[id description]];
+    if (supplement) {
+      [accum addObject:supplement];
+    } else {
+      NSLog(@"Could not find supplement for %@", id);
+    }
   }
 
   return accum;
@@ -211,7 +221,7 @@ static NSDictionary *propertyOptions;
 - (NSArray *)symptoms {
   NSMutableArray *accum = [[NSMutableArray alloc] initWithCapacity:self.symptomIds.count];
 
-  for(NSNumber *id in self.symptomIds) {
+  for (NSNumber *id in self.symptomIds) {
     Symptom *symptom = [Symptom findByKey:[id description]];
     if (symptom) {
       [accum addObject:symptom];
