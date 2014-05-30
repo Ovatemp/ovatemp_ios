@@ -15,7 +15,11 @@
 #import "TodayNavigationController.h"
 #import "SessionViewController.h"
 #import "TodayViewController.h"
-#import "User.h"
+
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleConversionTracking/ACTReporter.h>
+#import <HockeySDK/HockeySDK.h>
+#import <Mixpanel/Mixpanel.h>
 
 static CGFloat const kDissolveDuration = 0.2;
 
@@ -23,6 +27,7 @@ static CGFloat const kDissolveDuration = 0.2;
   MainTabBarViewController *mainViewController;
   NSDate *lastForcedLogout;
   BOOL loggedIn;
+  BOOL loaded;
 }
 
 @end
@@ -35,14 +40,25 @@ static CGFloat const kDissolveDuration = 0.2;
   // Configure standard UI appearance
   [self configureTabBarAppearance];
 
+  // Setup 3rd party libraries
+  [self configureAnalytics];
+  [self configureHockey];
+
+
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(logOutWithUnauthorized)
                                                name:kUnauthorizedRequestNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-  if (!self.activeViewController) {
-    [self launchAppropriateViewController];
+  if (!loaded) {
+    loaded = YES;
+    if ([Configuration loggedIn]) {
+      [self startLoading];
+      [self refreshToken];
+    } else {
+      [self launchAppropriateViewController];
+    }
   }
 }
 
@@ -93,6 +109,7 @@ static CGFloat const kDissolveDuration = 0.2;
   todayController.tabBarItem.image = [UIImage imageNamed:@"today_unselect"];
   todayController.tabBarItem.selectedImage = [UIImage imageNamed:@"today_select"];
   todayController.tabBarItem.title = @"Today";
+  [todayController startLoading];
 
   [tabController addChildViewController:calendarController];
   calendarController.tabBarItem.image = [UIImage imageNamed:@"cal_unselected"];
@@ -116,7 +133,7 @@ static CGFloat const kDissolveDuration = 0.2;
   [tabController addChildViewController:moreViewController];
 
   tabController.delegate = self;
-  
+
   mainViewController = tabController;
 }
 
@@ -129,21 +146,22 @@ static CGFloat const kDissolveDuration = 0.2;
 }
 
 - (void)refreshToken {
-  if([Configuration sharedConfiguration].token != nil) {
-    [ConnectionManager put:@"/sessions/refresh"
-                    params:nil
-                   success:^(NSDictionary *response) {
-                     [Configuration loggedInWithResponse:response];
-                   }
-                   failure:^(NSError *error) {
-                     [self logOutWithUnauthorized];
-                   }
-     ];
-  }
+  [ConnectionManager put:@"/sessions/refresh"
+                  params:nil
+                 success:^(NSDictionary *response) {
+                   [self stopLoading];
+                   [Configuration loggedInWithResponse:response];
+                   [self launchAppropriateViewController];
+                 }
+                 failure:^(NSError *error) {
+                   [self stopLoading];
+                   [self logOutWithUnauthorized];
+                 }
+   ];
 }
 
 - (void)logOutWithUnauthorized {
-  if(![Configuration loggedIn]) {
+  if (![Configuration loggedIn]) {
     return;
   }
 
@@ -152,10 +170,10 @@ static CGFloat const kDissolveDuration = 0.2;
   }
 
   lastForcedLogout = [NSDate date];
-  
+
   Alert *alert = [Alert alertWithTitle:@"Sorry for the trouble!"
                                message:@"You've been logged out of your account. Please log in again."];
-  
+
   [Configuration logOut];
 
   [self.activeViewController removeFromParentViewController];
@@ -209,6 +227,27 @@ static CGFloat const kDissolveDuration = 0.2;
 
 - (BOOL)shouldAutorotate {
   return NO;
+}
+
+# pragma mark - 3rd party librarys
+
+- (void)configureAnalytics {
+  [GAI sharedInstance].trackUncaughtExceptions = YES;
+  [[GAI sharedInstance] trackerWithTrackingId:kGoogleAnalyticsTrackingID];
+
+  [ACTConversionReporter reportWithConversionID:kGoogleAdwordsConversionID
+                                          label:kGoogleAdwordsConversionLabel
+                                          value:@"0.000000"
+                                   isRepeatable:NO];
+
+  [Mixpanel sharedInstanceWithToken:kMixpanelToken];
+}
+
+- (void)configureHockey {
+  BITHockeyManager *hockey = [BITHockeyManager sharedHockeyManager];
+  [hockey configureWithIdentifier:kHockeyIdentifier];
+  [hockey startManager];
+  [hockey.authenticator authenticateInstallation];
 }
 
 @end

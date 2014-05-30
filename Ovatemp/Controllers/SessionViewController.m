@@ -41,6 +41,7 @@
 # pragma mark - Registration, login, password reset
 
 - (IBAction)sessionRegister:(id)sender {
+  [self startLoading];
   [ConnectionManager post:@"/users"
                    params:@{
                             @"user":
@@ -56,6 +57,7 @@
 }
 
 - (IBAction)sessionLogin:(id)sender {
+  [self startLoading];
   [ConnectionManager post:@"/sessions"
                    params:@{
                             @"email": self.emailField.text,
@@ -86,28 +88,34 @@
 }
 
 - (void)resetPassword:(NSString *)email {
+  [self startLoading];
   [ConnectionManager post:@"/password_resets"
                    params:@{
                             @"email": email,
                             }
                   success:^(NSDictionary *response) {
+                    [self stopLoading];
                     [Alert showAlertWithTitle:nil message:@"We've sent you an email! Please check your email and complete the password reset process."];
                   }
                   failure:^(NSError *error) {
+                    [self stopLoading];
                     [Alert showAlertWithTitle:nil message:@"Sorry, we couldn't reset your password. Please make sure you used the right email address and that you are connected to the internet."];
                   }];
 }
 
 - (void)loggedIn:(NSDictionary *)response {
+  [self stopLoading];
   [Configuration loggedInWithResponse:response];
   [self backOutToRootViewController];
 }
 
 - (void)loginFailed:(NSError *)error {
+  [self stopLoading];
   [Alert presentError:error];
 }
 
 - (void)signedUp:(NSDictionary *)response {
+  [self stopLoading];
   NSNumber *userID = response[@"user"][@"id"];
   Mixpanel *mixpanel = [Mixpanel sharedInstance];
   [mixpanel createAlias:userID.stringValue forDistinctID:mixpanel.distinctId];
@@ -120,6 +128,7 @@
 }
 
 - (void)signupFailed:(NSError *)error {
+  [self stopLoading];
   [Alert presentError:error];
 }
 
