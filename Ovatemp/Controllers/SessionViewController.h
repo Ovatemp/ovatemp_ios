@@ -8,15 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum SessionType {
-  SessionRegister,
-  SessionLogin,
-  SessionResetPassword
-} SessionType;
-
 @interface SessionViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
+
+- (IBAction)showPrivacyPolicy:(id)sender;
 
 @end
