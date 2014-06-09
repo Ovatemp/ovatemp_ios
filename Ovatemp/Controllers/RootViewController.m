@@ -244,10 +244,12 @@ static CGFloat const kDissolveDuration = 0.2;
 }
 
 - (void)configureHockey {
+#ifndef DEBUG
   BITHockeyManager *hockey = [BITHockeyManager sharedHockeyManager];
   [hockey configureWithIdentifier:kHockeyIdentifier];
   [hockey startManager];
   [hockey.authenticator authenticateInstallation];
+#endif
 }
 
 @end
