@@ -56,6 +56,11 @@ static Configuration *_sharedConfiguration;
   } else {
     [UserProfile setCurrent:nil];
   }
+  if (![response[@"subscription"] isNull]) {
+    [Subscription setCurrent:[Subscription withAttributes:response[@"subscription"]]];
+  } else {
+    [Subscription setCurrent:nil];
+  }
 
   [Supplement resetInstancesWithArray:response[@"supplements"]];
   [Medicine resetInstancesWithArray:response[@"medicines"]];

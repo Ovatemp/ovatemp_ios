@@ -1,0 +1,18 @@
+//
+//  SubscriptionSelectionController.h
+//  Ovatemp
+//
+//  Created by Ed Schmalzle on 7/9/14.
+//  Copyright (c) 2014 Back Forty. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@class GradientSegmentedControl;
+
+
+@interface SubscriptionSelectionController : UIViewController
+
+@property IBOutlet GradientSegmentedControl *segmentedControl;
+
+@end

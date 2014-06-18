@@ -10,7 +10,6 @@
 
 @interface BorderedGradientButton () {
   CGFloat _borderWidth;
-  UIBezierPath *borderPath;
   CGFloat _cornerRadius;
   UIColor *gradient;
 }
@@ -22,12 +21,14 @@
 
 - (void)configureDefaults {
   [super configureDefaults];
-  gradient = [UIColor gradientWithSize:self.bounds.size
-                             fromColor:GRADIENT_BLUE
-                         startPosition:CGPointZero
-                               toColor:GRADIENT_PINK
-                           endPosition:CGPointMake(self.bounds.size.width, self.bounds.size.height)];
-  [self buildBorderPath];
+  if (!CGRectEqualToRect(self.bounds, CGRectZero)) {
+    gradient = [UIColor gradientWithSize:self.bounds.size
+                               fromColor:GRADIENT_BLUE
+                           startPosition:CGPointZero
+                                 toColor:GRADIENT_PINK
+                             endPosition:CGPointMake(self.bounds.size.width, self.bounds.size.height)];
+    [self buildBorderPath];
+  }
 }
 
 - (void)buildBorderPath {

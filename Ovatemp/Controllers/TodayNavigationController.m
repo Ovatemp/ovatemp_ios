@@ -9,6 +9,7 @@
 #import "TodayNavigationController.h"
 #import "Calendar.h"
 #import "Day.h"
+#import "User.h"
 
 @interface TodayNavigationController ()
 

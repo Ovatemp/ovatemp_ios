@@ -8,9 +8,13 @@
 
 #import "GradientButton.h"
 
-@interface BorderedGradientButton : GradientButton
+@interface BorderedGradientButton : GradientButton {
+  UIBezierPath *borderPath;
+}
 
 @property CGFloat borderWidth;
 @property CGFloat cornerRadius;
+
+- (void)buildBorderPath;
 
 @end

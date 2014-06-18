@@ -45,7 +45,7 @@
   #ifdef BETA
     #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
   #else
-    #define ROOT_URL @"http://api.ovatemp.com"
+    #define ROOT_URL @"http://api.ova temp.com"
   #endif
 
   #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
@@ -66,6 +66,10 @@ UIColor * Color(int red, int green, int blue);
 UIColor * ColorA(int red, int green, int blue, CGFloat alpha);
 
 #define STATUS_BAR_HEIGHT 20
+
+// In app purchase config
+
+#define IAP_SHARED_SECRET @"e5a5438524c64f7db49fb672bd5ab9a7"
 
 // 3rd party API keys
 static NSString * const kGoogleAnalyticsTrackingID = @"UA-32219902-2";

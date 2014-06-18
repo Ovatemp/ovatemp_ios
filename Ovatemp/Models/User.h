@@ -8,6 +8,7 @@
 
 #import "BaseModel.h"
 #import "UserProfile.h"
+#import "Subscription.h"
 
 @interface User : BaseModel
 
@@ -19,6 +20,5 @@
 @property NSString *fertilityProfileName;
 @property NSString *mailchimpLeid;
 @property NSString *passwordDigest;
-@property UserProfile *profile;
 
 @end

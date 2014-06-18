@@ -7,6 +7,7 @@
 //
 
 #import "User.h"
+#import "UserProfile.h"
 
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <Mixpanel/Mixpanel.h>
@@ -33,8 +34,9 @@ static User *_currentUser;
     NSMutableDictionary *profileProperties = [NSMutableDictionary dictionaryWithCapacity:5];
     profileProperties[@"User ID"] = user.id.stringValue;
 
-    if (user.profile.fullName) {
-      profileProperties[@"Name"] = user.profile.fullName;
+    UserProfile *profile = [UserProfile current];
+    if (profile.fullName) {
+      profileProperties[@"Name"] = profile.fullName;
     }
 
     if (user.createdAt) {
@@ -45,10 +47,10 @@ static User *_currentUser;
       profileProperties[@"Email"] = user.email;
     }
 
-    if (user.profile.dateOfBirth) {
+    if (profile.dateOfBirth) {
       NSDateComponents* ageComponents = [[NSCalendar currentCalendar]
                                          components:NSYearCalendarUnit
-                                         fromDate:user.profile.dateOfBirth
+                                         fromDate:profile.dateOfBirth
                                          toDate:[NSDate date]
                                          options:0];
       NSInteger age = [ageComponents year];

@@ -10,20 +10,24 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
+#import "SubscriptionHelper.h"
 #import <Reachability/Reachability.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Build the main window
-  
+
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   self.window.rootViewController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
 
   // Display the app!
   [self.window makeKeyAndVisible];
-  
+
   [self setupReachability];
+
+  // Ping the in app purchase helper so we start getting notifications
+  [SubscriptionHelper sharedInstance];
 
   return YES;
 }
@@ -53,16 +57,16 @@
 # pragma mark - Reachability
 
 - (void)reachabilityChanged:(NSNotification *)notification {
-  
+
   Reachability *reach = notification.object;
-  
+
   if(reach.currentReachabilityStatus == NotReachable) {
     self.alertWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     UIViewController *alertController = [[UIViewController alloc] initWithNibName: @"ConnectivityAlertView" bundle: [NSBundle mainBundle]];
-    
+
     self.alertWindow.windowLevel = UIWindowLevelAlert;
     self.alertWindow.rootViewController = alertController;
-    
+
     [self.alertWindow makeKeyAndVisible];
   } else {
     self.alertWindow = nil;
@@ -79,7 +83,7 @@
                                                name:kReachabilityChangedNotification
                                              object:nil];
   [reach startNotifier];
-  
+
   if (reach.currentReachabilityStatus == NotReachable) {
     [[NSNotificationCenter defaultCenter] postNotificationName: kReachabilityChangedNotification object: reach userInfo: nil];
   }

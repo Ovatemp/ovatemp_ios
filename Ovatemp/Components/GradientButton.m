@@ -65,8 +65,13 @@ static UIColor *kPressedEndColor;
     return;
   }
 
-  NSDictionary *fontAttributes = @{NSFontAttributeName: self.titleLabel.font};
-  targetSize = [self.titleLabel.text sizeWithAttributes:fontAttributes];
+  if (self.currentAttributedTitle) {
+    targetSize = [self.currentAttributedTitle size];
+  } else {
+    NSDictionary *fontAttributes = @{NSFontAttributeName: self.titleLabel.font};
+    targetSize = [self.titleLabel.text sizeWithAttributes:fontAttributes];
+  }
+
   start = CGPointZero;
   end = CGPointMake(targetSize.width, targetSize.height);
   [self setTextColor];
@@ -92,6 +97,17 @@ static UIColor *kPressedEndColor;
               startPosition:start
                     toColor:endColor
                 endPosition:end];
+}
+
+- (void)setTitleColor:(UIColor *)color forState:(UIControlState)state {
+  [super setTitleColor:color forState:state];
+
+  if (self.currentAttributedTitle) {
+    NSMutableAttributedString *fancyTitle = self.currentAttributedTitle.mutableCopy;
+    NSDictionary *attributes = @{NSForegroundColorAttributeName: color};
+    [fancyTitle addAttributes:attributes range:NSMakeRange(0, fancyTitle.length)];
+    [self setAttributedTitle:fancyTitle forState:state];
+  }
 }
 
 @end
