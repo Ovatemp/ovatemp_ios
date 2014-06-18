@@ -67,6 +67,10 @@ UIColor * ColorA(int red, int green, int blue, CGFloat alpha);
 
 #define STATUS_BAR_HEIGHT 20
 
+// In app purchase config
+
+#define IAP_SHARED_SECRET @"e5a5438524c64f7db49fb672bd5ab9a7"
+
 // 3rd party API keys
 static NSString * const kGoogleAnalyticsTrackingID = @"UA-32219902-2";
 static NSString * const kGoogleAdwordsConversionID = @"1009399358";
