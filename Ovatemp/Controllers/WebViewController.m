@@ -48,20 +48,14 @@
   NSURLRequest *request = [NSURLRequest requestWithURL:url];
   [self.webView loadRequest:request];
   [self.webView setMediaPlaybackRequiresUserAction:NO];
-  
+  [self stopLoading];
+  self.webView.hidden = NO;
 }
 
 # pragma Web view delegate methods
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-  [self webViewDidFinishLoad:webView];
   [Alert presentError:error];
-  self.webView.hidden = NO;
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-  [self stopLoading];
-  self.webView.hidden = NO;
 }
 
 @end
