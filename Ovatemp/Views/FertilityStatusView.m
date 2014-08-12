@@ -94,11 +94,21 @@ NSArray *seekingPregnancyColors;
   CyclePhaseType phaseType = [kCyclePhaseTypes indexOfObject:self.day.cyclePhase];
 
   if ([UserProfile current].tryingToConceive.boolValue) {
-    self.label.text = seekingPregnancyMessages[phaseType];
-    self.backgroundColor = seekingPregnancyColors[phaseType];
+    if(self.day.inFertilityWindow) {
+      self.label.text = @"You're fertile. Let's get it on!";
+      self.backgroundColor = Color(56, 192, 191);
+    } else {
+      self.label.text = seekingPregnancyMessages[phaseType];
+      self.backgroundColor = seekingPregnancyColors[phaseType];
+    }
   } else {
-    self.label.text = avoidingPregnancyMessages[phaseType];
-    self.backgroundColor = avoidingPregnancyColors[phaseType];
+    if(self.day.inFertilityWindow) {
+      self.label.text = @"You're fertile";
+      self.backgroundColor = Color(240, 12, 35);
+    } else {
+      self.label.text = avoidingPregnancyMessages[phaseType];
+      self.backgroundColor = avoidingPregnancyColors[phaseType];
+    }
   }
 }
 
