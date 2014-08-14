@@ -93,7 +93,7 @@ NSArray *seekingPregnancyColors;
 
   CyclePhaseType phaseType = [kCyclePhaseTypes indexOfObject:self.day.cyclePhase];
 
-  if (false && [UserProfile current].tryingToConceive.boolValue) {
+  if ([UserProfile current].tryingToConceive.boolValue) {
     if(self.day.inFertilityWindow) {
       self.label.text = @"You're fertile. Let's get it on!";
       self.backgroundColor = Color(155, 218, 79);
