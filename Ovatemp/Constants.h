@@ -10,6 +10,9 @@
 
 #import "Configuration.h"
 
+// Set this if you want your build to use the staging server
+// #Define BETA 1
+
 // Color definitions; arguments are: red, green, blue
 #define DARK Color(56, 62, 62)
 #define LIGHT Color(255, 255, 255)
@@ -36,11 +39,16 @@
 
 // API configuration
 #if TARGET_IPHONE_SIMULATOR
-#define ROOT_URL @"http://localhost:3000"
-#define DEVICE_ID @"DUMMYDEVICE"
+  #define ROOT_URL @"http://localhost:3000"
+  #define DEVICE_ID @"DUMMYDEVICE"
 #else
-#define ROOT_URL @"http://api.ovatemp.com"
-#define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
+  #ifdef BETA
+    #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
+  #else
+    #define ROOT_URL @"http://api.ovatemp.com"
+  #endif
+
+  #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
 #endif
 
 # define API_URL [ROOT_URL stringByAppendingString:@"/api"]
