@@ -1,30 +1,68 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebViewController">
             <connections>
+                <outlet property="backButton" destination="EZY-Q1-nzS" id="k81-3M-G7N"/>
+                <outlet property="forwardButton" destination="utI-BP-aIl" id="Ocy-N5-UlB"/>
+                <outlet property="reloadButton" destination="Bz9-fK-8If" id="1A6-Ld-wpW"/>
                 <outlet property="view" destination="2Cg-SL-bnL" id="bOv-54-2H3"/>
+                <outlet property="webToolbar" destination="Mhn-qX-KeM" id="DOa-9a-9VT"/>
                 <outlet property="webView" destination="8e5-ze-yb0" id="527-Gw-rZu"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="2Cg-SL-bnL">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="577"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8e5-ze-yb0">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="620"/>
+                <webView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8e5-ze-yb0">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="577"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
+                <toolbar clearsContextBeforeDrawing="NO" contentMode="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="Mhn-qX-KeM">
+                    <rect key="frame" x="0.0" y="533" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <items>
+                        <barButtonItem image="BackArrow.png" id="EZY-Q1-nzS">
+                            <connections>
+                                <action selector="goBack" destination="8e5-ze-yb0" id="99a-pX-84p"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="leO-P6-Qkh"/>
+                        <barButtonItem systemItem="refresh" id="Bz9-fK-8If">
+                            <connections>
+                                <action selector="reload" destination="8e5-ze-yb0" id="VVS-fj-oxR"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="j4I-sM-SWs"/>
+                        <barButtonItem image="ForwardArrow.png" id="utI-BP-aIl">
+                            <connections>
+                                <action selector="goForward" destination="8e5-ze-yb0" id="Aww-lh-iMu"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="8e5-ze-yb0" firstAttribute="top" secondItem="2Cg-SL-bnL" secondAttribute="top" id="7bP-ja-nNM"/>
+                <constraint firstItem="8e5-ze-yb0" firstAttribute="trailing" secondItem="Mhn-qX-KeM" secondAttribute="trailing" id="Kgy-Sj-JyQ"/>
+                <constraint firstItem="Mhn-qX-KeM" firstAttribute="leading" secondItem="2Cg-SL-bnL" secondAttribute="leading" id="PV8-sb-xVp"/>
+                <constraint firstItem="Mhn-qX-KeM" firstAttribute="bottom" secondItem="8e5-ze-yb0" secondAttribute="bottom" id="dhd-sd-tFG"/>
+                <constraint firstItem="8e5-ze-yb0" firstAttribute="top" secondItem="2Cg-SL-bnL" secondAttribute="top" id="mMH-X3-AJV"/>
+                <constraint firstAttribute="trailing" secondItem="Mhn-qX-KeM" secondAttribute="trailing" id="p0w-DG-r8z"/>
+                <constraint firstAttribute="bottom" secondItem="8e5-ze-yb0" secondAttribute="bottom" id="rem-dN-Cnj"/>
+                <constraint firstItem="Mhn-qX-KeM" firstAttribute="leading" secondItem="8e5-ze-yb0" secondAttribute="leading" id="w9y-B6-qQF"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="BackArrow.png" width="19" height="34"/>
+        <image name="ForwardArrow.png" width="19" height="34"/>
+    </resources>
 </document>
