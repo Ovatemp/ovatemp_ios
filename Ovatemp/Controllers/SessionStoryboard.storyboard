@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xAO-d3-XmG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xAO-d3-XmG">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -27,13 +27,7 @@
                                 <rect key="frame" x="0.0" y="215" width="320" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xD5-F4-vAu">
-                                        <rect key="frame" x="13" y="9" width="67" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="19"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohJ-b0-as7">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ohJ-b0-as7">
                                         <rect key="frame" x="13" y="40" width="307" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,12 +35,6 @@
                                             <constraint firstAttribute="height" constant="1" id="W9f-dY-lBr"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yBA-ba-hbl">
-                                        <rect key="frame" x="13" y="48" width="78" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="19"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C8h-Up-gOg" userLabel="Top border">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -67,13 +55,46 @@
                                         <rect key="frame" x="102" y="6" width="198" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <accessibility key="accessibilityConfiguration" label="Email"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="198" id="kfT-2I-bf3"/>
+                                            <constraint firstAttribute="height" constant="30" id="qgP-AA-HPe"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                         <connections>
                                             <outlet property="delegate" destination="3Re-AB-8d5" id="jY9-SH-l0b"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UXe-Cs-1RT">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0a1-1l-09o">
+                                        <rect key="frame" x="13" y="3" width="87" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
+                                        <state key="normal" title="Email">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="emailLabelPressed:" destination="3Re-AB-8d5" eventType="touchUpInside" id="wR8-dS-alf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUQ-q0-dfI">
+                                        <rect key="frame" x="13" y="40" width="87" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
+                                        <state key="normal" title="Password">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="emailLabelPressed:" destination="3Re-AB-8d5" eventType="touchUpInside" id="enG-hq-LPP"/>
+                                            <action selector="passwordLabelPressed:" destination="3Re-AB-8d5" eventType="touchUpInside" id="ING-03-4vP"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UXe-Cs-1RT">
                                         <rect key="frame" x="102" y="44" width="198" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <accessibility key="accessibilityConfiguration" label="Password"/>
@@ -86,31 +107,18 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="xD5-F4-vAu" firstAttribute="top" secondItem="C8h-Up-gOg" secondAttribute="bottom" constant="8" symbolic="YES" id="4Ni-7O-W5J"/>
                                     <constraint firstItem="C8h-Up-gOg" firstAttribute="leading" secondItem="yOT-X5-9P3" secondAttribute="leading" id="598-Xq-bzc"/>
-                                    <constraint firstItem="yOT-X5-9P3" firstAttribute="top" secondItem="UXe-Cs-1RT" secondAttribute="bottom" constant="3" id="6ZO-Z9-A8W"/>
-                                    <constraint firstItem="ohJ-b0-as7" firstAttribute="top" secondItem="xD5-F4-vAu" secondAttribute="bottom" constant="8" symbolic="YES" id="6b1-9z-iZY"/>
-                                    <constraint firstItem="XlG-sC-Nqb" firstAttribute="trailing" secondItem="UXe-Cs-1RT" secondAttribute="trailing" id="7hR-To-ajQ"/>
                                     <constraint firstAttribute="bottom" secondItem="yOT-X5-9P3" secondAttribute="bottom" constant="3" id="AZ5-KS-i7A"/>
                                     <constraint firstItem="C8h-Up-gOg" firstAttribute="trailing" secondItem="ohJ-b0-as7" secondAttribute="trailing" id="Bl3-jI-9Eu"/>
-                                    <constraint firstItem="UXe-Cs-1RT" firstAttribute="top" secondItem="XlG-sC-Nqb" secondAttribute="bottom" constant="8" symbolic="YES" id="IKe-iU-UYo"/>
                                     <constraint firstAttribute="trailing" secondItem="yOT-X5-9P3" secondAttribute="trailing" id="KMv-mY-cLF"/>
-                                    <constraint firstItem="UXe-Cs-1RT" firstAttribute="leading" secondItem="yBA-ba-hbl" secondAttribute="trailing" constant="11" id="Kj6-5R-RTu"/>
-                                    <constraint firstItem="XlG-sC-Nqb" firstAttribute="top" secondItem="C8h-Up-gOg" secondAttribute="bottom" constant="5" id="N6I-wQ-eAT"/>
-                                    <constraint firstItem="UXe-Cs-1RT" firstAttribute="top" secondItem="ohJ-b0-as7" secondAttribute="bottom" constant="3" id="Ql9-kL-kXB"/>
+                                    <constraint firstItem="XlG-sC-Nqb" firstAttribute="top" secondItem="C8h-Up-gOg" secondAttribute="bottom" constant="5" id="UWv-8d-nr3"/>
                                     <constraint firstItem="yOT-X5-9P3" firstAttribute="trailing" secondItem="ohJ-b0-as7" secondAttribute="trailing" id="W4C-9L-PZ0"/>
-                                    <constraint firstItem="xD5-F4-vAu" firstAttribute="leading" secondItem="xpN-CW-pIF" secondAttribute="leading" constant="13" id="a9e-ck-aft"/>
+                                    <constraint firstAttribute="trailing" secondItem="XlG-sC-Nqb" secondAttribute="trailing" constant="20" symbolic="YES" id="Yoq-60-LTp"/>
+                                    <constraint firstItem="ohJ-b0-as7" firstAttribute="top" secondItem="XlG-sC-Nqb" secondAttribute="bottom" constant="4" id="aBL-9R-CLX"/>
                                     <constraint firstItem="C8h-Up-gOg" firstAttribute="top" secondItem="xpN-CW-pIF" secondAttribute="top" id="bEh-cC-NUD"/>
-                                    <constraint firstItem="yOT-X5-9P3" firstAttribute="top" secondItem="yBA-ba-hbl" secondAttribute="bottom" constant="6" id="dZd-z9-pQ2"/>
                                     <constraint firstItem="C8h-Up-gOg" firstAttribute="leading" secondItem="xpN-CW-pIF" secondAttribute="leading" id="g2V-5j-4rr"/>
-                                    <constraint firstItem="UXe-Cs-1RT" firstAttribute="centerY" secondItem="yBA-ba-hbl" secondAttribute="centerY" id="iEB-ZB-cn1"/>
-                                    <constraint firstItem="ohJ-b0-as7" firstAttribute="leading" secondItem="xD5-F4-vAu" secondAttribute="leading" id="iiw-Kg-KS8"/>
-                                    <constraint firstAttribute="trailing" secondItem="XlG-sC-Nqb" secondAttribute="trailing" constant="20" symbolic="YES" id="isL-lV-rcB"/>
-                                    <constraint firstItem="XlG-sC-Nqb" firstAttribute="leading" secondItem="xD5-F4-vAu" secondAttribute="trailing" constant="22" id="ivE-Im-qC5"/>
                                     <constraint firstItem="ohJ-b0-as7" firstAttribute="centerY" secondItem="xpN-CW-pIF" secondAttribute="centerY" id="mQw-Ot-Ba5"/>
-                                    <constraint firstItem="XlG-sC-Nqb" firstAttribute="leading" secondItem="UXe-Cs-1RT" secondAttribute="leading" id="rCs-mP-BcB"/>
-                                    <constraint firstItem="ohJ-b0-as7" firstAttribute="top" secondItem="XlG-sC-Nqb" secondAttribute="bottom" constant="4" id="vco-qK-qoZ"/>
-                                    <constraint firstItem="ohJ-b0-as7" firstAttribute="leading" secondItem="yBA-ba-hbl" secondAttribute="leading" id="zCU-do-ZUe"/>
+                                    <constraint firstItem="XlG-sC-Nqb" firstAttribute="leading" secondItem="0a1-1l-09o" secondAttribute="trailing" constant="2" id="oo2-Ul-lyb"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gly-r8-5w8" customClass="GradientButton">

@@ -160,6 +160,17 @@
   return YES;
 }
 
+
+- (IBAction)emailLabelPressed:(UIButton *)sender {
+
+    [self.emailField becomeFirstResponder];
+}
+
+- (IBAction)passwordLabelPressed:(UIButton *)sender {
+
+    [self.passwordField becomeFirstResponder];
+}
+
 # pragma mark - Autorotation
 
 - (BOOL)shouldAutorotate {

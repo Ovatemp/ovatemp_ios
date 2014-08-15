@@ -13,6 +13,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 
+
 - (IBAction)showPrivacyPolicy:(id)sender;
+- (IBAction)emailLabelPressed:(UIButton *)sender;
+- (IBAction)passwordLabelPressed:(UIButton *)sender;
 
 @end
