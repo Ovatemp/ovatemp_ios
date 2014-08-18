@@ -148,22 +148,6 @@ static NSInteger kTotalDays;
                  }];
 }
 
-- (void)addDays:(NSArray *)days {
-  NSMutableArray *currentDays = [self.days mutableCopy];
-  if (!currentDays) {
-    currentDays = [NSMutableArray arrayWithCapacity:days.count];
-  }
-  for (Day *day in days) {
-    day.cycle = self;
-    if (![currentDays containsObject:day]) {
-      [currentDays addObject:day];
-    }
-  }
-  self.days = [currentDays sortedArrayUsingComparator:^NSComparisonResult(Day *day1, Day *day2) {
-    return [day1.date compare:day2.date];
-  }];
-}
-
 + (Cycle *)cycleFromResponse:(NSDictionary *)cycleResponse {
   NSArray *daysResponse = cycleResponse[@"days"];
   if (!daysResponse) {
@@ -201,7 +185,9 @@ static NSInteger kTotalDays;
     [kAllCycles addObject:cycle];
   }
 
-  [cycle addDays:days];
+  [days setValue:cycle forKey:@"cycle"];
+  cycle.days = days;
+
   if([cycleResponse[@"coverline"] isNull]) {
     cycle.coverline = nil;
   } else {
