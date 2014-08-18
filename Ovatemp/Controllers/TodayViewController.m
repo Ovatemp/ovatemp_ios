@@ -173,15 +173,10 @@
 
 # pragma mark - Reactions to date changes
 
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
-                       change:(NSDictionary *)change context:(void *)context
-{
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+  
   if([keyPath isEqualToString:@"day"] && [[Calendar sharedInstance] class] == [object class]) {
-    Day *oldDay = change[@"old"];
-    Day *newDay = change[@"new"];
-    if (oldDay.isNull || newDay.isNull || ![oldDay.idate isEqualToString:newDay.idate]) {
       [self dateChanged];
-    }
   }
 }
 
