@@ -7,6 +7,7 @@ PODS:
   - Mixpanel (2.3.6)
   - Nocilla (0.8.0)
   - OCMock (2.2.2)
+  - Reachability (3.1.1)
   - Specta (0.2.1)
 
 DEPENDENCIES:
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - Mixpanel
   - Nocilla
   - OCMock
+  - Reachability
   - Specta
 
 EXTERNAL SOURCES:
@@ -33,6 +35,7 @@ SPEC CHECKSUMS:
   Mixpanel: 9aba38257fc4d2777ab5db1afc55e22bdfd57a4a
   Nocilla: 6620f0fbd453bb9849b871c2545145cce85443b5
   OCMock: ee92ff671156212865397cd6fbae60a2d3698fb8
+  Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
 
 COCOAPODS: 0.33.1

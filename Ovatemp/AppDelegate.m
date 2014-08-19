@@ -10,16 +10,20 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
+#import <Reachability/Reachability.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Build the main window
+  
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   self.window.rootViewController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
 
   // Display the app!
   [self.window makeKeyAndVisible];
+  
+  [self setupReachability];
 
   return YES;
 }
@@ -44,6 +48,41 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
   // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+# pragma mark - Reachability
+
+- (void)reachabilityChanged:(NSNotification *)notification {
+  
+  Reachability *reach = notification.object;
+  
+  if(reach.currentReachabilityStatus == NotReachable) {
+    self.alertWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    UIViewController *alertController = [[UIViewController alloc] initWithNibName: @"ConnectivityAlertView" bundle: [NSBundle mainBundle]];
+    
+    self.alertWindow.windowLevel = UIWindowLevelAlert;
+    self.alertWindow.rootViewController = alertController;
+    
+    [self.alertWindow makeKeyAndVisible];
+  } else {
+    self.alertWindow = nil;
+    [self.window makeKeyAndVisible];
+  }
+}
+
+- (void)setupReachability {
+  Reachability *reach = [Reachability reachabilityForInternetConnection];
+  reach.reachableOnWWAN = YES; // This should always be true
+
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(reachabilityChanged:)
+                                               name:kReachabilityChangedNotification
+                                             object:nil];
+  [reach startNotifier];
+  
+  if (reach.currentReachabilityStatus == NotReachable) {
+    [[NSNotificationCenter defaultCenter] postNotificationName: kReachabilityChangedNotification object: reach userInfo: nil];
+  }
 }
 
 @end

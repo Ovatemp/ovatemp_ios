@@ -155,7 +155,11 @@ static CGFloat const kDissolveDuration = 0.2;
                  }
                  failure:^(NSError *error) {
                    [self stopLoading];
-                   [self logOutWithUnauthorized];
+                   if(error.code == -1004 && error.domain == NSURLErrorDomain) {
+                     loaded = NO;
+                   } else {
+                     [self logOutWithUnauthorized];
+                   }
                  }
    ];
 }

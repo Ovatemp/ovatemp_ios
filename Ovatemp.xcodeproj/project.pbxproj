@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EA4C6DB19A3952100C04FF5 /* ConnectivityAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EA4C6DA19A3952100C04FF5 /* ConnectivityAlertView.xib */; };
 		830E351818D2506B00884F0E /* NSDate+Formatters.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E351718D2506B00884F0E /* NSDate+Formatters.m */; };
 		8315E49E18C521A800DA935A /* SessionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49D18C521A800DA935A /* SessionSpec.m */; };
 		8315E4A618C6300800DA935A /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E4A518C6300800DA935A /* CalendarCell.m */; };
@@ -272,6 +273,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0EA4C6DA19A3952100C04FF5 /* ConnectivityAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectivityAlertView.xib; sourceTree = "<group>"; };
 		803928D684F54DB4A5F86E42 /* Pods-OvatempTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.xcconfig"; path = "Pods/Pods-OvatempTests.xcconfig"; sourceTree = "<group>"; };
 		830E351618D2506B00884F0E /* NSDate+Formatters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Formatters.h"; sourceTree = "<group>"; };
 		830E351718D2506B00884F0E /* NSDate+Formatters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Formatters.m"; sourceTree = "<group>"; };
@@ -1002,6 +1004,7 @@
 				83BD853918D0B7A900890EDA /* RootViewController.xib */,
 				83A1FDF418D35C3B0030D331 /* SessionStoryboard.storyboard */,
 				C3C1766618F4DF5E0099DA42 /* WebViewController.xib */,
+				0EA4C6DA19A3952100C04FF5 /* ConnectivityAlertView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1356,6 +1359,7 @@
 				83EB3F2218AEA7D500EA91AC /* coaching_selected@2x.png in Resources */,
 				83EB3F3318AEA7D500EA91AC /* Dry@2x.png in Resources */,
 				83EB3F2818AEA7D500EA91AC /* community_unselect@2x.png in Resources */,
+				0EA4C6DB19A3952100C04FF5 /* ConnectivityAlertView.xib in Resources */,
 				834BD63218AD1363003B6808 /* MoreStoryboard.storyboard in Resources */,
 				832934D218B7D93200F6875B /* Symptoms@2x.png in Resources */,
 				83D8CDAB18E353F300D0AC72 /* Revitalize@2x.png in Resources */,
