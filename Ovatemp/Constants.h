@@ -11,7 +11,7 @@
 #import "Configuration.h"
 
 // Set this if you want your build to use the staging server
-// #Define BETA 1
+#define BETA 1
 
 // Color definitions; arguments are: red, green, blue
 #define DARK Color(56, 62, 62)
