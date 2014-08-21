@@ -78,10 +78,21 @@
   CGFloat leftPaddingPoints = 2.5;
   CGFloat rightPaddingPoints = 1;
 
-  if (self.cycle.days.count < 30) {
+  int newCount = [[Calendar day].cycleDay intValue];
+
+  static int maxCycleCount;
+  if (!maxCycleCount) {
+    maxCycleCount = newCount;
+  } else if (newCount > maxCycleCount) {
+    maxCycleCount = newCount;
+  } else if (newCount == 1) {
+    maxCycleCount = 1;
+  }
+
+  if (newCount < 30 && maxCycleCount < 30) {
     daysToShow = 30;
   } else {
-    daysToShow = MIN(40, self.cycle.days.count);
+    daysToShow = MIN(40, maxCycleCount);
   }
   pointWidth = canvasWidth / ((CGFloat)daysToShow + leftPaddingPoints + rightPaddingPoints);
 
@@ -104,10 +115,10 @@
 
   for(Day *day in days) {
     if(![day temperature]) continue;
-    
+
     CGFloat temperature = [day.temperature floatValue];
     if (temperature == 0) continue;
-    
+
     minValue = MIN(minValue, temperature);
     maxValue = MAX(maxValue, temperature);
   }
@@ -187,7 +198,7 @@
 
   [path moveToPoint:CGPointMake(leftPadding, lineY)];
   [path addLineToPoint:CGPointMake(canvasWidth - rightPadding, lineY)];
-  
+
 
   [path stroke];
   [path removeAllPoints];
@@ -239,6 +250,7 @@
 
     // Draw the cycle day line
     if(day == [Calendar day]) {
+      point.x = ([[Calendar day].cycleDay integerValue] - 1) * pointWidth + leftPadding + pointWidth / 2;
       [[UIColor blackColor] set];
       UIBezierPath *cycleDay = [[UIBezierPath alloc] init];
       [cycleDay setLineWidth:.5];
