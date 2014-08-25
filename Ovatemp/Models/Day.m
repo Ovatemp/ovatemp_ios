@@ -13,6 +13,8 @@
 #import "Cycle.h"
 #import "ConnectionManager.h"
 
+@import HealthKit;
+
 @interface Day() {
   NSMutableSet *dirtyAttributes;
 }
@@ -30,7 +32,7 @@ static NSDictionary *propertyOptions;
     return nil;
   }
 
-  self.ignoredAttributes = [NSSet setWithArray:@[@"createdAt", @"updatedAt", @"cycleId", @"userId"]];
+  self.ignoredAttributes = [NSSet setWithArray:@[@"createdAt", @"updatedAt", @"cycleId", @"userId", @"temperatureTakenAt"]];
 
   self->dirtyAttributes = [NSMutableSet set];
 
@@ -105,6 +107,10 @@ static NSDictionary *propertyOptions;
   [self setValue:value forKey:key];
   [self addDirtyAttribute:key];
   [self saveAndThen:callback];
+  
+  if([key isEqualToString: @"temperature"]) {
+    [self updateHealthKit];
+  }
 }
 
 - (void)setValue:(id)value forKey:(NSString *)key {
@@ -184,6 +190,29 @@ static NSDictionary *propertyOptions;
                    [Alert presentError:error];
                  }];
 
+}
+
+# pragma mark - HealthKit
+
+- (void)updateHealthKit {
+ 
+  if(self.temperature) {
+    NSString *identifier = HKQuantityTypeIdentifierBodyTemperature;
+    HKQuantityType *tempType = [HKObjectType quantityTypeForIdentifier:identifier];
+    
+    HKQuantity *myTemp = [HKQuantity quantityWithUnit:[HKUnit degreeFahrenheitUnit]
+                                          doubleValue: [self.temperature floatValue]];
+
+    HKQuantitySample *temperatureSample = [HKQuantitySample quantitySampleWithType: tempType
+                                                                          quantity: myTemp
+                                                                         startDate: self.date
+                                                                           endDate: self.date
+                                                                          metadata: nil];
+    HKHealthStore *healthStore = [[HKHealthStore alloc] init];
+    [healthStore saveObject: temperatureSample withCompletion:^(BOOL success, NSError *error) {
+      NSLog(@"I saved to healthkit");
+    }];
+  }
 }
 
 # pragma mark - Relations

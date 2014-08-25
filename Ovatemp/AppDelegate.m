@@ -24,6 +24,7 @@
   [self.window makeKeyAndVisible];
   
   [self setupReachability];
+  [self setupHealthKit];
 
   return YES;
 }
@@ -48,6 +49,21 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
   // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+# pragma mark - HealthKit
+
+- (void) setupHealthKit {
+  if([HKHealthStore isHealthDataAvailable]) {
+    self.healthStore = [[HKHealthStore alloc] init];
+    HKQuantityType *tempQuantityType = [HKQuantityType quantityTypeForIdentifier: HKQuantityTypeIdentifierBodyTemperature];
+    NSSet *writeDataTypes = [[NSSet alloc] initWithObjects: tempQuantityType, nil];
+    NSSet *readDataTypes = [[NSSet alloc] init];
+    
+    [self.healthStore requestAuthorizationToShareTypes: writeDataTypes readTypes: readDataTypes completion:^(BOOL success, NSError *error) {
+      NSLog(@"Linked to healthkit");
+    }];
+  }
 }
 
 # pragma mark - Reachability
