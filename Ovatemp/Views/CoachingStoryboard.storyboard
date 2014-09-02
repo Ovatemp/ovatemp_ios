@@ -506,10 +506,10 @@
             </objects>
             <point key="canvasLocation" x="606" y="685"/>
         </scene>
-        <!--Subscription Selection Controller-->
+        <!--View Controller-->
         <scene sceneID="YQZ-8z-kZ6">
             <objects>
-                <viewController storyboardIdentifier="SubscriptionSelectionViewController" id="HJB-Fw-g5v" customClass="SubscriptionSelectionController" sceneMemberID="viewController">
+                <viewController id="HJB-Fw-g5v" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="i6P-Wg-daV"/>
                         <viewControllerLayoutGuide type="bottom" id="jzS-8r-wTi"/>
@@ -683,6 +683,129 @@
             </objects>
             <point key="canvasLocation" x="1020" y="11"/>
         </scene>
+        <!--Subscription Selection Controller-->
+        <scene sceneID="QVg-ye-dfp">
+            <objects>
+                <viewController storyboardIdentifier="SubscriptionSelectionViewController" id="X2L-vO-0O8" customClass="SubscriptionSelectionController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nEp-9I-YPq"/>
+                        <viewControllerLayoutGuide type="bottom" id="feE-Rs-zq0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iRe-DI-VdL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="plain" rowHeight="40" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="50a-4Z-e9Z">
+                                <rect key="frame" x="35" y="104" width="251" height="232"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="232" id="jMi-0v-XR8"/>
+                                </constraints>
+                                <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="5" reuseIdentifier="SubscriptionMenuCell" textLabel="gnN-Ed-QnC" rowHeight="40" style="IBUITableViewCellStyleDefault" id="V0N-9o-4Kp">
+                                        <rect key="frame" x="0.0" y="1" width="251" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V0N-9o-4Kp" id="Thh-dt-yV3">
+                                            <rect key="frame" x="0.0" y="0.0" width="251" height="39"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="gnN-Ed-QnC">
+                                                    <rect key="frame" x="15" y="0.0" width="221" height="39"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="X2L-vO-0O8" id="HZq-7Z-ejB"/>
+                                    <outlet property="delegate" destination="X2L-vO-0O8" id="VjX-zP-v0A"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="s0L-Kt-eXX">
+                                <rect key="frame" x="20" y="20" width="280" height="55"/>
+                                <string key="text">High-tech meets
+ancient wisdom!</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="23"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="LDg-kf-eEi">
+                                <rect key="frame" x="20" y="73" width="280" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="zDZ-kf-jfF"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Boost your fertility with
+daily tips and exercises like:</string>
+                                        <attributes>
+                                            <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="19" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="0.75"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sam-i8-Vt5" customClass="BorderedGradientButton">
+                                <rect key="frame" x="54" y="393" width="212" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Restore Existing Subscription">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="restoreButtonTapped:" destination="X2L-vO-0O8" eventType="touchUpInside" id="Cpe-vO-7DZ"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YinOva_HiRes.png" translatesAutoresizingMaskIntoConstraints="NO" id="qkg-Tt-QbT">
+                                <rect key="frame" x="115" y="331" width="125" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="lVW-rW-7HW"/>
+                                    <constraint firstAttribute="height" constant="38" id="m2g-xD-1SH"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Powered By:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txh-aH-Xmz">
+                                <rect key="frame" x="107" y="329" width="71" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="11"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="feE-Rs-zq0" firstAttribute="top" secondItem="sam-i8-Vt5" secondAttribute="bottom" constant="8" id="Em8-7S-93e"/>
+                            <constraint firstItem="50a-4Z-e9Z" firstAttribute="leading" secondItem="iRe-DI-VdL" secondAttribute="leading" constant="35" id="FpQ-3Z-QkP"/>
+                            <constraint firstItem="50a-4Z-e9Z" firstAttribute="centerX" secondItem="s0L-Kt-eXX" secondAttribute="centerX" id="Gee-xu-ufT"/>
+                            <constraint firstItem="s0L-Kt-eXX" firstAttribute="top" secondItem="iRe-DI-VdL" secondAttribute="top" constant="20" symbolic="YES" id="OOC-ej-xHe"/>
+                            <constraint firstItem="LDg-kf-eEi" firstAttribute="top" secondItem="nEp-9I-YPq" secondAttribute="bottom" constant="53" id="OVb-iE-QvS"/>
+                            <constraint firstItem="sam-i8-Vt5" firstAttribute="top" secondItem="qkg-Tt-QbT" secondAttribute="bottom" constant="24" id="SMP-cN-EdC"/>
+                            <constraint firstItem="sam-i8-Vt5" firstAttribute="centerX" secondItem="LDg-kf-eEi" secondAttribute="centerX" id="aCH-5s-8vt"/>
+                            <constraint firstItem="sam-i8-Vt5" firstAttribute="leading" secondItem="iRe-DI-VdL" secondAttribute="leading" constant="54" id="bIj-0w-l50"/>
+                            <constraint firstAttribute="trailing" secondItem="LDg-kf-eEi" secondAttribute="trailing" constant="20" symbolic="YES" id="boX-B7-Z5W"/>
+                            <constraint firstItem="50a-4Z-e9Z" firstAttribute="top" secondItem="s0L-Kt-eXX" secondAttribute="bottom" constant="29" id="dyt-Bs-Fnb"/>
+                            <constraint firstAttribute="trailing" secondItem="qkg-Tt-QbT" secondAttribute="trailing" constant="80" id="hig-ZW-b5a"/>
+                            <constraint firstItem="s0L-Kt-eXX" firstAttribute="leading" secondItem="LDg-kf-eEi" secondAttribute="leading" id="q2g-xr-fg0"/>
+                            <constraint firstItem="LDg-kf-eEi" firstAttribute="leading" secondItem="iRe-DI-VdL" secondAttribute="leading" constant="20" symbolic="YES" id="rB9-m8-vGJ"/>
+                            <constraint firstItem="s0L-Kt-eXX" firstAttribute="trailing" secondItem="LDg-kf-eEi" secondAttribute="trailing" id="zOA-Mv-XCw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Dls-Xa-BRJ"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="50a-4Z-e9Z" id="dhp-Q8-geT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ktG-40-tTo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1410" y="685"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ActivateSmall.png" width="21" height="24"/>
@@ -693,6 +816,7 @@
         <image name="RefreshSmall.png" width="31" height="25"/>
         <image name="RevitalizeSmall.png" width="31" height="31"/>
         <image name="VentilateSmall.png" width="24" height="24"/>
+        <image name="YinOva_HiRes.png" width="720" height="720"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
