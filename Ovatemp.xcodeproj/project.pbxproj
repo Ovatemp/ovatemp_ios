@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0EA4C6DB19A3952100C04FF5 /* ConnectivityAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EA4C6DA19A3952100C04FF5 /* ConnectivityAlertView.xib */; };
+		0E33F8481959FC8A0017B9AA /* SubscriptionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E33F8471959FC8A0017B9AA /* SubscriptionHelper.m */; };
+		0E79EE31196DB7F5003D3240 /* SubscriptionSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E79EE2F196DB7F5003D3240 /* SubscriptionSelectionController.m */; };
+		0E79EE32196DB7F5003D3240 /* SubscriptionSelectionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E79EE30196DB7F5003D3240 /* SubscriptionSelectionController.xib */; };
+		0EBE3864197427A500AAAF34 /* SubscriptionMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBE3862197427A500AAAF34 /* SubscriptionMenuCell.m */; };
 		830E351818D2506B00884F0E /* NSDate+Formatters.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E351718D2506B00884F0E /* NSDate+Formatters.m */; };
 		8315E49E18C521A800DA935A /* SessionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49D18C521A800DA935A /* SessionSpec.m */; };
 		8315E4A618C6300800DA935A /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E4A518C6300800DA935A /* CalendarCell.m */; };
@@ -273,7 +276,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0EA4C6DA19A3952100C04FF5 /* ConnectivityAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectivityAlertView.xib; sourceTree = "<group>"; };
+		0E33F8461959FC8A0017B9AA /* SubscriptionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubscriptionHelper.h; path = Helpers/SubscriptionHelper.h; sourceTree = "<group>"; };
+		0E33F8471959FC8A0017B9AA /* SubscriptionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubscriptionHelper.m; path = Helpers/SubscriptionHelper.m; sourceTree = "<group>"; };
+		0E79EE2E196DB7F5003D3240 /* SubscriptionSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscriptionSelectionController.h; sourceTree = "<group>"; };
+		0E79EE2F196DB7F5003D3240 /* SubscriptionSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscriptionSelectionController.m; sourceTree = "<group>"; };
+		0E79EE30196DB7F5003D3240 /* SubscriptionSelectionController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SubscriptionSelectionController.xib; path = ../Controllers/SubscriptionSelectionController.xib; sourceTree = "<group>"; };
+		0EBE3861197427A500AAAF34 /* SubscriptionMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscriptionMenuCell.h; sourceTree = "<group>"; };
+		0EBE3862197427A500AAAF34 /* SubscriptionMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscriptionMenuCell.m; sourceTree = "<group>"; };
 		803928D684F54DB4A5F86E42 /* Pods-OvatempTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.xcconfig"; path = "Pods/Pods-OvatempTests.xcconfig"; sourceTree = "<group>"; };
 		830E351618D2506B00884F0E /* NSDate+Formatters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Formatters.h"; sourceTree = "<group>"; };
 		830E351718D2506B00884F0E /* NSDate+Formatters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Formatters.m"; sourceTree = "<group>"; };
@@ -641,6 +650,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E34FBC2195324E6001916F2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0E33F8461959FC8A0017B9AA /* SubscriptionHelper.h */,
+				0E33F8471959FC8A0017B9AA /* SubscriptionHelper.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		832934B818B7D93200F6875B /* MedsMoodsSupplements */ = {
 			isa = PBXGroup;
 			children = (
@@ -677,6 +695,8 @@
 				8333B9E418E2193700C64231 /* CoachingRootViewController.m */,
 				83DF333018E324DA002119CE /* QuizViewController.h */,
 				83DF333118E324DA002119CE /* QuizViewController.m */,
+				0E79EE2E196DB7F5003D3240 /* SubscriptionSelectionController.h */,
+				0E79EE2F196DB7F5003D3240 /* SubscriptionSelectionController.m */,
 			);
 			name = Coaching;
 			sourceTree = "<group>";
@@ -996,6 +1016,7 @@
 			children = (
 				83686E9F18C6323600A5329C /* CalendarCell.xib */,
 				83A1FE0318D74C8E0030D331 /* CalendarViewController.xib */,
+				0E79EE30196DB7F5003D3240 /* SubscriptionSelectionController.xib */,
 				8333B98118E0A7C900C64231 /* CoachingStoryboard.storyboard */,
 				C350899118EDFD0C004D6A2F /* CommunityStoryboard.storyboard */,
 				838752F918CF8E2E00E8ED4A /* CycleChartView.xib */,
@@ -1004,7 +1025,6 @@
 				83BD853918D0B7A900890EDA /* RootViewController.xib */,
 				83A1FDF418D35C3B0030D331 /* SessionStoryboard.storyboard */,
 				C3C1766618F4DF5E0099DA42 /* WebViewController.xib */,
-				0EA4C6DA19A3952100C04FF5 /* ConnectivityAlertView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1107,6 +1127,7 @@
 		C36C5104189028190053A884 /* Ovatemp */ = {
 			isa = PBXGroup;
 			children = (
+				0E34FBC2195324E6001916F2 /* Helpers */,
 				C308705918980A2E00DC4364 /* Categories */,
 				C308705A18980A2E00DC4364 /* Controllers */,
 				C308705E18980A2E00DC4364 /* Models */,
@@ -1163,6 +1184,8 @@
 				8333B98E18E0BD8600C64231 /* LifestyleCell.m */,
 				C374AACD18F9D13B0064341A /* PassthroughScrollView.h */,
 				C374AACE18F9D13B0064341A /* PassthroughScrollView.m */,
+				0EBE3861197427A500AAAF34 /* SubscriptionMenuCell.h */,
+				0EBE3862197427A500AAAF34 /* SubscriptionMenuCell.m */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1359,7 +1382,6 @@
 				83EB3F2218AEA7D500EA91AC /* coaching_selected@2x.png in Resources */,
 				83EB3F3318AEA7D500EA91AC /* Dry@2x.png in Resources */,
 				83EB3F2818AEA7D500EA91AC /* community_unselect@2x.png in Resources */,
-				0EA4C6DB19A3952100C04FF5 /* ConnectivityAlertView.xib in Resources */,
 				834BD63218AD1363003B6808 /* MoreStoryboard.storyboard in Resources */,
 				832934D218B7D93200F6875B /* Symptoms@2x.png in Resources */,
 				83D8CDAB18E353F300D0AC72 /* Revitalize@2x.png in Resources */,
@@ -1421,6 +1443,7 @@
 				C3E58C3C18D39B7B0026301A /* Icon76.png in Resources */,
 				83A1FDF518D35C3B0030D331 /* SessionStoryboard.storyboard in Resources */,
 				83C6511618C91B7500F35CE5 /* ForwardArrow.png in Resources */,
+				0E79EE32196DB7F5003D3240 /* SubscriptionSelectionController.xib in Resources */,
 				C3513A5A18F739A100E90517 /* DietSmall@2x.png in Resources */,
 				83D8CDA918E353F300D0AC72 /* Refresh@2x.png in Resources */,
 				8333B9D818E2156B00C64231 /* NourishSmall@2x.png in Resources */,
@@ -1552,6 +1575,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3BF8FE818984AC200572F43 /* User.m in Sources */,
+				0EBE3864197427A500AAAF34 /* SubscriptionMenuCell.m in Sources */,
 				C31A3FEF18FCA251004E3BA4 /* UIViewController+Session.m in Sources */,
 				C374AAD218F9D9CE0064341A /* TemperatureCellEditView.m in Sources */,
 				C382F1E618F33801005E0CAF /* BorderedGradientButton.m in Sources */,
@@ -1570,6 +1594,7 @@
 				83DF332F18E32269002119CE /* Question.m in Sources */,
 				834BD63518AD1519003B6808 /* MoreViewController.m in Sources */,
 				C3E1299A18FC8C89004288D8 /* MainTabBarViewController.m in Sources */,
+				0E33F8481959FC8A0017B9AA /* SubscriptionHelper.m in Sources */,
 				C3EC024218F61DCD00AA38D5 /* IconLabel.m in Sources */,
 				8333B98C18E0BD4200C64231 /* LifestyleViewController.m in Sources */,
 				830E351818D2506B00884F0E /* NSDate+Formatters.m in Sources */,
@@ -1590,6 +1615,7 @@
 				C3A145C319351F4800FA2D5F /* NSObject+Analytics.m in Sources */,
 				C391ECBE192E7F4500D21FBC /* UIViewController+Status.m in Sources */,
 				C38C2D5B18EF4F0700449F89 /* DelegatingNavigationViewController.m in Sources */,
+				0E79EE31196DB7F5003D3240 /* SubscriptionSelectionController.m in Sources */,
 				C36C510B189028190053A884 /* main.m in Sources */,
 				C35CF95518EF2DF6004D47EA /* NSObject+IsNull.m in Sources */,
 				C35424CA18FB08BA005378B9 /* DisturbanceCellEditView.m in Sources */,

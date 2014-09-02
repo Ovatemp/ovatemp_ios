@@ -10,6 +10,7 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
+#import "SubscriptionHelper.h"
 #import <Reachability/Reachability.h>
 
 @implementation AppDelegate
@@ -24,6 +25,9 @@
   [self.window makeKeyAndVisible];
   
   [self setupReachability];
+  
+  // Ping the in app purchase helper so we start getting notifications
+  [SubscriptionHelper sharedInstance];
 
   return YES;
 }
