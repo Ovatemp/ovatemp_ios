@@ -174,6 +174,7 @@
 		83EB3F3718AEA7D500EA91AC /* Wet.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EB3EB918AEA7D500EA91AC /* Wet.png */; };
 		83EB3F3818AEA7D500EA91AC /* Wet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EB3EBA18AEA7D500EA91AC /* Wet@2x.png */; };
 		83EB3F3A18AEAD2600EA91AC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EB3F3918AEAD2600EA91AC /* QuartzCore.framework */; };
+		969FAC8A19B78BB800CD0770 /* Categories.png in Resources */ = {isa = PBXBuildFile; fileRef = 969FAC8919B78BB800CD0770 /* Categories.png */; };
 		96D245B619B6005E005E8D7E /* Massage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D245B119B6005E005E8D7E /* Massage@2x.png */; };
 		96D245B719B6005E005E8D7E /* DietAndLifestyle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D245B219B6005E005E8D7E /* DietAndLifestyle@2x.png */; };
 		96D245B819B6005E005E8D7E /* Meditations@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D245B319B6005E005E8D7E /* Meditations@2x.png */; };
@@ -183,6 +184,13 @@
 		96D245BF19B612BA005E8D7E /* Acupressure.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D245BE19B612BA005E8D7E /* Acupressure.png */; };
 		96D245C119B612D9005E8D7E /* DietAndLifestyle.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D245C019B612D9005E8D7E /* DietAndLifestyle.png */; };
 		96D245C319B61328005E8D7E /* Meditations.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D245C219B61328005E8D7E /* Meditations.png */; };
+		96F75AA319B65F4F000E42A4 /* BuyButtonCenter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96F75A9D19B65F4F000E42A4 /* BuyButtonCenter@2x.png */; };
+		96F75AA419B65F4F000E42A4 /* BuyButtonLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 96F75A9E19B65F4F000E42A4 /* BuyButtonLeft.png */; };
+		96F75AA519B65F4F000E42A4 /* BuyButtonLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96F75A9F19B65F4F000E42A4 /* BuyButtonLeft@2x.png */; };
+		96F75AA619B65F4F000E42A4 /* BuyButtonRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96F75AA019B65F4F000E42A4 /* BuyButtonRight@2x.png */; };
+		96F75AA719B65F4F000E42A4 /* BuyButtonRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 96F75AA119B65F4F000E42A4 /* BuyButtonRight.png */; };
+		96F75AA819B65F4F000E42A4 /* BuyButtonCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = 96F75AA219B65F4F000E42A4 /* BuyButtonCenter.png */; };
+		96F75AAA19B66181000E42A4 /* BuyButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 96F75AA919B66180000E42A4 /* BuyButton.png */; };
 		9C4D13D86AB546AD9A46ADE4 /* libPods-OvatempTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */; };
 		C3066C6818983537003F8B84 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3066C6618983537003F8B84 /* TodayViewController.m */; };
 		C30B84D118E3206A0078EDE3 /* UIViewController+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = C30B84D018E3206A0078EDE3 /* UIViewController+Loading.m */; };
@@ -491,6 +499,7 @@
 		83EB3EB918AEA7D500EA91AC /* Wet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wet.png; sourceTree = "<group>"; };
 		83EB3EBA18AEA7D500EA91AC /* Wet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wet@2x.png"; sourceTree = "<group>"; };
 		83EB3F3918AEAD2600EA91AC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		969FAC8919B78BB800CD0770 /* Categories.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Categories.png; sourceTree = "<group>"; };
 		96D245B119B6005E005E8D7E /* Massage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Massage@2x.png"; sourceTree = "<group>"; };
 		96D245B219B6005E005E8D7E /* DietAndLifestyle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DietAndLifestyle@2x.png"; sourceTree = "<group>"; };
 		96D245B319B6005E005E8D7E /* Meditations@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Meditations@2x.png"; sourceTree = "<group>"; };
@@ -500,6 +509,13 @@
 		96D245BE19B612BA005E8D7E /* Acupressure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Acupressure.png; sourceTree = "<group>"; };
 		96D245C019B612D9005E8D7E /* DietAndLifestyle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DietAndLifestyle.png; sourceTree = "<group>"; };
 		96D245C219B61328005E8D7E /* Meditations.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Meditations.png; sourceTree = "<group>"; };
+		96F75A9D19B65F4F000E42A4 /* BuyButtonCenter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BuyButtonCenter@2x.png"; sourceTree = "<group>"; };
+		96F75A9E19B65F4F000E42A4 /* BuyButtonLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BuyButtonLeft.png; sourceTree = "<group>"; };
+		96F75A9F19B65F4F000E42A4 /* BuyButtonLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BuyButtonLeft@2x.png"; sourceTree = "<group>"; };
+		96F75AA019B65F4F000E42A4 /* BuyButtonRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BuyButtonRight@2x.png"; sourceTree = "<group>"; };
+		96F75AA119B65F4F000E42A4 /* BuyButtonRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BuyButtonRight.png; sourceTree = "<group>"; };
+		96F75AA219B65F4F000E42A4 /* BuyButtonCenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BuyButtonCenter.png; sourceTree = "<group>"; };
+		96F75AA919B66180000E42A4 /* BuyButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BuyButton.png; sourceTree = "<group>"; };
 		C3066C6518983537003F8B84 /* TodayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		C3066C6618983537003F8B84 /* TodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		C30B84CF18E3206A0078EDE3 /* UIViewController+Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Loading.h"; sourceTree = "<group>"; };
@@ -939,6 +955,14 @@
 		96D245BB19B60075005E8D7E /* InAppPurchases */ = {
 			isa = PBXGroup;
 			children = (
+				969FAC8919B78BB800CD0770 /* Categories.png */,
+				96F75AA919B66180000E42A4 /* BuyButton.png */,
+				96F75A9D19B65F4F000E42A4 /* BuyButtonCenter@2x.png */,
+				96F75A9E19B65F4F000E42A4 /* BuyButtonLeft.png */,
+				96F75A9F19B65F4F000E42A4 /* BuyButtonLeft@2x.png */,
+				96F75AA019B65F4F000E42A4 /* BuyButtonRight@2x.png */,
+				96F75AA119B65F4F000E42A4 /* BuyButtonRight.png */,
+				96F75AA219B65F4F000E42A4 /* BuyButtonCenter.png */,
 				96D245BC19B6128F005E8D7E /* Massage.png */,
 				96D245B119B6005E005E8D7E /* Massage@2x.png */,
 				96D245C019B612D9005E8D7E /* DietAndLifestyle.png */,
@@ -1376,6 +1400,7 @@
 				8333B9DD18E2156B00C64231 /* VentilateSmall.png in Resources */,
 				83EB3F0618AEA7D500EA91AC /* Heavy.png in Resources */,
 				C3513A5418F7326C00E90517 /* MassageSmall@2x.png in Resources */,
+				969FAC8A19B78BB800CD0770 /* Categories.png in Resources */,
 				83EB3F0C18AEA7D500EA91AC /* Medium@2x.png in Resources */,
 				83D8CDA018E353F300D0AC72 /* Activate.png in Resources */,
 				832934C818B7D93200F6875B /* Amazing@2x.png in Resources */,
@@ -1408,6 +1433,7 @@
 				8333B99218E0C25500C64231 /* example.html in Resources */,
 				83D8CDA118E353F300D0AC72 /* Activate@2x.png in Resources */,
 				83EB3EC018AEA7D500EA91AC /* Sticky.png in Resources */,
+				96F75AA719B65F4F000E42A4 /* BuyButtonRight.png in Resources */,
 				838752FA18CF8E2E00E8ED4A /* CycleChartView.xib in Resources */,
 				8333B9A118E0D1B800C64231 /* Acupressure.png in Resources */,
 				83D8CDA318E353F300D0AC72 /* Energize@2x.png in Resources */,
@@ -1422,6 +1448,7 @@
 				83EB3F2218AEA7D500EA91AC /* coaching_selected@2x.png in Resources */,
 				83EB3F3318AEA7D500EA91AC /* Dry@2x.png in Resources */,
 				83EB3F2818AEA7D500EA91AC /* community_unselect@2x.png in Resources */,
+				96F75AAA19B66181000E42A4 /* BuyButton.png in Resources */,
 				834BD63218AD1363003B6808 /* MoreStoryboard.storyboard in Resources */,
 				832934D218B7D93200F6875B /* Symptoms@2x.png in Resources */,
 				83D8CDAB18E353F300D0AC72 /* Revitalize@2x.png in Resources */,
@@ -1463,6 +1490,7 @@
 				832934D018B7D93200F6875B /* DaySupplements@2x.png in Resources */,
 				832934CB18B7D93200F6875B /* Medicines.png in Resources */,
 				C3513A5318F7326C00E90517 /* LifestyleSmall@2x.png in Resources */,
+				96F75AA519B65F4F000E42A4 /* BuyButtonLeft@2x.png in Resources */,
 				83EB3F2E18AEA7D500EA91AC /* today_selected.png in Resources */,
 				835AE58B18B7A51700FEAF98 /* CheckBox.png in Resources */,
 				8333B9D218E2156B00C64231 /* ActivateSmall.png in Resources */,
@@ -1492,9 +1520,11 @@
 				83D8CDA918E353F300D0AC72 /* Refresh@2x.png in Resources */,
 				8333B9D818E2156B00C64231 /* NourishSmall@2x.png in Resources */,
 				83EB3F3718AEA7D500EA91AC /* Wet.png in Resources */,
+				96F75AA619B65F4F000E42A4 /* BuyButtonRight@2x.png in Resources */,
 				8333B9A218E0D1B800C64231 /* Acupressure@2x.png in Resources */,
 				C3E58C2C18D39AAC0026301A /* LaunchImage.png in Resources */,
 				83EB3F2F18AEA7D500EA91AC /* today_selected@2x.png in Resources */,
+				96F75AA819B65F4F000E42A4 /* BuyButtonCenter.png in Resources */,
 				83EB3F2A18AEA7D500EA91AC /* more_selected.png in Resources */,
 				83EB3F3118AEA7D500EA91AC /* today_unselect@2x.png in Resources */,
 				83D8CDA418E353F300D0AC72 /* Hydrate.png in Resources */,
@@ -1513,6 +1543,7 @@
 				8333B9AB18E0D32000C64231 /* Massage.png in Resources */,
 				83D8CDAD18E353F300D0AC72 /* Ventilate@2x.png in Resources */,
 				83D8CDAA18E353F300D0AC72 /* Revitalize.png in Resources */,
+				96F75AA319B65F4F000E42A4 /* BuyButtonCenter@2x.png in Resources */,
 				832934CD18B7D93200F6875B /* Sad.png in Resources */,
 				83D8CDA618E353F300D0AC72 /* Nourish.png in Resources */,
 				83EB3F0718AEA7D500EA91AC /* Heavy@2x.png in Resources */,
@@ -1525,6 +1556,7 @@
 				83D8CDA818E353F300D0AC72 /* Refresh.png in Resources */,
 				83EB3EDE18AEA7D500EA91AC /* Protected@2x.png in Resources */,
 				83C6511518C91B7500F35CE5 /* BackArrow@2x.png in Resources */,
+				96F75AA419B65F4F000E42A4 /* BuyButtonLeft.png in Resources */,
 				C35089AE18EDFF40004D6A2F /* TryingToAvoid@2x.png in Resources */,
 				C36C5111189028190053A884 /* Images.xcassets in Resources */,
 				83C6511718C91B7500F35CE5 /* ForwardArrow@2x.png in Resources */,
@@ -1815,6 +1847,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
@@ -1823,6 +1857,7 @@
 					"$(PROJECT_DIR)/Ovatemp/Frameworks",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1834,6 +1869,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
@@ -1842,6 +1879,7 @@
 					"$(PROJECT_DIR)/Ovatemp/Frameworks",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
