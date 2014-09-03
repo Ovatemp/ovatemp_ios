@@ -7,10 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GradientButton.h"
+
 
 @interface SubscriptionSelectionController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet GradientButton *leftSegmentedButton;
+@property (strong, nonatomic) IBOutlet GradientButton *centerSegmentedButton;
+@property (strong, nonatomic) IBOutlet GradientButton *rightSegmentedButton;
+@property (strong, nonatomic) IBOutlet GradientButton *centerDiscountButton;
+@property (strong, nonatomic) IBOutlet GradientButton *rightDiscountButton;
+
+- (IBAction)leftSegmentedButtonPressed:(GradientButton *)sender;
+- (IBAction)centerSegmentedButtonPressed:(GradientButton *)sender;
+- (IBAction)rightSegmentedButtonPressed:(GradientButton *)sender;
+- (IBAction)centerDiscountButtonPressed:(GradientButton *)sender;
+- (IBAction)rightDiscountButtonPressed:(GradientButton *)sender;
+
+
+
+
 
 -(IBAction)restoreButtonTapped:(id)sender;
 

@@ -31,7 +31,7 @@ static NSString * const kExerciseIcon = @"icon";
 
   if (!kExerciseList) {
     kExerciseList = @[
-                         @{kExerciseName: @"   Acupressure",
+                         @{kExerciseName: @"    Acupressure",
                            kExerciseIcon: @"Acupressure.png"},
                          @{kExerciseName: @"   Diet & Lifestyle",
                            kExerciseIcon: @"DietAndLifestyle.png"},
@@ -48,35 +48,46 @@ static NSString * const kExerciseIcon = @"icon";
                                              object:nil];
 }
 
+- (void)logsubviews:(UIView *)view withDepth:(int)depth {
+  NSString *indent = @"";
+  for (int i = 0; i < depth; i++) {
+    indent = [indent stringByAppendingString:@" "];
+  }
+
+  NSLog(@"%@%@", indent, view);
+  for (UIView *subview in view.subviews) {
+    [self logsubviews:subview withDepth:depth + 2];
+  }
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad {
 
-    [super viewDidLoad];
+  [super viewDidLoad];
 
-//    _subscriptionHelper = [SubscriptionHelper sharedInstance];
-//    if(!_products) {
-//      [_subscriptionHelper requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
-//        if (success) {
-//          _products = products;
-//          [self.tableView reloadData];
-//        }
-//      }];
-//    }
+    _subscriptionHelper = [SubscriptionHelper sharedInstance];
+    if(!_products) {
+      [_subscriptionHelper requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+        if (success) {
+          _products = products;
+            [self buttonsAreEnabled:YES];
+        } else {
+          NSLog(@"\n\n\nProducts did not load!!!\n\n\n");
+          [self buttonsAreEnabled:YES];
+        }
+      }];
+    }
+  [self buttonsAreEnabled:NO];
 }
-
 
 - (void)didReceiveMemoryWarning {
 
     [super didReceiveMemoryWarning];
 }
 
--(IBAction)restoreButtonTapped:(id)sender {
-
-  [_subscriptionHelper restorePurchases];
-}
 
 # pragma mark - StoreKit notifications
 
@@ -107,19 +118,61 @@ static NSString * const kExerciseIcon = @"icon";
   return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return 50.0f;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//  return 52.0f;
+//}
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-  SKProduct *selectedProduct = _products[indexPath.row];
-
+- (void) selectionMadeForProduct:(SKProduct*)selectedProduct {
   SKPayment * payment = [SKPayment paymentWithProduct: selectedProduct];
   [[SKPaymentQueue defaultQueue] addPayment:payment];
 
   // TODO: on success, send user to coaching
   // TODO: on failure, display message and send user to subscription selection
+}
+
+# pragma mark - UIButtons
+
+- (IBAction)leftSegmentedButtonPressed:(GradientButton *)sender {
+  SKProduct *selectedProduct = _products[0];
+  [self selectionMadeForProduct:selectedProduct];
+}
+
+- (IBAction)centerSegmentedButtonPressed:(GradientButton *)sender {
+  SKProduct *selectedProduct = _products[1];
+  [self selectionMadeForProduct:selectedProduct];
+}
+
+- (IBAction)rightSegmentedButtonPressed:(GradientButton *)sender {
+  SKProduct *selectedProduct = _products[2];
+  [self selectionMadeForProduct:selectedProduct];
+}
+
+- (IBAction)centerDiscountButtonPressed:(GradientButton *)sender {
+  [self centerSegmentedButtonPressed:sender];
+}
+
+- (IBAction)rightDiscountButtonPressed:(GradientButton *)sender {
+  [self rightSegmentedButtonPressed:sender];
+}
+
+-(IBAction)restoreButtonTapped:(id)sender {
+
+  [_subscriptionHelper restorePurchases];
+}
+
+- (void) buttonsAreEnabled:(BOOL)enabled {
+  BOOL disabled = !enabled;
+  _leftSegmentedButton.highlighted = disabled;
+  _leftSegmentedButton.enabled = enabled;
+  _centerSegmentedButton.highlighted = disabled;
+  _centerSegmentedButton.enabled = enabled;
+  _rightSegmentedButton.highlighted = disabled;
+  _rightSegmentedButton.enabled = enabled;
+  _centerDiscountButton.highlighted = disabled;
+  _centerDiscountButton.enabled = enabled;
+  _rightDiscountButton.highlighted = disabled;
+  _rightDiscountButton.enabled = enabled;
+
 }
 
 @end
