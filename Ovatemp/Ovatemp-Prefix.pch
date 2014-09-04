@@ -24,3 +24,5 @@
   #import "UIViewController+Session.h"
   #import "UIViewController+Status.h"
 #endif
+
+#define HKCONNECTION @"HKConnection"

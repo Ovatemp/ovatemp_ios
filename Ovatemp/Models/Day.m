@@ -71,7 +71,7 @@ static NSDictionary *propertyOptions;
 
 - (NSString *)imageNameForProperty:(NSString *)key {
   NSString *value = [self valueForKey:key];
-  
+
   return [value capitalizedString];
 }
 
@@ -95,7 +95,7 @@ static NSDictionary *propertyOptions;
     NSArray *enumeratedStrings = propertyOptions[key];
     value = enumeratedStrings[index];
   }
-  
+
   [self updateProperty:key withValue:value then:callback];
 }
 
@@ -107,7 +107,7 @@ static NSDictionary *propertyOptions;
   [self setValue:value forKey:key];
   [self addDirtyAttribute:key];
   [self saveAndThen:callback];
-  
+
   if([key isEqualToString: @"temperature"]) {
     [self updateHealthKit];
   }
@@ -127,17 +127,17 @@ static NSDictionary *propertyOptions;
                         @"period": kPeriodTypes
                         };
   }
-  
+
   if(propertyOptions[key]) {
     NSArray *possibleValues = propertyOptions[key];
-    
+
     // If we have a value outside of the possible values (such as null),
     // set the value to "unset"
     if(![possibleValues containsObject:value]) {
       value = nil;
     }
   }
-  
+
   [super setValue:value forKey:key];
 }
 
@@ -164,19 +164,19 @@ static NSDictionary *propertyOptions;
 
 - (void)saveAndThen:(ConnectionManagerSuccess)onSuccess {
   NSDictionary *attributes;
-  
+
   @synchronized(self->dirtyAttributes) {
     if([self->dirtyAttributes count] < 1) {
       return;
     }
-    
+
     // Make sure we send back the date, since we are using a different local identifier
     [self->dirtyAttributes addObject:@"date"];
-    
+
     attributes = [self attributesForKeys:self->dirtyAttributes camelCase:FALSE];
     [self->dirtyAttributes removeAllObjects];
   }
-  
+
   [ConnectionManager put:@"/days/"
                   params:@{
                            @"day": attributes,
@@ -195,23 +195,27 @@ static NSDictionary *propertyOptions;
 # pragma mark - HealthKit
 
 - (void)updateHealthKit {
- 
-  if(self.temperature) {
-    NSString *identifier = HKQuantityTypeIdentifierBodyTemperature;
-    HKQuantityType *tempType = [HKObjectType quantityTypeForIdentifier:identifier];
-    
-    HKQuantity *myTemp = [HKQuantity quantityWithUnit:[HKUnit degreeFahrenheitUnit]
-                                          doubleValue: [self.temperature floatValue]];
+  if ([[NSUserDefaults standardUserDefaults] boolForKey:HKCONNECTION]) {
+    if(self.temperature) {
+      NSString *identifier = HKQuantityTypeIdentifierBodyTemperature;
+      HKQuantityType *tempType = [HKObjectType quantityTypeForIdentifier:identifier];
 
-    HKQuantitySample *temperatureSample = [HKQuantitySample quantitySampleWithType: tempType
-                                                                          quantity: myTemp
-                                                                         startDate: self.date
-                                                                           endDate: self.date
-                                                                          metadata: nil];
-    HKHealthStore *healthStore = [[HKHealthStore alloc] init];
-    [healthStore saveObject: temperatureSample withCompletion:^(BOOL success, NSError *error) {
-      NSLog(@"I saved to healthkit");
-    }];
+      HKQuantity *myTemp = [HKQuantity quantityWithUnit:[HKUnit degreeFahrenheitUnit]
+                                            doubleValue: [self.temperature floatValue]];
+
+      HKQuantitySample *temperatureSample = [HKQuantitySample quantitySampleWithType: tempType
+                                                                            quantity: myTemp
+                                                                           startDate: self.date
+                                                                             endDate: self.date
+                                                                            metadata: nil];
+      HKHealthStore *healthStore = [[HKHealthStore alloc] init];
+      [healthStore saveObject: temperatureSample withCompletion:^(BOOL success, NSError *error) {
+        NSLog(@"I saved to healthkit");
+      }];
+    }
+  }
+  else {
+    NSLog(@"Could not save to healthkit. No connection could be made");
   }
 }
 
