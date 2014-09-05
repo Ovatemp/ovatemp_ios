@@ -691,6 +691,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSB-at-Dnq" customClass="GradientSegmentedControl">
+                                <rect key="frame" x="20" y="373" width="280" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="s0L-Kt-eXX">
                                 <rect key="frame" x="20" y="20" width="280" height="59"/>
                                 <string key="text">High-tech meets
@@ -722,6 +726,34 @@ daily tips and exercises like:</string>
                                     <constraint firstAttribute="height" constant="35" id="txq-nS-5tz"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="WFw-J0-7XF" customClass="GradientButton">
+                                <rect key="frame" x="214" y="407" width="77" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="77" id="7ee-iE-bYL"/>
+                                    <constraint firstAttribute="height" constant="16" id="tGS-Mw-O2R"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                <state key="normal" title="(50% Off)"/>
+                                <connections>
+                                    <action selector="rightDiscountButtonPressed:" destination="X2L-vO-0O8" eventType="touchUpInside" id="HfE-1e-ImX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="PMk-b4-rLs" customClass="GradientButton">
+                                <rect key="frame" x="126" y="407" width="69" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="oy7-OF-ygc"/>
+                                    <constraint firstAttribute="width" constant="69" id="qgf-U1-eR2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                <state key="normal" title="(30% Off)"/>
+                                <connections>
+                                    <action selector="centerDiscountButtonPressed:" destination="X2L-vO-0O8" eventType="touchUpInside" id="dLb-sW-faR"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Powered By:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txh-aH-Xmz">
                                 <rect key="frame" x="122" y="335" width="59" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -732,82 +764,48 @@ daily tips and exercises like:</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="10"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BuyButton.png" translatesAutoresizingMaskIntoConstraints="NO" id="8m8-3y-OgM">
-                                <rect key="frame" x="20" y="373" width="280" height="52"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
-                                </accessibility>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="Kjr-m9-jgN"/>
-                                    <constraint firstAttribute="width" constant="280" id="imj-WJ-hpV"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="udB-TG-8Fb" customClass="GradientButton">
-                                <rect key="frame" x="49" y="387" width="51" height="24"/>
+                                <rect key="frame" x="20" y="374" width="94" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="2fO-wy-Wlc"/>
-                                    <constraint firstAttribute="width" constant="51" id="SyU-ka-alN"/>
+                                    <constraint firstAttribute="height" constant="51" id="2fO-wy-Wlc"/>
+                                    <constraint firstAttribute="width" constant="94" id="SyU-ka-alN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
-                                <state key="normal" title="$49.99  monthly"/>
+                                <state key="normal" title=" $49.99   monthly"/>
                                 <connections>
                                     <action selector="leftSegmentedButtonPressed:" destination="X2L-vO-0O8" eventType="touchUpInside" id="Yjc-Xd-GMA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="570-5c-oQD" customClass="GradientButton">
-                                <rect key="frame" x="221" y="379" width="65" height="25"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="570-5c-oQD" customClass="GradientButton">
+                                <rect key="frame" x="205" y="374" width="95" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="65" id="2gK-sT-4eE"/>
-                                    <constraint firstAttribute="height" constant="25" id="BRF-ty-rEC"/>
+                                    <constraint firstAttribute="width" constant="95" id="RWF-aE-Xy5"/>
+                                    <constraint firstAttribute="height" constant="50" id="lg6-ao-PaX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
-                                <state key="normal" title=" $149.99   6 months">
+                                <inset key="contentEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="12" minY="0.0" maxX="8" maxY="8"/>
+                                <state key="normal" title="  $149.99     6 months">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="rightSegmentedButtonPressed:" destination="X2L-vO-0O8" eventType="touchUpInside" id="ufN-wf-Jao"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="zPQ-8c-tgo" customClass="GradientButton">
-                                <rect key="frame" x="137" y="379" width="56" height="27"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="zPQ-8c-tgo" customClass="GradientButton">
+                                <rect key="frame" x="117" y="373" width="94" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="56" id="7AX-0H-ITF"/>
-                                    <constraint firstAttribute="height" constant="27" id="OpJ-th-rsr"/>
+                                    <constraint firstAttribute="width" constant="94" id="8xN-uQ-4DL"/>
+                                    <constraint firstAttribute="height" constant="51" id="x4l-EH-e0h"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
-                                <state key="normal" title="  $99.99  3 months"/>
+                                <inset key="titleEdgeInsets" minX="12" minY="0.0" maxX="8" maxY="8"/>
+                                <state key="normal" title="  $99.99      3 months"/>
                                 <connections>
                                     <action selector="centerSegmentedButtonPressed:" destination="X2L-vO-0O8" eventType="touchUpInside" id="b9X-RK-PvN"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="0bF-zd-qJp" customClass="GradientButton">
-                                <rect key="frame" x="136" y="407" width="59" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="14" id="CPD-Bc-ZyP"/>
-                                    <constraint firstAttribute="width" constant="59" id="xgD-ji-w97"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                <state key="normal" title="(33% Off)"/>
-                                <connections>
-                                    <action selector="centerDiscountButtonPressed:" destination="X2L-vO-0O8" eventType="touchUpInside" id="UzB-CV-7gg"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="WFw-J0-7XF" customClass="GradientButton">
-                                <rect key="frame" x="224" y="407" width="59" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="14" id="Gzs-RO-QmP"/>
-                                    <constraint firstAttribute="width" constant="59" id="c24-pL-5SP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                <state key="normal" title="(50% Off)"/>
-                                <connections>
-                                    <action selector="rightDiscountButtonPressed:" destination="X2L-vO-0O8" eventType="touchUpInside" id="HfE-1e-ImX"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Categories.png" translatesAutoresizingMaskIntoConstraints="NO" id="nv4-wF-NGV">
@@ -822,23 +820,21 @@ daily tips and exercises like:</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qkg-Tt-QbT" firstAttribute="leading" secondItem="txh-aH-Xmz" secondAttribute="trailing" constant="-22" id="9ac-TS-EyI"/>
-                            <constraint firstItem="0bF-zd-qJp" firstAttribute="leading" secondItem="udB-TG-8Fb" secondAttribute="trailing" constant="36" id="CBY-uy-OxG"/>
-                            <constraint firstItem="8m8-3y-OgM" firstAttribute="leading" secondItem="iRe-DI-VdL" secondAttribute="leading" constant="20" id="L9T-WG-kgl"/>
+                            <constraint firstItem="570-5c-oQD" firstAttribute="leading" secondItem="zPQ-8c-tgo" secondAttribute="trailing" constant="-6" id="MFj-JZ-xV3"/>
                             <constraint firstItem="nv4-wF-NGV" firstAttribute="top" secondItem="nEp-9I-YPq" secondAttribute="bottom" constant="103" id="Njx-jn-tKU"/>
                             <constraint firstAttribute="trailing" secondItem="s0L-Kt-eXX" secondAttribute="trailing" constant="20" id="ORf-Jr-fx8"/>
                             <constraint firstItem="nv4-wF-NGV" firstAttribute="top" secondItem="s0L-Kt-eXX" secondAttribute="bottom" constant="44" id="QXB-av-OI6"/>
-                            <constraint firstItem="8m8-3y-OgM" firstAttribute="top" secondItem="nv4-wF-NGV" secondAttribute="bottom" constant="40" id="VL3-Ik-igf"/>
                             <constraint firstItem="feE-Rs-zq0" firstAttribute="top" relation="lessThanOrEqual" secondItem="s0L-Kt-eXX" secondAttribute="bottom" constant="352" id="bPs-kd-PPZ"/>
                             <constraint firstItem="s0L-Kt-eXX" firstAttribute="leading" secondItem="iRe-DI-VdL" secondAttribute="leading" constant="20" id="dYq-lf-ax8"/>
-                            <constraint firstAttribute="trailing" secondItem="8m8-3y-OgM" secondAttribute="trailing" constant="20" id="fyp-bX-ILo"/>
                             <constraint firstItem="LDg-kf-eEi" firstAttribute="top" secondItem="s0L-Kt-eXX" secondAttribute="bottom" constant="8" id="mMr-IQ-so5"/>
-                            <constraint firstItem="udB-TG-8Fb" firstAttribute="leading" secondItem="iRe-DI-VdL" secondAttribute="leading" constant="49" id="qCz-bv-BaG"/>
+                            <constraint firstItem="udB-TG-8Fb" firstAttribute="leading" secondItem="iRe-DI-VdL" secondAttribute="leading" constant="20" id="qCz-bv-BaG"/>
+                            <constraint firstItem="zPQ-8c-tgo" firstAttribute="leading" secondItem="udB-TG-8Fb" secondAttribute="trailing" constant="3" id="xmt-cz-BxJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Dls-Xa-BRJ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
-                        <outlet property="centerDiscountButton" destination="0bF-zd-qJp" id="jrV-Yg-5ZA"/>
+                        <outlet property="centerDiscountButton" destination="PMk-b4-rLs" id="TRB-j4-lxE"/>
                         <outlet property="centerSegmentedButton" destination="zPQ-8c-tgo" id="jAP-5m-AOC"/>
                         <outlet property="leftSegmentedButton" destination="udB-TG-8Fb" id="Uo2-tq-fwb"/>
                         <outlet property="rightDiscountButton" destination="WFw-J0-7XF" id="qYt-UM-kTF"/>
@@ -852,7 +848,6 @@ daily tips and exercises like:</string>
     </scenes>
     <resources>
         <image name="ActivateSmall.png" width="21" height="24"/>
-        <image name="BuyButton.png" width="561" height="143"/>
         <image name="Categories.png" width="405" height="432"/>
         <image name="EnergizeSmall.png" width="21" height="35"/>
         <image name="HydrateSmall.png" width="19" height="29"/>

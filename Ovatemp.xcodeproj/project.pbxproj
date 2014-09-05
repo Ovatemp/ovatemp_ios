@@ -174,6 +174,7 @@
 		83EB3F3718AEA7D500EA91AC /* Wet.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EB3EB918AEA7D500EA91AC /* Wet.png */; };
 		83EB3F3818AEA7D500EA91AC /* Wet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EB3EBA18AEA7D500EA91AC /* Wet@2x.png */; };
 		83EB3F3A18AEAD2600EA91AC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EB3F3918AEAD2600EA91AC /* QuartzCore.framework */; };
+		962ADF7719B8F6CD00904691 /* GradientSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 962ADF7619B8F6CD00904691 /* GradientSegmentedControl.m */; };
 		969FAC8A19B78BB800CD0770 /* Categories.png in Resources */ = {isa = PBXBuildFile; fileRef = 969FAC8919B78BB800CD0770 /* Categories.png */; };
 		96D245B619B6005E005E8D7E /* Massage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D245B119B6005E005E8D7E /* Massage@2x.png */; };
 		96D245B719B6005E005E8D7E /* DietAndLifestyle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D245B219B6005E005E8D7E /* DietAndLifestyle@2x.png */; };
@@ -499,6 +500,8 @@
 		83EB3EB918AEA7D500EA91AC /* Wet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wet.png; sourceTree = "<group>"; };
 		83EB3EBA18AEA7D500EA91AC /* Wet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wet@2x.png"; sourceTree = "<group>"; };
 		83EB3F3918AEAD2600EA91AC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		962ADF7519B8F6CD00904691 /* GradientSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientSegmentedControl.h; sourceTree = "<group>"; };
+		962ADF7619B8F6CD00904691 /* GradientSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientSegmentedControl.m; sourceTree = "<group>"; };
 		969FAC8919B78BB800CD0770 /* Categories.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Categories.png; sourceTree = "<group>"; };
 		96D245B119B6005E005E8D7E /* Massage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Massage@2x.png"; sourceTree = "<group>"; };
 		96D245B219B6005E005E8D7E /* DietAndLifestyle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DietAndLifestyle@2x.png"; sourceTree = "<group>"; };
@@ -1222,6 +1225,8 @@
 				C382F1D318F31CBE005E0CAF /* Alert.m */,
 				C382F1E418F33801005E0CAF /* BorderedGradientButton.h */,
 				C382F1E518F33801005E0CAF /* BorderedGradientButton.m */,
+				962ADF7519B8F6CD00904691 /* GradientSegmentedControl.h */,
+				962ADF7619B8F6CD00904691 /* GradientSegmentedControl.m */,
 				8315E4A418C6300800DA935A /* CalendarCell.h */,
 				8315E4A518C6300800DA935A /* CalendarCell.m */,
 				8333B98718E0B86E00C64231 /* CoachingMenuCell.h */,
@@ -1668,6 +1673,7 @@
 				C3BF8FE01898452F00572F43 /* SessionViewController.m in Sources */,
 				C30B84D418E324260078EDE3 /* UIColor+Traits.m in Sources */,
 				83DF332F18E32269002119CE /* Question.m in Sources */,
+				962ADF7719B8F6CD00904691 /* GradientSegmentedControl.m in Sources */,
 				834BD63518AD1519003B6808 /* MoreViewController.m in Sources */,
 				C3E1299A18FC8C89004288D8 /* MainTabBarViewController.m in Sources */,
 				0E33F8481959FC8A0017B9AA /* SubscriptionHelper.m in Sources */,
