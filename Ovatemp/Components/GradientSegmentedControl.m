@@ -9,62 +9,35 @@
 #import "GradientSegmentedControl.h"
 
 @interface GradientSegmentedControl () {
-
   UIBezierPath *leftDividerPath;
   UIBezierPath *rightDividerPath;
 }
-
 @end
 
 @implementation GradientSegmentedControl
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
+// super draws a gradient button with a 1pt border
 - (void)configureDefaults {
   [super configureDefaults];
   [self buildDividerLines];
 }
 
+// Divides the button into thirds with 2 vert lines
 - (void)buildDividerLines {
-//  CGFloat x = self.bounds.size.width / 3;
-//  CGPoint startPoint = CGPointMake(x, 0);
-//  CGPoint endPoint = CGPointMake(x, self.bounds.size.height);
-//
-//  CGContextRef cxt = UIGraphicsGetCurrentContext();
-//  CGContextMoveToPoint(cxt, startPoint.x, startPoint.y);
-//  CGContextAddLineToPoint(cxt, endPoint.x, endPoint.y);
-//  CGContextStrokePath(cxt);
-//
-//  x += x;
-//  startPoint = CGPointMake(x, 0);
-//  endPoint = CGPointMake(x, self.bounds.size.height);
-//
-//  CGContextMoveToPoint(cxt, startPoint.x, startPoint.y);
-//  CGContextAddLineToPoint(cxt, endPoint.x, endPoint.y);
-//  CGContextStrokePath(cxt);
-
-  // OR...
-
   CGFloat x = self.bounds.size.width / 3;
 
   leftDividerPath = [self makeDividerWithXOrigin:x];
   rightDividerPath = [self makeDividerWithXOrigin:(x * 2)];
 }
 
+// Reused to draw the same sized line at whichever x starting point
 - (UIBezierPath*) makeDividerWithXOrigin:(CGFloat)x {
-
   CGFloat length = (self.bounds.size.height - (self.borderWidth + 2.5));
   NSLog(@"Bounds height is %f and the set length is %f", self.bounds.size.height, length);
   return [UIBezierPath bezierPathWithRect:CGRectMake(x, self.borderWidth + 0.5, 1.0f, length)];
 }
 
+// Allows the lines to blend into one solid block when pressed
 - (void)drawRect:(CGRect)rect {
   [super drawRect:rect];
   if (self.isHighlighted || self.isSelected) {

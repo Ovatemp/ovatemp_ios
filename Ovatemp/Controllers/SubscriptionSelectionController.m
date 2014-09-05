@@ -75,8 +75,11 @@ static NSString * const kExerciseIcon = @"icon";
           _products = products;
             [self buttonsAreEnabled:YES];
         } else {
-          NSLog(@"\n\n\nProducts did not load!!!\n\n\n");
+          UIAlertView *noProducts = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"There was an issue when trying to connect with In-App Purchases. \nPlease try again later." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles: nil];
+          [noProducts show];
+          /* Replace above UIAlertview with...
           [self buttonsAreEnabled:YES];
+          ...for local testing */
         }
       }];
     }
