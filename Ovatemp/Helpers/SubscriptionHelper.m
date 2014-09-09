@@ -29,21 +29,21 @@ NSString *const SubscriptionExpirationDefaultsKey = @"SubscriptionHelperProductP
                                                         @"OneMonth",
                                                         @"ThreeMonths",
                                                         @"SixMonths", nil]];
-    
+
   }
-  
+
   [[SKPaymentQueue defaultQueue] addTransactionObserver: self];
-  
+
   return self;
 }
 
 - (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler {
-  
+
   _completionHandler = [completionHandler copy];
-  
+
   _productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers: _productIdentifiers];
   _productsRequest.delegate = self;
-  
+
   [_productsRequest start];
 }
 
@@ -51,23 +51,38 @@ NSString *const SubscriptionExpirationDefaultsKey = @"SubscriptionHelperProductP
 
   static dispatch_once_t once;
   static SubscriptionHelper *sharedInstance;
-  
+
   dispatch_once( &once, ^{
     sharedInstance = [[self alloc] init];
   });
-  
+
   return sharedInstance;
 }
 
 - (void) restorePurchases {
-  
+
   [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+}
+
+- (void) paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
+{
+  NSMutableArray *purchasedItemIDs = [[NSMutableArray alloc] init];
+  NSLog(@"received restored transactions: %i", queue.transactions.count);
+
+  for (SKPaymentTransaction *transaction in queue.transactions)
+  {
+    NSString *productID = transaction.payment.productIdentifier;
+
+    [purchasedItemIDs addObject:productID];
+
+    NSLog(@"%@",purchasedItemIDs);
+  }
 }
 
 #pragma mark - SKPaymentTransaction Observer
 
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions {
-  
+
   for (SKPaymentTransaction *transaction in transactions) {
     switch (transaction.transactionState) {
       case SKPaymentTransactionStatePurchased:
@@ -85,41 +100,41 @@ NSString *const SubscriptionExpirationDefaultsKey = @"SubscriptionHelperProductP
 }
 
 - (void)completeTransaction:(SKPaymentTransaction *)transaction {
-  
+
   [self provideContentForProductIdentifier: transaction.payment.productIdentifier
                                purchasedOn: transaction.transactionDate];
   [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 }
 
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction {
-  
+
   [self provideContentForProductIdentifier: transaction.originalTransaction.payment.productIdentifier
                                purchasedOn: transaction.originalTransaction.transactionDate];
   [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 }
 
 - (void)provideContentForProductIdentifier: (NSString *) productIdentifier purchasedOn: (NSDate*) transactionDate {
-  
+
   [self updateSubscriptionStatusForProductIdentifier: productIdentifier purchasedOn: transactionDate];
   [[NSNotificationCenter defaultCenter] postNotificationName:SubscriptionHelperProductPurchasedNotification object:productIdentifier userInfo:nil];
 }
 
 - (void)failedTransaction:(SKPaymentTransaction *)transaction {
-  
+
   if (transaction.error.code != SKErrorPaymentCancelled) {
     NSLog(@"Transaction error: %@", transaction.error.localizedDescription);
   }
-  
+
   [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 }
 
 #pragma mark - Subscription status/update helpers
 
 - (void)updateSubscriptionStatusForProductIdentifier: (NSString*) productIdentifier purchasedOn: (NSDate*) transactionDate {
-  
+
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   NSDate *currentExpirationDate = [defaults objectForKey: SubscriptionExpirationDefaultsKey];
-  
+
   NSCalendar *calendar = [NSCalendar currentCalendar];
   NSDateComponents *components = [[NSDateComponents alloc] init];
   if([productIdentifier isEqualToString: @"OneMonth"]) {
@@ -130,9 +145,9 @@ NSString *const SubscriptionExpirationDefaultsKey = @"SubscriptionHelperProductP
     [components setMonth: 6];
   }
   NSDate *newExpirationDate = [calendar dateByAddingComponents: components toDate: transactionDate options: 0];
-  
+
   NSLog(@"The new expiration date is: %@", [newExpirationDate classicDate]);
-  
+
   if(!currentExpirationDate || [currentExpirationDate compare: newExpirationDate] == NSOrderedAscending) {
     [defaults setObject: newExpirationDate forKey: SubscriptionExpirationDefaultsKey];
     [defaults synchronize];
@@ -140,44 +155,44 @@ NSString *const SubscriptionExpirationDefaultsKey = @"SubscriptionHelperProductP
 }
 
 - (BOOL) hasActiveSubscription {
-  
+
   NSDate *date = [[NSUserDefaults standardUserDefaults] objectForKey: SubscriptionExpirationDefaultsKey];
   NSDate *today = [NSDate date];
-  
+
   if(date && [today compare: date] == NSOrderedAscending) {
     return YES;
   }
-  
+
   return NO;
 }
 
 #pragma mark - SKProductsRequestDelegate
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
-  
+
   _productsRequest = nil;
-  
+
   NSArray *skProducts = response.products;
   NSArray *invalidProducts = response.invalidProductIdentifiers;
-  
+
   for (NSString *identifier in invalidProducts) {
     NSLog(@"Invalid identifier: %@", identifier);
   }
-  
+
   // Sort products by price
   skProducts = [skProducts sortedArrayUsingComparator:^NSComparisonResult(id prod1, id prod2) {
     return [[prod1 price] floatValue] > [[prod2 price] floatValue];
   }];
-  
+
   _completionHandler(YES, skProducts);
   _completionHandler = nil;
-  
+
 }
 
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
-  
+
   _productsRequest = nil;
-  
+
   _completionHandler(NO, nil);
   _completionHandler = nil;
 }

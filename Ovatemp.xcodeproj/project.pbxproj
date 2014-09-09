@@ -175,6 +175,7 @@
 		83EB3F3818AEA7D500EA91AC /* Wet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EB3EBA18AEA7D500EA91AC /* Wet@2x.png */; };
 		83EB3F3A18AEAD2600EA91AC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EB3F3918AEAD2600EA91AC /* QuartzCore.framework */; };
 		962ADF7719B8F6CD00904691 /* GradientSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 962ADF7619B8F6CD00904691 /* GradientSegmentedControl.m */; };
+		9668CF1E19BF67B2006F894D /* OldSubscriptionSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9668CF1D19BF67B2006F894D /* OldSubscriptionSelectionController.m */; };
 		969FAC8A19B78BB800CD0770 /* Categories.png in Resources */ = {isa = PBXBuildFile; fileRef = 969FAC8919B78BB800CD0770 /* Categories.png */; };
 		96D245B619B6005E005E8D7E /* Massage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D245B119B6005E005E8D7E /* Massage@2x.png */; };
 		96D245B719B6005E005E8D7E /* DietAndLifestyle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D245B219B6005E005E8D7E /* DietAndLifestyle@2x.png */; };
@@ -502,6 +503,8 @@
 		83EB3F3918AEAD2600EA91AC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		962ADF7519B8F6CD00904691 /* GradientSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientSegmentedControl.h; sourceTree = "<group>"; };
 		962ADF7619B8F6CD00904691 /* GradientSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientSegmentedControl.m; sourceTree = "<group>"; };
+		9668CF1C19BF67B2006F894D /* OldSubscriptionSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldSubscriptionSelectionController.h; sourceTree = "<group>"; };
+		9668CF1D19BF67B2006F894D /* OldSubscriptionSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldSubscriptionSelectionController.m; sourceTree = "<group>"; };
 		969FAC8919B78BB800CD0770 /* Categories.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Categories.png; sourceTree = "<group>"; };
 		96D245B119B6005E005E8D7E /* Massage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Massage@2x.png"; sourceTree = "<group>"; };
 		96D245B219B6005E005E8D7E /* DietAndLifestyle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DietAndLifestyle@2x.png"; sourceTree = "<group>"; };
@@ -734,6 +737,8 @@
 				83DF333118E324DA002119CE /* QuizViewController.m */,
 				0E79EE2E196DB7F5003D3240 /* SubscriptionSelectionController.h */,
 				0E79EE2F196DB7F5003D3240 /* SubscriptionSelectionController.m */,
+				9668CF1C19BF67B2006F894D /* OldSubscriptionSelectionController.h */,
+				9668CF1D19BF67B2006F894D /* OldSubscriptionSelectionController.m */,
 			);
 			name = Coaching;
 			sourceTree = "<group>";
@@ -1668,6 +1673,7 @@
 				C374AACC18F9D0ED0064341A /* TemperatureCellStaticView.m in Sources */,
 				8333B98918E0B86E00C64231 /* CoachingMenuCell.m in Sources */,
 				83DF333218E324DA002119CE /* QuizViewController.m in Sources */,
+				9668CF1E19BF67B2006F894D /* OldSubscriptionSelectionController.m in Sources */,
 				C322F8C918F8727C00902C9D /* DayCellEditView.m in Sources */,
 				83BD853818D0B23900890EDA /* RootViewController.m in Sources */,
 				C3BF8FE01898452F00572F43 /* SessionViewController.m in Sources */,
