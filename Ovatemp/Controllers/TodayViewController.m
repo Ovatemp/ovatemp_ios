@@ -135,6 +135,9 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
 
+  // Permission for landscape mode
+  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ShouldRotate"];
+
   [[Calendar sharedInstance] addObserver:self
                               forKeyPath:@"day"
                                  options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
@@ -153,6 +156,9 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
+
+  // Restriction for landscape mode
+  [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"ShouldRotate"];
 
   [[NSNotificationCenter defaultCenter]
    removeObserver:self
@@ -174,7 +180,7 @@
 # pragma mark - Reactions to date changes
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-  
+
   if([keyPath isEqualToString:@"day"] && [[Calendar sharedInstance] class] == [object class]) {
     self.day = [Calendar day];
     [self.tableView reloadData];

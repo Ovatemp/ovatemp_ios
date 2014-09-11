@@ -29,9 +29,6 @@
   // Ping the in app purchase helper so we start getting notifications
   [SubscriptionHelper sharedInstance];
 
-  // Restriction for landscape mode
-  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ShouldRotate"];
-
   return YES;
 }
 
