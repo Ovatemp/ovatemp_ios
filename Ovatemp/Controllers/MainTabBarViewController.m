@@ -50,9 +50,12 @@
 
   UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
   if (UIDeviceOrientationIsLandscape(deviceOrientation)) {
-    inLandscape = YES;
-    if (!isAnimating) {
-      [self showCycleViewController];
+
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShouldRotate"]) {
+          inLandscape = YES;
+      if (!isAnimating) {
+        [self showCycleViewController];
+      }
     }
   } else {
     inLandscape = NO;

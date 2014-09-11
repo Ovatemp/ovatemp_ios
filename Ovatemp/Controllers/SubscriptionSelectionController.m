@@ -29,6 +29,8 @@ static NSString * const kExerciseIcon = @"icon";
 
 - (void) viewWillAppear:(BOOL)animated {
 
+  [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"ShouldRotate"];
+
   if (!kExerciseList) {
     kExerciseList = @[
                          @{kExerciseName: @"    Acupressure",
@@ -62,6 +64,7 @@ static NSString * const kExerciseIcon = @"icon";
 
 - (void)viewWillDisappear:(BOOL)animated {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
+  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ShouldRotate"];
 }
 
 - (void)viewDidLoad {
@@ -90,7 +93,6 @@ static NSString * const kExerciseIcon = @"icon";
 
     [super didReceiveMemoryWarning];
 }
-
 
 # pragma mark - StoreKit notifications
 
