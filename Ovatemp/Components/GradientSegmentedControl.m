@@ -33,7 +33,6 @@
 // Reused to draw the same sized line at whichever x starting point
 - (UIBezierPath*) makeDividerWithXOrigin:(CGFloat)x {
   CGFloat length = (self.bounds.size.height - (self.borderWidth + 2.5));
-  NSLog(@"Bounds height is %f and the set length is %f", self.bounds.size.height, length);
   return [UIBezierPath bezierPathWithRect:CGRectMake(x, self.borderWidth + 0.5, 1.0f, length)];
 }
 

@@ -1864,6 +1864,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Ovatemp/Frameworks",
@@ -1886,6 +1887,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Ovatemp/Frameworks",

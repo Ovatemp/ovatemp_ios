@@ -53,6 +53,7 @@ static Configuration *_sharedConfiguration;
   [Configuration sharedConfiguration].token = response[@"token"];
   if (![response[@"user_profile"] isNull]) {
     [UserProfile setCurrent:[UserProfile withAttributes:response[@"user_profile"]]];
+    NSLog(@"User Profile? %@", [UserProfile withAttributes:response[@"user_profile"]]);
   } else {
     [UserProfile setCurrent:nil];
   }

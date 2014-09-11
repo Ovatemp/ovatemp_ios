@@ -74,6 +74,7 @@ static NSString * const kExerciseIcon = @"icon";
     _subscriptionHelper = [SubscriptionHelper sharedInstance];
     if(!_products) {
       [_subscriptionHelper requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+        NSLog(@"THINGS %@", products);
         if (success) {
           _products = products;
             [self buttonsAreEnabled:YES];

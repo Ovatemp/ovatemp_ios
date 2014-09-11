@@ -67,7 +67,7 @@ NSString *const SubscriptionExpirationDefaultsKey = @"SubscriptionHelperProductP
 - (void) paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
 {
   NSMutableArray *purchasedItemIDs = [[NSMutableArray alloc] init];
-  NSLog(@"received restored transactions: %i", queue.transactions.count);
+  NSLog(@"received restored transactions: %@", queue.transactions);
 
   for (SKPaymentTransaction *transaction in queue.transactions)
   {
