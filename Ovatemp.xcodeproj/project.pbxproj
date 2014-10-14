@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E33F8481959FC8A0017B9AA /* SubscriptionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E33F8471959FC8A0017B9AA /* SubscriptionHelper.m */; };
-		0E79EE31196DB7F5003D3240 /* SubscriptionSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E79EE2F196DB7F5003D3240 /* SubscriptionSelectionController.m */; };
+		0EA4C6DB19A3952100C04FF5 /* ConnectivityAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EA4C6DA19A3952100C04FF5 /* ConnectivityAlertView.xib */; };
+		0EC9830B19AB8619009A5730 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC9830A19AB8619009A5730 /* HealthKit.framework */; };
 		830E351818D2506B00884F0E /* NSDate+Formatters.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E351718D2506B00884F0E /* NSDate+Formatters.m */; };
 		8315E49E18C521A800DA935A /* SessionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49D18C521A800DA935A /* SessionSpec.m */; };
 		8315E4A618C6300800DA935A /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E4A518C6300800DA935A /* CalendarCell.m */; };
@@ -172,19 +172,6 @@
 		83EB3F3718AEA7D500EA91AC /* Wet.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EB3EB918AEA7D500EA91AC /* Wet.png */; };
 		83EB3F3818AEA7D500EA91AC /* Wet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EB3EBA18AEA7D500EA91AC /* Wet@2x.png */; };
 		83EB3F3A18AEAD2600EA91AC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EB3F3918AEAD2600EA91AC /* QuartzCore.framework */; };
-		962ADF7719B8F6CD00904691 /* GradientSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 962ADF7619B8F6CD00904691 /* GradientSegmentedControl.m */; };
-		9659C5B919C73EB000E8F47B /* GradientSegmentedControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9659C5B819C73EB000E8F47B /* GradientSegmentedControlButton.m */; };
-		9659C5BC19C780B900E8F47B /* SubscriptionMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9659C5BB19C780B900E8F47B /* SubscriptionMenuTableViewCell.m */; };
-		96AE66CC19C872FC00E568C3 /* MassageBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96AE66C419C872FC00E568C3 /* MassageBlue@2x.png */; };
-		96AE66CD19C872FC00E568C3 /* MeditationsBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96AE66C519C872FC00E568C3 /* MeditationsBlue@2x.png */; };
-		96AE66CE19C872FC00E568C3 /* DietAndLifestyleBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 96AE66C619C872FC00E568C3 /* DietAndLifestyleBlue.png */; };
-		96AE66CF19C872FC00E568C3 /* MassageBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 96AE66C719C872FC00E568C3 /* MassageBlue.png */; };
-		96AE66D019C872FC00E568C3 /* MeditationsBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 96AE66C819C872FC00E568C3 /* MeditationsBlue.png */; };
-		96AE66D119C872FC00E568C3 /* DietAndLifestyleBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96AE66C919C872FC00E568C3 /* DietAndLifestyleBlue@2x.png */; };
-		96AE66D219C872FC00E568C3 /* AcupressureBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96AE66CA19C872FC00E568C3 /* AcupressureBlue@2x.png */; };
-		96AE66D319C872FC00E568C3 /* AcupressureBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 96AE66CB19C872FC00E568C3 /* AcupressureBlue.png */; };
-		96C0016819C33990009721A0 /* Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C0016719C33990009721A0 /* Subscription.m */; };
-		96D245BA19B6005E005E8D7E /* YinOva_HiRes.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D245B519B6005E005E8D7E /* YinOva_HiRes.png */; };
 		9C4D13D86AB546AD9A46ADE4 /* libPods-OvatempTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */; };
 		C3066C6818983537003F8B84 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3066C6618983537003F8B84 /* TodayViewController.m */; };
 		C30B84D118E3206A0078EDE3 /* UIViewController+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = C30B84D018E3206A0078EDE3 /* UIViewController+Loading.m */; };
@@ -244,8 +231,6 @@
 		C38C2D5B18EF4F0700449F89 /* DelegatingNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C38C2D5A18EF4F0700449F89 /* DelegatingNavigationViewController.m */; };
 		C391ECBE192E7F4500D21FBC /* UIViewController+Status.m in Sources */ = {isa = PBXBuildFile; fileRef = C391ECBD192E7F4500D21FBC /* UIViewController+Status.m */; };
 		C3A145C319351F4800FA2D5F /* NSObject+Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A145C219351F4800FA2D5F /* NSObject+Analytics.m */; };
-		C3AD9EF31937C4F300D02589 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3AD9EF21937C4F300D02589 /* CoreBluetooth.framework */; };
-		C3B8968B19C08EA800D8814E /* ONDO.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B8968A19C08EA800D8814E /* ONDO.m */; };
 		C3BF8FBF1898409C00572F43 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BF8FBE1898409C00572F43 /* XCTest.framework */; };
 		C3BF8FC01898409C00572F43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C50FE189028190053A884 /* Foundation.framework */; };
 		C3BF8FC11898409C00572F43 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C5102189028190053A884 /* UIKit.framework */; };
@@ -263,13 +248,6 @@
 		C3D8911D19083DEC00E21627 /* FertilityProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D8911C19083DEC00E21627 /* FertilityProfile.m */; };
 		C3D8912119084CB800E21627 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D8912019084CB800E21627 /* StoreKit.framework */; };
 		C3D8912319084D9F00E21627 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D8912219084D9F00E21627 /* GameKit.framework */; };
-		C3DA588A19C21C4C005F671B /* ONDOPairViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DA588919C21C4C005F671B /* ONDOPairViewController.m */; };
-		C3DA589119C236B7005F671B /* BluetoothIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3DA588C19C236B7005F671B /* BluetoothIcon@2x.png */; };
-		C3DA589219C236B7005F671B /* BluetoothSignal1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3DA588D19C236B7005F671B /* BluetoothSignal1@2x.png */; };
-		C3DA589319C236B7005F671B /* BluetoothSignal2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3DA588E19C236B7005F671B /* BluetoothSignal2@2x.png */; };
-		C3DA589419C236B7005F671B /* BluetoothSignal3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3DA588F19C236B7005F671B /* BluetoothSignal3@2x.png */; };
-		C3DA589519C236B7005F671B /* OndoPicture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3DA589019C236B7005F671B /* OndoPicture@2x.png */; };
-		C3DB9D4519C098D300F654B3 /* ONDODevice.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DB9D4419C098D300F654B3 /* ONDODevice.m */; };
 		C3E1299A18FC8C89004288D8 /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E1299918FC8C89004288D8 /* MainTabBarViewController.m */; };
 		C3E58C2C18D39AAC0026301A /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C2A18D39AAC0026301A /* LaunchImage.png */; };
 		C3E58C2D18D39AAC0026301A /* LaunchImageR4.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C2B18D39AAC0026301A /* LaunchImageR4.png */; };
@@ -282,17 +260,6 @@
 		C3E58C3C18D39B7B0026301A /* Icon76.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C3418D39B7B0026301A /* Icon76.png */; };
 		C3E58C3D18D39B7B0026301A /* Icon76@x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E58C3518D39B7B0026301A /* Icon76@x.png */; };
 		C3EC024218F61DCD00AA38D5 /* IconLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EC024118F61DCD00AA38D5 /* IconLabel.m */; };
-		C3F6A6A819B76D100013D806 /* Form.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F6A6A719B76D100013D806 /* Form.m */; };
-		C3F6A6AE19B773480013D806 /* NSObject+ClassForProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F6A6AD19B773480013D806 /* NSObject+ClassForProperty.m */; };
-		C3F6A6B219B7B4370013D806 /* FormRow.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F6A6B119B7B4370013D806 /* FormRow.m */; };
-		C3FE050919B8CF320008B63F /* MoreTryingToConceive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3FE050819B8CF320008B63F /* MoreTryingToConceive@2x.png */; };
-		C3FE050B19B8D0A30008B63F /* MoreTryingToAvoid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3FE050A19B8D0A30008B63F /* MoreTryingToAvoid@2x.png */; };
-		C3FE050D19B8D16E0008B63F /* MorePrivacyTerms@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3FE050C19B8D16E0008B63F /* MorePrivacyTerms@2x.png */; };
-		C3FE050F19B8D3DC0008B63F /* MoreBirthday@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3FE050E19B8D3DC0008B63F /* MoreBirthday@2x.png */; };
-		C3FE051219B8D5680008B63F /* BackArrowSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3FE051019B8D5680008B63F /* BackArrowSmall@2x.png */; };
-		C3FE051319B8D5680008B63F /* ForwardArrowSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3FE051119B8D5680008B63F /* ForwardArrowSmall@2x.png */; };
-		C3FE051619B8DA5B0008B63F /* BluetoothDeviceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FE051519B8DA5B0008B63F /* BluetoothDeviceTableViewController.m */; };
-		C3FE056619B8DB890008B63F /* ONDO.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3FE056419B8DB890008B63F /* ONDO.xcdatamodeld */; };
 		D18C51F548DA4E59B785DE16 /* libPods-Ovatemp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */; };
 /* End PBXBuildFile section */
 
@@ -307,10 +274,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E33F8461959FC8A0017B9AA /* SubscriptionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubscriptionHelper.h; path = Helpers/SubscriptionHelper.h; sourceTree = "<group>"; };
-		0E33F8471959FC8A0017B9AA /* SubscriptionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubscriptionHelper.m; path = Helpers/SubscriptionHelper.m; sourceTree = "<group>"; };
-		0E79EE2E196DB7F5003D3240 /* SubscriptionSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscriptionSelectionController.h; sourceTree = "<group>"; };
-		0E79EE2F196DB7F5003D3240 /* SubscriptionSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscriptionSelectionController.m; sourceTree = "<group>"; };
+		0EA4C6DA19A3952100C04FF5 /* ConnectivityAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectivityAlertView.xib; sourceTree = "<group>"; };
+		0EC9830A19AB8619009A5730 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		0EC9830C19AB8619009A5730 /* Ovatemp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Ovatemp.entitlements; sourceTree = "<group>"; };
 		803928D684F54DB4A5F86E42 /* Pods-OvatempTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.xcconfig"; path = "Pods/Pods-OvatempTests.xcconfig"; sourceTree = "<group>"; };
 		830E351618D2506B00884F0E /* NSDate+Formatters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Formatters.h"; sourceTree = "<group>"; };
 		830E351718D2506B00884F0E /* NSDate+Formatters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Formatters.m"; sourceTree = "<group>"; };
@@ -421,7 +387,7 @@
 		83A1FE0518D778F80030D331 /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
 		83A1FE0618D778F80030D331 /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
 		83A1FE0818D78B2C0030D331 /* FAMSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAMSettingsViewController.h; sourceTree = "<group>"; };
-		83A1FE0918D78B2C0030D331 /* FAMSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FAMSettingsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		83A1FE0918D78B2C0030D331 /* FAMSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAMSettingsViewController.m; sourceTree = "<group>"; };
 		83A1FE0B18D78FAC0030D331 /* ProfileSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSettingsViewController.h; sourceTree = "<group>"; };
 		83A1FE0C18D78FAC0030D331 /* ProfileSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileSettingsViewController.m; sourceTree = "<group>"; };
 		83BD853618D0B23900890EDA /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -510,23 +476,6 @@
 		83EB3EB918AEA7D500EA91AC /* Wet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wet.png; sourceTree = "<group>"; };
 		83EB3EBA18AEA7D500EA91AC /* Wet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wet@2x.png"; sourceTree = "<group>"; };
 		83EB3F3918AEAD2600EA91AC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		962ADF7519B8F6CD00904691 /* GradientSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientSegmentedControl.h; sourceTree = "<group>"; };
-		962ADF7619B8F6CD00904691 /* GradientSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientSegmentedControl.m; sourceTree = "<group>"; };
-		9659C5B719C73EB000E8F47B /* GradientSegmentedControlButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientSegmentedControlButton.h; sourceTree = "<group>"; };
-		9659C5B819C73EB000E8F47B /* GradientSegmentedControlButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientSegmentedControlButton.m; sourceTree = "<group>"; };
-		9659C5BA19C780B900E8F47B /* SubscriptionMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscriptionMenuTableViewCell.h; sourceTree = "<group>"; };
-		9659C5BB19C780B900E8F47B /* SubscriptionMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscriptionMenuTableViewCell.m; sourceTree = "<group>"; };
-		96AE66C419C872FC00E568C3 /* MassageBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MassageBlue@2x.png"; sourceTree = "<group>"; };
-		96AE66C519C872FC00E568C3 /* MeditationsBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MeditationsBlue@2x.png"; sourceTree = "<group>"; };
-		96AE66C619C872FC00E568C3 /* DietAndLifestyleBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DietAndLifestyleBlue.png; sourceTree = "<group>"; };
-		96AE66C719C872FC00E568C3 /* MassageBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MassageBlue.png; sourceTree = "<group>"; };
-		96AE66C819C872FC00E568C3 /* MeditationsBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MeditationsBlue.png; sourceTree = "<group>"; };
-		96AE66C919C872FC00E568C3 /* DietAndLifestyleBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DietAndLifestyleBlue@2x.png"; sourceTree = "<group>"; };
-		96AE66CA19C872FC00E568C3 /* AcupressureBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AcupressureBlue@2x.png"; sourceTree = "<group>"; };
-		96AE66CB19C872FC00E568C3 /* AcupressureBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AcupressureBlue.png; sourceTree = "<group>"; };
-		96C0016619C33990009721A0 /* Subscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subscription.h; sourceTree = "<group>"; };
-		96C0016719C33990009721A0 /* Subscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subscription.m; sourceTree = "<group>"; };
-		96D245B519B6005E005E8D7E /* YinOva_HiRes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YinOva_HiRes.png; sourceTree = "<group>"; };
 		C3066C6518983537003F8B84 /* TodayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		C3066C6618983537003F8B84 /* TodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		C30B84CF18E3206A0078EDE3 /* UIViewController+Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Loading.h"; sourceTree = "<group>"; };
@@ -615,9 +564,6 @@
 		C391ECBD192E7F4500D21FBC /* UIViewController+Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Status.m"; sourceTree = "<group>"; };
 		C3A145C119351F4800FA2D5F /* NSObject+Analytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Analytics.h"; sourceTree = "<group>"; };
 		C3A145C219351F4800FA2D5F /* NSObject+Analytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Analytics.m"; sourceTree = "<group>"; };
-		C3AD9EF21937C4F300D02589 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		C3B8968919C08EA800D8814E /* ONDO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ONDO.h; path = ONDOSDK/ONDO.h; sourceTree = SOURCE_ROOT; };
-		C3B8968A19C08EA800D8814E /* ONDO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ONDO.m; path = ONDOSDK/ONDO.m; sourceTree = SOURCE_ROOT; };
 		C3BF8FBD1898409C00572F43 /* OvatempTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OvatempTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3BF8FBE1898409C00572F43 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C3BF8FC41898409C00572F43 /* OvatempTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OvatempTests-Info.plist"; sourceTree = "<group>"; };
@@ -644,15 +590,6 @@
 		C3D8911C19083DEC00E21627 /* FertilityProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FertilityProfile.m; sourceTree = "<group>"; };
 		C3D8912019084CB800E21627 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C3D8912219084D9F00E21627 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		C3DA588819C21C4C005F671B /* ONDOPairViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ONDOPairViewController.h; path = ONDOSDK/ONDOPairViewController.h; sourceTree = SOURCE_ROOT; };
-		C3DA588919C21C4C005F671B /* ONDOPairViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ONDOPairViewController.m; path = ONDOSDK/ONDOPairViewController.m; sourceTree = SOURCE_ROOT; };
-		C3DA588C19C236B7005F671B /* BluetoothIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BluetoothIcon@2x.png"; sourceTree = "<group>"; };
-		C3DA588D19C236B7005F671B /* BluetoothSignal1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BluetoothSignal1@2x.png"; sourceTree = "<group>"; };
-		C3DA588E19C236B7005F671B /* BluetoothSignal2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BluetoothSignal2@2x.png"; sourceTree = "<group>"; };
-		C3DA588F19C236B7005F671B /* BluetoothSignal3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BluetoothSignal3@2x.png"; sourceTree = "<group>"; };
-		C3DA589019C236B7005F671B /* OndoPicture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OndoPicture@2x.png"; sourceTree = "<group>"; };
-		C3DB9D4319C098D300F654B3 /* ONDODevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ONDODevice.h; path = ONDOSDK/ONDODevice.h; sourceTree = SOURCE_ROOT; };
-		C3DB9D4419C098D300F654B3 /* ONDODevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ONDODevice.m; path = ONDOSDK/ONDODevice.m; sourceTree = SOURCE_ROOT; };
 		C3E1299818FC8C89004288D8 /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
 		C3E1299918FC8C89004288D8 /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
 		C3E58C2A18D39AAC0026301A /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
@@ -667,21 +604,6 @@
 		C3E58C3518D39B7B0026301A /* Icon76@x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon76@x.png"; sourceTree = "<group>"; };
 		C3EC024018F61DCD00AA38D5 /* IconLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconLabel.h; sourceTree = "<group>"; };
 		C3EC024118F61DCD00AA38D5 /* IconLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconLabel.m; sourceTree = "<group>"; };
-		C3F6A6A619B76D100013D806 /* Form.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Form.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		C3F6A6A719B76D100013D806 /* Form.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Form.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		C3F6A6AC19B773480013D806 /* NSObject+ClassForProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ClassForProperty.h"; sourceTree = "<group>"; };
-		C3F6A6AD19B773480013D806 /* NSObject+ClassForProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ClassForProperty.m"; sourceTree = "<group>"; };
-		C3F6A6B019B7B4370013D806 /* FormRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FormRow.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		C3F6A6B119B7B4370013D806 /* FormRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormRow.m; sourceTree = "<group>"; };
-		C3FE050819B8CF320008B63F /* MoreTryingToConceive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MoreTryingToConceive@2x.png"; sourceTree = "<group>"; };
-		C3FE050A19B8D0A30008B63F /* MoreTryingToAvoid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MoreTryingToAvoid@2x.png"; sourceTree = "<group>"; };
-		C3FE050C19B8D16E0008B63F /* MorePrivacyTerms@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MorePrivacyTerms@2x.png"; sourceTree = "<group>"; };
-		C3FE050E19B8D3DC0008B63F /* MoreBirthday@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MoreBirthday@2x.png"; sourceTree = "<group>"; };
-		C3FE051019B8D5680008B63F /* BackArrowSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackArrowSmall@2x.png"; sourceTree = "<group>"; };
-		C3FE051119B8D5680008B63F /* ForwardArrowSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ForwardArrowSmall@2x.png"; sourceTree = "<group>"; };
-		C3FE051419B8DA5B0008B63F /* BluetoothDeviceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothDeviceTableViewController.h; sourceTree = "<group>"; };
-		C3FE051519B8DA5B0008B63F /* BluetoothDeviceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothDeviceTableViewController.m; sourceTree = "<group>"; };
-		C3FE056519B8DB890008B63F /* ONDO.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ONDO.xcdatamodel; sourceTree = "<group>"; };
 		DA450FC5E9904FF093E24AC1 /* Pods-Ovatemp.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.xcconfig"; path = "Pods/Pods-Ovatemp.xcconfig"; sourceTree = "<group>"; };
 		F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ovatemp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OvatempTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -692,18 +614,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C388C73918FC45B100B622FB /* CoreData.framework in Frameworks */,
-				C3AD9EF31937C4F300D02589 /* CoreBluetooth.framework in Frameworks */,
 				C388C73D18FC45BD00B622FB /* libz.dylib in Frameworks */,
 				C34AE14318FC4C64003209B2 /* libGoogleConversionTracking.a in Frameworks */,
 				C388C73B18FC45B800B622FB /* SystemConfiguration.framework in Frameworks */,
 				C3D8912119084CB800E21627 /* StoreKit.framework in Frameworks */,
 				C3D8912319084D9F00E21627 /* GameKit.framework in Frameworks */,
+				C388C73918FC45B100B622FB /* CoreData.framework in Frameworks */,
 				C388C73718FC45AA00B622FB /* AdSupport.framework in Frameworks */,
 				83EB3F3A18AEAD2600EA91AC /* QuartzCore.framework in Frameworks */,
 				C36C5101189028190053A884 /* CoreGraphics.framework in Frameworks */,
 				C36C5103189028190053A884 /* UIKit.framework in Frameworks */,
 				C36C50FF189028190053A884 /* Foundation.framework in Frameworks */,
+				0EC9830B19AB8619009A5730 /* HealthKit.framework in Frameworks */,
 				D18C51F548DA4E59B785DE16 /* libPods-Ovatemp.a in Frameworks */,
 				C388C73518FC459B00B622FB /* libGoogleAnalyticsServices.a in Frameworks */,
 			);
@@ -723,15 +645,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0E34FBC2195324E6001916F2 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				0E33F8461959FC8A0017B9AA /* SubscriptionHelper.h */,
-				0E33F8471959FC8A0017B9AA /* SubscriptionHelper.m */,
-			);
-			name = Helpers;
-			sourceTree = "<group>";
-		};
 		832934B818B7D93200F6875B /* MedsMoodsSupplements */ = {
 			isa = PBXGroup;
 			children = (
@@ -768,8 +681,6 @@
 				8333B9E418E2193700C64231 /* CoachingRootViewController.m */,
 				83DF333018E324DA002119CE /* QuizViewController.h */,
 				83DF333118E324DA002119CE /* QuizViewController.m */,
-				0E79EE2E196DB7F5003D3240 /* SubscriptionSelectionController.h */,
-				0E79EE2F196DB7F5003D3240 /* SubscriptionSelectionController.m */,
 			);
 			name = Coaching;
 			sourceTree = "<group>";
@@ -777,14 +688,6 @@
 		8333B99818E0D1B800C64231 /* Coaching */ = {
 			isa = PBXGroup;
 			children = (
-				96AE66C419C872FC00E568C3 /* MassageBlue@2x.png */,
-				96AE66C519C872FC00E568C3 /* MeditationsBlue@2x.png */,
-				96AE66C619C872FC00E568C3 /* DietAndLifestyleBlue.png */,
-				96AE66C719C872FC00E568C3 /* MassageBlue.png */,
-				96AE66C819C872FC00E568C3 /* MeditationsBlue.png */,
-				96AE66C919C872FC00E568C3 /* DietAndLifestyleBlue@2x.png */,
-				96AE66CA19C872FC00E568C3 /* AcupressureBlue@2x.png */,
-				96AE66CB19C872FC00E568C3 /* AcupressureBlue.png */,
 				8333B9B118E1BD7A00C64231 /* Lifestyle */,
 				8333B9AD18E0D39800C64231 /* Meditation.png */,
 				8333B9AE18E0D39800C64231 /* Meditation@2x.png */,
@@ -861,7 +764,6 @@
 			children = (
 				83C6511018C91B7500F35CE5 /* BackArrow.png */,
 				83C6511118C91B7500F35CE5 /* BackArrow@2x.png */,
-				C3FE051019B8D5680008B63F /* BackArrowSmall@2x.png */,
 				8333B99818E0D1B800C64231 /* Coaching */,
 				83EB3E3318AEA7D500EA91AC /* CervicalFluid */,
 				835AE58918B7A51700FEAF98 /* CheckBox.png */,
@@ -870,7 +772,6 @@
 				8333B9C418E2156B00C64231 /* FertilityProfile */,
 				83C6511218C91B7500F35CE5 /* ForwardArrow.png */,
 				83C6511318C91B7500F35CE5 /* ForwardArrow@2x.png */,
-				C3FE051119B8D5680008B63F /* ForwardArrowSmall@2x.png */,
 				C3E58C2E18D39B7B0026301A /* Icon29.png */,
 				C3E58C2F18D39B7B0026301A /* Icon29@2x.png */,
 				C3E58C3018D39B7B0026301A /* Icon40.png */,
@@ -879,12 +780,10 @@
 				C3E58C3318D39B7B0026301A /* Icon60@2x.png */,
 				C3E58C3418D39B7B0026301A /* Icon76.png */,
 				C3E58C3518D39B7B0026301A /* Icon76@x.png */,
-				96D245BB19B60075005E8D7E /* InAppPurchases */,
 				83EB3E5718AEA7D500EA91AC /* Intercourse */,
 				C3E58C2A18D39AAC0026301A /* LaunchImage.png */,
 				C3E58C2B18D39AAC0026301A /* LaunchImageR4.png */,
 				832934B818B7D93200F6875B /* MedsMoodsSupplements */,
-				C3FE050719B8CF320008B63F /* More */,
 				83A1FDF618D35C820030D331 /* OvatempIcon.png */,
 				83A1FDF718D35C820030D331 /* OvatempIcon@2x.png */,
 				83EB3E8318AEA7D500EA91AC /* PeriodIcons */,
@@ -898,8 +797,6 @@
 		83C4D21018D9DFCA008C523C /* MoreAndSettings */ = {
 			isa = PBXGroup;
 			children = (
-				C3FE051419B8DA5B0008B63F /* BluetoothDeviceTableViewController.h */,
-				C3FE051519B8DA5B0008B63F /* BluetoothDeviceTableViewController.m */,
 				83A1FE0818D78B2C0030D331 /* FAMSettingsViewController.h */,
 				83A1FE0918D78B2C0030D331 /* FAMSettingsViewController.m */,
 				834BD63318AD1519003B6808 /* MoreViewController.h */,
@@ -1004,21 +901,11 @@
 			path = VaginalSensation;
 			sourceTree = "<group>";
 		};
-		96D245BB19B60075005E8D7E /* InAppPurchases */ = {
-			isa = PBXGroup;
-			children = (
-				96D245B519B6005E005E8D7E /* YinOva_HiRes.png */,
-			);
-			name = InAppPurchases;
-			sourceTree = "<group>";
-		};
 		C308705918980A2E00DC4364 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
 				83C6510D18C9015000F35CE5 /* NSDate+CalendarOps.h */,
 				83C6510E18C9015000F35CE5 /* NSDate+CalendarOps.m */,
-				C3F6A6AC19B773480013D806 /* NSObject+ClassForProperty.h */,
-				C3F6A6AD19B773480013D806 /* NSObject+ClassForProperty.m */,
 				830E351618D2506B00884F0E /* NSDate+Formatters.h */,
 				830E351718D2506B00884F0E /* NSDate+Formatters.m */,
 				C3A145C119351F4800FA2D5F /* NSObject+Analytics.h */,
@@ -1104,8 +991,6 @@
 				C3BF8FE718984AC200572F43 /* User.m */,
 				83A1FE0518D778F80030D331 /* UserProfile.h */,
 				83A1FE0618D778F80030D331 /* UserProfile.m */,
-				96C0016619C33990009721A0 /* Subscription.h */,
-				96C0016719C33990009721A0 /* Subscription.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1123,6 +1008,7 @@
 				83BD853918D0B7A900890EDA /* RootViewController.xib */,
 				83A1FDF418D35C3B0030D331 /* SessionStoryboard.storyboard */,
 				C3C1766618F4DF5E0099DA42 /* WebViewController.xib */,
+				0EA4C6DA19A3952100C04FF5 /* ConnectivityAlertView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1203,7 +1089,7 @@
 		C36C50FD189028190053A884 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C3AD9EF21937C4F300D02589 /* CoreBluetooth.framework */,
+				0EC9830A19AB8619009A5730 /* HealthKit.framework */,
 				C3D8912219084D9F00E21627 /* GameKit.framework */,
 				C3D8912019084CB800E21627 /* StoreKit.framework */,
 				C34AE14218FC4C64003209B2 /* libGoogleConversionTracking.a */,
@@ -1226,8 +1112,7 @@
 		C36C5104189028190053A884 /* Ovatemp */ = {
 			isa = PBXGroup;
 			children = (
-				0E34FBC2195324E6001916F2 /* Helpers */,
-				C3B8968819C08E9000D8814E /* ONDOSDK */,
+				0EC9830C19AB8619009A5730 /* Ovatemp.entitlements */,
 				C308705918980A2E00DC4364 /* Categories */,
 				C308705A18980A2E00DC4364 /* Controllers */,
 				C308705E18980A2E00DC4364 /* Models */,
@@ -1240,7 +1125,6 @@
 				C3D4F35318983B9C00CBB91A /* Constants.m */,
 				C36C5110189028190053A884 /* Images.xcassets */,
 				C36C5105189028190053A884 /* Supporting Files */,
-				C3FE056419B8DB890008B63F /* ONDO.xcdatamodeld */,
 			);
 			path = Ovatemp;
 			sourceTree = "<group>";
@@ -1275,39 +1159,18 @@
 				C322F8BD18F8643500902C9D /* DayCell */,
 				8387260E18CA12C800A3277C /* FertilityStatusView.h */,
 				8387260F18CA12C800A3277C /* FertilityStatusView.m */,
-				C3F6A6AF19B7B4270013D806 /* Forms */,
 				C382F1D618F31CBE005E0CAF /* GradientButton.h */,
 				C382F1D718F31CBE005E0CAF /* GradientButton.m */,
 				C322F8CB18F8AA8900902C9D /* GradientLabel.h */,
 				C322F8CC18F8AA8900902C9D /* GradientLabel.m */,
-				962ADF7519B8F6CD00904691 /* GradientSegmentedControl.h */,
-				962ADF7619B8F6CD00904691 /* GradientSegmentedControl.m */,
-				9659C5B719C73EB000E8F47B /* GradientSegmentedControlButton.h */,
-				9659C5B819C73EB000E8F47B /* GradientSegmentedControlButton.m */,
 				C3EC024018F61DCD00AA38D5 /* IconLabel.h */,
 				C3EC024118F61DCD00AA38D5 /* IconLabel.m */,
 				8333B98D18E0BD8600C64231 /* LifestyleCell.h */,
 				8333B98E18E0BD8600C64231 /* LifestyleCell.m */,
 				C374AACD18F9D13B0064341A /* PassthroughScrollView.h */,
 				C374AACE18F9D13B0064341A /* PassthroughScrollView.m */,
-				9659C5BA19C780B900E8F47B /* SubscriptionMenuTableViewCell.h */,
-				9659C5BB19C780B900E8F47B /* SubscriptionMenuTableViewCell.m */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		C3B8968819C08E9000D8814E /* ONDOSDK */ = {
-			isa = PBXGroup;
-			children = (
-				C3B8968919C08EA800D8814E /* ONDO.h */,
-				C3B8968A19C08EA800D8814E /* ONDO.m */,
-				C3DB9D4319C098D300F654B3 /* ONDODevice.h */,
-				C3DB9D4419C098D300F654B3 /* ONDODevice.m */,
-				C3DA588819C21C4C005F671B /* ONDOPairViewController.h */,
-				C3DA588919C21C4C005F671B /* ONDOPairViewController.m */,
-				C3DA588B19C236B7005F671B /* Images */,
-			);
-			name = ONDOSDK;
 			sourceTree = "<group>";
 		};
 		C3BF8FC21898409C00572F43 /* OvatempTests */ = {
@@ -1359,41 +1222,6 @@
 				83C4D21B18D9F1CF008C523C /* KIFUITestActor+OTAdditions.m */,
 			);
 			name = Helpers;
-			sourceTree = "<group>";
-		};
-		C3DA588B19C236B7005F671B /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				C3DA588C19C236B7005F671B /* BluetoothIcon@2x.png */,
-				C3DA588D19C236B7005F671B /* BluetoothSignal1@2x.png */,
-				C3DA588E19C236B7005F671B /* BluetoothSignal2@2x.png */,
-				C3DA588F19C236B7005F671B /* BluetoothSignal3@2x.png */,
-				C3DA589019C236B7005F671B /* OndoPicture@2x.png */,
-			);
-			name = Images;
-			path = ONDOSDK/Images;
-			sourceTree = SOURCE_ROOT;
-		};
-		C3F6A6AF19B7B4270013D806 /* Forms */ = {
-			isa = PBXGroup;
-			children = (
-				C3F6A6A619B76D100013D806 /* Form.h */,
-				C3F6A6A719B76D100013D806 /* Form.m */,
-				C3F6A6B019B7B4370013D806 /* FormRow.h */,
-				C3F6A6B119B7B4370013D806 /* FormRow.m */,
-			);
-			name = Forms;
-			sourceTree = "<group>";
-		};
-		C3FE050719B8CF320008B63F /* More */ = {
-			isa = PBXGroup;
-			children = (
-				C3FE050E19B8D3DC0008B63F /* MoreBirthday@2x.png */,
-				C3FE050C19B8D16E0008B63F /* MorePrivacyTerms@2x.png */,
-				C3FE050A19B8D0A30008B63F /* MoreTryingToAvoid@2x.png */,
-				C3FE050819B8CF320008B63F /* MoreTryingToConceive@2x.png */,
-			);
-			path = More;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1450,10 +1278,10 @@
 					C36C50FA189028190053A884 = {
 						DevelopmentTeam = MC934XNWAV;
 						SystemCapabilities = {
-							com.apple.BackgroundModes = {
+							com.apple.GameCenter = {
 								enabled = 1;
 							};
-							com.apple.GameCenter = {
+							com.apple.HealthKit = {
 								enabled = 1;
 							};
 							com.apple.InAppPurchase = {
@@ -1509,27 +1337,22 @@
 				83EB3EDD18AEA7D500EA91AC /* Protected.png in Resources */,
 				83D8CDA518E353F300D0AC72 /* Hydrate@2x.png in Resources */,
 				83EB3F2518AEA7D500EA91AC /* community_selected.png in Resources */,
-				96AE66D219C872FC00E568C3 /* AcupressureBlue@2x.png in Resources */,
-				C3FE051319B8D5680008B63F /* ForwardArrowSmall@2x.png in Resources */,
 				8333B9BD18E1BD7A00C64231 /* Exercise@2x.png in Resources */,
 				83EB3F2C18AEA7D500EA91AC /* more_unselect.png in Resources */,
 				83EB3F1B18AEA7D500EA91AC /* Positive.png in Resources */,
 				C350899218EDFD0C004D6A2F /* CommunityStoryboard.storyboard in Resources */,
 				832934C918B7D93200F6875B /* Good.png in Resources */,
 				83EB3F0D18AEA7D500EA91AC /* Spotting.png in Resources */,
-				C3FE051219B8D5680008B63F /* BackArrowSmall@2x.png in Resources */,
 				835AE58C18B7A51700FEAF98 /* CheckBox@2x.png in Resources */,
 				83A1FE0418D74C8E0030D331 /* CalendarViewController.xib in Resources */,
 				83EB3F3518AEA7D500EA91AC /* Lube.png in Resources */,
 				C3E58C2D18D39AAC0026301A /* LaunchImageR4.png in Resources */,
-				96AE66CE19C872FC00E568C3 /* DietAndLifestyleBlue.png in Resources */,
 				C3513A5218F7326C00E90517 /* AcupressureSmall@2x.png in Resources */,
 				83EB3F1D18AEA7D500EA91AC /* cal_selected.png in Resources */,
 				83EB3EC118AEA7D500EA91AC /* Sticky@2x.png in Resources */,
 				83EB3F3618AEA7D500EA91AC /* Lube@2x.png in Resources */,
 				83EB3F1F18AEA7D500EA91AC /* cal_unselected.png in Resources */,
 				83EB3F2418AEA7D500EA91AC /* coaching_unselect@2x.png in Resources */,
-				C3FE050D19B8D16E0008B63F /* MorePrivacyTerms@2x.png in Resources */,
 				8333B99218E0C25500C64231 /* example.html in Resources */,
 				83D8CDA118E353F300D0AC72 /* Activate@2x.png in Resources */,
 				83EB3EC018AEA7D500EA91AC /* Sticky.png in Resources */,
@@ -1539,29 +1362,24 @@
 				835BA2BA18BBEFBF00C64350 /* +@2x.png in Resources */,
 				83EB3F3818AEA7D500EA91AC /* Wet@2x.png in Resources */,
 				8333B9D518E2156B00C64231 /* HydrateSmall.png in Resources */,
-				96D245BA19B6005E005E8D7E /* YinOva_HiRes.png in Resources */,
 				83D8CDAC18E353F300D0AC72 /* Ventilate.png in Resources */,
 				C3E58C3818D39B7B0026301A /* Icon40.png in Resources */,
 				835BA2B918BBEFBF00C64350 /* +.png in Resources */,
-				96AE66D019C872FC00E568C3 /* MeditationsBlue.png in Resources */,
-				96AE66CD19C872FC00E568C3 /* MeditationsBlue@2x.png in Resources */,
 				83EB3F2218AEA7D500EA91AC /* coaching_selected@2x.png in Resources */,
 				83EB3F3318AEA7D500EA91AC /* Dry@2x.png in Resources */,
 				83EB3F2818AEA7D500EA91AC /* community_unselect@2x.png in Resources */,
+				0EA4C6DB19A3952100C04FF5 /* ConnectivityAlertView.xib in Resources */,
 				834BD63218AD1363003B6808 /* MoreStoryboard.storyboard in Resources */,
 				832934D218B7D93200F6875B /* Symptoms@2x.png in Resources */,
 				83D8CDAB18E353F300D0AC72 /* Revitalize@2x.png in Resources */,
 				83EB3F1C18AEA7D500EA91AC /* Positive@2x.png in Resources */,
-				C3FE050F19B8D3DC0008B63F /* MoreBirthday@2x.png in Resources */,
 				832934D318B7D93200F6875B /* Moody.png in Resources */,
 				83EB3F3218AEA7D500EA91AC /* Dry.png in Resources */,
 				832934CF18B7D93200F6875B /* DaySupplements.png in Resources */,
 				8333B9D318E2156B00C64231 /* ActivateSmall@2x.png in Resources */,
 				83EB3EDF18AEA7D500EA91AC /* Unprotected.png in Resources */,
 				C3E58C3718D39B7B0026301A /* Icon29@2x.png in Resources */,
-				96AE66CF19C872FC00E568C3 /* MassageBlue.png in Resources */,
 				83686EA018C6323600A5329C /* CalendarCell.xib in Resources */,
-				96AE66D119C872FC00E568C3 /* DietAndLifestyleBlue@2x.png in Resources */,
 				8333B9D918E2156B00C64231 /* RefreshSmall.png in Resources */,
 				C35089AB18EDFF40004D6A2F /* ShareTheNews.png in Resources */,
 				83EB3EE018AEA7D500EA91AC /* Unprotected@2x.png in Resources */,
@@ -1605,11 +1423,9 @@
 				C3E58C3B18D39B7B0026301A /* Icon60@2x.png in Resources */,
 				83D8CDA718E353F300D0AC72 /* Nourish@2x.png in Resources */,
 				839A346218ABCFB6007CD657 /* TodayNavigationController.xib in Resources */,
-				C3DA589519C236B7005F671B /* OndoPicture@2x.png in Resources */,
 				832934CC18B7D93200F6875B /* Medicines@2x.png in Resources */,
 				83EB3F2B18AEA7D500EA91AC /* more_selected@2x.png in Resources */,
 				C35089AF18EDFF40004D6A2F /* TryingToConceive.png in Resources */,
-				C3DA589119C236B7005F671B /* BluetoothIcon@2x.png in Resources */,
 				C35089A918EDFF40004D6A2F /* OvatempSupport.png in Resources */,
 				C3E58C3C18D39B7B0026301A /* Icon76.png in Resources */,
 				83A1FDF518D35C3B0030D331 /* SessionStoryboard.storyboard in Resources */,
@@ -1618,7 +1434,6 @@
 				83D8CDA918E353F300D0AC72 /* Refresh@2x.png in Resources */,
 				8333B9D818E2156B00C64231 /* NourishSmall@2x.png in Resources */,
 				83EB3F3718AEA7D500EA91AC /* Wet.png in Resources */,
-				C3DA589419C236B7005F671B /* BluetoothSignal3@2x.png in Resources */,
 				8333B9A218E0D1B800C64231 /* Acupressure@2x.png in Resources */,
 				C3E58C2C18D39AAC0026301A /* LaunchImage.png in Resources */,
 				83EB3F2F18AEA7D500EA91AC /* today_selected@2x.png in Resources */,
@@ -1633,7 +1448,6 @@
 				832934D118B7D93200F6875B /* Symptoms.png in Resources */,
 				8333B9BE18E1BD7A00C64231 /* Habits.png in Resources */,
 				8333B9DC18E2156B00C64231 /* RevitalizeSmall@2x.png in Resources */,
-				C3FE050919B8CF320008B63F /* MoreTryingToConceive@2x.png in Resources */,
 				83EB3F2118AEA7D500EA91AC /* coaching_selected.png in Resources */,
 				8333B9A318E0D1B800C64231 /* Lifestyle.png in Resources */,
 				8333B9BA18E1BD7A00C64231 /* Diet.png in Resources */,
@@ -1646,22 +1460,18 @@
 				83EB3F0718AEA7D500EA91AC /* Heavy@2x.png in Resources */,
 				8333B9A418E0D1B800C64231 /* Lifestyle@2x.png in Resources */,
 				832934CA18B7D93200F6875B /* Good@2x.png in Resources */,
-				C3DA589319C236B7005F671B /* BluetoothSignal2@2x.png in Resources */,
 				C3E58C3618D39B7B0026301A /* Icon29.png in Resources */,
 				83EB3F3018AEA7D500EA91AC /* today_unselect.png in Resources */,
 				83C6511418C91B7500F35CE5 /* BackArrow.png in Resources */,
 				83BD853A18D0B7A900890EDA /* RootViewController.xib in Resources */,
-				C3FE050B19B8D0A30008B63F /* MoreTryingToAvoid@2x.png in Resources */,
 				83D8CDA818E353F300D0AC72 /* Refresh.png in Resources */,
 				83EB3EDE18AEA7D500EA91AC /* Protected@2x.png in Resources */,
 				83C6511518C91B7500F35CE5 /* BackArrow@2x.png in Resources */,
-				C3DA589219C236B7005F671B /* BluetoothSignal1@2x.png in Resources */,
 				C35089AE18EDFF40004D6A2F /* TryingToAvoid@2x.png in Resources */,
 				C36C5111189028190053A884 /* Images.xcassets in Resources */,
 				83C6511718C91B7500F35CE5 /* ForwardArrow@2x.png in Resources */,
 				C35089AD18EDFF40004D6A2F /* TryingToAvoid.png in Resources */,
 				8333B9BB18E1BD7A00C64231 /* Diet@2x.png in Resources */,
-				96AE66CC19C872FC00E568C3 /* MassageBlue@2x.png in Resources */,
 				83EB3F2618AEA7D500EA91AC /* community_selected@2x.png in Resources */,
 				83EB3F0B18AEA7D500EA91AC /* Medium.png in Resources */,
 				83EB3F0918AEA7D500EA91AC /* Light.png in Resources */,
@@ -1669,7 +1479,6 @@
 				8333B9AC18E0D32000C64231 /* Massage@2x.png in Resources */,
 				C35089A818EDFF40004D6A2F /* FertilityQuestions@2x.png in Resources */,
 				8333B9D718E2156B00C64231 /* NourishSmall.png in Resources */,
-				96AE66D319C872FC00E568C3 /* AcupressureBlue.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1755,9 +1564,7 @@
 				C31A3FEF18FCA251004E3BA4 /* UIViewController+Session.m in Sources */,
 				C374AAD218F9D9CE0064341A /* TemperatureCellEditView.m in Sources */,
 				C382F1E618F33801005E0CAF /* BorderedGradientButton.m in Sources */,
-				C3FE051619B8DA5B0008B63F /* BluetoothDeviceTableViewController.m in Sources */,
 				838752F418CF44BC00E8ED4A /* Cycle.m in Sources */,
-				96C0016819C33990009721A0 /* Subscription.m in Sources */,
 				8333B98618E0B77000C64231 /* CoachingMenuViewController.m in Sources */,
 				838752F118CE5F9300E8ED4A /* CycleViewController.m in Sources */,
 				C3BF8FE5189848CE00572F43 /* BaseModel.m in Sources */,
@@ -1766,28 +1573,22 @@
 				8333B98918E0B86E00C64231 /* CoachingMenuCell.m in Sources */,
 				83DF333218E324DA002119CE /* QuizViewController.m in Sources */,
 				C322F8C918F8727C00902C9D /* DayCellEditView.m in Sources */,
-				9659C5B919C73EB000E8F47B /* GradientSegmentedControlButton.m in Sources */,
 				83BD853818D0B23900890EDA /* RootViewController.m in Sources */,
 				C3BF8FE01898452F00572F43 /* SessionViewController.m in Sources */,
 				C30B84D418E324260078EDE3 /* UIColor+Traits.m in Sources */,
 				83DF332F18E32269002119CE /* Question.m in Sources */,
-				962ADF7719B8F6CD00904691 /* GradientSegmentedControl.m in Sources */,
 				834BD63518AD1519003B6808 /* MoreViewController.m in Sources */,
 				C3E1299A18FC8C89004288D8 /* MainTabBarViewController.m in Sources */,
-				0E33F8481959FC8A0017B9AA /* SubscriptionHelper.m in Sources */,
-				C3F6A6AE19B773480013D806 /* NSObject+ClassForProperty.m in Sources */,
 				C3EC024218F61DCD00AA38D5 /* IconLabel.m in Sources */,
 				8333B98C18E0BD4200C64231 /* LifestyleViewController.m in Sources */,
 				830E351818D2506B00884F0E /* NSDate+Formatters.m in Sources */,
 				C382F1DC18F31CBE005E0CAF /* GradientButton.m in Sources */,
-				C3B8968B19C08EA800D8814E /* ONDO.m in Sources */,
 				C32C4A8F18985A7800B05009 /* ConnectionManager.m in Sources */,
 				C36C510F189028190053A884 /* AppDelegate.m in Sources */,
 				8329353B18B7FD2600F6875B /* Symptom.m in Sources */,
 				C3D8911D19083DEC00E21627 /* FertilityProfile.m in Sources */,
 				C350899718EDFD74004D6A2F /* CommunityForumsViewController.m in Sources */,
 				C31220241899BB8E0027C4B3 /* Configuration.m in Sources */,
-				C3DA588A19C21C4C005F671B /* ONDOPairViewController.m in Sources */,
 				8387261018CA12C800A3277C /* FertilityStatusView.m in Sources */,
 				83C4D21618D9E0F6008C523C /* Onboard2ViewController.m in Sources */,
 				C3513A4D18F72D4900E90517 /* UINavigationItem+IconLabel.m in Sources */,
@@ -1796,13 +1597,10 @@
 				8315E4A618C6300800DA935A /* CalendarCell.m in Sources */,
 				835BA2B318BBCB8300C64350 /* SharedRelation.m in Sources */,
 				C3A145C319351F4800FA2D5F /* NSObject+Analytics.m in Sources */,
-				C3F6A6B219B7B4370013D806 /* FormRow.m in Sources */,
 				C391ECBE192E7F4500D21FBC /* UIViewController+Status.m in Sources */,
 				C38C2D5B18EF4F0700449F89 /* DelegatingNavigationViewController.m in Sources */,
-				0E79EE31196DB7F5003D3240 /* SubscriptionSelectionController.m in Sources */,
 				C36C510B189028190053A884 /* main.m in Sources */,
 				C35CF95518EF2DF6004D47EA /* NSObject+IsNull.m in Sources */,
-				C3DB9D4519C098D300F654B3 /* ONDODevice.m in Sources */,
 				C35424CA18FB08BA005378B9 /* DisturbanceCellEditView.m in Sources */,
 				C382F1DB18F31CBE005E0CAF /* DayToggleButton.m in Sources */,
 				8329353518B7F85B00F6875B /* Supplement.m in Sources */,
@@ -1812,15 +1610,12 @@
 				8329353818B7FD1700F6875B /* Medicine.m in Sources */,
 				8333B9E518E2193700C64231 /* CoachingRootViewController.m in Sources */,
 				C388C74018FC46BD00B622FB /* UIViewController+Analytics.m in Sources */,
-				C3FE056619B8DB890008B63F /* ONDO.xcdatamodeld in Sources */,
 				83686EA318C6335000A5329C /* CalendarViewController.m in Sources */,
 				C322F8CD18F8AA8900902C9D /* GradientLabel.m in Sources */,
 				8333B98F18E0BD8600C64231 /* LifestyleCell.m in Sources */,
 				83C4D20F18D9D9F7008C523C /* UIViewController+UserProfileHelpers.m in Sources */,
 				835AE58618B7A36000FEAF98 /* CheckCell.m in Sources */,
-				C3F6A6A819B76D100013D806 /* Form.m in Sources */,
 				C322F8C018F8644400902C9D /* DayCellStaticView.m in Sources */,
-				9659C5BC19C780B900E8F47B /* SubscriptionMenuTableViewCell.m in Sources */,
 				83C4D21918D9E744008C523C /* UIViewController+KeyboardObservers.m in Sources */,
 				839A346118ABCFB6007CD657 /* TodayNavigationController.m in Sources */,
 				83A1FE0718D778F80030D331 /* UserProfile.m in Sources */,
@@ -1897,7 +1692,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jason Welch (FLL4BTMFKV)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1915,10 +1710,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos7.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -1938,7 +1731,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jason Welch (FLL4BTMFKV)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1949,8 +1742,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos7.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1962,12 +1754,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Ovatemp/Frameworks",
@@ -1985,12 +1778,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Ovatemp/Frameworks",
@@ -2075,19 +1869,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		C3FE056419B8DB890008B63F /* ONDO.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				C3FE056519B8DB890008B63F /* ONDO.xcdatamodel */,
-			);
-			currentVersion = C3FE056519B8DB890008B63F /* ONDO.xcdatamodel */;
-			path = ONDO.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = C36C50F3189028190053A884 /* Project object */;
 }

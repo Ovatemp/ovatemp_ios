@@ -26,3 +26,5 @@
 
   #import <Inflections/NSString+Inflections.h>
 #endif
+
+#define HKCONNECTION @"HKConnection"

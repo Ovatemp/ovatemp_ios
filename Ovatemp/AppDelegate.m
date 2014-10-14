@@ -31,6 +31,7 @@
   [self.window makeKeyAndVisible];
 
   [self setupReachability];
+  [self setupHealthKit];
 
   // Ping the in app purchase helper so we start getting notifications
   [SubscriptionHelper sharedInstance];
@@ -59,6 +60,27 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
   // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   [self saveContext];
+}
+
+# pragma mark - HealthKit
+
+- (void) setupHealthKit {
+  [[NSUserDefaults standardUserDefaults] setBool:NO forKey:HKCONNECTION];
+
+  if([HKHealthStore isHealthDataAvailable]) {
+    self.healthStore = [[HKHealthStore alloc] init];
+    HKQuantityType *tempQuantityType = [HKQuantityType quantityTypeForIdentifier: HKQuantityTypeIdentifierBodyTemperature];
+    NSSet *writeDataTypes = [[NSSet alloc] initWithObjects: tempQuantityType, nil];
+    NSSet *readDataTypes = [[NSSet alloc] init];
+
+    [self.healthStore requestAuthorizationToShareTypes: writeDataTypes readTypes: readDataTypes completion:^(BOOL success, NSError *error) {
+      NSLog(@"Linked to healthkit");
+      if (success) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:HKCONNECTION];
+      }
+    }];
+  }
+  [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 # pragma mark - Reachability
