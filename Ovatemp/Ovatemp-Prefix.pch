@@ -24,7 +24,7 @@
   #import "UIViewController+Session.h"
   #import "UIViewController+Status.h"
 
-  #import <Inflections/NSString+Inflections.h>
+//  #import "NSString+Inflections.h"
 #endif
 
 #define HKCONNECTION @"HKConnection"

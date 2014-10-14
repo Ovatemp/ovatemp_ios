@@ -12,7 +12,7 @@
 #import "WebViewController.h"
 #import "User.h"
 
-#import <Mixpanel/Mixpanel.h>
+#import "Mixpanel.h"
 
 @implementation SessionViewController
 

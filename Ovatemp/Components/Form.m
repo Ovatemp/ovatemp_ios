@@ -10,6 +10,7 @@
 
 
 #import "NSObject+ClassForProperty.h"
+#import "NSString+Inflections.h"
 
 static NSString * const kSectionRows = @"rows";
 static NSString * const kSectionTitle = @"title";

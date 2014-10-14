@@ -9,8 +9,8 @@
 #import "User.h"
 #import "UserProfile.h"
 
-#import <GoogleAnalytics-iOS-SDK/GAI.h>
-#import <Mixpanel/Mixpanel.h>
+#import "GAI.h"
+#import "Mixpanel.h"
 
 static User *_currentUser;
 
