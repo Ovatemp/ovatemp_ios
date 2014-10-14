@@ -16,10 +16,10 @@
 #import "SessionViewController.h"
 #import "TodayViewController.h"
 
-#import <GoogleAnalytics-iOS-SDK/GAI.h>
-#import <GoogleConversionTracking/ACTReporter.h>
+#import "GAI.h"
+#import "ACTReporter.h"
 #import <HockeySDK/HockeySDK.h>
-#import <Mixpanel/Mixpanel.h>
+#import "Mixpanel.h"
 
 static CGFloat const kDissolveDuration = 0.2;
 

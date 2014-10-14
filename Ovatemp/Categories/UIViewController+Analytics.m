@@ -8,11 +8,12 @@
 
 #import "UIViewController+Analytics.h"
 
-#import <GoogleAnalytics-iOS-SDK/GAI.h>
-#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
-#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
+// Google Analytics
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAIDictionaryBuilder.h"
 
-#import <Mixpanel/Mixpanel.h>
+#import "Mixpanel.h"
 
 @implementation UIViewController (Analytics)
 

@@ -7,6 +7,7 @@
 //
 
 #import "NSObject+ClassForProperty.h"
+#import "RegexKitLite.h"
 
 #import <objc/runtime.h>
 
