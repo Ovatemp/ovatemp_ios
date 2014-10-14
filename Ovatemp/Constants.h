@@ -45,7 +45,7 @@
   #ifdef BETA
     #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
   #else
-    #define ROOT_URL @"http://api.ova temp.com"
+    #define ROOT_URL @"http://api.ovatemp.com"
   #endif
 
   #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString

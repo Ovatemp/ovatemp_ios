@@ -7,12 +7,6 @@
 //
 
 #import "SubscriptionSelectionController.h"
-#import "Alert.h"
-#import "GradientSegmentedControl.h"
-#import "SubscriptionHelper.h"
-#import "SubscriptionMenuTableViewCell.h"
-
-#import <StoreKit/StoreKit.h>
 #import "SubscriptionHelper.h"
 #import <StoreKit/StoreKit.h>
 #import "SubscriptionMenuCell.h"
@@ -27,140 +21,107 @@ static NSString * const kExerciseIcon = @"icon";
 @end
 
 @implementation SubscriptionSelectionController {
-  SubscriptionHelper *_subscriptionHelper;
-  NSArray *_products;
+    SubscriptionHelper *_subscriptionHelper;
+    NSArray *_products;
 }
 
 #pragma mark - UIViewController overrides
 
 - (void) viewWillAppear:(BOOL)animated {
-
-  [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"ShouldRotate"];
-
-  if (!kExerciseList) {
-    kExerciseList = @[
-                         @{kExerciseName: @"    Acupressure",
-                           kExerciseIcon: @"Acupressure.png"},
-                         @{kExerciseName: @"   Diet & Lifestyle",
-                           kExerciseIcon: @"DietAndLifestyle.png"},
-                         @{kExerciseName: @"Massage",
-                           kExerciseIcon: @"Massage.png"},
-                         @{kExerciseName: @"  Meditations",
-                           kExerciseIcon: @"Meditations.png"},
-                         ];
-  }
-
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(productPurchased:)
-                                               name:SubscriptionHelperProductPurchasedNotification
-                                             object:nil];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"ShouldRotate"];
+    
+    if (!kExerciseList) {
+        kExerciseList = @[
+                          @{kExerciseName: @"    Acupressure",
+                            kExerciseIcon: @"Acupressure.png"},
+                          @{kExerciseName: @"   Diet & Lifestyle",
+                            kExerciseIcon: @"DietAndLifestyle.png"},
+                          @{kExerciseName: @"Massage",
+                            kExerciseIcon: @"Massage.png"},
+                          @{kExerciseName: @"  Meditations",
+                            kExerciseIcon: @"Meditations.png"},
+                          ];
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(productPurchased:)
+                                                 name:SubscriptionHelperProductPurchasedNotification
+                                               object:nil];
 }
-
-- (void)viewDidLoad {
-  [super viewDidLoad];
-
-  self.segmentedControl.hidden = YES;
-  self.segmentedControl.backgroundColor = [UIColor clearColor];
-  [self startLoading];
-
-  _subscriptionHelper = [SubscriptionHelper sharedInstance];
-  if(!_products) {
-    [_subscriptionHelper requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
-      [self stopLoading];
-
-      if (success) {
-        _products = products;
-        float basePrice = 0;
-        for (int i = 0; i < products.count; i++) {
-          SKProduct *product = products[i];
-          int months = i * 3;
-          NSString *description;
-          switch (months) {
-            case 0:
-              description = @"monthly";
-              break;
-            default:
-              description = [NSString stringWithFormat:@"%i months", months];
-              break;
-          }
-
-          NSString *subtitle;
-          if (basePrice == 0) {
-            basePrice = product.price.floatValue;
-          } else {
-            int percentage = 100 - round(product.price.floatValue / months / basePrice * 100);
-            subtitle = [NSString stringWithFormat:@"(%i%% off)", percentage];
-          }
-          NSString *title = [NSString stringWithFormat:@"$%.2f\n%@", product.price.floatValue, description];
-          GradientSegmentedControlButton *button = [self.segmentedControl addButtonWithTitle:title subtitle:subtitle];
-          [button addTarget:self action:@selector(selectProduct:) forControlEvents:UIControlEventTouchUpInside];
-        }
-        self.segmentedControl.hidden = NO;
-      } else {
-        [[Alert alertWithTitle:@"Connect"
-                      message:@"There was an issue when trying to connect with In-App Purchases.\nPlease try again later."] show];
-      }
-    }];
-  }
-}
-
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
 
 - (void)logsubviews:(UIView *)view withDepth:(int)depth {
-  NSString *indent = @"";
-  for (int i = 0; i < depth; i++) {
-    indent = [indent stringByAppendingString:@" "];
-  }
-
-  NSLog(@"%@%@", indent, view);
-  for (UIView *subview in view.subviews) {
-    [self logsubviews:subview withDepth:depth + 2];
-  }
+    NSString *indent = @"";
+    for (int i = 0; i < depth; i++) {
+        indent = [indent stringByAppendingString:@" "];
+    }
+    
+    NSLog(@"%@%@", indent, view);
+    for (UIView *subview in view.subviews) {
+        [self logsubviews:subview withDepth:depth + 2];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
-  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ShouldRotate"];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ShouldRotate"];
+}
+
+- (void)viewDidLoad {
+    
+    [super viewDidLoad];
+    
+    _subscriptionHelper = [SubscriptionHelper sharedInstance];
+    if(!_products) {
+        [_subscriptionHelper requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+            NSLog(@"THINGS %@", products);
+            if (success) {
+                _products = products;
+                [self buttonsAreEnabled:YES];
+            } else {
+                UIAlertView *noProducts = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"There was an issue when trying to connect with In-App Purchases. \nPlease try again later." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles: nil];
+                [noProducts show];
+                /* Replace above UIAlertview with...
+                 [self buttonsAreEnabled:YES];
+                 ...for local testing */
+            }
+        }];
+    }
+    [self buttonsAreEnabled:NO];
+}
+
+- (void)didReceiveMemoryWarning {
+    
+    [super didReceiveMemoryWarning];
 }
 
 # pragma mark - StoreKit notifications
 
 - (void)productPurchased: (NSNotification *)notification {
-  [self.navigationController popViewControllerAnimated:NO];
-}
-
-# pragma mark - UIButtons
-
-- (void)selectProduct:(GradientSegmentedControlButton *)sender {
-  SKProduct *selectedProduct = _products[sender.index];
-  SKPayment * payment = [SKPayment paymentWithProduct: selectedProduct];
-  [[SKPaymentQueue defaultQueue] addPayment:payment];
-
-  [self.navigationController popViewControllerAnimated:NO];
+    
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 
 # pragma mark - Table View
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
-  return 1;
+    return 1;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return kExerciseList.count;
+    return kExerciseList.count;
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSubscriptionPlanCell forIndexPath:indexPath];
-
-  NSDictionary *exercise = kExerciseList[indexPath.row];
-  cell.imageView.image = [UIImage imageNamed:exercise[kExerciseIcon]];
-  cell.textLabel.text = exercise[kExerciseName];
-
-  return cell;
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSubscriptionPlanCell forIndexPath:indexPath];
+    
+    NSDictionary *exercise = kExerciseList[indexPath.row];
+    cell.imageView.image = [UIImage imageNamed:exercise[kExerciseIcon]];
+    cell.textLabel.text = exercise[kExerciseName];
+    
+    return cell;
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -168,56 +129,56 @@ static NSString * const kExerciseIcon = @"icon";
 //}
 
 - (void) selectionMadeForProduct:(SKProduct*)selectedProduct {
-  SKPayment * payment = [SKPayment paymentWithProduct: selectedProduct];
-  [[SKPaymentQueue defaultQueue] addPayment:payment];
-
-  // TODO: on success, send user to coaching
-  // TODO: on failure, display message and send user to subscription selection
+    SKPayment * payment = [SKPayment paymentWithProduct: selectedProduct];
+    [[SKPaymentQueue defaultQueue] addPayment:payment];
+    
+    // TODO: on success, send user to coaching
+    // TODO: on failure, display message and send user to subscription selection
 }
 
 # pragma mark - UIButtons
 
 - (IBAction)leftSegmentedButtonPressed:(GradientButton *)sender {
-  SKProduct *selectedProduct = _products[0];
-  [self selectionMadeForProduct:selectedProduct];
+    SKProduct *selectedProduct = _products[0];
+    [self selectionMadeForProduct:selectedProduct];
 }
 
 - (IBAction)centerSegmentedButtonPressed:(GradientButton *)sender {
-  SKProduct *selectedProduct = _products[1];
-  [self selectionMadeForProduct:selectedProduct];
+    SKProduct *selectedProduct = _products[1];
+    [self selectionMadeForProduct:selectedProduct];
 }
 
 - (IBAction)rightSegmentedButtonPressed:(GradientButton *)sender {
-  SKProduct *selectedProduct = _products[2];
-  [self selectionMadeForProduct:selectedProduct];
+    SKProduct *selectedProduct = _products[2];
+    [self selectionMadeForProduct:selectedProduct];
 }
 
 - (IBAction)centerDiscountButtonPressed:(GradientButton *)sender {
-  [self centerSegmentedButtonPressed:sender];
+    [self centerSegmentedButtonPressed:sender];
 }
 
 - (IBAction)rightDiscountButtonPressed:(GradientButton *)sender {
-  [self rightSegmentedButtonPressed:sender];
+    [self rightSegmentedButtonPressed:sender];
 }
 
 -(IBAction)restoreButtonTapped:(id)sender {
-
-  [_subscriptionHelper restorePurchases];
+    
+    [_subscriptionHelper restorePurchases];
 }
 
 - (void) buttonsAreEnabled:(BOOL)enabled {
-  BOOL disabled = !enabled;
-  _leftSegmentedButton.highlighted = disabled;
-  _leftSegmentedButton.enabled = enabled;
-  _centerSegmentedButton.highlighted = disabled;
-  _centerSegmentedButton.enabled = enabled;
-  _rightSegmentedButton.highlighted = disabled;
-  _rightSegmentedButton.enabled = enabled;
-  _centerDiscountButton.highlighted = disabled;
-  _centerDiscountButton.enabled = enabled;
-  _rightDiscountButton.highlighted = disabled;
-  _rightDiscountButton.enabled = enabled;
-
+    BOOL disabled = !enabled;
+    _leftSegmentedButton.highlighted = disabled;
+    _leftSegmentedButton.enabled = enabled;
+    _centerSegmentedButton.highlighted = disabled;
+    _centerSegmentedButton.enabled = enabled;
+    _rightSegmentedButton.highlighted = disabled;
+    _rightSegmentedButton.enabled = enabled;
+    _centerDiscountButton.highlighted = disabled;
+    _centerDiscountButton.enabled = enabled;
+    _rightDiscountButton.highlighted = disabled;
+    _rightDiscountButton.enabled = enabled;
+    
 }
 
 @end
