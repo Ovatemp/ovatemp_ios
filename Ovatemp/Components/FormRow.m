@@ -157,7 +157,20 @@
   textField.text = self.dateString;
   [textField sizeToFit];
   textField.inputView = self.datePicker;
-  self.datePicker.date = self.value;
+  // date cannot be nil, if for some reason it is nil, set the birthday to 13 years ago today (possible youngest age to use app)
+    if (self.value) {
+        self.datePicker.date = self.value;
+    } else {
+        NSDate *today = [[NSDate alloc] init];
+        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        
+        NSDateComponents *addComponents = [[NSDateComponents alloc] init];
+        addComponents.year = -13;
+        
+        self.datePicker.date = [calendar dateByAddingComponents:addComponents toDate:today options:0];
+    }
+    
+  
   return textField;
 }
 
