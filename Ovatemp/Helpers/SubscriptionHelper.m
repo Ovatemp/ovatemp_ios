@@ -133,14 +133,8 @@ NSString *const SubscriptionExpirationDefaultsKey = @"SubscriptionHelperProductP
 
 - (void)updateSubscriptionStatusForProductIdentifier: (NSString*) productIdentifier purchasedOn: (NSDate*) transactionDate {
 
-  Subscription *subscription = [Subscription current];
-
-  if (!subscription) {
-    subscription = [Subscription new];
-    [Subscription setCurrent:subscription];
-  }
-
-  NSDate *currentExpirationDate = [Subscription current].expiresAt; // nil if there hasn't been one
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  NSDate *currentExpirationDate = [defaults objectForKey: SubscriptionExpirationDefaultsKey];
 
   NSCalendar *calendar = [NSCalendar currentCalendar];
   NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -156,17 +150,14 @@ NSString *const SubscriptionExpirationDefaultsKey = @"SubscriptionHelperProductP
   NSLog(@"The new expiration date is: %@", [newExpirationDate classicDate]);
 
   if(!currentExpirationDate || [currentExpirationDate compare: newExpirationDate] == NSOrderedAscending) {
-    subscription.name = productIdentifier;
-    subscription.expiresAt = newExpirationDate;
-    [subscription save];
+    [defaults setObject: newExpirationDate forKey: SubscriptionExpirationDefaultsKey];
+    [defaults synchronize];
   }
-  [subscription printDetails];
 }
 
 - (BOOL) hasActiveSubscription {
 
-  Subscription *subscription = [Subscription current];
-  NSDate *date = subscription.expiresAt;
+  NSDate *date = [[NSUserDefaults standardUserDefaults] objectForKey: SubscriptionExpirationDefaultsKey];
   NSDate *today = [NSDate date];
 
   if(date && [today compare: date] == NSOrderedAscending) {

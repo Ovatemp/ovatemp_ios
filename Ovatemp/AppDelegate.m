@@ -11,7 +11,6 @@
 #import "AppDelegate.h"
 #import "RootViewController.h"
 #import "SubscriptionHelper.h"
-
 #import <CoreData/CoreData.h>
 #import <Reachability/Reachability.h>
 
@@ -32,6 +31,9 @@
 
   [self setupReachability];
   [self setupHealthKit];
+
+  // Ping the in app purchase helper so we start getting notifications
+  [SubscriptionHelper sharedInstance];
 
   // Ping the in app purchase helper so we start getting notifications
   [SubscriptionHelper sharedInstance];

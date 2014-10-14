@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0EA4C6DB19A3952100C04FF5 /* ConnectivityAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EA4C6DA19A3952100C04FF5 /* ConnectivityAlertView.xib */; };
 		0EC9830B19AB8619009A5730 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC9830A19AB8619009A5730 /* HealthKit.framework */; };
+		0E33F8481959FC8A0017B9AA /* SubscriptionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E33F8471959FC8A0017B9AA /* SubscriptionHelper.m */; };
+		0E79EE31196DB7F5003D3240 /* SubscriptionSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E79EE2F196DB7F5003D3240 /* SubscriptionSelectionController.m */; };
+		0E79EE32196DB7F5003D3240 /* SubscriptionSelectionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E79EE30196DB7F5003D3240 /* SubscriptionSelectionController.xib */; };
+		0EBE3864197427A500AAAF34 /* SubscriptionMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBE3862197427A500AAAF34 /* SubscriptionMenuCell.m */; };
 		830E351818D2506B00884F0E /* NSDate+Formatters.m in Sources */ = {isa = PBXBuildFile; fileRef = 830E351718D2506B00884F0E /* NSDate+Formatters.m */; };
 		8315E49E18C521A800DA935A /* SessionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49D18C521A800DA935A /* SessionSpec.m */; };
 		8315E4A618C6300800DA935A /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E4A518C6300800DA935A /* CalendarCell.m */; };
@@ -172,6 +176,25 @@
 		83EB3F3718AEA7D500EA91AC /* Wet.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EB3EB918AEA7D500EA91AC /* Wet.png */; };
 		83EB3F3818AEA7D500EA91AC /* Wet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EB3EBA18AEA7D500EA91AC /* Wet@2x.png */; };
 		83EB3F3A18AEAD2600EA91AC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EB3F3918AEAD2600EA91AC /* QuartzCore.framework */; };
+		962ADF7719B8F6CD00904691 /* GradientSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 962ADF7619B8F6CD00904691 /* GradientSegmentedControl.m */; };
+		9668CF1E19BF67B2006F894D /* OldSubscriptionSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9668CF1D19BF67B2006F894D /* OldSubscriptionSelectionController.m */; };
+		969FAC8A19B78BB800CD0770 /* Categories.png in Resources */ = {isa = PBXBuildFile; fileRef = 969FAC8919B78BB800CD0770 /* Categories.png */; };
+		96D245B619B6005E005E8D7E /* Massage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D245B119B6005E005E8D7E /* Massage@2x.png */; };
+		96D245B719B6005E005E8D7E /* DietAndLifestyle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D245B219B6005E005E8D7E /* DietAndLifestyle@2x.png */; };
+		96D245B819B6005E005E8D7E /* Meditations@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D245B319B6005E005E8D7E /* Meditations@2x.png */; };
+		96D245B919B6005E005E8D7E /* Acupressure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D245B419B6005E005E8D7E /* Acupressure@2x.png */; };
+		96D245BA19B6005E005E8D7E /* YinOva_HiRes.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D245B519B6005E005E8D7E /* YinOva_HiRes.png */; };
+		96D245BD19B6128F005E8D7E /* Massage.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D245BC19B6128F005E8D7E /* Massage.png */; };
+		96D245BF19B612BA005E8D7E /* Acupressure.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D245BE19B612BA005E8D7E /* Acupressure.png */; };
+		96D245C119B612D9005E8D7E /* DietAndLifestyle.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D245C019B612D9005E8D7E /* DietAndLifestyle.png */; };
+		96D245C319B61328005E8D7E /* Meditations.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D245C219B61328005E8D7E /* Meditations.png */; };
+		96F75AA319B65F4F000E42A4 /* BuyButtonCenter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96F75A9D19B65F4F000E42A4 /* BuyButtonCenter@2x.png */; };
+		96F75AA419B65F4F000E42A4 /* BuyButtonLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 96F75A9E19B65F4F000E42A4 /* BuyButtonLeft.png */; };
+		96F75AA519B65F4F000E42A4 /* BuyButtonLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96F75A9F19B65F4F000E42A4 /* BuyButtonLeft@2x.png */; };
+		96F75AA619B65F4F000E42A4 /* BuyButtonRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96F75AA019B65F4F000E42A4 /* BuyButtonRight@2x.png */; };
+		96F75AA719B65F4F000E42A4 /* BuyButtonRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 96F75AA119B65F4F000E42A4 /* BuyButtonRight.png */; };
+		96F75AA819B65F4F000E42A4 /* BuyButtonCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = 96F75AA219B65F4F000E42A4 /* BuyButtonCenter.png */; };
+		96F75AAA19B66181000E42A4 /* BuyButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 96F75AA919B66180000E42A4 /* BuyButton.png */; };
 		9C4D13D86AB546AD9A46ADE4 /* libPods-OvatempTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */; };
 		C3066C6818983537003F8B84 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3066C6618983537003F8B84 /* TodayViewController.m */; };
 		C30B84D118E3206A0078EDE3 /* UIViewController+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = C30B84D018E3206A0078EDE3 /* UIViewController+Loading.m */; };
@@ -277,6 +300,13 @@
 		0EA4C6DA19A3952100C04FF5 /* ConnectivityAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectivityAlertView.xib; sourceTree = "<group>"; };
 		0EC9830A19AB8619009A5730 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		0EC9830C19AB8619009A5730 /* Ovatemp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Ovatemp.entitlements; sourceTree = "<group>"; };
+		0E33F8461959FC8A0017B9AA /* SubscriptionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubscriptionHelper.h; path = Helpers/SubscriptionHelper.h; sourceTree = "<group>"; };
+		0E33F8471959FC8A0017B9AA /* SubscriptionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubscriptionHelper.m; path = Helpers/SubscriptionHelper.m; sourceTree = "<group>"; };
+		0E79EE2E196DB7F5003D3240 /* SubscriptionSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscriptionSelectionController.h; sourceTree = "<group>"; };
+		0E79EE2F196DB7F5003D3240 /* SubscriptionSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscriptionSelectionController.m; sourceTree = "<group>"; };
+		0E79EE30196DB7F5003D3240 /* SubscriptionSelectionController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SubscriptionSelectionController.xib; path = ../Controllers/SubscriptionSelectionController.xib; sourceTree = "<group>"; };
+		0EBE3861197427A500AAAF34 /* SubscriptionMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscriptionMenuCell.h; sourceTree = "<group>"; };
+		0EBE3862197427A500AAAF34 /* SubscriptionMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscriptionMenuCell.m; sourceTree = "<group>"; };
 		803928D684F54DB4A5F86E42 /* Pods-OvatempTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.xcconfig"; path = "Pods/Pods-OvatempTests.xcconfig"; sourceTree = "<group>"; };
 		830E351618D2506B00884F0E /* NSDate+Formatters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Formatters.h"; sourceTree = "<group>"; };
 		830E351718D2506B00884F0E /* NSDate+Formatters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Formatters.m"; sourceTree = "<group>"; };
@@ -476,6 +506,27 @@
 		83EB3EB918AEA7D500EA91AC /* Wet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wet.png; sourceTree = "<group>"; };
 		83EB3EBA18AEA7D500EA91AC /* Wet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wet@2x.png"; sourceTree = "<group>"; };
 		83EB3F3918AEAD2600EA91AC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		962ADF7519B8F6CD00904691 /* GradientSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientSegmentedControl.h; sourceTree = "<group>"; };
+		962ADF7619B8F6CD00904691 /* GradientSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientSegmentedControl.m; sourceTree = "<group>"; };
+		9668CF1C19BF67B2006F894D /* OldSubscriptionSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldSubscriptionSelectionController.h; sourceTree = "<group>"; };
+		9668CF1D19BF67B2006F894D /* OldSubscriptionSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldSubscriptionSelectionController.m; sourceTree = "<group>"; };
+		969FAC8919B78BB800CD0770 /* Categories.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Categories.png; sourceTree = "<group>"; };
+		96D245B119B6005E005E8D7E /* Massage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Massage@2x.png"; sourceTree = "<group>"; };
+		96D245B219B6005E005E8D7E /* DietAndLifestyle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DietAndLifestyle@2x.png"; sourceTree = "<group>"; };
+		96D245B319B6005E005E8D7E /* Meditations@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Meditations@2x.png"; sourceTree = "<group>"; };
+		96D245B419B6005E005E8D7E /* Acupressure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Acupressure@2x.png"; sourceTree = "<group>"; };
+		96D245B519B6005E005E8D7E /* YinOva_HiRes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YinOva_HiRes.png; sourceTree = "<group>"; };
+		96D245BC19B6128F005E8D7E /* Massage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Massage.png; sourceTree = "<group>"; };
+		96D245BE19B612BA005E8D7E /* Acupressure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Acupressure.png; sourceTree = "<group>"; };
+		96D245C019B612D9005E8D7E /* DietAndLifestyle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DietAndLifestyle.png; sourceTree = "<group>"; };
+		96D245C219B61328005E8D7E /* Meditations.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Meditations.png; sourceTree = "<group>"; };
+		96F75A9D19B65F4F000E42A4 /* BuyButtonCenter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BuyButtonCenter@2x.png"; sourceTree = "<group>"; };
+		96F75A9E19B65F4F000E42A4 /* BuyButtonLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BuyButtonLeft.png; sourceTree = "<group>"; };
+		96F75A9F19B65F4F000E42A4 /* BuyButtonLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BuyButtonLeft@2x.png"; sourceTree = "<group>"; };
+		96F75AA019B65F4F000E42A4 /* BuyButtonRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BuyButtonRight@2x.png"; sourceTree = "<group>"; };
+		96F75AA119B65F4F000E42A4 /* BuyButtonRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BuyButtonRight.png; sourceTree = "<group>"; };
+		96F75AA219B65F4F000E42A4 /* BuyButtonCenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BuyButtonCenter.png; sourceTree = "<group>"; };
+		96F75AA919B66180000E42A4 /* BuyButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BuyButton.png; sourceTree = "<group>"; };
 		C3066C6518983537003F8B84 /* TodayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		C3066C6618983537003F8B84 /* TodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		C30B84CF18E3206A0078EDE3 /* UIViewController+Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Loading.h"; sourceTree = "<group>"; };
@@ -645,6 +696,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E34FBC2195324E6001916F2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0E33F8461959FC8A0017B9AA /* SubscriptionHelper.h */,
+				0E33F8471959FC8A0017B9AA /* SubscriptionHelper.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		832934B818B7D93200F6875B /* MedsMoodsSupplements */ = {
 			isa = PBXGroup;
 			children = (
@@ -681,6 +741,10 @@
 				8333B9E418E2193700C64231 /* CoachingRootViewController.m */,
 				83DF333018E324DA002119CE /* QuizViewController.h */,
 				83DF333118E324DA002119CE /* QuizViewController.m */,
+				0E79EE2E196DB7F5003D3240 /* SubscriptionSelectionController.h */,
+				0E79EE2F196DB7F5003D3240 /* SubscriptionSelectionController.m */,
+				9668CF1C19BF67B2006F894D /* OldSubscriptionSelectionController.h */,
+				9668CF1D19BF67B2006F894D /* OldSubscriptionSelectionController.m */,
 			);
 			name = Coaching;
 			sourceTree = "<group>";
@@ -762,6 +826,7 @@
 		834BD64318AEA1A4003B6808 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				96D245BB19B60075005E8D7E /* InAppPurchases */,
 				83C6511018C91B7500F35CE5 /* BackArrow.png */,
 				83C6511118C91B7500F35CE5 /* BackArrow@2x.png */,
 				8333B99818E0D1B800C64231 /* Coaching */,
@@ -901,6 +966,30 @@
 			path = VaginalSensation;
 			sourceTree = "<group>";
 		};
+		96D245BB19B60075005E8D7E /* InAppPurchases */ = {
+			isa = PBXGroup;
+			children = (
+				969FAC8919B78BB800CD0770 /* Categories.png */,
+				96F75AA919B66180000E42A4 /* BuyButton.png */,
+				96F75A9D19B65F4F000E42A4 /* BuyButtonCenter@2x.png */,
+				96F75A9E19B65F4F000E42A4 /* BuyButtonLeft.png */,
+				96F75A9F19B65F4F000E42A4 /* BuyButtonLeft@2x.png */,
+				96F75AA019B65F4F000E42A4 /* BuyButtonRight@2x.png */,
+				96F75AA119B65F4F000E42A4 /* BuyButtonRight.png */,
+				96F75AA219B65F4F000E42A4 /* BuyButtonCenter.png */,
+				96D245BC19B6128F005E8D7E /* Massage.png */,
+				96D245B119B6005E005E8D7E /* Massage@2x.png */,
+				96D245C019B612D9005E8D7E /* DietAndLifestyle.png */,
+				96D245B219B6005E005E8D7E /* DietAndLifestyle@2x.png */,
+				96D245C219B61328005E8D7E /* Meditations.png */,
+				96D245B319B6005E005E8D7E /* Meditations@2x.png */,
+				96D245B419B6005E005E8D7E /* Acupressure@2x.png */,
+				96D245BE19B612BA005E8D7E /* Acupressure.png */,
+				96D245B519B6005E005E8D7E /* YinOva_HiRes.png */,
+			);
+			name = InAppPurchases;
+			sourceTree = "<group>";
+		};
 		C308705918980A2E00DC4364 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -1000,6 +1089,7 @@
 			children = (
 				83686E9F18C6323600A5329C /* CalendarCell.xib */,
 				83A1FE0318D74C8E0030D331 /* CalendarViewController.xib */,
+				0E79EE30196DB7F5003D3240 /* SubscriptionSelectionController.xib */,
 				8333B98118E0A7C900C64231 /* CoachingStoryboard.storyboard */,
 				C350899118EDFD0C004D6A2F /* CommunityStoryboard.storyboard */,
 				838752F918CF8E2E00E8ED4A /* CycleChartView.xib */,
@@ -1008,7 +1098,6 @@
 				83BD853918D0B7A900890EDA /* RootViewController.xib */,
 				83A1FDF418D35C3B0030D331 /* SessionStoryboard.storyboard */,
 				C3C1766618F4DF5E0099DA42 /* WebViewController.xib */,
-				0EA4C6DA19A3952100C04FF5 /* ConnectivityAlertView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1113,6 +1202,7 @@
 			isa = PBXGroup;
 			children = (
 				0EC9830C19AB8619009A5730 /* Ovatemp.entitlements */,
+				0E34FBC2195324E6001916F2 /* Helpers */,
 				C308705918980A2E00DC4364 /* Categories */,
 				C308705A18980A2E00DC4364 /* Controllers */,
 				C308705E18980A2E00DC4364 /* Models */,
@@ -1148,6 +1238,8 @@
 				C382F1D318F31CBE005E0CAF /* Alert.m */,
 				C382F1E418F33801005E0CAF /* BorderedGradientButton.h */,
 				C382F1E518F33801005E0CAF /* BorderedGradientButton.m */,
+				962ADF7519B8F6CD00904691 /* GradientSegmentedControl.h */,
+				962ADF7619B8F6CD00904691 /* GradientSegmentedControl.m */,
 				8315E4A418C6300800DA935A /* CalendarCell.h */,
 				8315E4A518C6300800DA935A /* CalendarCell.m */,
 				8333B98718E0B86E00C64231 /* CoachingMenuCell.h */,
@@ -1169,6 +1261,8 @@
 				8333B98E18E0BD8600C64231 /* LifestyleCell.m */,
 				C374AACD18F9D13B0064341A /* PassthroughScrollView.h */,
 				C374AACE18F9D13B0064341A /* PassthroughScrollView.m */,
+				0EBE3861197427A500AAAF34 /* SubscriptionMenuCell.h */,
+				0EBE3862197427A500AAAF34 /* SubscriptionMenuCell.m */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1327,13 +1421,16 @@
 				8333B9DD18E2156B00C64231 /* VentilateSmall.png in Resources */,
 				83EB3F0618AEA7D500EA91AC /* Heavy.png in Resources */,
 				C3513A5418F7326C00E90517 /* MassageSmall@2x.png in Resources */,
+				969FAC8A19B78BB800CD0770 /* Categories.png in Resources */,
 				83EB3F0C18AEA7D500EA91AC /* Medium@2x.png in Resources */,
 				83D8CDA018E353F300D0AC72 /* Activate.png in Resources */,
 				832934C818B7D93200F6875B /* Amazing@2x.png in Resources */,
 				C35089AC18EDFF40004D6A2F /* ShareTheNews@2x.png in Resources */,
 				83A1FDF918D35C820030D331 /* OvatempIcon@2x.png in Resources */,
 				83EB3F0E18AEA7D500EA91AC /* Spotting@2x.png in Resources */,
+				96D245B919B6005E005E8D7E /* Acupressure@2x.png in Resources */,
 				835AE58818B7A3B500FEAF98 /* CheckCell.xib in Resources */,
+				96D245BD19B6128F005E8D7E /* Massage.png in Resources */,
 				83EB3EDD18AEA7D500EA91AC /* Protected.png in Resources */,
 				83D8CDA518E353F300D0AC72 /* Hydrate@2x.png in Resources */,
 				83EB3F2518AEA7D500EA91AC /* community_selected.png in Resources */,
@@ -1345,6 +1442,7 @@
 				83EB3F0D18AEA7D500EA91AC /* Spotting.png in Resources */,
 				835AE58C18B7A51700FEAF98 /* CheckBox@2x.png in Resources */,
 				83A1FE0418D74C8E0030D331 /* CalendarViewController.xib in Resources */,
+				96D245C319B61328005E8D7E /* Meditations.png in Resources */,
 				83EB3F3518AEA7D500EA91AC /* Lube.png in Resources */,
 				C3E58C2D18D39AAC0026301A /* LaunchImageR4.png in Resources */,
 				C3513A5218F7326C00E90517 /* AcupressureSmall@2x.png in Resources */,
@@ -1356,28 +1454,33 @@
 				8333B99218E0C25500C64231 /* example.html in Resources */,
 				83D8CDA118E353F300D0AC72 /* Activate@2x.png in Resources */,
 				83EB3EC018AEA7D500EA91AC /* Sticky.png in Resources */,
+				96F75AA719B65F4F000E42A4 /* BuyButtonRight.png in Resources */,
 				838752FA18CF8E2E00E8ED4A /* CycleChartView.xib in Resources */,
 				8333B9A118E0D1B800C64231 /* Acupressure.png in Resources */,
 				83D8CDA318E353F300D0AC72 /* Energize@2x.png in Resources */,
 				835BA2BA18BBEFBF00C64350 /* +@2x.png in Resources */,
 				83EB3F3818AEA7D500EA91AC /* Wet@2x.png in Resources */,
 				8333B9D518E2156B00C64231 /* HydrateSmall.png in Resources */,
+				96D245BA19B6005E005E8D7E /* YinOva_HiRes.png in Resources */,
 				83D8CDAC18E353F300D0AC72 /* Ventilate.png in Resources */,
 				C3E58C3818D39B7B0026301A /* Icon40.png in Resources */,
+				96D245B619B6005E005E8D7E /* Massage@2x.png in Resources */,
 				835BA2B918BBEFBF00C64350 /* +.png in Resources */,
 				83EB3F2218AEA7D500EA91AC /* coaching_selected@2x.png in Resources */,
 				83EB3F3318AEA7D500EA91AC /* Dry@2x.png in Resources */,
 				83EB3F2818AEA7D500EA91AC /* community_unselect@2x.png in Resources */,
-				0EA4C6DB19A3952100C04FF5 /* ConnectivityAlertView.xib in Resources */,
+				96F75AAA19B66181000E42A4 /* BuyButton.png in Resources */,
 				834BD63218AD1363003B6808 /* MoreStoryboard.storyboard in Resources */,
 				832934D218B7D93200F6875B /* Symptoms@2x.png in Resources */,
 				83D8CDAB18E353F300D0AC72 /* Revitalize@2x.png in Resources */,
 				83EB3F1C18AEA7D500EA91AC /* Positive@2x.png in Resources */,
+				96D245BF19B612BA005E8D7E /* Acupressure.png in Resources */,
 				832934D318B7D93200F6875B /* Moody.png in Resources */,
 				83EB3F3218AEA7D500EA91AC /* Dry.png in Resources */,
 				832934CF18B7D93200F6875B /* DaySupplements.png in Resources */,
 				8333B9D318E2156B00C64231 /* ActivateSmall@2x.png in Resources */,
 				83EB3EDF18AEA7D500EA91AC /* Unprotected.png in Resources */,
+				96D245C119B612D9005E8D7E /* DietAndLifestyle.png in Resources */,
 				C3E58C3718D39B7B0026301A /* Icon29@2x.png in Resources */,
 				83686EA018C6323600A5329C /* CalendarCell.xib in Resources */,
 				8333B9D918E2156B00C64231 /* RefreshSmall.png in Resources */,
@@ -1389,6 +1492,7 @@
 				C3513A5D18F739A100E90517 /* SupplementsSmall@2x.png in Resources */,
 				C3D8911A1908141500E21627 /* EnergizeSmall@2x.png in Resources */,
 				83EB3EBD18AEA7D500EA91AC /* Eggwhite.png in Resources */,
+				96D245B719B6005E005E8D7E /* DietAndLifestyle@2x.png in Resources */,
 				8333B9DE18E2156B00C64231 /* VentilateSmall@2x.png in Resources */,
 				83EB3F2018AEA7D500EA91AC /* cal_unselected@2x.png in Resources */,
 				83EB3F2D18AEA7D500EA91AC /* more_unselect@2x.png in Resources */,
@@ -1407,6 +1511,7 @@
 				832934D018B7D93200F6875B /* DaySupplements@2x.png in Resources */,
 				832934CB18B7D93200F6875B /* Medicines.png in Resources */,
 				C3513A5318F7326C00E90517 /* LifestyleSmall@2x.png in Resources */,
+				96F75AA519B65F4F000E42A4 /* BuyButtonLeft@2x.png in Resources */,
 				83EB3F2E18AEA7D500EA91AC /* today_selected.png in Resources */,
 				835AE58B18B7A51700FEAF98 /* CheckBox.png in Resources */,
 				8333B9D218E2156B00C64231 /* ActivateSmall.png in Resources */,
@@ -1425,18 +1530,22 @@
 				839A346218ABCFB6007CD657 /* TodayNavigationController.xib in Resources */,
 				832934CC18B7D93200F6875B /* Medicines@2x.png in Resources */,
 				83EB3F2B18AEA7D500EA91AC /* more_selected@2x.png in Resources */,
+				96D245B819B6005E005E8D7E /* Meditations@2x.png in Resources */,
 				C35089AF18EDFF40004D6A2F /* TryingToConceive.png in Resources */,
 				C35089A918EDFF40004D6A2F /* OvatempSupport.png in Resources */,
 				C3E58C3C18D39B7B0026301A /* Icon76.png in Resources */,
 				83A1FDF518D35C3B0030D331 /* SessionStoryboard.storyboard in Resources */,
 				83C6511618C91B7500F35CE5 /* ForwardArrow.png in Resources */,
+				0E79EE32196DB7F5003D3240 /* SubscriptionSelectionController.xib in Resources */,
 				C3513A5A18F739A100E90517 /* DietSmall@2x.png in Resources */,
 				83D8CDA918E353F300D0AC72 /* Refresh@2x.png in Resources */,
 				8333B9D818E2156B00C64231 /* NourishSmall@2x.png in Resources */,
 				83EB3F3718AEA7D500EA91AC /* Wet.png in Resources */,
+				96F75AA619B65F4F000E42A4 /* BuyButtonRight@2x.png in Resources */,
 				8333B9A218E0D1B800C64231 /* Acupressure@2x.png in Resources */,
 				C3E58C2C18D39AAC0026301A /* LaunchImage.png in Resources */,
 				83EB3F2F18AEA7D500EA91AC /* today_selected@2x.png in Resources */,
+				96F75AA819B65F4F000E42A4 /* BuyButtonCenter.png in Resources */,
 				83EB3F2A18AEA7D500EA91AC /* more_selected.png in Resources */,
 				83EB3F3118AEA7D500EA91AC /* today_unselect@2x.png in Resources */,
 				83D8CDA418E353F300D0AC72 /* Hydrate.png in Resources */,
@@ -1455,6 +1564,7 @@
 				8333B9AB18E0D32000C64231 /* Massage.png in Resources */,
 				83D8CDAD18E353F300D0AC72 /* Ventilate@2x.png in Resources */,
 				83D8CDAA18E353F300D0AC72 /* Revitalize.png in Resources */,
+				96F75AA319B65F4F000E42A4 /* BuyButtonCenter@2x.png in Resources */,
 				832934CD18B7D93200F6875B /* Sad.png in Resources */,
 				83D8CDA618E353F300D0AC72 /* Nourish.png in Resources */,
 				83EB3F0718AEA7D500EA91AC /* Heavy@2x.png in Resources */,
@@ -1467,6 +1577,7 @@
 				83D8CDA818E353F300D0AC72 /* Refresh.png in Resources */,
 				83EB3EDE18AEA7D500EA91AC /* Protected@2x.png in Resources */,
 				83C6511518C91B7500F35CE5 /* BackArrow@2x.png in Resources */,
+				96F75AA419B65F4F000E42A4 /* BuyButtonLeft.png in Resources */,
 				C35089AE18EDFF40004D6A2F /* TryingToAvoid@2x.png in Resources */,
 				C36C5111189028190053A884 /* Images.xcassets in Resources */,
 				83C6511718C91B7500F35CE5 /* ForwardArrow@2x.png in Resources */,
@@ -1561,6 +1672,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3BF8FE818984AC200572F43 /* User.m in Sources */,
+				0EBE3864197427A500AAAF34 /* SubscriptionMenuCell.m in Sources */,
 				C31A3FEF18FCA251004E3BA4 /* UIViewController+Session.m in Sources */,
 				C374AAD218F9D9CE0064341A /* TemperatureCellEditView.m in Sources */,
 				C382F1E618F33801005E0CAF /* BorderedGradientButton.m in Sources */,
@@ -1572,13 +1684,16 @@
 				C374AACC18F9D0ED0064341A /* TemperatureCellStaticView.m in Sources */,
 				8333B98918E0B86E00C64231 /* CoachingMenuCell.m in Sources */,
 				83DF333218E324DA002119CE /* QuizViewController.m in Sources */,
+				9668CF1E19BF67B2006F894D /* OldSubscriptionSelectionController.m in Sources */,
 				C322F8C918F8727C00902C9D /* DayCellEditView.m in Sources */,
 				83BD853818D0B23900890EDA /* RootViewController.m in Sources */,
 				C3BF8FE01898452F00572F43 /* SessionViewController.m in Sources */,
 				C30B84D418E324260078EDE3 /* UIColor+Traits.m in Sources */,
 				83DF332F18E32269002119CE /* Question.m in Sources */,
+				962ADF7719B8F6CD00904691 /* GradientSegmentedControl.m in Sources */,
 				834BD63518AD1519003B6808 /* MoreViewController.m in Sources */,
 				C3E1299A18FC8C89004288D8 /* MainTabBarViewController.m in Sources */,
+				0E33F8481959FC8A0017B9AA /* SubscriptionHelper.m in Sources */,
 				C3EC024218F61DCD00AA38D5 /* IconLabel.m in Sources */,
 				8333B98C18E0BD4200C64231 /* LifestyleViewController.m in Sources */,
 				830E351818D2506B00884F0E /* NSDate+Formatters.m in Sources */,
@@ -1599,6 +1714,7 @@
 				C3A145C319351F4800FA2D5F /* NSObject+Analytics.m in Sources */,
 				C391ECBE192E7F4500D21FBC /* UIViewController+Status.m in Sources */,
 				C38C2D5B18EF4F0700449F89 /* DelegatingNavigationViewController.m in Sources */,
+				0E79EE31196DB7F5003D3240 /* SubscriptionSelectionController.m in Sources */,
 				C36C510B189028190053A884 /* main.m in Sources */,
 				C35CF95518EF2DF6004D47EA /* NSObject+IsNull.m in Sources */,
 				C35424CA18FB08BA005378B9 /* DisturbanceCellEditView.m in Sources */,
