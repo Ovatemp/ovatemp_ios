@@ -8,11 +8,12 @@
 
 #import "AccountMainTableViewController.h"
 #import "AccountTableViewCell.h"
+#import "WebViewController.h"
 
 @interface AccountMainTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property AccountTableViewCell *accountTableViewCell;
-@property UIActivityViewController *activityViewController;
+@property (strong, nonatomic) UIActivityViewController *activityViewController;
 
 @end
 
@@ -77,11 +78,11 @@ NSArray *accountMenuItems;
         
         [self.activityViewController setValue:@"Ovatemp" forKey:@"subject"];
         
-//        [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:activityViewController
-//                                                                                                 animated:YES
-//                                                                                               completion:nil];
-        
-        [self.navigationController presentViewController:self. activityViewController animated:YES completion:nil];
+//        [self.navigationController presentViewController:self. activityViewController animated:YES completion:nil];
+//        [[[self parentViewController] parentViewController] presentViewController:self.activityViewController animated:YES completion:^{
+//            NSLog(@"completed");
+//        }];
+        [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:self.activityViewController animated:YES completion:nil];
     }
     
     if (indexPath.row == 5) {
@@ -94,6 +95,18 @@ NSArray *accountMenuItems;
         } else {
             NSLog(@"error opening link in AppStore");
         }
+    }
+    
+    if (indexPath.row == 6) {
+        NSLog(@"How it works");
+    }
+    
+    if (indexPath.row == 7) {
+        // TOS
+        NSString *url = [ROOT_URL stringByAppendingString:@"/terms"];
+        WebViewController *webViewController = [WebViewController withURL:url];
+        [self.navigationController pushViewController:webViewController animated:YES];
+
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
