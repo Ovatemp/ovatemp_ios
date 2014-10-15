@@ -382,6 +382,10 @@
 		5F1C9C7319EDE87A000F1FC1 /* FertilityStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C9B5B19EDE87A000F1FC1 /* FertilityStatusView.m */; };
 		5F1C9C7419EDE87A000F1FC1 /* LifestyleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C9B5D19EDE87A000F1FC1 /* LifestyleCell.m */; };
 		5F1C9C7519EDE87A000F1FC1 /* MoreStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C9B5E19EDE87A000F1FC1 /* MoreStoryboard.storyboard */; };
+		5F1C9C7719EEE993000F1FC1 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C9C7619EEE993000F1FC1 /* Account.storyboard */; };
+		5F1C9C7A19EEEDF9000F1FC1 /* AccountMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C9C7919EEEDF9000F1FC1 /* AccountMainTableViewController.m */; };
+		5F1C9C7E19EEF344000F1FC1 /* AccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C9C7C19EEF343000F1FC1 /* AccountTableViewCell.m */; };
+		5F1C9C7F19EEF344000F1FC1 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C9C7D19EEF343000F1FC1 /* AccountTableViewCell.xib */; };
 		5F58690619ED802400D2B58E /* Negative.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58677419ED802400D2B58E /* Negative.png */; };
 		5F58690719ED802400D2B58E /* Negative@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58677519ED802400D2B58E /* Negative@2x.png */; };
 		5F586A2719ED802400D2B58E /* Positive.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58690419ED802400D2B58E /* Positive.png */; };
@@ -950,6 +954,12 @@
 		5F1C9B5C19EDE87A000F1FC1 /* LifestyleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifestyleCell.h; sourceTree = "<group>"; };
 		5F1C9B5D19EDE87A000F1FC1 /* LifestyleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifestyleCell.m; sourceTree = "<group>"; };
 		5F1C9B5E19EDE87A000F1FC1 /* MoreStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MoreStoryboard.storyboard; sourceTree = "<group>"; };
+		5F1C9C7619EEE993000F1FC1 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
+		5F1C9C7819EEEDF9000F1FC1 /* AccountMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountMainTableViewController.h; sourceTree = "<group>"; };
+		5F1C9C7919EEEDF9000F1FC1 /* AccountMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountMainTableViewController.m; sourceTree = "<group>"; };
+		5F1C9C7B19EEF343000F1FC1 /* AccountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountTableViewCell.h; sourceTree = "<group>"; };
+		5F1C9C7C19EEF343000F1FC1 /* AccountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountTableViewCell.m; sourceTree = "<group>"; };
+		5F1C9C7D19EEF343000F1FC1 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
 		5F58677419ED802400D2B58E /* Negative.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Negative.png; sourceTree = "<group>"; };
 		5F58677519ED802400D2B58E /* Negative@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Negative@2x.png"; sourceTree = "<group>"; };
 		5F58690419ED802400D2B58E /* Positive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Positive.png; sourceTree = "<group>"; };
@@ -1420,6 +1430,11 @@
 		5F1C9A2519EDE879000F1FC1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5F1C9C7B19EEF343000F1FC1 /* AccountTableViewCell.h */,
+				5F1C9C7C19EEF343000F1FC1 /* AccountTableViewCell.m */,
+				5F1C9C7D19EEF343000F1FC1 /* AccountTableViewCell.xib */,
+				5F1C9C7819EEEDF9000F1FC1 /* AccountMainTableViewController.h */,
+				5F1C9C7919EEEDF9000F1FC1 /* AccountMainTableViewController.m */,
 				5F1C9A2619EDE879000F1FC1 /* BluetoothDeviceTableViewController.h */,
 				5F1C9A2719EDE879000F1FC1 /* BluetoothDeviceTableViewController.m */,
 				5F1C9A2819EDE879000F1FC1 /* CalendarViewController.h */,
@@ -1823,6 +1838,7 @@
 		5F1C9B4A19EDE87A000F1FC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5F1C9C7619EEE993000F1FC1 /* Account.storyboard */,
 				5F1C9B4B19EDE87A000F1FC1 /* CalendarCell.h */,
 				5F1C9B4C19EDE87A000F1FC1 /* CalendarCell.m */,
 				5F1C9B4D19EDE87A000F1FC1 /* CalendarCell.xib */,
@@ -2108,6 +2124,7 @@
 				5F1C96C219EDD319000F1FC1 /* Changelog.txt in Resources */,
 				5F1C99DA19EDE775000F1FC1 /* OndoPicture@2x.png in Resources */,
 				5F1C9BA019EDE87A000F1FC1 /* InfoPlist.strings in Resources */,
+				5F1C9C7F19EEF344000F1FC1 /* AccountTableViewCell.xib in Resources */,
 				5F1C9C3A19EDE87A000F1FC1 /* cal_selected@2x.png in Resources */,
 				5F1C970919EDD31A000F1FC1 /* test_variant.json in Resources */,
 				5F1C9C2019EDE87A000F1FC1 /* Medicines@2x.png in Resources */,
@@ -2229,6 +2246,7 @@
 				5F1C9C3B19EDE87A000F1FC1 /* cal_unselected.png in Resources */,
 				5F1C9C6719EDE87A000F1FC1 /* Ovatemp.entitlements in Resources */,
 				5F1C9BF819EDE87A000F1FC1 /* RefreshSmall.png in Resources */,
+				5F1C9C7719EEE993000F1FC1 /* Account.storyboard in Resources */,
 				5F1C9C2B19EDE87A000F1FC1 /* OvatempIcon.png in Resources */,
 				5F1C9C2219EDE87A000F1FC1 /* Moody@2x.png in Resources */,
 				5F1C970F19EDD31A000F1FC1 /* .gitignore in Resources */,
@@ -2418,6 +2436,7 @@
 				5F1C9B7B19EDE87A000F1FC1 /* PassthroughScrollView.m in Sources */,
 				5F1C9B7A19EDE87A000F1FC1 /* IconLabel.m in Sources */,
 				5F1C970419EDD31A000F1FC1 /* MPVariant.m in Sources */,
+				5F1C9C7E19EEF344000F1FC1 /* AccountTableViewCell.m in Sources */,
 				5F1C96D619EDD31A000F1FC1 /* MPABTestDesignerDeviceInfoRequestMessage.m in Sources */,
 				5F1C96D519EDD31A000F1FC1 /* MPABTestDesignerConnection.m in Sources */,
 				5F1C96E319EDD31A000F1FC1 /* MPCGRectToNSDictionaryValueTransformer.m in Sources */,
@@ -2442,6 +2461,7 @@
 				5F1C9B9B19EDE87A000F1FC1 /* TodayNavigationController.m in Sources */,
 				5F1C9B8E19EDE87A000F1FC1 /* MainTabBarViewController.m in Sources */,
 				5F1C970119EDD31A000F1FC1 /* MPUIEdgeInsetsToNSDictionaryValueTransformer.m in Sources */,
+				5F1C9C7A19EEEDF9000F1FC1 /* AccountMainTableViewController.m in Sources */,
 				5F1C9B6F19EDE87A000F1FC1 /* DayAttribute.m in Sources */,
 				5F1C9B7719EDE87A000F1FC1 /* GradientLabel.m in Sources */,
 				5F1C9B6419EDE87A000F1FC1 /* NSObject+IsNull.m in Sources */,

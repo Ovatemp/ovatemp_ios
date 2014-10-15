@@ -103,6 +103,9 @@ static CGFloat const kDissolveDuration = 0.2;
   UIViewController *coachingController = [[UIStoryboard storyboardWithName:@"CoachingStoryboard" bundle:nil] instantiateInitialViewController];
   UIViewController *communityController = [[UIStoryboard storyboardWithName:@"CommunityStoryboard" bundle:nil] instantiateInitialViewController];
   UIViewController *moreViewController = [[UIStoryboard storyboardWithName:@"MoreStoryboard" bundle:nil] instantiateInitialViewController];
+    
+  // Account
+  UIViewController *accountController = [[UIStoryboard storyboardWithName:@"Account" bundle:nil] instantiateInitialViewController];
 
   // Add controllers to the tab bar controller
   [tabController addChildViewController:todayController];
@@ -129,6 +132,9 @@ static CGFloat const kDissolveDuration = 0.2;
   moreViewController.tabBarItem.image = [UIImage imageNamed:@"more_unselect"];
   moreViewController.tabBarItem.selectedImage = [UIImage imageNamed:@"more_select"];
   moreViewController.tabBarItem.title = @"More";
+
+  [tabController addChildViewController:accountController];
+  communityController.tabBarItem.title = @"Account";
 
   [tabController addChildViewController:moreViewController];
 
