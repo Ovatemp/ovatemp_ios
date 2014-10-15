@@ -10,6 +10,7 @@
 #import "AccountTableViewCell.h"
 #import "WebViewController.h"
 #import "ONDOViewController.h"
+#import "ProfileViewController.h"
 
 @interface AccountMainTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -31,7 +32,7 @@ NSArray *accountMenuItems;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    accountMenuItems = [NSArray arrayWithObjects:@"Profile", @"Settings", @"ONDO Thermometer", @"Help", @"Share Ovatemp", @"Rate this App", @"How it works", @"Terms of Service", nil];
+    accountMenuItems = [NSArray arrayWithObjects:@"Profile", @"Settings", @"ONDO Thermometer", @"Help", @"Share Ovatemp", @"Rate this App", @"How it Works", @"Terms of Service", nil];
     
     [[self tableView] registerNib:[UINib nibWithNibName:@"AccountTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"accountCell"];
 }
@@ -67,6 +68,8 @@ NSArray *accountMenuItems;
     
     if (indexPath.row == 0) {
         // Profile
+        ProfileViewController *profileVC = [[ProfileViewController alloc] init];
+        [self.navigationController pushViewController:profileVC animated:YES];
         
     } else if (indexPath.row == 1) {
         // Settings
