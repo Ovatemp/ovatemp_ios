@@ -12,6 +12,7 @@
 @interface AccountMainTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property AccountTableViewCell *accountTableViewCell;
+@property UIActivityViewController *activityViewController;
 
 @end
 
@@ -62,6 +63,40 @@ NSArray *accountMenuItems;
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"selected row %ld", (long)indexPath.row);
+    
+    if (indexPath.row == 4) {
+        // share sheet
+        
+        NSString *shareString = @"Are you fertile? Find out now with Ovatemp! https://itunes.apple.com/us/app/ovatemp/id692187268?mt=8";
+        
+        self.activityViewController =
+        [[UIActivityViewController alloc] initWithActivityItems:@[shareString]
+                                          applicationActivities:nil];
+        
+        [self.activityViewController setValue:@"Ovatemp" forKey:@"subject"];
+        
+//        [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:activityViewController
+//                                                                                                 animated:YES
+//                                                                                               completion:nil];
+        
+        [self.navigationController presentViewController:self. activityViewController animated:YES completion:nil];
+    }
+    
+    if (indexPath.row == 5) {
+        // rate app
+        // https://itunes.apple.com/us/app/ovatemp/id692187268?mt=8
+        // http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=xxxxxxxx&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8
+        NSURL *appStoreURL = [NSURL URLWithString:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=692187268&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"];
+        if ([[UIApplication sharedApplication]canOpenURL:appStoreURL]) {
+            [[UIApplication sharedApplication]openURL:appStoreURL];
+        } else {
+            NSLog(@"error opening link in AppStore");
+        }
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 /*
 // Override to support conditional editing of the table view.
