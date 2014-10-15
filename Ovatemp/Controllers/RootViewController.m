@@ -102,7 +102,10 @@ static CGFloat const kDissolveDuration = 0.2;
   UIViewController *calendarController = [[CalendarViewController alloc] initWithNibName:@"CalendarViewController" bundle:nil];
   UIViewController *coachingController = [[UIStoryboard storyboardWithName:@"CoachingStoryboard" bundle:nil] instantiateInitialViewController];
   UIViewController *communityController = [[UIStoryboard storyboardWithName:@"CommunityStoryboard" bundle:nil] instantiateInitialViewController];
-  UIViewController *moreViewController = [[UIStoryboard storyboardWithName:@"MoreStoryboard" bundle:nil] instantiateInitialViewController];
+//  UIViewController *moreViewController = [[UIStoryboard storyboardWithName:@"MoreStoryboard" bundle:nil] instantiateInitialViewController];
+    
+  // Account
+  UIViewController *accountController = [[UIStoryboard storyboardWithName:@"Account" bundle:nil] instantiateInitialViewController];
 
   // Add controllers to the tab bar controller
   [tabController addChildViewController:todayController];
@@ -126,11 +129,17 @@ static CGFloat const kDissolveDuration = 0.2;
   communityController.tabBarItem.selectedImage = [UIImage imageNamed:@"community_select"];
   communityController.tabBarItem.title = @"Community";
 
-  moreViewController.tabBarItem.image = [UIImage imageNamed:@"more_unselect"];
-  moreViewController.tabBarItem.selectedImage = [UIImage imageNamed:@"more_select"];
-  moreViewController.tabBarItem.title = @"More";
+//  [tabController addChildViewController:moreViewController];
+//  moreViewController.tabBarItem.image = [UIImage imageNamed:@"more_unselect"];
+//  moreViewController.tabBarItem.selectedImage = [UIImage imageNamed:@"more_select"];
+//  moreViewController.tabBarItem.title = @"More";
 
-  [tabController addChildViewController:moreViewController];
+  [tabController addChildViewController:accountController];
+  accountController.tabBarItem.image = [UIImage imageNamed:@"more_unselect"];
+  accountController.tabBarItem.selectedImage = [UIImage imageNamed:@"more_select"];
+  accountController.tabBarItem.title = @"Account";
+
+  
 
   tabController.delegate = self;
 
