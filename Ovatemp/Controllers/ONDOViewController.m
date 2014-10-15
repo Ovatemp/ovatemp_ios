@@ -8,8 +8,10 @@
 
 #import "ONDOViewController.h"
 #import "AccountTableViewCell.h"
+#import "ONDO.h"
+#import "BluetoothDeviceTableViewController.h"
 
-@interface ONDOViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ONDOViewController () <UITableViewDelegate, UITableViewDataSource, ONDODelegate>
 
 @property AccountTableViewCell *accountTableViewCell;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -25,7 +27,7 @@ NSArray *ondoMenuItems;
     // Do any additional setup after loading the view from its nib.
     self.title = @"ONDO";
     
-    ondoMenuItems = [NSArray arrayWithObjects:@"Buy ONDO", @"Pair ONDO", @"About ONDO", @"Instruction Manual", nil];
+    ondoMenuItems = [NSArray arrayWithObjects:@"Buy ONDO", @"Pair ONDO", @"Manage Thermometers", @"About ONDO", @"Instruction Manual", nil];
         
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -72,17 +74,35 @@ NSArray *ondoMenuItems;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+//    [self.form addLabel:@"Pair" withImage:nil andAccessoryType:UITableViewCellAccessoryNone toSection:@"ONDO™" whenTapped:^(FormRow *row) {
+//        [ONDO showPairingWizardWithDelegate:controller];
+//    }];
+//    
+//    [self.form addLabel:@"Manage thermometers" withImage:nil toSection:@"ONDO™" whenTapped:^(FormRow *row) {
+//        BluetoothDeviceTableViewController *bluetoothController = [BluetoothDeviceTableViewController new];
+//        bluetoothController.title = @"ONDO Thermometers";
+//        [controller.navigationController pushViewController:bluetoothController animated:YES];
+//    }];
+    
     if (indexPath.row == 0) {
         // Buy
         
     } else if (indexPath.row == 1) {
         // Pair
+        __weak ONDOViewController *controller = self;
+        [ONDO showPairingWizardWithDelegate:controller];
         
     } else if (indexPath.row == 2) {
+        // Manage
+        BluetoothDeviceTableViewController *bluetoothController = [BluetoothDeviceTableViewController new];
+        bluetoothController.title = @"ONDO Thermometers";
+        [self.navigationController pushViewController:bluetoothController animated:YES];
+        
+    } else if (indexPath.row == 3) {
         // About
         
-    } else { // indexPath.row == 3
-        // Instruction
+    } else { // indexPath.row == 4
+        // Instructions
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
