@@ -49,7 +49,7 @@ static User *_currentUser;
 
     if (profile.dateOfBirth) {
       NSDateComponents* ageComponents = [[NSCalendar currentCalendar]
-                                         components:NSYearCalendarUnit
+                                         components:NSCalendarUnitYear
                                          fromDate:profile.dateOfBirth
                                          toDate:[NSDate date]
                                          options:0];

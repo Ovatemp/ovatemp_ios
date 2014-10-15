@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:nil action:nil];
+  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
   self.navigationItem.backBarButtonItem = backButton;
   
   self.edgesForExtendedLayout = UIRectEdgeNone;

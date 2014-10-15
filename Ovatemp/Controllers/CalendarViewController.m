@@ -143,7 +143,7 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
   CalendarCell *cell= (CalendarCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"CalendarCell" forIndexPath:indexPath];
 
   NSDate *date = [self dateForItemAtIndexPath:indexPath];
-  NSDateComponents *comps = [cal components:NSEraCalendarUnit | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
+  NSDateComponents *comps = [cal components:NSCalendarUnitEra | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
   date = [cal dateFromComponents:comps];
 
   if (loaded && comps.year != year) {
@@ -172,7 +172,7 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
   cell.fertilityWindowView.hidden = !inFertilityWindow;
   cell.fertilityWindowView.backgroundColor = FERTILITY_WINDOW_COLOR;
 
-  NSDateComponents *todayComps = [cal components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:[NSDate date]];
+  NSDateComponents *todayComps = [cal components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay) fromDate:[NSDate date]];
   NSDate *today = [cal dateFromComponents:todayComps];
 
   cell.dateLabel.text = [NSString stringWithFormat:@"%ld", (long)comps.day];

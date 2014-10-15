@@ -10,9 +10,9 @@
 
 @interface Configuration : NSObject
 
-@property NSString *token;
-@property NSNumber *hasSeenProfileIntroScreen;
-@property NSDictionary *coachingContentUrls;
+@property (strong, nonatomic) NSString *token;
+@property (strong, nonatomic) NSNumber *hasSeenProfileIntroScreen;
+@property (strong, nonatomic) NSDictionary *coachingContentUrls;
 
 + (Configuration *)sharedConfiguration;
 + (void)loggedInWithResponse:(NSDictionary *)response;

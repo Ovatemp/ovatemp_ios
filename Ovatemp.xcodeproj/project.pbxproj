@@ -8,16 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0EC9830B19AB8619009A5730 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC9830A19AB8619009A5730 /* HealthKit.framework */; };
-		5F1C96C019EDD319000F1FC1 /* Changelog.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C961519EDD319000F1FC1 /* Changelog.txt */; };
-		5F1C96C119EDD319000F1FC1 /* Readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C962619EDD319000F1FC1 /* Readme.txt */; };
-		5F1C96C219EDD319000F1FC1 /* Changelog.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C962819EDD319000F1FC1 /* Changelog.txt */; };
-		5F1C96C319EDD319000F1FC1 /* Readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C963419EDD319000F1FC1 /* Readme.txt */; };
 		5F1C96C419EDD319000F1FC1 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C963519EDD319000F1FC1 /* libAdIdAccess.a */; };
 		5F1C96C519EDD319000F1FC1 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C963619EDD319000F1FC1 /* libGoogleAnalyticsServices.a */; };
-		5F1C96C619EDD319000F1FC1 /* Readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C963719EDD319000F1FC1 /* Readme.txt */; };
 		5F1C96C719EDD319000F1FC1 /* libGoogleConversionTracking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C963E19EDD319000F1FC1 /* libGoogleConversionTracking.a */; };
-		5F1C96C819EDD319000F1FC1 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C963F19EDD319000F1FC1 /* README.md */; };
-		5F1C96C919EDD319000F1FC1 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C964019EDD319000F1FC1 /* README.txt */; };
 		5F1C96CA19EDD319000F1FC1 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C964219EDD319000F1FC1 /* HockeySDK.framework */; };
 		5F1C96CB19EDD31A000F1FC1 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C964419EDD319000F1FC1 /* HockeySDK.xcconfig */; };
 		5F1C96CC19EDD31A000F1FC1 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C964519EDD319000F1FC1 /* HockeySDKResources.bundle */; };
@@ -430,7 +423,6 @@
 
 /* Begin PBXFileReference section */
 		0EC9830A19AB8619009A5730 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		5F1C961519EDD319000F1FC1 /* Changelog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Changelog.txt; sourceTree = "<group>"; };
 		5F1C961C19EDD319000F1FC1 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		5F1C961D19EDD319000F1FC1 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
 		5F1C961E19EDD319000F1FC1 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
@@ -441,23 +433,17 @@
 		5F1C962319EDD319000F1FC1 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
 		5F1C962419EDD319000F1FC1 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
 		5F1C962519EDD319000F1FC1 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
-		5F1C962619EDD319000F1FC1 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
-		5F1C962819EDD319000F1FC1 /* Changelog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Changelog.txt; sourceTree = "<group>"; };
 		5F1C962F19EDD319000F1FC1 /* TAGContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGContainer.h; sourceTree = "<group>"; };
 		5F1C963019EDD319000F1FC1 /* TAGContainerOpener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGContainerOpener.h; sourceTree = "<group>"; };
 		5F1C963119EDD319000F1FC1 /* TAGDataLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGDataLayer.h; sourceTree = "<group>"; };
 		5F1C963219EDD319000F1FC1 /* TAGLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGLogger.h; sourceTree = "<group>"; };
 		5F1C963319EDD319000F1FC1 /* TAGManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGManager.h; sourceTree = "<group>"; };
-		5F1C963419EDD319000F1FC1 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
 		5F1C963519EDD319000F1FC1 /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
 		5F1C963619EDD319000F1FC1 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
-		5F1C963719EDD319000F1FC1 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
 		5F1C963919EDD319000F1FC1 /* ACTReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACTReporter.h; sourceTree = "<group>"; };
 		5F1C963B19EDD319000F1FC1 /* GoogleConversionPing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleConversionPing.h; sourceTree = "<group>"; };
 		5F1C963D19EDD319000F1FC1 /* DCTReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCTReporter.h; sourceTree = "<group>"; };
 		5F1C963E19EDD319000F1FC1 /* libGoogleConversionTracking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleConversionTracking.a; sourceTree = "<group>"; };
-		5F1C963F19EDD319000F1FC1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		5F1C964019EDD319000F1FC1 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		5F1C964219EDD319000F1FC1 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		5F1C964419EDD319000F1FC1 /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HockeySDK.xcconfig; sourceTree = "<group>"; };
 		5F1C964519EDD319000F1FC1 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
@@ -1074,7 +1060,6 @@
 				5F1C962719EDD319000F1FC1 /* GoogleTagManager */,
 				5F1C963519EDD319000F1FC1 /* libAdIdAccess.a */,
 				5F1C963619EDD319000F1FC1 /* libGoogleAnalyticsServices.a */,
-				5F1C963719EDD319000F1FC1 /* Readme.txt */,
 			);
 			path = GoogleAnalyticsServicesiOS_3.09;
 			sourceTree = "<group>";
@@ -1082,9 +1067,7 @@
 		5F1C961419EDD319000F1FC1 /* GoogleAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				5F1C961519EDD319000F1FC1 /* Changelog.txt */,
 				5F1C961B19EDD319000F1FC1 /* Library */,
-				5F1C962619EDD319000F1FC1 /* Readme.txt */,
 			);
 			path = GoogleAnalytics;
 			sourceTree = "<group>";
@@ -1109,9 +1092,7 @@
 		5F1C962719EDD319000F1FC1 /* GoogleTagManager */ = {
 			isa = PBXGroup;
 			children = (
-				5F1C962819EDD319000F1FC1 /* Changelog.txt */,
 				5F1C962E19EDD319000F1FC1 /* Library */,
-				5F1C963419EDD319000F1FC1 /* Readme.txt */,
 			);
 			path = GoogleTagManager;
 			sourceTree = "<group>";
@@ -1135,8 +1116,6 @@
 				5F1C963A19EDD319000F1FC1 /* Deprecated */,
 				5F1C963C19EDD319000F1FC1 /* DoubleClick */,
 				5F1C963E19EDD319000F1FC1 /* libGoogleConversionTracking.a */,
-				5F1C963F19EDD319000F1FC1 /* README.md */,
-				5F1C964019EDD319000F1FC1 /* README.txt */,
 			);
 			path = GoogleConversionTracking;
 			sourceTree = "<group>";
@@ -2114,7 +2093,6 @@
 				5F1C96EA19EDD31A000F1FC1 /* MPNotification.storyboard in Resources */,
 				5F1C9BE219EDE87A000F1FC1 /* TryingToConceive.png in Resources */,
 				5F1C9C0219EDE87A000F1FC1 /* ForwardArrow.png in Resources */,
-				5F1C96C919EDD319000F1FC1 /* README.txt in Resources */,
 				5F1C9C1519EDE87A000F1FC1 /* Meditations.png in Resources */,
 				5F1C9BC219EDE87A000F1FC1 /* Diet@2x.png in Resources */,
 				5F1C9C4B19EDE87A000F1FC1 /* today_unselect.png in Resources */,
@@ -2137,7 +2115,6 @@
 				5F1C9C0419EDE87A000F1FC1 /* ForwardArrowSmall@2x.png in Resources */,
 				5F1C9BA719EDE87A000F1FC1 /* BackArrow.png in Resources */,
 				5F1C9BEB19EDE87A000F1FC1 /* Energize@2x.png in Resources */,
-				5F1C96C219EDD319000F1FC1 /* Changelog.txt in Resources */,
 				5F1C99DA19EDE775000F1FC1 /* OndoPicture@2x.png in Resources */,
 				5F1C9BA019EDE87A000F1FC1 /* InfoPlist.strings in Resources */,
 				5F1C9C7F19EEF344000F1FC1 /* AccountTableViewCell.xib in Resources */,
@@ -2161,7 +2138,6 @@
 				5F1C9BA519EDE87A000F1FC1 /* Acupressure.png in Resources */,
 				5F1C9BAA19EDE87A000F1FC1 /* BuyButton.png in Resources */,
 				5F1C9BA819EDE87A000F1FC1 /* BackArrow@2x.png in Resources */,
-				5F1C96C019EDD319000F1FC1 /* Changelog.txt in Resources */,
 				5F1C9C4519EDE87A000F1FC1 /* more_selected.png in Resources */,
 				5F1C9BC919EDE87A000F1FC1 /* HabitsSmall@2x.png in Resources */,
 				5F1C9BC519EDE87A000F1FC1 /* Exercise@2x.png in Resources */,
@@ -2173,7 +2149,6 @@
 				5F1C9C4A19EDE87A000F1FC1 /* today_selected@2x.png in Resources */,
 				5F1C9BBB19EDE87A000F1FC1 /* Acupressure@2x.png in Resources */,
 				5F1C9C1A19EDE87A000F1FC1 /* Amazing@2x.png in Resources */,
-				5F1C96C319EDD319000F1FC1 /* Readme.txt in Resources */,
 				5F1C9C6619EDE87A000F1FC1 /* Ovatemp-Info.plist in Resources */,
 				5F1C9C6C19EDE87A000F1FC1 /* CheckCell.xib in Resources */,
 				5F1C9C4119EDE87A000F1FC1 /* community_selected.png in Resources */,
@@ -2219,12 +2194,10 @@
 				5F1C9C1319EDE87A000F1FC1 /* Massage.png in Resources */,
 				5F1C9BC719EDE87A000F1FC1 /* Habits.png in Resources */,
 				5F1C9C0719EDE87A000F1FC1 /* Icon40.png in Resources */,
-				5F1C96C119EDD319000F1FC1 /* Readme.txt in Resources */,
 				5F1C9C3619EDE87A000F1FC1 /* Negative@2x.png in Resources */,
 				5F1C9C2C19EDE87A000F1FC1 /* OvatempIcon@2x.png in Resources */,
 				5F1C9BD919EDE87A000F1FC1 /* MeditationSmall@2x.png in Resources */,
 				5F1C9C5119EDE87A000F1FC1 /* Wet.png in Resources */,
-				5F1C96C619EDD319000F1FC1 /* Readme.txt in Resources */,
 				5F1C9C1C19EDE87A000F1FC1 /* DaySupplements@2x.png in Resources */,
 				5F1C9BFB19EDE87A000F1FC1 /* Revitalize@2x.png in Resources */,
 				5F1C9BF319EDE87A000F1FC1 /* Nourish@2x.png in Resources */,
@@ -2418,7 +2391,6 @@
 				5F1C96DD19EDD31A000F1FC1 /* MPApplicationStateSerializer.m in Sources */,
 				5F1C9B9519EDE87A000F1FC1 /* RootViewController.m in Sources */,
 				5F1C9B7919EDE87A000F1FC1 /* GradientSegmentedControlButton.m in Sources */,
-				5F1C96C819EDD319000F1FC1 /* README.md in Sources */,
 				5F1C96DA19EDD31A000F1FC1 /* MPABTestDesignerSnapshotResponseMessage.m in Sources */,
 				5F1C96D919EDD31A000F1FC1 /* MPABTestDesignerSnapshotRequestMessage.m in Sources */,
 				5F1C9C5B19EDE87A000F1FC1 /* Day.m in Sources */,

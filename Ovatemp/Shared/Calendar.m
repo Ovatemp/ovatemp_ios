@@ -80,7 +80,7 @@ static Calendar *sharedCalendar = nil;
 - (BOOL)isSameDayWith:(NSDate*)compareDate {
   NSCalendar* calendar = [NSCalendar currentCalendar];
 
-  unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
+  unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay;
   NSDateComponents* comp1 = [calendar components:unitFlags fromDate:self.date];
   NSDateComponents* comp2 = [calendar components:unitFlags fromDate:compareDate];
 
