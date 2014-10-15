@@ -74,16 +74,6 @@ NSArray *ondoMenuItems;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-//    [self.form addLabel:@"Pair" withImage:nil andAccessoryType:UITableViewCellAccessoryNone toSection:@"ONDO™" whenTapped:^(FormRow *row) {
-//        [ONDO showPairingWizardWithDelegate:controller];
-//    }];
-//    
-//    [self.form addLabel:@"Manage thermometers" withImage:nil toSection:@"ONDO™" whenTapped:^(FormRow *row) {
-//        BluetoothDeviceTableViewController *bluetoothController = [BluetoothDeviceTableViewController new];
-//        bluetoothController.title = @"ONDO Thermometers";
-//        [controller.navigationController pushViewController:bluetoothController animated:YES];
-//    }];
-    
     if (indexPath.row == 0) {
         // Buy
         
