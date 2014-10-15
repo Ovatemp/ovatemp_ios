@@ -9,6 +9,7 @@
 #import "AccountMainTableViewController.h"
 #import "AccountTableViewCell.h"
 #import "WebViewController.h"
+#import "ONDOViewController.h"
 
 @interface AccountMainTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -67,6 +68,22 @@ NSArray *accountMenuItems;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"selected row %ld", (long)indexPath.row);
     
+    if (indexPath.row == 2) {
+        // ONDO
+//        [self.form addLabel:@"Pair" withImage:nil andAccessoryType:UITableViewCellAccessoryNone toSection:@"ONDO™" whenTapped:^(FormRow *row) {
+//            [ONDO showPairingWizardWithDelegate:controller];
+//        }];
+//        
+//        [self.form addLabel:@"Manage thermometers" withImage:nil toSection:@"ONDO™" whenTapped:^(FormRow *row) {
+//            BluetoothDeviceTableViewController *bluetoothController = [BluetoothDeviceTableViewController new];
+//            bluetoothController.title = @"ONDO Thermometers";
+//            [controller.navigationController pushViewController:bluetoothController animated:YES];
+//        }];
+        
+        ONDOViewController *ondoVC = [[ONDOViewController alloc] init];
+        [self.navigationController pushViewController:ondoVC animated:YES];
+    }
+    
     if (indexPath.row == 4) {
         // share sheet
         
@@ -98,7 +115,7 @@ NSArray *accountMenuItems;
     }
     
     if (indexPath.row == 6) {
-        NSLog(@"How it works");
+        NSLog(@"How it Works");
     }
     
     if (indexPath.row == 7) {
