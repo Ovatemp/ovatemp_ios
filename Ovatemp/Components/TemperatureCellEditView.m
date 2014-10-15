@@ -52,9 +52,14 @@
 
 - (void)setValue:(id)value {
   if (value) {
-    NSString *temperatureString = [NSString stringWithFormat:@"%.1fºF", [value floatValue]];
+    // Convert to Celsius
+    float tempInCelsius = (([value floatValue] - 32) / 1.8000f);
+
+    // Display both values on label
+    NSString *temperatureString = [NSString stringWithFormat:@"%.1fºF / %.1fºC", [value floatValue], tempInCelsius];
     self.temperatureLabel.text = temperatureString;
     self.temperatureSlider.value = [value floatValue];
+    self.temperatureLabel.font = [self.temperatureLabel.font fontWithSize:35.0f];
   } else {
     self.temperatureLabel.text = nil;
     self.temperatureSlider.value = 98.6f;

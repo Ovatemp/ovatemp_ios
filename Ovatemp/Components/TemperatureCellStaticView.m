@@ -36,7 +36,11 @@
   [self.cycleImageView setImage:[ccv drawChart:self.cycleImageView.bounds.size]];
 
   if (value) {
-    NSString *temperatureString = [NSString stringWithFormat:@"%.1fºF", [value floatValue]];
+    // Convert to Celsius
+    float tempInCelsius = (([value floatValue] - 32) / 1.8000f);
+
+    // Display both values on label
+    NSString *temperatureString = [NSString stringWithFormat:@"%.1fºF / %.1fºC", [value floatValue], tempInCelsius];
     self.temperatureLabel.text = temperatureString;
   } else {
     self.temperatureLabel.text = nil;
