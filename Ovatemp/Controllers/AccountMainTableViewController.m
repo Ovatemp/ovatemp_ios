@@ -92,6 +92,7 @@ NSArray *accountMenuItems;
         [[UIActivityViewController alloc] initWithActivityItems:@[shareString]
                                           applicationActivities:nil];
         
+        self.activityViewController.excludedActivityTypes = @[UIActivityTypeAirDrop, UIActivityTypeCopyToPasteboard];
         [self.activityViewController setValue:@"Ovatemp" forKey:@"subject"];
         
         // TODO: FIXME, activityViewController will sometimes dismiss by itself
