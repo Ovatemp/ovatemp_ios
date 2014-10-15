@@ -33,8 +33,6 @@ NSArray *accountMenuItems;
     
     accountMenuItems = [NSArray arrayWithObjects:@"Profile", @"Settings", @"ONDO Thermometer", @"Help", @"Share Ovatemp", @"Rate this App", @"How it works", @"Terms of Service", nil];
     
-//    self.accountTableViewCell = [UINib nibWithNibName:@"AccountTableViewCell" bundle:nil];
-//    [self.tableView registerNib:self.accountTableViewCell forCellReuseIdentifier:@"accountCell"];
     [[self tableView] registerNib:[UINib nibWithNibName:@"AccountTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"accountCell"];
 }
 
@@ -66,26 +64,24 @@ NSArray *accountMenuItems;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"selected row %ld", (long)indexPath.row);
     
-    if (indexPath.row == 2) {
+    if (indexPath.row == 0) {
+        // Profile
+        
+    } else if (indexPath.row == 1) {
+        // Settings
+        
+    } else if (indexPath.row == 2) {
         // ONDO
-//        [self.form addLabel:@"Pair" withImage:nil andAccessoryType:UITableViewCellAccessoryNone toSection:@"ONDO™" whenTapped:^(FormRow *row) {
-//            [ONDO showPairingWizardWithDelegate:controller];
-//        }];
-//        
-//        [self.form addLabel:@"Manage thermometers" withImage:nil toSection:@"ONDO™" whenTapped:^(FormRow *row) {
-//            BluetoothDeviceTableViewController *bluetoothController = [BluetoothDeviceTableViewController new];
-//            bluetoothController.title = @"ONDO Thermometers";
-//            [controller.navigationController pushViewController:bluetoothController animated:YES];
-//        }];
         
         ONDOViewController *ondoVC = [[ONDOViewController alloc] init];
         [self.navigationController pushViewController:ondoVC animated:YES];
-    }
-    
-    if (indexPath.row == 4) {
-        // share sheet
+        
+    } else if (indexPath.row == 3) {
+        // Help
+        
+    } else if (indexPath.row == 4) {
+        // Share
         
         NSString *shareString = @"Are you fertile? Find out now with Ovatemp! https://itunes.apple.com/us/app/ovatemp/id692187268?mt=8";
         
@@ -95,15 +91,11 @@ NSArray *accountMenuItems;
         
         [self.activityViewController setValue:@"Ovatemp" forKey:@"subject"];
         
-//        [self.navigationController presentViewController:self. activityViewController animated:YES completion:nil];
-//        [[[self parentViewController] parentViewController] presentViewController:self.activityViewController animated:YES completion:^{
-//            NSLog(@"completed");
-//        }];
+        // TODO: FIXME, activityViewController will sometimes dismiss by itself
         [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:self.activityViewController animated:YES completion:nil];
-    }
-    
-    if (indexPath.row == 5) {
-        // rate app
+        
+    } else if (indexPath.row == 5) {
+        // Rate app
         // https://itunes.apple.com/us/app/ovatemp/id692187268?mt=8
         // http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=xxxxxxxx&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8
         NSURL *appStoreURL = [NSURL URLWithString:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=692187268&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"];
@@ -112,19 +104,17 @@ NSArray *accountMenuItems;
         } else {
             NSLog(@"error opening link in AppStore");
         }
-    }
     
-    if (indexPath.row == 6) {
-        NSLog(@"How it Works");
-    }
-    
-    if (indexPath.row == 7) {
+    } else if (indexPath.row == 6) {
+        // How it Works
+        
+    } else { // indexPath.row == 7
         // TOS
         NSString *url = [ROOT_URL stringByAppendingString:@"/terms"];
         WebViewController *webViewController = [WebViewController withURL:url];
         [self.navigationController pushViewController:webViewController animated:YES];
-
     }
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

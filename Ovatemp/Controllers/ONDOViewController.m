@@ -71,15 +71,17 @@ NSArray *ondoMenuItems;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"selected row %ld", (long)indexPath.row);
     
     if (indexPath.row == 0) {
         // Buy
+        
     } else if (indexPath.row == 1) {
         // Pair
+        
     } else if (indexPath.row == 2) {
         // About
-    } else {
+        
+    } else { // indexPath.row == 3
         // Instruction
     }
     
