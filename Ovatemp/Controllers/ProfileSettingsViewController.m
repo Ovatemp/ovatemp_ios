@@ -22,11 +22,15 @@
 
 - (void)viewDidLoad {
   self.form = [Form withViewController:self];
+  // TODO: if fullName is an empty string, initialize the form with 10 whitespace characters or something.
+  if (![UserProfile current].fullName) {
+      [UserProfile current].fullName = @"          ";
+  }
   self.form.representedObject = [UserProfile current];
   self.form.onChange = ^(Form *form, FormRow *row, id value) {
     [[UserProfile current] save];
   };
-
+  
   [self.form addKeyPath:@"fullName" withLabel:@"Full Name:" toSection:@"Profile Settings"];
 
   NSInteger minAgeInYears = 12;
