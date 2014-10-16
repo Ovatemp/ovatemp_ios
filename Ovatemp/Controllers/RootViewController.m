@@ -227,7 +227,7 @@ static CGFloat const kDissolveDuration = 0.2;
 - (void)configureTabBarAppearance {
   [[UITabBar appearance] setBackgroundColor:LIGHT];
   [[UITabBar appearance] setTintColor:PURPLE];
-  [[UITabBar appearance] setSelectedImageTintColor:PURPLE];
+//  [[UITabBar appearance] setSelectedImageTintColor:PURPLE];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

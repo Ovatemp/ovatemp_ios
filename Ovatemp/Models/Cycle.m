@@ -51,7 +51,7 @@ static NSInteger kTotalDays;
 + (void)calculateDates {
   NSDate *today = [NSDate date];
   NSCalendar *calendar = [NSCalendar currentCalendar];
-  NSDateComponents *comps = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:today];
+  NSDateComponents *comps = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:today];
 
   // Go to the end of two months from now
   [comps setMonth:[comps month]+2];
@@ -63,7 +63,7 @@ static NSInteger kTotalDays;
   [comps setYear:comps.year - 2];
   kFirstDate = [calendar dateFromComponents:comps];
 
-  kTotalDays = [[calendar components:NSDayCalendarUnit
+  kTotalDays = [[calendar components:NSCalendarUnitDay
                             fromDate:kFirstDate
                               toDate:kLastDate
                              options:0] day];
@@ -76,11 +76,11 @@ static NSInteger kTotalDays;
   }
 
   NSCalendar *calendar = [NSCalendar currentCalendar];
-  NSDateComponents *components = [calendar components:NSWeekdayCalendarUnit fromDate:firstDate];
+  NSDateComponents *components = [calendar components:NSCalendarUnitWeekday fromDate:firstDate];
 
   while (components.weekday != 1) {
     firstDate = [firstDate dateByAddingTimeInterval:60 * 60 * -24];
-    components = [calendar components:NSWeekdayCalendarUnit fromDate:firstDate];
+    components = [calendar components:NSCalendarUnitWeekday fromDate:firstDate];
   }
 
   return firstDate;

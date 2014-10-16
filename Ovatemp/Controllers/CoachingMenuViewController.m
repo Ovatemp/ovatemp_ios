@@ -36,7 +36,7 @@
     self.extendedLayoutIncludesOpaqueBars=NO;
     self.automaticallyAdjustsScrollViewInsets=NO;
 
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = backButton;
   }
   return self;
@@ -73,7 +73,7 @@
     [self trackEvent:@"Started Coaching Program" action:@"Category" label:categoryName value:nil];
   }
 
-  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:nil action:nil];
+  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
   viewController.navigationItem.backBarButtonItem = backButton;
   viewController.navigationItem.title = categoryName;
   viewController.navigationItem.titleIcon = [UIImage imageNamed:[categoryName stringByAppendingString:@"Small"]];
