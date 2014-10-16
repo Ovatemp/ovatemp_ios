@@ -65,27 +65,8 @@ NSArray *settingsMenuItems;
         SettingsTemperatureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"settingsTempCell" forIndexPath:indexPath];
         
         [[cell textLabel] setText:[settingsMenuItems objectAtIndex:indexPath.row]];
-        NSLog(@"%@", cell.textLabel.frame);
-        NSLog(@"%f", cell.textLabel.frame.origin.x);
-        NSLog(@"%f", cell.textLabel.frame.origin.y);
-        NSLog(@"%f", cell.textLabel.frame.size.height);
-        NSLog(@"%f", cell.textLabel.frame.size.width);
         
         return cell;
-        
-        // Temp switch
-//        UISegmentedControl *tempSwitch;
-//        tempSwitch = [[UISegmentedControl alloc] initWithItems:@[@"ºF", @"ºC"]];
-//        [tempSwitch addTarget:self action:@selector(changeTempUnits:)
-//            forControlEvents:UIControlEventValueChanged];
-//        
-//        [cell setAccessoryType:UITableViewCellAccessoryNone] ;
-//        // get cell frame and put the temp switch in its place
-//        [tempSwitch setFrame:[cell bounds]];
-////        [tempSwitch setFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)]
-//        [tempSwitch setAutoresizingMask:UIViewAutoresizingFlexibleWidth] ;
-////        tempSwitch.tag = 47;
-//        [[cell contentView] addSubview:tempSwitch] ;
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"accountCell" forIndexPath:indexPath];
         
