@@ -10,7 +10,7 @@
 #import "AccountTableViewCell.h"
 #import "WebViewController.h"
 #import "ONDOViewController.h"
-#import "ProfileViewController.h"
+#import "ProfileTableViewController.h"
 
 @interface AccountMainTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -35,11 +35,19 @@ NSArray *accountMenuItems;
     accountMenuItems = [NSArray arrayWithObjects:@"Profile", @"Settings", @"ONDO Thermometer", @"Help", @"Share Ovatemp", @"Rate this App", @"How it Works", @"Terms of Service", nil];
     
     [[self tableView] registerNib:[UINib nibWithNibName:@"AccountTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"accountCell"];
+    
+    // logout
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(doLogout)];
+    self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)doLogout {
+    [self logout];
 }
 
 #pragma mark - Table view data source
@@ -68,7 +76,7 @@ NSArray *accountMenuItems;
     
     if (indexPath.row == 0) {
         // Profile
-        ProfileViewController *profileVC = [[ProfileViewController alloc] init];
+        ProfileTableViewController *profileVC = [[ProfileTableViewController alloc] init];
         [self.navigationController pushViewController:profileVC animated:YES];
         
     } else if (indexPath.row == 1) {
