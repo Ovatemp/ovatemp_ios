@@ -9,6 +9,7 @@
 #import "SettingsTableViewController.h"
 #import "AccountTableViewCell.h"
 #import "SettingsTemperatureTableViewCell.h"
+#import "FAMSettingsViewController.h"
 
 @interface SettingsTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -76,6 +77,19 @@ NSArray *settingsMenuItems;
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"%ld", (long)indexPath.row);
+    
+    // do nothing if row 0 (temp units)
+    
+    if (indexPath.row == 1) {
+        // FAM Settings
+        FAMSettingsViewController *famController = [FAMSettingsViewController new];
+        famController.title = @"FAM Settings";
+        [self.navigationController pushViewController:famController animated:YES];
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 /*
 // Override to support conditional editing of the table view.
