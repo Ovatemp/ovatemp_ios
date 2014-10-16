@@ -91,10 +91,7 @@
     birthDate.datePicker.maximumDate = maximumDate;
     
     // email
-    FormRow *email = [self.form addKeyPath:@"email"
-                                 withLabel:@"Email"
-                                  andImage:nil
-                                 toSection:@"Profile Settings"];
+    [self.form addKeyPath:@"email" withLabel:@"Email" andImage:nil toSection:@"Profile Settings"];
 }
 
 - (void)didReceiveMemoryWarning {
