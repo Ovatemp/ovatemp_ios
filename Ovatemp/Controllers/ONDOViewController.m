@@ -27,7 +27,7 @@ NSArray *ondoMenuItems;
     // Do any additional setup after loading the view from its nib.
     self.title = @"ONDO";
     
-    ondoMenuItems = [NSArray arrayWithObjects:@"Buy ONDO", @"Pair ONDO", @"Manage Thermometers", @"About ONDO", @"Instruction Manual", nil];
+    ondoMenuItems = [NSArray arrayWithObjects:@"Buy ONDO", @"Pair ONDO", @"Manage ONDO", @"About ONDO", @"Instruction Manual", nil];
         
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

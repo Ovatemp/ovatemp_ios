@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) NSString *fullName;
 @property (nonatomic, strong) NSDate *dateOfBirth;
+@property (nonatomic, strong) NSString *email;
 
 @property (nonatomic, assign) BOOL tryingToConceive;
 @property (nonatomic, assign) BOOL fiveDayRule;
