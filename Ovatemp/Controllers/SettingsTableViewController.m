@@ -78,8 +78,6 @@ NSArray *settingsMenuItems;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"%ld", (long)indexPath.row);
-    
     // do nothing if row 0 (temp units)
     
     if (indexPath.row == 1) {

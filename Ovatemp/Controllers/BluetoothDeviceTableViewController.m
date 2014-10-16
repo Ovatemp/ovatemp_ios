@@ -61,6 +61,16 @@
   return [ONDO sharedInstance].devices.count;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // fix to avoid persistent cell highlighting
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+// Override "Delete" text in case we want to use something else
+//- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return @"Remove";
+//}
+
 # pragma mark - ONDO delegate methods
 
 - (void)ONDO:(ONDO *)ondo didConnectToDevice:(ONDODevice *)device {
