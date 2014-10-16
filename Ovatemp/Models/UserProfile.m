@@ -10,6 +10,8 @@
 
 #import "Alert.h"
 
+#import "User.h"
+
 static UserProfile *_currentUserProfile;
 
 @implementation UserProfile
@@ -23,7 +25,8 @@ static UserProfile *_currentUserProfile;
                                                         @"five_day_rule": @NO,
                                                         @"dry_day_rule": @NO,
                                                         @"temperature_shift_rule": @NO,
-                                                        @"peak_day_rule": @NO
+                                                        @"peak_day_rule": @NO,
+                                                        @"email": @""
                                                         }];
   }
   return _currentUserProfile;
@@ -31,13 +34,19 @@ static UserProfile *_currentUserProfile;
 
 + (void)setCurrent:(UserProfile *)userProfile {
   _currentUserProfile = userProfile;
+    if (!_currentUserProfile.email) {
+      // add email
+      User *currentUser = [User current];
+      NSString *currentUserEmail = currentUser.email;
+      _currentUserProfile.email = currentUserEmail;
+    }
 }
 
 - (id)init {
   self = [super init];
   if(!self) { return nil; }
 
-  self.ignoredAttributes = [NSSet setWithArray:@[@"createdAt", @"updatedAt", @"userId"]];
+  self.ignoredAttributes = [NSSet setWithArray:@[@"createdAt", @"updatedAt", @"userId", @"email"]];
 
   return self;
 }
