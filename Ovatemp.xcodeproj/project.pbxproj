@@ -385,6 +385,8 @@
 		5F223F3119F014620003AF64 /* ProfileTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F223F2F19F014620003AF64 /* ProfileTableViewController.xib */; };
 		5F223F3519F03B480003AF64 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F223F3319F03B480003AF64 /* SettingsTableViewController.m */; };
 		5F223F3619F03B480003AF64 /* SettingsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F223F3419F03B480003AF64 /* SettingsTableViewController.xib */; };
+		5F223F3A19F05C330003AF64 /* SettingsTemperatureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F223F3819F05C330003AF64 /* SettingsTemperatureTableViewCell.m */; };
+		5F223F3B19F05C330003AF64 /* SettingsTemperatureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F223F3919F05C330003AF64 /* SettingsTemperatureTableViewCell.xib */; };
 		5F58690619ED802400D2B58E /* Negative.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58677419ED802400D2B58E /* Negative.png */; };
 		5F58690719ED802400D2B58E /* Negative@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58677519ED802400D2B58E /* Negative@2x.png */; };
 		5F586A2719ED802400D2B58E /* Positive.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58690419ED802400D2B58E /* Positive.png */; };
@@ -961,6 +963,9 @@
 		5F223F3219F03B480003AF64 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		5F223F3319F03B480003AF64 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		5F223F3419F03B480003AF64 /* SettingsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsTableViewController.xib; sourceTree = "<group>"; };
+		5F223F3719F05C330003AF64 /* SettingsTemperatureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTemperatureTableViewCell.h; sourceTree = "<group>"; };
+		5F223F3819F05C330003AF64 /* SettingsTemperatureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTemperatureTableViewCell.m; sourceTree = "<group>"; };
+		5F223F3919F05C330003AF64 /* SettingsTemperatureTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsTemperatureTableViewCell.xib; sourceTree = "<group>"; };
 		5F58677419ED802400D2B58E /* Negative.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Negative.png; sourceTree = "<group>"; };
 		5F58677519ED802400D2B58E /* Negative@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Negative@2x.png"; sourceTree = "<group>"; };
 		5F58690419ED802400D2B58E /* Positive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Positive.png; sourceTree = "<group>"; };
@@ -1432,6 +1437,9 @@
 				5F223F2F19F014620003AF64 /* ProfileTableViewController.xib */,
 				5F1C9C8519EF16DB000F1FC1 /* ONDOViewController.h */,
 				5F1C9C8619EF16DB000F1FC1 /* ONDOViewController.m */,
+				5F223F3719F05C330003AF64 /* SettingsTemperatureTableViewCell.h */,
+				5F223F3819F05C330003AF64 /* SettingsTemperatureTableViewCell.m */,
+				5F223F3919F05C330003AF64 /* SettingsTemperatureTableViewCell.xib */,
 				5F1C9C8719EF16DB000F1FC1 /* ONDOViewController.xib */,
 				5F1C9C7B19EEF343000F1FC1 /* AccountTableViewCell.h */,
 				5F1C9C7C19EEF343000F1FC1 /* AccountTableViewCell.m */,
@@ -2173,6 +2181,7 @@
 				5F1C9C0819EDE87A000F1FC1 /* Icon40@2x.png in Resources */,
 				5F1C9C2719EDE87A000F1FC1 /* MoreBirthday@2x.png in Resources */,
 				5F1C9B8319EDE87A000F1FC1 /* CalendarViewController.xib in Resources */,
+				5F223F3B19F05C330003AF64 /* SettingsTemperatureTableViewCell.xib in Resources */,
 				5F1C9C0D19EDE87A000F1FC1 /* Protected.png in Resources */,
 				5F1C9BD519EDE87A000F1FC1 /* Meditation.png in Resources */,
 				5F1C9C5019EDE87A000F1FC1 /* Lube@2x.png in Resources */,
@@ -2435,6 +2444,7 @@
 				5F1C9C7419EDE87A000F1FC1 /* LifestyleCell.m in Sources */,
 				5F1C9B8119EDE87A000F1FC1 /* BluetoothDeviceTableViewController.m in Sources */,
 				5F1C9B7C19EDE87A000F1FC1 /* SubscriptionMenuCell.m in Sources */,
+				5F223F3A19F05C330003AF64 /* SettingsTemperatureTableViewCell.m in Sources */,
 				5F1C9B7B19EDE87A000F1FC1 /* PassthroughScrollView.m in Sources */,
 				5F1C9B7A19EDE87A000F1FC1 /* IconLabel.m in Sources */,
 				5F1C970419EDD31A000F1FC1 /* MPVariant.m in Sources */,

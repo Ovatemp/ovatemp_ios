@@ -7,17 +7,32 @@
 //
 
 #import "SettingsTableViewController.h"
+#import "AccountTableViewCell.h"
+#import "SettingsTemperatureTableViewCell.h"
 
-@interface SettingsTableViewController ()
+@interface SettingsTableViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property AccountTableViewCell *accountTableViewCell;
 
 @end
 
 @implementation SettingsTableViewController
 
+NSArray *settingsMenuItems;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"Settings";
+    
+    settingsMenuItems = [NSArray arrayWithObjects:@"Temperature Units", @"FAM Settings", nil];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    [[self tableView] registerNib:[UINib nibWithNibName:@"AccountTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"accountCell"];
+    
+    [[self tableView] registerNib:[UINib nibWithNibName:@"SettingsTemperatureTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"settingsTempCell"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -34,26 +49,52 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [settingsMenuItems count];
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    AccountTableViewCell *cell;
     
-    // Configure the cell...
+    if (indexPath.row == 0) {
+        SettingsTemperatureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"settingsTempCell" forIndexPath:indexPath];
+        
+        [[cell textLabel] setText:[settingsMenuItems objectAtIndex:indexPath.row]];
+        NSLog(@"%@", cell.textLabel.frame);
+        NSLog(@"%f", cell.textLabel.frame.origin.x);
+        NSLog(@"%f", cell.textLabel.frame.origin.y);
+        NSLog(@"%f", cell.textLabel.frame.size.height);
+        NSLog(@"%f", cell.textLabel.frame.size.width);
+        
+        return cell;
+        
+        // Temp switch
+//        UISegmentedControl *tempSwitch;
+//        tempSwitch = [[UISegmentedControl alloc] initWithItems:@[@"ºF", @"ºC"]];
+//        [tempSwitch addTarget:self action:@selector(changeTempUnits:)
+//            forControlEvents:UIControlEventValueChanged];
+//        
+//        [cell setAccessoryType:UITableViewCellAccessoryNone] ;
+//        // get cell frame and put the temp switch in its place
+//        [tempSwitch setFrame:[cell bounds]];
+////        [tempSwitch setFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)]
+//        [tempSwitch setAutoresizingMask:UIViewAutoresizingFlexibleWidth] ;
+////        tempSwitch.tag = 47;
+//        [[cell contentView] addSubview:tempSwitch] ;
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"accountCell" forIndexPath:indexPath];
+        
+        [[cell textLabel] setText:[settingsMenuItems objectAtIndex:indexPath.row]];
+    }
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
