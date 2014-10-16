@@ -11,6 +11,7 @@
 #import "WebViewController.h"
 #import "ONDOViewController.h"
 #import "ProfileTableViewController.h"
+#import "SettingsTableViewController.h"
 
 @interface AccountMainTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -81,6 +82,8 @@ NSArray *accountMenuItems;
         
     } else if (indexPath.row == 1) {
         // Settings
+        SettingsTableViewController *settingsVC = [[SettingsTableViewController alloc] init];
+        [self.navigationController pushViewController:settingsVC animated:YES];
         
     } else if (indexPath.row == 2) {
         // ONDO

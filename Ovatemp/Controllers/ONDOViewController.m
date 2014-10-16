@@ -85,7 +85,7 @@ NSArray *ondoMenuItems;
     } else if (indexPath.row == 2) {
         // Manage
         BluetoothDeviceTableViewController *bluetoothController = [BluetoothDeviceTableViewController new];
-        bluetoothController.title = @"ONDO Thermometers";
+        bluetoothController.title = @"Manage ONDO";
         [self.navigationController pushViewController:bluetoothController animated:YES];
         
     } else if (indexPath.row == 3) {

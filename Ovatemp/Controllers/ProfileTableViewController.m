@@ -32,11 +32,11 @@
     
     // Set up radio buttons
     FormRow *conceive = [self.form addKeyPath:@"tryingToConceive"
-                                    withLabel:@"Trying to conceive:"
+                                    withLabel:@"Trying to Conceive"
                                      andImage:@"MoreTryingToConceive.png"
                                     toSection:@"Goal"];
     FormRow *avoid = [self.form addKeyPath:@"tryingToConceive"
-                                 withLabel:@"Trying to avoid:"
+                                 withLabel:@"Trying to Avoid"
                                   andImage:@"MoreTryingToAvoid.png"
                                  toSection:@"Goal"];
     avoid.valueTransformer = [NSValueTransformer valueTransformerForName:NSNegateBooleanTransformerName];
@@ -74,7 +74,7 @@
         [[UserProfile current] save];
     };
     
-    [self.form addKeyPath:@"fullName" withLabel:@"Full Name:" toSection:@"Profile Settings"];
+    [self.form addKeyPath:@"fullName" withLabel:@"Full Name" toSection:@"Profile Settings"];
     
     NSInteger minAgeInYears = 12;
     NSInteger day = 60 * 60 * 24;
@@ -83,18 +83,16 @@
     NSDate *minimumDate = [NSDate dateWithTimeIntervalSinceNow:-50 * year];
     
     FormRow *birthDate = [self.form addKeyPath:@"dateOfBirth"
-                                     withLabel:@"Date of Birth:"
-                                      andImage:@"MoreBirthday.png"
+                                     withLabel:@"Date of Birth"
+                                  // andImage:@"MoreBirthday.png"
+                                     andImage:nil
                                      toSection:@"Profile Settings"];
     birthDate.datePicker.datePickerMode = UIDatePickerModeDate;
     birthDate.datePicker.minimumDate = minimumDate;
     birthDate.datePicker.maximumDate = maximumDate;
     
     // email
-    FormRow *email = [self.form addKeyPath:@"email"
-                                 withLabel:@"Email"
-                                  andImage:nil
-                                 toSection:@"Profile Settings"];
+    [self.form addKeyPath:@"email" withLabel:@"Email" andImage:nil toSection:@"Profile Settings"];
 }
 
 - (void)didReceiveMemoryWarning {
