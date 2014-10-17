@@ -152,7 +152,7 @@ static CGFloat const kDissolveDuration = 0.2;
 //- (SessionViewController *)createSessionViewController {
 - (SelectLogInOrSignUpViewController *)createSessionViewController {
 //  SessionViewController* sessionViewController = [[UIStoryboard storyboardWithName:@"SessionStoryboard" bundle:nil] instantiateInitialViewController];
-//
+
 //  return sessionViewController;
     
     SelectLogInOrSignUpViewController *selectVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateInitialViewController];
