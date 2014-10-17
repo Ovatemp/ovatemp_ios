@@ -11,7 +11,7 @@
 #import "User.h"
 #import "Alert.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () <UITextFieldDelegate>
 
 @end
 
@@ -22,6 +22,9 @@
 - (void)viewDidAppear:(BOOL)animated {
     [self addKeyboardObservers];
     [self trackScreenView:@"Login"];
+    
+    self.emailField.delegate = self;
+    self.passwordField.delegate = self;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -91,6 +94,22 @@
 
 - (BOOL)shouldAutorotate {
     return FALSE;
+}
+
+#pragma mark - Keyboard
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    return YES;
+}
+
+// It is important for you to hide keyboard
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+//    [self.view endEditing:YES];
+    return YES;
 }
 
 /*

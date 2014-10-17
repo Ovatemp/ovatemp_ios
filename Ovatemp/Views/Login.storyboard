@@ -62,7 +62,7 @@
         <!--Sign Up-->
         <scene sceneID="uNd-ci-e0z">
             <objects>
-                <viewController id="E4r-6s-Glc" sceneMemberID="viewController">
+                <viewController id="E4r-6s-Glc" customClass="SignUpViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b12-uz-ypd"/>
                         <viewControllerLayoutGuide type="bottom" id="JgD-JO-NpE"/>
@@ -104,6 +104,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Sign Up" id="MJc-MD-bfm"/>
+                    <connections>
+                        <outlet property="dateOfBirthField" destination="RO9-id-8xH" id="f8F-vg-Ya9"/>
+                        <outlet property="emailField" destination="Sxc-1f-7bk" id="A8a-9h-Gem"/>
+                        <outlet property="fullNameField" destination="tuo-ck-sL0" id="jPi-M9-EKB"/>
+                        <outlet property="passwordField" destination="Jy1-kj-rkP" id="eXD-IQ-vM6"/>
+                        <outlet property="singUpButton" destination="ytD-pr-ZyT" id="fNE-ep-uey"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O86-PJ-JDt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -334,12 +341,12 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ScB-L1-76z">
                                 <rect key="frame" x="16" y="299" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d74-Xq-dTh">
                                 <rect key="frame" x="16" y="356" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YW-5h-plm">
                                 <rect key="frame" x="139" y="431" width="43" height="30"/>
