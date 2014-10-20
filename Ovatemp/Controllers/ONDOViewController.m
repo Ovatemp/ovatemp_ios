@@ -10,6 +10,7 @@
 #import "AccountTableViewCell.h"
 #import "ONDO.h"
 #import "BluetoothDeviceTableViewController.h"
+#import "WebViewController.h"
 
 @interface ONDOViewController () <UITableViewDelegate, UITableViewDataSource, ONDODelegate>
 
@@ -74,25 +75,49 @@ NSArray *ondoMenuItems;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == 0) {
-        // Buy
-        
-    } else if (indexPath.row == 1) {
-        // Pair
-        __weak ONDOViewController *controller = self;
-        [ONDO showPairingWizardWithDelegate:controller];
-        
-    } else if (indexPath.row == 2) {
-        // Manage
-        BluetoothDeviceTableViewController *bluetoothController = [BluetoothDeviceTableViewController new];
-        bluetoothController.title = @"Manage ONDO";
-        [self.navigationController pushViewController:bluetoothController animated:YES];
-        
-    } else if (indexPath.row == 3) {
-        // About
-        
-    } else { // indexPath.row == 4
-        // Instructions
+    
+    switch (indexPath.row) {
+        case 0:  // Buy
+        {
+            NSString *url = @"http://ovatemp.com/products/ondo";
+            WebViewController *webViewController = [WebViewController withURL:url];
+            [self.navigationController pushViewController:webViewController animated:YES];
+            break;
+        }
+            
+        case 1: // Pair
+        {
+            __weak ONDOViewController *controller = self;
+            [ONDO showPairingWizardWithDelegate:controller];
+            break;
+        }
+            
+        case 2: // Manage
+        {
+            BluetoothDeviceTableViewController *bluetoothController = [BluetoothDeviceTableViewController new];
+            bluetoothController.title = @"Manage ONDO";
+            [self.navigationController pushViewController:bluetoothController animated:YES];
+            break;
+        }
+            
+        case 3: // About
+        {
+            NSString *url = @"http://ovatemp.com/pages/ondo";
+            WebViewController *webViewController = [WebViewController withURL:url];
+            [self.navigationController pushViewController:webViewController animated:YES];
+            break;
+        }
+            
+        case 4: // Instructions
+        {
+            NSString *url = @"https://s3.amazonaws.com/ovatemp/UserManual_2014.02.26.pdf";
+            WebViewController *webViewController = [WebViewController withURL:url];
+            [self.navigationController pushViewController:webViewController animated:YES];
+            break;
+        }
+            
+        default:
+            break;
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

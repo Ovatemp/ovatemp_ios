@@ -75,59 +75,83 @@ NSArray *accountMenuItems;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == 0) {
-        // Profile
-        ProfileTableViewController *profileVC = [[ProfileTableViewController alloc] init];
-        [self.navigationController pushViewController:profileVC animated:YES];
-        
-    } else if (indexPath.row == 1) {
-        // Settings
-        SettingsTableViewController *settingsVC = [[SettingsTableViewController alloc] init];
-        [self.navigationController pushViewController:settingsVC animated:YES];
-        
-    } else if (indexPath.row == 2) {
-        // ONDO
-        
-        ONDOViewController *ondoVC = [[ONDOViewController alloc] init];
-        [self.navigationController pushViewController:ondoVC animated:YES];
-        
-    } else if (indexPath.row == 3) {
-        // Help
-        
-    } else if (indexPath.row == 4) {
-        // Share
-        
-        NSString *shareString = @"Are you fertile? Find out now with Ovatemp! https://itunes.apple.com/us/app/ovatemp/id692187268?mt=8";
-        
-        self.activityViewController =
-        [[UIActivityViewController alloc] initWithActivityItems:@[shareString]
-                                          applicationActivities:nil];
-        
-        self.activityViewController.excludedActivityTypes = @[UIActivityTypeAirDrop, UIActivityTypeCopyToPasteboard];
-        [self.activityViewController setValue:@"Ovatemp" forKey:@"subject"];
-        
-        // TODO: FIXME, activityViewController will sometimes dismiss by itself
-        [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:self.activityViewController animated:YES completion:nil];
-        
-    } else if (indexPath.row == 5) {
-        // Rate app
-        // https://itunes.apple.com/us/app/ovatemp/id692187268?mt=8
-        // http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=xxxxxxxx&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8
-        NSURL *appStoreURL = [NSURL URLWithString:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=692187268&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"];
-        if ([[UIApplication sharedApplication]canOpenURL:appStoreURL]) {
-            [[UIApplication sharedApplication]openURL:appStoreURL];
-        } else {
-            NSLog(@"error opening link in AppStore");
+    switch (indexPath.row) {
+        case 0: // Profile
+        {
+            ProfileTableViewController *profileVC = [[ProfileTableViewController alloc] init];
+            [self.navigationController pushViewController:profileVC animated:YES];
+            break;
         }
-    
-    } else if (indexPath.row == 6) {
-        // How it Works
-        
-    } else { // indexPath.row == 7
-        // TOS
-        NSString *url = [ROOT_URL stringByAppendingString:@"/terms"];
-        WebViewController *webViewController = [WebViewController withURL:url];
-        [self.navigationController pushViewController:webViewController animated:YES];
+            
+        case 1: // Settings
+        {
+            SettingsTableViewController *settingsVC = [[SettingsTableViewController alloc] init];
+            [self.navigationController pushViewController:settingsVC animated:YES];
+            break;
+        }
+            
+        case 2: // ONDO
+        {
+            ONDOViewController *ondoVC = [[ONDOViewController alloc] init];
+            [self.navigationController pushViewController:ondoVC animated:YES];
+            break;
+        }
+            
+        case 3: // Help
+        {
+            break;
+        }
+            
+        case 4: // Share
+        {
+            NSString *shareString = @"Are you fertile? Find out now with Ovatemp! https://itunes.apple.com/us/app/ovatemp/id692187268?mt=8";
+            
+            self.activityViewController =
+            [[UIActivityViewController alloc] initWithActivityItems:@[shareString]
+                                              applicationActivities:nil];
+            
+            self.activityViewController.excludedActivityTypes = @[UIActivityTypeAirDrop, UIActivityTypeCopyToPasteboard];
+            [self.activityViewController setValue:@"Ovatemp" forKey:@"subject"];
+            
+            // TODO: FIXME, activityViewController will sometimes dismiss by itself
+            [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:self.activityViewController animated:YES completion:nil];
+            break;
+        }
+            
+        case 5: // Rate app
+        {
+            
+            // https://itunes.apple.com/us/app/ovatemp/id692187268?mt=8 - normal store URL
+            // http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=692187268&pageNumber=0& sortOrdering=2&type=Purple+Software&mt=8 - brings user to ratings tab
+            
+            NSURL *appStoreURL = [NSURL URLWithString:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=692187268&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"];
+            if ([[UIApplication sharedApplication]canOpenURL:appStoreURL]) {
+                [[UIApplication sharedApplication]openURL:appStoreURL];
+            } else {
+                NSLog(@"error opening link in AppStore");
+            }
+            break;
+        }
+            
+        case 6: // How it Works
+        {
+            NSString *url = @"http://ovatemp.helpshift.com/a/ovatemp/?s=fertility-faqs&f=how-does-ovatemp-work";
+            WebViewController *webViewController = [WebViewController withURL:url];
+            [self.navigationController pushViewController:webViewController animated:YES];
+            break;
+        }
+            
+        case 7: // TOS
+        {
+            NSString *url = [ROOT_URL stringByAppendingString:@"/terms"];
+            WebViewController *webViewController = [WebViewController withURL:url];
+            webViewController.title = @"Terms of Service";
+            [self.navigationController pushViewController:webViewController animated:YES];
+            break;
+        }
+            
+        default:
+            break;
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
