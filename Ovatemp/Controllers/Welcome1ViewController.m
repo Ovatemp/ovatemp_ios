@@ -7,6 +7,8 @@
 //
 
 #import "Welcome1ViewController.h"
+#import "UserProfile.h"
+#import "UIViewController+UserProfileHelpers.h"
 
 @interface Welcome1ViewController ()
 
@@ -26,13 +28,16 @@
 }
 
 - (IBAction)didSelectTryingToConceive:(id)sender {
+    [UserProfile current].tryingToConceive = YES;
+    [[UserProfile current] save];
     [self performSegueWithIdentifier:@"tryingToConceive" sender:self];
 }
 
 - (IBAction)didSelectTryingToAvoid:(id)sender {
+    [UserProfile current].tryingToConceive = NO;
+    [[UserProfile current] save];
     [self performSegueWithIdentifier:@"tryingToAvoid" sender:self];
 }
-
 
 /*
 #pragma mark - Navigation
