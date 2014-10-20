@@ -74,18 +74,28 @@ NSArray *settingsMenuItems;
         [[cell textLabel] setText:[settingsMenuItems objectAtIndex:indexPath.row]];
     }
     
+    // if failure
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // do nothing if row 0 (temp units)
     
-    if (indexPath.row == 1) {
-        // FAM Settings
-        FAMSettingsViewController *famController = [FAMSettingsViewController new];
-        famController.title = @"FAM Settings";
-        [self.navigationController pushViewController:famController animated:YES];
+    switch (indexPath.row) {
+        case 0: // Temperature unit select, do nothing
+            break;
+            
+        case 1: // FAM Settings
+        {
+            FAMSettingsViewController *famController = [FAMSettingsViewController new];
+            famController.title = @"FAM Settings";
+            [self.navigationController pushViewController:famController animated:YES];
+        }
+        
+        default:
+            break;
     }
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
