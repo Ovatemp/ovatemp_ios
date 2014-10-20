@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Day.h"
 
 @interface Welcome1ViewController : UIViewController
 

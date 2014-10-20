@@ -50,6 +50,15 @@
                                     <segue destination="A27-NT-QUR" kind="push" id="vZ5-L5-qh4"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPD-7T-qbV">
+                                <rect key="frame" x="94" y="160" width="133" height="30"/>
+                                <state key="normal" title="Jump to Welcome2">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="kFR-fO-zr5" kind="push" id="gya-ek-y7R"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -169,7 +178,7 @@
         <!--Welcome-->
         <scene sceneID="dJN-e6-otk">
             <objects>
-                <viewController id="kFR-fO-zr5" sceneMemberID="viewController">
+                <viewController id="kFR-fO-zr5" customClass="Welcome2ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TIG-AM-bS6"/>
                         <viewControllerLayoutGuide type="bottom" id="PyD-JX-VES"/>
@@ -190,8 +199,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="X months ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hO-f8-2WO">
-                                <rect key="frame" x="56" y="235" width="107" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1 week ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hO-f8-2WO">
+                                <rect key="frame" x="56" y="235" width="203" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -209,6 +218,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="timeAgoLabel" destination="9hO-f8-2WO" id="XCN-Kx-RFp"/>
+                        <outlet property="tryingToConceivePicker" destination="1v7-Db-EN3" id="UMh-zi-jiq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hOZ-ZW-mca" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -393,6 +406,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="7Dh-Ua-Vdw"/>
+        <segue reference="kMr-Zw-8PI"/>
+        <segue reference="BUf-ng-Aq6"/>
     </inferredMetricsTieBreakers>
 </document>
