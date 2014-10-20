@@ -394,6 +394,8 @@
 		5F586A2819ED802400D2B58E /* Positive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58690519ED802400D2B58E /* Positive@2x.png */; };
 		5F846E0719F560D300CED980 /* Welcome1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0619F560D300CED980 /* Welcome1ViewController.m */; };
 		5F846E0A19F57D4D00CED980 /* Welcome2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0919F57D4D00CED980 /* Welcome2ViewController.m */; };
+		5F846E0D19F5A96000CED980 /* Welcome3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0C19F5A96000CED980 /* Welcome3ViewController.m */; };
+		5F846E1019F5AEC100CED980 /* WelcomeONDOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0F19F5AEC100CED980 /* WelcomeONDOViewController.m */; };
 		5F8C568E19F184C60024552A /* SelectLogInOrSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C568D19F184C60024552A /* SelectLogInOrSignUpViewController.m */; };
 		5F8C569119F186C90024552A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C569019F186C90024552A /* LoginViewController.m */; };
 		5F8C569419F1BD950024552A /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C569319F1BD950024552A /* SignUpViewController.m */; };
@@ -982,6 +984,10 @@
 		5F846E0619F560D300CED980 /* Welcome1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Welcome1ViewController.m; sourceTree = "<group>"; };
 		5F846E0819F57D4D00CED980 /* Welcome2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Welcome2ViewController.h; sourceTree = "<group>"; };
 		5F846E0919F57D4D00CED980 /* Welcome2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Welcome2ViewController.m; sourceTree = "<group>"; };
+		5F846E0B19F5A96000CED980 /* Welcome3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Welcome3ViewController.h; sourceTree = "<group>"; };
+		5F846E0C19F5A96000CED980 /* Welcome3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Welcome3ViewController.m; sourceTree = "<group>"; };
+		5F846E0E19F5AEC100CED980 /* WelcomeONDOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeONDOViewController.h; sourceTree = "<group>"; };
+		5F846E0F19F5AEC100CED980 /* WelcomeONDOViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeONDOViewController.m; sourceTree = "<group>"; };
 		5F8C568C19F184C60024552A /* SelectLogInOrSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectLogInOrSignUpViewController.h; sourceTree = "<group>"; };
 		5F8C568D19F184C60024552A /* SelectLogInOrSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLogInOrSignUpViewController.m; sourceTree = "<group>"; };
 		5F8C568F19F186C90024552A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -1528,6 +1534,10 @@
 				5F846E0619F560D300CED980 /* Welcome1ViewController.m */,
 				5F846E0819F57D4D00CED980 /* Welcome2ViewController.h */,
 				5F846E0919F57D4D00CED980 /* Welcome2ViewController.m */,
+				5F846E0B19F5A96000CED980 /* Welcome3ViewController.h */,
+				5F846E0C19F5A96000CED980 /* Welcome3ViewController.m */,
+				5F846E0E19F5AEC100CED980 /* WelcomeONDOViewController.h */,
+				5F846E0F19F5AEC100CED980 /* WelcomeONDOViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -2454,6 +2464,7 @@
 				5F1C96FF19EDD31A000F1FC1 /* MPTypeDescription.m in Sources */,
 				5F1C96FE19EDD31A000F1FC1 /* MPTweakStore.m in Sources */,
 				5F1C9B8019EDE87A000F1FC1 /* Constants.m in Sources */,
+				5F846E1019F5AEC100CED980 /* WelcomeONDOViewController.m in Sources */,
 				5F1C96E919EDD31A000F1FC1 /* MPNotification.m in Sources */,
 				5F1C99DD19EDE775000F1FC1 /* ONDOPairViewController.m in Sources */,
 				5F1C9B8D19EDE87A000F1FC1 /* LifestyleViewController.m in Sources */,
@@ -2483,6 +2494,7 @@
 				5F1C9C7E19EEF344000F1FC1 /* AccountTableViewCell.m in Sources */,
 				5F1C96D619EDD31A000F1FC1 /* MPABTestDesignerDeviceInfoRequestMessage.m in Sources */,
 				5F1C96D519EDD31A000F1FC1 /* MPABTestDesignerConnection.m in Sources */,
+				5F846E0D19F5A96000CED980 /* Welcome3ViewController.m in Sources */,
 				5F1C96E319EDD31A000F1FC1 /* MPCGRectToNSDictionaryValueTransformer.m in Sources */,
 				5F1C9B7D19EDE87A000F1FC1 /* SubscriptionMenuTableViewCell.m in Sources */,
 				5F1C9B9219EDE87A000F1FC1 /* Onboard2ViewController.m in Sources */,

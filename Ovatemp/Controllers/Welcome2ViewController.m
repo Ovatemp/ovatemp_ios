@@ -21,6 +21,8 @@ NSArray *yearsArray;
 NSArray *singularUnitsOfTimeArray;
 NSArray *unitsOfTimeArray;
 
+NSDate *startedTryingDate;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -86,6 +88,41 @@ NSArray *unitsOfTimeArray;
     }
     
     self.timeAgoLabel.text = [NSString stringWithFormat:@"%ld %@ ago", (long)[pickerView selectedRowInComponent:0] + 1, timeComponentAsString];
+    
+    // convert start trying date to NSDate
+    // 0 - week
+    // 1 - month
+    // 2 - year
+    
+    NSCalendar *startedTryingCalendar = [NSCalendar currentCalendar];
+    NSDateComponents *startedTryingComponenets = [[NSDateComponents alloc] init];
+    
+    switch (timeComponent) {
+        case 0: // week
+            startedTryingComponenets.weekOfYear = -([pickerView selectedRowInComponent:0] + 1);
+            break;
+        
+        case 1: // month
+            startedTryingComponenets.month = -([pickerView selectedRowInComponent:0] + 1);
+        
+        case 2: // year
+            startedTryingComponenets.year= -([pickerView selectedRowInComponent:0] + 1);
+            
+        default:
+            break;
+    }
+    
+    startedTryingDate = [startedTryingCalendar dateByAddingComponents:startedTryingComponenets toDate:[NSDate date] options:0];
+}
+
+- (IBAction)doNextScreen:(id)sender {
+    
+    // save date to NSUserDefaults
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:startedTryingDate forKey:@"startedTryingDate"];
+    [defaults synchronize];
+    
+    [self performSegueWithIdentifier:@"welcome2ToWelcome3" sender:self];
 }
 
 /*

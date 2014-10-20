@@ -214,13 +214,14 @@
                     <navigationItem key="navigationItem" title="Welcome" id="plb-tV-YrQ">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="iL7-V3-KxC">
                             <connections>
-                                <segue destination="gRw-wx-L5R" kind="push" id="BUf-ng-Aq6"/>
+                                <action selector="doNextScreen:" destination="kFR-fO-zr5" id="nP4-wy-YcG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="timeAgoLabel" destination="9hO-f8-2WO" id="XCN-Kx-RFp"/>
                         <outlet property="tryingToConceivePicker" destination="1v7-Db-EN3" id="UMh-zi-jiq"/>
+                        <segue destination="gRw-wx-L5R" kind="push" identifier="welcome2ToWelcome3" id="inY-NG-Hzw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hOZ-ZW-mca" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -230,7 +231,7 @@
         <!--Welcome-->
         <scene sceneID="ktx-ut-5E4">
             <objects>
-                <viewController id="gRw-wx-L5R" sceneMemberID="viewController">
+                <viewController id="gRw-wx-L5R" customClass="Welcome3ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Lbg-UC-4w9"/>
                         <viewControllerLayoutGuide type="bottom" id="jNJ-08-VNz"/>
@@ -288,10 +289,13 @@
                     <navigationItem key="navigationItem" title="Welcome" id="4py-OU-x7y">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="i81-WA-bbU">
                             <connections>
-                                <segue destination="4wG-ur-4Q6" kind="push" id="mzU-Y0-hqF"/>
+                                <action selector="doNextScreen:" destination="gRw-wx-L5R" id="gtn-12-a5q"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="4wG-ur-4Q6" kind="push" identifier="toOndoPairing" id="13K-Va-Q3Z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x81-6D-wAq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -300,7 +304,7 @@
         <!--Welcome-->
         <scene sceneID="pYH-qy-DeN">
             <objects>
-                <viewController id="4wG-ur-4Q6" sceneMemberID="viewController">
+                <viewController id="4wG-ur-4Q6" customClass="WelcomeONDOViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UcP-IU-CON"/>
                         <viewControllerLayoutGuide type="bottom" id="qBJ-Xg-cJn"/>
@@ -328,12 +332,18 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                 <state key="normal" title="Yes">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="doONDOPairing:" destination="4wG-ur-4Q6" eventType="touchUpInside" id="Zs3-4N-ei9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="om6-3N-P0D">
                                 <rect key="frame" x="145" y="430" width="30" height="30"/>
                                 <state key="normal" title="No">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="doNoPairing:" destination="4wG-ur-4Q6" eventType="touchUpInside" id="Goa-j0-Put"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -407,6 +417,6 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="kMr-Zw-8PI"/>
-        <segue reference="BUf-ng-Aq6"/>
+        <segue reference="inY-NG-Hzw"/>
     </inferredMetricsTieBreakers>
 </document>
