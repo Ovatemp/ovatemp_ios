@@ -15,6 +15,7 @@
 #import "TodayNavigationController.h"
 #import "SessionViewController.h"
 #import "TodayViewController.h"
+#import "SelectLogInOrSignUpViewController.h"
 
 #import "GAI.h"
 #import "ACTReporter.h"
@@ -148,10 +149,14 @@ static CGFloat const kDissolveDuration = 0.2;
 
 # pragma mark - Session Handling
 
-- (SessionViewController *)createSessionViewController {
-  SessionViewController* sessionViewController = [[UIStoryboard storyboardWithName:@"SessionStoryboard" bundle:nil] instantiateInitialViewController];
+//- (SessionViewController *)createSessionViewController {
+- (SelectLogInOrSignUpViewController *)createSessionViewController {
+//  SessionViewController* sessionViewController = [[UIStoryboard storyboardWithName:@"SessionStoryboard" bundle:nil] instantiateInitialViewController];
 
-  return sessionViewController;
+//  return sessionViewController;
+    
+    SelectLogInOrSignUpViewController *selectVC = [[UIStoryboard storyboardWithName:@"Login" bundle:nil] instantiateInitialViewController];
+    return selectVC;
 }
 
 - (void)refreshToken {

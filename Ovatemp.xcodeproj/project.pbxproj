@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0EC9830B19AB8619009A5730 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC9830A19AB8619009A5730 /* HealthKit.framework */; };
+		5F1A3BF419F17614002FFA28 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F1A3BF319F17614002FFA28 /* Login.storyboard */; };
 		5F1C96C419EDD319000F1FC1 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C963519EDD319000F1FC1 /* libAdIdAccess.a */; };
 		5F1C96C519EDD319000F1FC1 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C963619EDD319000F1FC1 /* libGoogleAnalyticsServices.a */; };
 		5F1C96C719EDD319000F1FC1 /* libGoogleConversionTracking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C963E19EDD319000F1FC1 /* libGoogleConversionTracking.a */; };
@@ -391,6 +392,10 @@
 		5F58690719ED802400D2B58E /* Negative@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58677519ED802400D2B58E /* Negative@2x.png */; };
 		5F586A2719ED802400D2B58E /* Positive.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58690419ED802400D2B58E /* Positive.png */; };
 		5F586A2819ED802400D2B58E /* Positive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58690519ED802400D2B58E /* Positive@2x.png */; };
+		5F846E0719F560D300CED980 /* Welcome1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0619F560D300CED980 /* Welcome1ViewController.m */; };
+		5F8C568E19F184C60024552A /* SelectLogInOrSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C568D19F184C60024552A /* SelectLogInOrSignUpViewController.m */; };
+		5F8C569119F186C90024552A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C569019F186C90024552A /* LoginViewController.m */; };
+		5F8C569419F1BD950024552A /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C569319F1BD950024552A /* SignUpViewController.m */; };
 		8315E49E18C521A800DA935A /* SessionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49D18C521A800DA935A /* SessionSpec.m */; };
 		83548FF218BD24450016B53A /* TodaySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 83548FF118BD24450016B53A /* TodaySpec.m */; };
 		83C4D21C18D9F1CF008C523C /* KIFUITestActor+OTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4D21B18D9F1CF008C523C /* KIFUITestActor+OTAdditions.m */; };
@@ -427,6 +432,7 @@
 
 /* Begin PBXFileReference section */
 		0EC9830A19AB8619009A5730 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		5F1A3BF319F17614002FFA28 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		5F1C961C19EDD319000F1FC1 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		5F1C961D19EDD319000F1FC1 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
 		5F1C961E19EDD319000F1FC1 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
@@ -971,6 +977,14 @@
 		5F58690419ED802400D2B58E /* Positive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Positive.png; sourceTree = "<group>"; };
 		5F58690519ED802400D2B58E /* Positive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Positive@2x.png"; sourceTree = "<group>"; };
 		5F586A2C19ED89DA00D2B58E /* libPods-OvatempTests-KIF.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-OvatempTests-KIF.a"; path = "Pods/build/Release-iphoneos/libPods-OvatempTests-KIF.a"; sourceTree = "<group>"; };
+		5F846E0519F560D300CED980 /* Welcome1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Welcome1ViewController.h; sourceTree = "<group>"; };
+		5F846E0619F560D300CED980 /* Welcome1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Welcome1ViewController.m; sourceTree = "<group>"; };
+		5F8C568C19F184C60024552A /* SelectLogInOrSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectLogInOrSignUpViewController.h; sourceTree = "<group>"; };
+		5F8C568D19F184C60024552A /* SelectLogInOrSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLogInOrSignUpViewController.m; sourceTree = "<group>"; };
+		5F8C568F19F186C90024552A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		5F8C569019F186C90024552A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		5F8C569219F1BD950024552A /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		5F8C569319F1BD950024552A /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		8315E49D18C521A800DA935A /* SessionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionSpec.m; sourceTree = "<group>"; };
 		83548FF118BD24450016B53A /* TodaySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodaySpec.m; sourceTree = "<group>"; };
 		83C4D21A18D9F1CF008C523C /* KIFUITestActor+OTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFUITestActor+OTAdditions.h"; sourceTree = "<group>"; };
@@ -1501,6 +1515,14 @@
 				5F1C9A5A19EDE879000F1FC1 /* WebViewController.h */,
 				5F1C9A5B19EDE879000F1FC1 /* WebViewController.m */,
 				5F1C9A5C19EDE879000F1FC1 /* WebViewController.xib */,
+				5F8C568C19F184C60024552A /* SelectLogInOrSignUpViewController.h */,
+				5F8C568D19F184C60024552A /* SelectLogInOrSignUpViewController.m */,
+				5F8C568F19F186C90024552A /* LoginViewController.h */,
+				5F8C569019F186C90024552A /* LoginViewController.m */,
+				5F8C569219F1BD950024552A /* SignUpViewController.h */,
+				5F8C569319F1BD950024552A /* SignUpViewController.m */,
+				5F846E0519F560D300CED980 /* Welcome1ViewController.h */,
+				5F846E0619F560D300CED980 /* Welcome1ViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1870,6 +1892,7 @@
 				5F1C9B5C19EDE87A000F1FC1 /* LifestyleCell.h */,
 				5F1C9B5D19EDE87A000F1FC1 /* LifestyleCell.m */,
 				5F1C9B5E19EDE87A000F1FC1 /* MoreStoryboard.storyboard */,
+				5F1A3BF319F17614002FFA28 /* Login.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2282,6 +2305,7 @@
 				5F1C9BF719EDE87A000F1FC1 /* Refresh@2x.png in Resources */,
 				5F1C9BE819EDE87A000F1FC1 /* ActivateSmall.png in Resources */,
 				5F1C9BE519EDE87A000F1FC1 /* DietAndLifestyle@2x.png in Resources */,
+				5F1A3BF419F17614002FFA28 /* Login.storyboard in Resources */,
 				5F1C9BAB19EDE87A000F1FC1 /* BuyButtonCenter.png in Resources */,
 				5F1C9B9619EDE87A000F1FC1 /* RootViewController.xib in Resources */,
 				5F1C9C5319EDE87A000F1FC1 /* YinOva_HiRes.png in Resources */,
@@ -2394,6 +2418,7 @@
 				5F1C9B7219EDE87A000F1FC1 /* DayToggleButton.m in Sources */,
 				5F1C9C6419EDE87A000F1FC1 /* UserProfile.m in Sources */,
 				5F1C9B9319EDE87A000F1FC1 /* ProfileSettingsViewController.m in Sources */,
+				5F8C569419F1BD950024552A /* SignUpViewController.m in Sources */,
 				5F1C96F319EDD31A000F1FC1 /* MPPassThroughValueTransformer.m in Sources */,
 				5F1C96F419EDD31A000F1FC1 /* MPPropertyDescription.m in Sources */,
 				5F1C96F219EDD31A000F1FC1 /* MPObjectSerializerContext.m in Sources */,
@@ -2433,6 +2458,7 @@
 				5F1C9BA419EDE87A000F1FC1 /* SubscriptionHelper.m in Sources */,
 				5F1C96E819EDD31A000F1FC1 /* MPEnumDescription.m in Sources */,
 				5F1C9C7019EDE87A000F1FC1 /* CycleChartView.m in Sources */,
+				5F8C568E19F184C60024552A /* SelectLogInOrSignUpViewController.m in Sources */,
 				5F1C9C6D19EDE87A000F1FC1 /* CoachingMenuCell.m in Sources */,
 				5F1C971019EDD31A000F1FC1 /* Reachability.m in Sources */,
 				5F1C96E119EDD31A000F1FC1 /* MPCGColorRefToNSStringValueTransformer.m in Sources */,
@@ -2474,6 +2500,7 @@
 				5F1C9B8E19EDE87A000F1FC1 /* MainTabBarViewController.m in Sources */,
 				5F1C970119EDD31A000F1FC1 /* MPUIEdgeInsetsToNSDictionaryValueTransformer.m in Sources */,
 				5F1C9C7A19EEEDF9000F1FC1 /* AccountMainTableViewController.m in Sources */,
+				5F846E0719F560D300CED980 /* Welcome1ViewController.m in Sources */,
 				5F1C9B6F19EDE87A000F1FC1 /* DayAttribute.m in Sources */,
 				5F1C9B7719EDE87A000F1FC1 /* GradientLabel.m in Sources */,
 				5F1C9B6419EDE87A000F1FC1 /* NSObject+IsNull.m in Sources */,
@@ -2497,6 +2524,7 @@
 				5F1C9C5E19EDE87A000F1FC1 /* Question.m in Sources */,
 				5F1C9C5519EDE87A000F1FC1 /* main.m in Sources */,
 				5F1C9B9819EDE87A000F1FC1 /* SessionViewController.m in Sources */,
+				5F8C569119F186C90024552A /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
