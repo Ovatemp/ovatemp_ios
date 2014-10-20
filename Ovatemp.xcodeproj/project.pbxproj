@@ -396,6 +396,7 @@
 		5F846E0A19F57D4D00CED980 /* Welcome2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0919F57D4D00CED980 /* Welcome2ViewController.m */; };
 		5F846E0D19F5A96000CED980 /* Welcome3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0C19F5A96000CED980 /* Welcome3ViewController.m */; };
 		5F846E1019F5AEC100CED980 /* WelcomeONDOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0F19F5AEC100CED980 /* WelcomeONDOViewController.m */; };
+		5F846E1419F5C2B900CED980 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F846E1319F5C2B900CED980 /* Launch Screen.xib */; };
 		5F8C568E19F184C60024552A /* SelectLogInOrSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C568D19F184C60024552A /* SelectLogInOrSignUpViewController.m */; };
 		5F8C569119F186C90024552A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C569019F186C90024552A /* LoginViewController.m */; };
 		5F8C569419F1BD950024552A /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C569319F1BD950024552A /* SignUpViewController.m */; };
@@ -988,6 +989,7 @@
 		5F846E0C19F5A96000CED980 /* Welcome3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Welcome3ViewController.m; sourceTree = "<group>"; };
 		5F846E0E19F5AEC100CED980 /* WelcomeONDOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeONDOViewController.h; sourceTree = "<group>"; };
 		5F846E0F19F5AEC100CED980 /* WelcomeONDOViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeONDOViewController.m; sourceTree = "<group>"; };
+		5F846E1319F5C2B900CED980 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		5F8C568C19F184C60024552A /* SelectLogInOrSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectLogInOrSignUpViewController.h; sourceTree = "<group>"; };
 		5F8C568D19F184C60024552A /* SelectLogInOrSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLogInOrSignUpViewController.m; sourceTree = "<group>"; };
 		5F8C568F19F186C90024552A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -1908,6 +1910,7 @@
 				5F1C9B5D19EDE87A000F1FC1 /* LifestyleCell.m */,
 				5F1C9B5E19EDE87A000F1FC1 /* MoreStoryboard.storyboard */,
 				5F1A3BF319F17614002FFA28 /* Login.storyboard */,
+				5F846E1319F5C2B900CED980 /* Launch Screen.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2121,6 +2124,7 @@
 				5F1C9B8819EDE87A000F1FC1 /* CommunityStoryboard.storyboard in Resources */,
 				5F1C9BB619EDE87A000F1FC1 /* Sticky.png in Resources */,
 				5F1C96CB19EDD31A000F1FC1 /* HockeySDK.xcconfig in Resources */,
+				5F846E1419F5C2B900CED980 /* Launch Screen.xib in Resources */,
 				5F1C9C3D19EDE87A000F1FC1 /* coaching_selected.png in Resources */,
 				5F1C9BD319EDE87A000F1FC1 /* MassageBlue@2x.png in Resources */,
 				5F1C9C2119EDE87A000F1FC1 /* Moody.png in Resources */,

@@ -19,12 +19,17 @@
 
 # pragma mark - Setup
 
+- (void)viewDidLoad {
+    self.emailField.delegate = self;
+    self.passwordField.delegate = self;
+    
+    self.emailField.borderStyle = UITextBorderStyleRoundedRect;
+    self.passwordField.borderStyle = UITextBorderStyleRoundedRect;
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [self addKeyboardObservers];
     [self trackScreenView:@"Login"];
-    
-    self.emailField.delegate = self;
-    self.passwordField.delegate = self;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
