@@ -7,6 +7,12 @@
 //
 
 #import "SignUpViewController.h"
+#import "Alert.h"
+#import "User.h"
+#import "UserProfile.h"
+#import "UIViewController+UserProfileHelpers.h"
+
+#import "Mixpanel.h"
 
 @interface SignUpViewController ()
 
@@ -16,12 +22,76 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.dateOfBirthPicker = [self useDatePickerForTextField:self.dateOfBirthField];
+    NSInteger minAgeInYears = 12;
+    NSInteger day = 60 * 60 * 24;
+    NSInteger year = day * 365;
+    NSDate *maximumDate = [NSDate dateWithTimeIntervalSinceNow:-minAgeInYears * year];
+    NSDate *minimumDate = [NSDate dateWithTimeIntervalSinceNow:-100 * year];
+    
+    // default date
+    NSCalendar *defaultDate = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *defaultDateComponents = [[NSDateComponents alloc] init];
+    [defaultDateComponents setYear:-30];
+    
+    self.dateOfBirthPicker.date = [defaultDate dateByAddingComponents:defaultDateComponents toDate:[NSDate date] options:0];
+    
+    self.dateOfBirthPicker.maximumDate = maximumDate;
+    self.dateOfBirthPicker.minimumDate = minimumDate;
+    
+    [self.dateOfBirthPicker addTarget:self
+                               action:nil
+                     forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+# pragma mark - Registration
+
+- (IBAction)sessionRegister:(id)sender {
+    [self startLoading];
+    [ConnectionManager post:@"/users"
+                     params:@{
+                              @"user":
+                                  @{
+                                      @"email": self.emailField.text,
+                                      @"password": self.passwordField.text,
+                                      @"password_confirmation": self.passwordField.text
+                                      }
+                              }
+                     target:self
+                    success:@selector(signedUp:)
+                    failure:@selector(signupFailed:)];
+}
+
+- (void)signedUp:(NSDictionary *)response {
+    [self stopLoading];
+    NSNumber *userID = response[@"user"][@"id"];
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel createAlias:userID.stringValue forDistinctID:mixpanel.distinctId];
+    
+    [Configuration loggedInWithResponse:response];
+    
+    [self trackEvent:@"Signed Up" action:nil label:nil value:nil];
+    
+    // profile has been created, set birthday
+    [UserProfile current].dateOfBirth = self.dateOfBirthPicker.date;
+    [[UserProfile current] save];
+    
+    [self performSegueWithIdentifier:@"welcome1VC" sender:nil];
+}
+
+- (void)signupFailed:(NSError *)error {
+    [self stopLoading];
+    [Alert presentError:error];
+}
+
+- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    
+    return;
 }
 
 /*

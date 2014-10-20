@@ -392,6 +392,7 @@
 		5F58690719ED802400D2B58E /* Negative@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58677519ED802400D2B58E /* Negative@2x.png */; };
 		5F586A2719ED802400D2B58E /* Positive.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58690419ED802400D2B58E /* Positive.png */; };
 		5F586A2819ED802400D2B58E /* Positive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58690519ED802400D2B58E /* Positive@2x.png */; };
+		5F846E0719F560D300CED980 /* Welcome1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0619F560D300CED980 /* Welcome1ViewController.m */; };
 		5F8C568E19F184C60024552A /* SelectLogInOrSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C568D19F184C60024552A /* SelectLogInOrSignUpViewController.m */; };
 		5F8C569119F186C90024552A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C569019F186C90024552A /* LoginViewController.m */; };
 		5F8C569419F1BD950024552A /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C569319F1BD950024552A /* SignUpViewController.m */; };
@@ -976,6 +977,8 @@
 		5F58690419ED802400D2B58E /* Positive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Positive.png; sourceTree = "<group>"; };
 		5F58690519ED802400D2B58E /* Positive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Positive@2x.png"; sourceTree = "<group>"; };
 		5F586A2C19ED89DA00D2B58E /* libPods-OvatempTests-KIF.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-OvatempTests-KIF.a"; path = "Pods/build/Release-iphoneos/libPods-OvatempTests-KIF.a"; sourceTree = "<group>"; };
+		5F846E0519F560D300CED980 /* Welcome1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Welcome1ViewController.h; sourceTree = "<group>"; };
+		5F846E0619F560D300CED980 /* Welcome1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Welcome1ViewController.m; sourceTree = "<group>"; };
 		5F8C568C19F184C60024552A /* SelectLogInOrSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectLogInOrSignUpViewController.h; sourceTree = "<group>"; };
 		5F8C568D19F184C60024552A /* SelectLogInOrSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLogInOrSignUpViewController.m; sourceTree = "<group>"; };
 		5F8C568F19F186C90024552A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -1518,6 +1521,8 @@
 				5F8C569019F186C90024552A /* LoginViewController.m */,
 				5F8C569219F1BD950024552A /* SignUpViewController.h */,
 				5F8C569319F1BD950024552A /* SignUpViewController.m */,
+				5F846E0519F560D300CED980 /* Welcome1ViewController.h */,
+				5F846E0619F560D300CED980 /* Welcome1ViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -2495,6 +2500,7 @@
 				5F1C9B8E19EDE87A000F1FC1 /* MainTabBarViewController.m in Sources */,
 				5F1C970119EDD31A000F1FC1 /* MPUIEdgeInsetsToNSDictionaryValueTransformer.m in Sources */,
 				5F1C9C7A19EEEDF9000F1FC1 /* AccountMainTableViewController.m in Sources */,
+				5F846E0719F560D300CED980 /* Welcome1ViewController.m in Sources */,
 				5F1C9B6F19EDE87A000F1FC1 /* DayAttribute.m in Sources */,
 				5F1C9B7719EDE87A000F1FC1 /* GradientLabel.m in Sources */,
 				5F1C9B6419EDE87A000F1FC1 /* NSObject+IsNull.m in Sources */,
