@@ -304,7 +304,7 @@
         <!--Welcome-->
         <scene sceneID="pYH-qy-DeN">
             <objects>
-                <viewController id="4wG-ur-4Q6" sceneMemberID="viewController">
+                <viewController id="4wG-ur-4Q6" customClass="WelcomeONDOViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UcP-IU-CON"/>
                         <viewControllerLayoutGuide type="bottom" id="qBJ-Xg-cJn"/>
@@ -332,12 +332,18 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                 <state key="normal" title="Yes">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="doONDOPairing:" destination="4wG-ur-4Q6" eventType="touchUpInside" id="Zs3-4N-ei9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="om6-3N-P0D">
                                 <rect key="frame" x="145" y="430" width="30" height="30"/>
                                 <state key="normal" title="No">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="doNoPairing:" destination="4wG-ur-4Q6" eventType="touchUpInside" id="Goa-j0-Put"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -410,7 +416,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="gya-ek-y7R"/>
+        <segue reference="kMr-Zw-8PI"/>
         <segue reference="inY-NG-Hzw"/>
     </inferredMetricsTieBreakers>
 </document>
