@@ -42,6 +42,12 @@
     [self.dateOfBirthPicker addTarget:self
                                action:@selector(dateOfBirthChanged:)
                      forControlEvents:UIControlEventValueChanged];
+    
+    // text field overrides
+    self.fullNameField.borderStyle = UITextBorderStyleRoundedRect;
+    self.dateOfBirthField.borderStyle = UITextBorderStyleRoundedRect;
+    self.emailField.borderStyle = UITextBorderStyleRoundedRect;
+    self.passwordField.borderStyle = UITextBorderStyleRoundedRect;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
