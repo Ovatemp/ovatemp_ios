@@ -16,13 +16,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self.navigationItem setHidesBackButton:YES];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)didSelectTryingToConceive:(id)sender {
+    [self performSegueWithIdentifier:@"tryingToConceive" sender:self];
+}
+
+- (IBAction)didSelectTryingToAvoid:(id)sender {
+    [self performSegueWithIdentifier:@"tryingToAvoid" sender:self];
+}
+
 
 /*
 #pragma mark - Navigation

@@ -40,13 +40,25 @@
     self.dateOfBirthPicker.minimumDate = minimumDate;
     
     [self.dateOfBirthPicker addTarget:self
-                               action:nil
+                               action:@selector(dateOfBirthChanged:)
                      forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self addKeyboardObservers];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [self removeKeyboardObservers];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dateOfBirthChanged:(UIDatePicker *)sender {
+    self.dateOfBirthField.text = [self.dateOfBirthPicker.date classicDate];
 }
 
 # pragma mark - Registration
@@ -77,21 +89,17 @@
     
     [self trackEvent:@"Signed Up" action:nil label:nil value:nil];
     
-    // profile has been created, set birthday
+    // profile has been created successfully, set birthday and name
     [UserProfile current].dateOfBirth = self.dateOfBirthPicker.date;
+    [UserProfile current].fullName = self.fullNameField.text;
     [[UserProfile current] save];
     
-    [self performSegueWithIdentifier:@"welcome1VC" sender:nil];
+    [self performSegueWithIdentifier:@"signUpToWelcome1" sender:self];
 }
 
 - (void)signupFailed:(NSError *)error {
     [self stopLoading];
     [Alert presentError:error];
-}
-
-- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    
-    return;
 }
 
 /*

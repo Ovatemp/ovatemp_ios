@@ -83,7 +83,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tuo-ck-sL0">
                                 <rect key="frame" x="16" y="167" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date of Birth" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RO9-id-8xH">
                                 <rect key="frame" x="16" y="205" width="288" height="30"/>
@@ -93,12 +93,12 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sxc-1f-7bk">
                                 <rect key="frame" x="16" y="294" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jy1-kj-rkP">
                                 <rect key="frame" x="16" y="332" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -110,6 +110,7 @@
                         <outlet property="fullNameField" destination="tuo-ck-sL0" id="jPi-M9-EKB"/>
                         <outlet property="passwordField" destination="Jy1-kj-rkP" id="eXD-IQ-vM6"/>
                         <outlet property="signUpButton" destination="ytD-pr-ZyT" id="l6L-gH-DDO"/>
+                        <segue destination="6kd-1c-wF8" kind="push" identifier="signUpToWelcome1" id="TXe-Ar-2e2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O86-PJ-JDt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -140,7 +141,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="kFR-fO-zr5" kind="push" id="mSA-sy-Hd0"/>
+                                    <action selector="didSelectTryingToConceive:" destination="6kd-1c-wF8" eventType="touchUpInside" id="MKu-d3-OSl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ge9-eD-1Ly">
@@ -149,13 +150,17 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="gRw-wx-L5R" kind="push" id="avZ-1u-PYZ"/>
+                                    <action selector="didSelectTryingToAvoid:" destination="6kd-1c-wF8" eventType="touchUpInside" id="6jG-pt-Sjs"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Welcome" id="t2v-Yf-xCF"/>
+                    <connections>
+                        <segue destination="kFR-fO-zr5" kind="push" identifier="tryingToConceive" id="kMr-Zw-8PI"/>
+                        <segue destination="gRw-wx-L5R" kind="push" identifier="tryingToAvoid" id="7Dh-Ua-Vdw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wtr-92-Pog" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -388,6 +393,6 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="avZ-1u-PYZ"/>
+        <segue reference="7Dh-Ua-Vdw"/>
     </inferredMetricsTieBreakers>
 </document>
