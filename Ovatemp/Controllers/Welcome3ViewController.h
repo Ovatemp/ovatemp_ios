@@ -10,4 +10,6 @@
 
 @interface Welcome3ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
