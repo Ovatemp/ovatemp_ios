@@ -49,7 +49,7 @@
                                     <segue destination="A27-NT-QUR" kind="push" id="vZ5-L5-qh4"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPD-7T-qbV">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPD-7T-qbV">
                                 <rect key="frame" x="94" y="269" width="133" height="30"/>
                                 <state key="normal" title="Jump to Welcome2">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -150,15 +150,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What is your fertility goal?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3GX-42-HW9">
-                                <rect key="frame" x="61" y="82" width="199" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFJ-DU-cFn">
-                                <rect key="frame" x="86" y="182" width="148" height="30"/>
-                                <state key="normal" title="I’m trying to conceive">
+                                <rect key="frame" x="16" y="183" width="288" height="90"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="I’m trying to conceive" backgroundImage="btn_tryingtoconceive">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -166,18 +162,28 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ge9-eD-1Ly">
-                                <rect key="frame" x="60" y="249" width="200" height="30"/>
-                                <state key="normal" title="I’m trying to avoid pregnancy">
+                                <rect key="frame" x="16" y="319" width="288" height="90"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="I’m trying to avoid pregnancy" backgroundImage="btn_tryingtoconceive">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="didSelectTryingToAvoid:" destination="6kd-1c-wF8" eventType="touchUpInside" id="6jG-pt-Sjs"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What is your fertility goal?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3GX-42-HW9">
+                                <rect key="frame" x="54" y="82" width="212" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Welcome" id="t2v-Yf-xCF"/>
+                    <navigationItem key="navigationItem" title="Welcome" id="t2v-Yf-xCF">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="SVy-Pt-GW7"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="kFR-fO-zr5" kind="push" identifier="tryingToConceive" id="kMr-Zw-8PI"/>
                         <segue destination="gRw-wx-L5R" kind="push" identifier="tryingToAvoid" id="7Dh-Ua-Vdw"/>
@@ -199,31 +205,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I’m trying to conceive ✓" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UH-MO-hod">
-                                <rect key="frame" x="64" y="110" width="187" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I’m trying to conceive" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UH-MO-hod">
+                                <rect key="frame" x="68" y="111" width="184" height="22"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" red="0.50588235294117645" green="0.41960784313725491" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="When did you start trying?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cux-bF-Nwn">
-                                <rect key="frame" x="56" y="206" width="203" height="21"/>
+                                <rect key="frame" x="16" y="206" width="203" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1 week ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hO-f8-2WO">
-                                <rect key="frame" x="56" y="235" width="203" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1v7-Db-EN3">
                                 <rect key="frame" x="-3" y="264" width="320" height="162"/>
                             </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="✓" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mj9-Y1-O3H">
+                                <rect key="frame" x="250" y="111" width="17" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" red="0.50588235290000005" green="0.41960784309999999" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="6 weeks ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hO-f8-2WO">
+                                <rect key="frame" x="16" y="235" width="203" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Welcome" id="plb-tV-YrQ">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="SGS-2u-jFJ"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="iL7-V3-KxC">
                             <connections>
                                 <action selector="doNextScreen:" destination="kFR-fO-zr5" id="nP4-wy-YcG"/>
@@ -252,12 +265,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Getting to know you" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOW-al-JBH">
-                                <rect key="frame" x="81" y="82" width="155" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YbR-Xo-d1e">
                                 <rect key="frame" x="16" y="118" width="288" height="174"/>
                                 <string key="text">To receive accurate fertility information please tell us about yourself. For any answer you are unsure about please provide your best approximation.</string>
@@ -295,10 +302,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Getting to know you" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOW-al-JBH">
+                                <rect key="frame" x="79" y="82" width="162" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Welcome" id="4py-OU-x7y">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="ETg-VN-2Kg"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="i81-WA-bbU">
                             <connections>
                                 <action selector="doNextScreen:" destination="gRw-wx-L5R" id="gtn-12-a5q"/>
@@ -327,7 +341,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Will you be using an ONDO Thermometer?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="692-Hb-sqX">
                                 <rect key="frame" x="70" y="85" width="181" height="54"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -340,8 +354,9 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeZ-3h-R1R">
-                                <rect key="frame" x="145" y="377" width="30" height="30"/>
-                                <state key="normal" title="Yes">
+                                <rect key="frame" x="16" y="404" width="288" height="45"/>
+                                <state key="normal" title="Yes" backgroundImage="btn_signup_login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -349,18 +364,35 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="om6-3N-P0D">
-                                <rect key="frame" x="145" y="430" width="30" height="30"/>
-                                <state key="normal" title="No">
+                                <rect key="frame" x="16" y="472" width="288" height="45"/>
+                                <state key="normal" title="No" backgroundImage="btn_signup_login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="doNoPairing:" destination="4wG-ur-4Q6" eventType="touchUpInside" id="Goa-j0-Put"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LnZ-ph-IIC">
+                                <rect key="frame" x="75" y="518" width="171" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="Learn more about ONDO">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doLearnMoreAboutONDO:" destination="4wG-ur-4Q6" eventType="touchUpInside" id="ooY-jC-HtH"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_thermometer" translatesAutoresizingMaskIntoConstraints="NO" id="Iwf-Pw-SxN">
+                                <rect key="frame" x="100" y="269" width="120" height="120"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Welcome" id="h1W-xB-o0v"/>
+                    <navigationItem key="navigationItem" title="Welcome" id="h1W-xB-o0v">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="aB5-x7-pqw"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xc9-eu-E6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -445,7 +477,9 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
     <resources>
         <image name="bg_launching" width="320" height="568"/>
         <image name="btn_signup_login" width="282" height="46"/>
+        <image name="btn_tryingtoconceive" width="294" height="93"/>
         <image name="img_ovatemp_logo" width="210" height="101"/>
+        <image name="img_thermometer" width="95" height="95"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -453,7 +487,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="gya-ek-y7R"/>
-        <segue reference="inY-NG-Hzw"/>
+        <segue reference="7Dh-Ua-Vdw"/>
+        <segue reference="kMr-Zw-8PI"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,6 +8,7 @@
 
 #import "WelcomeONDOViewController.h"
 #import "ONDO.h"
+#import "WebViewController.h"
 
 @interface WelcomeONDOViewController () <ONDODelegate>
 
@@ -30,10 +31,18 @@
 //    [self.navigationController pushViewController:ondoVC animated:YES];
     __weak WelcomeONDOViewController *controller = self;
     [ONDO showPairingWizardWithDelegate:controller];
+    [self backOutToRootViewController];
 }
 
 - (IBAction)doNoPairing:(id)sender {
     [self backOutToRootViewController];
+}
+
+- (IBAction)doLearnMoreAboutONDO:(id)sender {
+    NSString *url = @"http://ovatemp.com/pages/ondo";
+    WebViewController *webViewController = [WebViewController withURL:url];
+    webViewController.title = @"ONDO";
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 
 /*

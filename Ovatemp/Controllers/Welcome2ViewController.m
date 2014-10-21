@@ -37,6 +37,9 @@ NSDate *startedTryingDate;
     singularUnitsOfTimeArray = [[NSArray alloc] initWithObjects:@"week", @"month", @"year", nil];
     
     unitsOfTimeArray = [[NSArray alloc] initWithObjects:@"weeks", @"months", @"years", nil];
+    
+    // set default picker value to 6 weeks
+    [self.tryingToConceivePicker selectRow:5 inComponent:0 animated:NO];
 }
 
 - (void)didReceiveMemoryWarning {
