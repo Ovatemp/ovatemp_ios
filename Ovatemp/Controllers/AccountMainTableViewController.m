@@ -48,7 +48,22 @@ NSArray *accountMenuItems;
 }
 
 - (void)doLogout {
-    [self logout];
+    UIAlertController *errorAlert = [UIAlertController
+                                     alertControllerWithTitle:@"Logout"
+                                     message:@"Are you sure you wish to logout?"
+                                     preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:nil];
+    
+    UIAlertAction *logout = [UIAlertAction actionWithTitle:@"Logout" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        [self logout];
+    }];
+    
+    [errorAlert addAction:no];
+    [errorAlert addAction:logout];
+    
+    [self presentViewController:errorAlert animated:YES completion:nil];
+//    [self logout];
 }
 
 #pragma mark - Table view data source

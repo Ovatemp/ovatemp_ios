@@ -70,6 +70,22 @@
 # pragma mark - Registration
 
 - (IBAction)sessionRegister:(id)sender {
+    // empty info checks
+    if ([self.fullNameField.text length] == 0) {
+        [self alertUserWithTitle:@"Error" andMessage:@"Please enter your full name."];
+        return;
+    }
+    
+    if ([self.dateOfBirthField.text length] == 0) {
+        [self alertUserWithTitle:@"Error" andMessage:@"Please enter your full date of birth."];
+        return;
+    }
+    
+    if (([self.fullNameField.text length] < 4) || ([self.fullNameField.text length] > 48)) {
+        [self alertUserWithTitle:@"Error" andMessage:@"The Full Name field must be between 4 and 48 characters long."];
+        return;
+    }
+    
     [self startLoading];
     [ConnectionManager post:@"/users"
                      params:@{
@@ -106,6 +122,22 @@
 - (void)signupFailed:(NSError *)error {
     [self stopLoading];
     [Alert presentError:error];
+}
+
+#pragma mark - UIAlertController
+
+- (void)alertUserWithTitle:(NSString *)title andMessage:(NSString *)message {
+    UIAlertController *errorAlert = [UIAlertController
+                                     alertControllerWithTitle:title
+                                     message:message
+                                     preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
+                                               handler:nil];
+    
+    [errorAlert addAction:ok];
+    
+    [self presentViewController:errorAlert animated:YES completion:nil];
 }
 
 /*
