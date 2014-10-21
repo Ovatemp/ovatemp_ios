@@ -76,7 +76,8 @@
 # pragma mark - Registration
 
 - (IBAction)sessionRegister:(id)sender {
-    // empty info checks
+    
+    // Text Field Checks
     if ([self.fullNameField.text length] == 0) {
         [self alertUserWithTitle:@"Error" andMessage:@"Please enter your full name."];
         return;
@@ -97,13 +98,14 @@
         return;
     }
     
-    // email check
+    // Email Validation
     if (![self validateEmail:self.emailField.text]) {
         
         [self alertUserWithTitle:@"Error" andMessage:@"Please enter a valid email address."];
         return;
     }
     
+    // Passed all checks, continue with registration
     [self startLoading];
     [ConnectionManager post:@"/users"
                      params:@{
