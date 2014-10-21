@@ -14,11 +14,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg_launching" translatesAutoresizingMaskIntoConstraints="NO" id="2To-HE-ydQ">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_launchingscreen" translatesAutoresizingMaskIntoConstraints="NO" id="2To-HE-ydQ">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_ovatemp_logo" translatesAutoresizingMaskIntoConstraints="NO" id="KQx-bt-Opf">
-                    <rect key="frame" x="35" y="224" width="250" height="119"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -26,8 +23,7 @@
         </view>
     </objects>
     <resources>
-        <image name="bg_launching" width="320" height="568"/>
-        <image name="img_ovatemp_logo" width="210" height="101"/>
+        <image name="img_launchingscreen" width="320" height="568"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
