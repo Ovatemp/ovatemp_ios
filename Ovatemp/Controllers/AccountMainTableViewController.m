@@ -50,7 +50,7 @@ NSArray *accountMenuItems;
 - (void)doLogout {
     UIAlertController *errorAlert = [UIAlertController
                                      alertControllerWithTitle:@"Logout"
-                                     message:@"Are you sure you wish to logout?"
+                                     message:@"Are you sure you want to logout?"
                                      preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:nil];

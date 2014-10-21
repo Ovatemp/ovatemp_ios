@@ -14,6 +14,8 @@
 
 #import "Mixpanel.h"
 
+#define EMAIL_REGEX @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+
 @interface SignUpViewController () <UITextViewDelegate>
 
 @end
@@ -90,6 +92,13 @@
         return;
     }
     
+    // email check
+    if (![self validateEmail:self.emailField.text]) {
+        
+        [self alertUserWithTitle:@"Error" andMessage:@"Please enter a valid email address."];
+        return;
+    }
+    
     [self startLoading];
     [ConnectionManager post:@"/users"
                      params:@{
@@ -131,6 +140,13 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return NO;
+}
+
+- (BOOL)validateEmail:(NSString *)email {
+    
+    NSPredicate *emailPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", EMAIL_REGEX];
+    
+    return [emailPredicate evaluateWithObject:email];
 }
 
 #pragma mark - UIAlertController
