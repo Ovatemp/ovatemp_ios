@@ -7,27 +7,30 @@
 //
 
 #import "Welcome3ViewController.h"
-#import "WelcomeInfoTableViewCell.h"
+#import "LastPeriodTableViewCell.h"
 
 @interface Welcome3ViewController () <UITableViewDelegate, UITableViewDataSource>
 
-@property WelcomeInfoTableViewCell *welcomeInfoTableViewCell;
+@property LastPeriodTableViewCell *lastPeriodTableViewCell;
 
 @end
 
 @implementation Welcome3ViewController
 
 NSArray *welcomeInfoArray;
+BOOL expandCell;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    expandCell = NO;
+    
     self.tableView.delegate = self;
     
     welcomeInfoArray = [NSArray arrayWithObjects:@"Last Period", @"Cycle Length", @"Height", @"Weight", nil];
     
-    [[self tableView] registerNib:[UINib nibWithNibName:@"WelcomeInfoTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"welcomeInfoCell"];
+    [[self tableView] registerNib:[UINib nibWithNibName:@"LastPeriodTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"lastPeriodCell"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,13 +57,76 @@ NSArray *welcomeInfoArray;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    WelcomeInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"welcomeInfoCell" forIndexPath:indexPath];
+    UITableViewCell *cell;
     
-    [[cell textLabel] setText:[welcomeInfoArray objectAtIndex:indexPath.row]];
+//    switch (indexPath.row) {
+//        case 0:
+//        {
+//            LastPeriodTableViewCell *lastPeriodTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"lastPeriodCell" forIndexPath:indexPath];
+//            
+//            [[lastPeriodTableViewCell textLabel] setText:[welcomeInfoArray objectAtIndex:indexPath.row]];
+//            
+//            return lastPeriodTableViewCell;
+//             break;
+//        }
+//        case 1:
+//        {
+//            cell = [[UITableViewCell alloc] init];
+//            [[cell textLabel] setText:[welcomeInfoArray objectAtIndex:indexPath.row]];
+//             break;
+//        }
+//        case 2:
+//        {
+//            cell = [[UITableViewCell alloc] init];
+//            [[cell textLabel] setText:[welcomeInfoArray objectAtIndex:indexPath.row]];
+//             break;
+//        }
+//        case 3:
+//        {
+//            cell = [[UITableViewCell alloc] init];
+//            [[cell textLabel] setText:[welcomeInfoArray objectAtIndex:indexPath.row]];
+//             break;
+//        }
+//        default:
+//            break;
+//    }
+    
+    if (indexPath.row == 0) {
+        LastPeriodTableViewCell *lastPeriodTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"lastPeriodCell" forIndexPath:indexPath];
+        [[lastPeriodTableViewCell textLabel] setText:[welcomeInfoArray objectAtIndex:indexPath.row]];
+        
+        if (expandCell) {
+            lastPeriodTableViewCell.datePicker.hidden = NO;
+        }
+        
+        return lastPeriodTableViewCell;
+    } else {
+        cell = [[UITableViewCell alloc] init];
+        [[cell textLabel] setText:[welcomeInfoArray objectAtIndex:indexPath.row]];
+    }
     
     return cell;
+    
+//    WelcomeInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"welcomeInfoCell" forIndexPath:indexPath];
+//    
+//    [[cell textLabel] setText:[welcomeInfoArray objectAtIndex:indexPath.row]];
+    
+//    return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (expandCell) {
+        return 200.0f;
+    }
+    return 44.0f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        NSArray *reloadPaths = [NSArray arrayWithObject:[NSIndexPath indexPathWithIndex:0]];
+        [tableView reloadRowsAtIndexPaths:reloadPaths withRowAnimation:UITableViewRowAnimationBottom];
+    }
+}
 
 /*
 #pragma mark - Navigation
