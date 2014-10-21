@@ -112,8 +112,11 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];
-//    [self.view endEditing:YES];
+    UIView *view = [self.view viewWithTag:textField.tag + 1];
+    if (!view)
+        [textField resignFirstResponder];
+    else
+        [view becomeFirstResponder];
     return YES;
 }
 

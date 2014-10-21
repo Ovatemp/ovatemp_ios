@@ -144,9 +144,14 @@
     [Alert presentError:error];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return NO;
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    UIView *view = [self.view viewWithTag:textField.tag + 1];
+    if (!view)
+        [textField resignFirstResponder];
+    else
+        [view becomeFirstResponder];
+    return YES;
 }
 
 - (BOOL)validateEmail:(NSString *)email {
