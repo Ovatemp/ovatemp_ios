@@ -52,6 +52,7 @@
     self.passwordField.borderStyle = UITextBorderStyleRoundedRect;
     
     self.fullNameField.delegate = self;
+    self.dateOfBirthField.delegate = self;
     self.emailField.delegate = self;
     self.passwordField.delegate = self;
 }
@@ -152,6 +153,13 @@
     else
         [view becomeFirstResponder];
     return YES;
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField { //Keyboard becomes visible
+    
+    if (textField.tag == 1) {
+        self.dateOfBirthField.text = [self.dateOfBirthPicker.date classicDate];
+    }
 }
 
 - (BOOL)validateEmail:(NSString *)email {
