@@ -93,22 +93,22 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tuo-ck-sL0">
                                 <rect key="frame" x="16" y="152" width="288" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Date of Birth" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RO9-id-8xH">
                                 <rect key="frame" x="16" y="205" width="288" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sxc-1f-7bk">
                                 <rect key="frame" x="16" y="294" width="288" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jy1-kj-rkP">
                                 <rect key="frame" x="16" y="347" width="288" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytD-pr-ZyT">
                                 <rect key="frame" x="16" y="483" width="288" height="45"/>
@@ -419,7 +419,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ScB-L1-76z">
                                 <rect key="frame" x="16" y="265" width="288" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" red="0.5607843137254902" green="0.50980392156862742" blue="0.61568627450980395" alpha="1" colorSpace="deviceRGB"/>
@@ -429,7 +429,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d74-Xq-dTh">
                                 <rect key="frame" x="16" y="323" width="288" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" red="0.56078431370000004" green="0.50980392159999999" blue="0.61568627450000002" alpha="1" colorSpace="deviceRGB"/>

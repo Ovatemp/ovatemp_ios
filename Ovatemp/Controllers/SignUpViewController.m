@@ -14,7 +14,7 @@
 
 #import "Mixpanel.h"
 
-@interface SignUpViewController ()
+@interface SignUpViewController () <UITextViewDelegate>
 
 @end
 
@@ -48,6 +48,10 @@
     self.dateOfBirthField.borderStyle = UITextBorderStyleRoundedRect;
     self.emailField.borderStyle = UITextBorderStyleRoundedRect;
     self.passwordField.borderStyle = UITextBorderStyleRoundedRect;
+    
+    self.fullNameField.delegate = self;
+    self.emailField.delegate = self;
+    self.passwordField.delegate = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -122,6 +126,11 @@
 - (void)signupFailed:(NSError *)error {
     [self stopLoading];
     [Alert presentError:error];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
 }
 
 #pragma mark - UIAlertController
