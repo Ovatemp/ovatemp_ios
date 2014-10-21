@@ -32,25 +32,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg_launching" translatesAutoresizingMaskIntoConstraints="NO" id="8Qf-fN-4FS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_launchingscreen" translatesAutoresizingMaskIntoConstraints="NO" id="8Qf-fN-4FS">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_ovatemp_logo" translatesAutoresizingMaskIntoConstraints="NO" id="JcL-JI-taj">
-                                <rect key="frame" x="35" y="104" width="250" height="119"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yro-nn-XMT">
-                                <rect key="frame" x="16" y="431" width="288" height="45"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yro-nn-XMT">
+                                <rect key="frame" x="16" y="432" width="288" height="45"/>
                                 <state key="normal" title="Log In" backgroundImage="btn_signup_login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected" title="Log In" image="btn_signup_login_pressed"/>
+                                <state key="highlighted" title="Log In" backgroundImage="btn_signup_login_pressed"/>
                                 <connections>
                                     <segue destination="A27-NT-QUR" kind="push" id="vZ5-L5-qh4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPD-7T-qbV">
-                                <rect key="frame" x="94" y="269" width="133" height="30"/>
+                                <rect key="frame" x="88" y="305" width="133" height="30"/>
                                 <state key="normal" title="Jump to Welcome2">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -58,13 +56,14 @@
                                     <segue destination="kFR-fO-zr5" kind="push" id="gya-ek-y7R"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7DU-7y-x7c">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7DU-7y-x7c">
                                 <rect key="frame" x="16" y="363" width="288" height="45"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Sign Up" backgroundImage="btn_signup_login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected" title="Sign Up" backgroundImage="btn_signup_login_pressed"/>
+                                <state key="highlighted" title="Sign Up" backgroundImage="btn_signup_login_pressed"/>
                                 <connections>
                                     <segue destination="E4r-6s-Glc" kind="push" id="6iK-be-xvl"/>
                                 </connections>
@@ -76,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jda-iO-Nhp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="247" y="235"/>
+            <point key="canvasLocation" x="247" y="232"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="uNd-ci-e0z">
@@ -110,13 +109,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytD-pr-ZyT">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytD-pr-ZyT">
                                 <rect key="frame" x="16" y="483" width="288" height="45"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Sign Up" backgroundImage="btn_signup_login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected" title="Sign Up" backgroundImage="btn_signup_login_pressed"/>
+                                <state key="highlighted" title="Sign Up" backgroundImage="btn_signup_login_pressed"/>
                                 <connections>
                                     <action selector="sessionRegister:" destination="E4r-6s-Glc" eventType="touchUpInside" id="4tX-1r-Nt1"/>
                                 </connections>
@@ -150,24 +150,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFJ-DU-cFn">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFJ-DU-cFn">
                                 <rect key="frame" x="16" y="183" width="288" height="90"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="I’m trying to conceive" backgroundImage="btn_tryingtoconceive">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected" title="I’m trying to conceive" backgroundImage="btn_tryingtoconceive_pressed"/>
+                                <state key="highlighted" title="I’m trying to conceive" backgroundImage="btn_tryingtoconceive_pressed"/>
                                 <connections>
                                     <action selector="didSelectTryingToConceive:" destination="6kd-1c-wF8" eventType="touchUpInside" id="MKu-d3-OSl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ge9-eD-1Ly">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ge9-eD-1Ly">
                                 <rect key="frame" x="16" y="319" width="288" height="90"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="I’m trying to avoid pregnancy" backgroundImage="btn_tryingtoconceive">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected" title="I’m trying to avoid pregnancy" backgroundImage="btn_tryingtoconceive_pressed"/>
+                                <state key="highlighted" title="I’m trying to avoid pregnancy" backgroundImage="btn_tryingtoconceive_pressed"/>
                                 <connections>
                                     <action selector="didSelectTryingToAvoid:" destination="6kd-1c-wF8" eventType="touchUpInside" id="6jG-pt-Sjs"/>
                                 </connections>
@@ -353,22 +355,26 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeZ-3h-R1R">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeZ-3h-R1R">
                                 <rect key="frame" x="16" y="404" width="288" height="45"/>
                                 <state key="normal" title="Yes" backgroundImage="btn_signup_login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected" title="Yes" backgroundImage="btn_signup_login_pressed"/>
+                                <state key="highlighted" title="Yes" backgroundImage="btn_signup_login_pressed"/>
                                 <connections>
                                     <action selector="doONDOPairing:" destination="4wG-ur-4Q6" eventType="touchUpInside" id="Zs3-4N-ei9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="om6-3N-P0D">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="om6-3N-P0D">
                                 <rect key="frame" x="16" y="472" width="288" height="45"/>
                                 <state key="normal" title="No" backgroundImage="btn_signup_login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected" title="No" backgroundImage="btn_signup_login_pressed"/>
+                                <state key="highlighted" title="No" backgroundImage="btn_signup_login_pressed"/>
                                 <connections>
                                     <action selector="doNoPairing:" destination="4wG-ur-4Q6" eventType="touchUpInside" id="Goa-j0-Put"/>
                                 </connections>
@@ -413,11 +419,8 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg_launching" translatesAutoresizingMaskIntoConstraints="NO" id="ex7-sR-0MO">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_ovatemp_logo" translatesAutoresizingMaskIntoConstraints="NO" id="IHe-hJ-3gj">
-                                <rect key="frame" x="35" y="104" width="250" height="119"/>
-                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ScB-L1-76z">
-                                <rect key="frame" x="16" y="265" width="288" height="45"/>
+                                <rect key="frame" x="16" y="295" width="288" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                 <userDefinedRuntimeAttributes>
@@ -427,7 +430,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d74-Xq-dTh">
-                                <rect key="frame" x="16" y="323" width="288" height="45"/>
+                                <rect key="frame" x="16" y="353" width="288" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
@@ -436,13 +439,14 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YW-5h-plm">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YW-5h-plm">
                                 <rect key="frame" x="16" y="431" width="288" height="45"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Log In" backgroundImage="btn_signup_login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected" title="Log In" backgroundImage="btn_signup_login_pressed"/>
+                                <state key="highlighted" title="Log In" backgroundImage="btn_signup_login_pressed"/>
                                 <connections>
                                     <action selector="doLogin:" destination="A27-NT-QUR" eventType="touchUpInside" id="OTQ-mT-WaF"/>
                                 </connections>
@@ -458,6 +462,9 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                     <action selector="doResetPassword:" destination="A27-NT-QUR" eventType="touchUpInside" id="9Jf-F4-UnU"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_ovatemp_logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="IHe-hJ-3gj">
+                                <rect key="frame" x="68" y="83" width="184" height="194"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -477,8 +484,11 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
     <resources>
         <image name="bg_launching" width="320" height="568"/>
         <image name="btn_signup_login" width="282" height="46"/>
+        <image name="btn_signup_login_pressed" width="282" height="46"/>
         <image name="btn_tryingtoconceive" width="294" height="93"/>
-        <image name="img_ovatemp_logo" width="210" height="101"/>
+        <image name="btn_tryingtoconceive_pressed" width="294" height="93"/>
+        <image name="img_launchingscreen" width="320" height="568"/>
+        <image name="img_ovatemp_logo-1" width="184" height="194"/>
         <image name="img_thermometer" width="95" height="95"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -487,7 +497,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="gya-ek-y7R"/>
         <segue reference="7Dh-Ua-Vdw"/>
-        <segue reference="kMr-Zw-8PI"/>
     </inferredMetricsTieBreakers>
 </document>

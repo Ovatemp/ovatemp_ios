@@ -14,6 +14,8 @@
 
 #import "Mixpanel.h"
 
+#define EMAIL_REGEX @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+
 @interface SignUpViewController () <UITextViewDelegate>
 
 @end
@@ -74,7 +76,8 @@
 # pragma mark - Registration
 
 - (IBAction)sessionRegister:(id)sender {
-    // empty info checks
+    
+    // Text Field Checks
     if ([self.fullNameField.text length] == 0) {
         [self alertUserWithTitle:@"Error" andMessage:@"Please enter your full name."];
         return;
@@ -90,6 +93,19 @@
         return;
     }
     
+    if (([self.passwordField.text length] < 4) || ([self.fullNameField.text length] > 48)) {
+        [self alertUserWithTitle:@"Error" andMessage:@"The Password field must be between 4 and 48 characters long."];
+        return;
+    }
+    
+    // Email Validation
+    if (![self validateEmail:self.emailField.text]) {
+        
+        [self alertUserWithTitle:@"Error" andMessage:@"Please enter a valid email address."];
+        return;
+    }
+    
+    // Passed all checks, continue with registration
     [self startLoading];
     [ConnectionManager post:@"/users"
                      params:@{
@@ -131,6 +147,13 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return NO;
+}
+
+- (BOOL)validateEmail:(NSString *)email {
+    
+    NSPredicate *emailPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", EMAIL_REGEX];
+    
+    return [emailPredicate evaluateWithObject:email];
 }
 
 #pragma mark - UIAlertController
