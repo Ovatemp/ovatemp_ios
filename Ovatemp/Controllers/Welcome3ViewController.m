@@ -12,8 +12,11 @@
 
 @interface Welcome3ViewController () <UITableViewDelegate, UITableViewDataSource>
 
-@property LastPeriodTableViewCell *lastPeriodTableViewCell;
 @property NSIndexPath *selectedRowIndex;
+
+// Cells
+@property LastPeriodTableViewCell *lastPeriodCell;
+@property CycleLengthTableViewCell *cycleLengthCell;
 
 @end
 
@@ -96,27 +99,24 @@ BOOL expandCell;
 //    }
     
     if (indexPath.row == 0) {
-        LastPeriodTableViewCell *lastPeriodTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"lastPeriodCell" forIndexPath:indexPath];
-        
-        if ([lastPeriodTableViewCell.dateLabel.text length] > 0) {
-            
-        }
+        self.lastPeriodCell = [tableView dequeueReusableCellWithIdentifier:@"lastPeriodCell" forIndexPath:indexPath];
         
         if (expandCell) {
-            lastPeriodTableViewCell.datePicker.hidden = NO;
-//            lastPeriodTableViewCell.dateLabel.text = [[NSDate date] classicDate];
+            self.lastPeriodCell.datePicker.hidden = NO;
         }
         
-        return lastPeriodTableViewCell;
+        return self.lastPeriodCell;
+        
+        
     } else if (indexPath.row == 1) {
-        CycleLengthTableViewCell *cycleCell = [tableView dequeueReusableCellWithIdentifier:@"cycleCell" forIndexPath:indexPath];
+        self.cycleLengthCell = [tableView dequeueReusableCellWithIdentifier:@"cycleCell" forIndexPath:indexPath];
         
         if (expandCell) {
-            cycleCell.cycleLengthPicker.hidden = NO;
-            cycleCell.cycleLengthValueLabel.text = @"26";
+            self.cycleLengthCell.cycleLengthPicker.hidden = NO;
+            self.cycleLengthCell.cycleLengthValueLabel.text = @"26";
         }
         
-        return cycleCell;
+        return self.cycleLengthCell;
     }
     
     else {
@@ -150,14 +150,15 @@ BOOL expandCell;
     
     self.selectedRowIndex = indexPath;
     
-    if (indexPath.row == 0) {
-        [tableView cellForRowAtIndexPath:indexPath];
-    }
-    
 //    if (indexPath.row == 0) {
 ////        expandCell = YES;
     [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 //    }
+    
+    if (indexPath.row == 0) {
+        self.lastPeriodCell.dateLabel.text = [self.lastPeriodCell.datePicker.date classicDate];
+    }
+
 }
 
 /*
