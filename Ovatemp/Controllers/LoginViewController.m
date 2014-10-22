@@ -11,6 +11,8 @@
 #import "User.h"
 #import "Alert.h"
 
+#define EMAIL_REGEX @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+
 @interface LoginViewController () <UITextFieldDelegate>
 
 @end
@@ -42,6 +44,19 @@
 }
 
 - (IBAction)doLogin:(id)sender {
+    
+    // Email Validation
+    if (![self validateEmail:self.emailField.text]) {
+        [self alertUserWithTitle:@"Error" andMessage:@"Please enter a valid email address."];
+        return;
+    }
+    
+    // Password Validation
+    if (([self.passwordField.text length] < 4) || ([self.passwordField.text length] > 48)) {
+        [self alertUserWithTitle:@"Error" andMessage:@"The Password field must be between 4 and 48 characters long."];
+        return;
+    }
+    
     [self startLoading];
     [ConnectionManager post:@"/sessions"
                      params:@{
@@ -95,6 +110,13 @@
                     }];
 }
 
+- (BOOL)validateEmail:(NSString *)email {
+    
+    NSPredicate *emailPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", EMAIL_REGEX];
+    
+    return [emailPredicate evaluateWithObject:email];
+}
+
 # pragma mark - Autorotation
 
 - (BOOL)shouldAutorotate {
@@ -119,6 +141,23 @@
         [view becomeFirstResponder];
     return YES;
 }
+
+#pragma mark - UIAlertController
+
+- (void)alertUserWithTitle:(NSString *)title andMessage:(NSString *)message {
+    UIAlertController *errorAlert = [UIAlertController
+                                     alertControllerWithTitle:title
+                                     message:message
+                                     preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
+                                               handler:nil];
+    
+    [errorAlert addAction:ok];
+    
+    [self presentViewController:errorAlert animated:YES completion:nil];
+}
+
 
 /*
 #pragma mark - Navigation

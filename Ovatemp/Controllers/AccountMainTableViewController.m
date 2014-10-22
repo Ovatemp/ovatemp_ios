@@ -119,7 +119,7 @@ NSArray *accountMenuItems;
             
         case 4: // Share
         {
-            NSString *shareString = @"Are you fertile? Find out now with Ovatemp! https://itunes.apple.com/us/app/ovatemp/id692187268?mt=8";
+            NSString *shareString = @"I just downloaded the @Ovatemp App! Download yours for free and learn about your fertile health! #fertilityawareness #ovatemp https://itunes.apple.com/us/app/ovatemp/id692187268?mt=8";
             
             self.activityViewController =
             [[UIActivityViewController alloc] initWithActivityItems:@[shareString]
