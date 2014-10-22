@@ -18,18 +18,24 @@
 @property LastPeriodTableViewCell *lastPeriodCell;
 @property CycleLengthTableViewCell *cycleLengthCell;
 
+// Info
+@property NSDate *lastPeriodDate;
+
 @end
 
 @implementation Welcome3ViewController
 
 NSArray *welcomeInfoArray;
 BOOL expandCell;
+BOOL firstOpenLastPeriod;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     expandCell = NO;
+    
+    firstOpenLastPeriod = YES;
     
     self.tableView.delegate = self;
     
@@ -125,12 +131,6 @@ BOOL expandCell;
     }
     
     return cell;
-    
-//    WelcomeInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"welcomeInfoCell" forIndexPath:indexPath];
-//    
-//    [[cell textLabel] setText:[welcomeInfoArray objectAtIndex:indexPath.row]];
-    
-//    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -150,13 +150,23 @@ BOOL expandCell;
     
     self.selectedRowIndex = indexPath;
     
-//    if (indexPath.row == 0) {
-////        expandCell = YES;
+    if (indexPath.row == 0) {
+        
+        if (firstOpenLastPeriod) {
+            self.lastPeriodDate = self.lastPeriodCell.datePicker.date;
+            firstOpenLastPeriod = NO;
+        }
+        
+        // record date
+        if (!expandCell) {
+            self.lastPeriodDate = self.lastPeriodCell.datePicker.date;
+        }
+    }
+    
     [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//    }
     
     if (indexPath.row == 0) {
-        self.lastPeriodCell.dateLabel.text = [self.lastPeriodCell.datePicker.date classicDate];
+        self.lastPeriodCell.dateLabel.text = [self.lastPeriodDate classicDate];
     }
 
 }
