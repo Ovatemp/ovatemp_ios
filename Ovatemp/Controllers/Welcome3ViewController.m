@@ -8,6 +8,7 @@
 
 #import "Welcome3ViewController.h"
 #import "LastPeriodTableViewCell.h"
+#import "CycleLengthTableViewCell.h"
 
 @interface Welcome3ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -32,6 +33,8 @@ BOOL expandCell;
     welcomeInfoArray = [NSArray arrayWithObjects:@"Last Period", @"Cycle Length", @"Height", @"Weight", nil];
     
     [[self tableView] registerNib:[UINib nibWithNibName:@"LastPeriodTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"lastPeriodCell"];
+    
+    [[self tableView] registerNib:[UINib nibWithNibName:@"CycleLengthTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cycleCell"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -94,14 +97,29 @@ BOOL expandCell;
     
     if (indexPath.row == 0) {
         LastPeriodTableViewCell *lastPeriodTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"lastPeriodCell" forIndexPath:indexPath];
-        [[lastPeriodTableViewCell textLabel] setText:[welcomeInfoArray objectAtIndex:indexPath.row]];
+        
+        if ([lastPeriodTableViewCell.dateLabel.text length] > 0) {
+            
+        }
         
         if (expandCell) {
             lastPeriodTableViewCell.datePicker.hidden = NO;
+//            lastPeriodTableViewCell.dateLabel.text = [[NSDate date] classicDate];
         }
         
         return lastPeriodTableViewCell;
-    } else {
+    } else if (indexPath.row == 1) {
+        CycleLengthTableViewCell *cycleCell = [tableView dequeueReusableCellWithIdentifier:@"cycleCell" forIndexPath:indexPath];
+        
+        if (expandCell) {
+            cycleCell.cycleLengthPicker.hidden = NO;
+            cycleCell.cycleLengthValueLabel.text = @"26";
+        }
+        
+        return cycleCell;
+    }
+    
+    else {
         cell = [[UITableViewCell alloc] init];
         [[cell textLabel] setText:[welcomeInfoArray objectAtIndex:indexPath.row]];
     }
@@ -131,6 +149,10 @@ BOOL expandCell;
     expandCell = !expandCell;
     
     self.selectedRowIndex = indexPath;
+    
+    if (indexPath.row == 0) {
+        [tableView cellForRowAtIndexPath:indexPath];
+    }
     
 //    if (indexPath.row == 0) {
 ////        expandCell = YES;

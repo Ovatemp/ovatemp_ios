@@ -89,13 +89,13 @@
         return;
     }
     
-    if (([self.fullNameField.text length] < 4) || ([self.fullNameField.text length] > 48)) {
-        [self alertUserWithTitle:@"Error" andMessage:@"The Full Name field must be between 4 and 48 characters long."];
+    if (([self.fullNameField.text length] < 4) || ([self.fullNameField.text length] > 64)) {
+        [self alertUserWithTitle:@"Error" andMessage:@"The Full Name field must be between 4 and 64 characters long."];
         return;
     }
     
-    if (([self.passwordField.text length] < 4) || ([self.passwordField.text length] > 48)) {
-        [self alertUserWithTitle:@"Error" andMessage:@"The Password field must be between 4 and 48 characters long."];
+    if (([self.passwordField.text length] < 4) || ([self.passwordField.text length] > 64)) {
+        [self alertUserWithTitle:@"Error" andMessage:@"The Password field must be between 4 and 64 characters long."];
         return;
     }
     
