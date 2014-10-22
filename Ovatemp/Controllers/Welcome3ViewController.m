@@ -10,6 +10,14 @@
 #import "LastPeriodTableViewCell.h"
 #import "CycleLengthTableViewCell.h"
 
+typedef enum {
+    TableStateAllClosed,
+    TableStateLastPeriodExpanded,
+    TableStateCycleLengthExpanded,
+    TableStateHeightExpanded,
+    TableStateWeightExpanded,
+} TableStateType;
+
 @interface Welcome3ViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property NSIndexPath *selectedRowIndex;
@@ -20,22 +28,34 @@
 
 // Info
 @property NSDate *lastPeriodDate;
+@property int cycleLength;
+@property int userHeightFeetComponent;
+@property int userHeightInchesComponent;
+@property int userWeight;
 
 @end
 
 @implementation Welcome3ViewController
 
 NSArray *welcomeInfoArray;
-BOOL expandCell;
+
+TableStateType currentState;
+
+BOOL expandLastPeriodCell;
+BOOL expandCycleLengthCell;
+BOOL expandHeightCell;
+BOOL expandWeightCell;
+
 BOOL firstOpenLastPeriod;
+BOOL firstOpenCycleLengthCell;
+BOOL firstOpenHeightCell;
+BOOL firstOpenWeightCell;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    expandCell = NO;
-    
-    firstOpenLastPeriod = YES;
+    currentState = TableStateAllClosed;
     
     self.tableView.delegate = self;
     
@@ -77,7 +97,7 @@ BOOL firstOpenLastPeriod;
         {
             self.lastPeriodCell = [tableView dequeueReusableCellWithIdentifier:@"lastPeriodCell" forIndexPath:indexPath];
             
-            if (expandCell) {
+            if (expandLastPeriodCell) {
                 self.lastPeriodCell.datePicker.hidden = NO;
             }
             
@@ -88,7 +108,7 @@ BOOL firstOpenLastPeriod;
         {
             self.cycleLengthCell = [tableView dequeueReusableCellWithIdentifier:@"cycleCell" forIndexPath:indexPath];
             
-            if (expandCell) {
+            if (expandLastPeriodCell) {
                 self.cycleLengthCell.cycleLengthPicker.hidden = NO;
                 self.cycleLengthCell.cycleLengthValueLabel.text = @"26";
             }
@@ -118,7 +138,7 @@ BOOL firstOpenLastPeriod;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if(self.selectedRowIndex && indexPath.row == self.selectedRowIndex.row) {
-        if (expandCell) {
+        if (expandLastPeriodCell || expandCycleLengthCell || expandHeightCell || expandWeightCell) {
             return 200.0f;
         }
     }
@@ -128,37 +148,92 @@ BOOL firstOpenLastPeriod;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    expandCell = !expandCell;
-    
     self.selectedRowIndex = indexPath;
     
     switch (indexPath.row) {
-        case 0:
+        case 0: // tapped first cell
         {
+            
+            if (currentState == TableStateAllClosed) { // open first cell
+                [self setTableStateForState:TableStateCycleLengthExpanded];
+            }
+            
+            expandLastPeriodCell = !expandLastPeriodCell;
+            
+            // first time the cell is opened we need to save the date
             if (firstOpenLastPeriod) {
                 self.lastPeriodDate = self.lastPeriodCell.datePicker.date;
                 firstOpenLastPeriod = NO;
             }
             
             // record date
-            if (!expandCell) {
+            if (!expandLastPeriodCell) {
                 self.lastPeriodDate = self.lastPeriodCell.datePicker.date;
             }
+            
+            // reset all other cells
+            expandCycleLengthCell = NO;
+            self.cycleLengthCell.cycleLengthPicker.hidden = !self.cycleLengthCell.cycleLengthPicker.hidden;
+            expandHeightCell = NO;
+            expandWeightCell = NO;
             break;
         }
             
         case 1:
         {
+            expandCycleLengthCell = !expandCycleLengthCell;
+            
+            if (firstOpenCycleLengthCell) {
+                
+            }
+            
+            if (!expandCycleLengthCell) {
+                
+            }
+            
+            // reset all other cells
+            expandLastPeriodCell = NO;
+            self.lastPeriodCell.datePicker.hidden = !self.lastPeriodCell.datePicker.hidden;
+            expandHeightCell = NO;
+            expandWeightCell = NO;
             break;
         }
             
         case 2:
         {
+            expandHeightCell = !expandWeightCell;
+            
+            if (firstOpenHeightCell) {
+                
+            }
+            
+            if (!expandWeightCell) {
+                
+            }
+            
+            // reset all other cells
+            expandLastPeriodCell = NO;
+            expandCycleLengthCell = NO;
+            expandWeightCell = NO;
             break;
         }
             
         case 3:
         {
+            expandWeightCell = !expandWeightCell;
+            
+            if (firstOpenWeightCell) {
+                
+            }
+            
+            if (!expandWeightCell) {
+                
+            }
+            
+            // reset all other cells
+            expandLastPeriodCell = NO;
+            expandCycleLengthCell = NO;
+            expandHeightCell = NO;
             break;
         }
             
@@ -166,7 +241,16 @@ BOOL firstOpenLastPeriod;
             break;
     }
     
-    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    NSMutableArray *indexPaths = [NSMutableArray new];
+    for (int i = 0; i < 4; i++) {
+        [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+    }
+    
+    [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+//    [tableView reloadData];
+    
+    
+    
     
     // refreshed cells, set lables
     switch (indexPath.row) {
@@ -188,6 +272,75 @@ BOOL firstOpenLastPeriod;
             
         case 3:
         {
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
+- (void)setTableStateForState:(TableStateType)state {
+    
+//    TableStateAllClosed,
+//    TableStateLastPeriodExpanded,
+//    TableStateCycleLengthExpanded,
+//    TableStateHeightExpanded,
+//    TableStateWeightExpanded,
+    
+    switch (state) {
+        case TableStateAllClosed:
+        {
+            expandLastPeriodCell = NO;
+            expandCycleLengthCell = NO;
+            expandHeightCell = NO;
+            expandWeightCell = NO;
+            
+            currentState = TableStateAllClosed;
+            break;
+        }
+            
+        case TableStateLastPeriodExpanded:
+        {
+            expandLastPeriodCell = YES;
+            expandCycleLengthCell = NO;
+            expandHeightCell = NO;
+            expandWeightCell = NO;
+            
+            currentState = TableStateLastPeriodExpanded;
+            break;
+        }
+            
+        case TableStateCycleLengthExpanded:
+        {
+            expandLastPeriodCell = NO;
+            expandCycleLengthCell = YES;
+            expandHeightCell = NO;
+            expandWeightCell = NO;
+            
+            currentState = TableStateCycleLengthExpanded;
+            break;
+        }
+            
+        case TableStateHeightExpanded:
+        {
+            expandLastPeriodCell = NO;
+            expandCycleLengthCell = NO;
+            expandHeightCell = YES;
+            expandWeightCell = NO;
+            
+            currentState = TableStateHeightExpanded;
+            break;
+        }
+            
+        case TableStateWeightExpanded:
+        {
+            expandLastPeriodCell = NO;
+            expandCycleLengthCell = NO;
+            expandHeightCell = NO;
+            expandWeightCell = YES;
+            
+            currentState = TableStateWeightExpanded;
             break;
         }
             
