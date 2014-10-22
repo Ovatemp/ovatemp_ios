@@ -72,62 +72,44 @@ BOOL firstOpenLastPeriod;
     
     UITableViewCell *cell;
     
-//    switch (indexPath.row) {
-//        case 0:
-//        {
-//            LastPeriodTableViewCell *lastPeriodTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"lastPeriodCell" forIndexPath:indexPath];
-//            
-//            [[lastPeriodTableViewCell textLabel] setText:[welcomeInfoArray objectAtIndex:indexPath.row]];
-//            
-//            return lastPeriodTableViewCell;
-//             break;
-//        }
-//        case 1:
-//        {
-//            cell = [[UITableViewCell alloc] init];
-//            [[cell textLabel] setText:[welcomeInfoArray objectAtIndex:indexPath.row]];
-//             break;
-//        }
-//        case 2:
-//        {
-//            cell = [[UITableViewCell alloc] init];
-//            [[cell textLabel] setText:[welcomeInfoArray objectAtIndex:indexPath.row]];
-//             break;
-//        }
-//        case 3:
-//        {
-//            cell = [[UITableViewCell alloc] init];
-//            [[cell textLabel] setText:[welcomeInfoArray objectAtIndex:indexPath.row]];
-//             break;
-//        }
-//        default:
-//            break;
-//    }
-    
-    if (indexPath.row == 0) {
-        self.lastPeriodCell = [tableView dequeueReusableCellWithIdentifier:@"lastPeriodCell" forIndexPath:indexPath];
-        
-        if (expandCell) {
-            self.lastPeriodCell.datePicker.hidden = NO;
+    switch (indexPath.row) {
+        case 0:
+        {
+            self.lastPeriodCell = [tableView dequeueReusableCellWithIdentifier:@"lastPeriodCell" forIndexPath:indexPath];
+            
+            if (expandCell) {
+                self.lastPeriodCell.datePicker.hidden = NO;
+            }
+            
+            return self.lastPeriodCell;
+             break;
         }
-        
-        return self.lastPeriodCell;
-        
-        
-    } else if (indexPath.row == 1) {
-        self.cycleLengthCell = [tableView dequeueReusableCellWithIdentifier:@"cycleCell" forIndexPath:indexPath];
-        
-        if (expandCell) {
-            self.cycleLengthCell.cycleLengthPicker.hidden = NO;
-            self.cycleLengthCell.cycleLengthValueLabel.text = @"26";
+        case 1:
+        {
+            self.cycleLengthCell = [tableView dequeueReusableCellWithIdentifier:@"cycleCell" forIndexPath:indexPath];
+            
+            if (expandCell) {
+                self.cycleLengthCell.cycleLengthPicker.hidden = NO;
+                self.cycleLengthCell.cycleLengthValueLabel.text = @"26";
+            }
+            
+            return self.cycleLengthCell;
+             break;
         }
-        
-        return self.cycleLengthCell;
-    }
-    
-    else {
-        cell = [[UITableViewCell alloc] init];
-        [[cell textLabel] setText:[welcomeInfoArray objectAtIndex:indexPath.row]];
+        case 2:
+        {
+            cell = [[UITableViewCell alloc] init];
+            [[cell textLabel] setText:[welcomeInfoArray objectAtIndex:indexPath.row]];
+             break;
+        }
+        case 3:
+        {
+            cell = [[UITableViewCell alloc] init];
+            [[cell textLabel] setText:[welcomeInfoArray objectAtIndex:indexPath.row]];
+             break;
+        }
+        default:
+            break;
     }
     
     return cell;
@@ -150,25 +132,68 @@ BOOL firstOpenLastPeriod;
     
     self.selectedRowIndex = indexPath;
     
-    if (indexPath.row == 0) {
-        
-        if (firstOpenLastPeriod) {
-            self.lastPeriodDate = self.lastPeriodCell.datePicker.date;
-            firstOpenLastPeriod = NO;
+    switch (indexPath.row) {
+        case 0:
+        {
+            if (firstOpenLastPeriod) {
+                self.lastPeriodDate = self.lastPeriodCell.datePicker.date;
+                firstOpenLastPeriod = NO;
+            }
+            
+            // record date
+            if (!expandCell) {
+                self.lastPeriodDate = self.lastPeriodCell.datePicker.date;
+            }
+            break;
         }
-        
-        // record date
-        if (!expandCell) {
-            self.lastPeriodDate = self.lastPeriodCell.datePicker.date;
+            
+        case 1:
+        {
+            break;
         }
+            
+        case 2:
+        {
+            break;
+        }
+            
+        case 3:
+        {
+            break;
+        }
+            
+        default:
+            break;
     }
     
     [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     
-    if (indexPath.row == 0) {
-        self.lastPeriodCell.dateLabel.text = [self.lastPeriodDate classicDate];
+    // refreshed cells, set lables
+    switch (indexPath.row) {
+        case 0:
+        {
+            self.lastPeriodCell.dateLabel.text = [self.lastPeriodDate classicDate];
+            break;
+        }
+            
+        case 1:
+        {
+            break;
+        }
+            
+        case 2:
+        {
+            break;
+        }
+            
+        case 3:
+        {
+            break;
+        }
+            
+        default:
+            break;
     }
-
 }
 
 /*
