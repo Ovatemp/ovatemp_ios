@@ -12,6 +12,7 @@
 @interface Welcome3ViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property LastPeriodTableViewCell *lastPeriodTableViewCell;
+@property NSIndexPath *selectedRowIndex;
 
 @end
 
@@ -115,17 +116,26 @@ BOOL expandCell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (expandCell) {
-        return 200.0f;
+    
+    if(self.selectedRowIndex && indexPath.row == self.selectedRowIndex.row) {
+        if (expandCell) {
+            return 200.0f;
+        }
     }
+    
     return 44.0f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        NSArray *reloadPaths = [NSArray arrayWithObject:[NSIndexPath indexPathWithIndex:0]];
-        [tableView reloadRowsAtIndexPaths:reloadPaths withRowAnimation:UITableViewRowAnimationBottom];
-    }
+    
+    expandCell = !expandCell;
+    
+    self.selectedRowIndex = indexPath;
+    
+//    if (indexPath.row == 0) {
+////        expandCell = YES;
+    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    }
 }
 
 /*

@@ -94,7 +94,7 @@
         return;
     }
     
-    if (([self.passwordField.text length] < 4) || ([self.fullNameField.text length] > 48)) {
+    if (([self.passwordField.text length] < 4) || ([self.passwordField.text length] > 48)) {
         [self alertUserWithTitle:@"Error" andMessage:@"The Password field must be between 4 and 48 characters long."];
         return;
     }
