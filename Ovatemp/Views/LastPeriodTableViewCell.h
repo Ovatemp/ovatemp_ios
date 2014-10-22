@@ -11,5 +11,7 @@
 @interface LastPeriodTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UILabel *lastPeriodLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end

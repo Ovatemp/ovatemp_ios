@@ -402,6 +402,8 @@
 		5F8C569419F1BD950024552A /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C569319F1BD950024552A /* SignUpViewController.m */; };
 		5FDAA3A619F7069C004E7181 /* LastPeriodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDAA3A419F7069C004E7181 /* LastPeriodTableViewCell.m */; };
 		5FDAA3A719F7069C004E7181 /* LastPeriodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDAA3A519F7069C004E7181 /* LastPeriodTableViewCell.xib */; };
+		5FDAA3AB19F8020F004E7181 /* CycleLengthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDAA3A919F8020F004E7181 /* CycleLengthTableViewCell.m */; };
+		5FDAA3AC19F8020F004E7181 /* CycleLengthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDAA3AA19F8020F004E7181 /* CycleLengthTableViewCell.xib */; };
 		8315E49E18C521A800DA935A /* SessionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49D18C521A800DA935A /* SessionSpec.m */; };
 		83548FF218BD24450016B53A /* TodaySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 83548FF118BD24450016B53A /* TodaySpec.m */; };
 		83C4D21C18D9F1CF008C523C /* KIFUITestActor+OTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4D21B18D9F1CF008C523C /* KIFUITestActor+OTAdditions.m */; };
@@ -1001,6 +1003,9 @@
 		5FDAA3A319F7069C004E7181 /* LastPeriodTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastPeriodTableViewCell.h; sourceTree = "<group>"; };
 		5FDAA3A419F7069C004E7181 /* LastPeriodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastPeriodTableViewCell.m; sourceTree = "<group>"; };
 		5FDAA3A519F7069C004E7181 /* LastPeriodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LastPeriodTableViewCell.xib; sourceTree = "<group>"; };
+		5FDAA3A819F8020F004E7181 /* CycleLengthTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleLengthTableViewCell.h; sourceTree = "<group>"; };
+		5FDAA3A919F8020F004E7181 /* CycleLengthTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleLengthTableViewCell.m; sourceTree = "<group>"; };
+		5FDAA3AA19F8020F004E7181 /* CycleLengthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CycleLengthTableViewCell.xib; sourceTree = "<group>"; };
 		8315E49D18C521A800DA935A /* SessionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionSpec.m; sourceTree = "<group>"; };
 		83548FF118BD24450016B53A /* TodaySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodaySpec.m; sourceTree = "<group>"; };
 		83C4D21A18D9F1CF008C523C /* KIFUITestActor+OTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFUITestActor+OTAdditions.h"; sourceTree = "<group>"; };
@@ -1893,6 +1898,9 @@
 		5F1C9B4A19EDE87A000F1FC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5FDAA3A819F8020F004E7181 /* CycleLengthTableViewCell.h */,
+				5FDAA3A919F8020F004E7181 /* CycleLengthTableViewCell.m */,
+				5FDAA3AA19F8020F004E7181 /* CycleLengthTableViewCell.xib */,
 				5FDAA3A319F7069C004E7181 /* LastPeriodTableViewCell.h */,
 				5FDAA3A419F7069C004E7181 /* LastPeriodTableViewCell.m */,
 				5FDAA3A519F7069C004E7181 /* LastPeriodTableViewCell.xib */,
@@ -2299,6 +2307,7 @@
 				5F1C96CE19EDD31A000F1FC1 /* Media.xcassets in Resources */,
 				5F1C9BDD19EDE87A000F1FC1 /* OvatempSupport@2x.png in Resources */,
 				5F1C9C4319EDE87A000F1FC1 /* community_unselect.png in Resources */,
+				5FDAA3AC19F8020F004E7181 /* CycleLengthTableViewCell.xib in Resources */,
 				5F1C9BC019EDE87A000F1FC1 /* DietAndLifestyleBlue@2x.png in Resources */,
 				5F1C9BAD19EDE87A000F1FC1 /* BuyButtonLeft.png in Resources */,
 				5F1C9C3B19EDE87A000F1FC1 /* cal_unselected.png in Resources */,
@@ -2490,6 +2499,7 @@
 				5F1C96E819EDD31A000F1FC1 /* MPEnumDescription.m in Sources */,
 				5F1C9C7019EDE87A000F1FC1 /* CycleChartView.m in Sources */,
 				5F8C568E19F184C60024552A /* SelectLogInOrSignUpViewController.m in Sources */,
+				5FDAA3AB19F8020F004E7181 /* CycleLengthTableViewCell.m in Sources */,
 				5F1C9C6D19EDE87A000F1FC1 /* CoachingMenuCell.m in Sources */,
 				5F1C971019EDD31A000F1FC1 /* Reachability.m in Sources */,
 				5F1C96E119EDD31A000F1FC1 /* MPCGColorRefToNSStringValueTransformer.m in Sources */,

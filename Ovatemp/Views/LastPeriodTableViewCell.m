@@ -12,6 +12,10 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    [self.datePicker addTarget:self
+                               action:@selector(lastPeriodChanged:)
+                     forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -20,12 +24,9 @@
     // Configure the view for the selected state
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    
-    CGRect frame = self.textLabel.frame;
-    frame.size.width -= 150; // fix text label cutting off second text label
-    self.textLabel.frame = frame;
+- (void)lastPeriodChanged:(UIDatePicker *)sender {
+//    NSString *dateString = [NSString stringWithFormat:@"%@ %@, %@", [self.datePicker.date ]]
+    self.dateLabel.text = [self.datePicker.date classicDate];
 }
 
 @end
