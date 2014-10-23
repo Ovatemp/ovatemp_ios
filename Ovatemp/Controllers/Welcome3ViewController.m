@@ -9,6 +9,8 @@
 #import "Welcome3ViewController.h"
 #import "LastPeriodTableViewCell.h"
 #import "CycleLengthTableViewCell.h"
+#import "HeightTableViewCell.h"
+#import "WeightTableViewCell.h"
 
 typedef enum {
     TableStateAllClosed,
@@ -25,6 +27,8 @@ typedef enum {
 // Cells
 @property LastPeriodTableViewCell *lastPeriodCell;
 @property CycleLengthTableViewCell *cycleLengthCell;
+@property HeightTableViewCell *heightCell;
+@property WeightTableViewCell *weightCell;
 
 // Info
 @property NSDate *lastPeriodDate;
@@ -55,6 +59,16 @@ BOOL firstOpenWeightCell;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    expandLastPeriodCell = NO;
+    expandCycleLengthCell = NO;
+    expandHeightCell = NO;
+    expandWeightCell = NO;
+    
+    firstOpenLastPeriod = YES;
+    firstOpenCycleLengthCell = YES;
+    firstOpenHeightCell = YES;
+    firstOpenWeightCell = YES;
+    
     currentState = TableStateAllClosed;
     
     self.tableView.delegate = self;
@@ -64,6 +78,24 @@ BOOL firstOpenWeightCell;
     [[self tableView] registerNib:[UINib nibWithNibName:@"LastPeriodTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"lastPeriodCell"];
     
     [[self tableView] registerNib:[UINib nibWithNibName:@"CycleLengthTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cycleCell"];
+    
+    [[self tableView] registerNib:[UINib nibWithNibName:@"HeightTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"heightCell"];
+    
+    [[self tableView] registerNib:[UINib nibWithNibName:@"WeightTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"weightCell"];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    expandLastPeriodCell = NO;
+    expandCycleLengthCell = NO;
+    expandHeightCell = NO;
+    expandWeightCell = NO;
+    
+    firstOpenLastPeriod = YES;
+    firstOpenCycleLengthCell = YES;
+    firstOpenHeightCell = YES;
+    firstOpenWeightCell = YES;
+    
+    currentState = TableStateAllClosed;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,7 +142,7 @@ BOOL firstOpenWeightCell;
             
             if (expandLastPeriodCell) {
                 self.cycleLengthCell.cycleLengthPicker.hidden = NO;
-                self.cycleLengthCell.cycleLengthValueLabel.text = @"26";
+//                self.cycleLengthCell.cycleLengthValueLabel.text = @"26";
             }
             
             return self.cycleLengthCell;
@@ -118,15 +150,27 @@ BOOL firstOpenWeightCell;
         }
         case 2:
         {
-            cell = [[UITableViewCell alloc] init];
-            [[cell textLabel] setText:[welcomeInfoArray objectAtIndex:indexPath.row]];
-             break;
+            self.heightCell = [tableView dequeueReusableCellWithIdentifier:@"heightCell" forIndexPath:indexPath];
+            
+            if (expandWeightCell) {
+                self.heightCell.heightPicker.hidden = NO;
+//                self.heightCell.heightValueLabel.text = @"100";
+            }
+            
+            return self.heightCell;
+            break;
         }
         case 3:
         {
-            cell = [[UITableViewCell alloc] init];
-            [[cell textLabel] setText:[welcomeInfoArray objectAtIndex:indexPath.row]];
-             break;
+            self.weightCell = [tableView dequeueReusableCellWithIdentifier:@"weightCell" forIndexPath:indexPath];
+            
+            if (expandWeightCell) {
+                self.weightCell.weightPicker.hidden = NO;
+//                self.weightCell.weightValueLabel.text = @"3' 1\"";
+            }
+            
+            return self.weightCell;
+            break;
         }
         default:
             break;
@@ -155,10 +199,12 @@ BOOL firstOpenWeightCell;
         {
             
             if (currentState == TableStateAllClosed) { // open first cell
-                [self setTableStateForState:TableStateCycleLengthExpanded];
+                [self setTableStateForState:TableStateLastPeriodExpanded];
+            } else if (currentState == TableStateLastPeriodExpanded) {
+                [self setTableStateForState:TableStateAllClosed];
             }
             
-            expandLastPeriodCell = !expandLastPeriodCell;
+//            expandLastPeriodCell = !expandLastPeriodCell;
             
             // first time the cell is opened we need to save the date
             if (firstOpenLastPeriod) {
@@ -170,12 +216,6 @@ BOOL firstOpenWeightCell;
             if (!expandLastPeriodCell) {
                 self.lastPeriodDate = self.lastPeriodCell.datePicker.date;
             }
-            
-            // reset all other cells
-            expandCycleLengthCell = NO;
-            self.cycleLengthCell.cycleLengthPicker.hidden = !self.cycleLengthCell.cycleLengthPicker.hidden;
-            expandHeightCell = NO;
-            expandWeightCell = NO;
             break;
         }
             
@@ -210,11 +250,6 @@ BOOL firstOpenWeightCell;
             if (!expandWeightCell) {
                 
             }
-            
-            // reset all other cells
-            expandLastPeriodCell = NO;
-            expandCycleLengthCell = NO;
-            expandWeightCell = NO;
             break;
         }
             
@@ -229,11 +264,6 @@ BOOL firstOpenWeightCell;
             if (!expandWeightCell) {
                 
             }
-            
-            // reset all other cells
-            expandLastPeriodCell = NO;
-            expandCycleLengthCell = NO;
-            expandHeightCell = NO;
             break;
         }
             
@@ -278,6 +308,9 @@ BOOL firstOpenWeightCell;
         default:
             break;
     }
+    
+    [tableView setNeedsDisplay];
+    [tableView setNeedsLayout];
 }
 
 - (void)setTableStateForState:(TableStateType)state {
@@ -292,9 +325,13 @@ BOOL firstOpenWeightCell;
         case TableStateAllClosed:
         {
             expandLastPeriodCell = NO;
+            self.lastPeriodCell.datePicker.hidden = YES;
             expandCycleLengthCell = NO;
+            self.cycleLengthCell.cycleLengthPicker.hidden = YES;
             expandHeightCell = NO;
+            self.heightCell.heightPicker.hidden = YES;
             expandWeightCell = NO;
+            self.weightCell.weightPicker.hidden = YES;
             
             currentState = TableStateAllClosed;
             break;
@@ -303,9 +340,13 @@ BOOL firstOpenWeightCell;
         case TableStateLastPeriodExpanded:
         {
             expandLastPeriodCell = YES;
+            self.lastPeriodCell.datePicker.hidden = NO;
             expandCycleLengthCell = NO;
+            self.cycleLengthCell.cycleLengthPicker.hidden = YES;
             expandHeightCell = NO;
+            self.heightCell.heightPicker.hidden = YES;
             expandWeightCell = NO;
+            self.weightCell.weightPicker.hidden = YES;
             
             currentState = TableStateLastPeriodExpanded;
             break;
@@ -314,9 +355,13 @@ BOOL firstOpenWeightCell;
         case TableStateCycleLengthExpanded:
         {
             expandLastPeriodCell = NO;
+            self.lastPeriodCell.datePicker.hidden = YES;
             expandCycleLengthCell = YES;
+            self.cycleLengthCell.cycleLengthPicker.hidden = NO;
             expandHeightCell = NO;
+            self.heightCell.heightPicker.hidden = YES;
             expandWeightCell = NO;
+            self.weightCell.weightPicker.hidden = YES;
             
             currentState = TableStateCycleLengthExpanded;
             break;
@@ -325,9 +370,13 @@ BOOL firstOpenWeightCell;
         case TableStateHeightExpanded:
         {
             expandLastPeriodCell = NO;
+            self.lastPeriodCell.datePicker.hidden = YES;
             expandCycleLengthCell = NO;
+            self.cycleLengthCell.cycleLengthPicker.hidden = YES;
             expandHeightCell = YES;
+            self.heightCell.heightPicker.hidden = NO;
             expandWeightCell = NO;
+            self.weightCell.weightPicker.hidden = YES;
             
             currentState = TableStateHeightExpanded;
             break;
@@ -336,9 +385,13 @@ BOOL firstOpenWeightCell;
         case TableStateWeightExpanded:
         {
             expandLastPeriodCell = NO;
+            self.lastPeriodCell.datePicker.hidden = YES;
             expandCycleLengthCell = NO;
+            self.cycleLengthCell.cycleLengthPicker.hidden = YES;
             expandHeightCell = NO;
+            self.heightCell.heightPicker.hidden = YES;
             expandWeightCell = YES;
+            self.weightCell.weightPicker.hidden = NO;
             
             currentState = TableStateWeightExpanded;
             break;
