@@ -35,7 +35,9 @@
     
     NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [UIColor ovatempDarkGreyTitleColor],NSForegroundColorAttributeName,
-                                    [UIColor whiteColor],NSBackgroundColorAttributeName,nil];
+                                    [UIColor whiteColor],NSBackgroundColorAttributeName,
+                                    [UIFont fontWithName:@"LucidaSans" size:12], NSFontAttributeName,
+                                    nil];
     self.navigationController.navigationBar.titleTextAttributes = textAttributes;
 }
 
