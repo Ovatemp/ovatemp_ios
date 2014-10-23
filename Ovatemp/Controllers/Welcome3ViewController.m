@@ -342,7 +342,7 @@ BOOL firstOpenWeightCell;
             
         case 1:
         {
-            self.cycleLengthCell.cycleLengthValueLabel.text = [NSString stringWithFormat:@"%ld", (long)self.cycleLength];
+            self.cycleLengthCell.cycleLengthValueLabel.text = [NSString stringWithFormat:@"%ld days", (long)self.cycleLength];
             break;
         }
             
