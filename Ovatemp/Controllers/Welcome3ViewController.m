@@ -142,7 +142,6 @@ BOOL firstOpenWeightCell;
             
             if (expandCycleLengthCell) {
                 self.cycleLengthCell.cycleLengthPicker.hidden = NO;
-//                self.cycleLengthCell.cycleLengthValueLabel.text = @"26";
             }
             
             return self.cycleLengthCell;
@@ -152,9 +151,8 @@ BOOL firstOpenWeightCell;
         {
             self.heightCell = [tableView dequeueReusableCellWithIdentifier:@"heightCell" forIndexPath:indexPath];
             
-            if (expandWeightCell) {
+            if (expandHeightCell) {
                 self.heightCell.heightPicker.hidden = NO;
-//                self.heightCell.heightValueLabel.text = @"100";
             }
             
             return self.heightCell;
@@ -166,7 +164,6 @@ BOOL firstOpenWeightCell;
             
             if (expandWeightCell) {
                 self.weightCell.weightPicker.hidden = NO;
-//                self.weightCell.weightValueLabel.text = @"3' 1\"";
             }
             
             return self.weightCell;
@@ -272,11 +269,12 @@ BOOL firstOpenWeightCell;
             }
             
             if (firstOpenWeightCell) {
-                
+                self.userWeight = 130;
+                firstOpenWeightCell = NO;
             }
             
             if (!expandWeightCell) {
-                
+                self.userWeight = ([self.weightCell.weightPicker selectedRowInComponent:0] + 100);
             }
             break;
         }
@@ -314,12 +312,17 @@ BOOL firstOpenWeightCell;
             
         case 3:
         {
+            self.weightCell.weightValueLabel.text = [NSString stringWithFormat:@"%ld lbs", (long)self.userWeight];
+            
             break;
         }
             
         default:
             break;
     }
+    
+    // make sure cell can be displayed, even if out of view
+    [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     
     [self setTableStateForState:currentState]; // make sure current state is set
     
@@ -329,11 +332,11 @@ BOOL firstOpenWeightCell;
 
 - (void)setTableStateForState:(TableStateType)state {
     
-//    TableStateAllClosed,
-//    TableStateLastPeriodExpanded,
-//    TableStateCycleLengthExpanded,
-//    TableStateHeightExpanded,
-//    TableStateWeightExpanded,
+//    TableStateAllClosed
+//    TableStateLastPeriodExpanded
+//    TableStateCycleLengthExpanded
+//    TableStateHeightExpanded
+//    TableStateWeightExpanded
     
     switch (state) {
         case TableStateAllClosed:
