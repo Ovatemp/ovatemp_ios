@@ -15,29 +15,42 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OWk-Tk-5BQ">
-                    <rect key="frame" x="0.0" y="286" width="320" height="282"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ONDO image here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLC-4w-6B3">
+                    <rect key="frame" x="90" y="129" width="140" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ari-P5-BJd">
+                    <rect key="frame" x="59" y="158" width="202" height="84"/>
+                    <string key="text">ONDO sends your daily Basal Body temperature (BBT) straight to your smartphone eliminating the need to record your BBT manually.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OWk-Tk-5BQ">
+                    <rect key="frame" x="0.0" y="290" width="320" height="219"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="xFA-J2-5gn"/>
                         <outlet property="delegate" destination="-1" id="PBM-nh-CAD"/>
                     </connections>
                 </tableView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ONDO image here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLC-4w-6B3">
-                    <rect key="frame" x="90" y="129" width="140" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ari-P5-BJd">
-                    <rect key="frame" x="59" y="158" width="202" height="95"/>
-                    <string key="text">ONDO sends your daily Basal Body temperature (BBT) straight to your smartphone eliminating the need to record your BBT manually.</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ari-P5-BJd" firstAttribute="top" secondItem="KLC-4w-6B3" secondAttribute="bottom" constant="8" id="0dd-Sr-SBI"/>
+                <constraint firstItem="KLC-4w-6B3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="129" id="7Ll-pa-B22"/>
+                <constraint firstItem="OWk-Tk-5BQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Cyg-6a-kwr"/>
+                <constraint firstItem="OWk-Tk-5BQ" firstAttribute="top" secondItem="ari-P5-BJd" secondAttribute="bottom" constant="48" id="DhJ-ao-CZ8"/>
+                <constraint firstItem="OWk-Tk-5BQ" firstAttribute="top" secondItem="ari-P5-BJd" secondAttribute="bottom" constant="48" id="HSY-L0-2eG"/>
+                <constraint firstAttribute="trailing" secondItem="ari-P5-BJd" secondAttribute="trailing" constant="59" id="NSN-gW-IBC"/>
+                <constraint firstAttribute="trailing" secondItem="KLC-4w-6B3" secondAttribute="trailing" constant="90" id="TIr-XR-y3I"/>
+                <constraint firstAttribute="trailing" secondItem="OWk-Tk-5BQ" secondAttribute="trailing" id="Yo2-WU-wgK"/>
+                <constraint firstItem="KLC-4w-6B3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="90" id="cy0-Ke-dEE"/>
+                <constraint firstAttribute="bottom" secondItem="OWk-Tk-5BQ" secondAttribute="bottom" constant="59" id="m8h-e2-uSk"/>
+                <constraint firstItem="ari-P5-BJd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="59" id="vol-62-OVl"/>
+            </constraints>
             <point key="canvasLocation" x="139" y="154"/>
         </view>
     </objects>
