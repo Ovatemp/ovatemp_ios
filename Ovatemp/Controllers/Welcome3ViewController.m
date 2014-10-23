@@ -204,7 +204,6 @@ BOOL firstOpenWeightCell;
                 [self setTableStateForState:TableStateLastPeriodExpanded];
             }
             
-//            expandLastPeriodCell = !expandLastPeriodCell;
             
             // first time the cell is opened we need to save the date
             if (firstOpenLastPeriod) {
@@ -221,7 +220,6 @@ BOOL firstOpenWeightCell;
             
         case 1:
         {
-//            expandCycleLengthCell = !expandCycleLengthCell;
             
             if (currentState == TableStateCycleLengthExpanded) {
                 [self setTableStateForState:TableStateAllClosed];
@@ -230,14 +228,13 @@ BOOL firstOpenWeightCell;
             }
             
             if (firstOpenCycleLengthCell) {
-                self.cycleLength = 26;
+                self.cycleLength = 28;
                 firstOpenCycleLengthCell = NO;
             }
             
             if (!expandCycleLengthCell) {
                 // save picker info
-                // TODO: FIXME, just read lable contents
-                self.cycleLength = [self.cycleLengthCell.cycleLengthPicker selectedRowInComponent:0];
+                self.cycleLength = [self.cycleLengthCell.cycleLengthValueLabel.text integerValue];
                 
             }
             break;
@@ -245,7 +242,6 @@ BOOL firstOpenWeightCell;
             
         case 2:
         {
-//            expandHeightCell = !expandHeightCell;
             
             if (currentState == TableStateHeightExpanded) {
                 [self setTableStateForState:TableStateAllClosed];
@@ -254,18 +250,20 @@ BOOL firstOpenWeightCell;
             }
             
             if (firstOpenHeightCell) {
-                
+                self.userHeightFeetComponent = 5;
+                self.userHeightInchesComponent = 5;
+                firstOpenHeightCell = NO;
             }
             
             if (!expandWeightCell) {
-                
+                self.userHeightFeetComponent = ([self.heightCell.heightPicker selectedRowInComponent:0] + 3);
+                self.userHeightInchesComponent = ([self.heightCell.heightPicker selectedRowInComponent:1] + 1);
             }
             break;
         }
             
         case 3:
         {
-//            expandWeightCell = !expandWeightCell;
             
             if (currentState == TableStateWeightExpanded) {
                 [self setTableStateForState:TableStateAllClosed];
@@ -293,11 +291,7 @@ BOOL firstOpenWeightCell;
     }
     
     [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-//    [tableView reloadData];
-    
-    
-    
-    
+
     // refreshed cells, set lables
     switch (indexPath.row) {
         case 0:
@@ -314,6 +308,7 @@ BOOL firstOpenWeightCell;
             
         case 2:
         {
+            self.heightCell.heightValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"", (long)self.userHeightFeetComponent, (long)self.userHeightInchesComponent];
             break;
         }
             
@@ -326,7 +321,7 @@ BOOL firstOpenWeightCell;
             break;
     }
     
-    [self setTableStateForState:currentState];
+    [self setTableStateForState:currentState]; // make sure current state is set
     
     [tableView setNeedsDisplay];
     [tableView setNeedsLayout];

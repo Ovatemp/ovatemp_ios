@@ -18,6 +18,9 @@ NSArray *cycleLengthPickerData;
     cycleLengthPickerData = @[@"26", @"27", @"28", @"29", @"30"];
     
     self.cycleLengthPicker.delegate = self;
+    
+    // default picker value
+    [self.cycleLengthPicker selectRow:2 inComponent:0 animated:NO]; // 28
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

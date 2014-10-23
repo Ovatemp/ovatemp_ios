@@ -28,6 +28,10 @@ NSMutableArray *heightPickerInchesData;
     }
     
     self.heightPicker.delegate = self;
+    
+    // default value
+    [self.heightPicker selectRow:2 inComponent:0 animated:NO]; // 5'
+    [self.heightPicker selectRow:4 inComponent:1 animated:NO]; // 5"
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -66,7 +70,7 @@ NSMutableArray *heightPickerInchesData;
     }
     else
     {
-        return [heightPickerFeetData objectAtIndex:row];
+        return [heightPickerInchesData objectAtIndex:row];
     }
 }
 
