@@ -20,11 +20,11 @@ NSMutableArray *heightPickerInchesData;
     heightPickerInchesData = [[NSMutableArray alloc] init];
     
     for (int i = 3; i < 7; i++) {
-        [heightPickerFeetData addObject:[NSString stringWithFormat:@"%d", i]];
+        [heightPickerFeetData addObject:[NSString stringWithFormat:@"%d'", i]];
     }
     
     for (int i = 1; i < 12; i++) {
-        [heightPickerInchesData addObject:[NSString stringWithFormat:@"%d", i]];
+        [heightPickerInchesData addObject:[NSString stringWithFormat:@"%d\"", i]];
     }
     
     self.heightPicker.delegate = self;
@@ -44,7 +44,7 @@ NSMutableArray *heightPickerInchesData;
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
-    self.heightValueLabel.text = [NSString stringWithFormat:@"%@' %@\"", [heightPickerFeetData objectAtIndex:[self.heightPicker selectedRowInComponent:0]], [heightPickerInchesData objectAtIndex:[self.heightPicker selectedRowInComponent:1]]];
+    self.heightValueLabel.text = [NSString stringWithFormat:@"%@ %@", [heightPickerFeetData objectAtIndex:[self.heightPicker selectedRowInComponent:0]], [heightPickerInchesData objectAtIndex:[self.heightPicker selectedRowInComponent:1]]];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView

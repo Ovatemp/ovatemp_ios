@@ -104,6 +104,48 @@ BOOL firstOpenWeightCell;
 }
 
 - (IBAction)doNextScreen:(id)sender {
+    
+    // save user data
+    // we need to check if the labels on each cell have contents before saving, since we put placeholder data in the global variables
+    // if the label is not empty, save data
+    // else, ignore dummy data and don't save
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([self.lastPeriodCell.dateLabel.text length] > 0) {
+        NSLog(@"User entered last perioid info");
+        
+        self.firstDay = [Day forDate:self.lastPeriodDate];
+        if(!self.firstDay) {
+            self.firstDay = [Day withAttributes:@{@"date": self.lastPeriodDate,
+                                                 @"idate": [self.lastPeriodDate dateId],
+                                                @"period": @""}];
+        }
+        [self.firstDay selectProperty:@"period" withindex:PERIOD_LIGHT];
+        [self.firstDay save];
+    }
+    
+    if ([self.cycleLengthCell.cycleLengthValueLabel.text length] > 0) {
+        NSLog(@"user entered cycle length info");
+        
+        [defaults setInteger:self.cycleLength forKey:@"cycleLength"];
+    }
+    
+    if ([self.heightCell.heightValueLabel.text length] > 0) {
+        NSLog(@"user entered height");
+        
+        [defaults setInteger:self.userHeightFeetComponent forKey:@"userHeightFeetComponent"];
+        [defaults setInteger:self.userHeightInchesComponent forKey:@"userHeightInchesComponent"];
+    }
+    
+    if ([self.weightCell.weightValueLabel.text length] > 0) {
+        NSLog(@"user entered weight");
+        
+        [defaults setInteger:self.userWeight forKey:@"userWeight"];
+    }
+    
+    [defaults synchronize];
+    
     [self performSegueWithIdentifier:@"toOndoPairing" sender:self];
 }
 
@@ -252,7 +294,7 @@ BOOL firstOpenWeightCell;
                 firstOpenHeightCell = NO;
             }
             
-            if (!expandWeightCell) {
+            if (!expandHeightCell) {
                 self.userHeightFeetComponent = ([self.heightCell.heightPicker selectedRowInComponent:0] + 3);
                 self.userHeightInchesComponent = ([self.heightCell.heightPicker selectedRowInComponent:1] + 1);
             }
