@@ -81,6 +81,7 @@ NSArray *ondoMenuItems;
         {
             NSString *url = @"http://ovatemp.com/products/ondo";
             WebViewController *webViewController = [WebViewController withURL:url];
+            webViewController.title = @"Buy ONDO";
             [self.navigationController pushViewController:webViewController animated:YES];
             break;
         }
@@ -104,6 +105,7 @@ NSArray *ondoMenuItems;
         {
             NSString *url = @"http://ovatemp.com/pages/ondo";
             WebViewController *webViewController = [WebViewController withURL:url];
+            webViewController.title = @"About ONDO";
             [self.navigationController pushViewController:webViewController animated:YES];
             break;
         }
@@ -112,6 +114,7 @@ NSArray *ondoMenuItems;
         {
             NSString *url = @"https://s3.amazonaws.com/ovatemp/UserManual_2014.02.26.pdf";
             WebViewController *webViewController = [WebViewController withURL:url];
+            webViewController.title = @"Instruction Manual";
             [self.navigationController pushViewController:webViewController animated:YES];
             break;
         }

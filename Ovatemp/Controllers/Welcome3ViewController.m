@@ -221,7 +221,13 @@ BOOL firstOpenWeightCell;
             
         case 1:
         {
-            expandCycleLengthCell = !expandCycleLengthCell;
+//            expandCycleLengthCell = !expandCycleLengthCell;
+            
+            if (currentState == TableStateAllClosed) {
+                [self setTableStateForState:TableStateCycleLengthExpanded];
+            } else if (currentState == TableStateCycleLengthExpanded) {
+                [self setTableStateForState:TableStateAllClosed];
+            }
             
             if (firstOpenCycleLengthCell) {
                 
@@ -230,18 +236,18 @@ BOOL firstOpenWeightCell;
             if (!expandCycleLengthCell) {
                 
             }
-            
-            // reset all other cells
-            expandLastPeriodCell = NO;
-            self.lastPeriodCell.datePicker.hidden = !self.lastPeriodCell.datePicker.hidden;
-            expandHeightCell = NO;
-            expandWeightCell = NO;
             break;
         }
             
         case 2:
         {
-            expandHeightCell = !expandWeightCell;
+//            expandHeightCell = !expandHeightCell;
+            
+            if (currentState == TableStateAllClosed) {
+                [self setTableStateForState:TableStateHeightExpanded];
+            } else if (currentState == TableStateHeightExpanded) {
+                [self setTableStateForState:TableStateAllClosed];
+            }
             
             if (firstOpenHeightCell) {
                 
@@ -255,7 +261,13 @@ BOOL firstOpenWeightCell;
             
         case 3:
         {
-            expandWeightCell = !expandWeightCell;
+//            expandWeightCell = !expandWeightCell;
+            
+            if (currentState == TableStateAllClosed) {
+                [self setTableStateForState:TableStateWeightExpanded];
+            } else if (currentState == TableStateWeightExpanded) {
+                [self setTableStateForState:TableStateAllClosed];
+            }
             
             if (firstOpenWeightCell) {
                 
