@@ -235,7 +235,7 @@ BOOL firstOpenWeightCell;
             }
             
             if (!expandCycleLengthCell) {
-                // safe picker info
+                // save picker info
                 // TODO: FIXME, just read lable contents
                 self.cycleLength = [self.cycleLengthCell.cycleLengthPicker selectedRowInComponent:0];
                 
