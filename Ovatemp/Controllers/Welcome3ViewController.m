@@ -32,10 +32,10 @@ typedef enum {
 
 // Info
 @property NSDate *lastPeriodDate;
-@property int cycleLength;
-@property int userHeightFeetComponent;
-@property int userHeightInchesComponent;
-@property int userWeight;
+@property NSInteger cycleLength;
+@property NSInteger userHeightFeetComponent;
+@property NSInteger userHeightInchesComponent;
+@property NSInteger userWeight;
 
 @end
 
@@ -140,7 +140,7 @@ BOOL firstOpenWeightCell;
         {
             self.cycleLengthCell = [tableView dequeueReusableCellWithIdentifier:@"cycleCell" forIndexPath:indexPath];
             
-            if (expandLastPeriodCell) {
+            if (expandCycleLengthCell) {
                 self.cycleLengthCell.cycleLengthPicker.hidden = NO;
 //                self.cycleLengthCell.cycleLengthValueLabel.text = @"26";
             }
@@ -198,10 +198,10 @@ BOOL firstOpenWeightCell;
         case 0: // tapped first cell
         {
             
-            if (currentState == TableStateAllClosed) { // open first cell
-                [self setTableStateForState:TableStateLastPeriodExpanded];
-            } else if (currentState == TableStateLastPeriodExpanded) {
+            if (currentState == TableStateLastPeriodExpanded) {
                 [self setTableStateForState:TableStateAllClosed];
+            } else {
+                [self setTableStateForState:TableStateLastPeriodExpanded];
             }
             
 //            expandLastPeriodCell = !expandLastPeriodCell;
@@ -223,17 +223,21 @@ BOOL firstOpenWeightCell;
         {
 //            expandCycleLengthCell = !expandCycleLengthCell;
             
-            if (currentState == TableStateAllClosed) {
-                [self setTableStateForState:TableStateCycleLengthExpanded];
-            } else if (currentState == TableStateCycleLengthExpanded) {
+            if (currentState == TableStateCycleLengthExpanded) {
                 [self setTableStateForState:TableStateAllClosed];
+            } else {
+                [self setTableStateForState:TableStateCycleLengthExpanded];
             }
             
             if (firstOpenCycleLengthCell) {
-                
+                self.cycleLength = 26;
+                firstOpenCycleLengthCell = NO;
             }
             
             if (!expandCycleLengthCell) {
+                // safe picker info
+                // TODO: FIXME, just read lable contents
+                self.cycleLength = [self.cycleLengthCell.cycleLengthPicker selectedRowInComponent:0];
                 
             }
             break;
@@ -243,10 +247,10 @@ BOOL firstOpenWeightCell;
         {
 //            expandHeightCell = !expandHeightCell;
             
-            if (currentState == TableStateAllClosed) {
-                [self setTableStateForState:TableStateHeightExpanded];
-            } else if (currentState == TableStateHeightExpanded) {
+            if (currentState == TableStateHeightExpanded) {
                 [self setTableStateForState:TableStateAllClosed];
+            } else {
+                [self setTableStateForState:TableStateHeightExpanded];
             }
             
             if (firstOpenHeightCell) {
@@ -263,10 +267,10 @@ BOOL firstOpenWeightCell;
         {
 //            expandWeightCell = !expandWeightCell;
             
-            if (currentState == TableStateAllClosed) {
-                [self setTableStateForState:TableStateWeightExpanded];
-            } else if (currentState == TableStateWeightExpanded) {
+            if (currentState == TableStateWeightExpanded) {
                 [self setTableStateForState:TableStateAllClosed];
+            } else {
+                [self setTableStateForState:TableStateWeightExpanded];
             }
             
             if (firstOpenWeightCell) {
@@ -304,6 +308,7 @@ BOOL firstOpenWeightCell;
             
         case 1:
         {
+            self.cycleLengthCell.cycleLengthValueLabel.text = [NSString stringWithFormat:@"%ld", (long)self.cycleLength];
             break;
         }
             
@@ -320,6 +325,8 @@ BOOL firstOpenWeightCell;
         default:
             break;
     }
+    
+    [self setTableStateForState:currentState];
     
     [tableView setNeedsDisplay];
     [tableView setNeedsLayout];
