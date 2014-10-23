@@ -400,6 +400,10 @@
 		5F8C568E19F184C60024552A /* SelectLogInOrSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C568D19F184C60024552A /* SelectLogInOrSignUpViewController.m */; };
 		5F8C569119F186C90024552A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C569019F186C90024552A /* LoginViewController.m */; };
 		5F8C569419F1BD950024552A /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C569319F1BD950024552A /* SignUpViewController.m */; };
+		5FCD68B219F942920091C492 /* HeightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCD68B019F942920091C492 /* HeightTableViewCell.m */; };
+		5FCD68B319F942920091C492 /* HeightTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FCD68B119F942920091C492 /* HeightTableViewCell.xib */; };
+		5FCD68B719F942A10091C492 /* WeightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCD68B519F942A10091C492 /* WeightTableViewCell.m */; };
+		5FCD68B819F942A10091C492 /* WeightTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FCD68B619F942A10091C492 /* WeightTableViewCell.xib */; };
 		5FDAA3A619F7069C004E7181 /* LastPeriodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDAA3A419F7069C004E7181 /* LastPeriodTableViewCell.m */; };
 		5FDAA3A719F7069C004E7181 /* LastPeriodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDAA3A519F7069C004E7181 /* LastPeriodTableViewCell.xib */; };
 		5FDAA3AB19F8020F004E7181 /* CycleLengthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDAA3A919F8020F004E7181 /* CycleLengthTableViewCell.m */; };
@@ -1000,6 +1004,12 @@
 		5F8C569019F186C90024552A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		5F8C569219F1BD950024552A /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		5F8C569319F1BD950024552A /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		5FCD68AF19F942920091C492 /* HeightTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeightTableViewCell.h; sourceTree = "<group>"; };
+		5FCD68B019F942920091C492 /* HeightTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeightTableViewCell.m; sourceTree = "<group>"; };
+		5FCD68B119F942920091C492 /* HeightTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeightTableViewCell.xib; sourceTree = "<group>"; };
+		5FCD68B419F942A10091C492 /* WeightTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeightTableViewCell.h; sourceTree = "<group>"; };
+		5FCD68B519F942A10091C492 /* WeightTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeightTableViewCell.m; sourceTree = "<group>"; };
+		5FCD68B619F942A10091C492 /* WeightTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeightTableViewCell.xib; sourceTree = "<group>"; };
 		5FDAA3A319F7069C004E7181 /* LastPeriodTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastPeriodTableViewCell.h; sourceTree = "<group>"; };
 		5FDAA3A419F7069C004E7181 /* LastPeriodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastPeriodTableViewCell.m; sourceTree = "<group>"; };
 		5FDAA3A519F7069C004E7181 /* LastPeriodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LastPeriodTableViewCell.xib; sourceTree = "<group>"; };
@@ -1898,6 +1908,12 @@
 		5F1C9B4A19EDE87A000F1FC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5FCD68B419F942A10091C492 /* WeightTableViewCell.h */,
+				5FCD68B519F942A10091C492 /* WeightTableViewCell.m */,
+				5FCD68B619F942A10091C492 /* WeightTableViewCell.xib */,
+				5FCD68AF19F942920091C492 /* HeightTableViewCell.h */,
+				5FCD68B019F942920091C492 /* HeightTableViewCell.m */,
+				5FCD68B119F942920091C492 /* HeightTableViewCell.xib */,
 				5FDAA3A819F8020F004E7181 /* CycleLengthTableViewCell.h */,
 				5FDAA3A919F8020F004E7181 /* CycleLengthTableViewCell.m */,
 				5FDAA3AA19F8020F004E7181 /* CycleLengthTableViewCell.xib */,
@@ -2167,6 +2183,7 @@
 				5F1C96EA19EDD31A000F1FC1 /* MPNotification.storyboard in Resources */,
 				5F1C9BE219EDE87A000F1FC1 /* TryingToConceive.png in Resources */,
 				5F1C9C0219EDE87A000F1FC1 /* ForwardArrow.png in Resources */,
+				5FCD68B319F942920091C492 /* HeightTableViewCell.xib in Resources */,
 				5F1C9C1519EDE87A000F1FC1 /* Meditations.png in Resources */,
 				5F1C9BC219EDE87A000F1FC1 /* Diet@2x.png in Resources */,
 				5F1C9C4B19EDE87A000F1FC1 /* today_unselect.png in Resources */,
@@ -2220,6 +2237,7 @@
 				5F1C9BEA19EDE87A000F1FC1 /* Energize.png in Resources */,
 				5F1C9BDC19EDE87A000F1FC1 /* OvatempSupport.png in Resources */,
 				5F1C9C1F19EDE87A000F1FC1 /* Medicines.png in Resources */,
+				5FCD68B819F942A10091C492 /* WeightTableViewCell.xib in Resources */,
 				5F1C99D619EDE775000F1FC1 /* BluetoothIcon@2x.png in Resources */,
 				5F1C9C4A19EDE87A000F1FC1 /* today_selected@2x.png in Resources */,
 				5F1C9BBB19EDE87A000F1FC1 /* Acupressure@2x.png in Resources */,
@@ -2484,6 +2502,7 @@
 				5F1C9C5A19EDE87A000F1FC1 /* Cycle.m in Sources */,
 				5F1C9C5719EDE87A000F1FC1 /* BaseModel.m in Sources */,
 				5F1C96EE19EDD31A000F1FC1 /* MPObjectIdentityProvider.m in Sources */,
+				5FCD68B719F942A10091C492 /* WeightTableViewCell.m in Sources */,
 				5F1C96FF19EDD31A000F1FC1 /* MPTypeDescription.m in Sources */,
 				5F1C96FE19EDD31A000F1FC1 /* MPTweakStore.m in Sources */,
 				5F1C9B8019EDE87A000F1FC1 /* Constants.m in Sources */,
@@ -2561,6 +2580,7 @@
 				5F1C9B8919EDE87A000F1FC1 /* CycleViewController.m in Sources */,
 				5F1C9B6319EDE87A000F1FC1 /* NSObject+ClassForProperty.m in Sources */,
 				5F1C971119EDD31A000F1FC1 /* RegexKitLite.m in Sources */,
+				5FCD68B219F942920091C492 /* HeightTableViewCell.m in Sources */,
 				5F1C9C6319EDE87A000F1FC1 /* User.m in Sources */,
 				5F1C96DE19EDD31A000F1FC1 /* MPBOOLToNSNumberValueTransformer.m in Sources */,
 				5F1C9C5E19EDE87A000F1FC1 /* Question.m in Sources */,
