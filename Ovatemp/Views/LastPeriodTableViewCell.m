@@ -24,6 +24,8 @@
     NSDateComponents *comps = [[NSDateComponents alloc] init];
     [comps setYear:-1];
     self.datePicker.minimumDate = [calendar dateByAddingComponents:comps toDate:[NSDate date] options:0];
+    
+    self.lastPeriodLabel.textColor = [UIColor ovatempGreyColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

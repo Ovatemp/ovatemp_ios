@@ -21,6 +21,8 @@ NSArray *cycleLengthPickerData;
     
     // default picker value
     [self.cycleLengthPicker selectRow:2 inComponent:0 animated:NO]; // 28
+    
+    self.cycleLengthLabel.textColor = [UIColor ovatempGreyColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

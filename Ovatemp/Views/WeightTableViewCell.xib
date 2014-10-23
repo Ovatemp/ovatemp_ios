@@ -31,6 +31,7 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="weightLabel" destination="XsD-aa-n9r" id="rbV-hN-8WC"/>
                 <outlet property="weightPicker" destination="LZ1-cx-3pi" id="WRj-D1-Yw3"/>
                 <outlet property="weightValueLabel" destination="M38-Na-Gze" id="Xcz-h4-gcP"/>
             </connections>

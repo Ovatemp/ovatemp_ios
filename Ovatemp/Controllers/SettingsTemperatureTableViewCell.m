@@ -12,6 +12,8 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    self.textLabel.textColor = [UIColor ovatempGreyColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

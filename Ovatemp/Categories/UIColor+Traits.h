@@ -21,4 +21,6 @@
 - (UIColor *)darkenBy:(CGFloat)amount;
 - (UIColor *)desaturateBy:(CGFloat)amount;
 
++ (UIColor *)ovatempGreyColor;
+
 @end

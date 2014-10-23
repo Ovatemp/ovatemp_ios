@@ -10,6 +10,7 @@
 
 @interface WeightTableViewCell : UITableViewCell <UIPickerViewDataSource, UIPickerViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *weightLabel;
 @property (weak, nonatomic) IBOutlet UILabel *weightValueLabel;
 @property (weak, nonatomic) IBOutlet UIPickerView *weightPicker;
 
