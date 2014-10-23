@@ -27,6 +27,16 @@
     
     self.emailField.borderStyle = UITextBorderStyleRoundedRect;
     self.passwordField.borderStyle = UITextBorderStyleRoundedRect;
+    
+    // font [self.navigationController.navigationBar setTitleTextAttributes:
+//    [NSDictionary dictionaryWithObjectsAndKeys:
+//     [UIFont fontWithName:@"LucidaSans" size:21],
+//     NSFontAttributeName, nil];
+    
+    NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [UIColor ovatempDarkGreyTitleColor],NSForegroundColorAttributeName,
+                                    [UIColor whiteColor],NSBackgroundColorAttributeName,nil];
+    self.navigationController.navigationBar.titleTextAttributes = textAttributes;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

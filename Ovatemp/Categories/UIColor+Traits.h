@@ -23,4 +23,6 @@
 
 + (UIColor *)ovatempGreyColor;
 
++ (UIColor *)ovatempDarkGreyTitleColor;
+
 @end
