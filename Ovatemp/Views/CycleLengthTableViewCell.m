@@ -31,7 +31,7 @@ NSArray *cycleLengthPickerData;
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
-    self.cycleLengthValueLabel.text = [cycleLengthPickerData objectAtIndex:row];
+    self.cycleLengthValueLabel.text = [NSString stringWithFormat:@"%@ days", [cycleLengthPickerData objectAtIndex:row]];
 }
 
 #pragma mark - UIPickerViewDelegate methods
