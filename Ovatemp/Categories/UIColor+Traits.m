@@ -95,4 +95,9 @@ static NSMutableDictionary *__cachedGradients;
   }
 }
 
++ (UIColor *)ovatempGreyColor {
+    
+    return [UIColor colorWithRed:(68/255.0) green:(68/255.0) blue:(68/255.0) alpha:1.0];
+}
+
 @end

@@ -31,6 +31,7 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="heightLabel" destination="Pzp-nc-A5L" id="sMG-or-hdX"/>
                 <outlet property="heightPicker" destination="wfP-ks-aau" id="0Cb-Td-fP2"/>
                 <outlet property="heightValueLabel" destination="nzo-wG-YzH" id="u5m-PD-w7N"/>
             </connections>

@@ -10,6 +10,7 @@
 
 @interface HeightTableViewCell : UITableViewCell <UIPickerViewDataSource, UIPickerViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *heightLabel;
 @property (weak, nonatomic) IBOutlet UILabel *heightValueLabel;
 @property (weak, nonatomic) IBOutlet UIPickerView *heightPicker;
 

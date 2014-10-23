@@ -123,6 +123,9 @@
     cell.textLabel.text = self.label;
     cell.imageView.image = self.image;
     
+    // Josh edit: change to grey color
+    cell.textLabel.textColor = [UIColor ovatempGreyColor];
+    
     return cell;
 }
 
@@ -158,6 +161,10 @@
     [textField sizeToFit];
     textField.inputView = self.datePicker;
     self.datePicker.date = self.value;
+    
+    // Josh edit: change to grey color
+    textField.textColor = [UIColor ovatempGreyColor];
+    
     return textField;
 }
 
@@ -173,6 +180,10 @@
     textField.text = self.value;
     [textField sizeToFit];
     [textField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
+    
+    // Josh edit: change to grey color
+    textField.textColor = [UIColor ovatempGreyColor];
+    
     return textField;
 }
 

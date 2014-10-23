@@ -24,6 +24,8 @@ NSMutableArray *weightPickerData;
     self.weightPicker.delegate = self;
     
     [self.weightPicker selectRow:30 inComponent:0 animated:NO];
+    
+    self.weightLabel.textColor = [UIColor ovatempGreyColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
