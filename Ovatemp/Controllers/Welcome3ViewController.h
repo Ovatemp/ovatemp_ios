@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Day.h"
+
 @interface Welcome3ViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) Day *firstDay;
 
 @end

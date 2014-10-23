@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WeightTableViewCell : UITableViewCell
+@interface WeightTableViewCell : UITableViewCell <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *weightValueLabel;
 @property (weak, nonatomic) IBOutlet UIPickerView *weightPicker;

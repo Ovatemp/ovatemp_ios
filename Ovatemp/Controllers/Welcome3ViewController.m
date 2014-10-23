@@ -104,6 +104,48 @@ BOOL firstOpenWeightCell;
 }
 
 - (IBAction)doNextScreen:(id)sender {
+    
+    // save user data
+    // we need to check if the labels on each cell have contents before saving, since we put placeholder data in the global variables
+    // if the label is not empty, save data
+    // else, ignore dummy data and don't save
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([self.lastPeriodCell.dateLabel.text length] > 0) {
+        NSLog(@"User entered last perioid info");
+        
+        self.firstDay = [Day forDate:self.lastPeriodDate];
+        if(!self.firstDay) {
+            self.firstDay = [Day withAttributes:@{@"date": self.lastPeriodDate,
+                                                 @"idate": [self.lastPeriodDate dateId],
+                                                @"period": @""}];
+        }
+        [self.firstDay selectProperty:@"period" withindex:PERIOD_LIGHT];
+        [self.firstDay save];
+    }
+    
+    if ([self.cycleLengthCell.cycleLengthValueLabel.text length] > 0) {
+        NSLog(@"user entered cycle length info");
+        
+        [defaults setInteger:self.cycleLength forKey:@"cycleLength"];
+    }
+    
+    if ([self.heightCell.heightValueLabel.text length] > 0) {
+        NSLog(@"user entered height");
+        
+        [defaults setInteger:self.userHeightFeetComponent forKey:@"userHeightFeetComponent"];
+        [defaults setInteger:self.userHeightInchesComponent forKey:@"userHeightInchesComponent"];
+    }
+    
+    if ([self.weightCell.weightValueLabel.text length] > 0) {
+        NSLog(@"user entered weight");
+        
+        [defaults setInteger:self.userWeight forKey:@"userWeight"];
+    }
+    
+    [defaults synchronize];
+    
     [self performSegueWithIdentifier:@"toOndoPairing" sender:self];
 }
 
@@ -142,7 +184,6 @@ BOOL firstOpenWeightCell;
             
             if (expandCycleLengthCell) {
                 self.cycleLengthCell.cycleLengthPicker.hidden = NO;
-//                self.cycleLengthCell.cycleLengthValueLabel.text = @"26";
             }
             
             return self.cycleLengthCell;
@@ -152,9 +193,8 @@ BOOL firstOpenWeightCell;
         {
             self.heightCell = [tableView dequeueReusableCellWithIdentifier:@"heightCell" forIndexPath:indexPath];
             
-            if (expandWeightCell) {
+            if (expandHeightCell) {
                 self.heightCell.heightPicker.hidden = NO;
-//                self.heightCell.heightValueLabel.text = @"100";
             }
             
             return self.heightCell;
@@ -166,7 +206,6 @@ BOOL firstOpenWeightCell;
             
             if (expandWeightCell) {
                 self.weightCell.weightPicker.hidden = NO;
-//                self.weightCell.weightValueLabel.text = @"3' 1\"";
             }
             
             return self.weightCell;
@@ -204,7 +243,6 @@ BOOL firstOpenWeightCell;
                 [self setTableStateForState:TableStateLastPeriodExpanded];
             }
             
-//            expandLastPeriodCell = !expandLastPeriodCell;
             
             // first time the cell is opened we need to save the date
             if (firstOpenLastPeriod) {
@@ -221,7 +259,6 @@ BOOL firstOpenWeightCell;
             
         case 1:
         {
-//            expandCycleLengthCell = !expandCycleLengthCell;
             
             if (currentState == TableStateCycleLengthExpanded) {
                 [self setTableStateForState:TableStateAllClosed];
@@ -230,14 +267,13 @@ BOOL firstOpenWeightCell;
             }
             
             if (firstOpenCycleLengthCell) {
-                self.cycleLength = 26;
+                self.cycleLength = 28;
                 firstOpenCycleLengthCell = NO;
             }
             
             if (!expandCycleLengthCell) {
                 // save picker info
-                // TODO: FIXME, just read lable contents
-                self.cycleLength = [self.cycleLengthCell.cycleLengthPicker selectedRowInComponent:0];
+                self.cycleLength = [self.cycleLengthCell.cycleLengthValueLabel.text integerValue];
                 
             }
             break;
@@ -245,7 +281,6 @@ BOOL firstOpenWeightCell;
             
         case 2:
         {
-//            expandHeightCell = !expandHeightCell;
             
             if (currentState == TableStateHeightExpanded) {
                 [self setTableStateForState:TableStateAllClosed];
@@ -254,18 +289,20 @@ BOOL firstOpenWeightCell;
             }
             
             if (firstOpenHeightCell) {
-                
+                self.userHeightFeetComponent = 5;
+                self.userHeightInchesComponent = 5;
+                firstOpenHeightCell = NO;
             }
             
-            if (!expandWeightCell) {
-                
+            if (!expandHeightCell) {
+                self.userHeightFeetComponent = ([self.heightCell.heightPicker selectedRowInComponent:0] + 3);
+                self.userHeightInchesComponent = ([self.heightCell.heightPicker selectedRowInComponent:1] + 1);
             }
             break;
         }
             
         case 3:
         {
-//            expandWeightCell = !expandWeightCell;
             
             if (currentState == TableStateWeightExpanded) {
                 [self setTableStateForState:TableStateAllClosed];
@@ -274,11 +311,12 @@ BOOL firstOpenWeightCell;
             }
             
             if (firstOpenWeightCell) {
-                
+                self.userWeight = 130;
+                firstOpenWeightCell = NO;
             }
             
             if (!expandWeightCell) {
-                
+                self.userWeight = ([self.weightCell.weightPicker selectedRowInComponent:0] + 100);
             }
             break;
         }
@@ -293,11 +331,7 @@ BOOL firstOpenWeightCell;
     }
     
     [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-//    [tableView reloadData];
-    
-    
-    
-    
+
     // refreshed cells, set lables
     switch (indexPath.row) {
         case 0:
@@ -308,17 +342,20 @@ BOOL firstOpenWeightCell;
             
         case 1:
         {
-            self.cycleLengthCell.cycleLengthValueLabel.text = [NSString stringWithFormat:@"%ld", (long)self.cycleLength];
+            self.cycleLengthCell.cycleLengthValueLabel.text = [NSString stringWithFormat:@"%ld days", (long)self.cycleLength];
             break;
         }
             
         case 2:
         {
+            self.heightCell.heightValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"", (long)self.userHeightFeetComponent, (long)self.userHeightInchesComponent];
             break;
         }
             
         case 3:
         {
+            self.weightCell.weightValueLabel.text = [NSString stringWithFormat:@"%ld lbs", (long)self.userWeight];
+            
             break;
         }
             
@@ -326,7 +363,10 @@ BOOL firstOpenWeightCell;
             break;
     }
     
-    [self setTableStateForState:currentState];
+    // make sure cell can be displayed, even if out of view
+    [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    
+    [self setTableStateForState:currentState]; // make sure current state is set
     
     [tableView setNeedsDisplay];
     [tableView setNeedsLayout];
@@ -334,11 +374,11 @@ BOOL firstOpenWeightCell;
 
 - (void)setTableStateForState:(TableStateType)state {
     
-//    TableStateAllClosed,
-//    TableStateLastPeriodExpanded,
-//    TableStateCycleLengthExpanded,
-//    TableStateHeightExpanded,
-//    TableStateWeightExpanded,
+//    TableStateAllClosed
+//    TableStateLastPeriodExpanded
+//    TableStateCycleLengthExpanded
+//    TableStateHeightExpanded
+//    TableStateWeightExpanded
     
     switch (state) {
         case TableStateAllClosed:

@@ -18,6 +18,9 @@ NSArray *cycleLengthPickerData;
     cycleLengthPickerData = @[@"26", @"27", @"28", @"29", @"30"];
     
     self.cycleLengthPicker.delegate = self;
+    
+    // default picker value
+    [self.cycleLengthPicker selectRow:2 inComponent:0 animated:NO]; // 28
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -28,7 +31,7 @@ NSArray *cycleLengthPickerData;
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
-    self.cycleLengthValueLabel.text = [cycleLengthPickerData objectAtIndex:row];
+    self.cycleLengthValueLabel.text = [NSString stringWithFormat:@"%@ days", [cycleLengthPickerData objectAtIndex:row]];
 }
 
 #pragma mark - UIPickerViewDelegate methods
