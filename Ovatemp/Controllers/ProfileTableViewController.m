@@ -7,97 +7,125 @@
 //
 
 #import "ProfileTableViewController.h"
-#import "Form.h"
 #import "User.h"
+#import "TryingToConceiveOrAvoidTableViewCell.h"
 #import "AccountTableViewCell.h"
 
-@interface ProfileTableViewController ()
+#import "EditNameAndEmailTableViewCell.h"
+#import "EditDateOfBirthTableViewCell.h"
+#import "EditHeightTableViewCell.h"
+#import "EditWeightTableViewCell.h"
 
-@property Form *form;
+@interface ProfileTableViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property TryingToConceiveOrAvoidTableViewCell *tryingToConceiveCell;
+@property TryingToConceiveOrAvoidTableViewCell *tryingToAvoidCell;
+
+@property EditNameAndEmailTableViewCell *nameCell;
+@property EditNameAndEmailTableViewCell *emailCell;
+@property EditDateOfBirthTableViewCell *dobCell;
+@property EditHeightTableViewCell *heightCell;
+@property EditWeightTableViewCell *weightCell;
 
 @end
 
 @implementation ProfileTableViewController
+
+NSArray *profileInfoSectionZeroArray;
+NSArray *profileInfoSectionOneArray;
+
+NSArray *profileSectionTitles;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"Profile";
     
-    self.form = [Form withViewController:self];
-    self.form.representedObject = [UserProfile current];
-    self.form.onChange = ^(Form *form, FormRow *row, id value) {
-        [[UserProfile current] save];
-    };
+    profileInfoSectionZeroArray = [NSArray arrayWithObjects:@"Trying to Conceive", @"Trying to Avoid", nil];
     
-    // Set up radio buttons
-    FormRow *conceive = [self.form addKeyPath:@"tryingToConceive"
-                                    withLabel:@"Trying to Conceive"
-                                     andImage:@"MoreTryingToConceive.png"
-                                    toSection:@"Goal"];
-    FormRow *avoid = [self.form addKeyPath:@"tryingToConceive"
-                                 withLabel:@"Trying to Avoid"
-                                  andImage:@"MoreTryingToAvoid.png"
-                                 toSection:@"Goal"];
-    avoid.valueTransformer = [NSValueTransformer valueTransformerForName:NSNegateBooleanTransformerName];
+    profileInfoSectionOneArray = [NSArray arrayWithObjects:@"Full Name", @"Date of Birth", @"Email", @"Height", @"Weight", nil];
     
-    conceive.onChange = ^ (FormRow *row, id value) {
-        UISwitch *avoidSwitch = (UISwitch *)avoid.control;
-        UISwitch *conceiveSwitch = (UISwitch *)row.control;
-        [avoidSwitch setOn:!conceiveSwitch.on animated:YES];
-    };
+    profileSectionTitles = [NSArray arrayWithObjects:@"Goal", @"Profile Settings", nil];
     
-    avoid.onChange = ^ (FormRow *row, id value) {
-        UISwitch *avoidSwitch = (UISwitch *)row.control;
-        UISwitch *conceiveSwitch = (UISwitch *)conceive.control;
-        [conceiveSwitch setOn:!avoidSwitch.on animated:YES];
-    };
+    self.tableView.delegate = self;
     
-    // name and birthday
-    // If fullName is nil, initialize the form with a dummy name.
-    if (![UserProfile current].fullName || [[UserProfile current].fullName length] == 0) {
-        [UserProfile current].fullName = @"Jane Doe";
-    }
-    // dateOfBirth cannot be nil.  If for some reason it is nil, set the birthday to 12 years ago today (youngest age to use app).
-    if (![UserProfile current].dateOfBirth) {
-        NSDate *today = [[NSDate alloc] init];
-        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-        
-        NSDateComponents *addComponents = [[NSDateComponents alloc] init];
-        addComponents.year = -12;
-        
-        
-        [UserProfile current].dateOfBirth = [calendar dateByAddingComponents:addComponents toDate:today options:0];
-    }
-    self.form.representedObject = [UserProfile current];
-    self.form.onChange = ^(Form *form, FormRow *row, id value) {
-        [[UserProfile current] save];
-    };
+//    [[UserProfile current] save]
     
-    [self.form addKeyPath:@"fullName" withLabel:@"Full Name" toSection:@"Profile Settings"];
     
-    NSInteger minAgeInYears = 12;
-    NSInteger day = 60 * 60 * 24;
-    NSInteger year = day * 365;
-    NSDate *maximumDate = [NSDate dateWithTimeIntervalSinceNow:-minAgeInYears * year];
-    NSDate *minimumDate = [NSDate dateWithTimeIntervalSinceNow:-50 * year];
+    [[self tableView] registerNib:[UINib nibWithNibName:@"TryingToConceiveOrAvoidTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"conceiveAvoidCell"];
     
-    FormRow *birthDate = [self.form addKeyPath:@"dateOfBirth"
-                                     withLabel:@"Date of Birth"
-                                  // andImage:@"MoreBirthday.png"
-                                     andImage:nil
-                                     toSection:@"Profile Settings"];
-    birthDate.datePicker.datePickerMode = UIDatePickerModeDate;
-    birthDate.datePicker.minimumDate = minimumDate;
-    birthDate.datePicker.maximumDate = maximumDate;
+    [[self tableView] registerNib:[UINib nibWithNibName:@"EditNameAndEmailTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"nameEmailCell"];
     
-    // email
-    [self.form addKeyPath:@"email" withLabel:@"Email" andImage:nil toSection:@"Profile Settings"];
+    [[self tableView] registerNib:[UINib nibWithNibName:@"EditDateOfBirthTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"dobCell"];
+    
+    [[self tableView] registerNib:[UINib nibWithNibName:@"EditHeightTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"heightCell"];
+    [[self tableView] registerNib:[UINib nibWithNibName:@"EditWeightTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"weightCell"];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Table view
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    
+    if (section == 0) {
+        return [profileInfoSectionZeroArray count];
+    } else {
+        return [profileInfoSectionOneArray count];
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0)
+        return @"Goal";
+    if (section == 1)
+        return @"Profile Settings";
+    return @"undefined";
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) { // conceive
+            self.tryingToConceiveCell = [tableView dequeueReusableCellWithIdentifier:@"conceiveAvoidCell" forIndexPath:indexPath];
+            return self.tryingToConceiveCell;
+        } else {
+            self.tryingToAvoidCell = [tableView dequeueReusableCellWithIdentifier:@"conceiveAvoidCell" forIndexPath:indexPath];
+            self.tryingToAvoidCell.tryingToLabel.text = @"Trying to Avoid";
+            return self.tryingToAvoidCell;
+        }
+    } else { // section 1
+        
+        if (indexPath.row == 0) { // full name
+            self.nameCell = [tableView dequeueReusableCellWithIdentifier:@"nameEmailCell" forIndexPath:indexPath];
+            return self.nameCell;
+        } else if (indexPath.row == 1) { // DOB
+            self.dobCell = [tableView dequeueReusableCellWithIdentifier:@"dobCell" forIndexPath:indexPath];
+            return self.dobCell;
+        } else if (indexPath.row == 2) { // email
+            self.emailCell = [tableView dequeueReusableCellWithIdentifier:@"nameEmailCell" forIndexPath:indexPath];
+            self.emailCell.titleLabel.text = @"Email";
+            return self.emailCell;
+        } else if (indexPath.row == 3) { // height
+            self.heightCell = [tableView dequeueReusableCellWithIdentifier:@"heightCell" forIndexPath:indexPath];
+            return self.heightCell;
+        } else if (indexPath.row == 4) { // weight
+            self.weightCell = [tableView dequeueReusableCellWithIdentifier:@"weightCell" forIndexPath:indexPath];
+            return self.weightCell;
+        }
+    }
+    
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    return cell;
 }
 
 @end

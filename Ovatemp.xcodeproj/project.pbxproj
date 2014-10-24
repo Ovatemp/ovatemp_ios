@@ -392,6 +392,16 @@
 		5F58690719ED802400D2B58E /* Negative@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58677519ED802400D2B58E /* Negative@2x.png */; };
 		5F586A2719ED802400D2B58E /* Positive.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58690419ED802400D2B58E /* Positive.png */; };
 		5F586A2819ED802400D2B58E /* Positive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58690519ED802400D2B58E /* Positive@2x.png */; };
+		5F6561D919FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F6561D719FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.m */; };
+		5F6561DA19FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F6561D819FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.xib */; };
+		5F6561DE19FAD63B001FB509 /* EditHeightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F6561DC19FAD63B001FB509 /* EditHeightTableViewCell.m */; };
+		5F6561DF19FAD63B001FB509 /* EditHeightTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F6561DD19FAD63B001FB509 /* EditHeightTableViewCell.xib */; };
+		5F6561E319FAD74C001FB509 /* EditWeightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F6561E119FAD74C001FB509 /* EditWeightTableViewCell.m */; };
+		5F6561E419FAD74C001FB509 /* EditWeightTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F6561E219FAD74C001FB509 /* EditWeightTableViewCell.xib */; };
+		5F6561E819FAD836001FB509 /* EditDateOfBirthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F6561E619FAD836001FB509 /* EditDateOfBirthTableViewCell.m */; };
+		5F6561E919FAD836001FB509 /* EditDateOfBirthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F6561E719FAD836001FB509 /* EditDateOfBirthTableViewCell.xib */; };
+		5F6561ED19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F6561EB19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.m */; };
+		5F6561EE19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F6561EC19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.xib */; };
 		5F846E0719F560D300CED980 /* Welcome1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0619F560D300CED980 /* Welcome1ViewController.m */; };
 		5F846E0A19F57D4D00CED980 /* Welcome2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0919F57D4D00CED980 /* Welcome2ViewController.m */; };
 		5F846E0D19F5A96000CED980 /* Welcome3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0C19F5A96000CED980 /* Welcome3ViewController.m */; };
@@ -969,9 +979,9 @@
 		5F1C9C7619EEE993000F1FC1 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		5F1C9C7819EEEDF9000F1FC1 /* AccountMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountMainTableViewController.h; sourceTree = "<group>"; };
 		5F1C9C7919EEEDF9000F1FC1 /* AccountMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountMainTableViewController.m; sourceTree = "<group>"; };
-		5F1C9C7B19EEF343000F1FC1 /* AccountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountTableViewCell.h; sourceTree = "<group>"; };
-		5F1C9C7C19EEF343000F1FC1 /* AccountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountTableViewCell.m; sourceTree = "<group>"; };
-		5F1C9C7D19EEF343000F1FC1 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
+		5F1C9C7B19EEF343000F1FC1 /* AccountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountTableViewCell.h; path = ../Controllers/AccountTableViewCell.h; sourceTree = "<group>"; };
+		5F1C9C7C19EEF343000F1FC1 /* AccountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountTableViewCell.m; path = ../Controllers/AccountTableViewCell.m; sourceTree = "<group>"; };
+		5F1C9C7D19EEF343000F1FC1 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccountTableViewCell.xib; path = ../Controllers/AccountTableViewCell.xib; sourceTree = "<group>"; };
 		5F1C9C8519EF16DB000F1FC1 /* ONDOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONDOViewController.h; sourceTree = "<group>"; };
 		5F1C9C8619EF16DB000F1FC1 /* ONDOViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONDOViewController.m; sourceTree = "<group>"; };
 		5F1C9C8719EF16DB000F1FC1 /* ONDOViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONDOViewController.xib; sourceTree = "<group>"; };
@@ -989,6 +999,21 @@
 		5F58690419ED802400D2B58E /* Positive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Positive.png; sourceTree = "<group>"; };
 		5F58690519ED802400D2B58E /* Positive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Positive@2x.png"; sourceTree = "<group>"; };
 		5F586A2C19ED89DA00D2B58E /* libPods-OvatempTests-KIF.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-OvatempTests-KIF.a"; path = "Pods/build/Release-iphoneos/libPods-OvatempTests-KIF.a"; sourceTree = "<group>"; };
+		5F6561D619FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TryingToConceiveOrAvoidTableViewCell.h; sourceTree = "<group>"; };
+		5F6561D719FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TryingToConceiveOrAvoidTableViewCell.m; sourceTree = "<group>"; };
+		5F6561D819FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TryingToConceiveOrAvoidTableViewCell.xib; sourceTree = "<group>"; };
+		5F6561DB19FAD63B001FB509 /* EditHeightTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditHeightTableViewCell.h; sourceTree = "<group>"; };
+		5F6561DC19FAD63B001FB509 /* EditHeightTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditHeightTableViewCell.m; sourceTree = "<group>"; };
+		5F6561DD19FAD63B001FB509 /* EditHeightTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditHeightTableViewCell.xib; sourceTree = "<group>"; };
+		5F6561E019FAD74C001FB509 /* EditWeightTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditWeightTableViewCell.h; sourceTree = "<group>"; };
+		5F6561E119FAD74C001FB509 /* EditWeightTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditWeightTableViewCell.m; sourceTree = "<group>"; };
+		5F6561E219FAD74C001FB509 /* EditWeightTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditWeightTableViewCell.xib; sourceTree = "<group>"; };
+		5F6561E519FAD836001FB509 /* EditDateOfBirthTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditDateOfBirthTableViewCell.h; sourceTree = "<group>"; };
+		5F6561E619FAD836001FB509 /* EditDateOfBirthTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditDateOfBirthTableViewCell.m; sourceTree = "<group>"; };
+		5F6561E719FAD836001FB509 /* EditDateOfBirthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditDateOfBirthTableViewCell.xib; sourceTree = "<group>"; };
+		5F6561EA19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNameAndEmailTableViewCell.h; sourceTree = "<group>"; };
+		5F6561EB19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNameAndEmailTableViewCell.m; sourceTree = "<group>"; };
+		5F6561EC19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditNameAndEmailTableViewCell.xib; sourceTree = "<group>"; };
 		5F846E0519F560D300CED980 /* Welcome1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Welcome1ViewController.h; sourceTree = "<group>"; };
 		5F846E0619F560D300CED980 /* Welcome1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Welcome1ViewController.m; sourceTree = "<group>"; };
 		5F846E0819F57D4D00CED980 /* Welcome2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Welcome2ViewController.h; sourceTree = "<group>"; };
@@ -1486,9 +1511,6 @@
 				5F223F3719F05C330003AF64 /* SettingsTemperatureTableViewCell.h */,
 				5F223F3819F05C330003AF64 /* SettingsTemperatureTableViewCell.m */,
 				5F223F3919F05C330003AF64 /* SettingsTemperatureTableViewCell.xib */,
-				5F1C9C7B19EEF343000F1FC1 /* AccountTableViewCell.h */,
-				5F1C9C7C19EEF343000F1FC1 /* AccountTableViewCell.m */,
-				5F1C9C7D19EEF343000F1FC1 /* AccountTableViewCell.xib */,
 				5F1C9C7819EEEDF9000F1FC1 /* AccountMainTableViewController.h */,
 				5F1C9C7919EEEDF9000F1FC1 /* AccountMainTableViewController.m */,
 				5F1C9A2619EDE879000F1FC1 /* BluetoothDeviceTableViewController.h */,
@@ -1908,6 +1930,21 @@
 		5F1C9B4A19EDE87A000F1FC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5F6561EA19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.h */,
+				5F6561EB19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.m */,
+				5F6561EC19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.xib */,
+				5F6561E519FAD836001FB509 /* EditDateOfBirthTableViewCell.h */,
+				5F6561E619FAD836001FB509 /* EditDateOfBirthTableViewCell.m */,
+				5F6561E719FAD836001FB509 /* EditDateOfBirthTableViewCell.xib */,
+				5F6561E019FAD74C001FB509 /* EditWeightTableViewCell.h */,
+				5F6561E119FAD74C001FB509 /* EditWeightTableViewCell.m */,
+				5F6561E219FAD74C001FB509 /* EditWeightTableViewCell.xib */,
+				5F6561DB19FAD63B001FB509 /* EditHeightTableViewCell.h */,
+				5F6561DC19FAD63B001FB509 /* EditHeightTableViewCell.m */,
+				5F6561DD19FAD63B001FB509 /* EditHeightTableViewCell.xib */,
+				5F1C9C7B19EEF343000F1FC1 /* AccountTableViewCell.h */,
+				5F1C9C7C19EEF343000F1FC1 /* AccountTableViewCell.m */,
+				5F1C9C7D19EEF343000F1FC1 /* AccountTableViewCell.xib */,
 				5FCD68B419F942A10091C492 /* WeightTableViewCell.h */,
 				5FCD68B519F942A10091C492 /* WeightTableViewCell.m */,
 				5FCD68B619F942A10091C492 /* WeightTableViewCell.xib */,
@@ -1943,6 +1980,9 @@
 				5F1C9B5E19EDE87A000F1FC1 /* MoreStoryboard.storyboard */,
 				5F1A3BF319F17614002FFA28 /* Login.storyboard */,
 				5F846E1319F5C2B900CED980 /* Launch Screen.xib */,
+				5F6561D619FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.h */,
+				5F6561D719FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.m */,
+				5F6561D819FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2166,6 +2206,7 @@
 				5F1C9BD119EDE87A000F1FC1 /* Massage@2x.png in Resources */,
 				5F1C9BBD19EDE87A000F1FC1 /* AcupressureBlue@2x.png in Resources */,
 				5F1C9BCE19EDE87A000F1FC1 /* Lifestyle@2x.png in Resources */,
+				5F6561EE19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.xib in Resources */,
 				5F1C9C4F19EDE87A000F1FC1 /* Lube.png in Resources */,
 				5F1C9BFA19EDE87A000F1FC1 /* Revitalize.png in Resources */,
 				5F1C9C2619EDE87A000F1FC1 /* Symptoms@2x.png in Resources */,
@@ -2269,6 +2310,7 @@
 				5F1C9C1819EDE87A000F1FC1 /* +@2x.png in Resources */,
 				5F1C9C3919EDE87A000F1FC1 /* cal_selected.png in Resources */,
 				5F1C9C4419EDE87A000F1FC1 /* community_unselect@2x.png in Resources */,
+				5F6561DA19FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.xib in Resources */,
 				5F1C9C3719EDE87A000F1FC1 /* Positive.png in Resources */,
 				5F1C9C2419EDE87A000F1FC1 /* Sad@2x.png in Resources */,
 				5F1C9BDF19EDE87A000F1FC1 /* ShareTheNews@2x.png in Resources */,
@@ -2277,6 +2319,7 @@
 				5F1C9C1619EDE87A000F1FC1 /* Meditations@2x.png in Resources */,
 				5F1C9B9A19EDE87A000F1FC1 /* SubscriptionSelectionController.xib in Resources */,
 				5F1C9C3319EDE87A000F1FC1 /* Spotting.png in Resources */,
+				5F6561E919FAD836001FB509 /* EditDateOfBirthTableViewCell.xib in Resources */,
 				5F1C9C1119EDE87A000F1FC1 /* LaunchImage.png in Resources */,
 				5F1C9BC819EDE87A000F1FC1 /* Habits@2x.png in Resources */,
 				5F1C9C5619EDE87A000F1FC1 /* .gitkeep in Resources */,
@@ -2305,6 +2348,7 @@
 				5F1C9BCB19EDE87A000F1FC1 /* Supplements@2x.png in Resources */,
 				5FDAA3A719F7069C004E7181 /* LastPeriodTableViewCell.xib in Resources */,
 				5F1C9BCC19EDE87A000F1FC1 /* SupplementsSmall@2x.png in Resources */,
+				5F6561DF19FAD63B001FB509 /* EditHeightTableViewCell.xib in Resources */,
 				5F1C9C0519EDE87A000F1FC1 /* Icon29.png in Resources */,
 				5F1C970819EDD31A000F1FC1 /* snapshot_config.json in Resources */,
 				5F1C9C3C19EDE87A000F1FC1 /* cal_unselected@2x.png in Resources */,
@@ -2346,6 +2390,7 @@
 				5F223F3619F03B480003AF64 /* SettingsTableViewController.xib in Resources */,
 				5F1C9C3519EDE87A000F1FC1 /* Negative.png in Resources */,
 				5F1C9BD019EDE87A000F1FC1 /* Massage.png in Resources */,
+				5F6561E419FAD74C001FB509 /* EditWeightTableViewCell.xib in Resources */,
 				5F1C9BFC19EDE87A000F1FC1 /* RevitalizeSmall.png in Resources */,
 				5F1C9C0319EDE87A000F1FC1 /* ForwardArrow@2x.png in Resources */,
 				5F58690619ED802400D2B58E /* Negative.png in Resources */,
@@ -2443,6 +2488,7 @@
 				5F1C9C5C19EDE87A000F1FC1 /* FertilityProfile.m in Sources */,
 				5F1C9C5819EDE87A000F1FC1 /* Configuration.m in Sources */,
 				5F1C9B8719EDE87A000F1FC1 /* CommunityForumViewController.m in Sources */,
+				5F6561DE19FAD63B001FB509 /* EditHeightTableViewCell.m in Sources */,
 				5F1C96CD19EDD31A000F1FC1 /* _MPTweakBindObserver.m in Sources */,
 				5F1C9B6C19EDE87A000F1FC1 /* UIViewController+UserProfileHelpers.m in Sources */,
 				5F1C9C6919EDE87A000F1FC1 /* CalendarCell.m in Sources */,
@@ -2468,7 +2514,9 @@
 				5F1C970E19EDD31A000F1FC1 /* NSString+Inflections.m in Sources */,
 				5F1C9C8819EF16DB000F1FC1 /* ONDOViewController.m in Sources */,
 				5F1C96EC19EDD31A000F1FC1 /* MPNSAttributedStringToNSDictionaryValueTransformer.m in Sources */,
+				5F6561E819FAD836001FB509 /* EditDateOfBirthTableViewCell.m in Sources */,
 				5F1C970219EDD31A000F1FC1 /* MPUIFontToNSDictionaryValueTransformer.m in Sources */,
+				5F6561E319FAD74C001FB509 /* EditWeightTableViewCell.m in Sources */,
 				5F1C9B7F19EDE87A000F1FC1 /* TemperatureCellStaticView.m in Sources */,
 				5F1C9B8F19EDE87A000F1FC1 /* MoreViewController.m in Sources */,
 				5F1C9B7219EDE87A000F1FC1 /* DayToggleButton.m in Sources */,
@@ -2505,6 +2553,7 @@
 				5FCD68B719F942A10091C492 /* WeightTableViewCell.m in Sources */,
 				5F1C96FF19EDD31A000F1FC1 /* MPTypeDescription.m in Sources */,
 				5F1C96FE19EDD31A000F1FC1 /* MPTweakStore.m in Sources */,
+				5F6561ED19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.m in Sources */,
 				5F1C9B8019EDE87A000F1FC1 /* Constants.m in Sources */,
 				5F846E1019F5AEC100CED980 /* WelcomeONDOViewController.m in Sources */,
 				5F1C96E919EDD31A000F1FC1 /* MPNotification.m in Sources */,
@@ -2549,6 +2598,7 @@
 				5F1C9C6519EDE87A000F1FC1 /* ONDO.xcdatamodeld in Sources */,
 				5F1C96D219EDD31A000F1FC1 /* MPABTestDesignerChangeResponseMessage.m in Sources */,
 				5F1C96D819EDD31A000F1FC1 /* MPABTestDesignerDisconnectMessage.m in Sources */,
+				5F6561D919FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.m in Sources */,
 				5F1C96ED19EDD31A000F1FC1 /* MPNSNumberToCGFloatValueTransformer.m in Sources */,
 				5F1C9B7119EDE87A000F1FC1 /* DayCellStaticView.m in Sources */,
 				5F1C96CF19EDD31A000F1FC1 /* Mixpanel.m in Sources */,
