@@ -10,7 +10,8 @@
 #import "AccountTableViewCell.h"
 #import "WebViewController.h"
 #import "ONDOViewController.h"
-#import "ProfileTableViewController.h"
+//#import "ProfileTableViewController.h"
+#import "UserProfileReadOnlyViewController.h"
 #import "SettingsTableViewController.h"
 
 @interface AccountMainTableViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -93,7 +94,9 @@ NSArray *accountMenuItems;
     switch (indexPath.row) {
         case 0: // Profile
         {
-            ProfileTableViewController *profileVC = [[ProfileTableViewController alloc] init];
+//            ProfileTableViewController *profileVC = [[ProfileTableViewController alloc] init];
+//            [self.navigationController pushViewController:profileVC animated:YES];
+            UserProfileReadOnlyViewController *profileVC = [[UserProfileReadOnlyViewController alloc] init];
             [self.navigationController pushViewController:profileVC animated:YES];
             break;
         }

@@ -36,6 +36,8 @@ NSArray *profileInfoSectionOneArray;
 
 NSArray *profileSectionTitles;
 
+BOOL userIsEditing;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -60,11 +62,25 @@ NSArray *profileSectionTitles;
     
     [[self tableView] registerNib:[UINib nibWithNibName:@"EditHeightTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"heightCell"];
     [[self tableView] registerNib:[UINib nibWithNibName:@"EditWeightTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"weightCell"];
+    
+    userIsEditing = NO;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleDone target:self action:@selector(doEditInfo)];
+    
+    [self.tableView setAllowsSelection:NO];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)doEditInfo {
+    userIsEditing = !userIsEditing;
+    
+    if (userIsEditing) {
+//        self.
+    }
 }
 
 #pragma mark - Table view
@@ -126,6 +142,12 @@ NSArray *profileSectionTitles;
     
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (userIsEditing) {
+        
+    }
 }
 
 @end

@@ -402,6 +402,8 @@
 		5F6561E919FAD836001FB509 /* EditDateOfBirthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F6561E719FAD836001FB509 /* EditDateOfBirthTableViewCell.xib */; };
 		5F6561ED19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F6561EB19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.m */; };
 		5F6561EE19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F6561EC19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.xib */; };
+		5F6561F219FADEFD001FB509 /* UserProfileReadOnlyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F6561F019FADEFD001FB509 /* UserProfileReadOnlyViewController.m */; };
+		5F6561F319FADEFD001FB509 /* UserProfileReadOnlyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F6561F119FADEFD001FB509 /* UserProfileReadOnlyViewController.xib */; };
 		5F846E0719F560D300CED980 /* Welcome1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0619F560D300CED980 /* Welcome1ViewController.m */; };
 		5F846E0A19F57D4D00CED980 /* Welcome2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0919F57D4D00CED980 /* Welcome2ViewController.m */; };
 		5F846E0D19F5A96000CED980 /* Welcome3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0C19F5A96000CED980 /* Welcome3ViewController.m */; };
@@ -1014,6 +1016,9 @@
 		5F6561EA19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNameAndEmailTableViewCell.h; sourceTree = "<group>"; };
 		5F6561EB19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNameAndEmailTableViewCell.m; sourceTree = "<group>"; };
 		5F6561EC19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditNameAndEmailTableViewCell.xib; sourceTree = "<group>"; };
+		5F6561EF19FADEFD001FB509 /* UserProfileReadOnlyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileReadOnlyViewController.h; sourceTree = "<group>"; };
+		5F6561F019FADEFD001FB509 /* UserProfileReadOnlyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileReadOnlyViewController.m; sourceTree = "<group>"; };
+		5F6561F119FADEFD001FB509 /* UserProfileReadOnlyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileReadOnlyViewController.xib; sourceTree = "<group>"; };
 		5F846E0519F560D300CED980 /* Welcome1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Welcome1ViewController.h; sourceTree = "<group>"; };
 		5F846E0619F560D300CED980 /* Welcome1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Welcome1ViewController.m; sourceTree = "<group>"; };
 		5F846E0819F57D4D00CED980 /* Welcome2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Welcome2ViewController.h; sourceTree = "<group>"; };
@@ -1930,6 +1935,9 @@
 		5F1C9B4A19EDE87A000F1FC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5F6561EF19FADEFD001FB509 /* UserProfileReadOnlyViewController.h */,
+				5F6561F019FADEFD001FB509 /* UserProfileReadOnlyViewController.m */,
+				5F6561F119FADEFD001FB509 /* UserProfileReadOnlyViewController.xib */,
 				5F6561EA19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.h */,
 				5F6561EB19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.m */,
 				5F6561EC19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.xib */,
@@ -2282,6 +2290,7 @@
 				5F1C99D619EDE775000F1FC1 /* BluetoothIcon@2x.png in Resources */,
 				5F1C9C4A19EDE87A000F1FC1 /* today_selected@2x.png in Resources */,
 				5F1C9BBB19EDE87A000F1FC1 /* Acupressure@2x.png in Resources */,
+				5F6561F319FADEFD001FB509 /* UserProfileReadOnlyViewController.xib in Resources */,
 				5F1C9C1A19EDE87A000F1FC1 /* Amazing@2x.png in Resources */,
 				5F1C9C6619EDE87A000F1FC1 /* Ovatemp-Info.plist in Resources */,
 				5F1C9C6C19EDE87A000F1FC1 /* CheckCell.xib in Resources */,
@@ -2561,6 +2570,7 @@
 				5F1C9B8D19EDE87A000F1FC1 /* LifestyleViewController.m in Sources */,
 				5F1C9B8619EDE87A000F1FC1 /* CommunityForumsViewController.m in Sources */,
 				5F1C96D119EDD31A000F1FC1 /* MPABTestDesignerChangeRequestMessage.m in Sources */,
+				5F6561F219FADEFD001FB509 /* UserProfileReadOnlyViewController.m in Sources */,
 				5F1C9B9E19EDE87A000F1FC1 /* WebViewController.m in Sources */,
 				5F1C96DB19EDD31A000F1FC1 /* MPABTestDesignerTweakRequestMessage.m in Sources */,
 				5F1C9BA419EDE87A000F1FC1 /* SubscriptionHelper.m in Sources */,
