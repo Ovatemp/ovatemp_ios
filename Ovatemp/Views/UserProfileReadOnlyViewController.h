@@ -10,4 +10,12 @@
 
 @interface UserProfileReadOnlyViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *tryingToImage;
+@property (weak, nonatomic) IBOutlet UILabel *tryingToLabel;
+@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *heightLabel;
+@property (weak, nonatomic) IBOutlet UILabel *weightLabel;
+
 @end
