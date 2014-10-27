@@ -40,10 +40,12 @@ NSArray *profileInfoSectionOneArray;
 
 NSArray *profileSectionTitles;
 
-BOOL userIsEditing;
+BOOL firstEditWeight;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    firstEditWeight = YES;
     
     self.title = @"Profile";
     
@@ -66,10 +68,6 @@ BOOL userIsEditing;
     
     [[self tableView] registerNib:[UINib nibWithNibName:@"EditHeightTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"heightCell"];
     [[self tableView] registerNib:[UINib nibWithNibName:@"EditWeightTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"weightCell"];
-    
-    userIsEditing = NO;
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleDone target:self action:@selector(doEditInfo)];
     
     [self.tableView setAllowsSelection:NO];
 }
@@ -99,7 +97,11 @@ BOOL userIsEditing;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.heightCell.heightField.text = [NSString stringWithFormat:@"%@' %@\"", [defaults objectForKey:@"userHeightFeetComponent"], [defaults objectForKey:@"userHeightInchesComponent"]];
-    self.weightCell.weightField.text = [NSString stringWithFormat:@"%@ lbs", [defaults objectForKey:@"userWeight"]];
+    
+    if (firstEditWeight) {
+        self.weightCell.weightField.text = [NSString stringWithFormat:@"%@ lbs", [defaults objectForKey:@"userWeight"]];
+        firstEditWeight = NO;
+    }
     
     // tags
     self.nameCell.textField.tag = 0;
@@ -194,14 +196,6 @@ BOOL userIsEditing;
     [self.tryingToConceiveCell.tryingToSwitch setOn:!self.tryingToConceiveCell.tryingToSwitch.on animated:YES];
 }
 
-- (void)doEditInfo {
-    userIsEditing = !userIsEditing;
-    
-    if (userIsEditing) {
-//        self.
-    }
-}
-
 #pragma mark - Table view
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -261,12 +255,6 @@ BOOL userIsEditing;
     
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (userIsEditing) {
-        
-    }
 }
 
 @end
