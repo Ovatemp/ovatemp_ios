@@ -55,6 +55,11 @@ BOOL firstOpenCycleLengthCell;
 BOOL firstOpenHeightCell;
 BOOL firstOpenWeightCell;
 
+BOOL lastPeriodHasData;
+BOOL cycleLengthHasData;
+BOOL heightHasData;
+BOOL weightHasData;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -68,6 +73,11 @@ BOOL firstOpenWeightCell;
     firstOpenCycleLengthCell = YES;
     firstOpenHeightCell = YES;
     firstOpenWeightCell = YES;
+    
+    lastPeriodHasData = NO;
+    cycleLengthHasData = NO;
+    heightHasData = NO;
+    weightHasData = NO;
     
     currentState = TableStateAllClosed;
     
@@ -94,6 +104,11 @@ BOOL firstOpenWeightCell;
     firstOpenCycleLengthCell = YES;
     firstOpenHeightCell = YES;
     firstOpenWeightCell = YES;
+    
+    lastPeriodHasData = NO;
+    cycleLengthHasData = NO;
+    heightHasData = NO;
+    weightHasData = NO;
     
     currentState = TableStateAllClosed;
 }
@@ -248,6 +263,7 @@ BOOL firstOpenWeightCell;
             if (firstOpenLastPeriod) {
                 self.lastPeriodDate = self.lastPeriodCell.datePicker.date;
                 firstOpenLastPeriod = NO;
+                lastPeriodHasData = YES;
             }
             
             // record date
@@ -269,6 +285,7 @@ BOOL firstOpenWeightCell;
             if (firstOpenCycleLengthCell) {
                 self.cycleLength = 28;
                 firstOpenCycleLengthCell = NO;
+                cycleLengthHasData = YES;
             }
             
             if (!expandCycleLengthCell) {
@@ -292,6 +309,7 @@ BOOL firstOpenWeightCell;
                 self.userHeightFeetComponent = 5;
                 self.userHeightInchesComponent = 5;
                 firstOpenHeightCell = NO;
+                heightHasData = YES;
             }
             
             if (!expandHeightCell) {
@@ -313,6 +331,7 @@ BOOL firstOpenWeightCell;
             if (firstOpenWeightCell) {
                 self.userWeight = 130;
                 firstOpenWeightCell = NO;
+                weightHasData = YES;
             }
             
             if (!expandWeightCell) {
@@ -361,6 +380,23 @@ BOOL firstOpenWeightCell;
             
         default:
             break;
+    }
+    
+    // if we opened a cell earlier, set the data we have
+    if (lastPeriodHasData) {
+        self.lastPeriodCell.dateLabel.text = [self.lastPeriodDate classicDate];
+    }
+    
+    if (cycleLengthHasData) {
+        self.cycleLengthCell.cycleLengthValueLabel.text = [NSString stringWithFormat:@"%ld days", (long)self.cycleLength];
+    }
+    
+    if (heightHasData) {
+        self.heightCell.heightValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"", (long)self.userHeightFeetComponent, (long)self.userHeightInchesComponent];
+    }
+    
+    if (weightHasData) {
+        self.weightCell.weightValueLabel.text = [NSString stringWithFormat:@"%ld lbs", (long)self.userWeight];
     }
     
     // make sure cell can be displayed, even if out of view
