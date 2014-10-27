@@ -87,6 +87,14 @@ BOOL userIsEditing;
     
     // trying to avoid image
     [self.tryingToAvoidCell.tryingToImage setImage:[UIImage imageNamed:@"icn_condom"]];
+    
+    self.nameCell.textField.text = [currentUserProfile fullName];
+    self.dobCell.textField.text = [[currentUserProfile dateOfBirth] classicDate];
+    self.emailCell.textField.text = [currentUserProfile email];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.heightCell.heightField.text = [NSString stringWithFormat:@"%@' %@\"", [defaults objectForKey:@"userHeightFeetComponent"], [defaults objectForKey:@"userHeightInchesComponent"]];
+    self.weightCell.weightField.text = [NSString stringWithFormat:@"%@ lbs", [defaults objectForKey:@"userWeight"]];
 }
 
 - (void)didReceiveMemoryWarning {

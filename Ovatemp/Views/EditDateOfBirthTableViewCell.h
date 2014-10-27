@@ -10,4 +10,6 @@
 
 @interface EditDateOfBirthTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+
 @end

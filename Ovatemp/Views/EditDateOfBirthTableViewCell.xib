@@ -26,6 +26,9 @@
                     </textField>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="textField" destination="mi5-mc-EyR" id="pud-dE-8vt"/>
+            </connections>
             <point key="canvasLocation" x="139" y="152"/>
         </tableViewCell>
     </objects>
