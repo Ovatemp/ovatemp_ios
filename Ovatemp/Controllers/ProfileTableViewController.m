@@ -27,9 +27,6 @@
 @property EditHeightTableViewCell *heightCell;
 @property EditWeightTableViewCell *weightCell;
 
-@property UIPickerView *heightPicker;
-@property UIPickerView *weightPicker;
-
 @end
 
 @implementation ProfileTableViewController
@@ -39,6 +36,7 @@ NSArray *profileInfoSectionOneArray;
 
 NSArray *profileSectionTitles;
 
+BOOL firstEditTrying;
 BOOL firstEditName;
 BOOL firstEditDob;
 BOOL firstEditEmail;
@@ -48,6 +46,7 @@ BOOL firstEditWeight;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    firstEditTrying = YES;
     firstEditName = YES;
     firstEditDob = YES;
     firstEditEmail = YES;
@@ -84,12 +83,15 @@ BOOL firstEditWeight;
     // Default values
     UserProfile *currentUserProfile = [UserProfile current];
     
-    if (currentUserProfile.tryingToConceive == YES) {
-        self.tryingToConceiveCell.tryingToSwitch.on = YES;
-        self.tryingToAvoidCell.tryingToSwitch.on = NO;
-    } else {
-        self.tryingToConceiveCell.tryingToSwitch.on = NO;
-        self.tryingToAvoidCell.tryingToSwitch.on = YES;
+    if (firstEditTrying) {
+        if (currentUserProfile.tryingToConceive == YES) {
+            self.tryingToConceiveCell.tryingToSwitch.on = YES;
+            self.tryingToAvoidCell.tryingToSwitch.on = NO;
+        } else {
+            self.tryingToConceiveCell.tryingToSwitch.on = NO;
+            self.tryingToAvoidCell.tryingToSwitch.on = YES;
+        }
+        firstEditTrying = NO;
     }
     
     [self.tryingToConceiveCell.tryingToSwitch addTarget:self action:@selector(selectedTryingToConceive) forControlEvents:UIControlEventValueChanged];
@@ -170,6 +172,11 @@ BOOL firstEditWeight;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    if (![self fullNameCheck]) {
+        [self alertUserWithTitle:@"Error" andMessage:@"Your full name should be between 4 and 48 characters."];
+        return NO;
+    }
+    
     UIView *view = [self.view viewWithTag:textField.tag + 1];
     if (!view)
         [textField resignFirstResponder];
@@ -178,11 +185,19 @@ BOOL firstEditWeight;
     return YES;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField { //Keyboard becomes visible
-    
-    if (textField.tag == 1) {
-//        self.dobCell.textField.text = [self.dateOfBirthPicker.date classicDate];
+//- (void)textFieldDidEndEditing:(UITextField *)textField {
+//    if (textField.tag == 0) {
+//        if (([textField.text length] < 4) || ([textField.text length] > 48)) {
+//            [self alertUserWithTitle:@"Error" andMessage:@"Your full name should be between 4 and 48 characters."];
+//        }
+//    }
+//}
+
+- (BOOL)fullNameCheck {
+    if (([self.nameCell.textField.text length] < 4) || ([self.nameCell.textField.text length] > 48)) {
+        return NO;
     }
+    return YES;
 }
 
 - (void)selectedTryingToConceive {
@@ -191,6 +206,47 @@ BOOL firstEditWeight;
 
 - (void)selectedTryingToAvoid {
     [self.tryingToConceiveCell.tryingToSwitch setOn:!self.tryingToConceiveCell.tryingToSwitch.on animated:YES];
+}
+
+- (void)didMoveToParentViewController:(UIViewController *)parent {
+    // user went back, save data
+    
+    UserProfile *currentUserProfile = [UserProfile current];
+    
+    currentUserProfile.tryingToConceive = self.tryingToConceiveCell.tryingToSwitch.on;
+    currentUserProfile.fullName = self.nameCell.textField.text;
+    currentUserProfile.dateOfBirth = self.dobCell.dateOfBirthPicker.date;
+    
+    [[UserProfile current] save];
+    
+    // height and weight
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSInteger userHeightFeetComponent = ([self.heightCell.heightPicker selectedRowInComponent:0] + 3);
+    NSInteger userHeightInchesComponent = ([self.heightCell.heightPicker selectedRowInComponent:1]);
+    
+    [defaults setInteger:userHeightFeetComponent forKey:@"userHeightFeetComponent"];
+    [defaults setInteger:userHeightInchesComponent forKey:@"userHeightInchesComponent"];
+    
+    [defaults setInteger:([self.weightCell.weightPicker selectedRowInComponent:0] + 100) forKey:@"userWeight"];
+    
+    [defaults synchronize];
+}
+
+#pragma mark - UIAlertController
+
+- (void)alertUserWithTitle:(NSString *)title andMessage:(NSString *)message {
+    UIAlertController *errorAlert = [UIAlertController
+                                     alertControllerWithTitle:title
+                                     message:message
+                                     preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
+                                               handler:nil];
+    
+    [errorAlert addAction:ok];
+    
+    [self presentViewController:errorAlert animated:YES completion:nil];
 }
 
 #pragma mark - Table view
