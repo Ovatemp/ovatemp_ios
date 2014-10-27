@@ -80,6 +80,21 @@ BOOL firstEditWeight;
 
 - (void)viewDidLayoutSubviews {
     
+    self.nameCell.textField.borderStyle = UITextBorderStyleNone;
+    [self.nameCell.textField setBackgroundColor:[UIColor clearColor]];
+    
+    self.dobCell.textField.borderStyle = UITextBorderStyleNone;
+    [self.dobCell.textField setBackgroundColor:[UIColor clearColor]];
+    
+    self.emailCell.textField.borderStyle = UITextBorderStyleNone;
+    [self.emailCell.textField setBackgroundColor:[UIColor clearColor]];
+    
+    self.heightCell.heightField.borderStyle = UITextBorderStyleNone;
+    [self.heightCell.heightField setBackgroundColor:[UIColor clearColor]];
+    
+    self.weightCell.weightField.borderStyle = UITextBorderStyleNone;
+    [self.weightCell.weightField setBackgroundColor:[UIColor clearColor]];
+    
     // Default values
     UserProfile *currentUserProfile = [UserProfile current];
     
