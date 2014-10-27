@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditWeightTableViewCell : UITableViewCell
+@interface EditWeightTableViewCell : UITableViewCell <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *weightField;
+
+@property UIPickerView *weightPicker;
 
 @end

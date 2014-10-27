@@ -296,7 +296,7 @@ BOOL firstOpenWeightCell;
             
             if (!expandHeightCell) {
                 self.userHeightFeetComponent = ([self.heightCell.heightPicker selectedRowInComponent:0] + 3);
-                self.userHeightInchesComponent = ([self.heightCell.heightPicker selectedRowInComponent:1] + 1);
+                self.userHeightInchesComponent = ([self.heightCell.heightPicker selectedRowInComponent:1]);
             }
             break;
         }

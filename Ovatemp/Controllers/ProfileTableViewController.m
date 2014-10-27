@@ -16,7 +16,7 @@
 #import "EditHeightTableViewCell.h"
 #import "EditWeightTableViewCell.h"
 
-@interface ProfileTableViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface ProfileTableViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property TryingToConceiveOrAvoidTableViewCell *tryingToConceiveCell;
 @property TryingToConceiveOrAvoidTableViewCell *tryingToAvoidCell;
@@ -36,10 +36,22 @@ NSArray *profileInfoSectionOneArray;
 
 NSArray *profileSectionTitles;
 
-BOOL userIsEditing;
+BOOL firstEditTrying;
+BOOL firstEditName;
+BOOL firstEditDob;
+BOOL firstEditEmail;
+BOOL firstEditHeight;
+BOOL firstEditWeight;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    firstEditTrying = YES;
+    firstEditName = YES;
+    firstEditDob = YES;
+    firstEditEmail = YES;
+    firstEditHeight = YES;
+    firstEditWeight = YES;
     
     self.title = @"Profile";
     
@@ -63,23 +75,23 @@ BOOL userIsEditing;
     [[self tableView] registerNib:[UINib nibWithNibName:@"EditHeightTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"heightCell"];
     [[self tableView] registerNib:[UINib nibWithNibName:@"EditWeightTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"weightCell"];
     
-    userIsEditing = NO;
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleDone target:self action:@selector(doEditInfo)];
-    
     [self.tableView setAllowsSelection:NO];
 }
 
 - (void)viewDidLayoutSubviews {
-    // set switch defaults
+    
+    // Default values
     UserProfile *currentUserProfile = [UserProfile current];
     
-    if (currentUserProfile.tryingToConceive == YES) {
-        self.tryingToConceiveCell.tryingToSwitch.on = YES;
-        self.tryingToAvoidCell.tryingToSwitch.on = NO;
-    } else {
-        self.tryingToConceiveCell.tryingToSwitch.on = NO;
-        self.tryingToAvoidCell.tryingToSwitch.on = YES;
+    if (firstEditTrying) {
+        if (currentUserProfile.tryingToConceive == YES) {
+            self.tryingToConceiveCell.tryingToSwitch.on = YES;
+            self.tryingToAvoidCell.tryingToSwitch.on = NO;
+        } else {
+            self.tryingToConceiveCell.tryingToSwitch.on = NO;
+            self.tryingToAvoidCell.tryingToSwitch.on = YES;
+        }
+        firstEditTrying = NO;
     }
     
     [self.tryingToConceiveCell.tryingToSwitch addTarget:self action:@selector(selectedTryingToConceive) forControlEvents:UIControlEventValueChanged];
@@ -88,18 +100,104 @@ BOOL userIsEditing;
     // trying to avoid image
     [self.tryingToAvoidCell.tryingToImage setImage:[UIImage imageNamed:@"icn_condom"]];
     
-    self.nameCell.textField.text = [currentUserProfile fullName];
-    self.dobCell.textField.text = [[currentUserProfile dateOfBirth] classicDate];
-    self.emailCell.textField.text = [currentUserProfile email];
+    if (firstEditName) {
+        self.nameCell.textField.text = [currentUserProfile fullName];
+        firstEditName = NO;
+    }
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.heightCell.heightField.text = [NSString stringWithFormat:@"%@' %@\"", [defaults objectForKey:@"userHeightFeetComponent"], [defaults objectForKey:@"userHeightInchesComponent"]];
-    self.weightCell.weightField.text = [NSString stringWithFormat:@"%@ lbs", [defaults objectForKey:@"userWeight"]];
+    if (firstEditDob) {
+        self.dobCell.textField.text = [[currentUserProfile dateOfBirth] classicDate];
+        firstEditDob = NO;
+    }
+    
+    if (firstEditEmail) {
+        self.emailCell.textField.text = [currentUserProfile email];
+        firstEditEmail = NO;
+    }
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults]; // Height and weight
+    
+    if (firstEditHeight) {
+        self.heightCell.heightField.text = [NSString stringWithFormat:@"%@' %@\"", [defaults objectForKey:@"userHeightFeetComponent"], [defaults objectForKey:@"userHeightInchesComponent"]];
+        firstEditHeight = NO;
+    }
+    
+    if (firstEditWeight) {
+        self.weightCell.weightField.text = [NSString stringWithFormat:@"%@ lbs", [defaults objectForKey:@"userWeight"]];
+        firstEditWeight = NO;
+    }
+    
+    // tags
+    self.nameCell.textField.tag = 0;
+    self.dobCell.textField.tag = 1;
+    self.emailCell.textField.tag = 2;
+    self.heightCell.heightField.tag = 3;
+    self.weightCell.weightField.tag = 4;
+    
+    self.nameCell.textField.delegate = self;
+    self.dobCell.textField.delegate = self;
+    self.emailCell.textField.delegate = self;
+    self.heightCell.heightField.delegate = self;
+//    self.weightCell.weightField.delegate = self;
+    
+    // pickers
+    
+    
+    // can't edit email field since updating email is not supported by the backend
+    self.emailCell.textField.enabled = NO;
+    
+    // height
+    
+    // weight
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self addKeyboardObservers];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [self removeKeyboardObservers];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dateOfBirthChanged:(UIDatePicker *)sender {
+//    self.dobCell.textField.text = [self.dateOfBirthPicker.date classicDate];
+//    [self.dobCell.textField setText:[self.dateOfBirthPicker.date classicDate]];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (![self fullNameCheck]) {
+        [self alertUserWithTitle:@"Error" andMessage:@"Your full name should be between 4 and 48 characters."];
+        return NO;
+    }
+    
+    UIView *view = [self.view viewWithTag:textField.tag + 1];
+    if (!view)
+        [textField resignFirstResponder];
+    else
+        [view becomeFirstResponder];
+    return YES;
+}
+
+//- (void)textFieldDidEndEditing:(UITextField *)textField {
+//    if (textField.tag == 0) {
+//        if (([textField.text length] < 4) || ([textField.text length] > 48)) {
+//            [self alertUserWithTitle:@"Error" andMessage:@"Your full name should be between 4 and 48 characters."];
+//        }
+//    }
+//}
+
+- (BOOL)fullNameCheck {
+    if (([self.nameCell.textField.text length] < 4) || ([self.nameCell.textField.text length] > 48)) {
+        return NO;
+    }
+    return YES;
 }
 
 - (void)selectedTryingToConceive {
@@ -110,12 +208,45 @@ BOOL userIsEditing;
     [self.tryingToConceiveCell.tryingToSwitch setOn:!self.tryingToConceiveCell.tryingToSwitch.on animated:YES];
 }
 
-- (void)doEditInfo {
-    userIsEditing = !userIsEditing;
+- (void)didMoveToParentViewController:(UIViewController *)parent {
+    // user went back, save data
     
-    if (userIsEditing) {
-//        self.
-    }
+    UserProfile *currentUserProfile = [UserProfile current];
+    
+    currentUserProfile.tryingToConceive = self.tryingToConceiveCell.tryingToSwitch.on;
+    currentUserProfile.fullName = self.nameCell.textField.text;
+    currentUserProfile.dateOfBirth = self.dobCell.dateOfBirthPicker.date;
+    
+    [[UserProfile current] save];
+    
+    // height and weight
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSInteger userHeightFeetComponent = ([self.heightCell.heightPicker selectedRowInComponent:0] + 3);
+    NSInteger userHeightInchesComponent = ([self.heightCell.heightPicker selectedRowInComponent:1]);
+    
+    [defaults setInteger:userHeightFeetComponent forKey:@"userHeightFeetComponent"];
+    [defaults setInteger:userHeightInchesComponent forKey:@"userHeightInchesComponent"];
+    
+    [defaults setInteger:([self.weightCell.weightPicker selectedRowInComponent:0] + 100) forKey:@"userWeight"];
+    
+    [defaults synchronize];
+}
+
+#pragma mark - UIAlertController
+
+- (void)alertUserWithTitle:(NSString *)title andMessage:(NSString *)message {
+    UIAlertController *errorAlert = [UIAlertController
+                                     alertControllerWithTitle:title
+                                     message:message
+                                     preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
+                                               handler:nil];
+    
+    [errorAlert addAction:ok];
+    
+    [self presentViewController:errorAlert animated:YES completion:nil];
 }
 
 #pragma mark - Table view
@@ -177,12 +308,6 @@ BOOL userIsEditing;
     
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (userIsEditing) {
-        
-    }
 }
 
 @end

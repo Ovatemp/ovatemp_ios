@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditHeightTableViewCell : UITableViewCell
+@interface EditHeightTableViewCell : UITableViewCell <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *heightField;
+@property UIPickerView *heightPicker;
 
 @end
