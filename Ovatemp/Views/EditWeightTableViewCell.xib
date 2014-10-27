@@ -20,7 +20,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7bB-tk-27b">
-                        <rect key="frame" x="234" y="7" width="74" height="30"/>
+                        <rect key="frame" x="138" y="8" width="170" height="30"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
@@ -29,6 +29,7 @@
             <connections>
                 <outlet property="weightField" destination="7bB-tk-27b" id="B7o-lQ-QDm"/>
             </connections>
+            <point key="canvasLocation" x="139" y="153"/>
         </tableViewCell>
     </objects>
 </document>

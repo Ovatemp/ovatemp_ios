@@ -20,7 +20,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gcy-yN-rkk">
-                        <rect key="frame" x="234" y="7" width="74" height="30"/>
+                        <rect key="frame" x="138" y="8" width="170" height="30"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
@@ -30,6 +30,7 @@
                 <outlet property="textField" destination="gcy-yN-rkk" id="rBc-Nz-6wk"/>
                 <outlet property="titleLabel" destination="DuZ-hg-c93" id="POl-Gq-Hv8"/>
             </connections>
+            <point key="canvasLocation" x="139" y="153"/>
         </tableViewCell>
     </objects>
 </document>
