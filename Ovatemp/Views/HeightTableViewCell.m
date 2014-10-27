@@ -23,7 +23,7 @@ NSMutableArray *heightPickerInchesData;
         [heightPickerFeetData addObject:[NSString stringWithFormat:@"%d'", i]];
     }
     
-    for (int i = 1; i < 12; i++) {
+    for (int i = 0; i < 12; i++) {
         [heightPickerInchesData addObject:[NSString stringWithFormat:@"%d\"", i]];
     }
     
@@ -31,7 +31,7 @@ NSMutableArray *heightPickerInchesData;
     
     // default value
     [self.heightPicker selectRow:2 inComponent:0 animated:NO]; // 5'
-    [self.heightPicker selectRow:4 inComponent:1 animated:NO]; // 5"
+    [self.heightPicker selectRow:5 inComponent:1 animated:NO]; // 5"
     
     self.heightLabel.textColor = [UIColor ovatempGreyColor];
 }
