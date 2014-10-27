@@ -70,7 +70,18 @@ BOOL userIsEditing;
     [self.tableView setAllowsSelection:NO];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidLayoutSubviews {
+    // set switch defaults
+    UserProfile *currentUserProfile = [UserProfile current];
+    
+    if (currentUserProfile.tryingToConceive == YES) {
+        self.tryingToConceiveCell.tryingToSwitch.on = YES;
+        self.tryingToAvoidCell.tryingToSwitch.on = NO;
+    } else {
+        self.tryingToConceiveCell.tryingToSwitch.on = NO;
+        self.tryingToAvoidCell.tryingToSwitch.on = YES;
+    }
+    
     [self.tryingToConceiveCell.tryingToSwitch addTarget:self action:@selector(selectedTryingToConceive) forControlEvents:UIControlEventValueChanged];
     [self.tryingToAvoidCell.tryingToSwitch addTarget:self action:@selector(selectedTryingToAvoid) forControlEvents:UIControlEventValueChanged];
 }
