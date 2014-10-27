@@ -10,4 +10,6 @@
 
 @interface SettingsTemperatureTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *tempControl;
+
 @end

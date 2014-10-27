@@ -15,6 +15,8 @@
 
 @property AccountTableViewCell *accountTableViewCell;
 
+@property SettingsTemperatureTableViewCell *tempCell;
+
 @end
 
 @implementation SettingsTableViewController
@@ -42,6 +44,26 @@ NSArray *settingsMenuItems;
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    if ([defaults objectForKey:@"temperatureUnitPreferenceFahrenheit"]) {
+//        self.tempCell.tempControl.selectedSegmentIndex = 0;
+//    } else {
+//        self.tempCell.tempControl.selectedSegmentIndex = 1;
+//    }
+}
+
+//- (void) viewDidLayoutSubviews {
+////    @"temperatureUnitPreferenceFahrenheit"
+//    
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    if ([defaults objectForKey:@"temperatureUnitPreferenceFahrenheit"]) {
+//        self.tempCell.tempControl.selectedSegmentIndex = 0;
+//    } else {
+//        self.tempCell.tempControl.selectedSegmentIndex = 1;
+//    }
+//}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -63,11 +85,11 @@ NSArray *settingsMenuItems;
     AccountTableViewCell *cell;
     
     if (indexPath.row == 0) {
-        SettingsTemperatureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"settingsTempCell" forIndexPath:indexPath];
+        self.tempCell = [tableView dequeueReusableCellWithIdentifier:@"settingsTempCell" forIndexPath:indexPath];
         
-        [[cell textLabel] setText:[settingsMenuItems objectAtIndex:indexPath.row]];
+        [[self.tempCell textLabel] setText:[settingsMenuItems objectAtIndex:indexPath.row]];
         
-        return cell;
+        return self.tempCell;
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"accountCell" forIndexPath:indexPath];
         

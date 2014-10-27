@@ -14,12 +14,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3gN-bp-uuF">
+                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="3gN-bp-uuF">
                         <rect key="frame" x="253" y="8" width="59" height="29"/>
                         <segments>
                             <segment title="ºF"/>
                             <segment title="ºC"/>
                         </segments>
+                        <connections>
+                            <action selector="segmentSwitch:" destination="KGk-i7-Jjw" eventType="valueChanged" id="jfW-oP-wSe"/>
+                        </connections>
                     </segmentedControl>
                 </subviews>
                 <constraints>
@@ -27,6 +30,9 @@
                     <constraint firstItem="3gN-bp-uuF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="WaI-e8-uS6"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="tempControl" destination="3gN-bp-uuF" id="ilm-bA-cRu"/>
+            </connections>
             <point key="canvasLocation" x="140" y="153"/>
         </tableViewCell>
     </objects>
