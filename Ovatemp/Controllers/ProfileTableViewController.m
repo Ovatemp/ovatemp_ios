@@ -16,7 +16,7 @@
 #import "EditHeightTableViewCell.h"
 #import "EditWeightTableViewCell.h"
 
-@interface ProfileTableViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface ProfileTableViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property TryingToConceiveOrAvoidTableViewCell *tryingToConceiveCell;
 @property TryingToConceiveOrAvoidTableViewCell *tryingToAvoidCell;
@@ -26,6 +26,10 @@
 @property EditDateOfBirthTableViewCell *dobCell;
 @property EditHeightTableViewCell *heightCell;
 @property EditWeightTableViewCell *weightCell;
+
+@property UIDatePicker *dateOfBirthPicker;
+@property UIPickerView *heightPicker;
+@property UIPickerView *weightPicker;
 
 @end
 
@@ -71,7 +75,8 @@ BOOL userIsEditing;
 }
 
 - (void)viewDidLayoutSubviews {
-    // set switch defaults
+    
+    // Default values
     UserProfile *currentUserProfile = [UserProfile current];
     
     if (currentUserProfile.tryingToConceive == YES) {
@@ -95,11 +100,90 @@ BOOL userIsEditing;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.heightCell.heightField.text = [NSString stringWithFormat:@"%@' %@\"", [defaults objectForKey:@"userHeightFeetComponent"], [defaults objectForKey:@"userHeightInchesComponent"]];
     self.weightCell.weightField.text = [NSString stringWithFormat:@"%@ lbs", [defaults objectForKey:@"userWeight"]];
+    
+    // tags
+    self.nameCell.textField.tag = 0;
+    self.dobCell.textField.tag = 1;
+    self.emailCell.textField.tag = 2;
+    self.heightCell.heightField.tag = 3;
+    self.weightCell.weightField.tag = 4;
+    
+    self.nameCell.textField.delegate = self;
+    self.dobCell.textField.delegate = self;
+    self.emailCell.textField.delegate = self;
+    self.heightCell.heightField.delegate = self;
+//    self.weightCell.weightField.delegate = self;
+    
+    // pickers
+    self.dateOfBirthPicker = [[UIDatePicker alloc] init];
+    self.dateOfBirthPicker.date = [currentUserProfile dateOfBirth]; // default date
+    
+    NSInteger minAgeInYears = 12;
+    NSInteger day = 60 * 60 * 24;
+    NSInteger year = day * 365;
+    NSDate *maximumDate = [NSDate dateWithTimeIntervalSinceNow:-minAgeInYears * year];
+    NSDate *minimumDate = [NSDate dateWithTimeIntervalSinceNow:-100 * year];
+    
+    self.dateOfBirthPicker.minimumDate = minimumDate;
+    self.dateOfBirthPicker.maximumDate = maximumDate;
+    
+    self.dateOfBirthPicker.datePickerMode = UIDatePickerModeDate;
+    
+    [self.dateOfBirthPicker addTarget:self
+                               action:@selector(dateOfBirthChanged:)
+                     forControlEvents:UIControlEventValueChanged];
+    
+    // done bar
+    UIToolbar *doneToolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];
+    [doneToolbar sizeToFit];
+    UIBarButtonItem *flexArea = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.view action:@selector(endEditing:)];
+    doneToolbar.items = @[flexArea, doneButton];
+    self.dobCell.textField.inputAccessoryView = doneToolbar;
+    
+    self.dobCell.textField.inputView = self.dateOfBirthPicker;
+    
+    // can't edit email field since updating email is not supported by the backend
+    self.emailCell.textField.enabled = NO;
+    
+    // height
+    
+    // weight
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self addKeyboardObservers];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [self removeKeyboardObservers];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dateOfBirthChanged:(UIDatePicker *)sender {
+    self.dobCell.textField.text = [self.dateOfBirthPicker.date classicDate];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    UIView *view = [self.view viewWithTag:textField.tag + 1];
+    if (!view)
+        [textField resignFirstResponder];
+    else
+        [view becomeFirstResponder];
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField { //Keyboard becomes visible
+    
+    if (textField.tag == 1) {
+        self.dobCell.textField.text = [self.dateOfBirthPicker.date classicDate];
+    }
 }
 
 - (void)selectedTryingToConceive {
