@@ -10,7 +10,4 @@
 
 @interface ProfileTableViewController : UITableViewController
 
-@property (weak, nonatomic) IBOutlet UISwitch *tryingToConceive;
-@property (weak, nonatomic) IBOutlet UISwitch *tryingToAvoid;
-
 @end
