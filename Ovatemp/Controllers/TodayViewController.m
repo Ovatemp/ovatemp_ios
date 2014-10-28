@@ -269,9 +269,6 @@
     } else {
         temperatureString = [NSString stringWithFormat:@"Recorded a temperature of %.2f for today", tempInCelsius];
     }
-    
-    // fallback
-    temperatureString = [NSString stringWithFormat:@"Recorded a temperature of %.2f for today", temperature];
     [Alert showAlertWithTitle:@"Temperature Recorded" message:temperatureString];
 }
 

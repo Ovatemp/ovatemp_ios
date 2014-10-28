@@ -27,10 +27,11 @@
                     </textField>
                 </subviews>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="weightField" destination="7bB-tk-27b" id="B7o-lQ-QDm"/>
             </connections>
-            <point key="canvasLocation" x="139" y="160"/>
+            <point key="canvasLocation" x="180" y="248"/>
         </tableViewCell>
     </objects>
 </document>

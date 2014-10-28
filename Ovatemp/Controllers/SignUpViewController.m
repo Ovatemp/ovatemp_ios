@@ -55,6 +55,14 @@
     self.dateOfBirthField.delegate = self;
     self.emailField.delegate = self;
     self.passwordField.delegate = self;
+    
+//    [[UIBarButtonItem appearance] setTintColor:[UIColor ovatempAquaColor]];
+    [self.navigationController.navigationBar setTintColor: [UIColor ovatempAquaColor]];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+//    [[UIBarButtonItem appearance] setTintColor:[UIColor ovatempAquaColor]];
+    [self.navigationController.navigationBar setTintColor: [UIColor ovatempAquaColor]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

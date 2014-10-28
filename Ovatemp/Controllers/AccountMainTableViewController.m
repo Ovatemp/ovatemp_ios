@@ -41,9 +41,15 @@ NSArray *accountMenuItems;
     // logout
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(doLogout)];
     self.navigationItem.rightBarButtonItem.enabled = YES;
+    
+    [[UIBarButtonItem appearance] setTintColor:[UIColor ovatempAquaColor]];
 }
 
--(void)viewDidLayoutSubviews
+- (void)viewDidAppear:(BOOL)animated {
+    [[UIBarButtonItem appearance] setTintColor:[UIColor ovatempAquaColor]];
+}
+
+- (void)viewDidLayoutSubviews
 {
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [self.tableView setSeparatorInset:UIEdgeInsetsZero];

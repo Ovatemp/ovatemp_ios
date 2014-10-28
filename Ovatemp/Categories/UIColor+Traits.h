@@ -22,7 +22,8 @@
 - (UIColor *)desaturateBy:(CGFloat)amount;
 
 + (UIColor *)ovatempGreyColor;
-
 + (UIColor *)ovatempDarkGreyTitleColor;
++ (UIColor *)ovatempAquaColor;
++ (UIColor *)ovatempAlmostWhiteColor;
 
 @end

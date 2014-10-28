@@ -26,6 +26,7 @@
                     </textField>
                 </subviews>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="textField" destination="gcy-yN-rkk" id="rBc-Nz-6wk"/>
                 <outlet property="titleLabel" destination="DuZ-hg-c93" id="POl-Gq-Hv8"/>
