@@ -993,9 +993,9 @@
 		5F223F3219F03B480003AF64 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		5F223F3319F03B480003AF64 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		5F223F3419F03B480003AF64 /* SettingsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsTableViewController.xib; sourceTree = "<group>"; };
-		5F223F3719F05C330003AF64 /* SettingsTemperatureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTemperatureTableViewCell.h; sourceTree = "<group>"; };
-		5F223F3819F05C330003AF64 /* SettingsTemperatureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTemperatureTableViewCell.m; sourceTree = "<group>"; };
-		5F223F3919F05C330003AF64 /* SettingsTemperatureTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsTemperatureTableViewCell.xib; sourceTree = "<group>"; };
+		5F223F3719F05C330003AF64 /* SettingsTemperatureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsTemperatureTableViewCell.h; path = ../Controllers/SettingsTemperatureTableViewCell.h; sourceTree = "<group>"; };
+		5F223F3819F05C330003AF64 /* SettingsTemperatureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsTemperatureTableViewCell.m; path = ../Controllers/SettingsTemperatureTableViewCell.m; sourceTree = "<group>"; };
+		5F223F3919F05C330003AF64 /* SettingsTemperatureTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsTemperatureTableViewCell.xib; path = ../Controllers/SettingsTemperatureTableViewCell.xib; sourceTree = "<group>"; };
 		5F58677419ED802400D2B58E /* Negative.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Negative.png; sourceTree = "<group>"; };
 		5F58677519ED802400D2B58E /* Negative@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Negative@2x.png"; sourceTree = "<group>"; };
 		5F58690419ED802400D2B58E /* Positive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Positive.png; sourceTree = "<group>"; };
@@ -1516,9 +1516,6 @@
 				5F1C9C8519EF16DB000F1FC1 /* ONDOViewController.h */,
 				5F1C9C8619EF16DB000F1FC1 /* ONDOViewController.m */,
 				5F1C9C8719EF16DB000F1FC1 /* ONDOViewController.xib */,
-				5F223F3719F05C330003AF64 /* SettingsTemperatureTableViewCell.h */,
-				5F223F3819F05C330003AF64 /* SettingsTemperatureTableViewCell.m */,
-				5F223F3919F05C330003AF64 /* SettingsTemperatureTableViewCell.xib */,
 				5F1C9C7819EEEDF9000F1FC1 /* AccountMainTableViewController.h */,
 				5F1C9C7919EEEDF9000F1FC1 /* AccountMainTableViewController.m */,
 				5F1C9A2619EDE879000F1FC1 /* BluetoothDeviceTableViewController.h */,
@@ -1938,6 +1935,9 @@
 		5F1C9B4A19EDE87A000F1FC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5F223F3719F05C330003AF64 /* SettingsTemperatureTableViewCell.h */,
+				5F223F3819F05C330003AF64 /* SettingsTemperatureTableViewCell.m */,
+				5F223F3919F05C330003AF64 /* SettingsTemperatureTableViewCell.xib */,
 				5F6561EA19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.h */,
 				5F6561EB19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.m */,
 				5F6561EC19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.xib */,
