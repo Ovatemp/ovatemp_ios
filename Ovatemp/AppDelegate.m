@@ -43,6 +43,8 @@
         [defaults setBool:YES forKey:@"temperatureUnitPreferenceFahrenheit"];
     }
     
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor ovatempAquaColor]} forState:UIControlStateNormal];
+    
     return YES;
 }
 

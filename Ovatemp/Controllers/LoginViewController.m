@@ -28,7 +28,7 @@
     self.emailField.borderStyle = UITextBorderStyleRoundedRect;
     self.passwordField.borderStyle = UITextBorderStyleRoundedRect;
     
-    self.navigationItem.leftBarButtonItem.tintColor = [UIColor ovatempAquaColor];
+    [[UIBarButtonItem appearance] setTintColor:[UIColor ovatempAquaColor]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
