@@ -27,7 +27,12 @@ NSMutableArray *weightPickerData;
     
     // default row value is weight - 100
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [self.weightPicker selectRow:([[defaults valueForKey:@"userWeight"] intValue] - 100) inComponent:0 animated:NO];
+    
+    if ([defaults valueForKey:@"userWeight"]) {
+        [self.weightPicker selectRow:([[defaults valueForKey:@"userWeight"] intValue] - 100) inComponent:0 animated:NO];
+    } else {
+        [self.weightPicker selectRow:30 inComponent:0 animated:NO];
+    }
     
     // done bar
     UIToolbar *doneToolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];

@@ -133,12 +133,20 @@ BOOL firstEditWeight;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults]; // Height and weight
     
     if (firstEditHeight) {
-        self.heightCell.heightField.text = [NSString stringWithFormat:@"%@' %@\"", [defaults objectForKey:@"userHeightFeetComponent"], [defaults objectForKey:@"userHeightInchesComponent"]];
+        if ([defaults objectForKey:@"userHeightFeetComponent"] && [defaults objectForKey:@"userHeightInchesComponent"]) {
+            self.heightCell.heightField.text = [NSString stringWithFormat:@"%@' %@\"", [defaults objectForKey:@"userHeightFeetComponent"], [defaults objectForKey:@"userHeightInchesComponent"]];
+        } else {
+            self.heightCell.heightField.text = @"";
+        }
         firstEditHeight = NO;
     }
     
     if (firstEditWeight) {
-        self.weightCell.weightField.text = [NSString stringWithFormat:@"%@ lbs", [defaults objectForKey:@"userWeight"]];
+        if ([defaults objectForKey:@"userWeight"]) {
+            self.weightCell.weightField.text = [NSString stringWithFormat:@"%@ lbs", [defaults objectForKey:@"userWeight"]];
+        } else {
+            self.weightCell.weightField.text = @"";
+        }
         firstEditWeight = NO;
     }
     
@@ -153,7 +161,7 @@ BOOL firstEditWeight;
     self.dobCell.textField.delegate = self;
     self.emailCell.textField.delegate = self;
     self.heightCell.heightField.delegate = self;
-//    self.weightCell.weightField.delegate = self;
+    self.weightCell.weightField.delegate = self;
     
     // pickers
     
@@ -164,6 +172,14 @@ BOOL firstEditWeight;
     // height
     
     // weight
+    
+//    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+//        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+//    }
+//    
+//    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+//        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+//    }
     
 }
 
@@ -215,6 +231,22 @@ BOOL firstEditWeight;
     return YES;
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if ([textField.accessibilityLabel isEqual: @"heightField"]) {
+        if ([textField.text length] == 0) {
+            textField.text = [NSString stringWithFormat:@"%ld' %ld\"", ([self.heightCell.heightPicker selectedRowInComponent:0] + 3), (long)[self.heightCell.heightPicker selectedRowInComponent:1]];
+        }
+    }
+    
+    if ([textField.accessibilityLabel isEqual: @"weightField"]) {
+        if ([textField.text length] == 0) {
+            textField.text = [NSString stringWithFormat:@"%ld lbs", ([self.weightCell.weightPicker selectedRowInComponent:0] + 100)];
+        }
+    }
+    return YES;
+}
+
 - (void)selectedTryingToConceive {
     [self.tryingToAvoidCell.tryingToSwitch setOn:!self.tryingToAvoidCell.tryingToSwitch.on animated:YES];
 }
@@ -240,12 +272,14 @@ BOOL firstEditWeight;
     NSInteger userHeightFeetComponent = ([self.heightCell.heightPicker selectedRowInComponent:0] + 3);
     NSInteger userHeightInchesComponent = ([self.heightCell.heightPicker selectedRowInComponent:1]);
     
-    [defaults setInteger:userHeightFeetComponent forKey:@"userHeightFeetComponent"];
-    [defaults setInteger:userHeightInchesComponent forKey:@"userHeightInchesComponent"];
-    
-    [defaults setInteger:([self.weightCell.weightPicker selectedRowInComponent:0] + 100) forKey:@"userWeight"];
-    
-    [defaults synchronize];
+    if ([self.heightCell.heightField.text length] > 0) {
+        [defaults setInteger:userHeightFeetComponent forKey:@"userHeightFeetComponent"];
+        [defaults setInteger:userHeightInchesComponent forKey:@"userHeightInchesComponent"];
+        
+        [defaults setInteger:([self.weightCell.weightPicker selectedRowInComponent:0] + 100) forKey:@"userWeight"];
+        
+        [defaults synchronize];
+    }
 }
 
 #pragma mark - UIAlertController
@@ -324,5 +358,29 @@ BOOL firstEditWeight;
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     return cell;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 1) {
+        return 58;
+    } else {
+        return 44;
+    }
+}
+
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.frame), 30)];
+//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 5, 200, 25)];
+//    
+//    // 15 pixel padding will come from CGRectMake(15, 5, 200, 25).
+//    if (section == 0) {
+//        label.text = @"Goal";
+//    } else {
+//        label.text = @"Profile Settings";
+//    }
+//    
+//    view.tintColor = [UIColor grayColor];
+//    
+//    [view addSubview: label];
+//    return view;
+//}
 
 @end

@@ -1016,9 +1016,9 @@
 		5F6561EA19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNameAndEmailTableViewCell.h; sourceTree = "<group>"; };
 		5F6561EB19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNameAndEmailTableViewCell.m; sourceTree = "<group>"; };
 		5F6561EC19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditNameAndEmailTableViewCell.xib; sourceTree = "<group>"; };
-		5F6561EF19FADEFD001FB509 /* UserProfileReadOnlyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileReadOnlyViewController.h; sourceTree = "<group>"; };
-		5F6561F019FADEFD001FB509 /* UserProfileReadOnlyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileReadOnlyViewController.m; sourceTree = "<group>"; };
-		5F6561F119FADEFD001FB509 /* UserProfileReadOnlyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileReadOnlyViewController.xib; sourceTree = "<group>"; };
+		5F6561EF19FADEFD001FB509 /* UserProfileReadOnlyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserProfileReadOnlyViewController.h; path = ../Views/UserProfileReadOnlyViewController.h; sourceTree = "<group>"; };
+		5F6561F019FADEFD001FB509 /* UserProfileReadOnlyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserProfileReadOnlyViewController.m; path = ../Views/UserProfileReadOnlyViewController.m; sourceTree = "<group>"; };
+		5F6561F119FADEFD001FB509 /* UserProfileReadOnlyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserProfileReadOnlyViewController.xib; path = ../Views/UserProfileReadOnlyViewController.xib; sourceTree = "<group>"; };
 		5F846E0519F560D300CED980 /* Welcome1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Welcome1ViewController.h; sourceTree = "<group>"; };
 		5F846E0619F560D300CED980 /* Welcome1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Welcome1ViewController.m; sourceTree = "<group>"; };
 		5F846E0819F57D4D00CED980 /* Welcome2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Welcome2ViewController.h; sourceTree = "<group>"; };
@@ -1504,6 +1504,9 @@
 		5F1C9A2519EDE879000F1FC1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5F6561EF19FADEFD001FB509 /* UserProfileReadOnlyViewController.h */,
+				5F6561F019FADEFD001FB509 /* UserProfileReadOnlyViewController.m */,
+				5F6561F119FADEFD001FB509 /* UserProfileReadOnlyViewController.xib */,
 				5F223F3219F03B480003AF64 /* SettingsTableViewController.h */,
 				5F223F3319F03B480003AF64 /* SettingsTableViewController.m */,
 				5F223F3419F03B480003AF64 /* SettingsTableViewController.xib */,
@@ -1935,9 +1938,6 @@
 		5F1C9B4A19EDE87A000F1FC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5F6561EF19FADEFD001FB509 /* UserProfileReadOnlyViewController.h */,
-				5F6561F019FADEFD001FB509 /* UserProfileReadOnlyViewController.m */,
-				5F6561F119FADEFD001FB509 /* UserProfileReadOnlyViewController.xib */,
 				5F6561EA19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.h */,
 				5F6561EB19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.m */,
 				5F6561EC19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.xib */,
