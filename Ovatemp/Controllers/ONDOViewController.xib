@@ -21,7 +21,7 @@
                         <constraint firstAttribute="height" constant="84" id="ar8-pS-yQC"/>
                     </constraints>
                     <string key="text">ONDO sends your daily Basal Body temperature (BBT) straight to your smartphone eliminating the need to record your BBT manually.</string>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                     <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
