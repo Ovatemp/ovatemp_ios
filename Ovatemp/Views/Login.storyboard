@@ -240,6 +240,7 @@
                     <navigationItem key="navigationItem" title="Welcome" id="plb-tV-YrQ">
                         <barButtonItem key="backBarButtonItem" title="Back" id="SGS-2u-jFJ"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="iL7-V3-KxC">
+                            <color key="tintColor" red="0.12549019607843137" green="0.42352941176470588" blue="0.44705882352941173" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="doNextScreen:" destination="kFR-fO-zr5" id="nP4-wy-YcG"/>
                             </connections>
@@ -294,6 +295,7 @@
                     <navigationItem key="navigationItem" title="Welcome" id="4py-OU-x7y">
                         <barButtonItem key="backBarButtonItem" title="Back" id="ETg-VN-2Kg"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="i81-WA-bbU">
+                            <color key="tintColor" red="0.12549019610000001" green="0.42352941179999998" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="doNextScreen:" destination="gRw-wx-L5R" id="gtn-12-a5q"/>
                             </connections>
@@ -477,6 +479,6 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="kMr-Zw-8PI"/>
-        <segue reference="7Dh-Ua-Vdw"/>
+        <segue reference="inY-NG-Hzw"/>
     </inferredMetricsTieBreakers>
 </document>

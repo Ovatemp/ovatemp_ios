@@ -25,6 +25,8 @@
                                     [UIFont fontWithName:@"LucidaSans" size:12], NSFontAttributeName,
                                     nil];
     self.navigationController.navigationBar.titleTextAttributes = textAttributes;
+    
+    [[UIBarButtonItem appearance] setTintColor:[UIColor ovatempAquaColor]];
 }
 
 -(void)viewWillAppear:(BOOL)animated {

@@ -317,9 +317,9 @@ BOOL firstEditWeight;
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0)
-        return @"Goal";
+        return @"   Goal";
     if (section == 1)
-        return @"Profile Settings";
+        return @"   Profile Settings";
     return @"undefined";
 }
 

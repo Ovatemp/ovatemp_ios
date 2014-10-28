@@ -104,4 +104,12 @@ static NSMutableDictionary *__cachedGradients;
     return [UIColor colorWithRed:(101.0f/255.0) green:(108.0f/255.0) blue:(111.0f/255.0) alpha:1.0];
 }
 
++ (UIColor *)ovatempAquaColor {
+    return [UIColor colorWithRed:(32.0f/255.0) green:(108.0f/255.0) blue:(114.0f/255.0) alpha:1.0];
+}
+
++ (UIColor *)ovatempAlmostWhiteColor {
+    return [UIColor colorWithRed:(249.0f/255.0) green:(249.0f/255.0) blue:(249.0f/255.0) alpha:1.0];
+}
+
 @end

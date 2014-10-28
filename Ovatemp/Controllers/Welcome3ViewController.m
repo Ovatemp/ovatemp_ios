@@ -92,6 +92,10 @@ BOOL weightHasData;
     [[self tableView] registerNib:[UINib nibWithNibName:@"HeightTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"heightCell"];
     
     [[self tableView] registerNib:[UINib nibWithNibName:@"WeightTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"weightCell"];
+    
+    self.tableView.bounces = NO;
+    
+    self.tableView.backgroundColor = [UIColor ovatempAlmostWhiteColor];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -495,6 +499,15 @@ BOOL weightHasData;
         default:
             break;
     }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *view = [[UIView alloc] init];
+    view.frame = CGRectMake(0, 0, 320, 200);
+    
+    view.backgroundColor = [UIColor ovatempAlmostWhiteColor];
+    
+    return view;
 }
 
 /*
