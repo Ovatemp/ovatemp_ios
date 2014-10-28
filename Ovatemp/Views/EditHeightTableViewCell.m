@@ -42,8 +42,13 @@ NSMutableArray *heightPickerInchesData;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     // default value
-    [self.heightPicker selectRow:([defaults integerForKey:@"userHeightFeetComponent"] -3) inComponent:0 animated:NO]; // -3
-    [self.heightPicker selectRow:[defaults integerForKey:@"userHeightInchesComponent"] inComponent:1 animated:NO];
+    if ([defaults integerForKey:@"userHeightFeetComponent"] && [defaults integerForKey:@"userHeightInchesComponent"]) {
+        [self.heightPicker selectRow:([defaults integerForKey:@"userHeightFeetComponent"] -3) inComponent:0 animated:NO]; // -3
+        [self.heightPicker selectRow:[defaults integerForKey:@"userHeightInchesComponent"] inComponent:1 animated:NO];
+    } else {
+        [self.heightPicker selectRow:2 inComponent:0 animated:NO]; // 5
+        [self.heightPicker selectRow:5 inComponent:1 animated:NO];
+    }
     
     self.heightField.inputView = self.heightPicker;
 }
