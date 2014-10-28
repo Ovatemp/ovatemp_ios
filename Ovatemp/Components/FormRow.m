@@ -126,6 +126,13 @@
     // Josh edit: change to grey color
     cell.textLabel.textColor = [UIColor ovatempGreyColor];
     
+    // change height
+    
+    CGRect cellSize = cell.frame;
+    cellSize.size.height = 58.0f;
+    cell.frame = cellSize;
+    
+    
     return cell;
 }
 

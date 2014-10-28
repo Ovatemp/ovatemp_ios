@@ -27,6 +27,8 @@
     self.navigationController.navigationBar.titleTextAttributes = textAttributes;
     
     [[UIBarButtonItem appearance] setTintColor:[UIColor ovatempAquaColor]];
+    
+    [self.navigationController.navigationBar setTintColor:[UIColor ovatempAquaColor]];
 }
 
 -(void)viewWillAppear:(BOOL)animated {

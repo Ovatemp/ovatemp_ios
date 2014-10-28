@@ -42,11 +42,7 @@ NSArray *accountMenuItems;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(doLogout)];
     self.navigationItem.rightBarButtonItem.enabled = YES;
     
-    [[UIBarButtonItem appearance] setTintColor:[UIColor ovatempAquaColor]];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [[UIBarButtonItem appearance] setTintColor:[UIColor ovatempAquaColor]];
+    [self.navigationController.navigationBar setTintColor:[UIColor ovatempAquaColor]];
 }
 
 - (void)viewDidLayoutSubviews
