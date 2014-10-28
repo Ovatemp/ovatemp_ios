@@ -31,6 +31,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="219" id="9QP-ws-vNO"/>
                     </constraints>
+                    <color key="separatorColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="xFA-J2-5gn"/>
                         <outlet property="delegate" destination="-1" id="PBM-nh-CAD"/>
