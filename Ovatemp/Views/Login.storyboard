@@ -181,7 +181,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Welcome" id="t2v-Yf-xCF">
                         <barButtonItem key="backBarButtonItem" title="Back" id="SVy-Pt-GW7"/>
@@ -235,7 +235,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Welcome" id="plb-tV-YrQ">
                         <barButtonItem key="backBarButtonItem" title="Back" id="SGS-2u-jFJ"/>
@@ -289,7 +289,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Welcome" id="4py-OU-x7y">
                         <barButtonItem key="backBarButtonItem" title="Back" id="ETg-VN-2Kg"/>
@@ -373,7 +373,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                 <rect key="frame" x="100" y="269" width="120" height="120"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Welcome" id="h1W-xB-o0v">
                         <barButtonItem key="backBarButtonItem" title="Back" id="aB5-x7-pqw"/>
@@ -476,7 +476,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="gya-ek-y7R"/>
+        <segue reference="kMr-Zw-8PI"/>
         <segue reference="7Dh-Ua-Vdw"/>
     </inferredMetricsTieBreakers>
 </document>
