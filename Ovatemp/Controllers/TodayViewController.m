@@ -265,9 +265,9 @@
     BOOL tempPrefFahrenheit = [defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"];
     
     if (tempPrefFahrenheit) {
-        temperatureString = [NSString stringWithFormat:@"Recorded a temperature of %.2f for today", temperature];
+        temperatureString = [NSString stringWithFormat:@"Recorded a temperature of %.2fºF for today", temperature];
     } else {
-        temperatureString = [NSString stringWithFormat:@"Recorded a temperature of %.2f for today", tempInCelsius];
+        temperatureString = [NSString stringWithFormat:@"Recorded a temperature of %.2fºC for today", tempInCelsius];
     }
     [Alert showAlertWithTitle:@"Temperature Recorded" message:temperatureString];
 }

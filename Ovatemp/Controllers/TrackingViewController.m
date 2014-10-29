@@ -8,7 +8,12 @@
 
 #import "TrackingViewController.h"
 
-@interface TrackingViewController ()
+#import "TodayNavigationController.h"
+#import "TodayViewController.h"
+
+@interface TrackingViewController () <UIGestureRecognizerDelegate>
+
+@property UIImageView *arrowImageView;
 
 @end
 
@@ -16,12 +21,12 @@
 
 NSArray *trackingTableDataArray;
 
+BOOL lowerDrawer;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-//    self.title = @"Tracking";
-//    self.navigationItem.prompt = @"subtitle\nhello";
-//    CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+
     // title
     CGRect headerTitleSubtitleFrame = CGRectMake(0, -15, 200, 44);
     UIView *_headerTitleSubtitleView = [[UILabel alloc] initWithFrame:headerTitleSubtitleFrame];
@@ -33,12 +38,8 @@ NSArray *trackingTableDataArray;
     titleView.backgroundColor = [UIColor clearColor];
     titleView.font = [UIFont boldSystemFontOfSize:20];
     titleView.textAlignment = NSTextAlignmentCenter;
-//    titleView.textColor = [UIColor whiteColor];
-//    titleView.shadowColor = [UIColor darkGrayColor];
-//    titleView.shadowOffset = CGSizeMake(0, -1);
-    
-    NSDate *date = [NSDate date]; //I'm using this just to show the this is how you convert a date
-    
+
+    NSDate *date = [NSDate date];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateStyle:NSDateFormatterMediumStyle];
     [df setTimeStyle:NSDateFormatterNoStyle];
@@ -54,15 +55,16 @@ NSArray *trackingTableDataArray;
     subtitleView.backgroundColor = [UIColor clearColor];
     subtitleView.font = [UIFont boldSystemFontOfSize:13];
     subtitleView.textAlignment = NSTextAlignmentCenter;
-//    subtitleView.textColor = [UIColor whiteColor];
-//    subtitleView.shadowColor = [UIColor darkGrayColor];
-//    subtitleView.shadowOffset = CGSizeMake(0, -1);
     subtitleView.text = @"Cycle Day #X";
     subtitleView.adjustsFontSizeToFitWidth = YES;
-    [_headerTitleSubtitleView addSubview:subtitleView];
     
     // arrow
-//    UIImageView *arrowImageView = [[UIImageView alloc] initWithImage:<#(UIImage *)#>]
+    self.arrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icn_pulldown_arrow"]];
+    
+    self.arrowImageView.frame = CGRectMake(90, 30, 20, 10);
+    [_headerTitleSubtitleView addSubview:self.arrowImageView];
+    
+    [_headerTitleSubtitleView addSubview:subtitleView];
     
     self.navigationItem.titleView = _headerTitleSubtitleView;
     
@@ -70,6 +72,14 @@ NSArray *trackingTableDataArray;
     
     [self.navigationController.view setTintColor:[UIColor whiteColor]];
     
+    // gesture
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(toggleDrawer:)];
+    [singleTap setDelegate:self];
+    singleTap.numberOfTapsRequired = 1;
+    singleTap.numberOfTouchesRequired = 1;
+    [self.navigationController.navigationBar addGestureRecognizer:singleTap];
+    
+    lowerDrawer = YES;
     
 }
 
@@ -78,8 +88,39 @@ NSArray *trackingTableDataArray;
     // Dispose of any resources that can be recreated.
 }
 
+- (void)toggleDrawer:(UIGestureRecognizer *)recognizer {
+
+    [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.6f initialSpringVelocity:0.5f options:0 animations:^{
+        if (lowerDrawer) {
+            self.drawerView.frame = CGRectMake(self.drawerView.frame.origin.x, self.drawerView.frame.origin.y + 70, self.drawerView.frame.size.width, self.drawerView.frame.size.height);
+            
+            // lower table at same time
+            self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + 70, self.tableView.frame.size.width, self.tableView.frame.size.height - 70);
+            
+            // flip arrow
+            self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI);
+            
+            lowerDrawer = NO;
+            
+        } else {
+            self.drawerView.frame = CGRectMake(self.drawerView.frame.origin.x, self.drawerView.frame.origin.y - 70, self.drawerView.frame.size.width, self.drawerView.frame.size.height);
+            
+            self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y - 70, self.tableView.frame.size.width, self.tableView.frame.size.height + 70);
+            
+            // flip arrow
+            self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI * 180);
+            
+            lowerDrawer = YES;
+        }
+    } completion:^(BOOL finished) {
+        //
+    }];
+}
+
 - (IBAction)displayChart:(id)sender {
-    
+    UIViewController *todayController = [[TodayViewController alloc] init];
+    todayController = [[TodayNavigationController alloc] initWithContentViewController:todayController];
+    [self.navigationController pushViewController:todayController animated:YES];
 }
 
 #pragma mark - Table view

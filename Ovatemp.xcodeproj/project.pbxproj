@@ -13,7 +13,6 @@
 		5F1C96C519EDD319000F1FC1 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C963619EDD319000F1FC1 /* libGoogleAnalyticsServices.a */; };
 		5F1C96C719EDD319000F1FC1 /* libGoogleConversionTracking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C963E19EDD319000F1FC1 /* libGoogleConversionTracking.a */; };
 		5F1C96CA19EDD319000F1FC1 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C964219EDD319000F1FC1 /* HockeySDK.framework */; };
-		5F1C96CB19EDD31A000F1FC1 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C964419EDD319000F1FC1 /* HockeySDK.xcconfig */; };
 		5F1C96CC19EDD31A000F1FC1 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C964519EDD319000F1FC1 /* HockeySDKResources.bundle */; };
 		5F1C96CD19EDD31A000F1FC1 /* _MPTweakBindObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C964819EDD319000F1FC1 /* _MPTweakBindObserver.m */; };
 		5F1C96CE19EDD31A000F1FC1 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C964919EDD319000F1FC1 /* Media.xcassets */; };
@@ -360,7 +359,6 @@
 		5F1C9C6319EDE87A000F1FC1 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C9B3F19EDE87A000F1FC1 /* User.m */; };
 		5F1C9C6419EDE87A000F1FC1 /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C9B4119EDE87A000F1FC1 /* UserProfile.m */; };
 		5F1C9C6519EDE87A000F1FC1 /* ONDO.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C9B4219EDE87A000F1FC1 /* ONDO.xcdatamodeld */; };
-		5F1C9C6619EDE87A000F1FC1 /* Ovatemp-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C9B4419EDE87A000F1FC1 /* Ovatemp-Info.plist */; };
 		5F1C9C6719EDE87A000F1FC1 /* Ovatemp.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C9B4619EDE87A000F1FC1 /* Ovatemp.entitlements */; };
 		5F1C9C6819EDE87A000F1FC1 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C9B4919EDE87A000F1FC1 /* Calendar.m */; };
 		5F1C9C6919EDE87A000F1FC1 /* CalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C9B4C19EDE87A000F1FC1 /* CalendarCell.m */; };
@@ -430,7 +428,6 @@
 		83C4D21C18D9F1CF008C523C /* KIFUITestActor+OTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4D21B18D9F1CF008C523C /* KIFUITestActor+OTAdditions.m */; };
 		83EB3F3A18AEAD2600EA91AC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EB3F3918AEAD2600EA91AC /* QuartzCore.framework */; };
 		9C4D13D86AB546AD9A46ADE4 /* libPods-OvatempTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */; };
-		C34AE14318FC4C64003209B2 /* libGoogleConversionTracking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C34AE14218FC4C64003209B2 /* libGoogleConversionTracking.a */; };
 		C36C50FF189028190053A884 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C50FE189028190053A884 /* Foundation.framework */; };
 		C36C5101189028190053A884 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C5100189028190053A884 /* CoreGraphics.framework */; };
 		C36C5103189028190053A884 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C5102189028190053A884 /* UIKit.framework */; };
@@ -1107,7 +1104,6 @@
 				5F1C971519EDD433000F1FC1 /* CoreText.framework in Frameworks */,
 				5F1C971319EDD42D000F1FC1 /* AssetsLibrary.framework in Frameworks */,
 				C388C73D18FC45BD00B622FB /* libz.dylib in Frameworks */,
-				C34AE14318FC4C64003209B2 /* libGoogleConversionTracking.a in Frameworks */,
 				C3D8912119084CB800E21627 /* StoreKit.framework in Frameworks */,
 				5F1C96C419EDD319000F1FC1 /* libAdIdAccess.a in Frameworks */,
 				C3D8912319084D9F00E21627 /* GameKit.framework in Frameworks */,
@@ -2167,7 +2163,7 @@
 		C36C50F3189028190053A884 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Back Forty";
 				TargetAttributes = {
 					C36C50FA189028190053A884 = {
@@ -2224,7 +2220,6 @@
 				5F1C9C3419EDE87A000F1FC1 /* Spotting@2x.png in Resources */,
 				5F1C9B8819EDE87A000F1FC1 /* CommunityStoryboard.storyboard in Resources */,
 				5F1C9BB619EDE87A000F1FC1 /* Sticky.png in Resources */,
-				5F1C96CB19EDD31A000F1FC1 /* HockeySDK.xcconfig in Resources */,
 				5F846E1419F5C2B900CED980 /* Launch Screen.xib in Resources */,
 				5F1C9C3D19EDE87A000F1FC1 /* coaching_selected.png in Resources */,
 				5F1C9BD319EDE87A000F1FC1 /* MassageBlue@2x.png in Resources */,
@@ -2314,7 +2309,6 @@
 				5F1C9BBB19EDE87A000F1FC1 /* Acupressure@2x.png in Resources */,
 				5F6561F319FADEFD001FB509 /* UserProfileReadOnlyViewController.xib in Resources */,
 				5F1C9C1A19EDE87A000F1FC1 /* Amazing@2x.png in Resources */,
-				5F1C9C6619EDE87A000F1FC1 /* Ovatemp-Info.plist in Resources */,
 				5F1C9C6C19EDE87A000F1FC1 /* CheckCell.xib in Resources */,
 				5F1C9C4119EDE87A000F1FC1 /* community_selected.png in Resources */,
 				5F1C9BEF19EDE87A000F1FC1 /* Hydrate@2x.png in Resources */,
