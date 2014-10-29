@@ -36,7 +36,16 @@ NSArray *trackingTableDataArray;
 //    titleView.textColor = [UIColor whiteColor];
 //    titleView.shadowColor = [UIColor darkGrayColor];
     titleView.shadowOffset = CGSizeMake(0, -1);
-    titleView.text = [NSString stringWithFormat:@"%@", [[NSDate date] classicDate]];
+    
+    NSDate *date = [NSDate date]; //I'm using this just to show the this is how you convert a date
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateStyle:NSDateFormatterMediumStyle];
+    [df setTimeStyle:NSDateFormatterNoStyle];
+    
+    NSString *dateString = [df stringFromDate:date];
+    
+    titleView.text = dateString;
     titleView.adjustsFontSizeToFitWidth = YES;
     [_headerTitleSubtitleView addSubview:titleView];
     
