@@ -179,6 +179,9 @@
     UISwitch *aSwitch = [UISwitch new];
     aSwitch.on = [self.value boolValue];
     [aSwitch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    // Josh
+    aSwitch.onTintColor = [UIColor ovatempAquaColor];
     return aSwitch;
 }
 
