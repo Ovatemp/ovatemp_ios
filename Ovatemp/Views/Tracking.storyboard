@@ -4,50 +4,73 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--Tracking-->
-        <scene sceneID="QUE-Tz-mCh">
-            <objects>
-                <tableViewController storyboardIdentifier="trackingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cge-Vu-g6G" customClass="TrackingTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Jpu-w3-fgV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dmv-1j-XvP">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dmv-1j-XvP" id="aZr-xj-zWL">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="cge-Vu-g6G" id="r9D-C2-NpW"/>
-                            <outlet property="delegate" destination="cge-Vu-g6G" id="oJf-zZ-0Bp"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Tracking" id="lCB-uf-zcZ"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XVx-mR-Ub5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="248.53333333333333" y="218.68000000000001"/>
-        </scene>
-        <!--Navigation Controller-->
+        <!--Tracking Navigation Controller-->
         <scene sceneID="ias-FX-odJ">
             <objects>
-                <navigationController id="elI-fj-aJ0" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AXY-JT-4sJ">
+                <navigationController storyboardIdentifier="trackingNavC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="elI-fj-aJ0" customClass="TrackingNavigationController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AXY-JT-4sJ" customClass="TrackingNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="KMv-ZT-RUc">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
-                        <segue destination="cge-Vu-g6G" kind="relationship" relationship="rootViewController" id="tj8-HK-K2F"/>
+                        <segue destination="3fu-mC-j0h" kind="relationship" relationship="rootViewController" id="jEu-tl-sSa"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3jN-Wg-WRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-188.80000000000001" y="218.68000000000001"/>
         </scene>
+        <!--Tracking View Controller-->
+        <scene sceneID="g5e-pe-93O">
+            <objects>
+                <viewController storyboardIdentifier="trackingVC" id="3fu-mC-j0h" customClass="TrackingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F7r-6r-oDV"/>
+                        <viewControllerLayoutGuide type="bottom" id="dST-cv-KVv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ucl-sb-Y0j">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V9D-yy-2mm">
+                                <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GZx-FW-Rp3">
+                                <rect key="frame" x="0.0" y="90" width="320" height="2"/>
+                                <color key="backgroundColor" red="0.87450980389999999" green="0.87450980389999999" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eDl-ej-vyi">
+                                <rect key="frame" x="0.0" y="298" width="320" height="210"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="3fu-mC-j0h" id="FlO-tt-iTx"/>
+                                    <outlet property="delegate" destination="3fu-mC-j0h" id="64C-02-pDa"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eWq-7Z-W5Z">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="u1Y-qs-dVJ"/>
+                        <barButtonItem key="rightBarButtonItem" image="icn_calendar" id="h88-Hg-Y8d">
+                            <color key="tintColor" red="0.11764705882352941" green="0.39215686274509803" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="eDl-ej-vyi" id="2nX-CB-5mD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tfl-Rg-s0B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="223" y="218"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="icn_calendar" width="22" height="22"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

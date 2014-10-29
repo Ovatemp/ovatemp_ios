@@ -405,7 +405,10 @@
 		5F6561F219FADEFD001FB509 /* UserProfileReadOnlyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F6561F019FADEFD001FB509 /* UserProfileReadOnlyViewController.m */; };
 		5F6561F319FADEFD001FB509 /* UserProfileReadOnlyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F6561F119FADEFD001FB509 /* UserProfileReadOnlyViewController.xib */; };
 		5F7AEA631A0122BB0053ABAB /* Tracking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F7AEA621A0122BB0053ABAB /* Tracking.storyboard */; };
-		5F7AEA661A0123FB0053ABAB /* TrackingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7AEA651A0123FB0053ABAB /* TrackingTableViewController.m */; };
+		5F7AEA6C1A0137080053ABAB /* TrackingNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7AEA6B1A0137080053ABAB /* TrackingNavigationBar.m */; };
+		5F7AEA6F1A01373C0053ABAB /* TrackingNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7AEA6E1A01373C0053ABAB /* TrackingNavigationController.m */; };
+		5F7AEA731A013C580053ABAB /* TrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7AEA711A013C580053ABAB /* TrackingViewController.m */; };
+		5F7AEA741A013C580053ABAB /* TrackingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F7AEA721A013C580053ABAB /* TrackingViewController.xib */; };
 		5F846E0719F560D300CED980 /* Welcome1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0619F560D300CED980 /* Welcome1ViewController.m */; };
 		5F846E0A19F57D4D00CED980 /* Welcome2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0919F57D4D00CED980 /* Welcome2ViewController.m */; };
 		5F846E0D19F5A96000CED980 /* Welcome3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0C19F5A96000CED980 /* Welcome3ViewController.m */; };
@@ -1022,8 +1025,13 @@
 		5F6561F019FADEFD001FB509 /* UserProfileReadOnlyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserProfileReadOnlyViewController.m; path = ../Views/UserProfileReadOnlyViewController.m; sourceTree = "<group>"; };
 		5F6561F119FADEFD001FB509 /* UserProfileReadOnlyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserProfileReadOnlyViewController.xib; path = ../Views/UserProfileReadOnlyViewController.xib; sourceTree = "<group>"; };
 		5F7AEA621A0122BB0053ABAB /* Tracking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tracking.storyboard; sourceTree = "<group>"; };
-		5F7AEA641A0123FB0053ABAB /* TrackingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingTableViewController.h; sourceTree = "<group>"; };
-		5F7AEA651A0123FB0053ABAB /* TrackingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingTableViewController.m; sourceTree = "<group>"; };
+		5F7AEA6A1A0137080053ABAB /* TrackingNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingNavigationBar.h; sourceTree = "<group>"; };
+		5F7AEA6B1A0137080053ABAB /* TrackingNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingNavigationBar.m; sourceTree = "<group>"; };
+		5F7AEA6D1A01373C0053ABAB /* TrackingNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingNavigationController.h; sourceTree = "<group>"; };
+		5F7AEA6E1A01373C0053ABAB /* TrackingNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingNavigationController.m; sourceTree = "<group>"; };
+		5F7AEA701A013C580053ABAB /* TrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingViewController.h; sourceTree = "<group>"; };
+		5F7AEA711A013C580053ABAB /* TrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingViewController.m; sourceTree = "<group>"; };
+		5F7AEA721A013C580053ABAB /* TrackingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingViewController.xib; sourceTree = "<group>"; };
 		5F846E0519F560D300CED980 /* Welcome1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Welcome1ViewController.h; sourceTree = "<group>"; };
 		5F846E0619F560D300CED980 /* Welcome1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Welcome1ViewController.m; sourceTree = "<group>"; };
 		5F846E0819F57D4D00CED980 /* Welcome2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Welcome2ViewController.h; sourceTree = "<group>"; };
@@ -1509,8 +1517,6 @@
 		5F1C9A2519EDE879000F1FC1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5F7AEA641A0123FB0053ABAB /* TrackingTableViewController.h */,
-				5F7AEA651A0123FB0053ABAB /* TrackingTableViewController.m */,
 				5F6561EF19FADEFD001FB509 /* UserProfileReadOnlyViewController.h */,
 				5F6561F019FADEFD001FB509 /* UserProfileReadOnlyViewController.m */,
 				5F6561F119FADEFD001FB509 /* UserProfileReadOnlyViewController.xib */,
@@ -1594,6 +1600,11 @@
 				5F846E0C19F5A96000CED980 /* Welcome3ViewController.m */,
 				5F846E0E19F5AEC100CED980 /* WelcomeONDOViewController.h */,
 				5F846E0F19F5AEC100CED980 /* WelcomeONDOViewController.m */,
+				5F7AEA6D1A01373C0053ABAB /* TrackingNavigationController.h */,
+				5F7AEA6E1A01373C0053ABAB /* TrackingNavigationController.m */,
+				5F7AEA701A013C580053ABAB /* TrackingViewController.h */,
+				5F7AEA711A013C580053ABAB /* TrackingViewController.m */,
+				5F7AEA721A013C580053ABAB /* TrackingViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1999,6 +2010,8 @@
 				5F6561D619FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.h */,
 				5F6561D719FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.m */,
 				5F6561D819FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.xib */,
+				5F7AEA6A1A0137080053ABAB /* TrackingNavigationBar.h */,
+				5F7AEA6B1A0137080053ABAB /* TrackingNavigationBar.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2374,6 +2387,7 @@
 				5F1C99D819EDE775000F1FC1 /* BluetoothSignal2@2x.png in Resources */,
 				5F1C9BC119EDE87A000F1FC1 /* Diet.png in Resources */,
 				5F1C9C0E19EDE87A000F1FC1 /* Protected@2x.png in Resources */,
+				5F7AEA741A013C580053ABAB /* TrackingViewController.xib in Resources */,
 				5F1C9BC319EDE87A000F1FC1 /* DietSmall@2x.png in Resources */,
 				5F586A2719ED802400D2B58E /* Positive.png in Resources */,
 				5F1C9BE119EDE87A000F1FC1 /* TryingToAvoid@2x.png in Resources */,
@@ -2540,6 +2554,7 @@
 				5F1C9B7219EDE87A000F1FC1 /* DayToggleButton.m in Sources */,
 				5F1C9C6419EDE87A000F1FC1 /* UserProfile.m in Sources */,
 				5F1C9B9319EDE87A000F1FC1 /* ProfileSettingsViewController.m in Sources */,
+				5F7AEA6C1A0137080053ABAB /* TrackingNavigationBar.m in Sources */,
 				5F8C569419F1BD950024552A /* SignUpViewController.m in Sources */,
 				5F1C96F319EDD31A000F1FC1 /* MPPassThroughValueTransformer.m in Sources */,
 				5F1C96F419EDD31A000F1FC1 /* MPPropertyDescription.m in Sources */,
@@ -2554,6 +2569,7 @@
 				5F1C9B9D19EDE87A000F1FC1 /* TodayViewController.m in Sources */,
 				5F1C9B7319EDE87A000F1FC1 /* DisturbanceCellEditView.m in Sources */,
 				5F1C9C6819EDE87A000F1FC1 /* Calendar.m in Sources */,
+				5F7AEA731A013C580053ABAB /* TrackingViewController.m in Sources */,
 				5F1C96DD19EDD31A000F1FC1 /* MPApplicationStateSerializer.m in Sources */,
 				5F1C9B9519EDE87A000F1FC1 /* RootViewController.m in Sources */,
 				5F1C9B7919EDE87A000F1FC1 /* GradientSegmentedControlButton.m in Sources */,
@@ -2596,7 +2612,6 @@
 				5F1C9B7019EDE87A000F1FC1 /* DayCellEditView.m in Sources */,
 				5F1C9B6119EDE87A000F1FC1 /* NSDate+Formatters.m in Sources */,
 				5F1C9C7419EDE87A000F1FC1 /* LifestyleCell.m in Sources */,
-				5F7AEA661A0123FB0053ABAB /* TrackingTableViewController.m in Sources */,
 				5F1C9B8119EDE87A000F1FC1 /* BluetoothDeviceTableViewController.m in Sources */,
 				5F1C9B7C19EDE87A000F1FC1 /* SubscriptionMenuCell.m in Sources */,
 				5F223F3A19F05C330003AF64 /* SettingsTemperatureTableViewCell.m in Sources */,
@@ -2630,6 +2645,7 @@
 				5F1C9B9B19EDE87A000F1FC1 /* TodayNavigationController.m in Sources */,
 				5F1C9B8E19EDE87A000F1FC1 /* MainTabBarViewController.m in Sources */,
 				5F1C970119EDD31A000F1FC1 /* MPUIEdgeInsetsToNSDictionaryValueTransformer.m in Sources */,
+				5F7AEA6F1A01373C0053ABAB /* TrackingNavigationController.m in Sources */,
 				5F1C9C7A19EEEDF9000F1FC1 /* AccountMainTableViewController.m in Sources */,
 				5F846E0719F560D300CED980 /* Welcome1ViewController.m in Sources */,
 				5F1C9B6F19EDE87A000F1FC1 /* DayAttribute.m in Sources */,
