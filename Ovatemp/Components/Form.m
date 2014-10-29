@@ -173,6 +173,11 @@ static NSString * const kSectionTitle = @"title";
   return [row buildCellForObject:self.representedObject inTableView:tableView atIndexPath:indexPath];
 }
 
+// Josh
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 58.0f;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   FormRow *row = [self rowAtIndexPath:indexPath];
 

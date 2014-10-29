@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    self.tryingToSwitch.onTintColor = [UIColor ovatempAquaColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -21,6 +21,8 @@
     } else {
         self.tempControl.selectedSegmentIndex = 1;
     }
+    
+    self.tempControl.tintColor = [UIColor ovatempAquaColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
