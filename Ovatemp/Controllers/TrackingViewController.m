@@ -8,13 +8,17 @@
 
 #import "TrackingViewController.h"
 
-@interface TrackingViewController ()
+@interface TrackingViewController () <UIGestureRecognizerDelegate>
+
+@property UIView *arrowView;
 
 @end
 
 @implementation TrackingViewController
 
 NSArray *trackingTableDataArray;
+
+BOOL lowerDrawer;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -59,10 +63,48 @@ NSArray *trackingTableDataArray;
 //    subtitleView.shadowOffset = CGSizeMake(0, -1);
     subtitleView.text = @"Cycle Day #X";
     subtitleView.adjustsFontSizeToFitWidth = YES;
-    [_headerTitleSubtitleView addSubview:subtitleView];
     
     // arrow
-//    UIImageView *arrowImageView = [[UIImageView alloc] initWithImage:<#(UIImage *)#>]
+//    self.arrowView = [[UIView alloc] initWithFrame:CGRectMake(100, 30, 20, 10)];
+//    self.arrowView.backgroundColor = [UIColor blackColor];
+//    
+//    // gesture recognizer
+//    UITapGestureRecognizer *singleTap =
+//    [[UITapGestureRecognizer alloc] initWithTarget: self
+//                                            action: @selector(toggleDrawer:)];
+//    [singleTap setDelegate:self];
+//    singleTap.numberOfTapsRequired = 1;
+//    singleTap.numberOfTouchesRequired = 1;
+//    
+//    [self.arrowView addGestureRecognizer: singleTap];
+//    
+//    [_headerTitleSubtitleView addSubview:self.arrowView];
+    UIButton *but=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    but.frame= CGRectMake(0, 0, 20, 10);
+    but.frame = CGRectMake(0, 22, 20, 10);
+    [but setTitle:@"Ok" forState:UIControlStateNormal];
+    [but addTarget:self action:@selector(toggleDrawer) forControlEvents:UIControlEventTouchUpInside];
+    self.arrowView = [[UIView alloc] initWithFrame:CGRectMake(50, 10, 20, 10)];
+    [self.arrowView addSubview:but];
+    but.backgroundColor = [UIColor redColor];
+    
+    [_headerTitleSubtitleView addSubview:self.arrowView];
+    
+//    // arrow
+//    UIImage *arrowImage = [[UIImage alloc] initWithContentsOfFile:@"icn_pulldown_arrow"];
+//    self.arrowView = [[UIImageView alloc] initWithImage:arrowImage];
+//    
+//    [self.arrowView setFrame:CGRectInset(_headerTitleSubtitleView.bounds, 100, 50)];
+//    
+//    // gesture recognizer
+//    UITapGestureRecognizer *singleFingerTap =
+//    [[UITapGestureRecognizer alloc] initWithTarget:self
+//                                            action:@selector(toggleDrawer:)];
+//    [self.arrowView addGestureRecognizer:singleFingerTap];
+//    
+//    [_headerTitleSubtitleView addSubview:self.arrowView];
+    
+    [_headerTitleSubtitleView addSubview:subtitleView];
     
     self.navigationItem.titleView = _headerTitleSubtitleView;
     
@@ -70,12 +112,51 @@ NSArray *trackingTableDataArray;
     
     [self.navigationController.view setTintColor:[UIColor whiteColor]];
     
+    // gesture
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(toggleDrawer:)];
+    [singleTap setDelegate:self];
+    singleTap.numberOfTapsRequired = 1;
+    singleTap.numberOfTouchesRequired = 1;
+//    [_headerTitleSubtitleView addGestureRecognizer: singleTap];
+//    [[self.navigationController.navigationBar.subviews objectAtIndex:1] setUserInteractionEnabled:YES];
+    [self.navigationController.navigationBar addGestureRecognizer:singleTap];
+    
+    lowerDrawer = YES;
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)toggleDrawer:(UIGestureRecognizer *)recognizer {
+//    CGPoint location = [recognizer locationInView:[recognizer.view superview]];
+    
+//    NSLog(@"did tap on arrow view");
+    [UIView animateWithDuration:0.3 delay:0.0 usingSpringWithDamping:0.5f initialSpringVelocity:0.5f options:0 animations:^{
+        if (lowerDrawer) {
+            self.drawerView.frame = CGRectMake(self.drawerView.frame.origin.x, self.drawerView.frame.origin.y + 70, self.drawerView.frame.size.width, self.drawerView.frame.size.height);
+            lowerDrawer = NO;
+            
+        } else {
+            self.drawerView.frame = CGRectMake(self.drawerView.frame.origin.x, self.drawerView.frame.origin.y - 70, self.drawerView.frame.size.width, self.drawerView.frame.size.height);
+            lowerDrawer = YES;
+        }
+    } completion:^(BOOL finished) {
+        //
+    }];
+//    [UIView animateWithDuration:0.3 delay:0.1  options:UIViewAnimationOptionCurveEaseIn animations:^{
+//        if (lowerDrawer) {
+//            self.drawerView.frame = CGRectMake(self.drawerView.frame.origin.x, self.drawerView.frame.origin.y + 70, self.drawerView.frame.size.width, self.drawerView.frame.size.height);
+//            lowerDrawer = NO;
+//
+//        } else {
+//            self.drawerView.frame = CGRectMake(self.drawerView.frame.origin.x, self.drawerView.frame.origin.y - 70, self.drawerView.frame.size.width, self.drawerView.frame.size.height);
+//            lowerDrawer = YES;
+//        }
+//    } completion:^(BOOL finished) {
+//            }];
 }
 
 - (IBAction)displayChart:(id)sender {
