@@ -16,7 +16,8 @@
 #import "SessionViewController.h"
 #import "TodayViewController.h"
 #import "SelectLogInOrSignUpViewController.h"
-#import "TrackingTableViewController.h"
+#import "TrackingViewController.h"
+#import "TrackingNavigationController.h"
 
 #import "GAI.h"
 #import "ACTReporter.h"
@@ -112,12 +113,12 @@ static CGFloat const kDissolveDuration = 0.2;
     // Add controllers to the tab bar controller
     
     UIStoryboard *trackingStoryboard = [UIStoryboard storyboardWithName:@"Tracking" bundle:nil];
-    TrackingTableViewController *trackingVC = [trackingStoryboard instantiateViewControllerWithIdentifier:@"trackingVC"];
-    [tabController addChildViewController:trackingVC];
-    trackingVC.tabBarItem.image = [UIImage imageNamed:@"icn_tracking"];
-    trackingVC.tabBarItem.selectedImage = [UIImage imageNamed:@"icn_tracking_pressed"];
-    trackingVC.tabBarItem.title = @"Tracking";
-    [trackingVC startLoading];
+    TrackingNavigationController *trackingNavC = [trackingStoryboard instantiateViewControllerWithIdentifier:@"trackingNavC"];
+    [tabController addChildViewController:trackingNavC];
+    trackingNavC.tabBarItem.image = [UIImage imageNamed:@"icn_tracking"];
+    trackingNavC.tabBarItem.selectedImage = [UIImage imageNamed:@"icn_tracking_pressed"];
+    trackingNavC.tabBarItem.title = @"Tracking";
+//    [trackingVC startLoading];
     
 //    [tabController addChildViewController:todayController];
 //    todayController.tabBarItem.image = [UIImage imageNamed:@"today_unselect"];

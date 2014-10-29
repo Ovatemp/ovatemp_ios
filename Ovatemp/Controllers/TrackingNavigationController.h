@@ -1,5 +1,5 @@
 //
-//  TrackingTableViewController.h
+//  TrackingNavigationController.h
 //  Ovatemp
 //
 //  Created by Josh L on 10/29/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TrackingTableViewController : UITableViewController
+@interface TrackingNavigationController : UINavigationController
 
 @end
