@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TrackingViewController : UIViewController
+@interface TrackingViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

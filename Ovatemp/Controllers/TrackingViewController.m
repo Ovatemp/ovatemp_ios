@@ -14,6 +14,8 @@
 
 @implementation TrackingViewController
 
+NSArray *trackingTableDataArray;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -51,6 +53,8 @@
     [_headerTitleSubtitleView addSubview:subtitleView];
     
     self.navigationItem.titleView = _headerTitleSubtitleView;
+    
+    trackingTableDataArray = [NSArray arrayWithObjects:@"Temperature", @"Cervical Fluid", @"Cervical Position", @"Period", @"Intercourse", @"Mood", @"Symptoms", @"Ovulation Test", @"Pregnancy Test", @"Supplements", @"Medicine", nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,6 +62,31 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Table view
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    return [trackingTableDataArray count];
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+   UITableViewCell *cell = [[UITableViewCell alloc] init];
+    
+    [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44;
+}
 /*
 #pragma mark - Navigation
 
