@@ -8,6 +8,9 @@
 
 #import "TrackingViewController.h"
 
+#import "TodayNavigationController.h"
+#import "TodayViewController.h"
+
 @interface TrackingViewController () <UIGestureRecognizerDelegate>
 
 @property UIView *arrowView;
@@ -79,14 +82,14 @@ BOOL lowerDrawer;
 //    [self.arrowView addGestureRecognizer: singleTap];
 //    
 //    [_headerTitleSubtitleView addSubview:self.arrowView];
-    UIButton *but=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    but.frame= CGRectMake(0, 0, 20, 10);
-    but.frame = CGRectMake(0, 22, 20, 10);
-    [but setTitle:@"Ok" forState:UIControlStateNormal];
-    [but addTarget:self action:@selector(toggleDrawer) forControlEvents:UIControlEventTouchUpInside];
-    self.arrowView = [[UIView alloc] initWithFrame:CGRectMake(50, 10, 20, 10)];
-    [self.arrowView addSubview:but];
-    but.backgroundColor = [UIColor redColor];
+//    UIButton *but=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+////    but.frame= CGRectMake(0, 0, 20, 10);
+//    but.frame = CGRectMake(0, 22, 20, 10);
+//    [but setTitle:@"Ok" forState:UIControlStateNormal];
+//    [but addTarget:self action:@selector(toggleDrawer) forControlEvents:UIControlEventTouchUpInside];
+//    self.arrowView = [[UIView alloc] initWithFrame:CGRectMake(50, 10, 20, 10)];
+//    [self.arrowView addSubview:but];
+//    but.backgroundColor = [UIColor redColor];
     
     [_headerTitleSubtitleView addSubview:self.arrowView];
     
@@ -134,13 +137,18 @@ BOOL lowerDrawer;
 //    CGPoint location = [recognizer locationInView:[recognizer.view superview]];
     
 //    NSLog(@"did tap on arrow view");
-    [UIView animateWithDuration:0.3 delay:0.0 usingSpringWithDamping:0.5f initialSpringVelocity:0.5f options:0 animations:^{
+    [UIView animateWithDuration:0.3 delay:0.0 usingSpringWithDamping:0.6f initialSpringVelocity:0.5f options:0 animations:^{
         if (lowerDrawer) {
             self.drawerView.frame = CGRectMake(self.drawerView.frame.origin.x, self.drawerView.frame.origin.y + 70, self.drawerView.frame.size.width, self.drawerView.frame.size.height);
+            
+            // lower table at same time
+            self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + 70, self.tableView.frame.size.width, self.tableView.frame.size.height);
             lowerDrawer = NO;
             
         } else {
             self.drawerView.frame = CGRectMake(self.drawerView.frame.origin.x, self.drawerView.frame.origin.y - 70, self.drawerView.frame.size.width, self.drawerView.frame.size.height);
+            
+            self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y - 70, self.tableView.frame.size.width, self.tableView.frame.size.height);
             lowerDrawer = YES;
         }
     } completion:^(BOOL finished) {
@@ -160,7 +168,9 @@ BOOL lowerDrawer;
 }
 
 - (IBAction)displayChart:(id)sender {
-    
+    UIViewController *todayController = [[TodayViewController alloc] init];
+    todayController = [[TodayNavigationController alloc] initWithContentViewController:todayController];
+    [self.navigationController pushViewController:todayController animated:YES];
 }
 
 #pragma mark - Table view
