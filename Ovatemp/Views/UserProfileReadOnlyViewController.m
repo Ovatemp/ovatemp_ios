@@ -69,6 +69,7 @@
     
     if (currentUserProfile.tryingToConceive) {
         // conceive picture is default
+        self.tryingToImage.image = [UIImage imageNamed:@"icn_sperms"];
         self.tryingToLabel.text = @"Trying to Conceive";
     } else {
         // set avoid picture
