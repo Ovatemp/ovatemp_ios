@@ -18,9 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor blueColor];
-
     
+//    self.view.tintColor = [UIColor blueColor];
+//    self.view.backgroundColor = [UIColor blueColor];
+    self.navigationBar.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning {

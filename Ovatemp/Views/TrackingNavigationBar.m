@@ -13,11 +13,17 @@
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-    rect.size.height = 90.0f;
+//- (void)drawRect:(CGRect)rect {
+//    // Drawing code
+//    rect.size.height = 90.0f;
+//
+//    [self setNeedsLayout];
+//    [super drawRect:rect];
+//}
 
-    [self setNeedsLayout];
+- (CGSize)sizeThatFits:(CGSize)size {
+    CGSize newSize = CGSizeMake(self.frame.size.width,70);
+    return newSize;
 }
 
 @end
