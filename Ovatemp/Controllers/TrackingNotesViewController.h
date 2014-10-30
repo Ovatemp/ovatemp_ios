@@ -10,4 +10,6 @@
 
 @interface TrackingNotesViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextView *notesTextView;
+
 @end
