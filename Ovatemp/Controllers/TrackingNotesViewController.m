@@ -21,6 +21,20 @@
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)]];
     
     [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 64)];
+//    [self.navigationController.navigationBar setBackgroundColor:[UIColor whiteColor]];
+    
+    [self.notesTextView setTintColor:[UIColor ovatempAquaColor]];
+    [self.notesTextView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    NSLog(@"%@", self.notesTextView.tintColor);
+    NSLog(@"%@", self.navigationController.navigationBar.tintColor);
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if ([self.notesTextView.text length] == 0) {
+        [self.notesTextView becomeFirstResponder];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
