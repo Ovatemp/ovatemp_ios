@@ -19,11 +19,17 @@
     // Do any additional setup after loading the view from its nib.
     
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)]];
+    
+    [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 64)];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 90)];
 }
 
 - (void)goBack {
