@@ -47,7 +47,7 @@
                                     <segue destination="A27-NT-QUR" kind="push" id="vZ5-L5-qh4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPD-7T-qbV">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPD-7T-qbV">
                                 <rect key="frame" x="88" y="305" width="133" height="30"/>
                                 <state key="normal" title="Jump to Welcome2">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -478,7 +478,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kMr-Zw-8PI"/>
+        <segue reference="gya-ek-y7R"/>
         <segue reference="7Dh-Ua-Vdw"/>
     </inferredMetricsTieBreakers>
 </document>

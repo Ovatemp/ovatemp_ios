@@ -386,6 +386,10 @@
 		5F223F3619F03B480003AF64 /* SettingsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F223F3419F03B480003AF64 /* SettingsTableViewController.xib */; };
 		5F223F3A19F05C330003AF64 /* SettingsTemperatureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F223F3819F05C330003AF64 /* SettingsTemperatureTableViewCell.m */; };
 		5F223F3B19F05C330003AF64 /* SettingsTemperatureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F223F3919F05C330003AF64 /* SettingsTemperatureTableViewCell.xib */; };
+		5F4C5B041A02986600D0F465 /* DateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F4C5B031A02986600D0F465 /* DateCollectionViewCell.xib */; };
+		5F4C5B081A02B09600D0F465 /* TrackingStatusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C5B061A02B09600D0F465 /* TrackingStatusTableViewCell.m */; };
+		5F4C5B091A02B09600D0F465 /* TrackingStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F4C5B071A02B09600D0F465 /* TrackingStatusTableViewCell.xib */; };
+		5F4C5B0D1A02C1CE00D0F465 /* TrackingNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C5B0B1A02C1CE00D0F465 /* TrackingNotesViewController.m */; };
 		5F58690619ED802400D2B58E /* Negative.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58677419ED802400D2B58E /* Negative.png */; };
 		5F58690719ED802400D2B58E /* Negative@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58677519ED802400D2B58E /* Negative@2x.png */; };
 		5F586A2719ED802400D2B58E /* Positive.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58690419ED802400D2B58E /* Positive.png */; };
@@ -998,6 +1002,12 @@
 		5F223F3719F05C330003AF64 /* SettingsTemperatureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsTemperatureTableViewCell.h; path = ../Controllers/SettingsTemperatureTableViewCell.h; sourceTree = "<group>"; };
 		5F223F3819F05C330003AF64 /* SettingsTemperatureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsTemperatureTableViewCell.m; path = ../Controllers/SettingsTemperatureTableViewCell.m; sourceTree = "<group>"; };
 		5F223F3919F05C330003AF64 /* SettingsTemperatureTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsTemperatureTableViewCell.xib; path = ../Controllers/SettingsTemperatureTableViewCell.xib; sourceTree = "<group>"; };
+		5F4C5B031A02986600D0F465 /* DateCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateCollectionViewCell.xib; sourceTree = "<group>"; };
+		5F4C5B051A02B09600D0F465 /* TrackingStatusTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingStatusTableViewCell.h; sourceTree = "<group>"; };
+		5F4C5B061A02B09600D0F465 /* TrackingStatusTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingStatusTableViewCell.m; sourceTree = "<group>"; };
+		5F4C5B071A02B09600D0F465 /* TrackingStatusTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingStatusTableViewCell.xib; sourceTree = "<group>"; };
+		5F4C5B0A1A02C1CE00D0F465 /* TrackingNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingNotesViewController.h; sourceTree = "<group>"; };
+		5F4C5B0B1A02C1CE00D0F465 /* TrackingNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingNotesViewController.m; sourceTree = "<group>"; };
 		5F58677419ED802400D2B58E /* Negative.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Negative.png; sourceTree = "<group>"; };
 		5F58677519ED802400D2B58E /* Negative@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Negative@2x.png"; sourceTree = "<group>"; };
 		5F58690419ED802400D2B58E /* Positive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Positive.png; sourceTree = "<group>"; };
@@ -1601,6 +1611,8 @@
 				5F7AEA701A013C580053ABAB /* TrackingViewController.h */,
 				5F7AEA711A013C580053ABAB /* TrackingViewController.m */,
 				5F7AEA721A013C580053ABAB /* TrackingViewController.xib */,
+				5F4C5B0A1A02C1CE00D0F465 /* TrackingNotesViewController.h */,
+				5F4C5B0B1A02C1CE00D0F465 /* TrackingNotesViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1950,6 +1962,9 @@
 			isa = PBXGroup;
 			children = (
 				5F7AEA621A0122BB0053ABAB /* Tracking.storyboard */,
+				5F4C5B051A02B09600D0F465 /* TrackingStatusTableViewCell.h */,
+				5F4C5B061A02B09600D0F465 /* TrackingStatusTableViewCell.m */,
+				5F4C5B071A02B09600D0F465 /* TrackingStatusTableViewCell.xib */,
 				5F223F3719F05C330003AF64 /* SettingsTemperatureTableViewCell.h */,
 				5F223F3819F05C330003AF64 /* SettingsTemperatureTableViewCell.m */,
 				5F223F3919F05C330003AF64 /* SettingsTemperatureTableViewCell.xib */,
@@ -2008,6 +2023,7 @@
 				5F6561D819FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.xib */,
 				5F7AEA6A1A0137080053ABAB /* TrackingNavigationBar.h */,
 				5F7AEA6B1A0137080053ABAB /* TrackingNavigationBar.m */,
+				5F4C5B031A02986600D0F465 /* DateCollectionViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2357,6 +2373,7 @@
 				5F1C9BC719EDE87A000F1FC1 /* Habits.png in Resources */,
 				5F1C9C0719EDE87A000F1FC1 /* Icon40.png in Resources */,
 				5F1C9C3619EDE87A000F1FC1 /* Negative@2x.png in Resources */,
+				5F4C5B091A02B09600D0F465 /* TrackingStatusTableViewCell.xib in Resources */,
 				5F1C9C2C19EDE87A000F1FC1 /* OvatempIcon@2x.png in Resources */,
 				5F1C9BD919EDE87A000F1FC1 /* MeditationSmall@2x.png in Resources */,
 				5F1C9C5119EDE87A000F1FC1 /* Wet.png in Resources */,
@@ -2380,6 +2397,7 @@
 				5F1C96E719EDD31A000F1FC1 /* MPCloseBtn@2x.png in Resources */,
 				5F1C99D819EDE775000F1FC1 /* BluetoothSignal2@2x.png in Resources */,
 				5F1C9BC119EDE87A000F1FC1 /* Diet.png in Resources */,
+				5F4C5B041A02986600D0F465 /* DateCollectionViewCell.xib in Resources */,
 				5F1C9C0E19EDE87A000F1FC1 /* Protected@2x.png in Resources */,
 				5F7AEA741A013C580053ABAB /* TrackingViewController.xib in Resources */,
 				5F1C9BC319EDE87A000F1FC1 /* DietSmall@2x.png in Resources */,
@@ -2612,6 +2630,7 @@
 				5F1C9B7B19EDE87A000F1FC1 /* PassthroughScrollView.m in Sources */,
 				5F1C9B7A19EDE87A000F1FC1 /* IconLabel.m in Sources */,
 				5F1C970419EDD31A000F1FC1 /* MPVariant.m in Sources */,
+				5F4C5B081A02B09600D0F465 /* TrackingStatusTableViewCell.m in Sources */,
 				5F1C9C7E19EEF344000F1FC1 /* AccountTableViewCell.m in Sources */,
 				5F1C96D619EDD31A000F1FC1 /* MPABTestDesignerDeviceInfoRequestMessage.m in Sources */,
 				5F1C96D519EDD31A000F1FC1 /* MPABTestDesignerConnection.m in Sources */,
@@ -2645,6 +2664,7 @@
 				5F1C9B6F19EDE87A000F1FC1 /* DayAttribute.m in Sources */,
 				5F1C9B7719EDE87A000F1FC1 /* GradientLabel.m in Sources */,
 				5F1C9B6419EDE87A000F1FC1 /* NSObject+IsNull.m in Sources */,
+				5F4C5B0D1A02C1CE00D0F465 /* TrackingNotesViewController.m in Sources */,
 				5F1C96D019EDD31A000F1FC1 /* MPAbstractABTestDesignerMessage.m in Sources */,
 				5F1C9C5919EDE87A000F1FC1 /* ConnectionManager.m in Sources */,
 				5F1C96FA19EDD31A000F1FC1 /* MPSurveyQuestionViewController.m in Sources */,
