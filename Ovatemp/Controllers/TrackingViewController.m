@@ -10,8 +10,9 @@
 
 #import "TodayNavigationController.h"
 #import "TodayViewController.h"
+#import "TrackingStatusTableViewCell.h"
 
-@interface TrackingViewController () <UIGestureRecognizerDelegate>
+@interface TrackingViewController () <UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, TrackingCellDelegate>
 
 @property UIImageView *arrowImageView;
 
@@ -81,6 +82,23 @@ BOOL lowerDrawer;
     
     lowerDrawer = YES;
     
+    self.drawerCollectionView.delegate = self;
+    self.drawerCollectionView.dataSource = self;
+    
+    [self.drawerCollectionView registerNib:[UINib nibWithNibName:@"DateCollectionViewCell" bundle:[NSBundle mainBundle]]
+forCellWithReuseIdentifier:@"dateCvCell"];
+    
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    [flowLayout setItemSize:CGSizeMake(50, 50)];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+    
+    [self.drawerCollectionView setCollectionViewLayout:flowLayout];
+    
+//    [self.drawerCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:7 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    
+    // status cell
+    [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingStatusTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"statusCell"];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -138,9 +156,15 @@ BOOL lowerDrawer;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    if (indexPath.row == 0) {
+        TrackingStatusTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"statusCell" forIndexPath:indexPath];;
+        cell.delegate = self;
+        return cell;
+    }
+    
    UITableViewCell *cell = [[UITableViewCell alloc] init];
     
-    [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
+    [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]]; 
     
     return cell;
 }
@@ -152,6 +176,28 @@ BOOL lowerDrawer;
     }
     return 44;
 }
+
+#pragma mark - UICollectionView
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return 10;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"dateCvCell" forIndexPath:indexPath];
+//    [cell.customLabel setText:[NSString stringWithFormat:@"My custom cell %ld", (long)indexPath.row]];
+    return cell;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    return CGSizeMake(50, 50);
+}
+
+#pragma mark - Push View Controller Delegate
+-(void)pushViewController:(UIViewController *)viewController{
+//    [[self navigationController] pushViewController:viewController animated:YES];
+    [self performSegueWithIdentifier:@"presentNotesVC" sender:self];
+}
+
 /*
 #pragma mark - Navigation
 
