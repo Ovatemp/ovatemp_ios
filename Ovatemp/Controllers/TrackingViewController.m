@@ -27,6 +27,10 @@ BOOL lowerDrawer;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    // table view line separator
+    self.tableView.layoutMargins = UIEdgeInsetsZero;
+    [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
 
     // title
     CGRect headerTitleSubtitleFrame = CGRectMake(0, -15, 200, 44);
@@ -37,7 +41,7 @@ BOOL lowerDrawer;
     CGRect titleFrame = CGRectMake(0, -15, 200, 24);
     UILabel *titleView = [[UILabel alloc] initWithFrame:titleFrame];
     titleView.backgroundColor = [UIColor clearColor];
-    titleView.font = [UIFont boldSystemFontOfSize:20];
+    titleView.font = [UIFont boldSystemFontOfSize:17];
     titleView.textAlignment = NSTextAlignmentCenter;
 
     NSDate *date = [NSDate date];
@@ -48,6 +52,7 @@ BOOL lowerDrawer;
     NSString *dateString = [df stringFromDate:date];
     
     titleView.text = dateString;
+    titleView.textColor = [UIColor ovatempDarkGreyTitleColor];
     titleView.adjustsFontSizeToFitWidth = YES;
     [_headerTitleSubtitleView addSubview:titleView];
     
@@ -57,6 +62,7 @@ BOOL lowerDrawer;
     subtitleView.font = [UIFont boldSystemFontOfSize:13];
     subtitleView.textAlignment = NSTextAlignmentCenter;
     subtitleView.text = @"Cycle Day #X";
+    subtitleView.textColor = [UIColor ovatempAquaColor];
     subtitleView.adjustsFontSizeToFitWidth = YES;
     
     // arrow
@@ -99,6 +105,18 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     // status cell
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingStatusTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"statusCell"];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.drawerView setHidden:NO];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if (lowerDrawer) {
+        [self.drawerView setHidden:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -159,12 +177,21 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     if (indexPath.row == 0) {
         TrackingStatusTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"statusCell" forIndexPath:indexPath];;
         cell.delegate = self;
+        
+        cell.layoutMargins = UIEdgeInsetsZero;
+        
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        
         return cell;
     }
     
    UITableViewCell *cell = [[UITableViewCell alloc] init];
     
     [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]]; 
+    
+    cell.layoutMargins = UIEdgeInsetsZero;
+    
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return cell;
 }

@@ -16,30 +16,33 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icn_tracking_period" translatesAutoresizingMaskIntoConstraints="NO" id="nh5-Ku-eu0">
                         <rect key="frame" x="90" y="25" width="140" height="140"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ID4-fj-0Xk">
-                        <rect key="frame" x="238" y="146" width="21" height="25"/>
-                        <state key="normal" image="icn_note_empty">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                        <state key="highlighted" image="icn_note_pressed"/>
-                        <connections>
-                            <action selector="presentNotesView:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aFn-vT-IY1"/>
-                        </connections>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGa-YN-Yhu">
                         <rect key="frame" x="139" y="84" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ID4-fj-0Xk">
+                        <rect key="frame" x="220" y="132" width="50" height="50"/>
+                        <state key="normal" image="icn_notes_empty">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="highlighted" image="icn_notes_pressed"/>
+                        <connections>
+                            <action selector="presentNotesView:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aFn-vT-IY1"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="139" y="202"/>
+            <accessibility key="accessibilityConfiguration">
+                <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+            </accessibility>
+            <point key="canvasLocation" x="139" y="201"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icn_note_empty" width="18" height="24"/>
-        <image name="icn_note_pressed" width="18" height="24"/>
+        <image name="icn_notes_empty" width="25" height="30"/>
+        <image name="icn_notes_pressed" width="25" height="30"/>
         <image name="icn_tracking_period" width="141" height="141"/>
     </resources>
 </document>

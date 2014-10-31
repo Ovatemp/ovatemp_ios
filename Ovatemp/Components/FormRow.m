@@ -132,6 +132,9 @@
     cellSize.size.height = 58.0f;
     cell.frame = cellSize;
     
+    // cell separator
+    cell.layoutMargins = UIEdgeInsetsMake(0, 0, 0, 0);
+    [cell setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     
     return cell;
 }

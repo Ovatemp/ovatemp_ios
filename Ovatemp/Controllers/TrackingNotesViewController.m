@@ -20,14 +20,48 @@
     
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)]];
     
-    [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 64)];
 //    [self.navigationController.navigationBar setBackgroundColor:[UIColor whiteColor]];
     
     [self.notesTextView setTintColor:[UIColor ovatempAquaColor]];
     [self.notesTextView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     
-    NSLog(@"%@", self.notesTextView.tintColor);
-    NSLog(@"%@", self.navigationController.navigationBar.tintColor);
+    // title
+    CGRect headerTitleSubtitleFrame = CGRectMake(0, -15, 200, 44);
+    UIView *_headerTitleSubtitleView = [[UILabel alloc] initWithFrame:headerTitleSubtitleFrame];
+    _headerTitleSubtitleView.backgroundColor = [UIColor clearColor];
+    _headerTitleSubtitleView.autoresizesSubviews = NO;
+    
+    CGRect titleFrame = CGRectMake(0, 0, 200, 24);
+    UILabel *titleView = [[UILabel alloc] initWithFrame:titleFrame];
+    titleView.backgroundColor = [UIColor clearColor];
+    titleView.font = [UIFont boldSystemFontOfSize:17];
+    titleView.textAlignment = NSTextAlignmentCenter;
+    
+    titleView.text = @"Notes";
+    titleView.textColor = [UIColor ovatempDarkGreyTitleColor];
+    titleView.adjustsFontSizeToFitWidth = YES;
+    [_headerTitleSubtitleView addSubview:titleView];
+    
+    CGRect subtitleFrame = CGRectMake(0, 22, 200, 44-24);
+    UILabel *subtitleView = [[UILabel alloc] initWithFrame:subtitleFrame];
+    subtitleView.backgroundColor = [UIColor clearColor];
+    subtitleView.font = [UIFont boldSystemFontOfSize:13];
+    subtitleView.textAlignment = NSTextAlignmentCenter;
+    
+    NSDate *date = [NSDate date];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateStyle:NSDateFormatterMediumStyle];
+    [df setTimeStyle:NSDateFormatterNoStyle];
+    
+    NSString *dateString = [df stringFromDate:date];
+    
+    subtitleView.text = dateString;
+    subtitleView.textColor = [UIColor ovatempDarkGreyTitleColor];
+    subtitleView.adjustsFontSizeToFitWidth = YES;
+    
+    [_headerTitleSubtitleView addSubview:subtitleView];
+    
+    self.navigationItem.titleView = _headerTitleSubtitleView;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -35,6 +69,8 @@
     if ([self.notesTextView.text length] == 0) {
         [self.notesTextView becomeFirstResponder];
     }
+    
+    [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 64)];
 }
 
 - (void)didReceiveMemoryWarning {

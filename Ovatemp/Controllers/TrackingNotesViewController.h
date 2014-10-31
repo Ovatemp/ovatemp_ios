@@ -12,4 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *notesTextView;
 
+@property (weak, nonatomic) IBOutlet UIView *titleView;
+
 @end

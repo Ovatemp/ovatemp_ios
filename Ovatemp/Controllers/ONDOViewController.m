@@ -28,6 +28,10 @@ NSArray *ondoMenuItems;
     // Do any additional setup after loading the view from its nib.
     self.title = @"ONDO";
     
+    // table view line separator
+    self.tableView.layoutMargins = UIEdgeInsetsZero;
+    [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
     ondoMenuItems = [NSArray arrayWithObjects:@"Buy ONDO", @"Pair ONDO", @"Manage ONDO", @"About ONDO", @"Instruction Manual", nil];
         
     self.tableView.delegate = self;
@@ -80,6 +84,8 @@ NSArray *ondoMenuItems;
     AccountTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"accountCell" forIndexPath:indexPath];
     
     [[cell textLabel] setText:[ondoMenuItems objectAtIndex:indexPath.row]];
+    
+    cell.layoutMargins = UIEdgeInsetsZero;
     
     return cell;
 }

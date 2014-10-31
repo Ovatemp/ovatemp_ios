@@ -44,25 +44,11 @@ NSArray *settingsMenuItems;
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    if ([defaults objectForKey:@"temperatureUnitPreferenceFahrenheit"]) {
-//        self.tempCell.tempControl.selectedSegmentIndex = 0;
-//    } else {
-//        self.tempCell.tempControl.selectedSegmentIndex = 1;
-//    }
+- (void) viewDidLayoutSubviews {
+    // table view line separator
+    self.tableView.layoutMargins = UIEdgeInsetsZero;
+    [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
-
-//- (void) viewDidLayoutSubviews {
-////    @"temperatureUnitPreferenceFahrenheit"
-//    
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    if ([defaults objectForKey:@"temperatureUnitPreferenceFahrenheit"]) {
-//        self.tempCell.tempControl.selectedSegmentIndex = 0;
-//    } else {
-//        self.tempCell.tempControl.selectedSegmentIndex = 1;
-//    }
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -89,14 +75,20 @@ NSArray *settingsMenuItems;
         
         [[self.tempCell textLabel] setText:[settingsMenuItems objectAtIndex:indexPath.row]];
         
+        self.tempCell.layoutMargins = UIEdgeInsetsMake(0, 0, 0, 0);
+        [self.tempCell setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+        
         return self.tempCell;
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"accountCell" forIndexPath:indexPath];
         
         [[cell textLabel] setText:[settingsMenuItems objectAtIndex:indexPath.row]];
+        
+        cell.layoutMargins = UIEdgeInsetsZero;
+        cell.layoutMargins = UIEdgeInsetsMake(0, 0, 0, 0);
+        [cell setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     }
     
-    // if failure
     return cell;
 }
 

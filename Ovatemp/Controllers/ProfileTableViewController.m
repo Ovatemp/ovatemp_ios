@@ -46,6 +46,10 @@ BOOL firstEditWeight;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // table view line separator
+    self.tableView.layoutMargins = UIEdgeInsetsZero;
+    [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
     firstEditTrying = YES;
     firstEditName = YES;
     firstEditDob = YES;
@@ -76,6 +80,11 @@ BOOL firstEditWeight;
     [[self tableView] registerNib:[UINib nibWithNibName:@"EditWeightTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"weightCell"];
     
     [self.tableView setAllowsSelection:NO];
+    
+    // new nav bar buttons
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelSaveAndReturn)]];
+    
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(saveDataAndReturn)]];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -163,24 +172,14 @@ BOOL firstEditWeight;
     self.heightCell.heightField.delegate = self;
     self.weightCell.weightField.delegate = self;
     
-    // pickers
-    
-    
     // can't edit email field since updating email is not supported by the backend
     self.emailCell.textField.enabled = NO;
     
-    // height
+    // table view line separator
+    self.tableView.layoutMargins = UIEdgeInsetsZero;
+    [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     
-    // weight
-    
-//    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-//        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
-//    }
-//    
-//    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-//        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
-//    }
-    
+    [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -255,7 +254,7 @@ BOOL firstEditWeight;
     [self.tryingToConceiveCell.tryingToSwitch setOn:!self.tryingToConceiveCell.tryingToSwitch.on animated:YES];
 }
 
-- (void)didMoveToParentViewController:(UIViewController *)parent {
+- (void)saveDataAndReturn {
     // user went back, save data
     
     UserProfile *currentUserProfile = [UserProfile current];
@@ -280,6 +279,13 @@ BOOL firstEditWeight;
         
         [defaults synchronize];
     }
+    
+    // pop
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) cancelSaveAndReturn {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UIAlertController
@@ -328,29 +334,36 @@ BOOL firstEditWeight;
     if (indexPath.section == 0) {
         if (indexPath.row == 0) { // conceive
             self.tryingToConceiveCell = [tableView dequeueReusableCellWithIdentifier:@"conceiveAvoidCell" forIndexPath:indexPath];
+            self.tryingToConceiveCell.layoutMargins = UIEdgeInsetsZero;
             return self.tryingToConceiveCell;
         } else {
             self.tryingToAvoidCell = [tableView dequeueReusableCellWithIdentifier:@"conceiveAvoidCell" forIndexPath:indexPath];
             self.tryingToAvoidCell.tryingToLabel.text = @"Trying to Avoid";
+            self.tryingToAvoidCell.layoutMargins = UIEdgeInsetsZero;
             return self.tryingToAvoidCell;
         }
     } else { // section 1
         
         if (indexPath.row == 0) { // full name
             self.nameCell = [tableView dequeueReusableCellWithIdentifier:@"nameEmailCell" forIndexPath:indexPath];
+            self.nameCell.layoutMargins = UIEdgeInsetsZero;
             return self.nameCell;
         } else if (indexPath.row == 1) { // DOB
             self.dobCell = [tableView dequeueReusableCellWithIdentifier:@"dobCell" forIndexPath:indexPath];
+            self.dobCell.layoutMargins = UIEdgeInsetsZero;
             return self.dobCell;
         } else if (indexPath.row == 2) { // email
             self.emailCell = [tableView dequeueReusableCellWithIdentifier:@"nameEmailCell" forIndexPath:indexPath];
             self.emailCell.titleLabel.text = @"Email";
+            self.emailCell.layoutMargins = UIEdgeInsetsZero;
             return self.emailCell;
         } else if (indexPath.row == 3) { // height
             self.heightCell = [tableView dequeueReusableCellWithIdentifier:@"heightCell" forIndexPath:indexPath];
+            self.heightCell.layoutMargins = UIEdgeInsetsZero;
             return self.heightCell;
         } else if (indexPath.row == 4) { // weight
             self.weightCell = [tableView dequeueReusableCellWithIdentifier:@"weightCell" forIndexPath:indexPath];
+            self.weightCell.layoutMargins = UIEdgeInsetsZero;
             return self.weightCell;
         }
     }
@@ -360,6 +373,11 @@ BOOL firstEditWeight;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         return 58;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section;
+{
+    return 35;
 }
 
 //- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
