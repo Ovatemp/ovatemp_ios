@@ -105,6 +105,18 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.drawerView setHidden:NO];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if (lowerDrawer) {
+        [self.drawerView setHidden:YES];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -166,6 +178,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         
         cell.layoutMargins = UIEdgeInsetsZero;
         
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        
         return cell;
     }
     
@@ -174,6 +188,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]]; 
     
     cell.layoutMargins = UIEdgeInsetsZero;
+    
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return cell;
 }
