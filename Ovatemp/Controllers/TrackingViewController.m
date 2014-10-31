@@ -12,7 +12,7 @@
 #import "TodayViewController.h"
 #import "TrackingStatusTableViewCell.h"
 
-@interface TrackingViewController () <UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, TrackingCellDelegate>
+@interface TrackingViewController () <UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, TrackingCellDelegate, UINavigationControllerDelegate>
 
 @property UIImageView *arrowImageView;
 
@@ -105,11 +105,16 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     // status cell
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingStatusTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"statusCell"];
     
+    self.navigationController.delegate = self;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.drawerView setHidden:NO];
+    [self.tableView reloadData];
+    [self.tableView setNeedsDisplay];
+    [self.tableView setNeedsLayout];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -182,6 +187,17 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         
+        // change notes button picture if we have a note saved for that date
+        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSString *dateKeyString = [dateFormatter stringFromDate:[NSDate date]];
+        NSLog(@"%@",dateKeyString);
+        NSString *keyString = [NSString stringWithFormat:@"note_%@", dateKeyString];
+        
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:keyString]) {
+            [cell.notesButton setImage:[UIImage imageNamed:@"icn_notes_entered"] forState:UIControlStateNormal];
+        }
+        
         return cell;
     }
     
@@ -223,6 +239,26 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 -(void)pushViewController:(UIViewController *)viewController{
 //    [[self navigationController] pushViewController:viewController animated:YES];
     [self performSegueWithIdentifier:@"presentNotesVC" sender:self];
+}
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if ([viewController isEqual:self]) {
+        [viewController viewWillAppear:animated];
+    } else if ([viewController conformsToProtocol:@protocol(UINavigationControllerDelegate)]){
+        // Set the navigation controller delegate to the passed-in view controller and call the UINavigationViewControllerDelegate method on the new delegate.
+        [navigationController setDelegate:(id<UINavigationControllerDelegate>)viewController];
+        [[navigationController delegate] navigationController:navigationController willShowViewController:viewController animated:YES];
+    }
+}
+
+- (void)navigationController:(UINavigationController *)navigationController
+       didShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animated
+{
+    if ([viewController isEqual:self]) {
+        [self viewDidAppear:animated];
+    }
 }
 
 /*

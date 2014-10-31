@@ -15,6 +15,17 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    // change notes button picture if we have a note saved for that date
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateKeyString = [dateFormatter stringFromDate:[NSDate date]];
+    NSLog(@"%@",dateKeyString);
+    NSString *keyString = [NSString stringWithFormat:@"note_%@", dateKeyString];
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:keyString]) {
+        [self.notesButton setImage:[UIImage imageNamed:@"icn_notes_entered"] forState:UIControlStateNormal];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

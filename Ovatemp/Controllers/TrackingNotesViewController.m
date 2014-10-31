@@ -8,7 +8,7 @@
 
 #import "TrackingNotesViewController.h"
 
-@interface TrackingNotesViewController ()
+@interface TrackingNotesViewController () <UITextViewDelegate>
 
 @end
 
@@ -18,7 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)]];
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveNoteAndGoBack)]];
     
 //    [self.navigationController.navigationBar setBackgroundColor:[UIColor whiteColor]];
     
@@ -62,6 +62,8 @@
     [_headerTitleSubtitleView addSubview:subtitleView];
     
     self.navigationItem.titleView = _headerTitleSubtitleView;
+    
+    self.notesTextView.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -82,8 +84,26 @@
     [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 90)];
 }
 
-- (void)goBack {
+- (void)saveNoteAndGoBack {
+    
+    if ([self.notesTextView.text length] > 0) { // user entered a note
+        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
+        NSLog(@"%@",dateString);
+        NSString *keyString = [NSString stringWithFormat:@"note_%@", dateString];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:self.notesTextView.text forKey:keyString];
+        
+        [defaults synchronize];
+    }
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView {
+    [self.notesTextView resignFirstResponder];
+    return YES;
 }
 
 /*
