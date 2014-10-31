@@ -160,6 +160,10 @@
         [textField resignFirstResponder];
     else
         [view becomeFirstResponder];
+    
+    if (textField.tag == 3) {
+        [self sessionRegister:self];
+    }
     return YES;
 }
 

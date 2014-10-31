@@ -14,7 +14,7 @@
                     <rect key="frame" x="10" y="29" width="548" height="174"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan 14, 2014 to Feb 03, 2014" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5t-rn-7fy">
-                    <rect key="frame" x="20" y="11" width="528" height="21"/>
+                    <rect key="frame" x="20" y="5" width="528" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -94,19 +94,29 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1c-6S-XLP">
-                    <rect key="frame" x="5" y="-5" width="54" height="42"/>
+                    <rect key="frame" x="5" y="-5" width="55" height="44"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="Back">
+                    <state key="normal" title="&lt; Back">
+                        <color key="titleColor" red="0.1176470588" green="0.3921568627" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="goBack:" destination="1" eventType="touchUpInside" id="SYO-um-Euh"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnU-dr-L0d">
+                    <rect key="frame" x="529" y="-7" width="44" height="44"/>
+                    <state key="normal" image="icn_info">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="getInfo:" destination="1" eventType="touchUpInside" id="xM0-nx-b9W"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="I5t-rn-7fy" firstAttribute="top" secondItem="1" secondAttribute="top" constant="11" id="190-Hm-rdM"/>
+                <constraint firstItem="I5t-rn-7fy" firstAttribute="top" secondItem="1" secondAttribute="top" constant="5" id="190-Hm-rdM"/>
                 <constraint firstItem="Chw-6E-r1T" firstAttribute="leading" secondItem="zG7-fI-P3e" secondAttribute="leading" id="4Pe-bk-w9p"/>
                 <constraint firstItem="jTZ-2Z-WB2" firstAttribute="top" secondItem="zG7-fI-P3e" secondAttribute="bottom" constant="8" symbolic="YES" id="4xh-pT-I2n"/>
                 <constraint firstItem="zG7-fI-P3e" firstAttribute="leading" secondItem="jTZ-2Z-WB2" secondAttribute="leading" id="5IG-3x-H0z"/>
@@ -143,6 +153,9 @@
             </connections>
         </view>
     </objects>
+    <resources>
+        <image name="icn_info" width="22" height="22"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

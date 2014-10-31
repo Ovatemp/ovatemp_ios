@@ -16,7 +16,15 @@
 
 @end
 
+@protocol CycleViewDelegate <NSObject>
+
+-(void)pushAlertController:(UIAlertController *)alertController;
+
+@end
+
 @interface CycleChartView : UIView
+
+@property(nonatomic,retain)id<CycleViewDelegate>delegate;
 
 @property NSArray *days;
 @property (nonatomic, strong) Cycle *cycle;

@@ -11,7 +11,7 @@
 #import "Calendar.h"
 #import "CycleChartView.h"
 
-@interface CycleViewController ()
+@interface CycleViewController () <CycleViewDelegate>
 
 @end
 
@@ -58,6 +58,7 @@
 
 - (UIViewController *)viewControllerWithCycle:(Cycle *)cycle {
   CycleChartView *chart = [[[NSBundle mainBundle] loadNibNamed:@"CycleChartView" owner:self options:nil] lastObject];
+    chart.delegate = self;
 
   chart.cycle = cycle;
   chart.landscape = TRUE;
@@ -96,6 +97,11 @@
 
 - (BOOL)shouldAutorotate {
   return FALSE;
+}
+
+#pragma mark - CycleViewDelegate
+- (void)pushAlertController:(UIAlertController *)alertController {
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end
