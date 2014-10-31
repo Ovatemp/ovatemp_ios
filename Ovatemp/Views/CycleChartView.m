@@ -28,6 +28,10 @@
 
 @implementation CycleChartView
 
+- (IBAction)goBack:(id)sender {
+    [[[[[UIApplication sharedApplication] delegate] window] rootViewController] dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)setCycle:(Cycle *)cycle {
   _cycle = cycle;
 
