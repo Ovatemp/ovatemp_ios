@@ -24,6 +24,41 @@
     
     [self.notesTextView setTintColor:[UIColor ovatempAquaColor]];
     [self.notesTextView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    // title
+//    CGRect headerTitleSubtitleFrame = CGRectMake(0, -15, 200, 44);
+//    UIView *_headerTitleSubtitleView = [[UILabel alloc] initWithFrame:headerTitleSubtitleFrame];
+    self.titleView.backgroundColor = [UIColor clearColor];
+    self.titleView.autoresizesSubviews = NO;
+    
+    CGRect titleFrame = CGRectMake(0, -15, 200, 24);
+    UILabel *titleView = [[UILabel alloc] initWithFrame:titleFrame];
+    titleView.backgroundColor = [UIColor clearColor];
+    titleView.font = [UIFont boldSystemFontOfSize:20];
+    titleView.textAlignment = NSTextAlignmentCenter;
+    
+    NSDate *date = [NSDate date];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateStyle:NSDateFormatterMediumStyle];
+    [df setTimeStyle:NSDateFormatterNoStyle];
+    
+    NSString *dateString = [df stringFromDate:date];
+    
+    titleView.text = dateString;
+    titleView.adjustsFontSizeToFitWidth = YES;
+    [self.titleView addSubview:titleView];
+    
+    CGRect subtitleFrame = CGRectMake(0, 22-15, 200, 44-24);
+    UILabel *subtitleView = [[UILabel alloc] initWithFrame:subtitleFrame];
+    subtitleView.backgroundColor = [UIColor clearColor];
+    subtitleView.font = [UIFont boldSystemFontOfSize:13];
+    subtitleView.textAlignment = NSTextAlignmentCenter;
+    subtitleView.text = @"Cycle Day #X";
+    subtitleView.adjustsFontSizeToFitWidth = YES;
+    
+    [self.titleView addSubview:subtitleView];
+    
+//    self.navigationItem.titleView = _headerTitleSubtitleView;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
