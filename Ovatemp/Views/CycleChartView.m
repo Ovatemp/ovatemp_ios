@@ -9,6 +9,8 @@
 #import "CycleChartView.h"
 #import "Calendar.h"
 
+#import "CycleViewController.h"
+
 @implementation DayDot
 @end
 
@@ -30,6 +32,21 @@
 
 - (IBAction)goBack:(id)sender {
     [[[[[UIApplication sharedApplication] delegate] window] rootViewController] dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)getInfo:(id)sender {
+    UIAlertController *errorAlert = [UIAlertController
+                                     alertControllerWithTitle:@"Hey"
+                                     message:@"Stay Awesome"
+                                     preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
+                                               handler:nil];
+    
+    [errorAlert addAction:ok];
+        
+//    [self presentViewController:errorAlert animated:YES completion:nil];
+    [self.delegate pushAlertController:errorAlert];
+    
 }
 
 - (void)setCycle:(Cycle *)cycle {
