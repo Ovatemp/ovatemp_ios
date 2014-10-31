@@ -32,6 +32,12 @@
   [self.form addKeyPath:@"peakDayRule" withLabel:@"Peak Day Rule:" toSection:@"FAM Settings"];
 }
 
+- (void) viewDidLayoutSubviews {
+    // table view line separator
+    self.tableView.layoutMargins = UIEdgeInsetsZero;
+    [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+}
+
 - (BOOL)shouldAutorotate {
   return FALSE;
 }

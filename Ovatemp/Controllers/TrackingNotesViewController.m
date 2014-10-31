@@ -25,9 +25,6 @@
     
     [self.notesTextView setTintColor:[UIColor ovatempAquaColor]];
     [self.notesTextView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-    
-    NSLog(@"%@", self.notesTextView.tintColor);
-    NSLog(@"%@", self.navigationController.navigationBar.tintColor);
 }
 
 - (void)viewWillAppear:(BOOL)animated {

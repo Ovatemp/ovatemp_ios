@@ -27,6 +27,10 @@ BOOL lowerDrawer;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    // table view line separator
+    self.tableView.layoutMargins = UIEdgeInsetsZero;
+    [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
 
     // title
     CGRect headerTitleSubtitleFrame = CGRectMake(0, -15, 200, 44);
@@ -159,12 +163,17 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     if (indexPath.row == 0) {
         TrackingStatusTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"statusCell" forIndexPath:indexPath];;
         cell.delegate = self;
+        
+        cell.layoutMargins = UIEdgeInsetsZero;
+        
         return cell;
     }
     
    UITableViewCell *cell = [[UITableViewCell alloc] init];
     
     [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]]; 
+    
+    cell.layoutMargins = UIEdgeInsetsZero;
     
     return cell;
 }
