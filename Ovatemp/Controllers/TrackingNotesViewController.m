@@ -20,8 +20,6 @@
     
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveNoteAndGoBack)]];
     
-//    [self.navigationController.navigationBar setBackgroundColor:[UIColor whiteColor]];
-    
     [self.notesTextView setTintColor:[UIColor ovatempAquaColor]];
     [self.notesTextView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     
