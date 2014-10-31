@@ -83,11 +83,12 @@ BOOL lowerDrawer;
 }
 
 - (void)showCycleViewController {
-    [self presentViewController:self.cycleViewController animated:YES completion:^{
-        if (!inLandscape) {
-            [self hideCycleViewController];
-        }
-    }];
+    [self performSelector:@selector(presentChart) withObject:nil afterDelay:1.0];
+}
+
+- (void)presentChart {
+    
+    [self pushViewController:self.cycleViewController];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -200,6 +201,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     if (lowerDrawer) {
         [self.drawerView setHidden:YES];
     }
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:NO forKey:@"ShouldRotate"];
+    [defaults synchronize];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -246,9 +251,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     }
     self.cycleViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
 //    [self.navigationController pushViewController:cycleVC animated:YES];
-    [self.navigationController presentViewController:self.cycleViewController animated:YES completion:^{
-        //
-    }];
+//    [self.navigationController presentViewController:self.cycleViewController animated:YES completion:^{
+//        //
+//    }];
+    [self performSelector:@selector(presentChart) withObject:nil afterDelay:1.0];
     [[UIDevice currentDevice] setValue:
      [NSNumber numberWithInteger: UIInterfaceOrientationLandscapeLeft]
                                 forKey:@"orientation"];
@@ -281,7 +287,6 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
         NSString *dateKeyString = [dateFormatter stringFromDate:[NSDate date]];
-        NSLog(@"%@",dateKeyString);
         NSString *keyString = [NSString stringWithFormat:@"note_%@", dateKeyString];
         
         if ([[NSUserDefaults standardUserDefaults] objectForKey:keyString]) {
@@ -330,7 +335,9 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 #pragma mark - Push View Controller Delegate
 -(void)pushViewController:(UIViewController *)viewController{
 //    [[self navigationController] pushViewController:viewController animated:YES];
-    [self performSegueWithIdentifier:@"presentNotesVC" sender:self];
+    if (!viewController) {
+        [self performSegueWithIdentifier:@"presentNotesVC" sender:self];
+    }
 }
 
 /*

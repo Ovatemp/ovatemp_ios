@@ -141,6 +141,11 @@
         [textField resignFirstResponder];
     else
         [view becomeFirstResponder];
+    
+    if (textField.tag == 1) {
+        // return key should perform login
+        [self doLogin:self];
+    }
     return YES;
 }
 
