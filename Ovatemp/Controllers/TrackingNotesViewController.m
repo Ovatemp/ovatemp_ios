@@ -18,7 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveNoteAndGoBack)]];
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelSaveAndGoBack)]];
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(saveNoteAndGoBack)]];
     
     [self.notesTextView setTintColor:[UIColor ovatempAquaColor]];
     [self.notesTextView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
@@ -110,6 +111,9 @@
     }
     
     [defaults synchronize];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+- (void)cancelSaveAndGoBack {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
