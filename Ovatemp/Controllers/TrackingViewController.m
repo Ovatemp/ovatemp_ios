@@ -11,22 +11,94 @@
 #import "TodayNavigationController.h"
 #import "TodayViewController.h"
 #import "TrackingStatusTableViewCell.h"
+#import "CycleViewController.h"
 
 @interface TrackingViewController () <UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, TrackingCellDelegate>
 
 @property UIImageView *arrowImageView;
 
+@property CycleViewController *cycleViewController;
+
 @end
 
 @implementation TrackingViewController
+
+BOOL inLandscape;
 
 NSArray *trackingTableDataArray;
 
 BOOL lowerDrawer;
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(orientationChanged:)
+                                                     name:UIDeviceOrientationDidChangeNotification
+                                                   object:nil];
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIDeviceOrientationDidChangeNotification
+                                                  object:nil];
+}
+
+# pragma mark - Autorotation
+
+- (void)orientationChanged:(NSNotification *)notification {
+    if (!self.cycleViewController) {
+        self.cycleViewController = [[CycleViewController alloc] init];
+        self.cycleViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    }
+    
+    BOOL isAnimating = self.cycleViewController.isBeingPresented || self.cycleViewController.isBeingDismissed;
+    
+    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+    if (UIDeviceOrientationIsLandscape(deviceOrientation)) {
+        
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShouldRotate"]) {
+            inLandscape = YES;
+            if (!isAnimating) {
+                [self showCycleViewController];
+            }
+        }
+    } else {
+        inLandscape = NO;
+        if (!isAnimating) {
+            [self hideCycleViewController];
+        }
+    }
+}
+
+- (void)hideCycleViewController {
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (inLandscape) {
+            [self showCycleViewController];
+        }
+    }];
+}
+
+- (void)showCycleViewController {
+    [self presentViewController:self.cycleViewController animated:YES completion:^{
+        if (!inLandscape) {
+            [self hideCycleViewController];
+        }
+    }];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return self.presentedViewController.preferredStatusBarStyle;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+//    self.cycleViewController = [[CycleViewController alloc] init];
     
     // table view line separator
     self.tableView.layoutMargins = UIEdgeInsetsZero;
@@ -112,6 +184,15 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     [self.tableView reloadData];
     [self.tableView setNeedsDisplay];
     [self.tableView setNeedsLayout];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(orientationChanged:)
+                                                 name:UIDeviceOrientationDidChangeNotification
+                                               object:nil];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:YES forKey:@"ShouldRotate"];
+    [defaults synchronize];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -156,9 +237,21 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 }
 
 - (IBAction)displayChart:(id)sender {
-    UIViewController *todayController = [[TodayViewController alloc] init];
-    todayController = [[TodayNavigationController alloc] initWithContentViewController:todayController];
-    [self.navigationController pushViewController:todayController animated:YES];
+//    UIViewController *todayController = [[TodayViewController alloc] init];
+//    todayController = [[TodayNavigationController alloc] initWithContentViewController:todayController];
+//    CycleViewController *cycleVC = [[CycleViewController alloc] init];
+    if (!self.cycleViewController) {
+        self.cycleViewController = [[CycleViewController alloc] init];
+        self.cycleViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    }
+    self.cycleViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+//    [self.navigationController pushViewController:cycleVC animated:YES];
+    [self.navigationController presentViewController:self.cycleViewController animated:YES completion:^{
+        //
+    }];
+    [[UIDevice currentDevice] setValue:
+     [NSNumber numberWithInteger: UIInterfaceOrientationLandscapeLeft]
+                                forKey:@"orientation"];
 }
 
 #pragma mark - Table view
