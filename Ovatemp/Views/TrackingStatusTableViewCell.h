@@ -18,4 +18,6 @@
 
 @property(nonatomic,strong)id<TrackingCellDelegate>delegate;
 
+@property (weak, nonatomic) IBOutlet UIButton *notesButton;
+
 @end

@@ -37,6 +37,9 @@
             <accessibility key="accessibilityConfiguration">
                 <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
             </accessibility>
+            <connections>
+                <outlet property="notesButton" destination="ID4-fj-0Xk" id="p5v-pa-q2W"/>
+            </connections>
             <point key="canvasLocation" x="139" y="201"/>
         </tableViewCell>
     </objects>

@@ -8,7 +8,7 @@
 
 #import "TrackingNotesViewController.h"
 
-@interface TrackingNotesViewController ()
+@interface TrackingNotesViewController () <UITextViewDelegate>
 
 @end
 
@@ -18,9 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)]];
-    
-//    [self.navigationController.navigationBar setBackgroundColor:[UIColor whiteColor]];
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelSaveAndGoBack)]];
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(saveNoteAndGoBack)]];
     
     [self.notesTextView setTintColor:[UIColor ovatempAquaColor]];
     [self.notesTextView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
@@ -62,6 +61,21 @@
     [_headerTitleSubtitleView addSubview:subtitleView];
     
     self.navigationItem.titleView = _headerTitleSubtitleView;
+    
+    self.notesTextView.delegate = self;
+    
+    // set text
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateKeyString = [dateFormatter stringFromDate:[NSDate date]];
+    NSLog(@"%@",dateKeyString);
+    NSString *keyString = [NSString stringWithFormat:@"note_%@", dateKeyString];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([defaults objectForKey:keyString]) {
+        self.notesTextView.text = [defaults objectForKey:keyString];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -82,8 +96,30 @@
     [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 90)];
 }
 
-- (void)goBack {
+- (void)saveNoteAndGoBack {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
+    NSLog(@"%@",dateString);
+    NSString *keyString = [NSString stringWithFormat:@"note_%@", dateString];
+    
+    if ([self.notesTextView.text length] > 0) { // user entered a note
+        [defaults setObject:self.notesTextView.text forKey:keyString];
+    } else { // no note or user deleted all text
+        [defaults removeObjectForKey:keyString];
+    }
+    
+    [defaults synchronize];
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+- (void)cancelSaveAndGoBack {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView {
+    [self.notesTextView resignFirstResponder];
+    return YES;
 }
 
 /*

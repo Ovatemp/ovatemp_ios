@@ -104,12 +104,14 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     
     // status cell
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingStatusTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"statusCell"];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.drawerView setHidden:NO];
+    [self.tableView reloadData];
+    [self.tableView setNeedsDisplay];
+    [self.tableView setNeedsLayout];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -181,6 +183,19 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         cell.layoutMargins = UIEdgeInsetsZero;
         
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        
+        // change notes button picture if we have a note saved for that date
+        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSString *dateKeyString = [dateFormatter stringFromDate:[NSDate date]];
+        NSLog(@"%@",dateKeyString);
+        NSString *keyString = [NSString stringWithFormat:@"note_%@", dateKeyString];
+        
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:keyString]) {
+            [cell.notesButton setImage:[UIImage imageNamed:@"icn_notes_entered"] forState:UIControlStateNormal];
+        } else {
+            [cell.notesButton setImage:[UIImage imageNamed:@"icn_notes_empty"] forState:UIControlStateNormal];
+        }
         
         return cell;
     }
