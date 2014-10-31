@@ -26,16 +26,27 @@
     [self.notesTextView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     
     // title
-//    CGRect headerTitleSubtitleFrame = CGRectMake(0, -15, 200, 44);
-//    UIView *_headerTitleSubtitleView = [[UILabel alloc] initWithFrame:headerTitleSubtitleFrame];
-    self.titleView.backgroundColor = [UIColor clearColor];
-    self.titleView.autoresizesSubviews = NO;
+    CGRect headerTitleSubtitleFrame = CGRectMake(0, -15, 200, 44);
+    UIView *_headerTitleSubtitleView = [[UILabel alloc] initWithFrame:headerTitleSubtitleFrame];
+    _headerTitleSubtitleView.backgroundColor = [UIColor clearColor];
+    _headerTitleSubtitleView.autoresizesSubviews = NO;
     
-    CGRect titleFrame = CGRectMake(0, -15, 200, 24);
+    CGRect titleFrame = CGRectMake(0, 0, 200, 24);
     UILabel *titleView = [[UILabel alloc] initWithFrame:titleFrame];
     titleView.backgroundColor = [UIColor clearColor];
-    titleView.font = [UIFont boldSystemFontOfSize:20];
+    titleView.font = [UIFont boldSystemFontOfSize:17];
     titleView.textAlignment = NSTextAlignmentCenter;
+    
+    titleView.text = @"Notes";
+    titleView.textColor = [UIColor ovatempDarkGreyTitleColor];
+    titleView.adjustsFontSizeToFitWidth = YES;
+    [_headerTitleSubtitleView addSubview:titleView];
+    
+    CGRect subtitleFrame = CGRectMake(0, 22, 200, 44-24);
+    UILabel *subtitleView = [[UILabel alloc] initWithFrame:subtitleFrame];
+    subtitleView.backgroundColor = [UIColor clearColor];
+    subtitleView.font = [UIFont boldSystemFontOfSize:13];
+    subtitleView.textAlignment = NSTextAlignmentCenter;
     
     NSDate *date = [NSDate date];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -44,21 +55,13 @@
     
     NSString *dateString = [df stringFromDate:date];
     
-    titleView.text = dateString;
-    titleView.adjustsFontSizeToFitWidth = YES;
-    [self.titleView addSubview:titleView];
-    
-    CGRect subtitleFrame = CGRectMake(0, 22-15, 200, 44-24);
-    UILabel *subtitleView = [[UILabel alloc] initWithFrame:subtitleFrame];
-    subtitleView.backgroundColor = [UIColor clearColor];
-    subtitleView.font = [UIFont boldSystemFontOfSize:13];
-    subtitleView.textAlignment = NSTextAlignmentCenter;
-    subtitleView.text = @"Cycle Day #X";
+    subtitleView.text = dateString;
+    subtitleView.textColor = [UIColor ovatempDarkGreyTitleColor];
     subtitleView.adjustsFontSizeToFitWidth = YES;
     
-    [self.titleView addSubview:subtitleView];
+    [_headerTitleSubtitleView addSubview:subtitleView];
     
-//    self.navigationItem.titleView = _headerTitleSubtitleView;
+    self.navigationItem.titleView = _headerTitleSubtitleView;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

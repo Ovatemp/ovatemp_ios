@@ -41,7 +41,7 @@ BOOL lowerDrawer;
     CGRect titleFrame = CGRectMake(0, -15, 200, 24);
     UILabel *titleView = [[UILabel alloc] initWithFrame:titleFrame];
     titleView.backgroundColor = [UIColor clearColor];
-    titleView.font = [UIFont boldSystemFontOfSize:20];
+    titleView.font = [UIFont boldSystemFontOfSize:17];
     titleView.textAlignment = NSTextAlignmentCenter;
 
     NSDate *date = [NSDate date];
@@ -52,6 +52,7 @@ BOOL lowerDrawer;
     NSString *dateString = [df stringFromDate:date];
     
     titleView.text = dateString;
+    titleView.textColor = [UIColor ovatempDarkGreyTitleColor];
     titleView.adjustsFontSizeToFitWidth = YES;
     [_headerTitleSubtitleView addSubview:titleView];
     
@@ -61,6 +62,7 @@ BOOL lowerDrawer;
     subtitleView.font = [UIFont boldSystemFontOfSize:13];
     subtitleView.textAlignment = NSTextAlignmentCenter;
     subtitleView.text = @"Cycle Day #X";
+    subtitleView.textColor = [UIColor ovatempAquaColor];
     subtitleView.adjustsFontSizeToFitWidth = YES;
     
     // arrow
