@@ -64,6 +64,19 @@
     self.navigationItem.titleView = _headerTitleSubtitleView;
     
     self.notesTextView.delegate = self;
+    
+    // set text
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateKeyString = [dateFormatter stringFromDate:[NSDate date]];
+    NSLog(@"%@",dateKeyString);
+    NSString *keyString = [NSString stringWithFormat:@"note_%@", dateKeyString];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([defaults objectForKey:keyString]) {
+        self.notesTextView.text = [defaults objectForKey:keyString];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -85,19 +98,20 @@
 }
 
 - (void)saveNoteAndGoBack {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
+    NSLog(@"%@",dateString);
+    NSString *keyString = [NSString stringWithFormat:@"note_%@", dateString];
     
     if ([self.notesTextView.text length] > 0) { // user entered a note
-        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-        NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
-        NSLog(@"%@",dateString);
-        NSString *keyString = [NSString stringWithFormat:@"note_%@", dateString];
-        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:self.notesTextView.text forKey:keyString];
-        
-        [defaults synchronize];
+    } else { // no note or user deleted all text
+        [defaults removeObjectForKey:keyString];
     }
+    
+    [defaults synchronize];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

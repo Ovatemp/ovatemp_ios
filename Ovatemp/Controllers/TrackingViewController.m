@@ -12,7 +12,7 @@
 #import "TodayViewController.h"
 #import "TrackingStatusTableViewCell.h"
 
-@interface TrackingViewController () <UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, TrackingCellDelegate, UINavigationControllerDelegate>
+@interface TrackingViewController () <UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, TrackingCellDelegate>
 
 @property UIImageView *arrowImageView;
 
@@ -104,9 +104,6 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     
     // status cell
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingStatusTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"statusCell"];
-    
-    self.navigationController.delegate = self;
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -196,6 +193,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         
         if ([[NSUserDefaults standardUserDefaults] objectForKey:keyString]) {
             [cell.notesButton setImage:[UIImage imageNamed:@"icn_notes_entered"] forState:UIControlStateNormal];
+        } else {
+            [cell.notesButton setImage:[UIImage imageNamed:@"icn_notes_empty"] forState:UIControlStateNormal];
         }
         
         return cell;
@@ -239,26 +238,6 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 -(void)pushViewController:(UIViewController *)viewController{
 //    [[self navigationController] pushViewController:viewController animated:YES];
     [self performSegueWithIdentifier:@"presentNotesVC" sender:self];
-}
-
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
-{
-    if ([viewController isEqual:self]) {
-        [viewController viewWillAppear:animated];
-    } else if ([viewController conformsToProtocol:@protocol(UINavigationControllerDelegate)]){
-        // Set the navigation controller delegate to the passed-in view controller and call the UINavigationViewControllerDelegate method on the new delegate.
-        [navigationController setDelegate:(id<UINavigationControllerDelegate>)viewController];
-        [[navigationController delegate] navigationController:navigationController willShowViewController:viewController animated:YES];
-    }
-}
-
-- (void)navigationController:(UINavigationController *)navigationController
-       didShowViewController:(UIViewController *)viewController
-                    animated:(BOOL)animated
-{
-    if ([viewController isEqual:self]) {
-        [self viewDidAppear:animated];
-    }
 }
 
 /*
