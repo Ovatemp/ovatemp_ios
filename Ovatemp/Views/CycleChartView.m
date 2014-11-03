@@ -31,6 +31,11 @@
 @implementation CycleChartView
 
 - (IBAction)goBack:(id)sender {
+    // reset orientation
+    [[UIDevice currentDevice] setValue:
+     [NSNumber numberWithInteger: UIInterfaceOrientationPortrait]
+                                forKey:@"orientation"];
+    
     [[[[[UIApplication sharedApplication] delegate] window] rootViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)getInfo:(id)sender {
