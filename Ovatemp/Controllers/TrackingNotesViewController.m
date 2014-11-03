@@ -68,7 +68,6 @@
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *dateKeyString = [dateFormatter stringFromDate:[NSDate date]];
-    NSLog(@"%@",dateKeyString);
     NSString *keyString = [NSString stringWithFormat:@"note_%@", dateKeyString];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -101,7 +100,6 @@
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
-    NSLog(@"%@",dateString);
     NSString *keyString = [NSString stringWithFormat:@"note_%@", dateString];
     
     if ([self.notesTextView.text length] > 0) { // user entered a note
