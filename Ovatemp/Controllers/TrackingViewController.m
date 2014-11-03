@@ -382,8 +382,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 }
 
 - (DateCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
     DateCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"dateCvCell" forIndexPath:indexPath];
-//    [cell.customLabel setText:[NSString stringWithFormat:@"My custom cell %ld", (long)indexPath.row]];
     
     // two labels, month and day
     // get date object for array, set labels, return
@@ -403,6 +403,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     if ([cellDate compare:[NSDate date]] == NSOrderedDescending) {
         // celldate is earlier than today
         cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_empty"];
+    } else {
+        cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_fertile_small"];
     }
     
     return cell;
