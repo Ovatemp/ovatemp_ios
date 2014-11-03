@@ -204,7 +204,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         NSCalendar *theCalendar = [NSCalendar currentCalendar];
         NSDate *previousDate = [theCalendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
         
-        [drawerDateData addObject:previousDate];
+//        [drawerDateData addObject:previousDate];
+        [drawerDateData insertObject:previousDate atIndex:0];
     }
     
 }
@@ -224,6 +225,11 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:YES forKey:@"ShouldRotate"];
     [defaults synchronize];
+    
+    // scroll to index
+//    [self.drawerCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathWithIndex:85] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+    
+    [self.drawerCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:89 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
