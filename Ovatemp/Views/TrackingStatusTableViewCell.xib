@@ -13,15 +13,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icn_tracking_period" translatesAutoresizingMaskIntoConstraints="NO" id="nh5-Ku-eu0">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icn_tracking_empty" translatesAutoresizingMaskIntoConstraints="NO" id="nh5-Ku-eu0">
                         <rect key="frame" x="90" y="25" width="140" height="140"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGa-YN-Yhu">
-                        <rect key="frame" x="139" y="84" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ID4-fj-0Xk">
                         <rect key="frame" x="220" y="132" width="50" height="50"/>
                         <state key="normal" image="icn_notes_empty">
@@ -32,7 +26,14 @@
                             <action selector="presentNotesView:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aFn-vT-IY1"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please enter your Basal Body Temperature and other daily data for fertility status." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGa-YN-Yhu">
+                        <rect key="frame" x="101" y="31" width="119" height="134"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
+                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
             </tableViewCellContentView>
             <accessibility key="accessibilityConfiguration">
                 <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
@@ -40,12 +41,12 @@
             <connections>
                 <outlet property="notesButton" destination="ID4-fj-0Xk" id="p5v-pa-q2W"/>
             </connections>
-            <point key="canvasLocation" x="139" y="201"/>
+            <point key="canvasLocation" x="139" y="196"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="icn_notes_empty" width="25" height="30"/>
         <image name="icn_notes_pressed" width="25" height="30"/>
-        <image name="icn_tracking_period" width="141" height="141"/>
+        <image name="icn_tracking_empty" width="140" height="140"/>
     </resources>
 </document>

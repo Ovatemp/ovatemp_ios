@@ -13,12 +13,15 @@
 #import "TrackingStatusTableViewCell.h"
 #import "CycleViewController.h"
 #import "TrackingNotesViewController.h"
+#import "DateCollectionViewCell.h"
 
 @interface TrackingViewController () <UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, TrackingCellDelegate>
 
 @property UIImageView *arrowImageView;
 
 @property CycleViewController *cycleViewController;
+
+@property NSDate *selectedDate;
 
 @end
 
@@ -29,6 +32,8 @@ BOOL inLandscape;
 NSArray *trackingTableDataArray;
 
 BOOL lowerDrawer;
+
+NSMutableArray *drawerDateData;
 
 - (id)init {
     self = [super init];
@@ -100,6 +105,10 @@ BOOL lowerDrawer;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    // set up global date
+    // start with current date, then change it whenever the user changes dates via the collection view
+    self.selectedDate = [NSDate date];
+    
 //    self.cycleViewController = [[CycleViewController alloc] init];
     
     // table view line separator
@@ -107,47 +116,7 @@ BOOL lowerDrawer;
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
 
     // title
-    CGRect headerTitleSubtitleFrame = CGRectMake(0, -15, 200, 44);
-    UIView *_headerTitleSubtitleView = [[UILabel alloc] initWithFrame:headerTitleSubtitleFrame];
-    _headerTitleSubtitleView.backgroundColor = [UIColor clearColor];
-    _headerTitleSubtitleView.autoresizesSubviews = NO;
-    
-    CGRect titleFrame = CGRectMake(0, -15, 200, 24);
-    UILabel *titleView = [[UILabel alloc] initWithFrame:titleFrame];
-    titleView.backgroundColor = [UIColor clearColor];
-    titleView.font = [UIFont boldSystemFontOfSize:17];
-    titleView.textAlignment = NSTextAlignmentCenter;
-
-    NSDate *date = [NSDate date];
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateStyle:NSDateFormatterMediumStyle];
-    [df setTimeStyle:NSDateFormatterNoStyle];
-    
-    NSString *dateString = [df stringFromDate:date];
-    
-    titleView.text = dateString;
-    titleView.textColor = [UIColor ovatempDarkGreyTitleColor];
-    titleView.adjustsFontSizeToFitWidth = YES;
-    [_headerTitleSubtitleView addSubview:titleView];
-    
-    CGRect subtitleFrame = CGRectMake(0, 22-15, 200, 44-24);
-    UILabel *subtitleView = [[UILabel alloc] initWithFrame:subtitleFrame];
-    subtitleView.backgroundColor = [UIColor clearColor];
-    subtitleView.font = [UIFont boldSystemFontOfSize:13];
-    subtitleView.textAlignment = NSTextAlignmentCenter;
-    subtitleView.text = @"Cycle Day #X";
-    subtitleView.textColor = [UIColor ovatempAquaColor];
-    subtitleView.adjustsFontSizeToFitWidth = YES;
-    
-    // arrow
-    self.arrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icn_pulldown_arrow"]];
-    
-    self.arrowImageView.frame = CGRectMake(90, 30, 20, 10);
-    [_headerTitleSubtitleView addSubview:self.arrowImageView];
-    
-    [_headerTitleSubtitleView addSubview:subtitleView];
-    
-    self.navigationItem.titleView = _headerTitleSubtitleView;
+    [self setTitleView];
     
     trackingTableDataArray = [NSArray arrayWithObjects:@"Large Dummy Cell", @"Temperature", @"Cervical Fluid", @"Cervical Position", @"Period", @"Intercourse", @"Mood", @"Symptoms", @"Ovulation Test", @"Pregnancy Test", @"Supplements", @"Medicine", nil];
     
@@ -178,6 +147,41 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     
     // status cell
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingStatusTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"statusCell"];
+    
+    // set up drawer
+    drawerDateData = [[NSMutableArray alloc] init];
+    
+    // get today's date, subtrack three months, count days, add them to drawer
+    NSDate *today = [NSDate date];
+    NSCalendar *defaultCal = [[NSCalendar alloc] initWithCalendarIdentifier:[[NSLocale currentLocale] objectForKey:NSLocaleCalendar]];
+    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+    [offsetComponents setMonth:-3];
+    
+    NSDate *threeMonthsAgo = [defaultCal dateByAddingComponents:offsetComponents toDate:today options:0];
+    
+    // array of date values subtracting one day from today's date
+    
+    // going to use 90 as a sloppy number of days for now
+    // TODO: FIXME
+    
+    NSDateComponents *dayOffset = [[NSDateComponents alloc] init];
+    dayOffset.day = 3;
+    
+    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+    NSDate *threeDaysAfterTodayDate = [currentCalendar dateByAddingComponents:dayOffset toDate:[NSDate date] options:0];
+    
+    NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+    for (int i = 0; i < 90; i++) {
+        dayComponent.day = -i;
+        
+        NSDate *previousDate = [currentCalendar dateByAddingComponents:dayComponent toDate:threeDaysAfterTodayDate options:0];
+        
+        [drawerDateData insertObject:previousDate atIndex:0];
+    }
+    
+    // scroll to index
+    [self.drawerCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:89 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -255,6 +259,66 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     
 }
 
+- (void)setTitleView {
+    CGRect headerTitleSubtitleFrame = CGRectMake(0, -15, 200, 44);
+    UIView *_headerTitleSubtitleView = [[UILabel alloc] initWithFrame:headerTitleSubtitleFrame];
+    _headerTitleSubtitleView.backgroundColor = [UIColor clearColor];
+    _headerTitleSubtitleView.autoresizesSubviews = NO;
+    
+    CGRect titleFrame = CGRectMake(0, -15, 200, 24);
+    UILabel *titleView = [[UILabel alloc] initWithFrame:titleFrame];
+    titleView.backgroundColor = [UIColor clearColor];
+    titleView.font = [UIFont boldSystemFontOfSize:17];
+    titleView.textAlignment = NSTextAlignmentCenter;
+    
+    //    NSDate *date = [NSDate date];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateStyle:NSDateFormatterMediumStyle];
+    [df setTimeStyle:NSDateFormatterNoStyle];
+    
+    NSString *dateString = [df stringFromDate:self.selectedDate];
+    
+    titleView.text = dateString;
+    titleView.textColor = [UIColor ovatempDarkGreyTitleColor];
+    titleView.adjustsFontSizeToFitWidth = YES;
+    [_headerTitleSubtitleView addSubview:titleView];
+    
+    CGRect subtitleFrame = CGRectMake(0, 22-15, 200, 44-24);
+    UILabel *subtitleView = [[UILabel alloc] initWithFrame:subtitleFrame];
+    subtitleView.backgroundColor = [UIColor clearColor];
+    subtitleView.font = [UIFont boldSystemFontOfSize:13];
+    subtitleView.textAlignment = NSTextAlignmentCenter;
+    subtitleView.text = @"Cycle Day #X";
+    subtitleView.textColor = [UIColor ovatempAquaColor];
+    subtitleView.adjustsFontSizeToFitWidth = YES;
+    
+    // arrow
+    self.arrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icn_pulldown_arrow"]];
+    
+    self.arrowImageView.frame = CGRectMake(90, 30, 20, 10);
+    [_headerTitleSubtitleView addSubview:self.arrowImageView];
+    
+    [_headerTitleSubtitleView addSubview:subtitleView];
+    
+    self.navigationItem.titleView = _headerTitleSubtitleView;
+
+}
+
+- (void)refreshTrackingView {
+    // here the user has selected a new date
+    // we will need to change all the labels and update the cells accordingly after hitting the backend
+    
+    // don't have the backend stuff set up currently
+    // TODO: FIXME, hit backend for new data from date
+    
+    // for now, just change labels
+    [self setTitleView];
+    
+    // load new data into tableview data sources
+    [self.tableView reloadData];
+    
+}
+
 #pragma mark - Table view
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -314,17 +378,46 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 
 #pragma mark - UICollectionView
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 10;
+    return [drawerDateData count];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"dateCvCell" forIndexPath:indexPath];
-//    [cell.customLabel setText:[NSString stringWithFormat:@"My custom cell %ld", (long)indexPath.row]];
+- (DateCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    DateCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"dateCvCell" forIndexPath:indexPath];
+    
+    // two labels, month and day
+    // get date object for array, set labels, return
+    NSDate *cellDate = [drawerDateData objectAtIndex:indexPath.row];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy"];
+    NSString *year = [formatter stringFromDate:cellDate];
+    [formatter setDateFormat:@"MM"];
+    NSString *month = [formatter stringFromDate:cellDate];
+    [formatter setDateFormat:@"dd"];
+    NSString *day = [formatter stringFromDate:cellDate];
+    
+    cell.monthLabel.text = month;
+    cell.dayLabel.text = day;
+    
+    // use outline for future dates
+    if ([cellDate compare:[NSDate date]] == NSOrderedDescending) {
+        // celldate is earlier than today
+        cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_empty"];
+    } else {
+        cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_fertile_small"];
+    }
+    
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     return CGSizeMake(50, 50);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    NSLog(@"%@", [drawerDateData objectAtIndex:indexPath.row]);
+    self.selectedDate = [drawerDateData objectAtIndex:indexPath.row];
+    [self refreshTrackingView];
 }
 
 #pragma mark - Push View Controller Delegate
