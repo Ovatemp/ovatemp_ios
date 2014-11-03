@@ -12,6 +12,7 @@
 #import "TodayViewController.h"
 #import "TrackingStatusTableViewCell.h"
 #import "CycleViewController.h"
+#import "TrackingNotesViewController.h"
 
 @interface TrackingViewController () <UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, TrackingCellDelegate>
 
@@ -88,7 +89,7 @@ BOOL lowerDrawer;
 
 - (void)presentChart {
     
-    [self pushViewController:self.cycleViewController];
+//    [self pushViewController:self.cycleViewController];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -242,22 +243,16 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 }
 
 - (IBAction)displayChart:(id)sender {
-//    UIViewController *todayController = [[TodayViewController alloc] init];
-//    todayController = [[TodayNavigationController alloc] initWithContentViewController:todayController];
-//    CycleViewController *cycleVC = [[CycleViewController alloc] init];
     if (!self.cycleViewController) {
         self.cycleViewController = [[CycleViewController alloc] init];
         self.cycleViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     }
-    self.cycleViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-//    [self.navigationController pushViewController:cycleVC animated:YES];
-//    [self.navigationController presentViewController:self.cycleViewController animated:YES completion:^{
-//        //
-//    }];
-    [self performSelector:@selector(presentChart) withObject:nil afterDelay:1.0];
+    
+    // don't present the chart here, just change device orientation and let the notification for changed orientation take care of presenting the view.
     [[UIDevice currentDevice] setValue:
      [NSNumber numberWithInteger: UIInterfaceOrientationLandscapeLeft]
                                 forKey:@"orientation"];
+    
 }
 
 #pragma mark - Table view
@@ -334,9 +329,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 
 #pragma mark - Push View Controller Delegate
 -(void)pushViewController:(UIViewController *)viewController{
-//    [[self navigationController] pushViewController:viewController animated:YES];
-    if (!viewController) {
+    if ([viewController isKindOfClass:[TrackingNotesViewController class]]) {
         [self performSegueWithIdentifier:@"presentNotesVC" sender:self];
+    } else {
+        [[self navigationController] pushViewController:viewController animated:YES];
     }
 }
 
