@@ -313,6 +313,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     
     // for now, just change labels
     [self setTitleView];
+    // drawer stays down, arrow should be facing upward
+    self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI);
     
     // load new data into tableview data sources
     [self.tableView reloadData];
@@ -415,8 +417,22 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    NSLog(@"%@", [drawerDateData objectAtIndex:indexPath.row]);
-    self.selectedDate = [drawerDateData objectAtIndex:indexPath.row];
+    
+    NSDate *dateAtIndex = [drawerDateData objectAtIndex:indexPath.row];
+    
+    if ([dateAtIndex compare:[NSDate date]] == NSOrderedDescending) {
+        // today is earlier than selected date, don't allow user to access that date
+        return;
+        
+    }
+    
+    if (self.selectedDate == dateAtIndex) {
+        // do nothing, select date is the date we're already on
+        return;
+    }
+    
+    // change date
+    self.selectedDate = dateAtIndex;
     [self refreshTrackingView];
 }
 
