@@ -451,6 +451,11 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     
     // change date
     self.selectedDate = dateAtIndex;
+    
+    // center cell
+     [self.drawerCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    
+    // load new data
     [self refreshTrackingView];
 }
 
