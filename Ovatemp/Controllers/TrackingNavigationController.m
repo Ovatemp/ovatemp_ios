@@ -21,7 +21,10 @@
     
 //    self.view.tintColor = [UIColor blueColor];
 //    self.view.backgroundColor = [UIColor blueColor];
-    self.navigationBar.backgroundColor = [UIColor whiteColor];
+    self.navigationBar.backgroundColor = [UIColor ovatempAlmostWhiteColor];
+    
+    [self.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    self.navigationBar.shadowImage = [[UIImage alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {

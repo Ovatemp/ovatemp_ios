@@ -47,7 +47,8 @@
     subtitleView.font = [UIFont boldSystemFontOfSize:13];
     subtitleView.textAlignment = NSTextAlignmentCenter;
     
-    NSDate *date = [NSDate date];
+//    NSDate *date = [NSDate date];
+    NSDate *date = self.selectedDate;
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateStyle:NSDateFormatterMediumStyle];
     [df setTimeStyle:NSDateFormatterNoStyle];
@@ -67,7 +68,7 @@
     // set text
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *dateKeyString = [dateFormatter stringFromDate:[NSDate date]];
+    NSString *dateKeyString = [dateFormatter stringFromDate:self.selectedDate];
     NSString *keyString = [NSString stringWithFormat:@"note_%@", dateKeyString];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -99,7 +100,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
+    NSString *dateString = [dateFormatter stringFromDate:self.selectedDate];
     NSString *keyString = [NSString stringWithFormat:@"note_%@", dateString];
     
     if ([self.notesTextView.text length] > 0) { // user entered a note
