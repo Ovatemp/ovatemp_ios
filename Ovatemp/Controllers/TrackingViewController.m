@@ -21,6 +21,8 @@
 
 @property CycleViewController *cycleViewController;
 
+@property NSDate *selectedDate;
+
 @end
 
 @implementation TrackingViewController
@@ -103,6 +105,10 @@ NSMutableArray *drawerDateData;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    // set up global date
+    // start with current date, then change it whenever the user changes dates via the collection view
+    self.selectedDate = [NSDate date];
+    
 //    self.cycleViewController = [[CycleViewController alloc] init];
     
     // table view line separator
@@ -110,47 +116,7 @@ NSMutableArray *drawerDateData;
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
 
     // title
-    CGRect headerTitleSubtitleFrame = CGRectMake(0, -15, 200, 44);
-    UIView *_headerTitleSubtitleView = [[UILabel alloc] initWithFrame:headerTitleSubtitleFrame];
-    _headerTitleSubtitleView.backgroundColor = [UIColor clearColor];
-    _headerTitleSubtitleView.autoresizesSubviews = NO;
-    
-    CGRect titleFrame = CGRectMake(0, -15, 200, 24);
-    UILabel *titleView = [[UILabel alloc] initWithFrame:titleFrame];
-    titleView.backgroundColor = [UIColor clearColor];
-    titleView.font = [UIFont boldSystemFontOfSize:17];
-    titleView.textAlignment = NSTextAlignmentCenter;
-
-    NSDate *date = [NSDate date];
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateStyle:NSDateFormatterMediumStyle];
-    [df setTimeStyle:NSDateFormatterNoStyle];
-    
-    NSString *dateString = [df stringFromDate:date];
-    
-    titleView.text = dateString;
-    titleView.textColor = [UIColor ovatempDarkGreyTitleColor];
-    titleView.adjustsFontSizeToFitWidth = YES;
-    [_headerTitleSubtitleView addSubview:titleView];
-    
-    CGRect subtitleFrame = CGRectMake(0, 22-15, 200, 44-24);
-    UILabel *subtitleView = [[UILabel alloc] initWithFrame:subtitleFrame];
-    subtitleView.backgroundColor = [UIColor clearColor];
-    subtitleView.font = [UIFont boldSystemFontOfSize:13];
-    subtitleView.textAlignment = NSTextAlignmentCenter;
-    subtitleView.text = @"Cycle Day #X";
-    subtitleView.textColor = [UIColor ovatempAquaColor];
-    subtitleView.adjustsFontSizeToFitWidth = YES;
-    
-    // arrow
-    self.arrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icn_pulldown_arrow"]];
-    
-    self.arrowImageView.frame = CGRectMake(90, 30, 20, 10);
-    [_headerTitleSubtitleView addSubview:self.arrowImageView];
-    
-    [_headerTitleSubtitleView addSubview:subtitleView];
-    
-    self.navigationItem.titleView = _headerTitleSubtitleView;
+    [self setTitleView];
     
     trackingTableDataArray = [NSArray arrayWithObjects:@"Large Dummy Cell", @"Temperature", @"Cervical Fluid", @"Cervical Position", @"Period", @"Intercourse", @"Mood", @"Symptoms", @"Ovulation Test", @"Pregnancy Test", @"Supplements", @"Medicine", nil];
     
@@ -210,7 +176,6 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         
         NSDate *previousDate = [currentCalendar dateByAddingComponents:dayComponent toDate:threeDaysAfterTodayDate options:0];
         
-//        [drawerDateData addObject:previousDate];
         [drawerDateData insertObject:previousDate atIndex:0];
     }
     
@@ -291,6 +256,66 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     [[UIDevice currentDevice] setValue:
      [NSNumber numberWithInteger: UIInterfaceOrientationLandscapeLeft]
                                 forKey:@"orientation"];
+    
+}
+
+- (void)setTitleView {
+    CGRect headerTitleSubtitleFrame = CGRectMake(0, -15, 200, 44);
+    UIView *_headerTitleSubtitleView = [[UILabel alloc] initWithFrame:headerTitleSubtitleFrame];
+    _headerTitleSubtitleView.backgroundColor = [UIColor clearColor];
+    _headerTitleSubtitleView.autoresizesSubviews = NO;
+    
+    CGRect titleFrame = CGRectMake(0, -15, 200, 24);
+    UILabel *titleView = [[UILabel alloc] initWithFrame:titleFrame];
+    titleView.backgroundColor = [UIColor clearColor];
+    titleView.font = [UIFont boldSystemFontOfSize:17];
+    titleView.textAlignment = NSTextAlignmentCenter;
+    
+    //    NSDate *date = [NSDate date];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateStyle:NSDateFormatterMediumStyle];
+    [df setTimeStyle:NSDateFormatterNoStyle];
+    
+    NSString *dateString = [df stringFromDate:self.selectedDate];
+    
+    titleView.text = dateString;
+    titleView.textColor = [UIColor ovatempDarkGreyTitleColor];
+    titleView.adjustsFontSizeToFitWidth = YES;
+    [_headerTitleSubtitleView addSubview:titleView];
+    
+    CGRect subtitleFrame = CGRectMake(0, 22-15, 200, 44-24);
+    UILabel *subtitleView = [[UILabel alloc] initWithFrame:subtitleFrame];
+    subtitleView.backgroundColor = [UIColor clearColor];
+    subtitleView.font = [UIFont boldSystemFontOfSize:13];
+    subtitleView.textAlignment = NSTextAlignmentCenter;
+    subtitleView.text = @"Cycle Day #X";
+    subtitleView.textColor = [UIColor ovatempAquaColor];
+    subtitleView.adjustsFontSizeToFitWidth = YES;
+    
+    // arrow
+    self.arrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icn_pulldown_arrow"]];
+    
+    self.arrowImageView.frame = CGRectMake(90, 30, 20, 10);
+    [_headerTitleSubtitleView addSubview:self.arrowImageView];
+    
+    [_headerTitleSubtitleView addSubview:subtitleView];
+    
+    self.navigationItem.titleView = _headerTitleSubtitleView;
+
+}
+
+- (void)refreshTrackingView {
+    // here the user has selected a new date
+    // we will need to change all the labels and update the cells accordingly after hitting the backend
+    
+    // don't have the backend stuff set up currently
+    // TODO: FIXME, hit backend for new data from date
+    
+    // for now, just change labels
+    [self setTitleView];
+    
+    // load new data into tableview data sources
+    [self.tableView reloadData];
     
 }
 
@@ -378,6 +403,12 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     return CGSizeMake(50, 50);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    NSLog(@"%@", [drawerDateData objectAtIndex:indexPath.row]);
+    self.selectedDate = [drawerDateData objectAtIndex:indexPath.row];
+    [self refreshTrackingView];
 }
 
 #pragma mark - Push View Controller Delegate

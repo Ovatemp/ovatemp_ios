@@ -410,7 +410,6 @@
 		5F7AEA6C1A0137080053ABAB /* TrackingNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7AEA6B1A0137080053ABAB /* TrackingNavigationBar.m */; };
 		5F7AEA6F1A01373C0053ABAB /* TrackingNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7AEA6E1A01373C0053ABAB /* TrackingNavigationController.m */; };
 		5F7AEA731A013C580053ABAB /* TrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7AEA711A013C580053ABAB /* TrackingViewController.m */; };
-		5F7AEA741A013C580053ABAB /* TrackingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F7AEA721A013C580053ABAB /* TrackingViewController.xib */; };
 		5F846E0719F560D300CED980 /* Welcome1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0619F560D300CED980 /* Welcome1ViewController.m */; };
 		5F846E0A19F57D4D00CED980 /* Welcome2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0919F57D4D00CED980 /* Welcome2ViewController.m */; };
 		5F846E0D19F5A96000CED980 /* Welcome3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0C19F5A96000CED980 /* Welcome3ViewController.m */; };
@@ -1039,7 +1038,6 @@
 		5F7AEA6E1A01373C0053ABAB /* TrackingNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingNavigationController.m; sourceTree = "<group>"; };
 		5F7AEA701A013C580053ABAB /* TrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingViewController.h; sourceTree = "<group>"; };
 		5F7AEA711A013C580053ABAB /* TrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingViewController.m; sourceTree = "<group>"; };
-		5F7AEA721A013C580053ABAB /* TrackingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingViewController.xib; sourceTree = "<group>"; };
 		5F846E0519F560D300CED980 /* Welcome1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Welcome1ViewController.h; sourceTree = "<group>"; };
 		5F846E0619F560D300CED980 /* Welcome1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Welcome1ViewController.m; sourceTree = "<group>"; };
 		5F846E0819F57D4D00CED980 /* Welcome2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Welcome2ViewController.h; sourceTree = "<group>"; };
@@ -1613,7 +1611,6 @@
 				5F7AEA6E1A01373C0053ABAB /* TrackingNavigationController.m */,
 				5F7AEA701A013C580053ABAB /* TrackingViewController.h */,
 				5F7AEA711A013C580053ABAB /* TrackingViewController.m */,
-				5F7AEA721A013C580053ABAB /* TrackingViewController.xib */,
 				5F4C5B0A1A02C1CE00D0F465 /* TrackingNotesViewController.h */,
 				5F4C5B0B1A02C1CE00D0F465 /* TrackingNotesViewController.m */,
 			);
@@ -2404,7 +2401,6 @@
 				5F1C9BC119EDE87A000F1FC1 /* Diet.png in Resources */,
 				5F4C5B041A02986600D0F465 /* DateCollectionViewCell.xib in Resources */,
 				5F1C9C0E19EDE87A000F1FC1 /* Protected@2x.png in Resources */,
-				5F7AEA741A013C580053ABAB /* TrackingViewController.xib in Resources */,
 				5F1C9BC319EDE87A000F1FC1 /* DietSmall@2x.png in Resources */,
 				5F586A2719ED802400D2B58E /* Positive.png in Resources */,
 				5F1C9BE119EDE87A000F1FC1 /* TryingToAvoid@2x.png in Resources */,
