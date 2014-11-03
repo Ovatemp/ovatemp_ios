@@ -180,7 +180,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     }
     
     // scroll to index
-    [self.drawerCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:89 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    [self.drawerCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:86 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     
 }
 
@@ -401,6 +401,19 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     cell.monthLabel.text = month;
     cell.dayLabel.text = day;
     
+    // if cell date is today, make it larger
+//    if ([cellDate compare:[NSDate date]] == NSOrderedSame) {
+//        CGRect cellFrame = cell.frame;
+//        cellFrame.size.height = 44.0f;
+//        cellFrame.size.width = 44.0f;
+//        cell.frame = cellFrame;
+//    } else {
+//        CGRect cellFrame = cell.frame;
+//        cellFrame.size.height = 34.0f;
+//        cellFrame.size.width = 34.0f;
+//        cell.frame = cellFrame;
+//    }
+    
     // use outline for future dates
     if ([cellDate compare:[NSDate date]] == NSOrderedDescending) {
         // celldate is earlier than today
@@ -412,9 +425,14 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     return cell;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(50, 50);
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    if (indexPath.row == 86) {
+//        return CGSizeMake(44, 44);
+//    }
+//    return CGSizeMake(34, 34);
+    return CGSizeMake(44, 44);
 }
+
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -436,8 +454,25 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     [self refreshTrackingView];
 }
 
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    // if decelerating, let scrollViewDidEndDecelerating: handle it
+    if (decelerate == NO) {
+        [self centerCell];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [self centerCell];
+}
+
+- (void)centerCell {
+     NSIndexPath *pathForCenterCell = [self.drawerCollectionView indexPathForItemAtPoint:CGPointMake(CGRectGetMidX(self.drawerCollectionView.bounds), CGRectGetMidY(self.drawerCollectionView.bounds))];
+    
+    [self.drawerCollectionView scrollToItemAtIndexPath:pathForCenterCell atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+}
+
 #pragma mark - Push View Controller Delegate
--(void)pushViewController:(UIViewController *)viewController{
+- (void)pushViewController:(UIViewController *)viewController{
     if ([viewController isKindOfClass:[TrackingNotesViewController class]]) {
         [self performSegueWithIdentifier:@"presentNotesVC" sender:self];
     } else {
