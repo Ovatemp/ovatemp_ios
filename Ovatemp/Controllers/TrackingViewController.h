@@ -15,4 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIView *drawerView;
 @property (weak, nonatomic) IBOutlet UICollectionView *drawerCollectionView;
 
+@property (weak, nonatomic) IBOutlet UIView *separatorView;
+
 @end

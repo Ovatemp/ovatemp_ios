@@ -14,4 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *titleView;
 
+@property NSDate *selectedDate;
+
 @end

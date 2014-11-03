@@ -31,6 +31,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" id="SXO-bw-vwf">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <view contentMode="scaleToFill" id="GZx-FW-Rp3">
                                 <rect key="frame" x="0.0" y="90" width="320" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -52,7 +57,7 @@
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Jxv-Mf-B2f">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4le-AO-vTM">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -77,7 +82,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="eWq-7Z-W5Z">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="u1Y-qs-dVJ">
+                        <barButtonItem key="leftBarButtonItem" image="icn_graph" id="u1Y-qs-dVJ">
+                            <color key="tintColor" red="0.1176470588" green="0.3921568627" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="displayChart:" destination="3fu-mC-j0h" id="l4b-hY-mzO"/>
                             </connections>
@@ -89,6 +95,7 @@
                     <connections>
                         <outlet property="drawerCollectionView" destination="Jxv-Mf-B2f" id="FWW-X9-KmO"/>
                         <outlet property="drawerView" destination="tad-EW-aMN" id="Q9o-c7-30T"/>
+                        <outlet property="separatorView" destination="GZx-FW-Rp3" id="B46-Re-R7F"/>
                         <outlet property="tableView" destination="eDl-ej-vyi" id="2nX-CB-5mD"/>
                         <segue destination="KZ8-F5-OfV" kind="push" identifier="presentNotesVC" id="vI3-j2-gIn"/>
                     </connections>
@@ -135,6 +142,7 @@
     </scenes>
     <resources>
         <image name="icn_calendar" width="22" height="22"/>
+        <image name="icn_graph" width="24" height="22"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
