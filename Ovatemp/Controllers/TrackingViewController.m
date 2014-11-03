@@ -13,6 +13,7 @@
 #import "TrackingStatusTableViewCell.h"
 #import "CycleViewController.h"
 #import "TrackingNotesViewController.h"
+#import "DateCollectionViewCell.h"
 
 @interface TrackingViewController () <UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, TrackingCellDelegate>
 
@@ -29,6 +30,8 @@ BOOL inLandscape;
 NSArray *trackingTableDataArray;
 
 BOOL lowerDrawer;
+
+NSMutableArray *drawerDateData;
 
 - (id)init {
     self = [super init];
@@ -178,6 +181,32 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     
     // status cell
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingStatusTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"statusCell"];
+    
+    // set up drawer
+    drawerDateData = [[NSMutableArray alloc] init];
+    
+    // get today's date, subtrack three months, count days, add them to drawer
+    NSDate *today = [NSDate date];
+    NSCalendar *defaultCal = [[NSCalendar alloc] initWithCalendarIdentifier:[[NSLocale currentLocale] objectForKey:NSLocaleCalendar]];
+    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+    [offsetComponents setMonth:-3];
+    
+    NSDate *threeMonthsAgo = [defaultCal dateByAddingComponents:offsetComponents toDate:today options:0];
+    
+    // array of date values subtracting one day from today's date
+    
+    // going to use 90 as a sloppy number of days for now
+    // TODO: FIXME
+    for (int i = 0; i < 90; i++) {
+        NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+        dayComponent.day = -i;
+        
+        NSCalendar *theCalendar = [NSCalendar currentCalendar];
+        NSDate *previousDate = [theCalendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
+        
+        [drawerDateData addObject:previousDate];
+    }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -314,12 +343,26 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 
 #pragma mark - UICollectionView
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 10;
+    return [drawerDateData count];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"dateCvCell" forIndexPath:indexPath];
+- (DateCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    DateCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"dateCvCell" forIndexPath:indexPath];
 //    [cell.customLabel setText:[NSString stringWithFormat:@"My custom cell %ld", (long)indexPath.row]];
+    
+    // two labels, month and day
+    // get date object for array, set labels, return
+    NSDate *cellDate = [drawerDateData objectAtIndex:indexPath.row];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy"];
+    NSString *year = [formatter stringFromDate:cellDate];
+    [formatter setDateFormat:@"MM"];
+    NSString *month = [formatter stringFromDate:cellDate];
+    [formatter setDateFormat:@"dd"];
+    NSString *day = [formatter stringFromDate:cellDate];
+    
+    cell.monthLabel.text = month;
+    cell.dayLabel.text = day;
     return cell;
 }
 

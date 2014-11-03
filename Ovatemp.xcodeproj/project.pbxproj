@@ -419,6 +419,7 @@
 		5F8C568E19F184C60024552A /* SelectLogInOrSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C568D19F184C60024552A /* SelectLogInOrSignUpViewController.m */; };
 		5F8C569119F186C90024552A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C569019F186C90024552A /* LoginViewController.m */; };
 		5F8C569419F1BD950024552A /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C569319F1BD950024552A /* SignUpViewController.m */; };
+		5FCCECDA1A07E8D500E653B1 /* DateCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCCECD91A07E8D500E653B1 /* DateCollectionViewCell.m */; };
 		5FCD68B219F942920091C492 /* HeightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCD68B019F942920091C492 /* HeightTableViewCell.m */; };
 		5FCD68B319F942920091C492 /* HeightTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FCD68B119F942920091C492 /* HeightTableViewCell.xib */; };
 		5FCD68B719F942A10091C492 /* WeightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCD68B519F942A10091C492 /* WeightTableViewCell.m */; };
@@ -1054,6 +1055,8 @@
 		5F8C569019F186C90024552A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		5F8C569219F1BD950024552A /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		5F8C569319F1BD950024552A /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		5FCCECD81A07E8D500E653B1 /* DateCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateCollectionViewCell.h; sourceTree = "<group>"; };
+		5FCCECD91A07E8D500E653B1 /* DateCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateCollectionViewCell.m; sourceTree = "<group>"; };
 		5FCD68AF19F942920091C492 /* HeightTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeightTableViewCell.h; sourceTree = "<group>"; };
 		5FCD68B019F942920091C492 /* HeightTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeightTableViewCell.m; sourceTree = "<group>"; };
 		5FCD68B119F942920091C492 /* HeightTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeightTableViewCell.xib; sourceTree = "<group>"; };
@@ -2024,6 +2027,8 @@
 				5F7AEA6A1A0137080053ABAB /* TrackingNavigationBar.h */,
 				5F7AEA6B1A0137080053ABAB /* TrackingNavigationBar.m */,
 				5F4C5B031A02986600D0F465 /* DateCollectionViewCell.xib */,
+				5FCCECD81A07E8D500E653B1 /* DateCollectionViewCell.h */,
+				5FCCECD91A07E8D500E653B1 /* DateCollectionViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2584,6 +2589,7 @@
 				5F7AEA731A013C580053ABAB /* TrackingViewController.m in Sources */,
 				5F1C96DD19EDD31A000F1FC1 /* MPApplicationStateSerializer.m in Sources */,
 				5F1C9B9519EDE87A000F1FC1 /* RootViewController.m in Sources */,
+				5FCCECDA1A07E8D500E653B1 /* DateCollectionViewCell.m in Sources */,
 				5F1C9B7919EDE87A000F1FC1 /* GradientSegmentedControlButton.m in Sources */,
 				5F1C96DA19EDD31A000F1FC1 /* MPABTestDesignerSnapshotResponseMessage.m in Sources */,
 				5F1C96D919EDD31A000F1FC1 /* MPABTestDesignerSnapshotRequestMessage.m in Sources */,
