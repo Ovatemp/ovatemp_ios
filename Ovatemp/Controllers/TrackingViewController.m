@@ -398,6 +398,13 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     
     cell.monthLabel.text = month;
     cell.dayLabel.text = day;
+    
+    // use outline for future dates
+    if ([cellDate compare:[NSDate date]] == NSOrderedDescending) {
+        // celldate is earlier than today
+        cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_empty"];
+    }
+    
     return cell;
 }
 
