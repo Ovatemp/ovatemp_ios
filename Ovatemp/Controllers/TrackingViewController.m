@@ -197,16 +197,25 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     
     // going to use 90 as a sloppy number of days for now
     // TODO: FIXME
+    
+    NSDateComponents *dayOffset = [[NSDateComponents alloc] init];
+    dayOffset.day = 3;
+    
+    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+    NSDate *threeDaysAfterTodayDate = [currentCalendar dateByAddingComponents:dayOffset toDate:[NSDate date] options:0];
+    
+    NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
     for (int i = 0; i < 90; i++) {
-        NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
         dayComponent.day = -i;
         
-        NSCalendar *theCalendar = [NSCalendar currentCalendar];
-        NSDate *previousDate = [theCalendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
+        NSDate *previousDate = [currentCalendar dateByAddingComponents:dayComponent toDate:threeDaysAfterTodayDate options:0];
         
 //        [drawerDateData addObject:previousDate];
         [drawerDateData insertObject:previousDate atIndex:0];
     }
+    
+    // scroll to index
+    [self.drawerCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:89 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     
 }
 
@@ -225,11 +234,6 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:YES forKey:@"ShouldRotate"];
     [defaults synchronize];
-    
-    // scroll to index
-//    [self.drawerCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathWithIndex:85] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
-    
-    [self.drawerCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:89 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
