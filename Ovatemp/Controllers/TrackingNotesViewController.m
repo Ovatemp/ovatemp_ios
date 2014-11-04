@@ -30,7 +30,7 @@
     _headerTitleSubtitleView.backgroundColor = [UIColor clearColor];
     _headerTitleSubtitleView.autoresizesSubviews = NO;
     
-    CGRect titleFrame = CGRectMake(0, 0, 200, 24);
+    CGRect titleFrame = CGRectMake(-8, 0, 200, 24);
     UILabel *titleView = [[UILabel alloc] initWithFrame:titleFrame];
     titleView.backgroundColor = [UIColor clearColor];
     titleView.font = [UIFont boldSystemFontOfSize:17];
@@ -41,7 +41,7 @@
     titleView.adjustsFontSizeToFitWidth = YES;
     [_headerTitleSubtitleView addSubview:titleView];
     
-    CGRect subtitleFrame = CGRectMake(0, 22, 200, 44-24);
+    CGRect subtitleFrame = CGRectMake(-8, 22, 200, 44-24);
     UILabel *subtitleView = [[UILabel alloc] initWithFrame:subtitleFrame];
     subtitleView.backgroundColor = [UIColor clearColor];
     subtitleView.font = [UIFont boldSystemFontOfSize:13];
