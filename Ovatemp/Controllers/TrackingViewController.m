@@ -392,7 +392,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     return [drawerDateData count];
 }
 
-- (DateCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     DateCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"dateCvCell" forIndexPath:indexPath];
     
@@ -504,7 +504,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 }
 
 - (void)centerCell {
-     NSIndexPath *pathForCenterCell = [self.drawerCollectionView indexPathForItemAtPoint:CGPointMake(CGRectGetMidX(self.drawerCollectionView.bounds), CGRectGetMidY(self.drawerCollectionView.bounds))];
+     NSIndexPath *pathForCenterCell = [self.drawerCollectionView indexPathForItemAtPoint:CGPointMake(CGRectGetMidX(self.drawerCollectionView.bounds) - 10, CGRectGetMidY(self.drawerCollectionView.bounds))];
+    NSLog(@"%@", pathForCenterCell); // we need - 10 as an offset here in case the user scrolls in between two cells, the indexPath will never be nil we will always snap to a cell
     
     if (pathForCenterCell == nil) {
         return;
