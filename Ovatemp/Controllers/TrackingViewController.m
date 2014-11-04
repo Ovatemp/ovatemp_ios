@@ -185,6 +185,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     self.selectedIndexPath = [NSIndexPath indexPathForRow:86 inSection:0];
     [self.drawerCollectionView scrollToItemAtIndexPath:self.selectedIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     
+    // hide scroll bars
+    [self.drawerCollectionView setShowsHorizontalScrollIndicator:NO];
+    [self.drawerCollectionView setShowsVerticalScrollIndicator:NO];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -504,11 +508,22 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 }
 
 - (void)centerCell {
-     NSIndexPath *pathForCenterCell = [self.drawerCollectionView indexPathForItemAtPoint:CGPointMake(CGRectGetMidX(self.drawerCollectionView.bounds) - 10, CGRectGetMidY(self.drawerCollectionView.bounds))];
-    NSLog(@"%@", pathForCenterCell); // we need - 10 as an offset here in case the user scrolls in between two cells, the indexPath will never be nil we will always snap to a cell
+     NSIndexPath *pathForCenterCell = [self.drawerCollectionView indexPathForItemAtPoint:CGPointMake(CGRectGetMidX(self.drawerCollectionView.bounds), CGRectGetMidY(self.drawerCollectionView.bounds))];
     
-    if (pathForCenterCell == nil) {
-        return;
+    // we need +/- 10 as an offset here in case the user scrolls in between two cells, the indexPath will never be nil we will always snap to a cell
+    
+    if (!pathForCenterCell) {
+        pathForCenterCell = [self.drawerCollectionView indexPathForItemAtPoint:CGPointMake(CGRectGetMidX(self.drawerCollectionView.bounds) - 10, CGRectGetMidY(self.drawerCollectionView.bounds))];
+    }
+    
+    if (!pathForCenterCell) {
+        pathForCenterCell = [self.drawerCollectionView indexPathForItemAtPoint:CGPointMake(CGRectGetMidX(self.drawerCollectionView.bounds) + 10, CGRectGetMidY(self.drawerCollectionView.bounds))];
+    }
+    
+    if (!pathForCenterCell) { // still nil
+        // I tried
+        NSLog(@"You're Tearing Me Apart, Lisa!");
+        return; // Oh Hi Mark
     }
     
     [self.drawerCollectionView scrollToItemAtIndexPath:pathForCenterCell atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
