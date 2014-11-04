@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="5RQ-0I-Qml">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -440,7 +439,8 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ScB-L1-76z">
                                 <rect key="frame" x="16" y="302" width="288" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="hLt-Vo-3Vx"/>
+                                    <constraint firstAttribute="height" constant="45" id="6Dh-jC-7TV"/>
+                                    <constraint firstAttribute="width" constant="288" id="zvN-pT-9Nc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
@@ -453,7 +453,8 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d74-Xq-dTh">
                                 <rect key="frame" x="16" y="360" width="288" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="mB4-8Y-faJ"/>
+                                    <constraint firstAttribute="width" constant="288" id="5cc-GL-ROP"/>
+                                    <constraint firstAttribute="height" constant="45" id="Hij-uF-I8S"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
@@ -465,6 +466,10 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YW-5h-plm">
                                 <rect key="frame" x="16" y="431" width="288" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="L8M-eK-QCq"/>
+                                    <constraint firstAttribute="width" constant="288" id="nlV-HQ-Q6k"/>
+                                </constraints>
                                 <state key="normal" title="Log In" backgroundImage="btn_signup_login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -478,7 +483,8 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcI-gM-ZVm">
                                 <rect key="frame" x="102" y="484" width="117" height="12"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="12" id="HdD-0i-iqc"/>
+                                    <constraint firstAttribute="width" constant="117" id="Rd7-Z4-Sb3"/>
+                                    <constraint firstAttribute="height" constant="12" id="gvt-fh-vjM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="Forgot Password?">
@@ -492,21 +498,16 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9YW-5h-plm" firstAttribute="top" secondItem="d74-Xq-dTh" secondAttribute="bottom" constant="26" id="0tC-mU-mEM"/>
-                            <constraint firstItem="d74-Xq-dTh" firstAttribute="trailing" secondItem="ScB-L1-76z" secondAttribute="trailing" id="7t1-i0-W7f"/>
-                            <constraint firstItem="ex7-sR-0MO" firstAttribute="centerX" secondItem="d74-Xq-dTh" secondAttribute="centerX" id="OOP-8J-414"/>
-                            <constraint firstItem="dcI-gM-ZVm" firstAttribute="top" secondItem="9YW-5h-plm" secondAttribute="bottom" constant="8" symbolic="YES" id="Paj-RN-jk5"/>
-                            <constraint firstItem="ScB-L1-76z" firstAttribute="top" secondItem="xVd-Gt-5hX" secondAttribute="bottom" constant="238" id="Qgb-15-4nO"/>
-                            <constraint firstItem="dcI-gM-ZVm" firstAttribute="centerX" secondItem="9YW-5h-plm" secondAttribute="centerX" id="RPI-dL-2go"/>
-                            <constraint firstItem="zXD-b5-HJw" firstAttribute="top" secondItem="dcI-gM-ZVm" secondAttribute="bottom" constant="72" id="T7y-Ug-xqX"/>
-                            <constraint firstItem="d74-Xq-dTh" firstAttribute="leading" secondItem="ScB-L1-76z" secondAttribute="leading" id="XpP-Zz-zAy"/>
-                            <constraint firstItem="ScB-L1-76z" firstAttribute="leading" secondItem="JZY-LF-IwK" secondAttribute="leadingMargin" id="aYs-z7-rMy"/>
-                            <constraint firstItem="d74-Xq-dTh" firstAttribute="top" secondItem="ScB-L1-76z" secondAttribute="bottom" constant="13" id="ctR-Qm-hVQ"/>
-                            <constraint firstItem="d74-Xq-dTh" firstAttribute="trailing" secondItem="9YW-5h-plm" secondAttribute="trailing" id="hrx-Gp-QfD"/>
-                            <constraint firstItem="ex7-sR-0MO" firstAttribute="bottom" secondItem="zXD-b5-HJw" secondAttribute="top" id="jB6-HR-KVa"/>
-                            <constraint firstItem="9YW-5h-plm" firstAttribute="leading" secondItem="d74-Xq-dTh" secondAttribute="leading" id="jFl-x9-wee"/>
-                            <constraint firstItem="dcI-gM-ZVm" firstAttribute="leading" secondItem="JZY-LF-IwK" secondAttribute="leadingMargin" constant="86" id="ka1-0c-h0w"/>
-                            <constraint firstItem="ex7-sR-0MO" firstAttribute="leading" secondItem="JZY-LF-IwK" secondAttribute="leading" id="nrS-Ai-Yet"/>
+                            <constraint firstItem="zXD-b5-HJw" firstAttribute="top" secondItem="ex7-sR-0MO" secondAttribute="bottom" id="2II-29-Kqd"/>
+                            <constraint firstItem="9YW-5h-plm" firstAttribute="top" secondItem="d74-Xq-dTh" secondAttribute="bottom" constant="26" id="F9J-ER-1df"/>
+                            <constraint firstItem="dcI-gM-ZVm" firstAttribute="centerX" secondItem="ex7-sR-0MO" secondAttribute="centerX" id="Hvn-q4-EsY"/>
+                            <constraint firstItem="dcI-gM-ZVm" firstAttribute="top" secondItem="9YW-5h-plm" secondAttribute="bottom" constant="8" id="JPx-he-gUu"/>
+                            <constraint firstItem="dcI-gM-ZVm" firstAttribute="centerX" secondItem="d74-Xq-dTh" secondAttribute="centerX" id="Uq2-wa-ZJP"/>
+                            <constraint firstItem="dcI-gM-ZVm" firstAttribute="centerX" secondItem="9YW-5h-plm" secondAttribute="centerX" id="bJy-xq-DNa"/>
+                            <constraint firstItem="dcI-gM-ZVm" firstAttribute="centerX" secondItem="ScB-L1-76z" secondAttribute="centerX" id="fe7-Mg-f4m"/>
+                            <constraint firstItem="zXD-b5-HJw" firstAttribute="top" secondItem="dcI-gM-ZVm" secondAttribute="bottom" constant="72" id="gmY-Ah-DQF"/>
+                            <constraint firstItem="d74-Xq-dTh" firstAttribute="top" secondItem="ScB-L1-76z" secondAttribute="bottom" constant="13" id="k1m-Wu-G3l"/>
+                            <constraint firstItem="dcI-gM-ZVm" firstAttribute="centerX" secondItem="JZY-LF-IwK" secondAttribute="centerX" id="u5v-aA-zPr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Log In" id="u0Y-ZD-qhU"/>
