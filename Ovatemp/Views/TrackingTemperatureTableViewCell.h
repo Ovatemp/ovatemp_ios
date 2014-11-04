@@ -10,4 +10,8 @@
 
 @interface TrackingTemperatureTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *temperatureValueLabel;
+@property (weak, nonatomic) IBOutlet UIPickerView *temperaturePicker;
+@property (weak, nonatomic) IBOutlet UIButton *infoButton;
+
 @end
