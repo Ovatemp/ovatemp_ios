@@ -79,7 +79,7 @@ static CGFloat const kStandardSpacing = 20.0f;
     self.instructionsLabel.frame = rect;
     [self.view addSubview:self.instructionsLabel];
 
-    UIImage *thermometerImage = [UIImage imageNamed:@"OndoPicture.png"];
+    UIImage *thermometerImage = [UIImage imageNamed:@"img_thermometer"];
     self.thermometerImageView = [[UIImageView alloc] initWithImage:thermometerImage];
     self.thermometerImageView.contentMode = UIViewContentModeCenter;
     rect.origin.y = CGRectGetMaxY(rect) + kStandardSpacing;
