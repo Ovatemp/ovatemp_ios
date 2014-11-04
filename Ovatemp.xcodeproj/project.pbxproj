@@ -386,6 +386,8 @@
 		5F223F3619F03B480003AF64 /* SettingsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F223F3419F03B480003AF64 /* SettingsTableViewController.xib */; };
 		5F223F3A19F05C330003AF64 /* SettingsTemperatureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F223F3819F05C330003AF64 /* SettingsTemperatureTableViewCell.m */; };
 		5F223F3B19F05C330003AF64 /* SettingsTemperatureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F223F3919F05C330003AF64 /* SettingsTemperatureTableViewCell.xib */; };
+		5F2B1DE81A097F0A0078A11D /* TrackingTemperatureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B1DE61A097F0A0078A11D /* TrackingTemperatureTableViewCell.m */; };
+		5F2B1DE91A097F0A0078A11D /* TrackingTemperatureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F2B1DE71A097F0A0078A11D /* TrackingTemperatureTableViewCell.xib */; };
 		5F4C5B041A02986600D0F465 /* DateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F4C5B031A02986600D0F465 /* DateCollectionViewCell.xib */; };
 		5F4C5B081A02B09600D0F465 /* TrackingStatusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C5B061A02B09600D0F465 /* TrackingStatusTableViewCell.m */; };
 		5F4C5B091A02B09600D0F465 /* TrackingStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F4C5B071A02B09600D0F465 /* TrackingStatusTableViewCell.xib */; };
@@ -1002,6 +1004,9 @@
 		5F223F3719F05C330003AF64 /* SettingsTemperatureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsTemperatureTableViewCell.h; path = ../Controllers/SettingsTemperatureTableViewCell.h; sourceTree = "<group>"; };
 		5F223F3819F05C330003AF64 /* SettingsTemperatureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsTemperatureTableViewCell.m; path = ../Controllers/SettingsTemperatureTableViewCell.m; sourceTree = "<group>"; };
 		5F223F3919F05C330003AF64 /* SettingsTemperatureTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsTemperatureTableViewCell.xib; path = ../Controllers/SettingsTemperatureTableViewCell.xib; sourceTree = "<group>"; };
+		5F2B1DE51A097F0A0078A11D /* TrackingTemperatureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingTemperatureTableViewCell.h; sourceTree = "<group>"; };
+		5F2B1DE61A097F0A0078A11D /* TrackingTemperatureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingTemperatureTableViewCell.m; sourceTree = "<group>"; };
+		5F2B1DE71A097F0A0078A11D /* TrackingTemperatureTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingTemperatureTableViewCell.xib; sourceTree = "<group>"; };
 		5F4C5B031A02986600D0F465 /* DateCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateCollectionViewCell.xib; sourceTree = "<group>"; };
 		5F4C5B051A02B09600D0F465 /* TrackingStatusTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingStatusTableViewCell.h; sourceTree = "<group>"; };
 		5F4C5B061A02B09600D0F465 /* TrackingStatusTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingStatusTableViewCell.m; sourceTree = "<group>"; };
@@ -1962,6 +1967,9 @@
 			isa = PBXGroup;
 			children = (
 				5F7AEA621A0122BB0053ABAB /* Tracking.storyboard */,
+				5F2B1DE51A097F0A0078A11D /* TrackingTemperatureTableViewCell.h */,
+				5F2B1DE61A097F0A0078A11D /* TrackingTemperatureTableViewCell.m */,
+				5F2B1DE71A097F0A0078A11D /* TrackingTemperatureTableViewCell.xib */,
 				5F4C5B051A02B09600D0F465 /* TrackingStatusTableViewCell.h */,
 				5F4C5B061A02B09600D0F465 /* TrackingStatusTableViewCell.m */,
 				5F4C5B071A02B09600D0F465 /* TrackingStatusTableViewCell.xib */,
@@ -2298,6 +2306,7 @@
 				5F1C9C2019EDE87A000F1FC1 /* Medicines@2x.png in Resources */,
 				5F1C9BF419EDE87A000F1FC1 /* NourishSmall.png in Resources */,
 				5F1C99D719EDE775000F1FC1 /* BluetoothSignal1@2x.png in Resources */,
+				5F2B1DE91A097F0A0078A11D /* TrackingTemperatureTableViewCell.xib in Resources */,
 				5F1C9BF919EDE87A000F1FC1 /* RefreshSmall@2x.png in Resources */,
 				5F1C9C1B19EDE87A000F1FC1 /* DaySupplements.png in Resources */,
 				5F1C9BB719EDE87A000F1FC1 /* Sticky@2x.png in Resources */,
@@ -2545,6 +2554,7 @@
 				5F223F3019F014620003AF64 /* ProfileTableViewController.m in Sources */,
 				5F1C9B8219EDE87A000F1FC1 /* CalendarViewController.m in Sources */,
 				5F1C9B8B19EDE87A000F1FC1 /* FAMSettingsViewController.m in Sources */,
+				5F2B1DE81A097F0A0078A11D /* TrackingTemperatureTableViewCell.m in Sources */,
 				5F1C9B8C19EDE87A000F1FC1 /* FertilityProfileIntroViewController.m in Sources */,
 				5F1C96F919EDD31A000F1FC1 /* MPSurveyQuestion.m in Sources */,
 				5F1C970319EDD31A000F1FC1 /* MPUIImageToNSDictionaryValueTransformer.m in Sources */,
