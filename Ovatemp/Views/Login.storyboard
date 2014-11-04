@@ -52,7 +52,7 @@
                                     <segue destination="A27-NT-QUR" kind="push" id="vZ5-L5-qh4"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPD-7T-qbV">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPD-7T-qbV">
                                 <rect key="frame" x="88" y="305" width="133" height="30"/>
                                 <state key="normal" title="Jump to Welcome2">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -370,19 +370,20 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="seX-3l-BiP">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="gRw-wx-L5R" id="joA-9z-Dnb"/>
-                                    <outlet property="delegate" destination="gRw-wx-L5R" id="x8M-7c-Pet"/>
-                                </connections>
-                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Getting to know you" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOW-al-JBH">
                                 <rect key="frame" x="79" y="82" width="162" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="seX-3l-BiP">
+                                <rect key="frame" x="0.0" y="258" width="320" height="290"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="gRw-wx-L5R" id="joA-9z-Dnb"/>
+                                    <outlet property="delegate" destination="gRw-wx-L5R" id="x8M-7c-Pet"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -416,22 +417,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Will you be using an ONDO Thermometer?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="692-Hb-sqX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Will you be using an ONDO Thermometer?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="692-Hb-sqX">
                                 <rect key="frame" x="70" y="85" width="181" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="mVp-6z-l9u"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCg-9y-xiW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCg-9y-xiW">
                                 <rect key="frame" x="27" y="147" width="266" height="114"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="114" id="5NI-gV-MaN"/>
+                                </constraints>
                                 <string key="text">ONDO is the only thermometer that seamlessly syncs your Basal Body Temperature (BBT) with your phone. 
 If you will be using an ONDO Thermometer, you will need to pair it with your device via Bluetooth.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeZ-3h-R1R">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeZ-3h-R1R">
                                 <rect key="frame" x="16" y="404" width="288" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="ldG-mJ-Q93"/>
+                                </constraints>
                                 <state key="normal" title="Yes" backgroundImage="btn_signup_login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -442,8 +452,11 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                     <action selector="doONDOPairing:" destination="4wG-ur-4Q6" eventType="touchUpInside" id="Zs3-4N-ei9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="om6-3N-P0D">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="om6-3N-P0D">
                                 <rect key="frame" x="16" y="472" width="288" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="uRm-WR-N9f"/>
+                                </constraints>
                                 <state key="normal" title="No" backgroundImage="btn_signup_login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -454,8 +467,11 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                     <action selector="doNoPairing:" destination="4wG-ur-4Q6" eventType="touchUpInside" id="Goa-j0-Put"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LnZ-ph-IIC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LnZ-ph-IIC">
                                 <rect key="frame" x="75" y="518" width="171" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="qdI-DS-QcW"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="Learn more about ONDO">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -465,15 +481,39 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                     <action selector="doLearnMoreAboutONDO:" destination="4wG-ur-4Q6" eventType="touchUpInside" id="ooY-jC-HtH"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_thermometer" translatesAutoresizingMaskIntoConstraints="NO" id="Iwf-Pw-SxN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_thermometer" translatesAutoresizingMaskIntoConstraints="NO" id="Iwf-Pw-SxN">
                                 <rect key="frame" x="100" y="269" width="120" height="120"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="qeZ-3h-R1R" firstAttribute="top" secondItem="Iwf-Pw-SxN" secondAttribute="bottom" constant="15" id="69Z-F6-87r"/>
+                            <constraint firstItem="qeZ-3h-R1R" firstAttribute="trailing" secondItem="Vqc-O1-7Fd" secondAttribute="trailingMargin" id="8o3-h1-5Xv"/>
+                            <constraint firstItem="om6-3N-P0D" firstAttribute="leading" secondItem="Vqc-O1-7Fd" secondAttribute="leadingMargin" id="DBh-kS-rJ0"/>
+                            <constraint firstItem="rCg-9y-xiW" firstAttribute="top" secondItem="692-Hb-sqX" secondAttribute="bottom" constant="8" symbolic="YES" id="Ift-h4-9xx"/>
+                            <constraint firstItem="LnZ-ph-IIC" firstAttribute="leading" secondItem="Vqc-O1-7Fd" secondAttribute="leadingMargin" constant="59" id="JCV-nY-ZXI"/>
+                            <constraint firstItem="692-Hb-sqX" firstAttribute="top" secondItem="UcP-IU-CON" secondAttribute="bottom" constant="21" id="JLG-36-w3j"/>
+                            <constraint firstItem="LnZ-ph-IIC" firstAttribute="centerX" secondItem="om6-3N-P0D" secondAttribute="centerX" id="NTG-Ln-Per"/>
+                            <constraint firstItem="LnZ-ph-IIC" firstAttribute="top" secondItem="om6-3N-P0D" secondAttribute="bottom" constant="1" id="OB2-WJ-SZh"/>
+                            <constraint firstAttribute="bottom" secondItem="LnZ-ph-IIC" secondAttribute="bottom" constant="20" symbolic="YES" id="TFV-fX-1Ng"/>
+                            <constraint firstItem="om6-3N-P0D" firstAttribute="trailing" secondItem="qeZ-3h-R1R" secondAttribute="trailing" id="TdF-ef-Rqb"/>
+                            <constraint firstItem="rCg-9y-xiW" firstAttribute="centerX" secondItem="Iwf-Pw-SxN" secondAttribute="centerX" id="byP-pP-Kqw"/>
+                            <constraint firstItem="692-Hb-sqX" firstAttribute="centerX" secondItem="rCg-9y-xiW" secondAttribute="centerX" id="eWC-V1-1Z4"/>
+                            <constraint firstItem="692-Hb-sqX" firstAttribute="leading" secondItem="Vqc-O1-7Fd" secondAttribute="leadingMargin" constant="54" id="gDy-hG-Kcm"/>
+                            <constraint firstItem="om6-3N-P0D" firstAttribute="leading" secondItem="qeZ-3h-R1R" secondAttribute="leading" id="nfT-Fr-rUH"/>
+                            <constraint firstItem="rCg-9y-xiW" firstAttribute="leading" secondItem="Vqc-O1-7Fd" secondAttribute="leadingMargin" constant="11" id="ns2-ob-lrB"/>
+                            <constraint firstItem="Iwf-Pw-SxN" firstAttribute="centerX" secondItem="qeZ-3h-R1R" secondAttribute="centerX" id="oqb-7M-SPU"/>
+                            <constraint firstItem="Iwf-Pw-SxN" firstAttribute="leading" secondItem="Vqc-O1-7Fd" secondAttribute="leadingMargin" constant="84" id="smD-wN-yYc"/>
+                            <constraint firstItem="Iwf-Pw-SxN" firstAttribute="top" secondItem="rCg-9y-xiW" secondAttribute="bottom" constant="8" symbolic="YES" id="tcf-RE-jRq"/>
+                            <constraint firstItem="om6-3N-P0D" firstAttribute="top" secondItem="qeZ-3h-R1R" secondAttribute="bottom" constant="23" id="uE6-8U-gH9"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Welcome" id="h1W-xB-o0v">
                         <barButtonItem key="backBarButtonItem" title="Back" id="aB5-x7-pqw"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="ondoImageView" destination="Iwf-Pw-SxN" id="FjO-KM-rdr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xc9-eu-E6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

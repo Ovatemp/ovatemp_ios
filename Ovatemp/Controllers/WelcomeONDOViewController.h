@@ -10,4 +10,6 @@
 
 @interface WelcomeONDOViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *ondoImageView;
+
 @end
