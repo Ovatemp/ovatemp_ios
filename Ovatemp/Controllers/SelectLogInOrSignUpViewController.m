@@ -7,6 +7,7 @@
 //
 
 #import "SelectLogInOrSignUpViewController.h"
+#import "WebViewController.h"
 
 @interface SelectLogInOrSignUpViewController ()
 
@@ -43,6 +44,13 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO];
+}
+
+- (IBAction)doPresentTerms:(id)sender {
+    NSString *url = [ROOT_URL stringByAppendingString:@"/terms"];
+    WebViewController *webViewController = [WebViewController withURL:url];
+    webViewController.title = @"Terms and Conditions";
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 
 /*
