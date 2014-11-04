@@ -36,28 +36,28 @@
                         <outlet property="delegate" destination="-1" id="PBM-nh-CAD"/>
                     </connections>
                 </tableView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_ondo" translatesAutoresizingMaskIntoConstraints="NO" id="ELq-eY-TJc">
-                    <rect key="frame" x="72" y="83" width="176" height="99"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_thermometer" translatesAutoresizingMaskIntoConstraints="NO" id="ELq-eY-TJc">
+                    <rect key="frame" x="100" y="70" width="120" height="120"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="ari-P5-BJd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="59" id="6JJ-BX-N5Z"/>
                 <constraint firstItem="OWk-Tk-5BQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Cyg-6a-kwr"/>
-                <constraint firstItem="ari-P5-BJd" firstAttribute="top" secondItem="ELq-eY-TJc" secondAttribute="bottom" constant="8" symbolic="YES" id="DA2-Mp-lF9"/>
-                <constraint firstItem="ELq-eY-TJc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="72" id="XLr-EP-rZb"/>
+                <constraint firstItem="ari-P5-BJd" firstAttribute="top" secondItem="ELq-eY-TJc" secondAttribute="bottom" id="DA2-Mp-lF9"/>
+                <constraint firstItem="ELq-eY-TJc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="100" id="XLr-EP-rZb"/>
                 <constraint firstAttribute="trailing" secondItem="OWk-Tk-5BQ" secondAttribute="trailing" id="Yo2-WU-wgK"/>
                 <constraint firstItem="ari-P5-BJd" firstAttribute="centerX" secondItem="OWk-Tk-5BQ" secondAttribute="centerX" id="b3G-M0-8Mh"/>
                 <constraint firstItem="OWk-Tk-5BQ" firstAttribute="top" secondItem="ari-P5-BJd" secondAttribute="bottom" constant="16" id="hKk-sv-hAF"/>
                 <constraint firstAttribute="bottom" secondItem="OWk-Tk-5BQ" secondAttribute="bottom" constant="59" id="m8h-e2-uSk"/>
                 <constraint firstItem="ari-P5-BJd" firstAttribute="centerX" secondItem="ELq-eY-TJc" secondAttribute="centerX" id="qXL-Qs-lcX"/>
-                <constraint firstItem="ELq-eY-TJc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="83" id="zu3-8c-ggs"/>
+                <constraint firstItem="ELq-eY-TJc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="zu3-8c-ggs"/>
             </constraints>
             <point key="canvasLocation" x="139" y="154"/>
         </view>
     </objects>
     <resources>
-        <image name="img_ondo" width="192" height="108"/>
+        <image name="img_thermometer" width="95" height="95"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
