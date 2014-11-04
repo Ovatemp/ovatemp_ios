@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="5RQ-0I-Qml">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -51,7 +52,7 @@
                                     <segue destination="A27-NT-QUR" kind="push" id="vZ5-L5-qh4"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPD-7T-qbV">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPD-7T-qbV">
                                 <rect key="frame" x="88" y="305" width="133" height="30"/>
                                 <state key="normal" title="Jump to Welcome2">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -93,16 +94,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Jzt-mx-ak0" firstAttribute="top" secondItem="Cxc-BL-bYj" secondAttribute="bottom" constant="65" id="2Ih-uc-EUf"/>
-                            <constraint firstItem="yro-nn-XMT" firstAttribute="top" secondItem="7DU-7y-x7c" secondAttribute="bottom" constant="24" id="7IT-fe-SGz"/>
-                            <constraint firstItem="yro-nn-XMT" firstAttribute="leading" secondItem="7DU-7y-x7c" secondAttribute="leading" id="Q1t-Sc-pYR"/>
-                            <constraint firstItem="Cxc-BL-bYj" firstAttribute="top" secondItem="yro-nn-XMT" secondAttribute="bottom" constant="8" symbolic="YES" id="QkF-77-ZLw"/>
-                            <constraint firstItem="8Qf-fN-4FS" firstAttribute="bottom" secondItem="Jzt-mx-ak0" secondAttribute="top" id="U14-LS-YkT"/>
-                            <constraint firstItem="7DU-7y-x7c" firstAttribute="top" secondItem="UPD-7T-qbV" secondAttribute="bottom" constant="28" id="adN-4x-lxk"/>
-                            <constraint firstItem="UPD-7T-qbV" firstAttribute="trailing" secondItem="Cxc-BL-bYj" secondAttribute="trailing" id="dnP-0K-rKM"/>
-                            <constraint firstItem="8Qf-fN-4FS" firstAttribute="centerX" secondItem="7DU-7y-x7c" secondAttribute="centerX" id="eL2-FF-hRT"/>
-                            <constraint firstItem="yro-nn-XMT" firstAttribute="centerX" secondItem="Cxc-BL-bYj" secondAttribute="centerX" id="lkh-IX-uRn"/>
-                            <constraint firstItem="8Qf-fN-4FS" firstAttribute="leading" secondItem="OZt-kB-AOu" secondAttribute="leading" id="vft-q5-bg0"/>
+                            <constraint firstItem="UPD-7T-qbV" firstAttribute="trailing" secondItem="Cxc-BL-bYj" secondAttribute="trailing" id="7Ea-nt-zLN"/>
+                            <constraint firstItem="Cxc-BL-bYj" firstAttribute="centerX" secondItem="yro-nn-XMT" secondAttribute="centerX" id="9G3-aO-WmZ"/>
+                            <constraint firstItem="Cxc-BL-bYj" firstAttribute="top" secondItem="yro-nn-XMT" secondAttribute="bottom" constant="8" symbolic="YES" id="Dqg-Vv-h9J"/>
+                            <constraint firstItem="8Qf-fN-4FS" firstAttribute="centerX" secondItem="Cxc-BL-bYj" secondAttribute="centerX" id="OYB-xK-XvQ"/>
+                            <constraint firstItem="yro-nn-XMT" firstAttribute="top" secondItem="7DU-7y-x7c" secondAttribute="bottom" constant="24" id="QAK-Un-zka"/>
+                            <constraint firstItem="yro-nn-XMT" firstAttribute="leading" secondItem="7DU-7y-x7c" secondAttribute="leading" id="eWH-Fa-XtN"/>
+                            <constraint firstItem="8Qf-fN-4FS" firstAttribute="leading" secondItem="OZt-kB-AOu" secondAttribute="leading" id="hGw-BV-aB9"/>
+                            <constraint firstItem="8Qf-fN-4FS" firstAttribute="bottom" secondItem="Jzt-mx-ak0" secondAttribute="top" id="pDt-q2-65z"/>
+                            <constraint firstItem="Jzt-mx-ak0" firstAttribute="top" secondItem="Cxc-BL-bYj" secondAttribute="bottom" constant="65" id="pXs-CS-5t5"/>
+                            <constraint firstItem="7DU-7y-x7c" firstAttribute="top" secondItem="UPD-7T-qbV" secondAttribute="bottom" constant="28" id="wTu-5z-r01"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uBw-4e-qIF"/>
@@ -123,23 +124,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tuo-ck-sL0">
-                                <rect key="frame" x="16" y="152" width="288" height="45"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tuo-ck-sL0">
+                                <rect key="frame" x="16" y="162" width="288" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288" id="he8-vX-Toc"/>
+                                    <constraint firstAttribute="height" constant="45" id="t2H-XU-aHU"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" red="0.5607843137254902" green="0.50980392156862742" blue="0.61568627450980395" alpha="1" colorSpace="deviceRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Date of Birth" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RO9-id-8xH">
-                                <rect key="frame" x="16" y="205" width="288" height="45"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Date of Birth" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RO9-id-8xH">
+                                <rect key="frame" x="16" y="215" width="288" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288" id="Lak-HF-hqi"/>
+                                    <constraint firstAttribute="height" constant="45" id="bmc-jw-uLv"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" red="0.5607843137254902" green="0.50980392156862742" blue="0.61568627450980395" alpha="1" colorSpace="deviceRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sxc-1f-7bk">
-                                <rect key="frame" x="16" y="294" width="288" height="45"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sxc-1f-7bk">
+                                <rect key="frame" x="16" y="304" width="288" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="kxC-qM-JQf"/>
+                                    <constraint firstAttribute="width" constant="288" id="nWP-YG-zZc"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" red="0.56078431370000004" green="0.50980392159999999" blue="0.61568627450000002" alpha="1" colorSpace="deviceRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytD-pr-ZyT">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytD-pr-ZyT">
                                 <rect key="frame" x="16" y="483" width="288" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288" id="6w5-Y0-qbC"/>
+                                    <constraint firstAttribute="height" constant="45" id="Orm-Xi-aGl"/>
+                                </constraints>
                                 <state key="normal" title="Sign Up" backgroundImage="btn_signup_login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -150,13 +182,39 @@
                                     <action selector="sessionRegister:" destination="E4r-6s-Glc" eventType="touchUpInside" id="4tX-1r-Nt1"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jy1-kj-rkP">
-                                <rect key="frame" x="16" y="347" width="288" height="45"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jy1-kj-rkP">
+                                <rect key="frame" x="16" y="357" width="288" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Njx-hq-3JE"/>
+                                    <constraint firstAttribute="width" constant="288" id="z5o-V9-8BY"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" red="0.56078431370000004" green="0.50980392159999999" blue="0.61568627450000002" alpha="1" colorSpace="deviceRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RO9-id-8xH" firstAttribute="top" secondItem="tuo-ck-sL0" secondAttribute="bottom" constant="8" id="1CC-YR-12i"/>
+                            <constraint firstItem="ytD-pr-ZyT" firstAttribute="leading" secondItem="UhM-Z6-Iye" secondAttribute="leadingMargin" id="4Mv-OV-ytd"/>
+                            <constraint firstItem="Sxc-1f-7bk" firstAttribute="leading" secondItem="UhM-Z6-Iye" secondAttribute="leadingMargin" id="9If-yR-fFt"/>
+                            <constraint firstItem="Jy1-kj-rkP" firstAttribute="top" secondItem="Sxc-1f-7bk" secondAttribute="bottom" constant="8" id="D8a-gn-vX5"/>
+                            <constraint firstItem="RO9-id-8xH" firstAttribute="trailing" secondItem="UhM-Z6-Iye" secondAttribute="trailingMargin" id="QCa-LW-ovF"/>
+                            <constraint firstItem="Sxc-1f-7bk" firstAttribute="top" secondItem="RO9-id-8xH" secondAttribute="bottom" constant="44" id="QmJ-OC-p50"/>
+                            <constraint firstItem="Jy1-kj-rkP" firstAttribute="leading" secondItem="UhM-Z6-Iye" secondAttribute="leadingMargin" id="btF-Ly-0qc"/>
+                            <constraint firstItem="tuo-ck-sL0" firstAttribute="leading" secondItem="UhM-Z6-Iye" secondAttribute="leadingMargin" id="lsk-g3-S1M"/>
+                            <constraint firstItem="JgD-JO-NpE" firstAttribute="top" secondItem="ytD-pr-ZyT" secondAttribute="bottom" constant="40" id="pz7-PH-jD9"/>
+                            <constraint firstItem="tuo-ck-sL0" firstAttribute="trailing" secondItem="UhM-Z6-Iye" secondAttribute="trailingMargin" id="r1d-Kk-62f"/>
+                            <constraint firstItem="ytD-pr-ZyT" firstAttribute="trailing" secondItem="UhM-Z6-Iye" secondAttribute="trailingMargin" id="rJy-fa-AYF"/>
+                            <constraint firstItem="RO9-id-8xH" firstAttribute="leading" secondItem="UhM-Z6-Iye" secondAttribute="leadingMargin" id="sbN-TF-jJh"/>
+                            <constraint firstItem="Sxc-1f-7bk" firstAttribute="trailing" secondItem="UhM-Z6-Iye" secondAttribute="trailingMargin" id="uGz-ZK-h3z"/>
+                            <constraint firstItem="ytD-pr-ZyT" firstAttribute="top" secondItem="Jy1-kj-rkP" secondAttribute="bottom" constant="81" id="wkO-Nl-ZIR"/>
+                            <constraint firstItem="Jy1-kj-rkP" firstAttribute="trailing" secondItem="UhM-Z6-Iye" secondAttribute="trailingMargin" id="zRb-Pd-u1b"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sign Up" id="MJc-MD-bfm"/>
                     <connections>
@@ -242,7 +300,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8y8-Bd-WUr">
-                                <rect key="frame" x="0.0" y="193" width="320" height="233"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I’m trying to conceive" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UH-MO-hod">
@@ -313,20 +370,20 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="seX-3l-BiP">
-                                <rect key="frame" x="0.0" y="300" width="320" height="248"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="gRw-wx-L5R" id="joA-9z-Dnb"/>
-                                    <outlet property="delegate" destination="gRw-wx-L5R" id="x8M-7c-Pet"/>
-                                </connections>
-                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Getting to know you" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOW-al-JBH">
                                 <rect key="frame" x="79" y="82" width="162" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="seX-3l-BiP">
+                                <rect key="frame" x="0.0" y="258" width="320" height="290"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="gRw-wx-L5R" id="joA-9z-Dnb"/>
+                                    <outlet property="delegate" destination="gRw-wx-L5R" id="x8M-7c-Pet"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -360,22 +417,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Will you be using an ONDO Thermometer?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="692-Hb-sqX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Will you be using an ONDO Thermometer?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="692-Hb-sqX">
                                 <rect key="frame" x="70" y="85" width="181" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="mVp-6z-l9u"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCg-9y-xiW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCg-9y-xiW">
                                 <rect key="frame" x="27" y="147" width="266" height="114"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="114" id="5NI-gV-MaN"/>
+                                </constraints>
                                 <string key="text">ONDO is the only thermometer that seamlessly syncs your Basal Body Temperature (BBT) with your phone. 
 If you will be using an ONDO Thermometer, you will need to pair it with your device via Bluetooth.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeZ-3h-R1R">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeZ-3h-R1R">
                                 <rect key="frame" x="16" y="404" width="288" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="ldG-mJ-Q93"/>
+                                </constraints>
                                 <state key="normal" title="Yes" backgroundImage="btn_signup_login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -386,8 +452,11 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                     <action selector="doONDOPairing:" destination="4wG-ur-4Q6" eventType="touchUpInside" id="Zs3-4N-ei9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="om6-3N-P0D">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="om6-3N-P0D">
                                 <rect key="frame" x="16" y="472" width="288" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="uRm-WR-N9f"/>
+                                </constraints>
                                 <state key="normal" title="No" backgroundImage="btn_signup_login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -398,8 +467,11 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                     <action selector="doNoPairing:" destination="4wG-ur-4Q6" eventType="touchUpInside" id="Goa-j0-Put"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LnZ-ph-IIC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LnZ-ph-IIC">
                                 <rect key="frame" x="75" y="518" width="171" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="qdI-DS-QcW"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="Learn more about ONDO">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -409,15 +481,39 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                     <action selector="doLearnMoreAboutONDO:" destination="4wG-ur-4Q6" eventType="touchUpInside" id="ooY-jC-HtH"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_thermometer" translatesAutoresizingMaskIntoConstraints="NO" id="Iwf-Pw-SxN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_thermometer" translatesAutoresizingMaskIntoConstraints="NO" id="Iwf-Pw-SxN">
                                 <rect key="frame" x="100" y="269" width="120" height="120"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="qeZ-3h-R1R" firstAttribute="top" secondItem="Iwf-Pw-SxN" secondAttribute="bottom" constant="15" id="69Z-F6-87r"/>
+                            <constraint firstItem="qeZ-3h-R1R" firstAttribute="trailing" secondItem="Vqc-O1-7Fd" secondAttribute="trailingMargin" id="8o3-h1-5Xv"/>
+                            <constraint firstItem="om6-3N-P0D" firstAttribute="leading" secondItem="Vqc-O1-7Fd" secondAttribute="leadingMargin" id="DBh-kS-rJ0"/>
+                            <constraint firstItem="rCg-9y-xiW" firstAttribute="top" secondItem="692-Hb-sqX" secondAttribute="bottom" constant="8" symbolic="YES" id="Ift-h4-9xx"/>
+                            <constraint firstItem="LnZ-ph-IIC" firstAttribute="leading" secondItem="Vqc-O1-7Fd" secondAttribute="leadingMargin" constant="59" id="JCV-nY-ZXI"/>
+                            <constraint firstItem="692-Hb-sqX" firstAttribute="top" secondItem="UcP-IU-CON" secondAttribute="bottom" constant="21" id="JLG-36-w3j"/>
+                            <constraint firstItem="LnZ-ph-IIC" firstAttribute="centerX" secondItem="om6-3N-P0D" secondAttribute="centerX" id="NTG-Ln-Per"/>
+                            <constraint firstItem="LnZ-ph-IIC" firstAttribute="top" secondItem="om6-3N-P0D" secondAttribute="bottom" constant="1" id="OB2-WJ-SZh"/>
+                            <constraint firstAttribute="bottom" secondItem="LnZ-ph-IIC" secondAttribute="bottom" constant="20" symbolic="YES" id="TFV-fX-1Ng"/>
+                            <constraint firstItem="om6-3N-P0D" firstAttribute="trailing" secondItem="qeZ-3h-R1R" secondAttribute="trailing" id="TdF-ef-Rqb"/>
+                            <constraint firstItem="rCg-9y-xiW" firstAttribute="centerX" secondItem="Iwf-Pw-SxN" secondAttribute="centerX" id="byP-pP-Kqw"/>
+                            <constraint firstItem="692-Hb-sqX" firstAttribute="centerX" secondItem="rCg-9y-xiW" secondAttribute="centerX" id="eWC-V1-1Z4"/>
+                            <constraint firstItem="692-Hb-sqX" firstAttribute="leading" secondItem="Vqc-O1-7Fd" secondAttribute="leadingMargin" constant="54" id="gDy-hG-Kcm"/>
+                            <constraint firstItem="om6-3N-P0D" firstAttribute="leading" secondItem="qeZ-3h-R1R" secondAttribute="leading" id="nfT-Fr-rUH"/>
+                            <constraint firstItem="rCg-9y-xiW" firstAttribute="leading" secondItem="Vqc-O1-7Fd" secondAttribute="leadingMargin" constant="11" id="ns2-ob-lrB"/>
+                            <constraint firstItem="Iwf-Pw-SxN" firstAttribute="centerX" secondItem="qeZ-3h-R1R" secondAttribute="centerX" id="oqb-7M-SPU"/>
+                            <constraint firstItem="Iwf-Pw-SxN" firstAttribute="leading" secondItem="Vqc-O1-7Fd" secondAttribute="leadingMargin" constant="84" id="smD-wN-yYc"/>
+                            <constraint firstItem="Iwf-Pw-SxN" firstAttribute="top" secondItem="rCg-9y-xiW" secondAttribute="bottom" constant="8" symbolic="YES" id="tcf-RE-jRq"/>
+                            <constraint firstItem="om6-3N-P0D" firstAttribute="top" secondItem="qeZ-3h-R1R" secondAttribute="bottom" constant="23" id="uE6-8U-gH9"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Welcome" id="h1W-xB-o0v">
                         <barButtonItem key="backBarButtonItem" title="Back" id="aB5-x7-pqw"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="ondoImageView" destination="Iwf-Pw-SxN" id="FjO-KM-rdr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xc9-eu-E6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -435,11 +531,15 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg_launching" translatesAutoresizingMaskIntoConstraints="NO" id="ex7-sR-0MO">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_launchingscreen" translatesAutoresizingMaskIntoConstraints="NO" id="ex7-sR-0MO">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ScB-L1-76z">
-                                <rect key="frame" x="16" y="295" width="288" height="45"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ScB-L1-76z">
+                                <rect key="frame" x="16" y="302" width="288" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="6Dh-jC-7TV"/>
+                                    <constraint firstAttribute="width" constant="288" id="zvN-pT-9Nc"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                 <userDefinedRuntimeAttributes>
@@ -448,8 +548,12 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d74-Xq-dTh">
-                                <rect key="frame" x="16" y="353" width="288" height="45"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d74-Xq-dTh">
+                                <rect key="frame" x="16" y="360" width="288" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288" id="5cc-GL-ROP"/>
+                                    <constraint firstAttribute="height" constant="45" id="Hij-uF-I8S"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
@@ -458,8 +562,12 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YW-5h-plm">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YW-5h-plm">
                                 <rect key="frame" x="16" y="431" width="288" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="L8M-eK-QCq"/>
+                                    <constraint firstAttribute="width" constant="288" id="nlV-HQ-Q6k"/>
+                                </constraints>
                                 <state key="normal" title="Log In" backgroundImage="btn_signup_login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -470,8 +578,12 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                     <action selector="doLogin:" destination="A27-NT-QUR" eventType="touchUpInside" id="OTQ-mT-WaF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcI-gM-ZVm">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcI-gM-ZVm">
                                 <rect key="frame" x="102" y="484" width="117" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="117" id="Rd7-Z4-Sb3"/>
+                                    <constraint firstAttribute="height" constant="12" id="gvt-fh-vjM"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="Forgot Password?">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -481,11 +593,20 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                     <action selector="doResetPassword:" destination="A27-NT-QUR" eventType="touchUpInside" id="9Jf-F4-UnU"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_ovatemp_logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="IHe-hJ-3gj">
-                                <rect key="frame" x="68" y="83" width="184" height="194"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zXD-b5-HJw" firstAttribute="top" secondItem="ex7-sR-0MO" secondAttribute="bottom" id="2II-29-Kqd"/>
+                            <constraint firstItem="9YW-5h-plm" firstAttribute="top" secondItem="d74-Xq-dTh" secondAttribute="bottom" constant="26" id="F9J-ER-1df"/>
+                            <constraint firstItem="dcI-gM-ZVm" firstAttribute="centerX" secondItem="ex7-sR-0MO" secondAttribute="centerX" id="Hvn-q4-EsY"/>
+                            <constraint firstItem="dcI-gM-ZVm" firstAttribute="top" secondItem="9YW-5h-plm" secondAttribute="bottom" constant="8" id="JPx-he-gUu"/>
+                            <constraint firstItem="dcI-gM-ZVm" firstAttribute="centerX" secondItem="d74-Xq-dTh" secondAttribute="centerX" id="Uq2-wa-ZJP"/>
+                            <constraint firstItem="dcI-gM-ZVm" firstAttribute="centerX" secondItem="9YW-5h-plm" secondAttribute="centerX" id="bJy-xq-DNa"/>
+                            <constraint firstItem="dcI-gM-ZVm" firstAttribute="centerX" secondItem="ScB-L1-76z" secondAttribute="centerX" id="fe7-Mg-f4m"/>
+                            <constraint firstItem="zXD-b5-HJw" firstAttribute="top" secondItem="dcI-gM-ZVm" secondAttribute="bottom" constant="72" id="gmY-Ah-DQF"/>
+                            <constraint firstItem="d74-Xq-dTh" firstAttribute="top" secondItem="ScB-L1-76z" secondAttribute="bottom" constant="13" id="k1m-Wu-G3l"/>
+                            <constraint firstItem="dcI-gM-ZVm" firstAttribute="centerX" secondItem="JZY-LF-IwK" secondAttribute="centerX" id="u5v-aA-zPr"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Log In" id="u0Y-ZD-qhU"/>
                     <connections>
@@ -501,13 +622,11 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
         </scene>
     </scenes>
     <resources>
-        <image name="bg_launching" width="320" height="568"/>
         <image name="btn_signup_login" width="282" height="46"/>
         <image name="btn_signup_login_pressed" width="282" height="46"/>
         <image name="btn_tryingtoconceive" width="294" height="93"/>
         <image name="btn_tryingtoconceive_pressed" width="294" height="93"/>
         <image name="img_launchingscreen" width="320" height="568"/>
-        <image name="img_ovatemp_logo-1" width="184" height="194"/>
         <image name="img_thermometer" width="95" height="95"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

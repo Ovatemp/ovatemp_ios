@@ -10,6 +10,8 @@
 #import "ONDO.h"
 #import "WebViewController.h"
 
+#import <sys/utsname.h> // for device name
+
 @interface WelcomeONDOViewController () <ONDODelegate>
 
 @end
@@ -19,6 +21,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSLog(@"%@", machineName());
+    NSString *deviceName = machineName();
+    
+    if ([deviceName isEqualToString:@"iPhone4,1"]) {
+        // hide squished ondo image
+        self.ondoImageView.hidden = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,6 +52,14 @@
     WebViewController *webViewController = [WebViewController withURL:url];
     webViewController.title = @"ONDO";
     [self.navigationController pushViewController:webViewController animated:YES];
+}
+
+NSString* machineName() {
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    
+    return [NSString stringWithCString:systemInfo.machine
+                              encoding:NSUTF8StringEncoding];
 }
 
 /*
