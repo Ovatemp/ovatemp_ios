@@ -16,6 +16,7 @@
 
 #import "TrackingStatusTableViewCell.h"
 #import "TrackingTemperatureTableViewCell.h"
+#import "TrackingCervicalFluidTableViewCell.h"
 
 typedef enum {
     TableStateAllClosed,
@@ -47,9 +48,11 @@ typedef enum {
 // cells
 @property TrackingStatusTableViewCell *statusCell;
 @property TrackingTemperatureTableViewCell *tempCell;
+@property TrackingCervicalFluidTableViewCell *cfCell;
 
 // info
 @property CGFloat temperature;
+@property NSString *cervicalFluid;
 
 @end
 
@@ -289,11 +292,14 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     MedicineCellHasData = NO;
     
     currentState = TableStateAllClosed;
+    [self setTableStateForState:currentState];
     
     // register cells
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingStatusTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"statusCell"];
     
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingTemperatureTableViewCell" bundle:nil] forCellReuseIdentifier:@"tempCell"];
+    
+    [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingCervicalFluidTableViewCell" bundle:nil] forCellReuseIdentifier:@"cfCell"];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -547,16 +553,33 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
         case 2:
         {
-            cell = [[UITableViewCell alloc] init];
             
-            [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
-            
-            cell.layoutMargins = UIEdgeInsetsZero;
-            
+            self.cfCell = [self.tableView dequeueReusableCellWithIdentifier:@"cfCell" forIndexPath:indexPath];
+
             // TODO: Finish custom cell implementation
-//            if (expandCervicalFluidCell) {
-//                // unhide component
-//            }
+            if (expandCervicalFluidCell) {
+                self.cfCell.dryImageView.hidden = NO;
+                self.cfCell.dryLabel.hidden = NO;
+                
+                self.cfCell.stickyImageView.hidden = NO;
+                self.cfCell.stickyLabel.hidden = NO;
+                
+                self.cfCell.creamyImageView.hidden = NO;
+                self.cfCell.creamyLabel.hidden = NO;
+                
+                self.cfCell.eggwhiteImageView.hidden = NO;
+                self.cfCell.eggwhiteLabel.hidden = NO;
+                
+                // unhide selection components
+                self.cfCell.placeholderLabel.hidden = YES;
+                self.cfCell.cfCollapsedLabel.hidden = NO;
+                self.cfCell.cfTypeImageView.hidden = NO;
+            }
+            
+            self.cfCell.layoutMargins = UIEdgeInsetsZero;
+            
+            return self.cfCell;
+            
             break;
         }
         
@@ -754,11 +777,33 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         }
            
         // TODO: Finish implementaiton for custom cells
-//        case 2:
-//        {
-//            break;
-//        }
-//            
+        case 2:
+        {
+            if (currentState == TableStateCervicalFluidExpanded) {
+                [self setTableStateForState:TableStateAllClosed];
+            } else {
+                [self setTableStateForState:TableStateCervicalFluidExpanded];
+            }
+            
+            // first time the cell is opened we need to save the temp
+            if (firstOpenCervicalFluidCell) {
+                
+                // No initial data until user makes a selection
+//                self.temperature = [self.tempCell.temperatureValueLabel.text floatValue];
+                firstOpenTemperatureCell = NO;
+//                TemperatureCellHasData = YES;
+            }
+            
+            // record temp
+            if (!expandCervicalFluidCell) {
+                if (CervicalFluidCellHasData) {
+                    self.cervicalFluid = self.cfCell.cfTypeCollapsedLabel.text;
+                }
+            }
+            
+            break;
+        }
+//
 //        case 3:
 //        {
 //            break;
@@ -830,11 +875,14 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         }
 
         // TODO: Finish implementation for custom cells
-//        case 2:
-//        {
-//            break;
-//        }
-//            
+        case 2:
+        {
+            if (CervicalFluidCellHasData) {
+                self.cfCell.cfTypeCollapsedLabel.text = self.cervicalFluid;
+            }
+            break;
+        }
+//
 //        case 3:
 //        {
 //            break;
@@ -890,9 +938,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     }
     
     // TODO: Finish implementation for custom cells
-//    if (CervicalFluidCellHasData) {
-//        // TODO
-//    }
+    if (CervicalFluidCellHasData) {
+        // TODO
+        self.cfCell.cfTypeCollapsedLabel.text = self.cervicalFluid;
+    }
 //    if (CervicalPositionCellHasData) {
 //        // TODO
 //    }
@@ -952,8 +1001,33 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         {
             expandTemperatureCell = NO;
             self.tempCell.temperaturePicker.hidden = YES;
+            
             expandCervicalFluidCell = NO;
-            // hide cervical fluid component
+            self.cfCell.dryImageView.hidden = YES;
+            self.cfCell.dryLabel.hidden = YES;
+            
+            self.cfCell.stickyImageView.hidden = YES;
+            self.cfCell.stickyLabel.hidden = YES;
+            
+            self.cfCell.creamyImageView.hidden = YES;
+            self.cfCell.creamyLabel.hidden = YES;
+            
+            self.cfCell.eggwhiteImageView.hidden = YES;
+            self.cfCell.eggwhiteLabel.hidden = YES;
+            
+            // unhide selection components
+            if (CervicalFluidCellHasData) {
+                self.cfCell.placeholderLabel.hidden = YES;
+                self.cfCell.cfCollapsedLabel.hidden = NO;
+                self.cfCell.cfTypeImageView.hidden = NO;
+                self.cfCell.cfTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cfCell.placeholderLabel.hidden = NO;
+                self.cfCell.cfCollapsedLabel.hidden = YES;
+                self.cfCell.cfTypeImageView.hidden = YES;
+                self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandCervicalPositionCell = NO;
             // hide cervical position component
             expandPeriodCell = NO;
