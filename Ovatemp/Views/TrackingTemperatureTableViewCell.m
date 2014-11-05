@@ -16,16 +16,21 @@ NSMutableArray *temperatureFractionalPartPickerData;
 - (void)awakeFromNib {
     // Initialization code
     
+    temperatureIntegerPartPickerData = [[NSMutableArray alloc] init];
+    temperatureFractionalPartPickerData = [[NSMutableArray alloc] init];
+    
     // set up picker data source
     for (int i = 90; i < 107; i++) {
         [temperatureIntegerPartPickerData addObject:[NSString stringWithFormat:@"%d", i]];
     }
     
-    for (int i = 0; i < 101; i++) {
+    for (int i = 0; i < 100; i++) {
         [temperatureFractionalPartPickerData addObject:[NSString stringWithFormat:@"%d", i]];
     }
     
     self.temperaturePicker.delegate = self;
+    self.temperaturePicker.dataSource = self;
+    self.temperaturePicker.showsSelectionIndicator = YES;
     
 //    [self.temperaturePicker selectRow:4 inComponent:0 animated:YES];
 //    [self.temperaturePicker selectRow:60 inComponent:1 animated:YES];

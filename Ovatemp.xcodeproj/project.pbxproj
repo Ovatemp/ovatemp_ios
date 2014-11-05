@@ -392,6 +392,10 @@
 		5F4C5B081A02B09600D0F465 /* TrackingStatusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C5B061A02B09600D0F465 /* TrackingStatusTableViewCell.m */; };
 		5F4C5B091A02B09600D0F465 /* TrackingStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F4C5B071A02B09600D0F465 /* TrackingStatusTableViewCell.xib */; };
 		5F4C5B0D1A02C1CE00D0F465 /* TrackingNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C5B0B1A02C1CE00D0F465 /* TrackingNotesViewController.m */; };
+		5F5160951A0AB46B00F4B74E /* TrackingCervicalFluidTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5160931A0AB46B00F4B74E /* TrackingCervicalFluidTableViewCell.m */; };
+		5F5160961A0AB46B00F4B74E /* TrackingCervicalFluidTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F5160941A0AB46B00F4B74E /* TrackingCervicalFluidTableViewCell.xib */; };
+		5F51609A1A0AB48600F4B74E /* TrackingCervicalPositionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5160981A0AB48600F4B74E /* TrackingCervicalPositionTableViewCell.m */; };
+		5F51609B1A0AB48600F4B74E /* TrackingCervicalPositionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F5160991A0AB48600F4B74E /* TrackingCervicalPositionTableViewCell.xib */; };
 		5F58690619ED802400D2B58E /* Negative.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58677419ED802400D2B58E /* Negative.png */; };
 		5F58690719ED802400D2B58E /* Negative@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58677519ED802400D2B58E /* Negative@2x.png */; };
 		5F586A2719ED802400D2B58E /* Positive.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F58690419ED802400D2B58E /* Positive.png */; };
@@ -1013,6 +1017,12 @@
 		5F4C5B071A02B09600D0F465 /* TrackingStatusTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingStatusTableViewCell.xib; sourceTree = "<group>"; };
 		5F4C5B0A1A02C1CE00D0F465 /* TrackingNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingNotesViewController.h; sourceTree = "<group>"; };
 		5F4C5B0B1A02C1CE00D0F465 /* TrackingNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingNotesViewController.m; sourceTree = "<group>"; };
+		5F5160921A0AB46B00F4B74E /* TrackingCervicalFluidTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingCervicalFluidTableViewCell.h; sourceTree = "<group>"; };
+		5F5160931A0AB46B00F4B74E /* TrackingCervicalFluidTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingCervicalFluidTableViewCell.m; sourceTree = "<group>"; };
+		5F5160941A0AB46B00F4B74E /* TrackingCervicalFluidTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingCervicalFluidTableViewCell.xib; sourceTree = "<group>"; };
+		5F5160971A0AB48600F4B74E /* TrackingCervicalPositionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingCervicalPositionTableViewCell.h; sourceTree = "<group>"; };
+		5F5160981A0AB48600F4B74E /* TrackingCervicalPositionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingCervicalPositionTableViewCell.m; sourceTree = "<group>"; };
+		5F5160991A0AB48600F4B74E /* TrackingCervicalPositionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingCervicalPositionTableViewCell.xib; sourceTree = "<group>"; };
 		5F58677419ED802400D2B58E /* Negative.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Negative.png; sourceTree = "<group>"; };
 		5F58677519ED802400D2B58E /* Negative@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Negative@2x.png"; sourceTree = "<group>"; };
 		5F58690419ED802400D2B58E /* Positive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Positive.png; sourceTree = "<group>"; };
@@ -1967,6 +1977,12 @@
 			isa = PBXGroup;
 			children = (
 				5F7AEA621A0122BB0053ABAB /* Tracking.storyboard */,
+				5F5160971A0AB48600F4B74E /* TrackingCervicalPositionTableViewCell.h */,
+				5F5160981A0AB48600F4B74E /* TrackingCervicalPositionTableViewCell.m */,
+				5F5160991A0AB48600F4B74E /* TrackingCervicalPositionTableViewCell.xib */,
+				5F5160921A0AB46B00F4B74E /* TrackingCervicalFluidTableViewCell.h */,
+				5F5160931A0AB46B00F4B74E /* TrackingCervicalFluidTableViewCell.m */,
+				5F5160941A0AB46B00F4B74E /* TrackingCervicalFluidTableViewCell.xib */,
 				5F2B1DE51A097F0A0078A11D /* TrackingTemperatureTableViewCell.h */,
 				5F2B1DE61A097F0A0078A11D /* TrackingTemperatureTableViewCell.m */,
 				5F2B1DE71A097F0A0078A11D /* TrackingTemperatureTableViewCell.xib */,
@@ -2264,6 +2280,7 @@
 				5F1C9BCD19EDE87A000F1FC1 /* Lifestyle.png in Resources */,
 				5F1C9C7519EDE87A000F1FC1 /* MoreStoryboard.storyboard in Resources */,
 				5F1C9C2D19EDE87A000F1FC1 /* Heavy.png in Resources */,
+				5F5160961A0AB46B00F4B74E /* TrackingCervicalFluidTableViewCell.xib in Resources */,
 				5F1C9C0919EDE87A000F1FC1 /* Icon60.png in Resources */,
 				5F1C9BD719EDE87A000F1FC1 /* MeditationsBlue.png in Resources */,
 				5F1C9C6E19EDE87A000F1FC1 /* CoachingStoryboard.storyboard in Resources */,
@@ -2308,6 +2325,7 @@
 				5F1C99D719EDE775000F1FC1 /* BluetoothSignal1@2x.png in Resources */,
 				5F2B1DE91A097F0A0078A11D /* TrackingTemperatureTableViewCell.xib in Resources */,
 				5F1C9BF919EDE87A000F1FC1 /* RefreshSmall@2x.png in Resources */,
+				5F51609B1A0AB48600F4B74E /* TrackingCervicalPositionTableViewCell.xib in Resources */,
 				5F1C9C1B19EDE87A000F1FC1 /* DaySupplements.png in Resources */,
 				5F1C9BB719EDE87A000F1FC1 /* Sticky@2x.png in Resources */,
 				5F1C9BB419EDE87A000F1FC1 /* Eggwhite.png in Resources */,
@@ -2566,10 +2584,12 @@
 				5F1C9B8419EDE87A000F1FC1 /* CoachingMenuViewController.m in Sources */,
 				5F1C96EB19EDD31A000F1FC1 /* MPNotificationViewController.m in Sources */,
 				5F1C9B6519EDE87A000F1FC1 /* UIColor+Traits.m in Sources */,
+				5F5160951A0AB46B00F4B74E /* TrackingCervicalFluidTableViewCell.m in Sources */,
 				5F1C970E19EDD31A000F1FC1 /* NSString+Inflections.m in Sources */,
 				5F1C9C8819EF16DB000F1FC1 /* ONDOViewController.m in Sources */,
 				5F1C96EC19EDD31A000F1FC1 /* MPNSAttributedStringToNSDictionaryValueTransformer.m in Sources */,
 				5F6561E819FAD836001FB509 /* EditDateOfBirthTableViewCell.m in Sources */,
+				5F51609A1A0AB48600F4B74E /* TrackingCervicalPositionTableViewCell.m in Sources */,
 				5F1C970219EDD31A000F1FC1 /* MPUIFontToNSDictionaryValueTransformer.m in Sources */,
 				5F6561E319FAD74C001FB509 /* EditWeightTableViewCell.m in Sources */,
 				5F1C9B7F19EDE87A000F1FC1 /* TemperatureCellStaticView.m in Sources */,
