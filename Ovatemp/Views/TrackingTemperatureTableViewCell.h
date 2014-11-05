@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TrackingTemperatureTableViewCell : UITableViewCell
+@interface TrackingTemperatureTableViewCell : UITableViewCell <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *temperatureValueLabel;
-@property (weak, nonatomic) IBOutlet UIPickerView *temperaturePicker;
 @property (weak, nonatomic) IBOutlet UIButton *infoButton;
+@property (weak, nonatomic) IBOutlet UIPickerView *temperaturePicker;
 
 @end

@@ -10,10 +10,27 @@
 
 #import "TodayNavigationController.h"
 #import "TodayViewController.h"
-#import "TrackingStatusTableViewCell.h"
 #import "CycleViewController.h"
 #import "TrackingNotesViewController.h"
 #import "DateCollectionViewCell.h"
+
+#import "TrackingStatusTableViewCell.h"
+#import "TrackingTemperatureTableViewCell.h"
+
+typedef enum {
+    TableStateAllClosed,
+    TableStateTemperatureExpanded,
+    TableStateCervicalFluidExpanded,
+    TableStateCervicalPositionExpanded,
+    TableStatePeriodExpanded,
+    TableStateIntercourseExpanded,
+    TableStateMoodExpanded,
+    TableStateSymptomsExpanded,
+    TableStateOvulationTestExpanded,
+    TableStatePregnancyTestExpanded,
+    TableStateSupplementsExpanded,
+    TableStateMedicineExpanded,
+} TableStateType;
 
 @interface TrackingViewController () <UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, TrackingCellDelegate>
 
@@ -24,6 +41,15 @@
 @property NSDate *selectedDate;
 
 @property NSIndexPath *selectedIndexPath;
+
+@property NSIndexPath *selectedTableRowIndex;
+
+// cells
+@property TrackingStatusTableViewCell *statusCell;
+@property TrackingTemperatureTableViewCell *tempCell;
+
+// info
+@property CGFloat temperature;
 
 @end
 
@@ -36,6 +62,45 @@ NSArray *trackingTableDataArray;
 BOOL lowerDrawer;
 
 NSMutableArray *drawerDateData;
+
+// table view cell states
+BOOL expandTemperatureCell;
+BOOL expandCervicalFluidCell;
+BOOL expandCervicalPositionCell;
+BOOL expandPeriodCell;
+BOOL expandIntercourseCell;
+BOOL expandMoodCell;
+BOOL expandSymptomsCell;
+BOOL expandOvulationTestCell;
+BOOL expandPregnancyTestCell;
+BOOL expandSupplementsCell;
+BOOL expandMedicineCell;
+
+BOOL firstOpenTemperatureCell;
+BOOL firstOpenCervicalFluidCell;
+BOOL firstOpenCervicalPositionCell;
+BOOL firstOpenPeriodCell;
+BOOL firstOpenIntercourseCell;
+BOOL firstOpenMoodCell;
+BOOL firstOpenSymptomsCell;
+BOOL firstOpenOvulationTestCell;
+BOOL firstOpenPregnancyTestCell;
+BOOL firstOpenSupplementsCell;
+BOOL firstOpenMedicineCell;
+
+BOOL TemperatureCellHasData;
+BOOL CervicalFluidCellHasData;
+BOOL CervicalPositionCellHasData;
+BOOL PeriodCellHasData;
+BOOL IntercourseCellHasData;
+BOOL MoodCellHasData;
+BOOL SymptomsCellHasData;
+BOOL OvulationTestCellHasData;
+BOOL PregnancyTestCellHasData;
+BOOL SupplementsCellHasData;
+BOOL MedicineCellHasData;
+
+TableStateType currentState;
 
 - (id)init {
     self = [super init];
@@ -120,7 +185,7 @@ NSMutableArray *drawerDateData;
     // title
     [self setTitleView];
     
-    trackingTableDataArray = [NSArray arrayWithObjects:@"Large Dummy Cell", @"Temperature", @"Cervical Fluid", @"Cervical Position", @"Period", @"Intercourse", @"Mood", @"Symptoms", @"Ovulation Test", @"Pregnancy Test", @"Supplements", @"Medicine", nil];
+    trackingTableDataArray = [NSArray arrayWithObjects:@"Status", @"Temperature", @"Cervical Fluid", @"Cervical Position", @"Period", @"Intercourse", @"Mood", @"Symptoms", @"Ovulation Test", @"Pregnancy Test", @"Supplements", @"Medicine", nil];
     
     [self.navigationController.view setTintColor:[UIColor ovatempAlmostWhiteColor]];
     
@@ -146,9 +211,6 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     [self.drawerCollectionView setCollectionViewLayout:flowLayout];
     
 //    [self.drawerCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:7 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-    
-    // status cell
-    [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingStatusTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"statusCell"];
     
     // set up drawer
     drawerDateData = [[NSMutableArray alloc] init];
@@ -189,6 +251,92 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     [self.drawerCollectionView setShowsHorizontalScrollIndicator:NO];
     [self.drawerCollectionView setShowsVerticalScrollIndicator:NO];
     
+    // bools for table view cells
+    expandTemperatureCell = NO;
+    expandCervicalFluidCell = NO;
+    expandCervicalPositionCell = NO;
+    expandPeriodCell = NO;
+    expandIntercourseCell = NO;
+    expandMoodCell = NO;
+    expandSymptomsCell = NO;
+    expandOvulationTestCell = NO;
+    expandPregnancyTestCell = NO;
+    expandSupplementsCell = NO;
+    expandMedicineCell = NO;
+    
+    firstOpenTemperatureCell = YES;
+    firstOpenCervicalFluidCell = YES;
+    firstOpenCervicalPositionCell = YES;
+    firstOpenPeriodCell = YES;
+    firstOpenIntercourseCell = YES;
+    firstOpenMoodCell = YES;
+    firstOpenSymptomsCell = YES;
+    firstOpenOvulationTestCell = YES;
+    firstOpenPregnancyTestCell = YES;
+    firstOpenSupplementsCell = YES;
+    firstOpenMedicineCell = YES;
+    
+    TemperatureCellHasData = NO;
+    CervicalFluidCellHasData = NO;
+    CervicalPositionCellHasData = NO;
+    PeriodCellHasData = NO;
+    IntercourseCellHasData = NO;
+    MoodCellHasData = NO;
+    SymptomsCellHasData = NO;
+    OvulationTestCellHasData = NO;
+    PregnancyTestCellHasData = NO;
+    SupplementsCellHasData = NO;
+    MedicineCellHasData = NO;
+    
+    currentState = TableStateAllClosed;
+    
+    // register cells
+    [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingStatusTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"statusCell"];
+    
+    [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingTemperatureTableViewCell" bundle:nil] forCellReuseIdentifier:@"tempCell"];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    // bools for table view cells
+    expandTemperatureCell = NO;
+    expandCervicalFluidCell = NO;
+    expandCervicalPositionCell = NO;
+    expandPeriodCell = NO;
+    expandIntercourseCell = NO;
+    expandMoodCell = NO;
+    expandSymptomsCell = NO;
+    expandOvulationTestCell = NO;
+    expandPregnancyTestCell = NO;
+    expandSupplementsCell = NO;
+    expandMedicineCell = NO;
+    
+    firstOpenTemperatureCell = YES;
+    firstOpenCervicalFluidCell = YES;
+    firstOpenCervicalPositionCell = YES;
+    firstOpenPeriodCell = YES;
+    firstOpenIntercourseCell = YES;
+    firstOpenMoodCell = YES;
+    firstOpenSymptomsCell = YES;
+    firstOpenOvulationTestCell = YES;
+    firstOpenPregnancyTestCell = YES;
+    firstOpenSupplementsCell = YES;
+    firstOpenMedicineCell = YES;
+    
+    TemperatureCellHasData = NO;
+    CervicalFluidCellHasData = NO;
+    CervicalPositionCellHasData = NO;
+    PeriodCellHasData = NO;
+    IntercourseCellHasData = NO;
+    MoodCellHasData = NO;
+    SymptomsCellHasData = NO;
+    OvulationTestCellHasData = NO;
+    PregnancyTestCellHasData = NO;
+    SupplementsCellHasData = NO;
+    MedicineCellHasData = NO;
+    
+    currentState = TableStateAllClosed;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -349,32 +497,207 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == 0) {
-        TrackingStatusTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"statusCell" forIndexPath:indexPath];;
-        cell.delegate = self;
-        
-        cell.layoutMargins = UIEdgeInsetsZero;
-        
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        
-        // change notes button picture if we have a note saved for that date
-        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-        NSString *dateKeyString = [dateFormatter stringFromDate:self.selectedDate];
-        NSString *keyString = [NSString stringWithFormat:@"note_%@", dateKeyString];
-        
-        if ([[NSUserDefaults standardUserDefaults] objectForKey:keyString]) {
-            [cell.notesButton setImage:[UIImage imageNamed:@"icn_notes_entered"] forState:UIControlStateNormal];
-        } else {
-            [cell.notesButton setImage:[UIImage imageNamed:@"icn_notes_empty"] forState:UIControlStateNormal];
+    UITableViewCell *cell;
+    
+    switch (indexPath.row) {
+        case 0:
+        {
+            self.statusCell = [self.tableView dequeueReusableCellWithIdentifier:@"statusCell" forIndexPath:indexPath];
+            self.statusCell.delegate = self;
+            
+            self.statusCell.layoutMargins = UIEdgeInsetsZero;
+            
+            [self.statusCell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            
+            // change notes button picture if we have a note saved for that date
+            NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+            NSString *dateKeyString = [dateFormatter stringFromDate:self.selectedDate];
+            NSString *keyString = [NSString stringWithFormat:@"note_%@", dateKeyString];
+            
+            if ([[NSUserDefaults standardUserDefaults] objectForKey:keyString]) {
+                [self.statusCell.notesButton setImage:[UIImage imageNamed:@"icn_notes_entered"] forState:UIControlStateNormal];
+            } else {
+                [self.statusCell.notesButton setImage:[UIImage imageNamed:@"icn_notes_empty"] forState:UIControlStateNormal];
+            }
+            
+            self.statusCell.layoutMargins = UIEdgeInsetsZero;
+            
+            [self.statusCell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            
+            return self.statusCell;
+            break;
+        }
+            
+        case 1:
+        {
+            self.tempCell = (TrackingTemperatureTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:@"tempCell" forIndexPath:indexPath];
+            
+            if (expandTemperatureCell) {
+                self.tempCell.temperaturePicker.hidden = NO;
+            }
+            
+            self.tempCell.layoutMargins = UIEdgeInsetsZero;
+            
+            [self.tempCell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            
+            return self.tempCell;
+            break;
+        }
+            
+        case 2:
+        {
+            cell = [[UITableViewCell alloc] init];
+            
+            [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
+            
+            cell.layoutMargins = UIEdgeInsetsZero;
+            
+            // TODO: Finish custom cell implementation
+//            if (expandCervicalFluidCell) {
+//                // unhide component
+//            }
+            break;
         }
         
-        return cell;
+        case 3:
+        {
+            cell = [[UITableViewCell alloc] init];
+            
+            [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
+            
+            cell.layoutMargins = UIEdgeInsetsZero;
+            
+            // TODO: Finish custom cell implementation
+//            if (expandCervicalPositionCell) {
+//                // unhide component
+//            }
+            break;
+        }
+        
+        case 4:
+        {
+            cell = [[UITableViewCell alloc] init];
+            
+            [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
+            
+            cell.layoutMargins = UIEdgeInsetsZero;
+            
+            // TODO: Finish custom cell implementation
+//            if (expandPeriodCell) {
+//                // unhide component
+//            }
+            break;
+        }
+            
+        case 5:
+        {
+            cell = [[UITableViewCell alloc] init];
+            
+            [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
+            
+            cell.layoutMargins = UIEdgeInsetsZero;
+            
+            // TODO: Finish custom cell implementation
+//            if (expandIntercourseCell) {
+//                // unhide component
+//            }
+            break;
+        }
+            
+        case 6:
+        {
+            cell = [[UITableViewCell alloc] init];
+            
+            [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
+            
+            cell.layoutMargins = UIEdgeInsetsZero;
+            
+            // TODO: Finish custom cell implementation
+//            if (expandMoodCell) {
+//                // unhide component
+//            }
+            break;
+        }
+            
+        case 7:
+        {
+            cell = [[UITableViewCell alloc] init];
+            
+            [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
+            
+            cell.layoutMargins = UIEdgeInsetsZero;
+            
+            // TODO: Finish custom cell implementation
+//            if (expandSymptomsCell) {
+//                // unhide component
+//            }
+            break;
+        }
+        
+        case 8:
+        {
+            cell = [[UITableViewCell alloc] init];
+            
+            [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
+            
+            cell.layoutMargins = UIEdgeInsetsZero;
+            
+            // TODO: Finish custom cell implementation
+//            if (expandOvulationTestCell) {
+//                // unhide component
+//            }
+            break;
+        }
+            
+        case 9:
+        {
+            cell = [[UITableViewCell alloc] init];
+            
+            [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
+            
+            cell.layoutMargins = UIEdgeInsetsZero;
+            
+            // TODO: Finish custom cell implementation
+//            if (expandPregnancyTestCell) {
+//                // unhide component
+//            }
+            break;
+        }
+            
+        case 10:
+        {
+            cell = [[UITableViewCell alloc] init];
+            
+            [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
+            
+            cell.layoutMargins = UIEdgeInsetsZero;
+
+            // TODO: Finish custom cell implementation
+//            if (expandSupplementsCell) {
+//                // unhide component
+//            }
+            break;
+        }
+            
+        case 11:
+        {
+            cell = [[UITableViewCell alloc] init];
+            
+            [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
+            
+            cell.layoutMargins = UIEdgeInsetsZero;
+            
+            // TODO: Finish custom cell implementation
+//            if (expandMedicineCell) {
+//                // unhide component
+//            }
+            break;
+        }
+            
+        default:
+            break;
     }
-    
-   UITableViewCell *cell = [[UITableViewCell alloc] init];
-    
-    [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]]; 
     
     cell.layoutMargins = UIEdgeInsetsZero;
     
@@ -388,7 +711,594 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     if (indexPath.row == 0) {
         return 190;
     }
-    return 44;
+    
+    if(self.selectedTableRowIndex && indexPath.row == self.selectedTableRowIndex.row) {
+        if (expandTemperatureCell || expandCervicalFluidCell || expandCervicalPositionCell || expandPeriodCell || expandIntercourseCell || expandMoodCell || expandSymptomsCell || expandOvulationTestCell || expandPregnancyTestCell || expandSupplementsCell || expandMedicineCell) {
+            return 200.0f;
+        }
+    }
+    
+    return 44.0f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    self.selectedTableRowIndex = indexPath;
+    
+    switch (indexPath.row) {
+        case 0:
+        {
+            // status cell, do nothing
+            break;
+        }
+            
+        case 1:
+        {
+            if (currentState == TableStateTemperatureExpanded) {
+                [self setTableStateForState:TableStateAllClosed];
+            } else {
+                [self setTableStateForState:TableStateTemperatureExpanded];
+            }
+            
+            // first time the cell is opened we need to save the temp
+            if (firstOpenTemperatureCell) {
+                self.temperature = [self.tempCell.temperatureValueLabel.text floatValue];
+                firstOpenTemperatureCell = NO;
+                TemperatureCellHasData = YES;
+            }
+            
+            // record temp
+            if (!expandTemperatureCell) {
+                self.temperature = [self.tempCell.temperatureValueLabel.text floatValue];
+            }
+        }
+           
+        // TODO: Finish implementaiton for custom cells
+//        case 2:
+//        {
+//            break;
+//        }
+//            
+//        case 3:
+//        {
+//            break;
+//        }
+//            
+//        case 4:
+//        {
+//            break;
+//        }
+//            
+//        case 5:
+//        {
+//            break;
+//        }
+//            
+//        case 6:
+//        {
+//            break;
+//        }
+//            
+//        case 7:
+//        {
+//            break;
+//        }
+//            
+//        case 8:
+//        {
+//            break;
+//        }
+//            
+//        case 9:
+//        {
+//            break;
+//        }
+//            
+//        case 10:
+//        {
+//            break;
+//        }
+//            
+//        case 11:
+//        {
+//            break;
+//        }
+            
+        default:
+            break;
+    }
+    
+    NSMutableArray *indexPaths = [NSMutableArray new];
+    for (int i = 0; i < 12; i++) {
+        [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+    }
+    
+    [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    // refreshed cells, set content
+    switch (indexPath.row) {
+        case 0:
+        {
+            // status cell, do nothing
+            break;
+        }
+            
+        case 1:
+        {
+            self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%f.2", self.temperature];
+            break;
+        }
+
+        // TODO: Finish implementation for custom cells
+//        case 2:
+//        {
+//            break;
+//        }
+//            
+//        case 3:
+//        {
+//            break;
+//        }
+//            
+//        case 4:
+//        {
+//            break;
+//        }
+//            
+//        case 5:
+//        {
+//            break;
+//        }
+//            
+//        case 6:
+//        {
+//            break;
+//        }
+//            
+//        case 7:
+//        {
+//            break;
+//        }
+//            
+//        case 8:
+//        {
+//            break;
+//        }
+//            
+//        case 9:
+//        {
+//            break;
+//        }
+//            
+//        case 10:
+//        {
+//            break;
+//        }
+//            
+//        case 11:
+//        {
+//            break;
+//        }
+            
+        default:
+            break;
+    }
+    
+    // if we opened a cell earlier, set the data we have
+    if (TemperatureCellHasData) {
+        self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%f.2", self.temperature];
+    }
+    
+    // TODO: Finish implementation for custom cells
+//    if (CervicalFluidCellHasData) {
+//        // TODO
+//    }
+//    if (CervicalPositionCellHasData) {
+//        // TODO
+//    }
+//    
+//    if (PeriodCellHasData) {
+//        // TODO
+//    }
+//    
+//    if (IntercourseCellHasData) {
+//        // TODO
+//    }
+//    
+//    if (MoodCellHasData) {
+//        // TODO
+//    }
+//    if (SymptomsCellHasData) {
+//        // TODO
+//    }
+//    
+//    if (OvulationTestCellHasData) {
+//        // TODO
+//    }
+//    
+//    if (PregnancyTestCellHasData) {
+//        // TODO
+//    }
+//    if (SupplementsCellHasData) {
+//        // TODO
+//    }
+//    if (MedicineCellHasData) {
+//        // TODO
+//    }
+    
+    [self setTableStateForState:currentState]; // make sure current state is set
+    
+    [tableView setNeedsDisplay];
+    [tableView setNeedsLayout];
+}
+
+- (void)setTableStateForState:(TableStateType)state {
+    
+//    TableStateAllClosed,
+//    TableStateTemperatureExpanded,
+//    TableStateCervicalFluidExpanded,
+//    TableStateCervicalPositionExpanded,
+//    TableStatePeriodExpanded,
+//    TableStateIntercourseExpanded,
+//    TableStateMoodExpanded,
+//    TableStateSymptomsExpanded,
+//    TableStateOvulationTestExpanded,
+//    TableStatePregnancyTestExpanded,
+//    TableStateSupplementsExpanded,
+//    TableStateMedicineExpanded,
+    
+    switch (state) {
+        case TableStateAllClosed:
+        {
+            expandTemperatureCell = NO;
+            self.tempCell.temperaturePicker.hidden = YES;
+            expandCervicalFluidCell = NO;
+            // hide cervical fluid component
+            expandCervicalPositionCell = NO;
+            // hide cervical position component
+            expandPeriodCell = NO;
+            // hide component
+            expandIntercourseCell = NO;
+            // hide component
+            expandMoodCell = NO;
+            // hide component
+            expandSymptomsCell = NO;
+            // hide component
+            expandOvulationTestCell = NO;
+            // hide component
+            expandPregnancyTestCell = NO;
+            // hide component
+            expandSupplementsCell = NO;
+            // hide component
+            expandMedicineCell = NO;
+            // hide component
+            
+            currentState = TableStateAllClosed;
+            break;
+        }
+            
+        case TableStateTemperatureExpanded:
+        {
+            expandTemperatureCell = YES;
+            self.tempCell.temperaturePicker.hidden = NO;
+            expandCervicalFluidCell = NO;
+            // hide cervical fluid component
+            expandCervicalPositionCell = NO;
+            // hide cervical position component
+            expandPeriodCell = NO;
+            // hide component
+            expandIntercourseCell = NO;
+            // hide component
+            expandMoodCell = NO;
+            // hide component
+            expandSymptomsCell = NO;
+            // hide component
+            expandOvulationTestCell = NO;
+            // hide component
+            expandPregnancyTestCell = NO;
+            // hide component
+            expandSupplementsCell = NO;
+            // hide component
+            expandMedicineCell = NO;
+            // hide component
+            
+            currentState = TableStateTemperatureExpanded;
+            break;
+        }
+            
+        case TableStateCervicalFluidExpanded:
+        {
+            expandTemperatureCell = NO;
+            self.tempCell.temperaturePicker.hidden = YES;
+            expandCervicalFluidCell = YES;
+            // unhide cervical fluid component
+            expandCervicalPositionCell = NO;
+            // hide cervical position component
+            expandPeriodCell = NO;
+            // hide component
+            expandIntercourseCell = NO;
+            // hide component
+            expandMoodCell = NO;
+            // hide component
+            expandSymptomsCell = NO;
+            // hide component
+            expandOvulationTestCell = NO;
+            // hide component
+            expandPregnancyTestCell = NO;
+            // hide component
+            expandSupplementsCell = NO;
+            // hide component
+            expandMedicineCell = NO;
+            // hide component
+            
+            currentState = TableStateCervicalFluidExpanded;
+            break;
+        }
+            
+        case TableStateCervicalPositionExpanded:
+        {
+            expandTemperatureCell = NO;
+            self.tempCell.temperaturePicker.hidden = YES;
+            expandCervicalFluidCell = NO;
+            // hide cervical fluid component
+            expandCervicalPositionCell = YES;
+            // unhide cervical position component
+            expandPeriodCell = NO;
+            // hide component
+            expandIntercourseCell = NO;
+            // hide component
+            expandMoodCell = NO;
+            // hide component
+            expandSymptomsCell = NO;
+            // hide component
+            expandOvulationTestCell = NO;
+            // hide component
+            expandPregnancyTestCell = NO;
+            // hide component
+            expandSupplementsCell = NO;
+            // hide component
+            expandMedicineCell = NO;
+            // hide component
+            
+            currentState = TableStateCervicalPositionExpanded;
+            break;
+        }
+            
+        case TableStatePeriodExpanded:
+        {
+            expandTemperatureCell = NO;
+            self.tempCell.temperaturePicker.hidden = YES;
+            expandCervicalFluidCell = NO;
+            // hide cervical fluid component
+            expandCervicalPositionCell = NO;
+            // hide cervical position component
+            expandPeriodCell = YES;
+            // unhide component
+            expandIntercourseCell = NO;
+            // hide component
+            expandMoodCell = NO;
+            // hide component
+            expandSymptomsCell = NO;
+            // hide component
+            expandOvulationTestCell = NO;
+            // hide component
+            expandPregnancyTestCell = NO;
+            // hide component
+            expandSupplementsCell = NO;
+            // hide component
+            expandMedicineCell = NO;
+            // hide component
+            
+            currentState = TableStatePeriodExpanded;
+            break;
+        }
+            
+        case TableStateIntercourseExpanded:
+        {
+            expandTemperatureCell = NO;
+            self.tempCell.temperaturePicker.hidden = YES;
+            expandCervicalFluidCell = NO;
+            // hide cervical fluid component
+            expandCervicalPositionCell = NO;
+            // hide cervical position component
+            expandPeriodCell = NO;
+            // hide component
+            expandIntercourseCell = YES;
+            // unhide component
+            expandMoodCell = NO;
+            // hide component
+            expandSymptomsCell = NO;
+            // hide component
+            expandOvulationTestCell = NO;
+            // hide component
+            expandPregnancyTestCell = NO;
+            // hide component
+            expandSupplementsCell = NO;
+            // hide component
+            expandMedicineCell = NO;
+            // hide component
+            
+            currentState = TableStateIntercourseExpanded;
+            break;
+        }
+            
+        case TableStateMoodExpanded:
+        {
+            expandTemperatureCell = NO;
+            self.tempCell.temperaturePicker.hidden = YES;
+            expandCervicalFluidCell = NO;
+            // hide cervical fluid component
+            expandCervicalPositionCell = NO;
+            // hide cervical position component
+            expandPeriodCell = NO;
+            // hide component
+            expandIntercourseCell = NO;
+            // hide component
+            expandMoodCell = YES;
+            // unhide component
+            expandSymptomsCell = NO;
+            // hide component
+            expandOvulationTestCell = NO;
+            // hide component
+            expandPregnancyTestCell = NO;
+            // hide component
+            expandSupplementsCell = NO;
+            // hide component
+            expandMedicineCell = NO;
+            // hide component
+            
+            currentState = TableStateMoodExpanded;
+            break;
+        }
+            
+        case TableStateSymptomsExpanded:
+        {
+            expandTemperatureCell = NO;
+            self.tempCell.temperaturePicker.hidden = YES;
+            expandCervicalFluidCell = NO;
+            // hide cervical fluid component
+            expandCervicalPositionCell = NO;
+            // hide cervical position component
+            expandPeriodCell = NO;
+            // hide component
+            expandIntercourseCell = NO;
+            // hide component
+            expandMoodCell = NO;
+            // hide component
+            expandSymptomsCell = YES;
+            // unhide component
+            expandOvulationTestCell = NO;
+            // hide component
+            expandPregnancyTestCell = NO;
+            // hide component
+            expandSupplementsCell = NO;
+            // hide component
+            expandMedicineCell = NO;
+            // hide component
+            
+            currentState = TableStateSymptomsExpanded;
+            break;
+        }
+            
+        case TableStateOvulationTestExpanded:
+        {
+            expandTemperatureCell = NO;
+            self.tempCell.temperaturePicker.hidden = YES;
+            expandCervicalFluidCell = NO;
+            // hide cervical fluid component
+            expandCervicalPositionCell = NO;
+            // hide cervical position component
+            expandPeriodCell = NO;
+            // hide component
+            expandIntercourseCell = NO;
+            // unhide component
+            expandMoodCell = NO;
+            // hide component
+            expandSymptomsCell = NO;
+            // hide component
+            expandOvulationTestCell = YES;
+            // unhide component
+            expandPregnancyTestCell = NO;
+            // hide component
+            expandSupplementsCell = NO;
+            // hide component
+            expandMedicineCell = NO;
+            // hide component
+            
+            currentState = TableStateOvulationTestExpanded;
+            break;
+        }
+            
+        case TableStatePregnancyTestExpanded:
+        {
+            expandTemperatureCell = NO;
+            self.tempCell.temperaturePicker.hidden = YES;
+            expandCervicalFluidCell = NO;
+            // hide cervical fluid component
+            expandCervicalPositionCell = NO;
+            // hide cervical position component
+            expandPeriodCell = NO;
+            // hide component
+            expandIntercourseCell = NO;
+            // hide component
+            expandMoodCell = NO;
+            // hide component
+            expandSymptomsCell = NO;
+            // hide component
+            expandOvulationTestCell = NO;
+            // hide component
+            expandPregnancyTestCell = YES;
+            // unhide component
+            expandSupplementsCell = NO;
+            // hide component
+            expandMedicineCell = NO;
+            // hide component
+            
+            currentState = TableStatePregnancyTestExpanded;
+            break;
+        }
+            
+        case TableStateSupplementsExpanded:
+        {
+            expandTemperatureCell = NO;
+            self.tempCell.temperaturePicker.hidden = YES;
+            expandCervicalFluidCell = NO;
+            // hide cervical fluid component
+            expandCervicalPositionCell = NO;
+            // hide cervical position component
+            expandPeriodCell = NO;
+            // hide component
+            expandIntercourseCell = NO;
+            // hide component
+            expandMoodCell = NO;
+            // hide component
+            expandSymptomsCell = NO;
+            // hide component
+            expandOvulationTestCell = NO;
+            // hide component
+            expandPregnancyTestCell = NO;
+            // hide component
+            expandSupplementsCell = YES;
+            // unhide component
+            expandMedicineCell = NO;
+            // hide component
+            
+            currentState = TableStateSupplementsExpanded;
+            break;
+        }
+            
+        case TableStateMedicineExpanded:
+        {
+            expandTemperatureCell = NO;
+            self.tempCell.temperaturePicker.hidden = YES;
+            expandCervicalFluidCell = NO;
+            // hide cervical fluid component
+            expandCervicalPositionCell = NO;
+            // hide cervical position component
+            expandPeriodCell = NO;
+            // hide component
+            expandIntercourseCell = NO;
+            // hide component
+            expandMoodCell = NO;
+            // hide component
+            expandSymptomsCell = NO;
+            // hide component
+            expandOvulationTestCell = NO;
+            // hide component
+            expandPregnancyTestCell = NO;
+            // hide component
+            expandSupplementsCell = NO;
+            // hide component
+            expandMedicineCell = YES;
+            // unhide component
+            
+            currentState = TableStateMedicineExpanded;
+            break;
+        }
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark - UICollectionView
