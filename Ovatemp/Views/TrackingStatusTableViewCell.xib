@@ -41,7 +41,7 @@
             <connections>
                 <outlet property="notesButton" destination="ID4-fj-0Xk" id="p5v-pa-q2W"/>
             </connections>
-            <point key="canvasLocation" x="139" y="196"/>
+            <point key="canvasLocation" x="172" y="219"/>
         </tableViewCell>
     </objects>
     <resources>
