@@ -293,7 +293,6 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     // register cells
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingStatusTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"statusCell"];
     
-//    [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingTemperatureTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"tempCell"];
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingTemperatureTableViewCell" bundle:nil] forCellReuseIdentifier:@"tempCell"];
 }
 
@@ -554,9 +553,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
             cell.layoutMargins = UIEdgeInsetsZero;
             
-            if (expandCervicalFluidCell) {
-                // unhide component
-            }
+            // TODO: Finish custom cell implementation
+//            if (expandCervicalFluidCell) {
+//                // unhide component
+//            }
             break;
         }
         
@@ -568,9 +568,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
             cell.layoutMargins = UIEdgeInsetsZero;
             
-            if (expandCervicalPositionCell) {
-                // unhide component
-            }
+            // TODO: Finish custom cell implementation
+//            if (expandCervicalPositionCell) {
+//                // unhide component
+//            }
             break;
         }
         
@@ -582,9 +583,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
             cell.layoutMargins = UIEdgeInsetsZero;
             
-            if (expandPeriodCell) {
-                // unhide component
-            }
+            // TODO: Finish custom cell implementation
+//            if (expandPeriodCell) {
+//                // unhide component
+//            }
             break;
         }
             
@@ -596,9 +598,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
             cell.layoutMargins = UIEdgeInsetsZero;
             
-            if (expandIntercourseCell) {
-                // unhide component
-            }
+            // TODO: Finish custom cell implementation
+//            if (expandIntercourseCell) {
+//                // unhide component
+//            }
             break;
         }
             
@@ -610,9 +613,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
             cell.layoutMargins = UIEdgeInsetsZero;
             
-            if (expandMoodCell) {
-                // unhide component
-            }
+            // TODO: Finish custom cell implementation
+//            if (expandMoodCell) {
+//                // unhide component
+//            }
             break;
         }
             
@@ -624,9 +628,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
             cell.layoutMargins = UIEdgeInsetsZero;
             
-            if (expandSymptomsCell) {
-                // unhide component
-            }
+            // TODO: Finish custom cell implementation
+//            if (expandSymptomsCell) {
+//                // unhide component
+//            }
             break;
         }
         
@@ -638,9 +643,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
             cell.layoutMargins = UIEdgeInsetsZero;
             
-            if (expandOvulationTestCell) {
-                // unhide component
-            }
+            // TODO: Finish custom cell implementation
+//            if (expandOvulationTestCell) {
+//                // unhide component
+//            }
             break;
         }
             
@@ -652,9 +658,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
             cell.layoutMargins = UIEdgeInsetsZero;
             
-            if (expandPregnancyTestCell) {
-                // unhide component
-            }
+            // TODO: Finish custom cell implementation
+//            if (expandPregnancyTestCell) {
+//                // unhide component
+//            }
             break;
         }
             
@@ -665,10 +672,11 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
             
             cell.layoutMargins = UIEdgeInsetsZero;
-            
-            if (expandSupplementsCell) {
-                // unhide component
-            }
+
+            // TODO: Finish custom cell implementation
+//            if (expandSupplementsCell) {
+//                // unhide component
+//            }
             break;
         }
             
@@ -680,9 +688,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
             cell.layoutMargins = UIEdgeInsetsZero;
             
-            if (expandMedicineCell) {
-                // unhide component
-            }
+            // TODO: Finish custom cell implementation
+//            if (expandMedicineCell) {
+//                // unhide component
+//            }
             break;
         }
             
@@ -743,56 +752,57 @@ forCellWithReuseIdentifier:@"dateCvCell"];
                 self.temperature = [self.tempCell.temperatureValueLabel.text floatValue];
             }
         }
-            
-        case 2:
-        {
-            break;
-        }
-            
-        case 3:
-        {
-            break;
-        }
-            
-        case 4:
-        {
-            break;
-        }
-            
-        case 5:
-        {
-            break;
-        }
-            
-        case 6:
-        {
-            break;
-        }
-            
-        case 7:
-        {
-            break;
-        }
-            
-        case 8:
-        {
-            break;
-        }
-            
-        case 9:
-        {
-            break;
-        }
-            
-        case 10:
-        {
-            break;
-        }
-            
-        case 11:
-        {
-            break;
-        }
+           
+        // TODO: Finish implementaiton for custom cells
+//        case 2:
+//        {
+//            break;
+//        }
+//            
+//        case 3:
+//        {
+//            break;
+//        }
+//            
+//        case 4:
+//        {
+//            break;
+//        }
+//            
+//        case 5:
+//        {
+//            break;
+//        }
+//            
+//        case 6:
+//        {
+//            break;
+//        }
+//            
+//        case 7:
+//        {
+//            break;
+//        }
+//            
+//        case 8:
+//        {
+//            break;
+//        }
+//            
+//        case 9:
+//        {
+//            break;
+//        }
+//            
+//        case 10:
+//        {
+//            break;
+//        }
+//            
+//        case 11:
+//        {
+//            break;
+//        }
             
         default:
             break;
@@ -818,56 +828,57 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%f.2", self.temperature];
             break;
         }
-            
-        case 2:
-        {
-            break;
-        }
-            
-        case 3:
-        {
-            break;
-        }
-            
-        case 4:
-        {
-            break;
-        }
-            
-        case 5:
-        {
-            break;
-        }
-            
-        case 6:
-        {
-            break;
-        }
-            
-        case 7:
-        {
-            break;
-        }
-            
-        case 8:
-        {
-            break;
-        }
-            
-        case 9:
-        {
-            break;
-        }
-            
-        case 10:
-        {
-            break;
-        }
-            
-        case 11:
-        {
-            break;
-        }
+
+        // TODO: Finish implementation for custom cells
+//        case 2:
+//        {
+//            break;
+//        }
+//            
+//        case 3:
+//        {
+//            break;
+//        }
+//            
+//        case 4:
+//        {
+//            break;
+//        }
+//            
+//        case 5:
+//        {
+//            break;
+//        }
+//            
+//        case 6:
+//        {
+//            break;
+//        }
+//            
+//        case 7:
+//        {
+//            break;
+//        }
+//            
+//        case 8:
+//        {
+//            break;
+//        }
+//            
+//        case 9:
+//        {
+//            break;
+//        }
+//            
+//        case 10:
+//        {
+//            break;
+//        }
+//            
+//        case 11:
+//        {
+//            break;
+//        }
             
         default:
             break;
@@ -878,41 +889,42 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%f.2", self.temperature];
     }
     
-    if (CervicalFluidCellHasData) {
-        // TODO
-    }
-    if (CervicalPositionCellHasData) {
-        // TODO
-    }
-    
-    if (PeriodCellHasData) {
-        // TODO
-    }
-    
-    if (IntercourseCellHasData) {
-        // TODO
-    }
-    
-    if (MoodCellHasData) {
-        // TODO
-    }
-    if (SymptomsCellHasData) {
-        // TODO
-    }
-    
-    if (OvulationTestCellHasData) {
-        // TODO
-    }
-    
-    if (PregnancyTestCellHasData) {
-        // TODO
-    }
-    if (SupplementsCellHasData) {
-        // TODO
-    }
-    if (MedicineCellHasData) {
-        // TODO
-    }
+    // TODO: Finish implementation for custom cells
+//    if (CervicalFluidCellHasData) {
+//        // TODO
+//    }
+//    if (CervicalPositionCellHasData) {
+//        // TODO
+//    }
+//    
+//    if (PeriodCellHasData) {
+//        // TODO
+//    }
+//    
+//    if (IntercourseCellHasData) {
+//        // TODO
+//    }
+//    
+//    if (MoodCellHasData) {
+//        // TODO
+//    }
+//    if (SymptomsCellHasData) {
+//        // TODO
+//    }
+//    
+//    if (OvulationTestCellHasData) {
+//        // TODO
+//    }
+//    
+//    if (PregnancyTestCellHasData) {
+//        // TODO
+//    }
+//    if (SupplementsCellHasData) {
+//        // TODO
+//    }
+//    if (MedicineCellHasData) {
+//        // TODO
+//    }
     
     [self setTableStateForState:currentState]; // make sure current state is set
     
