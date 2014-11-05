@@ -752,7 +752,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         case 0:
         {
             // status cell, do nothing
-            break;
+            return;
         }
             
         case 1:
@@ -1003,6 +1003,16 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             expandTemperatureCell = NO;
             self.tempCell.temperaturePicker.hidden = YES;
             
+            if (TemperatureCellHasData) {
+                self.tempCell.placeholderLabel.hidden = YES;
+                self.tempCell.collapsedLabel.hidden = NO;
+                self.tempCell.temperatureValueLabel.hidden = NO;
+            } else {
+                self.tempCell.placeholderLabel.hidden = NO;
+                self.tempCell.collapsedLabel.hidden = YES;
+                self.tempCell.temperatureValueLabel.hidden = YES;
+            }
+            
             expandCervicalFluidCell = NO;
             self.cfCell.dryImageView.hidden = YES;
             self.cfCell.dryLabel.hidden = YES;
@@ -1056,6 +1066,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         {
             expandTemperatureCell = YES;
             self.tempCell.temperaturePicker.hidden = NO;
+            self.tempCell.temperatureValueLabel.hidden = NO;
+            self.tempCell.placeholderLabel.hidden = YES;
+            self.tempCell.collapsedLabel.hidden = NO;
+            
             expandCervicalFluidCell = NO;
             // hide cervical fluid component
             expandCervicalPositionCell = NO;
