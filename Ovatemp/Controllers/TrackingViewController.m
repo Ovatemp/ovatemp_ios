@@ -454,7 +454,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     subtitleView.adjustsFontSizeToFitWidth = YES;
     
     // arrow
-    self.arrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icn_pulldown_arrow"]];
+    self.arrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pulldown_arrow"]];
     
     self.arrowImageView.frame = CGRectMake(90, 30, 20, 10);
     [_headerTitleSubtitleView addSubview:self.arrowImageView];
