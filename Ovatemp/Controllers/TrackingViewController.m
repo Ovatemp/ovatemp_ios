@@ -17,6 +17,7 @@
 #import "TrackingStatusTableViewCell.h"
 #import "TrackingTemperatureTableViewCell.h"
 #import "TrackingCervicalFluidTableViewCell.h"
+#import "TrackingCervicalPositionTableViewCell.h"
 
 typedef enum {
     TableStateAllClosed,
@@ -49,10 +50,12 @@ typedef enum {
 @property TrackingStatusTableViewCell *statusCell;
 @property TrackingTemperatureTableViewCell *tempCell;
 @property TrackingCervicalFluidTableViewCell *cfCell;
+@property TrackingCervicalPositionTableViewCell *cpCell;
 
 // info
 @property CGFloat temperature;
 @property NSString *cervicalFluid;
+@property NSString *cervicalPosition;
 
 @end
 
@@ -300,6 +303,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingTemperatureTableViewCell" bundle:nil] forCellReuseIdentifier:@"tempCell"];
     
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingCervicalFluidTableViewCell" bundle:nil] forCellReuseIdentifier:@"cfCell"];
+    
+    [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingCervicalPositionTableViewCell" bundle:nil] forCellReuseIdentifier:@"cpCell"];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -577,6 +582,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             }
             
             self.cfCell.layoutMargins = UIEdgeInsetsZero;
+            [self.cfCell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
             return self.cfCell;
             
@@ -585,16 +591,29 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         
         case 3:
         {
-            cell = [[UITableViewCell alloc] init];
             
-            [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
-            
-            cell.layoutMargins = UIEdgeInsetsZero;
+            self.cpCell = [self.tableView dequeueReusableCellWithIdentifier:@"cpCell" forIndexPath:indexPath];
             
             // TODO: Finish custom cell implementation
-//            if (expandCervicalPositionCell) {
-//                // unhide component
-//            }
+            if (expandCervicalPositionCell) {
+                self.cpCell.placeholderLabel.hidden = YES;
+                
+                self.cpCell.collapsedLabel.hidden = NO;
+                self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+                self.cpCell.cpTypeImageView.hidden = NO;
+                
+                self.cpCell.highImageView.hidden = NO;
+                self.cpCell.highLabel.hidden = NO;
+                
+                self.cpCell.lowImageView.hidden = NO;
+                self.cpCell.lowLabel.hidden = NO;
+            }
+            
+            [self.cpCell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            
+            self.cpCell.layoutMargins = UIEdgeInsetsZero;
+            
+            return self.cpCell;
             break;
         }
         
@@ -804,12 +823,22 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
             break;
         }
+
+        case 3:
+        {
+            if (currentState == TableStateCervicalPositionExpanded) {
+                [self setTableStateForState:TableStateAllClosed];
+            } else {
+                [self setTableStateForState:TableStateCervicalPositionExpanded];
+            }
+            
+            if (firstOpenCervicalPositionCell) {
+                // no initial data until the user makes a selection
+                firstOpenCervicalPositionCell = NO;
+            }
+            break;
+        }
 //
-//        case 3:
-//        {
-//            break;
-//        }
-//            
 //        case 4:
 //        {
 //            break;
@@ -883,12 +912,15 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             }
             break;
         }
+
+        case 3:
+        {
+            if (CervicalPositionCellHasData) {
+                self.cpCell.cpTypeCollapsedLabel.text = self.cervicalPosition;
+            }
+            break;
+        }
 //
-//        case 3:
-//        {
-//            break;
-//        }
-//            
 //        case 4:
 //        {
 //            break;
@@ -943,10 +975,11 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         // TODO
         self.cfCell.cfTypeCollapsedLabel.text = self.cervicalFluid;
     }
-//    if (CervicalPositionCellHasData) {
-//        // TODO
-//    }
-//    
+    if (CervicalPositionCellHasData) {
+        // TODO
+        self.cpCell.cpTypeCollapsedLabel.text = self.cervicalPosition;
+    }
+
 //    if (PeriodCellHasData) {
 //        // TODO
 //    }
@@ -1041,6 +1074,24 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
             expandCervicalPositionCell = NO;
             // hide cervical position component
+            self.cpCell.highImageView.hidden = YES;
+            self.cpCell.highLabel.hidden = YES;
+            
+            self.cpCell.lowImageView.hidden = YES;
+            self.cpCell.lowLabel.hidden = YES;
+            
+            if (CervicalPositionCellHasData) {
+                self.cpCell.placeholderLabel.hidden = YES;
+                self.cpCell.collapsedLabel.hidden = NO;
+                self.cpCell.cpTypeImageView.hidden = NO;
+                self.cpCell.cpTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cpCell.placeholderLabel.hidden = NO;
+                self.cpCell.collapsedLabel.hidden = YES;
+                self.cpCell.cpTypeImageView.hidden = YES;
+                self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandPeriodCell = NO;
             // hide component
             expandIntercourseCell = NO;
@@ -1099,10 +1150,40 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         {
             expandTemperatureCell = NO;
             self.tempCell.temperaturePicker.hidden = YES;
+            
+            if (TemperatureCellHasData) {
+                self.tempCell.placeholderLabel.hidden = YES;
+                self.tempCell.collapsedLabel.hidden = NO;
+                self.tempCell.temperatureValueLabel.hidden = NO;
+            } else {
+                self.tempCell.placeholderLabel.hidden = NO;
+                self.tempCell.collapsedLabel.hidden = YES;
+                self.tempCell.temperatureValueLabel.hidden = YES;
+            }
+            
             expandCervicalFluidCell = YES;
             // unhide cervical fluid component
+            
             expandCervicalPositionCell = NO;
             // hide cervical position component
+            self.cpCell.highImageView.hidden = YES;
+            self.cpCell.highLabel.hidden = YES;
+            
+            self.cpCell.lowImageView.hidden = YES;
+            self.cpCell.lowLabel.hidden = YES;
+            
+            if (CervicalPositionCellHasData) {
+                self.cpCell.placeholderLabel.hidden = YES;
+                self.cpCell.collapsedLabel.hidden = NO;
+                self.cpCell.cpTypeImageView.hidden = NO;
+                self.cpCell.cpTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cpCell.placeholderLabel.hidden = NO;
+                self.cpCell.collapsedLabel.hidden = YES;
+                self.cpCell.cpTypeImageView.hidden = YES;
+                self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandPeriodCell = NO;
             // hide component
             expandIntercourseCell = NO;
@@ -1128,10 +1209,56 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         {
             expandTemperatureCell = NO;
             self.tempCell.temperaturePicker.hidden = YES;
+            
+            if (TemperatureCellHasData) {
+                self.tempCell.placeholderLabel.hidden = YES;
+                self.tempCell.collapsedLabel.hidden = NO;
+                self.tempCell.temperatureValueLabel.hidden = NO;
+            } else {
+                self.tempCell.placeholderLabel.hidden = NO;
+                self.tempCell.collapsedLabel.hidden = YES;
+                self.tempCell.temperatureValueLabel.hidden = YES;
+            }
+            
             expandCervicalFluidCell = NO;
-            // hide cervical fluid component
+            self.cfCell.dryImageView.hidden = YES;
+            self.cfCell.dryLabel.hidden = YES;
+            
+            self.cfCell.stickyImageView.hidden = YES;
+            self.cfCell.stickyLabel.hidden = YES;
+            
+            self.cfCell.creamyImageView.hidden = YES;
+            self.cfCell.creamyLabel.hidden = YES;
+            
+            self.cfCell.eggwhiteImageView.hidden = YES;
+            self.cfCell.eggwhiteLabel.hidden = YES;
+            
+            // unhide selection components
+            if (CervicalFluidCellHasData) {
+                self.cfCell.placeholderLabel.hidden = YES;
+                self.cfCell.cfCollapsedLabel.hidden = NO;
+                self.cfCell.cfTypeImageView.hidden = NO;
+                self.cfCell.cfTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cfCell.placeholderLabel.hidden = NO;
+                self.cfCell.cfCollapsedLabel.hidden = YES;
+                self.cfCell.cfTypeImageView.hidden = YES;
+                self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandCervicalPositionCell = YES;
-            // unhide cervical position component
+            self.cpCell.placeholderLabel.hidden = YES;
+            
+            self.cpCell.collapsedLabel.hidden = NO;
+            self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+            self.cpCell.cpTypeImageView.hidden = NO;
+            
+            self.cpCell.highImageView.hidden = NO;
+            self.cpCell.highLabel.hidden = NO;
+            
+            self.cpCell.lowImageView.hidden = NO;
+            self.cpCell.lowLabel.hidden = NO;
+            
             expandPeriodCell = NO;
             // hide component
             expandIntercourseCell = NO;
@@ -1157,10 +1284,63 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         {
             expandTemperatureCell = NO;
             self.tempCell.temperaturePicker.hidden = YES;
+            
+            if (TemperatureCellHasData) {
+                self.tempCell.placeholderLabel.hidden = YES;
+                self.tempCell.collapsedLabel.hidden = NO;
+                self.tempCell.temperatureValueLabel.hidden = NO;
+            } else {
+                self.tempCell.placeholderLabel.hidden = NO;
+                self.tempCell.collapsedLabel.hidden = YES;
+                self.tempCell.temperatureValueLabel.hidden = YES;
+            }
+            
             expandCervicalFluidCell = NO;
-            // hide cervical fluid component
+            self.cfCell.dryImageView.hidden = YES;
+            self.cfCell.dryLabel.hidden = YES;
+            
+            self.cfCell.stickyImageView.hidden = YES;
+            self.cfCell.stickyLabel.hidden = YES;
+            
+            self.cfCell.creamyImageView.hidden = YES;
+            self.cfCell.creamyLabel.hidden = YES;
+            
+            self.cfCell.eggwhiteImageView.hidden = YES;
+            self.cfCell.eggwhiteLabel.hidden = YES;
+            
+            // unhide selection components
+            if (CervicalFluidCellHasData) {
+                self.cfCell.placeholderLabel.hidden = YES;
+                self.cfCell.cfCollapsedLabel.hidden = NO;
+                self.cfCell.cfTypeImageView.hidden = NO;
+                self.cfCell.cfTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cfCell.placeholderLabel.hidden = NO;
+                self.cfCell.cfCollapsedLabel.hidden = YES;
+                self.cfCell.cfTypeImageView.hidden = YES;
+                self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandCervicalPositionCell = NO;
             // hide cervical position component
+            self.cpCell.highImageView.hidden = YES;
+            self.cpCell.highLabel.hidden = YES;
+            
+            self.cpCell.lowImageView.hidden = NO;
+            self.cpCell.lowLabel.hidden = NO;
+            
+            if (CervicalPositionCellHasData) {
+                self.cpCell.placeholderLabel.hidden = YES;
+                self.cpCell.collapsedLabel.hidden = NO;
+                self.cpCell.cpTypeImageView.hidden = NO;
+                self.cpCell.cpTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cpCell.placeholderLabel.hidden = NO;
+                self.cpCell.collapsedLabel.hidden = YES;
+                self.cpCell.cpTypeImageView.hidden = YES;
+                self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandPeriodCell = YES;
             // unhide component
             expandIntercourseCell = NO;
@@ -1186,10 +1366,63 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         {
             expandTemperatureCell = NO;
             self.tempCell.temperaturePicker.hidden = YES;
+            
+            if (TemperatureCellHasData) {
+                self.tempCell.placeholderLabel.hidden = YES;
+                self.tempCell.collapsedLabel.hidden = NO;
+                self.tempCell.temperatureValueLabel.hidden = NO;
+            } else {
+                self.tempCell.placeholderLabel.hidden = NO;
+                self.tempCell.collapsedLabel.hidden = YES;
+                self.tempCell.temperatureValueLabel.hidden = YES;
+            }
+            
             expandCervicalFluidCell = NO;
-            // hide cervical fluid component
+            self.cfCell.dryImageView.hidden = YES;
+            self.cfCell.dryLabel.hidden = YES;
+            
+            self.cfCell.stickyImageView.hidden = YES;
+            self.cfCell.stickyLabel.hidden = YES;
+            
+            self.cfCell.creamyImageView.hidden = YES;
+            self.cfCell.creamyLabel.hidden = YES;
+            
+            self.cfCell.eggwhiteImageView.hidden = YES;
+            self.cfCell.eggwhiteLabel.hidden = YES;
+            
+            // unhide selection components
+            if (CervicalFluidCellHasData) {
+                self.cfCell.placeholderLabel.hidden = YES;
+                self.cfCell.cfCollapsedLabel.hidden = NO;
+                self.cfCell.cfTypeImageView.hidden = NO;
+                self.cfCell.cfTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cfCell.placeholderLabel.hidden = NO;
+                self.cfCell.cfCollapsedLabel.hidden = YES;
+                self.cfCell.cfTypeImageView.hidden = YES;
+                self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandCervicalPositionCell = NO;
             // hide cervical position component
+            self.cpCell.highImageView.hidden = YES;
+            self.cpCell.highLabel.hidden = YES;
+            
+            self.cpCell.lowImageView.hidden = NO;
+            self.cpCell.lowLabel.hidden = NO;
+            
+            if (CervicalPositionCellHasData) {
+                self.cpCell.placeholderLabel.hidden = YES;
+                self.cpCell.collapsedLabel.hidden = NO;
+                self.cpCell.cpTypeImageView.hidden = NO;
+                self.cpCell.cpTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cpCell.placeholderLabel.hidden = NO;
+                self.cpCell.collapsedLabel.hidden = YES;
+                self.cpCell.cpTypeImageView.hidden = YES;
+                self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandPeriodCell = NO;
             // hide component
             expandIntercourseCell = YES;
@@ -1213,12 +1446,66 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
         case TableStateMoodExpanded:
         {
+            
             expandTemperatureCell = NO;
             self.tempCell.temperaturePicker.hidden = YES;
+            
+            if (TemperatureCellHasData) {
+                self.tempCell.placeholderLabel.hidden = YES;
+                self.tempCell.collapsedLabel.hidden = NO;
+                self.tempCell.temperatureValueLabel.hidden = NO;
+            } else {
+                self.tempCell.placeholderLabel.hidden = NO;
+                self.tempCell.collapsedLabel.hidden = YES;
+                self.tempCell.temperatureValueLabel.hidden = YES;
+            }
+            
             expandCervicalFluidCell = NO;
-            // hide cervical fluid component
+            self.cfCell.dryImageView.hidden = YES;
+            self.cfCell.dryLabel.hidden = YES;
+            
+            self.cfCell.stickyImageView.hidden = YES;
+            self.cfCell.stickyLabel.hidden = YES;
+            
+            self.cfCell.creamyImageView.hidden = YES;
+            self.cfCell.creamyLabel.hidden = YES;
+            
+            self.cfCell.eggwhiteImageView.hidden = YES;
+            self.cfCell.eggwhiteLabel.hidden = YES;
+            
+            // unhide selection components
+            if (CervicalFluidCellHasData) {
+                self.cfCell.placeholderLabel.hidden = YES;
+                self.cfCell.cfCollapsedLabel.hidden = NO;
+                self.cfCell.cfTypeImageView.hidden = NO;
+                self.cfCell.cfTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cfCell.placeholderLabel.hidden = NO;
+                self.cfCell.cfCollapsedLabel.hidden = YES;
+                self.cfCell.cfTypeImageView.hidden = YES;
+                self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandCervicalPositionCell = NO;
             // hide cervical position component
+            self.cpCell.highImageView.hidden = YES;
+            self.cpCell.highLabel.hidden = YES;
+            
+            self.cpCell.lowImageView.hidden = NO;
+            self.cpCell.lowLabel.hidden = NO;
+            
+            if (CervicalPositionCellHasData) {
+                self.cpCell.placeholderLabel.hidden = YES;
+                self.cpCell.collapsedLabel.hidden = NO;
+                self.cpCell.cpTypeImageView.hidden = NO;
+                self.cpCell.cpTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cpCell.placeholderLabel.hidden = NO;
+                self.cpCell.collapsedLabel.hidden = YES;
+                self.cpCell.cpTypeImageView.hidden = YES;
+                self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandPeriodCell = NO;
             // hide component
             expandIntercourseCell = NO;
@@ -1244,10 +1531,63 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         {
             expandTemperatureCell = NO;
             self.tempCell.temperaturePicker.hidden = YES;
+            
+            if (TemperatureCellHasData) {
+                self.tempCell.placeholderLabel.hidden = YES;
+                self.tempCell.collapsedLabel.hidden = NO;
+                self.tempCell.temperatureValueLabel.hidden = NO;
+            } else {
+                self.tempCell.placeholderLabel.hidden = NO;
+                self.tempCell.collapsedLabel.hidden = YES;
+                self.tempCell.temperatureValueLabel.hidden = YES;
+            }
+            
             expandCervicalFluidCell = NO;
-            // hide cervical fluid component
+            self.cfCell.dryImageView.hidden = YES;
+            self.cfCell.dryLabel.hidden = YES;
+            
+            self.cfCell.stickyImageView.hidden = YES;
+            self.cfCell.stickyLabel.hidden = YES;
+            
+            self.cfCell.creamyImageView.hidden = YES;
+            self.cfCell.creamyLabel.hidden = YES;
+            
+            self.cfCell.eggwhiteImageView.hidden = YES;
+            self.cfCell.eggwhiteLabel.hidden = YES;
+            
+            // unhide selection components
+            if (CervicalFluidCellHasData) {
+                self.cfCell.placeholderLabel.hidden = YES;
+                self.cfCell.cfCollapsedLabel.hidden = NO;
+                self.cfCell.cfTypeImageView.hidden = NO;
+                self.cfCell.cfTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cfCell.placeholderLabel.hidden = NO;
+                self.cfCell.cfCollapsedLabel.hidden = YES;
+                self.cfCell.cfTypeImageView.hidden = YES;
+                self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandCervicalPositionCell = NO;
             // hide cervical position component
+            self.cpCell.highImageView.hidden = YES;
+            self.cpCell.highLabel.hidden = YES;
+            
+            self.cpCell.lowImageView.hidden = NO;
+            self.cpCell.lowLabel.hidden = NO;
+            
+            if (CervicalPositionCellHasData) {
+                self.cpCell.placeholderLabel.hidden = YES;
+                self.cpCell.collapsedLabel.hidden = NO;
+                self.cpCell.cpTypeImageView.hidden = NO;
+                self.cpCell.cpTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cpCell.placeholderLabel.hidden = NO;
+                self.cpCell.collapsedLabel.hidden = YES;
+                self.cpCell.cpTypeImageView.hidden = YES;
+                self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandPeriodCell = NO;
             // hide component
             expandIntercourseCell = NO;
@@ -1273,10 +1613,63 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         {
             expandTemperatureCell = NO;
             self.tempCell.temperaturePicker.hidden = YES;
+            
+            if (TemperatureCellHasData) {
+                self.tempCell.placeholderLabel.hidden = YES;
+                self.tempCell.collapsedLabel.hidden = NO;
+                self.tempCell.temperatureValueLabel.hidden = NO;
+            } else {
+                self.tempCell.placeholderLabel.hidden = NO;
+                self.tempCell.collapsedLabel.hidden = YES;
+                self.tempCell.temperatureValueLabel.hidden = YES;
+            }
+            
             expandCervicalFluidCell = NO;
-            // hide cervical fluid component
+            self.cfCell.dryImageView.hidden = YES;
+            self.cfCell.dryLabel.hidden = YES;
+            
+            self.cfCell.stickyImageView.hidden = YES;
+            self.cfCell.stickyLabel.hidden = YES;
+            
+            self.cfCell.creamyImageView.hidden = YES;
+            self.cfCell.creamyLabel.hidden = YES;
+            
+            self.cfCell.eggwhiteImageView.hidden = YES;
+            self.cfCell.eggwhiteLabel.hidden = YES;
+            
+            // unhide selection components
+            if (CervicalFluidCellHasData) {
+                self.cfCell.placeholderLabel.hidden = YES;
+                self.cfCell.cfCollapsedLabel.hidden = NO;
+                self.cfCell.cfTypeImageView.hidden = NO;
+                self.cfCell.cfTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cfCell.placeholderLabel.hidden = NO;
+                self.cfCell.cfCollapsedLabel.hidden = YES;
+                self.cfCell.cfTypeImageView.hidden = YES;
+                self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandCervicalPositionCell = NO;
             // hide cervical position component
+            self.cpCell.highImageView.hidden = YES;
+            self.cpCell.highLabel.hidden = YES;
+            
+            self.cpCell.lowImageView.hidden = NO;
+            self.cpCell.lowLabel.hidden = NO;
+            
+            if (CervicalPositionCellHasData) {
+                self.cpCell.placeholderLabel.hidden = YES;
+                self.cpCell.collapsedLabel.hidden = NO;
+                self.cpCell.cpTypeImageView.hidden = NO;
+                self.cpCell.cpTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cpCell.placeholderLabel.hidden = NO;
+                self.cpCell.collapsedLabel.hidden = YES;
+                self.cpCell.cpTypeImageView.hidden = YES;
+                self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandPeriodCell = NO;
             // hide component
             expandIntercourseCell = NO;
@@ -1302,10 +1695,63 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         {
             expandTemperatureCell = NO;
             self.tempCell.temperaturePicker.hidden = YES;
+            
+            if (TemperatureCellHasData) {
+                self.tempCell.placeholderLabel.hidden = YES;
+                self.tempCell.collapsedLabel.hidden = NO;
+                self.tempCell.temperatureValueLabel.hidden = NO;
+            } else {
+                self.tempCell.placeholderLabel.hidden = NO;
+                self.tempCell.collapsedLabel.hidden = YES;
+                self.tempCell.temperatureValueLabel.hidden = YES;
+            }
+            
             expandCervicalFluidCell = NO;
-            // hide cervical fluid component
+            self.cfCell.dryImageView.hidden = YES;
+            self.cfCell.dryLabel.hidden = YES;
+            
+            self.cfCell.stickyImageView.hidden = YES;
+            self.cfCell.stickyLabel.hidden = YES;
+            
+            self.cfCell.creamyImageView.hidden = YES;
+            self.cfCell.creamyLabel.hidden = YES;
+            
+            self.cfCell.eggwhiteImageView.hidden = YES;
+            self.cfCell.eggwhiteLabel.hidden = YES;
+            
+            // unhide selection components
+            if (CervicalFluidCellHasData) {
+                self.cfCell.placeholderLabel.hidden = YES;
+                self.cfCell.cfCollapsedLabel.hidden = NO;
+                self.cfCell.cfTypeImageView.hidden = NO;
+                self.cfCell.cfTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cfCell.placeholderLabel.hidden = NO;
+                self.cfCell.cfCollapsedLabel.hidden = YES;
+                self.cfCell.cfTypeImageView.hidden = YES;
+                self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandCervicalPositionCell = NO;
             // hide cervical position component
+            self.cpCell.highImageView.hidden = YES;
+            self.cpCell.highLabel.hidden = YES;
+            
+            self.cpCell.lowImageView.hidden = NO;
+            self.cpCell.lowLabel.hidden = NO;
+            
+            if (CervicalPositionCellHasData) {
+                self.cpCell.placeholderLabel.hidden = YES;
+                self.cpCell.collapsedLabel.hidden = NO;
+                self.cpCell.cpTypeImageView.hidden = NO;
+                self.cpCell.cpTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cpCell.placeholderLabel.hidden = NO;
+                self.cpCell.collapsedLabel.hidden = YES;
+                self.cpCell.cpTypeImageView.hidden = YES;
+                self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandPeriodCell = NO;
             // hide component
             expandIntercourseCell = NO;
@@ -1331,10 +1777,63 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         {
             expandTemperatureCell = NO;
             self.tempCell.temperaturePicker.hidden = YES;
+            
+            if (TemperatureCellHasData) {
+                self.tempCell.placeholderLabel.hidden = YES;
+                self.tempCell.collapsedLabel.hidden = NO;
+                self.tempCell.temperatureValueLabel.hidden = NO;
+            } else {
+                self.tempCell.placeholderLabel.hidden = NO;
+                self.tempCell.collapsedLabel.hidden = YES;
+                self.tempCell.temperatureValueLabel.hidden = YES;
+            }
+            
             expandCervicalFluidCell = NO;
-            // hide cervical fluid component
+            self.cfCell.dryImageView.hidden = YES;
+            self.cfCell.dryLabel.hidden = YES;
+            
+            self.cfCell.stickyImageView.hidden = YES;
+            self.cfCell.stickyLabel.hidden = YES;
+            
+            self.cfCell.creamyImageView.hidden = YES;
+            self.cfCell.creamyLabel.hidden = YES;
+            
+            self.cfCell.eggwhiteImageView.hidden = YES;
+            self.cfCell.eggwhiteLabel.hidden = YES;
+            
+            // unhide selection components
+            if (CervicalFluidCellHasData) {
+                self.cfCell.placeholderLabel.hidden = YES;
+                self.cfCell.cfCollapsedLabel.hidden = NO;
+                self.cfCell.cfTypeImageView.hidden = NO;
+                self.cfCell.cfTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cfCell.placeholderLabel.hidden = NO;
+                self.cfCell.cfCollapsedLabel.hidden = YES;
+                self.cfCell.cfTypeImageView.hidden = YES;
+                self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandCervicalPositionCell = NO;
             // hide cervical position component
+            self.cpCell.highImageView.hidden = YES;
+            self.cpCell.highLabel.hidden = YES;
+            
+            self.cpCell.lowImageView.hidden = NO;
+            self.cpCell.lowLabel.hidden = NO;
+            
+            if (CervicalPositionCellHasData) {
+                self.cpCell.placeholderLabel.hidden = YES;
+                self.cpCell.collapsedLabel.hidden = NO;
+                self.cpCell.cpTypeImageView.hidden = NO;
+                self.cpCell.cpTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cpCell.placeholderLabel.hidden = NO;
+                self.cpCell.collapsedLabel.hidden = YES;
+                self.cpCell.cpTypeImageView.hidden = YES;
+                self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandPeriodCell = NO;
             // hide component
             expandIntercourseCell = NO;
@@ -1360,10 +1859,63 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         {
             expandTemperatureCell = NO;
             self.tempCell.temperaturePicker.hidden = YES;
+            
+            if (TemperatureCellHasData) {
+                self.tempCell.placeholderLabel.hidden = YES;
+                self.tempCell.collapsedLabel.hidden = NO;
+                self.tempCell.temperatureValueLabel.hidden = NO;
+            } else {
+                self.tempCell.placeholderLabel.hidden = NO;
+                self.tempCell.collapsedLabel.hidden = YES;
+                self.tempCell.temperatureValueLabel.hidden = YES;
+            }
+            
             expandCervicalFluidCell = NO;
-            // hide cervical fluid component
+            self.cfCell.dryImageView.hidden = YES;
+            self.cfCell.dryLabel.hidden = YES;
+            
+            self.cfCell.stickyImageView.hidden = YES;
+            self.cfCell.stickyLabel.hidden = YES;
+            
+            self.cfCell.creamyImageView.hidden = YES;
+            self.cfCell.creamyLabel.hidden = YES;
+            
+            self.cfCell.eggwhiteImageView.hidden = YES;
+            self.cfCell.eggwhiteLabel.hidden = YES;
+            
+            // unhide selection components
+            if (CervicalFluidCellHasData) {
+                self.cfCell.placeholderLabel.hidden = YES;
+                self.cfCell.cfCollapsedLabel.hidden = NO;
+                self.cfCell.cfTypeImageView.hidden = NO;
+                self.cfCell.cfTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cfCell.placeholderLabel.hidden = NO;
+                self.cfCell.cfCollapsedLabel.hidden = YES;
+                self.cfCell.cfTypeImageView.hidden = YES;
+                self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandCervicalPositionCell = NO;
             // hide cervical position component
+            self.cpCell.highImageView.hidden = YES;
+            self.cpCell.highLabel.hidden = YES;
+            
+            self.cpCell.lowImageView.hidden = NO;
+            self.cpCell.lowLabel.hidden = NO;
+            
+            if (CervicalPositionCellHasData) {
+                self.cpCell.placeholderLabel.hidden = YES;
+                self.cpCell.collapsedLabel.hidden = NO;
+                self.cpCell.cpTypeImageView.hidden = NO;
+                self.cpCell.cpTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cpCell.placeholderLabel.hidden = NO;
+                self.cpCell.collapsedLabel.hidden = YES;
+                self.cpCell.cpTypeImageView.hidden = YES;
+                self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandPeriodCell = NO;
             // hide component
             expandIntercourseCell = NO;
