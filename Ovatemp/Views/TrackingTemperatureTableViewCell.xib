@@ -37,7 +37,7 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lQA-8c-cPq">
+                    <pickerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lQA-8c-cPq">
                         <rect key="frame" x="0.0" y="29" width="320" height="162"/>
                     </pickerView>
                 </subviews>

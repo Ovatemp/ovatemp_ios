@@ -774,6 +774,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             if (!expandTemperatureCell) {
                 self.temperature = [self.tempCell.temperatureValueLabel.text floatValue];
             }
+            break;
         }
            
         // TODO: Finish implementaiton for custom cells
