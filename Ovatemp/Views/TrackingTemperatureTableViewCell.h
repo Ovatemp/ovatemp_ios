@@ -15,4 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *collapsedLabel;
 
+@property NSDate *selectedDate;
+
 @end

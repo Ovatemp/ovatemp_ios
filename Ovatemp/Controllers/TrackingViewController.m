@@ -53,7 +53,7 @@ typedef enum {
 @property TrackingCervicalPositionTableViewCell *cpCell;
 
 // info
-@property CGFloat temperature;
+@property NSNumber *temperature;
 @property NSString *cervicalFluid;
 @property NSString *cervicalPosition;
 
@@ -348,6 +348,9 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     MedicineCellHasData = NO;
     
     currentState = TableStateAllClosed;
+    
+    // set date in temp cell
+    [self.tempCell setSelectedDate:self.selectedDate];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -784,14 +787,14 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
             // first time the cell is opened we need to save the temp
             if (firstOpenTemperatureCell) {
-                self.temperature = [self.tempCell.temperatureValueLabel.text floatValue];
+                self.temperature = [NSNumber numberWithFloat:[self.tempCell.temperatureValueLabel.text floatValue]];
                 firstOpenTemperatureCell = NO;
                 TemperatureCellHasData = YES;
             }
             
             // record temp
             if (!expandTemperatureCell) {
-                self.temperature = [self.tempCell.temperatureValueLabel.text floatValue];
+                self.temperature = [NSNumber numberWithFloat:[self.tempCell.temperatureValueLabel.text floatValue]];
             }
             break;
         }
@@ -900,7 +903,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
         case 1:
         {
-            self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%f.2", self.temperature];
+            self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f", [self.temperature floatValue]];
             break;
         }
 
@@ -967,7 +970,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     
     // if we opened a cell earlier, set the data we have
     if (TemperatureCellHasData) {
-        self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%f.2", self.temperature];
+        self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f", [self.temperature floatValue]];
     }
     
     // TODO: Finish implementation for custom cells
@@ -2039,6 +2042,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     
     // change date
     self.selectedDate = dateAtIndex;
+    [self.tempCell setSelectedDate:self.selectedDate];
     
     self.selectedIndexPath = indexPath;
     
