@@ -23,4 +23,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *eggwhiteImageView;
 @property (weak, nonatomic) IBOutlet UILabel *eggwhiteLabel;
 
+@property NSDate *selectedDate;
+
 @end

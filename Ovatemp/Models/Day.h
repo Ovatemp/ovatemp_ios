@@ -19,6 +19,9 @@
 #define kCervicalFluidTypes @[@"sticky", @"creamy", @"eggwhite"]
 @property (nonatomic, retain) NSString* cervicalFluid;
 
+#define kCervicalPositionTypes @[@"low/closed/firm", @"high/open/soft"]
+@property NSString *cervicalPosition;
+
 #define kCyclePhaseTypes @[@"period", @"preovulation", @"ovulation", @"postovulation"]
 typedef enum cyclePhaseTypesEnum : NSUInteger
 {
