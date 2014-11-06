@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ConnectionManager.h"
 
 @interface TrackingTemperatureTableViewCell : UITableViewCell <UIPickerViewDataSource, UIPickerViewDelegate>
 
@@ -14,5 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *temperaturePicker;
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *collapsedLabel;
+
+@property NSDate *selectedDate;
 
 @end

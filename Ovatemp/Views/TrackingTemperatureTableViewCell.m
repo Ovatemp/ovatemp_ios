@@ -7,6 +7,10 @@
 //
 
 #import "TrackingTemperatureTableViewCell.h"
+#import "DayAttribute.h"
+#import "Alert.h"
+#import "Cycle.h"
+#import "Calendar.h"
 
 @implementation TrackingTemperatureTableViewCell
 
@@ -32,8 +36,12 @@ NSMutableArray *temperatureFractionalPartPickerData;
     self.temperaturePicker.dataSource = self;
     self.temperaturePicker.showsSelectionIndicator = YES;
     
-//    [self.temperaturePicker selectRow:4 inComponent:0 animated:YES];
-//    [self.temperaturePicker selectRow:60 inComponent:1 animated:YES];
+    [self.temperaturePicker selectRow:8 inComponent:0 animated:YES];
+    [self.temperaturePicker selectRow:60 inComponent:1 animated:YES];
+    
+    self.temperatureValueLabel.text = @"98.6";
+    
+    self.selectedDate = [[NSDate alloc] init];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -73,19 +81,41 @@ NSMutableArray *temperatureFractionalPartPickerData;
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    
+//    NSString *temperatureUnit;
+//    
+//    if ([defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"]) {
+//        // fahrenheit
+//        temperatureUnit = @"F";
+//    } else {
+//        // celsius
+//        temperatureUnit = @"C";
+//    }
     
-    NSString *temperatureUnit;
+    self.temperatureValueLabel.text = [NSString stringWithFormat:@"%@.%@", [temperatureIntegerPartPickerData objectAtIndex:[pickerView selectedRowInComponent:0]], [temperatureFractionalPartPickerData objectAtIndex:[pickerView selectedRowInComponent:1]]];
     
-    if ([defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"]) {
-        // fahrenheit
-        temperatureUnit = @"F";
-    } else {
-        // celsius
-        temperatureUnit = @"C";
-    }
+    // update temperature on backend
+    [self postAndSaveTemperature];
+}
+
+- (void)postAndSaveTemperature {
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+    [attributes setObject:self.selectedDate forKey:@"date"];
+    [attributes setObject:self.temperatureValueLabel.text forKey:@"temperature"];
     
-    self.temperatureValueLabel.text = [NSString stringWithFormat:@"%@.%@º%@", [temperatureIntegerPartPickerData objectAtIndex:[pickerView selectedRowInComponent:0]], [temperatureFractionalPartPickerData objectAtIndex:[pickerView selectedRowInComponent:1]], temperatureUnit];
+    [ConnectionManager put:@"/days/"
+                    params:@{
+                             @"day": attributes,
+                             }
+                   success:^(NSDictionary *response) {
+                       [Cycle cycleFromResponse:response];
+                       [Calendar setDate:self.selectedDate];
+//                       if (onSuccess) onSuccess(response);
+                   }
+                   failure:^(NSError *error) {
+                       [Alert presentError:error];
+                   }];
 }
 
 @end
