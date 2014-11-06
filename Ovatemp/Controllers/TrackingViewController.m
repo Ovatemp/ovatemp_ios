@@ -1958,12 +1958,12 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
 //    [formatter setDateFormat:@"yyyy"];
 //    NSString *year = [formatter stringFromDate:cellDate];
-    [formatter setDateFormat:@"MMM"];
-    NSString *month = [formatter stringFromDate:cellDate];
+    [formatter setDateFormat:@"EEE"];
+    NSString *dayOfWeek = [formatter stringFromDate:cellDate];
     [formatter setDateFormat:@"dd"];
     NSString *day = [formatter stringFromDate:cellDate];
     
-    cell.monthLabel.text = month;
+    cell.monthLabel.text = dayOfWeek;
     cell.dayLabel.text = day;
     
     // if cell date is today, make it larger
@@ -1986,6 +1986,12 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     } else {
         cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_fertile_small"];
     }
+    
+//    if (indexPath == self.selectedIndexPath) {
+//        CGSize cellSize = cell.frame.size;
+//        
+//        CGSizeMake(44, 54);
+//    }
     
     return cell;
 }
