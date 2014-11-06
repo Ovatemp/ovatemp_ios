@@ -8,7 +8,6 @@
 
 #import "TrackingTemperatureTableViewCell.h"
 #import "DayAttribute.h"
-#import "ConnectionManager.h"
 #import "Alert.h"
 #import "Cycle.h"
 #import "Calendar.h"
@@ -113,7 +112,6 @@ NSMutableArray *temperatureFractionalPartPickerData;
                        [Cycle cycleFromResponse:response];
                        [Calendar setDate:self.selectedDate];
 //                       if (onSuccess) onSuccess(response);
-                       // TODO: Fix callback
                    }
                    failure:^(NSError *error) {
                        [Alert presentError:error];
