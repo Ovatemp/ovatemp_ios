@@ -474,7 +474,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     // arrow
     self.arrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pulldown_arrow"]];
     
-    self.arrowImageView.frame = CGRectMake(90, 30, 20, 10);
+    self.arrowImageView.frame = CGRectMake(90, 35, 24, 8);
+    
     [_headerTitleSubtitleView addSubview:self.arrowImageView];
     
     [_headerTitleSubtitleView addSubview:subtitleView];
@@ -489,6 +490,25 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     
     // don't have the backend stuff set up currently
     // TODO: FIXME, hit backend for new data from date
+    
+    [ConnectionManager get:@"/cycles"
+                    params:@{
+                             @"date": [self.selectedDate dateId],
+                             }
+                   success:^(NSDictionary *response) {
+                       [Cycle cycleFromResponse:response];
+                       Day *day = [Day forDate:self.selectedDate];
+                       if (!day) {
+                           day = [Day withAttributes:@{@"date": self.selectedDate, @"idate": self.selectedDate.dateId}];
+                       }
+                       
+//                       if (onSuccess) onSuccess(response);
+                   }
+                   failure:^(NSError *error) {
+//                       if(onFailure) onFailure(error);
+                       NSLog(@"error hitting backend");
+                       // TODO: Alert user
+                   }];
     
     // for now, just change labels
     [self setTitleView];
