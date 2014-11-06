@@ -128,7 +128,8 @@ static NSDictionary *propertyOptions;
                         @"mood": kMoodTypes,
                         @"pregnancyTest": kPregnancyTestTypes,
                         @"opk": kOpkTypes,
-                        @"period": kPeriodTypes
+                        @"period": kPeriodTypes,
+                        @"cervicalPosition": kCervicalPositionTypes
                         };
   }
 

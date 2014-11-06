@@ -309,6 +309,9 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingCervicalFluidTableViewCell" bundle:nil] forCellReuseIdentifier:@"cfCell"];
     
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingCervicalPositionTableViewCell" bundle:nil] forCellReuseIdentifier:@"cpCell"];
+    
+    // refresh info
+    [self refreshTrackingView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -353,8 +356,9 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     
     currentState = TableStateAllClosed;
     
-    // set date in temp cell
+    // set date in cells
     [self.tempCell setSelectedDate:self.selectedDate];
+    [self.cfCell setSelectedDate:self.selectedDate];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -503,6 +507,30 @@ forCellWithReuseIdentifier:@"dateCvCell"];
                        }
                        
 //                       if (onSuccess) onSuccess(response);
+                       
+                       // set data
+                       if (day.temperature) {
+                           self.temperature = day.temperature;
+                           // change lable if we have info
+                           self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f", [self.temperature floatValue]];
+                           
+                           TemperatureCellHasData = YES;
+                       }
+                       
+                       if (day.cervicalFluid) {
+                           self.cervicalFluid = day.cervicalFluid;
+                           self.cfCell.cfTypeCollapsedLabel.text = self.cervicalFluid;
+                           CervicalFluidCellHasData = YES;
+                           
+                           [self setDataForCervicalFluidCell];
+                       }
+                       
+                       if (day.cervicalPosition) {
+                           
+                       }
+                       
+                       [self setTableStateForState:TableStateAllClosed];
+                       [[self tableView] reloadData];
                    }
                    failure:^(NSError *error) {
 //                       if(onFailure) onFailure(error);
@@ -518,6 +546,39 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     // load new data into tableview data sources
     [self.tableView reloadData];
     
+}
+
+- (void)setDataForCervicalFluidCell {
+//    self.cervicalFluid = [self.cfCell.cfTypeCollapsedLabel.text lowercaseString];
+    
+    if ([self.cervicalFluid isEqual:@"dry"]) {
+        self.cfCell.placeholderLabel.hidden = YES;
+        self.cfCell.cfCollapsedLabel.hidden = NO;
+        self.cfCell.cfTypeCollapsedLabel.text = @"Dry";
+        self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+        self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_dry"];
+        
+    } else if ([self.cervicalFluid isEqual:@"sticky"]) {
+        self.cfCell.placeholderLabel.hidden = YES;
+        self.cfCell.cfCollapsedLabel.hidden = NO;
+        self.cfCell.cfTypeCollapsedLabel.text = @"Sticky";
+        self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+        self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_sticky"];
+        
+    } else if ([self.cervicalFluid isEqual:@"creamy"]) {
+        self.cfCell.placeholderLabel.hidden = YES;
+        self.cfCell.cfCollapsedLabel.hidden = NO;
+        self.cfCell.cfTypeCollapsedLabel.text = @"Creamy";
+        self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+        self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_creamy"];
+        
+    } else { // eggwhite
+        self.cfCell.placeholderLabel.hidden = YES;
+        self.cfCell.cfCollapsedLabel.hidden = NO;
+        self.cfCell.cfTypeCollapsedLabel.text = @"Eggwhite";
+        self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+        self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_eggwhite"];
+    }
 }
 
 #pragma mark - Table view
@@ -605,7 +666,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
                 // unhide selection components
                 self.cfCell.placeholderLabel.hidden = YES;
                 self.cfCell.cfCollapsedLabel.hidden = NO;
-                self.cfCell.cfTypeImageView.hidden = NO;
+                self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+                self.cfCell.cfTypeImageView.hidden = YES;
             }
             
             self.cfCell.layoutMargins = UIEdgeInsetsZero;
@@ -787,7 +849,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         }
     }
     
-    return 44.0f;
+    return 64.0f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -995,12 +1057,19 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     // if we opened a cell earlier, set the data we have
     if (TemperatureCellHasData) {
         self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f", [self.temperature floatValue]];
+        
+        // split string by .
+        NSArray *tempChunks = [self.tempCell.temperatureValueLabel.text componentsSeparatedByString: @"."];
+        
+        [self.tempCell.temperaturePicker selectRow:([tempChunks[0] intValue] - 90) inComponent:0 animated:NO];
+        [self.tempCell.temperaturePicker selectRow:[tempChunks[1] intValue] inComponent:0 animated:NO];
     }
     
     // TODO: Finish implementation for custom cells
     if (CervicalFluidCellHasData) {
         // TODO
-        self.cfCell.cfTypeCollapsedLabel.text = self.cervicalFluid;
+        self.cervicalFluid = [self.cfCell.cfTypeCollapsedLabel.text lowercaseString];
+        [self setDataForCervicalFluidCell];
     }
     if (CervicalPositionCellHasData) {
         // TODO
@@ -1150,6 +1219,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
             expandCervicalFluidCell = NO;
             // hide cervical fluid component
+            self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            
             expandCervicalPositionCell = NO;
             // hide cervical position component
             expandPeriodCell = NO;
@@ -2072,6 +2143,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     // change date
     self.selectedDate = dateAtIndex;
     [self.tempCell setSelectedDate:self.selectedDate];
+    [self.cfCell setSelectedDate:self.selectedDate];
     
     self.selectedIndexPath = indexPath;
     
