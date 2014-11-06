@@ -112,4 +112,8 @@ static NSMutableDictionary *__cachedGradients;
     return [UIColor colorWithRed:(249.0f/255.0) green:(249.0f/255.0) blue:(249.0f/255.0) alpha:1.0];
 }
 
++ (UIColor *)ovatempGreyColorForDateCollectionViewCells {
+    return [UIColor colorWithRed:(204.0f/255.0) green:(204.0f/255.0) blue:(204.0f/255.0) alpha:1.0];
+}
+
 @end

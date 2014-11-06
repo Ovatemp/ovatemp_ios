@@ -178,6 +178,10 @@ TableStateType currentState;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    // fix bar buttons
+    self.navigationItem.leftBarButtonItem.imageInsets = UIEdgeInsetsMake(-18, 0, 18, 0);
+    self.navigationItem.rightBarButtonItem.imageInsets  = UIEdgeInsetsMake(-18, 0, 18, 0);
+    
     // set up global date
     // start with current date, then change it whenever the user changes dates via the collection view
     self.selectedDate = [NSDate date];
@@ -1952,9 +1956,9 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == 86) {
-        NSLog(@"index 86");
-    }
+//    if (indexPath.row == 86) {
+//        NSLog(@"index 86");
+//    }
     
     DateCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"dateCvCell" forIndexPath:indexPath];
     
@@ -1966,8 +1970,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 //    [formatter setDateFormat:@"yyyy"];
 //    NSString *year = [formatter stringFromDate:cellDate];
     [formatter setDateFormat:@"EEE"];
-    NSString *dayOfWeek = [formatter stringFromDate:cellDate];
-    [formatter setDateFormat:@"dd"];
+    NSString *dayOfWeek = [[formatter stringFromDate:cellDate] uppercaseString];
+    [formatter setDateFormat:@"d"];
     NSString *day = [formatter stringFromDate:cellDate];
     
     cell.monthLabel.text = dayOfWeek;
@@ -1975,10 +1979,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     
     // if cell date is today, make it larger
     
-    if (indexPath.row == 86) {
-        NSLog(@"indexPath:%@ indexPath.row:%ld", indexPath, (long)indexPath.row);
-        NSLog(@"self.selectedIndexPath:%@ self.selectedIndexPath.row:%ld", self.selectedIndexPath, (long)self.selectedIndexPath.row);
-    }
+//    if (indexPath.row == 86) {
+//        NSLog(@"indexPath:%@ indexPath.row:%ld", indexPath, (long)indexPath.row);
+//        NSLog(@"self.selectedIndexPath:%@ self.selectedIndexPath.row:%ld", self.selectedIndexPath, (long)self.selectedIndexPath.row);
+//    }
     
     if (indexPath.row == self.selectedIndexPath.row) {
         CGRect cellFrame = cell.frame;
@@ -1992,14 +1996,19 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         cell.frame = cellFrame;
     }
     
-    NSLog(@"index:%ld h:%f w:%f", (long)indexPath.row, cell.frame.size.height, cell.frame.size.width);
+//    NSLog(@"index:%ld h:%f w:%f", (long)indexPath.row, cell.frame.size.height, cell.frame.size.width);
     
     // use outline for future dates
     if ([cellDate compare:[NSDate date]] == NSOrderedDescending) {
         // celldate is earlier than today
         cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_empty"];
+        // change colors
+        cell.monthLabel.textColor = [UIColor ovatempGreyColorForDateCollectionViewCells];
+        cell.dayLabel.textColor = [UIColor ovatempGreyColorForDateCollectionViewCells];
     } else {
         cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_fertile_small"];
+        cell.monthLabel.textColor = [UIColor whiteColor];
+        cell.dayLabel.textColor = [UIColor whiteColor];
     }
     
 //    if (indexPath == self.selectedIndexPath) {
@@ -2067,14 +2076,14 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     
 //    [self.drawerCollectionView reloadItemsAtIndexPaths:@[indexPath]];
     
-    NSLog(@"---%@", [self.drawerCollectionView cellForItemAtIndexPath:indexPath]);
+//    NSLog(@"---%@", [self.drawerCollectionView cellForItemAtIndexPath:indexPath]);
     
     [self.drawerCollectionView reloadData];
     [self.drawerCollectionView.collectionViewLayout invalidateLayout];
     
     [[self.drawerCollectionView cellForItemAtIndexPath:indexPath] setNeedsDisplay];
     
-    NSLog(@"---%@", [self.drawerCollectionView cellForItemAtIndexPath:indexPath]);
+//    NSLog(@"---%@", [self.drawerCollectionView cellForItemAtIndexPath:indexPath]);
     
     // load new data
     [self refreshTrackingView];

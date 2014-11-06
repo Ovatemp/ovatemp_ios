@@ -25,5 +25,6 @@
 + (UIColor *)ovatempDarkGreyTitleColor;
 + (UIColor *)ovatempAquaColor;
 + (UIColor *)ovatempAlmostWhiteColor;
++ (UIColor *)ovatempGreyColorForDateCollectionViewCells;
 
 @end
