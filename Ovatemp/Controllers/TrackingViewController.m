@@ -1949,6 +1949,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    if (indexPath.row == 86) {
+        NSLog(@"index 86");
+    }
+    
     DateCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"dateCvCell" forIndexPath:indexPath];
     
     // two labels, month and day
@@ -1967,10 +1971,16 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     cell.dayLabel.text = day;
     
     // if cell date is today, make it larger
-    if (indexPath == self.selectedIndexPath) {
+    
+    if (indexPath.row == 86) {
+        NSLog(@"indexPath:%@ indexPath.row:%ld", indexPath, (long)indexPath.row);
+        NSLog(@"self.selectedIndexPath:%@ self.selectedIndexPath.row:%ld", self.selectedIndexPath, (long)self.selectedIndexPath.row);
+    }
+    
+    if (indexPath.row == self.selectedIndexPath.row) {
         CGRect cellFrame = cell.frame;
-        cellFrame.size.height = 49.0f;
-        cellFrame.size.width = 49.0f;
+        cellFrame.size.height = 54.0f;
+        cellFrame.size.width = 44.0f;
         cell.frame = cellFrame;
     } else {
         CGRect cellFrame = cell.frame;
@@ -1978,6 +1988,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         cellFrame.size.width = 44.0f;
         cell.frame = cellFrame;
     }
+    
+    NSLog(@"index:%ld h:%f w:%f", (long)indexPath.row, cell.frame.size.height, cell.frame.size.width);
     
     // use outline for future dates
     if ([cellDate compare:[NSDate date]] == NSOrderedDescending) {
@@ -2047,7 +2059,18 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 //    imageFrame.size.width += 5;
 //    selectedCell.statusImageView.frame = imageFrame;
     
-    [self.drawerCollectionView reloadItemsAtIndexPaths:@[indexPath]];
+//    [self collectionView:self.drawerCollectionView layout:[[UICollectionViewFlowLayout alloc] init] sizeForItemAtIndexPath:indexPath];
+    
+//    [self.drawerCollectionView reloadItemsAtIndexPaths:@[indexPath]];
+    
+    NSLog(@"---%@", [self.drawerCollectionView cellForItemAtIndexPath:indexPath]);
+    
+    [self.drawerCollectionView reloadData];
+    [self.drawerCollectionView.collectionViewLayout invalidateLayout];
+    
+    [[self.drawerCollectionView cellForItemAtIndexPath:indexPath] setNeedsDisplay];
+    
+    NSLog(@"---%@", [self.drawerCollectionView cellForItemAtIndexPath:indexPath]);
     
     // load new data
     [self refreshTrackingView];
