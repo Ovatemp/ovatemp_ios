@@ -515,6 +515,12 @@ forCellWithReuseIdentifier:@"dateCvCell"];
                            self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f", [self.temperature floatValue]];
                            
                            TemperatureCellHasData = YES;
+                       } else {
+                           self.tempCell.placeholderLabel.hidden = NO;
+                           self.tempCell.temperatureValueLabel.hidden = YES;
+                           self.tempCell.collapsedLabel.hidden = YES;
+                           self.tempCell.temperatureValueLabel.text = @"98.60";
+                           TemperatureCellHasData = NO;
                        }
                        
                        if (day.cervicalFluid) {
@@ -523,6 +529,13 @@ forCellWithReuseIdentifier:@"dateCvCell"];
                            CervicalFluidCellHasData = YES;
                            
                            [self setDataForCervicalFluidCell];
+                       } else { // hide components
+                           self.cfCell.placeholderLabel.hidden = NO;
+                           self.cfCell.cfCollapsedLabel.hidden = YES;
+                           self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+                           self.cfCell.cfTypeImageView.hidden = YES;
+                           self.cfCell.cfTypeCollapsedLabel.text = @"";
+                           CervicalFluidCellHasData = NO;
                        }
                        
                        if (day.cervicalPosition) {
@@ -996,6 +1009,11 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         // TODO: Finish implementation for custom cells
         case 2:
         {
+            if ([self.cfCell.cfTypeCollapsedLabel.text length] > 0) { // we have data
+                CervicalFluidCellHasData = YES;
+            } else {
+                CervicalFluidCellHasData = NO;
+            }
             if (CervicalFluidCellHasData) {
                 self.cfCell.cfTypeCollapsedLabel.text = self.cervicalFluid;
             }
