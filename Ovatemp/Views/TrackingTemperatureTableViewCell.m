@@ -12,6 +12,8 @@
 #import "Cycle.h"
 #import "Calendar.h"
 
+@import HealthKit;
+
 @implementation TrackingTemperatureTableViewCell
 
 NSMutableArray *temperatureIntegerPartPickerData;
@@ -100,6 +102,9 @@ NSMutableArray *temperatureFractionalPartPickerData;
 }
 
 - (void)postAndSaveTemperature {
+    // first save to HealthKit
+    [self updateHealthKit];
+    
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     [attributes setObject:self.selectedDate forKey:@"date"];
     [attributes setObject:self.temperatureValueLabel.text forKey:@"temperature"];
@@ -116,6 +121,36 @@ NSMutableArray *temperatureFractionalPartPickerData;
                    failure:^(NSError *error) {
                        [Alert presentError:error];
                    }];
+}
+
+# pragma mark - HealthKit
+
+- (void)updateHealthKit {
+    
+    float temp = [self.temperatureValueLabel.text floatValue];
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:HKCONNECTION]) {
+        if(temp) {
+            NSString *identifier = HKQuantityTypeIdentifierBodyTemperature;
+            HKQuantityType *tempType = [HKObjectType quantityTypeForIdentifier:identifier];
+            
+            HKQuantity *myTemp = [HKQuantity quantityWithUnit:[HKUnit degreeFahrenheitUnit]
+                                                  doubleValue: temp];
+            
+            HKQuantitySample *temperatureSample = [HKQuantitySample quantitySampleWithType: tempType
+                                                                                  quantity: myTemp
+                                                                                 startDate: self.selectedDate
+                                                                                   endDate: self.selectedDate
+                                                                                  metadata: nil];
+            HKHealthStore *healthStore = [[HKHealthStore alloc] init];
+            [healthStore saveObject: temperatureSample withCompletion:^(BOOL success, NSError *error) {
+                NSLog(@"I saved to healthkit");
+            }];
+        }
+    }
+    else {
+        NSLog(@"Could not save to healthkit. No connection could be made");
+    }
 }
 
 @end
