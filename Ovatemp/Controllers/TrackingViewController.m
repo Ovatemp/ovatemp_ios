@@ -8,6 +8,10 @@
 
 #import "TrackingViewController.h"
 
+#import "ONDO.h"
+#import "Alert.h"
+#import "Calendar.h"
+
 #import "TodayNavigationController.h"
 #import "TodayViewController.h"
 #import "CycleViewController.h"
@@ -19,6 +23,8 @@
 #import "TrackingCervicalFluidTableViewCell.h"
 #import "TrackingCervicalPositionTableViewCell.h"
 #import "TrackingPeriodTableViewCell.h"
+
+@import HealthKit;
 
 typedef enum {
     TableStateAllClosed,
@@ -35,7 +41,7 @@ typedef enum {
     TableStateMedicineExpanded,
 } TableStateType;
 
-@interface TrackingViewController () <UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, TrackingCellDelegate>
+@interface TrackingViewController () <UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, TrackingCellDelegate, ONDODelegate>
 
 @property UIImageView *arrowImageView;
 
@@ -170,7 +176,7 @@ TableStateType currentState;
 
 - (void)presentChart {
     
-//    [self pushViewController:self.cycleViewController];
+    //    [self pushViewController:self.cycleViewController];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -189,12 +195,12 @@ TableStateType currentState;
     // start with current date, then change it whenever the user changes dates via the collection view
     self.selectedDate = [NSDate date];
     
-//    self.cycleViewController = [[CycleViewController alloc] init];
+    //    self.cycleViewController = [[CycleViewController alloc] init];
     
     // table view line separator
     self.tableView.layoutMargins = UIEdgeInsetsZero;
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-
+    
     // title
     [self setTitleView];
     
@@ -215,7 +221,7 @@ TableStateType currentState;
     self.drawerCollectionView.dataSource = self;
     
     [self.drawerCollectionView registerNib:[UINib nibWithNibName:@"DateCollectionViewCell" bundle:[NSBundle mainBundle]]
-forCellWithReuseIdentifier:@"dateCvCell"];
+                forCellWithReuseIdentifier:@"dateCvCell"];
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     [flowLayout setItemSize:CGSizeMake(50, 50)];
@@ -223,7 +229,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     
     [self.drawerCollectionView setCollectionViewLayout:flowLayout];
     
-//    [self.drawerCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:7 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    //    [self.drawerCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:7 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     
     // set up drawer
     drawerDateData = [[NSMutableArray alloc] init];
@@ -366,6 +372,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     [self.cfCell setSelectedDate:self.selectedDate];
     [self.cpCell setSelectedDate:self.selectedDate];
     [self.periodCell setSelectedDate:self.selectedDate];
+    
+    if ([ONDO sharedInstance].devices.count > 0) {
+        [ONDO startWithDelegate:self];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -402,7 +412,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 }
 
 - (void)toggleDrawer:(UIGestureRecognizer *)recognizer {
-
+    
     [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.6f initialSpringVelocity:0.5f options:0 animations:^{
         if (lowerDrawer) {
             self.drawerView.frame = CGRectMake(self.drawerView.frame.origin.x, self.drawerView.frame.origin.y + 70, self.drawerView.frame.size.width, self.drawerView.frame.size.height);
@@ -492,7 +502,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     [_headerTitleSubtitleView addSubview:subtitleView];
     
     self.navigationItem.titleView = _headerTitleSubtitleView;
-
+    
 }
 
 - (void)refreshTrackingView {
@@ -513,7 +523,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
                            day = [Day withAttributes:@{@"date": self.selectedDate, @"idate": self.selectedDate.dateId}];
                        }
                        
-//                       if (onSuccess) onSuccess(response);
+                       //                       if (onSuccess) onSuccess(response);
                        
                        // set data
                        if (day.temperature) {
@@ -565,11 +575,11 @@ forCellWithReuseIdentifier:@"dateCvCell"];
                            PeriodCellHasData = NO;
                        }
                        
-//                       [self setTableStateForState:TableStateAllClosed];
+                       //                       [self setTableStateForState:TableStateAllClosed];
                        [[self tableView] reloadData];
                    }
                    failure:^(NSError *error) {
-//                       if(onFailure) onFailure(error);
+                       //                       if(onFailure) onFailure(error);
                        NSLog(@"error hitting backend");
                        // TODO: Alert user
                    }];
@@ -582,15 +592,15 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     // load new data into tableview data sources
     [self.tableView reloadData];
     
-//    [self.tempCell setSelectedDate:self.selectedDate];
-//    [self.cfCell setSelectedDate:self.selectedDate];
-//    [self.cpCell setSelectedDate:self.selectedDate];
-//    [self.periodCell setSelectedDate:self.selectedDate];
+    //    [self.tempCell setSelectedDate:self.selectedDate];
+    //    [self.cfCell setSelectedDate:self.selectedDate];
+    //    [self.cpCell setSelectedDate:self.selectedDate];
+    //    [self.periodCell setSelectedDate:self.selectedDate];
     
 }
 
 - (void)setDataForCervicalFluidCell {
-//    self.cervicalFluid = [self.cfCell.cfTypeCollapsedLabel.text lowercaseString];
+    //    self.cervicalFluid = [self.cfCell.cfTypeCollapsedLabel.text lowercaseString];
     
     if ([self.cervicalFluid isEqual:@"dry"]) {
         self.cfCell.placeholderLabel.hidden = YES;
@@ -733,7 +743,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         {
             
             self.cfCell = [self.tableView dequeueReusableCellWithIdentifier:@"cfCell" forIndexPath:indexPath];
-
+            
             // TODO: Finish custom cell implementation
             if (expandCervicalFluidCell) {
                 self.cfCell.dryImageView.hidden = NO;
@@ -769,7 +779,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
             break;
         }
-        
+            
         case 3:
         {
             
@@ -804,7 +814,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             return self.cpCell;
             break;
         }
-        
+            
         case 4:
         {
             self.periodCell = [self.tableView dequeueReusableCellWithIdentifier:@"periodCell" forIndexPath:indexPath];
@@ -843,9 +853,9 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             cell.layoutMargins = UIEdgeInsetsZero;
             
             // TODO: Finish custom cell implementation
-//            if (expandIntercourseCell) {
-//                // unhide component
-//            }
+            //            if (expandIntercourseCell) {
+            //                // unhide component
+            //            }
             break;
         }
             
@@ -858,9 +868,9 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             cell.layoutMargins = UIEdgeInsetsZero;
             
             // TODO: Finish custom cell implementation
-//            if (expandMoodCell) {
-//                // unhide component
-//            }
+            //            if (expandMoodCell) {
+            //                // unhide component
+            //            }
             break;
         }
             
@@ -873,12 +883,12 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             cell.layoutMargins = UIEdgeInsetsZero;
             
             // TODO: Finish custom cell implementation
-//            if (expandSymptomsCell) {
-//                // unhide component
-//            }
+            //            if (expandSymptomsCell) {
+            //                // unhide component
+            //            }
             break;
         }
-        
+            
         case 8:
         {
             cell = [[UITableViewCell alloc] init];
@@ -888,9 +898,9 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             cell.layoutMargins = UIEdgeInsetsZero;
             
             // TODO: Finish custom cell implementation
-//            if (expandOvulationTestCell) {
-//                // unhide component
-//            }
+            //            if (expandOvulationTestCell) {
+            //                // unhide component
+            //            }
             break;
         }
             
@@ -903,9 +913,9 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             cell.layoutMargins = UIEdgeInsetsZero;
             
             // TODO: Finish custom cell implementation
-//            if (expandPregnancyTestCell) {
-//                // unhide component
-//            }
+            //            if (expandPregnancyTestCell) {
+            //                // unhide component
+            //            }
             break;
         }
             
@@ -916,11 +926,11 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
             
             cell.layoutMargins = UIEdgeInsetsZero;
-
+            
             // TODO: Finish custom cell implementation
-//            if (expandSupplementsCell) {
-//                // unhide component
-//            }
+            //            if (expandSupplementsCell) {
+            //                // unhide component
+            //            }
             break;
         }
             
@@ -933,9 +943,9 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             cell.layoutMargins = UIEdgeInsetsZero;
             
             // TODO: Finish custom cell implementation
-//            if (expandMedicineCell) {
-//                // unhide component
-//            }
+            //            if (expandMedicineCell) {
+            //                // unhide component
+            //            }
             break;
         }
             
@@ -997,8 +1007,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             }
             break;
         }
-           
-        // TODO: Finish implementaiton for custom cells
+            
+            // TODO: Finish implementaiton for custom cells
         case 2:
         {
             if (currentState == TableStateCervicalFluidExpanded) {
@@ -1011,9 +1021,9 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             if (firstOpenCervicalFluidCell) {
                 
                 // No initial data until user makes a selection
-//                self.temperature = [self.tempCell.temperatureValueLabel.text floatValue];
+                //                self.temperature = [self.tempCell.temperatureValueLabel.text floatValue];
                 firstOpenTemperatureCell = NO;
-//                TemperatureCellHasData = YES;
+                //                TemperatureCellHasData = YES;
             }
             
             // record temp
@@ -1025,7 +1035,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
             break;
         }
-
+            
         case 3:
         {
             if (currentState == TableStateCervicalPositionExpanded) {
@@ -1040,7 +1050,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             }
             break;
         }
-
+            
         case 4:
         {
             if (currentState == TableStatePeriodExpanded) {
@@ -1056,41 +1066,41 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
             break;
         }
-//
-//        case 5:
-//        {
-//            break;
-//        }
-//            
-//        case 6:
-//        {
-//            break;
-//        }
-//            
-//        case 7:
-//        {
-//            break;
-//        }
-//            
-//        case 8:
-//        {
-//            break;
-//        }
-//            
-//        case 9:
-//        {
-//            break;
-//        }
-//            
-//        case 10:
-//        {
-//            break;
-//        }
-//            
-//        case 11:
-//        {
-//            break;
-//        }
+            //
+            //        case 5:
+            //        {
+            //            break;
+            //        }
+            //
+            //        case 6:
+            //        {
+            //            break;
+            //        }
+            //
+            //        case 7:
+            //        {
+            //            break;
+            //        }
+            //
+            //        case 8:
+            //        {
+            //            break;
+            //        }
+            //
+            //        case 9:
+            //        {
+            //            break;
+            //        }
+            //
+            //        case 10:
+            //        {
+            //            break;
+            //        }
+            //
+            //        case 11:
+            //        {
+            //            break;
+            //        }
             
         default:
             break;
@@ -1116,8 +1126,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f", [self.temperature floatValue]];
             break;
         }
-
-        // TODO: Finish implementation for custom cells
+            
+            // TODO: Finish implementation for custom cells
         case 2:
         {
             if ([self.cfCell.cfTypeCollapsedLabel.text length] > 0) { // we have data
@@ -1130,7 +1140,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             }
             break;
         }
-
+            
         case 3:
         {
             if (CervicalPositionCellHasData) {
@@ -1138,7 +1148,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             }
             break;
         }
-
+            
         case 4:
         {
             if (PeriodCellHasData) {
@@ -1147,41 +1157,41 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             }
             break;
         }
-//
-//        case 5:
-//        {
-//            break;
-//        }
-//            
-//        case 6:
-//        {
-//            break;
-//        }
-//            
-//        case 7:
-//        {
-//            break;
-//        }
-//            
-//        case 8:
-//        {
-//            break;
-//        }
-//            
-//        case 9:
-//        {
-//            break;
-//        }
-//            
-//        case 10:
-//        {
-//            break;
-//        }
-//            
-//        case 11:
-//        {
-//            break;
-//        }
+            //
+            //        case 5:
+            //        {
+            //            break;
+            //        }
+            //
+            //        case 6:
+            //        {
+            //            break;
+            //        }
+            //
+            //        case 7:
+            //        {
+            //            break;
+            //        }
+            //
+            //        case 8:
+            //        {
+            //            break;
+            //        }
+            //
+            //        case 9:
+            //        {
+            //            break;
+            //        }
+            //
+            //        case 10:
+            //        {
+            //            break;
+            //        }
+            //
+            //        case 11:
+            //        {
+            //            break;
+            //        }
             
         default:
             break;
@@ -1208,43 +1218,43 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         // TODO
         self.cpCell.cpTypeCollapsedLabel.text = self.cervicalPosition;
     }
-
+    
     if (PeriodCellHasData) {
         // TODO
         self.period = [self.periodCell.periodTypeCollapsedLabel.text lowercaseString];
         // TODO: setDataForPeriodCell?
         [self setDataForPeriodCell];
     }
-//
-//    if (IntercourseCellHasData) {
-//        // TODO
-//    }
-//    
-//    if (MoodCellHasData) {
-//        // TODO
-//    }
-//    if (SymptomsCellHasData) {
-//        // TODO
-//    }
-//    
-//    if (OvulationTestCellHasData) {
-//        // TODO
-//    }
-//    
-//    if (PregnancyTestCellHasData) {
-//        // TODO
-//    }
-//    if (SupplementsCellHasData) {
-//        // TODO
-//    }
-//    if (MedicineCellHasData) {
-//        // TODO
-//    }
+    //
+    //    if (IntercourseCellHasData) {
+    //        // TODO
+    //    }
+    //
+    //    if (MoodCellHasData) {
+    //        // TODO
+    //    }
+    //    if (SymptomsCellHasData) {
+    //        // TODO
+    //    }
+    //
+    //    if (OvulationTestCellHasData) {
+    //        // TODO
+    //    }
+    //
+    //    if (PregnancyTestCellHasData) {
+    //        // TODO
+    //    }
+    //    if (SupplementsCellHasData) {
+    //        // TODO
+    //    }
+    //    if (MedicineCellHasData) {
+    //        // TODO
+    //    }
     
     [self setTableStateForState:currentState]; // make sure current state is set
     
     if (currentState == TableStateAllClosed) {
-            [self refreshTrackingView]; // new info
+        [self refreshTrackingView]; // new info
     }
     
     [tableView setNeedsDisplay];
@@ -1253,18 +1263,18 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 
 - (void)setTableStateForState:(TableStateType)state {
     
-//    TableStateAllClosed,
-//    TableStateTemperatureExpanded,
-//    TableStateCervicalFluidExpanded,
-//    TableStateCervicalPositionExpanded,
-//    TableStatePeriodExpanded,
-//    TableStateIntercourseExpanded,
-//    TableStateMoodExpanded,
-//    TableStateSymptomsExpanded,
-//    TableStateOvulationTestExpanded,
-//    TableStatePregnancyTestExpanded,
-//    TableStateSupplementsExpanded,
-//    TableStateMedicineExpanded,
+    //    TableStateAllClosed,
+    //    TableStateTemperatureExpanded,
+    //    TableStateCervicalFluidExpanded,
+    //    TableStateCervicalPositionExpanded,
+    //    TableStatePeriodExpanded,
+    //    TableStateIntercourseExpanded,
+    //    TableStateMoodExpanded,
+    //    TableStateSymptomsExpanded,
+    //    TableStateOvulationTestExpanded,
+    //    TableStatePregnancyTestExpanded,
+    //    TableStateSupplementsExpanded,
+    //    TableStateMedicineExpanded,
     
     switch (state) {
         case TableStateAllClosed:
@@ -2237,9 +2247,9 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-//    if (indexPath.row == 86) {
-//        NSLog(@"index 86");
-//    }
+    //    if (indexPath.row == 86) {
+    //        NSLog(@"index 86");
+    //    }
     
     DateCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"dateCvCell" forIndexPath:indexPath];
     
@@ -2248,8 +2258,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     NSDate *cellDate = [drawerDateData objectAtIndex:indexPath.row];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
-//    [formatter setDateFormat:@"yyyy"];
-//    NSString *year = [formatter stringFromDate:cellDate];
+    //    [formatter setDateFormat:@"yyyy"];
+    //    NSString *year = [formatter stringFromDate:cellDate];
     [formatter setDateFormat:@"EEE"];
     NSString *dayOfWeek = [[formatter stringFromDate:cellDate] uppercaseString];
     [formatter setDateFormat:@"d"];
@@ -2260,10 +2270,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     
     // if cell date is today, make it larger
     
-//    if (indexPath.row == 86) {
-//        NSLog(@"indexPath:%@ indexPath.row:%ld", indexPath, (long)indexPath.row);
-//        NSLog(@"self.selectedIndexPath:%@ self.selectedIndexPath.row:%ld", self.selectedIndexPath, (long)self.selectedIndexPath.row);
-//    }
+    //    if (indexPath.row == 86) {
+    //        NSLog(@"indexPath:%@ indexPath.row:%ld", indexPath, (long)indexPath.row);
+    //        NSLog(@"self.selectedIndexPath:%@ self.selectedIndexPath.row:%ld", self.selectedIndexPath, (long)self.selectedIndexPath.row);
+    //    }
     
     if (indexPath.row == self.selectedIndexPath.row) {
         CGRect cellFrame = cell.frame;
@@ -2277,7 +2287,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         cell.frame = cellFrame;
     }
     
-//    NSLog(@"index:%ld h:%f w:%f", (long)indexPath.row, cell.frame.size.height, cell.frame.size.width);
+    //    NSLog(@"index:%ld h:%f w:%f", (long)indexPath.row, cell.frame.size.height, cell.frame.size.width);
     
     // use outline for future dates
     if ([cellDate compare:[NSDate date]] == NSOrderedDescending) {
@@ -2292,11 +2302,11 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         cell.dayLabel.textColor = [UIColor whiteColor];
     }
     
-//    if (indexPath == self.selectedIndexPath) {
-//        CGSize cellSize = cell.frame.size;
-//        
-//        CGSizeMake(44, 54);
-//    }
+    //    if (indexPath == self.selectedIndexPath) {
+    //        CGSize cellSize = cell.frame.size;
+    //
+    //        CGSizeMake(44, 54);
+    //    }
     
     // selected a new day, reset properties
     firstOpenTemperatureCell = YES;
@@ -2329,10 +2339,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    if (indexPath.row == 86) {
-//        return CGSizeMake(44, 44);
-//    }
-//    return CGSizeMake(34, 34);
+    //    if (indexPath.row == 86) {
+    //        return CGSizeMake(44, 44);
+    //    }
+    //    return CGSizeMake(34, 34);
     
     if (indexPath == self.selectedIndexPath) {
         return CGSizeMake(44, 54);
@@ -2367,34 +2377,34 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     self.selectedIndexPath = indexPath;
     
     // center cell
-     [self.drawerCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    [self.drawerCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     
     // increase cell size
     DateCollectionViewCell *selectedCell = (DateCollectionViewCell *)[self.drawerCollectionView cellForItemAtIndexPath:indexPath];
     
     CGRect cellFrame = selectedCell.frame;
     cellFrame.size.height += 5;
-//    cellFrame.size.width += 5;
+    //    cellFrame.size.width += 5;
     selectedCell.frame = cellFrame;
-//    [self.drawerCollectionView reloadData];
+    //    [self.drawerCollectionView reloadData];
     
-//    CGRect imageFrame = selectedCell.statusImageView.frame;
-//    imageFrame.size.height += 5;
-//    imageFrame.size.width += 5;
-//    selectedCell.statusImageView.frame = imageFrame;
+    //    CGRect imageFrame = selectedCell.statusImageView.frame;
+    //    imageFrame.size.height += 5;
+    //    imageFrame.size.width += 5;
+    //    selectedCell.statusImageView.frame = imageFrame;
     
-//    [self collectionView:self.drawerCollectionView layout:[[UICollectionViewFlowLayout alloc] init] sizeForItemAtIndexPath:indexPath];
+    //    [self collectionView:self.drawerCollectionView layout:[[UICollectionViewFlowLayout alloc] init] sizeForItemAtIndexPath:indexPath];
     
-//    [self.drawerCollectionView reloadItemsAtIndexPaths:@[indexPath]];
+    //    [self.drawerCollectionView reloadItemsAtIndexPaths:@[indexPath]];
     
-//    NSLog(@"---%@", [self.drawerCollectionView cellForItemAtIndexPath:indexPath]);
+    //    NSLog(@"---%@", [self.drawerCollectionView cellForItemAtIndexPath:indexPath]);
     
     [self.drawerCollectionView reloadData];
     [self.drawerCollectionView.collectionViewLayout invalidateLayout];
     
     [[self.drawerCollectionView cellForItemAtIndexPath:indexPath] setNeedsDisplay];
     
-//    NSLog(@"---%@", [self.drawerCollectionView cellForItemAtIndexPath:indexPath]);
+    //    NSLog(@"---%@", [self.drawerCollectionView cellForItemAtIndexPath:indexPath]);
     
     // load new data
     [self refreshTrackingView];
@@ -2412,7 +2422,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 }
 
 - (void)centerCell {
-     NSIndexPath *pathForCenterCell = [self.drawerCollectionView indexPathForItemAtPoint:CGPointMake(CGRectGetMidX(self.drawerCollectionView.bounds), CGRectGetMidY(self.drawerCollectionView.bounds))];
+    NSIndexPath *pathForCenterCell = [self.drawerCollectionView indexPathForItemAtPoint:CGPointMake(CGRectGetMidX(self.drawerCollectionView.bounds), CGRectGetMidY(self.drawerCollectionView.bounds))];
     
     // we need +/- 10 as an offset here in case the user scrolls in between two cells, the indexPath will never be nil we will always snap to a cell
     
@@ -2453,14 +2463,117 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     }
 }
 
-/*
-#pragma mark - Navigation
+# pragma mark - ONDO delegate methods
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)ONDOsaysBluetoothIsDisabled:(ONDO *)ondo {
+    [Alert showAlertWithTitle:@"Bluetooth is Off"
+                      message:@"Bluetooth is off, so we can't detect a thing"];
 }
-*/
+
+- (void)ONDOsaysLEBluetoothIsUnavailable:(ONDO *)ondo {
+    [Alert showAlertWithTitle:@"LE Bluetooth Unavailable"
+                      message:@"Your device does not support low-energy Bluetooth, so it can't connect to your ONDO"];
+}
+
+- (void)ONDO:(ONDO *)ondo didEncounterError:(NSError *)error {
+    [Alert presentError:error];
+}
+
+- (void)ONDO:(ONDO *)ondo didReceiveTemperature:(CGFloat)temperature {
+    
+    float tempInCelsius = temperature;
+    temperature = temperature * 9.0f / 5.0f + 32.0f;
+    
+    // Save the temperature
+//    Day *day = [Day today];
+    //    [day updateProperty:@"temperature" withValue:@(temperature)];
+    
+    TemperatureCellHasData = YES;
+    // TODO: get ondo icon asset and unhide it when temp is taken with ondo
+    
+    // always send F to backend
+    [self postAndSaveONDOTempWithTempValue:temperature];
+    
+    // update table view cell
+    
+    // Tell the user what's up
+    
+    // Display C or F
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString *temperatureString;
+    
+    BOOL tempPrefFahrenheit = [defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"];
+    
+    if (tempPrefFahrenheit) {
+        temperatureString = [NSString stringWithFormat:@"Recorded a temperature of %.2fºF for today", temperature];
+        self.temperature = [NSNumber numberWithFloat:temperature];
+    } else {
+        temperatureString = [NSString stringWithFormat:@"Recorded a temperature of %.2fºC for today", tempInCelsius];
+        self.temperature = [NSNumber numberWithFloat:tempInCelsius];
+    }
+    [Alert showAlertWithTitle:@"Temperature Recorded" message:temperatureString];
+}
+
+- (void)postAndSaveONDOTempWithTempValue:(float)temp {
+    // first save to HealthKit
+    [self updateHealthKitWithTemp:temp];
+    
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+    [attributes setObject:self.selectedDate forKey:@"date"];
+    [attributes setObject:[NSString stringWithFormat:@"%f", temp] forKey:@"temperature"];
+    
+    [ConnectionManager put:@"/days/"
+                    params:@{
+                             @"day": attributes,
+                             }
+                   success:^(NSDictionary *response) {
+                       [Cycle cycleFromResponse:response];
+                       [Calendar setDate:self.selectedDate];
+                       //                       if (onSuccess) onSuccess(response);
+                       [self refreshTrackingView];
+                       // refresh after successful POST
+                   }
+                   failure:^(NSError *error) {
+                       [Alert presentError:error];
+                   }];
+}
+
+# pragma mark - HealthKit
+
+- (void)updateHealthKitWithTemp:(float)temp {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:HKCONNECTION]) {
+        if(temp) {
+            NSString *identifier = HKQuantityTypeIdentifierBodyTemperature;
+            HKQuantityType *tempType = [HKObjectType quantityTypeForIdentifier:identifier];
+            
+            HKQuantity *myTemp = [HKQuantity quantityWithUnit:[HKUnit degreeFahrenheitUnit]
+                                                  doubleValue: temp];
+            
+            HKQuantitySample *temperatureSample = [HKQuantitySample quantitySampleWithType: tempType
+                                                                                  quantity: myTemp
+                                                                                 startDate: self.selectedDate
+                                                                                   endDate: self.selectedDate
+                                                                                  metadata: nil];
+            HKHealthStore *healthStore = [[HKHealthStore alloc] init];
+            [healthStore saveObject: temperatureSample withCompletion:^(BOOL success, NSError *error) {
+                NSLog(@"I saved to healthkit");
+            }];
+        }
+    }
+    else {
+        NSLog(@"Could not save to healthkit. No connection could be made");
+    }
+}
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
