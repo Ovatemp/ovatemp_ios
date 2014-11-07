@@ -20,5 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *lowImageView;
 @property (weak, nonatomic) IBOutlet UILabel *lowLabel;
 
+@property NSDate *selectedDate;
 
 @end

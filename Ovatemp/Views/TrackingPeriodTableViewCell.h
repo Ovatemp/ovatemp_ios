@@ -25,4 +25,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *heavyImageView;
 @property (weak, nonatomic) IBOutlet UILabel *heavyLabel;
 
+@property NSDate *selectedDate;
+
 @end
