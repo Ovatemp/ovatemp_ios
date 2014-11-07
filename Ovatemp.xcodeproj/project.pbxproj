@@ -433,6 +433,8 @@
 		5FDAA3A719F7069C004E7181 /* LastPeriodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDAA3A519F7069C004E7181 /* LastPeriodTableViewCell.xib */; };
 		5FDAA3AB19F8020F004E7181 /* CycleLengthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDAA3A919F8020F004E7181 /* CycleLengthTableViewCell.m */; };
 		5FDAA3AC19F8020F004E7181 /* CycleLengthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDAA3AA19F8020F004E7181 /* CycleLengthTableViewCell.xib */; };
+		5FE12F791A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE12F771A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.m */; };
+		5FE12F7A1A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FE12F781A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.xib */; };
 		8315E49E18C521A800DA935A /* SessionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49D18C521A800DA935A /* SessionSpec.m */; };
 		83548FF218BD24450016B53A /* TodaySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 83548FF118BD24450016B53A /* TodaySpec.m */; };
 		83C4D21C18D9F1CF008C523C /* KIFUITestActor+OTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4D21B18D9F1CF008C523C /* KIFUITestActor+OTAdditions.m */; };
@@ -1082,6 +1084,9 @@
 		5FDAA3A819F8020F004E7181 /* CycleLengthTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleLengthTableViewCell.h; sourceTree = "<group>"; };
 		5FDAA3A919F8020F004E7181 /* CycleLengthTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleLengthTableViewCell.m; sourceTree = "<group>"; };
 		5FDAA3AA19F8020F004E7181 /* CycleLengthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CycleLengthTableViewCell.xib; sourceTree = "<group>"; };
+		5FE12F761A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingPeriodTableViewCell.h; sourceTree = "<group>"; };
+		5FE12F771A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingPeriodTableViewCell.m; sourceTree = "<group>"; };
+		5FE12F781A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingPeriodTableViewCell.xib; sourceTree = "<group>"; };
 		8315E49D18C521A800DA935A /* SessionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionSpec.m; sourceTree = "<group>"; };
 		83548FF118BD24450016B53A /* TodaySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodaySpec.m; sourceTree = "<group>"; };
 		83C4D21A18D9F1CF008C523C /* KIFUITestActor+OTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFUITestActor+OTAdditions.h"; sourceTree = "<group>"; };
@@ -1977,6 +1982,9 @@
 			isa = PBXGroup;
 			children = (
 				5F7AEA621A0122BB0053ABAB /* Tracking.storyboard */,
+				5FE12F761A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.h */,
+				5FE12F771A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.m */,
+				5FE12F781A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.xib */,
 				5F5160971A0AB48600F4B74E /* TrackingCervicalPositionTableViewCell.h */,
 				5F5160981A0AB48600F4B74E /* TrackingCervicalPositionTableViewCell.m */,
 				5F5160991A0AB48600F4B74E /* TrackingCervicalPositionTableViewCell.xib */,
@@ -2439,6 +2447,7 @@
 				5F1C9C4D19EDE87A000F1FC1 /* Dry.png in Resources */,
 				5F1C9C0A19EDE87A000F1FC1 /* Icon60@2x.png in Resources */,
 				5F1C96CE19EDD31A000F1FC1 /* Media.xcassets in Resources */,
+				5FE12F7A1A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.xib in Resources */,
 				5F1C9BDD19EDE87A000F1FC1 /* OvatempSupport@2x.png in Resources */,
 				5F1C9C4319EDE87A000F1FC1 /* community_unselect.png in Resources */,
 				5FDAA3AC19F8020F004E7181 /* CycleLengthTableViewCell.xib in Resources */,
@@ -2553,6 +2562,7 @@
 				5F1C970519EDD31A000F1FC1 /* MPWebSocket.m in Sources */,
 				5F1C96F819EDD31A000F1FC1 /* MPSurveyNavigationController.m in Sources */,
 				5F1C96F619EDD31A000F1FC1 /* MPSurvey.m in Sources */,
+				5FE12F791A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.m in Sources */,
 				5F1C9C6219EDE87A000F1FC1 /* Symptom.m in Sources */,
 				5F1C9B7E19EDE87A000F1FC1 /* TemperatureCellEditView.m in Sources */,
 				5F1C96D419EDD31A000F1FC1 /* MPABTestDesignerClearResponseMessage.m in Sources */,

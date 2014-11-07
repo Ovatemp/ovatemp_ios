@@ -18,6 +18,7 @@
 #import "TrackingTemperatureTableViewCell.h"
 #import "TrackingCervicalFluidTableViewCell.h"
 #import "TrackingCervicalPositionTableViewCell.h"
+#import "TrackingPeriodTableViewCell.h"
 
 typedef enum {
     TableStateAllClosed,
@@ -51,11 +52,13 @@ typedef enum {
 @property TrackingTemperatureTableViewCell *tempCell;
 @property TrackingCervicalFluidTableViewCell *cfCell;
 @property TrackingCervicalPositionTableViewCell *cpCell;
+@property TrackingPeriodTableViewCell *periodCell;
 
 // info
 @property NSNumber *temperature;
 @property NSString *cervicalFluid;
 @property NSString *cervicalPosition;
+@property NSString *period;
 
 @end
 
@@ -309,6 +312,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingCervicalFluidTableViewCell" bundle:nil] forCellReuseIdentifier:@"cfCell"];
     
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingCervicalPositionTableViewCell" bundle:nil] forCellReuseIdentifier:@"cpCell"];
+    
+    [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingPeriodTableViewCell" bundle:nil] forCellReuseIdentifier:@"periodCell"];
     
     // refresh info
     [self refreshTrackingView];
@@ -940,12 +945,23 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             }
             break;
         }
+
+        case 4:
+        {
+            if (currentState == TableStatePeriodExpanded) {
+                [self setTableStateForState:TableStateAllClosed];
+            } else {
+                [self setTableStateForState:TableStatePeriodExpanded];
+            }
+            
+            if (firstOpenPeriodCell) {
+                // no initial data until the user makes a selection
+                firstOpenPeriodCell = NO;
+            }
+            
+            break;
+        }
 //
-//        case 4:
-//        {
-//            break;
-//        }
-//            
 //        case 5:
 //        {
 //            break;
@@ -1027,12 +1043,15 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             }
             break;
         }
+
+        case 4:
+        {
+            if (PeriodCellHasData) {
+                self.periodCell.periodTypeCollapsedLabel.text = self.cervicalPosition;
+            }
+            break;
+        }
 //
-//        case 4:
-//        {
-//            break;
-//        }
-//            
 //        case 5:
 //        {
 //            break;
@@ -1094,10 +1113,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         self.cpCell.cpTypeCollapsedLabel.text = self.cervicalPosition;
     }
 
-//    if (PeriodCellHasData) {
-//        // TODO
-//    }
-//    
+    if (PeriodCellHasData) {
+        // TODO
+    }
+//
 //    if (IntercourseCellHasData) {
 //        // TODO
 //    }
@@ -1208,6 +1227,9 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
             expandPeriodCell = NO;
             // hide component
+            self.periodCell.noneImageView.hidden = YES;
+            self.periodCell.noneLabel.hidden = YES;
+            
             expandIntercourseCell = NO;
             // hide component
             expandMoodCell = NO;
