@@ -12,6 +12,8 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    self.selectedDate = [[NSDate alloc] init];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

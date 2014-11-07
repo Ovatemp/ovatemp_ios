@@ -25,9 +25,11 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rBv-fi-XpT"/>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Medium" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udb-v0-hPp">
-                        <rect key="frame" x="46" y="22" width="63" height="21"/>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rBv-fi-XpT">
+                        <rect key="frame" x="8" y="18" width="30" height="30"/>
+                    </imageView>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Spotting" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udb-v0-hPp">
+                        <rect key="frame" x="46" y="23" width="88" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -37,6 +39,9 @@
                         <state key="normal" image="icn_p_none">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="didSelectNone:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ad4-YE-Q2m"/>
+                        </connections>
                     </button>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="99" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="None" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ycl-Wo-j64">
                         <rect key="frame" x="19" y="103" width="26" height="16"/>
@@ -49,6 +54,9 @@
                         <state key="normal" image="icn_p_spotting">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="didSelectSpotting:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qCR-TU-4gc"/>
+                        </connections>
                     </button>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="99" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Spotting" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCU-Sb-b43">
                         <rect key="frame" x="72" y="103" width="40" height="16"/>
@@ -61,6 +69,9 @@
                         <state key="normal" image="icn_p_light">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="didSelectLight:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Rds-1T-2GH"/>
+                        </connections>
                     </button>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="99" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Light" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7I-AO-HMx">
                         <rect key="frame" x="139" y="103" width="26" height="16"/>
@@ -73,6 +84,9 @@
                         <state key="normal" image="icn_p_medium">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="didSelectMedium:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1nN-7Y-p58"/>
+                        </connections>
                     </button>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="99" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Medium" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glL-cP-BCT">
                         <rect key="frame" x="193" y="103" width="38" height="16"/>
@@ -85,8 +99,11 @@
                         <state key="normal" image="icn_p_heavy">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="didSelectHeavy:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MfP-GX-kEu"/>
+                        </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTc-SL-pZz">
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTc-SL-pZz">
                         <rect key="frame" x="290" y="13" width="22" height="22"/>
                         <state key="normal" image="icn_info">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -116,7 +133,7 @@
                 <outlet property="spottingImageView" destination="ojw-VO-zLn" id="tLf-ea-Vmd"/>
                 <outlet property="spottingLabel" destination="GCU-Sb-b43" id="or4-aG-39k"/>
             </connections>
-            <point key="canvasLocation" x="244" y="306"/>
+            <point key="canvasLocation" x="244" y="305"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -364,6 +364,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     // set date in cells
     [self.tempCell setSelectedDate:self.selectedDate];
     [self.cfCell setSelectedDate:self.selectedDate];
+    [self.cpCell setSelectedDate:self.selectedDate];
+    [self.periodCell setSelectedDate:self.selectedDate];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -531,6 +533,7 @@ forCellWithReuseIdentifier:@"dateCvCell"];
                        if (day.cervicalFluid) {
                            self.cervicalFluid = day.cervicalFluid;
                            self.cfCell.cfTypeCollapsedLabel.text = self.cervicalFluid;
+                           self.cfCell.cfTypeCollapsedLabel.hidden = NO;
                            CervicalFluidCellHasData = YES;
                            
                            [self setDataForCervicalFluidCell];
@@ -544,10 +547,25 @@ forCellWithReuseIdentifier:@"dateCvCell"];
                        }
                        
                        if (day.cervicalPosition) {
-                           
+                           // TODO: Waiting for backend
                        }
                        
-                       [self setTableStateForState:TableStateAllClosed];
+                       if (day.period) {
+                           self.period = day.period;
+                           self.periodCell.periodTypeCollapsedLabel.text = self.period;
+                           self.periodCell.periodTypeCollapsedLabel.hidden = NO;
+                           PeriodCellHasData = YES;
+                           [self setDataForPeriodCell];
+                       } else { // no data, hide componenets
+                           self.periodCell.placeholderLabel.hidden = NO;
+                           self.periodCell.periodCollapsedLabel.hidden = YES;
+                           self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+                           self.periodCell.periodTypeImageView.hidden = YES;
+                           self.periodCell.periodTypeCollapsedLabel.text = @"";
+                           PeriodCellHasData = NO;
+                       }
+                       
+//                       [self setTableStateForState:TableStateAllClosed];
                        [[self tableView] reloadData];
                    }
                    failure:^(NSError *error) {
@@ -563,6 +581,11 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     
     // load new data into tableview data sources
     [self.tableView reloadData];
+    
+//    [self.tempCell setSelectedDate:self.selectedDate];
+//    [self.cfCell setSelectedDate:self.selectedDate];
+//    [self.cpCell setSelectedDate:self.selectedDate];
+//    [self.periodCell setSelectedDate:self.selectedDate];
     
 }
 
@@ -596,6 +619,42 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         self.cfCell.cfTypeCollapsedLabel.text = @"Eggwhite";
         self.cfCell.cfTypeCollapsedLabel.hidden = YES;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_eggwhite"];
+    }
+}
+
+- (void)setDataForPeriodCell {
+    if ([self.period isEqual:@"none"]) {
+        self.periodCell.placeholderLabel.hidden = YES;
+        self.periodCell.periodCollapsedLabel.hidden = NO;
+        self.periodCell.periodTypeCollapsedLabel.text = @"None";
+        self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+        self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_none"];
+    } else if ([self.period isEqual:@"spotting"]) {
+        self.periodCell.placeholderLabel.hidden = YES;
+        self.periodCell.periodCollapsedLabel.hidden = NO;
+        self.periodCell.periodTypeCollapsedLabel.text = @"Spotting";
+        self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+        self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_spotting"];
+    } else if ([self.period isEqual:@"light"]) {
+        self.periodCell.placeholderLabel.hidden = YES;
+        self.periodCell.periodCollapsedLabel.hidden = NO;
+        self.periodCell.periodTypeCollapsedLabel.text = @"Light";
+        self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+        self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_light"];
+    } else if ([self.period isEqual:@"medium"]) {
+        self.periodCell.placeholderLabel.hidden = YES;
+        self.periodCell.periodCollapsedLabel.hidden = NO;
+        self.periodCell.periodTypeCollapsedLabel.text = @"Medium";
+        self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+        self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_medium"];
+    } else { // heavy
+        if ([self.period isEqual:@"heavy"]) {
+            self.periodCell.placeholderLabel.hidden = YES;
+            self.periodCell.periodCollapsedLabel.hidden = NO;
+            self.periodCell.periodTypeCollapsedLabel.text = @"Heavy";
+            self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+            self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_heavy"];
+        }
     }
 }
 
@@ -652,11 +711,19 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
             if (expandTemperatureCell) {
                 self.tempCell.temperaturePicker.hidden = NO;
+            } else { // not expanding
+                if (TemperatureCellHasData) {
+                    self.tempCell.temperatureValueLabel.hidden = NO;
+                    self.tempCell.placeholderLabel.hidden = YES;
+                    self.tempCell.collapsedLabel.hidden = NO;
+                }
             }
             
             self.tempCell.layoutMargins = UIEdgeInsetsZero;
             
             [self.tempCell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            
+            [self.tempCell setSelectedDate:self.selectedDate];
             
             return self.tempCell;
             break;
@@ -686,10 +753,17 @@ forCellWithReuseIdentifier:@"dateCvCell"];
                 self.cfCell.cfCollapsedLabel.hidden = NO;
                 self.cfCell.cfTypeCollapsedLabel.hidden = YES;
                 self.cfCell.cfTypeImageView.hidden = YES;
+            } else { // not expanding
+                if (CervicalFluidCellHasData) {
+                    self.cfCell.cfTypeImageView.hidden = NO;
+                    self.cfCell.cfTypeCollapsedLabel.hidden = NO;
+                }
             }
             
             self.cfCell.layoutMargins = UIEdgeInsetsZero;
             [self.cfCell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            
+            [self.cfCell setSelectedDate:self.selectedDate];
             
             return self.cfCell;
             
@@ -714,11 +788,18 @@ forCellWithReuseIdentifier:@"dateCvCell"];
                 
                 self.cpCell.lowImageView.hidden = NO;
                 self.cpCell.lowLabel.hidden = NO;
+            } else { // not expanding
+                if (CervicalPositionCellHasData) {
+                    self.cpCell.cpTypeImageView.hidden = NO;
+                    self.cpCell.cpTypeCollapsedLabel.hidden = NO;
+                }
             }
             
             [self.cpCell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
             self.cpCell.layoutMargins = UIEdgeInsetsZero;
+            
+            [self.cpCell setSelectedDate:self.selectedDate];
             
             return self.cpCell;
             break;
@@ -726,16 +807,30 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         
         case 4:
         {
-            cell = [[UITableViewCell alloc] init];
+            self.periodCell = [self.tableView dequeueReusableCellWithIdentifier:@"periodCell" forIndexPath:indexPath];
             
-            [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
+            if (expandPeriodCell) {
+                self.periodCell.placeholderLabel.hidden = YES;
+                
+                self.periodCell.periodCollapsedLabel.hidden = NO;
+                self.periodCell.periodTypeCollapsedLabel.hidden = NO;
+                self.periodCell.periodTypeImageView.hidden = NO;
+                
+                // TODO: unhide buttons?
+            } else { // unhide
+                if (PeriodCellHasData) {
+                    self.periodCell.periodTypeImageView.hidden = NO;
+                    self.periodCell.periodTypeCollapsedLabel.hidden = NO;
+                }
+            }
             
-            cell.layoutMargins = UIEdgeInsetsZero;
+            [self.periodCell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
-            // TODO: Finish custom cell implementation
-//            if (expandPeriodCell) {
-//                // unhide component
-//            }
+            self.periodCell.layoutMargins = UIEdgeInsetsZero;
+            
+            [self.periodCell setSelectedDate:self.selectedDate];
+            
+            return self.periodCell;
             break;
         }
             
@@ -1047,7 +1142,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
         case 4:
         {
             if (PeriodCellHasData) {
-                self.periodCell.periodTypeCollapsedLabel.text = self.cervicalPosition;
+                self.periodCell.periodTypeCollapsedLabel.text = self.period;
+                self.periodCell.periodTypeImageView.hidden = NO;
             }
             break;
         }
@@ -1115,6 +1211,9 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 
     if (PeriodCellHasData) {
         // TODO
+        self.period = [self.periodCell.periodTypeCollapsedLabel.text lowercaseString];
+        // TODO: setDataForPeriodCell?
+        [self setDataForPeriodCell];
     }
 //
 //    if (IntercourseCellHasData) {
@@ -1143,6 +1242,10 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 //    }
     
     [self setTableStateForState:currentState]; // make sure current state is set
+    
+    if (currentState == TableStateAllClosed) {
+            [self refreshTrackingView]; // new info
+    }
     
     [tableView setNeedsDisplay];
     [tableView setNeedsLayout];
@@ -1229,6 +1332,30 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             // hide component
             self.periodCell.noneImageView.hidden = YES;
             self.periodCell.noneLabel.hidden = YES;
+            
+            self.periodCell.spottingImageView.hidden = YES;
+            self.periodCell.spottingLabel.hidden = YES;
+            
+            self.periodCell.lightImageView.hidden = YES;
+            self.periodCell.lightLabel.hidden = YES;
+            
+            self.periodCell.mediumImageView.hidden = YES;
+            self.periodCell.mediumLabel.hidden = YES;
+            
+            self.periodCell.heavyImageView.hidden = YES;
+            self.periodCell.heavyLabel.hidden = YES;
+            
+            if (PeriodCellHasData) {
+                self.periodCell.placeholderLabel.hidden = YES;
+                self.periodCell.periodCollapsedLabel.hidden = NO;
+                self.periodCell.periodTypeCollapsedLabel.hidden = NO;
+                self.periodCell.periodTypeImageView.hidden = NO;
+            } else {
+                self.periodCell.placeholderLabel.hidden = NO;
+                self.periodCell.periodCollapsedLabel.hidden = YES;
+                self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+                self.periodCell.periodTypeImageView.hidden = YES;
+            }
             
             expandIntercourseCell = NO;
             // hide component
@@ -1464,8 +1591,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             self.cpCell.highImageView.hidden = YES;
             self.cpCell.highLabel.hidden = YES;
             
-            self.cpCell.lowImageView.hidden = NO;
-            self.cpCell.lowLabel.hidden = NO;
+            self.cpCell.lowImageView.hidden = YES;
+            self.cpCell.lowLabel.hidden = YES;
             
             if (CervicalPositionCellHasData) {
                 self.cpCell.placeholderLabel.hidden = YES;
@@ -1481,6 +1608,29 @@ forCellWithReuseIdentifier:@"dateCvCell"];
             
             expandPeriodCell = YES;
             // unhide component
+            self.periodCell.placeholderLabel.hidden = YES;
+            self.periodCell.periodCollapsedLabel.hidden = NO;
+            self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+            self.periodCell.periodTypeImageView.hidden = YES;
+            
+            // unhide buttons
+            self.periodCell.noneImageView.hidden = NO;
+            self.periodCell.noneLabel.hidden = NO;
+            
+            self.periodCell.spottingImageView.hidden = NO;
+            self.periodCell.spottingLabel.hidden = NO;
+            
+            self.periodCell.lightImageView.hidden = NO;
+            self.periodCell.lightLabel.hidden = NO;
+            
+            self.periodCell.mediumImageView.hidden = NO;
+            self.periodCell.mediumLabel.hidden = NO;
+            
+            self.periodCell.heavyImageView.hidden = NO;
+            self.periodCell.heavyLabel.hidden = NO;
+            
+            
+            
             expandIntercourseCell = NO;
             // hide component
             expandMoodCell = NO;
@@ -2148,6 +2298,33 @@ forCellWithReuseIdentifier:@"dateCvCell"];
 //        CGSizeMake(44, 54);
 //    }
     
+    // selected a new day, reset properties
+    firstOpenTemperatureCell = YES;
+    firstOpenCervicalFluidCell = YES;
+    firstOpenCervicalPositionCell = YES;
+    firstOpenPeriodCell = YES;
+    firstOpenIntercourseCell = YES;
+    firstOpenMoodCell = YES;
+    firstOpenSymptomsCell = YES;
+    firstOpenOvulationTestCell = YES;
+    firstOpenPregnancyTestCell = YES;
+    firstOpenSupplementsCell = YES;
+    firstOpenMedicineCell = YES;
+    
+    TemperatureCellHasData = NO;
+    CervicalFluidCellHasData = NO;
+    CervicalPositionCellHasData = NO;
+    PeriodCellHasData = NO;
+    IntercourseCellHasData = NO;
+    MoodCellHasData = NO;
+    SymptomsCellHasData = NO;
+    OvulationTestCellHasData = NO;
+    PregnancyTestCellHasData = NO;
+    SupplementsCellHasData = NO;
+    MedicineCellHasData = NO;
+    
+    [self refreshTrackingView];
+    
     return cell;
 }
 
@@ -2184,6 +2361,8 @@ forCellWithReuseIdentifier:@"dateCvCell"];
     self.selectedDate = dateAtIndex;
     [self.tempCell setSelectedDate:self.selectedDate];
     [self.cfCell setSelectedDate:self.selectedDate];
+    [self.cpCell setSelectedDate:self.selectedDate];
+    [self.periodCell setSelectedDate:self.selectedDate];
     
     self.selectedIndexPath = indexPath;
     
