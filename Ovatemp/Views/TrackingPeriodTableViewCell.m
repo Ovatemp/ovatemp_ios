@@ -76,4 +76,8 @@
                    }];
 }
 
+- (IBAction)didSelectInfoButton:(id)sender {
+    // TODO: Present UIAlertController
+}
+
 @end
