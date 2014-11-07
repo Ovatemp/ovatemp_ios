@@ -102,6 +102,9 @@ NSMutableArray *temperatureFractionalPartPickerData;
 }
 
 - (void)postAndSaveTemperature {
+    // first save to HealthKit
+    [self updateHealthKit];
+    
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     [attributes setObject:self.selectedDate forKey:@"date"];
     [attributes setObject:self.temperatureValueLabel.text forKey:@"temperature"];
