@@ -380,6 +380,12 @@
 		5F1C9C7F19EEF344000F1FC1 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C9C7D19EEF343000F1FC1 /* AccountTableViewCell.xib */; };
 		5F1C9C8819EF16DB000F1FC1 /* ONDOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C9C8619EF16DB000F1FC1 /* ONDOViewController.m */; };
 		5F1C9C8919EF16DB000F1FC1 /* ONDOViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C9C8719EF16DB000F1FC1 /* ONDOViewController.xib */; };
+		5F1E1D8A1A0DA579001C22B7 /* TrackingIntercourseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E1D881A0DA579001C22B7 /* TrackingIntercourseTableViewCell.m */; };
+		5F1E1D8B1A0DA579001C22B7 /* TrackingIntercourseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F1E1D891A0DA579001C22B7 /* TrackingIntercourseTableViewCell.xib */; };
+		5F1E1D8F1A0DABFA001C22B7 /* TrackingSymptomsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E1D8D1A0DABFA001C22B7 /* TrackingSymptomsTableViewCell.m */; };
+		5F1E1D901A0DABFA001C22B7 /* TrackingSymptomsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F1E1D8E1A0DABFA001C22B7 /* TrackingSymptomsTableViewCell.xib */; };
+		5F1E1D941A0DAEE4001C22B7 /* TrackingMoodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E1D921A0DAEE4001C22B7 /* TrackingMoodTableViewCell.m */; };
+		5F1E1D951A0DAEE4001C22B7 /* TrackingMoodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F1E1D931A0DAEE4001C22B7 /* TrackingMoodTableViewCell.xib */; };
 		5F223F3019F014620003AF64 /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F223F2E19F014620003AF64 /* ProfileTableViewController.m */; };
 		5F223F3119F014620003AF64 /* ProfileTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F223F2F19F014620003AF64 /* ProfileTableViewController.xib */; };
 		5F223F3519F03B480003AF64 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F223F3319F03B480003AF64 /* SettingsTableViewController.m */; };
@@ -1001,6 +1007,15 @@
 		5F1C9C8519EF16DB000F1FC1 /* ONDOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONDOViewController.h; sourceTree = "<group>"; };
 		5F1C9C8619EF16DB000F1FC1 /* ONDOViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONDOViewController.m; sourceTree = "<group>"; };
 		5F1C9C8719EF16DB000F1FC1 /* ONDOViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONDOViewController.xib; sourceTree = "<group>"; };
+		5F1E1D871A0DA579001C22B7 /* TrackingIntercourseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingIntercourseTableViewCell.h; sourceTree = "<group>"; };
+		5F1E1D881A0DA579001C22B7 /* TrackingIntercourseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingIntercourseTableViewCell.m; sourceTree = "<group>"; };
+		5F1E1D891A0DA579001C22B7 /* TrackingIntercourseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingIntercourseTableViewCell.xib; sourceTree = "<group>"; };
+		5F1E1D8C1A0DABFA001C22B7 /* TrackingSymptomsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingSymptomsTableViewCell.h; sourceTree = "<group>"; };
+		5F1E1D8D1A0DABFA001C22B7 /* TrackingSymptomsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingSymptomsTableViewCell.m; sourceTree = "<group>"; };
+		5F1E1D8E1A0DABFA001C22B7 /* TrackingSymptomsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingSymptomsTableViewCell.xib; sourceTree = "<group>"; };
+		5F1E1D911A0DAEE4001C22B7 /* TrackingMoodTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingMoodTableViewCell.h; sourceTree = "<group>"; };
+		5F1E1D921A0DAEE4001C22B7 /* TrackingMoodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingMoodTableViewCell.m; sourceTree = "<group>"; };
+		5F1E1D931A0DAEE4001C22B7 /* TrackingMoodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingMoodTableViewCell.xib; sourceTree = "<group>"; };
 		5F223F2D19F014620003AF64 /* ProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewController.h; sourceTree = "<group>"; };
 		5F223F2E19F014620003AF64 /* ProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewController.m; sourceTree = "<group>"; };
 		5F223F2F19F014620003AF64 /* ProfileTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableViewController.xib; sourceTree = "<group>"; };
@@ -1982,6 +1997,15 @@
 			isa = PBXGroup;
 			children = (
 				5F7AEA621A0122BB0053ABAB /* Tracking.storyboard */,
+				5F1E1D8C1A0DABFA001C22B7 /* TrackingSymptomsTableViewCell.h */,
+				5F1E1D8D1A0DABFA001C22B7 /* TrackingSymptomsTableViewCell.m */,
+				5F1E1D8E1A0DABFA001C22B7 /* TrackingSymptomsTableViewCell.xib */,
+				5F1E1D911A0DAEE4001C22B7 /* TrackingMoodTableViewCell.h */,
+				5F1E1D921A0DAEE4001C22B7 /* TrackingMoodTableViewCell.m */,
+				5F1E1D931A0DAEE4001C22B7 /* TrackingMoodTableViewCell.xib */,
+				5F1E1D871A0DA579001C22B7 /* TrackingIntercourseTableViewCell.h */,
+				5F1E1D881A0DA579001C22B7 /* TrackingIntercourseTableViewCell.m */,
+				5F1E1D891A0DA579001C22B7 /* TrackingIntercourseTableViewCell.xib */,
 				5FE12F761A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.h */,
 				5FE12F771A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.m */,
 				5FE12F781A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.xib */,
@@ -2274,6 +2298,7 @@
 				5F1C9C3D19EDE87A000F1FC1 /* coaching_selected.png in Resources */,
 				5F1C9BD319EDE87A000F1FC1 /* MassageBlue@2x.png in Resources */,
 				5F1C9C2119EDE87A000F1FC1 /* Moody.png in Resources */,
+				5F1E1D901A0DABFA001C22B7 /* TrackingSymptomsTableViewCell.xib in Resources */,
 				5F7AEA631A0122BB0053ABAB /* Tracking.storyboard in Resources */,
 				5F1C9BB519EDE87A000F1FC1 /* Eggwhite@2x.png in Resources */,
 				5F1C9BE919EDE87A000F1FC1 /* ActivateSmall@2x.png in Resources */,
@@ -2339,6 +2364,7 @@
 				5F1C9BB419EDE87A000F1FC1 /* Eggwhite.png in Resources */,
 				5F1C9BD219EDE87A000F1FC1 /* MassageBlue.png in Resources */,
 				5F1C9BBA19EDE87A000F1FC1 /* Acupressure.png in Resources */,
+				5F1E1D8B1A0DA579001C22B7 /* TrackingIntercourseTableViewCell.xib in Resources */,
 				5F1C9BA619EDE87A000F1FC1 /* Acupressure@2x.png in Resources */,
 				5F1C9BDE19EDE87A000F1FC1 /* ShareTheNews.png in Resources */,
 				5F1C9C4919EDE87A000F1FC1 /* today_selected.png in Resources */,
@@ -2405,6 +2431,7 @@
 				5F1C9BF519EDE87A000F1FC1 /* NourishSmall@2x.png in Resources */,
 				5F1C9BAE19EDE87A000F1FC1 /* BuyButtonLeft@2x.png in Resources */,
 				5F1C9BE019EDE87A000F1FC1 /* TryingToAvoid.png in Resources */,
+				5F1E1D951A0DAEE4001C22B7 /* TrackingMoodTableViewCell.xib in Resources */,
 				5F1C9C6A19EDE87A000F1FC1 /* CalendarCell.xib in Resources */,
 				5F1C9C1319EDE87A000F1FC1 /* Massage.png in Resources */,
 				5F1C9BC719EDE87A000F1FC1 /* Habits.png in Resources */,
@@ -2566,6 +2593,7 @@
 				5F1C9C6219EDE87A000F1FC1 /* Symptom.m in Sources */,
 				5F1C9B7E19EDE87A000F1FC1 /* TemperatureCellEditView.m in Sources */,
 				5F1C96D419EDD31A000F1FC1 /* MPABTestDesignerClearResponseMessage.m in Sources */,
+				5F1E1D8A1A0DA579001C22B7 /* TrackingIntercourseTableViewCell.m in Sources */,
 				5F1C96F519EDD31A000F1FC1 /* MPSequenceGenerator.m in Sources */,
 				5F1C9C5C19EDE87A000F1FC1 /* FertilityProfile.m in Sources */,
 				5F1C9C5819EDE87A000F1FC1 /* Configuration.m in Sources */,
@@ -2618,6 +2646,7 @@
 				5F1C96D719EDD31A000F1FC1 /* MPABTestDesignerDeviceInfoResponseMessage.m in Sources */,
 				5F1C96D319EDD31A000F1FC1 /* MPABTestDesignerClearRequestMessage.m in Sources */,
 				5F1C9B6D19EDE87A000F1FC1 /* Alert.m in Sources */,
+				5F1E1D8F1A0DABFA001C22B7 /* TrackingSymptomsTableViewCell.m in Sources */,
 				5F1C9B6019EDE87A000F1FC1 /* NSDate+CalendarOps.m in Sources */,
 				5F1C9B9D19EDE87A000F1FC1 /* TodayViewController.m in Sources */,
 				5F1C9B7319EDE87A000F1FC1 /* DisturbanceCellEditView.m in Sources */,
@@ -2639,6 +2668,7 @@
 				5F1C9C5719EDE87A000F1FC1 /* BaseModel.m in Sources */,
 				5F1C96EE19EDD31A000F1FC1 /* MPObjectIdentityProvider.m in Sources */,
 				5FCD68B719F942A10091C492 /* WeightTableViewCell.m in Sources */,
+				5F1E1D941A0DAEE4001C22B7 /* TrackingMoodTableViewCell.m in Sources */,
 				5F1C96FF19EDD31A000F1FC1 /* MPTypeDescription.m in Sources */,
 				5F1C96FE19EDD31A000F1FC1 /* MPTweakStore.m in Sources */,
 				5F6561ED19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.m in Sources */,
