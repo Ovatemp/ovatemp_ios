@@ -26,22 +26,44 @@ NSMutableArray *temperatureFractionalPartPickerData;
     temperatureFractionalPartPickerData = [[NSMutableArray alloc] init];
     
     // set up picker data source
-    for (int i = 90; i < 107; i++) {
-        [temperatureIntegerPartPickerData addObject:[NSString stringWithFormat:@"%d", i]];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"]) {
+        // Celsius 32 41
+        for (int i = 32; i < 41; i++) {
+            [temperatureIntegerPartPickerData addObject:[NSString stringWithFormat:@"%d", i]];
+        }
+        
+        for (int i = 0; i < 100; i++) {
+            [temperatureFractionalPartPickerData addObject:[NSString stringWithFormat:@"%d", i]];
+        }
+        
+        [self.temperaturePicker selectRow:5 inComponent:0 animated:YES];
+        [self.temperaturePicker selectRow:0 inComponent:1 animated:YES];
+        
+        self.temperatureValueLabel.text = @"37.00";
+        
+    } else {
+        // Fahrenheit
+        for (int i = 90; i < 107; i++) {
+            [temperatureIntegerPartPickerData addObject:[NSString stringWithFormat:@"%d", i]];
+        }
+        
+        for (int i = 0; i < 100; i++) {
+            [temperatureFractionalPartPickerData addObject:[NSString stringWithFormat:@"%d", i]];
+        }
+        
+        [self.temperaturePicker selectRow:8 inComponent:0 animated:YES];
+        [self.temperaturePicker selectRow:60 inComponent:1 animated:YES];
+        
+        self.temperatureValueLabel.text = @"98.60";
     }
     
-    for (int i = 0; i < 100; i++) {
-        [temperatureFractionalPartPickerData addObject:[NSString stringWithFormat:@"%d", i]];
-    }
+    
     
     self.temperaturePicker.delegate = self;
     self.temperaturePicker.dataSource = self;
     self.temperaturePicker.showsSelectionIndicator = YES;
-    
-    [self.temperaturePicker selectRow:8 inComponent:0 animated:YES];
-    [self.temperaturePicker selectRow:60 inComponent:1 animated:YES];
-    
-    self.temperatureValueLabel.text = @"98.6";
     
     self.selectedDate = [[NSDate alloc] init];
 }
@@ -83,18 +105,6 @@ NSMutableArray *temperatureFractionalPartPickerData;
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    
-//    NSString *temperatureUnit;
-//    
-//    if ([defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"]) {
-//        // fahrenheit
-//        temperatureUnit = @"F";
-//    } else {
-//        // celsius
-//        temperatureUnit = @"C";
-//    }
-    
     self.temperatureValueLabel.text = [NSString stringWithFormat:@"%@.%@", [temperatureIntegerPartPickerData objectAtIndex:[pickerView selectedRowInComponent:0]], [temperatureFractionalPartPickerData objectAtIndex:[pickerView selectedRowInComponent:1]]];
     
     // update temperature on backend
@@ -102,12 +112,22 @@ NSMutableArray *temperatureFractionalPartPickerData;
 }
 
 - (void)postAndSaveTemperature {
+    
+    float tempInFahrenheit;
+    // if Celsius, convert to Fahrenheit
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"]) {
+        tempInFahrenheit = (([self.temperatureValueLabel.text floatValue] * 1.8000f) + 32);
+    } else {
+        tempInFahrenheit = [self.temperatureValueLabel.text floatValue];
+    }
+    
     // first save to HealthKit
-    [self updateHealthKit];
+    [self updateHealthKitWithTemperature:tempInFahrenheit];
     
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     [attributes setObject:self.selectedDate forKey:@"date"];
-    [attributes setObject:self.temperatureValueLabel.text forKey:@"temperature"];
+    [attributes setObject:[NSNumber numberWithFloat:tempInFahrenheit] forKey:@"temperature"];
     
     [ConnectionManager put:@"/days/"
                     params:@{
@@ -125,9 +145,7 @@ NSMutableArray *temperatureFractionalPartPickerData;
 
 # pragma mark - HealthKit
 
-- (void)updateHealthKit {
-    
-    float temp = [self.temperatureValueLabel.text floatValue];
+- (void)updateHealthKitWithTemperature:(float)temp {
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:HKCONNECTION]) {
         if(temp) {

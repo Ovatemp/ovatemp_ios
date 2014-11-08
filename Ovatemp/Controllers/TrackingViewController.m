@@ -526,17 +526,31 @@ TableStateType currentState;
                        //                       if (onSuccess) onSuccess(response);
                        
                        // set data
+                       NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                       
+                       BOOL tempPrefFahrenheit = [defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"];
+                       
                        if (day.temperature) {
-                           self.temperature = day.temperature;
                            // change lable if we have info
-                           self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f", [self.temperature floatValue]];
+                           if (tempPrefFahrenheit) {
+                               self.temperature = day.temperature;
+                               self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f", [self.temperature floatValue]];
+                           } else {
+                               float tempInCelsius = (([day.temperature floatValue]- 32) / 1.8000f);
+                               self.temperature = [NSNumber numberWithFloat:tempInCelsius];
+                                self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f", tempInCelsius];
+                           }
                            
                            TemperatureCellHasData = YES;
                        } else {
                            self.tempCell.placeholderLabel.hidden = NO;
                            self.tempCell.temperatureValueLabel.hidden = YES;
                            self.tempCell.collapsedLabel.hidden = YES;
-                           self.tempCell.temperatureValueLabel.text = @"98.60";
+                           if (tempPrefFahrenheit) {
+                               self.tempCell.temperatureValueLabel.text = @"98.60";
+                           } else {
+                               self.tempCell.temperatureValueLabel.text = @"37.00";
+                           }
                            TemperatureCellHasData = NO;
                        }
                        
@@ -1204,8 +1218,16 @@ TableStateType currentState;
         // split string by .
         NSArray *tempChunks = [self.tempCell.temperatureValueLabel.text componentsSeparatedByString: @"."];
         
-        [self.tempCell.temperaturePicker selectRow:([tempChunks[0] intValue] - 90) inComponent:0 animated:NO];
-        [self.tempCell.temperaturePicker selectRow:[tempChunks[1] intValue] inComponent:0 animated:NO];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        if ([defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"]) {
+            [self.tempCell.temperaturePicker selectRow:([tempChunks[0] intValue] - 90) inComponent:0 animated:NO];
+            [self.tempCell.temperaturePicker selectRow:[tempChunks[1] intValue] inComponent:0 animated:NO];
+        } else {
+            [self.tempCell.temperaturePicker selectRow:([tempChunks[0] intValue] - 32) inComponent:0 animated:NO];
+            [self.tempCell.temperaturePicker selectRow:[tempChunks[1] intValue] inComponent:0 animated:NO];
+        }
+
     }
     
     // TODO: Finish implementation for custom cells
@@ -1256,6 +1278,30 @@ TableStateType currentState;
     if (currentState == TableStateAllClosed) {
         [self refreshTrackingView]; // new info
     }
+    
+//    if (currentState == TableStateTemperatureExpanded) {
+//        // fix picker
+//        // split string by .
+//        NSArray *tempChunks = [self.tempCell.temperatureValueLabel.text componentsSeparatedByString: @"."];
+//        
+//        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//        
+//        if ([defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"]) {
+//            [self.tempCell.temperaturePicker selectRow:([tempChunks[0] intValue] - 90) inComponent:0 animated:NO];
+//            [self.tempCell.temperaturePicker selectRow:[tempChunks[1] intValue] inComponent:0 animated:NO];
+//        } else {
+//            NSLog(@"%d, %d", [tempChunks[0] intValue], [tempChunks[1] intValue]);
+//            
+//            NSLog(@"%ld", (long)[self.tempCell.temperaturePicker selectedRowInComponent:0]);
+//            NSLog(@"%ld", (long)[self.tempCell.temperaturePicker selectedRowInComponent:1]);
+//            
+//            [self.tempCell.temperaturePicker selectRow:([tempChunks[0] intValue] - 32) inComponent:0 animated:NO];
+//            [self.tempCell.temperaturePicker selectRow:[tempChunks[1] intValue] inComponent:0 animated:NO];
+//        }
+//    }
+//    
+//    NSLog(@"%ld", (long)[self.tempCell.temperaturePicker selectedRowInComponent:0]);
+//    NSLog(@"%ld", (long)[self.tempCell.temperaturePicker selectedRowInComponent:1]);
     
     [tableView setNeedsDisplay];
     [tableView setNeedsLayout];
