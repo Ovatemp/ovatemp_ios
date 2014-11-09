@@ -973,6 +973,8 @@ TableStateType currentState;
             
             [self.periodCell setSelectedDate:self.selectedDate];
             
+            self.periodCell.delegate = self;
+            
             return self.periodCell;
             break;
         }
