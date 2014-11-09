@@ -625,6 +625,9 @@ TableStateType currentState;
                        
                        if (day.mood) {
                            // TODO
+                           
+                           self.mood = day.mood;
+                           [self setDataForMoodCell];
                        }
                        
                        if (day.symptoms) {
@@ -739,6 +742,53 @@ TableStateType currentState;
         self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
         self.intercourseCell.intercourseTypeCollapsedImageView.image = [UIImage imageNamed:@"icn_i_unprotected"];
     }
+}
+
+- (void)setDataForMoodCell {
+    if ([self.mood isEqual:@"angry"]) {
+        [self.moodCell setAngryMoodSelected:YES];
+    } else if ([self.mood isEqual:@"anxious"]) {
+        [self.moodCell setAnxiousMoodSelected:YES];
+    } else if ([self.mood isEqual:@"calm"]) {
+        [self.moodCell setCalmMoodSelected:YES];
+    } else if ([self.mood isEqual:@"depressed"]) {
+        [self.moodCell setDepressedMoodSelected:YES];
+    } else if ([self.mood isEqual:@"emotional"]) {
+        [self.moodCell setEmotionalModdSelected:YES];
+    } else if ([self.mood isEqual:@"excited"]) {
+        [self.moodCell setExcitedMoodSelected:YES];
+    } else if ([self.mood isEqual:@"frisky"]) {
+        [self.moodCell setFriskyMoodSelected:YES];
+    } else if ([self.mood isEqual:@"frustrated"]) {
+        [self.moodCell setFrustratedMoodSelected:YES];
+    } else if ([self.mood isEqual:@"happy"]) {
+        [self.moodCell setHappyMoodSelected:YES];
+    } else if ([self.mood isEqual:@"inLove"]) {
+        [self.moodCell setInLoveMoodSelected:YES];
+    } else if ([self.mood isEqual:@"motivated"]) {
+        [self.moodCell setMotivatedMoodSelected:YES];
+    } else if ([self.mood isEqual:@"neutral"]) {
+        [self.moodCell setNeutralMoodSelected:YES];
+    } else if ([self.mood isEqual:@"sad"]) {
+        [self.moodCell setSadMoodSelected:YES];
+    } else { // worried
+        [self.moodCell setWorriedMoodSelected:YES];
+    }
+    //    angryMoodSelected = NO;
+    //    anxiousMoodSelected = NO;
+    //    calmMoodSelected = NO;
+    //    depressedMoodSelected = NO;
+    //    emotionalModdSelected = NO;
+    //    excitedMoodSelected = NO;
+    //    friskyMoodSelected = NO;
+    //    frustratedMoodSelected = NO;
+    //    happyMoodSelected = NO;
+    //    inLoveMoodSelected = NO;
+    //    motivatedMoodSelected = NO;
+    //    neutralMoodSelected = NO;
+    //    neutralMoodSelected = NO;
+    //    sadMoodSelected = NO;
+    //    worriedMoodSelected = NO;
 }
 
 #pragma mark - Table view
