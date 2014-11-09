@@ -609,7 +609,18 @@ TableStateType currentState;
                        }
                        
                        if (day.intercourse) {
-                           // TODO
+                           self.intercourse = day.intercourse;
+                           self.intercourseCell.intercourseTypeCollapsedLabel.text = self.intercourse;
+                           self.intercourseCell.intercourseTypeCollapsedLabel.hidden = NO;
+                           IntercourseCellHasData = YES;
+                           [self setDataForIntercourseCell];
+                       } else { // no data, hide components
+                           self.intercourseCell.placeholderLabel.hidden = NO;
+                           self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+                           self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+                           self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+                           self.intercourseCell.intercourseTypeCollapsedLabel.text = @"";
+                           IntercourseCellHasData = NO;
                        }
                        
                        if (day.mood) {
