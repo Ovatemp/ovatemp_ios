@@ -1011,6 +1011,8 @@ TableStateType currentState;
             
             self.intercourseCell.layoutMargins = UIEdgeInsetsZero;
             
+            self.intercourseCell.delegate = self;
+            
             return self.intercourseCell;
             break;
         }
