@@ -413,6 +413,9 @@ TableStateType currentState;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:YES forKey:@"ShouldRotate"];
     [defaults synchronize];
+    
+    // fix nav bar
+    [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 90)];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -3197,6 +3200,9 @@ TableStateType currentState;
 //        webViewController.navigationItem.leftBarButtonItem = backButton;
         
         [webViewController.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(popWebView)]];
+        
+        // fix nav bar
+        [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 64)];
         
 //        [self presentViewController:webViewController animated:YES completion:nil];
         [self pushViewController:webViewController];
