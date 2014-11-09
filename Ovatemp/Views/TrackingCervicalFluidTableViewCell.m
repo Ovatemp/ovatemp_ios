@@ -12,6 +12,8 @@
 #import "Cycle.h"
 #import "Calendar.h"
 
+#import "TrackingViewController.h"
+
 @implementation TrackingCervicalFluidTableViewCell
 
 - (void)awakeFromNib {
@@ -68,6 +70,10 @@
                    failure:^(NSError *error) {
                        [Alert presentError:error];
                    }];
+}
+
+- (IBAction)didSelectInfo:(id)sender {
+    [self.delegate pushInfoAlertWithTitle:@"Cervical Fluid" AndMessage:@"Cervical fluid is like the “water for the swimmers”. The wetter the fluid the more chances you have of getting pregnant." AndURL:@"http://google.com"];
 }
 
 @end

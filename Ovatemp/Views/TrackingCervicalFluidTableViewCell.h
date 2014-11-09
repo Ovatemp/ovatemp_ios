@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TrackingCervicalFluidTableViewCell : UITableViewCell
+#import "TrackingTemperatureTableViewCell.h"
+
+@interface TrackingCervicalFluidTableViewCell : UITableViewCell <PresentInfoAlertDelegate>
+
+@property(nonatomic,retain)id<PresentInfoAlertDelegate>delegate;
+
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cfCollapsedLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cfTypeCollapsedLabel;

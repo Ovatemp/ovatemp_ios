@@ -904,6 +904,8 @@ TableStateType currentState;
             
             [self.cfCell setSelectedDate:self.selectedDate];
             
+            self.cfCell.delegate = self;
+            
             return self.cfCell;
             
             break;

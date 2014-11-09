@@ -24,6 +24,9 @@
                         <state key="normal" image="icn_info">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="didSelectInfoButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ebu-2V-aB5"/>
+                        </connections>
                     </button>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="99" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cervical Position" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4v-er-OXG">
                         <rect key="frame" x="6" y="2" width="94" height="15"/>
