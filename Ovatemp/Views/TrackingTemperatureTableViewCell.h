@@ -9,12 +9,21 @@
 #import <UIKit/UIKit.h>
 #import "ConnectionManager.h"
 
+@protocol PresentInfoAlertDelegate <NSObject>
+
+- (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
+
+@end
+
 @interface TrackingTemperatureTableViewCell : UITableViewCell <UIPickerViewDataSource, UIPickerViewDelegate>
+
+@property(nonatomic,retain)id<PresentInfoAlertDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet UILabel *temperatureValueLabel;
 @property (weak, nonatomic) IBOutlet UIPickerView *temperaturePicker;
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *collapsedLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *ondoIcon;
 
 @property NSDate *selectedDate;
 

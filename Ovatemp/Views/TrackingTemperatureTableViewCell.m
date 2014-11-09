@@ -12,6 +12,8 @@
 #import "Cycle.h"
 #import "Calendar.h"
 
+#import "TrackingViewController.h"
+
 @import HealthKit;
 
 @implementation TrackingTemperatureTableViewCell
@@ -72,6 +74,9 @@ NSMutableArray *temperatureFractionalPartPickerData;
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+- (IBAction)didSelectInfoButton:(id)sender {
+    [self.delegate pushInfoAlertWithTitle:@"Basal Body Temperature" AndMessage:@"Temperature of the body at rest, taken immediately after awakening and before any other activity (i.e. taking a sip of water, going to the bathroom).\n\nWomen have lower basal body temperatures before ovulation, and higher temperatures afterwards." AndURL:@"http://google.com"];
 }
 
 #pragma mark - UIPickerView
