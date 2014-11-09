@@ -37,7 +37,7 @@
                             <action selector="didSelectInfoButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Xtt-Yx-rM6"/>
                         </connections>
                     </button>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xxe-1n-Jnh">
+                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xxe-1n-Jnh">
                         <rect key="frame" x="0.0" y="58" width="320" height="92"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
