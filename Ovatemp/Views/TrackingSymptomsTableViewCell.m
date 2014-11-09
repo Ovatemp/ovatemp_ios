@@ -8,6 +8,8 @@
 
 #import "TrackingSymptomsTableViewCell.h"
 
+#import "TrackingViewController.h"
+
 @implementation TrackingSymptomsTableViewCell
 
 NSArray *symptomsDataSource;
@@ -27,7 +29,7 @@ NSArray *symptomsDataSource;
 }
 
 - (IBAction)didSelectInfoButton:(id)sender {
-    // TODO: Present UIAlertController
+    [self.delegate pushInfoAlertWithTitle:@"Symptoms" AndMessage:@"In addition to the main fertility signs, our bodies have several ways of letting us know what is going on. Hormones are a very powerful thing and they can sometimes trigger specific symptoms to each woman.\n\nTake note of these symptoms and learn your patterns for better understanding of your body." AndURL:@"http://google.com"];
 }
 
 #pragma mark - Table View Methods

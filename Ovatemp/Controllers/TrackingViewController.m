@@ -1064,6 +1064,8 @@ TableStateType currentState;
             
             self.symptomsCell.layoutMargins = UIEdgeInsetsZero;
             
+            self.symptomsCell.delegate = self;
+            
             return self.symptomsCell;
             break;
         }
