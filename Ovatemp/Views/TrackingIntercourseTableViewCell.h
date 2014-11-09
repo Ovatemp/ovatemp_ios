@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TrackingTemperatureTableViewCell.h" // where our delegate is
 
 @interface TrackingIntercourseTableViewCell : UITableViewCell
+
+@property(nonatomic,retain)id<PresentInfoAlertDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *intercourseCollapsedLabel;

@@ -36,6 +36,9 @@
                         <state key="normal" image="icn_info">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="didSelectInfo:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NJh-Ty-HYU"/>
+                        </connections>
                     </button>
                     <button hidden="YES" opaque="NO" tag="99" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9RT-4f-cby">
                         <rect key="frame" x="25" y="63" width="31" height="24"/>

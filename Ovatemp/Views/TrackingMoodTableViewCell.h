@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TrackingTemperatureTableViewCell.h" // where our delegate is
 
 @interface TrackingMoodTableViewCell : UITableViewCell <UITableViewDataSource, UITableViewDelegate>
+
+@property(nonatomic,retain)id<PresentInfoAlertDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet UILabel *moodPlaceholderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *moodCollapsedLabel;

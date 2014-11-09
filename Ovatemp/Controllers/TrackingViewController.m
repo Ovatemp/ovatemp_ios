@@ -904,6 +904,8 @@ TableStateType currentState;
             
             [self.cfCell setSelectedDate:self.selectedDate];
             
+            self.cfCell.delegate = self;
+            
             return self.cfCell;
             
             break;
@@ -940,6 +942,8 @@ TableStateType currentState;
             
             [self.cpCell setSelectedDate:self.selectedDate];
             
+            self.cpCell.delegate = self;
+            
             return self.cpCell;
             break;
         }
@@ -968,6 +972,8 @@ TableStateType currentState;
             self.periodCell.layoutMargins = UIEdgeInsetsZero;
             
             [self.periodCell setSelectedDate:self.selectedDate];
+            
+            self.periodCell.delegate = self;
             
             return self.periodCell;
             break;
@@ -1005,6 +1011,8 @@ TableStateType currentState;
             
             self.intercourseCell.layoutMargins = UIEdgeInsetsZero;
             
+            self.intercourseCell.delegate = self;
+            
             return self.intercourseCell;
             break;
         }
@@ -1030,6 +1038,8 @@ TableStateType currentState;
             
             self.moodCell.layoutMargins = UIEdgeInsetsZero;
             
+            self.moodCell.delegate = self;
+            
             return self.moodCell;
             break;
         }
@@ -1053,6 +1063,8 @@ TableStateType currentState;
             [self.symptomsCell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
             self.symptomsCell.layoutMargins = UIEdgeInsetsZero;
+            
+            self.symptomsCell.delegate = self;
             
             return self.symptomsCell;
             break;

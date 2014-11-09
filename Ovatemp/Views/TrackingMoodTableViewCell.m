@@ -11,6 +11,7 @@
 #import "ConnectionManager.h"
 #import "Calendar.h"
 #import "Alert.h"
+#import "TrackingViewController.h"
 
 @implementation TrackingMoodTableViewCell
 
@@ -38,7 +39,7 @@ NSIndexPath *selectedIndexPath;
 }
 
 - (IBAction)didSelectInfoButton:(id)sender {
-    // TODO: Present UIAlertController
+    [self.delegate pushInfoAlertWithTitle:@"Mood" AndMessage:@"Taking note of your mood throughout your cycle can help you identify patterns and understand both your cycles and your mood swings better.\n\nDid you know you feel your best when ovulating?" AndURL:@"http://google.com"];
 }
 
 - (void)resetSelectedMood {
