@@ -1038,6 +1038,8 @@ TableStateType currentState;
             
             self.moodCell.layoutMargins = UIEdgeInsetsZero;
             
+            self.moodCell.delegate = self;
+            
             return self.moodCell;
             break;
         }
