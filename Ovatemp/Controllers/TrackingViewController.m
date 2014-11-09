@@ -17,6 +17,7 @@
 #import "CycleViewController.h"
 #import "TrackingNotesViewController.h"
 #import "DateCollectionViewCell.h"
+#import "WebViewController.h"
 
 #import "TrackingStatusTableViewCell.h"
 #import "TrackingTemperatureTableViewCell.h"
@@ -44,7 +45,7 @@ typedef enum {
     TableStateMedicineExpanded,
 } TableStateType;
 
-@interface TrackingViewController () <UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, TrackingCellDelegate, ONDODelegate>
+@interface TrackingViewController () <UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, TrackingCellDelegate, ONDODelegate, PresentInfoAlertDelegate>
 
 @property UIImageView *arrowImageView;
 
@@ -857,6 +858,8 @@ TableStateType currentState;
             [self.tempCell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
             [self.tempCell setSelectedDate:self.selectedDate];
+            
+            self.tempCell.delegate = self;
             
             return self.tempCell;
             break;
@@ -3173,6 +3176,48 @@ TableStateType currentState;
     else {
         NSLog(@"Could not save to healthkit. No connection could be made");
     }
+}
+
+#pragma mark - Push Info Alert Delegate
+
+- (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url {
+    UIAlertController *infoAlert = [UIAlertController
+                                    alertControllerWithTitle:title
+                                    message:message
+                                    preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *gotIt = [UIAlertAction actionWithTitle:@"Got it" style:UIAlertActionStyleDefault
+                                                  handler:nil];
+    
+    UIAlertAction *learnMore = [UIAlertAction actionWithTitle:@"Learn more" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        WebViewController *webViewController = [WebViewController withURL:url];
+        webViewController.title = title;
+        
+//        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(dismissViewControllerAnimated:completion:)];
+//        webViewController.navigationItem.leftBarButtonItem = backButton;
+        
+        [webViewController.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(popViewControllerAnimated:)]];
+        
+//        [self presentViewController:webViewController animated:YES completion:nil];
+        [self pushViewController:webViewController];
+//        UINavigationController *tempNavigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
+//
+//        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(dismissViewControllerAnimated:completion:)];
+//
+//        [tempNavigationController.navigationItem setLeftBarButtonItem:backButton];
+//        
+//        //now present this navigation controller modally
+//        [self presentViewController:tempNavigationController
+//                           animated:YES
+//                         completion:nil];
+    }];
+    
+    [infoAlert addAction:gotIt];
+    [infoAlert addAction:learnMore];
+    
+    infoAlert.view.tintColor = [UIColor ovatempAquaColor];
+    
+    [self presentViewController:infoAlert animated:YES completion:nil];
 }
 
 /*
