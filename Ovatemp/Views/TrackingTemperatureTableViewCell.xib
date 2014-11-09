@@ -40,10 +40,14 @@
                     <pickerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lQA-8c-cPq">
                         <rect key="frame" x="0.0" y="29" width="320" height="162"/>
                     </pickerView>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icn_positive" translatesAutoresizingMaskIntoConstraints="NO" id="6uw-4c-XJ5">
+                        <rect key="frame" x="85" y="10" width="30" height="30"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="collapsedLabel" destination="hca-T7-h3B" id="8sk-W3-5ry"/>
+                <outlet property="ondoIcon" destination="6uw-4c-XJ5" id="TIN-5d-Rib"/>
                 <outlet property="placeholderLabel" destination="UOc-hD-NjA" id="rwk-GG-aHu"/>
                 <outlet property="temperaturePicker" destination="lQA-8c-cPq" id="A8N-7y-ER1"/>
                 <outlet property="temperatureValueLabel" destination="brF-Dn-gLz" id="D2g-0v-s64"/>
@@ -53,5 +57,6 @@
     </objects>
     <resources>
         <image name="icn_info" width="22" height="22"/>
+        <image name="icn_positive" width="33" height="33"/>
     </resources>
 </document>

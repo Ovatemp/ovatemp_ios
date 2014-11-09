@@ -3114,6 +3114,9 @@ TableStateType currentState;
     // first save to HealthKit
     [self updateHealthKitWithTemp:temp];
     
+    // unhide ondo icon
+    self.tempCell.ondoIcon.hidden = NO;
+    
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     [attributes setObject:self.selectedDate forKey:@"date"];
     [attributes setObject:[NSString stringWithFormat:@"%f", temp] forKey:@"temperature"];

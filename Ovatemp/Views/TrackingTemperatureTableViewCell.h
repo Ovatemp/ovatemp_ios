@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *temperaturePicker;
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *collapsedLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *ondoIcon;
 
 @property NSDate *selectedDate;
 
