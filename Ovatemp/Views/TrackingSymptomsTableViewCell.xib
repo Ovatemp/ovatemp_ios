@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -37,15 +37,12 @@
                     <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="tAZ-dm-EWG">
                         <rect key="frame" x="0.0" y="58" width="320" height="92"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <connections>
-                            <outlet property="dataSource" destination="-1" id="d8H-ue-K9j"/>
-                            <outlet property="delegate" destination="-1" id="i76-wq-Nfd"/>
-                        </connections>
                     </tableView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="placeholderLabel" destination="pC8-Vg-fNe" id="7FO-NB-9Ye"/>
+                <outlet property="symptomsCollapsedLabel" destination="dQh-Yb-zd7" id="DrU-2L-Vxr"/>
                 <outlet property="symptomsTableView" destination="tAZ-dm-EWG" id="VcY-Uv-V4x"/>
             </connections>
             <point key="canvasLocation" x="198" y="307"/>

@@ -912,13 +912,22 @@ TableStateType currentState;
             if (expandIntercourseCell) {
                 // unhide component
                 self.intercourseCell.placeholderLabel.hidden = YES;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
                 
                 self.intercourseCell.protectedImageView.hidden = NO;
                 self.intercourseCell.protectedLabel.hidden = NO;
                 
                 self.intercourseCell.unprotectedImageView.hidden = NO;
                 self.intercourseCell.unprotectedLabel.hidden = NO;
-
+            } else {
+                self.intercourseCell.placeholderLabel.hidden = NO;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+                
+                self.intercourseCell.protectedImageView.hidden = YES;
+                self.intercourseCell.protectedLabel.hidden = YES;
+                
+                self.intercourseCell.unprotectedImageView.hidden = YES;
+                self.intercourseCell.unprotectedLabel.hidden = YES;
             }
             
             [self.intercourseCell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -937,7 +946,13 @@ TableStateType currentState;
             if (expandMoodCell) {
                 // unhide component
                 self.moodCell.moodPlaceholderLabel.hidden = YES;
+                self.moodCell.moodCollapsedLabel.hidden = NO;
                 self.moodCell.moodTableView.hidden = NO;
+            } else {
+                self.moodCell.moodPlaceholderLabel.hidden = NO;
+                self.moodCell.moodCollapsedLabel.hidden = YES;
+                self.moodCell.moodTableView.hidden = YES;
+
             }
             
             [self.moodCell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -956,7 +971,12 @@ TableStateType currentState;
             if (expandSymptomsCell) {
             // unhide component
                 self.symptomsCell.placeholderLabel.hidden = YES;
+                self.symptomsCell.symptomsCollapsedLabel.hidden = NO;
                 self.symptomsCell.symptomsTableView.hidden = NO;
+            } else {
+                self.symptomsCell.placeholderLabel.hidden = NO;
+                self.symptomsCell.symptomsCollapsedLabel.hidden = YES;
+                self.symptomsCell.symptomsTableView.hidden = YES;
             }
             
             [self.symptomsCell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -1279,6 +1299,7 @@ TableStateType currentState;
         {
             if (MoodCellHasData) {
                 // no collapsed labels to show
+                self.moodCell.moodPlaceholderLabel.hidden = NO;
             }
             break;
         }
@@ -1287,6 +1308,7 @@ TableStateType currentState;
         {
             if (SymptomsCellHasData) {
                 // no collapsed labels to show
+                self.symptomsCell.placeholderLabel.hidden = NO;
             }
             break;
         }
@@ -2086,8 +2108,8 @@ TableStateType currentState;
             self.cpCell.highImageView.hidden = YES;
             self.cpCell.highLabel.hidden = YES;
             
-            self.cpCell.lowImageView.hidden = NO;
-            self.cpCell.lowLabel.hidden = NO;
+            self.cpCell.lowImageView.hidden = YES;
+            self.cpCell.lowLabel.hidden = YES;
             
             if (CervicalPositionCellHasData) {
                 self.cpCell.placeholderLabel.hidden = YES;
@@ -2201,8 +2223,8 @@ TableStateType currentState;
             self.cpCell.highImageView.hidden = YES;
             self.cpCell.highLabel.hidden = YES;
             
-            self.cpCell.lowImageView.hidden = NO;
-            self.cpCell.lowLabel.hidden = NO;
+            self.cpCell.lowImageView.hidden = YES;
+            self.cpCell.lowLabel.hidden = YES;
             
             if (CervicalPositionCellHasData) {
                 self.cpCell.placeholderLabel.hidden = YES;
@@ -2331,8 +2353,8 @@ TableStateType currentState;
             self.cpCell.highImageView.hidden = YES;
             self.cpCell.highLabel.hidden = YES;
             
-            self.cpCell.lowImageView.hidden = NO;
-            self.cpCell.lowLabel.hidden = NO;
+            self.cpCell.lowImageView.hidden = YES;
+            self.cpCell.lowLabel.hidden = YES;
             
             if (CervicalPositionCellHasData) {
                 self.cpCell.placeholderLabel.hidden = YES;

@@ -10,6 +10,7 @@
 
 @interface TrackingSymptomsTableViewCell : UITableViewCell <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
+@property (weak, nonatomic) IBOutlet UILabel *symptomsCollapsedLabel;
 @property (weak, nonatomic) IBOutlet UITableView *symptomsTableView;
 
 @end
