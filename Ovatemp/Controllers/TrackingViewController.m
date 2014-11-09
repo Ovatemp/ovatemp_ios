@@ -1411,12 +1411,23 @@ TableStateType currentState;
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
+        int componentZeroSelection;
+        int componenetOneSelection;
+        
         if ([defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"]) {
-            [self.tempCell.temperaturePicker selectRow:([tempChunks[0] intValue] - 90) inComponent:0 animated:NO];
-            [self.tempCell.temperaturePicker selectRow:[tempChunks[1] intValue] inComponent:0 animated:NO];
+            componentZeroSelection = [tempChunks[0] intValue];
+            componentZeroSelection -= 90;
+            
+            componenetOneSelection = [tempChunks[1] intValue];
+            [self.tempCell.temperaturePicker selectRow:componentZeroSelection inComponent:0 animated:NO];
+            [self.tempCell.temperaturePicker selectRow:componenetOneSelection inComponent:1 animated:NO];
         } else {
-            [self.tempCell.temperaturePicker selectRow:([tempChunks[0] intValue] - 32) inComponent:0 animated:NO];
-            [self.tempCell.temperaturePicker selectRow:[tempChunks[1] intValue] inComponent:0 animated:NO];
+            componentZeroSelection = [tempChunks[0] intValue];
+            componentZeroSelection -= 32;
+            
+            componenetOneSelection = [tempChunks[1] intValue];
+            [self.tempCell.temperaturePicker selectRow:componentZeroSelection inComponent:0 animated:NO];
+            [self.tempCell.temperaturePicker selectRow:componenetOneSelection inComponent:1 animated:NO];
         }
 
     }
