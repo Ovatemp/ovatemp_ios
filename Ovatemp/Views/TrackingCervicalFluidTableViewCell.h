@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "TrackingTemperatureTableViewCell.h"
+#import "TrackingTemperatureTableViewCell.h" // where our delegate is
 
-@interface TrackingCervicalFluidTableViewCell : UITableViewCell <PresentInfoAlertDelegate>
+@interface TrackingCervicalFluidTableViewCell : UITableViewCell
 
 @property(nonatomic,retain)id<PresentInfoAlertDelegate>delegate;
 
