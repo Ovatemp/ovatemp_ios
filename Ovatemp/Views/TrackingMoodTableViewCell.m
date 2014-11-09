@@ -16,6 +16,8 @@
 
 NSArray *moodDataSource;
 
+NSIndexPath *selectedIndexPath;
+
 - (void)awakeFromNib {
     // Initialization code
     
@@ -57,7 +59,7 @@ NSArray *moodDataSource;
     self.worriedMoodSelected = NO;
 }
 
-- (void)hitBackendWithMoodType:(NSString *)moodType {
+- (void)hitBackendWithMoodType:(id)moodType {
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     
     [attributes setObject:moodType forKey:@"mood"];
@@ -76,6 +78,97 @@ NSArray *moodDataSource;
                        [Alert presentError:error];
                    }];
     
+}
+
+- (void)selectMoodAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.row) {
+        case 0:
+        {
+            self.angryMoodSelected = YES;
+            break;
+        }
+            
+        case 1:
+        {
+            self.anxiousMoodSelected = YES;
+            break;
+        }
+            
+        case 2:
+        {
+            self.calmMoodSelected = YES;
+            break;
+        }
+            
+        case 3:
+        {
+            self.depressedMoodSelected = YES;
+            break;
+        }
+            
+        case 4:
+        {
+            self.emotionalModdSelected = YES;
+            break;
+        }
+            
+        case 5:
+        {
+            self.excitedMoodSelected = YES;
+            break;
+        }
+            
+        case 6:
+        {
+            self.friskyMoodSelected = YES;
+            break;
+        }
+            
+        case 7:
+        {
+            self.frustratedMoodSelected = YES;
+            break;
+        }
+            
+        case 8:
+        {
+            self.happyMoodSelected = YES;
+            break;
+        }
+            
+        case 9:
+        {
+            self.inLoveMoodSelected = YES;
+            break;
+        }
+            
+        case 10:
+        {
+            self.motivatedMoodSelected = YES;
+            break;
+        }
+            
+        case 11:
+        {
+            self.neutralMoodSelected = YES;
+            break;
+        }
+            
+        case 12:
+        {
+            self.sadMoodSelected = YES;
+            break;
+        }
+            
+        case 13:
+        {
+            self.worriedMoodSelected = YES;
+            break;
+        }
+        
+        default:
+            break;
+    }
 }
 
 #pragma mark - Table View Methods
@@ -224,85 +317,196 @@ NSArray *moodDataSource;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self resetSelectedMood];
-    [self.moodTableView reloadData];
+//    [self resetSelectedMood]; // clear all
+//    [self.moodTableView reloadData];
     
     [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
     
+//    if (selectedIndexPath) { // we already have a saved path
+//        if (selectedIndexPath == indexPath) {
+//            // deselect
+//            [self selectMoodAtIndexPath:indexPath]; // select what we need to remove
+//        }
+//    } else { // first time selecting anything
+//        [self resetSelectedMood]; // clear all
+//    }
+    
     switch (indexPath.row) {
         case 0:
-            self.angryMoodSelected = YES;
-            [self hitBackendWithMoodType:@"angry"];
+        {
+            if (self.angryMoodSelected) { // if cell is already selected
+                // deselect
+                [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                [self hitBackendWithMoodType:"<null>"];
+                self.angryMoodSelected = NO;
+                
+            } else { // select cell
+                self.angryMoodSelected = YES;
+                [self hitBackendWithMoodType:@"angry"];
+            }
             break;
-            
+        }
         case 1:
-            self.anxiousMoodSelected = YES;
-            [self hitBackendWithMoodType:@"anxious"];
+        {
+            if (self.anxiousMoodSelected) {
+                [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                [self hitBackendWithMoodType:@"<null>"];
+                self.anxiousMoodSelected = NO;
+            } else {
+                self.anxiousMoodSelected = YES;
+                [self hitBackendWithMoodType:@"anxious"];
+            }
             break;
-            
+        }
         case 2:
-            self.calmMoodSelected = YES;
-            [self hitBackendWithMoodType:@"calm"];
+        {
+            if (self.calmMoodSelected) {
+                [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                [self hitBackendWithMoodType:@"<null>"];
+                self.calmMoodSelected = NO;
+            } else {
+                self.calmMoodSelected = YES;
+                [self hitBackendWithMoodType:@"calm"];
+            }
             break;
-            
+        }
         case 3:
-            self.depressedMoodSelected = YES;
-            [self hitBackendWithMoodType:@"depressed"];
+        {
+            if (self.depressedMoodSelected) {
+                [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                [self hitBackendWithMoodType:@"<null>"];
+                self.depressedMoodSelected = NO;
+            } else {
+                self.depressedMoodSelected = YES;
+                [self hitBackendWithMoodType:@"depressed"];
+            }
             break;
-            
+        }
         case 4:
-            self.emotionalModdSelected = YES;
-            [self hitBackendWithMoodType:@"emotional"];
+        {
+            if (self.emotionalModdSelected) {
+                [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                [self hitBackendWithMoodType:@"<null>"];
+                self.emotionalModdSelected = NO;
+            } else {
+                self.emotionalModdSelected = YES;
+                [self hitBackendWithMoodType:@"emotional"];
+            }
             break;
-            
+        }
         case 5:
-            self.excitedMoodSelected = YES;
-            [self hitBackendWithMoodType:@"excited"];
+        {
+            if (self.excitedMoodSelected) {
+                [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                [self hitBackendWithMoodType:@"<null>"];
+                self.excitedMoodSelected = NO;
+            } else {
+                self.excitedMoodSelected = YES;
+                [self hitBackendWithMoodType:@"excited"];
+            }
             break;
-            
+        }
         case 6:
-            self.friskyMoodSelected = YES;
-            [self hitBackendWithMoodType:@"frisky"];
+        {
+            if (self.friskyMoodSelected) {
+                [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                [self hitBackendWithMoodType:@"<null>"];
+                self.friskyMoodSelected = NO;
+            } else {
+                self.friskyMoodSelected = YES;
+                [self hitBackendWithMoodType:@"frisky"];
+            }
             break;
-            
+        }
         case 7:
-            self.frustratedMoodSelected = YES;
-            [self hitBackendWithMoodType:@"frustrated"];
+        {
+            if (self.frustratedMoodSelected) {
+                [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                [self hitBackendWithMoodType:@"<null>"];
+                self.friskyMoodSelected = NO;
+            } else {
+                self.frustratedMoodSelected = YES;
+                [self hitBackendWithMoodType:@"frustrated"];
+            }
             break;
-            
+        }
         case 8:
-            self.happyMoodSelected = YES;
-            [self hitBackendWithMoodType:@"happy"];
+        {
+            if (self.happyMoodSelected) {
+                [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                [self hitBackendWithMoodType:@"<null>"];
+                self.happyMoodSelected = NO;
+            } else {
+                self.happyMoodSelected = YES;
+                [self hitBackendWithMoodType:@"happy"];
+            }
             break;
-            
+    }
         case 9:
-            self.inLoveMoodSelected = YES;
-            [self hitBackendWithMoodType:@"inLove"];
+        {
+            if (self.inLoveMoodSelected) {
+                [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                [self hitBackendWithMoodType:@"<null>"];
+                self.inLoveMoodSelected = NO;
+            } else {
+                self.inLoveMoodSelected = YES;
+                [self hitBackendWithMoodType:@"inLove"];
+            }
             break;
-            
+        }
         case 10:
-            self.motivatedMoodSelected = YES;
-            [self hitBackendWithMoodType:@"motivated"];
+        {
+            if (self.motivatedMoodSelected) {
+                [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                [self hitBackendWithMoodType:@"<null>"];
+                self.motivatedMoodSelected = NO;
+            } else {
+                self.motivatedMoodSelected = YES;
+                [self hitBackendWithMoodType:@"motivated"];
+            }
             break;
-            
+        }
         case 11:
-            self.neutralMoodSelected = YES;
-            [self hitBackendWithMoodType:@"neutral"];
+        {
+            if (self.neutralMoodSelected) {
+                [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                [self hitBackendWithMoodType:@"<null>"];
+                self.neutralMoodSelected = NO;
+            } else {
+                self.neutralMoodSelected = YES;
+                [self hitBackendWithMoodType:@"neutral"];
+            }
             break;
-            
+        }
         case 12:
-            self.sadMoodSelected = YES;
-            [self hitBackendWithMoodType:@"sad"];
+        {
+            if (self.sadMoodSelected) {
+                [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                [self hitBackendWithMoodType:"<null>"];
+                self.sadMoodSelected = NO;
+            } else {
+                self.sadMoodSelected = YES;
+                [self hitBackendWithMoodType:@"sad"];
+            }
             break;
-            
+        }
         case 13:
-            self.worriedMoodSelected = YES;
-            [self hitBackendWithMoodType:@"worried"];
+        {
+            if (self.worriedMoodSelected) {
+                [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                [self hitBackendWithMoodType:@"<null>"];
+                self.worriedMoodSelected = NO;
+            } else {
+                self.worriedMoodSelected = YES;
+                [self hitBackendWithMoodType:@"worried"];
+            }
             break;
-            
+        }
         default:
             break;
     }
+    
+    selectedIndexPath = indexPath;
 }
 
 
