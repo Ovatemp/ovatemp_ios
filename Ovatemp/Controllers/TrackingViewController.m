@@ -3196,7 +3196,7 @@ TableStateType currentState;
 //        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(dismissViewControllerAnimated:completion:)];
 //        webViewController.navigationItem.leftBarButtonItem = backButton;
         
-        [webViewController.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(popViewControllerAnimated:)]];
+        [webViewController.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(popWebView)]];
         
 //        [self presentViewController:webViewController animated:YES completion:nil];
         [self pushViewController:webViewController];
@@ -3218,6 +3218,10 @@ TableStateType currentState;
     infoAlert.view.tintColor = [UIColor ovatempAquaColor];
     
     [self presentViewController:infoAlert animated:YES completion:nil];
+}
+
+- (void)popWebView {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*
