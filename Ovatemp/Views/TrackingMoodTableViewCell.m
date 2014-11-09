@@ -337,7 +337,7 @@ NSIndexPath *selectedIndexPath;
             if (self.angryMoodSelected) { // if cell is already selected
                 // deselect
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                [self hitBackendWithMoodType:"<null>"];
+                [self hitBackendWithMoodType:@"<null>"];
                 self.angryMoodSelected = NO;
                 
             } else { // select cell
@@ -482,7 +482,7 @@ NSIndexPath *selectedIndexPath;
         {
             if (self.sadMoodSelected) {
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                [self hitBackendWithMoodType:"<null>"];
+                [self hitBackendWithMoodType:@"<null>"];
                 self.sadMoodSelected = NO;
             } else {
                 self.sadMoodSelected = YES;
