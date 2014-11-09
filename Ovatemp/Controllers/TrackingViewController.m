@@ -204,6 +204,7 @@ TableStateType currentState;
     // start with current date, then change it whenever the user changes dates via the collection view
     self.selectedDate = [NSDate date];
     
+    
     //    self.cycleViewController = [[CycleViewController alloc] init];
     
     // table view line separator
@@ -387,6 +388,9 @@ TableStateType currentState;
     [self.cfCell setSelectedDate:self.selectedDate];
     [self.cpCell setSelectedDate:self.selectedDate];
     [self.periodCell setSelectedDate:self.selectedDate];
+    [self.intercourseCell setSelectedDate:self.selectedDate];
+    [self.moodCell setSelectedDate:self.selectedDate];
+    [self.symptomsCell setSelectedDate:self.selectedDate];
     
     if ([ONDO sharedInstance].devices.count > 0) {
         [ONDO startWithDelegate:self];

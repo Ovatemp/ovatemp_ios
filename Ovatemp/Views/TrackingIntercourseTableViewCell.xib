@@ -45,12 +45,18 @@
                         <state key="normal" image="icn_i_unprotected">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="didSelectUnprotected:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ziN-ki-Um9"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avF-IP-YYn">
                         <rect key="frame" x="217" y="71" width="32" height="38"/>
                         <state key="normal" image="icn_i_protected">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="didSelectProtected:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jHR-yG-tto"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Unprotected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgz-LP-MvT">
                         <rect key="frame" x="55" y="110" width="64" height="21"/>

@@ -15,6 +15,8 @@ NSArray *moodDataSource;
 - (void)awakeFromNib {
     // Initialization code
     
+    self.selectedDate = [[NSDate alloc] init];
+    
     moodDataSource = [[NSArray alloc] initWithObjects:@"Angry", @"Anxious", @"Calm", @"Depressed", @"Emotional", @"Excited", @"Frisky", @"Frustrated", @"Happy", @"In Love", @"Motivated", @"Neutral", @"Sad", @"Worried", nil];
 }
 

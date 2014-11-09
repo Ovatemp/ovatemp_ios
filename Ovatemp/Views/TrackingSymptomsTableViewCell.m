@@ -15,6 +15,8 @@ NSArray *symptomsDataSource;
 - (void)awakeFromNib {
     // Initialization code
     
+    self.selectedDate = [[NSDate alloc] init];
+    
     symptomsDataSource = [NSArray arrayWithObjects:@"Acne", @"Backache", @"Breast Tenderness", @"Constipation", @"Cramps", @"Diarrhea", @"Fatigue", @"Fever", @"Headache", @"Indigestion", @"Insomnia", @"Mood Swings", @"Nausea", @"PMS", @"Stress", @"Tired", @"Vaginal Pain", @"Vomiting", nil];
 }
 

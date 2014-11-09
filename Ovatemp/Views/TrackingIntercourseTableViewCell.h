@@ -21,4 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *protectedImageView;
 @property (weak, nonatomic) IBOutlet UILabel *protectedLabel;
 
+@property NSDate *selectedDate;
+
 @end

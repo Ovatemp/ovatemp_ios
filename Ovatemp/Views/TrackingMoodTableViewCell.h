@@ -14,4 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *moodCollapsedLabel;
 @property (weak, nonatomic) IBOutlet UITableView *moodTableView;
 
+@property NSDate *selectedDate;
+
 @end

@@ -13,4 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *symptomsCollapsedLabel;
 @property (weak, nonatomic) IBOutlet UITableView *symptomsTableView;
 
+@property NSDate *selectedDate;
+
 @end
