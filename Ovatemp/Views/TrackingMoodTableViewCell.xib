@@ -33,14 +33,22 @@
                         <state key="normal" image="icn_info">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="didSelectInfoButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Xtt-Yx-rM6"/>
+                        </connections>
                     </button>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xxe-1n-Jnh">
+                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xxe-1n-Jnh">
                         <rect key="frame" x="0.0" y="58" width="320" height="92"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tableView>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="moodCollapsedLabel" destination="6B6-Tm-Pjb" id="yya-EA-GB1"/>
+                <outlet property="moodPlaceholderLabel" destination="mbz-dF-Z2L" id="hGj-gR-cNs"/>
+                <outlet property="moodTableView" destination="xxe-1n-Jnh" id="ydK-F9-Nte"/>
+            </connections>
             <point key="canvasLocation" x="198" y="425"/>
         </tableViewCell>
     </objects>

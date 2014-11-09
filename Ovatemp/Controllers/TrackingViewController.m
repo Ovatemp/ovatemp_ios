@@ -23,6 +23,9 @@
 #import "TrackingCervicalFluidTableViewCell.h"
 #import "TrackingCervicalPositionTableViewCell.h"
 #import "TrackingPeriodTableViewCell.h"
+#import "TrackingIntercourseTableViewCell.h"
+#import "TrackingMoodTableViewCell.h"
+#import "TrackingSymptomsTableViewCell.h"
 
 @import HealthKit;
 
@@ -59,12 +62,18 @@ typedef enum {
 @property TrackingCervicalFluidTableViewCell *cfCell;
 @property TrackingCervicalPositionTableViewCell *cpCell;
 @property TrackingPeriodTableViewCell *periodCell;
+@property TrackingIntercourseTableViewCell *intercourseCell;
+@property TrackingMoodTableViewCell *moodCell;
+@property TrackingSymptomsTableViewCell *symptomsCell;
 
 // info
 @property NSNumber *temperature;
 @property NSString *cervicalFluid;
 @property NSString *cervicalPosition;
 @property NSString *period;
+@property NSString *intercourse;
+@property NSString *mood;
+@property NSArray *symptoms;
 
 @end
 
@@ -195,6 +204,7 @@ TableStateType currentState;
     // start with current date, then change it whenever the user changes dates via the collection view
     self.selectedDate = [NSDate date];
     
+    
     //    self.cycleViewController = [[CycleViewController alloc] init];
     
     // table view line separator
@@ -321,6 +331,12 @@ TableStateType currentState;
     
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingPeriodTableViewCell" bundle:nil] forCellReuseIdentifier:@"periodCell"];
     
+    [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingIntercourseTableViewCell" bundle:nil] forCellReuseIdentifier:@"intercourseCell"];
+    
+    [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingMoodTableViewCell" bundle:nil] forCellReuseIdentifier:@"moodCell"];
+    
+    [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingSymptomsTableViewCell" bundle:nil] forCellReuseIdentifier:@"symptomsCell"];
+    
     // refresh info
     [self refreshTrackingView];
 }
@@ -372,6 +388,9 @@ TableStateType currentState;
     [self.cfCell setSelectedDate:self.selectedDate];
     [self.cpCell setSelectedDate:self.selectedDate];
     [self.periodCell setSelectedDate:self.selectedDate];
+    [self.intercourseCell setSelectedDate:self.selectedDate];
+    [self.moodCell setSelectedDate:self.selectedDate];
+    [self.symptomsCell setSelectedDate:self.selectedDate];
     
     if ([ONDO sharedInstance].devices.count > 0) {
         [ONDO startWithDelegate:self];
@@ -589,6 +608,29 @@ TableStateType currentState;
                            PeriodCellHasData = NO;
                        }
                        
+                       if (day.intercourse) {
+                           self.intercourse = day.intercourse;
+                           self.intercourseCell.intercourseTypeCollapsedLabel.text = self.intercourse;
+                           self.intercourseCell.intercourseTypeCollapsedLabel.hidden = NO;
+                           IntercourseCellHasData = YES;
+                           [self setDataForIntercourseCell];
+                       } else { // no data, hide components
+                           self.intercourseCell.placeholderLabel.hidden = NO;
+                           self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+                           self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+                           self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+                           self.intercourseCell.intercourseTypeCollapsedLabel.text = @"";
+                           IntercourseCellHasData = NO;
+                       }
+                       
+                       if (day.mood) {
+                           // TODO
+                       }
+                       
+                       if (day.symptoms) {
+                           // TODO
+                       }
+                       
                        //                       [self setTableStateForState:TableStateAllClosed];
                        [[self tableView] reloadData];
                    }
@@ -679,6 +721,23 @@ TableStateType currentState;
             self.periodCell.periodTypeCollapsedLabel.hidden = YES;
             self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_heavy"];
         }
+    }
+}
+
+- (void)setDataForIntercourseCell {
+    if ([self.intercourse isEqual:@"protected"]) {
+        self.intercourseCell.placeholderLabel.hidden = YES;
+        self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+        self.intercourseCell.intercourseTypeCollapsedLabel.text = @"Protected";
+        self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+        self.intercourseCell.intercourseTypeCollapsedImageView.image = [UIImage imageNamed:@"icn_i_protected"];
+        
+    } else { // unprotected
+        self.intercourseCell.placeholderLabel.hidden = YES;
+        self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+        self.intercourseCell.intercourseTypeCollapsedLabel.text = @"Unprotected";
+        self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+        self.intercourseCell.intercourseTypeCollapsedImageView.image = [UIImage imageNamed:@"icn_i_unprotected"];
     }
 }
 
@@ -858,48 +917,88 @@ TableStateType currentState;
             break;
         }
             
-        case 5:
+        case 5: // intercourse
         {
-            cell = [[UITableViewCell alloc] init];
             
-            [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
+            self.intercourseCell = [self.tableView dequeueReusableCellWithIdentifier:@"intercourseCell" forIndexPath:indexPath];
             
-            cell.layoutMargins = UIEdgeInsetsZero;
             
-            // TODO: Finish custom cell implementation
-            //            if (expandIntercourseCell) {
-            //                // unhide component
-            //            }
+//             TODO: Finish custom cell implementation
+            if (expandIntercourseCell) {
+                // unhide component
+                self.intercourseCell.placeholderLabel.hidden = YES;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+                
+                self.intercourseCell.protectedImageView.hidden = NO;
+                self.intercourseCell.protectedLabel.hidden = NO;
+                
+                self.intercourseCell.unprotectedImageView.hidden = NO;
+                self.intercourseCell.unprotectedLabel.hidden = NO;
+            } else {
+                self.intercourseCell.placeholderLabel.hidden = NO;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+                
+                self.intercourseCell.protectedImageView.hidden = YES;
+                self.intercourseCell.protectedLabel.hidden = YES;
+                
+                self.intercourseCell.unprotectedImageView.hidden = YES;
+                self.intercourseCell.unprotectedLabel.hidden = YES;
+            }
+            
+            [self.intercourseCell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            
+            self.intercourseCell.layoutMargins = UIEdgeInsetsZero;
+            
+            return self.intercourseCell;
             break;
         }
             
         case 6:
         {
-            cell = [[UITableViewCell alloc] init];
-            
-            [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
-            
-            cell.layoutMargins = UIEdgeInsetsZero;
+            self.moodCell = [self.tableView dequeueReusableCellWithIdentifier:@"moodCell" forIndexPath:indexPath];
             
             // TODO: Finish custom cell implementation
-            //            if (expandMoodCell) {
-            //                // unhide component
-            //            }
+            if (expandMoodCell) {
+                // unhide component
+                self.moodCell.moodPlaceholderLabel.hidden = YES;
+                self.moodCell.moodCollapsedLabel.hidden = NO;
+                self.moodCell.moodTableView.hidden = NO;
+            } else {
+                self.moodCell.moodPlaceholderLabel.hidden = NO;
+                self.moodCell.moodCollapsedLabel.hidden = YES;
+                self.moodCell.moodTableView.hidden = YES;
+
+            }
+            
+            [self.moodCell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            
+            self.moodCell.layoutMargins = UIEdgeInsetsZero;
+            
+            return self.moodCell;
             break;
         }
             
         case 7:
         {
-            cell = [[UITableViewCell alloc] init];
-            
-            [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
-            
-            cell.layoutMargins = UIEdgeInsetsZero;
+            self.symptomsCell = [self.tableView dequeueReusableCellWithIdentifier:@"symptomsCell" forIndexPath:indexPath];
             
             // TODO: Finish custom cell implementation
-            //            if (expandSymptomsCell) {
-            //                // unhide component
-            //            }
+            if (expandSymptomsCell) {
+            // unhide component
+                self.symptomsCell.placeholderLabel.hidden = YES;
+                self.symptomsCell.symptomsCollapsedLabel.hidden = NO;
+                self.symptomsCell.symptomsTableView.hidden = NO;
+            } else {
+                self.symptomsCell.placeholderLabel.hidden = NO;
+                self.symptomsCell.symptomsCollapsedLabel.hidden = YES;
+                self.symptomsCell.symptomsTableView.hidden = YES;
+            }
+            
+            [self.symptomsCell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            
+            self.symptomsCell.layoutMargins = UIEdgeInsetsZero;
+            
+            return self.symptomsCell;
             break;
         }
             
@@ -1080,21 +1179,51 @@ TableStateType currentState;
             
             break;
         }
-            //
-            //        case 5:
-            //        {
-            //            break;
-            //        }
-            //
-            //        case 6:
-            //        {
-            //            break;
-            //        }
-            //
-            //        case 7:
-            //        {
-            //            break;
-            //        }
+            
+        case 5:
+        {
+            if (currentState == TableStateIntercourseExpanded) {
+                [self setTableStateForState:TableStateAllClosed];
+            } else {
+                [self setTableStateForState:TableStateIntercourseExpanded];
+            }
+            
+            if (firstOpenIntercourseCell) {
+                // no initial data until the user makes a selection
+                firstOpenIntercourseCell = NO;
+            }
+            break;
+        }
+            
+        case 6:
+        {
+            if (currentState == TableStateMoodExpanded) {
+                [self setTableStateForState:TableStateAllClosed];
+            } else {
+                [self setTableStateForState:TableStateMoodExpanded];
+            }
+            
+            if (firstOpenMoodCell) {
+                // no initial data until the user makes a selection
+                firstOpenMoodCell = NO;
+            }
+            break;
+        }
+            
+        case 7:
+        {
+            if (currentState == TableStateSymptomsExpanded) {
+                [self setTableStateForState:TableStateAllClosed];
+            } else {
+                [self setTableStateForState:TableStateSymptomsExpanded];
+            }
+            
+            if (firstOpenSymptomsCell) {
+                // no initial data until the user makes a selection
+                firstOpenSymptomsCell = NO;
+            }
+            break;
+        }
             //
             //        case 8:
             //        {
@@ -1171,21 +1300,33 @@ TableStateType currentState;
             }
             break;
         }
-            //
-            //        case 5:
-            //        {
-            //            break;
-            //        }
-            //
-            //        case 6:
-            //        {
-            //            break;
-            //        }
-            //
-            //        case 7:
-            //        {
-            //            break;
-            //        }
+            
+        case 5:
+        {
+            if (IntercourseCellHasData) {
+                self.intercourseCell.intercourseTypeCollapsedLabel.text = self.intercourse;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = NO;
+            }
+            break;
+        }
+            
+        case 6:
+        {
+            if (MoodCellHasData) {
+                // no collapsed labels to show
+                self.moodCell.moodPlaceholderLabel.hidden = NO;
+            }
+            break;
+        }
+            
+        case 7:
+        {
+            if (SymptomsCellHasData) {
+                // no collapsed labels to show
+                self.symptomsCell.placeholderLabel.hidden = NO;
+            }
+            break;
+        }
             //
             //        case 8:
             //        {
@@ -1244,20 +1385,21 @@ TableStateType currentState;
     if (PeriodCellHasData) {
         // TODO
         self.period = [self.periodCell.periodTypeCollapsedLabel.text lowercaseString];
-        // TODO: setDataForPeriodCell?
         [self setDataForPeriodCell];
     }
-    //
-    //    if (IntercourseCellHasData) {
-    //        // TODO
-    //    }
-    //
-    //    if (MoodCellHasData) {
-    //        // TODO
-    //    }
-    //    if (SymptomsCellHasData) {
-    //        // TODO
-    //    }
+    
+    if (IntercourseCellHasData) {
+        // TODO
+        self.intercourse = [self.intercourseCell.intercourseTypeCollapsedLabel.text lowercaseString];
+        [self setDataForIntercourseCell];
+    }
+    
+    if (MoodCellHasData) {
+        // TODO
+    }
+    if (SymptomsCellHasData) {
+        // TODO
+    }
     //
     //    if (OvulationTestCellHasData) {
     //        // TODO
@@ -1415,10 +1557,32 @@ TableStateType currentState;
             
             expandIntercourseCell = NO;
             // hide component
+            self.intercourseCell.protectedImageView.hidden = YES;
+            self.intercourseCell.protectedLabel.hidden = YES;
+            
+            self.intercourseCell.unprotectedImageView.hidden = YES;
+            self.intercourseCell.unprotectedLabel.hidden = YES;
+
+            if (IntercourseCellHasData) {
+                self.intercourseCell.placeholderLabel.hidden = YES;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = NO;
+            } else {
+                self.intercourseCell.placeholderLabel.hidden = NO;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+                self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+            }
+            
             expandMoodCell = NO;
             // hide component
+            self.moodCell.moodTableView.hidden = YES;
+            
             expandSymptomsCell = NO;
             // hide component
+            self.symptomsCell.symptomsTableView.hidden = YES;
+            
             expandOvulationTestCell = NO;
             // hide component
             expandPregnancyTestCell = NO;
@@ -1441,19 +1605,108 @@ TableStateType currentState;
             self.tempCell.collapsedLabel.hidden = NO;
             
             expandCervicalFluidCell = NO;
-            // hide cervical fluid component
-            self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            self.cfCell.dryImageView.hidden = YES;
+            self.cfCell.dryLabel.hidden = YES;
+            
+            self.cfCell.stickyImageView.hidden = YES;
+            self.cfCell.stickyLabel.hidden = YES;
+            
+            self.cfCell.creamyImageView.hidden = YES;
+            self.cfCell.creamyLabel.hidden = YES;
+            
+            self.cfCell.eggwhiteImageView.hidden = YES;
+            self.cfCell.eggwhiteLabel.hidden = YES;
+            
+            // unhide selection components
+            if (CervicalFluidCellHasData) {
+                self.cfCell.placeholderLabel.hidden = YES;
+                self.cfCell.cfCollapsedLabel.hidden = NO;
+                self.cfCell.cfTypeImageView.hidden = NO;
+                self.cfCell.cfTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cfCell.placeholderLabel.hidden = NO;
+                self.cfCell.cfCollapsedLabel.hidden = YES;
+                self.cfCell.cfTypeImageView.hidden = YES;
+                self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            }
             
             expandCervicalPositionCell = NO;
             // hide cervical position component
+            self.cpCell.highImageView.hidden = YES;
+            self.cpCell.highLabel.hidden = YES;
+            
+            self.cpCell.lowImageView.hidden = YES;
+            self.cpCell.lowLabel.hidden = YES;
+            
+            if (CervicalPositionCellHasData) {
+                self.cpCell.placeholderLabel.hidden = YES;
+                self.cpCell.collapsedLabel.hidden = NO;
+                self.cpCell.cpTypeImageView.hidden = NO;
+                self.cpCell.cpTypeCollapsedLabel.hidden = NO;
+            } else {
+                self.cpCell.placeholderLabel.hidden = NO;
+                self.cpCell.collapsedLabel.hidden = YES;
+                self.cpCell.cpTypeImageView.hidden = YES;
+                self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+            }
+            
             expandPeriodCell = NO;
             // hide component
+            self.periodCell.noneImageView.hidden = YES;
+            self.periodCell.noneLabel.hidden = YES;
+            
+            self.periodCell.spottingImageView.hidden = YES;
+            self.periodCell.spottingLabel.hidden = YES;
+            
+            self.periodCell.lightImageView.hidden = YES;
+            self.periodCell.lightLabel.hidden = YES;
+            
+            self.periodCell.mediumImageView.hidden = YES;
+            self.periodCell.mediumLabel.hidden = YES;
+            
+            self.periodCell.heavyImageView.hidden = YES;
+            self.periodCell.heavyLabel.hidden = YES;
+            
+            if (PeriodCellHasData) {
+                self.periodCell.placeholderLabel.hidden = YES;
+                self.periodCell.periodCollapsedLabel.hidden = NO;
+                self.periodCell.periodTypeCollapsedLabel.hidden = NO;
+                self.periodCell.periodTypeImageView.hidden = NO;
+            } else {
+                self.periodCell.placeholderLabel.hidden = NO;
+                self.periodCell.periodCollapsedLabel.hidden = YES;
+                self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+                self.periodCell.periodTypeImageView.hidden = YES;
+            }
+            
             expandIntercourseCell = NO;
             // hide component
+            self.intercourseCell.protectedImageView.hidden = YES;
+            self.intercourseCell.protectedLabel.hidden = YES;
+            
+            self.intercourseCell.unprotectedImageView.hidden = YES;
+            self.intercourseCell.unprotectedLabel.hidden = YES;
+            
+            if (IntercourseCellHasData) {
+                self.intercourseCell.placeholderLabel.hidden = YES;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = NO;
+            } else {
+                self.intercourseCell.placeholderLabel.hidden = NO;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+                self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+            }
+            
             expandMoodCell = NO;
             // hide component
+            self.moodCell.moodTableView.hidden = YES;
+            
             expandSymptomsCell = NO;
             // hide component
+            self.symptomsCell.symptomsTableView.hidden = YES;
+            
             expandOvulationTestCell = NO;
             // hide component
             expandPregnancyTestCell = NO;
@@ -1507,12 +1760,61 @@ TableStateType currentState;
             
             expandPeriodCell = NO;
             // hide component
+            self.periodCell.noneImageView.hidden = YES;
+            self.periodCell.noneLabel.hidden = YES;
+            
+            self.periodCell.spottingImageView.hidden = YES;
+            self.periodCell.spottingLabel.hidden = YES;
+            
+            self.periodCell.lightImageView.hidden = YES;
+            self.periodCell.lightLabel.hidden = YES;
+            
+            self.periodCell.mediumImageView.hidden = YES;
+            self.periodCell.mediumLabel.hidden = YES;
+            
+            self.periodCell.heavyImageView.hidden = YES;
+            self.periodCell.heavyLabel.hidden = YES;
+            
+            if (PeriodCellHasData) {
+                self.periodCell.placeholderLabel.hidden = YES;
+                self.periodCell.periodCollapsedLabel.hidden = NO;
+                self.periodCell.periodTypeCollapsedLabel.hidden = NO;
+                self.periodCell.periodTypeImageView.hidden = NO;
+            } else {
+                self.periodCell.placeholderLabel.hidden = NO;
+                self.periodCell.periodCollapsedLabel.hidden = YES;
+                self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+                self.periodCell.periodTypeImageView.hidden = YES;
+            }
+            
             expandIntercourseCell = NO;
             // hide component
+            self.intercourseCell.protectedImageView.hidden = YES;
+            self.intercourseCell.protectedLabel.hidden = YES;
+            
+            self.intercourseCell.unprotectedImageView.hidden = YES;
+            self.intercourseCell.unprotectedLabel.hidden = YES;
+            
+            if (IntercourseCellHasData) {
+                self.intercourseCell.placeholderLabel.hidden = YES;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = NO;
+            } else {
+                self.intercourseCell.placeholderLabel.hidden = NO;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+                self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+            }
+            
             expandMoodCell = NO;
             // hide component
+            self.moodCell.moodTableView.hidden = YES;
+            
             expandSymptomsCell = NO;
             // hide component
+            self.symptomsCell.symptomsTableView.hidden = YES;
+            
             expandOvulationTestCell = NO;
             // hide component
             expandPregnancyTestCell = NO;
@@ -1582,12 +1884,61 @@ TableStateType currentState;
             
             expandPeriodCell = NO;
             // hide component
+            self.periodCell.noneImageView.hidden = YES;
+            self.periodCell.noneLabel.hidden = YES;
+            
+            self.periodCell.spottingImageView.hidden = YES;
+            self.periodCell.spottingLabel.hidden = YES;
+            
+            self.periodCell.lightImageView.hidden = YES;
+            self.periodCell.lightLabel.hidden = YES;
+            
+            self.periodCell.mediumImageView.hidden = YES;
+            self.periodCell.mediumLabel.hidden = YES;
+            
+            self.periodCell.heavyImageView.hidden = YES;
+            self.periodCell.heavyLabel.hidden = YES;
+            
+            if (PeriodCellHasData) {
+                self.periodCell.placeholderLabel.hidden = YES;
+                self.periodCell.periodCollapsedLabel.hidden = NO;
+                self.periodCell.periodTypeCollapsedLabel.hidden = NO;
+                self.periodCell.periodTypeImageView.hidden = NO;
+            } else {
+                self.periodCell.placeholderLabel.hidden = NO;
+                self.periodCell.periodCollapsedLabel.hidden = YES;
+                self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+                self.periodCell.periodTypeImageView.hidden = YES;
+            }
+            
             expandIntercourseCell = NO;
             // hide component
+            self.intercourseCell.protectedImageView.hidden = YES;
+            self.intercourseCell.protectedLabel.hidden = YES;
+            
+            self.intercourseCell.unprotectedImageView.hidden = YES;
+            self.intercourseCell.unprotectedLabel.hidden = YES;
+            
+            if (IntercourseCellHasData) {
+                self.intercourseCell.placeholderLabel.hidden = YES;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = NO;
+            } else {
+                self.intercourseCell.placeholderLabel.hidden = NO;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+                self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+            }
+            
             expandMoodCell = NO;
             // hide component
+            self.moodCell.moodTableView.hidden = YES;
+            
             expandSymptomsCell = NO;
             // hide component
+            self.symptomsCell.symptomsTableView.hidden = YES;
+            
             expandOvulationTestCell = NO;
             // hide component
             expandPregnancyTestCell = NO;
@@ -1685,14 +2036,34 @@ TableStateType currentState;
             self.periodCell.heavyImageView.hidden = NO;
             self.periodCell.heavyLabel.hidden = NO;
             
-            
-            
             expandIntercourseCell = NO;
             // hide component
+            self.intercourseCell.protectedImageView.hidden = YES;
+            self.intercourseCell.protectedLabel.hidden = YES;
+            
+            self.intercourseCell.unprotectedImageView.hidden = YES;
+            self.intercourseCell.unprotectedLabel.hidden = YES;
+            
+            if (IntercourseCellHasData) {
+                self.intercourseCell.placeholderLabel.hidden = YES;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = NO;
+            } else {
+                self.intercourseCell.placeholderLabel.hidden = NO;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+                self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+            }
+            
             expandMoodCell = NO;
             // hide component
+            self.moodCell.moodTableView.hidden = YES;
+            
             expandSymptomsCell = NO;
             // hide component
+            self.symptomsCell.symptomsTableView.hidden = YES;
+            
             expandOvulationTestCell = NO;
             // hide component
             expandPregnancyTestCell = NO;
@@ -1752,8 +2123,8 @@ TableStateType currentState;
             self.cpCell.highImageView.hidden = YES;
             self.cpCell.highLabel.hidden = YES;
             
-            self.cpCell.lowImageView.hidden = NO;
-            self.cpCell.lowLabel.hidden = NO;
+            self.cpCell.lowImageView.hidden = YES;
+            self.cpCell.lowLabel.hidden = YES;
             
             if (CervicalPositionCellHasData) {
                 self.cpCell.placeholderLabel.hidden = YES;
@@ -1769,12 +2140,44 @@ TableStateType currentState;
             
             expandPeriodCell = NO;
             // hide component
+            self.periodCell.noneImageView.hidden = YES;
+            self.periodCell.noneLabel.hidden = YES;
+            
+            self.periodCell.spottingImageView.hidden = YES;
+            self.periodCell.spottingLabel.hidden = YES;
+            
+            self.periodCell.lightImageView.hidden = YES;
+            self.periodCell.lightLabel.hidden = YES;
+            
+            self.periodCell.mediumImageView.hidden = YES;
+            self.periodCell.mediumLabel.hidden = YES;
+            
+            self.periodCell.heavyImageView.hidden = YES;
+            self.periodCell.heavyLabel.hidden = YES;
+            
+            if (PeriodCellHasData) {
+                self.periodCell.placeholderLabel.hidden = YES;
+                self.periodCell.periodCollapsedLabel.hidden = NO;
+                self.periodCell.periodTypeCollapsedLabel.hidden = NO;
+                self.periodCell.periodTypeImageView.hidden = NO;
+            } else {
+                self.periodCell.placeholderLabel.hidden = NO;
+                self.periodCell.periodCollapsedLabel.hidden = YES;
+                self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+                self.periodCell.periodTypeImageView.hidden = YES;
+            }
+            
             expandIntercourseCell = YES;
             // unhide component
+            
             expandMoodCell = NO;
             // hide component
+            self.moodCell.moodTableView.hidden = YES;
+            
             expandSymptomsCell = NO;
             // hide component
+            self.symptomsCell.symptomsTableView.hidden = YES;
+            
             expandOvulationTestCell = NO;
             // hide component
             expandPregnancyTestCell = NO;
@@ -1835,8 +2238,8 @@ TableStateType currentState;
             self.cpCell.highImageView.hidden = YES;
             self.cpCell.highLabel.hidden = YES;
             
-            self.cpCell.lowImageView.hidden = NO;
-            self.cpCell.lowLabel.hidden = NO;
+            self.cpCell.lowImageView.hidden = YES;
+            self.cpCell.lowLabel.hidden = YES;
             
             if (CervicalPositionCellHasData) {
                 self.cpCell.placeholderLabel.hidden = YES;
@@ -1852,12 +2255,60 @@ TableStateType currentState;
             
             expandPeriodCell = NO;
             // hide component
+            self.periodCell.noneImageView.hidden = YES;
+            self.periodCell.noneLabel.hidden = YES;
+            
+            self.periodCell.spottingImageView.hidden = YES;
+            self.periodCell.spottingLabel.hidden = YES;
+            
+            self.periodCell.lightImageView.hidden = YES;
+            self.periodCell.lightLabel.hidden = YES;
+            
+            self.periodCell.mediumImageView.hidden = YES;
+            self.periodCell.mediumLabel.hidden = YES;
+            
+            self.periodCell.heavyImageView.hidden = YES;
+            self.periodCell.heavyLabel.hidden = YES;
+            
+            if (PeriodCellHasData) {
+                self.periodCell.placeholderLabel.hidden = YES;
+                self.periodCell.periodCollapsedLabel.hidden = NO;
+                self.periodCell.periodTypeCollapsedLabel.hidden = NO;
+                self.periodCell.periodTypeImageView.hidden = NO;
+            } else {
+                self.periodCell.placeholderLabel.hidden = NO;
+                self.periodCell.periodCollapsedLabel.hidden = YES;
+                self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+                self.periodCell.periodTypeImageView.hidden = YES;
+            }
+            
             expandIntercourseCell = NO;
             // hide component
+            self.intercourseCell.protectedImageView.hidden = YES;
+            self.intercourseCell.protectedLabel.hidden = YES;
+            
+            self.intercourseCell.unprotectedImageView.hidden = YES;
+            self.intercourseCell.unprotectedLabel.hidden = YES;
+            
+            if (IntercourseCellHasData) {
+                self.intercourseCell.placeholderLabel.hidden = YES;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = NO;
+            } else {
+                self.intercourseCell.placeholderLabel.hidden = NO;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+                self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+            }
+            
             expandMoodCell = YES;
-            // unhide component
+            self.moodCell.moodTableView.hidden = NO;
+            
             expandSymptomsCell = NO;
             // hide component
+            self.symptomsCell.symptomsTableView.hidden = YES;
+            
             expandOvulationTestCell = NO;
             // hide component
             expandPregnancyTestCell = NO;
@@ -1917,8 +2368,8 @@ TableStateType currentState;
             self.cpCell.highImageView.hidden = YES;
             self.cpCell.highLabel.hidden = YES;
             
-            self.cpCell.lowImageView.hidden = NO;
-            self.cpCell.lowLabel.hidden = NO;
+            self.cpCell.lowImageView.hidden = YES;
+            self.cpCell.lowLabel.hidden = YES;
             
             if (CervicalPositionCellHasData) {
                 self.cpCell.placeholderLabel.hidden = YES;
@@ -1934,12 +2385,60 @@ TableStateType currentState;
             
             expandPeriodCell = NO;
             // hide component
+            self.periodCell.noneImageView.hidden = YES;
+            self.periodCell.noneLabel.hidden = YES;
+            
+            self.periodCell.spottingImageView.hidden = YES;
+            self.periodCell.spottingLabel.hidden = YES;
+            
+            self.periodCell.lightImageView.hidden = YES;
+            self.periodCell.lightLabel.hidden = YES;
+            
+            self.periodCell.mediumImageView.hidden = YES;
+            self.periodCell.mediumLabel.hidden = YES;
+            
+            self.periodCell.heavyImageView.hidden = YES;
+            self.periodCell.heavyLabel.hidden = YES;
+            
+            if (PeriodCellHasData) {
+                self.periodCell.placeholderLabel.hidden = YES;
+                self.periodCell.periodCollapsedLabel.hidden = NO;
+                self.periodCell.periodTypeCollapsedLabel.hidden = NO;
+                self.periodCell.periodTypeImageView.hidden = NO;
+            } else {
+                self.periodCell.placeholderLabel.hidden = NO;
+                self.periodCell.periodCollapsedLabel.hidden = YES;
+                self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+                self.periodCell.periodTypeImageView.hidden = YES;
+            }
+            
             expandIntercourseCell = NO;
             // hide component
+            self.intercourseCell.protectedImageView.hidden = YES;
+            self.intercourseCell.protectedLabel.hidden = YES;
+            
+            self.intercourseCell.unprotectedImageView.hidden = YES;
+            self.intercourseCell.unprotectedLabel.hidden = YES;
+            
+            if (IntercourseCellHasData) {
+                self.intercourseCell.placeholderLabel.hidden = YES;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = NO;
+            } else {
+                self.intercourseCell.placeholderLabel.hidden = NO;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+                self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+            }
+            
             expandMoodCell = NO;
-            // hide component
+            self.moodCell.moodTableView.hidden = YES;
+            
             expandSymptomsCell = YES;
-            // unhide component
+            // hide component
+            self.symptomsCell.symptomsTableView.hidden = NO;
+            
             expandOvulationTestCell = NO;
             // hide component
             expandPregnancyTestCell = NO;
