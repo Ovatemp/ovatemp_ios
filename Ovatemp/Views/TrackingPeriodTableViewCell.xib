@@ -35,11 +35,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gU1-Uo-n67">
-                        <rect key="frame" x="15" y="60" width="35" height="35"/>
+                        <rect key="frame" x="6" y="52" width="53" height="53"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" image="icn_p_none">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <state key="selected" image="icn_p_none_p"/>
+                        <state key="highlighted" image="icn_p_none_p"/>
                         <connections>
                             <action selector="didSelectNone:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ad4-YE-Q2m"/>
                         </connections>
@@ -52,11 +54,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ojw-VO-zLn">
-                        <rect key="frame" x="75" y="60" width="35" height="35"/>
+                        <rect key="frame" x="64" y="50" width="57" height="57"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" image="icn_p_spotting">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <state key="selected" image="icn_p_spotting_p"/>
+                        <state key="highlighted" image="icn_p_spotting_p"/>
                         <connections>
                             <action selector="didSelectSpotting:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qCR-TU-4gc"/>
                         </connections>
@@ -69,51 +73,50 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ze9-gr-dRM">
-                        <rect key="frame" x="135" y="60" width="35" height="35"/>
+                        <rect key="frame" x="120" y="50" width="57" height="57"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" image="icn_p_light">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <state key="selected" image="icn_p_light_p"/>
+                        <state key="highlighted" image="icn_p_light_p"/>
                         <connections>
                             <action selector="didSelectLight:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Rds-1T-2GH"/>
                         </connections>
                     </button>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="99" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Light" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N7I-AO-HMx">
-                        <rect key="frame" x="139" y="103" width="26" height="16"/>
+                        <rect key="frame" x="135" y="103" width="26" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ex0-GI-D3i">
-                        <rect key="frame" x="195" y="60" width="35" height="35"/>
+                        <rect key="frame" x="169" y="50" width="57" height="57"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" image="icn_p_medium">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <state key="selected" image="icn_p_medium_p"/>
+                        <state key="highlighted" image="icn_p_medium_p"/>
                         <connections>
                             <action selector="didSelectMedium:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1nN-7Y-p58"/>
                         </connections>
                     </button>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="99" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medium" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="glL-cP-BCT">
-                        <rect key="frame" x="193" y="103" width="38" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="m5a-OS-2OM">
-                        <rect key="frame" x="255" y="60" width="35" height="35"/>
+                        <rect key="frame" x="224" y="50" width="57" height="57"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" image="icn_p_heavy">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <state key="selected" image="icn_p_heavy_p"/>
+                        <state key="highlighted" image="icn_p_heavy_p"/>
                         <connections>
                             <action selector="didSelectHeavy:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MfP-GX-kEu"/>
                         </connections>
                     </button>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="99" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heavy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dBw-8L-fgF">
-                        <rect key="frame" x="257" y="103" width="30" height="16"/>
+                        <rect key="frame" x="237" y="103" width="30" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -133,6 +136,13 @@
                         <rect key="frame" x="6" y="19" width="30" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="99" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medium" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="glL-cP-BCT">
+                        <rect key="frame" x="178" y="103" width="38" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -157,10 +167,15 @@
     <resources>
         <image name="icn_info" width="22" height="22"/>
         <image name="icn_p_heavy" width="33" height="38"/>
+        <image name="icn_p_heavy_p" width="53" height="54"/>
         <image name="icn_p_light" width="25" height="38"/>
+        <image name="icn_p_light_p" width="53" height="54"/>
         <image name="icn_p_medium" width="31" height="38"/>
+        <image name="icn_p_medium_p" width="53" height="54"/>
         <image name="icn_p_none" width="37" height="37"/>
+        <image name="icn_p_none_p" width="53" height="54"/>
         <image name="icn_p_spotting" width="44" height="38"/>
+        <image name="icn_p_spotting_p" width="53" height="54"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

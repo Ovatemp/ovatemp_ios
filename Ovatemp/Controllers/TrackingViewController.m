@@ -771,6 +771,7 @@ TableStateType currentState;
         self.periodCell.periodTypeCollapsedLabel.hidden = YES;
         self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_none"];
         [self.periodCell setSelectedPeriodType:PeriodSelectionNone];
+        [self.periodCell.noneImageView setSelected:YES];
     } else if ([self.period isEqual:@"spotting"]) {
         self.periodCell.placeholderLabel.hidden = YES;
         self.periodCell.periodCollapsedLabel.hidden = NO;
@@ -778,6 +779,7 @@ TableStateType currentState;
         self.periodCell.periodTypeCollapsedLabel.hidden = YES;
         self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_spotting"];
         [self.periodCell setSelectedPeriodType:PeriodSelectionSpotting];
+        [self.periodCell.spottingImageView setSelected:YES];
     } else if ([self.period isEqual:@"light"]) {
         self.periodCell.placeholderLabel.hidden = YES;
         self.periodCell.periodCollapsedLabel.hidden = NO;
@@ -785,6 +787,7 @@ TableStateType currentState;
         self.periodCell.periodTypeCollapsedLabel.hidden = YES;
         self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_light"];
         [self.periodCell setSelectedPeriodType:PeriodSelectionLight];
+        [self.periodCell.lightImageView setSelected:YES];
     } else if ([self.period isEqual:@"medium"]) {
         self.periodCell.placeholderLabel.hidden = YES;
         self.periodCell.periodCollapsedLabel.hidden = NO;
@@ -792,6 +795,7 @@ TableStateType currentState;
         self.periodCell.periodTypeCollapsedLabel.hidden = YES;
         self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_medium"];
         [self.periodCell setSelectedPeriodType:PeriodSelectionMedium];
+        [self.periodCell.mediumImageView setSelected:YES];
     } else { // heavy
         if ([self.period isEqual:@"heavy"]) {
             self.periodCell.placeholderLabel.hidden = YES;
@@ -800,6 +804,7 @@ TableStateType currentState;
             self.periodCell.periodTypeCollapsedLabel.hidden = YES;
             self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_heavy"];
             [self.periodCell setSelectedPeriodType:PeriodSelectionHeavy];
+            [self.periodCell.heavyImageView setSelected:YES];
         }
     }
 }

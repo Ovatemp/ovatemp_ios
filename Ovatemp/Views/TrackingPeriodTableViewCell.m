@@ -32,11 +32,15 @@
     if (self.selectedPeriodType == PeriodSelectionNone) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
         [self hitBackendWithPeriodType:[NSNull null]];
+        [self deselectAllButtons];
     } else {
         self.selectedPeriodType = PeriodSelectionNone;
         self.periodTypeCollapsedLabel.text = @"None";
         self.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_none"];
         [self hitBackendWithPeriodType:@"none"];
+        
+        [self deselectAllButtons];
+        [self.noneImageView setSelected:YES];
     }
 }
 
@@ -44,11 +48,15 @@
     if (self.selectedPeriodType == PeriodSelectionSpotting) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
         [self hitBackendWithPeriodType:[NSNull null]];
+        [self deselectAllButtons];
     } else {
         self.selectedPeriodType = PeriodSelectionSpotting;
         self.periodTypeCollapsedLabel.text = @"Spotting";
         self.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_spotting"];
-    [self hitBackendWithPeriodType:@"spotting"];
+        [self hitBackendWithPeriodType:@"spotting"];
+        
+        [self deselectAllButtons];
+        [self.spottingImageView setSelected:YES];
     }
 }
 
@@ -56,11 +64,15 @@
     if (self.selectedPeriodType == PeriodSelectionLight) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
         [self hitBackendWithPeriodType:[NSNull null]];
+        [self deselectAllButtons];
     } else {
         self.selectedPeriodType = PeriodSelectionLight;
         self.periodTypeCollapsedLabel.text = @"Light";
         self.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_light"];
         [self hitBackendWithPeriodType:@"light"];
+        
+        [self deselectAllButtons];
+        [self.lightImageView setSelected:YES];
     }
 }
 
@@ -68,11 +80,15 @@
     if (self.selectedPeriodType == PeriodSelectionMedium) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
         [self hitBackendWithPeriodType:[NSNull null]];
+        [self deselectAllButtons];
     } else {
         self.selectedPeriodType = PeriodSelectionMedium;
         self.periodTypeCollapsedLabel.text = @"Medium";
         self.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_medium"];
         [self hitBackendWithPeriodType:@"medium"];
+        
+        [self deselectAllButtons];
+        [self.mediumImageView setSelected:YES];
     }
 }
 
@@ -80,12 +96,24 @@
     if (self.selectedPeriodType == PeriodSelectionHeavy) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
         [self hitBackendWithPeriodType:[NSNull null]];
+        [self deselectAllButtons];
     } else {
         self.selectedPeriodType = PeriodSelectionHeavy;
         self.periodTypeCollapsedLabel.text = @"Heavy";
         self.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_heavy"];
         [self hitBackendWithPeriodType:@"heavy"];
+        
+        [self deselectAllButtons];
+        [self.heavyImageView setSelected:YES];
     }
+}
+
+- (void)deselectAllButtons {
+    [self.noneImageView setSelected:NO];
+    [self.spottingImageView setSelected:NO];
+    [self.lightImageView setSelected:NO];
+    [self.mediumImageView setSelected:NO];
+    [self.heavyImageView setSelected:NO];
 }
 
 - (void)hitBackendWithPeriodType:(id)periodType {
