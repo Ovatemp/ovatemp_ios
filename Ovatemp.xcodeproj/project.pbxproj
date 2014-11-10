@@ -388,6 +388,8 @@
 		5F1E1D951A0DAEE4001C22B7 /* TrackingMoodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F1E1D931A0DAEE4001C22B7 /* TrackingMoodTableViewCell.xib */; };
 		5F1E1E211A103457001C22B7 /* TrackingOvulationTestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E1E1F1A103457001C22B7 /* TrackingOvulationTestTableViewCell.m */; };
 		5F1E1E221A103457001C22B7 /* TrackingOvulationTestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F1E1E201A103457001C22B7 /* TrackingOvulationTestTableViewCell.xib */; };
+		5F1E1E261A110116001C22B7 /* TrackingPregnancyTestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E1E241A110116001C22B7 /* TrackingPregnancyTestTableViewCell.m */; };
+		5F1E1E271A110116001C22B7 /* TrackingPregnancyTestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F1E1E251A110116001C22B7 /* TrackingPregnancyTestTableViewCell.xib */; };
 		5F223F3019F014620003AF64 /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F223F2E19F014620003AF64 /* ProfileTableViewController.m */; };
 		5F223F3119F014620003AF64 /* ProfileTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F223F2F19F014620003AF64 /* ProfileTableViewController.xib */; };
 		5F223F3519F03B480003AF64 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F223F3319F03B480003AF64 /* SettingsTableViewController.m */; };
@@ -1021,6 +1023,9 @@
 		5F1E1E1E1A103457001C22B7 /* TrackingOvulationTestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingOvulationTestTableViewCell.h; sourceTree = "<group>"; };
 		5F1E1E1F1A103457001C22B7 /* TrackingOvulationTestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingOvulationTestTableViewCell.m; sourceTree = "<group>"; };
 		5F1E1E201A103457001C22B7 /* TrackingOvulationTestTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingOvulationTestTableViewCell.xib; sourceTree = "<group>"; };
+		5F1E1E231A110116001C22B7 /* TrackingPregnancyTestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingPregnancyTestTableViewCell.h; sourceTree = "<group>"; };
+		5F1E1E241A110116001C22B7 /* TrackingPregnancyTestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingPregnancyTestTableViewCell.m; sourceTree = "<group>"; };
+		5F1E1E251A110116001C22B7 /* TrackingPregnancyTestTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingPregnancyTestTableViewCell.xib; sourceTree = "<group>"; };
 		5F223F2D19F014620003AF64 /* ProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewController.h; sourceTree = "<group>"; };
 		5F223F2E19F014620003AF64 /* ProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewController.m; sourceTree = "<group>"; };
 		5F223F2F19F014620003AF64 /* ProfileTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableViewController.xib; sourceTree = "<group>"; };
@@ -2002,6 +2007,9 @@
 			isa = PBXGroup;
 			children = (
 				5F7AEA621A0122BB0053ABAB /* Tracking.storyboard */,
+				5F1E1E231A110116001C22B7 /* TrackingPregnancyTestTableViewCell.h */,
+				5F1E1E241A110116001C22B7 /* TrackingPregnancyTestTableViewCell.m */,
+				5F1E1E251A110116001C22B7 /* TrackingPregnancyTestTableViewCell.xib */,
 				5F1E1E1E1A103457001C22B7 /* TrackingOvulationTestTableViewCell.h */,
 				5F1E1E1F1A103457001C22B7 /* TrackingOvulationTestTableViewCell.m */,
 				5F1E1E201A103457001C22B7 /* TrackingOvulationTestTableViewCell.xib */,
@@ -2433,6 +2441,7 @@
 				5F1C9C3319EDE87A000F1FC1 /* Spotting.png in Resources */,
 				5F6561E919FAD836001FB509 /* EditDateOfBirthTableViewCell.xib in Resources */,
 				5F1C9C1119EDE87A000F1FC1 /* LaunchImage.png in Resources */,
+				5F1E1E271A110116001C22B7 /* TrackingPregnancyTestTableViewCell.xib in Resources */,
 				5F1C9BC819EDE87A000F1FC1 /* Habits@2x.png in Resources */,
 				5F1C9C5619EDE87A000F1FC1 /* .gitkeep in Resources */,
 				5F1C9C1919EDE87A000F1FC1 /* Amazing.png in Resources */,
@@ -2701,6 +2710,7 @@
 				5F1C971019EDD31A000F1FC1 /* Reachability.m in Sources */,
 				5F1C96E119EDD31A000F1FC1 /* MPCGColorRefToNSStringValueTransformer.m in Sources */,
 				5F1C96E519EDD31A000F1FC1 /* MPClassDescription.m in Sources */,
+				5F1E1E261A110116001C22B7 /* TrackingPregnancyTestTableViewCell.m in Sources */,
 				5F1C9C6B19EDE87A000F1FC1 /* CheckCell.m in Sources */,
 				5F1C96E219EDD31A000F1FC1 /* MPCGPointToNSDictionaryValueTransformer.m in Sources */,
 				5F1C9B7019EDE87A000F1FC1 /* DayCellEditView.m in Sources */,
