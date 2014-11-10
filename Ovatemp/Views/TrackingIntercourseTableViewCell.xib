@@ -41,19 +41,23 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRx-Zh-3a2">
-                        <rect key="frame" x="71" y="71" width="32" height="38"/>
+                        <rect key="frame" x="61" y="63" width="53" height="53"/>
                         <state key="normal" image="icn_i_unprotected">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <state key="selected" image="icn_i_unprotected_p"/>
+                        <state key="highlighted" image="icn_i_unprotected_p"/>
                         <connections>
                             <action selector="didSelectUnprotected:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ziN-ki-Um9"/>
                         </connections>
                     </button>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avF-IP-YYn">
-                        <rect key="frame" x="217" y="71" width="32" height="38"/>
+                        <rect key="frame" x="207" y="63" width="53" height="53"/>
                         <state key="normal" image="icn_i_protected">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <state key="selected" image="icn_i_protected_p"/>
+                        <state key="highlighted" image="icn_i_protected_p"/>
                         <connections>
                             <action selector="didSelectProtected:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jHR-yG-tto"/>
                         </connections>
@@ -64,15 +68,15 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icn_i_unprotected" translatesAutoresizingMaskIntoConstraints="NO" id="xqd-oX-uUf">
+                        <rect key="frame" x="8" y="23" width="30" height="30"/>
+                    </imageView>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Protected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vu3-Bu-C7K">
                         <rect key="frame" x="209" y="110" width="49" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icn_i_unprotected" translatesAutoresizingMaskIntoConstraints="NO" id="xqd-oX-uUf">
-                        <rect key="frame" x="8" y="23" width="30" height="30"/>
-                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -90,7 +94,9 @@
     </objects>
     <resources>
         <image name="icn_i_protected" width="32" height="38"/>
+        <image name="icn_i_protected_p" width="53" height="54"/>
         <image name="icn_i_unprotected" width="31" height="38"/>
+        <image name="icn_i_unprotected_p" width="53" height="54"/>
         <image name="icn_info" width="22" height="22"/>
     </resources>
 </document>

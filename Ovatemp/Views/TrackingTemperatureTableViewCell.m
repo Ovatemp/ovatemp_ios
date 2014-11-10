@@ -32,7 +32,7 @@ NSMutableArray *temperatureFractionalPartPickerData;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"]) {
         // Celsius 32 41
-        for (int i = 32; i < 41; i++) {
+        for (int i = 32; i < 42; i++) {
             [temperatureIntegerPartPickerData addObject:[NSString stringWithFormat:@"%d", i]];
         }
         
