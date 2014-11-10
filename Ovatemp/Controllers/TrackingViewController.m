@@ -751,6 +751,7 @@ TableStateType currentState;
         self.cpCell.cpTypeCollapsedLabel.hidden = YES;
         self.cpCell.cpTypeImageView.image = [UIImage imageNamed:@"icn_cp_lowclosedfirm"];
         [self.cpCell setSelectedCervicalPositionType:CervicalPositionSelectionLow];
+        [self.cpCell.lowImageView setSelected:YES];
     } else { // high
         self.cpCell.placeholderLabel.hidden = YES;
         self.cpCell.collapsedLabel.hidden = NO;
@@ -758,6 +759,7 @@ TableStateType currentState;
         self.cpCell.cpTypeCollapsedLabel.hidden = YES;
         self.cpCell.cpTypeImageView.image = [UIImage imageNamed:@"icn_cp_highopensoft"];
         [self.cpCell setSelectedCervicalPositionType:CervicalPositionSelectionHigh];
+        [self.cpCell.highImageView setSelected:YES];
     }
 }
 

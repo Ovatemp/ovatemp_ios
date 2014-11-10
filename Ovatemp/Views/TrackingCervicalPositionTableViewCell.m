@@ -29,23 +29,36 @@
     if (self.selectedCervicalPositionType == CervicalPositionSelectionLow) {
         self.selectedCervicalPositionType = CervicalPositionSelectionNone;
         [self hitBackendWithCervicalPositionType:[NSNull null]];
+        [self deselectAllButtons];
     } else {
         self.selectedCervicalPositionType = CervicalPositionSelectionLow;
         [self hitBackendWithCervicalPositionType:@"low"];
         self.cpTypeCollapsedLabel.text = @"Low";
         self.cpTypeImageView.image = [UIImage imageNamed:@"icn_cp_lowclosedfirm"];
+        
+        [self deselectAllButtons];
+        [self.lowImageView setSelected:YES];
     }
 }
 - (IBAction)didSelectHighButton:(id)sender {
     if (self.selectedCervicalPositionType == CervicalPositionSelectionHigh) {
         self.selectedCervicalPositionType = CervicalPositionSelectionNone;
         [self hitBackendWithCervicalPositionType:[NSNull null]];
+        [self deselectAllButtons];
     } else {
         self.selectedCervicalPositionType = CervicalPositionSelectionHigh;
         [self hitBackendWithCervicalPositionType:@"high"];
         self.cpTypeCollapsedLabel.text = @"High";
-        self.cpTypeImageView.image = [UIImage imageNamed:@"icn_cp_highopensoft"];\
+        self.cpTypeImageView.image = [UIImage imageNamed:@"icn_cp_highopensoft"];
+        
+        [self deselectAllButtons];
+        [self.highImageView setSelected:YES];
     }
+}
+
+- (void)deselectAllButtons {
+    [self.highImageView setSelected:NO];
+    [self.lowImageView setSelected:NO];
 }
 
 - (IBAction)didSelectInfoButton:(id)sender {

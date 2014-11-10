@@ -43,6 +43,8 @@
                         <state key="normal" image="icn_cp_lowclosedfirm">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <state key="selected" image="icn_cp_lowclosedfirm_p"/>
+                        <state key="highlighted" image="icn_cp_lowclosedfirm_p"/>
                         <connections>
                             <action selector="didSelectLowButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="taB-UD-5W0"/>
                         </connections>
@@ -53,6 +55,8 @@
                         <state key="normal" image="icn_cp_highopensoft">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <state key="selected" image="icn_cp_highopensoft_p"/>
+                        <state key="highlighted" image="icn_cp_highopensoft_p"/>
                         <connections>
                             <action selector="didSelectHighButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MOv-EJ-Tcc"/>
                         </connections>
@@ -99,7 +103,9 @@
     </objects>
     <resources>
         <image name="icn_cp_highopensoft" width="53" height="53"/>
+        <image name="icn_cp_highopensoft_p" width="53" height="54"/>
         <image name="icn_cp_lowclosedfirm" width="31" height="30"/>
+        <image name="icn_cp_lowclosedfirm_p" width="53" height="54"/>
         <image name="icn_info" width="22" height="22"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
