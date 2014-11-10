@@ -1319,6 +1319,16 @@ TableStateType currentState;
         case 8:
         {
             // TODO: ovulation test states, continue here
+            if (currentState == TableStateOvulationTestExpanded) {
+                [self setTableStateForState:TableStateAllClosed];
+            } else {
+                [self setTableStateForState:TableStateOvulationTestExpanded];
+            }
+            
+            if (firstOpenOvulationTestCell) {
+                // no initial data until the user makes a selection
+                firstOpenOvulationTestCell = NO;
+            }
             break;
         }
             //
@@ -1419,11 +1429,15 @@ TableStateType currentState;
             }
             break;
         }
-            //
-            //        case 8:
-            //        {
-            //            break;
-            //        }
+            
+        case 8:
+        {
+            if (OvulationTestCellHasData) {
+                // no collapsed labels to show
+                self.ovulationCell.placeholderLabel.hidden = NO;
+            }
+            break;
+        }
             //
             //        case 9:
             //        {
@@ -1503,10 +1517,10 @@ TableStateType currentState;
     if (SymptomsCellHasData) {
         // TODO
     }
-    //
-    //    if (OvulationTestCellHasData) {
-    //        // TODO
-    //    }
+    
+    if (OvulationTestCellHasData) {
+        // TODO
+    }
     //
     //    if (PregnancyTestCellHasData) {
     //        // TODO
@@ -1688,6 +1702,12 @@ TableStateType currentState;
             
             expandOvulationTestCell = NO;
             // hide component
+            self.ovulationCell.ovulationTypeNegativeImageView.hidden = YES;
+            self.ovulationCell.ovulationTypeNegativeLabel.hidden = YES;
+            
+            self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
+            self.ovulationCell.ovulationTypePositiveLabel.hidden = YES;
+            
             expandPregnancyTestCell = NO;
             // hide component
             expandSupplementsCell = NO;
@@ -1812,6 +1832,12 @@ TableStateType currentState;
             
             expandOvulationTestCell = NO;
             // hide component
+            self.ovulationCell.ovulationTypeNegativeImageView.hidden = YES;
+            self.ovulationCell.ovulationTypeNegativeLabel.hidden = YES;
+            
+            self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
+            self.ovulationCell.ovulationTypePositiveLabel.hidden = YES;
+            
             expandPregnancyTestCell = NO;
             // hide component
             expandSupplementsCell = NO;
@@ -1920,6 +1946,12 @@ TableStateType currentState;
             
             expandOvulationTestCell = NO;
             // hide component
+            self.ovulationCell.ovulationTypeNegativeImageView.hidden = YES;
+            self.ovulationCell.ovulationTypeNegativeLabel.hidden = YES;
+            
+            self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
+            self.ovulationCell.ovulationTypePositiveLabel.hidden = YES;
+            
             expandPregnancyTestCell = NO;
             // hide component
             expandSupplementsCell = NO;
@@ -2044,6 +2076,12 @@ TableStateType currentState;
             
             expandOvulationTestCell = NO;
             // hide component
+            self.ovulationCell.ovulationTypeNegativeImageView.hidden = YES;
+            self.ovulationCell.ovulationTypeNegativeLabel.hidden = YES;
+            
+            self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
+            self.ovulationCell.ovulationTypePositiveLabel.hidden = YES;
+            
             expandPregnancyTestCell = NO;
             // hide component
             expandSupplementsCell = NO;
@@ -2169,6 +2207,12 @@ TableStateType currentState;
             
             expandOvulationTestCell = NO;
             // hide component
+            self.ovulationCell.ovulationTypeNegativeImageView.hidden = YES;
+            self.ovulationCell.ovulationTypeNegativeLabel.hidden = YES;
+            
+            self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
+            self.ovulationCell.ovulationTypePositiveLabel.hidden = YES;
+            
             expandPregnancyTestCell = NO;
             // hide component
             expandSupplementsCell = NO;
@@ -2283,6 +2327,12 @@ TableStateType currentState;
             
             expandOvulationTestCell = NO;
             // hide component
+            self.ovulationCell.ovulationTypeNegativeImageView.hidden = YES;
+            self.ovulationCell.ovulationTypeNegativeLabel.hidden = YES;
+            
+            self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
+            self.ovulationCell.ovulationTypePositiveLabel.hidden = YES;
+            
             expandPregnancyTestCell = NO;
             // hide component
             expandSupplementsCell = NO;
@@ -2414,6 +2464,12 @@ TableStateType currentState;
             
             expandOvulationTestCell = NO;
             // hide component
+            self.ovulationCell.ovulationTypeNegativeImageView.hidden = YES;
+            self.ovulationCell.ovulationTypeNegativeLabel.hidden = YES;
+            
+            self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
+            self.ovulationCell.ovulationTypePositiveLabel.hidden = YES;
+            
             expandPregnancyTestCell = NO;
             // hide component
             expandSupplementsCell = NO;
@@ -2544,6 +2600,12 @@ TableStateType currentState;
             
             expandOvulationTestCell = NO;
             // hide component
+            self.ovulationCell.ovulationTypeNegativeImageView.hidden = YES;
+            self.ovulationCell.ovulationTypeNegativeLabel.hidden = YES;
+            
+            self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
+            self.ovulationCell.ovulationTypePositiveLabel.hidden = YES;
+            
             expandPregnancyTestCell = NO;
             // hide component
             expandSupplementsCell = NO;
@@ -2618,14 +2680,69 @@ TableStateType currentState;
             
             expandPeriodCell = NO;
             // hide component
+            self.periodCell.noneImageView.hidden = YES;
+            self.periodCell.noneLabel.hidden = YES;
+            
+            self.periodCell.spottingImageView.hidden = YES;
+            self.periodCell.spottingLabel.hidden = YES;
+            
+            self.periodCell.lightImageView.hidden = YES;
+            self.periodCell.lightLabel.hidden = YES;
+            
+            self.periodCell.mediumImageView.hidden = YES;
+            self.periodCell.mediumLabel.hidden = YES;
+            
+            self.periodCell.heavyImageView.hidden = YES;
+            self.periodCell.heavyLabel.hidden = YES;
+            
+            if (PeriodCellHasData) {
+                self.periodCell.placeholderLabel.hidden = YES;
+                self.periodCell.periodCollapsedLabel.hidden = NO;
+                self.periodCell.periodTypeCollapsedLabel.hidden = NO;
+                self.periodCell.periodTypeImageView.hidden = NO;
+            } else {
+                self.periodCell.placeholderLabel.hidden = NO;
+                self.periodCell.periodCollapsedLabel.hidden = YES;
+                self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+                self.periodCell.periodTypeImageView.hidden = YES;
+            }
+            
             expandIntercourseCell = NO;
-            // unhide component
+            // hide component
+            self.intercourseCell.protectedImageView.hidden = YES;
+            self.intercourseCell.protectedLabel.hidden = YES;
+            
+            self.intercourseCell.unprotectedImageView.hidden = YES;
+            self.intercourseCell.unprotectedLabel.hidden = YES;
+            
+            if (IntercourseCellHasData) {
+                self.intercourseCell.placeholderLabel.hidden = YES;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = NO;
+            } else {
+                self.intercourseCell.placeholderLabel.hidden = NO;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+                self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+            }
+            
             expandMoodCell = NO;
             // hide component
+            self.moodCell.moodTableView.hidden = YES;
+            
             expandSymptomsCell = NO;
             // hide component
+            self.symptomsCell.symptomsTableView.hidden = YES;
+            
             expandOvulationTestCell = YES;
-            // unhide component
+            // hide component
+            self.ovulationCell.ovulationTypeNegativeImageView.hidden = NO;
+            self.ovulationCell.ovulationTypeNegativeLabel.hidden = NO;
+            
+            self.ovulationCell.ovulationTypePositiveImageView.hidden = NO;
+            self.ovulationCell.ovulationTypePositiveLabel.hidden = NO;
+            
             expandPregnancyTestCell = NO;
             // hide component
             expandSupplementsCell = NO;
