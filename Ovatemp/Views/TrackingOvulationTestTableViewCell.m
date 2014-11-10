@@ -8,10 +8,14 @@
 
 #import "TrackingOvulationTestTableViewCell.h"
 
+#import "TrackingViewController.h"
+
 @implementation TrackingOvulationTestTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    self.selectedDate = [[NSDate alloc] init];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -26,6 +30,7 @@
 }
 
 - (IBAction)didSelectInfoButton:(id)sender {
+    [self.delegate pushInfoAlertWithTitle:@"Ovulation Test" AndMessage:@"Ovulation tests detect a surge in Luteinizing Hormone (LH) and can help you time intercourse during ovulation to achieve pregnancy.\n\nNot recommended for birth control since sperm can last days in optimal conditions and it would be risky." AndURL:@"http://google.com"];
 }
 
 @end

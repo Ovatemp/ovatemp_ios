@@ -27,6 +27,7 @@
 #import "TrackingIntercourseTableViewCell.h"
 #import "TrackingMoodTableViewCell.h"
 #import "TrackingSymptomsTableViewCell.h"
+#import "TrackingOvulationTestTableViewCell.h"
 
 @import HealthKit;
 
@@ -66,6 +67,7 @@ typedef enum {
 @property TrackingIntercourseTableViewCell *intercourseCell;
 @property TrackingMoodTableViewCell *moodCell;
 @property TrackingSymptomsTableViewCell *symptomsCell;
+@property TrackingOvulationTestTableViewCell *ovulationCell;
 
 // info
 @property NSNumber *temperature;
@@ -75,6 +77,7 @@ typedef enum {
 @property NSString *intercourse;
 @property NSString *mood;
 @property NSArray *symptoms;
+@property NSString *ovulation; // opk
 
 @end
 
@@ -337,6 +340,8 @@ TableStateType currentState;
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingMoodTableViewCell" bundle:nil] forCellReuseIdentifier:@"moodCell"];
     
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingSymptomsTableViewCell" bundle:nil] forCellReuseIdentifier:@"symptomsCell"];
+    
+    [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingOvulationTestTableViewCell" bundle:nil] forCellReuseIdentifier:@"ovulationCell"];
     
     // refresh info
     [self refreshTrackingView];
@@ -1062,9 +1067,7 @@ TableStateType currentState;
             
             [self.symptomsCell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
-            self.symptomsCell.layoutMargins = UIEdgeInsetsZero;
             
-            self.symptomsCell.delegate = self;
             
             return self.symptomsCell;
             break;
@@ -1072,16 +1075,36 @@ TableStateType currentState;
             
         case 8:
         {
-            cell = [[UITableViewCell alloc] init];
             
-            [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
-            
-            cell.layoutMargins = UIEdgeInsetsZero;
+            self.ovulationCell = [self.tableView dequeueReusableCellWithIdentifier:@"ovulationCell" forIndexPath:indexPath];
             
             // TODO: Finish custom cell implementation
-            //            if (expandOvulationTestCell) {
-            //                // unhide component
-            //            }
+            if (expandOvulationTestCell) {
+            // unhide component
+                self.ovulationCell.placeholderLabel.hidden = YES;
+                self.ovulationCell.ovulationCollapsedLabel.hidden = NO;
+                
+                self.ovulationCell.ovulationTypePositiveImageView.hidden = NO;
+                self.ovulationCell.ovulationTypePositiveLabel.hidden = NO;
+                
+                self.ovulationCell.ovulationTypeNegativeImageView.hidden = NO;
+                self.ovulationCell.ovulationTypeNegativeLabel.hidden = NO;
+            } else {
+                self.ovulationCell.placeholderLabel.hidden = NO;
+                self.ovulationCell.ovulationCollapsedLabel.hidden = YES;
+                
+                self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
+                self.ovulationCell.ovulationTypePositiveLabel.hidden = YES;
+                
+                self.ovulationCell.ovulationTypeNegativeImageView.hidden = YES;
+                self.ovulationCell.ovulationTypeNegativeLabel.hidden = YES;
+            }
+            
+            self.ovulationCell.layoutMargins = UIEdgeInsetsZero;
+            
+            self.ovulationCell.delegate = self;
+            
+            return self.ovulationCell;
             break;
         }
             
@@ -1292,11 +1315,12 @@ TableStateType currentState;
             }
             break;
         }
-            //
-            //        case 8:
-            //        {
-            //            break;
-            //        }
+            
+        case 8:
+        {
+            // TODO: ovulation test states, continue here
+            break;
+        }
             //
             //        case 9:
             //        {

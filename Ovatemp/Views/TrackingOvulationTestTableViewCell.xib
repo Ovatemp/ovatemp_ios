@@ -74,10 +74,10 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="oulationTypePositiveImageView" destination="RuD-m8-lAE" id="srA-vj-fyL"/>
                 <outlet property="ovulationCollapsedLabel" destination="KbL-FM-Ddi" id="ggX-mw-C03"/>
                 <outlet property="ovulationTypeNegativeImageView" destination="saD-zr-MCK" id="Jkp-SE-bCL"/>
                 <outlet property="ovulationTypeNegativeLabel" destination="VPw-Tz-NIR" id="K6z-U2-G7W"/>
+                <outlet property="ovulationTypePositiveImageView" destination="RuD-m8-lAE" id="1vv-aC-2Qf"/>
                 <outlet property="ovulationTypePositiveLabel" destination="TyS-Ic-DwU" id="vtm-4p-9bA"/>
                 <outlet property="placeholderLabel" destination="RGe-gz-aEi" id="hXD-0F-11e"/>
             </connections>
