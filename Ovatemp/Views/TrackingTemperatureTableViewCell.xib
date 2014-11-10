@@ -43,7 +43,7 @@
                     <pickerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lQA-8c-cPq">
                         <rect key="frame" x="0.0" y="29" width="320" height="162"/>
                     </pickerView>
-                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icn_positive" translatesAutoresizingMaskIntoConstraints="NO" id="6uw-4c-XJ5">
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icn_ondo_small" translatesAutoresizingMaskIntoConstraints="NO" id="6uw-4c-XJ5">
                         <rect key="frame" x="85" y="10" width="30" height="30"/>
                     </imageView>
                 </subviews>
@@ -60,6 +60,6 @@
     </objects>
     <resources>
         <image name="icn_info" width="22" height="22"/>
-        <image name="icn_positive" width="33" height="33"/>
+        <image name="icn_ondo_small" width="21" height="24"/>
     </resources>
 </document>
