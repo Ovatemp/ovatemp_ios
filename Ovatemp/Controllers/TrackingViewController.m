@@ -633,6 +633,7 @@ TableStateType currentState;
                            self.periodCell.periodTypeImageView.hidden = YES;
                            self.periodCell.periodTypeCollapsedLabel.text = @"";
                            PeriodCellHasData = NO;
+                           [self.periodCell setSelectedPeriodType:PeriodSelectionNoSelection];
                        }
                        
                        if (day.intercourse) {
@@ -755,24 +756,28 @@ TableStateType currentState;
         self.periodCell.periodTypeCollapsedLabel.text = @"None";
         self.periodCell.periodTypeCollapsedLabel.hidden = YES;
         self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_none"];
+        [self.periodCell setSelectedPeriodType:PeriodSelectionNone];
     } else if ([self.period isEqual:@"spotting"]) {
         self.periodCell.placeholderLabel.hidden = YES;
         self.periodCell.periodCollapsedLabel.hidden = NO;
         self.periodCell.periodTypeCollapsedLabel.text = @"Spotting";
         self.periodCell.periodTypeCollapsedLabel.hidden = YES;
         self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_spotting"];
+        [self.periodCell setSelectedPeriodType:PeriodSelectionSpotting];
     } else if ([self.period isEqual:@"light"]) {
         self.periodCell.placeholderLabel.hidden = YES;
         self.periodCell.periodCollapsedLabel.hidden = NO;
         self.periodCell.periodTypeCollapsedLabel.text = @"Light";
         self.periodCell.periodTypeCollapsedLabel.hidden = YES;
         self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_light"];
+        [self.periodCell setSelectedPeriodType:PeriodSelectionLight];
     } else if ([self.period isEqual:@"medium"]) {
         self.periodCell.placeholderLabel.hidden = YES;
         self.periodCell.periodCollapsedLabel.hidden = NO;
         self.periodCell.periodTypeCollapsedLabel.text = @"Medium";
         self.periodCell.periodTypeCollapsedLabel.hidden = YES;
         self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_medium"];
+        [self.periodCell setSelectedPeriodType:PeriodSelectionMedium];
     } else { // heavy
         if ([self.period isEqual:@"heavy"]) {
             self.periodCell.placeholderLabel.hidden = YES;
@@ -780,6 +785,7 @@ TableStateType currentState;
             self.periodCell.periodTypeCollapsedLabel.text = @"Heavy";
             self.periodCell.periodTypeCollapsedLabel.hidden = YES;
             self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_heavy"];
+            [self.periodCell setSelectedPeriodType:PeriodSelectionHeavy];
         }
     }
 }
