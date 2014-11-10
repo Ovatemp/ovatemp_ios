@@ -20,6 +20,9 @@ NSArray *symptomsDataSource;
     self.selectedDate = [[NSDate alloc] init];
     
     symptomsDataSource = [NSArray arrayWithObjects:@"Acne", @"Backache", @"Breast Tenderness", @"Constipation", @"Cramps", @"Diarrhea", @"Fatigue", @"Fever", @"Headache", @"Indigestion", @"Insomnia", @"Mood Swings", @"Nausea", @"PMS", @"Stress", @"Tired", @"Vaginal Pain", @"Vomiting", nil];
+    
+    self.symptomsTableView.delegate = self;
+    self.symptomsTableView.dataSource = self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -50,6 +53,9 @@ NSArray *symptomsDataSource;
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
     cell.textLabel.text = [symptomsDataSource objectAtIndex:indexPath.row];
+    
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setTintColor:[UIColor blackColor]];
     
     return cell;
 }
