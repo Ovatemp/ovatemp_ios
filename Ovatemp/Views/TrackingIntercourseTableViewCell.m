@@ -28,22 +28,34 @@
 }
 
 - (IBAction)didSelectUnprotected:(id)sender {
-    self.intercourseTypeCollapsedLabel.text = @"Unprotected";
-    self.intercourseTypeCollapsedImageView.image = [UIImage imageNamed:@"icn_i_unprotected"];
-    [self hitBackendWithIntercourseType:@"unprotected"];
+    if (self.selectedIntercourseType == IntercourseSelectionUnprotected) {
+        self.selectedIntercourseType = IntercourseSelectionNone;
+        [self hitBackendWithIntercourseType:[NSNull null]];
+    } else {
+        self.selectedIntercourseType = IntercourseSelectionUnprotected;
+        self.intercourseTypeCollapsedLabel.text = @"Unprotected";
+        self.intercourseTypeCollapsedImageView.image = [UIImage imageNamed:@"icn_i_unprotected"];
+        [self hitBackendWithIntercourseType:@"unprotected"];
+    }
 }
 
 - (IBAction)didSelectProtected:(id)sender {
-    self.intercourseTypeCollapsedLabel.text = @"Protected";
-    self.intercourseTypeCollapsedImageView.image = [UIImage imageNamed:@"icn_i_protected"];
-    [self hitBackendWithIntercourseType:@"protected"];
+    if (self.selectedIntercourseType == IntercourseSelectionProtected) {
+        self.selectedIntercourseType = IntercourseSelectionNone;
+        [self hitBackendWithIntercourseType:[NSNull null]];
+    } else {
+        self.selectedIntercourseType = IntercourseSelectionProtected;
+        self.intercourseTypeCollapsedLabel.text = @"Protected";
+        self.intercourseTypeCollapsedImageView.image = [UIImage imageNamed:@"icn_i_protected"];
+        [self hitBackendWithIntercourseType:@"protected"];
+    }
 }
 
 - (IBAction)didSelectInfoButton:(id)sender {
     [self.delegate pushInfoAlertWithTitle:@"Intercourse" AndMessage:@"Fancy word for sex. When trying to conceive you should have unprotected sex. When trying to avoid we recommend that you have protected sex when you are not on a dry day or your temperature has not risen yet  since a temperature shift is the only way to confirm ovulation.\n\nAlways use protection against STDs when you are not in a committed relationship." AndURL:@"http://google.com"];
 }
 
-- (void)hitBackendWithIntercourseType:(NSString *)intercourseType {
+- (void)hitBackendWithIntercourseType:(id)intercourseType {
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     
     [attributes setObject:intercourseType forKey:@"intercourse"];

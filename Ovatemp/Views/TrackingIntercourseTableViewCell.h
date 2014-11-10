@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "TrackingTemperatureTableViewCell.h" // where our delegate is
 
+typedef enum {
+    IntercourseSelectionNone,
+    IntercourseSelectionUnprotected,
+    IntercourseSelectionProtected
+} IntercourseSelectionType;
+
 @interface TrackingIntercourseTableViewCell : UITableViewCell
 
 @property(nonatomic,retain)id<PresentInfoAlertDelegate>delegate;
@@ -25,5 +31,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *protectedLabel;
 
 @property NSDate *selectedDate;
+
+@property IntercourseSelectionType selectedIntercourseType;
 
 @end

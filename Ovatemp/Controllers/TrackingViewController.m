@@ -94,6 +94,8 @@ BOOL lowerDrawer;
 
 NSMutableArray *drawerDateData;
 
+BOOL firstOpenView;
+
 // table view cell states
 BOOL expandTemperatureCell;
 BOOL expandCervicalFluidCell;
@@ -202,6 +204,8 @@ TableStateType currentState;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    firstOpenView = YES;
     
     // fix bar buttons
     self.navigationItem.leftBarButtonItem.imageInsets = UIEdgeInsetsMake(-18, 0, 18, 0);
@@ -640,8 +644,8 @@ TableStateType currentState;
                            self.intercourse = day.intercourse;
                            self.intercourseCell.intercourseTypeCollapsedLabel.text = self.intercourse;
                            self.intercourseCell.intercourseTypeCollapsedLabel.hidden = NO;
-                           IntercourseCellHasData = YES;
                            [self setDataForIntercourseCell];
+                           IntercourseCellHasData = YES;
                        } else { // no data, hide components
                            self.intercourseCell.placeholderLabel.hidden = NO;
                            self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
@@ -682,7 +686,11 @@ TableStateType currentState;
     // for now, just change labels
     [self setTitleView];
     // drawer stays down, arrow should be facing upward
-    self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI);
+    if (firstOpenView) {
+        self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI);
+        firstOpenView = NO;
+    }
+    
     
     // load new data into tableview data sources
     [self.tableView reloadData];
@@ -1048,22 +1056,35 @@ TableStateType currentState;
             if (expandIntercourseCell) {
                 // unhide component
                 self.intercourseCell.placeholderLabel.hidden = YES;
+                
                 self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
                 
-                self.intercourseCell.protectedImageView.hidden = NO;
-                self.intercourseCell.protectedLabel.hidden = NO;
-                
-                self.intercourseCell.unprotectedImageView.hidden = NO;
-                self.intercourseCell.unprotectedLabel.hidden = NO;
+//                self.intercourseCell.protectedImageView.hidden = NO;
+//                self.intercourseCell.protectedLabel.hidden = NO;
+//                
+//                self.intercourseCell.unprotectedImageView.hidden = NO;
+//                self.intercourseCell.unprotectedLabel.hidden = NO;
             } else {
-                self.intercourseCell.placeholderLabel.hidden = NO;
-                self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+                if (IntercourseCellHasData) {
+                    self.intercourseCell.placeholderLabel.hidden = YES;
+                    self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+                    self.intercourseCell.intercourseTypeCollapsedImageView.hidden = NO;
+                    self.intercourseCell.intercourseTypeCollapsedLabel.hidden = NO;
+                }
+//                  else {
+//                    self.intercourseCell.placeholderLabel.hidden = NO;
+//                    self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+//                    self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+//                    self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+//                }
                 
-                self.intercourseCell.protectedImageView.hidden = YES;
-                self.intercourseCell.protectedLabel.hidden = YES;
-                
-                self.intercourseCell.unprotectedImageView.hidden = YES;
-                self.intercourseCell.unprotectedLabel.hidden = YES;
+//                self.intercourseCell.protectedImageView.hidden = YES;
+//                self.intercourseCell.protectedLabel.hidden = YES;
+//                
+//                self.intercourseCell.unprotectedImageView.hidden = YES;
+//                self.intercourseCell.unprotectedLabel.hidden = YES;
             }
             
             [self.intercourseCell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -1299,8 +1320,7 @@ TableStateType currentState;
                 
                 // No initial data until user makes a selection
                 //                self.temperature = [self.tempCell.temperatureValueLabel.text floatValue];
-                firstOpenTemperatureCell = NO;
-                //                TemperatureCellHasData = YES;
+                firstOpenCervicalFluidCell = NO;
             }
             
             // record temp
@@ -1481,7 +1501,7 @@ TableStateType currentState;
         {
             if (PeriodCellHasData) {
                 self.periodCell.periodTypeCollapsedLabel.text = self.period;
-                self.periodCell.periodTypeImageView.hidden = NO;
+//                self.periodCell.periodTypeImageView.hidden = NO;
             }
             break;
         }
@@ -2433,6 +2453,17 @@ TableStateType currentState;
             
             expandIntercourseCell = YES;
             // unhide component
+            self.intercourseCell.placeholderLabel.hidden = YES;
+            
+            self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+            self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+            self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+            
+            self.intercourseCell.unprotectedImageView.hidden = NO;
+            self.intercourseCell.unprotectedLabel.hidden = NO;
+            
+            self.intercourseCell.protectedImageView.hidden = NO;
+            self.intercourseCell.protectedLabel.hidden = NO;
             
             expandMoodCell = NO;
             // hide component
