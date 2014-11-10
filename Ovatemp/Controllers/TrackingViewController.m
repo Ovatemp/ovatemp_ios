@@ -1065,8 +1065,17 @@ TableStateType currentState;
                 self.intercourseCell.unprotectedImageView.hidden = NO;
                 self.intercourseCell.unprotectedLabel.hidden = NO;
             } else {
-                self.intercourseCell.placeholderLabel.hidden = NO;
-                self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+                if (IntercourseCellHasData) {
+                    self.intercourseCell.placeholderLabel.hidden = YES;
+                    self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+                    self.intercourseCell.intercourseTypeCollapsedImageView.hidden = NO;
+                    self.intercourseCell.intercourseTypeCollapsedLabel.hidden = NO;
+                } else {
+                    self.intercourseCell.placeholderLabel.hidden = NO;
+                    self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+                    self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+                    self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+                }
                 
                 self.intercourseCell.protectedImageView.hidden = YES;
                 self.intercourseCell.protectedLabel.hidden = YES;
@@ -2442,6 +2451,17 @@ TableStateType currentState;
             
             expandIntercourseCell = YES;
             // unhide component
+            self.intercourseCell.placeholderLabel.hidden = YES;
+            
+            self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+            self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+            self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+            
+            self.intercourseCell.unprotectedImageView.hidden = NO;
+            self.intercourseCell.unprotectedLabel.hidden = NO;
+            
+            self.intercourseCell.protectedImageView.hidden = NO;
+            self.intercourseCell.protectedLabel.hidden = NO;
             
             expandMoodCell = NO;
             // hide component
