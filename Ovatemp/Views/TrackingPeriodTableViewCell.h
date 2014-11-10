@@ -9,6 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "TrackingTemperatureTableViewCell.h" // where our delegate is
 
+typedef enum {
+    PeriodSelectionNoSelection,
+    PeriodSelectionNone,
+    PeriodSelectionSpotting,
+    PeriodSelectionLight,
+    PeriodSelectionMedium,
+    PeriodSelectionHeavy,
+} PeriodSelectionType;
+
 @interface TrackingPeriodTableViewCell : UITableViewCell
 
 @property(nonatomic,retain)id<PresentInfoAlertDelegate>delegate;
@@ -30,5 +39,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *heavyLabel;
 
 @property NSDate *selectedDate;
+
+@property PeriodSelectionType selectedPeriodType;
 
 @end
