@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import "TrackingTemperatureTableViewCell.h" // where our delegate is
+
+typedef enum {
+    CervicalFluidSelectionNone,
+    CervicalFluidSelectionDry,
+    CervicalFluidSelectionSticky,
+    CervicalFluidSelectionCreamy,
+    CervicalFluidSelectionEggwhite,
+} CervicalFluidSelectionType;
 
 @interface TrackingCervicalFluidTableViewCell : UITableViewCell
 
@@ -29,5 +36,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *eggwhiteLabel;
 
 @property NSDate *selectedDate;
+
+@property CervicalFluidSelectionType selectedCervicalFluidType;
 
 @end

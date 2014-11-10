@@ -592,8 +592,8 @@ TableStateType currentState;
                            self.cfCell.cfTypeCollapsedLabel.text = self.cervicalFluid;
                            self.cfCell.cfTypeCollapsedLabel.hidden = NO;
                            CervicalFluidCellHasData = YES;
-                           
                            [self setDataForCervicalFluidCell];
+                           
                        } else { // hide components
                            self.cfCell.placeholderLabel.hidden = NO;
                            self.cfCell.cfCollapsedLabel.hidden = YES;
@@ -601,6 +601,7 @@ TableStateType currentState;
                            self.cfCell.cfTypeImageView.hidden = YES;
                            self.cfCell.cfTypeCollapsedLabel.text = @"";
                            CervicalFluidCellHasData = NO;
+                           [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionNone];
                        }
                        
                        if (day.cervicalPosition) {
@@ -689,6 +690,7 @@ TableStateType currentState;
         self.cfCell.cfTypeCollapsedLabel.text = @"Dry";
         self.cfCell.cfTypeCollapsedLabel.hidden = YES;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_dry"];
+        [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionDry];
         
     } else if ([self.cervicalFluid isEqual:@"sticky"]) {
         self.cfCell.placeholderLabel.hidden = YES;
@@ -696,6 +698,7 @@ TableStateType currentState;
         self.cfCell.cfTypeCollapsedLabel.text = @"Sticky";
         self.cfCell.cfTypeCollapsedLabel.hidden = YES;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_sticky"];
+        [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionSticky];
         
     } else if ([self.cervicalFluid isEqual:@"creamy"]) {
         self.cfCell.placeholderLabel.hidden = YES;
@@ -703,6 +706,7 @@ TableStateType currentState;
         self.cfCell.cfTypeCollapsedLabel.text = @"Creamy";
         self.cfCell.cfTypeCollapsedLabel.hidden = YES;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_creamy"];
+        [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionCreamy];
         
     } else { // eggwhite
         self.cfCell.placeholderLabel.hidden = YES;
@@ -710,6 +714,7 @@ TableStateType currentState;
         self.cfCell.cfTypeCollapsedLabel.text = @"Eggwhite";
         self.cfCell.cfTypeCollapsedLabel.hidden = YES;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_eggwhite"];
+        [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionEggwhite];
     }
 }
 
