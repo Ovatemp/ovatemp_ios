@@ -644,8 +644,8 @@ TableStateType currentState;
                            self.intercourse = day.intercourse;
                            self.intercourseCell.intercourseTypeCollapsedLabel.text = self.intercourse;
                            self.intercourseCell.intercourseTypeCollapsedLabel.hidden = NO;
-                           IntercourseCellHasData = YES;
                            [self setDataForIntercourseCell];
+                           IntercourseCellHasData = YES;
                        } else { // no data, hide components
                            self.intercourseCell.placeholderLabel.hidden = NO;
                            self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
@@ -1056,32 +1056,35 @@ TableStateType currentState;
             if (expandIntercourseCell) {
                 // unhide component
                 self.intercourseCell.placeholderLabel.hidden = YES;
+                
                 self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
                 self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
                 
-                self.intercourseCell.protectedImageView.hidden = NO;
-                self.intercourseCell.protectedLabel.hidden = NO;
-                
-                self.intercourseCell.unprotectedImageView.hidden = NO;
-                self.intercourseCell.unprotectedLabel.hidden = NO;
+//                self.intercourseCell.protectedImageView.hidden = NO;
+//                self.intercourseCell.protectedLabel.hidden = NO;
+//                
+//                self.intercourseCell.unprotectedImageView.hidden = NO;
+//                self.intercourseCell.unprotectedLabel.hidden = NO;
             } else {
                 if (IntercourseCellHasData) {
                     self.intercourseCell.placeholderLabel.hidden = YES;
                     self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
                     self.intercourseCell.intercourseTypeCollapsedImageView.hidden = NO;
                     self.intercourseCell.intercourseTypeCollapsedLabel.hidden = NO;
-                } else {
-                    self.intercourseCell.placeholderLabel.hidden = NO;
-                    self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
-                    self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
-                    self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
                 }
+//                  else {
+//                    self.intercourseCell.placeholderLabel.hidden = NO;
+//                    self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+//                    self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+//                    self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+//                }
                 
-                self.intercourseCell.protectedImageView.hidden = YES;
-                self.intercourseCell.protectedLabel.hidden = YES;
-                
-                self.intercourseCell.unprotectedImageView.hidden = YES;
-                self.intercourseCell.unprotectedLabel.hidden = YES;
+//                self.intercourseCell.protectedImageView.hidden = YES;
+//                self.intercourseCell.protectedLabel.hidden = YES;
+//                
+//                self.intercourseCell.unprotectedImageView.hidden = YES;
+//                self.intercourseCell.unprotectedLabel.hidden = YES;
             }
             
             [self.intercourseCell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -1317,8 +1320,7 @@ TableStateType currentState;
                 
                 // No initial data until user makes a selection
                 //                self.temperature = [self.tempCell.temperatureValueLabel.text floatValue];
-                firstOpenTemperatureCell = NO;
-                //                TemperatureCellHasData = YES;
+                firstOpenCervicalFluidCell = NO;
             }
             
             // record temp
@@ -1499,7 +1501,7 @@ TableStateType currentState;
         {
             if (PeriodCellHasData) {
                 self.periodCell.periodTypeCollapsedLabel.text = self.period;
-                self.periodCell.periodTypeImageView.hidden = NO;
+//                self.periodCell.periodTypeImageView.hidden = NO;
             }
             break;
         }
