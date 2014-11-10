@@ -54,14 +54,26 @@
     }
 }
 - (IBAction)didSelectCreamy:(id)sender {
-    [self hitBackendWithCervicalFluidType:@"creamy"];
-    self.cfTypeCollapsedLabel.text = @"Creamy";
-    self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_creamy"];
+    if (self.selectedCervicalFluidType == CervicalFluidSelectionCreamy) {
+        self.selectedCervicalFluidType = CervicalFluidSelectionNone;
+        [self hitBackendWithCervicalFluidType:[NSNull null]];
+    } else {
+        self.selectedCervicalFluidType = CervicalFluidSelectionCreamy;
+        [self hitBackendWithCervicalFluidType:@"creamy"];
+        self.cfTypeCollapsedLabel.text = @"Creamy";
+        self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_creamy"];
+    }
 }
 - (IBAction)didSelectEggwhite:(id)sender {
-    [self hitBackendWithCervicalFluidType:@"eggwhite"];
-    self.cfTypeCollapsedLabel.text = @"Eggwhite";
-    self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_eggwhite"];
+    if (self.selectedCervicalFluidType == CervicalFluidSelectionEggwhite) {
+        self.selectedCervicalFluidType = CervicalFluidSelectionNone;
+        [self hitBackendWithCervicalFluidType:[NSNull null]];
+    } else {
+        self.selectedCervicalFluidType = CervicalFluidSelectionEggwhite;
+        [self hitBackendWithCervicalFluidType:@"eggwhite"];
+        self.cfTypeCollapsedLabel.text = @"Eggwhite";
+        self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_eggwhite"];
+    }
 }
 
 - (void)hitBackendWithCervicalFluidType:(id)cfType {
