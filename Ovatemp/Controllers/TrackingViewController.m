@@ -28,6 +28,7 @@
 #import "TrackingMoodTableViewCell.h"
 #import "TrackingSymptomsTableViewCell.h"
 #import "TrackingOvulationTestTableViewCell.h"
+#import "TrackingPregnancyTestTableViewCell.h"
 
 @import HealthKit;
 
@@ -68,6 +69,7 @@ typedef enum {
 @property TrackingMoodTableViewCell *moodCell;
 @property TrackingSymptomsTableViewCell *symptomsCell;
 @property TrackingOvulationTestTableViewCell *ovulationCell;
+@property TrackingPregnancyTestTableViewCell *pregnancyCell;
 
 // info
 @property NSNumber *temperature;
@@ -78,6 +80,7 @@ typedef enum {
 @property NSString *mood;
 @property NSArray *symptoms;
 @property NSString *ovulation; // opk
+@property NSString *pregnancy; // ferning
 
 @end
 
@@ -342,6 +345,8 @@ TableStateType currentState;
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingSymptomsTableViewCell" bundle:nil] forCellReuseIdentifier:@"symptomsCell"];
     
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingOvulationTestTableViewCell" bundle:nil] forCellReuseIdentifier:@"ovulationCell"];
+    
+    [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingPregnancyTestTableViewCell" bundle:nil] forCellReuseIdentifier:@"pregnancyCell"];
     
     // refresh info
     [self refreshTrackingView];
@@ -641,6 +646,14 @@ TableStateType currentState;
                        
                        if (day.symptoms) {
                            // TODO
+                       }
+                       
+                       if (day.opk) { // ovulation test
+                           
+                       }
+                       
+                       if (day.ferning) { // pregnancy test
+                           
                        }
                        
                        //                       [self setTableStateForState:TableStateAllClosed];
@@ -1108,18 +1121,37 @@ TableStateType currentState;
             break;
         }
             
-        case 9:
+        case 9: // pregnancy test
         {
-            cell = [[UITableViewCell alloc] init];
-            
-            [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
-            
-            cell.layoutMargins = UIEdgeInsetsZero;
+            self.pregnancyCell = [self.tableView dequeueReusableCellWithIdentifier:@"pregnancyCell" forIndexPath:indexPath];
             
             // TODO: Finish custom cell implementation
-            //            if (expandPregnancyTestCell) {
-            //                // unhide component
-            //            }
+            if (expandPregnancyTestCell) {
+                // unhide component
+                self.pregnancyCell.placeholderLabel.hidden = YES;
+                self.pregnancyCell.pregnancyCollapsedLabel.hidden = NO;
+                
+                self.pregnancyCell.pregnancyTypeNegativeImageView.hidden = NO;
+                self.pregnancyCell.pregnancyTypeNegtaiveLabel.hidden = NO;
+                
+                self.pregnancyCell.pregnancyTypePositiveImageView.hidden = NO;
+                self.pregnancyCell.pregnancyTypePositiveLabel.hidden = NO;
+            } else {
+                self.pregnancyCell.placeholderLabel.hidden = NO;
+                self.pregnancyCell.pregnancyCollapsedLabel.hidden = YES;
+                
+                self.pregnancyCell.pregnancyTypeNegativeImageView.hidden = YES;
+                self.pregnancyCell.pregnancyTypeNegtaiveLabel.hidden = YES;
+                
+                self.pregnancyCell.pregnancyTypePositiveImageView.hidden = YES;
+                self.pregnancyCell.pregnancyTypePositiveLabel.hidden = YES;
+            }
+            
+            self.pregnancyCell.layoutMargins = UIEdgeInsetsZero;
+            
+            self.pregnancyCell.delegate = self;
+            
+            return self.pregnancyCell;
             break;
         }
             
@@ -1331,11 +1363,21 @@ TableStateType currentState;
             }
             break;
         }
-            //
-            //        case 9:
-            //        {
-            //            break;
-            //        }
+            
+        case 9:
+        {
+            if (currentState == TableStatePregnancyTestExpanded) {
+                [self setTableStateForState:TableStateAllClosed];
+            } else {
+                [self setTableStateForState:TableStatePregnancyTestExpanded];
+            }
+            
+            if (firstOpenPregnancyTestCell) {
+                // no initial data until the user makes a selection
+                firstOpenPregnancyTestCell = NO;
+            }
+            break;
+        }
             //
             //        case 10:
             //        {
@@ -1438,11 +1480,15 @@ TableStateType currentState;
             }
             break;
         }
-            //
-            //        case 9:
-            //        {
-            //            break;
-            //        }
+            
+        case 9:
+        {
+            if (PregnancyTestCellHasData) {
+                // no collapsed labels to show
+                self.pregnancyCell.placeholderLabel.hidden = NO;
+            }
+            break;
+        }
             //
             //        case 10:
             //        {
@@ -1521,10 +1567,10 @@ TableStateType currentState;
     if (OvulationTestCellHasData) {
         // TODO
     }
-    //
-    //    if (PregnancyTestCellHasData) {
-    //        // TODO
-    //    }
+    
+    if (PregnancyTestCellHasData) {
+        // TODO
+    }
     //    if (SupplementsCellHasData) {
     //        // TODO
     //    }
@@ -1710,6 +1756,12 @@ TableStateType currentState;
             
             expandPregnancyTestCell = NO;
             // hide component
+            self.pregnancyCell.pregnancyTypeNegativeImageView.hidden = YES;
+            self.pregnancyCell.pregnancyTypeNegtaiveLabel.hidden = YES;
+            
+            self.pregnancyCell.pregnancyTypePositiveImageView.hidden = YES;
+            self.pregnancyCell.pregnancyTypePositiveLabel.hidden = YES;
+            
             expandSupplementsCell = NO;
             // hide component
             expandMedicineCell = NO;
@@ -1840,6 +1892,12 @@ TableStateType currentState;
             
             expandPregnancyTestCell = NO;
             // hide component
+            self.pregnancyCell.pregnancyTypeNegativeImageView.hidden = YES;
+            self.pregnancyCell.pregnancyTypeNegtaiveLabel.hidden = YES;
+            
+            self.pregnancyCell.pregnancyTypePositiveImageView.hidden = YES;
+            self.pregnancyCell.pregnancyTypePositiveLabel.hidden = YES;
+            
             expandSupplementsCell = NO;
             // hide component
             expandMedicineCell = NO;
@@ -1954,6 +2012,12 @@ TableStateType currentState;
             
             expandPregnancyTestCell = NO;
             // hide component
+            self.pregnancyCell.pregnancyTypeNegativeImageView.hidden = YES;
+            self.pregnancyCell.pregnancyTypeNegtaiveLabel.hidden = YES;
+            
+            self.pregnancyCell.pregnancyTypePositiveImageView.hidden = YES;
+            self.pregnancyCell.pregnancyTypePositiveLabel.hidden = YES;
+            
             expandSupplementsCell = NO;
             // hide component
             expandMedicineCell = NO;
@@ -2084,6 +2148,12 @@ TableStateType currentState;
             
             expandPregnancyTestCell = NO;
             // hide component
+            self.pregnancyCell.pregnancyTypeNegativeImageView.hidden = YES;
+            self.pregnancyCell.pregnancyTypeNegtaiveLabel.hidden = YES;
+            
+            self.pregnancyCell.pregnancyTypePositiveImageView.hidden = YES;
+            self.pregnancyCell.pregnancyTypePositiveLabel.hidden = YES;
+            
             expandSupplementsCell = NO;
             // hide component
             expandMedicineCell = NO;
@@ -2215,6 +2285,12 @@ TableStateType currentState;
             
             expandPregnancyTestCell = NO;
             // hide component
+            self.pregnancyCell.pregnancyTypeNegativeImageView.hidden = YES;
+            self.pregnancyCell.pregnancyTypeNegtaiveLabel.hidden = YES;
+            
+            self.pregnancyCell.pregnancyTypePositiveImageView.hidden = YES;
+            self.pregnancyCell.pregnancyTypePositiveLabel.hidden = YES;
+            
             expandSupplementsCell = NO;
             // hide component
             expandMedicineCell = NO;
@@ -2335,6 +2411,12 @@ TableStateType currentState;
             
             expandPregnancyTestCell = NO;
             // hide component
+            self.pregnancyCell.pregnancyTypeNegativeImageView.hidden = YES;
+            self.pregnancyCell.pregnancyTypeNegtaiveLabel.hidden = YES;
+            
+            self.pregnancyCell.pregnancyTypePositiveImageView.hidden = YES;
+            self.pregnancyCell.pregnancyTypePositiveLabel.hidden = YES;
+            
             expandSupplementsCell = NO;
             // hide component
             expandMedicineCell = NO;
@@ -2472,6 +2554,12 @@ TableStateType currentState;
             
             expandPregnancyTestCell = NO;
             // hide component
+            self.pregnancyCell.pregnancyTypeNegativeImageView.hidden = YES;
+            self.pregnancyCell.pregnancyTypeNegtaiveLabel.hidden = YES;
+            
+            self.pregnancyCell.pregnancyTypePositiveImageView.hidden = YES;
+            self.pregnancyCell.pregnancyTypePositiveLabel.hidden = YES;
+            
             expandSupplementsCell = NO;
             // hide component
             expandMedicineCell = NO;
@@ -2608,6 +2696,12 @@ TableStateType currentState;
             
             expandPregnancyTestCell = NO;
             // hide component
+            self.pregnancyCell.pregnancyTypeNegativeImageView.hidden = YES;
+            self.pregnancyCell.pregnancyTypeNegtaiveLabel.hidden = YES;
+            
+            self.pregnancyCell.pregnancyTypePositiveImageView.hidden = YES;
+            self.pregnancyCell.pregnancyTypePositiveLabel.hidden = YES;
+            
             expandSupplementsCell = NO;
             // hide component
             expandMedicineCell = NO;
@@ -2663,8 +2757,8 @@ TableStateType currentState;
             self.cpCell.highImageView.hidden = YES;
             self.cpCell.highLabel.hidden = YES;
             
-            self.cpCell.lowImageView.hidden = NO;
-            self.cpCell.lowLabel.hidden = NO;
+            self.cpCell.lowImageView.hidden = YES;
+            self.cpCell.lowLabel.hidden = YES;
             
             if (CervicalPositionCellHasData) {
                 self.cpCell.placeholderLabel.hidden = YES;
@@ -2745,6 +2839,12 @@ TableStateType currentState;
             
             expandPregnancyTestCell = NO;
             // hide component
+            self.pregnancyCell.pregnancyTypeNegativeImageView.hidden = YES;
+            self.pregnancyCell.pregnancyTypeNegtaiveLabel.hidden = YES;
+            
+            self.pregnancyCell.pregnancyTypePositiveImageView.hidden = YES;
+            self.pregnancyCell.pregnancyTypePositiveLabel.hidden = YES;
+            
             expandSupplementsCell = NO;
             // hide component
             expandMedicineCell = NO;
@@ -2800,8 +2900,8 @@ TableStateType currentState;
             self.cpCell.highImageView.hidden = YES;
             self.cpCell.highLabel.hidden = YES;
             
-            self.cpCell.lowImageView.hidden = NO;
-            self.cpCell.lowLabel.hidden = NO;
+            self.cpCell.lowImageView.hidden = YES;
+            self.cpCell.lowLabel.hidden = YES;
             
             if (CervicalPositionCellHasData) {
                 self.cpCell.placeholderLabel.hidden = YES;
@@ -2817,16 +2917,77 @@ TableStateType currentState;
             
             expandPeriodCell = NO;
             // hide component
+            self.periodCell.noneImageView.hidden = YES;
+            self.periodCell.noneLabel.hidden = YES;
+            
+            self.periodCell.spottingImageView.hidden = YES;
+            self.periodCell.spottingLabel.hidden = YES;
+            
+            self.periodCell.lightImageView.hidden = YES;
+            self.periodCell.lightLabel.hidden = YES;
+            
+            self.periodCell.mediumImageView.hidden = YES;
+            self.periodCell.mediumLabel.hidden = YES;
+            
+            self.periodCell.heavyImageView.hidden = YES;
+            self.periodCell.heavyLabel.hidden = YES;
+            
+            if (PeriodCellHasData) {
+                self.periodCell.placeholderLabel.hidden = YES;
+                self.periodCell.periodCollapsedLabel.hidden = NO;
+                self.periodCell.periodTypeCollapsedLabel.hidden = NO;
+                self.periodCell.periodTypeImageView.hidden = NO;
+            } else {
+                self.periodCell.placeholderLabel.hidden = NO;
+                self.periodCell.periodCollapsedLabel.hidden = YES;
+                self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+                self.periodCell.periodTypeImageView.hidden = YES;
+            }
+            
             expandIntercourseCell = NO;
             // hide component
+            self.intercourseCell.protectedImageView.hidden = YES;
+            self.intercourseCell.protectedLabel.hidden = YES;
+            
+            self.intercourseCell.unprotectedImageView.hidden = YES;
+            self.intercourseCell.unprotectedLabel.hidden = YES;
+            
+            if (IntercourseCellHasData) {
+                self.intercourseCell.placeholderLabel.hidden = YES;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = NO;
+            } else {
+                self.intercourseCell.placeholderLabel.hidden = NO;
+                self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+                self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+            }
+            
             expandMoodCell = NO;
             // hide component
+            self.moodCell.moodTableView.hidden = YES;
+            
             expandSymptomsCell = NO;
             // hide component
+            self.symptomsCell.symptomsTableView.hidden = YES;
+            
             expandOvulationTestCell = NO;
             // hide component
+            self.ovulationCell.ovulationTypeNegativeImageView.hidden = YES;
+            self.ovulationCell.ovulationTypeNegativeLabel.hidden = YES;
+            
+            self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
+            self.ovulationCell.ovulationTypePositiveLabel.hidden = YES;
+            
             expandPregnancyTestCell = YES;
-            // unhide component
+            // hide component
+            self.pregnancyCell.pregnancyTypeNegativeImageView.hidden = NO;
+            self.pregnancyCell.pregnancyTypeNegtaiveLabel.hidden = NO;
+            
+            self.pregnancyCell.pregnancyTypePositiveImageView.hidden = NO;
+            self.pregnancyCell.pregnancyTypePositiveLabel.hidden = NO;
+            
             expandSupplementsCell = NO;
             // hide component
             expandMedicineCell = NO;
