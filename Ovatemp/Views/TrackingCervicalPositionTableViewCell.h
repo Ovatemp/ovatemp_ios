@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "TrackingTemperatureTableViewCell.h" // where our delegate is
 
+typedef enum {
+    CervicalPositionSelectionNone,
+    CervicalPositionSelectionLow,
+    CervicalPositionSelectionHigh
+} CervicalPositionSelectionType;
+
 @interface TrackingCervicalPositionTableViewCell : UITableViewCell
 
 @property(nonatomic,retain)id<PresentInfoAlertDelegate>delegate;
@@ -24,5 +30,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lowLabel;
 
 @property NSDate *selectedDate;
+
+@property CervicalPositionSelectionType selectedCervicalPositionType;
 
 @end

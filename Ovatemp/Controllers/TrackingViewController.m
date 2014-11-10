@@ -605,7 +605,19 @@ TableStateType currentState;
                        }
                        
                        if (day.cervicalPosition) {
-                           // TODO: Waiting for backend
+                           self.cervicalPosition = day.cervicalPosition;
+                           self.cpCell.cpTypeCollapsedLabel.text = self.cervicalPosition;
+                           self.cpCell.cpTypeCollapsedLabel.hidden = NO;
+                           CervicalPositionCellHasData = YES;
+                           [self setDataForCervicalPositionCell];
+                       } else {
+                           self.cpCell.placeholderLabel.hidden = NO;
+                           self.cpCell.collapsedLabel.hidden = YES;
+                           self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+                           self.cpCell.cpTypeImageView.hidden = YES;
+                           self.cpCell.cpTypeCollapsedLabel.text = @"";
+                           CervicalPositionCellHasData = NO;
+                           [self.cpCell setSelectedCervicalPositionType:CervicalPositionSelectionNone];
                        }
                        
                        if (day.period) {
@@ -715,6 +727,24 @@ TableStateType currentState;
         self.cfCell.cfTypeCollapsedLabel.hidden = YES;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_eggwhite"];
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionEggwhite];
+    }
+}
+
+- (void)setDataForCervicalPositionCell {
+    if ([self.cervicalPosition isEqual:@"low"]) {
+        self.cpCell.placeholderLabel.hidden = YES;
+        self.cpCell.collapsedLabel.hidden = NO;
+        self.cpCell.cpTypeCollapsedLabel.text = @"Low";
+        self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+        self.cpCell.cpTypeImageView.image = [UIImage imageNamed:@"icn_cp_lowclosedfirm"];
+        [self.cpCell setSelectedCervicalPositionType:CervicalPositionSelectionLow];
+    } else { // high
+        self.cpCell.placeholderLabel.hidden = YES;
+        self.cpCell.collapsedLabel.hidden = NO;
+        self.cpCell.cpTypeCollapsedLabel.text = @"High";
+        self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+        self.cpCell.cpTypeImageView.image = [UIImage imageNamed:@"icn_cp_highopensoft"];
+        [self.cpCell setSelectedCervicalPositionType:CervicalPositionSelectionHigh];
     }
 }
 
@@ -945,7 +975,7 @@ TableStateType currentState;
                 
                 self.cpCell.collapsedLabel.hidden = NO;
                 self.cpCell.cpTypeCollapsedLabel.hidden = YES;
-                self.cpCell.cpTypeImageView.hidden = NO;
+                self.cpCell.cpTypeImageView.hidden = YES;
                 
                 self.cpCell.highImageView.hidden = NO;
                 self.cpCell.highLabel.hidden = NO;
@@ -2078,7 +2108,7 @@ TableStateType currentState;
             
             self.cpCell.collapsedLabel.hidden = NO;
             self.cpCell.cpTypeCollapsedLabel.hidden = YES;
-            self.cpCell.cpTypeImageView.hidden = NO;
+            self.cpCell.cpTypeImageView.hidden = YES;
             
             self.cpCell.highImageView.hidden = NO;
             self.cpCell.highLabel.hidden = NO;
