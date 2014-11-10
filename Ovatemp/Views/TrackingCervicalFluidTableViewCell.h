@@ -14,7 +14,7 @@ typedef enum {
     CervicalFluidSelectionDry,
     CervicalFluidSelectionSticky,
     CervicalFluidSelectionCreamy,
-    CervicalFluidSelectionEggwhite,
+    CervicalFluidSelectionEggwhite
 } CervicalFluidSelectionType;
 
 @interface TrackingCervicalFluidTableViewCell : UITableViewCell
