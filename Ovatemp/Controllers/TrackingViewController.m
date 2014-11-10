@@ -1067,7 +1067,7 @@ TableStateType currentState;
             
             [self.symptomsCell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
-            
+            self.symptomsCell.delegate = self;
             
             return self.symptomsCell;
             break;
