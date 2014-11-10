@@ -94,6 +94,8 @@ BOOL lowerDrawer;
 
 NSMutableArray *drawerDateData;
 
+BOOL firstOpenView;
+
 // table view cell states
 BOOL expandTemperatureCell;
 BOOL expandCervicalFluidCell;
@@ -202,6 +204,8 @@ TableStateType currentState;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    firstOpenView = YES;
     
     // fix bar buttons
     self.navigationItem.leftBarButtonItem.imageInsets = UIEdgeInsetsMake(-18, 0, 18, 0);
@@ -682,7 +686,11 @@ TableStateType currentState;
     // for now, just change labels
     [self setTitleView];
     // drawer stays down, arrow should be facing upward
-    self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI);
+    if (firstOpenView) {
+        self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI);
+        firstOpenView = NO;
+    }
+    
     
     // load new data into tableview data sources
     [self.tableView reloadData];
@@ -1049,6 +1057,7 @@ TableStateType currentState;
                 // unhide component
                 self.intercourseCell.placeholderLabel.hidden = YES;
                 self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
                 
                 self.intercourseCell.protectedImageView.hidden = NO;
                 self.intercourseCell.protectedLabel.hidden = NO;
