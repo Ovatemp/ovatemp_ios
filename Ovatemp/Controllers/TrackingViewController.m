@@ -712,6 +712,7 @@ TableStateType currentState;
         self.cfCell.cfTypeCollapsedLabel.hidden = YES;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_dry"];
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionDry];
+        [self.cfCell.creamyImageView setSelected:YES];
         
     } else if ([self.cervicalFluid isEqual:@"sticky"]) {
         self.cfCell.placeholderLabel.hidden = YES;
@@ -720,6 +721,7 @@ TableStateType currentState;
         self.cfCell.cfTypeCollapsedLabel.hidden = YES;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_sticky"];
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionSticky];
+        [self.cfCell.stickyImageView setSelected:YES];
         
     } else if ([self.cervicalFluid isEqual:@"creamy"]) {
         self.cfCell.placeholderLabel.hidden = YES;
@@ -728,6 +730,7 @@ TableStateType currentState;
         self.cfCell.cfTypeCollapsedLabel.hidden = YES;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_creamy"];
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionCreamy];
+        [self.cfCell.creamyImageView setSelected:YES];
         
     } else { // eggwhite
         self.cfCell.placeholderLabel.hidden = YES;
@@ -736,6 +739,7 @@ TableStateType currentState;
         self.cfCell.cfTypeCollapsedLabel.hidden = YES;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_eggwhite"];
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionEggwhite];
+        [self.cfCell.eggwhiteImageView setSelected:YES];
     }
 }
 

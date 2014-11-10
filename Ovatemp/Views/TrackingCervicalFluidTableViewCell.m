@@ -32,6 +32,7 @@
     if (self.selectedCervicalFluidType == CervicalFluidSelectionDry) { // deselect
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
         [self hitBackendWithCervicalFluidType:[NSNull null]];
+        [self.dryImageView setSelected:NO];
     } else {
         self.selectedCervicalFluidType = CervicalFluidSelectionDry;
         [self hitBackendWithCervicalFluidType:@"dry"];
@@ -39,6 +40,9 @@
         // update local labels
         self.cfTypeCollapsedLabel.text = @"Dry";
         self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_dry"];
+        
+        [self deselectAllButtons];
+        [self.dryImageView setSelected:YES];
     }
 }
 
@@ -46,34 +50,53 @@
     if (self.selectedCervicalFluidType == CervicalFluidSelectionSticky) {
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
         [self hitBackendWithCervicalFluidType:[NSNull null]];
+        [self.stickyImageView setSelected:NO];
     } else {
         self.selectedCervicalFluidType = CervicalFluidSelectionSticky;
         [self hitBackendWithCervicalFluidType:@"sticky"];
         self.cfTypeCollapsedLabel.text = @"Sticky";
         self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_sticky"];
+        
+        [self deselectAllButtons];
+        [self.stickyImageView setSelected:YES];
     }
 }
 - (IBAction)didSelectCreamy:(id)sender {
     if (self.selectedCervicalFluidType == CervicalFluidSelectionCreamy) {
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
         [self hitBackendWithCervicalFluidType:[NSNull null]];
+        [self.creamyImageView setSelected:NO];
     } else {
         self.selectedCervicalFluidType = CervicalFluidSelectionCreamy;
         [self hitBackendWithCervicalFluidType:@"creamy"];
         self.cfTypeCollapsedLabel.text = @"Creamy";
         self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_creamy"];
+        
+        [self deselectAllButtons];
+        [self.creamyImageView setSelected:YES];
     }
 }
 - (IBAction)didSelectEggwhite:(id)sender {
     if (self.selectedCervicalFluidType == CervicalFluidSelectionEggwhite) {
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
         [self hitBackendWithCervicalFluidType:[NSNull null]];
+        [self.eggwhiteImageView setSelected:NO];
     } else {
         self.selectedCervicalFluidType = CervicalFluidSelectionEggwhite;
         [self hitBackendWithCervicalFluidType:@"eggwhite"];
         self.cfTypeCollapsedLabel.text = @"Eggwhite";
         self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_eggwhite"];
+        
+        [self deselectAllButtons];
+        [self.eggwhiteImageView setSelected:YES];
     }
+}
+
+- (void)deselectAllButtons {
+    [self.dryImageView setSelected:NO];
+    [self.stickyImageView setSelected:NO];
+    [self.creamyImageView setSelected:NO];
+    [self.eggwhiteImageView setSelected:NO];
 }
 
 - (void)hitBackendWithCervicalFluidType:(id)cfType {
