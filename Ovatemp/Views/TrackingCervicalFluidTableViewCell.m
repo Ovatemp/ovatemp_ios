@@ -29,30 +29,54 @@
 }
 
 - (IBAction)didSelectDry:(id)sender {
-    [self hitBackendWithCervicalFluidType:@"dry"];
-    
-    // update local labels
-    self.cfTypeCollapsedLabel.text = @"Dry";
-    self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_dry"];
+    if (self.selectedCervicalFluidType == CervicalFluidSelectionDry) { // deselect
+        self.selectedCervicalFluidType = CervicalFluidSelectionNone;
+        [self hitBackendWithCervicalFluidType:[NSNull null]];
+    } else {
+        self.selectedCervicalFluidType = CervicalFluidSelectionDry;
+        [self hitBackendWithCervicalFluidType:@"dry"];
+        
+        // update local labels
+        self.cfTypeCollapsedLabel.text = @"Dry";
+        self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_dry"];
+    }
 }
 
 - (IBAction)didSelectSticky:(id)sender {
-    [self hitBackendWithCervicalFluidType:@"sticky"];
-    self.cfTypeCollapsedLabel.text = @"Sticky";
-    self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_sticky"];
+    if (self.selectedCervicalFluidType == CervicalFluidSelectionSticky) {
+        self.selectedCervicalFluidType = CervicalFluidSelectionNone;
+        [self hitBackendWithCervicalFluidType:[NSNull null]];
+    } else {
+        self.selectedCervicalFluidType = CervicalFluidSelectionSticky;
+        [self hitBackendWithCervicalFluidType:@"sticky"];
+        self.cfTypeCollapsedLabel.text = @"Sticky";
+        self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_sticky"];
+    }
 }
 - (IBAction)didSelectCreamy:(id)sender {
-    [self hitBackendWithCervicalFluidType:@"creamy"];
-    self.cfTypeCollapsedLabel.text = @"Creamy";
-    self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_creamy"];
+    if (self.selectedCervicalFluidType == CervicalFluidSelectionCreamy) {
+        self.selectedCervicalFluidType = CervicalFluidSelectionNone;
+        [self hitBackendWithCervicalFluidType:[NSNull null]];
+    } else {
+        self.selectedCervicalFluidType = CervicalFluidSelectionCreamy;
+        [self hitBackendWithCervicalFluidType:@"creamy"];
+        self.cfTypeCollapsedLabel.text = @"Creamy";
+        self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_creamy"];
+    }
 }
 - (IBAction)didSelectEggwhite:(id)sender {
-    [self hitBackendWithCervicalFluidType:@"eggwhite"];
-    self.cfTypeCollapsedLabel.text = @"Eggwhite";
-    self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_eggwhite"];
+    if (self.selectedCervicalFluidType == CervicalFluidSelectionEggwhite) {
+        self.selectedCervicalFluidType = CervicalFluidSelectionNone;
+        [self hitBackendWithCervicalFluidType:[NSNull null]];
+    } else {
+        self.selectedCervicalFluidType = CervicalFluidSelectionEggwhite;
+        [self hitBackendWithCervicalFluidType:@"eggwhite"];
+        self.cfTypeCollapsedLabel.text = @"Eggwhite";
+        self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_eggwhite"];
+    }
 }
 
-- (void)hitBackendWithCervicalFluidType:(NSString *)cfType {
+- (void)hitBackendWithCervicalFluidType:(id)cfType {
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     
     [attributes setObject:cfType forKey:@"cervical_fluid"];
