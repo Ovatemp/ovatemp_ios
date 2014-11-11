@@ -1312,11 +1312,6 @@ TableStateType currentState;
                 // hit backend first time only from view controller
                 [self postAndSaveTempWithTempValue:[self.temperature floatValue]];
             }
-            
-            // record temp
-            if (!expandTemperatureCell) {
-                self.temperature = [NSNumber numberWithFloat:[self.tempCell.temperatureValueLabel.text floatValue]];
-            }
             break;
         }
             
@@ -1336,14 +1331,6 @@ TableStateType currentState;
                 //                self.temperature = [self.tempCell.temperatureValueLabel.text floatValue];
                 firstOpenCervicalFluidCell = NO;
             }
-            
-            // record temp
-            if (!expandCervicalFluidCell) {
-                if (CervicalFluidCellHasData) {
-                    self.cervicalFluid = self.cfCell.cfTypeCollapsedLabel.text;
-                }
-            }
-            
             break;
         }
             
@@ -1466,6 +1453,21 @@ TableStateType currentState;
             
         default:
             break;
+    }
+    
+    // record values outside of the swtich
+    // that way, if the user closes the currently open cell by opening another one, the data is saved
+    
+    // record temp if we're opening another cell and closing the temp cell
+    if (!expandTemperatureCell) {
+        self.temperature = [NSNumber numberWithFloat:[self.tempCell.temperatureValueLabel.text floatValue]];
+    }
+    
+    // record cf
+    if (!expandCervicalFluidCell) {
+        if (CervicalFluidCellHasData) {
+            self.cervicalFluid = self.cfCell.cfTypeCollapsedLabel.text;
+        }
     }
     
     NSMutableArray *indexPaths = [NSMutableArray new];
