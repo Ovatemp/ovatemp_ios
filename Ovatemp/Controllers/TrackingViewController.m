@@ -712,7 +712,10 @@ TableStateType currentState;
         self.cfCell.cfTypeCollapsedLabel.hidden = YES;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_dry"];
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionDry];
-        [self.cfCell.creamyImageView setSelected:YES];
+        [self.cfCell.dryImageView setSelected:YES];
+        [self.cfCell.stickyImageView setSelected:NO];
+        [self.cfCell.creamyImageView setSelected:NO];
+        [self.cfCell.eggwhiteImageView setSelected:NO];
         
     } else if ([self.cervicalFluid isEqual:@"sticky"]) {
         self.cfCell.placeholderLabel.hidden = YES;
@@ -722,6 +725,9 @@ TableStateType currentState;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_sticky"];
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionSticky];
         [self.cfCell.stickyImageView setSelected:YES];
+        [self.cfCell.dryImageView setSelected:NO];
+        [self.cfCell.creamyImageView setSelected:NO];
+        [self.cfCell.eggwhiteImageView setSelected:NO];
         
     } else if ([self.cervicalFluid isEqual:@"creamy"]) {
         self.cfCell.placeholderLabel.hidden = YES;
@@ -731,6 +737,9 @@ TableStateType currentState;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_creamy"];
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionCreamy];
         [self.cfCell.creamyImageView setSelected:YES];
+        [self.cfCell.dryImageView setSelected:NO];
+        [self.cfCell.stickyImageView setSelected:NO];
+        [self.cfCell.eggwhiteImageView setSelected:NO];
         
     } else { // eggwhite
         self.cfCell.placeholderLabel.hidden = YES;
@@ -740,6 +749,9 @@ TableStateType currentState;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_eggwhite"];
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionEggwhite];
         [self.cfCell.eggwhiteImageView setSelected:YES];
+        [self.cfCell.creamyImageView setSelected:NO];
+        [self.cfCell.dryImageView setSelected:NO];
+        [self.cfCell.stickyImageView setSelected:NO];
     }
 }
 
@@ -1308,11 +1320,9 @@ TableStateType currentState;
                 self.temperature = [NSNumber numberWithFloat:[self.tempCell.temperatureValueLabel.text floatValue]];
                 firstOpenTemperatureCell = NO;
                 TemperatureCellHasData = YES;
-            }
-            
-            // record temp
-            if (!expandTemperatureCell) {
-                self.temperature = [NSNumber numberWithFloat:[self.tempCell.temperatureValueLabel.text floatValue]];
+                
+                // hit backend first time only from view controller
+                [self postAndSaveTempWithTempValue:[self.temperature floatValue]];
             }
             break;
         }
@@ -1333,14 +1343,6 @@ TableStateType currentState;
                 //                self.temperature = [self.tempCell.temperatureValueLabel.text floatValue];
                 firstOpenCervicalFluidCell = NO;
             }
-            
-            // record temp
-            if (!expandCervicalFluidCell) {
-                if (CervicalFluidCellHasData) {
-                    self.cervicalFluid = self.cfCell.cfTypeCollapsedLabel.text;
-                }
-            }
-            
             break;
         }
             
@@ -1463,6 +1465,19 @@ TableStateType currentState;
             
         default:
             break;
+    }
+    
+    // record values outside of the swtich
+    // that way, if the user closes the currently open cell by opening another one, the data is saved
+    
+    // record temp if we're opening another cell and closing the temp cell
+    if (!expandTemperatureCell) {
+        self.temperature = [NSNumber numberWithFloat:[self.tempCell.temperatureValueLabel.text floatValue]];
+    }
+    
+    // record cf
+    if (!expandCervicalFluidCell) {
+        self.cervicalFluid = [self.cfCell.cfTypeCollapsedLabel.text lowercaseString];
     }
     
     NSMutableArray *indexPaths = [NSMutableArray new];
@@ -1609,7 +1624,7 @@ TableStateType currentState;
     // TODO: Finish implementation for custom cells
     if (CervicalFluidCellHasData) {
         // TODO
-        self.cervicalFluid = [self.cfCell.cfTypeCollapsedLabel.text lowercaseString];
+//        self.cervicalFluid = [self.cfCell.cfTypeCollapsedLabel.text lowercaseString];
         [self setDataForCervicalFluidCell];
     }
     if (CervicalPositionCellHasData) {
@@ -3500,8 +3515,11 @@ TableStateType currentState;
     TemperatureCellHasData = YES;
     // TODO: get ondo icon asset and unhide it when temp is taken with ondo
     
+    // unhide ondo icon
+    self.tempCell.ondoIcon.hidden = NO;
+    
     // always send F to backend
-    [self postAndSaveONDOTempWithTempValue:temperature];
+    [self postAndSaveTempWithTempValue:temperature];
     
     // update table view cell
     
@@ -3524,12 +3542,9 @@ TableStateType currentState;
     [Alert showAlertWithTitle:@"Temperature Recorded" message:temperatureString];
 }
 
-- (void)postAndSaveONDOTempWithTempValue:(float)temp {
+- (void)postAndSaveTempWithTempValue:(float)temp {
     // first save to HealthKit
     [self updateHealthKitWithTemp:temp];
-    
-    // unhide ondo icon
-    self.tempCell.ondoIcon.hidden = NO;
     
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     [attributes setObject:self.selectedDate forKey:@"date"];
