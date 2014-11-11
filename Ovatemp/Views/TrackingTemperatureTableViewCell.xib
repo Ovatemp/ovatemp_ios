@@ -43,7 +43,7 @@
                     <pickerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lQA-8c-cPq">
                         <rect key="frame" x="0.0" y="29" width="320" height="162"/>
                     </pickerView>
-                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icn_ondo_small" translatesAutoresizingMaskIntoConstraints="NO" id="6uw-4c-XJ5">
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icn_ondo_small" translatesAutoresizingMaskIntoConstraints="NO" id="6uw-4c-XJ5">
                         <rect key="frame" x="85" y="10" width="30" height="30"/>
                     </imageView>
                 </subviews>
