@@ -70,6 +70,39 @@ NSMutableArray *temperatureFractionalPartPickerData;
     self.selectedDate = [[NSDate alloc] init];
 }
 
+- (void)prepareForReuse {
+    // Initialization code
+    
+    temperatureIntegerPartPickerData = [[NSMutableArray alloc] init];
+    temperatureFractionalPartPickerData = [[NSMutableArray alloc] init];
+    
+    // set up picker data source
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"]) {
+        // Celsius 32 41
+        for (int i = 32; i < 42; i++) {
+            [temperatureIntegerPartPickerData addObject:[NSString stringWithFormat:@"%d", i]];
+        }
+        
+        for (int i = 0; i < 100; i++) {
+            [temperatureFractionalPartPickerData addObject:[NSString stringWithFormat:@"%d", i]];
+        }
+        
+    } else {
+        // Fahrenheit
+        for (int i = 90; i < 107; i++) {
+            [temperatureIntegerPartPickerData addObject:[NSString stringWithFormat:@"%d", i]];
+        }
+        
+        for (int i = 0; i < 100; i++) {
+            [temperatureFractionalPartPickerData addObject:[NSString stringWithFormat:@"%d", i]];
+        }
+    }
+    
+    [self.temperaturePicker reloadAllComponents];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
