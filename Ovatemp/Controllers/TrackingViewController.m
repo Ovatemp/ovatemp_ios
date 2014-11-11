@@ -712,7 +712,10 @@ TableStateType currentState;
         self.cfCell.cfTypeCollapsedLabel.hidden = YES;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_dry"];
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionDry];
-        [self.cfCell.creamyImageView setSelected:YES];
+        [self.cfCell.dryImageView setSelected:YES];
+        [self.cfCell.stickyImageView setSelected:NO];
+        [self.cfCell.creamyImageView setSelected:NO];
+        [self.cfCell.eggwhiteImageView setSelected:NO];
         
     } else if ([self.cervicalFluid isEqual:@"sticky"]) {
         self.cfCell.placeholderLabel.hidden = YES;
@@ -722,6 +725,9 @@ TableStateType currentState;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_sticky"];
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionSticky];
         [self.cfCell.stickyImageView setSelected:YES];
+        [self.cfCell.dryImageView setSelected:NO];
+        [self.cfCell.creamyImageView setSelected:NO];
+        [self.cfCell.eggwhiteImageView setSelected:NO];
         
     } else if ([self.cervicalFluid isEqual:@"creamy"]) {
         self.cfCell.placeholderLabel.hidden = YES;
@@ -731,6 +737,9 @@ TableStateType currentState;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_creamy"];
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionCreamy];
         [self.cfCell.creamyImageView setSelected:YES];
+        [self.cfCell.dryImageView setSelected:NO];
+        [self.cfCell.stickyImageView setSelected:NO];
+        [self.cfCell.eggwhiteImageView setSelected:NO];
         
     } else { // eggwhite
         self.cfCell.placeholderLabel.hidden = YES;
@@ -740,6 +749,9 @@ TableStateType currentState;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_eggwhite"];
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionEggwhite];
         [self.cfCell.eggwhiteImageView setSelected:YES];
+        [self.cfCell.creamyImageView setSelected:NO];
+        [self.cfCell.dryImageView setSelected:NO];
+        [self.cfCell.stickyImageView setSelected:NO];
     }
 }
 
@@ -1465,9 +1477,7 @@ TableStateType currentState;
     
     // record cf
     if (!expandCervicalFluidCell) {
-        if (CervicalFluidCellHasData) {
-            self.cervicalFluid = self.cfCell.cfTypeCollapsedLabel.text;
-        }
+        self.cervicalFluid = [self.cfCell.cfTypeCollapsedLabel.text lowercaseString];
     }
     
     NSMutableArray *indexPaths = [NSMutableArray new];
@@ -1614,7 +1624,7 @@ TableStateType currentState;
     // TODO: Finish implementation for custom cells
     if (CervicalFluidCellHasData) {
         // TODO
-        self.cervicalFluid = [self.cfCell.cfTypeCollapsedLabel.text lowercaseString];
+//        self.cervicalFluid = [self.cfCell.cfTypeCollapsedLabel.text lowercaseString];
         [self setDataForCervicalFluidCell];
     }
     if (CervicalPositionCellHasData) {
