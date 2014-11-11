@@ -66,11 +66,15 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self addKeyboardObservers];
+    // add keyboard observers
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    [self removeKeyboardObservers];
+    // remove keyboard observers
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,6 +84,38 @@
 
 - (void)dateOfBirthChanged:(UIDatePicker *)sender {
     self.dateOfBirthField.text = [self.dateOfBirthPicker.date classicDate];
+}
+
+#pragma mark - Keyboard
+- (void)keyboardDidShow:(NSNotification *)notification {
+    
+    if ([self.fullNameField isFirstResponder] || [self.dateOfBirthField isFirstResponder]) {
+        return;
+    }
+    
+    CGFloat height = [self keyboardHeight:notification];
+    
+    [UIView animateWithDuration:.2 animations:^{
+        CGRect frame = self.view.frame;
+        frame.origin.y = -height / 3;
+        self.view.frame = frame;
+    }];
+}
+
+- (CGFloat)keyboardHeight:(NSNotification *)notification {
+    NSDictionary *info = [notification userInfo];
+    NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardFrame = [kbFrame CGRectValue];
+    
+    return keyboardFrame.size.height;
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    [UIView animateWithDuration:.2 animations:^{
+        CGRect frame = self.view.frame;
+        frame.origin.y = 0;
+        self.view.frame = frame;
+    }];
 }
 
 # pragma mark - Registration

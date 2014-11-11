@@ -3400,6 +3400,9 @@ TableStateType currentState;
     
     self.selectedIndexPath = indexPath;
     
+    // reset ondo icon
+    self.tempCell.ondoIcon.hidden = YES;
+    
     // center cell
     [self.drawerCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     
