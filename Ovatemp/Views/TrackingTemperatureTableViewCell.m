@@ -89,11 +89,6 @@ NSMutableArray *temperatureFractionalPartPickerData;
             [temperatureFractionalPartPickerData addObject:[NSString stringWithFormat:@"%d", i]];
         }
         
-//        [self.temperaturePicker selectRow:5 inComponent:0 animated:YES];
-//        [self.temperaturePicker selectRow:0 inComponent:1 animated:YES];
-//        
-//        self.temperatureValueLabel.text = @"37.00";
-        
     } else {
         // Fahrenheit
         for (int i = 90; i < 107; i++) {
@@ -103,20 +98,9 @@ NSMutableArray *temperatureFractionalPartPickerData;
         for (int i = 0; i < 100; i++) {
             [temperatureFractionalPartPickerData addObject:[NSString stringWithFormat:@"%d", i]];
         }
-        
-//        [self.temperaturePicker selectRow:8 inComponent:0 animated:YES];
-//        [self.temperaturePicker selectRow:60 inComponent:1 animated:YES];
-//        
-//        self.temperatureValueLabel.text = @"98.60";
     }
     
     [self.temperaturePicker reloadAllComponents];
-    
-//    self.temperaturePicker.delegate = self;
-//    self.temperaturePicker.dataSource = self;
-//    self.temperaturePicker.showsSelectionIndicator = YES;
-    
-//    self.selectedDate = [[NSDate alloc] init];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
