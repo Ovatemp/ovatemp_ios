@@ -27,8 +27,8 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please enter your Basal Body Temperature and other daily data for fertility status." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGa-YN-Yhu">
-                        <rect key="frame" x="101" y="31" width="119" height="134"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <rect key="frame" x="105" y="28" width="111" height="134"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -41,7 +41,7 @@
             <connections>
                 <outlet property="notesButton" destination="ID4-fj-0Xk" id="p5v-pa-q2W"/>
             </connections>
-            <point key="canvasLocation" x="172" y="219"/>
+            <point key="canvasLocation" x="172" y="218"/>
         </tableViewCell>
     </objects>
     <resources>
