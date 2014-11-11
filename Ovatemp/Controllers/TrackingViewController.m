@@ -3550,6 +3550,16 @@ TableStateType currentState;
 }
 
 - (void)postAndSaveTempWithTempValue:(float)temp {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    BOOL tempPrefFahrenheit = [defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"];
+    
+    // celsius to fahrenheit
+    if (!tempPrefFahrenheit) {
+        temp = ((temp * 1.8000) + 32);
+    }
+    
     // first save to HealthKit
     [self updateHealthKitWithTemp:temp];
     
