@@ -859,17 +859,17 @@ TableStateType currentState;
         [self.moodCell setCalmMoodSelected:YES];
     } else if ([self.mood isEqual:@"depressed"]) {
         [self.moodCell setDepressedMoodSelected:YES];
-    } else if ([self.mood isEqual:@"emotional"]) {
+    } else if ([self.mood isEqual:@"moody"] || [self.mood isEqual:@"emotional"]) { // emotional
         [self.moodCell setEmotionalModdSelected:YES];
-    } else if ([self.mood isEqual:@"excited"]) {
+    } else if ([self.mood isEqual:@"amazing"] || [self.mood isEqual:@"excited"]) { // excited
         [self.moodCell setExcitedMoodSelected:YES];
     } else if ([self.mood isEqual:@"frisky"]) {
         [self.moodCell setFriskyMoodSelected:YES];
     } else if ([self.mood isEqual:@"frustrated"]) {
         [self.moodCell setFrustratedMoodSelected:YES];
-    } else if ([self.mood isEqual:@"happy"]) {
+    } else if ([self.mood isEqual:@"good"] || [self.mood isEqual:@"happy"]) { // happy
         [self.moodCell setHappyMoodSelected:YES];
-    } else if ([self.mood isEqual:@"inLove"]) {
+    } else if ([self.mood isEqual:@"in love"]) {
         [self.moodCell setInLoveMoodSelected:YES];
     } else if ([self.mood isEqual:@"motivated"]) {
         [self.moodCell setMotivatedMoodSelected:YES];
@@ -919,8 +919,6 @@ TableStateType currentState;
         {
             self.statusCell = [self.tableView dequeueReusableCellWithIdentifier:@"statusCell" forIndexPath:indexPath];
             self.statusCell.delegate = self;
-            
-            self.statusCell.layoutMargins = UIEdgeInsetsZero;
             
             [self.statusCell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
