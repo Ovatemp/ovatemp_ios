@@ -96,6 +96,8 @@ NSMutableArray *drawerDateData;
 
 BOOL firstOpenView;
 
+BOOL didLeaveToWebView; // for nav bar issues
+
 // table view cell states
 BOOL expandTemperatureCell;
 BOOL expandCervicalFluidCell;
@@ -414,6 +416,8 @@ TableStateType currentState;
     if ([ONDO sharedInstance].devices.count > 0) {
         [ONDO startWithDelegate:self];
     }
+    
+    didLeaveToWebView = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -432,8 +436,12 @@ TableStateType currentState;
     [defaults setBool:YES forKey:@"ShouldRotate"];
     [defaults synchronize];
     
-    // fix nav bar
-    [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 90)];
+    // fix nav bar when coming back from webview
+  
+    if (didLeaveToWebView) {
+        [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 90)];
+        didLeaveToWebView = NO;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -3651,6 +3659,8 @@ TableStateType currentState;
     [infoAlert addAction:learnMore];
     
     infoAlert.view.tintColor = [UIColor ovatempAquaColor];
+    
+    didLeaveToWebView = YES;
     
     [self presentViewController:infoAlert animated:YES completion:nil];
 }
