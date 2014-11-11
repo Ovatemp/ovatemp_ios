@@ -30,6 +30,9 @@ NSIndexPath *selectedIndexPath;
     
     self.moodTableView.delegate = self;
     self.moodTableView.dataSource = self;
+    
+    self.moodTableView.layoutMargins = UIEdgeInsetsZero;
+    [self.moodTableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -195,6 +198,10 @@ NSIndexPath *selectedIndexPath;
     
     [cell setTintColor:[UIColor blackColor]];
     
+    cell.layoutMargins = UIEdgeInsetsZero;
+    
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
     // set accessory
     switch (indexPath.row) {
         case 0:
@@ -318,8 +325,8 @@ NSIndexPath *selectedIndexPath;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-//    [self resetSelectedMood]; // clear all
-//    [self.moodTableView reloadData];
+    [self resetSelectedMood]; // clear all
+    [self.moodTableView reloadData];
     
     [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
     
@@ -338,7 +345,7 @@ NSIndexPath *selectedIndexPath;
             if (self.angryMoodSelected) { // if cell is already selected
                 // deselect
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                [self hitBackendWithMoodType:@"<null>"];
+                [self hitBackendWithMoodType:[NSNull null]];
                 self.angryMoodSelected = NO;
                 
             } else { // select cell
@@ -351,7 +358,7 @@ NSIndexPath *selectedIndexPath;
         {
             if (self.anxiousMoodSelected) {
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                [self hitBackendWithMoodType:@"<null>"];
+                [self hitBackendWithMoodType:[NSNull null]];
                 self.anxiousMoodSelected = NO;
             } else {
                 self.anxiousMoodSelected = YES;
@@ -363,7 +370,7 @@ NSIndexPath *selectedIndexPath;
         {
             if (self.calmMoodSelected) {
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                [self hitBackendWithMoodType:@"<null>"];
+                [self hitBackendWithMoodType:[NSNull null]];
                 self.calmMoodSelected = NO;
             } else {
                 self.calmMoodSelected = YES;
@@ -375,7 +382,7 @@ NSIndexPath *selectedIndexPath;
         {
             if (self.depressedMoodSelected) {
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                [self hitBackendWithMoodType:@"<null>"];
+                [self hitBackendWithMoodType:[NSNull null]];
                 self.depressedMoodSelected = NO;
             } else {
                 self.depressedMoodSelected = YES;
@@ -387,7 +394,7 @@ NSIndexPath *selectedIndexPath;
         {
             if (self.emotionalModdSelected) {
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                [self hitBackendWithMoodType:@"<null>"];
+                [self hitBackendWithMoodType:[NSNull null]];
                 self.emotionalModdSelected = NO;
             } else {
                 self.emotionalModdSelected = YES;
@@ -399,7 +406,7 @@ NSIndexPath *selectedIndexPath;
         {
             if (self.excitedMoodSelected) {
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                [self hitBackendWithMoodType:@"<null>"];
+                [self hitBackendWithMoodType:[NSNull null]];
                 self.excitedMoodSelected = NO;
             } else {
                 self.excitedMoodSelected = YES;
@@ -411,7 +418,7 @@ NSIndexPath *selectedIndexPath;
         {
             if (self.friskyMoodSelected) {
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                [self hitBackendWithMoodType:@"<null>"];
+                [self hitBackendWithMoodType:[NSNull null]];
                 self.friskyMoodSelected = NO;
             } else {
                 self.friskyMoodSelected = YES;
@@ -423,7 +430,7 @@ NSIndexPath *selectedIndexPath;
         {
             if (self.frustratedMoodSelected) {
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                [self hitBackendWithMoodType:@"<null>"];
+                [self hitBackendWithMoodType:[NSNull null]];
                 self.friskyMoodSelected = NO;
             } else {
                 self.frustratedMoodSelected = YES;
@@ -435,7 +442,7 @@ NSIndexPath *selectedIndexPath;
         {
             if (self.happyMoodSelected) {
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                [self hitBackendWithMoodType:@"<null>"];
+                [self hitBackendWithMoodType:[NSNull null]];
                 self.happyMoodSelected = NO;
             } else {
                 self.happyMoodSelected = YES;
@@ -447,7 +454,7 @@ NSIndexPath *selectedIndexPath;
         {
             if (self.inLoveMoodSelected) {
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                [self hitBackendWithMoodType:@"<null>"];
+                [self hitBackendWithMoodType:[NSNull null]];
                 self.inLoveMoodSelected = NO;
             } else {
                 self.inLoveMoodSelected = YES;
@@ -459,7 +466,7 @@ NSIndexPath *selectedIndexPath;
         {
             if (self.motivatedMoodSelected) {
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                [self hitBackendWithMoodType:@"<null>"];
+                [self hitBackendWithMoodType:[NSNull null]];
                 self.motivatedMoodSelected = NO;
             } else {
                 self.motivatedMoodSelected = YES;
@@ -471,7 +478,7 @@ NSIndexPath *selectedIndexPath;
         {
             if (self.neutralMoodSelected) {
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                [self hitBackendWithMoodType:@"<null>"];
+                [self hitBackendWithMoodType:[NSNull null]];
                 self.neutralMoodSelected = NO;
             } else {
                 self.neutralMoodSelected = YES;
@@ -483,7 +490,7 @@ NSIndexPath *selectedIndexPath;
         {
             if (self.sadMoodSelected) {
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                [self hitBackendWithMoodType:@"<null>"];
+                [self hitBackendWithMoodType:[NSNull null]];
                 self.sadMoodSelected = NO;
             } else {
                 self.sadMoodSelected = YES;
@@ -495,7 +502,7 @@ NSIndexPath *selectedIndexPath;
         {
             if (self.worriedMoodSelected) {
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                [self hitBackendWithMoodType:@"<null>"];
+                [self hitBackendWithMoodType:[NSNull null]];
                 self.worriedMoodSelected = NO;
             } else {
                 self.worriedMoodSelected = YES;

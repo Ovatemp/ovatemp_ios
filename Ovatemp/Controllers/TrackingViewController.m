@@ -920,8 +920,6 @@ TableStateType currentState;
             self.statusCell = [self.tableView dequeueReusableCellWithIdentifier:@"statusCell" forIndexPath:indexPath];
             self.statusCell.delegate = self;
             
-            self.statusCell.layoutMargins = UIEdgeInsetsZero;
-            
             [self.statusCell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
             // change notes button picture if we have a note saved for that date
