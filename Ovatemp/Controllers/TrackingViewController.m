@@ -669,9 +669,15 @@ TableStateType currentState;
                        
                        if (day.mood) {
                            // TODO
-                           
                            self.mood = day.mood;
                            [self setDataForMoodCell];
+                           self.moodCell.moodPlaceholderLabel.hidden = YES;
+                           self.moodCell.moodCollapsedLabel.hidden = NO;
+                           self.moodCell.moodTypeLabel.hidden = NO;
+                       } else {
+                           self.moodCell.moodPlaceholderLabel.hidden = NO;
+                           self.moodCell.moodCollapsedLabel.hidden = YES;
+                           self.moodCell.moodTypeLabel.hidden = YES;
                        }
                        
                        if (day.symptoms) {
@@ -853,32 +859,46 @@ TableStateType currentState;
 - (void)setDataForMoodCell {
     if ([self.mood isEqual:@"angry"]) {
         [self.moodCell setAngryMoodSelected:YES];
+        [self.moodCell.moodTypeLabel setText:@"Angry"];
     } else if ([self.mood isEqual:@"anxious"]) {
         [self.moodCell setAnxiousMoodSelected:YES];
+        [self.moodCell.moodTypeLabel setText:@"Anxious"];
     } else if ([self.mood isEqual:@"calm"]) {
         [self.moodCell setCalmMoodSelected:YES];
+        [self.moodCell.moodTypeLabel setText:@"Calm"];
     } else if ([self.mood isEqual:@"depressed"]) {
         [self.moodCell setDepressedMoodSelected:YES];
+        [self.moodCell.moodTypeLabel setText:@"Depressed"];
     } else if ([self.mood isEqual:@"moody"] || [self.mood isEqual:@"emotional"]) { // emotional
         [self.moodCell setEmotionalModdSelected:YES];
+        [self.moodCell.moodTypeLabel setText:@"Emotional"];
     } else if ([self.mood isEqual:@"amazing"] || [self.mood isEqual:@"excited"]) { // excited
         [self.moodCell setExcitedMoodSelected:YES];
+        [self.moodCell.moodTypeLabel setText:@"Excited"];
     } else if ([self.mood isEqual:@"frisky"]) {
         [self.moodCell setFriskyMoodSelected:YES];
+        [self.moodCell.moodTypeLabel setText:@"Frisky"];
     } else if ([self.mood isEqual:@"frustrated"]) {
         [self.moodCell setFrustratedMoodSelected:YES];
+        [self.moodCell.moodTypeLabel setText:@"Frustrated"];
     } else if ([self.mood isEqual:@"good"] || [self.mood isEqual:@"happy"]) { // happy
         [self.moodCell setHappyMoodSelected:YES];
+        [self.moodCell.moodTypeLabel setText:@"Happy"];
     } else if ([self.mood isEqual:@"in love"]) {
         [self.moodCell setInLoveMoodSelected:YES];
+        [self.moodCell.moodTypeLabel setText:@"In Love"];
     } else if ([self.mood isEqual:@"motivated"]) {
         [self.moodCell setMotivatedMoodSelected:YES];
+        [self.moodCell.moodTypeLabel setText:@"Motivated"];
     } else if ([self.mood isEqual:@"neutral"]) {
         [self.moodCell setNeutralMoodSelected:YES];
+        [self.moodCell.moodTypeLabel setText:@"Neutral"];
     } else if ([self.mood isEqual:@"sad"]) {
         [self.moodCell setSadMoodSelected:YES];
+        [self.moodCell.moodTypeLabel setText:@"Sad"];
     } else { // worried
         [self.moodCell setWorriedMoodSelected:YES];
+        [self.moodCell.moodTypeLabel setText:@"Worried"];
     }
     //    angryMoodSelected = NO;
     //    anxiousMoodSelected = NO;
@@ -1139,12 +1159,18 @@ TableStateType currentState;
                 // unhide component
                 self.moodCell.moodPlaceholderLabel.hidden = YES;
                 self.moodCell.moodCollapsedLabel.hidden = NO;
+                self.moodCell.moodTypeLabel.hidden = YES;
                 self.moodCell.moodTableView.hidden = NO;
             } else {
                 self.moodCell.moodPlaceholderLabel.hidden = NO;
                 self.moodCell.moodCollapsedLabel.hidden = YES;
                 self.moodCell.moodTableView.hidden = YES;
-
+                
+                if (MoodCellHasData) {
+                    self.moodCell.moodTypeLabel.hidden = NO;
+                } else {
+                    self.moodCell.moodTypeLabel.hidden = YES;
+                }
             }
             
             [self.moodCell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -1555,7 +1581,9 @@ TableStateType currentState;
         {
             if (MoodCellHasData) {
                 // no collapsed labels to show
-                self.moodCell.moodPlaceholderLabel.hidden = NO;
+                self.moodCell.moodPlaceholderLabel.hidden = YES;
+                self.moodCell.moodTypeLabel.hidden = NO;
+                self.moodCell.moodCollapsedLabel.hidden = NO;
             }
             break;
         }
@@ -1839,6 +1867,16 @@ TableStateType currentState;
             // hide component
             self.moodCell.moodTableView.hidden = YES;
             
+            if (MoodCellHasData) {
+                self.moodCell.moodPlaceholderLabel.hidden = YES;
+                self.moodCell.moodCollapsedLabel.hidden = NO;
+                self.moodCell.moodTypeLabel.hidden = NO;
+            } else {
+                self.moodCell.moodPlaceholderLabel.hidden = NO;
+                self.moodCell.moodCollapsedLabel.hidden = YES;
+                self.moodCell.moodTypeLabel.hidden = YES;
+            }
+            
             expandSymptomsCell = NO;
             // hide component
             self.symptomsCell.symptomsTableView.hidden = YES;
@@ -1975,6 +2013,16 @@ TableStateType currentState;
             // hide component
             self.moodCell.moodTableView.hidden = YES;
             
+            if (MoodCellHasData) {
+                self.moodCell.moodPlaceholderLabel.hidden = YES;
+                self.moodCell.moodCollapsedLabel.hidden = NO;
+                self.moodCell.moodTypeLabel.hidden = NO;
+            } else {
+                self.moodCell.moodPlaceholderLabel.hidden = NO;
+                self.moodCell.moodCollapsedLabel.hidden = YES;
+                self.moodCell.moodTypeLabel.hidden = YES;
+            }
+            
             expandSymptomsCell = NO;
             // hide component
             self.symptomsCell.symptomsTableView.hidden = YES;
@@ -2094,6 +2142,16 @@ TableStateType currentState;
             expandMoodCell = NO;
             // hide component
             self.moodCell.moodTableView.hidden = YES;
+            
+            if (MoodCellHasData) {
+                self.moodCell.moodPlaceholderLabel.hidden = YES;
+                self.moodCell.moodCollapsedLabel.hidden = NO;
+                self.moodCell.moodTypeLabel.hidden = NO;
+            } else {
+                self.moodCell.moodPlaceholderLabel.hidden = NO;
+                self.moodCell.moodCollapsedLabel.hidden = YES;
+                self.moodCell.moodTypeLabel.hidden = YES;
+            }
             
             expandSymptomsCell = NO;
             // hide component
@@ -2230,6 +2288,16 @@ TableStateType currentState;
             expandMoodCell = NO;
             // hide component
             self.moodCell.moodTableView.hidden = YES;
+            
+            if (MoodCellHasData) {
+                self.moodCell.moodPlaceholderLabel.hidden = YES;
+                self.moodCell.moodCollapsedLabel.hidden = NO;
+                self.moodCell.moodTypeLabel.hidden = NO;
+            } else {
+                self.moodCell.moodPlaceholderLabel.hidden = NO;
+                self.moodCell.moodCollapsedLabel.hidden = YES;
+                self.moodCell.moodTypeLabel.hidden = YES;
+            }
             
             expandSymptomsCell = NO;
             // hide component
@@ -2368,6 +2436,16 @@ TableStateType currentState;
             // hide component
             self.moodCell.moodTableView.hidden = YES;
             
+            if (MoodCellHasData) {
+                self.moodCell.moodPlaceholderLabel.hidden = YES;
+                self.moodCell.moodCollapsedLabel.hidden = NO;
+                self.moodCell.moodTypeLabel.hidden = NO;
+            } else {
+                self.moodCell.moodPlaceholderLabel.hidden = NO;
+                self.moodCell.moodCollapsedLabel.hidden = YES;
+                self.moodCell.moodTypeLabel.hidden = YES;
+            }
+            
             expandSymptomsCell = NO;
             // hide component
             self.symptomsCell.symptomsTableView.hidden = YES;
@@ -2504,6 +2582,16 @@ TableStateType currentState;
             expandMoodCell = NO;
             // hide component
             self.moodCell.moodTableView.hidden = YES;
+            
+            if (MoodCellHasData) {
+                self.moodCell.moodPlaceholderLabel.hidden = YES;
+                self.moodCell.moodCollapsedLabel.hidden = NO;
+                self.moodCell.moodTypeLabel.hidden = NO;
+            } else {
+                self.moodCell.moodPlaceholderLabel.hidden = NO;
+                self.moodCell.moodCollapsedLabel.hidden = YES;
+                self.moodCell.moodTypeLabel.hidden = YES;
+            }
             
             expandSymptomsCell = NO;
             // hide component
@@ -2647,6 +2735,8 @@ TableStateType currentState;
             
             expandMoodCell = YES;
             self.moodCell.moodTableView.hidden = NO;
+            self.moodCell.moodPlaceholderLabel.hidden = YES;
+            self.moodCell.moodTypeLabel.hidden = YES;
             
             expandSymptomsCell = NO;
             // hide component
@@ -2790,6 +2880,16 @@ TableStateType currentState;
             expandMoodCell = NO;
             self.moodCell.moodTableView.hidden = YES;
             
+            if (MoodCellHasData) {
+                self.moodCell.moodPlaceholderLabel.hidden = YES;
+                self.moodCell.moodCollapsedLabel.hidden = NO;
+                self.moodCell.moodTypeLabel.hidden = NO;
+            } else {
+                self.moodCell.moodPlaceholderLabel.hidden = NO;
+                self.moodCell.moodCollapsedLabel.hidden = YES;
+                self.moodCell.moodTypeLabel.hidden = YES;
+            }
+            
             expandSymptomsCell = YES;
             // hide component
             self.symptomsCell.symptomsTableView.hidden = NO;
@@ -2932,6 +3032,16 @@ TableStateType currentState;
             expandMoodCell = NO;
             // hide component
             self.moodCell.moodTableView.hidden = YES;
+            
+            if (MoodCellHasData) {
+                self.moodCell.moodPlaceholderLabel.hidden = YES;
+                self.moodCell.moodCollapsedLabel.hidden = NO;
+                self.moodCell.moodTypeLabel.hidden = NO;
+            } else {
+                self.moodCell.moodPlaceholderLabel.hidden = NO;
+                self.moodCell.moodCollapsedLabel.hidden = YES;
+                self.moodCell.moodTypeLabel.hidden = YES;
+            }
             
             expandSymptomsCell = NO;
             // hide component
