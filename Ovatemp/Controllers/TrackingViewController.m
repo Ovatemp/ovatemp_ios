@@ -397,6 +397,10 @@ TableStateType currentState;
     MedicineCellHasData = NO;
     
     currentState = TableStateAllClosed;
+    [self setTableStateForState:currentState];
+    // todo: loading view while data reloads?
+    [self.tableView reloadData];
+    [self refreshTrackingView];
     
     // set date in cells
     [self.tempCell setSelectedDate:self.selectedDate];
