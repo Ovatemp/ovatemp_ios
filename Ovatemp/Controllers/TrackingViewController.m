@@ -1308,6 +1308,9 @@ TableStateType currentState;
                 self.temperature = [NSNumber numberWithFloat:[self.tempCell.temperatureValueLabel.text floatValue]];
                 firstOpenTemperatureCell = NO;
                 TemperatureCellHasData = YES;
+                
+                // hit backend first time only from view controller
+                [self postAndSaveTempWithTempValue:[self.temperature floatValue]];
             }
             
             // record temp
@@ -3500,8 +3503,11 @@ TableStateType currentState;
     TemperatureCellHasData = YES;
     // TODO: get ondo icon asset and unhide it when temp is taken with ondo
     
+    // unhide ondo icon
+    self.tempCell.ondoIcon.hidden = NO;
+    
     // always send F to backend
-    [self postAndSaveONDOTempWithTempValue:temperature];
+    [self postAndSaveTempWithTempValue:temperature];
     
     // update table view cell
     
@@ -3524,12 +3530,9 @@ TableStateType currentState;
     [Alert showAlertWithTitle:@"Temperature Recorded" message:temperatureString];
 }
 
-- (void)postAndSaveONDOTempWithTempValue:(float)temp {
+- (void)postAndSaveTempWithTempValue:(float)temp {
     // first save to HealthKit
     [self updateHealthKitWithTemp:temp];
-    
-    // unhide ondo icon
-    self.tempCell.ondoIcon.hidden = NO;
     
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     [attributes setObject:self.selectedDate forKey:@"date"];
