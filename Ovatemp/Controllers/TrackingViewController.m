@@ -636,6 +636,10 @@ TableStateType currentState;
                            self.cervicalPosition = @"";
                            CervicalPositionCellHasData = NO;
                            [self.cpCell setSelectedCervicalPositionType:CervicalPositionSelectionNone];
+                           
+                           // deselect buttons
+                           [self.cpCell.lowImageView setSelected:NO];
+                           [self.cpCell.highImageView setSelected:NO];
                        }
                        
                        if (day.period) {
@@ -787,7 +791,7 @@ TableStateType currentState;
         [self.cpCell setSelectedCervicalPositionType:CervicalPositionSelectionLow];
         [self.cpCell.lowImageView setSelected:YES];
         [self.cpCell.highImageView setSelected:NO];
-    } else { // high
+    } else if ([self.cervicalPosition isEqual:@"high/open/soft"]) { // high
         self.cpCell.placeholderLabel.hidden = YES;
         self.cpCell.collapsedLabel.hidden = NO;
         self.cpCell.cpTypeCollapsedLabel.text = @"High/Open/Soft";
@@ -795,6 +799,16 @@ TableStateType currentState;
         self.cpCell.cpTypeImageView.image = [UIImage imageNamed:@"icn_cp_highopensoft"];
         [self.cpCell setSelectedCervicalPositionType:CervicalPositionSelectionHigh];
         [self.cpCell.highImageView setSelected:YES];
+        [self.cpCell.lowImageView setSelected:NO];
+    } else {
+        // no selection
+        self.cpCell.placeholderLabel.hidden = NO;
+        self.cpCell.collapsedLabel.hidden = YES;
+        self.cpCell.cpTypeCollapsedLabel.text = @"";
+        self.cpCell.cpTypeCollapsedLabel.hidden = NO;
+        self.cpCell.cpTypeImageView.hidden = YES;
+        [self.cpCell setSelectedCervicalPositionType:CervicalPositionSelectionNone];
+        [self.cpCell.highImageView setSelected:NO];
         [self.cpCell.lowImageView setSelected:NO];
     }
 }
@@ -1589,7 +1603,7 @@ TableStateType currentState;
 //                self.cpCell.cpTypeCollapsedLabel.text = self.cervicalPosition;
 //            }
             
-            if ([self.cervicalPosition length] > 0) { // we have data
+            if ([self.cpCell.cpTypeCollapsedLabel.text length] > 0) { // we have data
                 CervicalPositionCellHasData = YES;
             } else {
                 CervicalPositionCellHasData = NO;
