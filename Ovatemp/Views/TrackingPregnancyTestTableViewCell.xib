@@ -64,11 +64,22 @@
                             <action selector="didSelectPositive:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="J1P-LY-YsA"/>
                         </connections>
                     </button>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rR8-1X-yAu">
+                        <rect key="frame" x="13" y="23" width="30" height="30"/>
+                    </imageView>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Negative" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmu-63-FxL">
+                        <rect key="frame" x="52" y="23" width="104" height="30"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="placeholderLabel" destination="9v3-DA-c6L" id="QaE-1C-awN"/>
                 <outlet property="pregnancyCollapsedLabel" destination="1Td-0W-rUK" id="kUS-eg-7MZ"/>
+                <outlet property="pregnancyTypeCollapsedLabel" destination="Kmu-63-FxL" id="Ibk-C4-4NV"/>
+                <outlet property="pregnancyTypeImageView" destination="rR8-1X-yAu" id="bOz-np-DEo"/>
                 <outlet property="pregnancyTypeNegativeImageView" destination="iVa-0W-Fzo" id="omJ-ll-BKg"/>
                 <outlet property="pregnancyTypeNegtaiveLabel" destination="Nv3-t7-SgX" id="V6I-Ec-qE0"/>
                 <outlet property="pregnancyTypePositiveImageView" destination="V5C-su-dNA" id="XOY-6t-fdx"/>

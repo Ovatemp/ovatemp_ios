@@ -9,12 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "TrackingTemperatureTableViewCell.h" // where our delegate is
 
+typedef enum {
+    PregnancyTestSelectionNone,
+    PregnancyTestSelectionNegative,
+    PregnancyTestSelectionPositive
+} PregnancyTestSelectionType;
+
 @interface TrackingPregnancyTestTableViewCell : UITableViewCell
 
 @property(nonatomic,retain)id<PresentInfoAlertDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pregnancyCollapsedLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *pregnancyTypeImageView;
+@property (weak, nonatomic) IBOutlet UILabel *pregnancyTypeCollapsedLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *pregnancyTypeNegativeImageView;
 @property (weak, nonatomic) IBOutlet UILabel *pregnancyTypeNegtaiveLabel;
@@ -22,5 +30,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *pregnancyTypePositiveLabel;
 
 @property NSDate *selectedDate;
+
+@property PregnancyTestSelectionType selectedPregnancyTestType;
 
 @end
