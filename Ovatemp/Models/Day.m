@@ -129,7 +129,7 @@ static NSDictionary *propertyOptions;
                         @"pregnancyTest": kPregnancyTestTypes,
                         @"opk": kOpkTypes,
                         @"period": kPeriodTypes,
-                        @"cervicalPosition": kCervicalPositionTypes
+                        @"cervical_position": kCervicalPositionTypes
                         };
   }
 
