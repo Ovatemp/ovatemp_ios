@@ -46,7 +46,7 @@ typedef enum cyclePhaseTypesEnum : NSUInteger
 #define kOpkTypes @[@"positive", @"negative"]
 @property (nonatomic, retain) NSString* opk;
 
-#define kPeriodTypes @[@"spotting", @"light", @"medium", @"heavy"]
+#define kPeriodTypes @[@"none", @"spotting", @"light", @"medium", @"heavy"]
 typedef enum periodTypesEnum : NSUInteger
 {
   PERIOD_NONE,
