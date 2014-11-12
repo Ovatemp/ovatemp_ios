@@ -620,7 +620,7 @@ TableStateType currentState;
                            [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionNone];
                        }
                        
-                       if (day.cervicalPosition) {
+                       if ([day.cervicalPosition length] > 1) {
                            self.cervicalPosition = day.cervicalPosition;
                            self.cpCell.cpTypeCollapsedLabel.text = self.cervicalPosition;
                            self.cpCell.cpTypeCollapsedLabel.hidden = NO;
@@ -632,6 +632,8 @@ TableStateType currentState;
                            self.cpCell.cpTypeCollapsedLabel.hidden = YES;
                            self.cpCell.cpTypeImageView.hidden = YES;
                            self.cpCell.cpTypeCollapsedLabel.text = @"";
+                           // todo: set self.cervicalPosition.text = @"";?
+                           self.cervicalPosition = @"";
                            CervicalPositionCellHasData = NO;
                            [self.cpCell setSelectedCervicalPositionType:CervicalPositionSelectionNone];
                        }
@@ -776,22 +778,24 @@ TableStateType currentState;
 }
 
 - (void)setDataForCervicalPositionCell {
-    if ([self.cervicalPosition isEqual:@"low"]) {
+    if ([self.cervicalPosition isEqual:@"low/closed/firm"]) {
         self.cpCell.placeholderLabel.hidden = YES;
         self.cpCell.collapsedLabel.hidden = NO;
-        self.cpCell.cpTypeCollapsedLabel.text = @"Low";
+        self.cpCell.cpTypeCollapsedLabel.text = @"Low/Closed/Firm";
         self.cpCell.cpTypeCollapsedLabel.hidden = YES;
         self.cpCell.cpTypeImageView.image = [UIImage imageNamed:@"icn_cp_lowclosedfirm"];
         [self.cpCell setSelectedCervicalPositionType:CervicalPositionSelectionLow];
         [self.cpCell.lowImageView setSelected:YES];
+        [self.cpCell.highImageView setSelected:NO];
     } else { // high
         self.cpCell.placeholderLabel.hidden = YES;
         self.cpCell.collapsedLabel.hidden = NO;
-        self.cpCell.cpTypeCollapsedLabel.text = @"High";
+        self.cpCell.cpTypeCollapsedLabel.text = @"High/Open/Soft";
         self.cpCell.cpTypeCollapsedLabel.hidden = YES;
         self.cpCell.cpTypeImageView.image = [UIImage imageNamed:@"icn_cp_highopensoft"];
         [self.cpCell setSelectedCervicalPositionType:CervicalPositionSelectionHigh];
         [self.cpCell.highImageView setSelected:YES];
+        [self.cpCell.lowImageView setSelected:NO];
     }
 }
 
@@ -804,6 +808,10 @@ TableStateType currentState;
         self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_none"];
         [self.periodCell setSelectedPeriodType:PeriodSelectionNone];
         [self.periodCell.noneImageView setSelected:YES];
+        [self.periodCell.spottingImageView setSelected:NO];
+        [self.periodCell.lightImageView setSelected:NO];
+        [self.periodCell.mediumImageView setSelected:NO];
+        [self.periodCell.heavyImageView setSelected:NO];
     } else if ([self.period isEqual:@"spotting"]) {
         self.periodCell.placeholderLabel.hidden = YES;
         self.periodCell.periodCollapsedLabel.hidden = NO;
@@ -820,6 +828,10 @@ TableStateType currentState;
         self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_light"];
         [self.periodCell setSelectedPeriodType:PeriodSelectionLight];
         [self.periodCell.lightImageView setSelected:YES];
+        [self.periodCell.noneImageView setSelected:NO];
+        [self.periodCell.spottingImageView setSelected:NO];
+        [self.periodCell.mediumImageView setSelected:NO];
+        [self.periodCell.heavyImageView setSelected:NO];
     } else if ([self.period isEqual:@"medium"]) {
         self.periodCell.placeholderLabel.hidden = YES;
         self.periodCell.periodCollapsedLabel.hidden = NO;
@@ -828,6 +840,10 @@ TableStateType currentState;
         self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_medium"];
         [self.periodCell setSelectedPeriodType:PeriodSelectionMedium];
         [self.periodCell.mediumImageView setSelected:YES];
+        [self.periodCell.noneImageView setSelected:NO];
+        [self.periodCell.spottingImageView setSelected:NO];
+        [self.periodCell.lightImageView setSelected:NO];
+        [self.periodCell.heavyImageView setSelected:NO];
     } else { // heavy
         if ([self.period isEqual:@"heavy"]) {
             self.periodCell.placeholderLabel.hidden = YES;
@@ -837,6 +853,10 @@ TableStateType currentState;
             self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_heavy"];
             [self.periodCell setSelectedPeriodType:PeriodSelectionHeavy];
             [self.periodCell.heavyImageView setSelected:YES];
+            [self.periodCell.noneImageView setSelected:NO];
+            [self.periodCell.spottingImageView setSelected:NO];
+            [self.periodCell.lightImageView setSelected:NO];
+            [self.periodCell.mediumImageView setSelected:NO];
         }
     }
 }
@@ -1520,6 +1540,14 @@ TableStateType currentState;
         self.cervicalFluid = [self.cfCell.cfTypeCollapsedLabel.text lowercaseString];
     }
     
+    if (!expandCervicalPositionCell) {
+        self.cervicalPosition = [self.cpCell.cpTypeCollapsedLabel.text lowercaseString];
+    }
+    
+    if (!expandPeriodCell) {
+        self.period = [self.periodCell.periodTypeCollapsedLabel.text lowercaseString];
+    }
+    
     NSMutableArray *indexPaths = [NSMutableArray new];
     for (int i = 0; i < 12; i++) {
         [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
@@ -1557,6 +1585,15 @@ TableStateType currentState;
             
         case 3:
         {
+//            if (CervicalPositionCellHasData) {
+//                self.cpCell.cpTypeCollapsedLabel.text = self.cervicalPosition;
+//            }
+            
+            if ([self.cervicalPosition length] > 0) { // we have data
+                CervicalPositionCellHasData = YES;
+            } else {
+                CervicalPositionCellHasData = NO;
+            }
             if (CervicalPositionCellHasData) {
                 self.cpCell.cpTypeCollapsedLabel.text = self.cervicalPosition;
             }
@@ -1671,12 +1708,13 @@ TableStateType currentState;
     }
     if (CervicalPositionCellHasData) {
         // TODO
-        self.cpCell.cpTypeCollapsedLabel.text = self.cervicalPosition;
+//        self.cpCell.cpTypeCollapsedLabel.text = self.cervicalPosition;
+        [self setDataForCervicalPositionCell];
     }
     
     if (PeriodCellHasData) {
         // TODO
-        self.period = [self.periodCell.periodTypeCollapsedLabel.text lowercaseString];
+//        self.period = [self.periodCell.periodTypeCollapsedLabel.text lowercaseString];
         [self setDataForPeriodCell];
     }
     
