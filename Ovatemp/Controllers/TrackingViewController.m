@@ -137,6 +137,8 @@ BOOL MedicineCellHasData;
 
 TableStateType currentState;
 
+UIView *loadingView;
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -359,6 +361,9 @@ TableStateType currentState;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    
+    [self showLoadingSpinner];
+    
     [super viewWillAppear:animated];
     
     // bools for table view cells
@@ -422,6 +427,7 @@ TableStateType currentState;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     [self.drawerView setHidden:NO];
     [self.tableView reloadData];
     [self.tableView setNeedsDisplay];
@@ -702,6 +708,8 @@ TableStateType currentState;
                        
                        //                       [self setTableStateForState:TableStateAllClosed];
                        [[self tableView] reloadData];
+                       
+                       [self performSelectorOnMainThread:@selector(hideLoadingSpinner) withObject:self waitUntilDone:YES];
                    }
                    failure:^(NSError *error) {
                        //                       if(onFailure) onFailure(error);
@@ -725,7 +733,6 @@ TableStateType currentState;
     //    [self.cfCell setSelectedDate:self.selectedDate];
     //    [self.cpCell setSelectedDate:self.selectedDate];
     //    [self.periodCell setSelectedDate:self.selectedDate];
-    
 }
 
 - (void)setDataForCervicalFluidCell {
@@ -3834,6 +3841,25 @@ TableStateType currentState;
 
 - (void)popWebView {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)showLoadingSpinner {
+    loadingView = [[UIView alloc] init];
+    loadingView.frame = self.view.frame;
+    loadingView.backgroundColor = [UIColor colorWithRed:(68.0f/255.0) green:(68.0f/255.0) blue:(68.0f/255.0) alpha:0.8];
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]
+                                        initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [spinner sizeToFit];
+    [loadingView addSubview:spinner];
+    spinner.center = loadingView.center;
+    spinner.color = [UIColor whiteColor];
+    [spinner startAnimating];
+    
+    [self.view addSubview:loadingView];
+}
+
+- (void)hideLoadingSpinner {
+    [loadingView removeFromSuperview];
 }
 
 /*
