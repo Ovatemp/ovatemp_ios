@@ -78,7 +78,7 @@ typedef enum {
 @property NSString *period;
 @property NSString *intercourse;
 @property NSString *mood;
-@property NSArray *symptoms;
+@property NSMutableArray *symptomIds;
 @property NSString *ovulation; // opk
 @property NSString *pregnancy; // ferning
 
@@ -694,8 +694,16 @@ UIView *loadingView;
                            MoodCellHasData = NO;
                        }
                        
-                       if (day.symptoms) {
-                           // TODO
+                       if (day.symptomIds) {
+                           self.symptomIds = day.symptomIds;
+                           for (NSString *symptomID in day.symptomIds) {
+                               NSInteger symptomIntVal = [symptomID integerValue];
+                               
+                               [self setSymptomWithValue:symptomIntVal];
+                               SymptomsCellHasData = YES;
+                           }
+                       } else {
+                           // TODO: No data
                        }
                        
                        if (day.opk) { // ovulation test
@@ -961,6 +969,37 @@ UIView *loadingView;
     //    neutralMoodSelected = NO;
     //    sadMoodSelected = NO;
     //    worriedMoodSelected = NO;
+}
+
+- (void)setSymptomWithValue:(NSInteger)value {
+    // set i-1th cell check mark
+    // add element to array
+    
+    value--;
+//    [self.symptomsCell.selectedSymptoms addObject:[NSNumber numberWithInteger:value]];
+    // set checkmark
+    
+    if (value == 0) {
+        [self.symptomsCell setBreastTendernessSelected:YES];
+    } else if (value == 1) {
+        [self.symptomsCell setHeadachesSelected:YES];
+    } else if (value == 2) {
+        [self.symptomsCell setNauseaSeleted:YES];
+    } else if (value == 3) {
+        [self.symptomsCell setIrritabilityMoodSwingsSelected:YES];
+    } else if (value == 4) {
+        [self.symptomsCell setBloatingSelected:YES];
+    } else if (value == 5) {
+        [self.symptomsCell setPmsSelected:YES];
+    } else if (value == 6) {
+        [self.symptomsCell setStressSelected:YES];
+    } else if (value == 7) {
+        [self.symptomsCell setTravelSelected:YES];
+    } else { // fever
+        [self.symptomsCell setFeverSelected:YES];
+    }
+    
+//        symptomsDataSource = [NSArray arrayWithObjects:@"Breast tenderness", @"Headaches", @"Nausea", @"Irritability/Mood swings", @"Bloating", @"PMS", @"Stress", @"Travel", @"Fever", nil];
 }
 
 #pragma mark - Table view
@@ -1241,6 +1280,10 @@ UIView *loadingView;
                 self.symptomsCell.placeholderLabel.hidden = YES;
                 self.symptomsCell.symptomsCollapsedLabel.hidden = NO;
                 self.symptomsCell.symptomsTableView.hidden = NO;
+                
+                for (NSString *symptom in self.symptomIds) {
+                    [self setSymptomWithValue:[symptom integerValue]];
+                }
             } else {
                 self.symptomsCell.placeholderLabel.hidden = NO;
                 self.symptomsCell.symptomsCollapsedLabel.hidden = YES;
@@ -2959,6 +3002,8 @@ UIView *loadingView;
             expandSymptomsCell = YES;
             // hide component
             self.symptomsCell.symptomsTableView.hidden = NO;
+            self.symptomsCell.symptomsCollapsedLabel.hidden = NO;
+            self.symptomsCell.placeholderLabel.hidden = YES;
             
             expandOvulationTestCell = NO;
             // hide component
