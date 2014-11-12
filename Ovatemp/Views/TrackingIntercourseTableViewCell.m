@@ -31,11 +31,15 @@
     if (self.selectedIntercourseType == IntercourseSelectionUnprotected) {
         self.selectedIntercourseType = IntercourseSelectionNone;
         [self hitBackendWithIntercourseType:[NSNull null]];
+        [self.protectedImageView setSelected:NO];
+        [self.unprotectedImageView setSelected:NO];
     } else {
         self.selectedIntercourseType = IntercourseSelectionUnprotected;
         self.intercourseTypeCollapsedLabel.text = @"Unprotected";
         self.intercourseTypeCollapsedImageView.image = [UIImage imageNamed:@"icn_i_unprotected"];
         [self hitBackendWithIntercourseType:@"unprotected"];
+        [self.protectedImageView setSelected:NO];
+        [self.unprotectedImageView setSelected:YES];
     }
 }
 
@@ -43,11 +47,16 @@
     if (self.selectedIntercourseType == IntercourseSelectionProtected) {
         self.selectedIntercourseType = IntercourseSelectionNone;
         [self hitBackendWithIntercourseType:[NSNull null]];
+        [self.protectedImageView setSelected:NO];
+        [self.unprotectedImageView setSelected:NO];
     } else {
         self.selectedIntercourseType = IntercourseSelectionProtected;
         self.intercourseTypeCollapsedLabel.text = @"Protected";
         self.intercourseTypeCollapsedImageView.image = [UIImage imageNamed:@"icn_i_protected"];
         [self hitBackendWithIntercourseType:@"protected"];
+        [self.protectedImageView setSelected:YES];
+        [self.unprotectedImageView setSelected:NO];
+        
     }
 }
 

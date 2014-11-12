@@ -882,13 +882,16 @@ TableStateType currentState;
         self.intercourseCell.intercourseTypeCollapsedLabel.text = @"Protected";
         self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
         self.intercourseCell.intercourseTypeCollapsedImageView.image = [UIImage imageNamed:@"icn_i_protected"];
-        
+        [self.intercourseCell.protectedImageView setSelected:YES];
+        [self.intercourseCell.unprotectedImageView setSelected:NO];
     } else { // unprotected
         self.intercourseCell.placeholderLabel.hidden = YES;
         self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
         self.intercourseCell.intercourseTypeCollapsedLabel.text = @"Unprotected";
         self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
         self.intercourseCell.intercourseTypeCollapsedImageView.image = [UIImage imageNamed:@"icn_i_unprotected"];
+        [self.intercourseCell.protectedImageView setSelected:NO];
+        [self.intercourseCell.unprotectedImageView setSelected:YES];
     }
 }
 
