@@ -60,7 +60,7 @@
         self.ovulationTypeImageView.image = [UIImage imageNamed:@"icn_positive"];
         
         [self deselectAllButtons];
-        [self.ovulationTypeNegativeImageView setSelected:YES];
+        [self.ovulationTypePositiveImageView setSelected:YES];
     }
 }
 

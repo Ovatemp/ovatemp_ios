@@ -28,34 +28,26 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="saD-zr-MCK">
-                        <rect key="frame" x="75" y="71" width="32" height="38"/>
+                        <rect key="frame" x="65" y="71" width="53" height="53"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" image="icn_negative">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <state key="selected" image="icn_negative_p"/>
+                        <state key="highlighted" image="icn_negative_p"/>
                         <connections>
                             <action selector="didSelectNegative:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kPv-DF-BNY"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RuD-m8-lAE">
-                        <rect key="frame" x="217" y="71" width="32" height="38"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" image="icn_positive">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                        <connections>
-                            <action selector="didSelectPositive:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="SC8-ks-bu7"/>
-                        </connections>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Negative" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VPw-Tz-NIR">
-                        <rect key="frame" x="59" y="110" width="64" height="21"/>
+                        <rect key="frame" x="59" y="119" width="64" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Positive" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TyS-Ic-DwU">
-                        <rect key="frame" x="209" y="110" width="49" height="21"/>
+                        <rect key="frame" x="209" y="119" width="49" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -82,6 +74,18 @@
                         <rect key="frame" x="13" y="23" width="30" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RuD-m8-lAE">
+                        <rect key="frame" x="207" y="71" width="53" height="53"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" image="icn_positive">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="selected" image="icn_positive_p"/>
+                        <state key="highlighted" image="icn_positive_p"/>
+                        <connections>
+                            <action selector="didSelectPositive:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="SC8-ks-bu7"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -100,7 +104,9 @@
     <resources>
         <image name="icn_info" width="22" height="22"/>
         <image name="icn_negative" width="33" height="8"/>
+        <image name="icn_negative_p" width="53" height="54"/>
         <image name="icn_positive" width="33" height="33"/>
+        <image name="icn_positive_p" width="53" height="54"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
