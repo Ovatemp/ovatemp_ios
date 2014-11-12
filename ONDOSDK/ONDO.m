@@ -179,7 +179,9 @@ static NSString * const kONDOIdentifier = @"1809";
   NSLog(@"Disconnected peripheral %@", peripheral);
   [_connectingDevices removeObject:peripheral];
   _bluetoothManager = nil;
-  if (error) {
+
+  // If error code is anything other than 7 - CBErrorPeripheralDisconnected return the error
+  if (error && error.code != CBErrorPeripheralDisconnected) {
     [self notifyOnError:error];
   }
 }
