@@ -19,4 +19,15 @@
 
 @property NSDate *selectedDate;
 
+@property NSMutableArray *selectedSymptoms;
+
+@property BOOL breastTendernessSelected;
+@property BOOL headachesSelected;
+@property BOOL nauseaSeleted;
+@property BOOL irritabilityMoodSwingsSelected;
+@property BOOL bloatingSelected;
+@property BOOL pmsSelected;
+@property BOOL stressSelected;
+@property BOOL travelSelected;
+@property BOOL feverSelected;
 @end

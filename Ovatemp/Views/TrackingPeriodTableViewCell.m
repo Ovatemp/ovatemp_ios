@@ -137,7 +137,7 @@
 }
 
 - (IBAction)didSelectInfoButton:(id)sender {
-    [self.delegate pushInfoAlertWithTitle:@"Period" AndMessage:@"Your period can last for 3 to 7 days and represents the beginning of a new cycle. You should always consider the first day of bleeding as your Cycle Day 1.  Spotting does not count." AndURL:@"http://google.com"];
+    [self.delegate pushInfoAlertWithTitle:@"Period" AndMessage:@"Your period can last for 3 to 7 days and represents the beginning of a new cycle. You should always consider the first day of bleeding as your Cycle Day 1.  Spotting does not count." AndURL:@"http://ovatemp.helpshift.com/a/ovatemp/?s=fertility-faqs&f=learn-more-about-your-period"];
 }
 
 @end
