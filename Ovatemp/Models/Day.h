@@ -38,7 +38,9 @@ typedef enum cyclePhaseTypesEnum : NSUInteger
 #define kFerningTypes @[@"positive", @"negative"]
 @property (nonatomic, retain) NSString* ferning;
 
-#define kMoodTypes @[@"sad", @"moody", @"good", @"amazing"]
+//#define kMoodTypes @[@"sad", @"moody", @"good", @"amazing"]
+//
+#define kMoodTypes @[@"angry", @"anxious", @"calm", @"depressed", @"moody", @"amazing", @"frisky", @"frustrated", @"good", @"in love", @"motivated", @"neutral", @"sad", @"worried"]
 @property (nonatomic, retain) NSString* mood;
 
 #define kOpkTypes @[@"positive", @"negative"]

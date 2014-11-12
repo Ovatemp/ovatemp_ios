@@ -674,10 +674,12 @@ TableStateType currentState;
                            self.moodCell.moodPlaceholderLabel.hidden = YES;
                            self.moodCell.moodCollapsedLabel.hidden = NO;
                            self.moodCell.moodTypeLabel.hidden = NO;
+                           MoodCellHasData = YES;
                        } else {
                            self.moodCell.moodPlaceholderLabel.hidden = NO;
                            self.moodCell.moodCollapsedLabel.hidden = YES;
                            self.moodCell.moodTypeLabel.hidden = YES;
+                           MoodCellHasData = NO;
                        }
                        
                        if (day.symptoms) {
@@ -1162,15 +1164,17 @@ TableStateType currentState;
                 self.moodCell.moodTypeLabel.hidden = YES;
                 self.moodCell.moodTableView.hidden = NO;
             } else {
-                self.moodCell.moodPlaceholderLabel.hidden = NO;
-                self.moodCell.moodCollapsedLabel.hidden = YES;
-                self.moodCell.moodTableView.hidden = YES;
+//                self.moodCell.moodPlaceholderLabel.hidden = NO;
+//                self.moodCell.moodCollapsedLabel.hidden = YES;
+//                self.moodCell.moodTableView.hidden = YES;
                 
                 if (MoodCellHasData) {
                     self.moodCell.moodTypeLabel.hidden = NO;
-                } else {
-                    self.moodCell.moodTypeLabel.hidden = YES;
+                    self.moodCell.moodPlaceholderLabel.hidden = YES;
                 }
+//                else {
+//                    self.moodCell.moodTypeLabel.hidden = YES;
+//                }
             }
             
             [self.moodCell setSelectionStyle:UITableViewCellSelectionStyleNone];
