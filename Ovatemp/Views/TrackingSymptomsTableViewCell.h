@@ -19,4 +19,6 @@
 
 @property NSDate *selectedDate;
 
+@property NSMutableArray *selectedSymptoms;
+
 @end
