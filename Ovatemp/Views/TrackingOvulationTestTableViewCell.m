@@ -30,7 +30,7 @@
 }
 
 - (IBAction)didSelectInfoButton:(id)sender {
-    [self.delegate pushInfoAlertWithTitle:@"Ovulation Test" AndMessage:@"Ovulation tests detect a surge in Luteinizing Hormone (LH) and can help you time intercourse during ovulation to achieve pregnancy.\n\nNot recommended for birth control since sperm can last days in optimal conditions and it would be risky." AndURL:@"http://google.com"];
+    [self.delegate pushInfoAlertWithTitle:@"Ovulation Test" AndMessage:@"Ovulation tests detect a surge in Luteinizing Hormone (LH) and can help you time intercourse during ovulation to achieve pregnancy.\n\nNot recommended for birth control since sperm can last days in optimal conditions and it would be risky." AndURL:@"http://ovatemp.helpshift.com/a/ovatemp/?s=fertility-faqs&f=learn-more-about-ovulation-tests"];
 }
 
 @end
