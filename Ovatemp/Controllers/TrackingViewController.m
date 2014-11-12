@@ -706,8 +706,28 @@ UIView *loadingView;
                            // TODO: No data
                        }
                        
-                       if (day.opk) { // ovulation test
+                       if ([day.opk length] > 1) { // ovulation test
+                           self.ovulation = day.opk;
+                           self.ovulationCell.ovulationTypeCollapsedLabel.text = self.ovulation;
+                           self.ovulationCell.ovulationTypeCollapsedLabel.hidden = NO;
+                           self.ovulationCell.placeholderLabel.hidden = YES;
+                           self.ovulationCell.ovulationTypeImageView.hidden = NO;
+                           OvulationTestCellHasData = YES;
+                           [self setDataForOvulationTestCell];
+                       } else {
+                           self.ovulationCell.placeholderLabel.hidden = NO;
+                           self.ovulationCell.ovulationCollapsedLabel.hidden = YES;
+                           self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
+                           self.ovulationCell.ovulationTypeImageView.hidden = YES;
+                           self.ovulationCell.ovulationTypeCollapsedLabel.text = @"";
                            
+                           self.ovulation = @"";
+                           OvulationTestCellHasData = NO;
+                           [self.ovulationCell setSelectedOvulationTestType:OvulationTestSelectionNone];
+                           
+                           // deselect buttons
+                           [self.ovulationCell.ovulationTypePositiveImageView setSelected:NO];
+                           [self.ovulationCell.ovulationTypeNegativeImageView setSelected:NO];
                        }
                        
                        if (day.ferning) { // pregnancy test
@@ -1002,6 +1022,28 @@ UIView *loadingView;
 //        symptomsDataSource = [NSArray arrayWithObjects:@"Breast tenderness", @"Headaches", @"Nausea", @"Irritability/Mood swings", @"Bloating", @"PMS", @"Stress", @"Travel", @"Fever", nil];
 }
 
+- (void)setDataForOvulationTestCell {
+    if ([self.ovulation isEqual:@"positive"]) {
+        [self.ovulationCell setSelectedOvulationTestType:OvulationTestSelectionPositive];
+        [self.ovulationCell.ovulationTypeCollapsedLabel setText:@"Positive"];
+        [self.ovulationCell.ovulationTypeNegativeImageView setSelected:NO];
+        [self.ovulationCell.ovulationTypePositiveImageView setSelected:YES];
+        self.ovulationCell.ovulationTypeImageView.image = [UIImage imageNamed:@"icn_positive"];
+    } else if([self.ovulation isEqual:@"negative"]) { // negative
+        [self.ovulationCell setSelectedOvulationTestType:OvulationTestSelectionNegative];
+        [self.ovulationCell.ovulationTypeCollapsedLabel setText:@"Negative"];
+        [self.ovulationCell.ovulationTypeNegativeImageView setSelected:YES];
+        [self.ovulationCell.ovulationTypePositiveImageView setSelected:NO];
+        self.ovulationCell.ovulationTypeImageView.image = [UIImage imageNamed:@"icn_negative"];
+    } else { // no selection
+        [self.ovulationCell setSelectedOvulationTestType:OvulationTestSelectionNone];
+        [self.ovulationCell.ovulationTypeCollapsedLabel setText:@""];
+        [self.ovulationCell.ovulationTypeNegativeImageView setSelected:NO];
+        [self.ovulationCell.ovulationTypePositiveImageView setSelected:NO];
+        self.ovulationCell.imageView.hidden = YES;
+    }
+}
+
 #pragma mark - Table view
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -1225,6 +1267,8 @@ UIView *loadingView;
 //                self.intercourseCell.unprotectedLabel.hidden = YES;
             }
             
+            [self.intercourseCell setSelectedDate:self.selectedDate];
+            
             [self.intercourseCell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
             self.intercourseCell.layoutMargins = UIEdgeInsetsZero;
@@ -1259,6 +1303,8 @@ UIView *loadingView;
 //                    self.moodCell.moodTypeLabel.hidden = YES;
 //                }
             }
+
+            [self.moodCell setSelectedDate:self.selectedDate];
             
             [self.moodCell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
@@ -1292,6 +1338,8 @@ UIView *loadingView;
             
             [self.symptomsCell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
+            [self.symptomsCell setSelectedDate:self.selectedDate];
+            
             self.symptomsCell.delegate = self;
             
             return self.symptomsCell;
@@ -1308,6 +1356,7 @@ UIView *loadingView;
             // unhide component
                 self.ovulationCell.placeholderLabel.hidden = YES;
                 self.ovulationCell.ovulationCollapsedLabel.hidden = NO;
+                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
                 
                 self.ovulationCell.ovulationTypePositiveImageView.hidden = NO;
                 self.ovulationCell.ovulationTypePositiveLabel.hidden = NO;
@@ -1315,19 +1364,28 @@ UIView *loadingView;
                 self.ovulationCell.ovulationTypeNegativeImageView.hidden = NO;
                 self.ovulationCell.ovulationTypeNegativeLabel.hidden = NO;
             } else {
-                self.ovulationCell.placeholderLabel.hidden = NO;
-                self.ovulationCell.ovulationCollapsedLabel.hidden = YES;
+//                self.ovulationCell.placeholderLabel.hidden = NO;
+//                self.ovulationCell.ovulationCollapsedLabel.hidden = YES;
                 
                 self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
                 self.ovulationCell.ovulationTypePositiveLabel.hidden = YES;
                 
                 self.ovulationCell.ovulationTypeNegativeImageView.hidden = YES;
                 self.ovulationCell.ovulationTypeNegativeLabel.hidden = YES;
+                
+                if (OvulationTestCellHasData) {
+                    self.ovulationCell.ovulationTypeImageView.hidden = NO;
+                    self.ovulationCell.ovulationTypeCollapsedLabel.hidden = NO;
+                }
             }
+            
+            [self.ovulationCell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
             self.ovulationCell.layoutMargins = UIEdgeInsetsZero;
             
             self.ovulationCell.delegate = self;
+            
+            [self.ovulationCell setSelectedDate:self.selectedDate];
             
             return self.ovulationCell;
             break;
@@ -1349,15 +1407,21 @@ UIView *loadingView;
                 self.pregnancyCell.pregnancyTypePositiveImageView.hidden = NO;
                 self.pregnancyCell.pregnancyTypePositiveLabel.hidden = NO;
             } else {
-                self.pregnancyCell.placeholderLabel.hidden = NO;
-                self.pregnancyCell.pregnancyCollapsedLabel.hidden = YES;
+//                self.pregnancyCell.placeholderLabel.hidden = NO;
+//                self.pregnancyCell.pregnancyCollapsedLabel.hidden = YES;
                 
                 self.pregnancyCell.pregnancyTypeNegativeImageView.hidden = YES;
                 self.pregnancyCell.pregnancyTypeNegtaiveLabel.hidden = YES;
                 
                 self.pregnancyCell.pregnancyTypePositiveImageView.hidden = YES;
                 self.pregnancyCell.pregnancyTypePositiveLabel.hidden = YES;
+                
+                if (PregnancyTestCellHasData) {
+                    self.pregnancyCell.pregnancyCollapsedLabel.hidden = NO;
+                }
             }
+            
+            [self.pregnancyCell setSelectedDate:self.selectedDate];
             
             self.pregnancyCell.layoutMargins = UIEdgeInsetsZero;
             
@@ -1615,6 +1679,10 @@ UIView *loadingView;
         self.period = [self.periodCell.periodTypeCollapsedLabel.text lowercaseString];
     }
     
+    if (!expandOvulationTestCell) {
+        self.ovulation = [self.ovulationCell.ovulationTypeCollapsedLabel.text lowercaseString];
+    }
+    
     NSMutableArray *indexPaths = [NSMutableArray new];
     for (int i = 0; i < 12; i++) {
         [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
@@ -1707,9 +1775,16 @@ UIView *loadingView;
             
         case 8:
         {
+            if ([self.ovulationCell.ovulationTypeCollapsedLabel.text length] > 1) {
+                OvulationTestCellHasData = YES;
+            } else {
+                OvulationTestCellHasData = NO;
+            }
+            
             if (OvulationTestCellHasData) {
                 // no collapsed labels to show
-                self.ovulationCell.placeholderLabel.hidden = NO;
+//                self.ovulationCell.placeholderLabel.hidden = NO;
+                self.ovulationCell.ovulationTypeCollapsedLabel.text = self.ovulation;
             }
             break;
         }
@@ -1800,6 +1875,7 @@ UIView *loadingView;
     
     if (OvulationTestCellHasData) {
         // TODO
+        [self setDataForOvulationTestCell];
     }
     
     if (PregnancyTestCellHasData) {
@@ -1862,6 +1938,7 @@ UIView *loadingView;
     //    TableStateMedicineExpanded,
     
     switch (state) {
+#pragma mark - TableStateAllClosed
         case TableStateAllClosed:
         {
             expandTemperatureCell = NO;
@@ -1998,6 +2075,18 @@ UIView *loadingView;
             self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
             self.ovulationCell.ovulationTypePositiveLabel.hidden = YES;
             
+            if (OvulationTestCellHasData) {
+                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = NO;
+                self.ovulationCell.ovulationCollapsedLabel.hidden = NO;
+                self.ovulationCell.ovulationTypeImageView.hidden = NO;
+                self.ovulationCell.placeholderLabel.hidden = YES;
+            } else {
+                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
+                self.ovulationCell.ovulationCollapsedLabel.hidden = YES;
+                self.ovulationCell.ovulationTypeImageView.hidden = YES;
+                self.ovulationCell.placeholderLabel.hidden = NO;
+            }
+            
             expandPregnancyTestCell = NO;
             // hide component
             self.pregnancyCell.pregnancyTypeNegativeImageView.hidden = YES;
@@ -2015,6 +2104,7 @@ UIView *loadingView;
             break;
         }
             
+#pragma mark - TableStateTemperatureExpanded
         case TableStateTemperatureExpanded:
         {
             expandTemperatureCell = YES;
@@ -2136,6 +2226,10 @@ UIView *loadingView;
             // hide component
             self.symptomsCell.symptomsTableView.hidden = YES;
             
+            expandSymptomsCell = NO;
+            // hide component
+            self.symptomsCell.symptomsTableView.hidden = YES;
+            
             expandOvulationTestCell = NO;
             // hide component
             self.ovulationCell.ovulationTypeNegativeImageView.hidden = YES;
@@ -2143,6 +2237,18 @@ UIView *loadingView;
             
             self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
             self.ovulationCell.ovulationTypePositiveLabel.hidden = YES;
+            
+            if (OvulationTestCellHasData) {
+                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = NO;
+                self.ovulationCell.ovulationCollapsedLabel.hidden = NO;
+                self.ovulationCell.ovulationTypeImageView.hidden = NO;
+                self.ovulationCell.placeholderLabel.hidden = YES;
+            } else {
+                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
+                self.ovulationCell.ovulationCollapsedLabel.hidden = YES;
+                self.ovulationCell.ovulationTypeImageView.hidden = YES;
+                self.ovulationCell.placeholderLabel.hidden = NO;
+            }
             
             expandPregnancyTestCell = NO;
             // hide component
@@ -2161,6 +2267,7 @@ UIView *loadingView;
             break;
         }
             
+#pragma mark - Cervical Fluid
         case TableStateCervicalFluidExpanded:
         {
             expandTemperatureCell = NO;
@@ -2266,6 +2373,10 @@ UIView *loadingView;
             // hide component
             self.symptomsCell.symptomsTableView.hidden = YES;
             
+            expandSymptomsCell = NO;
+            // hide component
+            self.symptomsCell.symptomsTableView.hidden = YES;
+            
             expandOvulationTestCell = NO;
             // hide component
             self.ovulationCell.ovulationTypeNegativeImageView.hidden = YES;
@@ -2273,6 +2384,18 @@ UIView *loadingView;
             
             self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
             self.ovulationCell.ovulationTypePositiveLabel.hidden = YES;
+            
+            if (OvulationTestCellHasData) {
+                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = NO;
+                self.ovulationCell.ovulationCollapsedLabel.hidden = NO;
+                self.ovulationCell.ovulationTypeImageView.hidden = NO;
+                self.ovulationCell.placeholderLabel.hidden = YES;
+            } else {
+                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
+                self.ovulationCell.ovulationCollapsedLabel.hidden = YES;
+                self.ovulationCell.ovulationTypeImageView.hidden = YES;
+                self.ovulationCell.placeholderLabel.hidden = NO;
+            }
             
             expandPregnancyTestCell = NO;
             // hide component
@@ -2291,6 +2414,7 @@ UIView *loadingView;
             break;
         }
             
+#pragma mark - Cervical Position
         case TableStateCervicalPositionExpanded:
         {
             expandTemperatureCell = NO;
@@ -2412,6 +2536,10 @@ UIView *loadingView;
             // hide component
             self.symptomsCell.symptomsTableView.hidden = YES;
             
+            expandSymptomsCell = NO;
+            // hide component
+            self.symptomsCell.symptomsTableView.hidden = YES;
+            
             expandOvulationTestCell = NO;
             // hide component
             self.ovulationCell.ovulationTypeNegativeImageView.hidden = YES;
@@ -2419,6 +2547,18 @@ UIView *loadingView;
             
             self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
             self.ovulationCell.ovulationTypePositiveLabel.hidden = YES;
+            
+            if (OvulationTestCellHasData) {
+                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = NO;
+                self.ovulationCell.ovulationCollapsedLabel.hidden = NO;
+                self.ovulationCell.ovulationTypeImageView.hidden = NO;
+                self.ovulationCell.placeholderLabel.hidden = YES;
+            } else {
+                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
+                self.ovulationCell.ovulationCollapsedLabel.hidden = YES;
+                self.ovulationCell.ovulationTypeImageView.hidden = YES;
+                self.ovulationCell.placeholderLabel.hidden = NO;
+            }
             
             expandPregnancyTestCell = NO;
             // hide component
@@ -2437,6 +2577,7 @@ UIView *loadingView;
             break;
         }
             
+#pragma mark - Period
         case TableStatePeriodExpanded:
         {
             expandTemperatureCell = NO;
@@ -2559,6 +2700,10 @@ UIView *loadingView;
             // hide component
             self.symptomsCell.symptomsTableView.hidden = YES;
             
+            expandSymptomsCell = NO;
+            // hide component
+            self.symptomsCell.symptomsTableView.hidden = YES;
+            
             expandOvulationTestCell = NO;
             // hide component
             self.ovulationCell.ovulationTypeNegativeImageView.hidden = YES;
@@ -2566,6 +2711,18 @@ UIView *loadingView;
             
             self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
             self.ovulationCell.ovulationTypePositiveLabel.hidden = YES;
+            
+            if (OvulationTestCellHasData) {
+                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = NO;
+                self.ovulationCell.ovulationCollapsedLabel.hidden = NO;
+                self.ovulationCell.ovulationTypeImageView.hidden = NO;
+                self.ovulationCell.placeholderLabel.hidden = YES;
+            } else {
+                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
+                self.ovulationCell.ovulationCollapsedLabel.hidden = YES;
+                self.ovulationCell.ovulationTypeImageView.hidden = YES;
+                self.ovulationCell.placeholderLabel.hidden = NO;
+            }
             
             expandPregnancyTestCell = NO;
             // hide component
@@ -2584,6 +2741,7 @@ UIView *loadingView;
             break;
         }
             
+#pragma mark - Intercourse
         case TableStateIntercourseExpanded:
         {
             expandTemperatureCell = NO;
@@ -2706,6 +2864,10 @@ UIView *loadingView;
             // hide component
             self.symptomsCell.symptomsTableView.hidden = YES;
             
+            expandSymptomsCell = NO;
+            // hide component
+            self.symptomsCell.symptomsTableView.hidden = YES;
+            
             expandOvulationTestCell = NO;
             // hide component
             self.ovulationCell.ovulationTypeNegativeImageView.hidden = YES;
@@ -2713,6 +2875,18 @@ UIView *loadingView;
             
             self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
             self.ovulationCell.ovulationTypePositiveLabel.hidden = YES;
+            
+            if (OvulationTestCellHasData) {
+                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = NO;
+                self.ovulationCell.ovulationCollapsedLabel.hidden = NO;
+                self.ovulationCell.ovulationTypeImageView.hidden = NO;
+                self.ovulationCell.placeholderLabel.hidden = YES;
+            } else {
+                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
+                self.ovulationCell.ovulationCollapsedLabel.hidden = YES;
+                self.ovulationCell.ovulationTypeImageView.hidden = YES;
+                self.ovulationCell.placeholderLabel.hidden = NO;
+            }
             
             expandPregnancyTestCell = NO;
             // hide component
@@ -2731,6 +2905,7 @@ UIView *loadingView;
             break;
         }
             
+#pragma mark - Mood
         case TableStateMoodExpanded:
         {
             
@@ -2851,6 +3026,10 @@ UIView *loadingView;
             // hide component
             self.symptomsCell.symptomsTableView.hidden = YES;
             
+            expandSymptomsCell = NO;
+            // hide component
+            self.symptomsCell.symptomsTableView.hidden = YES;
+            
             expandOvulationTestCell = NO;
             // hide component
             self.ovulationCell.ovulationTypeNegativeImageView.hidden = YES;
@@ -2858,6 +3037,18 @@ UIView *loadingView;
             
             self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
             self.ovulationCell.ovulationTypePositiveLabel.hidden = YES;
+            
+            if (OvulationTestCellHasData) {
+                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = NO;
+                self.ovulationCell.ovulationCollapsedLabel.hidden = NO;
+                self.ovulationCell.ovulationTypeImageView.hidden = NO;
+                self.ovulationCell.placeholderLabel.hidden = YES;
+            } else {
+                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
+                self.ovulationCell.ovulationCollapsedLabel.hidden = YES;
+                self.ovulationCell.ovulationTypeImageView.hidden = YES;
+                self.ovulationCell.placeholderLabel.hidden = NO;
+            }
             
             expandPregnancyTestCell = NO;
             // hide component
@@ -2876,6 +3067,7 @@ UIView *loadingView;
             break;
         }
             
+#pragma mark - Symptoms
         case TableStateSymptomsExpanded:
         {
             expandTemperatureCell = NO;
@@ -3013,6 +3205,18 @@ UIView *loadingView;
             self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
             self.ovulationCell.ovulationTypePositiveLabel.hidden = YES;
             
+            if (OvulationTestCellHasData) {
+                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = NO;
+                self.ovulationCell.ovulationCollapsedLabel.hidden = NO;
+                self.ovulationCell.ovulationTypeImageView.hidden = NO;
+                self.ovulationCell.placeholderLabel.hidden = YES;
+            } else {
+                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
+                self.ovulationCell.ovulationCollapsedLabel.hidden = YES;
+                self.ovulationCell.ovulationTypeImageView.hidden = YES;
+                self.ovulationCell.placeholderLabel.hidden = NO;
+            }
+            
             expandPregnancyTestCell = NO;
             // hide component
             self.pregnancyCell.pregnancyTypeNegativeImageView.hidden = YES;
@@ -3030,6 +3234,7 @@ UIView *loadingView;
             break;
         }
             
+#pragma mark - Ovulation
         case TableStateOvulationTestExpanded:
         {
             expandTemperatureCell = NO;
@@ -3160,6 +3365,10 @@ UIView *loadingView;
             
             expandOvulationTestCell = YES;
             // hide component
+            self.ovulationCell.placeholderLabel.hidden = YES;
+            self.ovulationCell.ovulationTypeImageView.hidden = YES;
+            self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
+            
             self.ovulationCell.ovulationTypeNegativeImageView.hidden = NO;
             self.ovulationCell.ovulationTypeNegativeLabel.hidden = NO;
             
@@ -3183,6 +3392,7 @@ UIView *loadingView;
             break;
         }
             
+#pragma mark - Pregnancy
         case TableStatePregnancyTestExpanded:
         {
             expandTemperatureCell = NO;
@@ -3301,6 +3511,10 @@ UIView *loadingView;
             // hide component
             self.symptomsCell.symptomsTableView.hidden = YES;
             
+            expandSymptomsCell = NO;
+            // hide component
+            self.symptomsCell.symptomsTableView.hidden = YES;
+            
             expandOvulationTestCell = NO;
             // hide component
             self.ovulationCell.ovulationTypeNegativeImageView.hidden = YES;
@@ -3308,6 +3522,18 @@ UIView *loadingView;
             
             self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
             self.ovulationCell.ovulationTypePositiveLabel.hidden = YES;
+            
+            if (OvulationTestCellHasData) {
+                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = NO;
+                self.ovulationCell.ovulationCollapsedLabel.hidden = NO;
+                self.ovulationCell.ovulationTypeImageView.hidden = NO;
+                self.ovulationCell.placeholderLabel.hidden = YES;
+            } else {
+                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
+                self.ovulationCell.ovulationCollapsedLabel.hidden = YES;
+                self.ovulationCell.ovulationTypeImageView.hidden = YES;
+                self.ovulationCell.placeholderLabel.hidden = NO;
+            }
             
             expandPregnancyTestCell = YES;
             // hide component

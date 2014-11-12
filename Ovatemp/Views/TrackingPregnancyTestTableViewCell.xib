@@ -26,21 +26,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVa-0W-Fzo">
-                        <rect key="frame" x="75" y="71" width="32" height="38"/>
+                        <rect key="frame" x="65" y="63" width="53" height="53"/>
                         <state key="normal" image="icn_negative">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
                             <action selector="didSelectNegative:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="chd-NW-Z2d"/>
-                        </connections>
-                    </button>
-                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V5C-su-dNA">
-                        <rect key="frame" x="217" y="71" width="32" height="38"/>
-                        <state key="normal" image="icn_positive">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                        <connections>
-                            <action selector="didSelectPositive:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="J1P-LY-YsA"/>
                         </connections>
                     </button>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Negative" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nv3-t7-SgX">
@@ -62,6 +53,15 @@
                         </state>
                         <connections>
                             <action selector="didSelectInfoButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="CyC-pE-H2m"/>
+                        </connections>
+                    </button>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V5C-su-dNA">
+                        <rect key="frame" x="205" y="63" width="53" height="53"/>
+                        <state key="normal" image="icn_positive">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="didSelectPositive:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="J1P-LY-YsA"/>
                         </connections>
                     </button>
                 </subviews>
