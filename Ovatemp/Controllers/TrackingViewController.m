@@ -622,6 +622,7 @@ UIView *loadingView;
                            self.cfCell.cfTypeCollapsedLabel.hidden = YES;
                            self.cfCell.cfTypeImageView.hidden = YES;
                            self.cfCell.cfTypeCollapsedLabel.text = @"";
+                           self.cervicalFluid = @"";
                            CervicalFluidCellHasData = NO;
                            [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionNone];
                        }
@@ -839,7 +840,7 @@ UIView *loadingView;
         [self.cfCell.stickyImageView setSelected:NO];
         [self.cfCell.eggwhiteImageView setSelected:NO];
         
-    } else { // eggwhite
+    } else if ([self.cervicalFluid isEqual:@"eggwhite"]) {
         self.cfCell.placeholderLabel.hidden = YES;
         self.cfCell.cfCollapsedLabel.hidden = NO;
         self.cfCell.cfTypeCollapsedLabel.text = @"Eggwhite";
@@ -847,6 +848,18 @@ UIView *loadingView;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_eggwhite"];
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionEggwhite];
         [self.cfCell.eggwhiteImageView setSelected:YES];
+        [self.cfCell.creamyImageView setSelected:NO];
+        [self.cfCell.dryImageView setSelected:NO];
+        [self.cfCell.stickyImageView setSelected:NO];
+    } else { // no selection
+        self.cfCell.placeholderLabel.hidden = NO;
+        self.cfCell.cfCollapsedLabel.hidden = YES;
+        self.cfCell.cfTypeCollapsedLabel.text = @"";
+        self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+//        self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_eggwhite"];
+        self.cfCell.cfTypeImageView.hidden = YES;
+        [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionNone];
+        [self.cfCell.eggwhiteImageView setSelected:NO];
         [self.cfCell.creamyImageView setSelected:NO];
         [self.cfCell.dryImageView setSelected:NO];
         [self.cfCell.stickyImageView setSelected:NO];
