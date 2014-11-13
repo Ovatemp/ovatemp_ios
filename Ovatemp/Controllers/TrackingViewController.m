@@ -1871,6 +1871,12 @@ NSMutableArray *daysFromBackend;
     
     // record cf
     if (!expandCervicalFluidCell) {
+        // if none of the buttons are selected, set has data and record data, else there is no data
+//        if ([self.cfCell.dryImageView isSelected] || [self.cfCell.stickyImageView isSelected] || [self.cfCell.creamyImageView isSelected] || [self.cfCell.eggwhiteImageView isSelected]) {
+//            self.cervicalFluid = [self.cfCell.cfTypeCollapsedLabel.text lowercaseString];
+//        } else {
+//            CervicalFluidCellHasData = NO;
+//        }
         self.cervicalFluid = [self.cfCell.cfTypeCollapsedLabel.text lowercaseString];
     }
     
