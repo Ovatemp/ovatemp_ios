@@ -4332,15 +4332,21 @@ UIView *loadingView;
 
 - (void)showLoadingSpinner {
     loadingView = [[UIView alloc] init];
-    loadingView.frame = self.view.frame;
+    loadingView.frame = CGRectMake(0, 0, 100, 100);
+    loadingView.center = [self.view convertPoint:self.view.center fromView:self.view.superview];
     loadingView.backgroundColor = [UIColor colorWithRed:(68.0f/255.0) green:(68.0f/255.0) blue:(68.0f/255.0) alpha:0.8];
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]
                                         initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    [spinner sizeToFit];
-    [loadingView addSubview:spinner];
-    spinner.center = loadingView.center;
+//    [spinner sizeToFit];
+//    spinner.center = loadingView.center;
+    spinner.frame = CGRectMake(32, 32, 36, 36);
+//    spinner.center = [loadingView convertPoint:loadingView.center fromView:loadingView.superview];
     spinner.color = [UIColor whiteColor];
+    [loadingView addSubview:spinner];
     [spinner startAnimating];
+    
+    loadingView.layer.cornerRadius = 5;
+    loadingView.layer.masksToBounds = YES;
     
     [self.view addSubview:loadingView];
 }
