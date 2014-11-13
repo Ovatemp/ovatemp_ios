@@ -821,6 +821,8 @@ NSDate *peakDate;
 
 - (void)setDataForStatusCell {
     
+    UserProfile *currentUserProfile = [UserProfile current];
+    
     if ([day.cyclePhase isEqualToString:@"period"]) {
         self.statusCell.notEnoughInfoLabel.hidden = YES;
         
@@ -841,19 +843,23 @@ NSDate *peakDate;
         self.statusCell.titleLabel.text = @"Fertile";
         self.statusCell.titleLabel.hidden = NO;
         
-        if ([UserProfile current].tryingToConceive) {
+        if (currentUserProfile.tryingToConceive) {
             // green fertility image
             self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_fertile"];
         } else {
             // trying to avoid, red fertility image
+            self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period-1"]; // I know it's not the period phase, my designer named the asset wrong
         }
         
         self.statusCell.enterMoreInfoLabel.hidden = NO;
         
     } else if ([day.cyclePhase isEqualToString:@"preovulation"]) { // not fertile
         
-        if ([day.cervicalFluid isEqualToString:@"dry"]) {
+        if ([day.cervicalFluid isEqualToString:@"dry"] && currentUserProfile.tryingToConceive) {
             // yellow caution image
+            self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_notfertile-1"];
+        } else {
+            self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_notfertile"];
         }
         
         self.statusCell.notEnoughInfoLabel.hidden = YES;
@@ -861,9 +867,16 @@ NSDate *peakDate;
         self.statusCell.titleLabel.text = @"Not Fertile";
         self.statusCell.titleLabel.hidden = NO;
         
-        self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_notfertile"];
         self.statusCell.enterMoreInfoLabel.hidden = NO;
     } else if ([day.cyclePhase isEqualToString:@"postovulation"]) { // not fertile
+        self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_notfertile"];
+        
+        self.statusCell.notEnoughInfoLabel.hidden = YES;
+        
+        self.statusCell.titleLabel.text = @"Not Fertile";
+        self.statusCell.titleLabel.hidden = NO;
+        
+        self.statusCell.enterMoreInfoLabel.hidden = NO;
         
     } else { // not enough info?
         self.statusCell.notEnoughInfoLabel.hidden = NO;
