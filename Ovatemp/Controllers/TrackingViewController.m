@@ -1558,6 +1558,12 @@ NSMutableArray *daysFromBackend;
                     self.ovulationCell.ovulationTypeImageView.hidden = NO;
                     self.ovulationCell.ovulationTypeCollapsedLabel.hidden = NO;
                     self.ovulationCell.ovulationCollapsedLabel.hidden = NO;
+                } else {
+                    self.ovulationCell.ovulationTypeImageView.hidden = YES;
+                    self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
+                    self.ovulationCell.ovulationCollapsedLabel.hidden = YES;
+                    
+                    self.ovulationCell.placeholderLabel.hidden = NO;
                 }
             }
             
@@ -1603,6 +1609,11 @@ NSMutableArray *daysFromBackend;
                     self.pregnancyCell.pregnancyTypeImageView.hidden = NO;
                     self.pregnancyCell.pregnancyTypeCollapsedLabel.hidden = NO;
                     self.pregnancyCell.pregnancyCollapsedLabel.hidden = NO;
+                } else {
+                    self.pregnancyCell.pregnancyTypeImageView.hidden = YES;
+                    self.pregnancyCell.pregnancyTypeCollapsedLabel.hidden = YES;
+                    self.pregnancyCell.pregnancyCollapsedLabel.hidden = YES;
+                    self.pregnancyCell.placeholderLabel.hidden = NO;
                 }
             }
             
