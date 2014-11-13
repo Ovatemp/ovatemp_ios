@@ -1334,12 +1334,14 @@ UIView *loadingView;
                     self.intercourseCell.intercourseTypeCollapsedImageView.hidden = NO;
                     self.intercourseCell.intercourseTypeCollapsedLabel.hidden = NO;
                 }
-//                  else {
+                  else {
 //                    self.intercourseCell.placeholderLabel.hidden = NO;
 //                    self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
 //                    self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
 //                    self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
-//                }
+                }
+                
+//                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
                 
 //                self.intercourseCell.protectedImageView.hidden = YES;
 //                self.intercourseCell.protectedLabel.hidden = YES;
@@ -1445,7 +1447,8 @@ UIView *loadingView;
                 self.ovulationCell.ovulationTypeNegativeImageView.hidden = NO;
                 self.ovulationCell.ovulationTypeNegativeLabel.hidden = NO;
             } else {
-//                self.ovulationCell.placeholderLabel.hidden = NO;
+                self.ovulationCell.placeholderLabel.hidden = YES;
+//                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
 //                self.ovulationCell.ovulationCollapsedLabel.hidden = YES;
                 
                 self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
@@ -1491,6 +1494,7 @@ UIView *loadingView;
             } else {
 //                self.pregnancyCell.placeholderLabel.hidden = NO;
 //                self.pregnancyCell.pregnancyCollapsedLabel.hidden = YES;
+                self.pregnancyCell.placeholderLabel.hidden = YES;
                 
                 self.pregnancyCell.pregnancyTypeNegativeImageView.hidden = YES;
                 self.pregnancyCell.pregnancyTypeNegtaiveLabel.hidden = YES;
