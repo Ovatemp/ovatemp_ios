@@ -32,6 +32,18 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter more info for improved fertility insights" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Sb-ss-ipD">
+                        <rect key="frame" x="95" y="91" width="131" height="54"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Period" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCP-qn-NsI">
+                        <rect key="frame" x="105" y="28" width="111" height="66"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="27"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             </tableViewCellContentView>
@@ -39,9 +51,13 @@
                 <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
             </accessibility>
             <connections>
+                <outlet property="cycleImageView" destination="nh5-Ku-eu0" id="QIG-ol-LxS"/>
+                <outlet property="enterMoreInfoLabel" destination="9Sb-ss-ipD" id="XyG-Ug-A2q"/>
+                <outlet property="notEnoughInfoLabel" destination="xGa-YN-Yhu" id="ZJ5-bz-jBt"/>
                 <outlet property="notesButton" destination="ID4-fj-0Xk" id="p5v-pa-q2W"/>
+                <outlet property="titleLabel" destination="bCP-qn-NsI" id="VvA-gy-0UK"/>
             </connections>
-            <point key="canvasLocation" x="172" y="218"/>
+            <point key="canvasLocation" x="172" y="210"/>
         </tableViewCell>
     </objects>
     <resources>
