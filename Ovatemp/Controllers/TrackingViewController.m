@@ -139,6 +139,8 @@ TableStateType currentState;
 
 UIView *loadingView;
 
+Day *day;
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -543,7 +545,11 @@ UIView *loadingView;
     subtitleView.backgroundColor = [UIColor clearColor];
     subtitleView.font = [UIFont boldSystemFontOfSize:13];
     subtitleView.textAlignment = NSTextAlignmentCenter;
-    subtitleView.text = @"Cycle Day #X";
+    if (day.cycleDay) {
+        subtitleView.text = [NSString stringWithFormat:@"Cycle Day #%@", day.cycleDay];
+    } else {
+        subtitleView.text = [NSString stringWithFormat:@"Enter Cycle Info"];
+    }
     subtitleView.textColor = [UIColor ovatempAquaColor];
     subtitleView.adjustsFontSizeToFitWidth = YES;
     
@@ -573,7 +579,7 @@ UIView *loadingView;
                              }
                    success:^(NSDictionary *response) {
                        [Cycle cycleFromResponse:response];
-                       Day *day = [Day forDate:self.selectedDate];
+                       day = [Day forDate:self.selectedDate];
                        if (!day) {
                            day = [Day withAttributes:@{@"date": self.selectedDate, @"idate": self.selectedDate.dateId}];
                        }
@@ -776,6 +782,11 @@ UIView *loadingView;
                        //                       [self setTableStateForState:TableStateAllClosed];
                        [[self tableView] reloadData];
                        
+                       // set title components
+                       [self setTitleView];
+                       
+                       [self setDataForStatusCell];
+                       
                        [self performSelectorOnMainThread:@selector(hideLoadingSpinner) withObject:self waitUntilDone:YES];
                    }
                    failure:^(NSError *error) {
@@ -784,8 +795,6 @@ UIView *loadingView;
                        // TODO: Alert user
                    }];
     
-    // for now, just change labels
-    [self setTitleView];
     // drawer stays down, arrow should be facing upward
     if (firstOpenView) {
         self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI);
@@ -800,6 +809,44 @@ UIView *loadingView;
     //    [self.cfCell setSelectedDate:self.selectedDate];
     //    [self.cpCell setSelectedDate:self.selectedDate];
     //    [self.periodCell setSelectedDate:self.selectedDate];
+}
+
+- (void)setDataForStatusCell {
+    if ([day.cyclePhase isEqualToString:@"period"]) {
+        self.statusCell.notEnoughInfoLabel.hidden = YES;
+        
+        self.statusCell.titleLabel.text = @"Period";
+        self.statusCell.titleLabel.hidden = NO;
+        
+        self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period"];
+        self.statusCell.enterMoreInfoLabel.hidden = NO;
+        
+    } else if ([day.cyclePhase isEqualToString:@"ovulation"]) {
+        self.statusCell.notEnoughInfoLabel.hidden = YES;
+        
+        self.statusCell.titleLabel.text = @"Fertile";
+        self.statusCell.titleLabel.hidden = NO;
+        
+        self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_fertile"];
+        self.statusCell.enterMoreInfoLabel.hidden = NO;
+        
+    } else if ([day.cyclePhase isEqualToString:@"preovulation"]) { // not fertile
+        self.statusCell.notEnoughInfoLabel.hidden = YES;
+        
+        self.statusCell.titleLabel.text = @"Not Fertile";
+        self.statusCell.titleLabel.hidden = NO;
+        
+        self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_notfertile"];
+        self.statusCell.enterMoreInfoLabel.hidden = NO;
+    } else if ([day.cyclePhase isEqualToString:@"postovulation"]) { // not fertile
+        
+    } else { // not enough info?
+        self.statusCell.notEnoughInfoLabel.hidden = NO;
+        self.statusCell.titleLabel.hidden = YES;
+        self.statusCell.enterMoreInfoLabel.hidden = YES;
+        
+        self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_empty"];
+    }
 }
 
 - (void)setDataForCervicalFluidCell {

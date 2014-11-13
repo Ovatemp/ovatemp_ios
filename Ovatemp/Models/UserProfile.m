@@ -26,7 +26,11 @@ static UserProfile *_currentUserProfile;
                                                         @"dry_day_rule": @NO,
                                                         @"temperature_shift_rule": @NO,
                                                         @"peak_day_rule": @NO,
-                                                        @"email": @""
+                                                        @"email": @"",
+                                                        @"weightInPounds": @"",
+                                                        @"heightInInches": @"",
+                                                        @"startedTryingOn": @"",
+                                                        @"cycleLength": @""
                                                         }];
   }
   return _currentUserProfile;
