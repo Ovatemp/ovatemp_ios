@@ -1275,8 +1275,8 @@ UIView *loadingView;
                 self.periodCell.placeholderLabel.hidden = YES;
                 
                 self.periodCell.periodCollapsedLabel.hidden = NO;
-                self.periodCell.periodTypeCollapsedLabel.hidden = NO;
-                self.periodCell.periodTypeImageView.hidden = NO;
+                self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+                self.periodCell.periodTypeImageView.hidden = YES;
                 
                 // TODO: unhide buttons?
             } else { // unhide
