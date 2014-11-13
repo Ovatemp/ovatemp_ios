@@ -13,10 +13,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pregnancy Test" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Td-0W-rUK">
-                        <rect key="frame" x="8" y="8" width="86" height="21"/>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PREGNANCY TEST" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Td-0W-rUK">
+                        <rect key="frame" x="8" y="8" width="110" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.14117647059999999" green="0.46666666670000001" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pregnancy Test" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9v3-DA-c6L">
@@ -30,6 +30,8 @@
                         <state key="normal" image="icn_negative">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <state key="selected" image="icn_negative_p"/>
+                        <state key="highlighted" image="icn_negative_p"/>
                         <connections>
                             <action selector="didSelectNegative:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="chd-NW-Z2d"/>
                         </connections>
@@ -60,15 +62,28 @@
                         <state key="normal" image="icn_positive">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <state key="selected" image="icn_positive_p"/>
+                        <state key="highlighted" image="icn_positive_p"/>
                         <connections>
                             <action selector="didSelectPositive:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="J1P-LY-YsA"/>
                         </connections>
                     </button>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rR8-1X-yAu">
+                        <rect key="frame" x="13" y="26" width="30" height="30"/>
+                    </imageView>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Negative" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmu-63-FxL">
+                        <rect key="frame" x="52" y="26" width="104" height="30"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="placeholderLabel" destination="9v3-DA-c6L" id="QaE-1C-awN"/>
                 <outlet property="pregnancyCollapsedLabel" destination="1Td-0W-rUK" id="kUS-eg-7MZ"/>
+                <outlet property="pregnancyTypeCollapsedLabel" destination="Kmu-63-FxL" id="Ibk-C4-4NV"/>
+                <outlet property="pregnancyTypeImageView" destination="rR8-1X-yAu" id="bOz-np-DEo"/>
                 <outlet property="pregnancyTypeNegativeImageView" destination="iVa-0W-Fzo" id="omJ-ll-BKg"/>
                 <outlet property="pregnancyTypeNegtaiveLabel" destination="Nv3-t7-SgX" id="V6I-Ec-qE0"/>
                 <outlet property="pregnancyTypePositiveImageView" destination="V5C-su-dNA" id="XOY-6t-fdx"/>
@@ -80,6 +95,8 @@
     <resources>
         <image name="icn_info" width="22" height="22"/>
         <image name="icn_negative" width="33" height="8"/>
+        <image name="icn_negative_p" width="53" height="54"/>
         <image name="icn_positive" width="33" height="33"/>
+        <image name="icn_positive_p" width="53" height="54"/>
     </resources>
 </document>
