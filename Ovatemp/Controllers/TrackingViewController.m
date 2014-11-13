@@ -144,6 +144,8 @@ Day *day;
 
 NSDate *peakDate;
 
+NSMutableArray *daysFromBackend;
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -369,7 +371,7 @@ NSDate *peakDate;
     
     [self showLoadingSpinner];
     
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     
     // bools for table view cells
     expandTemperatureCell = NO;
@@ -590,6 +592,15 @@ NSDate *peakDate;
                        //                       if (onSuccess) onSuccess(response);
                        
                        // set data
+                       
+                       daysFromBackend = [[NSMutableArray alloc] initWithArray:[response objectForKey:@"days"]];
+                       if ([daysFromBackend count] == 1) {
+                           NSLog(@"only got one day back from backend");
+                       } else {
+                           NSLog(@"[daysFromBackend count]:%lu", (unsigned long)[daysFromBackend count]);
+                       }
+                       [self.drawerCollectionView reloadData];
+                       
                        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                        
                        BOOL tempPrefFahrenheit = [defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"];
@@ -788,12 +799,13 @@ NSDate *peakDate;
                        }
                        
                        //                       [self setTableStateForState:TableStateAllClosed];
-                       [[self tableView] reloadData];
                        
                        // set title components
                        [self setTitleView];
                        
                        [self setDataForStatusCell];
+                       
+                       [[self tableView] reloadData];
                        
                        [self performSelectorOnMainThread:@selector(hideLoadingSpinner) withObject:self waitUntilDone:YES];
                    }
@@ -4082,18 +4094,99 @@ NSDate *peakDate;
     
     //    NSLog(@"index:%ld h:%f w:%f", (long)indexPath.row, cell.frame.size.height, cell.frame.size.width);
     
-    // use outline for future dates
+    // check future dates
     if ([cellDate compare:[NSDate date]] == NSOrderedDescending) {
-        // celldate is earlier than today
+        // celldate is in the future
         cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_empty"];
         // change colors
         cell.monthLabel.textColor = [UIColor ovatempGreyColorForDateCollectionViewCells];
         cell.dayLabel.textColor = [UIColor ovatempGreyColorForDateCollectionViewCells];
-    } else {
-        cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_fertile_small"];
-        cell.monthLabel.textColor = [UIColor whiteColor];
-        cell.dayLabel.textColor = [UIColor whiteColor];
+        
+        return cell;
     }
+    
+    // days from backend
+    
+    if (indexPath.row == 80) {
+        NSLog(@"nov 7th");
+    }
+    
+    for (NSDictionary *dayDict in daysFromBackend) {
+        NSDateFormatter *dtFormatter = [[NSDateFormatter alloc] init];
+        [dtFormatter setLocale:[NSLocale systemLocale]];
+        [dtFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSDate *dateFromBackend = [dtFormatter dateFromString:[dayDict objectForKey:@"date"]];
+//        NSLog(@"cellDate:%@, dateFromBackend:%@", cellDate, dateFromBackend);
+//        if ([cellDate compare:dateFromBackend] == NSOrderedSame) { // date of this cell was tracked
+        if ([[dtFormatter stringFromDate:cellDate] isEqualToString:[dtFormatter stringFromDate:dateFromBackend]]) {
+//            NSLog(@"---dates are equal---");
+            NSString *cyclePhase = [dayDict objectForKey:@"cycle_phase"];
+            
+            if ([[dtFormatter stringFromDate:cellDate] isEqualToString:@"2014-11-07"]) {
+                NSLog(@"in nov 7th, indexPath.row:%ld", (long)indexPath.row);
+            }
+            
+            if ([cyclePhase isKindOfClass:[NSString class]]) {
+                
+                if ([[dtFormatter stringFromDate:cellDate] isEqualToString:@"2014-11-07"]) {
+                    NSLog(@"in nov 7th");
+                }
+                
+                if ([cyclePhase isEqualToString:@"period"]) { // if it's not null
+                    cell.statusImageView.image = [UIImage imageNamed:@"icn_period"];
+                    // change text color
+                    cell.monthLabel.textColor = [UIColor whiteColor];
+                    cell.dayLabel.textColor = [UIColor whiteColor];
+                    return cell;
+                } else if ([cyclePhase isEqualToString:@"ovulation"]) { // fertile
+                    cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_fertile_small"];
+                    cell.monthLabel.textColor = [UIColor whiteColor];
+                    cell.dayLabel.textColor = [UIColor whiteColor];
+                    return cell;
+                } else if ([cyclePhase isEqualToString:@"preovulation"]) { // not fertile
+                    cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_small"];
+                    cell.monthLabel.textColor = [UIColor whiteColor];
+                    cell.dayLabel.textColor = [UIColor whiteColor];
+                    return cell;
+                } else if ([cyclePhase isEqualToString:@"postovulation"]) { // not fertile
+                    cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_small"];
+                    cell.monthLabel.textColor = [UIColor whiteColor];
+                    cell.dayLabel.textColor = [UIColor whiteColor];
+                    return cell;
+                }
+            }
+        }
+//        else {
+        
+//            return cell;
+//        }
+    }
+    
+    // if we haven't returned yet
+    // date did not come back from backend, don't know info
+    cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_empty"];
+    //            cell.monthLabel.textColor = [UIColor whiteColor];
+    //            cell.dayLabel.textColor = [UIColor whiteColor];
+    cell.monthLabel.textColor = [UIColor ovatempGreyColorForDateCollectionViewCells];
+    cell.dayLabel.textColor = [UIColor ovatempGreyColorForDateCollectionViewCells];
+    
+//    cell.monthLabel.textColor = [UIColor whiteColor];
+//    cell.dayLabel.textColor = [UIColor whiteColor];
+    
+    // return
+    
+    // use outline for future dates
+//    if ([cellDate compare:[NSDate date]] == NSOrderedDescending) {
+//        // celldate is earlier than today
+//        cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_empty"];
+//        // change colors
+//        cell.monthLabel.textColor = [UIColor ovatempGreyColorForDateCollectionViewCells];
+//        cell.dayLabel.textColor = [UIColor ovatempGreyColorForDateCollectionViewCells];
+//    } else {
+//        cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_fertile_small"];
+//        cell.monthLabel.textColor = [UIColor whiteColor];
+//        cell.dayLabel.textColor = [UIColor whiteColor];
+//    }
     
     //    if (indexPath == self.selectedIndexPath) {
     //        CGSize cellSize = cell.frame.size;
@@ -4126,7 +4219,9 @@ NSDate *peakDate;
     SupplementsCellHasData = NO;
     MedicineCellHasData = NO;
     
-    [self refreshTrackingView];
+//    [self refreshTrackingView];
+    
+    NSLog(@"returning grey cell at indexPath.row:%ld", indexPath.row);
     
     return cell;
 }
