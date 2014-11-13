@@ -24,6 +24,11 @@
 @property (nonatomic, assign) BOOL temperatureShiftRule;
 @property (nonatomic, assign) BOOL peakDayRule;
 
+@property NSString *weightInPounds;
+@property NSString *heightInInches;
+@property NSString *startedTryingOn;
+@property NSString *cycleLength;
+
 - (void)refresh:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure;
 - (void)save;
 

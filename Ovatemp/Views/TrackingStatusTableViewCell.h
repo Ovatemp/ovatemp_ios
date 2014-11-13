@@ -19,5 +19,9 @@
 @property(nonatomic,strong)id<TrackingCellDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet UIButton *notesButton;
+@property (weak, nonatomic) IBOutlet UILabel *notEnoughInfoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *enterMoreInfoLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *cycleImageView;
 
 @end
