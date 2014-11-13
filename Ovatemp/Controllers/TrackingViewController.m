@@ -1568,7 +1568,14 @@ UIView *loadingView;
     
     if(self.selectedTableRowIndex && indexPath.row == self.selectedTableRowIndex.row) {
         if (expandTemperatureCell || expandCervicalFluidCell || expandCervicalPositionCell || expandPeriodCell || expandIntercourseCell || expandMoodCell || expandSymptomsCell || expandOvulationTestCell || expandPregnancyTestCell || expandSupplementsCell || expandMedicineCell) {
-            return 200.0f;
+            
+            if (indexPath.row == 1) {
+                return 200.0f;
+            } else if (indexPath.row == 6) {
+                return 200.0f;
+            } else {
+                return 150.0f;
+            }
         }
     }
     
