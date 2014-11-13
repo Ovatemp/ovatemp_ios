@@ -18,6 +18,7 @@
 #import "TrackingNotesViewController.h"
 #import "DateCollectionViewCell.h"
 #import "WebViewController.h"
+#import "UserProfile.h"
 
 #import "TrackingStatusTableViewCell.h"
 #import "TrackingTemperatureTableViewCell.h"
@@ -140,6 +141,8 @@ TableStateType currentState;
 UIView *loadingView;
 
 Day *day;
+
+NSDate *peakDate;
 
 - (id)init {
     self = [super init];
@@ -591,6 +594,11 @@ Day *day;
                        
                        BOOL tempPrefFahrenheit = [defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"];
                        
+                       NSDateFormatter* dtFormatter = [[NSDateFormatter alloc] init];
+                       [dtFormatter setLocale:[NSLocale systemLocale]];
+                       [dtFormatter setDateFormat:@"yyyy-MM-dd"];
+                       peakDate = [dtFormatter dateFromString:[response objectForKey:@"peak_date"]];
+                       
                        if (day.temperature) {
                            // change lable if we have info
                            if (tempPrefFahrenheit) {
@@ -812,6 +820,7 @@ Day *day;
 }
 
 - (void)setDataForStatusCell {
+    
     if ([day.cyclePhase isEqualToString:@"period"]) {
         self.statusCell.notEnoughInfoLabel.hidden = YES;
         
@@ -821,16 +830,32 @@ Day *day;
         self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period"];
         self.statusCell.enterMoreInfoLabel.hidden = NO;
         
-    } else if ([day.cyclePhase isEqualToString:@"ovulation"]) {
+    } else if ([day.cyclePhase isEqualToString:@"ovulation"]) { // fertile
+        // peak date
+        if ([self.selectedDate isEqual:peakDate]) {
+            self.statusCell.titleLabel.text = @"Peak Fertility";
+        }
+        
         self.statusCell.notEnoughInfoLabel.hidden = YES;
         
         self.statusCell.titleLabel.text = @"Fertile";
         self.statusCell.titleLabel.hidden = NO;
         
-        self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_fertile"];
+        if ([UserProfile current].tryingToConceive) {
+            // green fertility image
+            self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_fertile"];
+        } else {
+            // trying to avoid, red fertility image
+        }
+        
         self.statusCell.enterMoreInfoLabel.hidden = NO;
         
     } else if ([day.cyclePhase isEqualToString:@"preovulation"]) { // not fertile
+        
+        if ([day.cervicalFluid isEqualToString:@"dry"]) {
+            // yellow caution image
+        }
+        
         self.statusCell.notEnoughInfoLabel.hidden = YES;
         
         self.statusCell.titleLabel.text = @"Not Fertile";
