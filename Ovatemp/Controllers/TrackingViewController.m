@@ -139,6 +139,8 @@ TableStateType currentState;
 
 UIView *loadingView;
 
+Day *day;
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -543,7 +545,7 @@ UIView *loadingView;
     subtitleView.backgroundColor = [UIColor clearColor];
     subtitleView.font = [UIFont boldSystemFontOfSize:13];
     subtitleView.textAlignment = NSTextAlignmentCenter;
-    subtitleView.text = @"Cycle Day #X";
+    subtitleView.text = [NSString stringWithFormat:@"Cycle Day #%@", day.cycleDay];
     subtitleView.textColor = [UIColor ovatempAquaColor];
     subtitleView.adjustsFontSizeToFitWidth = YES;
     
@@ -573,7 +575,7 @@ UIView *loadingView;
                              }
                    success:^(NSDictionary *response) {
                        [Cycle cycleFromResponse:response];
-                       Day *day = [Day forDate:self.selectedDate];
+                       day = [Day forDate:self.selectedDate];
                        if (!day) {
                            day = [Day withAttributes:@{@"date": self.selectedDate, @"idate": self.selectedDate.dateId}];
                        }
@@ -776,6 +778,9 @@ UIView *loadingView;
                        //                       [self setTableStateForState:TableStateAllClosed];
                        [[self tableView] reloadData];
                        
+                       // set title components
+                       [self setTitleView];
+                       
                        [self performSelectorOnMainThread:@selector(hideLoadingSpinner) withObject:self waitUntilDone:YES];
                    }
                    failure:^(NSError *error) {
@@ -784,8 +789,6 @@ UIView *loadingView;
                        // TODO: Alert user
                    }];
     
-    // for now, just change labels
-    [self setTitleView];
     // drawer stays down, arrow should be facing upward
     if (firstOpenView) {
         self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI);
