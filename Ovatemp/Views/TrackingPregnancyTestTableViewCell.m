@@ -47,6 +47,19 @@
     }
 }
 - (IBAction)didSelectPositive:(id)sender {
+    if (self.selectedPregnancyTestType == PregnancyTestSelectionPositive) {
+        self.selectedPregnancyTestType = PregnancyTestSelectionNone;
+        [self hitBackendWithPregnancyTestType:[NSNull null]];
+        [self deselectAllButtons];
+    } else {
+        self.selectedPregnancyTestType = PregnancyTestSelectionPositive;
+        [self hitBackendWithPregnancyTestType:@"positive"];
+        self.pregnancyTypeCollapsedLabel.text = @"Positive";
+        self.pregnancyTypeImageView.image = [UIImage imageNamed:@"icn_positive"];
+        
+        [self deselectAllButtons];
+        [self.pregnancyTypePositiveImageView setSelected:YES];
+    }
 }
 
 - (void)hitBackendWithPregnancyTestType:(id)ptType {
