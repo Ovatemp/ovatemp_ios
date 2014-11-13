@@ -4189,7 +4189,6 @@ UIView *loadingView;
     //    [day updateProperty:@"temperature" withValue:@(temperature)];
     
     TemperatureCellHasData = YES;
-    // TODO: get ondo icon asset and unhide it when temp is taken with ondo
     
     // unhide ondo icon
     self.tempCell.ondoIcon.hidden = NO;
@@ -4219,15 +4218,13 @@ UIView *loadingView;
 }
 
 - (void)postAndSaveTempWithTempValue:(float)temp {
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    BOOL tempPrefFahrenheit = [defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"];
-    
-    // celsius to fahrenheit
-    if (!tempPrefFahrenheit) {
-        temp = ((temp * 1.8000) + 32);
-    }
+
+    // we're getting the temp in fahrenheit, no need to convert
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    BOOL tempPrefFahrenheit = [defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"];
+//    if (!tempPrefFahrenheit) {
+//        temp = ((temp * 1.8000) + 32);
+//    }
     
     // first save to HealthKit
     [self updateHealthKitWithTemp:temp];
