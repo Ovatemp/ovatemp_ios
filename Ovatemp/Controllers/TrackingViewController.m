@@ -683,6 +683,7 @@ UIView *loadingView;
                            self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
                            self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
                            self.intercourseCell.intercourseTypeCollapsedLabel.text = @"";
+                           self.intercourse = @"";
                            IntercourseCellHasData = NO;
                        }
                        
@@ -969,7 +970,7 @@ UIView *loadingView;
         self.intercourseCell.intercourseTypeCollapsedImageView.image = [UIImage imageNamed:@"icn_i_protected"];
         [self.intercourseCell.protectedImageView setSelected:YES];
         [self.intercourseCell.unprotectedImageView setSelected:NO];
-    } else { // unprotected
+    } else if ([self.intercourse isEqual:@"unprotected"]) { // unprotected
         self.intercourseCell.placeholderLabel.hidden = YES;
         self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
         self.intercourseCell.intercourseTypeCollapsedLabel.text = @"Unprotected";
@@ -977,6 +978,14 @@ UIView *loadingView;
         self.intercourseCell.intercourseTypeCollapsedImageView.image = [UIImage imageNamed:@"icn_i_unprotected"];
         [self.intercourseCell.protectedImageView setSelected:NO];
         [self.intercourseCell.unprotectedImageView setSelected:YES];
+    } else { // none
+        self.intercourseCell.placeholderLabel.hidden = NO;
+        self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+        self.intercourseCell.intercourseTypeCollapsedLabel.text = @"";
+        self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+        self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+        [self.intercourseCell.protectedImageView setSelected:NO];
+        [self.intercourseCell.unprotectedImageView setSelected:NO];
     }
 }
 
@@ -1754,6 +1763,10 @@ UIView *loadingView;
         self.period = [self.periodCell.periodTypeCollapsedLabel.text lowercaseString];
     }
     
+    if (!expandIntercourseCell) {
+        self.intercourse = [self.intercourseCell.intercourseTypeCollapsedLabel.text lowercaseString];
+    }
+    
     if (!expandOvulationTestCell) {
         self.ovulation = [self.ovulationCell.ovulationTypeCollapsedLabel.text lowercaseString];
     }
@@ -1825,6 +1838,11 @@ UIView *loadingView;
             
         case 5:
         {
+            if ([self.intercourseCell.intercourseTypeCollapsedLabel.text length] > 1) {
+                IntercourseCellHasData = YES;
+            } else {
+                IntercourseCellHasData = NO;
+            }
             if (IntercourseCellHasData) {
                 self.intercourseCell.intercourseTypeCollapsedLabel.text = self.intercourse;
                 self.intercourseCell.intercourseTypeCollapsedImageView.hidden = NO;
@@ -1948,7 +1966,7 @@ UIView *loadingView;
     
     if (IntercourseCellHasData) {
         // TODO
-        self.intercourse = [self.intercourseCell.intercourseTypeCollapsedLabel.text lowercaseString];
+//        self.intercourse = [self.intercourseCell.intercourseTypeCollapsedLabel.text lowercaseString];
         [self setDataForIntercourseCell];
     }
     
