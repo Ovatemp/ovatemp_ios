@@ -34,8 +34,8 @@
                             <action selector="didSelectInfoButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Qea-Fd-5R7"/>
                         </connections>
                     </button>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Unprotected" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfu-md-7xJ">
-                        <rect key="frame" x="52" y="23" width="148" height="31"/>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfu-md-7xJ">
+                        <rect key="frame" x="52" y="26" width="148" height="31"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -69,7 +69,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icn_i_unprotected" translatesAutoresizingMaskIntoConstraints="NO" id="xqd-oX-uUf">
-                        <rect key="frame" x="13" y="24" width="30" height="30"/>
+                        <rect key="frame" x="13" y="27" width="30" height="30"/>
                     </imageView>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Protected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vu3-Bu-C7K">
                         <rect key="frame" x="209" y="110" width="49" height="21"/>

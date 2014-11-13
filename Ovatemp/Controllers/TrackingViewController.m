@@ -1334,12 +1334,14 @@ UIView *loadingView;
                     self.intercourseCell.intercourseTypeCollapsedImageView.hidden = NO;
                     self.intercourseCell.intercourseTypeCollapsedLabel.hidden = NO;
                 }
-//                  else {
+                  else {
 //                    self.intercourseCell.placeholderLabel.hidden = NO;
 //                    self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
 //                    self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
 //                    self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
-//                }
+                }
+                
+//                self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
                 
 //                self.intercourseCell.protectedImageView.hidden = YES;
 //                self.intercourseCell.protectedLabel.hidden = YES;
@@ -1445,7 +1447,8 @@ UIView *loadingView;
                 self.ovulationCell.ovulationTypeNegativeImageView.hidden = NO;
                 self.ovulationCell.ovulationTypeNegativeLabel.hidden = NO;
             } else {
-//                self.ovulationCell.placeholderLabel.hidden = NO;
+                self.ovulationCell.placeholderLabel.hidden = YES;
+//                self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
 //                self.ovulationCell.ovulationCollapsedLabel.hidden = YES;
                 
                 self.ovulationCell.ovulationTypePositiveImageView.hidden = YES;
@@ -1491,6 +1494,7 @@ UIView *loadingView;
             } else {
 //                self.pregnancyCell.placeholderLabel.hidden = NO;
 //                self.pregnancyCell.pregnancyCollapsedLabel.hidden = YES;
+                self.pregnancyCell.placeholderLabel.hidden = YES;
                 
                 self.pregnancyCell.pregnancyTypeNegativeImageView.hidden = YES;
                 self.pregnancyCell.pregnancyTypeNegtaiveLabel.hidden = YES;
@@ -1564,7 +1568,14 @@ UIView *loadingView;
     
     if(self.selectedTableRowIndex && indexPath.row == self.selectedTableRowIndex.row) {
         if (expandTemperatureCell || expandCervicalFluidCell || expandCervicalPositionCell || expandPeriodCell || expandIntercourseCell || expandMoodCell || expandSymptomsCell || expandOvulationTestCell || expandPregnancyTestCell || expandSupplementsCell || expandMedicineCell) {
-            return 200.0f;
+            
+            if (indexPath.row == 1) {
+                return 200.0f;
+            } else if (indexPath.row == 6) {
+                return 200.0f;
+            } else {
+                return 150.0f;
+            }
         }
     }
     
@@ -4189,7 +4200,6 @@ UIView *loadingView;
     //    [day updateProperty:@"temperature" withValue:@(temperature)];
     
     TemperatureCellHasData = YES;
-    // TODO: get ondo icon asset and unhide it when temp is taken with ondo
     
     // unhide ondo icon
     self.tempCell.ondoIcon.hidden = NO;
@@ -4219,15 +4229,13 @@ UIView *loadingView;
 }
 
 - (void)postAndSaveTempWithTempValue:(float)temp {
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    BOOL tempPrefFahrenheit = [defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"];
-    
-    // celsius to fahrenheit
-    if (!tempPrefFahrenheit) {
-        temp = ((temp * 1.8000) + 32);
-    }
+
+    // we're getting the temp in fahrenheit, no need to convert
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    BOOL tempPrefFahrenheit = [defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"];
+//    if (!tempPrefFahrenheit) {
+//        temp = ((temp * 1.8000) + 32);
+//    }
     
     // first save to HealthKit
     [self updateHealthKitWithTemp:temp];
@@ -4332,15 +4340,21 @@ UIView *loadingView;
 
 - (void)showLoadingSpinner {
     loadingView = [[UIView alloc] init];
-    loadingView.frame = self.view.frame;
+    loadingView.frame = CGRectMake(0, 0, 100, 100);
+    loadingView.center = [self.view convertPoint:self.view.center fromView:self.view.superview];
     loadingView.backgroundColor = [UIColor colorWithRed:(68.0f/255.0) green:(68.0f/255.0) blue:(68.0f/255.0) alpha:0.8];
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]
                                         initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    [spinner sizeToFit];
-    [loadingView addSubview:spinner];
-    spinner.center = loadingView.center;
+//    [spinner sizeToFit];
+//    spinner.center = loadingView.center;
+    spinner.frame = CGRectMake(32, 32, 36, 36);
+//    spinner.center = [loadingView convertPoint:loadingView.center fromView:loadingView.superview];
     spinner.color = [UIColor whiteColor];
+    [loadingView addSubview:spinner];
     [spinner startAnimating];
+    
+    loadingView.layer.cornerRadius = 5;
+    loadingView.layer.masksToBounds = YES;
     
     [self.view addSubview:loadingView];
 }
