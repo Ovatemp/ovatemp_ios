@@ -1391,6 +1391,22 @@ NSMutableArray *daysFromBackend;
 //        symptomsDataSource = [NSArray arrayWithObjects:@"Breast tenderness", @"Headaches", @"Nausea", @"Irritability/Mood swings", @"Bloating", @"PMS", @"Stress", @"Travel", @"Fever", nil];
 }
 
+- (void)setExpandedOrClosedOvulationTestCellWithData {
+    // if we have data and are expanding
+    if (expandOvulationTestCell) {
+        self.ovulationCell.placeholderLabel.hidden = NO;
+        self.ovulationCell.ovulationCollapsedLabel.hidden = NO;
+        self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
+        self.ovulationCell.ovulationTypeImageView.hidden = YES;
+        
+    } else { // closed cell with data
+        self.ovulationCell.placeholderLabel.hidden = YES;
+        self.ovulationCell.ovulationCollapsedLabel.hidden = NO;
+        self.ovulationCell.ovulationTypeCollapsedLabel.hidden = NO;
+        self.ovulationCell.ovulationTypeImageView.hidden = NO;
+    }
+}
+
 - (void)setDataForOvulationTestCell {
     if ([self.ovulation isEqual:@"positive"]) {
         [self.ovulationCell setSelectedOvulationTestType:OvulationTestSelectionPositive];
@@ -1398,18 +1414,35 @@ NSMutableArray *daysFromBackend;
         [self.ovulationCell.ovulationTypeNegativeImageView setSelected:NO];
         [self.ovulationCell.ovulationTypePositiveImageView setSelected:YES];
         self.ovulationCell.ovulationTypeImageView.image = [UIImage imageNamed:@"icn_positive"];
+        [self setExpandedOrClosedOvulationTestCellWithData];
+        
     } else if([self.ovulation isEqual:@"negative"]) { // negative
         [self.ovulationCell setSelectedOvulationTestType:OvulationTestSelectionNegative];
         [self.ovulationCell.ovulationTypeCollapsedLabel setText:@"Negative"];
         [self.ovulationCell.ovulationTypeNegativeImageView setSelected:YES];
         [self.ovulationCell.ovulationTypePositiveImageView setSelected:NO];
         self.ovulationCell.ovulationTypeImageView.image = [UIImage imageNamed:@"icn_negative"];
+        [self setExpandedOrClosedOvulationTestCellWithData];
+        
     } else { // no selection
         [self.ovulationCell setSelectedOvulationTestType:OvulationTestSelectionNone];
         [self.ovulationCell.ovulationTypeCollapsedLabel setText:@""];
         [self.ovulationCell.ovulationTypeNegativeImageView setSelected:NO];
         [self.ovulationCell.ovulationTypePositiveImageView setSelected:NO];
         self.ovulationCell.imageView.hidden = YES;
+        
+        if (expandOvulationTestCell) {
+            self.ovulationCell.placeholderLabel.hidden = NO;
+            self.ovulationCell.ovulationCollapsedLabel.hidden = NO;
+            self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
+            self.ovulationCell.ovulationTypeImageView.hidden = YES;
+            
+        } else { // closed cell WITHOUT data
+            self.ovulationCell.placeholderLabel.hidden = NO;
+            self.ovulationCell.ovulationCollapsedLabel.hidden = YES;
+            self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
+            self.ovulationCell.ovulationTypeImageView.hidden = YES;
+        }
     }
 }
 
@@ -2512,9 +2545,56 @@ NSMutableArray *daysFromBackend;
         // TODO
     }
     
+//    if (OvulationTestCellHasData) {
+//        // TODO
+//        [self setDataForOvulationTestCell];
+//    }
+    
+    if ([self.ovulation length] > 1) { // we have data
+        OvulationTestCellHasData = YES;
+    } else {
+        OvulationTestCellHasData = NO;
+        
+        self.ovulation = @"";
+        self.ovulationCell.ovulationTypeCollapsedLabel.text = @"";
+        
+        // reset buttons
+        [self.ovulationCell.ovulationTypePositiveImageView setSelected:NO];
+        [self.ovulationCell.ovulationTypeNegativeImageView setSelected:NO];
+        
+        [self.ovulationCell setSelectedOvulationTestType:OvulationTestSelectionNone];
+    }
     if (OvulationTestCellHasData) {
-        // TODO
         [self setDataForOvulationTestCell];
+        
+        // capitalize and set to label
+        if (self.ovulation && [self.ovulation length] > 0) {
+            self.ovulationCell.ovulationTypeCollapsedLabel.text = [self.ovulation stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                                                                                                withString:[[self.ovulation substringToIndex:1] capitalizedString]];
+        }
+        else {
+            // don't set
+            // hide labels
+            self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
+            self.ovulationCell.ovulationCollapsedLabel.hidden = YES;
+            self.ovulationCell.ovulationTypeImageView.hidden = YES;
+            self.ovulationCell.placeholderLabel.hidden = NO;
+        }
+    } else {
+        
+        if (expandOvulationTestCell) {
+            self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
+            self.ovulationCell.ovulationCollapsedLabel.hidden = NO;
+            self.ovulationCell.ovulationTypeImageView.hidden = YES;
+            self.ovulationCell.placeholderLabel.hidden = YES;
+        } else {
+            // not expanding, no data
+            // hide labels
+            self.ovulationCell.ovulationTypeCollapsedLabel.hidden = YES;
+            self.ovulationCell.ovulationCollapsedLabel.hidden = YES;
+            self.ovulationCell.ovulationTypeImageView.hidden = YES;
+            self.ovulationCell.placeholderLabel.hidden = NO;
+        }
     }
     
     if (PregnancyTestCellHasData) {

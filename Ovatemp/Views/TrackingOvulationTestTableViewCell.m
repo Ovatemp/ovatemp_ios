@@ -37,6 +37,7 @@
         self.selectedOvulationTestType = OvulationTestSelectionNone;
         [self hitBackendWithOvulationTestType:[NSNull null]];
         [self deselectAllButtons];
+        self.ovulationTypeCollapsedLabel.text = @"";
     } else {
         self.selectedOvulationTestType = OvulationTestSelectionNegative;
         [self hitBackendWithOvulationTestType:@"negative"];
@@ -53,6 +54,7 @@
         self.selectedOvulationTestType = OvulationTestSelectionNone;
         [self hitBackendWithOvulationTestType:[NSNull null]];
         [self deselectAllButtons];
+        self.ovulationTypeCollapsedLabel.text = @"";
     } else {
         self.selectedOvulationTestType = OvulationTestSelectionPositive;
         [self hitBackendWithOvulationTestType:@"positive"];
