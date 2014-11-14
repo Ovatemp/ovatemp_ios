@@ -33,6 +33,7 @@
         self.selectedPeriodType = PeriodSelectionNoSelection;
         [self hitBackendWithPeriodType:[NSNull null]];
         [self deselectAllButtons];
+        self.periodTypeCollapsedLabel.text = @"";
     } else {
         self.selectedPeriodType = PeriodSelectionNone;
         self.periodTypeCollapsedLabel.text = @"None";
@@ -49,6 +50,7 @@
         self.selectedPeriodType = PeriodSelectionNoSelection;
         [self hitBackendWithPeriodType:[NSNull null]];
         [self deselectAllButtons];
+        self.periodTypeCollapsedLabel.text = @"";
     } else {
         self.selectedPeriodType = PeriodSelectionSpotting;
         self.periodTypeCollapsedLabel.text = @"Spotting";
@@ -65,6 +67,7 @@
         self.selectedPeriodType = PeriodSelectionNoSelection;
         [self hitBackendWithPeriodType:[NSNull null]];
         [self deselectAllButtons];
+        self.periodTypeCollapsedLabel.text = @"";
     } else {
         self.selectedPeriodType = PeriodSelectionLight;
         self.periodTypeCollapsedLabel.text = @"Light";
@@ -81,6 +84,7 @@
         self.selectedPeriodType = PeriodSelectionNoSelection;
         [self hitBackendWithPeriodType:[NSNull null]];
         [self deselectAllButtons];
+        self.periodTypeCollapsedLabel.text = @"";
     } else {
         self.selectedPeriodType = PeriodSelectionMedium;
         self.periodTypeCollapsedLabel.text = @"Medium";
@@ -97,6 +101,7 @@
         self.selectedPeriodType = PeriodSelectionNoSelection;
         [self hitBackendWithPeriodType:[NSNull null]];
         [self deselectAllButtons];
+        self.periodTypeCollapsedLabel.text = @"";
     } else {
         self.selectedPeriodType = PeriodSelectionHeavy;
         self.periodTypeCollapsedLabel.text = @"Heavy";
