@@ -30,6 +30,7 @@
         self.selectedCervicalPositionType = CervicalPositionSelectionNone;
         [self hitBackendWithCervicalPositionType:[NSNull null]];
         [self deselectAllButtons];
+        self.cpTypeCollapsedLabel.text = @"";
     } else {
         self.selectedCervicalPositionType = CervicalPositionSelectionLow;
         [self hitBackendWithCervicalPositionType:@"low/closed/firm"];
@@ -45,6 +46,7 @@
         self.selectedCervicalPositionType = CervicalPositionSelectionNone;
         [self hitBackendWithCervicalPositionType:[NSNull null]];
         [self deselectAllButtons];
+        self.cpTypeCollapsedLabel.text = @"";
     } else {
         self.selectedCervicalPositionType = CervicalPositionSelectionHigh;
         [self hitBackendWithCervicalPositionType:@"high/open/soft"];

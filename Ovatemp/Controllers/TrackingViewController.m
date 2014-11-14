@@ -2174,10 +2174,49 @@ NSMutableArray *daysFromBackend;
         self.cfCell.placeholderLabel.hidden = NO;
     }
     
+//    if (CervicalPositionCellHasData) {
+//        // TODO
+////        self.cpCell.cpTypeCollapsedLabel.text = self.cervicalPosition;
+//        [self setDataForCervicalPositionCell];
+//    }
+    
+    if ([self.cervicalPosition length] > 1) { // we have data
+        CervicalPositionCellHasData = YES;
+    } else {
+        CervicalPositionCellHasData = NO;
+        
+        self.cervicalPosition = @"";
+        self.cpCell.cpTypeCollapsedLabel.text = @"";
+        
+        // reset buttons
+        [self.cpCell.highImageView setSelected:NO];
+        [self.cpCell.lowImageView setSelected:NO];
+        
+        [self.cpCell setSelectedCervicalPositionType:CervicalPositionSelectionNone];
+    }
     if (CervicalPositionCellHasData) {
-        // TODO
-//        self.cpCell.cpTypeCollapsedLabel.text = self.cervicalPosition;
         [self setDataForCervicalPositionCell];
+        
+        // capitalize and set to label
+        if (self.cervicalPosition && [self.cervicalPosition length] > 0) {
+            self.cpCell.cpTypeCollapsedLabel.text = [self.cervicalPosition stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                                                                                withString:[[self.cervicalPosition substringToIndex:1] capitalizedString]];
+        }
+        else {
+            // don't set
+            // hide lables
+            self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+            self.cpCell.collapsedLabel.hidden = YES;
+            self.cpCell.cpTypeImageView.hidden = YES;
+            self.cpCell.placeholderLabel.hidden = NO;
+        }
+        //        self.cfCell.cfTypeCollapsedLabel.text = self.cervicalFluid;
+    } else {
+        // hide lables
+        self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+        self.cpCell.collapsedLabel.hidden = YES;
+        self.cpCell.cpTypeImageView.hidden = YES;
+        self.cpCell.placeholderLabel.hidden = NO;
     }
     
     if (PeriodCellHasData) {
