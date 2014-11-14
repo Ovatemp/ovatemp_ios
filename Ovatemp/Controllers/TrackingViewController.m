@@ -4896,6 +4896,9 @@ NSMutableArray *daysFromBackend;
     // reset disturbance switch
     [self.tempCell.disturbanceSwitch setOn:NO];
     
+    currentState = TableStateAllClosed;
+    [self setTableStateForState:currentState];
+    
     // load new data
     [self refreshTrackingView];
 }
