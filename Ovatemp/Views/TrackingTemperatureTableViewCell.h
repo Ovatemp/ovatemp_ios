@@ -25,6 +25,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *collapsedLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *ondoIcon;
 
+@property (weak, nonatomic) IBOutlet UIButton *infoButton;
+@property (weak, nonatomic) IBOutlet UISwitch *disturbanceSwitch;
+@property (weak, nonatomic) IBOutlet UILabel *disturbanceLabel;
+
 @property NSDate *selectedDate;
 
 @end

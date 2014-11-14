@@ -68,6 +68,12 @@ NSMutableArray *temperatureFractionalPartPickerData;
     self.temperaturePicker.showsSelectionIndicator = YES;
     
     self.selectedDate = [[NSDate alloc] init];
+    
+    // switch
+    [self.disturbanceSwitch addTarget:self action:@selector(disturbanceSwitchChanged:) forControlEvents:UIControlEventValueChanged];
+    // color
+    self.disturbanceSwitch.onTintColor = [UIColor ovatempAquaColor];
+    
 }
 
 - (void)prepareForReuse {
@@ -108,6 +114,14 @@ NSMutableArray *temperatureFractionalPartPickerData;
 
     // Configure the view for the selected state
 }
+
+- (void)disturbanceSwitchChanged:(UISwitch *)disturbanceSwitch
+{
+    BOOL disturbance = disturbanceSwitch.on;
+    
+    [self postAndSaveDisturbanceWithDisturbance:disturbance];
+}
+
 - (IBAction)didSelectInfoButton:(id)sender {
     [self.delegate pushInfoAlertWithTitle:@"Basal Body Temperature" AndMessage:@"Temperature of the body at rest, taken immediately after awakening and before any other activity (i.e. taking a sip of water, going to the bathroom).\n\nWomen have lower basal body temperatures before ovulation, and higher temperatures afterwards." AndURL:@"http://ovatemp.helpshift.com/a/ovatemp/?s=fertility-faqs&f=learn-more-about-basal-body-temperature"];
 }
@@ -175,6 +189,26 @@ NSMutableArray *temperatureFractionalPartPickerData;
                        [Cycle cycleFromResponse:response];
                        [Calendar setDate:self.selectedDate];
 //                       if (onSuccess) onSuccess(response);
+                   }
+                   failure:^(NSError *error) {
+                       [Alert presentError:error];
+                   }];
+}
+
+- (void)postAndSaveDisturbanceWithDisturbance:(BOOL)disturbance {
+    
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+    [attributes setObject:self.selectedDate forKey:@"date"];
+    [attributes setObject:[NSNumber numberWithBool:disturbance] forKey:@"disturbance"];
+    
+    [ConnectionManager put:@"/days/"
+                    params:@{
+                             @"day": attributes,
+                             }
+                   success:^(NSDictionary *response) {
+                       [Cycle cycleFromResponse:response];
+                       [Calendar setDate:self.selectedDate];
+                       //                       if (onSuccess) onSuccess(response);
                    }
                    failure:^(NSError *error) {
                        [Alert presentError:error];
