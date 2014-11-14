@@ -622,6 +622,9 @@ NSMutableArray *daysFromBackend;
                            }
                            
                            TemperatureCellHasData = YES;
+                           self.tempCell.placeholderLabel.hidden = YES;
+                           self.tempCell.temperatureValueLabel.hidden = NO;
+                           self.tempCell.collapsedLabel.hidden = NO;
                        } else {
                            self.tempCell.placeholderLabel.hidden = NO;
                            self.tempCell.temperatureValueLabel.hidden = YES;
@@ -906,8 +909,9 @@ NSMutableArray *daysFromBackend;
         self.cfCell.placeholderLabel.hidden = YES;
         self.cfCell.cfCollapsedLabel.hidden = NO;
         self.cfCell.cfTypeCollapsedLabel.text = @"Dry";
-        self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+        self.cfCell.cfTypeCollapsedLabel.hidden = NO;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_dry"];
+        self.cfCell.cfTypeImageView.hidden = NO;
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionDry];
         [self.cfCell.dryImageView setSelected:YES];
         [self.cfCell.stickyImageView setSelected:NO];
@@ -918,37 +922,80 @@ NSMutableArray *daysFromBackend;
         self.cfCell.placeholderLabel.hidden = YES;
         self.cfCell.cfCollapsedLabel.hidden = NO;
         self.cfCell.cfTypeCollapsedLabel.text = @"Sticky";
-        self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+        self.cfCell.cfTypeCollapsedLabel.hidden = NO;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_sticky"];
+        self.cfCell.cfTypeImageView.hidden = NO;
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionSticky];
         [self.cfCell.stickyImageView setSelected:YES];
         [self.cfCell.dryImageView setSelected:NO];
         [self.cfCell.creamyImageView setSelected:NO];
         [self.cfCell.eggwhiteImageView setSelected:NO];
         
+        // if we have data and are expanding
+        if (expandCervicalFluidCell) {
+            self.cfCell.placeholderLabel.hidden = YES;
+            self.cfCell.cfCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            self.cfCell.cfTypeImageView.hidden = YES;
+        } else { // closed cell
+            self.cfCell.placeholderLabel.hidden = YES;
+            self.cfCell.cfCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeImageView.hidden = NO;
+        }
+        
     } else if ([self.cervicalFluid isEqual:@"creamy"]) {
         self.cfCell.placeholderLabel.hidden = YES;
         self.cfCell.cfCollapsedLabel.hidden = NO;
         self.cfCell.cfTypeCollapsedLabel.text = @"Creamy";
-        self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+        self.cfCell.cfTypeCollapsedLabel.hidden = NO;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_creamy"];
+        self.cfCell.cfTypeImageView.hidden = NO;
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionCreamy];
         [self.cfCell.creamyImageView setSelected:YES];
         [self.cfCell.dryImageView setSelected:NO];
         [self.cfCell.stickyImageView setSelected:NO];
         [self.cfCell.eggwhiteImageView setSelected:NO];
         
+        // if we have data and are expanding
+        if (expandCervicalFluidCell) {
+            self.cfCell.placeholderLabel.hidden = YES;
+            self.cfCell.cfCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            self.cfCell.cfTypeImageView.hidden = YES;
+        } else { // closed cell
+            self.cfCell.placeholderLabel.hidden = YES;
+            self.cfCell.cfCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeImageView.hidden = NO;
+        }
+        
     } else if ([self.cervicalFluid isEqual:@"eggwhite"]) {
         self.cfCell.placeholderLabel.hidden = YES;
         self.cfCell.cfCollapsedLabel.hidden = NO;
         self.cfCell.cfTypeCollapsedLabel.text = @"Eggwhite";
-        self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+        self.cfCell.cfTypeCollapsedLabel.hidden = NO;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_eggwhite"];
+        self.cfCell.cfTypeImageView.hidden = NO;
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionEggwhite];
         [self.cfCell.eggwhiteImageView setSelected:YES];
         [self.cfCell.creamyImageView setSelected:NO];
         [self.cfCell.dryImageView setSelected:NO];
         [self.cfCell.stickyImageView setSelected:NO];
+        
+        // if we have data and are expanding
+        if (expandCervicalFluidCell) {
+            self.cfCell.placeholderLabel.hidden = YES;
+            self.cfCell.cfCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            self.cfCell.cfTypeImageView.hidden = YES;
+        } else { // closed cell
+            self.cfCell.placeholderLabel.hidden = YES;
+            self.cfCell.cfCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeImageView.hidden = NO;
+        }
+        
     } else { // no selection
         self.cfCell.placeholderLabel.hidden = NO;
         self.cfCell.cfCollapsedLabel.hidden = YES;
@@ -961,6 +1008,19 @@ NSMutableArray *daysFromBackend;
         [self.cfCell.creamyImageView setSelected:NO];
         [self.cfCell.dryImageView setSelected:NO];
         [self.cfCell.stickyImageView setSelected:NO];
+        
+        // if we have data and are expanding
+        if (expandCervicalFluidCell) {
+            self.cfCell.placeholderLabel.hidden = YES;
+            self.cfCell.cfCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            self.cfCell.cfTypeImageView.hidden = YES;
+        } else { // closed cell WITHOUT data
+            self.cfCell.placeholderLabel.hidden = NO;
+            self.cfCell.cfCollapsedLabel.hidden = YES;
+            self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            self.cfCell.cfTypeImageView.hidden = YES;
+        }
     }
 }
 
@@ -1924,7 +1984,7 @@ NSMutableArray *daysFromBackend;
             // TODO: Finish implementation for custom cells
         case 2:
         {
-            if ([self.cfCell.cfTypeCollapsedLabel.text length] > 0) { // we have data
+            if (([self.cfCell.cfTypeCollapsedLabel.text length] > 0) || ([self.cervicalFluid length] > 1)) { // we have data
                 CervicalFluidCellHasData = YES;
             } else {
                 CervicalFluidCellHasData = NO;
@@ -2071,12 +2131,49 @@ NSMutableArray *daysFromBackend;
 
     }
     
-    // TODO: Finish implementation for custom cells
-    if (CervicalFluidCellHasData) {
-        // TODO
-//        self.cervicalFluid = [self.cfCell.cfTypeCollapsedLabel.text lowercaseString];
-        [self setDataForCervicalFluidCell];
+//    if (([self.cfCell.cfTypeCollapsedLabel.text length] > 0) || ([self.cervicalFluid length] > 1)) { // we have data
+    if ([self.cervicalFluid length] > 1) { // we have data
+        CervicalFluidCellHasData = YES;
+    } else {
+        CervicalFluidCellHasData = NO;
+        
+        self.cervicalFluid = @"";
+        self.cfCell.cfTypeCollapsedLabel.text = @"";
+        
+        // reset buttons
+        [self.cfCell.dryImageView setSelected:NO];
+        [self.cfCell.stickyImageView setSelected:NO];
+        [self.cfCell.creamyImageView setSelected:NO];
+        [self.cfCell.eggwhiteImageView setSelected:NO];
+        
+        [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionNone];
     }
+    if (CervicalFluidCellHasData) {
+        [self setDataForCervicalFluidCell];
+        
+        // capitalize and set to label
+        if (self.cervicalFluid && [self.cervicalFluid length] > 0) {
+            self.cfCell.cfTypeCollapsedLabel.text = [self.cervicalFluid stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                                                      withString:[[self.cervicalFluid substringToIndex:1] capitalizedString]];
+        }
+        else {
+            // don't set
+            // hide lables
+            self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            self.cfCell.cfCollapsedLabel.hidden = YES;
+            self.cfCell.cfTypeImageView.hidden = YES;
+            self.cfCell.placeholderLabel.hidden = NO;
+            
+        }
+//        self.cfCell.cfTypeCollapsedLabel.text = self.cervicalFluid;
+    } else {
+        // hide lables
+        self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+        self.cfCell.cfCollapsedLabel.hidden = YES;
+        self.cfCell.cfTypeImageView.hidden = YES;
+        self.cfCell.placeholderLabel.hidden = NO;
+    }
+    
     if (CervicalPositionCellHasData) {
         // TODO
 //        self.cpCell.cpTypeCollapsedLabel.text = self.cervicalPosition;
@@ -4211,31 +4308,6 @@ NSMutableArray *daysFromBackend;
     //        CGSizeMake(44, 54);
     //    }
     
-    // selected a new day, reset properties
-    firstOpenTemperatureCell = YES;
-    firstOpenCervicalFluidCell = YES;
-    firstOpenCervicalPositionCell = YES;
-    firstOpenPeriodCell = YES;
-    firstOpenIntercourseCell = YES;
-    firstOpenMoodCell = YES;
-    firstOpenSymptomsCell = YES;
-    firstOpenOvulationTestCell = YES;
-    firstOpenPregnancyTestCell = YES;
-    firstOpenSupplementsCell = YES;
-    firstOpenMedicineCell = YES;
-    
-    TemperatureCellHasData = NO;
-    CervicalFluidCellHasData = NO;
-    CervicalPositionCellHasData = NO;
-    PeriodCellHasData = NO;
-    IntercourseCellHasData = NO;
-    MoodCellHasData = NO;
-    SymptomsCellHasData = NO;
-    OvulationTestCellHasData = NO;
-    PregnancyTestCellHasData = NO;
-    SupplementsCellHasData = NO;
-    MedicineCellHasData = NO;
-    
 //    [self refreshTrackingView];
     
     NSLog(@"returning grey cell at indexPath.row:%ld", indexPath.row);
@@ -4313,6 +4385,31 @@ NSMutableArray *daysFromBackend;
     [[self.drawerCollectionView cellForItemAtIndexPath:indexPath] setNeedsDisplay];
     
     //    NSLog(@"---%@", [self.drawerCollectionView cellForItemAtIndexPath:indexPath]);
+    
+    // selected a new day, reset properties
+    firstOpenTemperatureCell = YES;
+    firstOpenCervicalFluidCell = YES;
+    firstOpenCervicalPositionCell = YES;
+    firstOpenPeriodCell = YES;
+    firstOpenIntercourseCell = YES;
+    firstOpenMoodCell = YES;
+    firstOpenSymptomsCell = YES;
+    firstOpenOvulationTestCell = YES;
+    firstOpenPregnancyTestCell = YES;
+    firstOpenSupplementsCell = YES;
+    firstOpenMedicineCell = YES;
+    
+    TemperatureCellHasData = NO;
+    CervicalFluidCellHasData = NO;
+    CervicalPositionCellHasData = NO;
+    PeriodCellHasData = NO;
+    IntercourseCellHasData = NO;
+    MoodCellHasData = NO;
+    SymptomsCellHasData = NO;
+    OvulationTestCellHasData = NO;
+    PregnancyTestCellHasData = NO;
+    SupplementsCellHasData = NO;
+    MedicineCellHasData = NO;
     
     // load new data
     [self refreshTrackingView];

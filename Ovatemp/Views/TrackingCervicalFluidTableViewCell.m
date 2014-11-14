@@ -33,6 +33,7 @@
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
         [self hitBackendWithCervicalFluidType:[NSNull null]];
         [self.dryImageView setSelected:NO];
+        self.cfTypeCollapsedLabel.text = @"";
     } else {
         self.selectedCervicalFluidType = CervicalFluidSelectionDry;
         [self hitBackendWithCervicalFluidType:@"dry"];
@@ -51,6 +52,7 @@
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
         [self hitBackendWithCervicalFluidType:[NSNull null]];
         [self.stickyImageView setSelected:NO];
+        self.cfTypeCollapsedLabel.text = @"";
     } else {
         self.selectedCervicalFluidType = CervicalFluidSelectionSticky;
         [self hitBackendWithCervicalFluidType:@"sticky"];
@@ -66,6 +68,7 @@
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
         [self hitBackendWithCervicalFluidType:[NSNull null]];
         [self.creamyImageView setSelected:NO];
+        self.cfTypeCollapsedLabel.text = @"";
     } else {
         self.selectedCervicalFluidType = CervicalFluidSelectionCreamy;
         [self hitBackendWithCervicalFluidType:@"creamy"];
@@ -81,6 +84,7 @@
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
         [self hitBackendWithCervicalFluidType:[NSNull null]];
         [self.eggwhiteImageView setSelected:NO];
+        self.cfTypeCollapsedLabel.text = @"";
     } else {
         self.selectedCervicalFluidType = CervicalFluidSelectionEggwhite;
         [self hitBackendWithCervicalFluidType:@"eggwhite"];
