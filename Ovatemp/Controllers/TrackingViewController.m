@@ -1278,65 +1278,86 @@ NSMutableArray *daysFromBackend;
     }
 }
 
+- (void)setExpandedOrClosedMoodCellWithData {
+    // if we have data and are expanding
+    if (expandMoodCell) {
+        self.moodCell.moodPlaceholderLabel.hidden = YES;
+        self.moodCell.moodCollapsedLabel.hidden = NO;
+        self.moodCell.moodTypeLabel.hidden = YES;
+    } else { // closed cell with data
+        self.moodCell.moodPlaceholderLabel.hidden = YES;
+        self.moodCell.moodCollapsedLabel.hidden = NO;
+        self.moodCell.moodTypeLabel.hidden = NO;
+    }
+}
+
 - (void)setDataForMoodCell {
+    BOOL moodIsNotNone;
+    moodIsNotNone = YES;
+    
+    [self.moodCell resetSelectedMood];
+    
     if ([self.mood isEqual:@"angry"]) {
         [self.moodCell setAngryMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Angry"];
+//        [self.moodCell.moodTypeLabel setText:@"Angry"];
     } else if ([self.mood isEqual:@"anxious"]) {
         [self.moodCell setAnxiousMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Anxious"];
+//        [self.moodCell.moodTypeLabel setText:@"Anxious"];
     } else if ([self.mood isEqual:@"calm"]) {
         [self.moodCell setCalmMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Calm"];
+//        [self.moodCell.moodTypeLabel setText:@"Calm"];
     } else if ([self.mood isEqual:@"depressed"]) {
         [self.moodCell setDepressedMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Depressed"];
+//        [self.moodCell.moodTypeLabel setText:@"Depressed"];
     } else if ([self.mood isEqual:@"moody"] || [self.mood isEqual:@"emotional"]) { // emotional
         [self.moodCell setEmotionalModdSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Emotional"];
+//        [self.moodCell.moodTypeLabel setText:@"Emotional"];
     } else if ([self.mood isEqual:@"amazing"] || [self.mood isEqual:@"excited"]) { // excited
         [self.moodCell setExcitedMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Excited"];
+//        [self.moodCell.moodTypeLabel setText:@"Excited"];
     } else if ([self.mood isEqual:@"frisky"]) {
         [self.moodCell setFriskyMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Frisky"];
+//        [self.moodCell.moodTypeLabel setText:@"Frisky"];
     } else if ([self.mood isEqual:@"frustrated"]) {
         [self.moodCell setFrustratedMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Frustrated"];
+//        [self.moodCell.moodTypeLabel setText:@"Frustrated"];
     } else if ([self.mood isEqual:@"good"] || [self.mood isEqual:@"happy"]) { // happy
         [self.moodCell setHappyMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Happy"];
+//        [self.moodCell.moodTypeLabel setText:@"Happy"];
     } else if ([self.mood isEqual:@"in love"]) {
         [self.moodCell setInLoveMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"In Love"];
+//        [self.moodCell.moodTypeLabel setText:@"In Love"];
     } else if ([self.mood isEqual:@"motivated"]) {
         [self.moodCell setMotivatedMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Motivated"];
+//        [self.moodCell.moodTypeLabel setText:@"Motivated"];
     } else if ([self.mood isEqual:@"neutral"]) {
         [self.moodCell setNeutralMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Neutral"];
+//        [self.moodCell.moodTypeLabel setText:@"Neutral"];
     } else if ([self.mood isEqual:@"sad"]) {
         [self.moodCell setSadMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Sad"];
-    } else { // worried
+//        [self.moodCell.moodTypeLabel setText:@"Sad"];
+    } else if ([self.mood isEqual:@"worried"]) {
         [self.moodCell setWorriedMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Worried"];
+//        [self.moodCell.moodTypeLabel setText:@"Worried"];
+    } else { // none
+        moodIsNotNone = NO;
+        [self.moodCell resetSelectedMood];
     }
-    //    angryMoodSelected = NO;
-    //    anxiousMoodSelected = NO;
-    //    calmMoodSelected = NO;
-    //    depressedMoodSelected = NO;
-    //    emotionalModdSelected = NO;
-    //    excitedMoodSelected = NO;
-    //    friskyMoodSelected = NO;
-    //    frustratedMoodSelected = NO;
-    //    happyMoodSelected = NO;
-    //    inLoveMoodSelected = NO;
-    //    motivatedMoodSelected = NO;
-    //    neutralMoodSelected = NO;
-    //    neutralMoodSelected = NO;
-    //    sadMoodSelected = NO;
-    //    worriedMoodSelected = NO;
+    
+    if (moodIsNotNone) {
+        [self setExpandedOrClosedMoodCellWithData];
+    } else { // mood is none
+        // hide mood type label
+        if (expandMoodCell) {
+            self.moodCell.moodPlaceholderLabel.hidden = YES;
+            self.moodCell.moodCollapsedLabel.hidden = NO;
+            self.moodCell.moodTypeLabel.hidden = YES;
+        } else { // closed cell WITHOUT data
+            self.moodCell.moodPlaceholderLabel.hidden = NO;
+            self.moodCell.moodCollapsedLabel.hidden = YES;
+            self.moodCell.moodTypeLabel.hidden = YES;
+        }
+    }
 }
 
 - (void)setSymptomWithValue:(NSInteger)value {
@@ -2084,6 +2105,10 @@ NSMutableArray *daysFromBackend;
         self.intercourse = [self.intercourseCell.intercourseTypeCollapsedLabel.text lowercaseString];
     }
     
+    if (!expandMoodCell) {
+        self.mood = [self.moodCell.moodTypeLabel.text lowercaseString];
+    }
+    
     if (!expandOvulationTestCell) {
         self.ovulation = [self.ovulationCell.ovulationTypeCollapsedLabel.text lowercaseString];
     }
@@ -2291,7 +2316,7 @@ NSMutableArray *daysFromBackend;
         }
         else {
             // don't set
-            // hide lables
+            // hide labels
             self.cfCell.cfTypeCollapsedLabel.hidden = YES;
             self.cfCell.cfCollapsedLabel.hidden = YES;
             self.cfCell.cfTypeImageView.hidden = YES;
@@ -2300,7 +2325,7 @@ NSMutableArray *daysFromBackend;
         }
 //        self.cfCell.cfTypeCollapsedLabel.text = self.cervicalFluid;
     } else {
-        // hide lables
+        // hide labels
         self.cfCell.cfTypeCollapsedLabel.hidden = YES;
         self.cfCell.cfCollapsedLabel.hidden = YES;
         self.cfCell.cfTypeImageView.hidden = YES;
@@ -2337,7 +2362,7 @@ NSMutableArray *daysFromBackend;
         }
         else {
             // don't set
-            // hide lables
+            // hide labels
             self.cpCell.cpTypeCollapsedLabel.hidden = YES;
             self.cpCell.collapsedLabel.hidden = YES;
             self.cpCell.cpTypeImageView.hidden = YES;
@@ -2345,7 +2370,7 @@ NSMutableArray *daysFromBackend;
         }
         //        self.cfCell.cfTypeCollapsedLabel.text = self.cervicalFluid;
     } else {
-        // hide lables
+        // hide labels
         self.cpCell.cpTypeCollapsedLabel.hidden = YES;
         self.cpCell.collapsedLabel.hidden = YES;
         self.cpCell.cpTypeImageView.hidden = YES;
@@ -2385,14 +2410,14 @@ NSMutableArray *daysFromBackend;
         }
         else {
             // don't set
-            // hide lables
+            // hide labels
             self.periodCell.periodTypeCollapsedLabel.hidden = YES;
             self.periodCell.periodCollapsedLabel.hidden = YES;
             self.periodCell.periodTypeImageView.hidden = YES;
             self.periodCell.placeholderLabel.hidden = NO;
         }
     } else {
-        // hide lables
+        // hide labels
         self.periodCell.periodTypeCollapsedLabel.hidden = YES;
         self.periodCell.periodCollapsedLabel.hidden = YES;
         self.periodCell.periodTypeImageView.hidden = YES;
@@ -2429,23 +2454,60 @@ NSMutableArray *daysFromBackend;
         }
         else {
             // don't set
-            // hide lables
+            // hide labels
             self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
             self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
             self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
             self.intercourseCell.placeholderLabel.hidden = NO;
         }
     } else {
-        // hide lables
+        // hide labels
         self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
         self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
         self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
         self.intercourseCell.placeholderLabel.hidden = NO;
     }
     
-    if (MoodCellHasData) {
-        // TODO
+//    if (MoodCellHasData) {
+//        // TODO
+//    }
+    
+    if ([self.mood length] > 1) { // we have data
+        MoodCellHasData = YES;
+    } else {
+        MoodCellHasData = NO;
+        
+        self.mood = @"";
+        self.moodCell.moodTypeLabel.text = @"";
+        
+        [self.moodCell resetSelectedMood];
+        
+        [self.intercourseCell setSelectedIntercourseType:IntercourseSelectionNone];
     }
+    if (MoodCellHasData) {
+        [self setDataForMoodCell];
+        
+        // capitalize and set to label
+        if (self.mood && [self.mood length] > 0) {
+            self.moodCell.moodTypeLabel.text = [self.mood stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                                                                                                withString:[[self.mood substringToIndex:1] capitalizedString]];
+        }
+        else {
+            // don't set
+            // hide labels
+            self.moodCell.moodTypeLabel.hidden = YES;
+            self.moodCell.moodCollapsedLabel.hidden = YES;
+            self.moodCell.moodPlaceholderLabel.hidden = NO;
+        }
+    } else {
+        // hide labels
+        self.moodCell.moodTypeLabel.hidden = YES;
+        self.moodCell.moodCollapsedLabel.hidden = YES;
+        self.moodCell.moodPlaceholderLabel.hidden = NO;
+    }
+    
+    [self.moodCell.moodTableView reloadData];
+    
     if (SymptomsCellHasData) {
         // TODO
     }
