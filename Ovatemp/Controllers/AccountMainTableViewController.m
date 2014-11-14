@@ -136,6 +136,10 @@ NSArray *accountMenuItems;
             
         case 3: // Help
         {
+            NSString *url = @"http://ovatemp.helpshift.com/a/ovatemp/";
+            WebViewController *webViewController = [WebViewController withURL:url];
+            webViewController.title = @"Help";
+            [self.navigationController pushViewController:webViewController animated:YES];
             break;
         }
             
