@@ -1221,6 +1221,21 @@ NSMutableArray *daysFromBackend;
 
 }
 
+- (void)setExpandedOrClosedIntercourseCellWithData {
+    // if we have data and are expanding
+    if (expandIntercourseCell) {
+        self.intercourseCell.placeholderLabel.hidden = YES;
+        self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+        self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+        self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+    } else { // closed cell with data
+        self.intercourseCell.placeholderLabel.hidden = YES;
+        self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+        self.intercourseCell.intercourseTypeCollapsedLabel.hidden = NO;
+        self.intercourseCell.intercourseTypeCollapsedImageView.hidden = NO;
+    }
+}
+
 - (void)setDataForIntercourseCell {
     if ([self.intercourse isEqual:@"protected"]) {
         self.intercourseCell.placeholderLabel.hidden = YES;
@@ -1230,6 +1245,7 @@ NSMutableArray *daysFromBackend;
         self.intercourseCell.intercourseTypeCollapsedImageView.image = [UIImage imageNamed:@"icn_i_protected"];
         [self.intercourseCell.protectedImageView setSelected:YES];
         [self.intercourseCell.unprotectedImageView setSelected:NO];
+        [self setExpandedOrClosedIntercourseCellWithData];
     } else if ([self.intercourse isEqual:@"unprotected"]) { // unprotected
         self.intercourseCell.placeholderLabel.hidden = YES;
         self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
@@ -1238,6 +1254,7 @@ NSMutableArray *daysFromBackend;
         self.intercourseCell.intercourseTypeCollapsedImageView.image = [UIImage imageNamed:@"icn_i_unprotected"];
         [self.intercourseCell.protectedImageView setSelected:NO];
         [self.intercourseCell.unprotectedImageView setSelected:YES];
+        [self setExpandedOrClosedIntercourseCellWithData];
     } else { // none
         self.intercourseCell.placeholderLabel.hidden = NO;
         self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
@@ -1246,6 +1263,18 @@ NSMutableArray *daysFromBackend;
         self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
         [self.intercourseCell.protectedImageView setSelected:NO];
         [self.intercourseCell.unprotectedImageView setSelected:NO];
+        
+        if (expandIntercourseCell) {
+            self.intercourseCell.placeholderLabel.hidden = YES;
+            self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+            self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+            self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+        } else { // closed cell WITHOUT data
+            self.intercourseCell.placeholderLabel.hidden = NO;
+            self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+            self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+            self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+        }
     }
 }
 
@@ -2368,13 +2397,50 @@ NSMutableArray *daysFromBackend;
         self.periodCell.periodCollapsedLabel.hidden = YES;
         self.periodCell.periodTypeImageView.hidden = YES;
         self.periodCell.placeholderLabel.hidden = NO;
-        
     }
     
+//    if (IntercourseCellHasData) {
+//        // TODO
+////        self.intercourse = [self.intercourseCell.intercourseTypeCollapsedLabel.text lowercaseString];
+//        [self setDataForIntercourseCell];
+//    }
+    
+    if ([self.intercourse length] > 1) { // we have data
+        IntercourseCellHasData = YES;
+    } else {
+        IntercourseCellHasData = NO;
+        
+        self.intercourse = @"";
+        self.intercourseCell.intercourseTypeCollapsedLabel.text = @"";
+        
+        // reset buttons
+        [self.intercourseCell.protectedImageView setSelected:NO];
+        [self.intercourseCell.unprotectedImageView setSelected:NO];
+        
+        [self.intercourseCell setSelectedIntercourseType:IntercourseSelectionNone];
+    }
     if (IntercourseCellHasData) {
-        // TODO
-//        self.intercourse = [self.intercourseCell.intercourseTypeCollapsedLabel.text lowercaseString];
         [self setDataForIntercourseCell];
+        
+        // capitalize and set to label
+        if (self.intercourse && [self.intercourse length] > 0) {
+            self.intercourseCell.intercourseTypeCollapsedLabel.text = [self.intercourse stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                                                                                 withString:[[self.intercourse substringToIndex:1] capitalizedString]];
+        }
+        else {
+            // don't set
+            // hide lables
+            self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+            self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+            self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+            self.intercourseCell.placeholderLabel.hidden = NO;
+        }
+    } else {
+        // hide lables
+        self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+        self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+        self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+        self.intercourseCell.placeholderLabel.hidden = NO;
     }
     
     if (MoodCellHasData) {
