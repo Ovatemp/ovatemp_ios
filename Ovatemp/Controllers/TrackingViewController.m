@@ -847,8 +847,11 @@ NSMutableArray *daysFromBackend;
     if ([day.cyclePhase isEqualToString:@"period"]) {
         self.statusCell.notEnoughInfoLabel.hidden = YES;
         
-        self.statusCell.titleLabel.text = @"Period";
-        self.statusCell.titleLabel.hidden = NO;
+        // set period, hide others
+        self.statusCell.periodLabel.text = @"PERIOD";
+        self.statusCell.periodLabel.hidden = NO;
+        self.statusCell.peakLabel.hidden = YES;
+        self.statusCell.fertilityLabel.hidden = YES;
         
         self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period"];
         self.statusCell.enterMoreInfoLabel.hidden = NO;
@@ -856,13 +859,21 @@ NSMutableArray *daysFromBackend;
     } else if ([day.cyclePhase isEqualToString:@"ovulation"]) { // fertile
         // peak date
         if ([self.selectedDate isEqual:peakDate]) {
-            self.statusCell.titleLabel.text = @"Peak Fertility";
+            self.statusCell.peakLabel.text = @"PEAK";
+            self.statusCell.fertilityLabel.text = @"FERTILITY";
+            
+            self.statusCell.peakLabel.hidden = NO;
+            self.statusCell.fertilityLabel.hidden = NO;
+            self.statusCell.notEnoughInfoLabel.hidden = YES;
+            self.statusCell.periodLabel.hidden = YES;
+        } else { // just plain fertile
+            self.statusCell.periodLabel.text = @"FERTILE";
+            self.statusCell.periodLabel.hidden = NO;
+            
+            self.statusCell.peakLabel.hidden = YES;
+            self.statusCell.fertilityLabel.hidden = YES;
+            self.statusCell.notEnoughInfoLabel.hidden = YES;
         }
-        
-        self.statusCell.notEnoughInfoLabel.hidden = YES;
-        
-        self.statusCell.titleLabel.text = @"Fertile";
-        self.statusCell.titleLabel.hidden = NO;
         
         if (currentUserProfile.tryingToConceive) {
             // green fertility image
@@ -885,8 +896,13 @@ NSMutableArray *daysFromBackend;
         
         self.statusCell.notEnoughInfoLabel.hidden = YES;
         
-        self.statusCell.titleLabel.text = @"Not Fertile";
-        self.statusCell.titleLabel.hidden = NO;
+        self.statusCell.peakLabel.text = @"NOT";
+        self.statusCell.fertilityLabel.text = @"FERTILE";
+        
+        self.statusCell.peakLabel.hidden = NO;
+        self.statusCell.fertilityLabel.hidden = NO;
+        self.statusCell.notEnoughInfoLabel.hidden = YES;
+        self.statusCell.periodLabel.hidden = YES;
         
         self.statusCell.enterMoreInfoLabel.hidden = NO;
     } else if ([day.cyclePhase isEqualToString:@"postovulation"]) { // not fertile
@@ -894,14 +910,21 @@ NSMutableArray *daysFromBackend;
         
         self.statusCell.notEnoughInfoLabel.hidden = YES;
         
-        self.statusCell.titleLabel.text = @"Not Fertile";
-        self.statusCell.titleLabel.hidden = NO;
+        self.statusCell.peakLabel.text = @"NOT";
+        self.statusCell.fertilityLabel.text = @"FERTILE";
+        
+        self.statusCell.peakLabel.hidden = NO;
+        self.statusCell.fertilityLabel.hidden = NO;
+        self.statusCell.notEnoughInfoLabel.hidden = YES;
+        self.statusCell.periodLabel.hidden = YES;
         
         self.statusCell.enterMoreInfoLabel.hidden = NO;
         
     } else { // not enough info?
         self.statusCell.notEnoughInfoLabel.hidden = NO;
-        self.statusCell.titleLabel.hidden = YES;
+        self.statusCell.periodLabel.hidden = YES;
+        self.statusCell.peakLabel.hidden = YES;
+        self.statusCell.fertilityLabel.hidden = YES;
         self.statusCell.enterMoreInfoLabel.hidden = YES;
         
         self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_empty"];
