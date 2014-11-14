@@ -637,6 +637,12 @@ NSMutableArray *daysFromBackend;
                            TemperatureCellHasData = NO;
                        }
                        
+                       if (day.disturbance) {
+                           [self.tempCell.disturbanceSwitch setOn:YES];
+                       } else {
+                           [self.tempCell.disturbanceSwitch setOn:NO];
+                       }
+                       
                        if (day.cervicalFluid) {
                            self.cervicalFluid = day.cervicalFluid;
                            self.cfCell.cfTypeCollapsedLabel.text = self.cervicalFluid;
@@ -4886,6 +4892,9 @@ NSMutableArray *daysFromBackend;
     PregnancyTestCellHasData = NO;
     SupplementsCellHasData = NO;
     MedicineCellHasData = NO;
+    
+    // reset disturbance switch
+    [self.tempCell.disturbanceSwitch setOn:NO];
     
     // load new data
     [self refreshTrackingView];
