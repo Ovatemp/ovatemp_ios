@@ -55,6 +55,8 @@ static CGFloat const kStandardSpacing = 20.0f;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+  self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor ovatempDarkGreyTitleColor] forKey:NSForegroundColorAttributeName];
+    
   if (!self.statusLabel.superview) {
     // Set up the status label
     CGRect rect = CGRectInset(self.view.frame, kStandardSpacing, kStandardSpacing);

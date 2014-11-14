@@ -28,6 +28,8 @@ NSArray *accountMenuItems;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor ovatempDarkGreyTitleColor] forKey:NSForegroundColorAttributeName];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -172,6 +174,7 @@ NSArray *accountMenuItems;
         {
             NSString *url = @"http://ovatemp.helpshift.com/a/ovatemp/?s=fertility-faqs&f=how-does-ovatemp-work";
             WebViewController *webViewController = [WebViewController withURL:url];
+            webViewController.title = @"How It Works";
             [self.navigationController pushViewController:webViewController animated:YES];
             break;
         }
