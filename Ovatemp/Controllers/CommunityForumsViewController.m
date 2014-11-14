@@ -30,6 +30,9 @@ static CGFloat const kDesaturateBy = 0.22;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+    
+    // nav bar title color
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor ovatempDarkGreyTitleColor] forKey:NSForegroundColorAttributeName];
 
   if (!kCommunityForums) {
     kCommunityForums = @[
@@ -63,7 +66,7 @@ static CGFloat const kDesaturateBy = 0.22;
 //  self.navigationController.navigationBar.backgroundColor = LIGHT;
   self.navigationController.navigationBar.barTintColor = LIGHT;
   self.navigationController.navigationBar.tintColor = DARK;
-  self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: DARK};
+//  self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: DARK};
   [self trackScreenView:@"Community"];
 }
 
