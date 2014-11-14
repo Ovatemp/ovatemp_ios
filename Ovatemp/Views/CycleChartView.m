@@ -40,8 +40,8 @@
 }
 - (IBAction)getInfo:(id)sender {
     UIAlertController *errorAlert = [UIAlertController
-                                     alertControllerWithTitle:@"Hey"
-                                     message:@"Stay Awesome"
+                                     alertControllerWithTitle:@""
+                                     message:@"This chart displays your basal body temperature, period, cervical fluid, sex, and OPK over the course of your cycle. Your fertile window is shown as a green background on the chart."
                                      preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
