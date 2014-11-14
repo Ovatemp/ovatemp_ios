@@ -36,6 +36,7 @@
         self.selectedPregnancyTestType = PregnancyTestSelectionNone;
         [self hitBackendWithPregnancyTestType:[NSNull null]];
         [self deselectAllButtons];
+        self.pregnancyTypeCollapsedLabel.text = @"";
     } else {
         self.selectedPregnancyTestType = PregnancyTestSelectionNegative;
         [self hitBackendWithPregnancyTestType:@"negative"];
@@ -51,6 +52,7 @@
         self.selectedPregnancyTestType = PregnancyTestSelectionNone;
         [self hitBackendWithPregnancyTestType:[NSNull null]];
         [self deselectAllButtons];
+        self.pregnancyTypeCollapsedLabel.text = @"";
     } else {
         self.selectedPregnancyTestType = PregnancyTestSelectionPositive;
         [self hitBackendWithPregnancyTestType:@"positive"];

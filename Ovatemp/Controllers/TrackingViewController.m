@@ -1446,6 +1446,22 @@ NSMutableArray *daysFromBackend;
     }
 }
 
+- (void)setExpandedOrClosedPregnancyTestCellWithData {
+    // if we have data and are expanding
+    if (expandPregnancyTestCell) {
+        self.pregnancyCell.placeholderLabel.hidden = NO;
+        self.pregnancyCell.pregnancyCollapsedLabel.hidden = NO;
+        self.pregnancyCell.pregnancyTypeCollapsedLabel.hidden = YES;
+        self.pregnancyCell.pregnancyTypeImageView.hidden = YES;
+        
+    } else { // closed cell with data
+        self.pregnancyCell.placeholderLabel.hidden = YES;
+        self.pregnancyCell.pregnancyCollapsedLabel.hidden = NO;
+        self.pregnancyCell.pregnancyTypeCollapsedLabel.hidden = NO;
+        self.pregnancyCell.pregnancyTypeImageView.hidden = NO;
+    }
+}
+
 - (void)setDataForPregnancyTestCell {
     if ([self.pregnancy isEqual:@"positive"]) {
         [self.pregnancyCell setSelectedPregnancyTestType:PregnancyTestSelectionPositive];
@@ -1453,18 +1469,34 @@ NSMutableArray *daysFromBackend;
         [self.pregnancyCell.pregnancyTypeNegativeImageView setSelected:NO];
         [self.pregnancyCell.pregnancyTypePositiveImageView setSelected:YES];
         self.pregnancyCell.pregnancyTypeImageView.image = [UIImage imageNamed:@"icn_positive"];
+        [self setExpandedOrClosedOvulationTestCellWithData];
+        
     } else if([self.pregnancy isEqual:@"negative"]) { // negative
         [self.pregnancyCell setSelectedPregnancyTestType:PregnancyTestSelectionNegative];
         [self.pregnancyCell.pregnancyTypeCollapsedLabel setText:@"Negative"];
         [self.pregnancyCell.pregnancyTypeNegativeImageView setSelected:YES];
         [self.pregnancyCell.pregnancyTypePositiveImageView setSelected:NO];
         self.pregnancyCell.pregnancyTypeImageView.image = [UIImage imageNamed:@"icn_negative"];
+        [self setExpandedOrClosedOvulationTestCellWithData];
     } else { // no selection
         [self.pregnancyCell setSelectedPregnancyTestType:PregnancyTestSelectionNone];
         [self.pregnancyCell.pregnancyTypeCollapsedLabel setText:@""];
         [self.pregnancyCell.pregnancyTypeNegativeImageView setSelected:NO];
         [self.pregnancyCell.pregnancyTypePositiveImageView setSelected:NO];
         self.pregnancyCell.imageView.hidden = YES;
+        
+        if (expandPregnancyTestCell) {
+            self.pregnancyCell.placeholderLabel.hidden = NO;
+            self.pregnancyCell.pregnancyCollapsedLabel.hidden = NO;
+            self.pregnancyCell.pregnancyTypeCollapsedLabel.hidden = YES;
+            self.pregnancyCell.pregnancyTypeImageView.hidden = YES;
+            
+        } else { // closed cell WITHOUT data
+            self.pregnancyCell.placeholderLabel.hidden = NO;
+            self.pregnancyCell.pregnancyCollapsedLabel.hidden = YES;
+            self.pregnancyCell.pregnancyTypeCollapsedLabel.hidden = YES;
+            self.pregnancyCell.pregnancyTypeImageView.hidden = YES;
+        }
     }
 }
 
@@ -2597,10 +2629,58 @@ NSMutableArray *daysFromBackend;
         }
     }
     
-    if (PregnancyTestCellHasData) {
-        // TODO
-        [self setDataForPregnancyTestCell];
+//    if (PregnancyTestCellHasData) {
+//        // TODO
+//        [self setDataForPregnancyTestCell];
+//    }
+    
+    if ([self.pregnancy length] > 1) { // we have data
+        PregnancyTestCellHasData = YES;
+    } else {
+        PregnancyTestCellHasData = NO;
+        
+        self.pregnancy = @"";
+        self.pregnancyCell.pregnancyTypeCollapsedLabel.text = @"";
+        
+        // reset buttons
+        [self.pregnancyCell.pregnancyTypePositiveImageView setSelected:NO];
+        [self.pregnancyCell.pregnancyTypeNegativeImageView setSelected:NO];
+        
+        [self.pregnancyCell setSelectedPregnancyTestType:PregnancyTestSelectionNone];
     }
+    if (PregnancyTestCellHasData) {
+        [self setDataForPregnancyTestCell];
+        
+        // capitalize and set to label
+        if (self.pregnancy && [self.pregnancy length] > 0) {
+            self.pregnancyCell.pregnancyTypeCollapsedLabel.text = [self.pregnancy stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                                                                                          withString:[[self.pregnancy substringToIndex:1] capitalizedString]];
+        }
+        else {
+            // don't set
+            // hide labels
+            self.pregnancyCell.pregnancyTypeCollapsedLabel.hidden = YES;
+            self.pregnancyCell.pregnancyCollapsedLabel.hidden = YES;
+            self.pregnancyCell.pregnancyTypeImageView.hidden = YES;
+            self.pregnancyCell.placeholderLabel.hidden = NO;
+        }
+    } else {
+        
+        if (expandPregnancyTestCell) {
+            self.pregnancyCell.pregnancyTypeCollapsedLabel.hidden = YES;
+            self.pregnancyCell.pregnancyCollapsedLabel.hidden = NO;
+            self.pregnancyCell.pregnancyTypeImageView.hidden = YES;
+            self.pregnancyCell.placeholderLabel.hidden = YES;
+        } else {
+            // not expanding, no data
+            // hide labels
+            self.pregnancyCell.pregnancyTypeCollapsedLabel.hidden = YES;
+            self.pregnancyCell.pregnancyCollapsedLabel.hidden = YES;
+            self.pregnancyCell.pregnancyTypeImageView.hidden = YES;
+            self.pregnancyCell.placeholderLabel.hidden = NO;
+        }
+    }
+    
     //    if (SupplementsCellHasData) {
     //        // TODO
     //    }
