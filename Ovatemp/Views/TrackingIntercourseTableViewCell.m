@@ -33,6 +33,7 @@
         [self hitBackendWithIntercourseType:[NSNull null]];
         [self.protectedImageView setSelected:NO];
         [self.unprotectedImageView setSelected:NO];
+        self.intercourseTypeCollapsedLabel.text = @"";
     } else {
         self.selectedIntercourseType = IntercourseSelectionUnprotected;
         self.intercourseTypeCollapsedLabel.text = @"Unprotected";
@@ -49,6 +50,7 @@
         [self hitBackendWithIntercourseType:[NSNull null]];
         [self.protectedImageView setSelected:NO];
         [self.unprotectedImageView setSelected:NO];
+        self.intercourseTypeCollapsedLabel.text = @"";
     } else {
         self.selectedIntercourseType = IntercourseSelectionProtected;
         self.intercourseTypeCollapsedLabel.text = @"Protected";

@@ -622,6 +622,9 @@ NSMutableArray *daysFromBackend;
                            }
                            
                            TemperatureCellHasData = YES;
+                           self.tempCell.placeholderLabel.hidden = YES;
+                           self.tempCell.temperatureValueLabel.hidden = NO;
+                           self.tempCell.collapsedLabel.hidden = NO;
                        } else {
                            self.tempCell.placeholderLabel.hidden = NO;
                            self.tempCell.temperatureValueLabel.hidden = YES;
@@ -906,49 +909,106 @@ NSMutableArray *daysFromBackend;
         self.cfCell.placeholderLabel.hidden = YES;
         self.cfCell.cfCollapsedLabel.hidden = NO;
         self.cfCell.cfTypeCollapsedLabel.text = @"Dry";
-        self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+        self.cfCell.cfTypeCollapsedLabel.hidden = NO;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_dry"];
+        self.cfCell.cfTypeImageView.hidden = NO;
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionDry];
         [self.cfCell.dryImageView setSelected:YES];
         [self.cfCell.stickyImageView setSelected:NO];
         [self.cfCell.creamyImageView setSelected:NO];
         [self.cfCell.eggwhiteImageView setSelected:NO];
         
+        // if we have data and are expanding
+        if (expandCervicalFluidCell) {
+            self.cfCell.placeholderLabel.hidden = YES;
+            self.cfCell.cfCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            self.cfCell.cfTypeImageView.hidden = YES;
+        } else { // closed cell
+            self.cfCell.placeholderLabel.hidden = YES;
+            self.cfCell.cfCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeImageView.hidden = NO;
+        }
+        
     } else if ([self.cervicalFluid isEqual:@"sticky"]) {
         self.cfCell.placeholderLabel.hidden = YES;
         self.cfCell.cfCollapsedLabel.hidden = NO;
         self.cfCell.cfTypeCollapsedLabel.text = @"Sticky";
-        self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+        self.cfCell.cfTypeCollapsedLabel.hidden = NO;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_sticky"];
+        self.cfCell.cfTypeImageView.hidden = NO;
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionSticky];
         [self.cfCell.stickyImageView setSelected:YES];
         [self.cfCell.dryImageView setSelected:NO];
         [self.cfCell.creamyImageView setSelected:NO];
         [self.cfCell.eggwhiteImageView setSelected:NO];
         
+        // if we have data and are expanding
+        if (expandCervicalFluidCell) {
+            self.cfCell.placeholderLabel.hidden = YES;
+            self.cfCell.cfCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            self.cfCell.cfTypeImageView.hidden = YES;
+        } else { // closed cell
+            self.cfCell.placeholderLabel.hidden = YES;
+            self.cfCell.cfCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeImageView.hidden = NO;
+        }
+        
     } else if ([self.cervicalFluid isEqual:@"creamy"]) {
         self.cfCell.placeholderLabel.hidden = YES;
         self.cfCell.cfCollapsedLabel.hidden = NO;
         self.cfCell.cfTypeCollapsedLabel.text = @"Creamy";
-        self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+        self.cfCell.cfTypeCollapsedLabel.hidden = NO;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_creamy"];
+        self.cfCell.cfTypeImageView.hidden = NO;
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionCreamy];
         [self.cfCell.creamyImageView setSelected:YES];
         [self.cfCell.dryImageView setSelected:NO];
         [self.cfCell.stickyImageView setSelected:NO];
         [self.cfCell.eggwhiteImageView setSelected:NO];
         
+        // if we have data and are expanding
+        if (expandCervicalFluidCell) {
+            self.cfCell.placeholderLabel.hidden = YES;
+            self.cfCell.cfCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            self.cfCell.cfTypeImageView.hidden = YES;
+        } else { // closed cell
+            self.cfCell.placeholderLabel.hidden = YES;
+            self.cfCell.cfCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeImageView.hidden = NO;
+        }
+        
     } else if ([self.cervicalFluid isEqual:@"eggwhite"]) {
         self.cfCell.placeholderLabel.hidden = YES;
         self.cfCell.cfCollapsedLabel.hidden = NO;
         self.cfCell.cfTypeCollapsedLabel.text = @"Eggwhite";
-        self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+        self.cfCell.cfTypeCollapsedLabel.hidden = NO;
         self.cfCell.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_eggwhite"];
+        self.cfCell.cfTypeImageView.hidden = NO;
         [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionEggwhite];
         [self.cfCell.eggwhiteImageView setSelected:YES];
         [self.cfCell.creamyImageView setSelected:NO];
         [self.cfCell.dryImageView setSelected:NO];
         [self.cfCell.stickyImageView setSelected:NO];
+        
+        // if we have data and are expanding
+        if (expandCervicalFluidCell) {
+            self.cfCell.placeholderLabel.hidden = YES;
+            self.cfCell.cfCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            self.cfCell.cfTypeImageView.hidden = YES;
+        } else { // closed cell
+            self.cfCell.placeholderLabel.hidden = YES;
+            self.cfCell.cfCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeImageView.hidden = NO;
+        }
+        
     } else { // no selection
         self.cfCell.placeholderLabel.hidden = NO;
         self.cfCell.cfCollapsedLabel.hidden = YES;
@@ -961,6 +1021,19 @@ NSMutableArray *daysFromBackend;
         [self.cfCell.creamyImageView setSelected:NO];
         [self.cfCell.dryImageView setSelected:NO];
         [self.cfCell.stickyImageView setSelected:NO];
+        
+        // if we have data and are expanding
+        if (expandCervicalFluidCell) {
+            self.cfCell.placeholderLabel.hidden = YES;
+            self.cfCell.cfCollapsedLabel.hidden = NO;
+            self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            self.cfCell.cfTypeImageView.hidden = YES;
+        } else { // closed cell WITHOUT data
+            self.cfCell.placeholderLabel.hidden = NO;
+            self.cfCell.cfCollapsedLabel.hidden = YES;
+            self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            self.cfCell.cfTypeImageView.hidden = YES;
+        }
     }
 }
 
@@ -969,11 +1042,25 @@ NSMutableArray *daysFromBackend;
         self.cpCell.placeholderLabel.hidden = YES;
         self.cpCell.collapsedLabel.hidden = NO;
         self.cpCell.cpTypeCollapsedLabel.text = @"Low/Closed/Firm";
-        self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+        self.cpCell.cpTypeCollapsedLabel.hidden = NO;
         self.cpCell.cpTypeImageView.image = [UIImage imageNamed:@"icn_cp_lowclosedfirm"];
         [self.cpCell setSelectedCervicalPositionType:CervicalPositionSelectionLow];
         [self.cpCell.lowImageView setSelected:YES];
         [self.cpCell.highImageView setSelected:NO];
+        
+        // if we have data and are expanding
+        if (expandCervicalPositionCell) {
+            self.cpCell.placeholderLabel.hidden = YES;
+            self.cpCell.collapsedLabel.hidden = NO;
+            self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+            self.cpCell.cpTypeImageView.hidden = YES;
+        } else { // closed cell with data
+            self.cpCell.placeholderLabel.hidden = YES;
+            self.cpCell.collapsedLabel.hidden = NO;
+            self.cpCell.cpTypeCollapsedLabel.hidden = NO;
+            self.cpCell.cpTypeImageView.hidden = NO;
+        }
+        
     } else if ([self.cervicalPosition isEqual:@"high/open/soft"]) { // high
         self.cpCell.placeholderLabel.hidden = YES;
         self.cpCell.collapsedLabel.hidden = NO;
@@ -983,6 +1070,20 @@ NSMutableArray *daysFromBackend;
         [self.cpCell setSelectedCervicalPositionType:CervicalPositionSelectionHigh];
         [self.cpCell.highImageView setSelected:YES];
         [self.cpCell.lowImageView setSelected:NO];
+        
+        // if we have data and are expanding
+        if (expandCervicalPositionCell) {
+            self.cpCell.placeholderLabel.hidden = YES;
+            self.cpCell.collapsedLabel.hidden = NO;
+            self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+            self.cpCell.cpTypeImageView.hidden = YES;
+        } else { // closed cell with data
+            self.cpCell.placeholderLabel.hidden = YES;
+            self.cpCell.collapsedLabel.hidden = NO;
+            self.cpCell.cpTypeCollapsedLabel.hidden = NO;
+            self.cpCell.cpTypeImageView.hidden = NO;
+        }
+        
     } else {
         // no selection
         self.cpCell.placeholderLabel.hidden = NO;
@@ -993,6 +1094,34 @@ NSMutableArray *daysFromBackend;
         [self.cpCell setSelectedCervicalPositionType:CervicalPositionSelectionNone];
         [self.cpCell.highImageView setSelected:NO];
         [self.cpCell.lowImageView setSelected:NO];
+        
+        // if we have data and are expanding
+        if (expandCervicalPositionCell) {
+            self.cpCell.placeholderLabel.hidden = YES;
+            self.cpCell.collapsedLabel.hidden = NO;
+            self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+            self.cpCell.cpTypeImageView.hidden = YES;
+        } else { // closed cell WITHOUT data
+            self.cpCell.placeholderLabel.hidden = NO;
+            self.cpCell.collapsedLabel.hidden = YES;
+            self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+            self.cpCell.cpTypeImageView.hidden = YES;
+        }
+    }
+}
+
+- (void)setExpandedOrClosedPeriodCellWithData {
+    // if we have data and are expanding
+    if (expandPeriodCell) {
+        self.periodCell.placeholderLabel.hidden = YES;
+        self.periodCell.periodCollapsedLabel.hidden = NO;
+        self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+        self.periodCell.periodTypeImageView.hidden = YES;
+    } else { // closed cell with data
+        self.periodCell.placeholderLabel.hidden = YES;
+        self.periodCell.periodCollapsedLabel.hidden = NO;
+        self.periodCell.periodTypeCollapsedLabel.hidden = NO;
+        self.periodCell.periodTypeImageView.hidden = NO;
     }
 }
 
@@ -1009,6 +1138,8 @@ NSMutableArray *daysFromBackend;
         [self.periodCell.lightImageView setSelected:NO];
         [self.periodCell.mediumImageView setSelected:NO];
         [self.periodCell.heavyImageView setSelected:NO];
+        [self setExpandedOrClosedPeriodCellWithData];
+        
     } else if ([self.period isEqual:@"spotting"]) {
         self.periodCell.placeholderLabel.hidden = YES;
         self.periodCell.periodCollapsedLabel.hidden = NO;
@@ -1017,6 +1148,8 @@ NSMutableArray *daysFromBackend;
         self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_spotting"];
         [self.periodCell setSelectedPeriodType:PeriodSelectionSpotting];
         [self.periodCell.spottingImageView setSelected:YES];
+        [self setExpandedOrClosedPeriodCellWithData];
+        
     } else if ([self.period isEqual:@"light"]) {
         self.periodCell.placeholderLabel.hidden = YES;
         self.periodCell.periodCollapsedLabel.hidden = NO;
@@ -1029,11 +1162,13 @@ NSMutableArray *daysFromBackend;
         [self.periodCell.spottingImageView setSelected:NO];
         [self.periodCell.mediumImageView setSelected:NO];
         [self.periodCell.heavyImageView setSelected:NO];
+        [self setExpandedOrClosedPeriodCellWithData];
+        
     } else if ([self.period isEqual:@"medium"]) {
         self.periodCell.placeholderLabel.hidden = YES;
         self.periodCell.periodCollapsedLabel.hidden = NO;
         self.periodCell.periodTypeCollapsedLabel.text = @"Medium";
-        self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+        self.periodCell.periodTypeCollapsedLabel.hidden = NO;
         self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_medium"];
         [self.periodCell setSelectedPeriodType:PeriodSelectionMedium];
         [self.periodCell.mediumImageView setSelected:YES];
@@ -1041,20 +1176,63 @@ NSMutableArray *daysFromBackend;
         [self.periodCell.spottingImageView setSelected:NO];
         [self.periodCell.lightImageView setSelected:NO];
         [self.periodCell.heavyImageView setSelected:NO];
-    } else { // heavy
-        if ([self.period isEqual:@"heavy"]) {
+        [self setExpandedOrClosedPeriodCellWithData];
+        
+    } else if ([self.period isEqual:@"heavy"]) { // heavy
+        self.periodCell.placeholderLabel.hidden = YES;
+        self.periodCell.periodCollapsedLabel.hidden = NO;
+        self.periodCell.periodTypeCollapsedLabel.text = @"Heavy";
+        self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+        self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_heavy"];
+        [self.periodCell setSelectedPeriodType:PeriodSelectionHeavy];
+        [self.periodCell.heavyImageView setSelected:YES];
+        [self.periodCell.noneImageView setSelected:NO];
+        [self.periodCell.spottingImageView setSelected:NO];
+        [self.periodCell.lightImageView setSelected:NO];
+        [self.periodCell.mediumImageView setSelected:NO];
+        [self setExpandedOrClosedPeriodCellWithData];
+        
+    } else { // no selection
+        self.periodCell.placeholderLabel.hidden = NO;
+        self.periodCell.periodCollapsedLabel.hidden = NO;
+        self.periodCell.periodTypeCollapsedLabel.text = @"";
+        self.periodCell.periodTypeCollapsedLabel.hidden = NO;
+        self.periodCell.periodTypeImageView.hidden = YES;
+        [self.periodCell setSelectedPeriodType:PeriodSelectionNone];
+        [self.periodCell.noneImageView setSelected:NO];
+        [self.periodCell.spottingImageView setSelected:NO];
+        [self.periodCell.lightImageView setSelected:NO];
+        [self.periodCell.mediumImageView setSelected:NO];
+        [self.periodCell.heavyImageView setSelected:NO];
+        
+        // if we have data and are expanding
+        if (expandPeriodCell) {
             self.periodCell.placeholderLabel.hidden = YES;
             self.periodCell.periodCollapsedLabel.hidden = NO;
-            self.periodCell.periodTypeCollapsedLabel.text = @"Heavy";
             self.periodCell.periodTypeCollapsedLabel.hidden = YES;
-            self.periodCell.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_heavy"];
-            [self.periodCell setSelectedPeriodType:PeriodSelectionHeavy];
-            [self.periodCell.heavyImageView setSelected:YES];
-            [self.periodCell.noneImageView setSelected:NO];
-            [self.periodCell.spottingImageView setSelected:NO];
-            [self.periodCell.lightImageView setSelected:NO];
-            [self.periodCell.mediumImageView setSelected:NO];
+            self.periodCell.periodTypeImageView.hidden = YES;
+        } else { // closed cell WITHOUT data
+            self.periodCell.placeholderLabel.hidden = NO;
+            self.periodCell.periodCollapsedLabel.hidden = YES;
+            self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+            self.periodCell.periodTypeImageView.hidden = YES;
         }
+    }
+
+}
+
+- (void)setExpandedOrClosedIntercourseCellWithData {
+    // if we have data and are expanding
+    if (expandIntercourseCell) {
+        self.intercourseCell.placeholderLabel.hidden = YES;
+        self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+        self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+        self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+    } else { // closed cell with data
+        self.intercourseCell.placeholderLabel.hidden = YES;
+        self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+        self.intercourseCell.intercourseTypeCollapsedLabel.hidden = NO;
+        self.intercourseCell.intercourseTypeCollapsedImageView.hidden = NO;
     }
 }
 
@@ -1067,6 +1245,7 @@ NSMutableArray *daysFromBackend;
         self.intercourseCell.intercourseTypeCollapsedImageView.image = [UIImage imageNamed:@"icn_i_protected"];
         [self.intercourseCell.protectedImageView setSelected:YES];
         [self.intercourseCell.unprotectedImageView setSelected:NO];
+        [self setExpandedOrClosedIntercourseCellWithData];
     } else if ([self.intercourse isEqual:@"unprotected"]) { // unprotected
         self.intercourseCell.placeholderLabel.hidden = YES;
         self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
@@ -1075,6 +1254,7 @@ NSMutableArray *daysFromBackend;
         self.intercourseCell.intercourseTypeCollapsedImageView.image = [UIImage imageNamed:@"icn_i_unprotected"];
         [self.intercourseCell.protectedImageView setSelected:NO];
         [self.intercourseCell.unprotectedImageView setSelected:YES];
+        [self setExpandedOrClosedIntercourseCellWithData];
     } else { // none
         self.intercourseCell.placeholderLabel.hidden = NO;
         self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
@@ -1083,68 +1263,101 @@ NSMutableArray *daysFromBackend;
         self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
         [self.intercourseCell.protectedImageView setSelected:NO];
         [self.intercourseCell.unprotectedImageView setSelected:NO];
+        
+        if (expandIntercourseCell) {
+            self.intercourseCell.placeholderLabel.hidden = YES;
+            self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
+            self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+            self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+        } else { // closed cell WITHOUT data
+            self.intercourseCell.placeholderLabel.hidden = NO;
+            self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+            self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+            self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+        }
+    }
+}
+
+- (void)setExpandedOrClosedMoodCellWithData {
+    // if we have data and are expanding
+    if (expandMoodCell) {
+        self.moodCell.moodPlaceholderLabel.hidden = YES;
+        self.moodCell.moodCollapsedLabel.hidden = NO;
+        self.moodCell.moodTypeLabel.hidden = YES;
+    } else { // closed cell with data
+        self.moodCell.moodPlaceholderLabel.hidden = YES;
+        self.moodCell.moodCollapsedLabel.hidden = NO;
+        self.moodCell.moodTypeLabel.hidden = NO;
     }
 }
 
 - (void)setDataForMoodCell {
+    BOOL moodIsNotNone;
+    moodIsNotNone = YES;
+    
+    [self.moodCell resetSelectedMood];
+    
     if ([self.mood isEqual:@"angry"]) {
         [self.moodCell setAngryMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Angry"];
+//        [self.moodCell.moodTypeLabel setText:@"Angry"];
     } else if ([self.mood isEqual:@"anxious"]) {
         [self.moodCell setAnxiousMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Anxious"];
+//        [self.moodCell.moodTypeLabel setText:@"Anxious"];
     } else if ([self.mood isEqual:@"calm"]) {
         [self.moodCell setCalmMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Calm"];
+//        [self.moodCell.moodTypeLabel setText:@"Calm"];
     } else if ([self.mood isEqual:@"depressed"]) {
         [self.moodCell setDepressedMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Depressed"];
+//        [self.moodCell.moodTypeLabel setText:@"Depressed"];
     } else if ([self.mood isEqual:@"moody"] || [self.mood isEqual:@"emotional"]) { // emotional
         [self.moodCell setEmotionalModdSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Emotional"];
+//        [self.moodCell.moodTypeLabel setText:@"Emotional"];
     } else if ([self.mood isEqual:@"amazing"] || [self.mood isEqual:@"excited"]) { // excited
         [self.moodCell setExcitedMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Excited"];
+//        [self.moodCell.moodTypeLabel setText:@"Excited"];
     } else if ([self.mood isEqual:@"frisky"]) {
         [self.moodCell setFriskyMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Frisky"];
+//        [self.moodCell.moodTypeLabel setText:@"Frisky"];
     } else if ([self.mood isEqual:@"frustrated"]) {
         [self.moodCell setFrustratedMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Frustrated"];
+//        [self.moodCell.moodTypeLabel setText:@"Frustrated"];
     } else if ([self.mood isEqual:@"good"] || [self.mood isEqual:@"happy"]) { // happy
         [self.moodCell setHappyMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Happy"];
+//        [self.moodCell.moodTypeLabel setText:@"Happy"];
     } else if ([self.mood isEqual:@"in love"]) {
         [self.moodCell setInLoveMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"In Love"];
+//        [self.moodCell.moodTypeLabel setText:@"In Love"];
     } else if ([self.mood isEqual:@"motivated"]) {
         [self.moodCell setMotivatedMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Motivated"];
+//        [self.moodCell.moodTypeLabel setText:@"Motivated"];
     } else if ([self.mood isEqual:@"neutral"]) {
         [self.moodCell setNeutralMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Neutral"];
+//        [self.moodCell.moodTypeLabel setText:@"Neutral"];
     } else if ([self.mood isEqual:@"sad"]) {
         [self.moodCell setSadMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Sad"];
-    } else { // worried
+//        [self.moodCell.moodTypeLabel setText:@"Sad"];
+    } else if ([self.mood isEqual:@"worried"]) {
         [self.moodCell setWorriedMoodSelected:YES];
-        [self.moodCell.moodTypeLabel setText:@"Worried"];
+//        [self.moodCell.moodTypeLabel setText:@"Worried"];
+    } else { // none
+        moodIsNotNone = NO;
+        [self.moodCell resetSelectedMood];
     }
-    //    angryMoodSelected = NO;
-    //    anxiousMoodSelected = NO;
-    //    calmMoodSelected = NO;
-    //    depressedMoodSelected = NO;
-    //    emotionalModdSelected = NO;
-    //    excitedMoodSelected = NO;
-    //    friskyMoodSelected = NO;
-    //    frustratedMoodSelected = NO;
-    //    happyMoodSelected = NO;
-    //    inLoveMoodSelected = NO;
-    //    motivatedMoodSelected = NO;
-    //    neutralMoodSelected = NO;
-    //    neutralMoodSelected = NO;
-    //    sadMoodSelected = NO;
-    //    worriedMoodSelected = NO;
+    
+    if (moodIsNotNone) {
+        [self setExpandedOrClosedMoodCellWithData];
+    } else { // mood is none
+        // hide mood type label
+        if (expandMoodCell) {
+            self.moodCell.moodPlaceholderLabel.hidden = YES;
+            self.moodCell.moodCollapsedLabel.hidden = NO;
+            self.moodCell.moodTypeLabel.hidden = YES;
+        } else { // closed cell WITHOUT data
+            self.moodCell.moodPlaceholderLabel.hidden = NO;
+            self.moodCell.moodCollapsedLabel.hidden = YES;
+            self.moodCell.moodTypeLabel.hidden = YES;
+        }
+    }
 }
 
 - (void)setSymptomWithValue:(NSInteger)value {
@@ -1892,6 +2105,10 @@ NSMutableArray *daysFromBackend;
         self.intercourse = [self.intercourseCell.intercourseTypeCollapsedLabel.text lowercaseString];
     }
     
+    if (!expandMoodCell) {
+        self.mood = [self.moodCell.moodTypeLabel.text lowercaseString];
+    }
+    
     if (!expandOvulationTestCell) {
         self.ovulation = [self.ovulationCell.ovulationTypeCollapsedLabel.text lowercaseString];
     }
@@ -1924,7 +2141,7 @@ NSMutableArray *daysFromBackend;
             // TODO: Finish implementation for custom cells
         case 2:
         {
-            if ([self.cfCell.cfTypeCollapsedLabel.text length] > 0) { // we have data
+            if (([self.cfCell.cfTypeCollapsedLabel.text length] > 0) || ([self.cervicalFluid length] > 1)) { // we have data
                 CervicalFluidCellHasData = YES;
             } else {
                 CervicalFluidCellHasData = NO;
@@ -2042,6 +2259,7 @@ NSMutableArray *daysFromBackend;
     }
     
     // if we opened a cell earlier, set the data we have
+#pragma mark - Fixes for Cell if closed by opening another cell
     if (TemperatureCellHasData) {
         self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f", [self.temperature floatValue]];
         
@@ -2071,33 +2289,225 @@ NSMutableArray *daysFromBackend;
 
     }
     
-    // TODO: Finish implementation for custom cells
+//    if (([self.cfCell.cfTypeCollapsedLabel.text length] > 0) || ([self.cervicalFluid length] > 1)) { // we have data
+    if ([self.cervicalFluid length] > 1) { // we have data
+        CervicalFluidCellHasData = YES;
+    } else {
+        CervicalFluidCellHasData = NO;
+        
+        self.cervicalFluid = @"";
+        self.cfCell.cfTypeCollapsedLabel.text = @"";
+        
+        // reset buttons
+        [self.cfCell.dryImageView setSelected:NO];
+        [self.cfCell.stickyImageView setSelected:NO];
+        [self.cfCell.creamyImageView setSelected:NO];
+        [self.cfCell.eggwhiteImageView setSelected:NO];
+        
+        [self.cfCell setSelectedCervicalFluidType:CervicalFluidSelectionNone];
+    }
     if (CervicalFluidCellHasData) {
-        // TODO
-//        self.cervicalFluid = [self.cfCell.cfTypeCollapsedLabel.text lowercaseString];
         [self setDataForCervicalFluidCell];
+        
+        // capitalize and set to label
+        if (self.cervicalFluid && [self.cervicalFluid length] > 0) {
+            self.cfCell.cfTypeCollapsedLabel.text = [self.cervicalFluid stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                                                      withString:[[self.cervicalFluid substringToIndex:1] capitalizedString]];
+        }
+        else {
+            // don't set
+            // hide labels
+            self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+            self.cfCell.cfCollapsedLabel.hidden = YES;
+            self.cfCell.cfTypeImageView.hidden = YES;
+            self.cfCell.placeholderLabel.hidden = NO;
+            
+        }
+//        self.cfCell.cfTypeCollapsedLabel.text = self.cervicalFluid;
+    } else {
+        // hide labels
+        self.cfCell.cfTypeCollapsedLabel.hidden = YES;
+        self.cfCell.cfCollapsedLabel.hidden = YES;
+        self.cfCell.cfTypeImageView.hidden = YES;
+        self.cfCell.placeholderLabel.hidden = NO;
+    }
+    
+//    if (CervicalPositionCellHasData) {
+//        // TODO
+////        self.cpCell.cpTypeCollapsedLabel.text = self.cervicalPosition;
+//        [self setDataForCervicalPositionCell];
+//    }
+    
+    if ([self.cervicalPosition length] > 1) { // we have data
+        CervicalPositionCellHasData = YES;
+    } else {
+        CervicalPositionCellHasData = NO;
+        
+        self.cervicalPosition = @"";
+        self.cpCell.cpTypeCollapsedLabel.text = @"";
+        
+        // reset buttons
+        [self.cpCell.highImageView setSelected:NO];
+        [self.cpCell.lowImageView setSelected:NO];
+        
+        [self.cpCell setSelectedCervicalPositionType:CervicalPositionSelectionNone];
     }
     if (CervicalPositionCellHasData) {
-        // TODO
-//        self.cpCell.cpTypeCollapsedLabel.text = self.cervicalPosition;
         [self setDataForCervicalPositionCell];
+        
+        // capitalize and set to label
+        if (self.cervicalPosition && [self.cervicalPosition length] > 0) {
+            self.cpCell.cpTypeCollapsedLabel.text = [self.cervicalPosition stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                                                                                withString:[[self.cervicalPosition substringToIndex:1] capitalizedString]];
+        }
+        else {
+            // don't set
+            // hide labels
+            self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+            self.cpCell.collapsedLabel.hidden = YES;
+            self.cpCell.cpTypeImageView.hidden = YES;
+            self.cpCell.placeholderLabel.hidden = NO;
+        }
+        //        self.cfCell.cfTypeCollapsedLabel.text = self.cervicalFluid;
+    } else {
+        // hide labels
+        self.cpCell.cpTypeCollapsedLabel.hidden = YES;
+        self.cpCell.collapsedLabel.hidden = YES;
+        self.cpCell.cpTypeImageView.hidden = YES;
+        self.cpCell.placeholderLabel.hidden = NO;
     }
     
+//    if (PeriodCellHasData) {
+//        // TODO
+////        self.period = [self.periodCell.periodTypeCollapsedLabel.text lowercaseString];
+//        [self setDataForPeriodCell];
+//    }
+    
+    if ([self.period length] > 1) { // we have data
+        PeriodCellHasData = YES;
+    } else {
+        PeriodCellHasData = NO;
+        
+        self.period = @"";
+        self.periodCell.periodTypeCollapsedLabel.text = @"";
+        
+        // reset buttons
+        [self.periodCell.noneImageView setSelected:NO];
+        [self.periodCell.spottingImageView setSelected:NO];
+        [self.periodCell.lightImageView setSelected:NO];
+        [self.periodCell.mediumImageView setSelected:NO];
+        [self.periodCell.heavyImageView setSelected:NO];
+        
+        [self.periodCell setSelectedPeriodType:PeriodSelectionNone];
+    }
     if (PeriodCellHasData) {
-        // TODO
-//        self.period = [self.periodCell.periodTypeCollapsedLabel.text lowercaseString];
         [self setDataForPeriodCell];
+        
+        // capitalize and set to label
+        if (self.period && [self.period length] > 0) {
+            self.periodCell.periodTypeCollapsedLabel.text = [self.period stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                                                                                   withString:[[self.period substringToIndex:1] capitalizedString]];
+        }
+        else {
+            // don't set
+            // hide labels
+            self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+            self.periodCell.periodCollapsedLabel.hidden = YES;
+            self.periodCell.periodTypeImageView.hidden = YES;
+            self.periodCell.placeholderLabel.hidden = NO;
+        }
+    } else {
+        // hide labels
+        self.periodCell.periodTypeCollapsedLabel.hidden = YES;
+        self.periodCell.periodCollapsedLabel.hidden = YES;
+        self.periodCell.periodTypeImageView.hidden = YES;
+        self.periodCell.placeholderLabel.hidden = NO;
     }
     
+//    if (IntercourseCellHasData) {
+//        // TODO
+////        self.intercourse = [self.intercourseCell.intercourseTypeCollapsedLabel.text lowercaseString];
+//        [self setDataForIntercourseCell];
+//    }
+    
+    if ([self.intercourse length] > 1) { // we have data
+        IntercourseCellHasData = YES;
+    } else {
+        IntercourseCellHasData = NO;
+        
+        self.intercourse = @"";
+        self.intercourseCell.intercourseTypeCollapsedLabel.text = @"";
+        
+        // reset buttons
+        [self.intercourseCell.protectedImageView setSelected:NO];
+        [self.intercourseCell.unprotectedImageView setSelected:NO];
+        
+        [self.intercourseCell setSelectedIntercourseType:IntercourseSelectionNone];
+    }
     if (IntercourseCellHasData) {
-        // TODO
-//        self.intercourse = [self.intercourseCell.intercourseTypeCollapsedLabel.text lowercaseString];
         [self setDataForIntercourseCell];
+        
+        // capitalize and set to label
+        if (self.intercourse && [self.intercourse length] > 0) {
+            self.intercourseCell.intercourseTypeCollapsedLabel.text = [self.intercourse stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                                                                                 withString:[[self.intercourse substringToIndex:1] capitalizedString]];
+        }
+        else {
+            // don't set
+            // hide labels
+            self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+            self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+            self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+            self.intercourseCell.placeholderLabel.hidden = NO;
+        }
+    } else {
+        // hide labels
+        self.intercourseCell.intercourseTypeCollapsedLabel.hidden = YES;
+        self.intercourseCell.intercourseCollapsedLabel.hidden = YES;
+        self.intercourseCell.intercourseTypeCollapsedImageView.hidden = YES;
+        self.intercourseCell.placeholderLabel.hidden = NO;
     }
     
-    if (MoodCellHasData) {
-        // TODO
+//    if (MoodCellHasData) {
+//        // TODO
+//    }
+    
+    if ([self.mood length] > 1) { // we have data
+        MoodCellHasData = YES;
+    } else {
+        MoodCellHasData = NO;
+        
+        self.mood = @"";
+        self.moodCell.moodTypeLabel.text = @"";
+        
+        [self.moodCell resetSelectedMood];
+        
+        [self.intercourseCell setSelectedIntercourseType:IntercourseSelectionNone];
     }
+    if (MoodCellHasData) {
+        [self setDataForMoodCell];
+        
+        // capitalize and set to label
+        if (self.mood && [self.mood length] > 0) {
+            self.moodCell.moodTypeLabel.text = [self.mood stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                                                                                                withString:[[self.mood substringToIndex:1] capitalizedString]];
+        }
+        else {
+            // don't set
+            // hide labels
+            self.moodCell.moodTypeLabel.hidden = YES;
+            self.moodCell.moodCollapsedLabel.hidden = YES;
+            self.moodCell.moodPlaceholderLabel.hidden = NO;
+        }
+    } else {
+        // hide labels
+        self.moodCell.moodTypeLabel.hidden = YES;
+        self.moodCell.moodCollapsedLabel.hidden = YES;
+        self.moodCell.moodPlaceholderLabel.hidden = NO;
+    }
+    
+    [self.moodCell.moodTableView reloadData];
+    
     if (SymptomsCellHasData) {
         // TODO
     }
@@ -2124,48 +2534,11 @@ NSMutableArray *daysFromBackend;
         [self refreshTrackingView]; // new info
     }
     
-//    if (currentState == TableStateTemperatureExpanded) {
-//        // fix picker
-//        // split string by .
-//        NSArray *tempChunks = [self.tempCell.temperatureValueLabel.text componentsSeparatedByString: @"."];
-//        
-//        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//        
-//        if ([defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"]) {
-//            [self.tempCell.temperaturePicker selectRow:([tempChunks[0] intValue] - 90) inComponent:0 animated:NO];
-//            [self.tempCell.temperaturePicker selectRow:[tempChunks[1] intValue] inComponent:0 animated:NO];
-//        } else {
-//            NSLog(@"%d, %d", [tempChunks[0] intValue], [tempChunks[1] intValue]);
-//            
-//            NSLog(@"%ld", (long)[self.tempCell.temperaturePicker selectedRowInComponent:0]);
-//            NSLog(@"%ld", (long)[self.tempCell.temperaturePicker selectedRowInComponent:1]);
-//            
-//            [self.tempCell.temperaturePicker selectRow:([tempChunks[0] intValue] - 32) inComponent:0 animated:NO];
-//            [self.tempCell.temperaturePicker selectRow:[tempChunks[1] intValue] inComponent:0 animated:NO];
-//        }
-//    }
-//    
-//    NSLog(@"%ld", (long)[self.tempCell.temperaturePicker selectedRowInComponent:0]);
-//    NSLog(@"%ld", (long)[self.tempCell.temperaturePicker selectedRowInComponent:1]);
-    
     [tableView setNeedsDisplay];
     [tableView setNeedsLayout];
 }
 
 - (void)setTableStateForState:(TableStateType)state {
-    
-    //    TableStateAllClosed,
-    //    TableStateTemperatureExpanded,
-    //    TableStateCervicalFluidExpanded,
-    //    TableStateCervicalPositionExpanded,
-    //    TableStatePeriodExpanded,
-    //    TableStateIntercourseExpanded,
-    //    TableStateMoodExpanded,
-    //    TableStateSymptomsExpanded,
-    //    TableStateOvulationTestExpanded,
-    //    TableStatePregnancyTestExpanded,
-    //    TableStateSupplementsExpanded,
-    //    TableStateMedicineExpanded,
     
     switch (state) {
 #pragma mark - TableStateAllClosed
@@ -4211,31 +4584,6 @@ NSMutableArray *daysFromBackend;
     //        CGSizeMake(44, 54);
     //    }
     
-    // selected a new day, reset properties
-    firstOpenTemperatureCell = YES;
-    firstOpenCervicalFluidCell = YES;
-    firstOpenCervicalPositionCell = YES;
-    firstOpenPeriodCell = YES;
-    firstOpenIntercourseCell = YES;
-    firstOpenMoodCell = YES;
-    firstOpenSymptomsCell = YES;
-    firstOpenOvulationTestCell = YES;
-    firstOpenPregnancyTestCell = YES;
-    firstOpenSupplementsCell = YES;
-    firstOpenMedicineCell = YES;
-    
-    TemperatureCellHasData = NO;
-    CervicalFluidCellHasData = NO;
-    CervicalPositionCellHasData = NO;
-    PeriodCellHasData = NO;
-    IntercourseCellHasData = NO;
-    MoodCellHasData = NO;
-    SymptomsCellHasData = NO;
-    OvulationTestCellHasData = NO;
-    PregnancyTestCellHasData = NO;
-    SupplementsCellHasData = NO;
-    MedicineCellHasData = NO;
-    
 //    [self refreshTrackingView];
     
     NSLog(@"returning grey cell at indexPath.row:%ld", indexPath.row);
@@ -4313,6 +4661,31 @@ NSMutableArray *daysFromBackend;
     [[self.drawerCollectionView cellForItemAtIndexPath:indexPath] setNeedsDisplay];
     
     //    NSLog(@"---%@", [self.drawerCollectionView cellForItemAtIndexPath:indexPath]);
+    
+    // selected a new day, reset properties
+    firstOpenTemperatureCell = YES;
+    firstOpenCervicalFluidCell = YES;
+    firstOpenCervicalPositionCell = YES;
+    firstOpenPeriodCell = YES;
+    firstOpenIntercourseCell = YES;
+    firstOpenMoodCell = YES;
+    firstOpenSymptomsCell = YES;
+    firstOpenOvulationTestCell = YES;
+    firstOpenPregnancyTestCell = YES;
+    firstOpenSupplementsCell = YES;
+    firstOpenMedicineCell = YES;
+    
+    TemperatureCellHasData = NO;
+    CervicalFluidCellHasData = NO;
+    CervicalPositionCellHasData = NO;
+    PeriodCellHasData = NO;
+    IntercourseCellHasData = NO;
+    MoodCellHasData = NO;
+    SymptomsCellHasData = NO;
+    OvulationTestCellHasData = NO;
+    PregnancyTestCellHasData = NO;
+    SupplementsCellHasData = NO;
+    MedicineCellHasData = NO;
     
     // load new data
     [self refreshTrackingView];

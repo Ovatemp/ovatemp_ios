@@ -20,7 +20,7 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="99" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PERIOD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Te-XY-AXb">
+                    <label opaque="NO" userInteractionEnabled="NO" tag="99" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PERIOD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Te-XY-AXb">
                         <rect key="frame" x="6" y="7" width="46" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -154,7 +154,7 @@
                 <outlet property="mediumLabel" destination="glL-cP-BCT" id="wen-50-p5a"/>
                 <outlet property="noneImageView" destination="gU1-Uo-n67" id="4dl-j4-4oo"/>
                 <outlet property="noneLabel" destination="Ycl-Wo-j64" id="m4S-my-6g3"/>
-                <outlet property="periodCollapsedLabel" destination="6Te-XY-AXb" id="G78-ty-Smq"/>
+                <outlet property="periodCollapsedLabel" destination="6Te-XY-AXb" id="Cqg-6U-DPa"/>
                 <outlet property="periodTypeCollapsedLabel" destination="udb-v0-hPp" id="LJb-wA-7C4"/>
                 <outlet property="periodTypeImageView" destination="rBv-fi-XpT" id="ejT-jg-K4P"/>
                 <outlet property="placeholderLabel" destination="67X-dD-QIh" id="OIu-pu-sq6"/>

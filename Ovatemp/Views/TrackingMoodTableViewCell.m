@@ -360,12 +360,14 @@ NSIndexPath *selectedIndexPath;
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
                 [self hitBackendWithMoodType:[NSNull null]];
 //                self.angryMoodSelected = NO;
+                self.moodTypeLabel.text = @"";
                 [self resetSelectedMood];
             } else { // select cell
                 [self resetSelectedMood];
                 self.angryMoodSelected = YES;
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
                 [self hitBackendWithMoodType:@"angry"];
+                self.moodTypeLabel.text = @"Angry";
             }
             break;
         }
@@ -376,11 +378,13 @@ NSIndexPath *selectedIndexPath;
                 [self hitBackendWithMoodType:[NSNull null]];
 //                self.anxiousMoodSelected = NO;
                 [self resetSelectedMood];
+                self.moodTypeLabel.text = @"";
             } else {
                 [self resetSelectedMood];
                 self.anxiousMoodSelected = YES;
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
                 [self hitBackendWithMoodType:@"anxious"];
+                self.moodTypeLabel.text = @"Anxious";
             }
             break;
         }
@@ -391,11 +395,13 @@ NSIndexPath *selectedIndexPath;
                 [self hitBackendWithMoodType:[NSNull null]];
 //                self.calmMoodSelected = NO;
                 [self resetSelectedMood];
+                self.moodTypeLabel.text = @"";
             } else {
                 [self resetSelectedMood];
                 self.calmMoodSelected = YES;
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
                 [self hitBackendWithMoodType:@"calm"];
+                self.moodTypeLabel.text = @"Calm";
             }
             break;
         }
@@ -406,11 +412,13 @@ NSIndexPath *selectedIndexPath;
                 [self hitBackendWithMoodType:[NSNull null]];
 //                self.depressedMoodSelected = NO;
                 [self resetSelectedMood];
+                self.moodTypeLabel.text = @"";
             } else {
                 [self resetSelectedMood];
                 self.depressedMoodSelected = YES;
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
                 [self hitBackendWithMoodType:@"depressed"];
+                self.moodTypeLabel.text = @"Depressed";
             }
             break;
         }
@@ -421,11 +429,13 @@ NSIndexPath *selectedIndexPath;
                 [self hitBackendWithMoodType:[NSNull null]];
 //                self.emotionalModdSelected = NO;
                 [self resetSelectedMood];
+                self.moodTypeLabel.text = @"";
             } else {
                 [self resetSelectedMood];
                 self.emotionalModdSelected = YES;
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
                 [self hitBackendWithMoodType:@"moody"];
+                self.moodTypeLabel.text = @"Moody";
             }
             break;
         }
@@ -436,11 +446,13 @@ NSIndexPath *selectedIndexPath;
                 [self hitBackendWithMoodType:[NSNull null]];
 //                self.excitedMoodSelected = NO;
                 [self resetSelectedMood];
+                self.moodTypeLabel.text = @"";
             } else {
                 [self resetSelectedMood];
                 self.excitedMoodSelected = YES;
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
                 [self hitBackendWithMoodType:@"amazing"];
+                self.moodTypeLabel.text = @"Amazing";
             }
             break;
         }
@@ -451,11 +463,13 @@ NSIndexPath *selectedIndexPath;
                 [self hitBackendWithMoodType:[NSNull null]];
 //                self.friskyMoodSelected = NO;
                 [self resetSelectedMood];
+                self.moodTypeLabel.text = @"";
             } else {
                 [self resetSelectedMood];
                 self.friskyMoodSelected = YES;
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
                 [self hitBackendWithMoodType:@"frisky"];
+                self.moodTypeLabel.text = @"Frisky";
             }
             break;
         }
@@ -466,11 +480,13 @@ NSIndexPath *selectedIndexPath;
                 [self hitBackendWithMoodType:[NSNull null]];
 //                self.friskyMoodSelected = NO;
                 [self resetSelectedMood];
+                self.moodTypeLabel.text = @"";
             } else {
                 [self resetSelectedMood];
                 self.frustratedMoodSelected = YES;
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
                 [self hitBackendWithMoodType:@"frustrated"];
+                self.moodTypeLabel.text = @"Frustrated";
             }
             break;
         }
@@ -481,11 +497,13 @@ NSIndexPath *selectedIndexPath;
                 [self hitBackendWithMoodType:[NSNull null]];
 //                self.happyMoodSelected = NO;
                 [self resetSelectedMood];
+                self.moodTypeLabel.text = @"";
             } else {
                 [self resetSelectedMood];
                 self.happyMoodSelected = YES;
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
                 [self hitBackendWithMoodType:@"good"];
+                self.moodTypeLabel.text = @"Good";
             }
             break;
     }
@@ -496,11 +514,13 @@ NSIndexPath *selectedIndexPath;
                 [self hitBackendWithMoodType:[NSNull null]];
 //                self.inLoveMoodSelected = NO;
                 [self resetSelectedMood];
+                self.moodTypeLabel.text = @"";
             } else {
                 [self resetSelectedMood];
                 self.inLoveMoodSelected = YES;
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
                 [self hitBackendWithMoodType:@"in love"];
+                self.moodTypeLabel.text = @"In Love";
             }
             break;
         }
@@ -516,6 +536,7 @@ NSIndexPath *selectedIndexPath;
                 self.motivatedMoodSelected = YES;
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
                 [self hitBackendWithMoodType:@"motivated"];
+                self.moodTypeLabel.text = @"Motivated";
             }
             break;
         }
@@ -526,11 +547,13 @@ NSIndexPath *selectedIndexPath;
                 [self hitBackendWithMoodType:[NSNull null]];
 //                self.neutralMoodSelected = NO;
                 [self resetSelectedMood];
+                self.moodTypeLabel.text = @"";
             } else {
                 [self resetSelectedMood];
                 self.neutralMoodSelected = YES;
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
                 [self hitBackendWithMoodType:@"neutral"];
+                self.moodTypeLabel.text = @"Neutral";
             }
             break;
         }
@@ -541,12 +564,14 @@ NSIndexPath *selectedIndexPath;
                 [self hitBackendWithMoodType:[NSNull null]];
 //                self.sadMoodSelected = NO;
                 [self resetSelectedMood];
+                self.moodTypeLabel.text = @"";
             } else {
                 [self resetSelectedMood];
                 self.sadMoodSelected = YES;
 //                [self selectMoodAtIndexPath:indexPath];
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
                 [self hitBackendWithMoodType:@"sad"];
+                self.moodTypeLabel.text = @"Sad";
             }
             break;
         }
@@ -557,11 +582,13 @@ NSIndexPath *selectedIndexPath;
                 [self hitBackendWithMoodType:[NSNull null]];
 //                self.worriedMoodSelected = NO;
                 [self resetSelectedMood];
+                self.moodTypeLabel.text = @"";
             } else {
                 [self resetSelectedMood];
                 self.worriedMoodSelected = YES;
                 [self.moodTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
                 [self hitBackendWithMoodType:@"worried"];
+                self.moodTypeLabel.text = @"Worried";
             }
             break;
         }

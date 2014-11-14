@@ -35,4 +35,6 @@
 @property BOOL sadMoodSelected;
 @property BOOL worriedMoodSelected;
 
+- (void)resetSelectedMood;
+
 @end
