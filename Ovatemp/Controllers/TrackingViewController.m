@@ -2717,6 +2717,10 @@ NSMutableArray *daysFromBackend;
                 self.tempCell.temperatureValueLabel.hidden = YES;
             }
             
+            self.tempCell.infoButton.hidden = NO;
+            self.tempCell.disturbanceLabel.hidden = YES;
+            self.tempCell.disturbanceSwitch.hidden = YES;
+            
             expandCervicalFluidCell = NO;
             self.cfCell.dryImageView.hidden = YES;
             self.cfCell.dryLabel.hidden = YES;
@@ -2887,6 +2891,10 @@ NSMutableArray *daysFromBackend;
             self.tempCell.temperatureValueLabel.hidden = NO;
             self.tempCell.placeholderLabel.hidden = YES;
             self.tempCell.collapsedLabel.hidden = NO;
+            
+            self.tempCell.infoButton.hidden = YES;
+            self.tempCell.disturbanceLabel.hidden = NO;
+            self.tempCell.disturbanceSwitch.hidden = NO;
             
             expandCervicalFluidCell = NO;
             self.cfCell.dryImageView.hidden = YES;
@@ -3070,6 +3078,10 @@ NSMutableArray *daysFromBackend;
                 self.tempCell.temperatureValueLabel.hidden = YES;
             }
             
+            self.tempCell.infoButton.hidden = NO;
+            self.tempCell.disturbanceLabel.hidden = YES;
+            self.tempCell.disturbanceSwitch.hidden = YES;
+            
             expandCervicalFluidCell = YES;
             // unhide cervical fluid component
             
@@ -3228,6 +3240,10 @@ NSMutableArray *daysFromBackend;
                 self.tempCell.collapsedLabel.hidden = YES;
                 self.tempCell.temperatureValueLabel.hidden = YES;
             }
+            
+            self.tempCell.infoButton.hidden = NO;
+            self.tempCell.disturbanceLabel.hidden = YES;
+            self.tempCell.disturbanceSwitch.hidden = YES;
             
             expandCervicalFluidCell = NO;
             self.cfCell.dryImageView.hidden = YES;
@@ -3404,6 +3420,10 @@ NSMutableArray *daysFromBackend;
                 self.tempCell.temperatureValueLabel.hidden = YES;
             }
             
+            self.tempCell.infoButton.hidden = NO;
+            self.tempCell.disturbanceLabel.hidden = YES;
+            self.tempCell.disturbanceSwitch.hidden = YES;
+            
             expandCervicalFluidCell = NO;
             self.cfCell.dryImageView.hidden = YES;
             self.cfCell.dryLabel.hidden = YES;
@@ -3579,6 +3599,10 @@ NSMutableArray *daysFromBackend;
                 self.tempCell.collapsedLabel.hidden = YES;
                 self.tempCell.temperatureValueLabel.hidden = YES;
             }
+            
+            self.tempCell.infoButton.hidden = NO;
+            self.tempCell.disturbanceLabel.hidden = YES;
+            self.tempCell.disturbanceSwitch.hidden = YES;
             
             expandCervicalFluidCell = NO;
             self.cfCell.dryImageView.hidden = YES;
@@ -3757,6 +3781,10 @@ NSMutableArray *daysFromBackend;
                 self.tempCell.temperatureValueLabel.hidden = YES;
             }
             
+            self.tempCell.infoButton.hidden = NO;
+            self.tempCell.disturbanceLabel.hidden = YES;
+            self.tempCell.disturbanceSwitch.hidden = YES;
+            
             expandCervicalFluidCell = NO;
             self.cfCell.dryImageView.hidden = YES;
             self.cfCell.dryLabel.hidden = YES;
@@ -3929,6 +3957,10 @@ NSMutableArray *daysFromBackend;
                 self.tempCell.collapsedLabel.hidden = YES;
                 self.tempCell.temperatureValueLabel.hidden = YES;
             }
+            
+            self.tempCell.infoButton.hidden = NO;
+            self.tempCell.disturbanceLabel.hidden = YES;
+            self.tempCell.disturbanceSwitch.hidden = YES;
             
             expandCervicalFluidCell = NO;
             self.cfCell.dryImageView.hidden = YES;
@@ -4109,6 +4141,10 @@ NSMutableArray *daysFromBackend;
                 self.tempCell.temperatureValueLabel.hidden = YES;
             }
             
+            self.tempCell.infoButton.hidden = NO;
+            self.tempCell.disturbanceLabel.hidden = YES;
+            self.tempCell.disturbanceSwitch.hidden = YES;
+            
             expandCervicalFluidCell = NO;
             self.cfCell.dryImageView.hidden = YES;
             self.cfCell.dryLabel.hidden = YES;
@@ -4278,6 +4314,10 @@ NSMutableArray *daysFromBackend;
                 self.tempCell.collapsedLabel.hidden = YES;
                 self.tempCell.temperatureValueLabel.hidden = YES;
             }
+            
+            self.tempCell.infoButton.hidden = NO;
+            self.tempCell.disturbanceLabel.hidden = YES;
+            self.tempCell.disturbanceSwitch.hidden = YES;
             
             expandCervicalFluidCell = NO;
             self.cfCell.dryImageView.hidden = YES;
