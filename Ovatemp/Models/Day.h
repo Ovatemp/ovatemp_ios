@@ -16,7 +16,7 @@
 
 @interface Day : BaseModel
 
-#define kCervicalFluidTypes @[@"sticky", @"creamy", @"eggwhite"]
+#define kCervicalFluidTypes @[@"dry", @"sticky", @"creamy", @"eggwhite"]
 @property (nonatomic, retain) NSString* cervicalFluid;
 
 #define kCervicalPositionTypes @[@"low/closed/firm", @"high/open/soft"]
