@@ -13,7 +13,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icn_tracking_empty" translatesAutoresizingMaskIntoConstraints="NO" id="nh5-Ku-eu0">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icn_tracking_fertile" translatesAutoresizingMaskIntoConstraints="NO" id="nh5-Ku-eu0">
                         <rect key="frame" x="90" y="25" width="140" height="140"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ID4-fj-0Xk">
@@ -32,15 +32,27 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PERIOD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCP-qn-NsI">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter more info for improved fertility insights" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Sb-ss-ipD">
+                        <rect key="frame" x="95" y="84" width="131" height="54"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PERIOD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCP-qn-NsI">
                         <rect key="frame" x="120" y="53" width="80" height="32"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="27"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter more info for improved fertility insights" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Sb-ss-ipD">
-                        <rect key="frame" x="95" y="84" width="131" height="54"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PEAK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfT-rP-dUb">
+                        <rect key="frame" x="130" y="34" width="61" height="27"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="27"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FERTILITY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80i-ss-GMu">
+                        <rect key="frame" x="105" y="58" width="110" height="29"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="27"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -53,16 +65,18 @@
             <connections>
                 <outlet property="cycleImageView" destination="nh5-Ku-eu0" id="QIG-ol-LxS"/>
                 <outlet property="enterMoreInfoLabel" destination="9Sb-ss-ipD" id="XyG-Ug-A2q"/>
+                <outlet property="fertilityLabel" destination="80i-ss-GMu" id="4wT-dY-9f2"/>
                 <outlet property="notEnoughInfoLabel" destination="xGa-YN-Yhu" id="ZJ5-bz-jBt"/>
                 <outlet property="notesButton" destination="ID4-fj-0Xk" id="p5v-pa-q2W"/>
+                <outlet property="peakLabel" destination="MfT-rP-dUb" id="xq4-4V-Zab"/>
                 <outlet property="periodLabel" destination="bCP-qn-NsI" id="4Op-LO-KCD"/>
             </connections>
-            <point key="canvasLocation" x="172" y="206"/>
+            <point key="canvasLocation" x="172" y="198"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="icn_notes_empty" width="25" height="30"/>
         <image name="icn_notes_pressed" width="25" height="30"/>
-        <image name="icn_tracking_empty" width="140" height="140"/>
+        <image name="icn_tracking_fertile" width="140" height="145"/>
     </resources>
 </document>

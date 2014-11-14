@@ -24,4 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *enterMoreInfoLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *cycleImageView;
 
+@property (weak, nonatomic) IBOutlet UILabel *peakLabel;
+@property (weak, nonatomic) IBOutlet UILabel *fertilityLabel;
+
 @end
