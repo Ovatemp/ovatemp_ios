@@ -118,7 +118,22 @@ static NSDictionary *propertyOptions;
 }
 
 - (void)setValue:(id)value forKey:(NSString *)key {
-  if(!propertyOptions) {
+//  if(!propertyOptions) {
+//    propertyOptions = @{
+//                        @"cervicalFluid": kCervicalFluidTypes,
+//                        @"cyclePhase": kCyclePhaseTypes,
+//                        @"vaginalSensation": kVaginalSensationTypes,
+//                        @"intercourse": kIntercourseTypes,
+//                        @"ferning": kFerningTypes,
+//                        @"mood": kMoodTypes,
+//                        @"pregnancyTest": kPregnancyTestTypes,
+//                        @"opk": kOpkTypes,
+//                        @"period": kPeriodTypes,
+//                        @"cervical_position": kCervicalPositionTypes
+//                        };
+//  }
+    
+    // force resetting of propertyOptions in order to account new new attributes (ie: dry cervical fluid)
     propertyOptions = @{
                         @"cervicalFluid": kCervicalFluidTypes,
                         @"cyclePhase": kCyclePhaseTypes,
@@ -131,7 +146,6 @@ static NSDictionary *propertyOptions;
                         @"period": kPeriodTypes,
                         @"cervical_position": kCervicalPositionTypes
                         };
-  }
 
   if(propertyOptions[key]) {
     NSArray *possibleValues = propertyOptions[key];
