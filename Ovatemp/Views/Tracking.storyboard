@@ -91,6 +91,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="icn_calendar" id="h88-Hg-Y8d">
                             <color key="tintColor" red="0.11764705882352941" green="0.39215686274509803" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="displayCalendar:" destination="3fu-mC-j0h" id="1r0-so-PHa"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

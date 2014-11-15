@@ -19,6 +19,7 @@
 #import "DateCollectionViewCell.h"
 #import "WebViewController.h"
 #import "UserProfile.h"
+#import "CalendarViewController.h"
 
 #import "TrackingStatusTableViewCell.h"
 #import "TrackingTemperatureTableViewCell.h"
@@ -546,6 +547,19 @@ NSMutableArray *daysFromBackend;
      [NSNumber numberWithInteger: UIInterfaceOrientationLandscapeLeft]
                                 forKey:@"orientation"];
     
+}
+
+- (IBAction)displayCalendar:(id)sender {
+
+    CalendarViewController *calendarViewController = [[CalendarViewController alloc] initWithNibName:@"CalendarViewController" bundle:nil];
+    [calendarViewController.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(popWebView)]];
+    
+    // fix nav bar
+    [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 64)];
+    
+    [self pushViewController:calendarViewController];
+    
+    didLeaveToWebView = YES;
 }
 
 - (void)setTitleView {
