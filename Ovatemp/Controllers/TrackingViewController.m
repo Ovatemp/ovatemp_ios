@@ -577,6 +577,43 @@ NSMutableArray *daysFromBackend;
     
     // don't have the backend stuff set up currently
     // TODO: FIXME, hit backend for new data from date
+
+    [ConnectionManager get:@"/days"
+                    params:@{
+                             @"start_date": [drawerDateData firstObject],
+                             @"end_date": [drawerDateData lastObject]
+                             }
+                   success:^(NSDictionary *response) {
+                       NSArray *orphanDays = response[@"days"];
+                       NSArray *cycles = response[@"cycles"]; // array of dictionaries
+                       // [cycles[0] objectForKey:@"days"] <- array of days
+                       // [[[cycles[0] objectForKey:@"days"] objectAtIndex:0] objectForKey:@"date"]
+                       for (NSDictionary *days in cycles) {
+                           NSArray *daysArray = [days objectForKey:@"days"];
+                           for (NSDictionary *day in daysArray) {
+                               NSLog(@"%@", [day objectForKey:@"date"]);
+                           }
+                       }
+                       NSLog(@"%@", response);
+                       
+//                       if(orphanDays) {
+//                           for(NSDictionary *dayResponse in orphanDays) {
+//                               [Day withAttributes:dayResponse];
+//                           }
+//                       }
+//                       
+//                       if(cycles) {
+//                           for(NSDictionary *cycleResponse in cycles) {
+//                               [Cycle cycleFromResponse:cycleResponse];
+//                           }
+//                       }
+                       
+//                       kFullyLoaded = YES;
+//                       if(onSuccess) onSuccess(response);
+                   }
+                   failure:^(NSError *error) {
+                       NSLog(@"error: %@", error);
+                   }];
     
     [ConnectionManager get:@"/cycles"
                     params:@{
