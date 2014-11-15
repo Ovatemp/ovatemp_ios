@@ -455,6 +455,33 @@ NSMutableArray *daysFromBackend;
         [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 90)];
         didLeaveToWebView = NO;
     }
+    
+    // refresh date drawer
+    daysFromBackend = [[NSMutableArray alloc] init];
+    
+    [ConnectionManager get:@"/days"
+                    params:@{
+                             @"start_date": [drawerDateData firstObject],
+                             @"end_date": [drawerDateData lastObject]
+                             }
+                   success:^(NSDictionary *response) {
+                       //                       NSArray *orphanDays = response[@"days"];
+                       NSArray *cycles = response[@"cycles"]; // array of dictionaries
+                       // [cycles[0] objectForKey:@"days"] <- array of days
+                       // [[[cycles[0] objectForKey:@"days"] objectAtIndex:0] objectForKey:@"date"]
+                       for (NSDictionary *days in cycles) {
+                           NSArray *daysArray = [days objectForKey:@"days"];
+                           for (NSDictionary *day in daysArray) {
+                               //                               NSLog(@"%@", [day objectForKey:@"date"]);
+                               //                               [daysFromBackend addObject:[day objectForKey:@"date"]]; <- this will give you the date, we need the whole day dictionary
+                               [daysFromBackend addObject:day];
+                           }
+                       }
+                       [self.drawerCollectionView reloadData];
+                   }
+                   failure:^(NSError *error) {
+                       NSLog(@"error: %@", error);
+                   }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -563,6 +590,11 @@ NSMutableArray *daysFromBackend;
     
     self.arrowImageView.frame = CGRectMake(90, 35, 24, 8);
     
+    if (!lowerDrawer) {
+        // flip arrow if the drawer is already open
+        self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI);
+    }
+    
     [_headerTitleSubtitleView addSubview:self.arrowImageView];
     
     [_headerTitleSubtitleView addSubview:subtitleView];
@@ -592,15 +624,6 @@ NSMutableArray *daysFromBackend;
                        //                       if (onSuccess) onSuccess(response);
                        
                        // set data
-                       
-                       daysFromBackend = [[NSMutableArray alloc] initWithArray:[response objectForKey:@"days"]];
-                       if ([daysFromBackend count] == 1) {
-                           NSLog(@"only got one day back from backend");
-                       } else {
-                           NSLog(@"[daysFromBackend count]:%lu", (unsigned long)[daysFromBackend count]);
-                       }
-                       [self.drawerCollectionView reloadData];
-                       
                        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                        
                        BOOL tempPrefFahrenheit = [defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"];
@@ -829,7 +852,6 @@ NSMutableArray *daysFromBackend;
         self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI);
         firstOpenView = NO;
     }
-    
     
     // load new data into tableview data sources
     [self.tableView reloadData];
@@ -4726,10 +4748,6 @@ NSMutableArray *daysFromBackend;
     
     // days from backend
     
-    if (indexPath.row == 80) {
-        NSLog(@"nov 7th");
-    }
-    
     for (NSDictionary *dayDict in daysFromBackend) {
         NSDateFormatter *dtFormatter = [[NSDateFormatter alloc] init];
         [dtFormatter setLocale:[NSLocale systemLocale]];
@@ -4740,10 +4758,6 @@ NSMutableArray *daysFromBackend;
         if ([[dtFormatter stringFromDate:cellDate] isEqualToString:[dtFormatter stringFromDate:dateFromBackend]]) {
 //            NSLog(@"---dates are equal---");
             NSString *cyclePhase = [dayDict objectForKey:@"cycle_phase"];
-            
-            if ([[dtFormatter stringFromDate:cellDate] isEqualToString:@"2014-11-07"]) {
-                NSLog(@"in nov 7th, indexPath.row:%ld", (long)indexPath.row);
-            }
             
             if ([cyclePhase isKindOfClass:[NSString class]]) {
                 
@@ -4815,7 +4829,7 @@ NSMutableArray *daysFromBackend;
     
 //    [self refreshTrackingView];
     
-    NSLog(@"returning grey cell at indexPath.row:%ld", indexPath.row);
+//    NSLog(@"returning grey cell at indexPath.row:%ld", indexPath.row);
     
     return cell;
 }
@@ -4835,6 +4849,8 @@ NSMutableArray *daysFromBackend;
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self showLoadingSpinner];
     
     NSDate *dateAtIndex = [drawerDateData objectAtIndex:indexPath.row];
     
@@ -4924,6 +4940,8 @@ NSMutableArray *daysFromBackend;
     
     // load new data
     [self refreshTrackingView];
+    
+    [self hideLoadingSpinner];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
