@@ -923,7 +923,7 @@ NSMutableArray *daysFromBackend;
         
     } else if ([day.cyclePhase isEqualToString:@"preovulation"]) { // not fertile
         
-        if ([day.cervicalFluid isEqualToString:@"dry"] && currentUserProfile.tryingToConceive) {
+        if ([day.cervicalFluid isEqualToString:@"dry"] && !currentUserProfile.tryingToConceive) {
             // yellow caution image
             self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_notfertile-1"];
         } else {
@@ -4863,9 +4863,6 @@ NSMutableArray *daysFromBackend;
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    [self showLoadingSpinner];
-    
     NSDate *dateAtIndex = [drawerDateData objectAtIndex:indexPath.row];
     
     if ([dateAtIndex compare:[NSDate date]] == NSOrderedDescending) {
@@ -4878,6 +4875,8 @@ NSMutableArray *daysFromBackend;
         // do nothing, select date is the date we're already on
         return;
     }
+    
+    [self showLoadingSpinner];
     
     // change date
     self.selectedDate = dateAtIndex;
