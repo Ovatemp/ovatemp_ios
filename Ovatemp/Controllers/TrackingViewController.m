@@ -569,6 +569,10 @@ NSMutableArray *daysFromBackend;
     // fix nav bar
     [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 64)];
     
+    calendarViewController.title = @"Calendar";
+    
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor ovatempDarkGreyTitleColor] forKey:NSForegroundColorAttributeName];
+    
     [self pushViewController:calendarViewController];
     
     didLeaveToWebView = YES;
@@ -856,7 +860,7 @@ NSMutableArray *daysFromBackend;
                            [self.pregnancyCell.pregnancyTypeNegativeImageView setSelected:NO];
                        }
                        
-                       if (day.supplementIds) {
+                       if ([day.supplementIds count] > 0) {
                            self.supplements = [[NSMutableArray alloc] init];
                            self.supplementIDs = [[NSMutableArray alloc] initWithArray:day.supplementIds];
                            for (Supplement *supp in day.supplements) {
@@ -866,6 +870,15 @@ NSMutableArray *daysFromBackend;
                                [self.supplements addObject:simpleSupp];
                                [self.supplementIDs addObject:supp.id];
                            }
+                           self.supplementsCell.supplementsTableViewDataSource = self.supplements;
+                           self.supplementsCell.selectedSupplementIDs = self.supplementIDs;
+                           SupplementsCellHasData = YES;
+                       } else {
+                           SupplementsCellHasData = NO;
+                           [self.supplementsCell.supplementsTableViewDataSource removeAllObjects];
+                           [self.supplementsCell.selectedSupplementIDs removeAllObjects];
+                           [self.supplementIDs removeAllObjects];
+                           [self.supplements removeAllObjects];
                        }
                        
                        //                       [self setTableStateForState:TableStateAllClosed];
@@ -2011,8 +2024,15 @@ NSMutableArray *daysFromBackend;
             
             self.supplementsCell.delegate = self;
             
-            self.supplementsCell.selectedSupplementIDs = self.supplementIDs;
-            self.supplementsCell.supplementsTableViewDataSource = self.supplements;
+            if (SupplementsCellHasData) {
+                self.supplementsCell.selectedSupplementIDs = self.supplementIDs;
+                self.supplementsCell.supplementsTableViewDataSource = self.supplements;
+            } else {
+                [self.supplementsCell.selectedSupplementIDs removeAllObjects];
+                [self.supplementsCell.supplementsTableViewDataSource removeAllObjects];
+            }
+            
+            
             
             return self.supplementsCell;
 
@@ -2232,6 +2252,7 @@ NSMutableArray *daysFromBackend;
                 [self setTableStateForState:TableStateAllClosed];
             } else {
                 [self setTableStateForState:TableStateSupplementsExpanded];
+                [self.supplementsCell.supplementsTableView reloadData];
             }
             
             if (firstOpenSupplementsCell) {
@@ -5046,6 +5067,11 @@ NSMutableArray *daysFromBackend;
     PregnancyTestCellHasData = NO;
     SupplementsCellHasData = NO;
     MedicineCellHasData = NO;
+    
+//    self.supplementIDs = nil;
+//    self.supplements = nil;
+    [self.supplementsCell.supplementsTableViewDataSource removeAllObjects];
+    [self.supplementsCell.selectedSupplementIDs removeAllObjects];
     
     // reset disturbance switch
     [self.tempCell.disturbanceSwitch setOn:NO];

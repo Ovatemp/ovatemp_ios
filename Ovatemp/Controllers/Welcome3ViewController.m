@@ -11,6 +11,7 @@
 #import "CycleLengthTableViewCell.h"
 #import "HeightTableViewCell.h"
 #import "WeightTableViewCell.h"
+#import "User.h"
 
 typedef enum {
     TableStateAllClosed,
@@ -129,7 +130,9 @@ BOOL weightHasData;
     // if the label is not empty, save data
     // else, ignore dummy data and don't save
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    // no longer using user defaults, saving to user profile
+    UserProfile *currentUserProfile = [UserProfile current];
     
     if ([self.lastPeriodCell.dateLabel.text length] > 0) {
         NSLog(@"User entered last perioid info");
@@ -147,23 +150,26 @@ BOOL weightHasData;
     if ([self.cycleLengthCell.cycleLengthValueLabel.text length] > 0) {
         NSLog(@"user entered cycle length info");
         
-        [defaults setInteger:self.cycleLength forKey:@"cycleLength"];
+//        [defaults setInteger:self.cycleLength forKey:@"cycleLength"];
+        currentUserProfile.cycleLength = [NSNumber numberWithInteger:self.cycleLength];
     }
     
     if ([self.heightCell.heightValueLabel.text length] > 0) {
         NSLog(@"user entered height");
         
-        [defaults setInteger:self.userHeightFeetComponent forKey:@"userHeightFeetComponent"];
-        [defaults setInteger:self.userHeightInchesComponent forKey:@"userHeightInchesComponent"];
+//        [defaults setInteger:self.userHeightFeetComponent forKey:@"userHeightFeetComponent"];
+//        [defaults setInteger:self.userHeightInchesComponent forKey:@"userHeightInchesComponent"];
+        currentUserProfile.heightInInches = [NSNumber numberWithInteger:((self.userHeightFeetComponent * 12) + self.userHeightInchesComponent)];
     }
     
     if ([self.weightCell.weightValueLabel.text length] > 0) {
         NSLog(@"user entered weight");
         
-        [defaults setInteger:self.userWeight forKey:@"userWeight"];
+//        [defaults setInteger:self.userWeight forKey:@"userWeight"];
+        currentUserProfile.weightInPounds = [NSNumber numberWithInteger:self.userWeight];
     }
     
-    [defaults synchronize];
+//    [defaults synchronize];
     
     [self performSegueWithIdentifier:@"toOndoPairing" sender:self];
 }

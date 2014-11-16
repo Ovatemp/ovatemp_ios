@@ -71,9 +71,11 @@ typedef enum periodTypesEnum : NSUInteger
 @property (nonatomic, strong) NSMutableArray *supplementIds;
 @property (nonatomic, strong) NSMutableArray *symptomIds;
 
+@property BOOL usedOndo;
+@property NSString *notes;
+
 @property (nonatomic, strong) NSNumber *cycleDay;
 @property (nonatomic, strong) NSNumber *cycleId;
-
 
 @property (nonatomic, assign) BOOL disturbance;
 @property (nonatomic, assign) BOOL inFertilityWindow;
