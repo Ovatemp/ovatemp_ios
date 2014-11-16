@@ -123,9 +123,9 @@ NSDate *startedTryingDate;
 - (IBAction)doNextScreen:(id)sender {
     
     // save date to NSUserDefaults
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:startedTryingDate forKey:@"startedTryingDate"];
-    [defaults synchronize];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    [defaults setObject:startedTryingDate forKey:@"startedTryingDate"];
+//    [defaults synchronize];
     
     // save to user profile
     UserProfile *currentUserProfile = [UserProfile current];
