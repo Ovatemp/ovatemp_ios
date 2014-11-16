@@ -4863,9 +4863,6 @@ NSMutableArray *daysFromBackend;
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    [self showLoadingSpinner];
-    
     NSDate *dateAtIndex = [drawerDateData objectAtIndex:indexPath.row];
     
     if ([dateAtIndex compare:[NSDate date]] == NSOrderedDescending) {
@@ -4878,6 +4875,8 @@ NSMutableArray *daysFromBackend;
         // do nothing, select date is the date we're already on
         return;
     }
+    
+    [self showLoadingSpinner];
     
     // change date
     self.selectedDate = dateAtIndex;
