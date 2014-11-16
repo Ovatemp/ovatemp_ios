@@ -27,4 +27,7 @@
 
 @property NSMutableArray *selectedSupplements;
 
+@property NSNumber *addedSupplementID;
+@property NSString *addedSupllementString;
+
 @end

@@ -5258,6 +5258,10 @@ NSMutableArray *daysFromBackend;
     [self presentViewController:infoAlert animated:YES completion:nil];
 }
 
+- (void)presentViewControllerWithViewController:(UIViewController *)viewController {
+    [self presentViewController:viewController animated:YES completion:nil];
+}
+
 - (void)popWebView {
     [self.navigationController popViewControllerAnimated:YES];
 }
