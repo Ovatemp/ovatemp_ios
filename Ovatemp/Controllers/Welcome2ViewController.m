@@ -8,6 +8,8 @@
 
 #import "Welcome2ViewController.h"
 
+#import "User.h"
+
 @interface Welcome2ViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @end
@@ -124,6 +126,11 @@ NSDate *startedTryingDate;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:startedTryingDate forKey:@"startedTryingDate"];
     [defaults synchronize];
+    
+    // save to user profile
+    UserProfile *currentUserProfile = [UserProfile current];
+    currentUserProfile.startedTryingOn = startedTryingDate;
+    [currentUserProfile save];
     
     [self performSegueWithIdentifier:@"welcome2ToWelcome3" sender:self];
 }
