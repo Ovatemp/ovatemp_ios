@@ -10,6 +10,7 @@
 
 #import "Alert.h"
 #import "SharedRelation.h"
+#import "SimpleSupplement.h"
 
 @implementation TrackingSupplementsTableViewCell
 
@@ -20,9 +21,12 @@
     
     self.supplementsTableViewDataSource = [[NSMutableArray alloc] init];
     
-    [self.supplementsTableViewDataSource addObject:@"One"];
-    [self.supplementsTableViewDataSource addObject:@"Two"];
-    [self.supplementsTableViewDataSource addObject:@"Three"];
+    self.selectedSupplementIDs = [[NSMutableArray alloc] init];
+    self.allSupplementIDs = [[NSMutableArray alloc] init];
+    
+//    [self.supplementsTableViewDataSource addObject:@"One"];
+//    [self.supplementsTableViewDataSource addObject:@"Two"];
+//    [self.supplementsTableViewDataSource addObject:@"Three"];
     
     self.supplementsTableView.delegate = self;
     self.supplementsTableView.dataSource = self;
@@ -48,6 +52,9 @@
                                                handler:^(UIAlertAction *action) {
                                                    UITextField *alertField = [[alert textFields] firstObject];
                                                    NSString *supplement = alertField.text;
+                                                   if ([supplement length] == 0) {
+                                                       return;
+                                                   }
                                                    [self postNewSupplementToBackendWithSupplement:supplement];
                                                }];
     
@@ -128,6 +135,31 @@
                             // shared relation looks like this:
                             // Supplement (13): some tea [doesn't belong to all users]
 //                        }
+                        
+                        // create new supplement object
+                        // add it to selected array
+                        // push to backend
+                        
+                        SimpleSupplement *newSupp = [[SimpleSupplement alloc] init];
+                        newSupp.belongsToAllUsers = [NSNumber numberWithBool:[[response objectForKey:@"supplement"] objectForKey:@"belongs_to_all_users"]];
+                        newSupp.createdAt = [[response objectForKey:@"supplement"] objectForKey:@"created_at"];
+                        newSupp.idNumber = [NSNumber numberWithInt:[[[response objectForKey:@"supplement"] objectForKey:@"id"] intValue]];
+                        newSupp.name = [[response objectForKey:@"supplement"] objectForKey:@"name"];
+                        newSupp.updatedAt = [[response objectForKey:@"supplement"] objectForKey:@"updated_at"];
+                        newSupp.userID = [[response objectForKey:@"supplement"] objectForKey:@"user_id"];
+                        
+                        // todo, check for duplicates so supplement doesn't appear twice
+                        // de-select supplement if we want to uncheck it
+                        if ([self.supplementsTableViewDataSource containsObject:newSupp]) {
+                            //
+                        } else {
+                            [self.supplementsTableViewDataSource addObject:newSupp];
+                        }
+                        
+//                        [self.allSupplementIDs addObject:newSupp.idNumber];
+                        [self.selectedSupplementIDs addObject:newSupp.idNumber];
+                        
+                        [self hitBackendWithSupplementType:self.selectedSupplementIDs];
                     }
                     failure:^(NSError *error) {
                         [Alert presentError:error];
@@ -135,10 +167,10 @@
      ];
 }
 
-- (void)hitBackendWithPregnancyTestType:(id)ptType {
+- (void)hitBackendWithSupplementType:(id)supplementIds { // supplementIds should be an array
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     
-    [attributes setObject:ptType forKey:@"ferning"];
+    [attributes setObject:supplementIds forKey:@"supplement_ids"];
     [attributes setObject:self.selectedDate forKey:@"date"];
     
     [ConnectionManager put:@"/days/"
@@ -149,6 +181,8 @@
 //                       [Cycle cycleFromResponse:response];
 //                       [Calendar setDate:self.selectedDate];
                        //                       if (onSuccess) onSuccess(response);
+                       // TODO: reload table?
+                       [self.supplementsTableView reloadData];
                    }
                    failure:^(NSError *error) {
                        [Alert presentError:error];
@@ -171,11 +205,22 @@
     
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
-    cell.textLabel.text = [self.supplementsTableViewDataSource objectAtIndex:indexPath.row];
+    SimpleSupplement *cellSupp = [[SimpleSupplement alloc] init];
+    cellSupp = [self.supplementsTableViewDataSource objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = cellSupp.name;
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     [cell setTintColor:[UIColor blackColor]];
+    
+    // if [supplementsTableViewDataSource objectAtIndex:indexPath.row] is contained in selectedIDs, mark it as checked, otherwise no check mark
+    SimpleSupplement *tempSupp = [self.supplementsTableViewDataSource objectAtIndex:indexPath.row];
+    if ([self.selectedSupplementIDs containsObject:tempSupp.idNumber]) {
+        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+    } else {
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+    }
     
     return cell;
 }

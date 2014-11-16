@@ -25,7 +25,9 @@
 
 @property NSMutableArray *supplementsTableViewDataSource;
 
-@property NSMutableArray *selectedSupplements;
+@property NSMutableArray *allSupplementIDs;
+
+@property NSMutableArray *selectedSupplementIDs;
 
 @property NSNumber *addedSupplementID;
 @property NSString *addedSupllementString;
