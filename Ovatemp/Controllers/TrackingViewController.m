@@ -20,6 +20,8 @@
 #import "WebViewController.h"
 #import "UserProfile.h"
 #import "CalendarViewController.h"
+#import "Supplement.h"
+#import "SimpleSupplement.h"
 
 #import "TrackingStatusTableViewCell.h"
 #import "TrackingTemperatureTableViewCell.h"
@@ -85,7 +87,8 @@ typedef enum {
 @property NSMutableArray *symptomIds;
 @property NSString *ovulation; // opk
 @property NSString *pregnancy; // ferning
-@property NSArray *supplements;
+@property NSMutableArray *supplements;
+@property NSMutableArray *supplementIDs;
 
 @end
 
@@ -853,8 +856,16 @@ NSMutableArray *daysFromBackend;
                            [self.pregnancyCell.pregnancyTypeNegativeImageView setSelected:NO];
                        }
                        
-                       if (day.supplements) {
-                           self.supplements = [[NSArray alloc] initWithArray:day.supplements];
+                       if (day.supplementIds) {
+                           self.supplements = [[NSMutableArray alloc] init];
+                           self.supplementIDs = [[NSMutableArray alloc] initWithArray:day.supplementIds];
+                           for (Supplement *supp in day.supplements) {
+                               SimpleSupplement *simpleSupp = [[SimpleSupplement alloc] init];
+                               simpleSupp.name = supp.name;
+                               simpleSupp.idNumber = supp.id;
+                               [self.supplements addObject:simpleSupp];
+                               [self.supplementIDs addObject:supp.id];
+                           }
                        }
                        
                        //                       [self setTableStateForState:TableStateAllClosed];
@@ -1999,6 +2010,9 @@ NSMutableArray *daysFromBackend;
             self.supplementsCell.layoutMargins = UIEdgeInsetsZero;
             
             self.supplementsCell.delegate = self;
+            
+            self.supplementsCell.selectedSupplementIDs = self.supplementIDs;
+            self.supplementsCell.supplementsTableViewDataSource = self.supplements;
             
             return self.supplementsCell;
 
