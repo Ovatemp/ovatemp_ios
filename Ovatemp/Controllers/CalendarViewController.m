@@ -70,6 +70,7 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
       [self stopLoading];
       [self refresh];
       loaded = YES;
+//      [self performSelector:@selector(scrollToCurrentDay) withObject:self afterDelay:3.0];
     } failure:^(NSError *error) {
       [self stopLoading];
       [Alert presentError:error];
