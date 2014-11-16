@@ -923,7 +923,7 @@ NSMutableArray *daysFromBackend;
         
     } else if ([day.cyclePhase isEqualToString:@"preovulation"]) { // not fertile
         
-        if ([day.cervicalFluid isEqualToString:@"dry"] && currentUserProfile.tryingToConceive) {
+        if ([day.cervicalFluid isEqualToString:@"dry"] && !currentUserProfile.tryingToConceive) {
             // yellow caution image
             self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_notfertile-1"];
         } else {
