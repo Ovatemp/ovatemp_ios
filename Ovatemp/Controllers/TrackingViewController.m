@@ -2044,7 +2044,7 @@ NSMutableArray *daysFromBackend;
             
             if (indexPath.row == 1) {
                 return 200.0f;
-            } else if (indexPath.row == 6) {
+            } else if (indexPath.row == 6  || indexPath.row == 10 || indexPath.row == 11) {
                 return 200.0f;
             } else {
                 return 150.0f;

@@ -45,7 +45,7 @@
     // set up alert
     UIAlertController *alert = [UIAlertController
                                      alertControllerWithTitle:@""
-                                     message:@"Add new supplement"
+                                     message:@"Add New Supplement"
                                      preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
