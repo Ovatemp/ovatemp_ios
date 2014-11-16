@@ -31,6 +31,7 @@
 #import "TrackingSymptomsTableViewCell.h"
 #import "TrackingOvulationTestTableViewCell.h"
 #import "TrackingPregnancyTestTableViewCell.h"
+#import "TrackingSupplementsTableViewCell.h"
 
 @import HealthKit;
 
@@ -72,6 +73,7 @@ typedef enum {
 @property TrackingSymptomsTableViewCell *symptomsCell;
 @property TrackingOvulationTestTableViewCell *ovulationCell;
 @property TrackingPregnancyTestTableViewCell *pregnancyCell;
+@property TrackingSupplementsTableViewCell *supplementsCell;
 
 // info
 @property NSNumber *temperature;
@@ -83,6 +85,7 @@ typedef enum {
 @property NSMutableArray *symptomIds;
 @property NSString *ovulation; // opk
 @property NSString *pregnancy; // ferning
+@property NSArray *supplements;
 
 @end
 
@@ -364,6 +367,8 @@ NSMutableArray *daysFromBackend;
     
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingPregnancyTestTableViewCell" bundle:nil] forCellReuseIdentifier:@"pregnancyCell"];
     
+    [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingSupplementsTableViewCell" bundle:nil] forCellReuseIdentifier:@"supplementsCell"];
+    
     // refresh info
     [self refreshTrackingView];
 }
@@ -425,6 +430,10 @@ NSMutableArray *daysFromBackend;
     [self.intercourseCell setSelectedDate:self.selectedDate];
     [self.moodCell setSelectedDate:self.selectedDate];
     [self.symptomsCell setSelectedDate:self.selectedDate];
+    [self.ovulationCell setSelectedDate:self.selectedDate];
+    [self.pregnancyCell setSelectedDate:self.selectedDate];
+    [self.supplementsCell setSelectedDate:self.selectedDate];
+//    [self.medicineCell setSelectedDate:self.selectedDate];
     
     if ([ONDO sharedInstance].devices.count > 0) {
         [ONDO startWithDelegate:self];
@@ -842,6 +851,10 @@ NSMutableArray *daysFromBackend;
                            // deselect buttons
                            [self.pregnancyCell.pregnancyTypePositiveImageView setSelected:NO];
                            [self.pregnancyCell.pregnancyTypeNegativeImageView setSelected:NO];
+                       }
+                       
+                       if (day.supplements) {
+                           self.supplements = [[NSArray alloc] initWithArray:day.supplements];
                        }
                        
                        //                       [self setTableStateForState:TableStateAllClosed];
@@ -1972,16 +1985,23 @@ NSMutableArray *daysFromBackend;
             
         case 10:
         {
-            cell = [[UITableViewCell alloc] init];
-            
-            [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
-            
-            cell.layoutMargins = UIEdgeInsetsZero;
+            self.supplementsCell = [self.tableView dequeueReusableCellWithIdentifier:@"supplementsCell" forIndexPath:indexPath];
             
             // TODO: Finish custom cell implementation
-            //            if (expandSupplementsCell) {
-            //                // unhide component
-            //            }
+            if (expandSupplementsCell) {
+                [self showSupplementsCell];
+            } else {
+                [self hideSupplementsCell];
+            }
+            
+            [self.supplementsCell setSelectedDate:self.selectedDate];
+            
+            self.supplementsCell.layoutMargins = UIEdgeInsetsZero;
+            
+            self.supplementsCell.delegate = self;
+            
+            return self.supplementsCell;
+
             break;
         }
             
@@ -1997,6 +2017,8 @@ NSMutableArray *daysFromBackend;
             //            if (expandMedicineCell) {
             //                // unhide component
             //            }
+            
+//    [self.medicineCell setSelectedDate:self.selectedDate];
             break;
         }
             
@@ -2022,7 +2044,7 @@ NSMutableArray *daysFromBackend;
             
             if (indexPath.row == 1) {
                 return 200.0f;
-            } else if (indexPath.row == 6) {
+            } else if (indexPath.row == 6  || indexPath.row == 10 || indexPath.row == 11) {
                 return 200.0f;
             } else {
                 return 150.0f;
@@ -2189,11 +2211,21 @@ NSMutableArray *daysFromBackend;
             }
             break;
         }
-            //
-            //        case 10:
-            //        {
-            //            break;
-            //        }
+            
+        case 10:
+        {
+            if (currentState == TableStateSupplementsExpanded) {
+                [self setTableStateForState:TableStateAllClosed];
+            } else {
+                [self setTableStateForState:TableStateSupplementsExpanded];
+            }
+            
+            if (firstOpenSupplementsCell) {
+                // no initial data until the user makes a selection
+                firstOpenSupplementsCell = NO;
+            }
+            break;
+        }
             //
             //        case 11:
             //        {
@@ -2939,8 +2971,9 @@ NSMutableArray *daysFromBackend;
                 self.pregnancyCell.placeholderLabel.hidden = NO;
             }
             
-            expandSupplementsCell = NO;
-            // hide component
+            // supplements cell
+            [self hideSupplementsCell];
+
             expandMedicineCell = NO;
             // hide component
             
@@ -3118,8 +3151,9 @@ NSMutableArray *daysFromBackend;
                 self.pregnancyCell.placeholderLabel.hidden = NO;
             }
             
-            expandSupplementsCell = NO;
-            // hide component
+            // supplements cell
+            [self hideSupplementsCell];
+            
             expandMedicineCell = NO;
             // hide component
             
@@ -3281,8 +3315,9 @@ NSMutableArray *daysFromBackend;
                 self.pregnancyCell.placeholderLabel.hidden = NO;
             }
             
-            expandSupplementsCell = NO;
-            // hide component
+            // supplements cell
+            [self hideSupplementsCell];
+            
             expandMedicineCell = NO;
             // hide component
             
@@ -3460,8 +3495,9 @@ NSMutableArray *daysFromBackend;
                 self.pregnancyCell.placeholderLabel.hidden = NO;
             }
             
-            expandSupplementsCell = NO;
-            // hide component
+            // supplements cell
+            [self hideSupplementsCell];
+            
             expandMedicineCell = NO;
             // hide component
             
@@ -3640,8 +3676,9 @@ NSMutableArray *daysFromBackend;
                 self.pregnancyCell.placeholderLabel.hidden = NO;
             }
             
-            expandSupplementsCell = NO;
-            // hide component
+            // supplements cell
+            [self hideSupplementsCell];
+            
             expandMedicineCell = NO;
             // hide component
             
@@ -3820,8 +3857,9 @@ NSMutableArray *daysFromBackend;
                 self.pregnancyCell.placeholderLabel.hidden = NO;
             }
             
-            expandSupplementsCell = NO;
-            // hide component
+            // supplements cell
+            [self hideSupplementsCell];
+            
             expandMedicineCell = NO;
             // hide component
             
@@ -3998,8 +4036,9 @@ NSMutableArray *daysFromBackend;
                 self.pregnancyCell.placeholderLabel.hidden = NO;
             }
             
-            expandSupplementsCell = NO;
-            // hide component
+            // supplements cell
+            [self hideSupplementsCell];
+            
             expandMedicineCell = NO;
             // hide component
             
@@ -4181,8 +4220,9 @@ NSMutableArray *daysFromBackend;
                 self.pregnancyCell.placeholderLabel.hidden = NO;
             }
             
-            expandSupplementsCell = NO;
-            // hide component
+            // supplements cell
+            [self hideSupplementsCell];
+            
             expandMedicineCell = NO;
             // hide component
             
@@ -4355,8 +4395,9 @@ NSMutableArray *daysFromBackend;
                 self.pregnancyCell.placeholderLabel.hidden = NO;
             }
             
-            expandSupplementsCell = NO;
-            // hide component
+            // supplements cell
+            [self hideSupplementsCell];
+            
             expandMedicineCell = NO;
             // hide component
             
@@ -4522,15 +4563,17 @@ NSMutableArray *daysFromBackend;
             self.pregnancyCell.pregnancyTypeImageView.hidden = YES;
             self.pregnancyCell.pregnancyTypeCollapsedLabel.hidden = YES;
             
-            expandSupplementsCell = NO;
-            // hide component
+            // supplements cell
+            [self hideSupplementsCell];
+            
             expandMedicineCell = NO;
             // hide component
             
             currentState = TableStatePregnancyTestExpanded;
             break;
         }
-            
+         
+#pragma mark - Supplements
         case TableStateSupplementsExpanded:
         {
             expandTemperatureCell = NO;
@@ -4604,8 +4647,10 @@ NSMutableArray *daysFromBackend;
             // hide component
             expandPregnancyTestCell = NO;
             // hide component
-            expandSupplementsCell = YES;
-            // unhide component
+            
+            // supplements cell
+            [self showSupplementsCell];
+            
             expandMedicineCell = NO;
             // hide component
             
@@ -4613,6 +4658,7 @@ NSMutableArray *daysFromBackend;
             break;
         }
             
+#pragma mark - Medicine
         case TableStateMedicineExpanded:
         {
             expandTemperatureCell = NO;
@@ -4686,8 +4732,10 @@ NSMutableArray *daysFromBackend;
             // hide component
             expandPregnancyTestCell = NO;
             // hide component
-            expandSupplementsCell = NO;
-            // hide component
+
+            // supplements cell
+            [self hideSupplementsCell];
+            
             expandMedicineCell = YES;
             // unhide component
             
@@ -4698,6 +4746,39 @@ NSMutableArray *daysFromBackend;
         default:
             break;
     }
+}
+
+- (void)hideSupplementsCell {
+    expandSupplementsCell = NO;
+    // hide component
+    self.supplementsCell.supplementsTableView.hidden = YES;
+    
+    self.supplementsCell.infoButton.hidden = NO;
+    self.supplementsCell.addSupplementButton.hidden = YES;
+    
+    if (SupplementsCellHasData) {
+        self.supplementsCell.supplementsCollapsedLabel.hidden = NO;
+        self.supplementsCell.supplementsTypeCollapsedLabel.hidden = NO;
+        self.supplementsCell.placeholderLabel.hidden = YES;
+    } else {
+        self.supplementsCell.supplementsCollapsedLabel.hidden = YES;
+        self.supplementsCell.supplementsTypeCollapsedLabel.hidden = YES;
+        self.supplementsCell.placeholderLabel.hidden = NO;
+    }
+}
+
+- (void)showSupplementsCell {
+    expandSupplementsCell = YES;
+    // show component
+    
+    self.supplementsCell.infoButton.hidden = YES;
+    self.supplementsCell.addSupplementButton.hidden = NO;
+    
+    self.supplementsCell.supplementsTableView.hidden = NO;
+    self.supplementsCell.supplementsCollapsedLabel.hidden = NO;
+    
+    self.supplementsCell.supplementsTypeCollapsedLabel.hidden = YES;
+    self.supplementsCell.placeholderLabel.hidden = YES;
 }
 
 #pragma mark - UICollectionView
@@ -4884,6 +4965,13 @@ NSMutableArray *daysFromBackend;
     [self.cfCell setSelectedDate:self.selectedDate];
     [self.cpCell setSelectedDate:self.selectedDate];
     [self.periodCell setSelectedDate:self.selectedDate];
+    [self.intercourseCell setSelectedDate:self.selectedDate];
+    [self.moodCell setSelectedDate:self.selectedDate];
+    [self.symptomsCell setSelectedDate:self.selectedDate];
+    [self.ovulationCell setSelectedDate:self.selectedDate];
+    [self.pregnancyCell setSelectedDate:self.selectedDate];
+    [self.supplementsCell setSelectedDate:self.selectedDate];
+//    [self.medicineCell setSelectedDate:self.selectedDate];
     
     self.selectedIndexPath = indexPath;
     
@@ -5168,6 +5256,10 @@ NSMutableArray *daysFromBackend;
     didLeaveToWebView = YES;
     
     [self presentViewController:infoAlert animated:YES completion:nil];
+}
+
+- (void)presentViewControllerWithViewController:(UIViewController *)viewController {
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 - (void)popWebView {

@@ -12,6 +12,7 @@
 @protocol PresentInfoAlertDelegate <NSObject>
 
 - (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
+- (void)presentViewControllerWithViewController:(UIViewController *)viewController;
 
 @end
 

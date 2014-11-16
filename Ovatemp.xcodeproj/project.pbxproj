@@ -443,6 +443,9 @@
 		5FDAA3A719F7069C004E7181 /* LastPeriodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDAA3A519F7069C004E7181 /* LastPeriodTableViewCell.xib */; };
 		5FDAA3AB19F8020F004E7181 /* CycleLengthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDAA3A919F8020F004E7181 /* CycleLengthTableViewCell.m */; };
 		5FDAA3AC19F8020F004E7181 /* CycleLengthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDAA3AA19F8020F004E7181 /* CycleLengthTableViewCell.xib */; };
+		5FE118401A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE1183E1A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.m */; };
+		5FE118411A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FE1183F1A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.xib */; };
+		5FE118441A191C5100AC76A7 /* SimpleSupplement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE118431A191C5100AC76A7 /* SimpleSupplement.m */; };
 		5FE12F791A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE12F771A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.m */; };
 		5FE12F7A1A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FE12F781A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.xib */; };
 		8315E49E18C521A800DA935A /* SessionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49D18C521A800DA935A /* SessionSpec.m */; };
@@ -1109,6 +1112,11 @@
 		5FDAA3A819F8020F004E7181 /* CycleLengthTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleLengthTableViewCell.h; sourceTree = "<group>"; };
 		5FDAA3A919F8020F004E7181 /* CycleLengthTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleLengthTableViewCell.m; sourceTree = "<group>"; };
 		5FDAA3AA19F8020F004E7181 /* CycleLengthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CycleLengthTableViewCell.xib; sourceTree = "<group>"; };
+		5FE1183D1A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingSupplementsTableViewCell.h; sourceTree = "<group>"; };
+		5FE1183E1A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingSupplementsTableViewCell.m; sourceTree = "<group>"; };
+		5FE1183F1A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingSupplementsTableViewCell.xib; sourceTree = "<group>"; };
+		5FE118421A191C5100AC76A7 /* SimpleSupplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleSupplement.h; sourceTree = "<group>"; };
+		5FE118431A191C5100AC76A7 /* SimpleSupplement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleSupplement.m; sourceTree = "<group>"; };
 		5FE12F761A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingPeriodTableViewCell.h; sourceTree = "<group>"; };
 		5FE12F771A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingPeriodTableViewCell.m; sourceTree = "<group>"; };
 		5FE12F781A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingPeriodTableViewCell.xib; sourceTree = "<group>"; };
@@ -1990,6 +1998,8 @@
 				5F1C9B3F19EDE87A000F1FC1 /* User.m */,
 				5F1C9B4019EDE87A000F1FC1 /* UserProfile.h */,
 				5F1C9B4119EDE87A000F1FC1 /* UserProfile.m */,
+				5FE118421A191C5100AC76A7 /* SimpleSupplement.h */,
+				5FE118431A191C5100AC76A7 /* SimpleSupplement.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2007,6 +2017,9 @@
 			isa = PBXGroup;
 			children = (
 				5F7AEA621A0122BB0053ABAB /* Tracking.storyboard */,
+				5FE1183D1A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.h */,
+				5FE1183E1A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.m */,
+				5FE1183F1A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.xib */,
 				5F1E1E231A110116001C22B7 /* TrackingPregnancyTestTableViewCell.h */,
 				5F1E1E241A110116001C22B7 /* TrackingPregnancyTestTableViewCell.m */,
 				5F1E1E251A110116001C22B7 /* TrackingPregnancyTestTableViewCell.xib */,
@@ -2527,6 +2540,7 @@
 				5F1C9C1019EDE87A000F1FC1 /* Unprotected@2x.png in Resources */,
 				5F1E1E221A103457001C22B7 /* TrackingOvulationTestTableViewCell.xib in Resources */,
 				5F586A2819ED802400D2B58E /* Positive@2x.png in Resources */,
+				5FE118411A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.xib in Resources */,
 				5F1C9C2519EDE87A000F1FC1 /* Symptoms.png in Resources */,
 				5F1C9BF719EDE87A000F1FC1 /* Refresh@2x.png in Resources */,
 				5F1C9BE819EDE87A000F1FC1 /* ActivateSmall.png in Resources */,
@@ -2729,6 +2743,7 @@
 				5F846E0D19F5A96000CED980 /* Welcome3ViewController.m in Sources */,
 				5F1C96E319EDD31A000F1FC1 /* MPCGRectToNSDictionaryValueTransformer.m in Sources */,
 				5F1C9B7D19EDE87A000F1FC1 /* SubscriptionMenuTableViewCell.m in Sources */,
+				5FE118441A191C5100AC76A7 /* SimpleSupplement.m in Sources */,
 				5F1C9B9219EDE87A000F1FC1 /* Onboard2ViewController.m in Sources */,
 				5F1C9B7819EDE87A000F1FC1 /* GradientSegmentedControl.m in Sources */,
 				5F1C9B5F19EDE87A000F1FC1 /* AppDelegate.m in Sources */,
@@ -2737,6 +2752,7 @@
 				5F1C96FD19EDD31A000F1FC1 /* MPTweakInline.m in Sources */,
 				5F1C9C6519EDE87A000F1FC1 /* ONDO.xcdatamodeld in Sources */,
 				5F1C96D219EDD31A000F1FC1 /* MPABTestDesignerChangeResponseMessage.m in Sources */,
+				5FE118401A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.m in Sources */,
 				5F1C96D819EDD31A000F1FC1 /* MPABTestDesignerDisconnectMessage.m in Sources */,
 				5F6561D919FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.m in Sources */,
 				5F1C96ED19EDD31A000F1FC1 /* MPNSNumberToCGFloatValueTransformer.m in Sources */,
