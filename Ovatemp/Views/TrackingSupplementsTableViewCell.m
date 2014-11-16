@@ -61,7 +61,9 @@
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
                                                handler:nil];
     
-    [alert addTextFieldWithConfigurationHandler:nil];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    }];
     
     [alert addAction:ok];
     [alert addAction:cancel];
@@ -226,7 +228,22 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.supplementsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+    if ([self.supplementsTableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryCheckmark) {
+        [self.supplementsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+        // get id of object at selected index
+        // remove it from selected ids array
+        // hit backend
+        SimpleSupplement *selectedSupp = [[SimpleSupplement alloc] init];
+        selectedSupp = [self.supplementsTableViewDataSource objectAtIndex:indexPath.row];
+        [self.selectedSupplementIDs removeObject:selectedSupp.idNumber];
+        [self hitBackendWithSupplementType:self.selectedSupplementIDs];
+    } else {
+        [self.supplementsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        SimpleSupplement *selectedSupp = [[SimpleSupplement alloc] init];
+        selectedSupp = [self.supplementsTableViewDataSource objectAtIndex:indexPath.row];
+        [self.selectedSupplementIDs addObject:selectedSupp.idNumber];
+        [self hitBackendWithSupplementType:self.selectedSupplementIDs];
+    }
 }
 
 @end
