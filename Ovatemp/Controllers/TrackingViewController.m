@@ -4891,9 +4891,7 @@ NSMutableArray *daysFromBackend;
             
             if ([cyclePhase isKindOfClass:[NSString class]]) {
                 
-                if ([[dtFormatter stringFromDate:cellDate] isEqualToString:@"2014-11-07"]) {
-                    NSLog(@"in nov 7th");
-                }
+                UserProfile *currentUserProfile = [UserProfile current];
                 
                 if ([cyclePhase isEqualToString:@"period"]) { // if it's not null
                     cell.statusImageView.image = [UIImage imageNamed:@"icn_period"];
@@ -4902,12 +4900,17 @@ NSMutableArray *daysFromBackend;
                     cell.dayLabel.textColor = [UIColor whiteColor];
                     return cell;
                 } else if ([cyclePhase isEqualToString:@"ovulation"]) { // fertile
-                    cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_fertile_small"];
+                    if (currentUserProfile.tryingToConceive) {
+                        // green fertility image
+                        cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_fertile_small"];
+                    } else {
+                        // trying to avoid, red fertility image
+                        cell.statusImageView.image = [UIImage imageNamed:@"icn_dd_fertile_small"];
+                    }
                     cell.monthLabel.textColor = [UIColor whiteColor];
                     cell.dayLabel.textColor = [UIColor whiteColor];
                     return cell;
                 } else if ([cyclePhase isEqualToString:@"preovulation"]) { // not fertile
-                    UserProfile *currentUserProfile = [UserProfile current];
                     if (![[dayDict objectForKey:@"cervical_fluid"] isEqual:[NSNull null]]) {
                         if (([[dayDict objectForKey:@"cervical_fluid"] isEqualToString:@"dry"]) && !currentUserProfile.tryingToConceive) {
                             cell.statusImageView.image = [UIImage imageNamed:@"icn_dd_notfertile_small"];
