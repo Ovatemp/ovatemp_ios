@@ -121,6 +121,11 @@
     return YES;
 }
 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    return textView.text.length + (text.length - range.length) <= 1024;
+}
+
 /*
 #pragma mark - Navigation
 
