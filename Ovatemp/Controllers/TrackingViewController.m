@@ -883,12 +883,15 @@ NSMutableArray *daysFromBackend;
                        if ([day.supplementIds count] > 0) {
                            self.supplements = [[NSMutableArray alloc] init];
                            self.supplementIDs = [[NSMutableArray alloc] initWithArray:day.supplementIds];
-                           for (Supplement *supp in day.supplements) {
+                           NSArray *suppArray = [[Supplement instances] allValues];
+                           for (Supplement *supp in suppArray) {
                                SimpleSupplement *simpleSupp = [[SimpleSupplement alloc] init];
                                simpleSupp.name = supp.name;
                                simpleSupp.idNumber = supp.id;
-                               [self.supplements addObject:simpleSupp];
-                               [self.supplementIDs addObject:supp.id];
+                               if (![self.supplementIDs containsObject:simpleSupp]) {
+                                   [self.supplements addObject:simpleSupp];
+                               }
+//                               [self.supplementIDs addObject:supp.id];
                            }
                            self.supplementsCell.supplementsTableViewDataSource = self.supplements;
                            self.supplementsCell.selectedSupplementIDs = self.supplementIDs;
@@ -2073,8 +2076,12 @@ NSMutableArray *daysFromBackend;
             
             if ([self.supplements count] > 0) {
                 for (SimpleSupplement *supp in self.supplements) {
-                    self.supplementsCell.supplementsTypeCollapsedLabel.text =
-                    [self.supplementsCell.supplementsTypeCollapsedLabel.text stringByAppendingString:[NSString stringWithFormat:@"%@, ", supp.name]];
+                    // self. supplements is all supps
+                    // self.supplementIds is the selectedIds
+                    if ([self.supplementIDs containsObject:supp.idNumber]) {
+                        self.supplementsCell.supplementsTypeCollapsedLabel.text =
+                        [self.supplementsCell.supplementsTypeCollapsedLabel.text stringByAppendingString:[NSString stringWithFormat:@"%@, ", supp.name]];
+                    }
                 }
                 // remove trailing ", "
                 if ([self.supplementsCell.supplementsTypeCollapsedLabel.text length] > 2) {
