@@ -64,6 +64,8 @@ typedef enum {
 
 @property NSIndexPath *selectedTableRowIndex;
 
+@property BOOL viewIsLoading;
+
 // cells
 @property TrackingStatusTableViewCell *statusCell;
 @property TrackingTemperatureTableViewCell *tempCell;
@@ -5379,6 +5381,11 @@ NSMutableArray *daysFromBackend;
 }
 
 - (void)showLoadingSpinner {
+    if (self.viewIsLoading) {
+        [self hideLoadingSpinner];
+        return;
+    }
+    self.viewIsLoading = YES;
     loadingView = [[UIView alloc] init];
     loadingView.frame = CGRectMake(0, 0, 100, 100);
     loadingView.center = [self.view convertPoint:self.view.center fromView:self.view.superview];
@@ -5400,6 +5407,7 @@ NSMutableArray *daysFromBackend;
 }
 
 - (void)hideLoadingSpinner {
+    self.viewIsLoading = NO;
     [loadingView removeFromSuperview];
 }
 
