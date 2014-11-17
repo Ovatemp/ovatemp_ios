@@ -446,6 +446,8 @@
 		5FE118401A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE1183E1A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.m */; };
 		5FE118411A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FE1183F1A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.xib */; };
 		5FE118441A191C5100AC76A7 /* SimpleSupplement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE118431A191C5100AC76A7 /* SimpleSupplement.m */; };
+		5FE118481A1A907000AC76A7 /* TrackingMedicinesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE118461A1A907000AC76A7 /* TrackingMedicinesTableViewCell.m */; };
+		5FE118491A1A907000AC76A7 /* TrackingMedicinesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FE118471A1A907000AC76A7 /* TrackingMedicinesTableViewCell.xib */; };
 		5FE12F791A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE12F771A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.m */; };
 		5FE12F7A1A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FE12F781A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.xib */; };
 		8315E49E18C521A800DA935A /* SessionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49D18C521A800DA935A /* SessionSpec.m */; };
@@ -1117,6 +1119,9 @@
 		5FE1183F1A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingSupplementsTableViewCell.xib; sourceTree = "<group>"; };
 		5FE118421A191C5100AC76A7 /* SimpleSupplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleSupplement.h; sourceTree = "<group>"; };
 		5FE118431A191C5100AC76A7 /* SimpleSupplement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleSupplement.m; sourceTree = "<group>"; };
+		5FE118451A1A907000AC76A7 /* TrackingMedicinesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingMedicinesTableViewCell.h; sourceTree = "<group>"; };
+		5FE118461A1A907000AC76A7 /* TrackingMedicinesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingMedicinesTableViewCell.m; sourceTree = "<group>"; };
+		5FE118471A1A907000AC76A7 /* TrackingMedicinesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingMedicinesTableViewCell.xib; sourceTree = "<group>"; };
 		5FE12F761A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingPeriodTableViewCell.h; sourceTree = "<group>"; };
 		5FE12F771A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingPeriodTableViewCell.m; sourceTree = "<group>"; };
 		5FE12F781A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingPeriodTableViewCell.xib; sourceTree = "<group>"; };
@@ -2017,6 +2022,9 @@
 			isa = PBXGroup;
 			children = (
 				5F7AEA621A0122BB0053ABAB /* Tracking.storyboard */,
+				5FE118451A1A907000AC76A7 /* TrackingMedicinesTableViewCell.h */,
+				5FE118461A1A907000AC76A7 /* TrackingMedicinesTableViewCell.m */,
+				5FE118471A1A907000AC76A7 /* TrackingMedicinesTableViewCell.xib */,
 				5FE1183D1A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.h */,
 				5FE1183E1A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.m */,
 				5FE1183F1A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.xib */,
@@ -2554,6 +2562,7 @@
 				5F1C9C3819EDE87A000F1FC1 /* Positive@2x.png in Resources */,
 				5F1C9C0619EDE87A000F1FC1 /* Icon29@2x.png in Resources */,
 				5F1C9C3F19EDE87A000F1FC1 /* coaching_unselect.png in Resources */,
+				5FE118491A1A907000AC76A7 /* TrackingMedicinesTableViewCell.xib in Resources */,
 				5F1C9C3E19EDE87A000F1FC1 /* coaching_selected@2x.png in Resources */,
 				5F1C9C1219EDE87A000F1FC1 /* LaunchImageR4.png in Resources */,
 				5F1C9BDB19EDE87A000F1FC1 /* FertilityQuestions@2x.png in Resources */,
@@ -2764,6 +2773,7 @@
 				5F1C96EF19EDD31A000F1FC1 /* MPObjectSelector.m in Sources */,
 				5F1C970C19EDD31A000F1FC1 /* UIImage+MPImageEffects.m in Sources */,
 				5F1C9B9B19EDE87A000F1FC1 /* TodayNavigationController.m in Sources */,
+				5FE118481A1A907000AC76A7 /* TrackingMedicinesTableViewCell.m in Sources */,
 				5F1C9B8E19EDE87A000F1FC1 /* MainTabBarViewController.m in Sources */,
 				5F1C970119EDD31A000F1FC1 /* MPUIEdgeInsetsToNSDictionaryValueTransformer.m in Sources */,
 				5F7AEA6F1A01373C0053ABAB /* TrackingNavigationController.m in Sources */,
