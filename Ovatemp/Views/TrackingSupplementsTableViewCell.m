@@ -38,7 +38,7 @@
     // Configure the view for the selected state
 }
 - (IBAction)didSelectInfoButton:(id)sender {
-    
+    [self.delegate pushInfoAlertWithTitle:@"Supplements" AndMessage:@"Keeping track of medication and any kind of supplements you take can help you detect improvement or changes in your cycles and talk to your doctor about it.\nAlways consult your physician before taking any medication." AndURL:@"http://ovatemp.helpshift.com/a/ovatemp/?s=fertility-faqs&f=learn-more-about-supplements"];
 }
 - (IBAction)didSelectAddSupplementButton:(id)sender {
 
