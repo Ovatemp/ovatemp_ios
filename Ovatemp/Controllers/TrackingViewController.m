@@ -2036,6 +2036,20 @@ NSMutableArray *daysFromBackend;
             
             [self.supplementsCell.supplementsTableView reloadData];
             
+            self.supplementsCell.supplementsTypeCollapsedLabel.text = @"";
+            
+            if ([self.supplements count] > 0) {
+                for (SimpleSupplement *supp in self.supplements) {
+                    self.supplementsCell.supplementsTypeCollapsedLabel.text =
+                    [self.supplementsCell.supplementsTypeCollapsedLabel.text stringByAppendingString:[NSString stringWithFormat:@"%@, ", supp.name]];
+                }
+                // remove trailing ", "
+                if ([self.supplementsCell.supplementsTypeCollapsedLabel.text length] > 2) {
+                    self.supplementsCell.supplementsTypeCollapsedLabel.text = [self.supplementsCell.supplementsTypeCollapsedLabel.text substringToIndex:[self.supplementsCell.supplementsTypeCollapsedLabel.text length] - 2];
+                }
+
+            }
+            
             return self.supplementsCell;
 
             break;
