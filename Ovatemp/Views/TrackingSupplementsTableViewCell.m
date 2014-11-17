@@ -184,11 +184,30 @@
 //                       [Calendar setDate:self.selectedDate];
                        //                       if (onSuccess) onSuccess(response);
                        // TODO: reload table?
+                       // reload supplements
+                       [self reloadSupplements];
                        [self.supplementsTableView reloadData];
                    }
                    failure:^(NSError *error) {
                        [Alert presentError:error];
                    }];
+}
+
+- (void)reloadSupplements {
+//    [Supplement resetInstancesWithArray:response[@"supplements"]];
+    [ConnectionManager put:@"/sessions/refresh"
+                    params:nil
+                   success:^(NSDictionary *response) {
+//                       [self stopLoading];
+                       [Configuration loggedInWithResponse:response];
+//                       [self launchAppropriateViewController];
+                   }
+                   failure:^(NSError *error) {
+//                       [self stopLoading];
+//                       [self logOutWithUnauthorized];
+                       NSLog(@"Error: %@", [error localizedDescription]);
+                   }
+     ];
 }
 
 #pragma mark - Table View

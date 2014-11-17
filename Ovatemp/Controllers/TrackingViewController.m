@@ -2034,7 +2034,21 @@ NSMutableArray *daysFromBackend;
                 [self.supplementsCell.supplementsTableViewDataSource removeAllObjects];
             }
             
+            [self.supplementsCell.supplementsTableView reloadData];
             
+            self.supplementsCell.supplementsTypeCollapsedLabel.text = @"";
+            
+            if ([self.supplements count] > 0) {
+                for (SimpleSupplement *supp in self.supplements) {
+                    self.supplementsCell.supplementsTypeCollapsedLabel.text =
+                    [self.supplementsCell.supplementsTypeCollapsedLabel.text stringByAppendingString:[NSString stringWithFormat:@"%@, ", supp.name]];
+                }
+                // remove trailing ", "
+                if ([self.supplementsCell.supplementsTypeCollapsedLabel.text length] > 2) {
+                    self.supplementsCell.supplementsTypeCollapsedLabel.text = [self.supplementsCell.supplementsTypeCollapsedLabel.text substringToIndex:[self.supplementsCell.supplementsTypeCollapsedLabel.text length] - 2];
+                }
+
+            }
             
             return self.supplementsCell;
 
@@ -5050,6 +5064,11 @@ NSMutableArray *daysFromBackend;
     
     //    NSLog(@"---%@", [self.drawerCollectionView cellForItemAtIndexPath:indexPath]);
     
+    //    self.supplementIDs = nil;
+    //    self.supplements = nil;
+    [self.supplementsCell.supplementsTableViewDataSource removeAllObjects];
+    [self.supplementsCell.selectedSupplementIDs removeAllObjects];
+    
     [self.drawerCollectionView reloadData];
     [self.drawerCollectionView.collectionViewLayout invalidateLayout];
     
@@ -5081,11 +5100,6 @@ NSMutableArray *daysFromBackend;
     PregnancyTestCellHasData = NO;
     SupplementsCellHasData = NO;
     MedicineCellHasData = NO;
-    
-//    self.supplementIDs = nil;
-//    self.supplements = nil;
-    [self.supplementsCell.supplementsTableViewDataSource removeAllObjects];
-    [self.supplementsCell.selectedSupplementIDs removeAllObjects];
     
     // reset disturbance switch
     [self.tempCell.disturbanceSwitch setOn:NO];
