@@ -16,4 +16,6 @@
 
 @property NSDate *selectedDate;
 
+@property NSString *notesText;
+
 @end

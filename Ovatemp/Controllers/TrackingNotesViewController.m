@@ -7,6 +7,8 @@
 //
 
 #import "TrackingNotesViewController.h"
+#import "ConnectionManager.h"
+#import "Alert.h"
 
 @interface TrackingNotesViewController () <UITextViewDelegate>
 
@@ -66,16 +68,17 @@
     self.notesTextView.delegate = self;
     
     // set text
-    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *dateKeyString = [dateFormatter stringFromDate:self.selectedDate];
-    NSString *keyString = [NSString stringWithFormat:@"note_%@", dateKeyString];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    if ([defaults objectForKey:keyString]) {
-        self.notesTextView.text = [defaults objectForKey:keyString];
-    }
+//    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+//    NSString *dateKeyString = [dateFormatter stringFromDate:self.selectedDate];
+//    NSString *keyString = [NSString stringWithFormat:@"note_%@", dateKeyString];
+//    
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    
+//    if ([defaults objectForKey:keyString]) {
+//        self.notesTextView.text = [defaults objectForKey:keyString];
+//    }
+    self.notesTextView.text = self.notesText;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -97,21 +100,46 @@
 }
 
 - (void)saveNoteAndGoBack {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *dateString = [dateFormatter stringFromDate:self.selectedDate];
-    NSString *keyString = [NSString stringWithFormat:@"note_%@", dateString];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+//    NSString *dateString = [dateFormatter stringFromDate:self.selectedDate];
+//    NSString *keyString = [NSString stringWithFormat:@"note_%@", dateString];
+//    
+//    if ([self.notesTextView.text length] > 0) { // user entered a note
+//        [defaults setObject:self.notesTextView.text forKey:keyString];
+//    } else { // no note or user deleted all text
+//        [defaults removeObjectForKey:keyString];
+//    }
+//    
+//    [defaults synchronize];
     
-    if ([self.notesTextView.text length] > 0) { // user entered a note
-        [defaults setObject:self.notesTextView.text forKey:keyString];
-    } else { // no note or user deleted all text
-        [defaults removeObjectForKey:keyString];
-    }
-    
-    [defaults synchronize];
+    // No longer using NSUserDefaults, hitting backend
+    [self postNoteToBackend];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
+
+- (void)postNoteToBackend {
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+    
+    [attributes setObject:self.notesTextView.text forKey:@"notes"];
+    [attributes setObject:self.selectedDate forKey:@"date"];
+    
+    [ConnectionManager put:@"/days/"
+                    params:@{
+                             @"day": attributes,
+                             }
+                   success:^(NSDictionary *response) {
+//                       [Cycle cycleFromResponse:response];
+//                       [Calendar setDate:self.selectedDate];
+                       //                       if (onSuccess) onSuccess(response);
+                       NSLog(@"Posted note sucessfully");
+                   }
+                   failure:^(NSError *error) {
+                       [Alert presentError:error];
+                   }];
+}
+
 - (void)cancelSaveAndGoBack {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
@@ -119,6 +147,11 @@
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView {
     [self.notesTextView resignFirstResponder];
     return YES;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    return textView.text.length + (text.length - range.length) <= 1024;
 }
 
 /*

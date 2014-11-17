@@ -90,6 +90,8 @@ typedef enum {
 @property NSMutableArray *supplements;
 @property NSMutableArray *supplementIDs;
 
+@property NSString *notes;
+
 @end
 
 @implementation TrackingViewController
@@ -680,6 +682,13 @@ NSMutableArray *daysFromBackend;
                            self.tempCell.placeholderLabel.hidden = YES;
                            self.tempCell.temperatureValueLabel.hidden = NO;
                            self.tempCell.collapsedLabel.hidden = NO;
+                           
+                           // ondo image
+                           if (day.usedOndo) {
+                               self.tempCell.ondoIcon.hidden = NO;
+                           } else {
+                               self.tempCell.ondoIcon.hidden = YES;
+                           }
                        } else {
                            self.tempCell.placeholderLabel.hidden = NO;
                            self.tempCell.temperatureValueLabel.hidden = YES;
@@ -881,6 +890,12 @@ NSMutableArray *daysFromBackend;
                            [self.supplementsCell.selectedSupplementIDs removeAllObjects];
                            [self.supplementIDs removeAllObjects];
                            [self.supplements removeAllObjects];
+                       }
+                       
+                       if (day.notes) {
+                           self.notes = day.notes;
+                       } else {
+                           self.notes = @"";
                        }
                        
                        //                       [self setTableStateForState:TableStateAllClosed];
@@ -1630,12 +1645,18 @@ NSMutableArray *daysFromBackend;
             [self.statusCell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
             // change notes button picture if we have a note saved for that date
-            NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-            NSString *dateKeyString = [dateFormatter stringFromDate:self.selectedDate];
-            NSString *keyString = [NSString stringWithFormat:@"note_%@", dateKeyString];
-            
-            if ([[NSUserDefaults standardUserDefaults] objectForKey:keyString]) {
+//            NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+//            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+//            NSString *dateKeyString = [dateFormatter stringFromDate:self.selectedDate];
+//            NSString *keyString = [NSString stringWithFormat:@"note_%@", dateKeyString];
+//            
+//            if ([[NSUserDefaults standardUserDefaults] objectForKey:keyString]) {
+//                [self.statusCell.notesButton setImage:[UIImage imageNamed:@"icn_notes_entered"] forState:UIControlStateNormal];
+//            } else {
+//                [self.statusCell.notesButton setImage:[UIImage imageNamed:@"icn_notes_empty"] forState:UIControlStateNormal];
+//            }
+            // no longer using nsuserdefaults
+            if ([self.notes length] > 0) {
                 [self.statusCell.notesButton setImage:[UIImage imageNamed:@"icn_notes_entered"] forState:UIControlStateNormal];
             } else {
                 [self.statusCell.notesButton setImage:[UIImage imageNamed:@"icn_notes_empty"] forState:UIControlStateNormal];
@@ -5163,6 +5184,7 @@ NSMutableArray *daysFromBackend;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.destinationViewController isMemberOfClass:[TrackingNotesViewController class]]) {
         [segue.destinationViewController setSelectedDate:self.selectedDate];
+        [segue.destinationViewController setNotesText:self.notes];
     }
 }
 
@@ -5235,6 +5257,7 @@ NSMutableArray *daysFromBackend;
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     [attributes setObject:self.selectedDate forKey:@"date"];
     [attributes setObject:[NSString stringWithFormat:@"%f", temp] forKey:@"temperature"];
+    [attributes setObject:[NSNumber numberWithBool:YES] forKey:@"used_ondo"];
     
     [ConnectionManager put:@"/days/"
                     params:@{
