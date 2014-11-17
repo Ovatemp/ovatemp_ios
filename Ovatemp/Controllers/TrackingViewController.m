@@ -1638,12 +1638,18 @@ NSMutableArray *daysFromBackend;
             [self.statusCell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
             // change notes button picture if we have a note saved for that date
-            NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-            NSString *dateKeyString = [dateFormatter stringFromDate:self.selectedDate];
-            NSString *keyString = [NSString stringWithFormat:@"note_%@", dateKeyString];
-            
-            if ([[NSUserDefaults standardUserDefaults] objectForKey:keyString]) {
+//            NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+//            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+//            NSString *dateKeyString = [dateFormatter stringFromDate:self.selectedDate];
+//            NSString *keyString = [NSString stringWithFormat:@"note_%@", dateKeyString];
+//            
+//            if ([[NSUserDefaults standardUserDefaults] objectForKey:keyString]) {
+//                [self.statusCell.notesButton setImage:[UIImage imageNamed:@"icn_notes_entered"] forState:UIControlStateNormal];
+//            } else {
+//                [self.statusCell.notesButton setImage:[UIImage imageNamed:@"icn_notes_empty"] forState:UIControlStateNormal];
+//            }
+            // no longer using nsuserdefaults
+            if ([self.notes length] > 0) {
                 [self.statusCell.notesButton setImage:[UIImage imageNamed:@"icn_notes_entered"] forState:UIControlStateNormal];
             } else {
                 [self.statusCell.notesButton setImage:[UIImage imageNamed:@"icn_notes_empty"] forState:UIControlStateNormal];
