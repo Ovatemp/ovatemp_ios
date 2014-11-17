@@ -89,6 +89,7 @@ typedef enum {
 @property NSString *pregnancy; // ferning
 @property NSMutableArray *supplements;
 @property NSMutableArray *supplementIDs;
+@property BOOL usedOndo;
 
 @property NSString *notes;
 
@@ -689,9 +690,11 @@ NSMutableArray *daysFromBackend;
                            
                            // ondo image
                            if (day.usedOndo) {
+                               self.usedOndo = YES;
                                self.tempCell.ondoIcon.hidden = NO;
                            } else {
                                self.tempCell.ondoIcon.hidden = YES;
+                               self.usedOndo = NO;
                            }
                        } else {
                            self.tempCell.placeholderLabel.hidden = NO;
@@ -2887,6 +2890,12 @@ NSMutableArray *daysFromBackend;
                 self.tempCell.placeholderLabel.hidden = YES;
                 self.tempCell.collapsedLabel.hidden = NO;
                 self.tempCell.temperatureValueLabel.hidden = NO;
+                
+                if (self.usedOndo) {
+                    self.tempCell.ondoIcon.hidden = NO;
+                } else {
+                    self.tempCell.ondoIcon.hidden = YES;
+                }
             } else {
                 self.tempCell.placeholderLabel.hidden = NO;
                 self.tempCell.collapsedLabel.hidden = YES;
@@ -3072,6 +3081,7 @@ NSMutableArray *daysFromBackend;
             self.tempCell.infoButton.hidden = YES;
             self.tempCell.disturbanceLabel.hidden = NO;
             self.tempCell.disturbanceSwitch.hidden = NO;
+            self.tempCell.ondoIcon.hidden = YES;
             
             expandCervicalFluidCell = NO;
             self.cfCell.dryImageView.hidden = YES;
@@ -5068,6 +5078,7 @@ NSMutableArray *daysFromBackend;
     
     // reset ondo icon
     self.tempCell.ondoIcon.hidden = YES;
+    self.usedOndo = NO;
     
     // center cell
     [self.drawerCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
@@ -5224,6 +5235,7 @@ NSMutableArray *daysFromBackend;
     
     // unhide ondo icon
     self.tempCell.ondoIcon.hidden = NO;
+    self.usedOndo = YES;
     
     // always send F to backend
     [self postAndSaveTempWithTempValue:temperature];
@@ -5264,7 +5276,9 @@ NSMutableArray *daysFromBackend;
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     [attributes setObject:self.selectedDate forKey:@"date"];
     [attributes setObject:[NSString stringWithFormat:@"%f", temp] forKey:@"temperature"];
-    [attributes setObject:[NSNumber numberWithBool:YES] forKey:@"used_ondo"];
+    if (self.usedOndo) {
+        [attributes setObject:[NSNumber numberWithBool:YES] forKey:@"used_ondo"];
+    }
     
     [ConnectionManager put:@"/days/"
                     params:@{
