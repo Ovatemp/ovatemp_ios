@@ -682,6 +682,13 @@ NSMutableArray *daysFromBackend;
                            self.tempCell.placeholderLabel.hidden = YES;
                            self.tempCell.temperatureValueLabel.hidden = NO;
                            self.tempCell.collapsedLabel.hidden = NO;
+                           
+                           // ondo image
+                           if (day.usedOndo) {
+                               self.tempCell.ondoIcon.hidden = NO;
+                           } else {
+                               self.tempCell.ondoIcon.hidden = YES;
+                           }
                        } else {
                            self.tempCell.placeholderLabel.hidden = NO;
                            self.tempCell.temperatureValueLabel.hidden = YES;
@@ -5250,6 +5257,7 @@ NSMutableArray *daysFromBackend;
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     [attributes setObject:self.selectedDate forKey:@"date"];
     [attributes setObject:[NSString stringWithFormat:@"%f", temp] forKey:@"temperature"];
+    [attributes setObject:[NSNumber numberWithBool:YES] forKey:@"used_ondo"];
     
     [ConnectionManager put:@"/days/"
                     params:@{
