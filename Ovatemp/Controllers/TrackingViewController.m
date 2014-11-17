@@ -90,6 +90,8 @@ typedef enum {
 @property NSMutableArray *supplements;
 @property NSMutableArray *supplementIDs;
 
+@property NSString *notes;
+
 @end
 
 @implementation TrackingViewController
@@ -881,6 +883,12 @@ NSMutableArray *daysFromBackend;
                            [self.supplementsCell.selectedSupplementIDs removeAllObjects];
                            [self.supplementIDs removeAllObjects];
                            [self.supplements removeAllObjects];
+                       }
+                       
+                       if (day.notes) {
+                           self.notes = day.notes;
+                       } else {
+                           self.notes = @"";
                        }
                        
                        //                       [self setTableStateForState:TableStateAllClosed];
@@ -5163,6 +5171,7 @@ NSMutableArray *daysFromBackend;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.destinationViewController isMemberOfClass:[TrackingNotesViewController class]]) {
         [segue.destinationViewController setSelectedDate:self.selectedDate];
+        [segue.destinationViewController setNotesText:self.notes];
     }
 }
 
