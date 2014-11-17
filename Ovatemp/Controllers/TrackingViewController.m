@@ -2034,7 +2034,7 @@ NSMutableArray *daysFromBackend;
                 [self.supplementsCell.supplementsTableViewDataSource removeAllObjects];
             }
             
-            
+            [self.supplementsCell.supplementsTableView reloadData];
             
             return self.supplementsCell;
 
@@ -5050,6 +5050,11 @@ NSMutableArray *daysFromBackend;
     
     //    NSLog(@"---%@", [self.drawerCollectionView cellForItemAtIndexPath:indexPath]);
     
+    //    self.supplementIDs = nil;
+    //    self.supplements = nil;
+    [self.supplementsCell.supplementsTableViewDataSource removeAllObjects];
+    [self.supplementsCell.selectedSupplementIDs removeAllObjects];
+    
     [self.drawerCollectionView reloadData];
     [self.drawerCollectionView.collectionViewLayout invalidateLayout];
     
@@ -5081,11 +5086,6 @@ NSMutableArray *daysFromBackend;
     PregnancyTestCellHasData = NO;
     SupplementsCellHasData = NO;
     MedicineCellHasData = NO;
-    
-//    self.supplementIDs = nil;
-//    self.supplements = nil;
-    [self.supplementsCell.supplementsTableViewDataSource removeAllObjects];
-    [self.supplementsCell.selectedSupplementIDs removeAllObjects];
     
     // reset disturbance switch
     [self.tempCell.disturbanceSwitch setOn:NO];
