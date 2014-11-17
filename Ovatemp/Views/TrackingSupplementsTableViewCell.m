@@ -65,8 +65,8 @@
         textField.autocapitalizationType = UITextAutocapitalizationTypeWords;
     }];
     
-    [alert addAction:ok];
     [alert addAction:cancel];
+    [alert addAction:ok];
     
     [self.delegate presentViewControllerWithViewController:alert];
 }
