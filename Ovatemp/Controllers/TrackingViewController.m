@@ -573,6 +573,8 @@ NSMutableArray *daysFromBackend;
     
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor ovatempDarkGreyTitleColor] forKey:NSForegroundColorAttributeName];
     
+    [Calendar setDate:self.selectedDate];
+    
     [self pushViewController:calendarViewController];
     
     didLeaveToWebView = YES;
