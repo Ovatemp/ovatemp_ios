@@ -471,6 +471,10 @@ NSMutableArray *daysFromBackend;
         didLeaveToWebView = NO;
     }
     
+    [self refreshDrawerCollectionViewData];
+}
+
+- (void)refreshDrawerCollectionViewData {
     // refresh date drawer
     daysFromBackend = [[NSMutableArray alloc] init];
     
@@ -906,6 +910,9 @@ NSMutableArray *daysFromBackend;
                        [self setDataForStatusCell];
                        
                        [[self tableView] reloadData];
+                       
+                       // refresh drawer
+                       [self refreshDrawerCollectionViewData];
                        
                        [self performSelectorOnMainThread:@selector(hideLoadingSpinner) withObject:self waitUntilDone:YES];
                    }
