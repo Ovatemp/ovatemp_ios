@@ -665,6 +665,10 @@ NSMutableArray *datesWithPeriod;
                            day = [Day withAttributes:@{@"date": self.selectedDate, @"idate": self.selectedDate.dateId}];
                        }
                        
+                       NSLog(@"-----START OF RESPONSE FROM SERVER-----");
+                       NSLog(@"%@", response);
+                       NSLog(@"-----END OF RESPONSE FROM SERVER-----");
+                       
                        //                       if (onSuccess) onSuccess(response);
                        
                        // set data
@@ -676,6 +680,10 @@ NSMutableArray *datesWithPeriod;
                        [dtFormatter setLocale:[NSLocale systemLocale]];
                        [dtFormatter setDateFormat:@"yyyy-MM-dd"];
                        peakDate = [dtFormatter dateFromString:[response objectForKey:@"peak_date"]];
+                       
+                       if (![day.cyclePhase isEqualToString:@"period"]) {
+                           [datesWithPeriod removeObject:day.date];
+                       }
                        
                        if (day.temperature) {
                            // change lable if we have info
@@ -760,6 +768,7 @@ NSMutableArray *datesWithPeriod;
                        }
                        
                        if (day.period) {
+                           // todo: fix random spotting days from entering this array
                            if (![datesWithPeriod containsObject:day.date]) {
                                // add date to dates with period array
                                // if we have a spotting day right after a period day, it still counts as the period cycle phase
@@ -4981,6 +4990,14 @@ NSMutableArray *datesWithPeriod;
         if ([[dtFormatter stringFromDate:cellDate] isEqualToString:[dtFormatter stringFromDate:dateFromBackend]]) {
 //            NSLog(@"---dates are equal---");
             NSString *cyclePhase = [dayDict objectForKey:@"cycle_phase"];
+            
+            for (NSDate *periodDate in datesWithPeriod) {
+                if ([[dtFormatter stringFromDate:cellDate] isEqualToString:[dtFormatter stringFromDate:periodDate]]) {
+                    cyclePhase = @"period";
+                }
+            }
+            
+            
             
             if ([cyclePhase isKindOfClass:[NSString class]]) {
                 
