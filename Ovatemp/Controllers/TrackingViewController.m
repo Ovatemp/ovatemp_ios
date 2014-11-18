@@ -2244,6 +2244,8 @@ NSMutableArray *datesWithPeriod;
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return cell;
+    
+    [self.supplementsCell reloadSupplements];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
