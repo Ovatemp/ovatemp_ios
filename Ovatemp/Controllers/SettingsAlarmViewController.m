@@ -45,7 +45,7 @@
             self.onLabel.text = @"OFF";
             [self.alarmSwitch setOn:NO];
             [self hideDatePicker];
-            self.alarmTimeValueLabel.textColor = [UIColor colorWithRed:68.0f/255.0f green:68.0f/255.0f blue:68.0f/255.0f alpha:1.0f];
+            self.alarmTimeValueLabel.textColor = [UIColor ovatempGreyColor];
         }
     }
 }
@@ -71,7 +71,7 @@
     } else {
         self.onLabel.text = @"OFF";
         [self hideDatePicker];
-        self.alarmTimeValueLabel.textColor = [UIColor colorWithRed:68.0f/255.0f green:68.0f/255.0f blue:68.0f/255.0f alpha:1.0f];
+        self.alarmTimeValueLabel.textColor = [UIColor ovatempGreyColor];
     }
 }
 
