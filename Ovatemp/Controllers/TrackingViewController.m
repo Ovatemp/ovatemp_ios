@@ -1000,6 +1000,7 @@ NSMutableArray *datesWithPeriod;
                 self.statusCell.notEnoughInfoLabel.hidden = YES;
                 self.statusCell.periodLabel.hidden = YES;
                 self.statusCell.enterMoreInfoLabel.hidden = NO;
+                return;
             } else { // avoid
                 self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period-1"]; // I know it's not the period phase, my designer named the asset wrong
                 self.statusCell.peakLabel.text = @"PEAK";
@@ -1010,6 +1011,7 @@ NSMutableArray *datesWithPeriod;
                 self.statusCell.notEnoughInfoLabel.hidden = YES;
                 self.statusCell.periodLabel.hidden = YES;
                 self.statusCell.enterMoreInfoLabel.hidden = NO;
+                return;
             }
         } else { // just plain fertile
             if (currentUserProfile.tryingToConceive) {
@@ -1021,6 +1023,7 @@ NSMutableArray *datesWithPeriod;
                 self.statusCell.fertilityLabel.hidden = YES;
                 self.statusCell.notEnoughInfoLabel.hidden = YES;
                 self.statusCell.enterMoreInfoLabel.hidden = NO;
+                return;
             } else { // avoid
                 self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period-1"]; // I know it's not the period phase, my designer named the asset wrong
                 self.statusCell.periodLabel.text = @"FERTILE";
@@ -1030,6 +1033,7 @@ NSMutableArray *datesWithPeriod;
                 self.statusCell.fertilityLabel.hidden = YES;
                 self.statusCell.notEnoughInfoLabel.hidden = YES;
                 self.statusCell.enterMoreInfoLabel.hidden = NO;
+                return;
             }
         }
     }
@@ -5163,14 +5167,21 @@ NSMutableArray *datesWithPeriod;
                 UserProfile *currentUserProfile = [UserProfile current];
                 
                 // in fertility window overrides
+                NSLog(@"%@", [dayDict objectForKey: @"in_fertility_window"]);
                 NSNumber *inFertilityWindowNumber = (NSNumber *)[dayDict objectForKey: @"in_fertility_window"];
                 if ([inFertilityWindowNumber boolValue] == YES) {
                     if (currentUserProfile.tryingToConceive) {
-                        // peak fertility, green fertile
+                        // green fertility image
                         cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_fertile_small"];
+                        cell.monthLabel.textColor = [UIColor whiteColor];
+                        cell.dayLabel.textColor = [UIColor whiteColor];
+                        return cell;
                     } else { // avoid
                         // red fertility image
                         cell.statusImageView.image = [UIImage imageNamed:@"icn_dd_fertile_small"];
+                        cell.monthLabel.textColor = [UIColor whiteColor];
+                        cell.dayLabel.textColor = [UIColor whiteColor];
+                        return cell;
                     }
                 }
                 
