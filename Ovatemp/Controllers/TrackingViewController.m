@@ -915,7 +915,7 @@ NSMutableArray *datesWithPeriod;
                            [self.pregnancyCell.pregnancyTypeNegativeImageView setSelected:NO];
                        }
                        
-                       if ([day.supplementIds count] > 0) {
+                       if ([day.supplements count] > 0) {
                            self.supplements = [[NSMutableArray alloc] init];
                            self.supplementIDs = [[NSMutableArray alloc] initWithArray:day.supplementIds];
                            NSArray *suppArray = [[Supplement instances] allValues];
@@ -932,11 +932,25 @@ NSMutableArray *datesWithPeriod;
                            self.supplementsCell.selectedSupplementIDs = self.supplementIDs;
                            SupplementsCellHasData = YES;
                        } else {
-                           SupplementsCellHasData = NO;
+//                           SupplementsCellHasData = NO;
+                           SupplementsCellHasData = YES;
                            [self.supplementsCell.supplementsTableViewDataSource removeAllObjects];
                            [self.supplementsCell.selectedSupplementIDs removeAllObjects];
                            [self.supplementIDs removeAllObjects];
                            [self.supplements removeAllObjects];
+                           
+                           // add supplements to array, just don't mark them as selected
+                           NSArray *suppArray = [[Supplement instances] allValues];
+                           for (Supplement *supp in suppArray) {
+                               SimpleSupplement *simpleSupp = [[SimpleSupplement alloc] init];
+                               simpleSupp.name = supp.name;
+                               simpleSupp.idNumber = supp.id;
+                               if (![self.supplementIDs containsObject:simpleSupp]) {
+                                   [self.supplements addObject:simpleSupp];
+                               }
+                           }
+                           self.supplementsCell.supplementsTableViewDataSource = [[NSMutableArray alloc] initWithArray:self.supplements];
+                           self.supplementsCell.selectedSupplementIDs = [[NSMutableArray alloc] initWithArray:self.supplementIDs];
                        }
                        
                        if (day.notes) {
@@ -4980,9 +4994,16 @@ NSMutableArray *datesWithPeriod;
     self.supplementsCell.addSupplementButton.hidden = YES;
     
     if (SupplementsCellHasData) {
-        self.supplementsCell.supplementsCollapsedLabel.hidden = NO;
-        self.supplementsCell.supplementsTypeCollapsedLabel.hidden = NO;
-        self.supplementsCell.placeholderLabel.hidden = YES;
+        if ([self.supplementsCell.selectedSupplementIDs count] == 0) {
+            // no selected supplements
+            self.supplementsCell.supplementsCollapsedLabel.hidden = YES;
+            self.supplementsCell.supplementsTypeCollapsedLabel.hidden = YES;
+            self.supplementsCell.placeholderLabel.hidden = NO;
+        } else {
+            self.supplementsCell.supplementsCollapsedLabel.hidden = NO;
+            self.supplementsCell.supplementsTypeCollapsedLabel.hidden = NO;
+            self.supplementsCell.placeholderLabel.hidden = YES;
+        }
     } else {
         self.supplementsCell.supplementsCollapsedLabel.hidden = YES;
         self.supplementsCell.supplementsTypeCollapsedLabel.hidden = YES;
