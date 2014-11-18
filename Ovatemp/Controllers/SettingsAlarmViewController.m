@@ -51,6 +51,11 @@
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.title = @"BBT Alarm";
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -132,7 +137,18 @@
     UIAlertAction *learnMore = [UIAlertAction actionWithTitle:@"Learn more" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         WebViewController *webViewController = [WebViewController withURL:@"http://ovatemp.helpshift.com/a/ovatemp/?s=fertility-faqs&f=learn-more-about-the-alarm"];
         webViewController.title = @"BBT Alarm";
-        [self.navigationController presentViewController:webViewController animated:YES completion:nil];
+        
+        [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 64)];
+        
+//        [self.navigationController presentViewController:webViewController animated:YES completion:nil];
+//        webViewController.navigationItem.leftBarButtonItem.title = @"Back";
+        
+//        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(goBackFromWebView)];
+//        
+//        [webViewController.navigationItem setLeftBarButtonItem:backButton];
+        self.title = @"BBT Alarmmmmmmmm           ";
+        
+        [self.navigationController pushViewController:webViewController animated:YES];
     }];
     
     [infoAlert addAction:gotIt];
@@ -141,6 +157,10 @@
     infoAlert.view.tintColor = [UIColor ovatempAquaColor];
     
     [self presentViewController:infoAlert animated:YES completion:nil];
+}
+
+- (void)goBackFromWebView {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*
