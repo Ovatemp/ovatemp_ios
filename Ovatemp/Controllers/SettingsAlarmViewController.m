@@ -53,7 +53,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.title = @"BBT Alarm";
+    self.title = @"BBT Reminder";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -127,8 +127,8 @@
 }
 - (IBAction)doShowInfo:(id)sender {
     UIAlertController *infoAlert = [UIAlertController
-                                    alertControllerWithTitle:@"BBT Alarm"
-                                    message:@"Waiting on the client for this text"
+                                    alertControllerWithTitle:@"BBT Reminder"
+                                    message:@"Measuring BBT should be the first thing you do upon waking, even before taking a sip of water."
                                     preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *gotIt = [UIAlertAction actionWithTitle:@"Got it" style:UIAlertActionStyleDefault
@@ -136,7 +136,7 @@
     
     UIAlertAction *learnMore = [UIAlertAction actionWithTitle:@"Learn more" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         WebViewController *webViewController = [WebViewController withURL:@"http://ovatemp.helpshift.com/a/ovatemp/?s=fertility-faqs&f=learn-more-about-the-alarm"];
-        webViewController.title = @"BBT Alarm";
+        webViewController.title = @"BBT Reminder";
         
         [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 64)];
         
@@ -146,7 +146,7 @@
 //        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(goBackFromWebView)];
 //        
 //        [webViewController.navigationItem setLeftBarButtonItem:backButton];
-        self.title = @"BBT Alarmmmmmmmm           ";
+        self.title = @"BBT Reminder            ";
         
         [self.navigationController pushViewController:webViewController animated:YES];
     }];

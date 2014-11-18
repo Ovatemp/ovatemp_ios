@@ -1057,6 +1057,7 @@ NSMutableArray *datesWithPeriod;
                 self.statusCell.fertilityLabel.hidden = NO;
                 self.statusCell.notEnoughInfoLabel.hidden = YES;
                 self.statusCell.periodLabel.hidden = YES;
+                self.statusCell.enterMoreInfoLabel.text = @"Optimal conditions to make babies!";
                 self.statusCell.enterMoreInfoLabel.hidden = NO;
                 return;
             } else { // avoid
@@ -1068,6 +1069,7 @@ NSMutableArray *datesWithPeriod;
                 self.statusCell.fertilityLabel.hidden = NO;
                 self.statusCell.notEnoughInfoLabel.hidden = YES;
                 self.statusCell.periodLabel.hidden = YES;
+                self.statusCell.enterMoreInfoLabel.text = @"Practice safe sex or avoid intercourse";
                 self.statusCell.enterMoreInfoLabel.hidden = NO;
                 return;
             }
@@ -1080,6 +1082,7 @@ NSMutableArray *datesWithPeriod;
                 self.statusCell.peakLabel.hidden = YES;
                 self.statusCell.fertilityLabel.hidden = YES;
                 self.statusCell.notEnoughInfoLabel.hidden = YES;
+                self.statusCell.enterMoreInfoLabel.text = @"Let’s get it on!";
                 self.statusCell.enterMoreInfoLabel.hidden = NO;
                 return;
             } else { // avoid
@@ -1090,6 +1093,7 @@ NSMutableArray *datesWithPeriod;
                 self.statusCell.peakLabel.hidden = YES;
                 self.statusCell.fertilityLabel.hidden = YES;
                 self.statusCell.notEnoughInfoLabel.hidden = YES;
+                self.statusCell.enterMoreInfoLabel.text = @"Practice safe sex or avoid intercourse";
                 self.statusCell.enterMoreInfoLabel.hidden = NO;
                 return;
             }
@@ -1128,6 +1132,12 @@ NSMutableArray *datesWithPeriod;
         self.statusCell.fertilityLabel.hidden = YES;
         
         self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period"];
+        if (currentUserProfile.tryingToConceive) {
+            self.statusCell.enterMoreInfoLabel.text = @"Try to get some rest";
+        } else {
+            // avoid
+            self.statusCell.enterMoreInfoLabel.text = @"The first five days of your cycle are safe";
+        }
         self.statusCell.enterMoreInfoLabel.hidden = NO;
         
     } else if ([day.cyclePhase isEqualToString:@"ovulation"]) { // fertile
@@ -1139,7 +1149,23 @@ NSMutableArray *datesWithPeriod;
             self.statusCell.peakLabel.hidden = NO;
             self.statusCell.fertilityLabel.hidden = NO;
             self.statusCell.notEnoughInfoLabel.hidden = YES;
+            
+            if (currentUserProfile.tryingToConceive) {
+//                self.statusCell.enterMoreInfoLabel.text = @"Let’s get it on!";
+                self.statusCell.enterMoreInfoLabel.text = @"Optimal conditions to make babies!";
+                self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_fertile"];
+            } else {
+                // avoid
+                self.statusCell.enterMoreInfoLabel.text = @"Practice safe sex or avoid intercourse";
+                self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period-1"]; // I know it's not the period phase, my designer named the asset wrong
+            }
+            
+            self.statusCell.enterMoreInfoLabel.hidden = NO;
+            
             self.statusCell.periodLabel.hidden = YES;
+            
+            return;
+            
         } else { // just plain fertile
             self.statusCell.periodLabel.text = @"FERTILE";
             self.statusCell.periodLabel.hidden = NO;
@@ -1152,14 +1178,23 @@ NSMutableArray *datesWithPeriod;
         if (currentUserProfile.tryingToConceive) {
             // green fertility image
             self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_fertile"];
+            self.statusCell.enterMoreInfoLabel.text = @"Let’s get it on!";
         } else {
             // trying to avoid, red fertility image
             self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period-1"]; // I know it's not the period phase, my designer named the asset wrong
+            self.statusCell.enterMoreInfoLabel.text = @"Practice safe sex or avoid intercourse";
         }
         
         self.statusCell.enterMoreInfoLabel.hidden = NO;
         
     } else if ([day.cyclePhase isEqualToString:@"preovulation"]) { // not fertile
+        
+        if (currentUserProfile.tryingToConceive) {
+            self.statusCell.enterMoreInfoLabel.text = @"Fertile window about to open, check for Cervical Fluid";
+        } else {
+            self.statusCell.enterMoreInfoLabel.text = @"You are safe on the evening of a dry day";
+        }
+        
         if ([day.cervicalFluid isEqualToString:@"dry"] && !currentUserProfile.tryingToConceive) {
             // yellow caution image
             self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_notfertile-1"];
@@ -1189,6 +1224,7 @@ NSMutableArray *datesWithPeriod;
             self.statusCell.peakLabel.hidden = YES;
             self.statusCell.fertilityLabel.hidden = YES;
             self.statusCell.notEnoughInfoLabel.hidden = YES;
+            self.statusCell.enterMoreInfoLabel.text = @"Practice safe sex or avoid intercourse";
             self.statusCell.enterMoreInfoLabel.hidden = NO;
         }
     } else if ([day.cyclePhase isEqualToString:@"postovulation"]) { // not fertile
@@ -1203,6 +1239,12 @@ NSMutableArray *datesWithPeriod;
         self.statusCell.fertilityLabel.hidden = NO;
         self.statusCell.notEnoughInfoLabel.hidden = YES;
         self.statusCell.periodLabel.hidden = YES;
+        
+        if (currentUserProfile.tryingToConceive) {
+            self.statusCell.enterMoreInfoLabel.text = @"Crossing our fingers for you!";
+        } else { // avoid
+            self.statusCell.enterMoreInfoLabel.text = @"You’re safe to have unprotected sex until your next period";
+        }
         
         self.statusCell.enterMoreInfoLabel.hidden = NO;
         
