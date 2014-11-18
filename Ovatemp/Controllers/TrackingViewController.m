@@ -500,6 +500,24 @@ NSMutableArray *datesWithPeriod;
                                //                               NSLog(@"%@", [day objectForKey:@"date"]);
                                //                               [daysFromBackend addObject:[day objectForKey:@"date"]]; <- this will give you the date, we need the whole day dictionary
                                [daysFromBackend addObject:day];
+                               
+                               if ((![[day objectForKey:@"period"] isEqual:[NSNull null]])) {
+                                   if ([[day objectForKey:@"period"] isEqualToString:@"spotting"] || [[day objectForKey:@"period"] isEqualToString:@"light"] || [[day objectForKey:@"period"] isEqualToString:@"medium"] || [[day objectForKey:@"period"] isEqualToString:@"heavy"]) {
+                                       NSDateFormatter* dtFormatter = [[NSDateFormatter alloc] init];
+                                       [dtFormatter setLocale:[NSLocale systemLocale]];
+                                       [dtFormatter setDateFormat:@"yyyy-MM-dd"];
+                                       NSDate *tempDate = [dtFormatter dateFromString:[day objectForKey:@"date"]];
+                                       if (![datesWithPeriod containsObject:tempDate]) {
+                                           // add date to dates with period array
+                                           // if we have a spotting day right after a period day, it still counts as the period cycle phase
+                                           [datesWithPeriod addObject:tempDate];
+                                       }
+                                   }
+                               }
+                               
+                               
+                               
+                               
                            }
                        }
                        [self.drawerCollectionView reloadData];
@@ -4991,12 +5009,91 @@ NSMutableArray *datesWithPeriod;
 //            NSLog(@"---dates are equal---");
             NSString *cyclePhase = [dayDict objectForKey:@"cycle_phase"];
             
+            BOOL useOldCyclePhase = YES;
+            NSString *oldCyclePhase = cyclePhase;
+            
             for (NSDate *periodDate in datesWithPeriod) {
                 if ([[dtFormatter stringFromDate:cellDate] isEqualToString:[dtFormatter stringFromDate:periodDate]]) {
                     cyclePhase = @"period";
+                    useOldCyclePhase = NO;
                 }
             }
             
+            if (useOldCyclePhase) {
+                cyclePhase = oldCyclePhase;
+            }
+            
+            // if this cell is spotting and the day before did not have a period, cell is not fertile
+            if (![[dayDict objectForKey:@"period"] isEqual:[NSNull null]]) {
+                if ([[dayDict objectForKey:@"period"] isEqualToString:@"spotting"]) {
+                    // check if cell the day before had a period
+                    NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+                    dayComponent.day = -1;
+                    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+                    NSDate *dayBeforeCellDate = [currentCalendar dateByAddingComponents:dayComponent toDate:cellDate options:0];
+                    
+                    NSDateFormatter *dtFormatter = [[NSDateFormatter alloc] init];
+                    [dtFormatter setLocale:[NSLocale systemLocale]];
+                    [dtFormatter setDateFormat:@"yyyy-MM-dd"];
+                    
+                    BOOL dayBeforeHadPeriod = NO;
+                    
+                    for (NSDate *periodDate in datesWithPeriod) {
+                        if ([[dtFormatter stringFromDate:periodDate] isEqualToString:[dtFormatter stringFromDate:dayBeforeCellDate]]) {
+                            dayBeforeHadPeriod = YES;
+                        }
+                    }
+                    
+                    if (!dayBeforeHadPeriod) {
+                        // return not fertile cell
+                        cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_small"];
+                        cell.monthLabel.textColor = [UIColor whiteColor];
+                        cell.dayLabel.textColor = [UIColor whiteColor];
+                        return cell;
+                    }
+                    
+                }
+
+            }
+            
+            // if cell date -1 day has a period and celldate period is spotting, return period
+            // else, return not fertile
+            
+//            NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+//            dayComponent.day = -1;
+//            NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+//            NSDate *dayBeforeCellDate = [currentCalendar dateByAddingComponents:dayComponent toDate:cellDate options:0];
+//            
+//            NSDateFormatter *dtFormatter = [[NSDateFormatter alloc] init];
+//            [dtFormatter setLocale:[NSLocale systemLocale]];
+//            [dtFormatter setDateFormat:@"yyyy-MM-dd"];
+            
+//            
+//            BOOL dayBeforeHadPeriod = NO;
+//            for (NSDate *periodDate in datesWithPeriod) {
+//                if ([[dtFormatter stringFromDate:periodDate] isEqualToString:[dtFormatter stringFromDate:dayBeforeCellDate]]) {
+//                    dayBeforeHadPeriod = YES;
+//                }
+//            }
+//            
+//            if (!dayBeforeHadPeriod) {
+//                if (cyclePhase) {
+//                    <#statements#>
+//                }
+//                cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_small"];
+//                cell.monthLabel.textColor = [UIColor whiteColor];
+//                cell.dayLabel.textColor = [UIColor whiteColor];
+//            }
+            
+//            for (NSDate *periodDate in datesWithPeriod) {
+//                if ([[dtFormatter stringFromDate:cellDate] isEqualToString:[dtFormatter stringFromDate:periodDate]]) {
+//                    cell.statusImageView.image = [UIImage imageNamed:@"icn_period"];
+//                    // change text color
+//                    cell.monthLabel.textColor = [UIColor whiteColor];
+//                    cell.dayLabel.textColor = [UIColor whiteColor];
+//                    return cell;
+//                }
+//            }
             
             
             if ([cyclePhase isKindOfClass:[NSString class]]) {
