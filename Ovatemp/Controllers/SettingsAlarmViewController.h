@@ -13,5 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *alarmDatePicker;
 @property (weak, nonatomic) IBOutlet UISwitch *alarmSwitch;
 @property (weak, nonatomic) IBOutlet UIView *hideDatePickerView;
+@property (weak, nonatomic) IBOutlet UILabel *alarmTimeValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *onLabel;
 
 @end
