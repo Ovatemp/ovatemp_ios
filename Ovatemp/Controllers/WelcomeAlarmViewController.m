@@ -38,11 +38,6 @@
     [self backOutToRootViewController];
 }
 - (IBAction)doSetAlarm:(id)sender {
-    // first, save alarm info to user defaults
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.alarmTimePicker.date forKey:@"alarmDate"];
-    [defaults synchronize];
-    
     // set date for notification
     UILocalNotification *alarm = [[UILocalNotification alloc] init];
     alarm.fireDate = self.alarmTimePicker.date;
@@ -53,6 +48,19 @@
     alarm.soundName = UILocalNotificationDefaultSoundName;
     [[UIApplication sharedApplication] scheduleLocalNotification:alarm];
     [self backOutToRootViewController];
+    
+    // code for deleting this notification
+//    NSArray *arrayOfLocalNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+//    for (UILocalNotification *localNotification in arrayOfLocalNotifications) {
+//        
+//        if ([localNotification.alertBody isEqualToString:@"It's time to take your temperature."]) {
+//            NSLog(@"the notification this is canceld is %@", localNotification.alertBody);
+//            
+//            [[UIApplication sharedApplication] cancelLocalNotification:localNotification] ; // delete the notification from the system
+//            
+//        }
+//        
+//    }
 }
 
 /*
