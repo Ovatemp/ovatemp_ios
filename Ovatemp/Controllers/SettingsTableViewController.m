@@ -29,7 +29,7 @@ NSArray *settingsMenuItems;
     
     self.title = @"Settings";
     
-    settingsMenuItems = [NSArray arrayWithObjects:@"Temperature Units", @"FAM Settings", @"Reminders", nil];
+    settingsMenuItems = [NSArray arrayWithObjects:@"Temperature Units", @"FAM Settings", @"BBT Alarm", nil];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -119,7 +119,7 @@ NSArray *settingsMenuItems;
         case 2: // alarm settings
         {
             SettingsAlarmViewController *alarmVC = [SettingsAlarmViewController new];
-            alarmVC.title = @"Reminders";
+            alarmVC.title = @"BBT Alarm";
             [self.navigationController pushViewController:alarmVC animated:YES];
             break;
         }
