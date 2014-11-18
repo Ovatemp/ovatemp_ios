@@ -158,6 +158,8 @@ NSDate *peakDate;
 
 NSMutableArray *daysFromBackend;
 
+NSMutableArray *datesWithPeriod;
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -378,6 +380,7 @@ NSMutableArray *daysFromBackend;
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingSupplementsTableViewCell" bundle:nil] forCellReuseIdentifier:@"supplementsCell"];
     
     // refresh info
+    datesWithPeriod = [NSMutableArray new];
     [self refreshTrackingView];
 }
 
@@ -757,6 +760,11 @@ NSMutableArray *daysFromBackend;
                        }
                        
                        if (day.period) {
+                           if (![datesWithPeriod containsObject:day.date]) {
+                               // add date to dates with period array
+                               // if we have a spotting day right after a period day, it still counts as the period cycle phase
+                               [datesWithPeriod addObject:day.date];
+                           }
                            self.period = day.period;
                            self.periodCell.periodTypeCollapsedLabel.text = self.period;
                            self.periodCell.periodTypeCollapsedLabel.hidden = NO;
@@ -949,6 +957,28 @@ NSMutableArray *daysFromBackend;
     
     UserProfile *currentUserProfile = [UserProfile current];
     
+    // get day before selected date
+    // if that object is in the datesWithPeriod array and day.cyclePhase is not period, set day.cyclePhase to period
+    if ([day.period isEqualToString:@"spotting"]) {
+        NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+        dayComponent.day = -1;
+        NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+        NSDate *dayBeforeSelectedDate = [currentCalendar dateByAddingComponents:dayComponent toDate:self.selectedDate options:0];
+        
+        NSDateFormatter *dtFormatter = [[NSDateFormatter alloc] init];
+        [dtFormatter setLocale:[NSLocale systemLocale]];
+        [dtFormatter setDateFormat:@"yyyy-MM-dd"];
+        
+        for (NSDate *periodDate in datesWithPeriod) {
+            if ([[dtFormatter stringFromDate:periodDate] isEqualToString:[dtFormatter stringFromDate:dayBeforeSelectedDate]]) {
+                day.cyclePhase = @"period";
+            }
+        }
+        
+//        if ([datesWithPeriod containsObject:dayBeforeSelectedDate]) {
+//            day.cyclePhase = @"period";
+//        }
+    }
     if ([day.cyclePhase isEqualToString:@"period"]) {
         self.statusCell.notEnoughInfoLabel.hidden = YES;
         
