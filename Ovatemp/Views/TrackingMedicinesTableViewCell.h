@@ -22,4 +22,12 @@
 
 @property NSDate *selectedDate;
 
+@property NSMutableArray *medicinesTableViewDataSource;
+@property NSMutableArray *allMedicineIDs;
+@property NSMutableArray *selectedMedicineIDs;
+@property NSNumber *addedMedicineID;
+@property NSString *addedMedicineString;
+
+- (void)reloadMedicines;
+
 @end

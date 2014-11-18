@@ -34,6 +34,7 @@
 #import "TrackingOvulationTestTableViewCell.h"
 #import "TrackingPregnancyTestTableViewCell.h"
 #import "TrackingSupplementsTableViewCell.h"
+#import "TrackingMedicinesTableViewCell.h"
 
 @import HealthKit;
 
@@ -78,6 +79,7 @@ typedef enum {
 @property TrackingOvulationTestTableViewCell *ovulationCell;
 @property TrackingPregnancyTestTableViewCell *pregnancyCell;
 @property TrackingSupplementsTableViewCell *supplementsCell;
+@property TrackingMedicinesTableViewCell *medicinesCell;
 
 // info
 @property NSNumber *temperature;
@@ -91,6 +93,8 @@ typedef enum {
 @property NSString *pregnancy; // ferning
 @property NSMutableArray *supplements;
 @property NSMutableArray *supplementIDs;
+@property NSMutableArray *medicines;
+@property NSMutableArray *medicineIDs;
 @property BOOL usedOndo;
 
 @property NSString *notes;
@@ -250,7 +254,7 @@ NSMutableArray *datesWithPeriod;
     // title
     [self setTitleView];
     
-    trackingTableDataArray = [NSArray arrayWithObjects:@"Status", @"Temperature", @"Cervical Fluid", @"Cervical Position", @"Period", @"Intercourse", @"Mood", @"Symptoms", @"Ovulation Test", @"Pregnancy Test", @"Supplements", @"Medicine", nil];
+    trackingTableDataArray = [NSArray arrayWithObjects:@"Status", @"Temperature", @"Cervical Fluid", @"Cervical Position", @"Period", @"Intercourse", @"Mood", @"Symptoms", @"Ovulation Test", @"Pregnancy Test", @"Supplements", @"Medicines", nil];
     
     [self.navigationController.view setTintColor:[UIColor ovatempAlmostWhiteColor]];
     
@@ -378,6 +382,8 @@ NSMutableArray *datesWithPeriod;
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingPregnancyTestTableViewCell" bundle:nil] forCellReuseIdentifier:@"pregnancyCell"];
     
     [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingSupplementsTableViewCell" bundle:nil] forCellReuseIdentifier:@"supplementsCell"];
+    
+    [[self tableView] registerNib:[UINib nibWithNibName:@"TrackingMedicinesTableViewCell" bundle:nil] forCellReuseIdentifier:@"medicinesCell"];
     
     // refresh info
     datesWithPeriod = [NSMutableArray new];
@@ -951,6 +957,44 @@ NSMutableArray *datesWithPeriod;
                            }
                            self.supplementsCell.supplementsTableViewDataSource = [[NSMutableArray alloc] initWithArray:self.supplements];
                            self.supplementsCell.selectedSupplementIDs = [[NSMutableArray alloc] initWithArray:self.supplementIDs];
+                       }
+                       
+                       if ([day.medicines count] > 0) {
+                           self.medicines = [[NSMutableArray alloc] init];
+                           self.medicineIDs = [[NSMutableArray alloc] initWithArray:day.medicineIds];
+                           NSArray *medArray = [[Medicine instances] allValues];
+                           for (Medicine *med in medArray) {
+                               SimpleSupplement *simpleMed = [[SimpleSupplement alloc] init];
+                               simpleMed.name = med.name;
+                               simpleMed.idNumber = med.id;
+                               if (![self.medicineIDs containsObject:simpleMed]) {
+                                   [self.medicines addObject:simpleMed];
+                               }
+                               //                               [self.supplementIDs addObject:supp.id];
+                           }
+                           self.medicinesCell.medicinesTableViewDataSource = self.medicines;
+                           self.medicinesCell.selectedMedicineIDs = self.medicineIDs;
+                           MedicineCellHasData = YES;
+                       } else {
+                           //                           SupplementsCellHasData = NO;
+                           MedicineCellHasData = YES;
+                           [self.medicinesCell.medicinesTableViewDataSource removeAllObjects];
+                           [self.medicinesCell.selectedMedicineIDs removeAllObjects];
+                           [self.medicineIDs removeAllObjects];
+                           [self.medicines removeAllObjects];
+                           
+                           // add medicines to array, just don't mark them as selected
+                           NSArray *medArray = [[Medicine instances] allValues];
+                           for (Supplement *med in medArray) {
+                               SimpleSupplement *simpleMed = [[SimpleSupplement alloc] init];
+                               simpleMed.name = med.name;
+                               simpleMed.idNumber = med.id;
+                               if (![self.medicineIDs containsObject:simpleMed]) {
+                                   [self.medicines addObject:simpleMed];
+                               }
+                           }
+                           self.medicinesCell.medicinesTableViewDataSource = [[NSMutableArray alloc] initWithArray:self.medicines];
+                           self.medicinesCell.selectedMedicineIDs = [[NSMutableArray alloc] initWithArray:self.medicineIDs];
                        }
                        
                        if (day.notes) {
@@ -2232,20 +2276,53 @@ NSMutableArray *datesWithPeriod;
             break;
         }
             
-        case 11:
+        case 11: // medicines
         {
-            cell = [[UITableViewCell alloc] init];
-            
-            [[cell textLabel] setText:[trackingTableDataArray objectAtIndex:indexPath.row]];
-            
-            cell.layoutMargins = UIEdgeInsetsZero;
+            self.medicinesCell = [self.tableView dequeueReusableCellWithIdentifier:@"medicinesCell" forIndexPath:indexPath];
             
             // TODO: Finish custom cell implementation
-            //            if (expandMedicineCell) {
-            //                // unhide component
-            //            }
+            if (expandMedicineCell) {
+                [self showMedicinesCell];
+            } else {
+                [self hideMedicinesCell];
+            }
             
-//    [self.medicineCell setSelectedDate:self.selectedDate];
+            [self.medicinesCell setSelectedDate:self.selectedDate];
+            
+            self.medicinesCell.layoutMargins = UIEdgeInsetsZero;
+            
+            self.medicinesCell.delegate = self;
+            
+            if (MedicineCellHasData) {
+                self.medicinesCell.selectedMedicineIDs = self.medicineIDs;
+                self.medicinesCell.medicinesTableViewDataSource = self.medicines;
+            } else {
+                [self.medicinesCell.selectedMedicineIDs removeAllObjects];
+                [self.medicinesCell.medicinesTableViewDataSource removeAllObjects];
+            }
+            
+            [self.medicinesCell.medicinesTableView reloadData];
+            
+            self.medicinesCell.medicinesTypeCollapsedLabel.text = @"";
+            
+            if ([self.medicines count] > 0) {
+                for (SimpleSupplement *med in self.medicines) {
+                    // self. supplements is all supps
+                    // self.supplementIds is the selectedIds
+                    if ([self.medicineIDs containsObject:med.idNumber]) {
+                        self.medicinesCell.medicinesTypeCollapsedLabel.text =
+                        [self.medicinesCell.medicinesTypeCollapsedLabel.text stringByAppendingString:[NSString stringWithFormat:@"%@, ", med.name]];
+                    }
+                }
+                // remove trailing ", "
+                if ([self.medicinesCell.medicinesTypeCollapsedLabel.text length] > 2) {
+                    self.medicinesCell.medicinesTypeCollapsedLabel.text = [self.medicinesCell.medicinesTypeCollapsedLabel.text substringToIndex:[self.medicinesCell.medicinesTypeCollapsedLabel.text length] - 2];
+                }
+                
+            }
+            
+            return self.medicinesCell;
+            
             break;
         }
             
@@ -2258,8 +2335,6 @@ NSMutableArray *datesWithPeriod;
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return cell;
-    
-    [self.supplementsCell reloadSupplements];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -2456,11 +2531,23 @@ NSMutableArray *datesWithPeriod;
             }
             break;
         }
-            //
-            //        case 11:
-            //        {
-            //            break;
-            //        }
+            
+         case 11:
+        {
+            if (currentState == TableStateMedicineExpanded) {
+                [self setTableStateForState:TableStateAllClosed];
+            } else {
+                [self setTableStateForState:TableStateMedicineExpanded];
+                [self.medicinesCell.medicinesTableView reloadData];
+            }
+            
+            if (firstOpenMedicineCell) {
+                // no initial data until the user makes a selection
+                firstOpenMedicineCell = NO;
+            }
+
+            break;
+        }
             
         default:
             break;
@@ -3210,8 +3297,8 @@ NSMutableArray *datesWithPeriod;
             // supplements cell
             [self hideSupplementsCell];
 
-            expandMedicineCell = NO;
-            // hide component
+            // medicines cell
+            [self hideMedicinesCell];
             
             currentState = TableStateAllClosed;
             break;
@@ -3391,8 +3478,8 @@ NSMutableArray *datesWithPeriod;
             // supplements cell
             [self hideSupplementsCell];
             
-            expandMedicineCell = NO;
-            // hide component
+            // medicines cell
+            [self hideMedicinesCell];
             
             currentState = TableStateTemperatureExpanded;
             break;
@@ -3555,8 +3642,8 @@ NSMutableArray *datesWithPeriod;
             // supplements cell
             [self hideSupplementsCell];
             
-            expandMedicineCell = NO;
-            // hide component
+            // medicines cell
+            [self hideMedicinesCell];
             
             currentState = TableStateCervicalFluidExpanded;
             break;
@@ -3735,8 +3822,8 @@ NSMutableArray *datesWithPeriod;
             // supplements cell
             [self hideSupplementsCell];
             
-            expandMedicineCell = NO;
-            // hide component
+            // medicines cell
+            [self hideMedicinesCell];
             
             currentState = TableStateCervicalPositionExpanded;
             break;
@@ -3916,8 +4003,8 @@ NSMutableArray *datesWithPeriod;
             // supplements cell
             [self hideSupplementsCell];
             
-            expandMedicineCell = NO;
-            // hide component
+            // medicines cell
+            [self hideMedicinesCell];
             
             currentState = TableStatePeriodExpanded;
             break;
@@ -4097,8 +4184,8 @@ NSMutableArray *datesWithPeriod;
             // supplements cell
             [self hideSupplementsCell];
             
-            expandMedicineCell = NO;
-            // hide component
+            // medicines cell
+            [self hideMedicinesCell];
             
             currentState = TableStateIntercourseExpanded;
             break;
@@ -4276,8 +4363,8 @@ NSMutableArray *datesWithPeriod;
             // supplements cell
             [self hideSupplementsCell];
             
-            expandMedicineCell = NO;
-            // hide component
+            // medicines cell
+            [self hideMedicinesCell];
             
             currentState = TableStateMoodExpanded;
             break;
@@ -4460,8 +4547,8 @@ NSMutableArray *datesWithPeriod;
             // supplements cell
             [self hideSupplementsCell];
             
-            expandMedicineCell = NO;
-            // hide component
+            // medicines cell
+            [self hideMedicinesCell];
             
             currentState = TableStateSymptomsExpanded;
             break;
@@ -4635,8 +4722,8 @@ NSMutableArray *datesWithPeriod;
             // supplements cell
             [self hideSupplementsCell];
             
-            expandMedicineCell = NO;
-            // hide component
+            // medicines cell
+            [self hideMedicinesCell];
             
             currentState = TableStateOvulationTestExpanded;
             break;
@@ -4803,8 +4890,8 @@ NSMutableArray *datesWithPeriod;
             // supplements cell
             [self hideSupplementsCell];
             
-            expandMedicineCell = NO;
-            // hide component
+            // medicines cell
+            [self hideMedicinesCell];
             
             currentState = TableStatePregnancyTestExpanded;
             break;
@@ -4888,8 +4975,8 @@ NSMutableArray *datesWithPeriod;
             // supplements cell
             [self showSupplementsCell];
             
-            expandMedicineCell = NO;
-            // hide component
+            // medicines cell
+            [self hideMedicinesCell];
             
             currentState = TableStateSupplementsExpanded;
             break;
@@ -4973,8 +5060,8 @@ NSMutableArray *datesWithPeriod;
             // supplements cell
             [self hideSupplementsCell];
             
-            expandMedicineCell = YES;
-            // unhide component
+            // medicines cell
+            [self showMedicinesCell];
             
             currentState = TableStateMedicineExpanded;
             break;
@@ -5025,8 +5112,48 @@ NSMutableArray *datesWithPeriod;
     self.supplementsCell.placeholderLabel.hidden = YES;
 }
 
+- (void)hideMedicinesCell {
+    expandMedicineCell = NO;
+    // hide component
+    self.medicinesCell.medicinesTableView.hidden = YES;
+    
+    self.medicinesCell.infoButton.hidden = NO;
+    self.medicinesCell.addMedicinesButton.hidden = YES;
+    
+    if (MedicineCellHasData) {
+        if ([self.medicinesCell.selectedMedicineIDs count] == 0) {
+            // no selected supplements
+            self.medicinesCell.medicinesCollapsedLabel.hidden = YES;
+            self.medicinesCell.medicinesTypeCollapsedLabel.hidden = YES;
+            self.medicinesCell.placeholderLabel.hidden = NO;
+        } else {
+            self.medicinesCell.medicinesCollapsedLabel.hidden = NO;
+            self.medicinesCell.medicinesTypeCollapsedLabel.hidden = NO;
+            self.medicinesCell.placeholderLabel.hidden = YES;
+        }
+    } else {
+        self.medicinesCell.medicinesCollapsedLabel.hidden = YES;
+        self.medicinesCell.medicinesTypeCollapsedLabel.hidden = YES;
+        self.medicinesCell.placeholderLabel.hidden = NO;
+    }
+}
+
+- (void)showMedicinesCell {
+    expandMedicineCell = YES;
+    // show component
+    
+    self.medicinesCell.infoButton.hidden = YES;
+    self.medicinesCell.addMedicinesButton.hidden = NO;
+    
+    self.medicinesCell.medicinesTableView.hidden = NO;
+    self.medicinesCell.medicinesCollapsedLabel.hidden = NO;
+    
+    self.medicinesCell.medicinesTypeCollapsedLabel.hidden = YES;
+    self.medicinesCell.placeholderLabel.hidden = YES;
+}
+
 #pragma mark - UICollectionView
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return [drawerDateData count];
 }
 

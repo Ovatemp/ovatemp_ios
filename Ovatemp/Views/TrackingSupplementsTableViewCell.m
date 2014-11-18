@@ -24,10 +24,6 @@
     self.selectedSupplementIDs = [[NSMutableArray alloc] init];
     self.allSupplementIDs = [[NSMutableArray alloc] init];
     
-//    [self.supplementsTableViewDataSource addObject:@"One"];
-//    [self.supplementsTableViewDataSource addObject:@"Two"];
-//    [self.supplementsTableViewDataSource addObject:@"Three"];
-    
     self.supplementsTableView.delegate = self;
     self.supplementsTableView.dataSource = self;
 }
