@@ -689,9 +689,9 @@ NSMutableArray *datesWithPeriod;
                            day = [Day withAttributes:@{@"date": self.selectedDate, @"idate": self.selectedDate.dateId}];
                        }
                        
-                       NSLog(@"-----START OF RESPONSE FROM SERVER-----");
-                       NSLog(@"%@", response);
-                       NSLog(@"-----END OF RESPONSE FROM SERVER-----");
+//                       NSLog(@"-----START OF RESPONSE FROM SERVER-----");
+//                       NSLog(@"%@", response);
+//                       NSLog(@"-----END OF RESPONSE FROM SERVER-----");
                        
                        //                       if (onSuccess) onSuccess(response);
                        
@@ -5359,7 +5359,7 @@ NSMutableArray *datesWithPeriod;
                 UserProfile *currentUserProfile = [UserProfile current];
                 
                 // in fertility window overrides
-                NSLog(@"%@", [dayDict objectForKey: @"in_fertility_window"]);
+//                NSLog(@"%@", [dayDict objectForKey: @"in_fertility_window"]);
                 NSNumber *inFertilityWindowNumber = (NSNumber *)[dayDict objectForKey: @"in_fertility_window"];
                 if ([inFertilityWindowNumber boolValue] == YES) {
                     if (currentUserProfile.tryingToConceive) {

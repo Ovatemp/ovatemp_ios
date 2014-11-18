@@ -51,7 +51,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter more info for improved fertility insights" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Sb-ss-ipD">
-                        <rect key="frame" x="86" y="87" width="148" height="58"/>
+                        <rect key="frame" x="105" y="74" width="111" height="80"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12.5"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -71,7 +71,7 @@
                 <outlet property="peakLabel" destination="MfT-rP-dUb" id="xq4-4V-Zab"/>
                 <outlet property="periodLabel" destination="bCP-qn-NsI" id="4Op-LO-KCD"/>
             </connections>
-            <point key="canvasLocation" x="172" y="190"/>
+            <point key="canvasLocation" x="172" y="187"/>
         </tableViewCell>
     </objects>
     <resources>
