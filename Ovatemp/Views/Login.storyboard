@@ -91,6 +91,15 @@
                                     <action selector="doPresentTerms:" destination="gN8-1h-w9Z" eventType="touchUpInside" id="XkS-Z4-2Fo"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bq5-i7-h4d">
+                                <rect key="frame" x="104" y="325" width="101" height="30"/>
+                                <state key="normal" title="Jump to Alarm">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="fzS-P8-vEj" kind="push" id="i5d-0H-gOh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -514,11 +523,93 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                     </navigationItem>
                     <connections>
                         <outlet property="ondoImageView" destination="Iwf-Pw-SxN" id="FjO-KM-rdr"/>
+                        <segue destination="fzS-P8-vEj" kind="push" identifier="toAlarm" id="oca-qj-gdR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xc9-eu-E6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1266" y="1638"/>
+        </scene>
+        <!--BBT Reminder-->
+        <scene sceneID="g1U-ff-tRm">
+            <objects>
+                <viewController id="fzS-P8-vEj" customClass="WelcomeAlarmViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mmS-Wo-d4x"/>
+                        <viewControllerLayoutGuide type="bottom" id="h1L-mr-dBe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fzw-hJ-SZD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Placeholder text Placeholder text Placeholder text " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqx-Ag-SdS">
+                                <rect key="frame" x="60" y="111" width="200" height="85"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set your BTT Alarm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYg-UB-Vg7">
+                                <rect key="frame" x="79" y="82" width="162" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rkE-iw-YUX">
+                                <rect key="frame" x="0.0" y="198" width="320" height="199"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alarm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSV-N1-cdp">
+                                        <rect key="frame" x="8" y="8" width="45" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="6:30 AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8S8-or-utV">
+                                        <rect key="frame" x="247" y="8" width="65" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.50588235290000005" green="0.41960784309999999" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ed8-Wh-pMp">
+                                        <rect key="frame" x="0.0" y="37" width="320" height="162"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="437916600.65137702">
+                                            <!--2014-11-17 11:30:00 +0000-->
+                                        </date>
+                                    </datePicker>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFz-4q-dOa">
+                                <rect key="frame" x="16" y="426" width="288" height="46"/>
+                                <state key="normal" title="Set" backgroundImage="btn_signup_login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" backgroundImage="btn_signup_login_pressed"/>
+                                <state key="highlighted" backgroundImage="btn_signup_login_pressed"/>
+                                <connections>
+                                    <action selector="doNoPairing:" destination="4wG-ur-4Q6" eventType="touchUpInside" id="IAy-f2-MGD"/>
+                                    <action selector="doSetAlarm:" destination="fzS-P8-vEj" eventType="touchUpInside" id="ufy-i1-oWb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="BBT Reminder" id="hGJ-ac-7jP">
+                        <barButtonItem key="rightBarButtonItem" title="Skip" id="jDF-kd-Tfc">
+                            <connections>
+                                <action selector="doSkip:" destination="fzS-P8-vEj" id="yXZ-9K-3ys"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="alarmTimePicker" destination="ed8-Wh-pMp" id="q2V-Hz-3oT"/>
+                        <outlet property="alarmTimeValueLabel" destination="8S8-or-utV" id="iMG-v7-7sw"/>
+                        <outlet property="skipButton" destination="jDF-kd-Tfc" id="ELG-nG-xQ9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vq1-Td-HSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1681" y="1638"/>
         </scene>
         <!--Log In-->
         <scene sceneID="fgg-by-e26">
@@ -646,5 +737,6 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
     <inferredMetricsTieBreakers>
         <segue reference="kMr-Zw-8PI"/>
         <segue reference="inY-NG-Hzw"/>
+        <segue reference="oca-qj-gdR"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -40,11 +40,13 @@
 //    [self.navigationController pushViewController:ondoVC animated:YES];
     __weak WelcomeONDOViewController *controller = self;
     [ONDO showPairingWizardWithDelegate:controller];
-    [self backOutToRootViewController];
+//    [self backOutToRootViewController];
+    [self performSegueWithIdentifier:@"toAlarm" sender:self];
 }
 
 - (IBAction)doNoPairing:(id)sender {
-    [self backOutToRootViewController];
+    [self performSegueWithIdentifier:@"toAlarm" sender:self];
+//    [self backOutToRootViewController];
 }
 
 - (IBAction)doLearnMoreAboutONDO:(id)sender {

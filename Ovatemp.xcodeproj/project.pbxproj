@@ -448,6 +448,9 @@
 		5FE118441A191C5100AC76A7 /* SimpleSupplement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE118431A191C5100AC76A7 /* SimpleSupplement.m */; };
 		5FE118481A1A907000AC76A7 /* TrackingMedicinesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE118461A1A907000AC76A7 /* TrackingMedicinesTableViewCell.m */; };
 		5FE118491A1A907000AC76A7 /* TrackingMedicinesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FE118471A1A907000AC76A7 /* TrackingMedicinesTableViewCell.xib */; };
+		5FE1184C1A1ABFF700AC76A7 /* WelcomeAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE1184B1A1ABFF700AC76A7 /* WelcomeAlarmViewController.m */; };
+		5FE118501A1ADEFC00AC76A7 /* SettingsAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE1184E1A1ADEFC00AC76A7 /* SettingsAlarmViewController.m */; };
+		5FE118511A1ADEFC00AC76A7 /* SettingsAlarmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FE1184F1A1ADEFC00AC76A7 /* SettingsAlarmViewController.xib */; };
 		5FE12F791A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE12F771A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.m */; };
 		5FE12F7A1A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FE12F781A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.xib */; };
 		8315E49E18C521A800DA935A /* SessionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8315E49D18C521A800DA935A /* SessionSpec.m */; };
@@ -1122,6 +1125,11 @@
 		5FE118451A1A907000AC76A7 /* TrackingMedicinesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingMedicinesTableViewCell.h; sourceTree = "<group>"; };
 		5FE118461A1A907000AC76A7 /* TrackingMedicinesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingMedicinesTableViewCell.m; sourceTree = "<group>"; };
 		5FE118471A1A907000AC76A7 /* TrackingMedicinesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingMedicinesTableViewCell.xib; sourceTree = "<group>"; };
+		5FE1184A1A1ABFF700AC76A7 /* WelcomeAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeAlarmViewController.h; sourceTree = "<group>"; };
+		5FE1184B1A1ABFF700AC76A7 /* WelcomeAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeAlarmViewController.m; sourceTree = "<group>"; };
+		5FE1184D1A1ADEFC00AC76A7 /* SettingsAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsAlarmViewController.h; sourceTree = "<group>"; };
+		5FE1184E1A1ADEFC00AC76A7 /* SettingsAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsAlarmViewController.m; sourceTree = "<group>"; };
+		5FE1184F1A1ADEFC00AC76A7 /* SettingsAlarmViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsAlarmViewController.xib; sourceTree = "<group>"; };
 		5FE12F761A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingPeriodTableViewCell.h; sourceTree = "<group>"; };
 		5FE12F771A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingPeriodTableViewCell.m; sourceTree = "<group>"; };
 		5FE12F781A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingPeriodTableViewCell.xib; sourceTree = "<group>"; };
@@ -1585,6 +1593,9 @@
 				5F6561EF19FADEFD001FB509 /* UserProfileReadOnlyViewController.h */,
 				5F6561F019FADEFD001FB509 /* UserProfileReadOnlyViewController.m */,
 				5F6561F119FADEFD001FB509 /* UserProfileReadOnlyViewController.xib */,
+				5FE1184D1A1ADEFC00AC76A7 /* SettingsAlarmViewController.h */,
+				5FE1184E1A1ADEFC00AC76A7 /* SettingsAlarmViewController.m */,
+				5FE1184F1A1ADEFC00AC76A7 /* SettingsAlarmViewController.xib */,
 				5F223F3219F03B480003AF64 /* SettingsTableViewController.h */,
 				5F223F3319F03B480003AF64 /* SettingsTableViewController.m */,
 				5F223F3419F03B480003AF64 /* SettingsTableViewController.xib */,
@@ -1665,6 +1676,8 @@
 				5F846E0C19F5A96000CED980 /* Welcome3ViewController.m */,
 				5F846E0E19F5AEC100CED980 /* WelcomeONDOViewController.h */,
 				5F846E0F19F5AEC100CED980 /* WelcomeONDOViewController.m */,
+				5FE1184A1A1ABFF700AC76A7 /* WelcomeAlarmViewController.h */,
+				5FE1184B1A1ABFF700AC76A7 /* WelcomeAlarmViewController.m */,
 				5F7AEA6D1A01373C0053ABAB /* TrackingNavigationController.h */,
 				5F7AEA6E1A01373C0053ABAB /* TrackingNavigationController.m */,
 				5F7AEA701A013C580053ABAB /* TrackingViewController.h */,
@@ -2512,6 +2525,7 @@
 				5F1C9C4D19EDE87A000F1FC1 /* Dry.png in Resources */,
 				5F1C9C0A19EDE87A000F1FC1 /* Icon60@2x.png in Resources */,
 				5F1C96CE19EDD31A000F1FC1 /* Media.xcassets in Resources */,
+				5FE118511A1ADEFC00AC76A7 /* SettingsAlarmViewController.xib in Resources */,
 				5FE12F7A1A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.xib in Resources */,
 				5F1C9BDD19EDE87A000F1FC1 /* OvatempSupport@2x.png in Resources */,
 				5F1C9C4319EDE87A000F1FC1 /* community_unselect.png in Resources */,
@@ -2662,6 +2676,7 @@
 				5F1C96E019EDD31A000F1FC1 /* MPCGAffineTransformToNSDictionaryValueTransformer.m in Sources */,
 				5F1C96F019EDD31A000F1FC1 /* MPObjectSerializer.m in Sources */,
 				5F1C9B8419EDE87A000F1FC1 /* CoachingMenuViewController.m in Sources */,
+				5FE1184C1A1ABFF700AC76A7 /* WelcomeAlarmViewController.m in Sources */,
 				5F1C96EB19EDD31A000F1FC1 /* MPNotificationViewController.m in Sources */,
 				5F1C9B6519EDE87A000F1FC1 /* UIColor+Traits.m in Sources */,
 				5F5160951A0AB46B00F4B74E /* TrackingCervicalFluidTableViewCell.m in Sources */,
@@ -2723,6 +2738,7 @@
 				5F1C96D119EDD31A000F1FC1 /* MPABTestDesignerChangeRequestMessage.m in Sources */,
 				5F6561F219FADEFD001FB509 /* UserProfileReadOnlyViewController.m in Sources */,
 				5F1C9B9E19EDE87A000F1FC1 /* WebViewController.m in Sources */,
+				5FE118501A1ADEFC00AC76A7 /* SettingsAlarmViewController.m in Sources */,
 				5F1C96DB19EDD31A000F1FC1 /* MPABTestDesignerTweakRequestMessage.m in Sources */,
 				5F1C9BA419EDE87A000F1FC1 /* SubscriptionHelper.m in Sources */,
 				5F1C96E819EDD31A000F1FC1 /* MPEnumDescription.m in Sources */,

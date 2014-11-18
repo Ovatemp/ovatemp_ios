@@ -10,6 +10,7 @@
 #import "AccountTableViewCell.h"
 #import "SettingsTemperatureTableViewCell.h"
 #import "FAMSettingsViewController.h"
+#import "SettingsAlarmViewController.h"
 
 @interface SettingsTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -28,7 +29,7 @@ NSArray *settingsMenuItems;
     
     self.title = @"Settings";
     
-    settingsMenuItems = [NSArray arrayWithObjects:@"Temperature Units", @"FAM Settings", nil];
+    settingsMenuItems = [NSArray arrayWithObjects:@"Temperature Units", @"FAM Settings", @"Alarm Settings", nil];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -79,7 +80,15 @@ NSArray *settingsMenuItems;
         [self.tempCell setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
         
         return self.tempCell;
-    } else {
+    } else if (indexPath.row == 1) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"accountCell" forIndexPath:indexPath];
+        
+        [[cell textLabel] setText:[settingsMenuItems objectAtIndex:indexPath.row]];
+        
+        cell.layoutMargins = UIEdgeInsetsZero;
+        cell.layoutMargins = UIEdgeInsetsMake(0, 0, 0, 0);
+        [cell setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    } else { // row 2, alarm settings
         cell = [tableView dequeueReusableCellWithIdentifier:@"accountCell" forIndexPath:indexPath];
         
         [[cell textLabel] setText:[settingsMenuItems objectAtIndex:indexPath.row]];
@@ -104,6 +113,15 @@ NSArray *settingsMenuItems;
             FAMSettingsViewController *famController = [FAMSettingsViewController new];
             famController.title = @"FAM Settings";
             [self.navigationController pushViewController:famController animated:YES];
+            break;
+        }
+            
+        case 2: // alarm settings
+        {
+            SettingsAlarmViewController *alarmVC = [SettingsAlarmViewController new];
+            alarmVC.title = @"Alarm Settings";
+            [self.navigationController pushViewController:alarmVC animated:YES];
+            break;
         }
         
         default:
