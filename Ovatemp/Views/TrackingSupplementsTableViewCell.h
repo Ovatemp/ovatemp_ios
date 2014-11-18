@@ -32,4 +32,6 @@
 @property NSNumber *addedSupplementID;
 @property NSString *addedSupllementString;
 
+- (void)reloadSupplements;
+
 @end
