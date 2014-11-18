@@ -7,6 +7,7 @@
 //
 
 #import "SettingsAlarmViewController.h"
+#import "WebViewController.h"
 
 @interface SettingsAlarmViewController ()
 
@@ -118,6 +119,28 @@
             [[UIApplication sharedApplication] cancelLocalNotification:localNotification];
         }
     }
+}
+- (IBAction)doShowInfo:(id)sender {
+    UIAlertController *infoAlert = [UIAlertController
+                                    alertControllerWithTitle:@"BBT Alarm"
+                                    message:@"Waiting on the client for this text"
+                                    preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *gotIt = [UIAlertAction actionWithTitle:@"Got it" style:UIAlertActionStyleDefault
+                                                  handler:nil];
+    
+    UIAlertAction *learnMore = [UIAlertAction actionWithTitle:@"Learn more" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        WebViewController *webViewController = [WebViewController withURL:@"http://ovatemp.helpshift.com/a/ovatemp/?s=fertility-faqs&f=learn-more-about-the-alarm"];
+        webViewController.title = @"BBT Alarm";
+        [self.navigationController presentViewController:webViewController animated:YES completion:nil];
+    }];
+    
+    [infoAlert addAction:gotIt];
+    [infoAlert addAction:learnMore];
+    
+    infoAlert.view.tintColor = [UIColor ovatempAquaColor];
+    
+    [self presentViewController:infoAlert animated:YES completion:nil];
 }
 
 /*
