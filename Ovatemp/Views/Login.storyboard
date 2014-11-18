@@ -530,7 +530,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
             </objects>
             <point key="canvasLocation" x="1266" y="1638"/>
         </scene>
-        <!--BBT Reminder-->
+        <!--Reminders-->
         <scene sceneID="g1U-ff-tRm">
             <objects>
                 <viewController id="fzS-P8-vEj" customClass="WelcomeAlarmViewController" sceneMemberID="viewController">
@@ -542,14 +542,8 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Placeholder text Placeholder text Placeholder text " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqx-Ag-SdS">
-                                <rect key="frame" x="60" y="111" width="200" height="85"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set your BTT Alarm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYg-UB-Vg7">
-                                <rect key="frame" x="79" y="82" width="162" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set your Basal Body Temperature daily reminder" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYg-UB-Vg7">
+                                <rect key="frame" x="60" y="72" width="200" height="69"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -557,8 +551,8 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rkE-iw-YUX">
                                 <rect key="frame" x="0.0" y="198" width="320" height="199"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alarm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSV-N1-cdp">
-                                        <rect key="frame" x="8" y="8" width="45" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reminder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSV-N1-cdp">
+                                        <rect key="frame" x="8" y="8" width="74" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -591,10 +585,16 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                     <action selector="doSetAlarm:" destination="fzS-P8-vEj" eventType="touchUpInside" id="ufy-i1-oWb"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Placeholder text Placeholder text" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqx-Ag-SdS">
+                                <rect key="frame" x="85" y="127" width="150" height="85"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="BBT Reminder" id="hGJ-ac-7jP">
+                    <navigationItem key="navigationItem" title="Reminders" id="hGJ-ac-7jP">
                         <barButtonItem key="rightBarButtonItem" title="Skip" id="jDF-kd-Tfc">
                             <connections>
                                 <action selector="doSkip:" destination="fzS-P8-vEj" id="yXZ-9K-3ys"/>
