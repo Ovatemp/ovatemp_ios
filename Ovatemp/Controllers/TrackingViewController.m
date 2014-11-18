@@ -984,6 +984,56 @@ NSMutableArray *datesWithPeriod;
     
     UserProfile *currentUserProfile = [UserProfile current];
     
+    // in fertility window overrides
+    if (day.inFertilityWindow) {
+        if ([day.cervicalFluid isEqualToString:@"eggwhite"]) {
+            // peak fertiltity
+            // trying to avoid - red fertile
+            // conceive - green fertile
+            if (currentUserProfile.tryingToConceive) {
+                self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_fertile"];
+                self.statusCell.peakLabel.text = @"PEAK";
+                self.statusCell.fertilityLabel.text = @"FERTILITY";
+                
+                self.statusCell.peakLabel.hidden = NO;
+                self.statusCell.fertilityLabel.hidden = NO;
+                self.statusCell.notEnoughInfoLabel.hidden = YES;
+                self.statusCell.periodLabel.hidden = YES;
+                self.statusCell.enterMoreInfoLabel.hidden = NO;
+            } else { // avoid
+                self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period-1"]; // I know it's not the period phase, my designer named the asset wrong
+                self.statusCell.peakLabel.text = @"PEAK";
+                self.statusCell.fertilityLabel.text = @"FERTILITY";
+                
+                self.statusCell.peakLabel.hidden = NO;
+                self.statusCell.fertilityLabel.hidden = NO;
+                self.statusCell.notEnoughInfoLabel.hidden = YES;
+                self.statusCell.periodLabel.hidden = YES;
+                self.statusCell.enterMoreInfoLabel.hidden = NO;
+            }
+        } else { // just plain fertile
+            if (currentUserProfile.tryingToConceive) {
+                self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_fertile"];
+                self.statusCell.periodLabel.text = @"FERTILE";
+                self.statusCell.periodLabel.hidden = NO;
+                
+                self.statusCell.peakLabel.hidden = YES;
+                self.statusCell.fertilityLabel.hidden = YES;
+                self.statusCell.notEnoughInfoLabel.hidden = YES;
+                self.statusCell.enterMoreInfoLabel.hidden = NO;
+            } else { // avoid
+                self.statusCell.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period-1"]; // I know it's not the period phase, my designer named the asset wrong
+                self.statusCell.periodLabel.text = @"FERTILE";
+                self.statusCell.periodLabel.hidden = NO;
+                
+                self.statusCell.peakLabel.hidden = YES;
+                self.statusCell.fertilityLabel.hidden = YES;
+                self.statusCell.notEnoughInfoLabel.hidden = YES;
+                self.statusCell.enterMoreInfoLabel.hidden = NO;
+            }
+        }
+    }
+    
     // get day before selected date
     // if that object is in the datesWithPeriod array and day.cyclePhase is not period, set day.cyclePhase to period
     if ([day.period isEqualToString:@"spotting"]) {
@@ -5111,6 +5161,18 @@ NSMutableArray *datesWithPeriod;
             if ([cyclePhase isKindOfClass:[NSString class]]) {
                 
                 UserProfile *currentUserProfile = [UserProfile current];
+                
+                // in fertility window overrides
+                NSNumber *inFertilityWindowNumber = (NSNumber *)[dayDict objectForKey: @"in_fertility_window"];
+                if ([inFertilityWindowNumber boolValue] == YES) {
+                    if (currentUserProfile.tryingToConceive) {
+                        // peak fertility, green fertile
+                        cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_fertile_small"];
+                    } else { // avoid
+                        // red fertility image
+                        cell.statusImageView.image = [UIImage imageNamed:@"icn_dd_fertile_small"];
+                    }
+                }
                 
                 if ([cyclePhase isEqualToString:@"period"]) { // if it's not null
                     cell.statusImageView.image = [UIImage imageNamed:@"icn_period"];
