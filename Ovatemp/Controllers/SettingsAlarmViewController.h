@@ -10,4 +10,8 @@
 
 @interface SettingsAlarmViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIDatePicker *alarmDatePicker;
+@property (weak, nonatomic) IBOutlet UISwitch *alarmSwitch;
+@property (weak, nonatomic) IBOutlet UIView *hideDatePickerView;
+
 @end
