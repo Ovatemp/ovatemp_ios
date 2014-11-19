@@ -139,11 +139,12 @@ BOOL firstEditWeight;
         firstEditEmail = NO;
     }
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults]; // Height and weight
-    
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults]; // Height and weight
     if (firstEditHeight) {
-        if ([defaults objectForKey:@"userHeightFeetComponent"] && [defaults objectForKey:@"userHeightInchesComponent"]) {
-            self.heightCell.heightField.text = [NSString stringWithFormat:@"%@' %@\"", [defaults objectForKey:@"userHeightFeetComponent"], [defaults objectForKey:@"userHeightInchesComponent"]];
+        if (currentUserProfile.heightInInches) {
+            int feetComponent = [currentUserProfile.heightInInches intValue] / 12;
+            int inchesComponent = [currentUserProfile.heightInInches intValue] % 12;
+            self.heightCell.heightField.text = [NSString stringWithFormat:@"%d' %d\"", feetComponent, inchesComponent];;
         } else {
             self.heightCell.heightField.text = @"";
         }
@@ -151,8 +152,8 @@ BOOL firstEditWeight;
     }
     
     if (firstEditWeight) {
-        if ([defaults objectForKey:@"userWeight"]) {
-            self.weightCell.weightField.text = [NSString stringWithFormat:@"%@ lbs", [defaults objectForKey:@"userWeight"]];
+        if (currentUserProfile.weightInPounds) {
+            self.weightCell.weightField.text = [NSString stringWithFormat:@"%d lbs", [currentUserProfile.weightInPounds intValue]];
         } else {
             self.weightCell.weightField.text = @"";
         }
@@ -266,18 +267,22 @@ BOOL firstEditWeight;
     [[UserProfile current] save];
     
     // height and weight
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     NSInteger userHeightFeetComponent = ([self.heightCell.heightPicker selectedRowInComponent:0] + 3);
     NSInteger userHeightInchesComponent = ([self.heightCell.heightPicker selectedRowInComponent:1]);
     
     if ([self.heightCell.heightField.text length] > 0) {
-        [defaults setInteger:userHeightFeetComponent forKey:@"userHeightFeetComponent"];
-        [defaults setInteger:userHeightInchesComponent forKey:@"userHeightInchesComponent"];
-        
-        [defaults setInteger:([self.weightCell.weightPicker selectedRowInComponent:0] + 100) forKey:@"userWeight"];
-        
-        [defaults synchronize];
+//        [defaults setInteger:userHeightFeetComponent forKey:@"userHeightFeetComponent"];
+//        [defaults setInteger:userHeightInchesComponent forKey:@"userHeightInchesComponent"];
+//        
+//        [defaults setInteger:([self.weightCell.weightPicker selectedRowInComponent:0] + 100) forKey:@"userWeight"];
+        currentUserProfile.weightInPounds = [NSNumber numberWithInt:[self.weightCell.weightPicker selectedRowInComponent:0] + 100];
+//
+//        [defaults synchronize];
+        NSNumber *newHeight = [NSNumber numberWithInt:(userHeightFeetComponent * 12) + userHeightInchesComponent];
+        currentUserProfile.heightInInches = newHeight;
+        [currentUserProfile save];
     }
     
     // pop

@@ -82,14 +82,16 @@
     
     self.dateLabel.text = [currentUserProfile.dateOfBirth classicDate];
     
-    if ([defaults objectForKey:@"userHeightFeetComponent"] && [defaults objectForKey:@"userHeightInchesComponent"]) {
-        self.heightLabel.text = [NSString stringWithFormat:@"%@' %@\"", [defaults objectForKey:@"userHeightFeetComponent"], [defaults objectForKey:@"userHeightInchesComponent"]];
+    if (currentUserProfile.heightInInches) {
+        int feetComponent = [currentUserProfile.heightInInches intValue] / 12;
+        int inchesComponent = [currentUserProfile.heightInInches intValue] % 12;
+        self.heightLabel.text = [NSString stringWithFormat:@"%d' %d\"", feetComponent, inchesComponent];
     } else {
         self.heightLabel.text = @"No height recorded";
     }
     
-    if ([defaults objectForKey:@"userWeight"]) {
-        self.weightLabel.text = [NSString stringWithFormat:@"%@ lbs", [defaults objectForKey:@"userWeight"]];
+    if (currentUserProfile.weightInPounds) {
+        self.weightLabel.text = [NSString stringWithFormat:@"%d lbs", [currentUserProfile.weightInPounds intValue]];
     } else {
         self.weightLabel.text = @"No weight recorded";
     }

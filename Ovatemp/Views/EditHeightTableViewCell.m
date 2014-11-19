@@ -7,6 +7,7 @@
 //
 
 #import "EditHeightTableViewCell.h"
+#import "UserProfile.h"
 
 @implementation EditHeightTableViewCell
 
@@ -39,12 +40,17 @@ NSMutableArray *heightPickerInchesData;
     doneToolbar.items = @[flexArea, doneButton];
     self.heightField.inputAccessoryView = doneToolbar;
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     // default value
-    if ([defaults integerForKey:@"userHeightFeetComponent"] && [defaults integerForKey:@"userHeightInchesComponent"]) {
-        [self.heightPicker selectRow:([defaults integerForKey:@"userHeightFeetComponent"] -3) inComponent:0 animated:NO]; // -3
-        [self.heightPicker selectRow:[defaults integerForKey:@"userHeightInchesComponent"] inComponent:1 animated:NO];
+    UserProfile *currentUserProfile = [UserProfile current];
+    
+    if (currentUserProfile.heightInInches) {
+        int feetComponent = [currentUserProfile.heightInInches intValue] / 12;
+        int inchesComponent = [currentUserProfile.heightInInches intValue] % 12;
+        
+        [self.heightPicker selectRow:(feetComponent - 3) inComponent:0 animated:NO]; // -3
+        [self.heightPicker selectRow:inchesComponent inComponent:1 animated:NO];
     } else {
         [self.heightPicker selectRow:2 inComponent:0 animated:NO]; // 5
         [self.heightPicker selectRow:5 inComponent:1 animated:NO];
