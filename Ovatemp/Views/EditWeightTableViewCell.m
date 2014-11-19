@@ -7,6 +7,7 @@
 //
 
 #import "EditWeightTableViewCell.h"
+#import "UserProfile.h"
 
 @implementation EditWeightTableViewCell
 
@@ -26,10 +27,11 @@ NSMutableArray *weightPickerData;
     self.weightPicker.delegate = self;
     
     // default row value is weight - 100
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    UserProfile *currentUserProfile = [UserProfile current];
     
-    if ([defaults valueForKey:@"userWeight"]) {
-        [self.weightPicker selectRow:([[defaults valueForKey:@"userWeight"] intValue] - 100) inComponent:0 animated:NO];
+    if (currentUserProfile.weightInPounds) {
+        [self.weightPicker selectRow:([currentUserProfile.weightInPounds intValue] - 100) inComponent:0 animated:NO];
     } else {
         [self.weightPicker selectRow:30 inComponent:0 animated:NO];
     }

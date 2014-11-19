@@ -580,7 +580,10 @@ NSMutableArray *datesWithPeriod;
             lowerDrawer = YES;
         }
     } completion:^(BOOL finished) {
-        //
+        if (!lowerDrawer) {
+            // refresh drawer when closed
+            [self refreshDrawerCollectionViewData];
+        }
     }];
 }
 
