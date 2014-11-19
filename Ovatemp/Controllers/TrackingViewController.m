@@ -285,8 +285,8 @@ NSMutableArray *datesWithPeriod;
     drawerDateData = [[NSMutableArray alloc] init];
     
     // get today's date, subtrack three months, count days, add them to drawer
-    NSDate *today = [NSDate date];
-    NSCalendar *defaultCal = [[NSCalendar alloc] initWithCalendarIdentifier:[[NSLocale currentLocale] objectForKey:NSLocaleCalendar]];
+//    NSDate *today = [NSDate date];
+//    NSCalendar *defaultCal = [[NSCalendar alloc] initWithCalendarIdentifier:[[NSLocale currentLocale] objectForKey:NSLocaleCalendar]];
     NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
     [offsetComponents setMonth:-3];
     
@@ -450,7 +450,7 @@ NSMutableArray *datesWithPeriod;
     [self.ovulationCell setSelectedDate:self.selectedDate];
     [self.pregnancyCell setSelectedDate:self.selectedDate];
     [self.supplementsCell setSelectedDate:self.selectedDate];
-//    [self.medicineCell setSelectedDate:self.selectedDate];
+    [self.medicinesCell setSelectedDate:self.selectedDate];
     
     if ([ONDO sharedInstance].devices.count > 0) {
         [ONDO startWithDelegate:self];
@@ -5541,7 +5541,7 @@ NSMutableArray *datesWithPeriod;
     [self.ovulationCell setSelectedDate:self.selectedDate];
     [self.pregnancyCell setSelectedDate:self.selectedDate];
     [self.supplementsCell setSelectedDate:self.selectedDate];
-//    [self.medicineCell setSelectedDate:self.selectedDate];
+    [self.medicinesCell setSelectedDate:self.selectedDate];
     
     self.selectedIndexPath = indexPath;
     
