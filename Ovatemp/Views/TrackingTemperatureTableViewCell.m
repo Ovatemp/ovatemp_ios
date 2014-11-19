@@ -178,7 +178,14 @@ NSMutableArray *temperatureFractionalPartPickerData;
     [self updateHealthKitWithTemperature:tempInFahrenheit];
     
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
-    [attributes setObject:self.selectedDate forKey:@"date"];
+    
+    // format date to yyyy-mm-dd
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    
+    NSString *stringDateForBackend = [formatter stringFromDate:self.selectedDate];
+    
+    [attributes setObject:stringDateForBackend forKey:@"date"];
     [attributes setObject:[NSNumber numberWithFloat:tempInFahrenheit] forKey:@"temperature"];
     
     [ConnectionManager put:@"/days/"

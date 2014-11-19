@@ -235,13 +235,13 @@ BOOL firstEditWeight;
 {
     if ([textField.accessibilityLabel isEqual: @"heightField"]) {
         if ([textField.text length] == 0) {
-            textField.text = [NSString stringWithFormat:@"%ld' %ld\"", ([self.heightCell.heightPicker selectedRowInComponent:0] + 3), (long)[self.heightCell.heightPicker selectedRowInComponent:1]];
+            textField.text = [NSString stringWithFormat:@"%ld' %ld\"", (long)([self.heightCell.heightPicker selectedRowInComponent:0] + 3), (long)[self.heightCell.heightPicker selectedRowInComponent:1]];
         }
     }
     
     if ([textField.accessibilityLabel isEqual: @"weightField"]) {
         if ([textField.text length] == 0) {
-            textField.text = [NSString stringWithFormat:@"%ld lbs", ([self.weightCell.weightPicker selectedRowInComponent:0] + 100)];
+            textField.text = [NSString stringWithFormat:@"%ld lbs", (long)([self.weightCell.weightPicker selectedRowInComponent:0] + 100)];
         }
     }
     return YES;
