@@ -3153,6 +3153,9 @@ NSMutableArray *datesWithPeriod;
         [self refreshTrackingView]; // new info
     }
     
+    // make sure cell can be displayed, even if out of view
+    [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    
     [tableView setNeedsDisplay];
     [tableView setNeedsLayout];
 }
