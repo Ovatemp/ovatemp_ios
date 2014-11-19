@@ -145,6 +145,8 @@ static NSString * const kTokenParam = @"token";
   if (protocolRange.location != 0) {
     url = [API_URL stringByAppendingString:url];
   }
+    
+    NSLog(@"URL: %@", url);
   
   return [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
 }
