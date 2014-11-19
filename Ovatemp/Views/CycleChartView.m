@@ -367,6 +367,13 @@
     if(self.cycle.coverline) {
         CGFloat coverlineValue = [self.cycle.coverline floatValue];
         
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if (![defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"]) {
+            // celsius, change cover line value
+            coverlineValue = ((coverlineValue - 32) / 1.8000f);
+            
+        }
+        
         // Draw the cover line
         [[UIColor colorWithRed:(144/255.0) green:(65/255.0) blue:(160/255.0) alpha:1] set];
         [path setLineWidth:2];
