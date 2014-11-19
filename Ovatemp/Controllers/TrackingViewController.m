@@ -290,7 +290,7 @@ NSMutableArray *datesWithPeriod;
     NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
     [offsetComponents setMonth:-3];
     
-    NSDate *threeMonthsAgo = [defaultCal dateByAddingComponents:offsetComponents toDate:today options:0];
+//    NSDate *threeMonthsAgo = [defaultCal dateByAddingComponents:offsetComponents toDate:today options:0];
     
     // array of date values subtracting one day from today's date
     
@@ -692,9 +692,9 @@ NSMutableArray *datesWithPeriod;
                            day = [Day withAttributes:@{@"date": self.selectedDate, @"idate": self.selectedDate.dateId}];
                        }
                        
-//                       NSLog(@"-----START OF RESPONSE FROM SERVER-----");
-//                       NSLog(@"%@", response);
-//                       NSLog(@"-----END OF RESPONSE FROM SERVER-----");
+                       NSLog(@"-----START OF RESPONSE FROM SERVER-----");
+                       NSLog(@"%@", response);
+                       NSLog(@"-----END OF RESPONSE FROM SERVER-----");
                        
                        //                       if (onSuccess) onSuccess(response);
                        

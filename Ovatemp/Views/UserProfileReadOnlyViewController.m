@@ -63,7 +63,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     UserProfile *currentUserProfile = [UserProfile current];
     User *currentUser = [User current];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     self.nameLabel.text = currentUserProfile.fullName;
     
