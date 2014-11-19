@@ -712,13 +712,19 @@ NSMutableArray *datesWithPeriod;
                            [datesWithPeriod removeObject:day.date];
                        }
                        
+                       if ([day.temperature intValue] < 0) {
+                           NSLog(@"woah, got negative temperature from backend, resetting to nil");
+                           day.temperature = nil;
+                       }
+                       
                        if (day.temperature) {
                            // change lable if we have info
+                           
                            if (tempPrefFahrenheit) {
                                self.temperature = day.temperature;
                                self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f", [self.temperature floatValue]];
                            } else {
-                               float tempInCelsius = (([day.temperature floatValue]- 32) / 1.8000f);
+                               float tempInCelsius = (([day.temperature floatValue] - 32) / 1.8000f);
                                self.temperature = [NSNumber numberWithFloat:tempInCelsius];
                                 self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f", tempInCelsius];
                            }
@@ -2798,8 +2804,16 @@ NSMutableArray *datesWithPeriod;
         if ([defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"]) {
             componentZeroSelection = [tempChunks[0] intValue];
             componentZeroSelection -= 90;
-            
             componenetOneSelection = [tempChunks[1] intValue];
+            
+            if (componenetOneSelection < 0) {
+                componenetOneSelection = 60;
+            }
+            
+            if (componentZeroSelection < 0) {
+                componentZeroSelection = 8;
+            }
+            
             [self.tempCell.temperaturePicker selectRow:componentZeroSelection inComponent:0 animated:NO];
             [self.tempCell.temperaturePicker selectRow:componenetOneSelection inComponent:1 animated:NO];
         } else {
@@ -2807,6 +2821,15 @@ NSMutableArray *datesWithPeriod;
             componentZeroSelection -= 32;
             
             componenetOneSelection = [tempChunks[1] intValue];
+            
+            if (componenetOneSelection < 0) {
+                componenetOneSelection = 5;
+            }
+            
+            if (componentZeroSelection < 0) {
+                componentZeroSelection = 0;
+            }
+            
             [self.tempCell.temperaturePicker selectRow:componentZeroSelection inComponent:0 animated:NO];
             [self.tempCell.temperaturePicker selectRow:componenetOneSelection inComponent:1 animated:NO];
         }
@@ -4896,9 +4919,15 @@ NSMutableArray *datesWithPeriod;
             // hide component
             self.moodCell.moodTableView.hidden = YES;
             
-            expandSymptomsCell = NO;
-            // hide component
-            self.symptomsCell.symptomsTableView.hidden = YES;
+            if (MoodCellHasData) {
+                self.moodCell.moodPlaceholderLabel.hidden = YES;
+                self.moodCell.moodCollapsedLabel.hidden = NO;
+                self.moodCell.moodTypeLabel.hidden = NO;
+            } else {
+                self.moodCell.moodPlaceholderLabel.hidden = NO;
+                self.moodCell.moodCollapsedLabel.hidden = YES;
+                self.moodCell.moodTypeLabel.hidden = YES;
+            }
             
             expandSymptomsCell = NO;
             // hide component
@@ -5676,6 +5705,12 @@ NSMutableArray *datesWithPeriod;
     // unhide ondo icon
     self.tempCell.ondoIcon.hidden = NO;
     self.usedOndo = YES;
+    
+    if ((tempInCelsius < 0) || (temperature < 0)) {
+        [Alert showAlertWithTitle:@"Error"
+                          message:@"There was a problem taking your temperature, please try again.\n"];
+        return;
+    }
     
     // always send F to backend
     [self postAndSaveTempWithTempValue:temperature];
