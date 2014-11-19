@@ -148,6 +148,10 @@
                         
                         // todo, check for duplicates so supplement doesn't appear twice
                         // de-select supplement if we want to uncheck it
+                        if (self.selectedSupplementIDs == nil) {
+                            self.selectedSupplementIDs = [[NSMutableArray alloc] init];
+                        }
+                        
                         if ([self.supplementsTableViewDataSource containsObject:newSupp]) {
                             //
                         } else {
