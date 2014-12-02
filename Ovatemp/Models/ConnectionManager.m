@@ -317,6 +317,8 @@ static NSString * const kTokenParam = @"token";
 
 - (void)startRequest:(NSMutableURLRequest *)request withOptions:(NSDictionary *)options {
   request.allowsCellularAccess = YES;
+    
+  [request setValue:@"application/json; version=2" forHTTPHeaderField:@"Accept"];
 
   NSMutableDictionary *config = [self configForRequest:request];
   [config addEntriesFromDictionary:options];

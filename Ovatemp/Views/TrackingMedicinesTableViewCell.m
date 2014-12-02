@@ -78,7 +78,7 @@
                     success:^(NSDictionary *response) {
                         
                         SimpleSupplement *newMed = [[SimpleSupplement alloc] init];
-                        newMed.belongsToAllUsers = [NSNumber numberWithBool:[[response objectForKey:@"medicine"] objectForKey:@"belongs_to_all_users"]];
+                        newMed.belongsToAllUsers = [[[response objectForKey:@"medicine"] objectForKey:@"belongs_to_all_users"] boolValue];
                         newMed.createdAt = [[response objectForKey:@"medicine"] objectForKey:@"created_at"];
                         newMed.idNumber = [NSNumber numberWithInt:[[[response objectForKey:@"medicine"] objectForKey:@"id"] intValue]];
                         newMed.name = [[response objectForKey:@"medicine"] objectForKey:@"name"];
