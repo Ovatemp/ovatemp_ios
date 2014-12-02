@@ -139,7 +139,7 @@
                         // push to backend
                         
                         SimpleSupplement *newSupp = [[SimpleSupplement alloc] init];
-                        newSupp.belongsToAllUsers = [NSNumber numberWithBool:[[response objectForKey:@"supplement"] objectForKey:@"belongs_to_all_users"]];
+                        newSupp.belongsToAllUsers = [[[response objectForKey:@"supplement"] objectForKey:@"belongs_to_all_users"] boolValue];
                         newSupp.createdAt = [[response objectForKey:@"supplement"] objectForKey:@"created_at"];
                         newSupp.idNumber = [NSNumber numberWithInt:[[[response objectForKey:@"supplement"] objectForKey:@"id"] intValue]];
                         newSupp.name = [[response objectForKey:@"supplement"] objectForKey:@"name"];

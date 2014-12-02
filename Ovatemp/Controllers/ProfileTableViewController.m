@@ -277,10 +277,10 @@ BOOL firstEditWeight;
 //        [defaults setInteger:userHeightInchesComponent forKey:@"userHeightInchesComponent"];
 //        
 //        [defaults setInteger:([self.weightCell.weightPicker selectedRowInComponent:0] + 100) forKey:@"userWeight"];
-        currentUserProfile.weightInPounds = [NSNumber numberWithInt:[self.weightCell.weightPicker selectedRowInComponent:0] + 100];
+        currentUserProfile.weightInPounds = [NSNumber numberWithLong:[self.weightCell.weightPicker selectedRowInComponent:0] + 100];
 //
 //        [defaults synchronize];
-        NSNumber *newHeight = [NSNumber numberWithInt:(userHeightFeetComponent * 12) + userHeightInchesComponent];
+        NSNumber *newHeight = [NSNumber numberWithLong:(userHeightFeetComponent * 12) + userHeightInchesComponent];
         currentUserProfile.heightInInches = newHeight;
         [currentUserProfile save];
     }
