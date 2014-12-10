@@ -692,9 +692,9 @@ NSMutableArray *datesWithPeriod;
                            day = [Day withAttributes:@{@"date": self.selectedDate, @"idate": self.selectedDate.dateId}];
                        }
                        
-                       NSLog(@"-----START OF RESPONSE FROM SERVER-----");
-                       NSLog(@"%@", response);
-                       NSLog(@"-----END OF RESPONSE FROM SERVER-----");
+//                       NSLog(@"-----START OF RESPONSE FROM SERVER-----");
+//                       NSLog(@"%@", response);
+//                       NSLog(@"-----END OF RESPONSE FROM SERVER-----");
                        
                        //                       if (onSuccess) onSuccess(response);
                        
