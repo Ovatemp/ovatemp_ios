@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>116</string>
+	<string>121</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIBackgroundModes</key>
@@ -33,7 +33,6 @@
 	<array>
 		<string>armv7</string>
 		<string>gamekit</string>
-		<string>healthkit</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
