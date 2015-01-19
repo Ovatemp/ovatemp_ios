@@ -12,6 +12,9 @@ import Foundation
 
 class InterfaceController: WKInterfaceController {
 
+    @IBOutlet weak var fertilityStatusGroup: WKInterfaceGroup!
+    @IBOutlet weak var fertilityStatusLabel: WKInterfaceLabel!
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         

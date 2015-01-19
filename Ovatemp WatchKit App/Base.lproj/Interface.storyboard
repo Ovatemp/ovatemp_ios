@@ -18,6 +18,10 @@
                             </items>
                         </group>
                     </items>
+                    <connections>
+                        <outlet property="fertilityStatusGroup" destination="qkq-AY-5UZ" id="nUi-T1-7K1"/>
+                        <outlet property="fertilityStatusLabel" destination="Tr6-gr-rLy" id="MeZ-BD-frt"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="235" y="347"/>
