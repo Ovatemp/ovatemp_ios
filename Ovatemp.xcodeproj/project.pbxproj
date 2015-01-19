@@ -480,6 +480,14 @@
 		C3BF8FDD1898449D00572F43 /* OvatempTestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FDC1898449D00572F43 /* OvatempTestHelpers.m */; };
 		C3D8912119084CB800E21627 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D8912019084CB800E21627 /* StoreKit.framework */; };
 		C3D8912319084D9F00E21627 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D8912219084D9F00E21627 /* GameKit.framework */; };
+		F42764CD1A6D738800B26A2A /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42764CC1A6D738800B26A2A /* InterfaceController.swift */; };
+		F42764CF1A6D738800B26A2A /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42764CE1A6D738800B26A2A /* NotificationController.swift */; };
+		F42764D11A6D738800B26A2A /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42764D01A6D738800B26A2A /* GlanceController.swift */; };
+		F42764D31A6D738800B26A2A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F42764D21A6D738800B26A2A /* Images.xcassets */; };
+		F42764D71A6D738800B26A2A /* Ovatemp WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = F42764D61A6D738800B26A2A /* Ovatemp WatchKit App.app */; };
+		F42764DF1A6D738800B26A2A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F42764DD1A6D738800B26A2A /* Interface.storyboard */; };
+		F42764E11A6D738800B26A2A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F42764E01A6D738800B26A2A /* Images.xcassets */; };
+		F42764E41A6D738800B26A2A /* Ovatemp WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F42764C71A6D738800B26A2A /* Ovatemp WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -490,7 +498,35 @@
 			remoteGlobalIDString = C36C50FA189028190053A884;
 			remoteInfo = Ovatemp;
 		};
+		F42764D81A6D738800B26A2A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C36C50F3189028190053A884 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F42764D51A6D738800B26A2A;
+			remoteInfo = "Ovatemp WatchKit App";
+		};
+		F42764E21A6D738800B26A2A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C36C50F3189028190053A884 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F42764C61A6D738800B26A2A;
+			remoteInfo = "Ovatemp WatchKit Extension";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F42764ED1A6D738900B26A2A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F42764E41A6D738800B26A2A /* Ovatemp WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0EC9830A19AB8619009A5730 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -1178,6 +1214,17 @@
 		C3BF8FDC1898449D00572F43 /* OvatempTestHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OvatempTestHelpers.m; sourceTree = "<group>"; };
 		C3D8912019084CB800E21627 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C3D8912219084D9F00E21627 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		F42764C71A6D738800B26A2A /* Ovatemp WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Ovatemp WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F42764CA1A6D738800B26A2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F42764CB1A6D738800B26A2A /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		F42764CC1A6D738800B26A2A /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		F42764CE1A6D738800B26A2A /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		F42764D01A6D738800B26A2A /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
+		F42764D21A6D738800B26A2A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F42764D61A6D738800B26A2A /* Ovatemp WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ovatemp WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F42764DC1A6D738800B26A2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F42764DE1A6D738800B26A2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		F42764E01A6D738800B26A2A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ovatemp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OvatempTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1221,6 +1268,13 @@
 				C3BF8FC11898409C00572F43 /* UIKit.framework in Frameworks */,
 				C3BF8FC01898409C00572F43 /* Foundation.framework in Frameworks */,
 				9C4D13D86AB546AD9A46ADE4 /* libPods-OvatempTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F42764C41A6D738800B26A2A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2178,6 +2232,8 @@
 				5F58690419ED802400D2B58E /* Positive.png */,
 				5F58690519ED802400D2B58E /* Positive@2x.png */,
 				C3BF8FC21898409C00572F43 /* OvatempTests */,
+				F42764C81A6D738800B26A2A /* Ovatemp WatchKit Extension */,
+				F42764DA1A6D738800B26A2A /* Ovatemp WatchKit App */,
 				C36C50FD189028190053A884 /* Frameworks */,
 				C36C50FC189028190053A884 /* Products */,
 			);
@@ -2188,6 +2244,8 @@
 			children = (
 				C36C50FB189028190053A884 /* Ovatemp.app */,
 				C3BF8FBD1898409C00572F43 /* OvatempTests.xctest */,
+				F42764C71A6D738800B26A2A /* Ovatemp WatchKit Extension.appex */,
+				F42764D61A6D738800B26A2A /* Ovatemp WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2272,6 +2330,45 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		F42764C81A6D738800B26A2A /* Ovatemp WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F42764CC1A6D738800B26A2A /* InterfaceController.swift */,
+				F42764CE1A6D738800B26A2A /* NotificationController.swift */,
+				F42764D01A6D738800B26A2A /* GlanceController.swift */,
+				F42764D21A6D738800B26A2A /* Images.xcassets */,
+				F42764C91A6D738800B26A2A /* Supporting Files */,
+			);
+			path = "Ovatemp WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		F42764C91A6D738800B26A2A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F42764CA1A6D738800B26A2A /* Info.plist */,
+				F42764CB1A6D738800B26A2A /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F42764DA1A6D738800B26A2A /* Ovatemp WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				F42764DD1A6D738800B26A2A /* Interface.storyboard */,
+				F42764E01A6D738800B26A2A /* Images.xcassets */,
+				F42764DB1A6D738800B26A2A /* Supporting Files */,
+			);
+			path = "Ovatemp WatchKit App";
+			sourceTree = "<group>";
+		};
+		F42764DB1A6D738800B26A2A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F42764DC1A6D738800B26A2A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2282,10 +2379,12 @@
 				C36C50F7189028190053A884 /* Sources */,
 				C36C50F8189028190053A884 /* Frameworks */,
 				C36C50F9189028190053A884 /* Resources */,
+				F42764ED1A6D738900B26A2A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F42764E31A6D738800B26A2A /* PBXTargetDependency */,
 			);
 			name = Ovatemp;
 			productName = Ovatemp;
@@ -2311,6 +2410,39 @@
 			productName = OvatempTests;
 			productReference = C3BF8FBD1898409C00572F43 /* OvatempTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F42764C61A6D738800B26A2A /* Ovatemp WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F42764E91A6D738900B26A2A /* Build configuration list for PBXNativeTarget "Ovatemp WatchKit Extension" */;
+			buildPhases = (
+				F42764C31A6D738800B26A2A /* Sources */,
+				F42764C41A6D738800B26A2A /* Frameworks */,
+				F42764C51A6D738800B26A2A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F42764D91A6D738800B26A2A /* PBXTargetDependency */,
+			);
+			name = "Ovatemp WatchKit Extension";
+			productName = "Ovatemp WatchKit Extension";
+			productReference = F42764C71A6D738800B26A2A /* Ovatemp WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		F42764D51A6D738800B26A2A /* Ovatemp WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F42764E51A6D738900B26A2A /* Build configuration list for PBXNativeTarget "Ovatemp WatchKit App" */;
+			buildPhases = (
+				F42764D41A6D738800B26A2A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Ovatemp WatchKit App";
+			productName = "Ovatemp WatchKit App";
+			productReference = F42764D61A6D738800B26A2A /* Ovatemp WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp";
 		};
 /* End PBXNativeTarget section */
 
@@ -2342,6 +2474,13 @@
 						DevelopmentTeam = 76Q446F2EP;
 						TestTargetID = C36C50FA189028190053A884;
 					};
+					F42764C61A6D738800B26A2A = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = MC934XNWAV;
+					};
+					F42764D51A6D738800B26A2A = {
+						CreatedOnToolsVersion = 6.2;
+					};
 				};
 			};
 			buildConfigurationList = C36C50F6189028190053A884 /* Build configuration list for PBXProject "Ovatemp" */;
@@ -2350,6 +2489,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = C36C50F2189028190053A884;
 			productRefGroup = C36C50FC189028190053A884 /* Products */;
@@ -2358,6 +2498,8 @@
 			targets = (
 				C36C50FA189028190053A884 /* Ovatemp */,
 				C3BF8FBC1898409C00572F43 /* OvatempTests */,
+				F42764C61A6D738800B26A2A /* Ovatemp WatchKit Extension */,
+				F42764D51A6D738800B26A2A /* Ovatemp WatchKit App */,
 			);
 		};
 /* End PBXProject section */
@@ -2622,6 +2764,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F42764C51A6D738800B26A2A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F42764D31A6D738800B26A2A /* Images.xcassets in Resources */,
+				F42764D71A6D738800B26A2A /* Ovatemp WatchKit App.app in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F42764D41A6D738800B26A2A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F42764DF1A6D738800B26A2A /* Interface.storyboard in Resources */,
+				F42764E11A6D738800B26A2A /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -2873,6 +3033,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F42764C31A6D738800B26A2A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F42764CF1A6D738800B26A2A /* NotificationController.swift in Sources */,
+				F42764CD1A6D738800B26A2A /* InterfaceController.swift in Sources */,
+				F42764D11A6D738800B26A2A /* GlanceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2880,6 +3050,16 @@
 			isa = PBXTargetDependency;
 			target = C36C50FA189028190053A884 /* Ovatemp */;
 			targetProxy = C3BF8FCB1898409C00572F43 /* PBXContainerItemProxy */;
+		};
+		F42764D91A6D738800B26A2A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F42764D51A6D738800B26A2A /* Ovatemp WatchKit App */;
+			targetProxy = F42764D81A6D738800B26A2A /* PBXContainerItemProxy */;
+		};
+		F42764E31A6D738800B26A2A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F42764C61A6D738800B26A2A /* Ovatemp WatchKit Extension */;
+			targetProxy = F42764E21A6D738800B26A2A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2898,6 +3078,14 @@
 				C3BF8FC61898409C00572F43 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F42764DD1A6D738800B26A2A /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F42764DE1A6D738800B26A2A /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -2944,6 +3132,7 @@
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Applico LLC";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/ThirdParty/HockeySDK.embeddedframework";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
@@ -3098,6 +3287,7 @@
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/ThirdParty/HockeySDK.embeddedframework";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
@@ -3149,6 +3339,7 @@
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ovatemp, LLC (MC934XNWAV)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/ThirdParty/HockeySDK.embeddedframework";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
@@ -3248,6 +3439,127 @@
 			};
 			name = Release;
 		};
+		F42764E61A6D738900B26A2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IBSC_MODULE = Ovatemp_WatchKit_Extension;
+				INFOPLIST_FILE = "Ovatemp WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Debug;
+		};
+		F42764E71A6D738900B26A2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IBSC_MODULE = Ovatemp_WatchKit_Extension;
+				INFOPLIST_FILE = "Ovatemp WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Release;
+		};
+		F42764E81A6D738900B26A2A /* Release Automation */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IBSC_MODULE = Ovatemp_WatchKit_Extension;
+				INFOPLIST_FILE = "Ovatemp WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = "Release Automation";
+		};
+		F42764EA1A6D738900B26A2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Ovatemp WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F42764EB1A6D738900B26A2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ovatemp, LLC (MC934XNWAV)";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Ovatemp WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		F42764EC1A6D738900B26A2A /* Release Automation */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Applico LLC";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Ovatemp WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = "Release Automation";
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3280,6 +3592,24 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		F42764E51A6D738900B26A2A /* Build configuration list for PBXNativeTarget "Ovatemp WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F42764E61A6D738900B26A2A /* Debug */,
+				F42764E71A6D738900B26A2A /* Release */,
+				F42764E81A6D738900B26A2A /* Release Automation */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F42764E91A6D738900B26A2A /* Build configuration list for PBXNativeTarget "Ovatemp WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F42764EA1A6D738900B26A2A /* Debug */,
+				F42764EB1A6D738900B26A2A /* Release */,
+				F42764EC1A6D738900B26A2A /* Release Automation */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
