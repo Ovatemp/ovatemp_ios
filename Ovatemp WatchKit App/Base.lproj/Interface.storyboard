@@ -10,9 +10,13 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Ovatemp_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label alignment="center" verticalAlignment="center" text="Please enter your Basal Body Temperature and other daily data for fertility status." textAlignment="center" numberOfLines="6" id="Tr6-gr-rLy">
-                            <fontDescription key="font" type="system" pointSize="13"/>
-                        </label>
+                        <group width="1" height="0.90000000000000002" alignment="center" verticalAlignment="center" backgroundImage="Fertility Status - no data" id="qkq-AY-5UZ">
+                            <items>
+                                <label width="100" alignment="center" verticalAlignment="center" text="Please enter your Basal Body Temperature and other daily data for fertility status." textAlignment="center" numberOfLines="6" id="Tr6-gr-rLy">
+                                    <fontDescription key="font" type="system" pointSize="13"/>
+                                </label>
+                            </items>
+                        </group>
                     </items>
                 </controller>
             </objects>
