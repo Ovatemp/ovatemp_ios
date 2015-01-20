@@ -488,6 +488,8 @@
 		F42764DF1A6D738800B26A2A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F42764DD1A6D738800B26A2A /* Interface.storyboard */; };
 		F42764E11A6D738800B26A2A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F42764E01A6D738800B26A2A /* Images.xcassets */; };
 		F42764E41A6D738800B26A2A /* Ovatemp WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F42764C71A6D738800B26A2A /* Ovatemp WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F4B469391A6EF35D0016E156 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B469381A6EF35D0016E156 /* ConnectionManager.swift */; };
+		F4B4693A1A6EF8070016E156 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B469381A6EF35D0016E156 /* ConnectionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1226,6 +1228,7 @@
 		F42764DE1A6D738800B26A2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		F42764E01A6D738800B26A2A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ovatemp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4B469381A6EF35D0016E156 /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OvatempTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -2338,6 +2341,7 @@
 				F42764D01A6D738800B26A2A /* GlanceController.swift */,
 				F42764D21A6D738800B26A2A /* Images.xcassets */,
 				F42764C91A6D738800B26A2A /* Supporting Files */,
+				F4B469381A6EF35D0016E156 /* ConnectionManager.swift */,
 			);
 			path = "Ovatemp WatchKit Extension";
 			sourceTree = "<group>";
@@ -2895,6 +2899,7 @@
 				5F1C9B6D19EDE87A000F1FC1 /* Alert.m in Sources */,
 				5F1E1D8F1A0DABFA001C22B7 /* TrackingSymptomsTableViewCell.m in Sources */,
 				5F1C9B6019EDE87A000F1FC1 /* NSDate+CalendarOps.m in Sources */,
+				F4B4693A1A6EF8070016E156 /* ConnectionManager.swift in Sources */,
 				5F1C9B9D19EDE87A000F1FC1 /* TodayViewController.m in Sources */,
 				5F428F4C1A44A62C00D78762 /* MPABTestDesignerDeviceInfoRequestMessage.m in Sources */,
 				5F1C9B7319EDE87A000F1FC1 /* DisturbanceCellEditView.m in Sources */,
@@ -3038,6 +3043,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F42764CF1A6D738800B26A2A /* NotificationController.swift in Sources */,
+				F4B469391A6EF35D0016E156 /* ConnectionManager.swift in Sources */,
 				F42764CD1A6D738800B26A2A /* InterfaceController.swift in Sources */,
 				F42764D11A6D738800B26A2A /* GlanceController.swift in Sources */,
 			);
@@ -3300,6 +3306,7 @@
 					"$(PROJECT_DIR)/ThirdParty/GoogleConversionTracking",
 					"$(PROJECT_DIR)/ThirdParty/Mixpanel",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-licucore",
@@ -3601,6 +3608,7 @@
 				F42764E81A6D738900B26A2A /* Release Automation */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F42764E91A6D738900B26A2A /* Build configuration list for PBXNativeTarget "Ovatemp WatchKit Extension" */ = {
 			isa = XCConfigurationList;
@@ -3610,6 +3618,7 @@
 				F42764EC1A6D738900B26A2A /* Release Automation */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -9,16 +9,21 @@
 import WatchKit
 import Foundation
 
-
 class InterfaceController: WKInterfaceController {
 
     @IBOutlet weak var fertilityStatusGroup: WKInterfaceGroup!
     @IBOutlet weak var fertilityStatusLabel: WKInterfaceLabel!
     
+    let connectionManager = ConnectionManager()
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
         // Configure interface objects here.
+        connectionManager.requestFertilityStatus { (status, error) -> () in
+            
+            println("status: \(status)")
+        }
     }
 
     override func willActivate() {
