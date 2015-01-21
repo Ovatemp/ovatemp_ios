@@ -22,7 +22,21 @@ class InterfaceController: WKInterfaceController {
         // Configure interface objects here.
         connectionManager.requestFertilityStatus { (status, error) -> () in
             
-            println("status: \(status)")
+            switch status {
+                
+            case FertilityStatus.peakFertility:
+                self.fertilityStatusLabel.setText("PEAK FERTILITY")
+            case FertilityStatus.fertile:
+                self.fertilityStatusLabel.setText("FERTILE")
+            case FertilityStatus.notFertile:
+                self.fertilityStatusLabel.setText("NOT FERTILE")
+            case FertilityStatus.period:
+                self.fertilityStatusLabel.setText("PERIOD")
+            case FertilityStatus.empty:
+                self.fertilityStatusLabel.setText("Please enter your Basal Body Temperature and other daily data for fertility status.")
+            default:
+                self.fertilityStatusLabel.setText("Please enter your Basal Body Temperature and other daily data for fertility status.")
+            }
         }
     }
 

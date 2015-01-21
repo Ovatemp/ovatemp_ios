@@ -8,12 +8,21 @@
 
 import Foundation
 
-public typealias StatusRequestCompletionBlock = (status: NSNumber?, error: NSError?) -> ()
+public typealias StatusRequestCompletionBlock = (status: FertilityStatus, error: NSError?) -> ()
+
+public enum FertilityStatus {
+    case empty
+    case period
+    case peakFertility
+    case fertile
+    case notFertile
+    case caution
+}
 
 public class ConnectionManager {
     
     let session: NSURLSession
-    let URL = "http://ovatemp-api-staging.herokuapp.com/api/days?start_date=2015-01-20&end_date=2015-01-20&token=ea9716a030edc0d35fa2de9be4d63a57&device_id=8F44A8A7-B296-4822-95E2-D8A3B1DED8A3"
+    let URL: NSURL = NSURL(string: "http://ovatemp-api-staging.herokuapp.com/api/cycles?date=2014-11-20&token=09dfc3dd91409fc838d8180b777cf2ea&&device_id=58504179-52EC-4298-B276-E20053D7393C")!
     
     public init() {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -22,27 +31,94 @@ public class ConnectionManager {
     
     public func requestFertilityStatus(completion: StatusRequestCompletionBlock) {
         
-        let request = NSURLRequest(URL: NSURL(string: URL)!)
+        let request = NSMutableURLRequest(URL:URL)
+        request.addValue("application/json; version=2", forHTTPHeaderField:"Accept")
+        
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             if error == nil {
                 var JSONError: NSError?
                 let responseDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as NSDictionary
                 if JSONError == nil {
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                        completion(price: price, error: nil)
-//                    })
-                    println("Response: \(responseDict)")
+                    
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.locale = NSLocale.systemLocale()
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    
+                    let peakDate = dateFormatter.dateFromString(responseDict["peak_date"] as NSString)
+                    
+                    let dayArray = responseDict["days"] as NSArray
+                    
+                    for day in dayArray {
+                        
+                        let dateInfo = day["date"] as String
+                        
+                        if(dateInfo == "2014-11-20") {
+                            
+                            println("date: \(dateInfo)")
+                            
+                            if(day["in_fertility_window"] as Bool == true) {
+                                
+                                if(day["cervical_fluid"] as String == "sticky") {
+                                    
+                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                        completion(status: FertilityStatus.peakFertility, error: nil)
+                                    })
+                                } else {
+                                    
+                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                        completion(status: FertilityStatus.fertile, error: nil)
+                                    })
+                                }
+                            } else {
+                                
+                                if(day["cycle_phase"] as String == "period") {
+                                    
+                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                        completion(status: FertilityStatus.period, error: nil)
+                                    })
+                                } else if(day["cycle_phase"] as String == "ovulation") {
+                                    
+                                    if(day["date"] as String == dateFormatter.stringFromDate(peakDate!)) {
+                                        
+                                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                            completion(status: FertilityStatus.peakFertility, error: nil)
+                                        })
+                                    } else {
+                                        
+                                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                            completion(status: FertilityStatus.fertile, error: nil)
+                                        })
+                                    }
+                                } else if(day["cycle_phase"] as String == "preovulation") {
+                                    
+                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                        completion(status: FertilityStatus.notFertile, error: nil)
+                                    })
+                                    
+                                } else if(day["cycle_phase"] as String == "postovulation") {
+                                    
+                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                        completion(status: FertilityStatus.peakFertility, error: nil)
+                                    })
+                                    
+                                } else {
+                                    
+                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                        completion(status: FertilityStatus.empty, error: nil)
+                                    })
+                                }
+                            }
+                        }
+                    }
                 } else {
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                        completion(status: nil, error: JSONError)
-//                    })
-                    println("Error parsing response.")
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        completion(status: FertilityStatus.empty, error: nil)
+                    })
                 }
             } else {
-//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                    completion(status: nil, error: error)
-//                })
-                println("Error getting data.")
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completion(status: FertilityStatus.empty, error: nil)
+                })
             }
         })
         task.resume()
