@@ -22,7 +22,7 @@ public enum FertilityStatus {
 public class ConnectionManager {
     
     let session: NSURLSession
-    let URL: NSURL = NSURL(string: "http://ovatemp-api-staging.herokuapp.com/api/cycles?date=2014-11-20&token=09dfc3dd91409fc838d8180b777cf2ea&&device_id=58504179-52EC-4298-B276-E20053D7393C")! // modify date=
+    let URL: NSURL = NSURL(string: "http://ovatemp-api-staging.herokuapp.com/api/cycles?date=2014-12-15&token=09dfc3dd91409fc838d8180b777cf2ea&&device_id=58504179-52EC-4298-B276-E20053D7393C")! // modify date=
     
     public init() {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -52,7 +52,7 @@ public class ConnectionManager {
                         
                         let dateInfo = day["date"] as String
                         
-                        if(dateInfo == "2014-11-20") { // modify date here
+                        if(dateInfo == "2014-12-15") { // modify date here
                             
                             println("day data: \(day)")
                             
@@ -98,7 +98,7 @@ public class ConnectionManager {
                                 } else if(day["cycle_phase"] as String == "postovulation") {
                                     
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                        completion(status: FertilityStatus.peakFertility, error: nil)
+                                        completion(status: FertilityStatus.notFertile, error: nil)
                                     })
                                     
                                 } else {
