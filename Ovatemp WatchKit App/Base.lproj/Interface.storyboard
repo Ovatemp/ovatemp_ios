@@ -10,7 +10,7 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Ovatemp_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <group width="1" height="0.90000000000000002" alignment="center" verticalAlignment="center" backgroundImage="Fertility Status - no data" id="qkq-AY-5UZ">
+                        <group width="1" height="0.90000000000000002" alignment="center" verticalAlignment="center" contentMode="center" id="qkq-AY-5UZ">
                             <items>
                                 <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="6" id="Tr6-gr-rLy">
                                     <fontDescription key="font" type="system" pointSize="13"/>
