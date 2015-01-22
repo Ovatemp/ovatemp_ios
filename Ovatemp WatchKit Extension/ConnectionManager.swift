@@ -60,11 +60,15 @@ public class ConnectionManager {
                                 
                                 if(day["cervical_fluid"] as String == "sticky") {
                                     
+                                    // IF in_fertility_window AND cervical_fluid = sticky
+                                    // result is PEAK FERTILITY
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                         completion(status: FertilityStatus.peakFertility, error: nil)
                                     })
                                 } else {
                                     
+                                    // IF in_fertility_window
+                                    // result is FERTILE
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                         completion(status: FertilityStatus.fertile, error: nil)
                                     })
@@ -73,6 +77,8 @@ public class ConnectionManager {
                                 
                                 if(day["cycle_phase"] as String == "period") {
                                     
+                                    // IF cycle_phase = period 
+                                    // result is PERIOD
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                         completion(status: FertilityStatus.period, error: nil)
                                     })
@@ -80,36 +86,45 @@ public class ConnectionManager {
                                     
                                     if(day["date"] as String == dateFormatter.stringFromDate(peakDate!)) {
                                         
+                                        // IF cycle_phase = ovulation AND peak_date = selected date
+                                        // result is PEAK FERTILITY
                                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                             completion(status: FertilityStatus.peakFertility, error: nil)
                                         })
                                     } else {
                                         
+                                        // IF cycle_phase = ovulation
+                                        // result is FERTILE
                                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                             completion(status: FertilityStatus.fertile, error: nil)
                                         })
                                     }
                                 } else if(day["cycle_phase"] as String == "preovulation") {
                                     
+                                    // IF cycle_phase = preovulation
+                                    // result is NOT FERTILE
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                         completion(status: FertilityStatus.notFertile, error: nil)
                                     })
                                     
                                 } else if(day["cycle_phase"] as String == "postovulation") {
                                     
+                                    // IF cycle_phase = postovulation
+                                    // result is NOT FERTILE
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                         completion(status: FertilityStatus.notFertile, error: nil)
                                     })
                                     
                                 } else {
                                     
+                                    // result is NO DATA
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                         completion(status: FertilityStatus.empty, error: nil)
                                     })
                                 }
                             }
                             
-                            //return
+                            return
                         }
                     }
                 } else {
