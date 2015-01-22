@@ -31,10 +31,20 @@
             <objects>
                 <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModule="Ovatemp_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <group alignment="left" id="t8f-Gd-c4y"/>
-                        <group alignment="left" id="uCw-4Q-Ouw"/>
+                        <group alignment="left" hidden="YES" id="t8f-Gd-c4y"/>
+                        <group alignment="left" contentMode="scaleAspectFit" id="uCw-4Q-Ouw">
+                            <items>
+                                <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="6" id="g2m-eg-NaA">
+                                    <fontDescription key="font" type="system" pointSize="13"/>
+                                </label>
+                            </items>
+                        </group>
                     </items>
                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
+                    <connections>
+                        <outlet property="fertilityStatusGroup" destination="uCw-4Q-Ouw" id="36O-7J-2yR"/>
+                        <outlet property="fertilityStatusLabel" destination="g2m-eg-NaA" id="wZ3-wd-MAv"/>
+                    </connections>
                 </glanceController>
             </objects>
             <point key="canvasLocation" x="235" y="672"/>
