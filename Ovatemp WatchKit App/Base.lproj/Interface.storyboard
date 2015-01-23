@@ -13,7 +13,7 @@
                         <group width="1" height="0.90000000000000002" alignment="center" verticalAlignment="center" contentMode="center" id="qkq-AY-5UZ">
                             <items>
                                 <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="6" id="Tr6-gr-rLy">
-                                    <fontDescription key="font" type="system" pointSize="13"/>
+                                    <fontDescription key="font" type="boldSystem" pointSize="23"/>
                                 </label>
                             </items>
                         </group>
