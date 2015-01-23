@@ -22,7 +22,6 @@ public enum FertilityStatus {
 public class ConnectionManager {
     
     let session: NSURLSession
-    let URL: NSURL = NSURL(string: "http://ovatemp-api-staging.herokuapp.com/api/cycles?date=2014-12-11&token=09dfc3dd91409fc838d8180b777cf2ea&&device_id=58504179-52EC-4298-B276-E20053D7393C")! // modify date=
     
     public init() {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -30,6 +29,13 @@ public class ConnectionManager {
     }
     
     public func requestFertilityStatus(completion: StatusRequestCompletionBlock) {
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale.systemLocale()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let todayDate = dateFormatter.stringFromDate(NSDate())
+        
+        let URL: NSURL = NSURL(string: "http://ovatemp-api-staging.herokuapp.com/api/cycles?date=\(todayDate))&token=09dfc3dd91409fc838d8180b777cf2ea&&device_id=58504179-52EC-4298-B276-E20053D7393C")!
         
         let request = NSMutableURLRequest(URL:URL)
         request.addValue("application/json; version=2", forHTTPHeaderField:"Accept")
@@ -40,10 +46,6 @@ public class ConnectionManager {
                 let responseDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as NSDictionary
                 if JSONError == nil {
                     
-                    let dateFormatter = NSDateFormatter()
-                    dateFormatter.locale = NSLocale.systemLocale()
-                    dateFormatter.dateFormat = "yyyy-MM-dd"
-                    
                     let peakDate = dateFormatter.dateFromString(responseDict["peak_date"] as NSString)
                     
                     let dayArray = responseDict["days"] as NSArray
@@ -52,9 +54,9 @@ public class ConnectionManager {
                         
                         let dateInfo = day["date"] as String
                         
-                        if(dateInfo == "2014-12-11") { // modify date here
+                        if(dateInfo == todayDate) {
                             
-                            println("day data: \(day)")
+                            println("day data: \(day)") // printing log for testing
                             
                             if(day["in_fertility_window"] as Bool == true) {
                                 
