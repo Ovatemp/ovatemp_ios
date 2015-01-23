@@ -22,5 +22,4 @@ class PeriodPageViewController: WKInterfaceController {
             super.becomeCurrentPage()
         }
     }
-
 }
