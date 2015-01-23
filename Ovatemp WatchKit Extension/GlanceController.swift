@@ -49,8 +49,10 @@ class GlanceController: WKInterfaceController {
     }
 
     override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
-        super.willActivate()
+        
+        // Use Handoff to route the wearer to the enter info controller when the Glance is tapped.
+        self.updateUserActivity("com.ovatemp.ovatemp.1",
+            userInfo: ["controllerName": "PeriodPageViewController"])
     }
 
     override func didDeactivate() {

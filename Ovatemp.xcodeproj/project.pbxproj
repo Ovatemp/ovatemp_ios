@@ -488,6 +488,7 @@
 		F42764DF1A6D738800B26A2A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F42764DD1A6D738800B26A2A /* Interface.storyboard */; };
 		F42764E11A6D738800B26A2A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F42764E01A6D738800B26A2A /* Images.xcassets */; };
 		F42764E41A6D738800B26A2A /* Ovatemp WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F42764C71A6D738800B26A2A /* Ovatemp WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F4A8D8AD1A72CC64003345A9 /* PeriodPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A8D8AC1A72CC64003345A9 /* PeriodPageViewController.swift */; };
 		F4B469391A6EF35D0016E156 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B469381A6EF35D0016E156 /* ConnectionManager.swift */; };
 		F4B4693A1A6EF8070016E156 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B469381A6EF35D0016E156 /* ConnectionManager.swift */; };
 		F4E2F1301A6F0D3A002DDCDA /* Ovatemp WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = F42764D61A6D738800B26A2A /* Ovatemp WatchKit App.app */; };
@@ -1236,6 +1237,7 @@
 		F42764DE1A6D738800B26A2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		F42764E01A6D738800B26A2A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ovatemp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4A8D8AC1A72CC64003345A9 /* PeriodPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodPageViewController.swift; sourceTree = "<group>"; };
 		F4B469381A6EF35D0016E156 /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OvatempTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -2345,6 +2347,7 @@
 			isa = PBXGroup;
 			children = (
 				F42764CC1A6D738800B26A2A /* InterfaceController.swift */,
+				F4A8D8AC1A72CC64003345A9 /* PeriodPageViewController.swift */,
 				F42764CE1A6D738800B26A2A /* NotificationController.swift */,
 				F42764D01A6D738800B26A2A /* GlanceController.swift */,
 				F42764D21A6D738800B26A2A /* Images.xcassets */,
@@ -3055,6 +3058,7 @@
 			files = (
 				F42764CF1A6D738800B26A2A /* NotificationController.swift in Sources */,
 				F4B469391A6EF35D0016E156 /* ConnectionManager.swift in Sources */,
+				F4A8D8AD1A72CC64003345A9 /* PeriodPageViewController.swift in Sources */,
 				F42764CD1A6D738800B26A2A /* InterfaceController.swift in Sources */,
 				F42764D11A6D738800B26A2A /* GlanceController.swift in Sources */,
 			);
