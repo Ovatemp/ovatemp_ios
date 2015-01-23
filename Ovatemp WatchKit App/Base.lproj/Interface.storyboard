@@ -10,7 +10,7 @@
             <objects>
                 <controller title="Ovatemp" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Ovatemp_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <group width="1" height="0.90000000000000002" alignment="center" verticalAlignment="center" contentMode="center" id="qkq-AY-5UZ">
+                        <group width="1" height="1" alignment="center" verticalAlignment="center" contentMode="center" id="qkq-AY-5UZ">
                             <items>
                                 <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="6" id="Tr6-gr-rLy">
                                     <fontDescription key="font" type="boldSystem" pointSize="23"/>
@@ -31,6 +31,22 @@
         <scene sceneID="JcD-pM-Ld5">
             <objects>
                 <controller identifier="periodPageView" title="Period" id="UyJ-mT-fSB" customClass="PeriodPageViewController" customModule="Ovatemp_WatchKit_Extension">
+                    <items>
+                        <label alignment="center" text="Select" lineHeight="2" id="Oge-90-VKO"/>
+                        <group width="1" alignment="left" verticalAlignment="center" id="Z8Z-9x-cIJ">
+                            <items>
+                                <button width="0.30000000000000016" alignment="center" backgroundImage="btn_period_none" id="5yF-xS-OWC"/>
+                                <button alignment="center" backgroundImage="btn_period_spotting" id="k2U-Rd-gYQ"/>
+                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_light" id="dXF-u5-OtT"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" verticalAlignment="center" id="y0G-bq-RPo">
+                            <items>
+                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_medium" id="ebW-kY-W1a"/>
+                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_heavy" id="1xl-Q5-7lz"/>
+                            </items>
+                        </group>
+                    </items>
                     <connections>
                         <segue destination="9NZ-qY-wrT" kind="relationship" relationship="nextPage" id="nac-3o-tjg"/>
                     </connections>
