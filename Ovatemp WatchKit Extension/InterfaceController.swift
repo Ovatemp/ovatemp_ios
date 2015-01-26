@@ -54,12 +54,12 @@ class InterfaceController: WKInterfaceController {
                 self.fertilityStatusInfoLabel.setText("Try to get some rest.")
                 self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - period")
             case FertilityStatus.empty:
-                self.fertilityStatusLabel.setText("Please enter your Basal Body Temperature and other daily data for fertility status.")
-                self.fertilityStatusInfoLabel.setText("")
+                self.fertilityStatusLabel.setText("")
+                self.fertilityStatusInfoLabel.setText("Please enter your Basal Body Temperature and other daily data for fertility status.")
                 self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - no data")
             default:
-                self.fertilityStatusLabel.setText("Please enter your Basal Body Temperature and other daily data for fertility status.")
-                self.fertilityStatusInfoLabel.setText("")
+                self.fertilityStatusLabel.setText("")
+                self.fertilityStatusInfoLabel.setText("Please enter your Basal Body Temperature and other daily data for fertility status.")
                 self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - no data")
             }
         }
