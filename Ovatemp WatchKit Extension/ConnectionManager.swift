@@ -52,15 +52,15 @@ public class ConnectionManager {
                     
                     for day in dayArray {
                         
-                        let dateInfo = day["date"] as String
+                        let dateInfo = day["date"] as? String
                         
                         if(dateInfo == todayDate) {
                             
                             println("day data: \(day)") // printing log for testing
                             
-                            if(day["in_fertility_window"] as Bool == true) {
+                            if(day["in_fertility_window"] as? Bool == true) {
                                 
-                                if(day["cervical_fluid"] as String == "sticky") {
+                                if(day["cervical_fluid"] as? String == "sticky") {
                                     
                                     // IF in_fertility_window AND cervical_fluid = sticky
                                     // result is PEAK FERTILITY
@@ -77,16 +77,16 @@ public class ConnectionManager {
                                 }
                             } else {
                                 
-                                if(day["cycle_phase"] as String == "period") {
+                                if(day["cycle_phase"] as? String == "period") {
                                     
                                     // IF cycle_phase = period 
                                     // result is PERIOD
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                         completion(status: FertilityStatus.period, error: nil)
                                     })
-                                } else if(day["cycle_phase"] as String == "ovulation") {
+                                } else if(day["cycle_phase"] as? String == "ovulation") {
                                     
-                                    if(day["date"] as String == dateFormatter.stringFromDate(peakDate!)) {
+                                    if(day["date"] as? String == dateFormatter.stringFromDate(peakDate!)) {
                                         
                                         // IF cycle_phase = ovulation AND peak_date = selected date
                                         // result is PEAK FERTILITY
@@ -101,7 +101,7 @@ public class ConnectionManager {
                                             completion(status: FertilityStatus.fertile, error: nil)
                                         })
                                     }
-                                } else if(day["cycle_phase"] as String == "preovulation") {
+                                } else if(day["cycle_phase"] as? String == "preovulation") {
                                     
                                     // IF cycle_phase = preovulation
                                     // result is NOT FERTILE
@@ -109,7 +109,7 @@ public class ConnectionManager {
                                         completion(status: FertilityStatus.notFertile, error: nil)
                                     })
                                     
-                                } else if(day["cycle_phase"] as String == "postovulation") {
+                                } else if(day["cycle_phase"] as? String == "postovulation") {
                                     
                                     // IF cycle_phase = postovulation
                                     // result is NOT FERTILE
