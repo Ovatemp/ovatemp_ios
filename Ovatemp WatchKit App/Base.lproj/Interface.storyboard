@@ -10,16 +10,20 @@
             <objects>
                 <controller title="Ovatemp" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Ovatemp_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <group width="1" height="1" alignment="center" verticalAlignment="center" contentMode="center" id="qkq-AY-5UZ">
+                        <group width="1" height="1" alignment="center" verticalAlignment="center" contentMode="center" layout="vertical" id="qkq-AY-5UZ">
                             <items>
                                 <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="6" id="Tr6-gr-rLy">
                                     <fontDescription key="font" type="boldSystem" pointSize="23"/>
+                                </label>
+                                <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="6" id="hPG-OA-qgE">
+                                    <fontDescription key="font" type="system" pointSize="10"/>
                                 </label>
                             </items>
                         </group>
                     </items>
                     <connections>
                         <outlet property="fertilityStatusGroup" destination="qkq-AY-5UZ" id="nUi-T1-7K1"/>
+                        <outlet property="fertilityStatusInfoLabel" destination="hPG-OA-qgE" id="QQt-IM-HWj"/>
                         <outlet property="fertilityStatusLabel" destination="Tr6-gr-rLy" id="MeZ-BD-frt"/>
                         <segue destination="UyJ-mT-fSB" kind="relationship" relationship="nextPage" id="xUY-sO-UYo"/>
                     </connections>
@@ -78,10 +82,13 @@
                 <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModule="Ovatemp_WatchKit_App" customModuleProvider="target">
                     <items>
                         <group alignment="left" hidden="YES" id="t8f-Gd-c4y"/>
-                        <group alignment="left" contentMode="scaleAspectFit" id="uCw-4Q-Ouw">
+                        <group alignment="left" contentMode="scaleAspectFit" layout="vertical" id="uCw-4Q-Ouw">
                             <items>
                                 <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="6" id="g2m-eg-NaA">
-                                    <fontDescription key="font" type="system" pointSize="13"/>
+                                    <fontDescription key="font" type="boldSystem" pointSize="23"/>
+                                </label>
+                                <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="6" id="Wwo-nI-os2">
+                                    <fontDescription key="font" type="system" pointSize="10"/>
                                 </label>
                             </items>
                         </group>
@@ -89,6 +96,7 @@
                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
                     <connections>
                         <outlet property="fertilityStatusGroup" destination="uCw-4Q-Ouw" id="36O-7J-2yR"/>
+                        <outlet property="fertilityStatusInfoLabel" destination="Wwo-nI-os2" id="2Qa-nW-7M9"/>
                         <outlet property="fertilityStatusLabel" destination="g2m-eg-NaA" id="wZ3-wd-MAv"/>
                     </connections>
                 </glanceController>

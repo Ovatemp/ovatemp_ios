@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias StatusRequestCompletionBlock = (status: FertilityStatus, error: NSError?) -> ()
+public typealias StatusRequestCompletionBlock = (status: Fertility, error: NSError?) -> ()
 
 public enum FertilityStatus {
     case empty
@@ -17,6 +17,32 @@ public enum FertilityStatus {
     case fertile
     case notFertile
     case caution
+}
+
+public enum FertilityCycle {
+    case empty
+    case period
+    case ovulation
+    case preovulation
+    case postovulation
+}
+
+public struct Fertility {
+    
+    var fertilityStatus: FertilityStatus
+    var fertilityCycle: FertilityCycle
+    
+    init() {
+        
+        fertilityStatus = FertilityStatus.empty
+        fertilityCycle = FertilityCycle.empty
+    }
+    
+    init(status: FertilityStatus, cycle: FertilityCycle) {
+        
+        fertilityStatus = status
+        fertilityCycle = cycle
+    }
 }
 
 public class ConnectionManager {
@@ -65,14 +91,14 @@ public class ConnectionManager {
                                     // IF in_fertility_window AND cervical_fluid = sticky
                                     // result is PEAK FERTILITY
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                        completion(status: FertilityStatus.peakFertility, error: nil)
+                                        completion(status: Fertility(status: FertilityStatus.peakFertility, cycle: FertilityCycle.ovulation), error: nil)
                                     })
                                 } else {
                                     
                                     // IF in_fertility_window
                                     // result is FERTILE
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                        completion(status: FertilityStatus.fertile, error: nil)
+                                        completion(status: Fertility(status: FertilityStatus.fertile, cycle: FertilityCycle.ovulation), error: nil)
                                     })
                                 }
                             } else {
@@ -82,7 +108,7 @@ public class ConnectionManager {
                                     // IF cycle_phase = period 
                                     // result is PERIOD
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                        completion(status: FertilityStatus.period, error: nil)
+                                        completion(status: Fertility(status: FertilityStatus.period, cycle: FertilityCycle.period), error: nil)
                                     })
                                 } else if(day["cycle_phase"] as? String == "ovulation") {
                                     
@@ -91,14 +117,14 @@ public class ConnectionManager {
                                         // IF cycle_phase = ovulation AND peak_date = selected date
                                         // result is PEAK FERTILITY
                                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                            completion(status: FertilityStatus.peakFertility, error: nil)
+                                            completion(status: Fertility(status: FertilityStatus.peakFertility, cycle: FertilityCycle.ovulation), error: nil)
                                         })
                                     } else {
                                         
                                         // IF cycle_phase = ovulation
                                         // result is FERTILE
                                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                            completion(status: FertilityStatus.fertile, error: nil)
+                                            completion(status: Fertility(status: FertilityStatus.fertile, cycle: FertilityCycle.ovulation), error: nil)
                                         })
                                     }
                                 } else if(day["cycle_phase"] as? String == "preovulation") {
@@ -106,7 +132,7 @@ public class ConnectionManager {
                                     // IF cycle_phase = preovulation
                                     // result is NOT FERTILE
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                        completion(status: FertilityStatus.notFertile, error: nil)
+                                        completion(status: Fertility(status: FertilityStatus.notFertile, cycle: FertilityCycle.preovulation), error: nil)
                                     })
                                     
                                 } else if(day["cycle_phase"] as? String == "postovulation") {
@@ -114,14 +140,14 @@ public class ConnectionManager {
                                     // IF cycle_phase = postovulation
                                     // result is NOT FERTILE
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                        completion(status: FertilityStatus.notFertile, error: nil)
+                                        completion(status: Fertility(status: FertilityStatus.notFertile, cycle: FertilityCycle.postovulation), error: nil)
                                     })
                                     
                                 } else {
                                     
                                     // result is NO DATA
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                        completion(status: FertilityStatus.empty, error: nil)
+                                        completion(status: Fertility(status: FertilityStatus.empty, cycle: FertilityCycle.empty), error: nil)
                                     })
                                 }
                             }
@@ -131,12 +157,12 @@ public class ConnectionManager {
                     }
                 } else {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        completion(status: FertilityStatus.empty, error: nil)
+                        completion(status: Fertility(status: FertilityStatus.empty, cycle: FertilityCycle.empty), error: nil)
                     })
                 }
             } else {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completion(status: FertilityStatus.empty, error: nil)
+                    completion(status: Fertility(status: FertilityStatus.empty, cycle: FertilityCycle.empty), error: nil)
                 })
             }
         })
