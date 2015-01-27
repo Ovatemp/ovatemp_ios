@@ -18,6 +18,8 @@ class PeriodPageViewController: WKInterfaceController {
     @IBOutlet weak var periodSelectMediumButton: WKInterfaceButton!
     @IBOutlet weak var periodSelectHeavyButton: WKInterfaceButton!
     
+    let connectionManager = ConnectionManager()
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
     }
@@ -28,5 +30,26 @@ class PeriodPageViewController: WKInterfaceController {
             
             super.becomeCurrentPage()
         }
+    }
+
+    @IBAction func didSelectPeriodNone() {
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale.systemLocale()
+        dateFormatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ssZZZ"
+
+        let todayDate = dateFormatter.stringFromDate(NSDate())
+
+        let selectionDictionary = ["date": todayDate,"period": "none"]
+
+        connectionManager.updateFertilityData (selectionDictionary, { (success, error) -> () in
+
+            if(success) {
+
+                self.periodSelectionLabel.setText("None")
+                self.periodSelectNoneButton.setBackgroundImageNamed("btn_period_none_p")
+            }
+
+        })
     }
 }
