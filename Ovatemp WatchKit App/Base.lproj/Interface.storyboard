@@ -52,6 +52,12 @@
                         </group>
                     </items>
                     <connections>
+                        <outlet property="periodSelectHeavyButton" destination="1xl-Q5-7lz" id="JiU-AQ-vem"/>
+                        <outlet property="periodSelectLightButton" destination="dXF-u5-OtT" id="zFw-7Q-ekK"/>
+                        <outlet property="periodSelectMediumButton" destination="ebW-kY-W1a" id="nFj-eE-1tr"/>
+                        <outlet property="periodSelectNoneButton" destination="5yF-xS-OWC" id="O3L-An-RfR"/>
+                        <outlet property="periodSelectSpottingButton" destination="k2U-Rd-gYQ" id="5Tc-dV-d2e"/>
+                        <outlet property="periodSelectionLabel" destination="Oge-90-VKO" id="oZB-kM-0Hh"/>
                         <segue destination="9NZ-qY-wrT" kind="relationship" relationship="nextPage" id="nac-3o-tjg"/>
                     </connections>
                 </controller>
