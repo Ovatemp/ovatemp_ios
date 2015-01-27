@@ -171,7 +171,7 @@ public class ConnectionManager {
         task.resume()
     }
     
-    public func updateFertilityData(data: NSDictionary, completion: UpdateCompletionBlock) {
+    public func updateFertilityData(data: String, completion: UpdateCompletionBlock) {
         
         let todayDate = NSDate()
         
@@ -180,9 +180,9 @@ public class ConnectionManager {
         let request = NSMutableURLRequest(URL:URL)
         request.HTTPMethod = "PUT"
         
-        var JSONError: NSError?
-        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(data, options: nil, error: &JSONError)
-        
+        var putData = data+"&token=09dfc3dd91409fc838d8180b777cf2ea&&device_id=58504179-52EC-4298-B276-E20053D7393C"
+        request.HTTPBody = putData.dataUsingEncoding(NSUTF8StringEncoding)
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField:"Content-Type")
         request.addValue("application/json; version=2", forHTTPHeaderField:"Accept")
         
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
