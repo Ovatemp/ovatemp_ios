@@ -49,7 +49,11 @@
                                         <action selector="didSelectPeriodSpotting" destination="UyJ-mT-fSB" id="ev9-83-ZZI"/>
                                     </connections>
                                 </button>
-                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_light" id="dXF-u5-OtT"/>
+                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_light" id="dXF-u5-OtT">
+                                    <connections>
+                                        <action selector="didSelectPeriodLight" destination="UyJ-mT-fSB" id="a6Q-dQ-e8e"/>
+                                    </connections>
+                                </button>
                             </items>
                         </group>
                         <group width="1" alignment="left" verticalAlignment="center" id="y0G-bq-RPo">

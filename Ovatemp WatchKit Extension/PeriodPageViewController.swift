@@ -81,8 +81,17 @@ class PeriodPageViewController: WKInterfaceController {
             
             self.updatePeriodData("spotting", changeSelection: PeriodState.spotting)
         }
+    }
+    
+    @IBAction func didSelectPeriodLight() {
         
-        
+        if(periodSelectedState == PeriodState.light) {
+            
+            self.updatePeriodData("", changeSelection: PeriodState.light)
+        } else {
+            
+            self.updatePeriodData("light", changeSelection: PeriodState.light)
+        }
     }
     
     func updatePeriodData(periodSelection: String, changeSelection: PeriodState) {
