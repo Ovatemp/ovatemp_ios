@@ -94,6 +94,17 @@ class PeriodPageViewController: WKInterfaceController {
         }
     }
     
+    @IBAction func didSelectPeriodMedium() {
+        
+        if(periodSelectedState == PeriodState.medium) {
+            
+            self.updatePeriodData("", changeSelection: PeriodState.medium)
+        } else {
+            
+            self.updatePeriodData("medium", changeSelection: PeriodState.medium)
+        }
+    }
+    
     func updatePeriodData(periodSelection: String, changeSelection: PeriodState) {
         
         let periodSelectionString = "day[date]=\(todayDate)&day[period]="+periodSelection
