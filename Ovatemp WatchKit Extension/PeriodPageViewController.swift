@@ -105,6 +105,17 @@ class PeriodPageViewController: WKInterfaceController {
         }
     }
     
+    @IBAction func didSelectPeriodHeavy() {
+        
+        if(periodSelectedState == PeriodState.heavy) {
+            
+            self.updatePeriodData("", changeSelection: PeriodState.heavy)
+        } else {
+            
+            self.updatePeriodData("heavy", changeSelection: PeriodState.heavy)
+        }
+    }
+    
     func updatePeriodData(periodSelection: String, changeSelection: PeriodState) {
         
         let periodSelectionString = "day[date]=\(todayDate)&day[period]="+periodSelection

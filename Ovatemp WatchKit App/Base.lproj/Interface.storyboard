@@ -63,7 +63,11 @@
                                         <action selector="didSelectPeriodMedium" destination="UyJ-mT-fSB" id="F1H-q5-w6L"/>
                                     </connections>
                                 </button>
-                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_heavy" id="1xl-Q5-7lz"/>
+                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_heavy" id="1xl-Q5-7lz">
+                                    <connections>
+                                        <action selector="didSelectPeriodHeavy" destination="UyJ-mT-fSB" id="zgB-hp-21C"/>
+                                    </connections>
+                                </button>
                             </items>
                         </group>
                     </items>
