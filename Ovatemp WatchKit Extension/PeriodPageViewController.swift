@@ -32,8 +32,16 @@ class PeriodPageViewController: WKInterfaceController {
     
     let connectionManager = ConnectionManager()
     
+    var todayDate : String = ""
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale.systemLocale()
+        dateFormatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ssZZZ"
+        
+        self.todayDate = dateFormatter.stringFromDate(NSDate())
     }
     
     override func handleUserActivity(context: [NSObject : AnyObject]!) {
@@ -55,82 +63,74 @@ class PeriodPageViewController: WKInterfaceController {
 
     @IBAction func didSelectPeriodNone() {
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale.systemLocale()
-        dateFormatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ssZZZ"
-
-        let todayDate = dateFormatter.stringFromDate(NSDate())
-        
         if(periodSelectedState == PeriodState.none) {
-
-            let periodSelection = "day[date]=\(todayDate)&day[period]="
-
-            connectionManager.updateFertilityData (periodSelection, { (success, error) -> () in
-
-                if(success) {
-
-                    self.periodSelectionLabel.setText("Select")
-                    self.periodSelectNoneButton.setBackgroundImageNamed("btn_period_none")
-                    self.periodSelectedState = PeriodState.noData
-                }
-
-            })
             
+            self.updatePeriodData("", changeSelection: PeriodState.none)
         } else {
             
-            let periodSelection = "day[date]=\(todayDate)&day[period]=none"
-            
-            connectionManager.updateFertilityData (periodSelection, { (success, error) -> () in
-                
-                if(success) {
-                    
-                    self.periodSelectionLabel.setText("None")
-                    self.resetButtonImages()
-                    self.periodSelectNoneButton.setBackgroundImageNamed("btn_period_none_p")
-                    self.periodSelectedState = PeriodState.none
-                }
-                
-            })
+            self.updatePeriodData("none", changeSelection: PeriodState.none)
         }
     }
+    
     @IBAction func didSelectPeriodSpotting() {
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale.systemLocale()
-        dateFormatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ssZZZ"
-        
-        let todayDate = dateFormatter.stringFromDate(NSDate())
         
         if(periodSelectedState == PeriodState.spotting) {
             
-            let periodSelection = "day[date]=\(todayDate)&day[period]="
-            
-            connectionManager.updateFertilityData (periodSelection, { (success, error) -> () in
-                
-                if(success) {
-                    
-                    self.periodSelectionLabel.setText("Select")
-                    self.periodSelectSpottingButton.setBackgroundImageNamed("btn_period_spotting")
-                    self.periodSelectedState = PeriodState.spotting
-                }
-                
-            })
-            
+            self.updatePeriodData("", changeSelection: PeriodState.spotting)
         } else {
             
-            let periodSelection = "day[date]=\(todayDate)&day[period]=spotting"
+            self.updatePeriodData("spotting", changeSelection: PeriodState.spotting)
+        }
+        
+        
+    }
+    
+    func updatePeriodData(periodSelection: String, changeSelection: PeriodState) {
+        
+        let periodSelectionString = "day[date]=\(todayDate)&day[period]="+periodSelection
+        
+        connectionManager.updateFertilityData (periodSelectionString, { (success, error) -> () in
             
-            connectionManager.updateFertilityData (periodSelection, { (success, error) -> () in
+            if(success) {
                 
-                if(success) {
+                self.resetButtonImages()
+                
+                switch changeSelection {
                     
+                case self.periodSelectedState:
+                    self.periodSelectionLabel.setText("Select")
+                    self.periodSelectedState = PeriodState.noData
+                
+                case PeriodState.none:
+                    self.periodSelectionLabel.setText("None")
+                    self.periodSelectNoneButton.setBackgroundImageNamed("btn_period_none_p")
+                    self.periodSelectedState = PeriodState.none
+                    
+                case PeriodState.spotting:
                     self.periodSelectionLabel.setText("Spotting")
-                    self.resetButtonImages()
                     self.periodSelectSpottingButton.setBackgroundImageNamed("btn_period_spotting_p")
                     self.periodSelectedState = PeriodState.spotting
-                }
+                    
+                case PeriodState.light:
+                    self.periodSelectionLabel.setText("Light")
+                    self.periodSelectLightButton.setBackgroundImageNamed("btn_period_light_p")
+                    self.periodSelectedState = PeriodState.light
+                    
+                case PeriodState.medium:
+                    self.periodSelectionLabel.setText("Medium")
+                    self.periodSelectMediumButton.setBackgroundImageNamed("btn_period_medium_p")
+                    self.periodSelectedState = PeriodState.medium
+                    
+                case PeriodState.heavy:
+                    self.periodSelectionLabel.setText("Heavy")
+                    self.periodSelectHeavyButton.setBackgroundImageNamed("btn_period_heavy_p")
+                    self.periodSelectedState = PeriodState.heavy
                 
-            })
-        }
+                default:
+                    self.periodSelectionLabel.setText("Select")
+                    self.periodSelectedState = PeriodState.noData
+                }
+            }
+        })
     }
 }
