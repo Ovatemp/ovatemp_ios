@@ -10,6 +10,8 @@ import Foundation
 
 public typealias StatusRequestCompletionBlock = (status: Fertility, error: NSError?) -> ()
 
+public typealias UpdateCompletionBlock = (success: Bool, error: NSError?) -> ()
+
 public enum FertilityStatus {
     case empty
     case period
@@ -67,10 +69,10 @@ public class ConnectionManager {
         request.addValue("application/json; version=2", forHTTPHeaderField:"Accept")
         
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
-            if error == nil {
+            if (error == nil) {
                 var JSONError: NSError?
                 let responseDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as NSDictionary
-                if JSONError == nil {
+                if (JSONError == nil) {
                     
                     let peakDate = dateFormatter.dateFromString(responseDict["peak_date"] as NSString)
                     
@@ -167,5 +169,28 @@ public class ConnectionManager {
             }
         })
         task.resume()
-  }
+    }
+    
+    public func updateFertilityData(data: NSDictionary, completion: UpdateCompletionBlock) {
+        
+        let todayDate = NSDate()
+        
+        let URL: NSURL = NSURL(string: "http://ovatemp-api-staging.herokuapp.com/api/days/")!
+        
+        let request = NSMutableURLRequest(URL:URL)
+        request.HTTPMethod = "PUT"
+        
+        var JSONError: NSError?
+        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(data, options: nil, error: &JSONError)
+        
+        request.addValue("application/json; version=2", forHTTPHeaderField:"Accept")
+        
+        let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                completion(success: true, error: nil)
+            })
+        })
+        task.resume()
+    }
 }

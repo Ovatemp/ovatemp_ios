@@ -11,6 +11,13 @@ import WatchKit
 
 class PeriodPageViewController: WKInterfaceController {
     
+    @IBOutlet weak var periodSelectionLabel: WKInterfaceLabel!
+    @IBOutlet weak var periodSelectNoneButton: WKInterfaceButton!
+    @IBOutlet weak var periodSelectSpottingButton: WKInterfaceButton!
+    @IBOutlet weak var periodSelectLightButton: WKInterfaceButton!
+    @IBOutlet weak var periodSelectMediumButton: WKInterfaceButton!
+    @IBOutlet weak var periodSelectHeavyButton: WKInterfaceButton!
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
     }
