@@ -93,4 +93,44 @@ class PeriodPageViewController: WKInterfaceController {
             })
         }
     }
+    @IBAction func didSelectPeriodSpotting() {
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale.systemLocale()
+        dateFormatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ssZZZ"
+        
+        let todayDate = dateFormatter.stringFromDate(NSDate())
+        
+        if(periodSelectedState == PeriodState.spotting) {
+            
+            let periodSelection = "day[date]=\(todayDate)&day[period]="
+            
+            connectionManager.updateFertilityData (periodSelection, { (success, error) -> () in
+                
+                if(success) {
+                    
+                    self.periodSelectionLabel.setText("Select")
+                    self.periodSelectSpottingButton.setBackgroundImageNamed("btn_period_spotting")
+                    self.periodSelectedState = PeriodState.spotting
+                }
+                
+            })
+            
+        } else {
+            
+            let periodSelection = "day[date]=\(todayDate)&day[period]=spotting"
+            
+            connectionManager.updateFertilityData (periodSelection, { (success, error) -> () in
+                
+                if(success) {
+                    
+                    self.periodSelectionLabel.setText("Spotting")
+                    self.resetButtonImages()
+                    self.periodSelectSpottingButton.setBackgroundImageNamed("btn_period_spotting_p")
+                    self.periodSelectedState = PeriodState.spotting
+                }
+                
+            })
+        }
+    }
 }

@@ -44,7 +44,11 @@
                                         <action selector="didSelectPeriodNone" destination="UyJ-mT-fSB" id="85k-7l-Tkk"/>
                                     </connections>
                                 </button>
-                                <button alignment="center" backgroundImage="btn_period_spotting" id="k2U-Rd-gYQ"/>
+                                <button alignment="center" backgroundImage="btn_period_spotting" id="k2U-Rd-gYQ">
+                                    <connections>
+                                        <action selector="didSelectPeriodSpotting" destination="UyJ-mT-fSB" id="ev9-83-ZZI"/>
+                                    </connections>
+                                </button>
                                 <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_light" id="dXF-u5-OtT"/>
                             </items>
                         </group>
