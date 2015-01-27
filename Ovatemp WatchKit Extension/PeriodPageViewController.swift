@@ -9,6 +9,16 @@
 import Foundation
 import WatchKit
 
+public enum PeriodState {
+    case noData
+    case none
+    case spotting
+    case light
+    case medium
+    case heavy
+}
+
+
 class PeriodPageViewController: WKInterfaceController {
     
     @IBOutlet weak var periodSelectionLabel: WKInterfaceLabel!
@@ -17,6 +27,8 @@ class PeriodPageViewController: WKInterfaceController {
     @IBOutlet weak var periodSelectLightButton: WKInterfaceButton!
     @IBOutlet weak var periodSelectMediumButton: WKInterfaceButton!
     @IBOutlet weak var periodSelectHeavyButton: WKInterfaceButton!
+    
+    var periodSelectedState = PeriodState.noData
     
     let connectionManager = ConnectionManager()
     
@@ -31,6 +43,15 @@ class PeriodPageViewController: WKInterfaceController {
             super.becomeCurrentPage()
         }
     }
+    
+    func resetButtonImages() {
+        
+        self.periodSelectNoneButton.setBackgroundImageNamed("btn_period_none")
+        self.periodSelectSpottingButton.setBackgroundImageNamed("btn_period_spotting")
+        self.periodSelectLightButton.setBackgroundImageNamed("btn_period_light")
+        self.periodSelectMediumButton.setBackgroundImageNamed("btn_period_medium")
+        self.periodSelectHeavyButton.setBackgroundImageNamed("btn_period_heavy")
+    }
 
     @IBAction func didSelectPeriodNone() {
         
@@ -39,17 +60,37 @@ class PeriodPageViewController: WKInterfaceController {
         dateFormatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ssZZZ"
 
         let todayDate = dateFormatter.stringFromDate(NSDate())
+        
+        if(periodSelectedState == PeriodState.none) {
 
-        let selectionDictionary = ["date": todayDate,"period": "none"]
+            let periodSelection = "day[date]=\(todayDate)&day[period]="
 
-        connectionManager.updateFertilityData (selectionDictionary, { (success, error) -> () in
+            connectionManager.updateFertilityData (periodSelection, { (success, error) -> () in
 
-            if(success) {
+                if(success) {
 
-                self.periodSelectionLabel.setText("None")
-                self.periodSelectNoneButton.setBackgroundImageNamed("btn_period_none_p")
-            }
+                    self.periodSelectionLabel.setText("Select")
+                    self.periodSelectNoneButton.setBackgroundImageNamed("btn_period_none")
+                    self.periodSelectedState = PeriodState.noData
+                }
 
-        })
+            })
+            
+        } else {
+            
+            let periodSelection = "day[date]=\(todayDate)&day[period]=none"
+            
+            connectionManager.updateFertilityData (periodSelection, { (success, error) -> () in
+                
+                if(success) {
+                    
+                    self.periodSelectionLabel.setText("None")
+                    self.resetButtonImages()
+                    self.periodSelectNoneButton.setBackgroundImageNamed("btn_period_none_p")
+                    self.periodSelectedState = PeriodState.none
+                }
+                
+            })
+        }
     }
 }
