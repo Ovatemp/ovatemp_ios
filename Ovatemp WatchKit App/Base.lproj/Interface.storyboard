@@ -39,7 +39,11 @@
                         <label alignment="center" text="Select" lineHeight="2" id="Oge-90-VKO"/>
                         <group width="1" alignment="left" verticalAlignment="center" id="Z8Z-9x-cIJ">
                             <items>
-                                <button width="0.30000000000000016" alignment="center" backgroundImage="btn_period_none" id="5yF-xS-OWC"/>
+                                <button width="0.30000000000000016" alignment="center" backgroundImage="btn_period_none" id="5yF-xS-OWC">
+                                    <connections>
+                                        <action selector="didSelectPeriodNone" destination="UyJ-mT-fSB" id="q6N-oJ-Ead"/>
+                                    </connections>
+                                </button>
                                 <button alignment="center" backgroundImage="btn_period_spotting" id="k2U-Rd-gYQ"/>
                                 <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_light" id="dXF-u5-OtT"/>
                             </items>
