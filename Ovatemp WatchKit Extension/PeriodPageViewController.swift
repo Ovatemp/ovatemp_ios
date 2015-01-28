@@ -124,44 +124,49 @@ class PeriodPageViewController: WKInterfaceController {
             
             if(success) {
                 
-                self.resetButtonImages()
-                
-                switch changeSelection {
-                    
-                case self.periodSelectedState:
-                    self.periodSelectionLabel.setText("Select")
-                    self.periodSelectedState = PeriodState.noData
-                
-                case PeriodState.none:
-                    self.periodSelectionLabel.setText("None")
-                    self.periodSelectNoneButton.setBackgroundImageNamed("btn_period_none_p")
-                    self.periodSelectedState = PeriodState.none
-                    
-                case PeriodState.spotting:
-                    self.periodSelectionLabel.setText("Spotting")
-                    self.periodSelectSpottingButton.setBackgroundImageNamed("btn_period_spotting_p")
-                    self.periodSelectedState = PeriodState.spotting
-                    
-                case PeriodState.light:
-                    self.periodSelectionLabel.setText("Light")
-                    self.periodSelectLightButton.setBackgroundImageNamed("btn_period_light_p")
-                    self.periodSelectedState = PeriodState.light
-                    
-                case PeriodState.medium:
-                    self.periodSelectionLabel.setText("Medium")
-                    self.periodSelectMediumButton.setBackgroundImageNamed("btn_period_medium_p")
-                    self.periodSelectedState = PeriodState.medium
-                    
-                case PeriodState.heavy:
-                    self.periodSelectionLabel.setText("Heavy")
-                    self.periodSelectHeavyButton.setBackgroundImageNamed("btn_period_heavy_p")
-                    self.periodSelectedState = PeriodState.heavy
-                
-                default:
-                    self.periodSelectionLabel.setText("Select")
-                    self.periodSelectedState = PeriodState.noData
-                }
+                self.updatePeriodButtons(changeSelection)
             }
         })
+    }
+    
+    func updatePeriodButtons(changeSelection: PeriodState) {
+        
+        self.resetButtonImages()
+        
+        switch changeSelection {
+            
+        case self.periodSelectedState:
+            self.periodSelectionLabel.setText("Select")
+            self.periodSelectedState = PeriodState.noData
+            
+        case PeriodState.none:
+            self.periodSelectionLabel.setText("None")
+            self.periodSelectNoneButton.setBackgroundImageNamed("btn_period_none_p")
+            self.periodSelectedState = PeriodState.none
+            
+        case PeriodState.spotting:
+            self.periodSelectionLabel.setText("Spotting")
+            self.periodSelectSpottingButton.setBackgroundImageNamed("btn_period_spotting_p")
+            self.periodSelectedState = PeriodState.spotting
+            
+        case PeriodState.light:
+            self.periodSelectionLabel.setText("Light")
+            self.periodSelectLightButton.setBackgroundImageNamed("btn_period_light_p")
+            self.periodSelectedState = PeriodState.light
+            
+        case PeriodState.medium:
+            self.periodSelectionLabel.setText("Medium")
+            self.periodSelectMediumButton.setBackgroundImageNamed("btn_period_medium_p")
+            self.periodSelectedState = PeriodState.medium
+            
+        case PeriodState.heavy:
+            self.periodSelectionLabel.setText("Heavy")
+            self.periodSelectHeavyButton.setBackgroundImageNamed("btn_period_heavy_p")
+            self.periodSelectedState = PeriodState.heavy
+            
+        default:
+            self.periodSelectionLabel.setText("Select")
+            self.periodSelectedState = PeriodState.noData
+        }
     }
 }
