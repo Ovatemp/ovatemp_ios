@@ -42,6 +42,12 @@ class PeriodPageViewController: WKInterfaceController {
         dateFormatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ssZZZ"
         
         self.todayDate = dateFormatter.stringFromDate(NSDate())
+        
+        // Configure interface objects here.
+        connectionManager.requestPeriodStatus { (status, error) -> () in
+            
+            self.updatePeriodButtons(status)
+        }
     }
     
     override func handleUserActivity(context: [NSObject : AnyObject]!) {

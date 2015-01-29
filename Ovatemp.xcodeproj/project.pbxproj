@@ -488,6 +488,7 @@
 		F42764DF1A6D738800B26A2A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F42764DD1A6D738800B26A2A /* Interface.storyboard */; };
 		F42764E11A6D738800B26A2A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F42764E01A6D738800B26A2A /* Images.xcassets */; };
 		F42764E41A6D738800B26A2A /* Ovatemp WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F42764C71A6D738800B26A2A /* Ovatemp WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F4A2F7271A79A4CD00C85DFE /* PeriodPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A8D8AC1A72CC64003345A9 /* PeriodPageViewController.swift */; };
 		F4A8D8AD1A72CC64003345A9 /* PeriodPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A8D8AC1A72CC64003345A9 /* PeriodPageViewController.swift */; };
 		F4B469391A6EF35D0016E156 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B469381A6EF35D0016E156 /* ConnectionManager.swift */; };
 		F4B4693A1A6EF8070016E156 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B469381A6EF35D0016E156 /* ConnectionManager.swift */; };
@@ -3030,6 +3031,7 @@
 				5FCD68B219F942920091C492 /* HeightTableViewCell.m in Sources */,
 				5F1C9C6319EDE87A000F1FC1 /* User.m in Sources */,
 				5F428F7A1A44A62C00D78762 /* MPUIColorToNSStringValueTransformer.m in Sources */,
+				F4A2F7271A79A4CD00C85DFE /* PeriodPageViewController.swift in Sources */,
 				5F1C9C5E19EDE87A000F1FC1 /* Question.m in Sources */,
 				5F428F461A44A62C00D78762 /* MPAbstractABTestDesignerMessage.m in Sources */,
 				5F1C9C5519EDE87A000F1FC1 /* main.m in Sources */,
