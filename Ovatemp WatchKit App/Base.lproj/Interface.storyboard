@@ -93,19 +93,19 @@
             </objects>
             <point key="canvasLocation" x="469" y="348"/>
         </scene>
-        <!--Fluid-->
+        <!--Cerv. Fluid-->
         <scene sceneID="DAS-h6-YV7">
             <objects>
-                <controller identifier="fluidPageView" title="Fluid" id="9NZ-qY-wrT">
+                <controller identifier="fluidPageView" title="Cerv. Fluid" id="9NZ-qY-wrT">
                     <items>
                         <group width="1" alignment="left" verticalAlignment="center" id="z0Q-Ex-WLT">
                             <items>
-                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_medium" id="YlH-O8-qZw">
+                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_fluid_dry" id="YlH-O8-qZw">
                                     <connections>
                                         <action selector="didSelectPeriodMedium" destination="UyJ-mT-fSB" id="se2-su-l9s"/>
                                     </connections>
                                 </button>
-                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_heavy" id="xHx-Y2-dIs">
+                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_fluid_sticky" id="xHx-Y2-dIs">
                                     <connections>
                                         <action selector="didSelectPeriodHeavy" destination="UyJ-mT-fSB" id="acf-WR-boG"/>
                                     </connections>
@@ -114,19 +114,14 @@
                         </group>
                         <group width="1" alignment="left" verticalAlignment="center" id="tUa-IV-KGv">
                             <items>
-                                <button width="0.30000000000000016" alignment="center" backgroundImage="btn_period_none" id="3LM-Ak-S7p">
+                                <button alignment="center" backgroundImage="btn_fluid_creamy" id="3LM-Ak-S7p">
                                     <connections>
                                         <action selector="didSelectPeriodNone" destination="UyJ-mT-fSB" id="FPf-xU-1wf"/>
                                     </connections>
                                 </button>
-                                <button alignment="center" backgroundImage="btn_period_spotting" id="0mv-f9-2uc">
+                                <button alignment="center" backgroundImage="btn_fluid_eggwhite" id="0mv-f9-2uc">
                                     <connections>
                                         <action selector="didSelectPeriodSpotting" destination="UyJ-mT-fSB" id="H0r-Gj-gfW"/>
-                                    </connections>
-                                </button>
-                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_light" id="Wwz-zh-pmh">
-                                    <connections>
-                                        <action selector="didSelectPeriodLight" destination="UyJ-mT-fSB" id="Ckm-R8-Bjl"/>
                                     </connections>
                                 </button>
                             </items>
