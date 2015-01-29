@@ -142,10 +142,30 @@
             </objects>
             <point key="canvasLocation" x="704" y="347"/>
         </scene>
-        <!--Position-->
+        <!--Cerv. Position-->
         <scene sceneID="otn-Th-S2f">
             <objects>
-                <controller identifier="positionPageController" title="Position" id="h42-zn-QXN"/>
+                <controller identifier="positionPageController" title="Cerv. Position" id="h42-zn-QXN">
+                    <items>
+                        <group width="1" alignment="left" verticalAlignment="center" id="5kC-Qe-051">
+                            <items>
+                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_position_lowclosedfirm" id="LZF-V1-vU6">
+                                    <connections>
+                                        <action selector="didSelectFluidDry" destination="9NZ-qY-wrT" id="R3I-xd-jmc"/>
+                                    </connections>
+                                </button>
+                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_position_highopensoft" id="XsU-hF-1AE">
+                                    <connections>
+                                        <action selector="didSelectFluidSticky" destination="9NZ-qY-wrT" id="JqQ-ZV-Zde"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <label alignment="center" text="Select" lineHeight="2" id="uYy-U7-W9D">
+                            <fontDescription key="font" type="boldSystem" pointSize="16"/>
+                        </label>
+                    </items>
+                </controller>
             </objects>
             <point key="canvasLocation" x="953" y="347"/>
         </scene>
