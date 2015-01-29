@@ -14,6 +14,8 @@ public typealias PeriodStateRequestCompletionBlock = (status: PeriodState, error
 
 public typealias FluidStateRequestCompletionBlock = (status: FluidState, error: NSError?) -> ()
 
+public typealias PositionStateRequestCompletionBlock = (status: PositionState, error: NSError?) -> ()
+
 public typealias UpdateCompletionBlock = (success: Bool, error: NSError?) -> ()
 
 public enum FertilityStatus {
@@ -354,6 +356,81 @@ public class ConnectionManager {
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     completion(status: FluidState.noData, error: nil)
+                })
+            }
+        })
+        task.resume()
+    }
+    
+    public func requestPositionStatus(completion: PositionStateRequestCompletionBlock) {
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale.systemLocale()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let todayDate = dateFormatter.stringFromDate(NSDate())
+        
+        let URL: NSURL = NSURL(string: "http://ovatemp-api-staging.herokuapp.com/api/cycles?date=\(todayDate))&token=09dfc3dd91409fc838d8180b777cf2ea&&device_id=58504179-52EC-4298-B276-E20053D7393C")!
+        
+        let request = NSMutableURLRequest(URL:URL)
+        request.addValue("application/json; version=2", forHTTPHeaderField:"Accept")
+        
+        let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+            if (error == nil) {
+                var JSONError: NSError?
+                let responseDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as NSDictionary
+                if (JSONError == nil) {
+                    
+                    let dayArray = responseDict["days"] as NSArray
+                    
+                    for day in dayArray {
+                        
+                        let dateInfo = day["date"] as? String
+                        
+                        if(dateInfo == todayDate) {
+                            
+                            println("day position data: \(day)") // printing log for testing
+                            
+                            let positionStatus = day["cervical_position"] as? String
+                            
+                            var positionState = PositionState.noData
+                            
+                            if(positionStatus == "low/closed/firm") {
+                                
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    completion(status: PositionState.lowClosedFirm, error: nil)
+                                })
+                                
+                            } else if(positionStatus == "high/open/soft") {
+                                
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    completion(status: PositionState.highOpenSoft, error: nil)
+                                })
+                                
+                            } else {
+                                
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    completion(status: PositionState.noData, error: nil)
+                                })
+                                
+                            }
+                            
+                            return
+                        }
+                    }
+                    
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        completion(status: PositionState.noData, error: nil)
+                    })
+                } else {
+                    
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        completion(status: PositionState.noData, error: nil)
+                    })
+                }
+            } else {
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completion(status: PositionState.noData, error: nil)
                 })
             }
         })
