@@ -10,7 +10,14 @@
             <objects>
                 <controller title="Ovatemp" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Ovatemp_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <group width="1" height="1" alignment="center" verticalAlignment="center" contentMode="center" layout="vertical" id="qkq-AY-5UZ">
+                        <group width="1" alignment="left" verticalAlignment="bottom" id="Lmp-Zu-6Ob">
+                            <items>
+                                <label width="1" alignment="center" verticalAlignment="center" text="Enter your daily info" textAlignment="center" id="APn-ef-dOv">
+                                    <fontDescription key="font" type="system" pointSize="12"/>
+                                </label>
+                            </items>
+                        </group>
+                        <group width="0.90000000000000002" height="0.90000000000000002" alignment="center" verticalAlignment="center" contentMode="center" layout="vertical" id="qkq-AY-5UZ">
                             <items>
                                 <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="6" id="Tr6-gr-rLy">
                                     <fontDescription key="font" type="boldSystem" pointSize="23"/>
@@ -90,6 +97,44 @@
         <scene sceneID="DAS-h6-YV7">
             <objects>
                 <controller identifier="fluidPageView" title="Fluid" id="9NZ-qY-wrT">
+                    <items>
+                        <group width="1" alignment="left" verticalAlignment="center" id="z0Q-Ex-WLT">
+                            <items>
+                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_medium" id="YlH-O8-qZw">
+                                    <connections>
+                                        <action selector="didSelectPeriodMedium" destination="UyJ-mT-fSB" id="se2-su-l9s"/>
+                                    </connections>
+                                </button>
+                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_heavy" id="xHx-Y2-dIs">
+                                    <connections>
+                                        <action selector="didSelectPeriodHeavy" destination="UyJ-mT-fSB" id="acf-WR-boG"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" verticalAlignment="center" id="tUa-IV-KGv">
+                            <items>
+                                <button width="0.30000000000000016" alignment="center" backgroundImage="btn_period_none" id="3LM-Ak-S7p">
+                                    <connections>
+                                        <action selector="didSelectPeriodNone" destination="UyJ-mT-fSB" id="FPf-xU-1wf"/>
+                                    </connections>
+                                </button>
+                                <button alignment="center" backgroundImage="btn_period_spotting" id="0mv-f9-2uc">
+                                    <connections>
+                                        <action selector="didSelectPeriodSpotting" destination="UyJ-mT-fSB" id="H0r-Gj-gfW"/>
+                                    </connections>
+                                </button>
+                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_light" id="Wwz-zh-pmh">
+                                    <connections>
+                                        <action selector="didSelectPeriodLight" destination="UyJ-mT-fSB" id="Ckm-R8-Bjl"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <label alignment="center" text="Select" lineHeight="2" id="log-57-uHU">
+                            <fontDescription key="font" type="boldSystem" pointSize="16"/>
+                        </label>
+                    </items>
                     <connections>
                         <segue destination="h42-zn-QXN" kind="relationship" relationship="nextPage" id="UDM-vB-Bsf"/>
                     </connections>
