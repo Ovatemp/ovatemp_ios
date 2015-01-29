@@ -40,6 +40,11 @@ class FluidPageViewController: WKInterfaceController {
         
         self.todayDate = dateFormatter.stringFromDate(NSDate())
         
+        // Configure interface objects here.
+        connectionManager.requestFluidStatus { (status, error) -> () in
+            
+            self.updateFluidButtons(status)
+        }
     }
     
     func resetButtonImages() {
