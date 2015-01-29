@@ -143,7 +143,7 @@ class PeriodPageViewController: WKInterfaceController {
             
         case self.periodSelectedState:
             self.periodSelectionLabel.setText("Select")
-            self.periodSelectionLabel.setTextColor(UIColor.grayColor())
+            self.periodSelectionLabel.setTextColor(UIColor.lightGrayColor())
             self.periodSelectedState = PeriodState.noData
             
         case PeriodState.none:
@@ -178,7 +178,7 @@ class PeriodPageViewController: WKInterfaceController {
             
         default:
             self.periodSelectionLabel.setText("Select")
-            self.periodSelectionLabel.setTextColor(UIColor.grayColor())
+            self.periodSelectionLabel.setTextColor(UIColor.lightGrayColor())
             self.periodSelectedState = PeriodState.noData
         }
     }

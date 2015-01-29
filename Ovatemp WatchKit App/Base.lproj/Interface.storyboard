@@ -13,7 +13,7 @@
                         <group width="1" alignment="left" verticalAlignment="bottom" id="Lmp-Zu-6Ob">
                             <items>
                                 <label width="1" alignment="center" verticalAlignment="center" text="Enter your daily info" textAlignment="center" id="APn-ef-dOv">
-                                    <fontDescription key="font" type="system" pointSize="12"/>
+                                    <fontDescription key="font" type="system" pointSize="11"/>
                                 </label>
                             </items>
                         </group>
