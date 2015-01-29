@@ -66,6 +66,38 @@ class FluidPageViewController: WKInterfaceController {
         }
     }
     
+    @IBAction func didSelectFluidSticky() {
+        
+        if(fluidSelectedState == FluidState.sticky) {
+            
+            self.updateFluidData("", changeSelection: FluidState.sticky)
+        } else {
+            
+            self.updateFluidData("sticky", changeSelection: FluidState.sticky)
+        }
+    }
+    
+    @IBAction func didSelectFluidCreamy() {
+        
+        if(fluidSelectedState == FluidState.creamy) {
+            
+            self.updateFluidData("", changeSelection: FluidState.creamy)
+        } else {
+            
+            self.updateFluidData("creamy", changeSelection: FluidState.creamy)
+        }
+    }
+    
+    @IBAction func didSelectFluidEggwhite() {
+        
+        if(fluidSelectedState == FluidState.eggwhite) {
+            
+            self.updateFluidData("", changeSelection: FluidState.eggwhite)
+        } else {
+            
+            self.updateFluidData("eggwhite", changeSelection: FluidState.eggwhite)
+        }
+    }
     
     func updateFluidData(fluidSelection: String, changeSelection: FluidState) {
         

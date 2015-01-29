@@ -107,7 +107,7 @@
                                 </button>
                                 <button alignment="center" verticalAlignment="center" backgroundImage="btn_fluid_sticky" id="xHx-Y2-dIs">
                                     <connections>
-                                        <action selector="didSelectPeriodHeavy" destination="UyJ-mT-fSB" id="acf-WR-boG"/>
+                                        <action selector="didSelectFluidSticky" destination="9NZ-qY-wrT" id="ohu-IU-pAR"/>
                                     </connections>
                                 </button>
                             </items>
@@ -116,12 +116,12 @@
                             <items>
                                 <button alignment="center" backgroundImage="btn_fluid_creamy" id="3LM-Ak-S7p">
                                     <connections>
-                                        <action selector="didSelectPeriodNone" destination="UyJ-mT-fSB" id="FPf-xU-1wf"/>
+                                        <action selector="didSelectFluidCreamy" destination="9NZ-qY-wrT" id="w16-VQ-3J1"/>
                                     </connections>
                                 </button>
                                 <button alignment="center" backgroundImage="btn_fluid_eggwhite" id="0mv-f9-2uc">
                                     <connections>
-                                        <action selector="didSelectPeriodSpotting" destination="UyJ-mT-fSB" id="H0r-Gj-gfW"/>
+                                        <action selector="didSelectFluidEggwhite" destination="9NZ-qY-wrT" id="GhK-tJ-4kq"/>
                                     </connections>
                                 </button>
                             </items>
