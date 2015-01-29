@@ -50,7 +50,30 @@ class PositionPageViewController: WKInterfaceController {
         self.positionSelectHighOpenSoftButton.setBackgroundImageNamed("btn_position_highopensoft")
     }
     
-    func updateFluidData(positionSelection: String, changeSelection: PositionState) {
+    @IBAction func didSelectPositionLowClosedFirm() {
+        
+        if(positionSelectedState == PositionState.lowClosedFirm) {
+            
+            self.updatePositionData("", changeSelection: PositionState.lowClosedFirm)
+        } else {
+            
+            self.updatePositionData("low/closed/firm", changeSelection: PositionState.lowClosedFirm)
+        }
+    }
+    
+    @IBAction func didSelectPositionHighOpenSoft() {
+        
+        if(positionSelectedState == PositionState.highOpenSoft) {
+            
+            self.updatePositionData("", changeSelection: PositionState.highOpenSoft)
+        } else {
+            
+            self.updatePositionData("high/open/soft", changeSelection: PositionState.highOpenSoft)
+        }
+    }
+    
+    
+    func updatePositionData(positionSelection: String, changeSelection: PositionState) {
         
         let positionSelectionString = "day[date]=\(todayDate)&day[cervical_position]="+positionSelection
         

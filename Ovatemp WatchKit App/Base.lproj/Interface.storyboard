@@ -151,12 +151,12 @@
                             <items>
                                 <button alignment="center" verticalAlignment="center" backgroundImage="btn_position_lowclosedfirm" id="LZF-V1-vU6">
                                     <connections>
-                                        <action selector="didSelectFluidDry" destination="9NZ-qY-wrT" id="R3I-xd-jmc"/>
+                                        <action selector="didSelectPositionLowClosedFirm" destination="h42-zn-QXN" id="iHc-Dw-XBj"/>
                                     </connections>
                                 </button>
                                 <button alignment="center" verticalAlignment="center" backgroundImage="btn_position_highopensoft" id="XsU-hF-1AE">
                                     <connections>
-                                        <action selector="didSelectFluidSticky" destination="9NZ-qY-wrT" id="JqQ-ZV-Zde"/>
+                                        <action selector="didSelectPositionHighOpenSoft" destination="h42-zn-QXN" id="gfZ-Ys-2j8"/>
                                     </connections>
                                 </button>
                             </items>
