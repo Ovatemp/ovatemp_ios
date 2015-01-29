@@ -16,3 +16,18 @@ public enum FluidState {
     case creamy
     case eggwhite
 }
+
+class FluidPageViewController: WKInterfaceController {
+    
+    @IBOutlet weak var fluidSelectionLabel: WKInterfaceLabel!
+    @IBOutlet weak var fluidSelectDryButton: WKInterfaceButton!
+    @IBOutlet weak var fluidSelectStickyButton: WKInterfaceButton!
+    @IBOutlet weak var fluidSelectCreamyButton: WKInterfaceButton!
+    @IBOutlet weak var fluidSelectEggwhiteButton: WKInterfaceButton!
+    
+    override func awakeWithContext(context: AnyObject?) {
+        super.awakeWithContext(context)
+        
+    }
+
+}

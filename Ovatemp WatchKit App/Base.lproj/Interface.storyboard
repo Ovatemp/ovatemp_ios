@@ -96,7 +96,7 @@
         <!--Cerv. Fluid-->
         <scene sceneID="DAS-h6-YV7">
             <objects>
-                <controller identifier="fluidPageView" title="Cerv. Fluid" id="9NZ-qY-wrT">
+                <controller identifier="fluidPageView" title="Cerv. Fluid" id="9NZ-qY-wrT" customClass="FluidPageViewController" customModule="Ovatemp_WatchKit_Extension">
                     <items>
                         <group width="1" alignment="left" verticalAlignment="center" id="z0Q-Ex-WLT">
                             <items>
@@ -131,6 +131,11 @@
                         </label>
                     </items>
                     <connections>
+                        <outlet property="fluidSelectCreamyButton" destination="3LM-Ak-S7p" id="dea-Vf-uCG"/>
+                        <outlet property="fluidSelectDryButton" destination="YlH-O8-qZw" id="sNZ-8h-imZ"/>
+                        <outlet property="fluidSelectEggwhiteButton" destination="0mv-f9-2uc" id="h6J-z2-B86"/>
+                        <outlet property="fluidSelectStickyButton" destination="xHx-Y2-dIs" id="8ww-Fw-uzv"/>
+                        <outlet property="fluidSelectionLabel" destination="log-57-uHU" id="Ncn-jI-7US"/>
                         <segue destination="h42-zn-QXN" kind="relationship" relationship="nextPage" id="UDM-vB-Bsf"/>
                     </connections>
                 </controller>
