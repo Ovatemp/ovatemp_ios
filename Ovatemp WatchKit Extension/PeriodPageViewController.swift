@@ -128,7 +128,7 @@ class PeriodPageViewController: WKInterfaceController {
         
         connectionManager.updateFertilityData (periodSelectionString, { (success, error) -> () in
             
-            if(success) {
+            if(error === nil) {
                 
                 self.updatePeriodButtons(changeSelection)
             }

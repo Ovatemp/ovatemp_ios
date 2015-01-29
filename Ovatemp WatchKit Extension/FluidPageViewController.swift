@@ -105,7 +105,7 @@ class FluidPageViewController: WKInterfaceController {
         
         connectionManager.updateFertilityData (fluidSelectionString, { (success, error) -> () in
             
-            if(success) {
+            if(error == nil) {
                 
                 self.updateFluidButtons(changeSelection)
             }
