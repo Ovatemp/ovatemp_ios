@@ -12,6 +12,8 @@ public typealias StatusRequestCompletionBlock = (status: Fertility, error: NSErr
 
 public typealias PeriodStateRequestCompletionBlock = (status: PeriodState, error: NSError?) -> ()
 
+public typealias FluidStateRequestCompletionBlock = (status: FluidState, error: NSError?) -> ()
+
 public typealias UpdateCompletionBlock = (success: Bool, error: NSError?) -> ()
 
 public enum FertilityStatus {
@@ -196,8 +198,6 @@ public class ConnectionManager {
                 let responseDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as NSDictionary
                 if (JSONError == nil) {
                     
-                    let peakDate = dateFormatter.dateFromString(responseDict["peak_date"] as NSString)
-                    
                     let dayArray = responseDict["days"] as NSArray
                     
                     for day in dayArray {
@@ -206,7 +206,7 @@ public class ConnectionManager {
                         
                         if(dateInfo == todayDate) {
                             
-                            println("day data: \(day)") // printing log for testing
+                            println("day period data: \(day)") // printing log for testing
                             
                             let periodStatus = day["period"] as? String
                             
@@ -267,6 +267,93 @@ public class ConnectionManager {
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     completion(status: PeriodState.noData, error: nil)
+                })
+            }
+        })
+        task.resume()
+    }
+    
+    public func requestFluidStatus(completion: FluidStateRequestCompletionBlock) {
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale.systemLocale()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let todayDate = dateFormatter.stringFromDate(NSDate())
+        
+        let URL: NSURL = NSURL(string: "http://ovatemp-api-staging.herokuapp.com/api/cycles?date=\(todayDate))&token=09dfc3dd91409fc838d8180b777cf2ea&&device_id=58504179-52EC-4298-B276-E20053D7393C")!
+        
+        let request = NSMutableURLRequest(URL:URL)
+        request.addValue("application/json; version=2", forHTTPHeaderField:"Accept")
+        
+        let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+            if (error == nil) {
+                var JSONError: NSError?
+                let responseDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as NSDictionary
+                if (JSONError == nil) {
+                    
+                    let dayArray = responseDict["days"] as NSArray
+                    
+                    for day in dayArray {
+                        
+                        let dateInfo = day["date"] as? String
+                        
+                        if(dateInfo == todayDate) {
+                            
+                            println("day fluid data: \(day)") // printing log for testing
+                            
+                            let fluidStatus = day["cervical_fluid"] as? String
+                            
+                            var fluidState = FluidState.noData
+                            
+                            if(fluidStatus == "dry") {
+                                
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    completion(status: FluidState.dry, error: nil)
+                                })
+                                
+                            } else if(fluidStatus == "sticky") {
+                                
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    completion(status: FluidState.sticky, error: nil)
+                                })
+                                
+                            } else if(fluidStatus == "creamy") {
+                                
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    completion(status: FluidState.creamy, error: nil)
+                                })
+                                
+                            } else if(fluidStatus == "eggwhite") {
+                                
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    completion(status: FluidState.eggwhite, error: nil)
+                                })
+                                
+                            } else {
+                                
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    completion(status: FluidState.noData, error: nil)
+                                })
+                                
+                            }
+                            
+                            return
+                        }
+                    }
+                    
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        completion(status: FluidState.noData, error: nil)
+                    })
+                } else {
+                    
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        completion(status: FluidState.noData, error: nil)
+                    })
+                }
+            } else {
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completion(status: FluidState.noData, error: nil)
                 })
             }
         })
