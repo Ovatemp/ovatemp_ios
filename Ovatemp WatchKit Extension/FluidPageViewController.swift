@@ -41,5 +41,12 @@ class FluidPageViewController: WKInterfaceController {
         self.todayDate = dateFormatter.stringFromDate(NSDate())
         
     }
-
+    
+    func resetButtonImages() {
+        
+        self.fluidSelectDryButton.setBackgroundImageNamed("btn_fluid_dry")
+        self.fluidSelectStickyButton.setBackgroundImageNamed("btn_fluid_sticky")
+        self.fluidSelectCreamyButton.setBackgroundImageNamed("btn_fluid_creamy")
+        self.fluidSelectEggwhiteButton.setBackgroundImageNamed("btn_fluid_eggwhite")
+    }
 }
