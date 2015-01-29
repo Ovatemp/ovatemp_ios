@@ -55,6 +55,31 @@ class FluidPageViewController: WKInterfaceController {
         self.fluidSelectEggwhiteButton.setBackgroundImageNamed("btn_fluid_eggwhite")
     }
     
+    @IBAction func didSelectFluidDry() {
+        
+        if(fluidSelectedState == FluidState.dry) {
+            
+            self.updateFluidData("", changeSelection: FluidState.dry)
+        } else {
+            
+            self.updateFluidData("dry", changeSelection: FluidState.dry)
+        }
+    }
+    
+    
+    func updateFluidData(fluidSelection: String, changeSelection: FluidState) {
+        
+        let fluidSelectionString = "day[date]=\(todayDate)&day[cervical_fluid]="+fluidSelection
+        
+        connectionManager.updateFertilityData (fluidSelectionString, { (success, error) -> () in
+            
+            if(success) {
+                
+                self.updateFluidButtons(changeSelection)
+            }
+        })
+    }
+    
     func updateFluidButtons(changeSelection: FluidState) {
         
         self.resetButtonImages()

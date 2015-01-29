@@ -102,7 +102,7 @@
                             <items>
                                 <button alignment="center" verticalAlignment="center" backgroundImage="btn_fluid_dry" id="YlH-O8-qZw">
                                     <connections>
-                                        <action selector="didSelectPeriodMedium" destination="UyJ-mT-fSB" id="se2-su-l9s"/>
+                                        <action selector="didSelectFluidDry" destination="9NZ-qY-wrT" id="6nf-XP-7d4"/>
                                     </connections>
                                 </button>
                                 <button alignment="center" verticalAlignment="center" backgroundImage="btn_fluid_sticky" id="xHx-Y2-dIs">
