@@ -43,4 +43,47 @@ class PositionPageViewController: WKInterfaceController {
         self.positionSelectLowClosedFirmButton.setBackgroundImageNamed("btn_position_lowclosedfirm")
         self.positionSelectHighOpenSoftButton.setBackgroundImageNamed("btn_position_highopensoft")
     }
+    
+    func updateFluidData(positionSelection: String, changeSelection: PositionState) {
+        
+        let positionSelectionString = "day[date]=\(todayDate)&day[cervical_position]="+positionSelection
+        
+        connectionManager.updateFertilityData (positionSelectionString, { (success, error) -> () in
+            
+            if(error == nil) {
+                
+                self.updatePositionButtons(changeSelection)
+            }
+        })
+    }
+    
+    func updatePositionButtons(changeSelection: PositionState) {
+        
+        self.resetButtonImages()
+        
+        switch changeSelection {
+            
+        case self.positionSelectedState:
+            self.positionSelectionLabel.setText("Select")
+            self.positionSelectionLabel.setTextColor(UIColor.lightGrayColor())
+            self.positionSelectedState = PositionState.noData
+            
+        case PositionState.lowClosedFirm:
+            self.positionSelectionLabel.setText("Low/Closed/Firm")
+            self.positionSelectionLabel.setTextColor(UIColor.whiteColor())
+            self.positionSelectLowClosedFirmButton.setBackgroundImageNamed("btn_position_lowclosedfirm_p")
+            self.positionSelectedState = PositionState.lowClosedFirm
+            
+        case PositionState.highOpenSoft:
+            self.positionSelectionLabel.setText("High/Open/Soft")
+            self.positionSelectionLabel.setTextColor(UIColor.whiteColor())
+            self.positionSelectHighOpenSoftButton.setBackgroundImageNamed("btn_position_highopensoft_p")
+            self.positionSelectedState = PositionState.highOpenSoft
+            
+        default:
+            self.positionSelectionLabel.setText("Select")
+            self.positionSelectionLabel.setTextColor(UIColor.lightGrayColor())
+            self.positionSelectedState = PositionState.noData
+        }
+    }
 }
