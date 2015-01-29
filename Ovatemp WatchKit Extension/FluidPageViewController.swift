@@ -49,4 +49,46 @@ class FluidPageViewController: WKInterfaceController {
         self.fluidSelectCreamyButton.setBackgroundImageNamed("btn_fluid_creamy")
         self.fluidSelectEggwhiteButton.setBackgroundImageNamed("btn_fluid_eggwhite")
     }
+    
+    func updateFluidButtons(changeSelection: FluidState) {
+        
+        self.resetButtonImages()
+        
+        switch changeSelection {
+            
+        case self.fluidSelectedState:
+            self.fluidSelectionLabel.setText("Select")
+            self.fluidSelectionLabel.setTextColor(UIColor.lightGrayColor())
+            self.fluidSelectedState = FluidState.noData
+            
+        case FluidState.dry:
+            self.fluidSelectionLabel.setText("Dry")
+            self.fluidSelectionLabel.setTextColor(UIColor.whiteColor())
+            self.fluidSelectDryButton.setBackgroundImageNamed("btn_fluid_dry_p")
+            self.fluidSelectedState = FluidState.dry
+            
+        case FluidState.sticky:
+            self.fluidSelectionLabel.setText("Sticky")
+            self.fluidSelectionLabel.setTextColor(UIColor.whiteColor())
+            self.fluidSelectStickyButton.setBackgroundImageNamed("btn_fluid_sticky_p")
+            self.fluidSelectedState = FluidState.sticky
+            
+        case FluidState.creamy:
+            self.fluidSelectionLabel.setText("Creamy")
+            self.fluidSelectionLabel.setTextColor(UIColor.whiteColor())
+            self.fluidSelectCreamyButton.setBackgroundImageNamed("btn_fluid_creamy_p")
+            self.fluidSelectedState = FluidState.creamy
+            
+        case FluidState.eggwhite:
+            self.fluidSelectionLabel.setText("Eggwhite")
+            self.fluidSelectionLabel.setTextColor(UIColor.whiteColor())
+            self.fluidSelectEggwhiteButton.setBackgroundImageNamed("btn_fluid_eggwhite_p")
+            self.fluidSelectedState = FluidState.eggwhite
+            
+        default:
+            self.fluidSelectionLabel.setText("Select")
+            self.fluidSelectionLabel.setTextColor(UIColor.lightGrayColor())
+            self.fluidSelectedState = FluidState.noData
+        }
+    }
 }
