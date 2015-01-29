@@ -143,35 +143,42 @@ class PeriodPageViewController: WKInterfaceController {
             
         case self.periodSelectedState:
             self.periodSelectionLabel.setText("Select")
+            self.periodSelectionLabel.setTextColor(UIColor.grayColor())
             self.periodSelectedState = PeriodState.noData
             
         case PeriodState.none:
             self.periodSelectionLabel.setText("None")
+            self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
             self.periodSelectNoneButton.setBackgroundImageNamed("btn_period_none_p")
             self.periodSelectedState = PeriodState.none
             
         case PeriodState.spotting:
             self.periodSelectionLabel.setText("Spotting")
+            self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
             self.periodSelectSpottingButton.setBackgroundImageNamed("btn_period_spotting_p")
             self.periodSelectedState = PeriodState.spotting
             
         case PeriodState.light:
             self.periodSelectionLabel.setText("Light")
+            self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
             self.periodSelectLightButton.setBackgroundImageNamed("btn_period_light_p")
             self.periodSelectedState = PeriodState.light
             
         case PeriodState.medium:
             self.periodSelectionLabel.setText("Medium")
+            self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
             self.periodSelectMediumButton.setBackgroundImageNamed("btn_period_medium_p")
             self.periodSelectedState = PeriodState.medium
             
         case PeriodState.heavy:
             self.periodSelectionLabel.setText("Heavy")
+            self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
             self.periodSelectHeavyButton.setBackgroundImageNamed("btn_period_heavy_p")
             self.periodSelectedState = PeriodState.heavy
             
         default:
             self.periodSelectionLabel.setText("Select")
+            self.periodSelectionLabel.setTextColor(UIColor.grayColor())
             self.periodSelectedState = PeriodState.noData
         }
     }
