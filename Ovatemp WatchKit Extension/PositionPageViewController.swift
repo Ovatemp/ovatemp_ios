@@ -36,6 +36,12 @@ class PositionPageViewController: WKInterfaceController {
         
         self.todayDate = dateFormatter.stringFromDate(NSDate())
         
+        // Configure interface objects here.
+        connectionManager.requestPositionStatus { (status, error) -> () in
+            
+            self.updatePositionButtons(status)
+        }
+        
     }
     
     func resetButtonImages() {
