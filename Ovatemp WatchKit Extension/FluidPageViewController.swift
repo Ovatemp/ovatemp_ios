@@ -49,10 +49,10 @@ class FluidPageViewController: WKInterfaceController {
     
     func resetButtonImages() {
         
-        self.fluidSelectDryButton.setBackgroundImageNamed("btn_fluid_dry")
-        self.fluidSelectStickyButton.setBackgroundImageNamed("btn_fluid_sticky")
-        self.fluidSelectCreamyButton.setBackgroundImageNamed("btn_fluid_creamy")
-        self.fluidSelectEggwhiteButton.setBackgroundImageNamed("btn_fluid_eggwhite")
+        self.fluidSelectDryButton.setBackgroundImageNamed("btn_fluid_dry_p")
+        self.fluidSelectStickyButton.setBackgroundImageNamed("btn_fluid_sticky_p")
+        self.fluidSelectCreamyButton.setBackgroundImageNamed("btn_fluid_creamy_p")
+        self.fluidSelectEggwhiteButton.setBackgroundImageNamed("btn_fluid_eggwhite_p")
     }
     
     @IBAction func didSelectFluidDry() {
