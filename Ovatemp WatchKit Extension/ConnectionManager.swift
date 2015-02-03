@@ -377,7 +377,7 @@ public class ConnectionManager {
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                completion(success: true, error: nil)
+                completion(success: true, error: error)
             })
         })
         task.resume()
