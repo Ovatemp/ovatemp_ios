@@ -142,10 +142,35 @@
             </objects>
             <point key="canvasLocation" x="704" y="347"/>
         </scene>
-        <!--Position-->
+        <!--Cerv. Position-->
         <scene sceneID="otn-Th-S2f">
             <objects>
-                <controller identifier="positionPageController" title="Position" id="h42-zn-QXN"/>
+                <controller identifier="positionPageController" title="Cerv. Position" id="h42-zn-QXN" customClass="PositionPageViewController" customModule="Ovatemp_WatchKit_Extension">
+                    <items>
+                        <group width="1" alignment="left" verticalAlignment="center" id="5kC-Qe-051">
+                            <items>
+                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_position_lowclosedfirm" id="LZF-V1-vU6">
+                                    <connections>
+                                        <action selector="didSelectPositionLowClosedFirm" destination="h42-zn-QXN" id="iHc-Dw-XBj"/>
+                                    </connections>
+                                </button>
+                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_position_highopensoft" id="XsU-hF-1AE">
+                                    <connections>
+                                        <action selector="didSelectPositionHighOpenSoft" destination="h42-zn-QXN" id="gfZ-Ys-2j8"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <label alignment="center" text="Select" lineHeight="2" id="uYy-U7-W9D">
+                            <fontDescription key="font" type="boldSystem" pointSize="16"/>
+                        </label>
+                    </items>
+                    <connections>
+                        <outlet property="positionSelectHighOpenSoftButton" destination="XsU-hF-1AE" id="m7l-v3-TZl"/>
+                        <outlet property="positionSelectLowClosedFirmButton" destination="LZF-V1-vU6" id="HPw-MV-2en"/>
+                        <outlet property="positionSelectionLabel" destination="uYy-U7-W9D" id="moV-Xy-GDy"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="953" y="347"/>
         </scene>
