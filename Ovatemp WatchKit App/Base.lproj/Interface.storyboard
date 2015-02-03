@@ -13,7 +13,7 @@
                         <group width="1" alignment="left" verticalAlignment="bottom" id="Lmp-Zu-6Ob">
                             <items>
                                 <label width="1" alignment="center" verticalAlignment="center" text="Enter your daily info" textAlignment="center" id="APn-ef-dOv">
-                                    <fontDescription key="font" type="system" pointSize="12"/>
+                                    <fontDescription key="font" type="system" pointSize="11"/>
                                 </label>
                             </items>
                         </group>
@@ -43,41 +43,43 @@
             <objects>
                 <controller identifier="periodPageView" title="Period" id="UyJ-mT-fSB" customClass="PeriodPageViewController" customModule="Ovatemp_WatchKit_Extension">
                     <items>
-                        <label alignment="center" text="Select" lineHeight="2" id="Oge-90-VKO">
-                            <fontDescription key="font" type="boldSystem" pointSize="16"/>
+                        <label height="22" alignment="center" text="Select" lineHeight="2" id="Oge-90-VKO">
+                            <fontDescription key="font" type="boldSystem" pointSize="15"/>
                         </label>
-                        <group width="1" alignment="left" verticalAlignment="center" id="Z8Z-9x-cIJ">
+                        <group width="146" height="60" alignment="center" verticalAlignment="center" id="Z8Z-9x-cIJ">
                             <items>
-                                <button width="0.30000000000000016" alignment="center" backgroundImage="btn_period_none" id="5yF-xS-OWC">
+                                <button alignment="left" verticalAlignment="center" backgroundImage="btn_period_none" id="5yF-xS-OWC">
                                     <connections>
                                         <action selector="didSelectPeriodNone" destination="UyJ-mT-fSB" id="85k-7l-Tkk"/>
                                     </connections>
                                 </button>
-                                <button alignment="center" backgroundImage="btn_period_spotting" id="k2U-Rd-gYQ">
+                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_spotting" id="k2U-Rd-gYQ">
                                     <connections>
                                         <action selector="didSelectPeriodSpotting" destination="UyJ-mT-fSB" id="ev9-83-ZZI"/>
                                     </connections>
                                 </button>
-                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_light" id="dXF-u5-OtT">
+                                <button alignment="right" verticalAlignment="center" backgroundImage="btn_period_light" id="dXF-u5-OtT">
                                     <connections>
                                         <action selector="didSelectPeriodLight" destination="UyJ-mT-fSB" id="a6Q-dQ-e8e"/>
                                     </connections>
                                 </button>
                             </items>
+                            <variation key="device=watch38mm" height="50" width="126"/>
                         </group>
-                        <group width="1" alignment="left" verticalAlignment="center" id="y0G-bq-RPo">
+                        <group width="94" alignment="center" verticalAlignment="center" id="y0G-bq-RPo">
                             <items>
-                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_medium" id="ebW-kY-W1a">
+                                <button alignment="left" verticalAlignment="center" backgroundImage="btn_period_medium" id="ebW-kY-W1a">
                                     <connections>
                                         <action selector="didSelectPeriodMedium" destination="UyJ-mT-fSB" id="F1H-q5-w6L"/>
                                     </connections>
                                 </button>
-                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_heavy" id="1xl-Q5-7lz">
+                                <button alignment="right" verticalAlignment="center" backgroundImage="btn_period_heavy" id="1xl-Q5-7lz">
                                     <connections>
                                         <action selector="didSelectPeriodHeavy" destination="UyJ-mT-fSB" id="zgB-hp-21C"/>
                                     </connections>
                                 </button>
                             </items>
+                            <variation key="device=watch38mm" width="82"/>
                         </group>
                     </items>
                     <connections>
@@ -98,36 +100,38 @@
             <objects>
                 <controller identifier="fluidPageView" title="Cerv. Fluid" id="9NZ-qY-wrT" customClass="FluidPageViewController" customModule="Ovatemp_WatchKit_Extension">
                     <items>
-                        <group width="1" alignment="left" verticalAlignment="center" id="z0Q-Ex-WLT">
+                        <group width="110" height="70" alignment="center" verticalAlignment="center" id="z0Q-Ex-WLT">
                             <items>
-                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_fluid_dry" id="YlH-O8-qZw">
+                                <button alignment="left" verticalAlignment="center" backgroundImage="btn_fluid_dry" id="YlH-O8-qZw">
                                     <connections>
                                         <action selector="didSelectFluidDry" destination="9NZ-qY-wrT" id="6nf-XP-7d4"/>
                                     </connections>
                                 </button>
-                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_fluid_sticky" id="xHx-Y2-dIs">
+                                <button alignment="right" verticalAlignment="center" backgroundImage="btn_fluid_sticky" id="xHx-Y2-dIs">
                                     <connections>
                                         <action selector="didSelectFluidSticky" destination="9NZ-qY-wrT" id="ohu-IU-pAR"/>
                                     </connections>
                                 </button>
                             </items>
+                            <variation key="device=watch38mm" height="50" width="90"/>
                         </group>
-                        <group width="1" alignment="left" verticalAlignment="center" id="tUa-IV-KGv">
+                        <group width="110" height="70" alignment="center" verticalAlignment="center" id="tUa-IV-KGv">
                             <items>
-                                <button alignment="center" backgroundImage="btn_fluid_creamy" id="3LM-Ak-S7p">
+                                <button alignment="left" verticalAlignment="center" backgroundImage="btn_fluid_creamy" id="3LM-Ak-S7p">
                                     <connections>
                                         <action selector="didSelectFluidCreamy" destination="9NZ-qY-wrT" id="w16-VQ-3J1"/>
                                     </connections>
                                 </button>
-                                <button alignment="center" backgroundImage="btn_fluid_eggwhite" id="0mv-f9-2uc">
+                                <button alignment="right" verticalAlignment="center" backgroundImage="btn_fluid_eggwhite" id="0mv-f9-2uc">
                                     <connections>
                                         <action selector="didSelectFluidEggwhite" destination="9NZ-qY-wrT" id="GhK-tJ-4kq"/>
                                     </connections>
                                 </button>
                             </items>
+                            <variation key="device=watch38mm" height="50" width="90"/>
                         </group>
-                        <label alignment="center" text="Select" lineHeight="2" id="log-57-uHU">
-                            <fontDescription key="font" type="boldSystem" pointSize="16"/>
+                        <label height="22" alignment="center" text="Select" lineHeight="2" id="log-57-uHU">
+                            <fontDescription key="font" type="boldSystem" pointSize="15"/>
                         </label>
                     </items>
                     <connections>
@@ -147,19 +151,20 @@
             <objects>
                 <controller identifier="positionPageController" title="Cerv. Position" id="h42-zn-QXN" customClass="PositionPageViewController" customModule="Ovatemp_WatchKit_Extension">
                     <items>
-                        <group width="1" alignment="left" verticalAlignment="center" id="5kC-Qe-051">
+                        <group width="110" alignment="center" verticalAlignment="center" id="5kC-Qe-051">
                             <items>
-                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_position_lowclosedfirm" id="LZF-V1-vU6">
+                                <button alignment="left" verticalAlignment="center" backgroundImage="btn_position_lowclosedfirm" id="LZF-V1-vU6">
                                     <connections>
                                         <action selector="didSelectPositionLowClosedFirm" destination="h42-zn-QXN" id="iHc-Dw-XBj"/>
                                     </connections>
                                 </button>
-                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_position_highopensoft" id="XsU-hF-1AE">
+                                <button alignment="right" verticalAlignment="center" backgroundImage="btn_position_highopensoft" id="XsU-hF-1AE">
                                     <connections>
                                         <action selector="didSelectPositionHighOpenSoft" destination="h42-zn-QXN" id="gfZ-Ys-2j8"/>
                                     </connections>
                                 </button>
                             </items>
+                            <variation key="device=watch38mm" width="90"/>
                         </group>
                         <label alignment="center" text="Select" lineHeight="2" id="uYy-U7-W9D">
                             <fontDescription key="font" type="boldSystem" pointSize="16"/>
@@ -177,9 +182,9 @@
         <!--Glance Interface Controller-->
         <scene sceneID="BOz-TT-tkC">
             <objects>
-                <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModule="Ovatemp_WatchKit_App" customModuleProvider="target">
+                <glanceController spacing="0.0" topTemplateType="body3" id="0uZ-2p-rRc" customClass="GlanceController" customModule="Ovatemp_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <group alignment="left" hidden="YES" id="t8f-Gd-c4y"/>
+                        <label alignment="left" text="Label∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙" id="RPB-Pr-XcW"/>
                         <group alignment="left" contentMode="scaleAspectFit" layout="vertical" id="uCw-4Q-Ouw">
                             <items>
                                 <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="6" id="g2m-eg-NaA">
