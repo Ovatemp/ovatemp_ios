@@ -64,6 +64,7 @@
                                     </connections>
                                 </button>
                             </items>
+                            <variation key="device=watch38mm" height="50" width="126"/>
                         </group>
                         <group width="94" alignment="center" verticalAlignment="center" id="y0G-bq-RPo">
                             <items>
@@ -78,6 +79,7 @@
                                     </connections>
                                 </button>
                             </items>
+                            <variation key="device=watch38mm" width="82"/>
                         </group>
                     </items>
                     <connections>
@@ -111,8 +113,9 @@
                                     </connections>
                                 </button>
                             </items>
+                            <variation key="device=watch38mm" height="50" width="90"/>
                         </group>
-                        <group width="110" height="50" alignment="center" verticalAlignment="center" id="tUa-IV-KGv">
+                        <group width="110" height="70" alignment="center" verticalAlignment="center" id="tUa-IV-KGv">
                             <items>
                                 <button alignment="left" verticalAlignment="center" backgroundImage="btn_fluid_creamy" id="3LM-Ak-S7p">
                                     <connections>
@@ -125,6 +128,7 @@
                                     </connections>
                                 </button>
                             </items>
+                            <variation key="device=watch38mm" height="50" width="90"/>
                         </group>
                         <label height="22" alignment="center" text="Select" lineHeight="2" id="log-57-uHU">
                             <fontDescription key="font" type="boldSystem" pointSize="15"/>
@@ -147,19 +151,20 @@
             <objects>
                 <controller identifier="positionPageController" title="Cerv. Position" id="h42-zn-QXN" customClass="PositionPageViewController" customModule="Ovatemp_WatchKit_Extension">
                     <items>
-                        <group width="1" alignment="left" verticalAlignment="center" id="5kC-Qe-051">
+                        <group width="110" alignment="center" verticalAlignment="center" id="5kC-Qe-051">
                             <items>
-                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_position_lowclosedfirm" id="LZF-V1-vU6">
+                                <button alignment="left" verticalAlignment="center" backgroundImage="btn_position_lowclosedfirm" id="LZF-V1-vU6">
                                     <connections>
                                         <action selector="didSelectPositionLowClosedFirm" destination="h42-zn-QXN" id="iHc-Dw-XBj"/>
                                     </connections>
                                 </button>
-                                <button alignment="center" verticalAlignment="center" backgroundImage="btn_position_highopensoft" id="XsU-hF-1AE">
+                                <button alignment="right" verticalAlignment="center" backgroundImage="btn_position_highopensoft" id="XsU-hF-1AE">
                                     <connections>
                                         <action selector="didSelectPositionHighOpenSoft" destination="h42-zn-QXN" id="gfZ-Ys-2j8"/>
                                     </connections>
                                 </button>
                             </items>
+                            <variation key="device=watch38mm" width="90"/>
                         </group>
                         <label alignment="center" text="Select" lineHeight="2" id="uYy-U7-W9D">
                             <fontDescription key="font" type="boldSystem" pointSize="16"/>
@@ -177,9 +182,9 @@
         <!--Glance Interface Controller-->
         <scene sceneID="BOz-TT-tkC">
             <objects>
-                <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModule="Ovatemp_WatchKit_App" customModuleProvider="target">
+                <glanceController spacing="0.0" topTemplateType="body3" id="0uZ-2p-rRc" customClass="GlanceController" customModule="Ovatemp_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <group alignment="left" hidden="YES" id="t8f-Gd-c4y"/>
+                        <label alignment="left" text="Label∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙" id="RPB-Pr-XcW"/>
                         <group alignment="left" contentMode="scaleAspectFit" layout="vertical" id="uCw-4Q-Ouw">
                             <items>
                                 <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="6" id="g2m-eg-NaA">
