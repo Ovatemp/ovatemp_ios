@@ -488,6 +488,10 @@
 		F42764DF1A6D738800B26A2A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F42764DD1A6D738800B26A2A /* Interface.storyboard */; };
 		F42764E11A6D738800B26A2A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F42764E01A6D738800B26A2A /* Images.xcassets */; };
 		F42764E41A6D738800B26A2A /* Ovatemp WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F42764C71A6D738800B26A2A /* Ovatemp WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F47F9B9E1A7A9BCC00C12D3A /* FluidPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F9B9D1A7A9BCC00C12D3A /* FluidPageViewController.swift */; };
+		F47F9B9F1A7A9BCC00C12D3A /* FluidPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F9B9D1A7A9BCC00C12D3A /* FluidPageViewController.swift */; };
+		F47F9BA11A7AE36000C12D3A /* PositionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F9BA01A7AE36000C12D3A /* PositionPageViewController.swift */; };
+		F47F9BA21A7AE36000C12D3A /* PositionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F9BA01A7AE36000C12D3A /* PositionPageViewController.swift */; };
 		F4A2F7271A79A4CD00C85DFE /* PeriodPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A8D8AC1A72CC64003345A9 /* PeriodPageViewController.swift */; };
 		F4A8D8AD1A72CC64003345A9 /* PeriodPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A8D8AC1A72CC64003345A9 /* PeriodPageViewController.swift */; };
 		F4B469391A6EF35D0016E156 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B469381A6EF35D0016E156 /* ConnectionManager.swift */; };
@@ -1238,6 +1242,8 @@
 		F42764DE1A6D738800B26A2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		F42764E01A6D738800B26A2A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ovatemp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F47F9B9D1A7A9BCC00C12D3A /* FluidPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluidPageViewController.swift; sourceTree = "<group>"; };
+		F47F9BA01A7AE36000C12D3A /* PositionPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionPageViewController.swift; sourceTree = "<group>"; };
 		F4A8D8AC1A72CC64003345A9 /* PeriodPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodPageViewController.swift; sourceTree = "<group>"; };
 		F4B469381A6EF35D0016E156 /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OvatempTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2354,6 +2360,8 @@
 				F42764D21A6D738800B26A2A /* Images.xcassets */,
 				F42764C91A6D738800B26A2A /* Supporting Files */,
 				F4B469381A6EF35D0016E156 /* ConnectionManager.swift */,
+				F47F9B9D1A7A9BCC00C12D3A /* FluidPageViewController.swift */,
+				F47F9BA01A7AE36000C12D3A /* PositionPageViewController.swift */,
 			);
 			path = "Ovatemp WatchKit Extension";
 			sourceTree = "<group>";
@@ -2908,6 +2916,7 @@
 				5F1C9B7519EDE87A000F1FC1 /* FormRow.m in Sources */,
 				5F1C99DB19EDE775000F1FC1 /* ONDO.m in Sources */,
 				5F1C9B6A19EDE87A000F1FC1 /* UIViewController+Session.m in Sources */,
+				F47F9BA11A7AE36000C12D3A /* PositionPageViewController.swift in Sources */,
 				5F428F5F1A44A62C00D78762 /* MPDesignerEventBindingResponseMesssage.m in Sources */,
 				5F428F7E1A44A62C00D78762 /* MPUIImageToNSDictionaryValueTransformer.m in Sources */,
 				5F428F861A44A62C00D78762 /* UIColor+MPColor.m in Sources */,
@@ -3031,6 +3040,7 @@
 				5FCD68B219F942920091C492 /* HeightTableViewCell.m in Sources */,
 				5F1C9C6319EDE87A000F1FC1 /* User.m in Sources */,
 				5F428F7A1A44A62C00D78762 /* MPUIColorToNSStringValueTransformer.m in Sources */,
+				F47F9B9E1A7A9BCC00C12D3A /* FluidPageViewController.swift in Sources */,
 				F4A2F7271A79A4CD00C85DFE /* PeriodPageViewController.swift in Sources */,
 				5F1C9C5E19EDE87A000F1FC1 /* Question.m in Sources */,
 				5F428F461A44A62C00D78762 /* MPAbstractABTestDesignerMessage.m in Sources */,
@@ -3060,8 +3070,10 @@
 			files = (
 				F42764CF1A6D738800B26A2A /* NotificationController.swift in Sources */,
 				F4B469391A6EF35D0016E156 /* ConnectionManager.swift in Sources */,
+				F47F9BA21A7AE36000C12D3A /* PositionPageViewController.swift in Sources */,
 				F4A8D8AD1A72CC64003345A9 /* PeriodPageViewController.swift in Sources */,
 				F42764CD1A6D738800B26A2A /* InterfaceController.swift in Sources */,
+				F47F9B9F1A7A9BCC00C12D3A /* FluidPageViewController.swift in Sources */,
 				F42764D11A6D738800B26A2A /* GlanceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
