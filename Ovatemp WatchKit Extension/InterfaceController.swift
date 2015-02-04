@@ -33,24 +33,24 @@ class InterfaceController: WKInterfaceController {
             switch status.fertilityStatus {
                 
             case FertilityStatus.peakFertility:
-                self.fertilityStatusLabel.setText("PEAK FERTILITY")
-                self.fertilityStatusInfoLabel.setText("Optimal conditions to make babies!")
+                self.fertilityStatusLabel.setAttributedText(self.attributedString("PEAK FERTILITY"))
+                self.fertilityStatusInfoLabel.setText("Optimal conditions for conception")
                 self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - fertile")
             case FertilityStatus.fertile:
-                self.fertilityStatusLabel.setText("FERTILE")
+                self.fertilityStatusLabel.setAttributedText(self.attributedString("FERTILE"))
                 self.fertilityStatusInfoLabel.setText("Let's get it on!")
                 self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - fertile")
             case FertilityStatus.notFertile:
-                self.fertilityStatusLabel.setText("NOT FERTILE")
+                self.fertilityStatusLabel.setAttributedText(self.attributedString("NOT FERTILE"))
                 if(status.fertilityCycle == FertilityCycle.preovulation) {
                     
-                    self.fertilityStatusInfoLabel.setText("Fertile window about to open, check for Cervical Fluid.")
+                    self.fertilityStatusInfoLabel.setText("Please check for Cervical Fluid.")
                 } else {
                     self.fertilityStatusInfoLabel.setText("Crossing our fingers for you!")
                 }
                 self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - not fertile")
             case FertilityStatus.period:
-                self.fertilityStatusLabel.setText("PERIOD")
+                self.fertilityStatusLabel.setAttributedText(self.attributedString("PERIOD"))
                 self.fertilityStatusInfoLabel.setText("Try to get some rest.")
                 self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - period")
             case FertilityStatus.empty:
@@ -63,6 +63,19 @@ class InterfaceController: WKInterfaceController {
                 self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - no data")
             }
         }
+    }
+    
+    func attributedString(statusInfo: String) -> NSAttributedString {
+        
+        var paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 0.8
+        paragraphStyle.alignment = NSTextAlignment.Center
+        
+        var attrString = NSMutableAttributedString(string: statusInfo)
+        
+        attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+        
+        return attrString
     }
 
     override func didDeactivate() {

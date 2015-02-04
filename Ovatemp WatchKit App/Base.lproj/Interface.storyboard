@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6750" systemVersion="14C109" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6750" systemVersion="14B25" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
@@ -19,11 +19,11 @@
                         </group>
                         <group width="0.90000000000000002" height="0.90000000000000002" alignment="center" verticalAlignment="center" contentMode="center" layout="vertical" id="qkq-AY-5UZ">
                             <items>
-                                <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="6" id="Tr6-gr-rLy">
-                                    <fontDescription key="font" type="boldSystem" pointSize="23"/>
+                                <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="2" id="Tr6-gr-rLy">
+                                    <fontDescription key="font" type="boldSystem" pointSize="22"/>
                                 </label>
                                 <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="6" id="hPG-OA-qgE">
-                                    <fontDescription key="font" type="system" pointSize="10"/>
+                                    <fontDescription key="font" type="system" pointSize="12"/>
                                 </label>
                             </items>
                         </group>
@@ -113,7 +113,7 @@
                                     </connections>
                                 </button>
                             </items>
-                            <variation key="device=watch38mm" height="50" width="90"/>
+                            <variation key="device=watch38mm" height="50" width="100"/>
                         </group>
                         <group width="110" height="70" alignment="center" verticalAlignment="center" id="tUa-IV-KGv">
                             <items>
@@ -128,7 +128,7 @@
                                     </connections>
                                 </button>
                             </items>
-                            <variation key="device=watch38mm" height="50" width="90"/>
+                            <variation key="device=watch38mm" height="50" width="100"/>
                         </group>
                         <label height="22" alignment="center" text="Select" id="log-57-uHU">
                             <fontDescription key="font" type="boldSystem" pointSize="15"/>
@@ -164,7 +164,7 @@
                                     </connections>
                                 </button>
                             </items>
-                            <variation key="device=watch38mm" width="90"/>
+                            <variation key="device=watch38mm" width="100"/>
                         </group>
                         <label alignment="center" text="Select" id="uYy-U7-W9D">
                             <fontDescription key="font" type="boldSystem" pointSize="16"/>
@@ -227,4 +227,5 @@
             <point key="canvasLocation" x="553" y="1001"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.41960784313725491" green="0.83137254901960778" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -105,7 +105,8 @@
         UILocalNotification *alarm = [[UILocalNotification alloc] init];
         alarm.fireDate = self.alarmDatePicker.date;
         alarm.timeZone = [NSTimeZone defaultTimeZone];
-        alarm.repeatInterval = NSCalendarUnitDay;
+        alarm.repeatInterval = NSCalendarUnitMinute;
+        alarm.alertTitle = @"Reminder";
         alarm.alertBody = @"It's time to take your temperature.";
         alarm.alertAction = @"View";
         alarm.soundName = UILocalNotificationDefaultSoundName;
