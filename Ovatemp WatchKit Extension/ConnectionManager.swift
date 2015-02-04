@@ -75,7 +75,7 @@ public class ConnectionManager {
         request.addValue("application/json; version=2", forHTTPHeaderField:"Accept")
         
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
-            /*if (error == nil) {
+            if (error == nil) {
                 var JSONError: NSError?
                 let responseDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as NSDictionary
                 if (JSONError == nil) {
@@ -153,11 +153,11 @@ public class ConnectionManager {
                         completion(status: Fertility(status: FertilityStatus.empty, cycle: FertilityCycle.empty), error: nil)
                     })
                 }
-            } else {*/
+            } else {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completion(status: Fertility(status: FertilityStatus.peakFertility, cycle: FertilityCycle.empty), error: nil)
+                    completion(status: Fertility(status: FertilityStatus.empty, cycle: FertilityCycle.empty), error: nil)
                 })
-            //}
+            }
         })
         task.resume()
     }
