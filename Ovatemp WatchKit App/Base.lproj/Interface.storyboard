@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6724" systemVersion="14B25" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6750" systemVersion="14C109" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3735"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
     </dependencies>
     <scenes>
         <!--Ovatemp-->
@@ -43,7 +43,7 @@
             <objects>
                 <controller identifier="periodPageView" title="Period" id="UyJ-mT-fSB" customClass="PeriodPageViewController" customModule="Ovatemp_WatchKit_Extension">
                     <items>
-                        <label height="22" alignment="center" text="Select" lineHeight="2" id="Oge-90-VKO">
+                        <label height="22" alignment="center" text="Select" id="Oge-90-VKO">
                             <fontDescription key="font" type="boldSystem" pointSize="15"/>
                         </label>
                         <group width="146" height="60" alignment="center" verticalAlignment="center" id="Z8Z-9x-cIJ">
@@ -130,7 +130,7 @@
                             </items>
                             <variation key="device=watch38mm" height="50" width="90"/>
                         </group>
-                        <label height="22" alignment="center" text="Select" lineHeight="2" id="log-57-uHU">
+                        <label height="22" alignment="center" text="Select" id="log-57-uHU">
                             <fontDescription key="font" type="boldSystem" pointSize="15"/>
                         </label>
                     </items>
@@ -166,7 +166,7 @@
                             </items>
                             <variation key="device=watch38mm" width="90"/>
                         </group>
-                        <label alignment="center" text="Select" lineHeight="2" id="uYy-U7-W9D">
+                        <label alignment="center" text="Select" id="uYy-U7-W9D">
                             <fontDescription key="font" type="boldSystem" pointSize="16"/>
                         </label>
                     </items>
@@ -184,14 +184,11 @@
             <objects>
                 <glanceController spacing="0.0" topTemplateType="body3" id="0uZ-2p-rRc" customClass="GlanceController" customModule="Ovatemp_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label alignment="left" text="Label∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙" id="RPB-Pr-XcW"/>
+                        <label alignment="left" id="RPB-Pr-XcW"/>
                         <group alignment="left" contentMode="scaleAspectFit" layout="vertical" id="uCw-4Q-Ouw">
                             <items>
                                 <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="6" id="g2m-eg-NaA">
                                     <fontDescription key="font" type="boldSystem" pointSize="23"/>
-                                </label>
-                                <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="6" id="Wwo-nI-os2">
-                                    <fontDescription key="font" type="system" pointSize="10"/>
                                 </label>
                             </items>
                         </group>
@@ -199,7 +196,7 @@
                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
                     <connections>
                         <outlet property="fertilityStatusGroup" destination="uCw-4Q-Ouw" id="36O-7J-2yR"/>
-                        <outlet property="fertilityStatusInfoLabel" destination="Wwo-nI-os2" id="2Qa-nW-7M9"/>
+                        <outlet property="fertilityStatusInfoLabel" destination="RPB-Pr-XcW" id="mg0-cG-J1W"/>
                         <outlet property="fertilityStatusLabel" destination="g2m-eg-NaA" id="wZ3-wd-MAv"/>
                     </connections>
                 </glanceController>
