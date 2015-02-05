@@ -19,7 +19,9 @@ class PositionPageViewController: WKInterfaceController {
     
     @IBOutlet weak var positionSelectionLabel: WKInterfaceLabel!
     @IBOutlet weak var positionSelectLowClosedFirmButton: WKInterfaceButton!
+    @IBOutlet weak var positionSelectLowClosedFirmGroup: WKInterfaceGroup!
     @IBOutlet weak var positionSelectHighOpenSoftButton: WKInterfaceButton!
+    @IBOutlet weak var positionSelectHighOpenSoftGroup: WKInterfaceGroup!
     
     var positionSelectedState = PositionState.noData
     
@@ -46,8 +48,15 @@ class PositionPageViewController: WKInterfaceController {
     
     func resetButtonImages() {
         
-        self.positionSelectLowClosedFirmButton.setBackgroundImageNamed("btn_position_lowclosedfirm")
-        self.positionSelectHighOpenSoftButton.setBackgroundImageNamed("btn_position_highopensoft")
+        self.positionSelectLowClosedFirmGroup.setBackgroundImageNamed("Comp_1_0")
+        self.positionSelectHighOpenSoftGroup.setBackgroundImageNamed("Comp_1_0")
+    }
+    
+    func anitmateGroupSelection (buttonGroup: WKInterfaceGroup) {
+        
+        buttonGroup.setBackgroundImageNamed("Comp_1_")
+        
+        buttonGroup.startAnimatingWithImagesInRange(NSRange(location: 0, length: 29), duration: 1.0, repeatCount: 1)
     }
     
     @IBAction func didSelectPositionLowClosedFirm() {
@@ -100,13 +109,13 @@ class PositionPageViewController: WKInterfaceController {
         case PositionState.lowClosedFirm:
             self.positionSelectionLabel.setText("Low/Closed/Firm")
             self.positionSelectionLabel.setTextColor(UIColor.whiteColor())
-            self.positionSelectLowClosedFirmButton.setBackgroundImageNamed("btn_position_lowclosedfirm_p")
+            self.anitmateGroupSelection(self.positionSelectLowClosedFirmGroup)
             self.positionSelectedState = PositionState.lowClosedFirm
             
         case PositionState.highOpenSoft:
             self.positionSelectionLabel.setText("High/Open/Soft")
             self.positionSelectionLabel.setTextColor(UIColor.whiteColor())
-            self.positionSelectHighOpenSoftButton.setBackgroundImageNamed("btn_position_highopensoft_p")
+            self.anitmateGroupSelection(self.positionSelectHighOpenSoftGroup)
             self.positionSelectedState = PositionState.highOpenSoft
             
         default:

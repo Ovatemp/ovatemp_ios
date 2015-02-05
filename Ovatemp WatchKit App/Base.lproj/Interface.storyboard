@@ -189,18 +189,18 @@
                     <items>
                         <group width="110" alignment="center" verticalAlignment="center" id="5kC-Qe-051">
                             <items>
-                                <group alignment="left" verticalAlignment="center" id="6Up-fO-O3Y">
+                                <group alignment="left" verticalAlignment="center" backgroundImage="Comp_1_0" id="6Up-fO-O3Y">
                                     <items>
-                                        <button alignment="center" verticalAlignment="center" backgroundImage="btn_position_lowclosedfirm" id="LZF-V1-vU6">
+                                        <button alignment="center" verticalAlignment="center" backgroundImage="icn_lowclosedfirm" id="LZF-V1-vU6">
                                             <connections>
                                                 <action selector="didSelectPositionLowClosedFirm" destination="h42-zn-QXN" id="iHc-Dw-XBj"/>
                                             </connections>
                                         </button>
                                     </items>
                                 </group>
-                                <group alignment="right" verticalAlignment="center" id="dRA-Uf-Esi">
+                                <group alignment="right" verticalAlignment="center" backgroundImage="Comp_1_0" id="dRA-Uf-Esi">
                                     <items>
-                                        <button alignment="center" verticalAlignment="center" backgroundImage="btn_position_highopensoft" id="XsU-hF-1AE">
+                                        <button alignment="center" verticalAlignment="center" backgroundImage="icn_highopensoft" id="XsU-hF-1AE">
                                             <connections>
                                                 <action selector="didSelectPositionHighOpenSoft" destination="h42-zn-QXN" id="gfZ-Ys-2j8"/>
                                             </connections>
@@ -216,7 +216,9 @@
                     </items>
                     <connections>
                         <outlet property="positionSelectHighOpenSoftButton" destination="XsU-hF-1AE" id="m7l-v3-TZl"/>
+                        <outlet property="positionSelectHighOpenSoftGroup" destination="dRA-Uf-Esi" id="OEo-JN-wdh"/>
                         <outlet property="positionSelectLowClosedFirmButton" destination="LZF-V1-vU6" id="HPw-MV-2en"/>
+                        <outlet property="positionSelectLowClosedFirmGroup" destination="6Up-fO-O3Y" id="99f-A9-fd2"/>
                         <outlet property="positionSelectionLabel" destination="uYy-U7-W9D" id="moV-Xy-GDy"/>
                     </connections>
                 </controller>
