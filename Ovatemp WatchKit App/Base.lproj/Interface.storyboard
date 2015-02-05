@@ -48,27 +48,27 @@
                         </label>
                         <group width="146" height="60" alignment="center" verticalAlignment="center" id="Z8Z-9x-cIJ">
                             <items>
-                                <group alignment="left" verticalAlignment="center" id="ON3-k0-Fli">
+                                <group alignment="left" verticalAlignment="center" backgroundImage="Comp 1_0" id="ON3-k0-Fli">
                                     <items>
-                                        <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_none" id="5yF-xS-OWC">
+                                        <button alignment="center" verticalAlignment="center" backgroundImage="icn_period_none" id="5yF-xS-OWC">
                                             <connections>
                                                 <action selector="didSelectPeriodNone" destination="UyJ-mT-fSB" id="85k-7l-Tkk"/>
                                             </connections>
                                         </button>
                                     </items>
                                 </group>
-                                <group alignment="center" verticalAlignment="center" id="QL4-Ek-6Ka">
+                                <group alignment="center" verticalAlignment="center" backgroundImage="Comp 1_0" id="QL4-Ek-6Ka">
                                     <items>
-                                        <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_spotting" id="k2U-Rd-gYQ">
+                                        <button alignment="center" verticalAlignment="center" backgroundImage="icn_period_spotting" id="k2U-Rd-gYQ">
                                             <connections>
                                                 <action selector="didSelectPeriodSpotting" destination="UyJ-mT-fSB" id="ev9-83-ZZI"/>
                                             </connections>
                                         </button>
                                     </items>
                                 </group>
-                                <group alignment="right" verticalAlignment="center" id="JXd-BD-1cO">
+                                <group alignment="right" verticalAlignment="center" backgroundImage="Comp 1_0" id="JXd-BD-1cO">
                                     <items>
-                                        <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_light" id="dXF-u5-OtT">
+                                        <button alignment="center" verticalAlignment="center" backgroundImage="icn_period_light" id="dXF-u5-OtT">
                                             <connections>
                                                 <action selector="didSelectPeriodLight" destination="UyJ-mT-fSB" id="a6Q-dQ-e8e"/>
                                             </connections>
@@ -80,18 +80,18 @@
                         </group>
                         <group width="94" alignment="center" verticalAlignment="center" id="y0G-bq-RPo">
                             <items>
-                                <group alignment="left" verticalAlignment="center" id="VPC-73-smX">
+                                <group alignment="left" verticalAlignment="center" backgroundImage="Comp 1_0" id="VPC-73-smX">
                                     <items>
-                                        <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_medium" id="ebW-kY-W1a">
+                                        <button alignment="center" verticalAlignment="center" backgroundImage="icn_period_medium" id="ebW-kY-W1a">
                                             <connections>
                                                 <action selector="didSelectPeriodMedium" destination="UyJ-mT-fSB" id="F1H-q5-w6L"/>
                                             </connections>
                                         </button>
                                     </items>
                                 </group>
-                                <group alignment="right" verticalAlignment="center" id="paN-61-N9U">
+                                <group alignment="right" verticalAlignment="center" backgroundImage="Comp 1_0" id="paN-61-N9U">
                                     <items>
-                                        <button alignment="center" verticalAlignment="center" backgroundImage="btn_period_heavy" id="1xl-Q5-7lz">
+                                        <button alignment="center" verticalAlignment="center" backgroundImage="icn_period_heavy" id="1xl-Q5-7lz">
                                             <connections>
                                                 <action selector="didSelectPeriodHeavy" destination="UyJ-mT-fSB" id="zgB-hp-21C"/>
                                             </connections>
@@ -104,10 +104,15 @@
                     </items>
                     <connections>
                         <outlet property="periodSelectHeavyButton" destination="1xl-Q5-7lz" id="JiU-AQ-vem"/>
+                        <outlet property="periodSelectHeavyGroup" destination="paN-61-N9U" id="RMF-z4-iEF"/>
                         <outlet property="periodSelectLightButton" destination="dXF-u5-OtT" id="zFw-7Q-ekK"/>
+                        <outlet property="periodSelectLightGroup" destination="JXd-BD-1cO" id="KrK-SF-df3"/>
                         <outlet property="periodSelectMediumButton" destination="ebW-kY-W1a" id="nFj-eE-1tr"/>
+                        <outlet property="periodSelectMediumGroup" destination="VPC-73-smX" id="TgH-Aq-7lh"/>
                         <outlet property="periodSelectNoneButton" destination="5yF-xS-OWC" id="O3L-An-RfR"/>
+                        <outlet property="periodSelectNoneGroup" destination="ON3-k0-Fli" id="Kum-2K-5Bq"/>
                         <outlet property="periodSelectSpottingButton" destination="k2U-Rd-gYQ" id="5Tc-dV-d2e"/>
+                        <outlet property="periodSelectSpottingGroup" destination="QL4-Ek-6Ka" id="zJ7-hi-Dth"/>
                         <outlet property="periodSelectionLabel" destination="Oge-90-VKO" id="oZB-kM-0Hh"/>
                         <segue destination="9NZ-qY-wrT" kind="relationship" relationship="nextPage" id="nac-3o-tjg"/>
                     </connections>
@@ -122,18 +127,18 @@
                     <items>
                         <group width="110" height="70" alignment="center" verticalAlignment="center" id="z0Q-Ex-WLT">
                             <items>
-                                <group alignment="left" verticalAlignment="center" id="IkI-t5-6JS">
+                                <group alignment="left" verticalAlignment="center" backgroundImage="Comp 1_0" id="IkI-t5-6JS">
                                     <items>
-                                        <button alignment="center" verticalAlignment="center" backgroundImage="btn_fluid_dry" id="YlH-O8-qZw">
+                                        <button alignment="center" verticalAlignment="center" backgroundImage="icn_fluid_dry" id="YlH-O8-qZw">
                                             <connections>
                                                 <action selector="didSelectFluidDry" destination="9NZ-qY-wrT" id="6nf-XP-7d4"/>
                                             </connections>
                                         </button>
                                     </items>
                                 </group>
-                                <group alignment="right" verticalAlignment="center" id="eFC-p5-RoZ">
+                                <group alignment="right" verticalAlignment="center" backgroundImage="Comp 1_0" id="eFC-p5-RoZ">
                                     <items>
-                                        <button alignment="center" verticalAlignment="center" backgroundImage="btn_fluid_sticky" id="xHx-Y2-dIs">
+                                        <button alignment="center" verticalAlignment="center" backgroundImage="icn_fluid_sticky" id="xHx-Y2-dIs">
                                             <connections>
                                                 <action selector="didSelectFluidSticky" destination="9NZ-qY-wrT" id="ohu-IU-pAR"/>
                                             </connections>
@@ -145,18 +150,18 @@
                         </group>
                         <group width="110" height="70" alignment="center" verticalAlignment="center" id="tUa-IV-KGv">
                             <items>
-                                <group alignment="left" verticalAlignment="center" id="eKp-LX-bbJ">
+                                <group alignment="left" verticalAlignment="center" backgroundImage="Comp 1_0" id="eKp-LX-bbJ">
                                     <items>
-                                        <button alignment="center" verticalAlignment="center" backgroundImage="btn_fluid_creamy" id="3LM-Ak-S7p">
+                                        <button alignment="center" verticalAlignment="center" backgroundImage="icn_fluid_creamy" id="3LM-Ak-S7p">
                                             <connections>
                                                 <action selector="didSelectFluidCreamy" destination="9NZ-qY-wrT" id="w16-VQ-3J1"/>
                                             </connections>
                                         </button>
                                     </items>
                                 </group>
-                                <group alignment="right" verticalAlignment="center" id="rOc-fr-JgT">
+                                <group alignment="right" verticalAlignment="center" backgroundImage="Comp 1_0" id="rOc-fr-JgT">
                                     <items>
-                                        <button alignment="center" verticalAlignment="center" backgroundImage="btn_fluid_eggwhite" id="0mv-f9-2uc">
+                                        <button alignment="center" verticalAlignment="center" backgroundImage="icn_fluid_eggwhite" id="0mv-f9-2uc">
                                             <connections>
                                                 <action selector="didSelectFluidEggwhite" destination="9NZ-qY-wrT" id="GhK-tJ-4kq"/>
                                             </connections>
@@ -172,9 +177,13 @@
                     </items>
                     <connections>
                         <outlet property="fluidSelectCreamyButton" destination="3LM-Ak-S7p" id="dea-Vf-uCG"/>
+                        <outlet property="fluidSelectCreamyGroup" destination="eKp-LX-bbJ" id="uUx-1d-O2h"/>
                         <outlet property="fluidSelectDryButton" destination="YlH-O8-qZw" id="sNZ-8h-imZ"/>
+                        <outlet property="fluidSelectDryGroup" destination="IkI-t5-6JS" id="c1t-mu-ags"/>
                         <outlet property="fluidSelectEggwhiteButton" destination="0mv-f9-2uc" id="h6J-z2-B86"/>
+                        <outlet property="fluidSelectEggwhiteGroup" destination="rOc-fr-JgT" id="44K-rW-cNq"/>
                         <outlet property="fluidSelectStickyButton" destination="xHx-Y2-dIs" id="8ww-Fw-uzv"/>
+                        <outlet property="fluidSelectStickyGroup" destination="eFC-p5-RoZ" id="wXC-YJ-85K"/>
                         <outlet property="fluidSelectionLabel" destination="log-57-uHU" id="Ncn-jI-7US"/>
                         <segue destination="h42-zn-QXN" kind="relationship" relationship="nextPage" id="UDM-vB-Bsf"/>
                     </connections>
@@ -189,18 +198,18 @@
                     <items>
                         <group width="110" alignment="center" verticalAlignment="center" id="5kC-Qe-051">
                             <items>
-                                <group alignment="left" verticalAlignment="center" backgroundImage="Comp_1_0" id="6Up-fO-O3Y">
+                                <group alignment="left" verticalAlignment="center" backgroundImage="Comp 1_0" id="6Up-fO-O3Y">
                                     <items>
-                                        <button alignment="center" verticalAlignment="center" backgroundImage="icn_lowclosedfirm" id="LZF-V1-vU6">
+                                        <button alignment="center" verticalAlignment="center" backgroundImage="icn_position_lowclosedfirm" id="LZF-V1-vU6">
                                             <connections>
                                                 <action selector="didSelectPositionLowClosedFirm" destination="h42-zn-QXN" id="iHc-Dw-XBj"/>
                                             </connections>
                                         </button>
                                     </items>
                                 </group>
-                                <group alignment="right" verticalAlignment="center" backgroundImage="Comp_1_0" id="dRA-Uf-Esi">
+                                <group alignment="right" verticalAlignment="center" backgroundImage="Comp 1_0" id="dRA-Uf-Esi">
                                     <items>
-                                        <button alignment="center" verticalAlignment="center" backgroundImage="icn_highopensoft" id="XsU-hF-1AE">
+                                        <button alignment="center" verticalAlignment="center" backgroundImage="icn_position_highopensoft" id="XsU-hF-1AE">
                                             <connections>
                                                 <action selector="didSelectPositionHighOpenSoft" destination="h42-zn-QXN" id="gfZ-Ys-2j8"/>
                                             </connections>

@@ -22,11 +22,22 @@ public enum PeriodState {
 class PeriodPageViewController: WKInterfaceController {
     
     @IBOutlet weak var periodSelectionLabel: WKInterfaceLabel!
+    
     @IBOutlet weak var periodSelectNoneButton: WKInterfaceButton!
+    @IBOutlet weak var periodSelectNoneGroup: WKInterfaceGroup!
+    
     @IBOutlet weak var periodSelectSpottingButton: WKInterfaceButton!
+    @IBOutlet weak var periodSelectSpottingGroup: WKInterfaceGroup!
+    
     @IBOutlet weak var periodSelectLightButton: WKInterfaceButton!
+    @IBOutlet weak var periodSelectLightGroup: WKInterfaceGroup!
+    
     @IBOutlet weak var periodSelectMediumButton: WKInterfaceButton!
+    @IBOutlet weak var periodSelectMediumGroup: WKInterfaceGroup!
+    
     @IBOutlet weak var periodSelectHeavyButton: WKInterfaceButton!
+    @IBOutlet weak var periodSelectHeavyGroup: WKInterfaceGroup!
+    
     
     var periodSelectedState = PeriodState.noData
     
@@ -60,11 +71,18 @@ class PeriodPageViewController: WKInterfaceController {
     
     func resetButtonImages() {
         
-        self.periodSelectNoneButton.setBackgroundImageNamed("btn_period_none")
-        self.periodSelectSpottingButton.setBackgroundImageNamed("btn_period_spotting")
-        self.periodSelectLightButton.setBackgroundImageNamed("btn_period_light")
-        self.periodSelectMediumButton.setBackgroundImageNamed("btn_period_medium")
-        self.periodSelectHeavyButton.setBackgroundImageNamed("btn_period_heavy")
+        self.periodSelectNoneGroup.setBackgroundImageNamed("Comp 1_0")
+        self.periodSelectSpottingGroup.setBackgroundImageNamed("Comp 1_0")
+        self.periodSelectLightGroup.setBackgroundImageNamed("Comp 1_0")
+        self.periodSelectMediumGroup.setBackgroundImageNamed("Comp 1_0")
+        self.periodSelectHeavyGroup.setBackgroundImageNamed("Comp 1_0")
+    }
+    
+    func anitmateGroupSelection (buttonGroup: WKInterfaceGroup) {
+        
+        buttonGroup.setBackgroundImageNamed("Comp 1_")
+        
+        buttonGroup.startAnimatingWithImagesInRange(NSRange(location: 0, length: 29), duration: 1.5, repeatCount: 1)
     }
 
     @IBAction func didSelectPeriodNone() {
@@ -149,31 +167,31 @@ class PeriodPageViewController: WKInterfaceController {
         case PeriodState.none:
             self.periodSelectionLabel.setText("None")
             self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
-            self.periodSelectNoneButton.setBackgroundImageNamed("btn_period_none_p")
+            self.anitmateGroupSelection(self.periodSelectNoneGroup)
             self.periodSelectedState = PeriodState.none
             
         case PeriodState.spotting:
             self.periodSelectionLabel.setText("Spotting")
             self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
-            self.periodSelectSpottingButton.setBackgroundImageNamed("btn_period_spotting_p")
+            self.anitmateGroupSelection(self.periodSelectSpottingGroup)
             self.periodSelectedState = PeriodState.spotting
             
         case PeriodState.light:
             self.periodSelectionLabel.setText("Light")
             self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
-            self.periodSelectLightButton.setBackgroundImageNamed("btn_period_light_p")
+            self.anitmateGroupSelection(self.periodSelectLightGroup)
             self.periodSelectedState = PeriodState.light
             
         case PeriodState.medium:
             self.periodSelectionLabel.setText("Medium")
             self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
-            self.periodSelectMediumButton.setBackgroundImageNamed("btn_period_medium_p")
+            self.anitmateGroupSelection(self.periodSelectMediumGroup)
             self.periodSelectedState = PeriodState.medium
             
         case PeriodState.heavy:
             self.periodSelectionLabel.setText("Heavy")
             self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
-            self.periodSelectHeavyButton.setBackgroundImageNamed("btn_period_heavy_p")
+            self.anitmateGroupSelection(self.periodSelectHeavyGroup)
             self.periodSelectedState = PeriodState.heavy
             
         default:

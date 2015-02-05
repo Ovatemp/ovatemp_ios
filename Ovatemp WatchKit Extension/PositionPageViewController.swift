@@ -48,15 +48,15 @@ class PositionPageViewController: WKInterfaceController {
     
     func resetButtonImages() {
         
-        self.positionSelectLowClosedFirmGroup.setBackgroundImageNamed("Comp_1_0")
-        self.positionSelectHighOpenSoftGroup.setBackgroundImageNamed("Comp_1_0")
+        self.positionSelectLowClosedFirmGroup.setBackgroundImageNamed("Comp 1_0")
+        self.positionSelectHighOpenSoftGroup.setBackgroundImageNamed("Comp 1_0")
     }
     
     func anitmateGroupSelection (buttonGroup: WKInterfaceGroup) {
         
-        buttonGroup.setBackgroundImageNamed("Comp_1_")
+        buttonGroup.setBackgroundImageNamed("Comp 1_")
         
-        buttonGroup.startAnimatingWithImagesInRange(NSRange(location: 0, length: 29), duration: 1.0, repeatCount: 1)
+        buttonGroup.startAnimatingWithImagesInRange(NSRange(location: 0, length: 29), duration: 1.5, repeatCount: 1)
     }
     
     @IBAction func didSelectPositionLowClosedFirm() {
