@@ -122,31 +122,47 @@
                     <items>
                         <group width="110" height="70" alignment="center" verticalAlignment="center" id="z0Q-Ex-WLT">
                             <items>
-                                <button alignment="left" verticalAlignment="center" backgroundImage="btn_fluid_dry" id="YlH-O8-qZw">
-                                    <connections>
-                                        <action selector="didSelectFluidDry" destination="9NZ-qY-wrT" id="6nf-XP-7d4"/>
-                                    </connections>
-                                </button>
-                                <button alignment="right" verticalAlignment="center" backgroundImage="btn_fluid_sticky" id="xHx-Y2-dIs">
-                                    <connections>
-                                        <action selector="didSelectFluidSticky" destination="9NZ-qY-wrT" id="ohu-IU-pAR"/>
-                                    </connections>
-                                </button>
+                                <group alignment="left" verticalAlignment="center" id="IkI-t5-6JS">
+                                    <items>
+                                        <button alignment="center" verticalAlignment="center" backgroundImage="btn_fluid_dry" id="YlH-O8-qZw">
+                                            <connections>
+                                                <action selector="didSelectFluidDry" destination="9NZ-qY-wrT" id="6nf-XP-7d4"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
+                                <group alignment="right" verticalAlignment="center" id="eFC-p5-RoZ">
+                                    <items>
+                                        <button alignment="center" verticalAlignment="center" backgroundImage="btn_fluid_sticky" id="xHx-Y2-dIs">
+                                            <connections>
+                                                <action selector="didSelectFluidSticky" destination="9NZ-qY-wrT" id="ohu-IU-pAR"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
                             </items>
                             <variation key="device=watch38mm" height="50" width="100"/>
                         </group>
                         <group width="110" height="70" alignment="center" verticalAlignment="center" id="tUa-IV-KGv">
                             <items>
-                                <button alignment="left" verticalAlignment="center" backgroundImage="btn_fluid_creamy" id="3LM-Ak-S7p">
-                                    <connections>
-                                        <action selector="didSelectFluidCreamy" destination="9NZ-qY-wrT" id="w16-VQ-3J1"/>
-                                    </connections>
-                                </button>
-                                <button alignment="right" verticalAlignment="center" backgroundImage="btn_fluid_eggwhite" id="0mv-f9-2uc">
-                                    <connections>
-                                        <action selector="didSelectFluidEggwhite" destination="9NZ-qY-wrT" id="GhK-tJ-4kq"/>
-                                    </connections>
-                                </button>
+                                <group alignment="left" verticalAlignment="center" id="eKp-LX-bbJ">
+                                    <items>
+                                        <button alignment="center" verticalAlignment="center" backgroundImage="btn_fluid_creamy" id="3LM-Ak-S7p">
+                                            <connections>
+                                                <action selector="didSelectFluidCreamy" destination="9NZ-qY-wrT" id="w16-VQ-3J1"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
+                                <group alignment="right" verticalAlignment="center" id="rOc-fr-JgT">
+                                    <items>
+                                        <button alignment="center" verticalAlignment="center" backgroundImage="btn_fluid_eggwhite" id="0mv-f9-2uc">
+                                            <connections>
+                                                <action selector="didSelectFluidEggwhite" destination="9NZ-qY-wrT" id="GhK-tJ-4kq"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
                             </items>
                             <variation key="device=watch38mm" height="50" width="100"/>
                         </group>
@@ -173,16 +189,24 @@
                     <items>
                         <group width="110" alignment="center" verticalAlignment="center" id="5kC-Qe-051">
                             <items>
-                                <button alignment="left" verticalAlignment="center" backgroundImage="btn_position_lowclosedfirm" id="LZF-V1-vU6">
-                                    <connections>
-                                        <action selector="didSelectPositionLowClosedFirm" destination="h42-zn-QXN" id="iHc-Dw-XBj"/>
-                                    </connections>
-                                </button>
-                                <button alignment="right" verticalAlignment="center" backgroundImage="btn_position_highopensoft" id="XsU-hF-1AE">
-                                    <connections>
-                                        <action selector="didSelectPositionHighOpenSoft" destination="h42-zn-QXN" id="gfZ-Ys-2j8"/>
-                                    </connections>
-                                </button>
+                                <group alignment="left" verticalAlignment="center" id="6Up-fO-O3Y">
+                                    <items>
+                                        <button alignment="center" verticalAlignment="center" backgroundImage="btn_position_lowclosedfirm" id="LZF-V1-vU6">
+                                            <connections>
+                                                <action selector="didSelectPositionLowClosedFirm" destination="h42-zn-QXN" id="iHc-Dw-XBj"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
+                                <group alignment="right" verticalAlignment="center" id="dRA-Uf-Esi">
+                                    <items>
+                                        <button alignment="center" verticalAlignment="center" backgroundImage="btn_position_highopensoft" id="XsU-hF-1AE">
+                                            <connections>
+                                                <action selector="didSelectPositionHighOpenSoft" destination="h42-zn-QXN" id="gfZ-Ys-2j8"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
                             </items>
                             <variation key="device=watch38mm" width="100"/>
                         </group>
