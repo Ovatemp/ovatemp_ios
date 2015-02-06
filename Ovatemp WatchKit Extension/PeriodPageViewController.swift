@@ -76,6 +76,7 @@ class PeriodPageViewController: WKInterfaceController {
         self.periodSelectLightGroup.setBackgroundImageNamed("Comp 1_0")
         self.periodSelectMediumGroup.setBackgroundImageNamed("Comp 1_0")
         self.periodSelectHeavyGroup.setBackgroundImageNamed("Comp 1_0")
+        
     }
     
     func anitmateGroupSelection (buttonGroup: WKInterfaceGroup) {
@@ -148,7 +149,9 @@ class PeriodPageViewController: WKInterfaceController {
             
             if(error === nil) {
                 
-                self.updatePeriodButtons(changeSelection)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.updatePeriodButtons(changeSelection)
+                })
             }
         })
     }
@@ -167,32 +170,32 @@ class PeriodPageViewController: WKInterfaceController {
         case PeriodState.none:
             self.periodSelectionLabel.setText("None")
             self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
-            self.anitmateGroupSelection(self.periodSelectNoneGroup)
             self.periodSelectedState = PeriodState.none
+            self.anitmateGroupSelection(self.periodSelectNoneGroup)
             
         case PeriodState.spotting:
             self.periodSelectionLabel.setText("Spotting")
             self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
-            self.anitmateGroupSelection(self.periodSelectSpottingGroup)
             self.periodSelectedState = PeriodState.spotting
+            self.anitmateGroupSelection(self.periodSelectSpottingGroup)
             
         case PeriodState.light:
             self.periodSelectionLabel.setText("Light")
             self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
-            self.anitmateGroupSelection(self.periodSelectLightGroup)
             self.periodSelectedState = PeriodState.light
+            self.anitmateGroupSelection(self.periodSelectLightGroup)
             
         case PeriodState.medium:
             self.periodSelectionLabel.setText("Medium")
             self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
-            self.anitmateGroupSelection(self.periodSelectMediumGroup)
             self.periodSelectedState = PeriodState.medium
+            self.anitmateGroupSelection(self.periodSelectMediumGroup)
             
         case PeriodState.heavy:
             self.periodSelectionLabel.setText("Heavy")
             self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
-            self.anitmateGroupSelection(self.periodSelectHeavyGroup)
             self.periodSelectedState = PeriodState.heavy
+            self.anitmateGroupSelection(self.periodSelectHeavyGroup)
             
         default:
             self.periodSelectionLabel.setText("Select")
