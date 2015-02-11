@@ -12,8 +12,6 @@
 @interface SignUpViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *fullNameField;
-@property (weak, nonatomic) IBOutlet UITextField *dateOfBirthField;
-@property (strong, nonatomic) UIDatePicker *dateOfBirthPicker;
 
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;

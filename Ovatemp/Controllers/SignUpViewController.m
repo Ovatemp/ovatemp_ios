@@ -24,35 +24,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dateOfBirthPicker = [self useDatePickerForTextField:self.dateOfBirthField];
-    NSInteger minAgeInYears = 12;
-    NSInteger day = 60 * 60 * 24;
-    NSInteger year = day * 365;
-    NSDate *maximumDate = [NSDate dateWithTimeIntervalSinceNow:-minAgeInYears * year];
-    NSDate *minimumDate = [NSDate dateWithTimeIntervalSinceNow:-100 * year];
-    
-    // default date
-    NSCalendar *defaultDate = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *defaultDateComponents = [[NSDateComponents alloc] init];
-    [defaultDateComponents setYear:-30];
-    
-    self.dateOfBirthPicker.date = [defaultDate dateByAddingComponents:defaultDateComponents toDate:[NSDate date] options:0];
-    
-    self.dateOfBirthPicker.maximumDate = maximumDate;
-    self.dateOfBirthPicker.minimumDate = minimumDate;
-    
-    [self.dateOfBirthPicker addTarget:self
-                               action:@selector(dateOfBirthChanged:)
-                     forControlEvents:UIControlEventValueChanged];
     
     // text field overrides
     self.fullNameField.borderStyle = UITextBorderStyleRoundedRect;
-    self.dateOfBirthField.borderStyle = UITextBorderStyleRoundedRect;
     self.emailField.borderStyle = UITextBorderStyleRoundedRect;
     self.passwordField.borderStyle = UITextBorderStyleRoundedRect;
     
     self.fullNameField.delegate = self;
-    self.dateOfBirthField.delegate = self;
     self.emailField.delegate = self;
     self.passwordField.delegate = self;
     
@@ -82,14 +60,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)dateOfBirthChanged:(UIDatePicker *)sender {
-    self.dateOfBirthField.text = [self.dateOfBirthPicker.date classicDate];
-}
-
 #pragma mark - Keyboard
 - (void)keyboardDidShow:(NSNotification *)notification {
     
-    if ([self.fullNameField isFirstResponder] || [self.dateOfBirthField isFirstResponder]) {
+    if ([self.fullNameField isFirstResponder]) {
         return;
     }
     
@@ -125,11 +99,6 @@
     // Text Field Checks
     if ([self.fullNameField.text length] == 0) {
         [self alertUserWithTitle:@"Error" andMessage:@"Please enter your full name."];
-        return;
-    }
-    
-    if ([self.dateOfBirthField.text length] == 0) {
-        [self alertUserWithTitle:@"Error" andMessage:@"Please enter your full date of birth."];
         return;
     }
     
@@ -176,8 +145,7 @@
     
     [self trackEvent:@"Signed Up" action:nil label:nil value:nil];
     
-    // profile has been created successfully, set birthday and name
-    [UserProfile current].dateOfBirth = self.dateOfBirthPicker.date;
+    // profile has been created successfully, set name
     [UserProfile current].fullName = self.fullNameField.text;
     [[UserProfile current] save];
     
@@ -204,10 +172,7 @@
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField { //Keyboard becomes visible
-    
-    if (textField.tag == 1) {
-        self.dateOfBirthField.text = [self.dateOfBirthPicker.date classicDate];
-    }
+
 }
 
 - (BOOL)validateEmail:(NSString *)email {
