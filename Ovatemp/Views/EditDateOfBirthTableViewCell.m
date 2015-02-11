@@ -15,14 +15,25 @@
 - (void)awakeFromNib {
     // Initialization code
     
-    self.dateOfBirthPicker = [[UIDatePicker alloc] init];
-    self.dateOfBirthPicker.date = [[UserProfile current] dateOfBirth]; // default date
+    //set up date formats, minimums, maximums.
     
     NSInteger minAgeInYears = 12;
+    NSInteger oldestAgeinYears = 60;
     NSInteger day = 60 * 60 * 24;
     NSInteger year = day * 365;
     NSDate *maximumDate = [NSDate dateWithTimeIntervalSinceNow:-minAgeInYears * year];
-    NSDate *minimumDate = [NSDate dateWithTimeIntervalSinceNow:-100 * year];
+    NSDate *minimumDate = [NSDate dateWithTimeIntervalSinceNow:-oldestAgeinYears * year];
+    
+    self.dateOfBirthPicker = [[UIDatePicker alloc] init];
+    
+    if ([[UserProfile current] dateOfBirth]) {
+        self.dateOfBirthPicker.date = [[UserProfile current] dateOfBirth];
+    }
+    // default date
+    
+    else{
+        self.dateOfBirthPicker.date = self.dateOfBirthPicker.minimumDate;
+    }
     
     self.dateOfBirthPicker.minimumDate = minimumDate;
     self.dateOfBirthPicker.maximumDate = maximumDate;
