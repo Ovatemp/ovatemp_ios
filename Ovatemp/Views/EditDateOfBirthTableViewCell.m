@@ -25,6 +25,10 @@
     NSDate *minimumDate = [NSDate dateWithTimeIntervalSinceNow:-oldestAgeinYears * year];
     
     self.dateOfBirthPicker = [[UIDatePicker alloc] init];
+    self.dateOfBirthPicker.datePickerMode = UIDatePickerModeDate;
+    
+    self.dateOfBirthPicker.minimumDate = minimumDate;
+    self.dateOfBirthPicker.maximumDate = maximumDate;
     
     if ([[UserProfile current] dateOfBirth]) {
         self.dateOfBirthPicker.date = [[UserProfile current] dateOfBirth];
@@ -34,11 +38,6 @@
     else{
         self.dateOfBirthPicker.date = self.dateOfBirthPicker.minimumDate;
     }
-    
-    self.dateOfBirthPicker.minimumDate = minimumDate;
-    self.dateOfBirthPicker.maximumDate = maximumDate;
-    
-    self.dateOfBirthPicker.datePickerMode = UIDatePickerModeDate;
     
     [self.dateOfBirthPicker addTarget:self
                                action:@selector(dateOfBirthChanged:)

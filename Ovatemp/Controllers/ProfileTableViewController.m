@@ -130,8 +130,15 @@ BOOL firstEditWeight;
     }
     
     if (firstEditDob) {
-        self.dobCell.textField.text = [[currentUserProfile dateOfBirth] classicDate];
-        firstEditDob = NO;
+        
+        if ([currentUserProfile dateOfBirth]) {
+            self.dobCell.textField.text = [[currentUserProfile dateOfBirth] classicDate];
+            firstEditDob = NO;
+        }
+        
+        else {
+        self.dobCell.textField.text = @"No birthdate recorded";
+        }
     }
     
     if (firstEditEmail) {

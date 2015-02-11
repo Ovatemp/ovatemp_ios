@@ -18,6 +18,8 @@
 
 @interface SignUpViewController () <UITextViewDelegate>
 
+@property CGFloat kBHeight;
+
 @end
 
 @implementation SignUpViewController
@@ -63,11 +65,13 @@
 #pragma mark - Keyboard
 - (void)keyboardDidShow:(NSNotification *)notification {
     
+    
+    CGFloat height = [self keyboardHeight:notification];
+    self.kBHeight = height;
+    
     if ([self.fullNameField isFirstResponder]) {
         return;
     }
-    
-    CGFloat height = [self keyboardHeight:notification];
     
     [UIView animateWithDuration:.2 animations:^{
         CGRect frame = self.view.frame;
@@ -157,22 +161,33 @@
     [Alert presentError:error];
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    
+    if (textField.tag == 2) {
+        
+        [UIView animateWithDuration:.2 animations:^{
+            CGRect frame = self.view.frame;
+            frame.origin.y = -self.kBHeight/3;
+            self.view.frame = frame;
+        }];
+
+    }
+}
+
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     UIView *view = [self.view viewWithTag:textField.tag + 1];
+    
     if (!view)
         [textField resignFirstResponder];
     else
         [view becomeFirstResponder];
     
-    if (textField.tag == 3) {
+    if (textField.tag == 2) {
         [self sessionRegister:self];
     }
     return YES;
-}
-
--(void)textFieldDidBeginEditing:(UITextField *)textField { //Keyboard becomes visible
-
 }
 
 - (BOOL)validateEmail:(NSString *)email {
