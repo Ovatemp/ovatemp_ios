@@ -45,7 +45,13 @@
     
     self.emailLabel.text = currentUser.email;
     
-    self.dateLabel.text = [currentUserProfile.dateOfBirth classicDate];
+    if ([currentUserProfile dateOfBirth]){
+        self.dateLabel.text = [currentUserProfile.dateOfBirth classicDate];
+    }
+    
+    else {
+        self.dateLabel.text = @"No birthdate recorded";
+    }
     
     if ([defaults objectForKey:@"userHeightFeetComponent"] && [defaults objectForKey:@"userHeightInchesComponent"]) {
         self.heightLabel.text = [NSString stringWithFormat:@"%@' %@\"", [defaults objectForKey:@"userHeightFeetComponent"], [defaults objectForKey:@"userHeightInchesComponent"]];
@@ -80,7 +86,14 @@
     
     self.emailLabel.text = currentUser.email;
     
-    self.dateLabel.text = [currentUserProfile.dateOfBirth classicDate];
+    
+    if ([currentUserProfile dateOfBirth]){
+        self.dateLabel.text = [currentUserProfile.dateOfBirth classicDate];
+    }
+    
+    else {
+        self.dateLabel.text = @"No birthdate recorded";
+    }
     
     if (currentUserProfile.heightInInches) {
         int feetComponent = [currentUserProfile.heightInInches intValue] / 12;

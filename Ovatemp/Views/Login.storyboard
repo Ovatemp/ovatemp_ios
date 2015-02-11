@@ -148,7 +148,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sxc-1f-7bk">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sxc-1f-7bk">
                                 <rect key="frame" x="16" y="271" width="288" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="kxC-qM-JQf"/>
@@ -162,7 +162,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytD-pr-ZyT">
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytD-pr-ZyT">
                                 <rect key="frame" x="16" y="479" width="288" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="288" id="6w5-Y0-qbC"/>
@@ -178,7 +178,7 @@
                                     <action selector="sessionRegister:" destination="E4r-6s-Glc" eventType="touchUpInside" id="4tX-1r-Nt1"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jy1-kj-rkP">
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jy1-kj-rkP">
                                 <rect key="frame" x="16" y="352" width="288" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="Njx-hq-3JE"/>
