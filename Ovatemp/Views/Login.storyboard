@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="5RQ-0I-Qml">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="5RQ-0I-Qml">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -103,6 +103,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Cxc-BL-bYj" secondAttribute="centerX" id="15b-Lb-fST"/>
                             <constraint firstItem="UPD-7T-qbV" firstAttribute="trailing" secondItem="Cxc-BL-bYj" secondAttribute="trailing" id="7Ea-nt-zLN"/>
                             <constraint firstItem="Cxc-BL-bYj" firstAttribute="centerX" secondItem="yro-nn-XMT" secondAttribute="centerX" id="9G3-aO-WmZ"/>
                             <constraint firstItem="Cxc-BL-bYj" firstAttribute="top" secondItem="yro-nn-XMT" secondAttribute="bottom" constant="8" symbolic="YES" id="Dqg-Vv-h9J"/>
