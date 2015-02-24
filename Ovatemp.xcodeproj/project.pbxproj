@@ -480,6 +480,7 @@
 		C3BF8FDD1898449D00572F43 /* OvatempTestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FDC1898449D00572F43 /* OvatempTestHelpers.m */; };
 		C3D8912119084CB800E21627 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D8912019084CB800E21627 /* StoreKit.framework */; };
 		C3D8912319084D9F00E21627 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D8912219084D9F00E21627 /* GameKit.framework */; };
+		CED66676EF49970944AFFC0C /* libPods-Ovatemp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -494,6 +495,7 @@
 
 /* Begin PBXFileReference section */
 		0EC9830A19AB8619009A5730 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		259EFE437AEE5D2421AD121C /* Pods-OvatempTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F1A3BF319F17614002FFA28 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		5F1C961C19EDD319000F1FC1 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		5F1C961D19EDD319000F1FC1 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
@@ -1156,6 +1158,9 @@
 		83C4D21A18D9F1CF008C523C /* KIFUITestActor+OTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFUITestActor+OTAdditions.h"; sourceTree = "<group>"; };
 		83C4D21B18D9F1CF008C523C /* KIFUITestActor+OTAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFUITestActor+OTAdditions.m"; sourceTree = "<group>"; };
 		83EB3F3918AEAD2600EA91AC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8BECB898CAD31A22C0512519 /* Pods-OvatempTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.release.xcconfig"; sourceTree = "<group>"; };
+		A4580E814E861443FA3E0BBB /* Pods-Ovatemp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ovatemp/Pods-Ovatemp.debug.xcconfig"; sourceTree = "<group>"; };
+		A6DE6B0878F241D501B88C63 /* Pods-Ovatemp.release automation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.release automation.xcconfig"; path = "Pods/Target Support Files/Pods-Ovatemp/Pods-Ovatemp.release automation.xcconfig"; sourceTree = "<group>"; };
 		C34AE14218FC4C64003209B2 /* libGoogleConversionTracking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleConversionTracking.a; path = Ovatemp/Frameworks/libGoogleConversionTracking.a; sourceTree = "<group>"; };
 		C36C50FB189028190053A884 /* Ovatemp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ovatemp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C36C50FE189028190053A884 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1178,7 +1183,9 @@
 		C3BF8FDC1898449D00572F43 /* OvatempTestHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OvatempTestHelpers.m; sourceTree = "<group>"; };
 		C3D8912019084CB800E21627 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C3D8912219084D9F00E21627 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		DB1EDD0C2055CDA999D65790 /* Pods-Ovatemp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ovatemp/Pods-Ovatemp.release.xcconfig"; sourceTree = "<group>"; };
 		F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ovatemp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F672532872A0CE7B8BCFF273 /* Pods-OvatempTests.release automation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.release automation.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.release automation.xcconfig"; sourceTree = "<group>"; };
 		FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OvatempTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1210,6 +1217,7 @@
 				5F1C9BA219EDE87A000F1FC1 /* libGoogleAnalyticsServices.a in Frameworks */,
 				0EC9830B19AB8619009A5730 /* HealthKit.framework in Frameworks */,
 				5F1C96C719EDD319000F1FC1 /* libGoogleConversionTracking.a in Frameworks */,
+				CED66676EF49970944AFFC0C /* libPods-Ovatemp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2180,6 +2188,7 @@
 				C3BF8FC21898409C00572F43 /* OvatempTests */,
 				C36C50FD189028190053A884 /* Frameworks */,
 				C36C50FC189028190053A884 /* Products */,
+				FF782319FA8747953FB4BED8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2272,6 +2281,19 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		FF782319FA8747953FB4BED8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A4580E814E861443FA3E0BBB /* Pods-Ovatemp.debug.xcconfig */,
+				DB1EDD0C2055CDA999D65790 /* Pods-Ovatemp.release.xcconfig */,
+				A6DE6B0878F241D501B88C63 /* Pods-Ovatemp.release automation.xcconfig */,
+				259EFE437AEE5D2421AD121C /* Pods-OvatempTests.debug.xcconfig */,
+				8BECB898CAD31A22C0512519 /* Pods-OvatempTests.release.xcconfig */,
+				F672532872A0CE7B8BCFF273 /* Pods-OvatempTests.release automation.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2279,9 +2301,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C36C5127189028190053A884 /* Build configuration list for PBXNativeTarget "Ovatemp" */;
 			buildPhases = (
+				EB10790E4F957F9B6C982699 /* Check Pods Manifest.lock */,
 				C36C50F7189028190053A884 /* Sources */,
 				C36C50F8189028190053A884 /* Frameworks */,
 				C36C50F9189028190053A884 /* Resources */,
+				E8576B49FDB26B62A0CC5666 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2322,7 +2346,7 @@
 				ORGANIZATIONNAME = "Back Forty";
 				TargetAttributes = {
 					C36C50FA189028190053A884 = {
-						DevelopmentTeam = MC934XNWAV;
+						DevelopmentTeam = TAGM86AK24;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -2339,7 +2363,7 @@
 						};
 					};
 					C3BF8FBC1898409C00572F43 = {
-						DevelopmentTeam = 76Q446F2EP;
+						DevelopmentTeam = TAGM86AK24;
 						TestTargetID = C36C50FA189028190053A884;
 					};
 				};
@@ -2652,7 +2676,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-OvatempTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8576B49FDB26B62A0CC5666 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ovatemp/Pods-Ovatemp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB10790E4F957F9B6C982699 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2938,12 +2992,13 @@
 		};
 		5F586A2A19ED837E00D2B58E /* Release Automation */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6DE6B0878F241D501B88C63 /* Pods-Ovatemp.release automation.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Applico LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/ThirdParty/HockeySDK.embeddedframework";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
@@ -2989,7 +3044,7 @@
 					UIKit,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "00790863-84c1-4e79-beed-997be781b3bb";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2997,6 +3052,7 @@
 		};
 		5F586A2B19ED837E00D2B58E /* Release Automation */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F672532872A0CE7B8BCFF273 /* Pods-OvatempTests.release automation.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Ovatemp.app/Ovatemp";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3092,6 +3148,7 @@
 		};
 		C36C5128189028190053A884 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4580E814E861443FA3E0BBB /* Pods-Ovatemp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -3143,12 +3200,13 @@
 		};
 		C36C5129189028190053A884 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB1EDD0C2055CDA999D65790 /* Pods-Ovatemp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ovatemp, LLC (MC934XNWAV)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/ThirdParty/HockeySDK.embeddedframework";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
@@ -3194,7 +3252,7 @@
 					UIKit,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "55b897bb-2682-491b-828d-380a2971f2b9";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3202,6 +3260,7 @@
 		};
 		C3BF8FCE1898409C00572F43 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 259EFE437AEE5D2421AD121C /* Pods-OvatempTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Ovatemp.app/Ovatemp";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3228,6 +3287,7 @@
 		};
 		C3BF8FCF1898409C00572F43 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BECB898CAD31A22C0512519 /* Pods-OvatempTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Ovatemp.app/Ovatemp";
 				FRAMEWORK_SEARCH_PATHS = (
