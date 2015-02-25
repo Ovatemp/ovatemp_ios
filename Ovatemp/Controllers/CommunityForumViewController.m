@@ -16,7 +16,8 @@
 
 @implementation CommunityForumViewController
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
   return UIStatusBarStyleLightContent;
 }
 

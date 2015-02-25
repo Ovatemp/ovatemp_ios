@@ -28,7 +28,7 @@
             <objects>
                 <viewController storyboardIdentifier="trackingVC" id="3fu-mC-j0h" customClass="TrackingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ucl-sb-Y0j">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="SXO-bw-vwf">
@@ -42,7 +42,7 @@
                                 <color key="backgroundColor" red="0.87450980389999999" green="0.87450980389999999" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="eDl-ej-vyi">
-                                <rect key="frame" x="0.0" y="91" width="320" height="417"/>
+                                <rect key="frame" x="0.0" y="91" width="320" height="428"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -96,6 +96,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="drawerCollectionView" destination="Jxv-Mf-B2f" id="FWW-X9-KmO"/>
                         <outlet property="drawerView" destination="tad-EW-aMN" id="Q9o-c7-30T"/>
@@ -113,7 +114,7 @@
             <objects>
                 <viewController id="KZ8-F5-OfV" customClass="TrackingNotesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jeu-tA-eGM">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="bPO-w2-J7b">
