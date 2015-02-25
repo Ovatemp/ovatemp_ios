@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06F0A13F1A9E4F3000C253BC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06F0A13E1A9E4F3000C253BC /* LaunchScreen.xib */; };
 		0EC9830B19AB8619009A5730 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC9830A19AB8619009A5730 /* HealthKit.framework */; };
 		5F1A3BF419F17614002FFA28 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F1A3BF319F17614002FFA28 /* Login.storyboard */; };
 		5F1C96C419EDD319000F1FC1 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C963519EDD319000F1FC1 /* libAdIdAccess.a */; };
@@ -209,8 +210,6 @@
 		5F1C9C0E19EDE87A000F1FC1 /* Protected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C9AD619EDE879000F1FC1 /* Protected@2x.png */; };
 		5F1C9C0F19EDE87A000F1FC1 /* Unprotected.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C9AD719EDE879000F1FC1 /* Unprotected.png */; };
 		5F1C9C1019EDE87A000F1FC1 /* Unprotected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C9AD819EDE879000F1FC1 /* Unprotected@2x.png */; };
-		5F1C9C1119EDE87A000F1FC1 /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C9AD919EDE879000F1FC1 /* LaunchImage.png */; };
-		5F1C9C1219EDE87A000F1FC1 /* LaunchImageR4.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C9ADA19EDE879000F1FC1 /* LaunchImageR4.png */; };
 		5F1C9C1319EDE87A000F1FC1 /* Massage.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C9ADB19EDE879000F1FC1 /* Massage.png */; };
 		5F1C9C1419EDE87A000F1FC1 /* Massage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C9ADC19EDE879000F1FC1 /* Massage@2x.png */; };
 		5F1C9C1519EDE87A000F1FC1 /* Meditations.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C9ADD19EDE879000F1FC1 /* Meditations.png */; };
@@ -494,6 +493,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06F0A13E1A9E4F3000C253BC /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		0EC9830A19AB8619009A5730 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		259EFE437AEE5D2421AD121C /* Pods-OvatempTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F1A3BF319F17614002FFA28 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -781,8 +781,6 @@
 		5F1C9AD619EDE879000F1FC1 /* Protected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Protected@2x.png"; sourceTree = "<group>"; };
 		5F1C9AD719EDE879000F1FC1 /* Unprotected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Unprotected.png; sourceTree = "<group>"; };
 		5F1C9AD819EDE879000F1FC1 /* Unprotected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Unprotected@2x.png"; sourceTree = "<group>"; };
-		5F1C9AD919EDE879000F1FC1 /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
-		5F1C9ADA19EDE879000F1FC1 /* LaunchImageR4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImageR4.png; sourceTree = "<group>"; };
 		5F1C9ADB19EDE879000F1FC1 /* Massage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Massage.png; sourceTree = "<group>"; };
 		5F1C9ADC19EDE879000F1FC1 /* Massage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Massage@2x.png"; sourceTree = "<group>"; };
 		5F1C9ADD19EDE879000F1FC1 /* Meditations.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Meditations.png; sourceTree = "<group>"; };
@@ -1338,6 +1336,144 @@
 			name = Storyboards;
 			sourceTree = "<group>";
 		};
+		06FEA5C61A9D2DE9002BDFC2 /* Log In */ = {
+			isa = PBXGroup;
+			children = (
+				5F8C568C19F184C60024552A /* SelectLogInOrSignUpViewController.h */,
+				5F8C568D19F184C60024552A /* SelectLogInOrSignUpViewController.m */,
+				5F8C568F19F186C90024552A /* LoginViewController.h */,
+				5F8C569019F186C90024552A /* LoginViewController.m */,
+				5F8C569219F1BD950024552A /* SignUpViewController.h */,
+				5F8C569319F1BD950024552A /* SignUpViewController.m */,
+				5F846E0519F560D300CED980 /* Welcome1ViewController.h */,
+				5F846E0619F560D300CED980 /* Welcome1ViewController.m */,
+				5F846E0819F57D4D00CED980 /* Welcome2ViewController.h */,
+				5F846E0919F57D4D00CED980 /* Welcome2ViewController.m */,
+				5F846E0B19F5A96000CED980 /* Welcome3ViewController.h */,
+				5F846E0C19F5A96000CED980 /* Welcome3ViewController.m */,
+				5F846E0E19F5AEC100CED980 /* WelcomeONDOViewController.h */,
+				5F846E0F19F5AEC100CED980 /* WelcomeONDOViewController.m */,
+				5FE1184A1A1ABFF700AC76A7 /* WelcomeAlarmViewController.h */,
+				5FE1184B1A1ABFF700AC76A7 /* WelcomeAlarmViewController.m */,
+			);
+			name = "Log In";
+			sourceTree = "<group>";
+		};
+		06FEA5C71A9D2EC5002BDFC2 /* Coaching */ = {
+			isa = PBXGroup;
+			children = (
+				5F1C9A3619EDE879000F1FC1 /* DelegatingNavigationViewController.h */,
+				5F1C9A3719EDE879000F1FC1 /* DelegatingNavigationViewController.m */,
+				5F1C9A2B19EDE879000F1FC1 /* CoachingMenuViewController.h */,
+				5F1C9A2C19EDE879000F1FC1 /* CoachingMenuViewController.m */,
+				5F1C9A2D19EDE879000F1FC1 /* CoachingRootViewController.h */,
+				5F1C9A2E19EDE879000F1FC1 /* CoachingRootViewController.m */,
+				5F1C9A3A19EDE879000F1FC1 /* FertilityProfileIntroViewController.h */,
+				5F1C9A3B19EDE879000F1FC1 /* FertilityProfileIntroViewController.m */,
+				5F1C9A4A19EDE879000F1FC1 /* QuizViewController.h */,
+				5F1C9A4B19EDE879000F1FC1 /* QuizViewController.m */,
+				5F1C9A4219EDE879000F1FC1 /* OldSubscriptionSelectionController.h */,
+				5F1C9A4319EDE879000F1FC1 /* OldSubscriptionSelectionController.m */,
+				5F1C9A5219EDE879000F1FC1 /* SubscriptionSelectionController.h */,
+				5F1C9A5319EDE879000F1FC1 /* SubscriptionSelectionController.m */,
+			);
+			name = Coaching;
+			sourceTree = "<group>";
+		};
+		06FEA5C81A9D2FAC002BDFC2 /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				5F7AEA6D1A01373C0053ABAB /* TrackingNavigationController.h */,
+				5F7AEA6E1A01373C0053ABAB /* TrackingNavigationController.m */,
+				5F7AEA701A013C580053ABAB /* TrackingViewController.h */,
+				5F7AEA711A013C580053ABAB /* TrackingViewController.m */,
+				5F4C5B0A1A02C1CE00D0F465 /* TrackingNotesViewController.h */,
+				5F4C5B0B1A02C1CE00D0F465 /* TrackingNotesViewController.m */,
+			);
+			name = Tracking;
+			sourceTree = "<group>";
+		};
+		06FEA5C91A9D3002002BDFC2 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				5F6561EF19FADEFD001FB509 /* UserProfileReadOnlyViewController.h */,
+				5F6561F019FADEFD001FB509 /* UserProfileReadOnlyViewController.m */,
+				5F6561F119FADEFD001FB509 /* UserProfileReadOnlyViewController.xib */,
+				5FE1184D1A1ADEFC00AC76A7 /* SettingsAlarmViewController.h */,
+				5FE1184E1A1ADEFC00AC76A7 /* SettingsAlarmViewController.m */,
+				5FE1184F1A1ADEFC00AC76A7 /* SettingsAlarmViewController.xib */,
+				5F223F3219F03B480003AF64 /* SettingsTableViewController.h */,
+				5F223F3319F03B480003AF64 /* SettingsTableViewController.m */,
+				5F223F3419F03B480003AF64 /* SettingsTableViewController.xib */,
+				5F223F2D19F014620003AF64 /* ProfileTableViewController.h */,
+				5F223F2E19F014620003AF64 /* ProfileTableViewController.m */,
+				5F223F2F19F014620003AF64 /* ProfileTableViewController.xib */,
+				5F1C9C8519EF16DB000F1FC1 /* ONDOViewController.h */,
+				5F1C9C8619EF16DB000F1FC1 /* ONDOViewController.m */,
+				5F1C9C8719EF16DB000F1FC1 /* ONDOViewController.xib */,
+				5F1C9C7819EEEDF9000F1FC1 /* AccountMainTableViewController.h */,
+				5F1C9C7919EEEDF9000F1FC1 /* AccountMainTableViewController.m */,
+				5F1C9A2619EDE879000F1FC1 /* BluetoothDeviceTableViewController.h */,
+				5F1C9A2719EDE879000F1FC1 /* BluetoothDeviceTableViewController.m */,
+				5F1C9A2819EDE879000F1FC1 /* CalendarViewController.h */,
+				5F1C9A2919EDE879000F1FC1 /* CalendarViewController.m */,
+				5F1C9A2A19EDE879000F1FC1 /* CalendarViewController.xib */,
+				5F1C9A2F19EDE879000F1FC1 /* CommunityForumsViewController.h */,
+				5F1C9A3019EDE879000F1FC1 /* CommunityForumsViewController.m */,
+				5F1C9A3119EDE879000F1FC1 /* CommunityForumViewController.h */,
+				5F1C9A3219EDE879000F1FC1 /* CommunityForumViewController.m */,
+				5F1C9A3319EDE879000F1FC1 /* CommunityStoryboard.storyboard */,
+				5F1C9A3419EDE879000F1FC1 /* CycleViewController.h */,
+				5F1C9A3519EDE879000F1FC1 /* CycleViewController.m */,
+				5F1C9A3819EDE879000F1FC1 /* FAMSettingsViewController.h */,
+				5F1C9A3919EDE879000F1FC1 /* FAMSettingsViewController.m */,
+				5F1C9A3C19EDE879000F1FC1 /* LifestyleViewController.h */,
+				5F1C9A3D19EDE879000F1FC1 /* LifestyleViewController.m */,
+				5F1C9A3E19EDE879000F1FC1 /* MainTabBarViewController.h */,
+				5F1C9A3F19EDE879000F1FC1 /* MainTabBarViewController.m */,
+				5F1C9A4019EDE879000F1FC1 /* MoreViewController.h */,
+				5F1C9A4119EDE879000F1FC1 /* MoreViewController.m */,
+				5F1C9A4419EDE879000F1FC1 /* Onboard1ViewController.h */,
+				5F1C9A4519EDE879000F1FC1 /* Onboard1ViewController.m */,
+				5F1C9A4619EDE879000F1FC1 /* Onboard2ViewController.h */,
+				5F1C9A4719EDE879000F1FC1 /* Onboard2ViewController.m */,
+				5F1C9A4819EDE879000F1FC1 /* ProfileSettingsViewController.h */,
+				5F1C9A4919EDE879000F1FC1 /* ProfileSettingsViewController.m */,
+				5F1C9A4C19EDE879000F1FC1 /* RootViewController.h */,
+				5F1C9A4D19EDE879000F1FC1 /* RootViewController.m */,
+				5F1C9A4E19EDE879000F1FC1 /* RootViewController.xib */,
+				5F1C9A4F19EDE879000F1FC1 /* SessionStoryboard.storyboard */,
+				5F1C9A5019EDE879000F1FC1 /* SessionViewController.h */,
+				5F1C9A5119EDE879000F1FC1 /* SessionViewController.m */,
+				5F1C9A5419EDE879000F1FC1 /* SubscriptionSelectionController.xib */,
+				5F1C9A5519EDE879000F1FC1 /* TodayNavigationController.h */,
+				5F1C9A5619EDE879000F1FC1 /* TodayNavigationController.m */,
+				5F1C9A5719EDE879000F1FC1 /* TodayNavigationController.xib */,
+				5F1C9A5819EDE879000F1FC1 /* TodayViewController.h */,
+				5F1C9A5919EDE879000F1FC1 /* TodayViewController.m */,
+				5F1C9A5A19EDE879000F1FC1 /* WebViewController.h */,
+				5F1C9A5B19EDE879000F1FC1 /* WebViewController.m */,
+				5F1C9A5C19EDE879000F1FC1 /* WebViewController.xib */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		06FEA5CA1A9D302B002BDFC2 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				5F846E1319F5C2B900CED980 /* Launch Screen.xib */,
+				5F1C9B5419EDE87A000F1FC1 /* ConnectivityAlertView.xib */,
+				5F1C9B5519EDE87A000F1FC1 /* CycleChartView.h */,
+				5F1C9B5619EDE87A000F1FC1 /* CycleChartView.m */,
+				5F1C9B5719EDE87A000F1FC1 /* CycleChartView.xib */,
+				5F1C9B5A19EDE87A000F1FC1 /* FertilityStatusView.h */,
+				5F1C9B5B19EDE87A000F1FC1 /* FertilityStatusView.m */,
+				5F7AEA6A1A0137080053ABAB /* TrackingNavigationBar.h */,
+				5F7AEA6B1A0137080053ABAB /* TrackingNavigationBar.m */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
 		5F1C961219EDD319000F1FC1 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
@@ -1600,100 +1736,10 @@
 		5F1C9A2519EDE879000F1FC1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5F6561EF19FADEFD001FB509 /* UserProfileReadOnlyViewController.h */,
-				5F6561F019FADEFD001FB509 /* UserProfileReadOnlyViewController.m */,
-				5F6561F119FADEFD001FB509 /* UserProfileReadOnlyViewController.xib */,
-				5FE1184D1A1ADEFC00AC76A7 /* SettingsAlarmViewController.h */,
-				5FE1184E1A1ADEFC00AC76A7 /* SettingsAlarmViewController.m */,
-				5FE1184F1A1ADEFC00AC76A7 /* SettingsAlarmViewController.xib */,
-				5F223F3219F03B480003AF64 /* SettingsTableViewController.h */,
-				5F223F3319F03B480003AF64 /* SettingsTableViewController.m */,
-				5F223F3419F03B480003AF64 /* SettingsTableViewController.xib */,
-				5F223F2D19F014620003AF64 /* ProfileTableViewController.h */,
-				5F223F2E19F014620003AF64 /* ProfileTableViewController.m */,
-				5F223F2F19F014620003AF64 /* ProfileTableViewController.xib */,
-				5F1C9C8519EF16DB000F1FC1 /* ONDOViewController.h */,
-				5F1C9C8619EF16DB000F1FC1 /* ONDOViewController.m */,
-				5F1C9C8719EF16DB000F1FC1 /* ONDOViewController.xib */,
-				5F1C9C7819EEEDF9000F1FC1 /* AccountMainTableViewController.h */,
-				5F1C9C7919EEEDF9000F1FC1 /* AccountMainTableViewController.m */,
-				5F1C9A2619EDE879000F1FC1 /* BluetoothDeviceTableViewController.h */,
-				5F1C9A2719EDE879000F1FC1 /* BluetoothDeviceTableViewController.m */,
-				5F1C9A2819EDE879000F1FC1 /* CalendarViewController.h */,
-				5F1C9A2919EDE879000F1FC1 /* CalendarViewController.m */,
-				5F1C9A2A19EDE879000F1FC1 /* CalendarViewController.xib */,
-				5F1C9A2B19EDE879000F1FC1 /* CoachingMenuViewController.h */,
-				5F1C9A2C19EDE879000F1FC1 /* CoachingMenuViewController.m */,
-				5F1C9A2D19EDE879000F1FC1 /* CoachingRootViewController.h */,
-				5F1C9A2E19EDE879000F1FC1 /* CoachingRootViewController.m */,
-				5F1C9A2F19EDE879000F1FC1 /* CommunityForumsViewController.h */,
-				5F1C9A3019EDE879000F1FC1 /* CommunityForumsViewController.m */,
-				5F1C9A3119EDE879000F1FC1 /* CommunityForumViewController.h */,
-				5F1C9A3219EDE879000F1FC1 /* CommunityForumViewController.m */,
-				5F1C9A3319EDE879000F1FC1 /* CommunityStoryboard.storyboard */,
-				5F1C9A3419EDE879000F1FC1 /* CycleViewController.h */,
-				5F1C9A3519EDE879000F1FC1 /* CycleViewController.m */,
-				5F1C9A3619EDE879000F1FC1 /* DelegatingNavigationViewController.h */,
-				5F1C9A3719EDE879000F1FC1 /* DelegatingNavigationViewController.m */,
-				5F1C9A3819EDE879000F1FC1 /* FAMSettingsViewController.h */,
-				5F1C9A3919EDE879000F1FC1 /* FAMSettingsViewController.m */,
-				5F1C9A3A19EDE879000F1FC1 /* FertilityProfileIntroViewController.h */,
-				5F1C9A3B19EDE879000F1FC1 /* FertilityProfileIntroViewController.m */,
-				5F1C9A3C19EDE879000F1FC1 /* LifestyleViewController.h */,
-				5F1C9A3D19EDE879000F1FC1 /* LifestyleViewController.m */,
-				5F1C9A3E19EDE879000F1FC1 /* MainTabBarViewController.h */,
-				5F1C9A3F19EDE879000F1FC1 /* MainTabBarViewController.m */,
-				5F1C9A4019EDE879000F1FC1 /* MoreViewController.h */,
-				5F1C9A4119EDE879000F1FC1 /* MoreViewController.m */,
-				5F1C9A4219EDE879000F1FC1 /* OldSubscriptionSelectionController.h */,
-				5F1C9A4319EDE879000F1FC1 /* OldSubscriptionSelectionController.m */,
-				5F1C9A4419EDE879000F1FC1 /* Onboard1ViewController.h */,
-				5F1C9A4519EDE879000F1FC1 /* Onboard1ViewController.m */,
-				5F1C9A4619EDE879000F1FC1 /* Onboard2ViewController.h */,
-				5F1C9A4719EDE879000F1FC1 /* Onboard2ViewController.m */,
-				5F1C9A4819EDE879000F1FC1 /* ProfileSettingsViewController.h */,
-				5F1C9A4919EDE879000F1FC1 /* ProfileSettingsViewController.m */,
-				5F1C9A4A19EDE879000F1FC1 /* QuizViewController.h */,
-				5F1C9A4B19EDE879000F1FC1 /* QuizViewController.m */,
-				5F1C9A4C19EDE879000F1FC1 /* RootViewController.h */,
-				5F1C9A4D19EDE879000F1FC1 /* RootViewController.m */,
-				5F1C9A4E19EDE879000F1FC1 /* RootViewController.xib */,
-				5F1C9A4F19EDE879000F1FC1 /* SessionStoryboard.storyboard */,
-				5F1C9A5019EDE879000F1FC1 /* SessionViewController.h */,
-				5F1C9A5119EDE879000F1FC1 /* SessionViewController.m */,
-				5F1C9A5219EDE879000F1FC1 /* SubscriptionSelectionController.h */,
-				5F1C9A5319EDE879000F1FC1 /* SubscriptionSelectionController.m */,
-				5F1C9A5419EDE879000F1FC1 /* SubscriptionSelectionController.xib */,
-				5F1C9A5519EDE879000F1FC1 /* TodayNavigationController.h */,
-				5F1C9A5619EDE879000F1FC1 /* TodayNavigationController.m */,
-				5F1C9A5719EDE879000F1FC1 /* TodayNavigationController.xib */,
-				5F1C9A5819EDE879000F1FC1 /* TodayViewController.h */,
-				5F1C9A5919EDE879000F1FC1 /* TodayViewController.m */,
-				5F1C9A5A19EDE879000F1FC1 /* WebViewController.h */,
-				5F1C9A5B19EDE879000F1FC1 /* WebViewController.m */,
-				5F1C9A5C19EDE879000F1FC1 /* WebViewController.xib */,
-				5F8C568C19F184C60024552A /* SelectLogInOrSignUpViewController.h */,
-				5F8C568D19F184C60024552A /* SelectLogInOrSignUpViewController.m */,
-				5F8C568F19F186C90024552A /* LoginViewController.h */,
-				5F8C569019F186C90024552A /* LoginViewController.m */,
-				5F8C569219F1BD950024552A /* SignUpViewController.h */,
-				5F8C569319F1BD950024552A /* SignUpViewController.m */,
-				5F846E0519F560D300CED980 /* Welcome1ViewController.h */,
-				5F846E0619F560D300CED980 /* Welcome1ViewController.m */,
-				5F846E0819F57D4D00CED980 /* Welcome2ViewController.h */,
-				5F846E0919F57D4D00CED980 /* Welcome2ViewController.m */,
-				5F846E0B19F5A96000CED980 /* Welcome3ViewController.h */,
-				5F846E0C19F5A96000CED980 /* Welcome3ViewController.m */,
-				5F846E0E19F5AEC100CED980 /* WelcomeONDOViewController.h */,
-				5F846E0F19F5AEC100CED980 /* WelcomeONDOViewController.m */,
-				5FE1184A1A1ABFF700AC76A7 /* WelcomeAlarmViewController.h */,
-				5FE1184B1A1ABFF700AC76A7 /* WelcomeAlarmViewController.m */,
-				5F7AEA6D1A01373C0053ABAB /* TrackingNavigationController.h */,
-				5F7AEA6E1A01373C0053ABAB /* TrackingNavigationController.m */,
-				5F7AEA701A013C580053ABAB /* TrackingViewController.h */,
-				5F7AEA711A013C580053ABAB /* TrackingViewController.m */,
-				5F4C5B0A1A02C1CE00D0F465 /* TrackingNotesViewController.h */,
-				5F4C5B0B1A02C1CE00D0F465 /* TrackingNotesViewController.m */,
+				06FEA5C61A9D2DE9002BDFC2 /* Log In */,
+				06FEA5C71A9D2EC5002BDFC2 /* Coaching */,
+				06FEA5C81A9D2FAC002BDFC2 /* Tracking */,
+				06FEA5C91A9D3002002BDFC2 /* Other */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1756,8 +1802,6 @@
 				5F1C9AD219EDE879000F1FC1 /* Icon76.png */,
 				5F1C9AD319EDE879000F1FC1 /* Icon76@x.png */,
 				5F1C9AD419EDE879000F1FC1 /* Intercourse */,
-				5F1C9AD919EDE879000F1FC1 /* LaunchImage.png */,
-				5F1C9ADA19EDE879000F1FC1 /* LaunchImageR4.png */,
 				5F1C9ADB19EDE879000F1FC1 /* Massage.png */,
 				5F1C9ADC19EDE879000F1FC1 /* Massage@2x.png */,
 				5F1C9ADD19EDE879000F1FC1 /* Meditations.png */,
@@ -2050,15 +2094,8 @@
 			children = (
 				06FEA5C41A9CFA4C002BDFC2 /* Storyboards */,
 				06FEA5C31A9CF928002BDFC2 /* TableView Cells */,
-				5F846E1319F5C2B900CED980 /* Launch Screen.xib */,
-				5F1C9B5419EDE87A000F1FC1 /* ConnectivityAlertView.xib */,
-				5F1C9B5519EDE87A000F1FC1 /* CycleChartView.h */,
-				5F1C9B5619EDE87A000F1FC1 /* CycleChartView.m */,
-				5F1C9B5719EDE87A000F1FC1 /* CycleChartView.xib */,
-				5F1C9B5A19EDE87A000F1FC1 /* FertilityStatusView.h */,
-				5F1C9B5B19EDE87A000F1FC1 /* FertilityStatusView.m */,
-				5F7AEA6A1A0137080053ABAB /* TrackingNavigationBar.h */,
-				5F7AEA6B1A0137080053ABAB /* TrackingNavigationBar.m */,
+				06FEA5CA1A9D302B002BDFC2 /* Other */,
+				06F0A13E1A9E4F3000C253BC /* LaunchScreen.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2362,7 +2399,7 @@
 				ORGANIZATIONNAME = "Back Forty";
 				TargetAttributes = {
 					C36C50FA189028190053A884 = {
-						DevelopmentTeam = TAGM86AK24;
+						DevelopmentTeam = MC934XNWAV;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -2452,6 +2489,7 @@
 				5F1C9C1419EDE87A000F1FC1 /* Massage@2x.png in Resources */,
 				5F1C9C4619EDE87A000F1FC1 /* more_selected@2x.png in Resources */,
 				5F1C9C1D19EDE87A000F1FC1 /* Good.png in Resources */,
+				06F0A13F1A9E4F3000C253BC /* LaunchScreen.xib in Resources */,
 				5F1C9B9F19EDE87A000F1FC1 /* WebViewController.xib in Resources */,
 				5F1C9BB219EDE87A000F1FC1 /* Creamy.png in Resources */,
 				5F1C9C3119EDE87A000F1FC1 /* Medium.png in Resources */,
@@ -2542,7 +2580,6 @@
 				5F1C9B9A19EDE87A000F1FC1 /* SubscriptionSelectionController.xib in Resources */,
 				5F1C9C3319EDE87A000F1FC1 /* Spotting.png in Resources */,
 				5F6561E919FAD836001FB509 /* EditDateOfBirthTableViewCell.xib in Resources */,
-				5F1C9C1119EDE87A000F1FC1 /* LaunchImage.png in Resources */,
 				5F1E1E271A110116001C22B7 /* TrackingPregnancyTestTableViewCell.xib in Resources */,
 				5F1C9BC819EDE87A000F1FC1 /* Habits@2x.png in Resources */,
 				5F1C9C5619EDE87A000F1FC1 /* .gitkeep in Resources */,
@@ -2649,7 +2686,6 @@
 				5F1C9C3F19EDE87A000F1FC1 /* coaching_unselect.png in Resources */,
 				5FE118491A1A907000AC76A7 /* TrackingMedicinesTableViewCell.xib in Resources */,
 				5F1C9C3E19EDE87A000F1FC1 /* coaching_selected@2x.png in Resources */,
-				5F1C9C1219EDE87A000F1FC1 /* LaunchImageR4.png in Resources */,
 				5F1C9BDB19EDE87A000F1FC1 /* FertilityQuestions@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3011,7 +3047,6 @@
 			baseConfigurationReference = A6DE6B0878F241D501B88C63 /* Pods-Ovatemp.release automation.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -3167,7 +3202,6 @@
 			baseConfigurationReference = A4580E814E861443FA3E0BBB /* Pods-Ovatemp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -3219,7 +3253,6 @@
 			baseConfigurationReference = DB1EDD0C2055CDA999D65790 /* Pods-Ovatemp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

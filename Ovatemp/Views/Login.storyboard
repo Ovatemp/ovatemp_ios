@@ -194,7 +194,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ytD-pr-ZyT" firstAttribute="leading" secondItem="UhM-Z6-Iye" secondAttribute="leadingMargin" id="4Mv-OV-ytd"/>
                             <constraint firstItem="Sxc-1f-7bk" firstAttribute="leading" secondItem="UhM-Z6-Iye" secondAttribute="leadingMargin" id="9If-yR-fFt"/>
@@ -713,7 +713,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="inY-NG-Hzw"/>
-        <segue reference="gya-ek-y7R"/>
-        <segue reference="i5d-0H-gOh"/>
+        <segue reference="kMr-Zw-8PI"/>
+        <segue reference="oca-qj-gdR"/>
     </inferredMetricsTieBreakers>
 </document>
