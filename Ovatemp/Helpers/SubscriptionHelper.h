@@ -15,10 +15,10 @@ UIKIT_EXTERN NSString *const SubscriptionHelperProductPurchasedNotification;
 
 -(id)init;
 
-+ (SubscriptionHelper*) sharedInstance;
++ (SubscriptionHelper *)sharedInstance;
 
-- (BOOL) hasActiveSubscription;
-- (void) requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler;
-- (void) restorePurchases;
+- (BOOL)hasActiveSubscription;
+- (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler;
+- (void)restorePurchases;
 
 @end

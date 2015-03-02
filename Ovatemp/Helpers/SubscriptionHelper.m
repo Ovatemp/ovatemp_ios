@@ -7,7 +7,9 @@
 //
 
 #import "SubscriptionHelper.h"
+
 #import <StoreKit/StoreKit.h>
+
 #import "User.h"
 
 NSString *const SubscriptionHelperProductPurchasedNotification = @"SubscriptionHelperProductPurchasedNotification";
@@ -16,16 +18,17 @@ NSString *const SubscriptionExpirationDefaultsKey = @"SubscriptionHelperProductP
 @interface SubscriptionHelper () <SKProductsRequestDelegate, SKPaymentTransactionObserver>
 @end
 
-@implementation SubscriptionHelper {
+@implementation SubscriptionHelper
+{
   SKProductsRequest *_productsRequest;
   RequestProductsCompletionHandler _completionHandler;
   NSSet *_productIdentifiers;
 }
 
-- (id) init {
-
+- (id) init
+{
   self = [super init];
-  if(self) {
+  if (self) {
     _productIdentifiers = [[NSSet alloc] initWithArray:[[NSArray alloc] initWithObjects:
                                                         @"OneMonth",
                                                         @"ThreeMonths",
@@ -38,8 +41,8 @@ NSString *const SubscriptionExpirationDefaultsKey = @"SubscriptionHelperProductP
   return self;
 }
 
-- (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler {
-
+- (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler
+{
   _completionHandler = [completionHandler copy];
 
   _productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers: _productIdentifiers];

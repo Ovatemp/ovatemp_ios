@@ -16,8 +16,9 @@
   [self loadAndThen:nil failure:nil];
 }
 
-+ (void)loadAndThen:(ConnectionManagerSuccess)success failure:(ConnectionManagerFailure)failure {
-  [ConnectionManager get:@"/fertility_profiles" success:^(id response) {
++ (void)loadAndThen:(ConnectionManagerSuccess)success failure:(ConnectionManagerFailure)failure
+{
+    [ConnectionManager get:@"/fertility_profiles" success:^(id response) {
     NSString *fertility_profile_name = response[@"fertility_profile_name"];
     if (fertility_profile_name) {
       [User current].fertilityProfileName = fertility_profile_name;
@@ -31,11 +32,11 @@
     if (success) {
       success(response);
     }
-  } failure:^(NSError *error) {
+    } failure:^(NSError *error) {
     if (failure) {
       failure(error);
     }
-  }];
+    }];
 }
 
 @end

@@ -68,7 +68,6 @@ static CGFloat const kDesaturateBy = 0.22;
                                                                                               forKey: NSForegroundColorAttributeName];
     
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(247/255.0) green:(247/255.0) blue:(247/255.0) alpha:1];
-    //self.navigationController.navigationBar.barTintColor = LIGHT;
     //self.navigationController.navigationBar.tintColor = DARK;
     //self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: DARK};
     

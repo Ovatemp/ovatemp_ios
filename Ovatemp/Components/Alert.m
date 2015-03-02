@@ -27,37 +27,39 @@ static NSString * const kTitleKey = @"title";
 
 # pragma mark - Setup
 
-+ (Alert *)alertForError:(NSError *)error {
-  NSString *title = @"Something Went Wrong!";
++ (Alert *)alertForError:(NSError *)error
+{
+    NSString *title = @"Something Went Wrong!";
+    NSString *message = [error.userInfo objectForKey: @"error"];
 
-  NSString *message = [error.userInfo objectForKey:@"error"];
-
-  if (!message) {
+    if (!message) {
     message = error.localizedDescription;
-  }
-  if (!message || message.isNull) {
+    }
+    if (!message || message.isNull) {
     message = @"We're not 100% sure what, but we've been notified and will fix it shortly.";
-  }
-  
-  return [Alert alertWithTitle:title message:message];
+    }
+
+    return [Alert alertWithTitle: title message: message];
 }
 
-+ (Alert *)alertWithTitle:(NSString *)title message:(NSString *)message {
-  Alert *alert = [[self alloc] init];
-  alert.title = title;
-  alert.message = message;
-  if (!kAlerts) {
++ (Alert *)alertWithTitle:(NSString *)title message:(NSString *)message
+{
+    Alert *alert = [[self alloc] init];
+    alert.title = title;
+    alert.message = message;
+    if (!kAlerts) {
     kAlerts = [NSMutableDictionary dictionary];
-  }
-  kAlerts[alert.description] = alert;
-  return alert;
+    }
+    kAlerts[alert.description] = alert;
+    return alert;
 }
 
-+ (Alert *)presentError:(NSError *)error {
-  Alert *alert = [self alertForError:error];
-  [alert addButtonWithTitle:@"Okay"];
-  [alert show];
-  return alert;
++ (Alert *)presentError:(NSError *)error
+{
+    Alert *alert = [self alertForError:error];
+    [alert addButtonWithTitle:@"Okay"];
+    [alert show];
+    return alert;
 }
 
 + (Alert *)showAlertWithTitle:(NSString *)title message:(NSString *)message {

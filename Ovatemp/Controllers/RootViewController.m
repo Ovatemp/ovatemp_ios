@@ -104,7 +104,7 @@ static CGFloat const kDissolveDuration = 0.2;
     
 //    UIViewController *calendarController = [[CalendarViewController alloc] initWithNibName:@"CalendarViewController" bundle:nil];
     UIViewController *coachingController = [[UIStoryboard storyboardWithName:@"CoachingStoryboard" bundle:nil] instantiateInitialViewController];
-    UIViewController *communityController = [[UIStoryboard storyboardWithName:@"CommunityStoryboard" bundle:nil] instantiateInitialViewController];
+//    UIViewController *communityController = [[UIStoryboard storyboardWithName:@"CommunityStoryboard" bundle:nil] instantiateInitialViewController];
     //  UIViewController *moreViewController = [[UIStoryboard storyboardWithName:@"MoreStoryboard" bundle:nil] instantiateInitialViewController];
     
     // Account
@@ -136,10 +136,10 @@ static CGFloat const kDissolveDuration = 0.2;
     coachingController.tabBarItem.selectedImage = [UIImage imageNamed:@"icn_coaching_pressed"];
     coachingController.tabBarItem.title = @"Coaching";
     
-    [tabController addChildViewController:communityController];
-    communityController.tabBarItem.image = [UIImage imageNamed:@"icn_community"];
-    communityController.tabBarItem.selectedImage = [UIImage imageNamed:@"icn_community_pressed"];
-    communityController.tabBarItem.title = @"Community";
+//    [tabController addChildViewController:communityController];
+//    communityController.tabBarItem.image = [UIImage imageNamed:@"icn_community"];
+//    communityController.tabBarItem.selectedImage = [UIImage imageNamed:@"icn_community_pressed"];
+//    communityController.tabBarItem.title = @"Community";
     
     //  [tabController addChildViewController:moreViewController];
     //  moreViewController.tabBarItem.image = [UIImage imageNamed:@"more_unselect"];

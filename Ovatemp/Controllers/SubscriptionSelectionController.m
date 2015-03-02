@@ -20,15 +20,16 @@ static NSString * const kExerciseIcon = @"icon";
 @interface SubscriptionSelectionController ()
 @end
 
-@implementation SubscriptionSelectionController {
+@implementation SubscriptionSelectionController
+{
     SubscriptionHelper *_subscriptionHelper;
     NSArray *_products;
 }
 
 #pragma mark - UIViewController overrides
 
-- (void) viewWillAppear:(BOOL)animated {
-    
+- (void) viewWillAppear:(BOOL)animated
+{
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"ShouldRotate"];
     
     if (!kExerciseList) {
@@ -44,13 +45,14 @@ static NSString * const kExerciseIcon = @"icon";
                           ];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(productPurchased:)
-                                                 name:SubscriptionHelperProductPurchasedNotification
-                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(productPurchased:)
+                                                 name: SubscriptionHelperProductPurchasedNotification
+                                               object: nil];
 }
 
-- (void)logsubviews:(UIView *)view withDepth:(int)depth {
+- (void)logsubviews:(UIView *)view withDepth:(int)depth
+{
     NSString *indent = @"";
     for (int i = 0; i < depth; i++) {
         indent = [indent stringByAppendingString:@" "];
@@ -62,13 +64,14 @@ static NSString * const kExerciseIcon = @"icon";
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ShouldRotate"];
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
+    [[NSUserDefaults standardUserDefaults] setBool: YES forKey: @"ShouldRotate"];
 }
 
-- (void)viewDidLoad {
-    
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     _subscriptionHelper = [SubscriptionHelper sharedInstance];
@@ -90,31 +93,33 @@ static NSString * const kExerciseIcon = @"icon";
     [self buttonsAreEnabled:NO];
 }
 
-- (void)didReceiveMemoryWarning {
-    
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
 }
 
 # pragma mark - StoreKit notifications
 
-- (void)productPurchased: (NSNotification *)notification {
-    
-    [self.navigationController popViewControllerAnimated:NO];
+- (void)productPurchased: (NSNotification *)notification
+{
+    [self.navigationController popViewControllerAnimated: NO];
 }
 
 
 # pragma mark - Table View
 
-- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return kExerciseList.count;
 }
 
-- (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSubscriptionPlanCell forIndexPath:indexPath];
     
     NSDictionary *exercise = kExerciseList[indexPath.row];
@@ -128,7 +133,8 @@ static NSString * const kExerciseIcon = @"icon";
 //  return 52.0f;
 //}
 
-- (void) selectionMadeForProduct:(SKProduct*)selectedProduct {
+- (void)selectionMadeForProduct:(SKProduct *)selectedProduct
+{
     SKPayment * payment = [SKPayment paymentWithProduct: selectedProduct];
     [[SKPaymentQueue defaultQueue] addPayment:payment];
     
@@ -138,35 +144,41 @@ static NSString * const kExerciseIcon = @"icon";
 
 # pragma mark - UIButtons
 
-- (IBAction)leftSegmentedButtonPressed:(GradientButton *)sender {
+- (IBAction)leftSegmentedButtonPressed:(GradientButton *)sender
+{
     SKProduct *selectedProduct = _products[0];
     [self selectionMadeForProduct:selectedProduct];
 }
 
-- (IBAction)centerSegmentedButtonPressed:(GradientButton *)sender {
+- (IBAction)centerSegmentedButtonPressed:(GradientButton *)sender
+{
     SKProduct *selectedProduct = _products[1];
     [self selectionMadeForProduct:selectedProduct];
 }
 
-- (IBAction)rightSegmentedButtonPressed:(GradientButton *)sender {
+- (IBAction)rightSegmentedButtonPressed:(GradientButton *)sender
+{
     SKProduct *selectedProduct = _products[2];
     [self selectionMadeForProduct:selectedProduct];
 }
 
-- (IBAction)centerDiscountButtonPressed:(GradientButton *)sender {
+- (IBAction)centerDiscountButtonPressed:(GradientButton *)sender
+{
     [self centerSegmentedButtonPressed:sender];
 }
 
-- (IBAction)rightDiscountButtonPressed:(GradientButton *)sender {
+- (IBAction)rightDiscountButtonPressed:(GradientButton *)sender
+{
     [self rightSegmentedButtonPressed:sender];
 }
 
--(IBAction)restoreButtonTapped:(id)sender {
-    
+-(IBAction)restoreButtonTapped:(id)sender
+{
     [_subscriptionHelper restorePurchases];
 }
 
-- (void) buttonsAreEnabled:(BOOL)enabled {
+- (void) buttonsAreEnabled:(BOOL)enabled
+{
     BOOL disabled = !enabled;
     _leftSegmentedButton.highlighted = disabled;
     _leftSegmentedButton.enabled = enabled;
@@ -178,7 +190,6 @@ static NSString * const kExerciseIcon = @"icon";
     _centerDiscountButton.enabled = enabled;
     _rightDiscountButton.highlighted = disabled;
     _rightDiscountButton.enabled = enabled;
-    
 }
 
 @end

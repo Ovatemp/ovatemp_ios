@@ -13,32 +13,44 @@
 
 @implementation CoachingRootViewController
 
-- (void)viewDidLoad {
-  [super viewDidLoad];
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
 
-  self.navigationController.delegate = self;
-  self.navigationController.navigationBarHidden = YES;
+    [self customizeAppearance];
+    self.navigationController.delegate = self;
+    //self.navigationController.navigationBarHidden = NO;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
   [super viewDidAppear:animated];
   [self trackScreenView:@"CoachingIntro"];
 }
 
-- (IBAction)buyTapped:(id)sender {
-  
-  [self trackEvent:@"ui_action" action:@"tap" label:@"buy_button" value: @(29.99)];
-  
-  if([[SubscriptionHelper sharedInstance] hasActiveSubscription]) {
-    [self pushAppropriateController];
-  } else {
-    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SubscriptionSelectionViewController"];
-    [self.navigationController pushViewController: controller animated:FALSE];
-  }
-  
+- (void)customizeAppearance
+{
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject: [UIColor ovatempDarkGreyTitleColor]
+                                                                                              forKey: NSForegroundColorAttributeName];
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(247/255.0) green:(247/255.0) blue:(247/255.0) alpha:1];
+    self.navigationController.navigationBar.tintColor = [UIColor ovatempAquaColor];
 }
 
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+- (IBAction)buyTapped:(id)sender
+{
+    [self trackEvent:@"ui_action" action:@"tap" label:@"buy_button" value: @(29.99)];
+
+    if([[SubscriptionHelper sharedInstance] hasActiveSubscription]) {
+        [self pushAppropriateController];
+    } else {
+        UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SubscriptionSelectionViewController"];
+        [self.navigationController pushViewController: controller animated: YES];
+    }
+}
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
   [viewController viewWillAppear:animated];
 
   if(viewController != self) {

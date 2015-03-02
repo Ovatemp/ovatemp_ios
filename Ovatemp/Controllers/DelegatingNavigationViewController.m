@@ -14,7 +14,8 @@
 
 @implementation DelegatingNavigationViewController
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
   return self.visibleViewController.preferredStatusBarStyle;
 }
 
