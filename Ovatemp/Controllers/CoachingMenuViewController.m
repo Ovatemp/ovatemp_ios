@@ -26,15 +26,16 @@
 
 @implementation CoachingMenuViewController
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
   self = [super initWithCoder:aDecoder];
   if (self) {
-    self.rowNames = @[@"Acupressure",        @"Lifestyle",        @"Massage",           @"Meditation"];
+    self.rowNames = @[@"Acupressure", @"Lifestyle", @"Massage", @"Meditation"];
     self.rowColors = @[Color(125, 205, 200), Color(84, 194, 187), Color(61, 175, 168), Color(37, 145, 138)];
 
-    self.edgesForExtendedLayout=UIRectEdgeNone;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.extendedLayoutIncludesOpaqueBars=NO;
-    self.automaticallyAdjustsScrollViewInsets=NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
 
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = backButton;
@@ -42,13 +43,15 @@
   return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
   [super viewWillAppear:animated];
+    
   self.navigationItem.hidesBackButton = YES;
   NSString *profileName = [[User current].fertilityProfileName capitalizedString];
   self.navigationItem.title = profileName;
-  self.navigationItem.titleIcon = [UIImage imageNamed:[profileName stringByAppendingString:@"Small"]];
-  self.navigationItem.iconLabel.textColor = DARK;
+//  self.navigationItem.titleIcon = [UIImage imageNamed:[profileName stringByAppendingString:@"Small"]];
+//  self.navigationItem.iconLabel.textColor = DARK;
 
   self.navigationController.navigationBarHidden = NO;
   self.navigationController.navigationBar.barTintColor = LIGHT;
@@ -60,7 +63,8 @@
   [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
   UIViewController *viewController;
   NSString *categoryName = self.rowNames[indexPath.row];
 
@@ -85,33 +89,40 @@
   [self.navigationController pushViewController:viewController animated:YES];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
   return 1;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
     return 0;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
   return self.rowNames.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
   CoachingMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CoachingMenuCell"];
+    
   cell.titleLabel.text = self.rowNames[indexPath.row];
-  cell.iconImageView.image = [UIImage imageNamed:self.rowNames[indexPath.row]];
+  cell.iconImageView.image = [UIImage imageNamed: self.rowNames[indexPath.row]];
   cell.backgroundColor = self.rowColors[indexPath.row];
 
   return cell;
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
   return tableView.frame.size.height / self.rowNames.count;
 }
 
-- (BOOL)shouldAutorotate {
+- (BOOL)shouldAutorotate
+{
   return FALSE;
 }
 

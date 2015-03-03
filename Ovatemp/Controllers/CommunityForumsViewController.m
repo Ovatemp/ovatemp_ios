@@ -62,7 +62,7 @@ static CGFloat const kDesaturateBy = 0.22;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+        
     // nav bar title color
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject: [UIColor ovatempDarkGreyTitleColor]
                                                                                               forKey: NSForegroundColorAttributeName];

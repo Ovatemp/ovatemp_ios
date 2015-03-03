@@ -20,64 +20,69 @@
 
 @implementation LifestyleViewController
 
-- (void)viewDidLoad {
-  [super viewDidLoad];
-  
-  UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-  self.navigationItem.backBarButtonItem = backButton;
-  
-  self.edgesForExtendedLayout = UIRectEdgeNone;
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
 
-  UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backButton;
 
-  CGRect container = self.collectionView.frame;
-  container = UIEdgeInsetsInsetRect(container, self.collectionView.contentInset);
-  CGFloat itemWidth = container.size.width / 2 - 0.5;
-  CGFloat itemHeight = container.size.height / 2 - 44.5;
-  layout.itemSize = CGSizeMake(itemWidth, itemHeight);
-  layout.minimumInteritemSpacing = 0;
-  layout.minimumLineSpacing = 1.0;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 
-  layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);  // top, left, bottom, right
-  [self.collectionView setCollectionViewLayout:layout];
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
 
-  self.itemNames = @[@"Diet", @"Supplements", @"Exercise", @"Habits"];
-  self.collectionView.backgroundColor = [LIGHT darkenBy:0.2];
+    CGRect container = self.collectionView.frame;
+    container = UIEdgeInsetsInsetRect(container, self.collectionView.contentInset);
+    CGFloat itemWidth = container.size.width / 2 - 0.5;
+    CGFloat itemHeight = container.size.height / 2 - 44.5;
+    layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+    layout.minimumInteritemSpacing = 0;
+    layout.minimumLineSpacing = 1.0;
+
+    layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);  // top, left, bottom, right
+    [self.collectionView setCollectionViewLayout:layout];
+
+    self.itemNames = @[@"Diet", @"Supplements", @"Exercise", @"Habits"];
+    self.collectionView.backgroundColor = [LIGHT darkenBy:0.2];
 }
 
 # pragma mark - UICollectionViewDataSource/Delegate methods
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-  return self.itemNames.count;
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.itemNames.count;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-  NSString *name = self.itemNames[indexPath.row];
-  NSString *url = [Configuration sharedConfiguration].coachingContentUrls[name];
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *name = self.itemNames[indexPath.row];
+    NSString *url = [Configuration sharedConfiguration].coachingContentUrls[name];
 
-  WebViewController *webViewController = [WebViewController withURL:url];
-  webViewController.navigationItem.title = name;
-  UIImage *image = [UIImage imageNamed:[name stringByAppendingString:@"Small"]];
-  image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-  webViewController.navigationItem.titleIcon = image;
-  webViewController.navigationItem.iconLabel.tintColor = LIGHT;
-  webViewController.navigationItem.iconLabel.textColor = LIGHT;
-  [self trackScreenView:[@"Coaching Content: " stringByAppendingString:name]];
-  [self trackEvent:@"Started Coaching Program" action:@"Category" label:name value:nil];
-  [self.navigationController pushViewController:webViewController animated:YES];
+    WebViewController *webViewController = [WebViewController withURL:url];
+    webViewController.navigationItem.title = name;
+    UIImage *image = [UIImage imageNamed:[name stringByAppendingString:@"Small"]];
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    webViewController.navigationItem.titleIcon = image;
+    webViewController.navigationItem.iconLabel.tintColor = LIGHT;
+    webViewController.navigationItem.iconLabel.textColor = LIGHT;
+    [self trackScreenView:[@"Coaching Content: " stringByAppendingString:name]];
+    [self trackEvent:@"Started Coaching Program" action:@"Category" label:name value:nil];
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-  LifestyleCell *cell= (LifestyleCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"LifestyleCell" forIndexPath:indexPath];
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    LifestyleCell *cell= (LifestyleCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"LifestyleCell" forIndexPath:indexPath];
 
-  cell.imageView.image = [UIImage imageNamed:self.itemNames[indexPath.row]];
-  cell.titleLabel.text = self.itemNames[indexPath.row];
+    cell.imageView.image = [UIImage imageNamed: self.itemNames[indexPath.row]];
+    cell.titleLabel.text = self.itemNames[indexPath.row];
 
-  return cell;
+    return cell;
 }
 
-- (BOOL)shouldAutorotate {
-  return FALSE;
+- (BOOL)shouldAutorotate
+{
+    return FALSE;
 }
 
 @end
