@@ -15,12 +15,13 @@
 
 @implementation SettingsAlarmViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    // reset date picker hidden view frame
-    self.hideDatePickerView.frame = CGRectMake(self.hideDatePickerView.frame.origin.x, self.hideDatePickerView.frame.origin.y - 160, self.hideDatePickerView.frame.size.width, self.hideDatePickerView.frame.size.height);
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [self.alarmSwitch addTarget:self action:@selector(switchDidChange:) forControlEvents:UIControlEventValueChanged];
     self.alarmSwitch.onTintColor = [UIColor ovatempAquaColor];
@@ -45,14 +46,20 @@
             // default date
             self.onLabel.text = @"OFF";
             [self.alarmSwitch setOn:NO];
-            [self hideDatePicker];
+            [self hideDatePickerWithAnimation: NO];
             self.alarmTimeValueLabel.textColor = [UIColor ovatempGreyColor];
         }
     }
+    
+    if (!self.alarmSwitch.isOn) {
+        [self hideDatePickerWithAnimation: NO];
+    }
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
+    
     self.title = @"BBT Reminder";
 }
 
@@ -76,23 +83,37 @@
         self.alarmTimeValueLabel.textColor = [UIColor blackColor];
     } else {
         self.onLabel.text = @"OFF";
-        [self hideDatePicker];
+        [self hideDatePickerWithAnimation: YES];
         self.alarmTimeValueLabel.textColor = [UIColor ovatempGreyColor];
     }
 }
 
-- (void)showDatePicker {
-    
-    // 252, 412
-    [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.6f initialSpringVelocity:0.5f options:0 animations:^{
-            self.hideDatePickerView.frame = CGRectMake(self.hideDatePickerView.frame.origin.x, self.hideDatePickerView.frame.origin.y + 160, self.hideDatePickerView.frame.size.width, self.hideDatePickerView.frame.size.height);
-    } completion:nil];
+- (void)showDatePicker
+{
+    [UIView animateWithDuration: 0.5 animations:^{
+        [self.hideDatePickerView.subviews setValue: @1 forKeyPath: @"alpha"];
+        [self.hideDatePickerView.subviews setValue: @NO forKeyPath: @"hidden"];
+        self.hideDatePickerView.backgroundColor = [UIColor whiteColor];
+    }];
 }
 
-- (void)hideDatePicker {
-    [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.6f initialSpringVelocity:0.5f options:0 animations:^{
-        self.hideDatePickerView.frame = CGRectMake(self.hideDatePickerView.frame.origin.x, self.hideDatePickerView.frame.origin.y - 160, self.hideDatePickerView.frame.size.width, self.hideDatePickerView.frame.size.height);
-    } completion:nil];
+- (void)hideDatePickerWithAnimation:(BOOL)animation
+{
+    if (animation) {
+        [UIView animateWithDuration: 0.5 animations:^{
+            [self hideDatePicker];
+        }];
+    }else{
+        [self hideDatePicker];
+    }
+    
+}
+
+- (void)hideDatePicker
+{
+    [self.hideDatePickerView.subviews setValue: @0 forKeyPath: @"alpha"];
+    [self.hideDatePickerView.subviews setValue: @NO forKeyPath: @"hidden"];
+    self.hideDatePickerView.backgroundColor = [UIColor colorWithRed: 249.0/255.0 green: 249.0/255.0 blue: 249.0/255.0 alpha: 1];
 }
 
 - (void)doDone:(id)sender {

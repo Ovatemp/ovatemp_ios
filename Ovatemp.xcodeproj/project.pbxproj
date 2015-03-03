@@ -1214,6 +1214,12 @@
 				5F6561F119FADEFD001FB509 /* UserProfileReadOnlyViewController.xib */,
 				5F1C9A3819EDE879000F1FC1 /* FAMSettingsViewController.h */,
 				5F1C9A3919EDE879000F1FC1 /* FAMSettingsViewController.m */,
+				5FE1184D1A1ADEFC00AC76A7 /* SettingsAlarmViewController.h */,
+				5FE1184E1A1ADEFC00AC76A7 /* SettingsAlarmViewController.m */,
+				5FE1184F1A1ADEFC00AC76A7 /* SettingsAlarmViewController.xib */,
+				5F1C9C8519EF16DB000F1FC1 /* ONDOViewController.h */,
+				5F1C9C8619EF16DB000F1FC1 /* ONDOViewController.m */,
+				5F1C9C8719EF16DB000F1FC1 /* ONDOViewController.xib */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -1388,6 +1394,9 @@
 				5F7AEA711A013C580053ABAB /* TrackingViewController.m */,
 				5F4C5B0A1A02C1CE00D0F465 /* TrackingNotesViewController.h */,
 				5F4C5B0B1A02C1CE00D0F465 /* TrackingNotesViewController.m */,
+				5F1C9A2819EDE879000F1FC1 /* CalendarViewController.h */,
+				5F1C9A2919EDE879000F1FC1 /* CalendarViewController.m */,
+				5F1C9A2A19EDE879000F1FC1 /* CalendarViewController.xib */,
 			);
 			name = Tracking;
 			sourceTree = "<group>";
@@ -1395,23 +1404,14 @@
 		06FEA5C91A9D3002002BDFC2 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				5FE1184D1A1ADEFC00AC76A7 /* SettingsAlarmViewController.h */,
-				5FE1184E1A1ADEFC00AC76A7 /* SettingsAlarmViewController.m */,
-				5FE1184F1A1ADEFC00AC76A7 /* SettingsAlarmViewController.xib */,
 				5F223F3219F03B480003AF64 /* SettingsTableViewController.h */,
 				5F223F3319F03B480003AF64 /* SettingsTableViewController.m */,
 				5F223F3419F03B480003AF64 /* SettingsTableViewController.xib */,
 				5F223F2D19F014620003AF64 /* ProfileTableViewController.h */,
 				5F223F2E19F014620003AF64 /* ProfileTableViewController.m */,
 				5F223F2F19F014620003AF64 /* ProfileTableViewController.xib */,
-				5F1C9C8519EF16DB000F1FC1 /* ONDOViewController.h */,
-				5F1C9C8619EF16DB000F1FC1 /* ONDOViewController.m */,
-				5F1C9C8719EF16DB000F1FC1 /* ONDOViewController.xib */,
 				5F1C9A2619EDE879000F1FC1 /* BluetoothDeviceTableViewController.h */,
 				5F1C9A2719EDE879000F1FC1 /* BluetoothDeviceTableViewController.m */,
-				5F1C9A2819EDE879000F1FC1 /* CalendarViewController.h */,
-				5F1C9A2919EDE879000F1FC1 /* CalendarViewController.m */,
-				5F1C9A2A19EDE879000F1FC1 /* CalendarViewController.xib */,
 				5F1C9A3419EDE879000F1FC1 /* CycleViewController.h */,
 				5F1C9A3519EDE879000F1FC1 /* CycleViewController.m */,
 				5F1C9A3E19EDE879000F1FC1 /* MainTabBarViewController.h */,
