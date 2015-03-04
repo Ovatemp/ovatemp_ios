@@ -21,17 +21,16 @@
 
 # pragma mark - Setup
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     self.emailField.delegate = self;
     self.passwordField.delegate = self;
     
-    self.emailField.borderStyle = UITextBorderStyleRoundedRect;
-    self.passwordField.borderStyle = UITextBorderStyleRoundedRect;
-    
-    [[UIBarButtonItem appearance] setTintColor:[UIColor ovatempAquaColor]];
+    [self customizeAppearance];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     // add keyboard observers
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -39,18 +38,32 @@
     [self trackScreenView:@"Login"];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+- (void)viewDidDisappear:(BOOL)animated
+{
     // remove keyboard observers
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Appearance
+
+- (void)customizeAppearance
+{
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject: [UIColor ovatempDarkGreyTitleColor]
+                                                                                              forKey: NSForegroundColorAttributeName];
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(247/255.0) green:(247/255.0) blue:(247/255.0) alpha:1];
+    self.navigationController.navigationBar.tintColor = [UIColor ovatempAquaColor];
+}
+
 #pragma mark - Keyboard
+
 - (void)keyboardDidShow:(NSNotification *)notification {
     
 //    if ([self.fullNameField isFirstResponder] || [self.dateOfBirthField isFirstResponder]) {

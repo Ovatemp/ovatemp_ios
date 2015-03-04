@@ -18,8 +18,10 @@
 
 @implementation WelcomeONDOViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    [self customizeAppearance];
     // Do any additional setup after loading the view.
     NSLog(@"%@", machineName());
     NSString *deviceName = machineName();
@@ -33,6 +35,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Appearance
+
+- (void)customizeAppearance
+{
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject: [UIColor ovatempDarkGreyTitleColor]
+                                                                                              forKey: NSForegroundColorAttributeName];
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(247/255.0) green:(247/255.0) blue:(247/255.0) alpha:1];
+    self.navigationController.navigationBar.tintColor = [UIColor ovatempAquaColor];
 }
 
 - (IBAction)doONDOPairing:(id)sender {

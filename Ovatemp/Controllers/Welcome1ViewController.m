@@ -20,6 +20,7 @@
     [super viewDidLoad];
     
     [self.navigationItem setHidesBackButton:YES];
+    [self customizeAppearance];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,6 +38,17 @@
     [UserProfile current].tryingToConceive = NO;
     [[UserProfile current] save];
     [self performSegueWithIdentifier:@"tryingToAvoid" sender:self];
+}
+
+#pragma mark - Appearance
+
+- (void)customizeAppearance
+{
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject: [UIColor ovatempDarkGreyTitleColor]
+                                                                                              forKey: NSForegroundColorAttributeName];
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(247/255.0) green:(247/255.0) blue:(247/255.0) alpha:1];
+    self.navigationController.navigationBar.tintColor = [UIColor ovatempAquaColor];
 }
 
 /*

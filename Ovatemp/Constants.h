@@ -59,12 +59,12 @@
 #endif
 
 #ifdef RELEASE_AUTOMATION
-    #define ROOT_URL @"http://api.ovatemp.com"
+    #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
     #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
 #endif
 
 #ifdef DEBUG
-    #define ROOT_URL @"http://api.ovatemp.com"
+    #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
     #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
 #endif
 

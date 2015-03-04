@@ -24,7 +24,8 @@
 
 @implementation SignUpViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     // text field overrides
@@ -40,32 +41,35 @@
     [self.navigationController.navigationBar setTintColor: [UIColor ovatempAquaColor]];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
 //    [[UIBarButtonItem appearance] setTintColor:[UIColor ovatempAquaColor]];
     [self.navigationController.navigationBar setTintColor: [UIColor ovatempAquaColor]];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     // add keyboard observers
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+- (void)viewDidDisappear:(BOOL)animated
+{
     // remove keyboard observers
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Keyboard
-- (void)keyboardDidShow:(NSNotification *)notification {
-    
-    
+- (void)keyboardDidShow:(NSNotification *)notification
+{
     CGFloat height = [self keyboardHeight:notification];
     self.kBHeight = height;
     
@@ -80,7 +84,8 @@
     }];
 }
 
-- (CGFloat)keyboardHeight:(NSNotification *)notification {
+- (CGFloat)keyboardHeight:(NSNotification *)notification
+{
     NSDictionary *info = [notification userInfo];
     NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
     CGRect keyboardFrame = [kbFrame CGRectValue];
@@ -88,7 +93,8 @@
     return keyboardFrame.size.height;
 }
 
-- (void)keyboardWillHide:(NSNotification *)notification {
+- (void)keyboardWillHide:(NSNotification *)notification
+{
     [UIView animateWithDuration:.2 animations:^{
         CGRect frame = self.view.frame;
         frame.origin.y = 0;
@@ -98,7 +104,8 @@
 
 # pragma mark - Registration
 
-- (IBAction)sessionRegister:(id)sender {
+- (IBAction)sessionRegister:(id)sender
+{
     
     // Text Field Checks
     if ([self.fullNameField.text length] == 0) {
