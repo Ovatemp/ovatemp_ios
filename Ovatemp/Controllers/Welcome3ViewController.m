@@ -526,7 +526,7 @@ BOOL weightHasData;
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIView *view = [[UIView alloc] init];
-    view.frame = CGRectMake(0, 0, 320, 200);
+    view.frame = CGRectMake(0, 0, 320, 1);
     
     view.backgroundColor = [UIColor whiteColor];
     

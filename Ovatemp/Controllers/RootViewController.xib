@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RootViewController">
@@ -11,23 +12,30 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="1">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_launchingscreen" translatesAutoresizingMaskIntoConstraints="NO" id="2To-HE-ydQ">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_launchingscreen" translatesAutoresizingMaskIntoConstraints="NO" id="2To-HE-ydQ">
+                    <rect key="frame" x="0.0" y="-233" width="600" height="1066"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="2To-HE-ydQ" secondAttribute="height" multiplier="40:71" id="Jha-od-lZs"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="2To-HE-ydQ" secondAttribute="bottom" id="78Y-kn-tg8"/>
+                <constraint firstAttribute="centerX" secondItem="2To-HE-ydQ" secondAttribute="centerX" id="MTm-Od-uDt"/>
+                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="2To-HE-ydQ" secondAttribute="trailing" id="Yqs-rC-A2R"/>
+                <constraint firstAttribute="centerY" secondItem="2To-HE-ydQ" secondAttribute="centerY" id="lQp-Yt-tfH"/>
+                <constraint firstItem="2To-HE-ydQ" firstAttribute="top" relation="lessThanOrEqual" secondItem="1" secondAttribute="top" id="mQe-TJ-KlR"/>
+                <constraint firstItem="2To-HE-ydQ" firstAttribute="leading" relation="lessThanOrEqual" secondItem="1" secondAttribute="leading" id="mTr-qp-TAd"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <point key="canvasLocation" x="516" y="536"/>
         </view>
     </objects>
     <resources>
         <image name="img_launchingscreen" width="320" height="568"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

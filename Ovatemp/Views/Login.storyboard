@@ -499,7 +499,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Getting to know you" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kOW-al-JBH">
-                                <rect key="frame" x="16" y="10" width="568" height="67.5"/>
+                                <rect key="frame" x="16" y="0.0" width="568" height="67.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="67.5" id="nBF-aG-y0Y"/>
                                 </constraints>
@@ -508,20 +508,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="seX-3l-BiP">
-                                <rect key="frame" x="0.0" y="238" width="600" height="298"/>
+                                <rect key="frame" x="0.0" y="147.5" width="600" height="388"/>
                                 <connections>
                                     <outlet property="dataSource" destination="gRw-wx-L5R" id="joA-9z-Dnb"/>
                                     <outlet property="delegate" destination="gRw-wx-L5R" id="x8M-7c-Pet"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YbR-Xo-d1e">
-                                <rect key="frame" x="16" y="87.5" width="568" height="140.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YbR-Xo-d1e">
+                                <rect key="frame" x="16" y="67.5" width="568" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="113" id="bl8-Re-vEq"/>
                                     <constraint firstAttribute="width" constant="288" id="iCg-84-IuH"/>
+                                    <constraint firstAttribute="height" constant="80" id="ldN-zB-BnX"/>
                                 </constraints>
                                 <string key="text">To receive accurate fertility information please tell us about yourself. For any answer you are unsure about please provide your best approximation.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
@@ -534,9 +535,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="YbR-Xo-d1e" firstAttribute="top" secondItem="kOW-al-JBH" secondAttribute="bottom" constant="10" id="1yR-12-NeX"/>
-                            <constraint firstItem="seX-3l-BiP" firstAttribute="top" secondItem="YbR-Xo-d1e" secondAttribute="bottom" constant="10" id="Ig7-tM-BRK"/>
-                            <constraint firstItem="kOW-al-JBH" firstAttribute="top" secondItem="Lbg-UC-4w9" secondAttribute="bottom" constant="10" id="Js1-9K-WbE"/>
+                            <constraint firstItem="YbR-Xo-d1e" firstAttribute="top" secondItem="kOW-al-JBH" secondAttribute="bottom" id="1yR-12-NeX"/>
+                            <constraint firstItem="seX-3l-BiP" firstAttribute="top" secondItem="YbR-Xo-d1e" secondAttribute="bottom" id="7hw-GH-uYW"/>
+                            <constraint firstItem="seX-3l-BiP" firstAttribute="top" secondItem="YbR-Xo-d1e" secondAttribute="bottom" constant="104.5" id="Ig7-tM-BRK"/>
+                            <constraint firstItem="kOW-al-JBH" firstAttribute="top" secondItem="Lbg-UC-4w9" secondAttribute="bottom" id="Js1-9K-WbE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kOW-al-JBH" secondAttribute="trailing" id="VJI-Co-2Hj"/>
                             <constraint firstItem="seX-3l-BiP" firstAttribute="leading" secondItem="yED-SB-Ux4" secondAttribute="leading" id="ZVD-ux-wJe"/>
                             <constraint firstItem="YbR-Xo-d1e" firstAttribute="leading" secondItem="yED-SB-Ux4" secondAttribute="leadingMargin" id="cCr-0P-0SV"/>
@@ -546,6 +548,12 @@
                             <constraint firstItem="kOW-al-JBH" firstAttribute="leading" secondItem="yED-SB-Ux4" secondAttribute="leadingMargin" id="nku-mI-Oot"/>
                             <constraint firstItem="jNJ-08-VNz" firstAttribute="top" secondItem="seX-3l-BiP" secondAttribute="bottom" id="oYd-zS-XJF"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Ig7-tM-BRK"/>
+                                <exclude reference="gzs-8D-fhr"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Welcome" id="4py-OU-x7y">
                         <barButtonItem key="backBarButtonItem" title="Back" id="ETg-VN-2Kg"/>
@@ -563,7 +571,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x81-6D-wAq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1608" y="1730"/>
+            <point key="canvasLocation" x="1608" y="1730.5"/>
         </scene>
         <!--Welcome-->
         <scene sceneID="pYH-qy-DeN">
