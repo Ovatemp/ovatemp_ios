@@ -153,9 +153,18 @@
                 self.currentQuestion = i;
             }
         }
+        [self updateScreen];
+    }else{
+        Alert *alert = [Alert alertForError: nil];
+        [alert addButtonWithTitle:@"Cancel"
+                           target:self
+                           action:nil];
+        [alert addButtonWithTitle:@"Retry"
+                           target:self
+                           action:@selector(loadQuestions:)];
+        [alert show];
     }
 
-    [self updateScreen];
     [self stopLoading];
 }
 
