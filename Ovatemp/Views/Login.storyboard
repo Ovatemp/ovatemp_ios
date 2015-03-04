@@ -509,7 +509,6 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="seX-3l-BiP">
                                 <rect key="frame" x="0.0" y="238" width="600" height="298"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="gRw-wx-L5R" id="joA-9z-Dnb"/>
                                     <outlet property="delegate" destination="gRw-wx-L5R" id="x8M-7c-Pet"/>

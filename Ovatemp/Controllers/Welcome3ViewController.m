@@ -97,11 +97,10 @@ BOOL weightHasData;
     [[self tableView] registerNib:[UINib nibWithNibName:@"WeightTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"weightCell"];
     
     self.tableView.bounces = NO;
-    
-    self.tableView.backgroundColor = [UIColor ovatempAlmostWhiteColor];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     expandLastPeriodCell = NO;
     expandCycleLengthCell = NO;
     expandHeightCell = NO;
@@ -191,19 +190,19 @@ BOOL weightHasData;
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return [welcomeInfoArray count];
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     UITableViewCell *cell;
     
     switch (indexPath.row) {
@@ -258,8 +257,8 @@ BOOL weightHasData;
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     if(self.selectedRowIndex && indexPath.row == self.selectedRowIndex.row) {
         if (expandLastPeriodCell || expandCycleLengthCell || expandHeightCell || expandWeightCell) {
             return 200.0f;
@@ -269,7 +268,8 @@ BOOL weightHasData;
     return 44.0f;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
     self.selectedRowIndex = indexPath;
     
@@ -374,7 +374,7 @@ BOOL weightHasData;
         [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
     }
     
-    [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    [tableView reloadRowsAtIndexPaths: indexPaths withRowAnimation: UITableViewRowAnimationAutomatic];
 
     // refreshed cells, set lables
     switch (indexPath.row) {
@@ -433,7 +433,8 @@ BOOL weightHasData;
     [tableView setNeedsLayout];
 }
 
-- (void)setTableStateForState:(TableStateType)state {
+- (void)setTableStateForState:(TableStateType)state
+{
     
 //    TableStateAllClosed
 //    TableStateLastPeriodExpanded
@@ -522,23 +523,14 @@ BOOL weightHasData;
     }
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
     UIView *view = [[UIView alloc] init];
     view.frame = CGRectMake(0, 0, 320, 200);
     
-    view.backgroundColor = [UIColor ovatempAlmostWhiteColor];
+    view.backgroundColor = [UIColor whiteColor];
     
     return view;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
