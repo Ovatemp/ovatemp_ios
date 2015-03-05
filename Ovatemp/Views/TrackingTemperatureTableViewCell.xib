@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HI2-gT-RI8">
-                        <rect key="frame" x="290" y="13" width="22" height="22"/>
+                        <rect key="frame" x="285" y="13" width="22" height="22"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="22" id="Gje-OL-7sB"/>
                             <constraint firstAttribute="height" constant="22" id="YX7-Tt-sQz"/>
@@ -90,7 +90,7 @@
                     <constraint firstItem="UOc-hD-NjA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="78k-my-EJP"/>
                     <constraint firstItem="UOc-hD-NjA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="BJ6-d5-hXy"/>
                     <constraint firstAttribute="trailing" secondItem="Hot-Az-XGF" secondAttribute="trailing" constant="8" id="Frb-Mu-S3W"/>
-                    <constraint firstAttribute="trailing" secondItem="HI2-gT-RI8" secondAttribute="trailing" constant="8" id="HLU-gV-duf"/>
+                    <constraint firstAttribute="trailing" secondItem="HI2-gT-RI8" secondAttribute="trailing" constant="13" id="HLU-gV-duf"/>
                     <constraint firstItem="6uw-4c-XJ5" firstAttribute="top" secondItem="hca-T7-h3B" secondAttribute="bottom" constant="4" id="Jip-ul-V7M"/>
                     <constraint firstItem="mVJ-cb-zil" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="N0e-X2-v3T"/>
                     <constraint firstItem="brF-Dn-gLz" firstAttribute="top" secondItem="hca-T7-h3B" secondAttribute="bottom" constant="8" id="TDI-Ch-eF1"/>
