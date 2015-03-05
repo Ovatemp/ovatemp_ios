@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol TrackingCellDelegate <NSObject>
+@protocol TrackingStatusCellDelegate <NSObject>
 
--(void)pushViewController:(UIViewController *)viewController;
+- (void)pressedNotes;
 
 @end
 
 @interface TrackingStatusTableViewCell : UITableViewCell
 
-@property(nonatomic,strong)id<TrackingCellDelegate>delegate;
+@property(nonatomic,strong)id<TrackingStatusCellDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet UIButton *notesButton;
 @property (weak, nonatomic) IBOutlet UILabel *notEnoughInfoLabel;

@@ -15,9 +15,12 @@
 
 @implementation SelectLogInOrSignUpViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+//    [self showTutorial];
     
     // Nav bar title font and color
     NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -32,35 +35,41 @@
     [self.navigationController.navigationBar setTintColor:[UIColor ovatempAquaColor]];
 }
 
--(void)viewWillAppear:(BOOL)animated {
+- (void)showTutorial
+{
+//    UIViewController *presentedVC = [self.storyboard instantiateViewControllerWithIdentifier: @"popupViewController"];
+//    
+//    CCMPopupTransitioning *popup = [CCMPopupTransitioning sharedInstance];
+//    popup.destinationBounds = CGRectMake(0, 0, 300, 400);
+//    popup.presentedController = presentedVC;
+//    popup.presentingController = self;
+//    
+//    [self presentViewController: presentedVC animated: YES completion: nil];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
     [self.navigationController setNavigationBarHidden:YES];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewWillDisappear:(BOOL)animated{
+-(void)viewWillDisappear:(BOOL)animated
+{
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO];
 }
 
-- (IBAction)doPresentTerms:(id)sender {
+- (IBAction)doPresentTerms:(id)sender
+{
     NSString *url = [ROOT_URL stringByAppendingString:@"/terms"];
     WebViewController *webViewController = [WebViewController withURL:url];
     webViewController.title = @"Terms and Conditions";
     [self.navigationController pushViewController:webViewController animated:YES];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

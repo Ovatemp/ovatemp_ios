@@ -1,4 +1,4 @@
-platform :ios, "6.0"
+platform :ios, "7.0"
 
 target :Ovatemp do
   pod "GoogleAnalytics-iOS-SDK", inhibit_warnings: true
@@ -8,6 +8,7 @@ target :Ovatemp do
   pod "Mixpanel", inhibit_warnings: true
   pod "Reachability", inhibit_warnings: true
   pod "RegexKitLite", inhibit_warnings: true
+  pod "CCMPopup"
 end
 
 target :OvatempTests, exclusive: true do

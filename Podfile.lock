@@ -1,4 +1,5 @@
 PODS:
+  - CCMPopup (1.0.0)
   - Expecta (0.3.2)
   - GoogleAnalytics-iOS-SDK (3.10):
     - GoogleAnalytics-iOS-SDK/Core (= 3.10)
@@ -18,6 +19,7 @@ PODS:
   - Specta (0.3.2)
 
 DEPENDENCIES:
+  - CCMPopup
   - Expecta
   - GoogleAnalytics-iOS-SDK
   - GoogleConversionTracking
@@ -41,6 +43,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/BackForty/KIF.git
 
 SPEC CHECKSUMS:
+  CCMPopup: 698981d75a931ec5b40fe8cc1b85acb7d75c80ba
   Expecta: ee641011fe10aa1855d487b40e4976dac50ec342
   GoogleAnalytics-iOS-SDK: f422062075d9ccb1ea8d783fc5ba3829461e9502
   GoogleConversionTracking: 58f0f1a5c776b385862504a7483281d31ce573e7

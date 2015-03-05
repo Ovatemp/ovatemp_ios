@@ -16,12 +16,15 @@
 
 @implementation TrackingNotesViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelSaveAndGoBack)]];
-    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(saveNoteAndGoBack)]];
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain
+                                                                              target:self action:@selector(cancelSaveAndGoBack)]];
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone
+                                                                               target:self action:@selector(saveNoteAndGoBack)]];
     
     [self.notesTextView setTintColor:[UIColor ovatempAquaColor]];
     [self.notesTextView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
@@ -81,45 +84,30 @@
     self.notesTextView.text = self.notesText;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
+    
     if ([self.notesTextView.text length] == 0) {
         [self.notesTextView becomeFirstResponder];
     }
     
-    [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 64)];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 90)];
-}
-
-- (void)saveNoteAndGoBack {
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-//    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-//    NSString *dateString = [dateFormatter stringFromDate:self.selectedDate];
-//    NSString *keyString = [NSString stringWithFormat:@"note_%@", dateString];
-//    
-//    if ([self.notesTextView.text length] > 0) { // user entered a note
-//        [defaults setObject:self.notesTextView.text forKey:keyString];
-//    } else { // no note or user deleted all text
-//        [defaults removeObjectForKey:keyString];
-//    }
-//    
-//    [defaults synchronize];
-    
-    // No longer using NSUserDefaults, hitting backend
+- (void)saveNoteAndGoBack
+{
     [self postNoteToBackend];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated: YES completion: nil];
 }
 
-- (void)postNoteToBackend {
+- (void)postNoteToBackend
+{
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     
     [attributes setObject:self.notesTextView.text forKey:@"notes"];
@@ -130,9 +118,6 @@
                              @"day": attributes,
                              }
                    success:^(NSDictionary *response) {
-//                       [Cycle cycleFromResponse:response];
-//                       [Calendar setDate:self.selectedDate];
-                       //                       if (onSuccess) onSuccess(response);
                        NSLog(@"Posted note sucessfully");
                    }
                    failure:^(NSError *error) {
@@ -140,11 +125,13 @@
                    }];
 }
 
-- (void)cancelSaveAndGoBack {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+- (void)cancelSaveAndGoBack
+{
+    [self dismissViewControllerAnimated: YES completion: nil];
 }
 
-- (BOOL)textViewShouldEndEditing:(UITextView *)textView {
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView
+{
     [self.notesTextView resignFirstResponder];
     return YES;
 }
@@ -153,15 +140,5 @@
 {
     return textView.text.length + (text.length - range.length) <= 1024;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

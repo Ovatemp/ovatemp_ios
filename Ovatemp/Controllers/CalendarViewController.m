@@ -15,7 +15,8 @@
 
 static NSString * const kCalendarCellIdentifier = @"CalendarCell";
 
-@interface CalendarViewController () {
+@interface CalendarViewController ()
+{
   BOOL loaded;
   NSInteger year;
 }
@@ -26,35 +27,41 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
-  self.edgesForExtendedLayout = UIRectEdgeNone;
-  
-  UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-  CGFloat itemWidth = self.view.frame.size.width / 8;
-  layout.itemSize = CGSizeMake(itemWidth, itemWidth * 1.2);
-  layout.minimumInteritemSpacing = 0;
-  layout.minimumLineSpacing = 0;
+    [super viewDidLoad];
+    
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle: @"Cancel" style: UIBarButtonItemStyleDone target: self action: @selector(cancelCalendar)];
+    self.navigationItem.leftBarButtonItem = cancelButton;
 
-  layout.sectionInset = UIEdgeInsetsMake(3, itemWidth / 2, 0, itemWidth / 2);  // top, left, bottom, right
-  [self.collectionView setCollectionViewLayout:layout];
-  self.collectionView.showsVerticalScrollIndicator = FALSE;
-  self.collectionView.scrollsToTop = FALSE;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 
-  [self.collectionView registerNib:[UINib nibWithNibName:kCalendarCellIdentifier bundle:nil] forCellWithReuseIdentifier:kCalendarCellIdentifier];
-  [self.collectionView setBackgroundColor:[UIColor whiteColor]];
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    CGFloat itemWidth = self.view.frame.size.width / 8;
+    layout.itemSize = CGSizeMake(itemWidth, itemWidth * 1.2);
+    layout.minimumInteritemSpacing = 0;
+    layout.minimumLineSpacing = 0;
 
-  NSArray *weekdays = [@"S M T W R F S" componentsSeparatedByString:@" "];
-  for(int i=0; i < 7; i++) {
-    CGRect frame = CGRectMake(i * itemWidth + layout.sectionInset.left, 0, itemWidth, self.headerView.frame.size.height);
+    layout.sectionInset = UIEdgeInsetsMake(3, itemWidth / 2, 0, itemWidth / 2);  // top, left, bottom, right
+    [self.collectionView setCollectionViewLayout:layout];
+    self.collectionView.showsVerticalScrollIndicator = FALSE;
+    self.collectionView.scrollsToTop = FALSE;
 
-    UILabel *label = [[UILabel alloc] initWithFrame:frame];
-    label.text = weekdays[i];
-    label.textAlignment = NSTextAlignmentCenter;
-    [self.headerView addSubview:label];
-  }
+    [self.collectionView registerNib:[UINib nibWithNibName:kCalendarCellIdentifier bundle:nil] forCellWithReuseIdentifier:kCalendarCellIdentifier];
+    [self.collectionView setBackgroundColor:[UIColor whiteColor]];
+
+    NSArray *weekdays = [@"S M T W R F S" componentsSeparatedByString:@" "];
+    
+    for(int i=0; i < 7; i++) {
+        CGRect frame = CGRectMake(i * itemWidth + layout.sectionInset.left, 0, itemWidth, self.headerView.frame.size.height);
+
+        UILabel *label = [[UILabel alloc] initWithFrame:frame];
+        label.text = weekdays[i];
+        label.textAlignment = NSTextAlignmentCenter;
+        [self.headerView addSubview:label];
+    }
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
   [super viewDidAppear:animated];
 
   [[Calendar sharedInstance] addObserver: self
@@ -78,22 +85,26 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
   }
 }
 
-- (void)refresh {
+- (void)refresh
+{
   [self.collectionView reloadData];
   [self scrollToCurrentDay];
   [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];
   [self trackScreenView:@"Calendar"];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-  [[Calendar sharedInstance] removeObserver:self forKeyPath:@"day"];
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[Calendar sharedInstance] removeObserver:self forKeyPath:@"day"];
 }
 
-- (BOOL)shouldAutorotate {
-  return FALSE;
+- (BOOL)shouldAutorotate
+{
+    return FALSE;
 }
 
-- (void)scrollToCurrentDay {
+- (void)scrollToCurrentDay
+{
   if([Calendar day] == nil) { return; }
 
   NSInteger todayIndex = [[Cycle firstDate] daysTilDate:[Calendar day].date];
@@ -105,37 +116,39 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
-                       change:(NSDictionary *)change context:(void *)context {
-  if([keyPath isEqualToString:@"day"] && [[Calendar sharedInstance] class] == [object class]) {
-    [self scrollToCurrentDay];
-  }
+                       change:(NSDictionary *)change context:(void *)context
+{
+    if([keyPath isEqualToString:@"day"] && [[Calendar sharedInstance] class] == [object class]) {
+        [self scrollToCurrentDay];
+    }
 }
 
 # pragma mark - Helpers
 
-- (NSDate *)dateForItemAtIndexPath:(NSIndexPath *)indexPath {
-  return [[Cycle firstDate] addDays:indexPath.item];
+- (NSDate *)dateForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [[Cycle firstDate] addDays:indexPath.item];
 }
 
 # pragma mark - UICollectionViewDataSource/Delegate methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-  return [Cycle totalDays];
+    return [Cycle totalDays];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-  NSDate *date = [self dateForItemAtIndexPath:indexPath];
+    NSDate *date = [self dateForItemAtIndexPath:indexPath];
 
-  if([[NSDate date] compare:date] != NSOrderedDescending) {
+    if([[NSDate date] compare:date] != NSOrderedDescending) {
     return;
-  }
+    }
 
-  [Calendar setDate:date];
+    [Calendar setDate:date];
 
-  // Go to day view controller
-  [self.tabBarController setSelectedIndex:0];
+    // Go to day view controller
+    [self.tabBarController setSelectedIndex:0];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -205,6 +218,11 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
 
   [cell needsUpdateConstraints];
   return cell;
+}
+
+- (void)cancelCalendar
+{
+    [self dismissViewControllerAnimated: YES completion: nil];
 }
 
 @end

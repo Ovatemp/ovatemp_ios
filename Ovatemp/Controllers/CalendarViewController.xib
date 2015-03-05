@@ -1,37 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalendarViewController">
             <connections>
                 <outlet property="collectionView" destination="GLM-3q-jnf" id="MJs-79-Ne9"/>
                 <outlet property="fertilityStatusView" destination="xE4-8T-IyO" id="YWr-Wa-Mxj"/>
-                <outlet property="headerView" destination="hja-P0-IVh" id="dWI-KV-6hV"/>
                 <outlet property="view" destination="iN0-l3-epB" id="UTG-Ox-Hoi"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="64" width="600" height="536"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view hidden="YES" contentMode="scaleToFill" id="xE4-8T-IyO" customClass="FertilityStatusView">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xE4-8T-IyO" customClass="FertilityStatusView">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="elf-pA-15h">
-                            <rect key="frame" x="20" y="29" width="280" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elf-pA-15h">
+                            <rect key="frame" x="20" y="29" width="572" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="VLP-O6-ToD"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="elf-pA-15h" secondAttribute="bottom" constant="14" id="5hd-Rh-BVR"/>
+                        <constraint firstAttribute="height" constant="64" id="8Mt-p4-DgL"/>
+                        <constraint firstAttribute="trailing" secondItem="elf-pA-15h" secondAttribute="trailing" constant="8" id="bbN-yn-wR2"/>
+                        <constraint firstItem="elf-pA-15h" firstAttribute="leading" secondItem="xE4-8T-IyO" secondAttribute="leading" constant="20" id="xGj-fe-B5Z"/>
+                    </constraints>
                 </view>
-                <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" id="GLM-3q-jnf">
-                    <rect key="frame" x="0.0" y="-6" width="320" height="484"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="GLM-3q-jnf">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qr4-Zv-zav">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -44,18 +49,20 @@
                         <outlet property="delegate" destination="-1" id="1w4-eo-xF0"/>
                     </connections>
                 </collectionView>
-                <view contentMode="scaleToFill" id="hja-P0-IVh" userLabel="Days of the week view">
-                    <rect key="frame" x="0.0" y="-26" width="320" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
-                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="xE4-8T-IyO" secondAttribute="trailing" id="5c1-Dx-zva"/>
+                <constraint firstAttribute="bottom" secondItem="GLM-3q-jnf" secondAttribute="bottom" id="80X-nD-WcF"/>
+                <constraint firstAttribute="trailing" secondItem="GLM-3q-jnf" secondAttribute="trailing" id="9h7-8A-cbV"/>
+                <constraint firstAttribute="centerX" secondItem="GLM-3q-jnf" secondAttribute="centerX" id="PQH-3i-n7B"/>
+                <constraint firstAttribute="centerY" secondItem="GLM-3q-jnf" secondAttribute="centerY" id="UKP-Gl-s2X"/>
+                <constraint firstItem="xE4-8T-IyO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fds-5m-qra"/>
+                <constraint firstItem="GLM-3q-jnf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="k1m-7s-OFy"/>
+                <constraint firstItem="xE4-8T-IyO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xhE-Wc-w7g"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+            <point key="canvasLocation" x="572" y="102"/>
         </view>
     </objects>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

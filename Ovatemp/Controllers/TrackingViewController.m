@@ -53,7 +53,7 @@ typedef enum {
     TableStateMedicineExpanded,
 } TableStateType;
 
-@interface TrackingViewController () <UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, TrackingCellDelegate, ONDODelegate, PresentInfoAlertDelegate>
+@interface TrackingViewController () <UIGestureRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, TrackingStatusCellDelegate, ONDODelegate, PresentInfoAlertDelegate>
 
 @property UIImageView *arrowImageView;
 
@@ -164,7 +164,8 @@ NSMutableArray *daysFromBackend;
 
 NSMutableArray *datesWithPeriod;
 
-- (id)init {
+- (id)init
+{
     self = [super init];
     if (self) {
         [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
@@ -176,7 +177,8 @@ NSMutableArray *datesWithPeriod;
     return self;
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIDeviceOrientationDidChangeNotification
                                                   object:nil];
@@ -184,7 +186,8 @@ NSMutableArray *datesWithPeriod;
 
 # pragma mark - Autorotation
 
-- (void)orientationChanged:(NSNotification *)notification {
+- (void)orientationChanged:(NSNotification *)notification
+{
     if (!self.cycleViewController) {
         self.cycleViewController = [[CycleViewController alloc] init];
         self.cycleViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
@@ -209,7 +212,8 @@ NSMutableArray *datesWithPeriod;
     }
 }
 
-- (void)hideCycleViewController {
+- (void)hideCycleViewController
+{
     [self dismissViewControllerAnimated:YES completion:^{
         if (inLandscape) {
             [self showCycleViewController];
@@ -217,34 +221,30 @@ NSMutableArray *datesWithPeriod;
     }];
 }
 
-- (void)showCycleViewController {
+- (void)showCycleViewController
+{
     [self performSelector:@selector(presentChart) withObject:nil afterDelay:1.0];
 }
 
-- (void)presentChart {
-    
+- (void)presentChart
+{
     //    [self pushViewController:self.cycleViewController];
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
     return self.presentedViewController.preferredStatusBarStyle;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
     firstOpenView = YES;
-    
-    // fix bar buttons
-    self.navigationItem.leftBarButtonItem.imageInsets = UIEdgeInsetsMake(-18, 0, 18, 0);
-    self.navigationItem.rightBarButtonItem.imageInsets  = UIEdgeInsetsMake(-18, 0, 18, 0);
     
     // set up global date
     // start with current date, then change it whenever the user changes dates via the collection view
     self.selectedDate = [NSDate date];
-    
-    
     //    self.cycleViewController = [[CycleViewController alloc] init];
     
     // table view line separator
@@ -254,22 +254,19 @@ NSMutableArray *datesWithPeriod;
     // title
     [self setTitleView];
     
+    UITapGestureRecognizer *titleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(toggleMiniCalendar:)];
+    UITapGestureRecognizer *subtitleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(toggleMiniCalendar:)];
+    [self.titleLabel addGestureRecognizer: titleTapRecognizer];
+    [self.subTitleLabel addGestureRecognizer: subtitleTapRecognizer];
+    self.titleLabel.userInteractionEnabled = YES;
+    self.subTitleLabel.userInteractionEnabled = YES;
+    
     trackingTableDataArray = [NSArray arrayWithObjects:@"Status", @"Temperature", @"Cervical Fluid", @"Cervical Position", @"Period", @"Intercourse", @"Mood", @"Symptoms", @"Ovulation Test", @"Pregnancy Test", @"Supplements", @"Medicines", nil];
-    
-    [self.navigationController.view setTintColor:[UIColor ovatempAlmostWhiteColor]];
-    
-    // gesture
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(toggleDrawer:)];
-    [singleTap setDelegate:self];
-    singleTap.numberOfTapsRequired = 1;
-    singleTap.numberOfTouchesRequired = 1;
-    [self.navigationController.navigationBar addGestureRecognizer:singleTap];
-    
+
     lowerDrawer = YES;
     
     self.drawerCollectionView.delegate = self;
     self.drawerCollectionView.dataSource = self;
-    
     [self.drawerCollectionView registerNib:[UINib nibWithNibName:@"DateCollectionViewCell" bundle:[NSBundle mainBundle]]
                 forCellWithReuseIdentifier:@"dateCvCell"];
     
@@ -390,8 +387,8 @@ NSMutableArray *datesWithPeriod;
     [self refreshTrackingView];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    
+- (void)viewDidAppear:(BOOL)animated
+{
     [self showLoadingSpinner];
     
     [super viewDidAppear:animated];
@@ -459,7 +456,8 @@ NSMutableArray *datesWithPeriod;
     didLeaveToWebView = NO;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     
     [self.drawerView setHidden:NO];
@@ -479,14 +477,15 @@ NSMutableArray *datesWithPeriod;
     // fix nav bar when coming back from webview
   
     if (didLeaveToWebView) {
-        [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 90)];
+        //[self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 90)];
         didLeaveToWebView = NO;
     }
     
     [self refreshDrawerCollectionViewData];
 }
 
-- (void)refreshDrawerCollectionViewData {
+- (void)refreshDrawerCollectionViewData
+{
     // refresh date drawer
     daysFromBackend = [[NSMutableArray alloc] init];
     
@@ -533,7 +532,8 @@ NSMutableArray *datesWithPeriod;
                    }];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated
+{
     [super viewWillDisappear:animated];
     if (lowerDrawer) {
         [self.drawerView setHidden:YES];
@@ -544,41 +544,33 @@ NSMutableArray *datesWithPeriod;
     [defaults synchronize];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)toggleDrawer:(UIGestureRecognizer *)recognizer {
+- (IBAction)toggleMiniCalendar:(id)sender
+{
+    [self.view layoutIfNeeded];
     
-    [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.6f initialSpringVelocity:0.5f options:0 animations:^{
+    if (lowerDrawer) {
+        self.calendarTopConstraint.constant = 90;
+        lowerDrawer = NO;
+    }else{
+        self.calendarTopConstraint.constant = 0;
+        lowerDrawer = YES;
+    }
+    
+    [UIView animateWithDuration: 0.5 delay: 0.0 usingSpringWithDamping: 0.6f initialSpringVelocity: 0.4f options: 0 animations:^{
+        [self.view layoutIfNeeded];
+        
         if (lowerDrawer) {
-            self.drawerView.frame = CGRectMake(self.drawerView.frame.origin.x, self.drawerView.frame.origin.y + 70, self.drawerView.frame.size.width, self.drawerView.frame.size.height);
-            
-            // lower table at same time
-            self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + 70, self.tableView.frame.size.width, self.tableView.frame.size.height - 70);
-            
-            // lower separator
-            self.separatorView.frame = CGRectMake(self.separatorView.frame.origin.x, self.separatorView.frame.origin.y + 70, self.separatorView.frame.size.width, self.separatorView.frame.size.height);
-            
-            // flip arrow
-            self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI);
-            
-            lowerDrawer = NO;
-            
-        } else {
-            self.drawerView.frame = CGRectMake(self.drawerView.frame.origin.x, self.drawerView.frame.origin.y - 70, self.drawerView.frame.size.width, self.drawerView.frame.size.height);
-            
-            self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y - 70, self.tableView.frame.size.width, self.tableView.frame.size.height + 70);
-            
-            // raise separator
-            self.separatorView.frame = CGRectMake(self.separatorView.frame.origin.x, self.separatorView.frame.origin.y - 70, self.separatorView.frame.size.width, self.separatorView.frame.size.height);
-            
-            // flip arrow
-            self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI * 180);
-            
-            lowerDrawer = YES;
+            self.arrowButton.transform = CGAffineTransformMakeRotation(M_PI * 180);
+        }else{
+            self.arrowButton.transform = CGAffineTransformMakeRotation(M_PI);
         }
+        
     } completion:^(BOOL finished) {
         if (!lowerDrawer) {
             // refresh drawer when closed
@@ -587,7 +579,25 @@ NSMutableArray *datesWithPeriod;
     }];
 }
 
-- (IBAction)displayChart:(id)sender {
+- (IBAction)openCalendar:(id)sender
+{
+    CalendarViewController *calendarViewController = [[CalendarViewController alloc] initWithNibName:@"CalendarViewController" bundle:nil];
+    [calendarViewController.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(popWebView)]];
+
+    calendarViewController.title = @"Calendar";
+    [Calendar setDate:self.selectedDate];
+    
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: calendarViewController];
+    navVC.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor ovatempDarkGreyTitleColor]};
+    navVC.navigationBar.translucent = NO;
+    
+    [self presentViewController: navVC animated: YES completion: nil];
+    
+    didLeaveToWebView = YES;
+}
+
+- (IBAction)openGraph:(id)sender
+{
     if (!self.cycleViewController) {
         self.cycleViewController = [[CycleViewController alloc] init];
         self.cycleViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
@@ -597,81 +607,28 @@ NSMutableArray *datesWithPeriod;
     [[UIDevice currentDevice] setValue:
      [NSNumber numberWithInteger: UIInterfaceOrientationLandscapeLeft]
                                 forKey:@"orientation"];
-    
+
 }
 
-- (IBAction)displayCalendar:(id)sender {
-
-    CalendarViewController *calendarViewController = [[CalendarViewController alloc] initWithNibName:@"CalendarViewController" bundle:nil];
-    [calendarViewController.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(popWebView)]];
-    
-    // fix nav bar
-    [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 64)];
-    
-    calendarViewController.title = @"Calendar";
-    
-    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor ovatempDarkGreyTitleColor] forKey:NSForegroundColorAttributeName];
-    
-    [Calendar setDate:self.selectedDate];
-    
-    [self pushViewController:calendarViewController];
-    
-    didLeaveToWebView = YES;
-}
-
-- (void)setTitleView {
-    CGRect headerTitleSubtitleFrame = CGRectMake(0, -15, 200, 44);
-    UIView *_headerTitleSubtitleView = [[UILabel alloc] initWithFrame:headerTitleSubtitleFrame];
-    _headerTitleSubtitleView.backgroundColor = [UIColor clearColor];
-    _headerTitleSubtitleView.autoresizesSubviews = NO;
-    
-    CGRect titleFrame = CGRectMake(0, -15, 200, 24);
-    UILabel *titleView = [[UILabel alloc] initWithFrame:titleFrame];
-    titleView.backgroundColor = [UIColor clearColor];
-    titleView.font = [UIFont boldSystemFontOfSize:17];
-    titleView.textAlignment = NSTextAlignmentCenter;
-    
-    //    NSDate *date = [NSDate date];
+- (void)setTitleView
+{
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateStyle:NSDateFormatterMediumStyle];
     [df setTimeStyle:NSDateFormatterNoStyle];
     
     NSString *dateString = [df stringFromDate:self.selectedDate];
-    
-    titleView.text = dateString;
-    titleView.textColor = [UIColor ovatempDarkGreyTitleColor];
-    titleView.adjustsFontSizeToFitWidth = YES;
-    [_headerTitleSubtitleView addSubview:titleView];
-    
-    CGRect subtitleFrame = CGRectMake(0, 22-15, 200, 44-24);
-    UILabel *subtitleView = [[UILabel alloc] initWithFrame:subtitleFrame];
-    subtitleView.backgroundColor = [UIColor clearColor];
-    subtitleView.font = [UIFont boldSystemFontOfSize:13];
-    subtitleView.textAlignment = NSTextAlignmentCenter;
+    self.titleLabel.text = dateString;
+
     if (day.cycleDay) {
-        subtitleView.text = [NSString stringWithFormat:@"Cycle Day #%@", day.cycleDay];
+        self.subTitleLabel.text = [NSString stringWithFormat:@"Cycle Day #%@", day.cycleDay];
     } else {
-        subtitleView.text = [NSString stringWithFormat:@"Enter Cycle Info"];
+        self.subTitleLabel.text = [NSString stringWithFormat:@"Enter Cycle Info"];
     }
-    subtitleView.textColor = [UIColor ovatempAquaColor];
-    subtitleView.adjustsFontSizeToFitWidth = YES;
-    
-    // arrow
-    self.arrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pulldown_arrow"]];
-    
-    self.arrowImageView.frame = CGRectMake(90, 35, 24, 8);
     
     if (!lowerDrawer) {
         // flip arrow if the drawer is already open
         self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI);
     }
-    
-    [_headerTitleSubtitleView addSubview:self.arrowImageView];
-    
-    [_headerTitleSubtitleView addSubview:subtitleView];
-    
-    self.navigationItem.titleView = _headerTitleSubtitleView;
-    
 }
 
 - (void)refreshTrackingView {
@@ -1047,8 +1004,8 @@ NSMutableArray *datesWithPeriod;
     //    [self.periodCell setSelectedDate:self.selectedDate];
 }
 
-- (void)setDataForStatusCell {
-    
+- (void)setDataForStatusCell
+{
     UserProfile *currentUserProfile = [UserProfile current];
     
     // in fertility window overrides
@@ -1868,19 +1825,19 @@ NSMutableArray *datesWithPeriod;
 
 #pragma mark - Table view
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return [trackingTableDataArray count];
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     UITableViewCell *cell;
     
     switch (indexPath.row) {
@@ -5149,7 +5106,8 @@ NSMutableArray *datesWithPeriod;
     }
 }
 
-- (void)hideSupplementsCell {
+- (void)hideSupplementsCell
+{
     expandSupplementsCell = NO;
     // hide component
     self.supplementsCell.supplementsTableView.hidden = YES;
@@ -5230,7 +5188,9 @@ NSMutableArray *datesWithPeriod;
 }
 
 #pragma mark - UICollectionView
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
     return [drawerDateData count];
 }
 
@@ -5513,7 +5473,8 @@ NSMutableArray *datesWithPeriod;
 }
 
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
     NSDate *dateAtIndex = [drawerDateData objectAtIndex:indexPath.row];
     
     if ([dateAtIndex compare:[NSDate date]] == NSOrderedDescending) {
@@ -5621,18 +5582,21 @@ NSMutableArray *datesWithPeriod;
     [self hideLoadingSpinner];
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
     // if decelerating, let scrollViewDidEndDecelerating: handle it
     if (decelerate == NO) {
         [self centerCell];
     }
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
     [self centerCell];
 }
 
-- (void)centerCell {
+- (void)centerCell
+{
     NSIndexPath *pathForCenterCell = [self.drawerCollectionView indexPathForItemAtPoint:CGPointMake(CGRectGetMidX(self.drawerCollectionView.bounds), CGRectGetMidY(self.drawerCollectionView.bounds))];
     
     // we need +/- 10 as an offset here in case the user scrolls in between two cells, the indexPath will never be nil we will always snap to a cell
@@ -5657,22 +5621,6 @@ NSMutableArray *datesWithPeriod;
     [self.drawerCollectionView reloadData];
     
     [self collectionView:self.drawerCollectionView didSelectItemAtIndexPath:pathForCenterCell];
-}
-
-#pragma mark - Push View Controller Delegate
-- (void)pushViewController:(UIViewController *)viewController{
-    if ([viewController isKindOfClass:[TrackingNotesViewController class]]) {
-        [self performSegueWithIdentifier:@"presentNotesVC" sender:self.selectedDate];
-    } else {
-        [[self navigationController] pushViewController:viewController animated:YES];
-    }
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.destinationViewController isMemberOfClass:[TrackingNotesViewController class]]) {
-        [segue.destinationViewController setSelectedDate:self.selectedDate];
-        [segue.destinationViewController setNotesText:self.notes];
-    }
 }
 
 # pragma mark - ONDO delegate methods
@@ -5800,7 +5748,8 @@ NSMutableArray *datesWithPeriod;
 
 #pragma mark - Push Info Alert Delegate
 
-- (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url {
+- (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url
+{
     UIAlertController *infoAlert = [UIAlertController
                                     alertControllerWithTitle:title
                                     message:message
@@ -5822,7 +5771,7 @@ NSMutableArray *datesWithPeriod;
         [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 64)];
         
 //        [self presentViewController:webViewController animated:YES completion:nil];
-        [self pushViewController:webViewController];
+        [self presentViewController: webViewController animated: YES completion: nil];
 //        UINavigationController *tempNavigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
 //
 //        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(dismissViewControllerAnimated:completion:)];
@@ -5845,15 +5794,18 @@ NSMutableArray *datesWithPeriod;
     [self presentViewController:infoAlert animated:YES completion:nil];
 }
 
-- (void)presentViewControllerWithViewController:(UIViewController *)viewController {
+- (void)presentViewControllerWithViewController:(UIViewController *)viewController
+{
     [self presentViewController:viewController animated:YES completion:nil];
 }
 
-- (void)popWebView {
+- (void)popWebView
+{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)showLoadingSpinner {
+- (void)showLoadingSpinner
+{
     if (self.viewIsLoading) {
         [self hideLoadingSpinner];
         return;
@@ -5884,14 +5836,16 @@ NSMutableArray *datesWithPeriod;
     [loadingView removeFromSuperview];
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+#pragma mark - TrackingStatusCell Delegate
+
+- (void)pressedNotes
+{
+    TrackingNotesViewController *trackingVC = [self.storyboard instantiateViewControllerWithIdentifier: @"trackingNotesViewController"];
+    trackingVC.selectedDate = self.selectedDate;
+    trackingVC.notesText = self.notes;
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: trackingVC];
+    
+    [self presentViewController: navVC animated: YES completion: nil];
+}
 
 @end
