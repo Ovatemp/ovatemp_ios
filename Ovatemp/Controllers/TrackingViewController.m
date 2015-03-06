@@ -241,11 +241,8 @@ NSMutableArray *datesWithPeriod;
     [super viewDidLoad];
     
     firstOpenView = YES;
-    
-    // set up global date
-    // start with current date, then change it whenever the user changes dates via the collection view
+
     self.selectedDate = [NSDate date];
-    //    self.cycleViewController = [[CycleViewController alloc] init];
     
     // table view line separator
     self.tableView.layoutMargins = UIEdgeInsetsZero;
@@ -275,8 +272,7 @@ NSMutableArray *datesWithPeriod;
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     
     [self.drawerCollectionView setCollectionViewLayout:flowLayout];
-    
-    //    [self.drawerCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:7 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+//    [self.drawerCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:7 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     
     // set up drawer
     drawerDateData = [[NSMutableArray alloc] init];
@@ -308,10 +304,6 @@ NSMutableArray *datesWithPeriod;
         
         [drawerDateData insertObject:previousDate atIndex:0];
     }
-    
-    // scroll to index
-    self.selectedIndexPath = [NSIndexPath indexPathForRow:86 inSection:0];
-    [self.drawerCollectionView scrollToItemAtIndexPath:self.selectedIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     
     // hide scroll bars
     [self.drawerCollectionView setShowsHorizontalScrollIndicator:NO];
@@ -389,9 +381,13 @@ NSMutableArray *datesWithPeriod;
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
     [self showLoadingSpinner];
     
-    [super viewDidAppear:animated];
+    // scroll to index
+    self.selectedIndexPath = [NSIndexPath indexPathForRow: 86 inSection:0];
+    [self.drawerCollectionView scrollToItemAtIndexPath: self.selectedIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated: YES];
     
     // bools for table view cells
     expandTemperatureCell = NO;
