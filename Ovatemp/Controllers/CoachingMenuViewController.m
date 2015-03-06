@@ -48,10 +48,10 @@
   [super viewWillAppear:animated];
     
   self.navigationItem.hidesBackButton = YES;
-  NSString *profileName = [[User current].fertilityProfileName capitalizedString];
-  self.navigationItem.title = profileName;
-//  self.navigationItem.titleIcon = [UIImage imageNamed:[profileName stringByAppendingString:@"Small"]];
-//  self.navigationItem.iconLabel.textColor = DARK;
+  NSString *profileName = [User current].fertilityProfileName;
+  self.navigationItem.title = [profileName capitalizedString];
+  self.navigationItem.titleIcon = [UIImage imageNamed:[profileName stringByAppendingString:@"_small"]];
+  self.navigationItem.iconLabel.textColor = [UIColor ovatempDarkGreyTitleColor];
 
   self.navigationController.navigationBarHidden = NO;
   self.navigationController.navigationBar.barTintColor = LIGHT;
