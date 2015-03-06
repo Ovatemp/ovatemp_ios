@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14D87h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,20 +14,32 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MEDICINES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkF-NI-dFv">
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MEDICINES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkF-NI-dFv">
                         <rect key="frame" x="8" y="8" width="67" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="IzE-Bk-hkJ"/>
+                            <constraint firstAttribute="width" constant="67" id="VVv-of-bdI"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                         <color key="textColor" red="0.14117647059999999" green="0.46666666670000001" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Medicines" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQS-Cr-lAL">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medicines" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQS-Cr-lAL">
                         <rect key="frame" x="6" y="20" width="79" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="79" id="5Bo-Ap-89c"/>
+                            <constraint firstAttribute="height" constant="21" id="ORK-Sh-UqB"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wco-3L-Rx5">
-                        <rect key="frame" x="276" y="12" width="44" height="44"/>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wco-3L-Rx5">
+                        <rect key="frame" x="276" y="0.0" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="4wj-4Q-Aey"/>
+                            <constraint firstAttribute="width" constant="44" id="qxN-bt-EN3"/>
+                        </constraints>
                         <state key="normal" image="icn_plussign">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -34,8 +47,12 @@
                             <action selector="doAddMedicine:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6zh-tX-OHO"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dp3-gS-uGd">
-                        <rect key="frame" x="276" y="12" width="44" height="44"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dp3-gS-uGd">
+                        <rect key="frame" x="285" y="13" width="22" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="22" id="bDy-HP-XIJ"/>
+                            <constraint firstAttribute="height" constant="22" id="h6P-mW-GkU"/>
+                        </constraints>
                         <state key="normal" image="icn_info">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -43,17 +60,37 @@
                             <action selector="doShowInfo:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xkt-d8-F2X"/>
                         </connections>
                     </button>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uK-7F-knP">
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uK-7F-knP">
                         <rect key="frame" x="6" y="29" width="262" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Phq-tp-GgE"/>
+                            <constraint firstAttribute="width" constant="262" id="Q72-20-oIo"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ISq-Ry-5DE">
+                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ISq-Ry-5DE">
                         <rect key="frame" x="0.0" y="49" width="320" height="150"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tableView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="ISq-Ry-5DE" secondAttribute="bottom" id="45E-ID-Vfh"/>
+                    <constraint firstItem="Wco-3L-Rx5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="K3Z-JX-RuZ"/>
+                    <constraint firstItem="fQS-Cr-lAL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="K61-7f-HdA"/>
+                    <constraint firstItem="2uK-7F-knP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-2" id="Tyu-77-omP"/>
+                    <constraint firstItem="JkF-NI-dFv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="WZg-ei-c6w"/>
+                    <constraint firstItem="ISq-Ry-5DE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="41" id="XcE-lK-Of5"/>
+                    <constraint firstItem="JkF-NI-dFv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="ZC1-VK-c24"/>
+                    <constraint firstItem="fQS-Cr-lAL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-2" id="iRp-rb-fcn"/>
+                    <constraint firstItem="dp3-gS-uGd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="k7c-PW-ZXe"/>
+                    <constraint firstItem="2uK-7F-knP" firstAttribute="top" secondItem="JkF-NI-dFv" secondAttribute="bottom" constant="3" id="kns-hX-mwZ"/>
+                    <constraint firstAttribute="trailing" secondItem="Wco-3L-Rx5" secondAttribute="trailing" id="oFq-1a-noD"/>
+                    <constraint firstAttribute="trailing" secondItem="ISq-Ry-5DE" secondAttribute="trailing" id="p5A-iE-P7T"/>
+                    <constraint firstItem="ISq-Ry-5DE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="pj4-dB-Yqe"/>
+                    <constraint firstAttribute="trailing" secondItem="dp3-gS-uGd" secondAttribute="trailing" constant="13" id="yNo-dN-aDU"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="addMedicinesButton" destination="Wco-3L-Rx5" id="8ax-BU-ExR"/>
