@@ -4333,6 +4333,7 @@ NSMutableArray *datesWithPeriod;
             
             expandMoodCell = YES;
             self.moodCell.moodTableView.hidden = NO;
+            self.moodCell.moodCollapsedLabel.hidden = NO;
             self.moodCell.moodPlaceholderLabel.hidden = YES;
             self.moodCell.moodTypeLabel.hidden = YES;
             

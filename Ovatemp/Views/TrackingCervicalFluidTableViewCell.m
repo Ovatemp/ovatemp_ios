@@ -22,13 +22,13 @@
     self.selectedDate = [[NSDate alloc] init];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
-- (IBAction)didSelectDry:(id)sender {
+- (IBAction)didSelectDry:(id)sender
+{
     if (self.selectedCervicalFluidType == CervicalFluidSelectionDry) { // deselect
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
         [self hitBackendWithCervicalFluidType:[NSNull null]];
@@ -47,7 +47,8 @@
     }
 }
 
-- (IBAction)didSelectSticky:(id)sender {
+- (IBAction)didSelectSticky:(id)sender
+{
     if (self.selectedCervicalFluidType == CervicalFluidSelectionSticky) {
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
         [self hitBackendWithCervicalFluidType:[NSNull null]];
@@ -63,7 +64,8 @@
         [self.stickyImageView setSelected:YES];
     }
 }
-- (IBAction)didSelectCreamy:(id)sender {
+- (IBAction)didSelectCreamy:(id)sender
+{
     if (self.selectedCervicalFluidType == CervicalFluidSelectionCreamy) {
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
         [self hitBackendWithCervicalFluidType:[NSNull null]];
@@ -79,7 +81,8 @@
         [self.creamyImageView setSelected:YES];
     }
 }
-- (IBAction)didSelectEggwhite:(id)sender {
+- (IBAction)didSelectEggwhite:(id)sender
+{
     if (self.selectedCervicalFluidType == CervicalFluidSelectionEggwhite) {
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
         [self hitBackendWithCervicalFluidType:[NSNull null]];
@@ -96,14 +99,16 @@
     }
 }
 
-- (void)deselectAllButtons {
+- (void)deselectAllButtons
+{
     [self.dryImageView setSelected:NO];
     [self.stickyImageView setSelected:NO];
     [self.creamyImageView setSelected:NO];
     [self.eggwhiteImageView setSelected:NO];
 }
 
-- (void)hitBackendWithCervicalFluidType:(id)cfType {
+- (void)hitBackendWithCervicalFluidType:(id)cfType
+{
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     
     [attributes setObject:cfType forKey:@"cervical_fluid"];
@@ -123,7 +128,8 @@
                    }];
 }
 
-- (IBAction)didSelectInfo:(id)sender {
+- (IBAction)didSelectInfo:(id)sender
+{
     [self.delegate pushInfoAlertWithTitle:@"Cervical Fluid" AndMessage:@"Cervical fluid is like the “water for the swimmers”. The wetter the fluid the more chances you have of getting pregnant.\n\nThere are three types of cervical fluid: sticky; the LEAST fertile, creamy; SOMEWHAT fertile and eggwhite; MOST fertile." AndURL:@"http://ovatemp.helpshift.com/a/ovatemp/?s=fertility-faqs&f=learn-more-about-cervical-fluid"];
 }
 

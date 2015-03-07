@@ -204,7 +204,6 @@
                                 </variation>
                                 <connections>
                                     <action selector="sessionRegister:" destination="E4r-6s-Glc" eventType="touchUpInside" id="Q2W-9k-cc0"/>
-                                    <segue destination="GiB-zM-H5c" kind="custom" customClass="CCMPopupSegue" id="GeR-1g-c81"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GRm-08-aBC">
@@ -486,36 +485,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hOZ-ZW-mca" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2008" y="973"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Lia-uh-es5">
-            <objects>
-                <viewController storyboardIdentifier="popupViewController" id="GiB-zM-H5c" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="190-xq-cDY"/>
-                        <viewControllerLayoutGuide type="bottom" id="fWn-ed-oGm"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="1oQ-Jw-ZlI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popup" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3f9-Mv-Tri">
-                                <rect key="frame" x="275" y="289" width="51" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="3f9-Mv-Tri" secondAttribute="centerX" id="AnT-Ah-PdO"/>
-                            <constraint firstAttribute="centerY" secondItem="3f9-Mv-Tri" secondAttribute="centerY" id="yDr-ZT-7AL"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SQk-Dt-UIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="682" y="2043"/>
         </scene>
         <!--Welcome-->
         <scene sceneID="ktx-ut-5E4">
