@@ -8,15 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Day.h"
+
 @protocol TrackingStatusCellDelegate <NSObject>
 
 - (void)pressedNotes;
+
+- (NSMutableArray *)getDatesWithPeriod;
+- (NSDate *)getPeakDate;
+- (NSDate *)getSelectedDate;
+- (Day *)getSelectedDay;
+- (NSString *)getNotes;
 
 @end
 
 @interface TrackingStatusTableViewCell : UITableViewCell
 
-@property(nonatomic,strong)id<TrackingStatusCellDelegate>delegate;
+@property (weak, nonatomic) id<TrackingStatusCellDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UIButton *notesButton;
 @property (weak, nonatomic) IBOutlet UILabel *notEnoughInfoLabel;
@@ -26,5 +34,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *peakLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fertilityLabel;
+
+- (void)updateCell;
 
 @end

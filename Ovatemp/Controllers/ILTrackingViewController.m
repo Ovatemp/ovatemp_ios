@@ -17,12 +17,17 @@
 #import "Day.h"
 
 #import "TrackingStatusTableViewCell.h"
+#import "TrackingTemperatureTableViewCell.h"
+#import "TrackingCervicalFluidTableViewCell.h"
+#import "TrackingCervicalPositionTableViewCell.h"
 
 @import HealthKit;
 
-@interface ILTrackingViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate,TrackingStatusCellDelegate>
+@interface ILTrackingViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate,TrackingStatusCellDelegate,TrackingTemperatureCellDelegate>
 
 @property (nonatomic) NSDate *selectedDate;
+@property (nonatomic) NSDate *peakDate;
+
 @property (nonatomic) NSIndexPath *selectedIndexPath;
 @property (nonatomic) NSIndexPath *selectedTableRowIndex;
 
@@ -31,8 +36,8 @@
 @property (nonatomic) NSMutableArray *datesWithPeriod;
 
 @property (nonatomic) Day *day;
-@property (nonatomic) NSString *notes;
 @property (nonatomic) CycleViewController *cycleViewController;
+@property (nonatomic) NSString *notes;
 
 @property (nonatomic) BOOL lowerDrawer;
 @property (nonatomic) BOOL inLandscape;
@@ -270,6 +275,128 @@
 {
     UITableViewCell *cell;
     
+    switch (indexPath.row) {
+        case 0:{
+            // Status Cell
+            
+            cell = [tableView dequeueReusableCellWithIdentifier: @"statuCell" forIndexPath: indexPath];
+            ((TrackingStatusTableViewCell *)cell).delegate = self;
+            [((TrackingStatusTableViewCell *)cell) updateCell];
+            
+            if (self.selectedTableRowIndex.row == 0) {
+                // Hide/Move Labels
+            }
+            break;
+        }
+        case 1:{
+            // Temperature Cell
+            cell = [tableView dequeueReusableCellWithIdentifier: @"tempCell" forIndexPath: indexPath];
+            ((TrackingTemperatureTableViewCell *)cell).delegate = self;
+            
+            // Hide/Move Labels
+            if (self.selectedTableRowIndex.row == 1) {
+                [((TrackingTemperatureTableViewCell *)cell) setExpanded];
+            }else{
+                [((TrackingTemperatureTableViewCell *)cell) setMinimized];
+            }
+            break;
+        }
+        case 2:{
+            // Cervical Fluid Cell
+            cell = [tableView dequeueReusableCellWithIdentifier: @"cfCell" forIndexPath: indexPath];
+            
+            if (self.selectedTableRowIndex.row == 2) {
+                // Hide/Move Labels
+            }
+            break;
+        }
+        case 3:{
+            // Cervical Position Cell
+            cell = [tableView dequeueReusableCellWithIdentifier: @"cpCell" forIndexPath: indexPath];
+            
+            if (self.selectedTableRowIndex.row == 3) {
+                // Hide/Move Labels
+            }
+            break;
+        }
+        case 4:{
+            // Period Cell
+            cell = [tableView dequeueReusableCellWithIdentifier: @"periodCell" forIndexPath: indexPath];
+            
+            if (self.selectedTableRowIndex.row == 4) {
+                // Hide/Move Labels
+            }
+            break;
+        }
+        case 5:{
+            // Intercourse Cell
+            cell = [self.tableView dequeueReusableCellWithIdentifier: @"intercourseCell" forIndexPath: indexPath];
+            
+            if (self.selectedTableRowIndex.row == 5) {
+                // Hide/Move Labels
+            }
+            break;
+        }
+        case 6:{
+            // Mood Cell
+            cell = [self.tableView dequeueReusableCellWithIdentifier: @"moodCell" forIndexPath: indexPath];
+            
+            if (self.selectedTableRowIndex.row == 6) {
+                // Hide/Move Labels
+            }
+            break;
+        }
+        case 7:{
+            // Symptoms Cell
+            cell = [tableView dequeueReusableCellWithIdentifier: @"symptomsCell" forIndexPath: indexPath];
+
+            if (self.selectedTableRowIndex.row == 7) {
+                // Hide/Move Labels
+            }
+            break;
+        }
+        case 8:{
+            // Ovulation Cell
+            cell = [self.tableView dequeueReusableCellWithIdentifier: @"ovulationCell" forIndexPath: indexPath];
+            
+            if (self.selectedTableRowIndex.row == 8) {
+                // Hide/Move Labels
+            }
+            break;
+        }
+        case 9:{
+            // Pregnancy Cell
+            cell = [tableView dequeueReusableCellWithIdentifier: @"pregnancyCell" forIndexPath: indexPath];
+            
+            if (self.selectedTableRowIndex.row == 9) {
+                // Hide/Move Labels
+            }
+            break;
+        }
+        case 10:{
+            // Supplements Cell
+            cell = [tableView dequeueReusableCellWithIdentifier: @"supplementsCell" forIndexPath: indexPath];
+
+            if (self.selectedTableRowIndex.row == 10) {
+                // Hide/Move Labels
+            }
+            break;
+        }
+        case 11:{
+            // Medicines Cell
+            cell = [tableView dequeueReusableCellWithIdentifier: @"medicinesCell" forIndexPath: indexPath];
+
+            if (self.selectedTableRowIndex.row == 11) {
+                // Hide/Move Labels
+            }
+            break;
+        }
+        default:
+            break;
+    }
+    
+    [cell setSelectionStyle: UITableViewCellSelectionStyleNone];
+    
     return cell;
 }
 
@@ -383,6 +510,26 @@
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: trackingVC];
     
     [self presentViewController: navVC animated: YES completion: nil];
+}
+
+- (NSMutableArray *)getDatesWithPeriod
+{
+    return self.datesWithPeriod;
+}
+
+- (NSDate *)getSelectedDate
+{
+    return self.selectedDate;
+}
+
+- (NSDate *)getPeakDate
+{
+    return self.peakDate;
+}
+
+- (NSString *)getNotes
+{
+    return self.notes;
 }
 
 # pragma mark - HealthKit

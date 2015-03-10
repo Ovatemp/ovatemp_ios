@@ -21,16 +21,19 @@ static NSInteger kTotalDays;
 
 @implementation Cycle
 
-- (NSString *)description {
+- (NSString *)description
+{
   return [NSString stringWithFormat:@"Cycle %@ - %@", self.startDate.dateId, self.endDate.dateId];
 }
 
-+ (void)initialize {
++ (void)initialize
+{
   [super initialize];
   [self calculateDates];
 }
 
-+ (NSArray *)all {
++ (NSArray *)all
+{
   if (kAllCycles) {
     return [kAllCycles sortedArrayUsingComparator:^NSComparisonResult(Cycle *cycle1, Cycle *cycle2) {
       return [cycle1.startDate compare:cycle2.startDate];
@@ -40,7 +43,8 @@ static NSInteger kTotalDays;
   }
 }
 
-+ (Cycle *)atIndex:(NSInteger)index {
++ (Cycle *)atIndex:(NSInteger)index
+{
   NSArray *allCycles = [Cycle all];
   if (index >= 0 && index < allCycles.count) {
     return [allCycles objectAtIndex:index];
