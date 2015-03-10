@@ -8,7 +8,7 @@
         <!--Tracking View Controller-->
         <scene sceneID="g5e-pe-93O">
             <objects>
-                <viewController storyboardIdentifier="trackingVC" id="3fu-mC-j0h" customClass="TrackingViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="trackingVC" id="3fu-mC-j0h" customClass="ILTrackingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m2p-eO-So8"/>
                         <viewControllerLayoutGuide type="bottom" id="MD1-yE-W5K"/>
@@ -64,7 +64,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="openGraph:" destination="3fu-mC-j0h" eventType="touchUpInside" id="C13-Wq-EZ2"/>
+                                            <action selector="openGraph:" destination="3fu-mC-j0h" eventType="touchUpInside" id="oJn-q4-jrA"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDp-Jc-QRp">
@@ -77,7 +77,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="openCalendar:" destination="3fu-mC-j0h" eventType="touchUpInside" id="F9Q-CE-kPT"/>
+                                            <action selector="openCalendar:" destination="3fu-mC-j0h" eventType="touchUpInside" id="KyS-gH-oTP"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Mar 5, 2015" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCY-IG-S1b">
@@ -100,6 +100,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="toggleDrawer:" destination="3fu-mC-j0h" eventType="touchUpInside" id="jO0-H4-zDu"/>
                                             <action selector="toggleMiniCalendar:" destination="3fu-mC-j0h" eventType="touchUpInside" id="ZNj-uF-TNK"/>
                                         </connections>
                                     </button>
@@ -184,14 +185,17 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
-                        <outlet property="arrowButton" destination="qx6-dQ-dnC" id="wVl-ud-nUn"/>
-                        <outlet property="calendarTopConstraint" destination="y2R-v9-1hT" id="nu8-ZY-eLS"/>
-                        <outlet property="drawerCollectionView" destination="Jxv-Mf-B2f" id="FWW-X9-KmO"/>
+                        <outlet property="arrowButton" destination="qx6-dQ-dnC" id="hTt-VT-u75"/>
+                        <outlet property="calendarTopConstraint" destination="y2R-v9-1hT" id="Yif-wz-cy9"/>
+                        <outlet property="calendarView" destination="tad-EW-aMN" id="vU7-f5-tuA"/>
+                        <outlet property="drawerCollectionView" destination="Jxv-Mf-B2f" id="Hbe-84-tLN"/>
                         <outlet property="drawerView" destination="tad-EW-aMN" id="Q9o-c7-30T"/>
+                        <outlet property="navigationBarView" destination="bbP-aR-UaS" id="kd0-Pm-Cdq"/>
                         <outlet property="navigationView" destination="bbP-aR-UaS" id="cE5-qv-ugA"/>
                         <outlet property="subTitleLabel" destination="lIJ-T9-hsE" id="veU-Yo-giO"/>
-                        <outlet property="tableView" destination="eDl-ej-vyi" id="2nX-CB-5mD"/>
-                        <outlet property="titleLabel" destination="lCY-IG-S1b" id="0g2-sf-bOU"/>
+                        <outlet property="subtitleLabel" destination="lIJ-T9-hsE" id="p5e-cy-Oca"/>
+                        <outlet property="tableView" destination="eDl-ej-vyi" id="7xW-B1-F3s"/>
+                        <outlet property="titleLabel" destination="lCY-IG-S1b" id="Chv-tH-UJd"/>
                         <segue destination="JX6-Fi-sae" kind="show" identifier="presentNotesVC" id="WnT-NX-iIC"/>
                     </connections>
                 </viewController>

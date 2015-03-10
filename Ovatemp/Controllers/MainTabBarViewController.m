@@ -40,7 +40,8 @@
 
 # pragma mark - Autorotation
 
-- (void)orientationChanged:(NSNotification *)notification {
+- (void)orientationChanged:(NSNotification *)notification
+{
   if (!self.cycleViewController) {
     self.cycleViewController = [[CycleViewController alloc] init];
     self.cycleViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;

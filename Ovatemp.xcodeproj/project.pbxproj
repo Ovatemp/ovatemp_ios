@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0619A97F1AA4E32A000F31E6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */; };
+		06C55B221AAF4BD600EDE74A /* ILTrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */; };
 		0EC9830B19AB8619009A5730 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC9830A19AB8619009A5730 /* HealthKit.framework */; };
 		5F1A3BF419F17614002FFA28 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F1A3BF319F17614002FFA28 /* Login.storyboard */; };
 		5F1C96C419EDD319000F1FC1 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C963519EDD319000F1FC1 /* libAdIdAccess.a */; };
@@ -429,6 +430,8 @@
 
 /* Begin PBXFileReference section */
 		0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		06C55B201AAF4BD600EDE74A /* ILTrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTrackingViewController.h; sourceTree = "<group>"; };
+		06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTrackingViewController.m; sourceTree = "<group>"; };
 		0EC9830A19AB8619009A5730 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		259EFE437AEE5D2421AD121C /* Pods-OvatempTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F1A3BF319F17614002FFA28 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -1340,6 +1343,8 @@
 				5F7AEA6E1A01373C0053ABAB /* TrackingNavigationController.m */,
 				5F7AEA701A013C580053ABAB /* TrackingViewController.h */,
 				5F7AEA711A013C580053ABAB /* TrackingViewController.m */,
+				06C55B201AAF4BD600EDE74A /* ILTrackingViewController.h */,
+				06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */,
 				5F4C5B0A1A02C1CE00D0F465 /* TrackingNotesViewController.h */,
 				5F4C5B0B1A02C1CE00D0F465 /* TrackingNotesViewController.m */,
 				5F1C9A2819EDE879000F1FC1 /* CalendarViewController.h */,
@@ -2596,6 +2601,7 @@
 				5F6561E319FAD74C001FB509 /* EditWeightTableViewCell.m in Sources */,
 				5F1C9B7F19EDE87A000F1FC1 /* TemperatureCellStaticView.m in Sources */,
 				5F1C9B8F19EDE87A000F1FC1 /* MoreViewController.m in Sources */,
+				06C55B221AAF4BD600EDE74A /* ILTrackingViewController.m in Sources */,
 				5F428F561A44A62C00D78762 /* MPCGAffineTransformToNSDictionaryValueTransformer.m in Sources */,
 				5F1C9B7219EDE87A000F1FC1 /* DayToggleButton.m in Sources */,
 				5F1C9C6419EDE87A000F1FC1 /* UserProfile.m in Sources */,

@@ -164,6 +164,8 @@ NSMutableArray *daysFromBackend;
 
 NSMutableArray *datesWithPeriod;
 
+#pragma mark - UIViewController
+
 - (id)init
 {
     self = [super init];
@@ -184,56 +186,10 @@ NSMutableArray *datesWithPeriod;
                                                   object:nil];
 }
 
-# pragma mark - Autorotation
-
-- (void)orientationChanged:(NSNotification *)notification
+- (void)didReceiveMemoryWarning
 {
-    if (!self.cycleViewController) {
-        self.cycleViewController = [[CycleViewController alloc] init];
-        self.cycleViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    }
-    
-    BOOL isAnimating = self.cycleViewController.isBeingPresented || self.cycleViewController.isBeingDismissed;
-    
-    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
-    if (UIDeviceOrientationIsLandscape(deviceOrientation)) {
-        
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShouldRotate"]) {
-            inLandscape = YES;
-            if (!isAnimating) {
-                [self showCycleViewController];
-            }
-        }
-    } else {
-        inLandscape = NO;
-        if (!isAnimating) {
-            [self hideCycleViewController];
-        }
-    }
-}
-
-- (void)hideCycleViewController
-{
-    [self dismissViewControllerAnimated:YES completion:^{
-        if (inLandscape) {
-            [self showCycleViewController];
-        }
-    }];
-}
-
-- (void)showCycleViewController
-{
-    [self performSelector:@selector(presentChart) withObject:nil afterDelay:1.0];
-}
-
-- (void)presentChart
-{
-    //    [self pushViewController:self.cycleViewController];
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
-    return self.presentedViewController.preferredStatusBarStyle;
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewDidLoad
@@ -281,7 +237,7 @@ NSMutableArray *datesWithPeriod;
 //    NSDate *today = [NSDate date];
 //    NSCalendar *defaultCal = [[NSCalendar alloc] initWithCalendarIdentifier:[[NSLocale currentLocale] objectForKey:NSLocaleCalendar]];
     NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
-    [offsetComponents setMonth:-3];
+    [offsetComponents setMonth: -3];
     
 //    NSDate *threeMonthsAgo = [defaultCal dateByAddingComponents:offsetComponents toDate:today options:0];
     
@@ -379,6 +335,34 @@ NSMutableArray *datesWithPeriod;
     [self refreshTrackingView];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.drawerView setHidden:NO];
+    [self.tableView reloadData];
+    [self.tableView setNeedsDisplay];
+    [self.tableView setNeedsLayout];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(orientationChanged:)
+                                                 name:UIDeviceOrientationDidChangeNotification
+                                               object:nil];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:YES forKey:@"ShouldRotate"];
+    [defaults synchronize];
+    
+    // fix nav bar when coming back from webview
+    
+    if (didLeaveToWebView) {
+        //[self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 90)];
+        didLeaveToWebView = NO;
+    }
+    
+    [self refreshDrawerCollectionViewData];
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -433,99 +417,23 @@ NSMutableArray *datesWithPeriod;
     [self refreshTrackingView];
     
     // set date in cells
-    [self.tempCell setSelectedDate:self.selectedDate];
-    [self.cfCell setSelectedDate:self.selectedDate];
-    [self.cpCell setSelectedDate:self.selectedDate];
-    [self.periodCell setSelectedDate:self.selectedDate];
-    [self.intercourseCell setSelectedDate:self.selectedDate];
-    [self.moodCell setSelectedDate:self.selectedDate];
-    [self.symptomsCell setSelectedDate:self.selectedDate];
-    [self.ovulationCell setSelectedDate:self.selectedDate];
-    [self.pregnancyCell setSelectedDate:self.selectedDate];
-    [self.supplementsCell setSelectedDate:self.selectedDate];
-    [self.medicinesCell setSelectedDate:self.selectedDate];
+    [self.tempCell setSelectedDate: self.selectedDate];
+    [self.cfCell setSelectedDate: self.selectedDate];
+    [self.cpCell setSelectedDate: self.selectedDate];
+    [self.periodCell setSelectedDate: self.selectedDate];
+    [self.intercourseCell setSelectedDate: self.selectedDate];
+    [self.moodCell setSelectedDate: self.selectedDate];
+    [self.symptomsCell setSelectedDate: self.selectedDate];
+    [self.ovulationCell setSelectedDate: self.selectedDate];
+    [self.pregnancyCell setSelectedDate: self.selectedDate];
+    [self.supplementsCell setSelectedDate: self.selectedDate];
+    [self.medicinesCell setSelectedDate: self.selectedDate];
     
     if ([ONDO sharedInstance].devices.count > 0) {
         [ONDO startWithDelegate:self];
     }
     
     didLeaveToWebView = NO;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self.drawerView setHidden:NO];
-    [self.tableView reloadData];
-    [self.tableView setNeedsDisplay];
-    [self.tableView setNeedsLayout];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(orientationChanged:)
-                                                 name:UIDeviceOrientationDidChangeNotification
-                                               object:nil];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:YES forKey:@"ShouldRotate"];
-    [defaults synchronize];
-    
-    // fix nav bar when coming back from webview
-  
-    if (didLeaveToWebView) {
-        //[self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 90)];
-        didLeaveToWebView = NO;
-    }
-    
-    [self refreshDrawerCollectionViewData];
-}
-
-- (void)refreshDrawerCollectionViewData
-{
-    // refresh date drawer
-    daysFromBackend = [[NSMutableArray alloc] init];
-    
-    [ConnectionManager get:@"/days"
-                    params:@{
-                             @"start_date": [drawerDateData firstObject],
-                             @"end_date": [drawerDateData lastObject]
-                             }
-                   success:^(NSDictionary *response) {
-                       //                       NSArray *orphanDays = response[@"days"];
-                       NSArray *cycles = response[@"cycles"]; // array of dictionaries
-                       // [cycles[0] objectForKey:@"days"] <- array of days
-                       // [[[cycles[0] objectForKey:@"days"] objectAtIndex:0] objectForKey:@"date"]
-                       for (NSDictionary *days in cycles) {
-                           NSArray *daysArray = [days objectForKey:@"days"];
-                           for (NSDictionary *day in daysArray) {
-                               //                               NSLog(@"%@", [day objectForKey:@"date"]);
-                               //                               [daysFromBackend addObject:[day objectForKey:@"date"]]; <- this will give you the date, we need the whole day dictionary
-                               [daysFromBackend addObject:day];
-                               
-                               if ((![[day objectForKey:@"period"] isEqual:[NSNull null]])) {
-                                   if ([[day objectForKey:@"period"] isEqualToString:@"spotting"] || [[day objectForKey:@"period"] isEqualToString:@"light"] || [[day objectForKey:@"period"] isEqualToString:@"medium"] || [[day objectForKey:@"period"] isEqualToString:@"heavy"]) {
-                                       NSDateFormatter* dtFormatter = [[NSDateFormatter alloc] init];
-                                       [dtFormatter setLocale:[NSLocale systemLocale]];
-                                       [dtFormatter setDateFormat:@"yyyy-MM-dd"];
-                                       NSDate *tempDate = [dtFormatter dateFromString:[day objectForKey:@"date"]];
-                                       if (![datesWithPeriod containsObject:tempDate]) {
-                                           // add date to dates with period array
-                                           // if we have a spotting day right after a period day, it still counts as the period cycle phase
-                                           [datesWithPeriod addObject:tempDate];
-                                       }
-                                   }
-                               }
-                               
-                               
-                               
-                               
-                           }
-                       }
-                       [self.drawerCollectionView reloadData];
-                   }
-                   failure:^(NSError *error) {
-                       NSLog(@"error: %@", error);
-                   }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -540,11 +448,7 @@ NSMutableArray *datesWithPeriod;
     [defaults synchronize];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - IBAction's
 
 - (IBAction)toggleMiniCalendar:(id)sender
 {
@@ -606,28 +510,77 @@ NSMutableArray *datesWithPeriod;
 
 }
 
-- (void)setTitleView
+- (void)hideCycleViewController
 {
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateStyle:NSDateFormatterMediumStyle];
-    [df setTimeStyle:NSDateFormatterNoStyle];
-    
-    NSString *dateString = [df stringFromDate:self.selectedDate];
-    self.titleLabel.text = dateString;
-
-    if (day.cycleDay) {
-        self.subTitleLabel.text = [NSString stringWithFormat:@"Cycle Day #%@", day.cycleDay];
-    } else {
-        self.subTitleLabel.text = [NSString stringWithFormat:@"Enter Cycle Info"];
-    }
-    
-    if (!lowerDrawer) {
-        // flip arrow if the drawer is already open
-        self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI);
-    }
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (inLandscape) {
+            [self showCycleViewController];
+        }
+    }];
 }
 
-- (void)refreshTrackingView {
+- (void)showCycleViewController
+{
+    [self performSelector:@selector(presentChart) withObject:nil afterDelay:1.0];
+}
+
+- (void)presentChart
+{
+    //    [self pushViewController:self.cycleViewController];
+}
+
+#pragma mark - Network
+
+- (void)refreshDrawerCollectionViewData
+{
+    // refresh date drawer
+    daysFromBackend = [[NSMutableArray alloc] init];
+    
+    [ConnectionManager get:@"/days"
+                    params:@{
+                             @"start_date": [drawerDateData firstObject],
+                             @"end_date": [drawerDateData lastObject]
+                             }
+                   success:^(NSDictionary *response) {
+                       //                       NSArray *orphanDays = response[@"days"];
+                       NSArray *cycles = response[@"cycles"]; // array of dictionaries
+                       // [cycles[0] objectForKey:@"days"] <- array of days
+                       // [[[cycles[0] objectForKey:@"days"] objectAtIndex:0] objectForKey:@"date"]
+                       for (NSDictionary *days in cycles) {
+                           NSArray *daysArray = [days objectForKey:@"days"];
+                           for (NSDictionary *day in daysArray) {
+                               //                               NSLog(@"%@", [day objectForKey:@"date"]);
+                               //                               [daysFromBackend addObject:[day objectForKey:@"date"]]; <- this will give you the date, we need the whole day dictionary
+                               [daysFromBackend addObject:day];
+                               
+                               if ((![[day objectForKey:@"period"] isEqual:[NSNull null]])) {
+                                   if ([[day objectForKey:@"period"] isEqualToString:@"spotting"] || [[day objectForKey:@"period"] isEqualToString:@"light"] || [[day objectForKey:@"period"] isEqualToString:@"medium"] || [[day objectForKey:@"period"] isEqualToString:@"heavy"]) {
+                                       NSDateFormatter* dtFormatter = [[NSDateFormatter alloc] init];
+                                       [dtFormatter setLocale:[NSLocale systemLocale]];
+                                       [dtFormatter setDateFormat:@"yyyy-MM-dd"];
+                                       NSDate *tempDate = [dtFormatter dateFromString:[day objectForKey:@"date"]];
+                                       if (![datesWithPeriod containsObject:tempDate]) {
+                                           // add date to dates with period array
+                                           // if we have a spotting day right after a period day, it still counts as the period cycle phase
+                                           [datesWithPeriod addObject:tempDate];
+                                       }
+                                   }
+                               }
+                               
+                               
+                               
+                               
+                           }
+                       }
+                       [self.drawerCollectionView reloadData];
+                   }
+                   failure:^(NSError *error) {
+                       NSLog(@"error: %@", error);
+                   }];
+}
+
+- (void)refreshTrackingView
+{
     // here the user has selected a new date
     // we will need to change all the labels and update the cells accordingly after hitting the backend
     
@@ -645,9 +598,9 @@ NSMutableArray *datesWithPeriod;
                            day = [Day withAttributes:@{@"date": self.selectedDate, @"idate": self.selectedDate.dateId}];
                        }
                        
-//                       NSLog(@"-----START OF RESPONSE FROM SERVER-----");
-//                       NSLog(@"%@", response);
-//                       NSLog(@"-----END OF RESPONSE FROM SERVER-----");
+                       //                       NSLog(@"-----START OF RESPONSE FROM SERVER-----");
+                       //                       NSLog(@"%@", response);
+                       //                       NSLog(@"-----END OF RESPONSE FROM SERVER-----");
                        
                        //                       if (onSuccess) onSuccess(response);
                        
@@ -679,7 +632,7 @@ NSMutableArray *datesWithPeriod;
                            } else {
                                float tempInCelsius = (([day.temperature floatValue] - 32) / 1.8000f);
                                self.temperature = [NSNumber numberWithFloat:tempInCelsius];
-                                self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f", tempInCelsius];
+                               self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f", tempInCelsius];
                            }
                            
                            TemperatureCellHasData = YES;
@@ -894,13 +847,13 @@ NSMutableArray *datesWithPeriod;
                                if (![self.supplementIDs containsObject:simpleSupp]) {
                                    [self.supplements addObject:simpleSupp];
                                }
-//                               [self.supplementIDs addObject:supp.id];
+                               //                               [self.supplementIDs addObject:supp.id];
                            }
                            self.supplementsCell.supplementsTableViewDataSource = self.supplements;
                            self.supplementsCell.selectedSupplementIDs = self.supplementIDs;
                            SupplementsCellHasData = YES;
                        } else {
-//                           SupplementsCellHasData = NO;
+                           //                           SupplementsCellHasData = NO;
                            SupplementsCellHasData = YES;
                            [self.supplementsCell.supplementsTableViewDataSource removeAllObjects];
                            [self.supplementsCell.selectedSupplementIDs removeAllObjects];
@@ -999,6 +952,8 @@ NSMutableArray *datesWithPeriod;
     //    [self.cpCell setSelectedDate:self.selectedDate];
     //    [self.periodCell setSelectedDate:self.selectedDate];
 }
+
+#pragma mark - SetData && SetExpandedOrClosed Methods
 
 - (void)setDataForStatusCell
 {
@@ -1221,7 +1176,8 @@ NSMutableArray *datesWithPeriod;
     }
 }
 
-- (void)setDataForCervicalFluidCell {
+- (void)setDataForCervicalFluidCell
+{
     //    self.cervicalFluid = [self.cfCell.cfTypeCollapsedLabel.text lowercaseString];
     
     if ([self.cervicalFluid isEqual:@"dry"]) {
@@ -1356,7 +1312,8 @@ NSMutableArray *datesWithPeriod;
     }
 }
 
-- (void)setDataForCervicalPositionCell {
+- (void)setDataForCervicalPositionCell
+{
     if ([self.cervicalPosition isEqual:@"low/closed/firm"]) {
         self.cpCell.placeholderLabel.hidden = YES;
         self.cpCell.collapsedLabel.hidden = NO;
@@ -1429,7 +1386,8 @@ NSMutableArray *datesWithPeriod;
     }
 }
 
-- (void)setExpandedOrClosedPeriodCellWithData {
+- (void)setExpandedOrClosedPeriodCellWithData
+{
     // if we have data and are expanding
     if (expandPeriodCell) {
         self.periodCell.placeholderLabel.hidden = YES;
@@ -1444,7 +1402,8 @@ NSMutableArray *datesWithPeriod;
     }
 }
 
-- (void)setDataForPeriodCell {
+- (void)setDataForPeriodCell
+{
     if ([self.period isEqual:@"none"]) {
         self.periodCell.placeholderLabel.hidden = YES;
         self.periodCell.periodCollapsedLabel.hidden = NO;
@@ -1540,7 +1499,8 @@ NSMutableArray *datesWithPeriod;
 
 }
 
-- (void)setExpandedOrClosedIntercourseCellWithData {
+- (void)setExpandedOrClosedIntercourseCellWithData
+{
     // if we have data and are expanding
     if (expandIntercourseCell) {
         self.intercourseCell.placeholderLabel.hidden = YES;
@@ -1555,7 +1515,8 @@ NSMutableArray *datesWithPeriod;
     }
 }
 
-- (void)setDataForIntercourseCell {
+- (void)setDataForIntercourseCell
+{
     if ([self.intercourse isEqual:@"protected"]) {
         self.intercourseCell.placeholderLabel.hidden = YES;
         self.intercourseCell.intercourseCollapsedLabel.hidden = NO;
@@ -1597,7 +1558,8 @@ NSMutableArray *datesWithPeriod;
     }
 }
 
-- (void)setExpandedOrClosedMoodCellWithData {
+- (void)setExpandedOrClosedMoodCellWithData
+{
     // if we have data and are expanding
     if (expandMoodCell) {
         self.moodCell.moodPlaceholderLabel.hidden = YES;
@@ -1610,7 +1572,8 @@ NSMutableArray *datesWithPeriod;
     }
 }
 
-- (void)setDataForMoodCell {
+- (void)setDataForMoodCell
+{
     BOOL moodIsNotNone;
     moodIsNotNone = YES;
     
@@ -1679,7 +1642,8 @@ NSMutableArray *datesWithPeriod;
     }
 }
 
-- (void)setSymptomWithValue:(NSInteger)value {
+- (void)setSymptomWithValue:(NSInteger)value
+{
     // set i-1th cell check mark
     // add element to array
     
@@ -1710,7 +1674,8 @@ NSMutableArray *datesWithPeriod;
 //        symptomsDataSource = [NSArray arrayWithObjects:@"Breast tenderness", @"Headaches", @"Nausea", @"Irritability/Mood swings", @"Bloating", @"PMS", @"Stress", @"Travel", @"Fever", nil];
 }
 
-- (void)setExpandedOrClosedOvulationTestCellWithData {
+- (void)setExpandedOrClosedOvulationTestCellWithData
+{
     // if we have data and are expanding
     if (expandOvulationTestCell) {
         self.ovulationCell.placeholderLabel.hidden = NO;
@@ -1726,7 +1691,8 @@ NSMutableArray *datesWithPeriod;
     }
 }
 
-- (void)setDataForOvulationTestCell {
+- (void)setDataForOvulationTestCell
+{
     if ([self.ovulation isEqual:@"positive"]) {
         [self.ovulationCell setSelectedOvulationTestType:OvulationTestSelectionPositive];
         [self.ovulationCell.ovulationTypeCollapsedLabel setText:@"Positive"];
@@ -1765,7 +1731,8 @@ NSMutableArray *datesWithPeriod;
     }
 }
 
-- (void)setExpandedOrClosedPregnancyTestCellWithData {
+- (void)setExpandedOrClosedPregnancyTestCellWithData
+{
     // if we have data and are expanding
     if (expandPregnancyTestCell) {
         self.pregnancyCell.placeholderLabel.hidden = NO;
@@ -1781,7 +1748,8 @@ NSMutableArray *datesWithPeriod;
     }
 }
 
-- (void)setDataForPregnancyTestCell {
+- (void)setDataForPregnancyTestCell
+{
     if ([self.pregnancy isEqual:@"positive"]) {
         [self.pregnancyCell setSelectedPregnancyTestType:PregnancyTestSelectionPositive];
         [self.pregnancyCell.pregnancyTypeCollapsedLabel setText:@"Positive"];
@@ -2742,7 +2710,6 @@ NSMutableArray *datesWithPeriod;
     }
     
     // if we opened a cell earlier, set the data we have
-#pragma mark - Fixes for Cell if closed by opening another cell
     if (TemperatureCellHasData) {
         self.tempCell.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f", [self.temperature floatValue]];
         
@@ -3136,10 +3103,12 @@ NSMutableArray *datesWithPeriod;
     [tableView setNeedsLayout];
 }
 
-- (void)setTableStateForState:(TableStateType)state {
+#pragma mark - Table State Machine
+
+- (void)setTableStateForState:(TableStateType)state
+{
     
     switch (state) {
-#pragma mark - TableStateAllClosed
         case TableStateAllClosed:
         {
             expandTemperatureCell = NO;
@@ -3327,8 +3296,6 @@ NSMutableArray *datesWithPeriod;
             currentState = TableStateAllClosed;
             break;
         }
-            
-#pragma mark - TableStateTemperatureExpanded
         case TableStateTemperatureExpanded:
         {
             expandTemperatureCell = YES;
@@ -3509,7 +3476,6 @@ NSMutableArray *datesWithPeriod;
             break;
         }
             
-#pragma mark - Cervical Fluid
         case TableStateCervicalFluidExpanded:
         {
             expandTemperatureCell = NO;
@@ -3673,7 +3639,6 @@ NSMutableArray *datesWithPeriod;
             break;
         }
             
-#pragma mark - Cervical Position
         case TableStateCervicalPositionExpanded:
         {
             expandTemperatureCell = NO;
@@ -3853,7 +3818,6 @@ NSMutableArray *datesWithPeriod;
             break;
         }
             
-#pragma mark - Period
         case TableStatePeriodExpanded:
         {
             expandTemperatureCell = NO;
@@ -4034,7 +3998,6 @@ NSMutableArray *datesWithPeriod;
             break;
         }
             
-#pragma mark - Intercourse
         case TableStateIntercourseExpanded:
         {
             expandTemperatureCell = NO;
@@ -4215,7 +4178,6 @@ NSMutableArray *datesWithPeriod;
             break;
         }
             
-#pragma mark - Mood
         case TableStateMoodExpanded:
         {
             
@@ -4395,7 +4357,6 @@ NSMutableArray *datesWithPeriod;
             break;
         }
             
-#pragma mark - Symptoms
         case TableStateSymptomsExpanded:
         {
             expandTemperatureCell = NO;
@@ -4579,7 +4540,6 @@ NSMutableArray *datesWithPeriod;
             break;
         }
             
-#pragma mark - Ovulation
         case TableStateOvulationTestExpanded:
         {
             expandTemperatureCell = NO;
@@ -4754,7 +4714,6 @@ NSMutableArray *datesWithPeriod;
             break;
         }
             
-#pragma mark - Pregnancy
         case TableStatePregnancyTestExpanded:
         {
             expandTemperatureCell = NO;
@@ -4928,7 +4887,6 @@ NSMutableArray *datesWithPeriod;
             break;
         }
          
-#pragma mark - Supplements
         case TableStateSupplementsExpanded:
         {
             expandTemperatureCell = NO;
@@ -5013,7 +4971,6 @@ NSMutableArray *datesWithPeriod;
             break;
         }
             
-#pragma mark - Medicine
         case TableStateMedicineExpanded:
         {
             expandTemperatureCell = NO;
@@ -5103,6 +5060,8 @@ NSMutableArray *datesWithPeriod;
     }
 }
 
+#pragma mark - Hide/Show - Supplements/Medicine Cell's
+
 - (void)hideSupplementsCell
 {
     expandSupplementsCell = NO;
@@ -5130,7 +5089,8 @@ NSMutableArray *datesWithPeriod;
     }
 }
 
-- (void)showSupplementsCell {
+- (void)showSupplementsCell
+{
     expandSupplementsCell = YES;
     // show component
     
@@ -5144,7 +5104,8 @@ NSMutableArray *datesWithPeriod;
     self.supplementsCell.placeholderLabel.hidden = YES;
 }
 
-- (void)hideMedicinesCell {
+- (void)hideMedicinesCell
+{
     expandMedicineCell = NO;
     // hide component
     self.medicinesCell.medicinesTableView.hidden = YES;
@@ -5170,7 +5131,8 @@ NSMutableArray *datesWithPeriod;
     }
 }
 
-- (void)showMedicinesCell {
+- (void)showMedicinesCell
+{
     expandMedicineCell = YES;
     // show component
     
@@ -5184,14 +5146,15 @@ NSMutableArray *datesWithPeriod;
     self.medicinesCell.placeholderLabel.hidden = YES;
 }
 
-#pragma mark - UICollectionView
+#pragma mark - UICollectionView DataSource, Delegate
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return [drawerDateData count];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     
     //    if (indexPath.row == 86) {
     //        NSLog(@"index 86");
@@ -5456,7 +5419,8 @@ NSMutableArray *datesWithPeriod;
     return cell;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     //    if (indexPath.row == 86) {
     //        return CGSizeMake(44, 44);
     //    }
@@ -5622,22 +5586,25 @@ NSMutableArray *datesWithPeriod;
 
 # pragma mark - ONDO delegate methods
 
-- (void)ONDOsaysBluetoothIsDisabled:(ONDO *)ondo {
+- (void)ONDOsaysBluetoothIsDisabled:(ONDO *)ondo
+{
     [Alert showAlertWithTitle:@"Bluetooth is Off"
                       message:@"Bluetooth is off, so we can't detect a thing"];
 }
 
-- (void)ONDOsaysLEBluetoothIsUnavailable:(ONDO *)ondo {
+- (void)ONDOsaysLEBluetoothIsUnavailable:(ONDO *)ondo
+{
     [Alert showAlertWithTitle:@"LE Bluetooth Unavailable"
                       message:@"Your device does not support low-energy Bluetooth, so it can't connect to your ONDO"];
 }
 
-- (void)ONDO:(ONDO *)ondo didEncounterError:(NSError *)error {
+- (void)ONDO:(ONDO *)ondo didEncounterError:(NSError *)error
+{
     [Alert presentError:error];
 }
 
-- (void)ONDO:(ONDO *)ondo didReceiveTemperature:(CGFloat)temperature {
-    
+- (void)ONDO:(ONDO *)ondo didReceiveTemperature:(CGFloat)temperature
+{
     float tempInCelsius = temperature;
     temperature = temperature * 9.0f / 5.0f + 32.0f;
     
@@ -5681,8 +5648,8 @@ NSMutableArray *datesWithPeriod;
     [Alert showAlertWithTitle:@"Temperature Recorded" message:temperatureString];
 }
 
-- (void)postAndSaveTempWithTempValue:(float)temp {
-
+- (void)postAndSaveTempWithTempValue:(float)temp
+{
     // we're getting the temp in fahrenheit, no need to convert
 //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 //    BOOL tempPrefFahrenheit = [defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"];
@@ -5716,9 +5683,61 @@ NSMutableArray *datesWithPeriod;
                    }];
 }
 
+#pragma mark - UIAlertController Delegate
+
+- (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url
+{
+    UIAlertController *infoAlert = [UIAlertController
+                                    alertControllerWithTitle:title
+                                    message:message
+                                    preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *gotIt = [UIAlertAction actionWithTitle:@"Got it"
+                                                    style:UIAlertActionStyleDefault
+                                                  handler:nil];
+    
+    UIAlertAction *learnMore = [UIAlertAction actionWithTitle:@"Learn more"
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction *action) {
+                                                          
+        WebViewController *webViewController = [WebViewController withURL:url];
+        webViewController.title = title;
+        
+        [webViewController.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc]
+                                                                initWithTitle:@"Back"
+                                                                style:UIBarButtonItemStylePlain
+                                                                target:self
+                                                                action:@selector(popWebView)]];
+        
+        [self presentViewController: webViewController animated: YES completion: nil];
+
+    }];
+    
+    [infoAlert addAction:gotIt];
+    [infoAlert addAction:learnMore];
+    infoAlert.view.tintColor = [UIColor ovatempAquaColor];
+    
+    didLeaveToWebView = YES;
+    
+    [self presentViewController:infoAlert animated:YES completion:nil];
+}
+
+#pragma mark - TrackingStatusCell Delegate
+
+- (void)pressedNotes
+{
+    TrackingNotesViewController *trackingVC = [self.storyboard instantiateViewControllerWithIdentifier: @"trackingNotesViewController"];
+    trackingVC.selectedDate = self.selectedDate;
+    trackingVC.notesText = self.notes;
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: trackingVC];
+    
+    [self presentViewController: navVC animated: YES completion: nil];
+}
+
 # pragma mark - HealthKit
 
-- (void)updateHealthKitWithTemp:(float)temp {
+- (void)updateHealthKitWithTemp:(float)temp
+{
     if ([[NSUserDefaults standardUserDefaults] boolForKey:HKCONNECTION]) {
         if(temp) {
             NSString *identifier = HKQuantityTypeIdentifierBodyTemperature;
@@ -5743,62 +5762,27 @@ NSMutableArray *datesWithPeriod;
     }
 }
 
-#pragma mark - Push Info Alert Delegate
+#pragma mark - Helpers
 
-- (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url
+- (void)setTitleView
 {
-    UIAlertController *infoAlert = [UIAlertController
-                                    alertControllerWithTitle:title
-                                    message:message
-                                    preferredStyle:UIAlertControllerStyleAlert];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateStyle:NSDateFormatterMediumStyle];
+    [df setTimeStyle:NSDateFormatterNoStyle];
     
-    UIAlertAction *gotIt = [UIAlertAction actionWithTitle:@"Got it" style:UIAlertActionStyleDefault
-                                                  handler:nil];
+    NSString *dateString = [df stringFromDate:self.selectedDate];
+    self.titleLabel.text = dateString;
     
-    UIAlertAction *learnMore = [UIAlertAction actionWithTitle:@"Learn more" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        WebViewController *webViewController = [WebViewController withURL:url];
-        webViewController.title = title;
-        
-//        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(dismissViewControllerAnimated:completion:)];
-//        webViewController.navigationItem.leftBarButtonItem = backButton;
-        
-        [webViewController.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(popWebView)]];
-        
-        // fix nav bar
-        [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, 320, 64)];
-        
-//        [self presentViewController:webViewController animated:YES completion:nil];
-        [self presentViewController: webViewController animated: YES completion: nil];
-//        UINavigationController *tempNavigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
-//
-//        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(dismissViewControllerAnimated:completion:)];
-//
-//        [tempNavigationController.navigationItem setLeftBarButtonItem:backButton];
-//        
-//        //now present this navigation controller modally
-//        [self presentViewController:tempNavigationController
-//                           animated:YES
-//                         completion:nil];
-    }];
+    if (day.cycleDay) {
+        self.subTitleLabel.text = [NSString stringWithFormat:@"Cycle Day #%@", day.cycleDay];
+    } else {
+        self.subTitleLabel.text = [NSString stringWithFormat:@"Enter Cycle Info"];
+    }
     
-    [infoAlert addAction:gotIt];
-    [infoAlert addAction:learnMore];
-    
-    infoAlert.view.tintColor = [UIColor ovatempAquaColor];
-    
-    didLeaveToWebView = YES;
-    
-    [self presentViewController:infoAlert animated:YES completion:nil];
-}
-
-- (void)presentViewControllerWithViewController:(UIViewController *)viewController
-{
-    [self presentViewController:viewController animated:YES completion:nil];
-}
-
-- (void)popWebView
-{
-    [self.navigationController popViewControllerAnimated:YES];
+    if (!lowerDrawer) {
+        // flip arrow if the drawer is already open
+        self.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI);
+    }
 }
 
 - (void)showLoadingSpinner
@@ -5828,21 +5812,48 @@ NSMutableArray *datesWithPeriod;
     [self.view addSubview:loadingView];
 }
 
-- (void)hideLoadingSpinner {
+- (void)hideLoadingSpinner
+{
     self.viewIsLoading = NO;
     [loadingView removeFromSuperview];
 }
 
-#pragma mark - TrackingStatusCell Delegate
-
-- (void)pressedNotes
+- (void)presentViewControllerWithViewController:(UIViewController *)viewController
 {
-    TrackingNotesViewController *trackingVC = [self.storyboard instantiateViewControllerWithIdentifier: @"trackingNotesViewController"];
-    trackingVC.selectedDate = self.selectedDate;
-    trackingVC.notesText = self.notes;
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: trackingVC];
+    [self presentViewController:viewController animated:YES completion:nil];
+}
+
+- (void)popWebView
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Autorotation
+
+- (void)orientationChanged:(NSNotification *)notification
+{
+    if (!self.cycleViewController) {
+        self.cycleViewController = [[CycleViewController alloc] init];
+        self.cycleViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    }
     
-    [self presentViewController: navVC animated: YES completion: nil];
+    BOOL isAnimating = self.cycleViewController.isBeingPresented || self.cycleViewController.isBeingDismissed;
+    
+    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+    if (UIDeviceOrientationIsLandscape(deviceOrientation)) {
+        
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShouldRotate"]) {
+            inLandscape = YES;
+            if (!isAnimating) {
+                [self showCycleViewController];
+            }
+        }
+    } else {
+        inLandscape = NO;
+        if (!isAnimating) {
+            [self hideCycleViewController];
+        }
+    }
 }
 
 @end
