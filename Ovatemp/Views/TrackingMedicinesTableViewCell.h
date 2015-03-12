@@ -7,11 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TrackingTemperatureTableViewCell.h" // where our delegate is
+
+#import "Day.h"
+
+@protocol TrackingMedicinesCellDelegate <NSObject>
+
+- (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
+
+- (Day *)getSelectedDay;
+- (NSDate *)getSelectedDate;
+
+@end
 
 @interface TrackingMedicinesTableViewCell : UITableViewCell <UITableViewDataSource, UITableViewDelegate>
 
-@property(nonatomic,retain)id<PresentInfoAlertDelegate>delegate;
+@property (weak, nonatomic) id<TrackingMedicinesCellDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UIButton *addMedicinesButton;
 @property (weak, nonatomic) IBOutlet UIButton *infoButton;
@@ -20,8 +30,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *medicinesCollapsedLabel;
 @property (weak, nonatomic) IBOutlet UITableView *medicinesTableView;
 
-@property NSDate *selectedDate;
-
 @property NSMutableArray *medicinesTableViewDataSource;
 @property NSMutableArray *allMedicineIDs;
 @property NSMutableArray *selectedMedicineIDs;
@@ -29,5 +37,9 @@
 @property NSString *addedMedicineString;
 
 - (void)reloadMedicines;
+
+- (void)updateCell;
+- (void)setMinimized;
+- (void)setExpanded;
 
 @end

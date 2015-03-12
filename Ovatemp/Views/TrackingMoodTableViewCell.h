@@ -7,18 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TrackingTemperatureTableViewCell.h" // where our delegate is
+
+#import "Day.h"
+
+@protocol TrackingMoodCellDelegate <NSObject>
+
+- (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
+
+- (Day *)getSelectedDay;
+- (NSDate *)getSelectedDate;
+
+@end
 
 @interface TrackingMoodTableViewCell : UITableViewCell <UITableViewDataSource, UITableViewDelegate>
 
-@property(nonatomic,retain)id<PresentInfoAlertDelegate>delegate;
+@property (weak,nonatomic) id<TrackingMoodCellDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UILabel *moodPlaceholderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *moodCollapsedLabel;
 @property (weak, nonatomic) IBOutlet UILabel *moodTypeLabel;
 @property (weak, nonatomic) IBOutlet UITableView *moodTableView;
-
-@property NSDate *selectedDate;
 
 @property BOOL angryMoodSelected;
 @property BOOL anxiousMoodSelected;
@@ -36,5 +44,9 @@
 @property BOOL worriedMoodSelected;
 
 - (void)resetSelectedMood;
+
+- (void)updateCell;
+- (void)setMinimized;
+- (void)setExpanded;
 
 @end

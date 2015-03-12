@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TrackingTemperatureTableViewCell.h" // where our delegate is
+#import "Day.h"
 
 typedef enum {
     OvulationTestSelectionNone,
@@ -15,9 +15,19 @@ typedef enum {
     OvulationTestSelectionPositive
 } OvulationTestSelectionType;
 
+@protocol TrackingOvulationTestCell <NSObject>
+
+- (void)didSelectOvulationWithType:(OvulationTestSelectionType)type;
+- (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
+
+- (Day *)getSelectedDay;
+- (NSDate *)getSelectedDate;
+
+@end
+
 @interface TrackingOvulationTestTableViewCell : UITableViewCell
 
-@property(nonatomic,retain)id<PresentInfoAlertDelegate>delegate;
+@property (weak, nonatomic) id<TrackingOvulationTestCell> delegate;
 
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ovulationCollapsedLabel;
@@ -30,8 +40,8 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIButton *ovulationTypePositiveImageView;
 @property (weak, nonatomic) IBOutlet UILabel *ovulationTypePositiveLabel;
 
-@property NSDate *selectedDate;
-
-@property OvulationTestSelectionType selectedOvulationTestType;
+- (void)updateCell;
+- (void)setMinimized;
+- (void)setExpanded;
 
 @end

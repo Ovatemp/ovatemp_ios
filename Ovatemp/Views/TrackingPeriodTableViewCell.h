@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TrackingTemperatureTableViewCell.h" // where our delegate is
+#import "Day.h"
 
 typedef enum {
     PeriodSelectionNoSelection,
@@ -18,9 +18,19 @@ typedef enum {
     PeriodSelectionHeavy,
 } PeriodSelectionType;
 
+@protocol TrackingPeriodCellDelegate <NSObject>
+
+- (void)didSelectPeriodWithType:(PeriodSelectionType)type;
+- (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
+
+- (Day *)getSelectedDay;
+- (NSDate *)getSelectedDate;
+
+@end
+
 @interface TrackingPeriodTableViewCell : UITableViewCell
 
-@property(nonatomic,retain)id<PresentInfoAlertDelegate>delegate;
+@property(nonatomic,retain) id<TrackingPeriodCellDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *periodCollapsedLabel;
@@ -38,8 +48,8 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIButton *heavyImageView;
 @property (weak, nonatomic) IBOutlet UILabel *heavyLabel;
 
-@property NSDate *selectedDate;
-
-@property PeriodSelectionType selectedPeriodType;
+- (void)updateCell;
+- (void)setMinimized;
+- (void)setExpanded;
 
 @end

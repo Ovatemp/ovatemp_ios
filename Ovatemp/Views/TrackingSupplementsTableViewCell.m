@@ -14,10 +14,11 @@
 
 @implementation TrackingSupplementsTableViewCell
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     // Initialization code
     
-    self.selectedDate = [[NSDate alloc] init];
+//    self.selectedDate = [[NSDate alloc] init];
     
     self.supplementsTableViewDataSource = [[NSMutableArray alloc] init];
     
@@ -28,16 +29,16 @@
     self.supplementsTableView.dataSource = self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
-- (IBAction)didSelectInfoButton:(id)sender {
+- (IBAction)didSelectInfoButton:(id)sender
+{
     [self.delegate pushInfoAlertWithTitle:@"Supplements" AndMessage:@"Keeping track of medication and any kind of supplements you take can help you detect improvement or changes in your cycles and talk to your doctor about it.\nAlways consult your physician before taking any medication." AndURL:@"http://ovatemp.helpshift.com/a/ovatemp/?s=fertility-faqs&f=learn-more-about-supplements"];
 }
-- (IBAction)didSelectAddSupplementButton:(id)sender {
-
+- (IBAction)didSelectAddSupplementButton:(id)sender
+{
     // set up alert
     UIAlertController *alert = [UIAlertController
                                      alertControllerWithTitle:@""
@@ -104,7 +105,8 @@
 //}
 
 ///
-- (void)postNewSupplementToBackendWithSupplement:(NSString *)supplement {
+- (void)postNewSupplementToBackendWithSupplement:(NSString *)supplement
+{
     NSString *className = @"supplement"; // supplement
     NSString *classNamePlural = [className stringByAppendingString:@"s"]; // supplements
     
@@ -169,11 +171,14 @@
      ];
 }
 
-- (void)hitBackendWithSupplementType:(id)supplementIds { // supplementIds should be an array
+- (void)hitBackendWithSupplementType:(id)supplementIds
+{ // supplementIds should be an array
+    
+    NSDate *selectedDate = [self.delegate getSelectedDate];
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     
-    [attributes setObject:supplementIds forKey:@"supplement_ids"];
-    [attributes setObject:self.selectedDate forKey:@"date"];
+    [attributes setObject: supplementIds forKey: @"supplement_ids"];
+    [attributes setObject: selectedDate forKey: @"date"];
     
     [ConnectionManager put:@"/days/"
                     params:@{
@@ -193,7 +198,8 @@
                    }];
 }
 
-- (void)reloadSupplements {
+- (void)reloadSupplements
+{
 //    [Supplement resetInstancesWithArray:response[@"supplements"]];
     [ConnectionManager put:@"/sessions/refresh"
                     params:nil
@@ -210,20 +216,20 @@
      ];
 }
 
-#pragma mark - Table View
+#pragma mark - UITableView Data Source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return [self.supplementsTableViewDataSource count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
     SimpleSupplement *cellSupp = [[SimpleSupplement alloc] init];
@@ -246,7 +252,8 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     if ([self.supplementsTableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryCheckmark) {
         [self.supplementsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
         // get id of object at selected index
@@ -263,6 +270,98 @@
         [self.selectedSupplementIDs addObject:selectedSupp.idNumber];
         [self hitBackendWithSupplementType:self.selectedSupplementIDs];
     }
+}
+
+#pragma mark - Appearance
+
+- (void)updateCell
+{
+    Day *selectedDay = [self.delegate getSelectedDay];
+    
+    NSMutableArray *supplements = [[NSMutableArray alloc] init];
+    NSMutableArray *supplementIDs = [[NSMutableArray alloc] initWithArray: selectedDay.supplementIds];
+    
+    if ([selectedDay.supplements count] > 0) {
+        
+        NSArray *suppArray = [[Supplement instances] allValues];
+        
+        for (Supplement *supp in suppArray) {
+            SimpleSupplement *simpleSupp = [[SimpleSupplement alloc] init];
+            simpleSupp.name = supp.name;
+            simpleSupp.idNumber = supp.id;
+            
+            if (![supplementIDs containsObject:simpleSupp]) {
+                [supplements addObject:simpleSupp];
+            }
+            
+        }
+        
+        self.supplementsTableViewDataSource = supplements;
+        self.selectedSupplementIDs = supplementIDs;
+        
+    } else {
+
+        [self.supplementsTableViewDataSource removeAllObjects];
+        [self.selectedSupplementIDs removeAllObjects];
+        
+        // add supplements to array, just don't mark them as selected
+        NSArray *suppArray = [[Supplement instances] allValues];
+        for (Supplement *supp in suppArray) {
+            SimpleSupplement *simpleSupp = [[SimpleSupplement alloc] init];
+            simpleSupp.name = supp.name;
+            simpleSupp.idNumber = supp.id;
+            
+            if (![supplementIDs containsObject: simpleSupp]) {
+                [supplements addObject: simpleSupp];
+            }
+        }
+        
+        self.supplementsTableViewDataSource = [[NSMutableArray alloc] initWithArray: supplements];
+        self.selectedSupplementIDs = [[NSMutableArray alloc] initWithArray: supplementIDs];
+    }
+    
+    [self.supplementsTableView reloadData];
+}
+
+- (void)setMinimized
+{
+    Day *selectedDay = [self.delegate getSelectedDay];
+    
+    self.supplementsTableView.hidden = YES;
+    
+    self.infoButton.hidden = NO;
+    self.addSupplementButton.hidden = YES;
+    
+    if ([selectedDay.supplements count] > 0) {
+        
+        if ([selectedDay.supplementIds count] == 0) {
+            // no selected supplements
+            self.supplementsCollapsedLabel.hidden = YES;
+            self.supplementsTypeCollapsedLabel.hidden = YES;
+            self.placeholderLabel.hidden = NO;
+        } else {
+            self.supplementsCollapsedLabel.hidden = NO;
+            self.supplementsTypeCollapsedLabel.hidden = NO;
+            self.placeholderLabel.hidden = YES;
+        }
+        
+    } else {
+        self.supplementsCollapsedLabel.hidden = YES;
+        self.supplementsTypeCollapsedLabel.hidden = YES;
+        self.placeholderLabel.hidden = NO;
+    }
+}
+
+- (void)setExpanded
+{
+    self.infoButton.hidden = YES;
+    self.addSupplementButton.hidden = NO;
+    
+    self.supplementsTableView.hidden = NO;
+    self.supplementsCollapsedLabel.hidden = NO;
+    
+    self.supplementsTypeCollapsedLabel.hidden = YES;
+    self.placeholderLabel.hidden = YES;
 }
 
 @end

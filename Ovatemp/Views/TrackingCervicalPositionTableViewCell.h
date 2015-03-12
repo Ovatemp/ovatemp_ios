@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TrackingTemperatureTableViewCell.h" // where our delegate is
+#import "Day.h"
 
 typedef enum {
     CervicalPositionSelectionNone,
@@ -15,9 +15,19 @@ typedef enum {
     CervicalPositionSelectionHigh
 } CervicalPositionSelectionType;
 
+@protocol TrackingCervicalPositionCellDelegate <NSObject>
+
+- (void)didSelectCervicalFluidType:(CervicalPositionSelectionType)type;
+- (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
+
+- (Day *)getSelectedDay;
+- (NSDate *)getSelectedDate;
+
+@end
+
 @interface TrackingCervicalPositionTableViewCell : UITableViewCell
 
-@property(nonatomic,retain)id<PresentInfoAlertDelegate>delegate;
+@property(nonatomic,retain) id<TrackingCervicalPositionCellDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *collapsedLabel;
@@ -29,8 +39,8 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIButton *lowImageView;
 @property (weak, nonatomic) IBOutlet UILabel *lowLabel;
 
-@property NSDate *selectedDate;
-
-@property CervicalPositionSelectionType selectedCervicalPositionType;
+- (void)updateCell;
+- (void)setMinimized;
+- (void)setExpanded;
 
 @end

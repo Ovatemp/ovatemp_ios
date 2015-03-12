@@ -14,21 +14,28 @@
 
 #import "TrackingViewController.h"
 
+@interface TrackingPeriodTableViewCell ()
+
+@property PeriodSelectionType selectedPeriodType;
+
+@end
+
 @implementation TrackingPeriodTableViewCell
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     // Initialization code
     
-    self.selectedDate = [[NSDate alloc] init];
+//    self.selectedDate = [[NSDate alloc] init];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
-- (IBAction)didSelectNone:(id)sender {
+- (IBAction)didSelectNone:(id)sender
+{
     if (self.selectedPeriodType == PeriodSelectionNone) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
         [self hitBackendWithPeriodType:[NSNull null]];
@@ -45,7 +52,8 @@
     }
 }
 
-- (IBAction)didSelectSpotting:(id)sender {
+- (IBAction)didSelectSpotting:(id)sender
+{
     if (self.selectedPeriodType == PeriodSelectionSpotting) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
         [self hitBackendWithPeriodType:[NSNull null]];
@@ -62,7 +70,8 @@
     }
 }
 
-- (IBAction)didSelectLight:(id)sender {
+- (IBAction)didSelectLight:(id)sender
+{
     if (self.selectedPeriodType == PeriodSelectionLight) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
         [self hitBackendWithPeriodType:[NSNull null]];
@@ -79,7 +88,8 @@
     }
 }
 
-- (IBAction)didSelectMedium:(id)sender {
+- (IBAction)didSelectMedium:(id)sender
+{
     if (self.selectedPeriodType == PeriodSelectionMedium) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
         [self hitBackendWithPeriodType:[NSNull null]];
@@ -96,7 +106,8 @@
     }
 }
 
-- (IBAction)didSelectHeavy:(id)sender {
+- (IBAction)didSelectHeavy:(id)sender
+{
     if (self.selectedPeriodType == PeriodSelectionHeavy) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
         [self hitBackendWithPeriodType:[NSNull null]];
@@ -113,7 +124,8 @@
     }
 }
 
-- (void)deselectAllButtons {
+- (void)deselectAllButtons
+{
     [self.noneImageView setSelected:NO];
     [self.spottingImageView setSelected:NO];
     [self.lightImageView setSelected:NO];
@@ -121,11 +133,13 @@
     [self.heavyImageView setSelected:NO];
 }
 
-- (void)hitBackendWithPeriodType:(id)periodType {
+- (void)hitBackendWithPeriodType:(id)periodType
+{
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+    NSDate *selectedDate = [self.delegate getSelectedDate];
     
-    [attributes setObject:periodType forKey:@"period"];
-    [attributes setObject:self.selectedDate forKey:@"date"];
+    [attributes setObject: periodType forKey: @"period"];
+    [attributes setObject: selectedDate forKey: @"date"];
     
     [ConnectionManager put:@"/days/"
                     params:@{
@@ -133,7 +147,7 @@
                              }
                    success:^(NSDictionary *response) {
                        [Cycle cycleFromResponse:response];
-                       [Calendar setDate:self.selectedDate];
+                       [Calendar setDate: selectedDate];
                        //                       if (onSuccess) onSuccess(response);
                    }
                    failure:^(NSError *error) {
@@ -141,8 +155,162 @@
                    }];
 }
 
-- (IBAction)didSelectInfoButton:(id)sender {
+- (IBAction)didSelectInfoButton:(id)sender
+{
     [self.delegate pushInfoAlertWithTitle:@"Period" AndMessage:@"Your period can last for 3 to 7 days and represents the beginning of a new cycle. You should always consider the first day of bleeding as your Cycle Day 1.  Spotting does not count." AndURL:@"http://ovatemp.helpshift.com/a/ovatemp/?s=fertility-faqs&f=learn-more-about-your-period"];
+}
+
+#pragma mark - Appearance
+
+- (void)updateCell
+{
+    Day *selectedDay = [self.delegate getSelectedDay];
+    
+    if ([selectedDay.period isEqualToString: @"none"]) {
+        
+        self.selectedPeriodType = PeriodSelectionNone;
+        
+        self.placeholderLabel.hidden = YES;
+        self.periodCollapsedLabel.hidden = NO;
+        self.periodTypeCollapsedLabel.text = @"None";
+        self.periodTypeCollapsedLabel.hidden = YES;
+        self.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_none"];
+        [self.noneImageView setSelected:YES];
+        [self.spottingImageView setSelected:NO];
+        [self.lightImageView setSelected:NO];
+        [self.mediumImageView setSelected:NO];
+        [self.heavyImageView setSelected:NO];
+        
+    } else if ([selectedDay.period isEqualToString: @"spotting"]) {
+        
+        self.selectedPeriodType = PeriodSelectionSpotting;
+        
+        self.placeholderLabel.hidden = YES;
+        self.periodCollapsedLabel.hidden = NO;
+        self.periodTypeCollapsedLabel.text = @"Spotting";
+        self.periodTypeCollapsedLabel.hidden = YES;
+        self.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_spotting"];
+        [self.spottingImageView setSelected:YES];
+        
+    } else if ([selectedDay.period isEqual: @"light"]) {
+        
+        self.selectedPeriodType = PeriodSelectionLight;
+        
+        self.placeholderLabel.hidden = YES;
+        self.periodCollapsedLabel.hidden = NO;
+        self.periodTypeCollapsedLabel.text = @"Light";
+        self.periodTypeCollapsedLabel.hidden = YES;
+        self.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_light"];
+        [self.lightImageView setSelected:YES];
+        [self.noneImageView setSelected:NO];
+        [self.spottingImageView setSelected:NO];
+        [self.mediumImageView setSelected:NO];
+        [self.heavyImageView setSelected:NO];
+        
+    } else if ([selectedDay.period isEqual: @"medium"]) {
+        
+        self.selectedPeriodType = PeriodSelectionMedium;
+        
+        self.placeholderLabel.hidden = YES;
+        self.periodCollapsedLabel.hidden = NO;
+        self.periodTypeCollapsedLabel.text = @"Medium";
+        self.periodTypeCollapsedLabel.hidden = NO;
+        self.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_medium"];
+        [self.mediumImageView setSelected:YES];
+        [self.noneImageView setSelected:NO];
+        [self.spottingImageView setSelected:NO];
+        [self.lightImageView setSelected:NO];
+        [self.heavyImageView setSelected:NO];
+        
+    } else if ([selectedDay.period isEqual: @"heavy"]) {
+        
+        self.selectedPeriodType = PeriodSelectionHeavy;
+        
+        self.placeholderLabel.hidden = YES;
+        self.periodCollapsedLabel.hidden = NO;
+        self.periodTypeCollapsedLabel.text = @"Heavy";
+        self.periodTypeCollapsedLabel.hidden = YES;
+        self.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_heavy"];
+        [self.heavyImageView setSelected:YES];
+        [self.noneImageView setSelected:NO];
+        [self.spottingImageView setSelected:NO];
+        [self.lightImageView setSelected:NO];
+        [self.mediumImageView setSelected:NO];
+        
+    } else {
+        
+        self.selectedPeriodType = PeriodSelectionNone;
+        
+        self.placeholderLabel.hidden = NO;
+        self.periodCollapsedLabel.hidden = NO;
+        self.periodTypeCollapsedLabel.text = @"";
+        self.periodTypeCollapsedLabel.hidden = NO;
+        self.periodTypeImageView.hidden = YES;
+        [self.noneImageView setSelected:NO];
+        [self.spottingImageView setSelected:NO];
+        [self.lightImageView setSelected:NO];
+        [self.mediumImageView setSelected:NO];
+        [self.heavyImageView setSelected:NO];
+        
+    }
+}
+
+- (void)setMinimized
+{
+    Day *selectedDay = [self.delegate getSelectedDay];
+    
+    self.noneImageView.hidden = YES;
+    self.noneLabel.hidden = YES;
+    
+    self.spottingImageView.hidden = YES;
+    self.spottingLabel.hidden = YES;
+    
+    self.lightImageView.hidden = YES;
+    self.lightLabel.hidden = YES;
+    
+    self.mediumImageView.hidden = YES;
+    self.mediumLabel.hidden = YES;
+    
+    self.heavyImageView.hidden = YES;
+    self.heavyLabel.hidden = YES;
+
+    if (selectedDay.period.length > 0) {
+        // Minimized Cell, With Data
+        self.placeholderLabel.hidden = YES;
+        self.periodCollapsedLabel.hidden = NO;
+        self.periodTypeCollapsedLabel.hidden = NO;
+        self.periodTypeImageView.hidden = NO;
+    }else{
+        // Minimized Cell, Without Data
+        self.placeholderLabel.hidden = NO;
+        self.periodCollapsedLabel.hidden = YES;
+        self.periodTypeCollapsedLabel.hidden = YES;
+        self.periodTypeImageView.hidden = YES;
+    }
+    
+}
+
+- (void)setExpanded
+{
+    self.noneImageView.hidden = NO;
+    self.noneLabel.hidden = NO;
+    
+    self.spottingImageView.hidden = NO;
+    self.spottingLabel.hidden = NO;
+    
+    self.lightImageView.hidden = NO;
+    self.lightLabel.hidden = NO;
+    
+    self.mediumImageView.hidden = NO;
+    self.mediumLabel.hidden = NO;
+    
+    self.heavyImageView.hidden = NO;
+    self.heavyLabel.hidden = NO;
+    
+    self.placeholderLabel.hidden = YES;
+    self.periodCollapsedLabel.hidden = NO;
+    self.periodTypeCollapsedLabel.hidden = YES;
+    self.periodTypeImageView.hidden = YES;
 }
 
 @end

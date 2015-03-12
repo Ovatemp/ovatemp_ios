@@ -20,10 +20,14 @@
 #import "TrackingTemperatureTableViewCell.h"
 #import "TrackingCervicalFluidTableViewCell.h"
 #import "TrackingCervicalPositionTableViewCell.h"
+#import "TrackingPeriodTableViewCell.h"
+#import "TrackingIntercourseTableViewCell.h"
+#import "TrackingMoodTableViewCell.h"
+#import "TrackingSymptomsTableViewCell.h"
 
 @import HealthKit;
 
-@interface ILTrackingViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate,TrackingStatusCellDelegate,TrackingTemperatureCellDelegate>
+@interface ILTrackingViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate,TrackingStatusCellDelegate,TrackingTemperatureCellDelegate,TrackingCervicalFluidCellDelegate,TrackingCervicalPositionCellDelegate,TrackingPeriodCellDelegate,TrackingIntercourseCellDelegate,TrackingMoodCellDelegate,TrackingSymptomsCellDelegate>
 
 @property (nonatomic) NSDate *selectedDate;
 @property (nonatomic) NSDate *peakDate;
@@ -278,20 +282,17 @@
     switch (indexPath.row) {
         case 0:{
             // Status Cell
-            
             cell = [tableView dequeueReusableCellWithIdentifier: @"statuCell" forIndexPath: indexPath];
             ((TrackingStatusTableViewCell *)cell).delegate = self;
             [((TrackingStatusTableViewCell *)cell) updateCell];
             
-            if (self.selectedTableRowIndex.row == 0) {
-                // Hide/Move Labels
-            }
             break;
         }
         case 1:{
             // Temperature Cell
             cell = [tableView dequeueReusableCellWithIdentifier: @"tempCell" forIndexPath: indexPath];
             ((TrackingTemperatureTableViewCell *)cell).delegate = self;
+            [((TrackingTemperatureTableViewCell *)cell) updateCell];
             
             // Hide/Move Labels
             if (self.selectedTableRowIndex.row == 1) {
@@ -304,54 +305,84 @@
         case 2:{
             // Cervical Fluid Cell
             cell = [tableView dequeueReusableCellWithIdentifier: @"cfCell" forIndexPath: indexPath];
+            ((TrackingCervicalFluidTableViewCell *)cell).delegate = self;
+            [((TrackingCervicalFluidTableViewCell *)cell) updateCell];
             
+            // Hide/Move Labels
             if (self.selectedTableRowIndex.row == 2) {
-                // Hide/Move Labels
+                [((TrackingCervicalFluidTableViewCell *)cell) setExpanded];
+            }else{
+                [((TrackingCervicalFluidTableViewCell *)cell) setMinimized];
             }
             break;
         }
         case 3:{
             // Cervical Position Cell
             cell = [tableView dequeueReusableCellWithIdentifier: @"cpCell" forIndexPath: indexPath];
+            ((TrackingCervicalPositionTableViewCell *)cell).delegate = self;
+            [((TrackingCervicalPositionTableViewCell *)cell) updateCell];
             
+            // Hide/Move Labels
             if (self.selectedTableRowIndex.row == 3) {
-                // Hide/Move Labels
+                [((TrackingCervicalPositionTableViewCell *)cell) setExpanded];
+            }else{
+                [((TrackingCervicalPositionTableViewCell *)cell) setMinimized];
             }
             break;
         }
         case 4:{
             // Period Cell
             cell = [tableView dequeueReusableCellWithIdentifier: @"periodCell" forIndexPath: indexPath];
+            ((TrackingPeriodTableViewCell *)cell).delegate = self;
+            [((TrackingPeriodTableViewCell *)cell) updateCell];
             
+            // Hide/Move Labels
             if (self.selectedTableRowIndex.row == 4) {
-                // Hide/Move Labels
+                [((TrackingPeriodTableViewCell *)cell) setExpanded];
+            }else{
+                [((TrackingPeriodTableViewCell *)cell) setMinimized];
             }
             break;
         }
         case 5:{
             // Intercourse Cell
             cell = [self.tableView dequeueReusableCellWithIdentifier: @"intercourseCell" forIndexPath: indexPath];
+            ((TrackingIntercourseTableViewCell *)cell).delegate = self;
+            [((TrackingIntercourseTableViewCell *)cell) updateCell];
             
+            // Hide/Move Labels
             if (self.selectedTableRowIndex.row == 5) {
-                // Hide/Move Labels
+                [((TrackingIntercourseTableViewCell *)cell) setExpanded];
+            }else{
+                [((TrackingIntercourseTableViewCell *)cell) setMinimized];
             }
             break;
         }
         case 6:{
             // Mood Cell
             cell = [self.tableView dequeueReusableCellWithIdentifier: @"moodCell" forIndexPath: indexPath];
+            ((TrackingMoodTableViewCell *)cell).delegate = self;
+            [((TrackingMoodTableViewCell *)cell) updateCell];
             
+            // Hide/Move Labels
             if (self.selectedTableRowIndex.row == 6) {
-                // Hide/Move Labels
+                [((TrackingMoodTableViewCell *)cell) setExpanded];
+            }else{
+                [((TrackingMoodTableViewCell *)cell) setMinimized];
             }
             break;
         }
         case 7:{
             // Symptoms Cell
             cell = [tableView dequeueReusableCellWithIdentifier: @"symptomsCell" forIndexPath: indexPath];
-
+            ((TrackingSymptomsTableViewCell *)cell).delegate = self;
+            [((TrackingSymptomsTableViewCell *)cell) updateCell];
+            
+            // Hide/Move Labels
             if (self.selectedTableRowIndex.row == 7) {
-                // Hide/Move Labels
+                [((TrackingSymptomsTableViewCell *)cell) setExpanded];
+            }else{
+                [((TrackingSymptomsTableViewCell *)cell) setMinimized];
             }
             break;
         }

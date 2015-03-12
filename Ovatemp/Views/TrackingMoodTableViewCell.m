@@ -19,12 +19,13 @@ NSArray *moodDataSource;
 
 NSIndexPath *selectedIndexPath;
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     // Initialization code
     
     [self resetSelectedMood];
     
-    self.selectedDate = [[NSDate alloc] init];
+//    self.selectedDate = [[NSDate alloc] init];
     
     moodDataSource = [[NSArray alloc] initWithObjects:@"Angry", @"Anxious", @"Calm", @"Depressed", @"Emotional", @"Excited", @"Frisky", @"Frustrated", @"Happy", @"In Love", @"Motivated", @"Neutral", @"Sad", @"Worried", nil];
     
@@ -35,17 +36,18 @@ NSIndexPath *selectedIndexPath;
     [self.moodTableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
-- (IBAction)didSelectInfoButton:(id)sender {
+- (IBAction)didSelectInfoButton:(id)sender
+{
     [self.delegate pushInfoAlertWithTitle:@"Mood" AndMessage:@"Taking note of your mood throughout your cycle can help you identify patterns and understand both your cycles and your mood swings better.\n\nDid you know you feel your best when ovulating?" AndURL:@"http://ovatemp.helpshift.com/a/ovatemp/?s=fertility-faqs&f=learn-more-about-tracking-your-mood"];
 }
 
-- (void)resetSelectedMood {
+- (void)resetSelectedMood
+{
     // reset selection
     self.angryMoodSelected = NO;
     self.anxiousMoodSelected = NO;
@@ -63,11 +65,14 @@ NSIndexPath *selectedIndexPath;
     self.worriedMoodSelected = NO;
 }
 
-- (void)hitBackendWithMoodType:(id)moodType {
+- (void)hitBackendWithMoodType:(id)moodType
+{
+    NSDate *selectedDate = [self.delegate getSelectedDate];
+    
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     
-    [attributes setObject:moodType forKey:@"mood"];
-    [attributes setObject:self.selectedDate forKey:@"date"];
+    [attributes setObject: moodType forKey:@"mood"];
+    [attributes setObject: selectedDate forKey:@"date"];
     
     [ConnectionManager put:@"/days/"
                     params:@{
@@ -75,7 +80,7 @@ NSIndexPath *selectedIndexPath;
                              }
                    success:^(NSDictionary *response) {
                        [Cycle cycleFromResponse:response];
-                       [Calendar setDate:self.selectedDate];
+                       [Calendar setDate: selectedDate];
                        //                       if (onSuccess) onSuccess(response);
                    }
                    failure:^(NSError *error) {
@@ -84,7 +89,8 @@ NSIndexPath *selectedIndexPath;
     
 }
 
-- (void)selectMoodAtIndexPath:(NSIndexPath *)indexPath {
+- (void)selectMoodAtIndexPath:(NSIndexPath *)indexPath
+{
     switch (indexPath.row) {
         case 0:
         {
@@ -175,21 +181,21 @@ NSIndexPath *selectedIndexPath;
     }
 }
 
-#pragma mark - Table View Methods
+#pragma mark - UITableView Data Source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return [moodDataSource count];
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
 //    cell.textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
@@ -334,7 +340,8 @@ NSIndexPath *selectedIndexPath;
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
 //    [self resetSelectedMood]; // clear all
 //    [self.moodTableView reloadData];
@@ -601,7 +608,108 @@ NSIndexPath *selectedIndexPath;
     selectedIndexPath = indexPath;
 }
 
+#pragma mark - Appearance
 
+- (void)updateCell
+{
+    Day *selectedDay = [self.delegate getSelectedDay];
+    
+    BOOL moodIsNotNone;
+    moodIsNotNone = YES;
+    
+    [self resetSelectedMood];
+    
+    if ([selectedDay.mood isEqualToString:@"angry"]) {
+        self.angryMoodSelected = YES;
+        //        [self.moodTypeLabel setText:@"Angry"];
+        
+    } else if ([selectedDay.mood isEqualToString:@"anxious"]) {
+        self.anxiousMoodSelected = YES;
+        //        [self.moodTypeLabel setText:@"Anxious"];
+        
+    } else if ([selectedDay.mood isEqualToString:@"calm"]) {
+        self.calmMoodSelected = YES;
+        //        [self.moodTypeLabel setText:@"Calm"];
+        
+    } else if ([selectedDay.mood isEqualToString:@"depressed"]) {
+        self.depressedMoodSelected = YES;
+        //        [self.moodTypeLabel setText:@"Depressed"];
+        
+    } else if ([selectedDay.mood isEqualToString:@"moody"] || [selectedDay.mood isEqual:@"emotional"]) { // emotional
+        self.emotionalModdSelected = YES;
+        //        [self.moodTypeLabel setText:@"Emotional"];
+        
+    } else if ([selectedDay.mood isEqualToString:@"amazing"] || [selectedDay.mood isEqual:@"excited"]) { // excited
+        self.excitedMoodSelected = YES;
+        //        [self.moodTypeLabel setText:@"Excited"];
+        
+    } else if ([selectedDay.mood isEqualToString:@"frisky"]) {
+        self.friskyMoodSelected = YES;
+        //        [self.moodTypeLabel setText:@"Frisky"];
+        
+    } else if ([selectedDay.mood isEqualToString:@"frustrated"]) {
+        self.frustratedMoodSelected = YES;
+        //        [self.moodTypeLabel setText:@"Frustrated"];
+        
+    } else if ([selectedDay.mood isEqualToString:@"good"] || [selectedDay.mood isEqual:@"happy"]) { // happy
+        self.happyMoodSelected = YES;
+        //        [self.moodTypeLabel setText:@"Happy"];
+        
+    } else if ([selectedDay.mood isEqualToString:@"in love"]) {
+        self.inLoveMoodSelected = YES;
+        //        [self.moodTypeLabel setText:@"In Love"];
+        
+    } else if ([selectedDay.mood isEqualToString:@"motivated"]) {
+        self.motivatedMoodSelected = YES;
+        //        [self.moodTypeLabel setText:@"Motivated"];
+        
+    } else if ([selectedDay.mood isEqualToString:@"neutral"]) {
+        self.neutralMoodSelected = YES;
+        //        [self.moodTypeLabel setText:@"Neutral"];
+        
+    } else if ([selectedDay.mood isEqualToString:@"sad"]) {
+        self.sadMoodSelected = YES;
+        //        [self.moodTypeLabel setText:@"Sad"];
+        
+    } else if ([selectedDay.mood isEqualToString:@"worried"]) {
+        self.worriedMoodSelected = YES;
+        //        [self.moodTypeLabel setText:@"Worried"];
+        
+    } else { // none
+        moodIsNotNone = NO;
+        [self resetSelectedMood];
+        
+    }
+}
+
+- (void)setMinimized
+{
+    Day *selectedDay = [self.delegate getSelectedDay];
+    
+    self.moodTableView.hidden = YES;
+    
+    if (selectedDay.mood.length > 0) {
+        // Minimized Cell, With Data
+        self.moodPlaceholderLabel.hidden = YES;
+        self.moodCollapsedLabel.hidden = NO;
+        self.moodTypeLabel.hidden = NO;
+    }else{
+        // Minimized Cell, Without Data
+        self.moodPlaceholderLabel.hidden = NO;
+        self.moodCollapsedLabel.hidden = YES;
+        self.moodTypeLabel.hidden = YES;
+    }
+    
+}
+
+- (void)setExpanded
+{
+    self.moodTableView.hidden = NO;
+    
+    self.moodPlaceholderLabel.hidden = YES;
+    self.moodCollapsedLabel.hidden = NO;
+    self.moodTypeLabel.hidden = YES;
+}
 
 
 @end

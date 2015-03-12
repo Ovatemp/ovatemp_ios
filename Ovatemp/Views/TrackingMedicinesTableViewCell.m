@@ -12,10 +12,9 @@
 
 @implementation TrackingMedicinesTableViewCell
 
-- (void)awakeFromNib {
-    // Initialization code
-    
-    self.selectedDate = [[NSDate alloc] init];
+- (void)awakeFromNib
+{
+//    self.selectedDate = [[NSDate alloc] init];
     
     self.medicinesTableViewDataSource = [[NSMutableArray alloc] init];
     
@@ -26,12 +25,13 @@
     self.medicinesTableView.dataSource = self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
-- (IBAction)doAddMedicine:(id)sender {
+
+- (IBAction)doAddMedicine:(id)sender
+{
     // set up alert
     UIAlertController *alert = [UIAlertController
                                 alertControllerWithTitle:@""
@@ -59,12 +59,15 @@
     [alert addAction:ok];
     
     [self.delegate presentViewControllerWithViewController:alert];
+    
 }
-- (IBAction)doShowInfo:(id)sender {
+- (IBAction)doShowInfo:(id)sender
+{
     [self.delegate pushInfoAlertWithTitle:@"Medicines" AndMessage:@"Keeping track of medication and any kind of supplements you take can help you detect improvement or changes in your cycles and talk to your doctor about it.\nAlways consult your physician before taking any medication." AndURL:@"http://ovatemp.helpshift.com/a/ovatemp/?s=fertility-faqs&f=learn-more-about-medicines"];
 }
 
-- (void)postNewMedicineToBackendWithMedicine:(NSString *)medicine {
+- (void)postNewMedicineToBackendWithMedicine:(NSString *)medicine
+{
     NSString *className = @"medicine"; // supplement
     NSString *classNamePlural = [className stringByAppendingString:@"s"]; // supplements
     
@@ -108,11 +111,14 @@
      ];
 }
 
-- (void)hitBackendWithMedicineType:(id)medicineIds { // supplementIds should be an array
+- (void)hitBackendWithMedicineType:(id)medicineIds
+{
+    NSDate *selectedDate = [self.delegate getSelectedDate];
+    
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     
-    [attributes setObject:medicineIds forKey:@"medicine_ids"];
-    [attributes setObject:self.selectedDate forKey:@"date"];
+    [attributes setObject: medicineIds forKey: @"medicine_ids"];
+    [attributes setObject: selectedDate forKey: @"date"];
     
     [ConnectionManager put:@"/days/"
                     params:@{
@@ -132,7 +138,8 @@
                    }];
 }
 
-- (void)reloadMedicines {
+- (void)reloadMedicines
+{
     //    [Supplement resetInstancesWithArray:response[@"supplements"]];
     [ConnectionManager put:@"/sessions/refresh"
                     params:nil
@@ -150,20 +157,20 @@
      ];
 }
 
-#pragma mark - Table View
+#pragma mark - UITableView Data Source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return [self.medicinesTableViewDataSource count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
     SimpleSupplement *cellSupp = [[SimpleSupplement alloc] init];
@@ -186,7 +193,8 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     if ([self.medicinesTableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryCheckmark) {
         [self.medicinesTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
         // get id of object at selected index
@@ -203,6 +211,96 @@
         [self.selectedMedicineIDs addObject:selectedMed.idNumber];
         [self hitBackendWithMedicineType:self.selectedMedicineIDs];
     }
+}
+
+#pragma mark - Appearance
+
+- (void)updateCell
+{
+    Day *selectedDay = [self.delegate getSelectedDay];
+    
+    NSMutableArray *medicines = [[NSMutableArray alloc] init];
+    NSMutableArray *medicineIDs = [[NSMutableArray alloc] initWithArray: selectedDay.medicineIds];
+    
+    if ([selectedDay.medicines count] > 0) {
+        
+        NSArray *medArray = [[Medicine instances] allValues];
+        for (Medicine *med in medArray) {
+            
+            SimpleSupplement *simpleMed = [[SimpleSupplement alloc] init];
+            simpleMed.name = med.name;
+            simpleMed.idNumber = med.id;
+            
+            if (![medicineIDs containsObject: simpleMed]) {
+                [medicines addObject: simpleMed];
+            }
+        }
+        
+        self.medicinesTableViewDataSource = medicines;
+        self.selectedMedicineIDs = medicineIDs;
+        
+    } else {
+
+        [self.medicinesTableViewDataSource removeAllObjects];
+        [self.selectedMedicineIDs removeAllObjects];
+        
+        // add medicines to array, just don't mark them as selected
+        NSArray *medArray = [[Medicine instances] allValues];
+        for (Supplement *med in medArray) {
+            
+            SimpleSupplement *simpleMed = [[SimpleSupplement alloc] init];
+            simpleMed.name = med.name;
+            simpleMed.idNumber = med.id;
+            
+            if (![medicineIDs containsObject:simpleMed]) {
+                [medicines addObject:simpleMed];
+            }
+        }
+        
+        self.medicinesTableViewDataSource = [[NSMutableArray alloc] initWithArray: medicines];
+        self.selectedMedicineIDs = [[NSMutableArray alloc] initWithArray: medicineIDs];
+        
+        [self.medicinesTableView reloadData];
+    }
+}
+
+- (void)setMinimized
+{
+    Day *selectedDay = [self.delegate getSelectedDay];
+    
+    self.medicinesTableView.hidden = YES;
+    self.infoButton.hidden = NO;
+    self.addMedicinesButton.hidden = YES;
+    
+    if ([selectedDay.medicines count] > 0) {
+        
+        if ([selectedDay.medicineIds count] == 0) {
+            // no selected supplements
+            self.medicinesCollapsedLabel.hidden = YES;
+            self.medicinesTypeCollapsedLabel.hidden = YES;
+            self.placeholderLabel.hidden = NO;
+        } else {
+            self.medicinesCollapsedLabel.hidden = NO;
+            self.medicinesTypeCollapsedLabel.hidden = NO;
+            self.placeholderLabel.hidden = YES;
+        }
+        
+    } else {
+        self.medicinesCollapsedLabel.hidden = YES;
+        self.medicinesTypeCollapsedLabel.hidden = YES;
+        self.placeholderLabel.hidden = NO;
+    }
+}
+
+- (void)setExpanded
+{
+    self.medicinesTableView.hidden = NO;
+    self.infoButton.hidden = YES;
+    self.addMedicinesButton.hidden = NO;
+    
+    self.medicinesCollapsedLabel.hidden = NO;
+    self.medicinesTypeCollapsedLabel.hidden = YES;
+    self.placeholderLabel.hidden = YES;
 }
 
 @end

@@ -15,9 +15,19 @@ typedef enum {
     IntercourseSelectionProtected
 } IntercourseSelectionType;
 
+@protocol TrackingIntercourseCellDelegate <NSObject>
+
+- (void)didSelectIntercourseWithType:(IntercourseSelectionType)type;
+- (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
+
+- (Day *)getSelectedDay;
+- (NSDate *)getSelectedDate;
+
+@end
+
 @interface TrackingIntercourseTableViewCell : UITableViewCell
 
-@property(nonatomic,retain)id<PresentInfoAlertDelegate>delegate;
+@property(nonatomic,retain) id<TrackingIntercourseCellDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *intercourseCollapsedLabel;
@@ -30,8 +40,8 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIButton *protectedImageView;
 @property (weak, nonatomic) IBOutlet UILabel *protectedLabel;
 
-@property NSDate *selectedDate;
-
-@property IntercourseSelectionType selectedIntercourseType;
+- (void)updateCell;
+- (void)setMinimized;
+- (void)setExpanded;
 
 @end

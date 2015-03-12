@@ -17,12 +17,11 @@
 
 NSArray *symptomsDataSource;
 
-- (void)awakeFromNib {
-    // Initialization code
-    
+- (void)awakeFromNib
+{
     [self resetSelectedSymptoms];
     
-    self.selectedDate = [[NSDate alloc] init];
+//    self.selectedDate = [[NSDate alloc] init];
     
     symptomsDataSource = [NSArray arrayWithObjects:@"Breast tenderness", @"Headaches", @"Nausea", @"Irritability/Mood swings", @"Bloating", @"PMS", @"Stress", @"Travel", @"Fever", nil];
     
@@ -32,13 +31,13 @@ NSArray *symptomsDataSource;
     self.selectedSymptoms = [[NSMutableArray alloc] init];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
-- (void)resetSelectedSymptoms {
+- (void)resetSelectedSymptoms
+{
     self.breastTendernessSelected = NO;
     self.headachesSelected = NO;
     self.nauseaSeleted = NO;
@@ -50,24 +49,25 @@ NSArray *symptomsDataSource;
     self.feverSelected = NO;
 }
 
-- (IBAction)didSelectInfoButton:(id)sender {
+- (IBAction)didSelectInfoButton:(id)sender
+{
     [self.delegate pushInfoAlertWithTitle:@"Symptoms" AndMessage:@"In addition to the main fertility signs, our bodies have several ways of letting us know what is going on. Hormones are a very powerful thing and they can sometimes trigger specific symptoms to each woman.\n\nTake note of these symptoms and learn your patterns for better understanding of your body." AndURL:@"http://ovatemp.helpshift.com/a/ovatemp/?s=fertility-faqs&f=learn-more-about-tracking-additional-symptoms"];
 }
 
-#pragma mark - Table View Methods
+#pragma mark - UITableView Data Source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return [symptomsDataSource count];
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
@@ -350,11 +350,14 @@ NSArray *symptomsDataSource;
     }
 }
 
-- (void)hitBackendWithSymptomIDs:(id)symptom_ids {
+- (void)hitBackendWithSymptomIDs:(id)symptom_ids
+{
+    NSDate *selectedDate = [self.delegate getSelectedDate];
+    
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     
-    [attributes setObject:symptom_ids forKey:@"symptom_ids"];
-    [attributes setObject:self.selectedDate forKey:@"date"];
+    [attributes setObject: symptom_ids forKey: @"symptom_ids"];
+    [attributes setObject: selectedDate forKey: @"date"];
     
     [ConnectionManager put:@"/days/"
                     params:@{
@@ -362,7 +365,7 @@ NSArray *symptomsDataSource;
                              }
                    success:^(NSDictionary *response) {
                        [Cycle cycleFromResponse:response];
-                       [Calendar setDate:self.selectedDate];
+                       [Calendar setDate: selectedDate];
                        //                       if (onSuccess) onSuccess(response);
                    }
                    failure:^(NSError *error) {
@@ -395,5 +398,62 @@ NSArray *symptomsDataSource;
 //    }
 //    
 //}
+
+- (void)setSymptomWithValue:(NSInteger)value
+{
+    value--;
+    
+    if (value == 0) {
+        self.breastTendernessSelected = YES;
+    } else if (value == 1) {
+        self.headachesSelected = YES;
+    } else if (value == 2) {
+        self.nauseaSeleted = YES;
+    } else if (value == 3) {
+        self.irritabilityMoodSwingsSelected = YES;
+    } else if (value == 4) {
+        self.bloatingSelected = YES;
+    } else if (value == 5) {
+        self.pmsSelected = YES;
+    } else if (value == 6) {
+        self.stressSelected = YES;
+    } else if (value == 7) {
+        self.travelSelected = YES;
+    } else { // fever
+        self.feverSelected = YES;
+    }
+}
+
+#pragma mark - Appearance
+
+- (void)updateCell
+{
+    Day *selectedDay = [self.delegate getSelectedDay];
+    
+    if (selectedDay.symptomIds) {
+        
+        for (NSString *symptomID in selectedDay.symptomIds) {
+            NSInteger symptomIntVal = [symptomID integerValue];
+            
+            [self setSymptomWithValue:symptomIntVal];
+        }
+        
+        [self.symptomsTableView reloadData];
+    } else {
+        // TODO: No data
+    }
+}
+
+- (void)setMinimized
+{
+    self.symptomsTableView.hidden = YES;
+}
+
+- (void)setExpanded
+{
+    self.symptomsTableView.hidden = NO;
+    self.symptomsCollapsedLabel.hidden = NO;
+    self.placeholderLabel.hidden = YES;
+}
 
 @end

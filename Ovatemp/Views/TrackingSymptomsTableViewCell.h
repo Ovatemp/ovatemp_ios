@@ -7,17 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TrackingTemperatureTableViewCell.h" // where our delegate is
+#import "Day.h"
+
+@protocol TrackingSymptomsCellDelegate <NSObject>
+
+- (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
+
+- (Day *)getSelectedDay;
+- (NSDate *)getSelectedDate;
+
+@end
 
 @interface TrackingSymptomsTableViewCell : UITableViewCell <UITableViewDataSource, UITableViewDelegate>
 
-@property(nonatomic,retain)id<PresentInfoAlertDelegate>delegate;
+@property (weak, nonatomic) id<TrackingSymptomsCellDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *symptomsCollapsedLabel;
 @property (weak, nonatomic) IBOutlet UITableView *symptomsTableView;
-
-@property NSDate *selectedDate;
 
 @property NSMutableArray *selectedSymptoms;
 
@@ -30,4 +37,9 @@
 @property BOOL stressSelected;
 @property BOOL travelSelected;
 @property BOOL feverSelected;
+
+- (void)updateCell;
+- (void)setMinimized;
+- (void)setExpanded;
+
 @end

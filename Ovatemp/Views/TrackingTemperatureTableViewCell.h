@@ -13,6 +13,7 @@
 
 @protocol TrackingTemperatureCellDelegate <NSObject>
 
+- (void)didSelectTemperature:(NSNumber *)temperature;
 - (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
 - (void)presentViewControllerWithViewController:(UIViewController *)viewController;
 
@@ -36,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UISwitch *disturbanceSwitch;
 @property (weak, nonatomic) IBOutlet UILabel *disturbanceLabel;
 
+- (void)updateCell;
 - (void)setMinimized;
 - (void)setExpanded;
 

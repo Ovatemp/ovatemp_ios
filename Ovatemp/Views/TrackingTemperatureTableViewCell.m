@@ -243,45 +243,92 @@ NSMutableArray *temperatureFractionalPartPickerData;
     }
 }
 
-- (void)setExpanded
+#pragma mark - Appearance
+
+- (void)updateCell
 {
-    self.temperaturePicker.hidden = NO;
-    self.temperatureValueLabel.hidden = NO;
-    self.placeholderLabel.hidden = YES;
-    self.collapsedLabel.hidden = NO;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL tempPrefFahrenheit = [defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"];
+    Day *selectedDay = [self.delegate getSelectedDay];
     
-    self.infoButton.hidden = YES;
-    self.disturbanceLabel.hidden = NO;
-    self.disturbanceSwitch.hidden = NO;
-    self.ondoIcon.hidden = YES;
+    if (selectedDay.temperature){
+        
+        if (tempPrefFahrenheit){
+            self.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f", [selectedDay.temperature floatValue]];
+        } else {
+            float tempInCelsius = (([selectedDay.temperature floatValue] - 32) / 1.8000f);
+            selectedDay.temperature = [NSNumber numberWithFloat:tempInCelsius];
+            self.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f", tempInCelsius];
+        }
+        
+        if (selectedDay.usedOndo) {
+            self.ondoIcon.hidden = NO;
+        } else {
+            self.ondoIcon.hidden = YES;
+        }
+        
+    }else{
+        
+        self.placeholderLabel.hidden = NO;
+        self.temperatureValueLabel.hidden = YES;
+        self.collapsedLabel.hidden = YES;
+        
+        if (tempPrefFahrenheit) {
+            self.temperatureValueLabel.text = @"98.60";
+        } else {
+            self.temperatureValueLabel.text = @"37.00";
+        }
+        
+    }
+    
+    if (selectedDay.disturbance) {
+        [self.disturbanceSwitch setOn:YES];
+    } else {
+        [self.disturbanceSwitch setOn:NO];
+    }
 }
 
 - (void)setMinimized
 {
     Day *selectedDay = [self.delegate getSelectedDay];
-
-    self.temperaturePicker.hidden = YES;
-    
-    if (selectedDay.temperature) {
-        self.placeholderLabel.hidden = YES;
-        self.collapsedLabel.hidden = NO;
-        self.temperatureValueLabel.hidden = NO;
-        
-//        if (self.usedOndo) {
-//            self.tempCell.ondoIcon.hidden = NO;
-//        } else {
-//            self.tempCell.ondoIcon.hidden = YES;
-//        }
-        
-    } else {
-        self.placeholderLabel.hidden = NO;
-        self.collapsedLabel.hidden = YES;
-        self.temperatureValueLabel.hidden = YES;
-    }
     
     self.infoButton.hidden = NO;
     self.disturbanceLabel.hidden = YES;
     self.disturbanceSwitch.hidden = YES;
+    self.temperaturePicker.hidden = YES;
+    
+    if (selectedDay.temperature) {
+        // Minimized Cell, With Data
+        self.placeholderLabel.hidden = YES;
+        self.collapsedLabel.hidden = NO;
+        self.temperatureValueLabel.hidden = NO;
+        
+        if ([self.delegate usedOndo]) {
+            self.ondoIcon.hidden = NO;
+        } else {
+            self.ondoIcon.hidden = YES;
+        }
+        
+    } else {
+        // Minimized Cell, Without Data
+        self.placeholderLabel.hidden = NO;
+        self.collapsedLabel.hidden = YES;
+        self.temperatureValueLabel.hidden = YES;
+    }
+}
+
+- (void)setExpanded
+{
+    self.infoButton.hidden = YES;
+    self.disturbanceLabel.hidden = NO;
+    self.disturbanceSwitch.hidden = NO;
+    self.temperaturePicker.hidden = NO;
+    
+    self.placeholderLabel.hidden = YES;
+    self.collapsedLabel.hidden = NO;
+    self.temperatureValueLabel.hidden = NO;
+    
+    self.ondoIcon.hidden = YES;
 }
 
 @end
