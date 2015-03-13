@@ -65,7 +65,8 @@
     [alert addAction:cancel];
     [alert addAction:ok];
     
-    [self.delegate presentViewControllerWithViewController:alert];
+    // TO-DO
+//    [self.delegate presentViewControllerWithViewController:alert];
 }
 
 //- (void)createWithName:(NSString *)name success:(ConnectionManagerSuccess)onSuccess

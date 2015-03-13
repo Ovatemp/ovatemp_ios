@@ -17,7 +17,7 @@ typedef enum {
 
 @protocol TrackingCervicalPositionCellDelegate <NSObject>
 
-- (void)didSelectCervicalFluidType:(CervicalPositionSelectionType)type;
+- (void)didSelectCervicalPositionType:(CervicalPositionSelectionType)type;
 - (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
 
 - (Day *)getSelectedDay;

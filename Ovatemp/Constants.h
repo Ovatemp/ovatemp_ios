@@ -54,7 +54,7 @@
 //#endif
 
 #ifdef TARGET_IPHONE_SIMULATOR
-    #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
+    #define ROOT_URL @"http://api.ovatemp.com"
     #define DEVICE_ID @"DUMMYDEVICE"
 #endif
 

@@ -150,12 +150,12 @@
         
         self.selectedCervicalFluidType = CervicalFluidSelectionDry;
         
-        self.placeholderLabel.hidden = YES;
-        self.cfCollapsedLabel.hidden = NO;
+        self.placeholderLabel.alpha = 0.0;
+        self.cfCollapsedLabel.alpha = 1.0;
         self.cfTypeCollapsedLabel.text = @"Dry";
-        self.cfTypeCollapsedLabel.hidden = NO;
+        self.cfTypeCollapsedLabel.alpha = 1.0;
         self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_dry"];
-        self.cfTypeImageView.hidden = NO;
+        self.cfTypeImageView.alpha = 1.0;
         [self.dryImageView setSelected:YES];
         [self.stickyImageView setSelected:NO];
         [self.creamyImageView setSelected:NO];
@@ -165,12 +165,12 @@
         
         self.selectedCervicalFluidType = CervicalFluidSelectionSticky;
         
-        self.placeholderLabel.hidden = YES;
-        self.cfCollapsedLabel.hidden = NO;
+        self.placeholderLabel.alpha = 0.0;
+        self.cfCollapsedLabel.alpha = 1.0;
         self.cfTypeCollapsedLabel.text = @"Sticky";
-        self.cfTypeCollapsedLabel.hidden = NO;
+        self.cfTypeCollapsedLabel.alpha = 1.0;
         self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_sticky"];
-        self.cfTypeImageView.hidden = NO;
+        self.cfTypeImageView.alpha = 1.0;
         [self.stickyImageView setSelected:YES];
         [self.dryImageView setSelected:NO];
         [self.creamyImageView setSelected:NO];
@@ -180,12 +180,12 @@
         
         self.selectedCervicalFluidType = CervicalFluidSelectionCreamy;
         
-        self.placeholderLabel.hidden = YES;
-        self.cfCollapsedLabel.hidden = NO;
+        self.placeholderLabel.alpha = 0.0;
+        self.cfCollapsedLabel.alpha = 1.0;
         self.cfTypeCollapsedLabel.text = @"Creamy";
-        self.cfTypeCollapsedLabel.hidden = NO;
+        self.cfTypeCollapsedLabel.alpha = 1.0;
         self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_creamy"];
-        self.cfTypeImageView.hidden = NO;
+        self.cfTypeImageView.alpha = 1.0;
         [self.creamyImageView setSelected:YES];
         [self.dryImageView setSelected:NO];
         [self.stickyImageView setSelected:NO];
@@ -195,12 +195,12 @@
         
         self.selectedCervicalFluidType = CervicalFluidSelectionEggwhite;
         
-        self.placeholderLabel.hidden = YES;
-        self.cfCollapsedLabel.hidden = NO;
+        self.placeholderLabel.alpha = 0.0;
+        self.cfCollapsedLabel.alpha = 1.0;
         self.cfTypeCollapsedLabel.text = @"Eggwhite";
-        self.cfTypeCollapsedLabel.hidden = NO;
+        self.cfTypeCollapsedLabel.alpha = 1.0;
         self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_eggwhite"];
-        self.cfTypeImageView.hidden = NO;
+        self.cfTypeImageView.alpha = 1.0;
         [self.eggwhiteImageView setSelected:YES];
         [self.creamyImageView setSelected:NO];
         [self.dryImageView setSelected:NO];
@@ -210,12 +210,12 @@
         
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
         
-        self.placeholderLabel.hidden = NO;
-        self.cfCollapsedLabel.hidden = YES;
+        self.placeholderLabel.alpha = 1.0;
+        self.cfCollapsedLabel.alpha = 0.0;
         self.cfTypeCollapsedLabel.text = @"";
-        self.cfTypeCollapsedLabel.hidden = YES;
+        self.cfTypeCollapsedLabel.alpha = 0.0;
         //        self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_eggwhite"];
-        self.cfTypeImageView.hidden = YES;
+        self.cfTypeImageView.alpha = 0.0;
         [self.eggwhiteImageView setSelected:NO];
         [self.creamyImageView setSelected:NO];
         [self.dryImageView setSelected:NO];
@@ -228,52 +228,52 @@
 {
     Day *selectedDay = [self.delegate getSelectedDay];
     
-    self.dryImageView.hidden = YES;
-    self.dryLabel.hidden = YES;
+    self.dryImageView.alpha = 0.0;
+    self.dryLabel.alpha = 0.0;
     
-    self.stickyImageView.hidden = YES;
-    self.stickyLabel.hidden = YES;
+    self.stickyImageView.alpha = 0.0;
+    self.stickyLabel.alpha = 0.0;
     
-    self.creamyImageView.hidden = YES;
-    self.creamyLabel.hidden = YES;
+    self.creamyImageView.alpha = 0.0;
+    self.creamyLabel.alpha = 0.0;
     
-    self.eggwhiteImageView.hidden = YES;
-    self.eggwhiteLabel.hidden = YES;
+    self.eggwhiteImageView.alpha = 0.0;
+    self.eggwhiteLabel.alpha = 0.0;
     
     if (selectedDay.cervicalFluid.length > 0) {
         // Minimized Cell, With Data
-        self.placeholderLabel.hidden = YES;
-        self.cfCollapsedLabel.hidden = NO;
-        self.cfTypeCollapsedLabel.hidden = NO;
-        self.cfTypeImageView.hidden = NO;
+        self.placeholderLabel.alpha = 0.0;
+        self.cfCollapsedLabel.alpha = 1.0;
+        self.cfTypeCollapsedLabel.alpha = 1.0;
+        self.cfTypeImageView.alpha = 1.0;
     } else {
         // Minimized Cell, Without Data
-        self.placeholderLabel.hidden = NO;
-        self.cfCollapsedLabel.hidden = YES;
-        self.cfTypeCollapsedLabel.hidden = YES;
-        self.cfTypeImageView.hidden = YES;
+        self.placeholderLabel.alpha = 1.0;
+        self.cfCollapsedLabel.alpha = 0.0;
+        self.cfTypeCollapsedLabel.alpha = 0.0;
+        self.cfTypeImageView.alpha = 0.0;
     }
 }
 
 - (void)setExpanded
 {
     // Expanded Cell
-    self.dryImageView.hidden = NO;
-    self.dryLabel.hidden = NO;
+    self.dryImageView.alpha = 1.0;
+    self.dryLabel.alpha = 1.0;
     
-    self.stickyImageView.hidden = NO;
-    self.stickyLabel.hidden = NO;
+    self.stickyImageView.alpha = 1.0;
+    self.stickyLabel.alpha = 1.0;
     
-    self.creamyImageView.hidden = NO;
-    self.creamyLabel.hidden = NO;
+    self.creamyImageView.alpha = 1.0;
+    self.creamyLabel.alpha = 1.0;
     
-    self.eggwhiteImageView.hidden = NO;
-    self.eggwhiteLabel.hidden = NO;
+    self.eggwhiteImageView.alpha = 1.0;
+    self.eggwhiteLabel.alpha = 1.0;
     
-    self.placeholderLabel.hidden = YES;
-    self.cfCollapsedLabel.hidden = NO;
-    self.cfTypeCollapsedLabel.hidden = YES;
-    self.cfTypeImageView.hidden = YES;
+    self.placeholderLabel.alpha = 0.0;
+    self.cfCollapsedLabel.alpha = 1.0;
+    self.cfTypeCollapsedLabel.alpha = 0.0;
+    self.cfTypeImageView.alpha = 0.0;
 }
 
 @end

@@ -262,16 +262,16 @@ NSMutableArray *temperatureFractionalPartPickerData;
         }
         
         if (selectedDay.usedOndo) {
-            self.ondoIcon.hidden = NO;
+            self.ondoIcon.alpha = 1.0;
         } else {
-            self.ondoIcon.hidden = YES;
+            self.ondoIcon.alpha = 0.0;
         }
         
     }else{
         
-        self.placeholderLabel.hidden = NO;
-        self.temperatureValueLabel.hidden = YES;
-        self.collapsedLabel.hidden = YES;
+        self.placeholderLabel.alpha = 1.0;
+        self.temperatureValueLabel.alpha = 0.0;
+        self.collapsedLabel.alpha = 0.0;
         
         if (tempPrefFahrenheit) {
             self.temperatureValueLabel.text = @"98.60";
@@ -292,43 +292,49 @@ NSMutableArray *temperatureFractionalPartPickerData;
 {
     Day *selectedDay = [self.delegate getSelectedDay];
     
-    self.infoButton.hidden = NO;
-    self.disturbanceLabel.hidden = YES;
-    self.disturbanceSwitch.hidden = YES;
-    self.temperaturePicker.hidden = YES;
+    self.infoButton.alpha = 1.0;
+    self.disturbanceLabel.alpha = 0.0;
+    self.disturbanceSwitch.alpha = 0.0;
+    self.temperaturePicker.alpha = 0.0;
+    
+    if (selectedDay.usedOndo) {
+        self.ondoIcon.alpha = 1.0;
+    } else {
+        self.ondoIcon.alpha = 0.0;
+    }
     
     if (selectedDay.temperature) {
         // Minimized Cell, With Data
-        self.placeholderLabel.hidden = YES;
-        self.collapsedLabel.hidden = NO;
-        self.temperatureValueLabel.hidden = NO;
+        self.placeholderLabel.alpha = 0.0;
+        self.collapsedLabel.alpha = 1.0;
+        self.temperatureValueLabel.alpha = 1.0;
         
         if ([self.delegate usedOndo]) {
-            self.ondoIcon.hidden = NO;
+            self.ondoIcon.alpha = 1.0;
         } else {
-            self.ondoIcon.hidden = YES;
+            self.ondoIcon.alpha = 0.0;
         }
         
     } else {
         // Minimized Cell, Without Data
-        self.placeholderLabel.hidden = NO;
-        self.collapsedLabel.hidden = YES;
-        self.temperatureValueLabel.hidden = YES;
+        self.placeholderLabel.alpha = 1.0;
+        self.collapsedLabel.alpha = 0.0;
+        self.temperatureValueLabel.alpha = 0.0;
     }
 }
 
 - (void)setExpanded
 {
-    self.infoButton.hidden = YES;
-    self.disturbanceLabel.hidden = NO;
-    self.disturbanceSwitch.hidden = NO;
-    self.temperaturePicker.hidden = NO;
+    self.infoButton.alpha = 0.0;
+    self.disturbanceLabel.alpha = 1.0;
+    self.disturbanceSwitch.alpha = 1.0;
+    self.temperaturePicker.alpha = 1.0;
     
-    self.placeholderLabel.hidden = YES;
-    self.collapsedLabel.hidden = NO;
-    self.temperatureValueLabel.hidden = NO;
+    self.placeholderLabel.alpha = 0.0;
+    self.collapsedLabel.alpha = 1.0;
+    self.temperatureValueLabel.alpha = 1.0;
     
-    self.ondoIcon.hidden = YES;
+    self.ondoIcon.alpha = 0.0;
 }
 
 @end

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D87h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3fu-mC-j0h">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D98g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3fu-mC-j0h">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -101,7 +101,6 @@
                                         </state>
                                         <connections>
                                             <action selector="toggleDrawer:" destination="3fu-mC-j0h" eventType="touchUpInside" id="jO0-H4-zDu"/>
-                                            <action selector="toggleMiniCalendar:" destination="3fu-mC-j0h" eventType="touchUpInside" id="ZNj-uF-TNK"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cycle Day #4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIJ-T9-hsE">
@@ -172,15 +171,9 @@
                     <navigationItem key="navigationItem" id="eWq-7Z-W5Z">
                         <barButtonItem key="leftBarButtonItem" image="icn_graph" id="u1Y-qs-dVJ">
                             <color key="tintColor" red="0.1176470588" green="0.3921568627" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="displayChart:" destination="3fu-mC-j0h" id="l4b-hY-mzO"/>
-                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="icn_calendar" id="h88-Hg-Y8d">
                             <color key="tintColor" red="0.11764705882352941" green="0.39215686274509803" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="displayCalendar:" destination="3fu-mC-j0h" id="1r0-so-PHa"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
@@ -189,10 +182,7 @@
                         <outlet property="calendarTopConstraint" destination="y2R-v9-1hT" id="Yif-wz-cy9"/>
                         <outlet property="calendarView" destination="tad-EW-aMN" id="vU7-f5-tuA"/>
                         <outlet property="drawerCollectionView" destination="Jxv-Mf-B2f" id="Hbe-84-tLN"/>
-                        <outlet property="drawerView" destination="tad-EW-aMN" id="Q9o-c7-30T"/>
                         <outlet property="navigationBarView" destination="bbP-aR-UaS" id="kd0-Pm-Cdq"/>
-                        <outlet property="navigationView" destination="bbP-aR-UaS" id="cE5-qv-ugA"/>
-                        <outlet property="subTitleLabel" destination="lIJ-T9-hsE" id="veU-Yo-giO"/>
                         <outlet property="subtitleLabel" destination="lIJ-T9-hsE" id="p5e-cy-Oca"/>
                         <outlet property="tableView" destination="eDl-ej-vyi" id="7xW-B1-F3s"/>
                         <outlet property="titleLabel" destination="lCY-IG-S1b" id="Chv-tH-UJd"/>

@@ -169,7 +169,7 @@
     self.pregnancyTypePositiveImageView.hidden = NO;
     self.pregnancyTypePositiveLabel.hidden = NO;
         
-    self.placeholderLabel.hidden = NO;
+    self.placeholderLabel.hidden = YES;
     self.pregnancyCollapsedLabel.hidden = NO;
     self.pregnancyTypeCollapsedLabel.hidden = YES;
     self.pregnancyTypeImageView.hidden = YES;

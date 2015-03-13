@@ -58,7 +58,8 @@
     [alert addAction:cancel];
     [alert addAction:ok];
     
-    [self.delegate presentViewControllerWithViewController:alert];
+    // TO DO
+//    [self.delegate presentViewControllerWithViewController:alert];
     
 }
 - (IBAction)doShowInfo:(id)sender

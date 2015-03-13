@@ -12,6 +12,8 @@
 #import "CalendarViewController.h"
 #import "WebViewController.h"
 #import "TrackingNotesViewController.h"
+#import "ConnectionManager.h"
+#import "UserProfile.h"
 
 #import "Calendar.h"
 #import "Day.h"
@@ -24,10 +26,16 @@
 #import "TrackingIntercourseTableViewCell.h"
 #import "TrackingMoodTableViewCell.h"
 #import "TrackingSymptomsTableViewCell.h"
+#import "TrackingOvulationTestTableViewCell.h"
+#import "TrackingPregnancyTestTableViewCell.h"
+#import "TrackingSupplementsTableViewCell.h"
+#import "TrackingMedicinesTableViewCell.h"
+
+#import "DateCollectionViewCell.h"
 
 @import HealthKit;
 
-@interface ILTrackingViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate,TrackingStatusCellDelegate,TrackingTemperatureCellDelegate,TrackingCervicalFluidCellDelegate,TrackingCervicalPositionCellDelegate,TrackingPeriodCellDelegate,TrackingIntercourseCellDelegate,TrackingMoodCellDelegate,TrackingSymptomsCellDelegate>
+@interface ILTrackingViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate,TrackingStatusCellDelegate,TrackingTemperatureCellDelegate,TrackingCervicalFluidCellDelegate,TrackingCervicalPositionCellDelegate,TrackingPeriodCellDelegate,TrackingIntercourseCellDelegate,TrackingMoodCellDelegate,TrackingSymptomsCellDelegate,TrackingOvulationTestCell,TrackingPregnancyCellDelegate,TrackingSupplementsCellDelegate,TrackingMedicinesCellDelegate>
 
 @property (nonatomic) NSDate *selectedDate;
 @property (nonatomic) NSDate *peakDate;
@@ -38,6 +46,7 @@
 @property (nonatomic) NSArray *trackingTableDataArray;
 @property (nonatomic) NSMutableArray *drawerDateData;
 @property (nonatomic) NSMutableArray *datesWithPeriod;
+@property (nonatomic) NSMutableArray *daysFromBackend;
 
 @property (nonatomic) Day *day;
 @property (nonatomic) CycleViewController *cycleViewController;
@@ -66,6 +75,7 @@
     [self setUpDrawerCollectionView];
     [self registerTableNibs];
     
+    [self refreshDrawerCollectionViewData];
     [self refreshTrackingView];
 }
 
@@ -205,12 +215,73 @@
 
 - (void)refreshTrackingView
 {
-    self.day = [[Day alloc] init];
+    NSLog(@"REFRESH TRACKING VIEW");
+    
+    [ConnectionManager get: @"/cycles"
+                    params: @{
+                              @"date": [self.selectedDate dateId],
+                              }
+                   success:^(id response) {
+                       
+                       [Cycle cycleFromResponse:response];
+                       self.day = [Day forDate:self.selectedDate];
+                       if (!self.day) {
+                           self.day = [Day withAttributes:@{@"date": self.selectedDate, @"idate": self.selectedDate.dateId}];
+                       }
+                       
+                       NSLog(@"REFRESH SUCCESS : RELOADING TABLE");
+                       
+                       [self reloadTableWithAnimation];
+                       
+                   }
+                   failure:^(NSError *error) {
+                       
+                       NSLog(@"ERROR: %@", error.localizedDescription);
+                       
+                   }];
+    
 }
 
 - (void)refreshDrawerCollectionViewData
 {
-    
+    [ConnectionManager get:@"/days"
+                    params:@{
+                             @"start_date": [self.drawerDateData firstObject],
+                             @"end_date": [self.drawerDateData lastObject]
+                             }
+                   success:^(NSDictionary *response) {
+                       //                       NSArray *orphanDays = response[@"days"];
+                       NSArray *cycles = response[@"cycles"]; // array of dictionaries
+                       // [cycles[0] objectForKey:@"days"] <- array of days
+                       // [[[cycles[0] objectForKey:@"days"] objectAtIndex:0] objectForKey:@"date"]
+                       for (NSDictionary *days in cycles) {
+                           NSArray *daysArray = [days objectForKey:@"days"];
+                           for (NSDictionary *day in daysArray) {
+                               //                               NSLog(@"%@", [day objectForKey:@"date"]);
+                               //                               [daysFromBackend addObject:[day objectForKey:@"date"]]; <- this will give you the date, we need the whole day dictionary
+                               [self.daysFromBackend addObject:day];
+                               
+                               if ((![[day objectForKey:@"period"] isEqual:[NSNull null]])) {
+                                   if ([[day objectForKey:@"period"] isEqualToString:@"spotting"] || [[day objectForKey:@"period"] isEqualToString:@"light"] || [[day objectForKey:@"period"] isEqualToString:@"medium"] || [[day objectForKey:@"period"] isEqualToString:@"heavy"]) {
+                                       NSDateFormatter* dtFormatter = [[NSDateFormatter alloc] init];
+                                       [dtFormatter setLocale:[NSLocale systemLocale]];
+                                       [dtFormatter setDateFormat:@"yyyy-MM-dd"];
+                                       NSDate *tempDate = [dtFormatter dateFromString:[day objectForKey:@"date"]];
+                                       if (![self.datesWithPeriod containsObject:tempDate]) {
+                                           // add date to dates with period array
+                                           // if we have a spotting day right after a period day, it still counts as the period cycle phase
+                                           [self.datesWithPeriod addObject:tempDate];
+                                       }
+                                   }
+                               }
+                               
+                           }
+                       }
+                       [self.drawerCollectionView reloadData];
+                   }
+                   failure:^(NSError *error) {
+                       NSLog(@"error: %@", error);
+                   }];
 }
 
 #pragma mark - IBAction's
@@ -282,7 +353,7 @@
     switch (indexPath.row) {
         case 0:{
             // Status Cell
-            cell = [tableView dequeueReusableCellWithIdentifier: @"statuCell" forIndexPath: indexPath];
+            cell = [tableView dequeueReusableCellWithIdentifier: @"statusCell" forIndexPath: indexPath];
             ((TrackingStatusTableViewCell *)cell).delegate = self;
             [((TrackingStatusTableViewCell *)cell) updateCell];
             
@@ -389,36 +460,56 @@
         case 8:{
             // Ovulation Cell
             cell = [self.tableView dequeueReusableCellWithIdentifier: @"ovulationCell" forIndexPath: indexPath];
+            ((TrackingOvulationTestTableViewCell *)cell).delegate = self;
+            [((TrackingOvulationTestTableViewCell *)cell) updateCell];
             
+            // Hide/Move Labels
             if (self.selectedTableRowIndex.row == 8) {
-                // Hide/Move Labels
+                [((TrackingOvulationTestTableViewCell *)cell) setExpanded];
+            }else{
+                [((TrackingOvulationTestTableViewCell *)cell) setMinimized];
             }
             break;
         }
         case 9:{
             // Pregnancy Cell
             cell = [tableView dequeueReusableCellWithIdentifier: @"pregnancyCell" forIndexPath: indexPath];
+            ((TrackingPregnancyTestTableViewCell *)cell).delegate = self;
+            [((TrackingPregnancyTestTableViewCell *)cell) updateCell];
             
+            // Hide/Move Labels
             if (self.selectedTableRowIndex.row == 9) {
-                // Hide/Move Labels
+                [((TrackingPregnancyTestTableViewCell *)cell) setExpanded];
+            }else{
+                [((TrackingPregnancyTestTableViewCell *)cell) setMinimized];
             }
             break;
         }
         case 10:{
             // Supplements Cell
             cell = [tableView dequeueReusableCellWithIdentifier: @"supplementsCell" forIndexPath: indexPath];
-
+            ((TrackingSupplementsTableViewCell *)cell).delegate = self;
+            [((TrackingSupplementsTableViewCell *)cell) updateCell];
+            
+            // Hide/Move Labels
             if (self.selectedTableRowIndex.row == 10) {
-                // Hide/Move Labels
+                [((TrackingSupplementsTableViewCell *)cell) setExpanded];
+            }else{
+                [((TrackingSupplementsTableViewCell *)cell) setMinimized];
             }
             break;
         }
         case 11:{
             // Medicines Cell
             cell = [tableView dequeueReusableCellWithIdentifier: @"medicinesCell" forIndexPath: indexPath];
-
+            ((TrackingMedicinesTableViewCell *)cell).delegate = self;
+            [((TrackingMedicinesTableViewCell *)cell) updateCell];
+            
+            // Hide/Move Labels
             if (self.selectedTableRowIndex.row == 11) {
-                // Hide/Move Labels
+                [((TrackingMedicinesTableViewCell *)cell) setExpanded];
+            }else{
+                [((TrackingMedicinesTableViewCell *)cell) setMinimized];
             }
             break;
         }
@@ -454,7 +545,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.selectedTableRowIndex.row == indexPath.row) {
+        self.selectedTableRowIndex = nil;
+        
+    }else{
+        NSIndexPath *oldIndexPath = self.selectedTableRowIndex;
+        self.selectedTableRowIndex = indexPath;
+        
+        if (oldIndexPath) {
+            [self.tableView reloadRowsAtIndexPaths: @[oldIndexPath] withRowAnimation: UITableViewRowAnimationAutomatic];
+        }
+    }
     
+    [self.tableView reloadRowsAtIndexPaths: @[indexPath] withRowAnimation: UITableViewRowAnimationAutomatic];
+
 }
 
 #pragma mark - UICollectionView Data Source
@@ -466,8 +570,172 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell;
+    DateCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"dateCvCell" forIndexPath:indexPath];
     
+    NSDate *cellDate = [self.drawerDateData objectAtIndex:indexPath.row];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setDateFormat:@"EEE"];
+    NSString *dayOfWeek = [[formatter stringFromDate:cellDate] uppercaseString];
+    [formatter setDateFormat:@"d"];
+    NSString *day = [formatter stringFromDate:cellDate];
+    
+    cell.monthLabel.text = dayOfWeek;
+    cell.dayLabel.text = day;
+
+    if (indexPath.row == self.selectedIndexPath.row) {
+        CGRect cellFrame = cell.frame;
+        cellFrame.size.height = 54.0f;
+        cellFrame.size.width = 44.0f;
+        cell.frame = cellFrame;
+    } else {
+        CGRect cellFrame = cell.frame;
+        cellFrame.size.height = 44.0f;
+        cellFrame.size.width = 44.0f;
+        cell.frame = cellFrame;
+    }
+    
+    if ([cellDate compare:[NSDate date]] == NSOrderedDescending) {
+        // celldate is in the future
+        cell.statusImageView.image = [UIImage imageNamed:@"icn_dd_empty state_small"];
+        // change colors
+        cell.monthLabel.textColor = [UIColor ovatempGreyColorForDateCollectionViewCells];
+        cell.dayLabel.textColor = [UIColor ovatempGreyColorForDateCollectionViewCells];
+        
+        return cell;
+    }
+    
+    for (NSDictionary *dayDict in self.daysFromBackend) {
+        NSDateFormatter *dtFormatter = [[NSDateFormatter alloc] init];
+        [dtFormatter setLocale:[NSLocale systemLocale]];
+        [dtFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSDate *dateFromBackend = [dtFormatter dateFromString:[dayDict objectForKey:@"date"]];
+        //        NSLog(@"cellDate:%@, dateFromBackend:%@", cellDate, dateFromBackend);
+        //        if ([cellDate compare:dateFromBackend] == NSOrderedSame) { // date of this cell was tracked
+        if ([[dtFormatter stringFromDate:cellDate] isEqualToString:[dtFormatter stringFromDate:dateFromBackend]]) {
+            //            NSLog(@"---dates are equal---");
+            NSString *cyclePhase = [dayDict objectForKey:@"cycle_phase"];
+            
+            BOOL useOldCyclePhase = YES;
+            NSString *oldCyclePhase = cyclePhase;
+            
+            for (NSDate *periodDate in self.datesWithPeriod) {
+                if ([[dtFormatter stringFromDate:cellDate] isEqualToString:[dtFormatter stringFromDate:periodDate]]) {
+                    cyclePhase = @"period";
+                    useOldCyclePhase = NO;
+                }
+            }
+            
+            if (useOldCyclePhase) {
+                cyclePhase = oldCyclePhase;
+            }
+            
+            // if this cell is spotting and the day before did not have a period, cell is not fertile
+            if (![[dayDict objectForKey:@"period"] isEqual:[NSNull null]]) {
+                if ([[dayDict objectForKey:@"period"] isEqualToString:@"spotting"]) {
+                    // check if cell the day before had a period
+                    NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+                    dayComponent.day = -1;
+                    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+                    NSDate *dayBeforeCellDate = [currentCalendar dateByAddingComponents:dayComponent toDate:cellDate options:0];
+                    
+                    NSDateFormatter *dtFormatter = [[NSDateFormatter alloc] init];
+                    [dtFormatter setLocale:[NSLocale systemLocale]];
+                    [dtFormatter setDateFormat:@"yyyy-MM-dd"];
+                    
+                    BOOL dayBeforeHadPeriod = NO;
+                    
+                    for (NSDate *periodDate in self.datesWithPeriod) {
+                        if ([[dtFormatter stringFromDate:periodDate] isEqualToString:[dtFormatter stringFromDate:dayBeforeCellDate]]) {
+                            dayBeforeHadPeriod = YES;
+                        }
+                    }
+                    
+                    if (!dayBeforeHadPeriod) {
+                        // return not fertile cell
+                        cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_small"];
+                        cell.monthLabel.textColor = [UIColor whiteColor];
+                        cell.dayLabel.textColor = [UIColor whiteColor];
+                        return cell;
+                    }
+                    
+                }
+                
+            }
+            
+            if ([cyclePhase isKindOfClass:[NSString class]]) {
+                
+                UserProfile *currentUserProfile = [UserProfile current];
+                
+                // in fertility window overrides
+                //                NSLog(@"%@", [dayDict objectForKey: @"in_fertility_window"]);
+                NSNumber *inFertilityWindowNumber = (NSNumber *)[dayDict objectForKey: @"in_fertility_window"];
+                if ([inFertilityWindowNumber boolValue] == YES) {
+                    if (currentUserProfile.tryingToConceive) {
+                        // green fertility image
+                        cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_fertile_small"];
+                        cell.monthLabel.textColor = [UIColor whiteColor];
+                        cell.dayLabel.textColor = [UIColor whiteColor];
+                        return cell;
+                    } else { // avoid
+                        // red fertility image
+                        cell.statusImageView.image = [UIImage imageNamed:@"icn_dd_fertile_small"];
+                        cell.monthLabel.textColor = [UIColor whiteColor];
+                        cell.dayLabel.textColor = [UIColor whiteColor];
+                        return cell;
+                    }
+                }
+                
+                if ([cyclePhase isEqualToString:@"period"]) { // if it's not null
+                    cell.statusImageView.image = [UIImage imageNamed:@"icn_period"];
+                    // change text color
+                    cell.monthLabel.textColor = [UIColor whiteColor];
+                    cell.dayLabel.textColor = [UIColor whiteColor];
+                    return cell;
+                } else if ([cyclePhase isEqualToString:@"ovulation"]) { // fertile
+                    if (currentUserProfile.tryingToConceive) {
+                        // green fertility image
+                        cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_fertile_small"];
+                    } else {
+                        // trying to avoid, red fertility image
+                        cell.statusImageView.image = [UIImage imageNamed:@"icn_dd_fertile_small"];
+                    }
+                    cell.monthLabel.textColor = [UIColor whiteColor];
+                    cell.dayLabel.textColor = [UIColor whiteColor];
+                    return cell;
+                } else if ([cyclePhase isEqualToString:@"preovulation"]) { // not fertile
+                    if (![[dayDict objectForKey:@"cervical_fluid"] isEqual:[NSNull null]]) {
+                        if (([[dayDict objectForKey:@"cervical_fluid"] isEqualToString:@"dry"]) && !currentUserProfile.tryingToConceive) {
+                            cell.statusImageView.image = [UIImage imageNamed:@"icn_dd_notfertile_small"];
+                        } else if (([[dayDict objectForKey:@"cervical_fluid"] isEqualToString:@"sticky"]) && !currentUserProfile.tryingToConceive) {
+                            // red fertile asset
+                            cell.statusImageView.image = [UIImage imageNamed:@"icn_dd_fertile_small"];
+                        }
+                        else {
+                            cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_small"];
+                        }
+                    } else {
+                        cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_small"];
+                    }
+                    cell.monthLabel.textColor = [UIColor whiteColor];
+                    cell.dayLabel.textColor = [UIColor whiteColor];
+                    return cell;
+                } else if ([cyclePhase isEqualToString:@"postovulation"]) { // not fertile
+                    cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_small"];
+                    cell.monthLabel.textColor = [UIColor whiteColor];
+                    cell.dayLabel.textColor = [UIColor whiteColor];
+                    return cell;
+                }
+            }
+        }
+
+    }
+    
+    cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_empty"];
+    cell.monthLabel.textColor = [UIColor ovatempGreyColorForDateCollectionViewCells];
+    cell.dayLabel.textColor = [UIColor ovatempGreyColorForDateCollectionViewCells];
+    
+
     return cell;
 }
 
@@ -484,7 +752,35 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDate *dateAtIndex = [self.drawerDateData objectAtIndex:indexPath.row];
     
+    if ([dateAtIndex compare:[NSDate date]] == NSOrderedDescending) {
+        // today is earlier than selected date, don't allow user to access that date
+        return;
+    }
+    
+    if (self.selectedDate == dateAtIndex) {
+        // do nothing, select date is the date we're already on
+        return;
+    }
+    
+    self.selectedDate = dateAtIndex;
+    self.selectedIndexPath = indexPath;
+    
+    [self.drawerCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    
+    DateCollectionViewCell *selectedCell = (DateCollectionViewCell *)[self.drawerCollectionView cellForItemAtIndexPath:indexPath];
+    
+    CGRect cellFrame = selectedCell.frame;
+    cellFrame.size.height += 5;
+    selectedCell.frame = cellFrame;
+    
+    [self.drawerCollectionView reloadData];
+    [self.drawerCollectionView.collectionViewLayout invalidateLayout];
+    
+    [[self.drawerCollectionView cellForItemAtIndexPath:indexPath] setNeedsDisplay];
+    
+    [self refreshTrackingView];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
@@ -553,6 +849,11 @@
     return self.selectedDate;
 }
 
+- (Day *)getSelectedDay
+{
+    return self.day;
+}
+
 - (NSDate *)getPeakDate
 {
     return self.peakDate;
@@ -562,6 +863,66 @@
 {
     return self.notes;
 }
+
+- (BOOL)usedOndo
+{
+    return NO;
+}
+
+#pragma mark - TrackingTemperatureCell Delegate
+
+- (void)didSelectTemperature:(NSNumber *)temperature
+{
+    
+}
+
+#pragma mark - TrackingCervicalFluidCell Delegate
+
+- (void)didSelectCervicalFluidType:(CervicalFluidSelectionType)type
+{
+    
+}
+
+#pragma mark - TrackingCervicalPositionCell Delegate
+
+- (void)didSelectCervicalPositionType:(CervicalPositionSelectionType)type
+{
+    
+}
+
+#pragma mark - TrackingPeriodCell Delegate
+
+- (void)didSelectPeriodWithType:(PeriodSelectionType)type
+{
+    
+}
+
+#pragma mark - TrackingIntercourseCell Delegate
+
+- (void)didSelectIntercourseWithType:(IntercourseSelectionType)type
+{
+    
+}
+
+#pragma mark - TrackingMoodCell Delegate
+#pragma mark - TrackingSymptomsCell Delegate
+
+#pragma mark - TrackingOvulationTestCell Delegate
+
+- (void)didSelectOvulationWithType:(OvulationTestSelectionType)type
+{
+    
+}
+
+#pragma mark - TrackingPregnancyTestCell Delegate
+
+- (void)didSelectPregnancyWithType:(PregnancyTestSelectionType)type
+{
+    
+}
+
+#pragma mark - TrackingSupplementsCell Delegate
+#pragma mark - TrackingMedicinesCell Delegate
 
 # pragma mark - HealthKit
 
@@ -634,6 +995,13 @@
 }
 
 #pragma mark - Helper's
+
+- (void)reloadTableWithAnimation
+{
+    for (int i = 0; i <= 11; i++) {
+        [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: i inSection: 0]] withRowAnimation: UITableViewRowAnimationAutomatic];
+    }
+}
 
 - (void)registerTableNibs
 {
@@ -718,6 +1086,24 @@
     }
     
     return _datesWithPeriod;
+}
+
+- (NSMutableArray *)daysFromBackend
+{
+    if (!_daysFromBackend) {
+        _daysFromBackend = [[NSMutableArray alloc] init];
+    }
+    
+    return _daysFromBackend;
+}
+
+- (Day *)day
+{
+    if (!_day) {
+        _day = [[Day alloc] init];
+    }
+    
+    return _day;
 }
 
 @end
