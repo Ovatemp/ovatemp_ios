@@ -14,6 +14,7 @@
 #import "TrackingNotesViewController.h"
 #import "ConnectionManager.h"
 #import "UserProfile.h"
+#import "Alert.h"
 
 #import "Calendar.h"
 #import "Day.h"
@@ -52,8 +53,12 @@
 @property (nonatomic) CycleViewController *cycleViewController;
 @property (nonatomic) NSString *notes;
 
+@property (nonatomic) NSNumber *selectedTemperature;
+
 @property (nonatomic) BOOL lowerDrawer;
 @property (nonatomic) BOOL inLandscape;
+
+@property (nonatomic) UIActivityIndicatorView *activity;
 
 @end
 
@@ -71,12 +76,12 @@
     [self addOrientationObserver];
     
     [self setTitleView];
+    [self customizeAppearance];
     [self setTitleViewGestureRecognizer];
     [self setUpDrawerCollectionView];
     [self registerTableNibs];
     
     [self refreshDrawerCollectionViewData];
-    [self refreshTrackingView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -138,7 +143,17 @@
 
 - (void)customizeAppearance
 {
-    
+
+}
+
+- (void)startActivity
+{
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: YES];
+}
+
+- (void)stopActivity
+{
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: NO];
 }
 
 - (void)setTitleView
@@ -244,6 +259,8 @@
 
 - (void)refreshDrawerCollectionViewData
 {
+    NSLog(@"REFRESH DAYS COLLECTION VIEW");
+    
     [ConnectionManager get:@"/days"
                     params:@{
                              @"start_date": [self.drawerDateData firstObject],
@@ -277,7 +294,11 @@
                                
                            }
                        }
+                       
+                       NSLog(@"REFRESH DAYS COLLECTION VIEW  : SUCCESS");
+                       
                        [self.drawerCollectionView reloadData];
+                       [self refreshTrackingView];
                    }
                    failure:^(NSError *error) {
                        NSLog(@"error: %@", error);
@@ -364,6 +385,10 @@
             cell = [tableView dequeueReusableCellWithIdentifier: @"tempCell" forIndexPath: indexPath];
             ((TrackingTemperatureTableViewCell *)cell).delegate = self;
             [((TrackingTemperatureTableViewCell *)cell) updateCell];
+            
+            if (self.selectedTemperature) {
+                ((TrackingTemperatureTableViewCell *)cell).temperatureValueLabel.text = [NSString stringWithFormat: @"%.2f", [self.selectedTemperature floatValue]];
+            }
             
             // Hide/Move Labels
             if (self.selectedTableRowIndex.row == 1) {
@@ -545,6 +570,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self uploadSelectedTemperature];
+    
     if (self.selectedTableRowIndex.row == indexPath.row) {
         self.selectedTableRowIndex = nil;
         
@@ -873,7 +900,7 @@
 
 - (void)didSelectTemperature:(NSNumber *)temperature
 {
-    
+    self.selectedTemperature = temperature;
 }
 
 #pragma mark - TrackingCervicalFluidCell Delegate
@@ -924,34 +951,6 @@
 #pragma mark - TrackingSupplementsCell Delegate
 #pragma mark - TrackingMedicinesCell Delegate
 
-# pragma mark - HealthKit
-
-- (void)updateHealthKitWithTemp:(float)temp
-{
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:HKCONNECTION]) {
-        if(temp) {
-            NSString *identifier = HKQuantityTypeIdentifierBodyTemperature;
-            HKQuantityType *tempType = [HKObjectType quantityTypeForIdentifier:identifier];
-            
-            HKQuantity *myTemp = [HKQuantity quantityWithUnit:[HKUnit degreeFahrenheitUnit]
-                                                  doubleValue: temp];
-            
-            HKQuantitySample *temperatureSample = [HKQuantitySample quantitySampleWithType: tempType
-                                                                                  quantity: myTemp
-                                                                                 startDate: self.selectedDate
-                                                                                   endDate: self.selectedDate
-                                                                                  metadata: nil];
-            HKHealthStore *healthStore = [[HKHealthStore alloc] init];
-            [healthStore saveObject: temperatureSample withCompletion:^(BOOL success, NSError *error) {
-                NSLog(@"I saved to healthkit");
-            }];
-        }
-    }
-    else {
-        NSLog(@"Could not save to healthkit. No connection could be made");
-    }
-}
-
 #pragma mark - Orientation/Cycle Chart
 
 - (void)orientationChanged:(NSNotification *)notification
@@ -992,6 +991,93 @@
 - (void)presentChart
 {
     //    [self pushViewController:self.cycleViewController];
+}
+
+#pragma mark - Network
+
+- (void)uploadSelectedTemperature
+{
+    // Check if there has been a change in the selected temperature, if yes, post to backend.
+    
+    if (!self.selectedTemperature) {
+        return;
+    }
+    
+    if ([self.selectedTemperature floatValue] == [self.day.temperature floatValue]) {
+        return;
+    }
+    
+    NSLog(@"ILTrackingVC : UPLOADING SELECTED TEMPERATURE");
+    
+    float tempInFahrenheit;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults boolForKey: @"temperatureUnitPreferenceFahrenheit"]) {
+        tempInFahrenheit = (([self.selectedTemperature floatValue] * 1.8000f) + 32);
+    } else {
+        tempInFahrenheit = [self.selectedTemperature floatValue];
+    }
+    
+    [self updateHealthKitWithTemp: tempInFahrenheit];
+    
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat: @"yyyy-MM-dd"];
+    
+    NSString *stringDateForBackend = [formatter stringFromDate: self.selectedDate];
+    [attributes setObject: stringDateForBackend forKey: @"date"];
+    [attributes setObject: [NSNumber numberWithFloat: tempInFahrenheit] forKey: @"temperature"];
+    
+    [self startActivity];
+    
+    [ConnectionManager put:@"/days/"
+                    params:@{
+                             @"day": attributes,
+                             }
+                   success:^(NSDictionary *response) {
+                       
+                       NSLog(@"ILTrackingVC : UPLOADING SELECTED TEMPERATURE SUCCESS");
+                       
+                       [Cycle cycleFromResponse: response];
+                       [Calendar setDate: self.selectedDate];
+                       
+                       self.selectedTemperature = nil;
+                       
+                       [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: 1 inSection: 0]] withRowAnimation: UITableViewRowAnimationNone];
+                       [self stopActivity];
+                   }
+                   failure:^(NSError *error) {
+                       NSLog(@"ILTrackingVC : UPLOADING SELECTED TEMPERATURE FAILURE");
+                       [Alert presentError:error];
+                       [self stopActivity];
+                   }];
+}
+
+# pragma mark - HealthKit
+
+- (void)updateHealthKitWithTemp:(float)temp
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey: HKCONNECTION]) {
+        if(temp) {
+            NSString *identifier = HKQuantityTypeIdentifierBodyTemperature;
+            HKQuantityType *tempType = [HKObjectType quantityTypeForIdentifier:identifier];
+            
+            HKQuantity *myTemp = [HKQuantity quantityWithUnit:[HKUnit degreeFahrenheitUnit]
+                                                  doubleValue: temp];
+            
+            HKQuantitySample *temperatureSample = [HKQuantitySample quantitySampleWithType: tempType
+                                                                                  quantity: myTemp
+                                                                                 startDate: self.selectedDate
+                                                                                   endDate: self.selectedDate
+                                                                                  metadata: nil];
+            HKHealthStore *healthStore = [[HKHealthStore alloc] init];
+            [healthStore saveObject: temperatureSample withCompletion:^(BOOL success, NSError *error) {
+                NSLog(@"I saved to healthkit");
+            }];
+        }
+    }
+    else {
+        NSLog(@"Could not save to healthkit. No connection could be made");
+    }
 }
 
 #pragma mark - Helper's

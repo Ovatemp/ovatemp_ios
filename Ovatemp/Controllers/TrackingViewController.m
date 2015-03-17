@@ -1856,7 +1856,7 @@ NSMutableArray *datesWithPeriod;
             
             [self.tempCell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
-            [self.tempCell setSelectedDate:self.selectedDate];
+            [self.tempCell setSelectedDa    te:self.selectedDate];
             
             self.tempCell.delegate = self;
             

@@ -18,6 +18,12 @@
 
 @import HealthKit;
 
+@interface TrackingTemperatureTableViewCell ()
+
+@property (nonatomic) NSNumber *selectedTemperature;
+
+@end
+
 @implementation TrackingTemperatureTableViewCell
 
 NSMutableArray *temperatureIntegerPartPickerData;
@@ -30,7 +36,7 @@ NSMutableArray *temperatureFractionalPartPickerData;
     temperatureIntegerPartPickerData = [[NSMutableArray alloc] init];
     temperatureFractionalPartPickerData = [[NSMutableArray alloc] init];
     
-    // set up picker data source
+    // Set up picker data source
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"]) {
@@ -68,12 +74,8 @@ NSMutableArray *temperatureFractionalPartPickerData;
     self.temperaturePicker.dataSource = self;
     self.temperaturePicker.showsSelectionIndicator = YES;
     
-//    self.selectedDate = [[NSDate alloc] init];
-    
-    // switch
-    [self.disturbanceSwitch addTarget: self action: @selector(disturbanceSwitchChanged:) forControlEvents: UIControlEventValueChanged];
-    // color
     self.disturbanceSwitch.onTintColor = [UIColor ovatempAquaColor];
+    [self.disturbanceSwitch addTarget: self action: @selector(disturbanceSwitchChanged:) forControlEvents: UIControlEventValueChanged];
 }
 
 - (void)prepareForReuse
@@ -110,18 +112,21 @@ NSMutableArray *temperatureFractionalPartPickerData;
     [self.temperaturePicker reloadAllComponents];
 }
 
-- (void)disturbanceSwitchChanged:(UISwitch *)disturbanceSwitch
-{
-    BOOL disturbance = disturbanceSwitch.on;
-    [self postAndSaveDisturbanceWithDisturbance:disturbance];
-}
+#pragma mark - IBAction's
 
 - (IBAction)didSelectInfoButton:(id)sender
 {
     [self.delegate pushInfoAlertWithTitle:@"Basal Body Temperature" AndMessage:@"Temperature of the body at rest, taken immediately after awakening and before any other activity (i.e. taking a sip of water, going to the bathroom).\n\nWomen have lower basal body temperatures before ovulation, and higher temperatures afterwards." AndURL:@"http://ovatemp.helpshift.com/a/ovatemp/?s=fertility-faqs&f=learn-more-about-basal-body-temperature"];
 }
 
-#pragma mark - UIPickerView
+- (void)disturbanceSwitchChanged:(UISwitch *)disturbanceSwitch
+{
+    BOOL disturbance = disturbanceSwitch.on;
+    
+    [self postAndSaveDisturbanceWithDisturbance:disturbance];
+}
+
+#pragma mark - UIPickerView Data Source
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -150,50 +155,22 @@ NSMutableArray *temperatureFractionalPartPickerData;
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    self.temperatureValueLabel.text = [NSString stringWithFormat:@"%@.%@", [temperatureIntegerPartPickerData objectAtIndex:[pickerView selectedRowInComponent:0]], [temperatureFractionalPartPickerData objectAtIndex:[pickerView selectedRowInComponent:1]]];
+    NSString *tempInteger = [temperatureIntegerPartPickerData objectAtIndex: [pickerView selectedRowInComponent: 0]];
+    NSString *tempFractional = [temperatureFractionalPartPickerData objectAtIndex: [pickerView selectedRowInComponent: 1]];
+    NSString *temperatureString = [NSString stringWithFormat: @"%@.%@", tempInteger, tempFractional];
     
-    // update temperature on backend
-    [self postAndSaveTemperature];
+    self.temperatureValueLabel.text = temperatureString;
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.numberStyle = NSNumberFormatterDecimalStyle;
+    self.selectedTemperature = [formatter numberFromString: temperatureString];
+    
+    if ([self.delegate respondsToSelector: @selector(didSelectTemperature:)]) {
+        [self.delegate didSelectTemperature: self.selectedTemperature];
+    }
 }
 
-- (void)postAndSaveTemperature
-{
-    float tempInFahrenheit;
-    // if Celsius, convert to Fahrenheit
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (![defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"]) {
-        tempInFahrenheit = (([self.temperatureValueLabel.text floatValue] * 1.8000f) + 32);
-    } else {
-        tempInFahrenheit = [self.temperatureValueLabel.text floatValue];
-    }
-    
-    // first save to HealthKit
-    [self updateHealthKitWithTemperature:tempInFahrenheit];
-    
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
-    
-    // format date to yyyy-mm-dd
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
-    
-    NSString *stringDateForBackend = [formatter stringFromDate: SELECTED_DATE];
-    
-    [attributes setObject:stringDateForBackend forKey:@"date"];
-    [attributes setObject:[NSNumber numberWithFloat:tempInFahrenheit] forKey:@"temperature"];
-    
-    [ConnectionManager put:@"/days/"
-                    params:@{
-                             @"day": attributes,
-                             }
-                   success:^(NSDictionary *response) {
-                       [Cycle cycleFromResponse:response];
-                       [Calendar setDate: SELECTED_DATE];
-//                       if (onSuccess) onSuccess(response);
-                   }
-                   failure:^(NSError *error) {
-                       [Alert presentError:error];
-                   }];
-}
+#pragma mark - Network
 
 - (void)postAndSaveDisturbanceWithDisturbance:(BOOL)disturbance
 {
@@ -282,9 +259,54 @@ NSMutableArray *temperatureFractionalPartPickerData;
     }
     
     if (selectedDay.disturbance) {
-        [self.disturbanceSwitch setOn:YES];
+        [self.disturbanceSwitch setOn: YES];
     } else {
-        [self.disturbanceSwitch setOn:NO];
+        [self.disturbanceSwitch setOn: NO];
+    }
+    
+    [self setPickerSelection];
+}
+
+- (void)setPickerSelection
+{
+    NSArray *tempChunks = [self.temperatureValueLabel.text componentsSeparatedByString: @"."];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    int componentZeroSelection;
+    int componenetOneSelection;
+    
+    if ([defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"]) {
+        componentZeroSelection = [tempChunks[0] intValue];
+        componentZeroSelection -= 90;
+        componenetOneSelection = [tempChunks[1] intValue];
+        
+        if (componenetOneSelection < 0) {
+            componenetOneSelection = 60;
+        }
+        
+        if (componentZeroSelection < 0) {
+            componentZeroSelection = 8;
+        }
+        
+        [self.temperaturePicker selectRow:componentZeroSelection inComponent:0 animated:NO];
+        [self.temperaturePicker selectRow:componenetOneSelection inComponent:1 animated:NO];
+    } else {
+        componentZeroSelection = [tempChunks[0] intValue];
+        componentZeroSelection -= 32;
+        
+        componenetOneSelection = [tempChunks[1] intValue];
+        
+        if (componenetOneSelection < 0) {
+            componenetOneSelection = 5;
+        }
+        
+        if (componentZeroSelection < 0) {
+            componentZeroSelection = 0;
+        }
+        
+        [self.temperaturePicker selectRow:componentZeroSelection inComponent:0 animated:NO];
+        [self.temperaturePicker selectRow:componenetOneSelection inComponent:1 animated:NO];
     }
 }
 
