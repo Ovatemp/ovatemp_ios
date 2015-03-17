@@ -896,39 +896,60 @@
     return NO;
 }
 
-#pragma mark - TrackingTemperatureCell Delegate
+#pragma mark - Cell Delegate's
 
 - (void)didSelectTemperature:(NSNumber *)temperature
 {
     self.selectedTemperature = temperature;
 }
 
-#pragma mark - TrackingCervicalFluidCell Delegate
-
-- (void)didSelectCervicalFluidType:(CervicalFluidSelectionType)type
+- (void)didSelectDisturbance:(BOOL)disturbance
 {
-    
+    [self uploadDisturbance: disturbance];
 }
 
-#pragma mark - TrackingCervicalPositionCell Delegate
-
-- (void)didSelectCervicalPositionType:(CervicalPositionSelectionType)type
+- (void)didSelectCervicalFluidType:(id)type
 {
+    NSDictionary *params = @{@"log_name" : @"CERVICAL FLUID TYPE",
+                             @"attribute_key" : @"cervical_fluid",
+                             @"attribute_data" : type,
+                             @"notification_id" : @"cf",
+                             @"index_path_row" : @2};
     
+    [self uploadWithParameters: params];
 }
 
-#pragma mark - TrackingPeriodCell Delegate
-
-- (void)didSelectPeriodWithType:(PeriodSelectionType)type
+- (void)didSelectCervicalPositionType:(id)type
 {
+    NSDictionary *params = @{@"log_name" : @"CERVICAL POSITION TYPE",
+                             @"attribute_key" : @"cervical_position",
+                             @"attribute_data" : type,
+                             @"notification_id" : @"cp",
+                             @"index_path_row" : @3};
     
+    [self uploadWithParameters: params];
 }
 
-#pragma mark - TrackingIntercourseCell Delegate
-
-- (void)didSelectIntercourseWithType:(IntercourseSelectionType)type
+- (void)didSelectPeriodWithType:(id)type
 {
+    NSDictionary *params = @{@"log_name" : @"PERIOD TYPE",
+                             @"attribute_key" : @"period",
+                             @"attribute_data" : type,
+                             @"notification_id" : @"period",
+                             @"index_path_row" : @4};
     
+    [self uploadWithParameters: params];
+}
+
+- (void)didSelectIntercourseWithType:(id)type
+{
+    NSDictionary *params = @{@"log_name" : @"INTERCOURSE TYPE",
+                             @"attribute_key" : @"intercourse",
+                             @"attribute_data" : type,
+                             @"notification_id" : @"intercourse",
+                             @"index_path_row" : @5};
+    
+    [self uploadWithParameters: params];
 }
 
 #pragma mark - TrackingMoodCell Delegate
@@ -936,16 +957,28 @@
 
 #pragma mark - TrackingOvulationTestCell Delegate
 
-- (void)didSelectOvulationWithType:(OvulationTestSelectionType)type
+- (void)didSelectOvulationWithType:(id)type
 {
+    NSDictionary *params = @{@"log_name" : @"OVULATION TEST",
+                             @"attribute_key" : @"opk",
+                             @"attribute_data" : type,
+                             @"notification_id" : @"ovulation",
+                             @"index_path_row" : @8};
     
+    [self uploadWithParameters: params];
 }
 
 #pragma mark - TrackingPregnancyTestCell Delegate
 
-- (void)didSelectPregnancyWithType:(PregnancyTestSelectionType)type
+- (void)didSelectPregnancyWithType:(id)type
 {
+    NSDictionary *params = @{@"log_name" : @"PREGNANCY TEST",
+                             @"attribute_key" : @"ferning",
+                             @"attribute_data" : type,
+                             @"notification_id" : @"pregnancy",
+                             @"index_path_row" : @9};
     
+    [self uploadWithParameters: params];
 }
 
 #pragma mark - TrackingSupplementsCell Delegate
@@ -1027,7 +1060,7 @@
     [attributes setObject: stringDateForBackend forKey: @"date"];
     [attributes setObject: [NSNumber numberWithFloat: tempInFahrenheit] forKey: @"temperature"];
     
-    [self startActivity];
+    [[NSNotificationCenter defaultCenter] postNotificationName: @"temp_start_activity" object: self];
     
     [ConnectionManager put:@"/days/"
                     params:@{
@@ -1043,12 +1076,85 @@
                        self.selectedTemperature = nil;
                        
                        [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: 1 inSection: 0]] withRowAnimation: UITableViewRowAnimationNone];
-                       [self stopActivity];
+                       
+                       [[NSNotificationCenter defaultCenter] postNotificationName: @"temp_stop_activity" object: self];
                    }
                    failure:^(NSError *error) {
                        NSLog(@"ILTrackingVC : UPLOADING SELECTED TEMPERATURE FAILURE");
                        [Alert presentError:error];
                        [self stopActivity];
+                       [[NSNotificationCenter defaultCenter] postNotificationName: @"temp_stop_activity" object: self];
+                   }];
+}
+
+- (void)uploadDisturbance:(BOOL)disturbance
+{
+    NSLog(@"ILTrackingVC : UPLOADING DISTURBANCE");
+    
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+    [attributes setObject: self.selectedDate forKey: @"date"];
+    [attributes setObject: [NSNumber numberWithBool: disturbance] forKey: @"disturbance"];
+    
+    [self startActivity];
+    
+    [ConnectionManager put:@"/days/"
+                    params:@{
+                             @"day": attributes,
+                             }
+                   success:^(NSDictionary *response) {
+                       NSLog(@"ILTrackingVC : UPLOADING DISTURBANCE : SUCCESS");
+                       
+                       [Cycle cycleFromResponse:response];
+                       [Calendar setDate: self.selectedDate];
+                       
+                       [self stopActivity];
+                   }
+                   failure:^(NSError *error) {
+                       NSLog(@"ILTrackingVC : UPLOADING DISTURBANCE FAILURE");
+                       [Alert presentError:error];
+                       [self stopActivity];
+                   }];
+}
+
+- (void)uploadWithParameters:(NSDictionary *)params
+{
+    NSString *logName = params[@"log_name"];
+    NSString *attributeKey = params[@"attribute_key"];
+    NSString *attributeData = params[@"attribute_data"];
+    NSString *notificationId = params[@"notification_id"];
+    NSNumber *indexPathRow = params[@"index_path_row"];
+    
+    NSLog(@"ILTrackingVC : UPLOADING %@", logName);
+    
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+    
+    [attributes setObject: attributeData forKey: attributeKey];
+    [attributes setObject: self.selectedDate forKey: @"date"];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"%@_start_activity", notificationId] object: self];
+    
+    [ConnectionManager put:@"/days/"
+                    params:@{
+                             @"day": attributes,
+                             }
+                   success:^(NSDictionary *response) {
+                       
+                       NSLog(@"ILTrackingVC : UPLOADING %@ : SUCCESS", logName);
+                       [Cycle cycleFromResponse:response];
+                       [Calendar setDate: self.selectedDate];
+                       
+                       self.selectedTableRowIndex = nil;
+                       [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: [indexPathRow integerValue] inSection: 0]]
+                                             withRowAnimation: UITableViewRowAnimationAutomatic];
+                       
+                       [[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"%@_stop_activity", notificationId] object: self];
+                   }
+                   failure:^(NSError *error) {
+                       
+                       NSLog(@"ILTrackingVC : UPLOADING %@ : FAILURE", logName);
+                       [Alert presentError:error];
+                       
+                       [[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"%@_stop_activity", notificationId] object: self];
                    }];
 }
 

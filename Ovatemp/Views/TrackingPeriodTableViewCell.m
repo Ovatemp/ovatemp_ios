@@ -24,9 +24,34 @@
 
 - (void)awakeFromNib
 {
-    // Initialization code
+    [self setUpActivityView];
+}
+
+- (void)setUpActivityView
+{
+    self.activityView.hidden = YES;
+    self.activityView.hidesWhenStopped = YES;
     
-//    self.selectedDate = [[NSDate alloc] init];
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(startActivity)
+                                                 name: @"period_start_activity"
+                                               object: nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(stopActivity)
+                                                 name: @"period_stop_activity"
+                                               object: nil];
+}
+
+- (void)startActivity
+{
+    self.activityView.hidden = NO;
+    [self.activityView startAnimating];
+}
+
+- (void)stopActivity
+{
+    [self.activityView stopAnimating];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -38,17 +63,27 @@
 {
     if (self.selectedPeriodType == PeriodSelectionNone) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
-        [self hitBackendWithPeriodType:[NSNull null]];
+        
         [self deselectAllButtons];
         self.periodTypeCollapsedLabel.text = @"";
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectPeriodWithType:)]) {
+            [self.delegate didSelectPeriodWithType: [NSNull null]];
+        }
+        
     } else {
         self.selectedPeriodType = PeriodSelectionNone;
+        
         self.periodTypeCollapsedLabel.text = @"None";
         self.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_none"];
-        [self hitBackendWithPeriodType:@"none"];
         
         [self deselectAllButtons];
         [self.noneImageView setSelected:YES];
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectPeriodWithType:)]) {
+            [self.delegate didSelectPeriodWithType: @"none"];
+        }
+        
     }
 }
 
@@ -56,17 +91,26 @@
 {
     if (self.selectedPeriodType == PeriodSelectionSpotting) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
-        [self hitBackendWithPeriodType:[NSNull null]];
+        
         [self deselectAllButtons];
         self.periodTypeCollapsedLabel.text = @"";
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectPeriodWithType:)]) {
+            [self.delegate didSelectPeriodWithType: [NSNull null]];
+        }
+        
     } else {
         self.selectedPeriodType = PeriodSelectionSpotting;
+        
         self.periodTypeCollapsedLabel.text = @"Spotting";
         self.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_spotting"];
-        [self hitBackendWithPeriodType:@"spotting"];
         
         [self deselectAllButtons];
         [self.spottingImageView setSelected:YES];
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectPeriodWithType:)]) {
+            [self.delegate didSelectPeriodWithType: @"spotting"];
+        }
     }
 }
 
@@ -74,17 +118,26 @@
 {
     if (self.selectedPeriodType == PeriodSelectionLight) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
-        [self hitBackendWithPeriodType:[NSNull null]];
+
         [self deselectAllButtons];
         self.periodTypeCollapsedLabel.text = @"";
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectPeriodWithType:)]) {
+            [self.delegate didSelectPeriodWithType: [NSNull null]];
+        }
+        
     } else {
         self.selectedPeriodType = PeriodSelectionLight;
+        
         self.periodTypeCollapsedLabel.text = @"Light";
         self.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_light"];
-        [self hitBackendWithPeriodType:@"light"];
         
         [self deselectAllButtons];
         [self.lightImageView setSelected:YES];
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectPeriodWithType:)]) {
+            [self.delegate didSelectPeriodWithType: @"light"];
+        }
     }
 }
 
@@ -92,17 +145,26 @@
 {
     if (self.selectedPeriodType == PeriodSelectionMedium) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
-        [self hitBackendWithPeriodType:[NSNull null]];
+
         [self deselectAllButtons];
         self.periodTypeCollapsedLabel.text = @"";
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectPeriodWithType:)]) {
+            [self.delegate didSelectPeriodWithType: [NSNull null]];
+        }
+        
     } else {
         self.selectedPeriodType = PeriodSelectionMedium;
+        
         self.periodTypeCollapsedLabel.text = @"Medium";
         self.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_medium"];
-        [self hitBackendWithPeriodType:@"medium"];
         
         [self deselectAllButtons];
         [self.mediumImageView setSelected:YES];
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectPeriodWithType:)]) {
+            [self.delegate didSelectPeriodWithType: @"medium"];
+        }
     }
 }
 
@@ -110,17 +172,26 @@
 {
     if (self.selectedPeriodType == PeriodSelectionHeavy) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
-        [self hitBackendWithPeriodType:[NSNull null]];
+
         [self deselectAllButtons];
         self.periodTypeCollapsedLabel.text = @"";
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectPeriodWithType:)]) {
+            [self.delegate didSelectPeriodWithType: [NSNull null]];
+        }
+        
     } else {
         self.selectedPeriodType = PeriodSelectionHeavy;
+        
         self.periodTypeCollapsedLabel.text = @"Heavy";
         self.periodTypeImageView.image = [UIImage imageNamed:@"icn_p_heavy"];
-        [self hitBackendWithPeriodType:@"heavy"];
         
         [self deselectAllButtons];
         [self.heavyImageView setSelected:YES];
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectPeriodWithType:)]) {
+            [self.delegate didSelectPeriodWithType: @"heavy"];
+        }
     }
 }
 
@@ -131,28 +202,6 @@
     [self.lightImageView setSelected:NO];
     [self.mediumImageView setSelected:NO];
     [self.heavyImageView setSelected:NO];
-}
-
-- (void)hitBackendWithPeriodType:(id)periodType
-{
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
-    NSDate *selectedDate = [self.delegate getSelectedDate];
-    
-    [attributes setObject: periodType forKey: @"period"];
-    [attributes setObject: selectedDate forKey: @"date"];
-    
-    [ConnectionManager put:@"/days/"
-                    params:@{
-                             @"day": attributes,
-                             }
-                   success:^(NSDictionary *response) {
-                       [Cycle cycleFromResponse:response];
-                       [Calendar setDate: selectedDate];
-                       //                       if (onSuccess) onSuccess(response);
-                   }
-                   failure:^(NSError *error) {
-                       [Alert presentError:error];
-                   }];
 }
 
 - (IBAction)didSelectInfoButton:(id)sender

@@ -19,7 +19,7 @@ typedef enum {
 
 @protocol TrackingCervicalFluidCellDelegate <NSObject>
 
-- (void)didSelectCervicalFluidType:(CervicalFluidSelectionType)type;
+- (void)didSelectCervicalFluidType:(id)type;
 - (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
 
 - (Day *)getSelectedDay;
@@ -44,6 +44,8 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UILabel *creamyLabel;
 @property (weak, nonatomic) IBOutlet UIButton *eggwhiteImageView;
 @property (weak, nonatomic) IBOutlet UILabel *eggwhiteLabel;
+
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 
 - (void)updateCell;
 - (void)setMinimized;

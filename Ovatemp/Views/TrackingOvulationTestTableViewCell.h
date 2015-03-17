@@ -17,7 +17,7 @@ typedef enum {
 
 @protocol TrackingOvulationTestCell <NSObject>
 
-- (void)didSelectOvulationWithType:(OvulationTestSelectionType)type;
+- (void)didSelectOvulationWithType:(id)type;
 - (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
 
 - (Day *)getSelectedDay;
@@ -39,6 +39,7 @@ typedef enum {
 
 @property (weak, nonatomic) IBOutlet UIButton *ovulationTypePositiveImageView;
 @property (weak, nonatomic) IBOutlet UILabel *ovulationTypePositiveLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 
 - (void)updateCell;
 - (void)setMinimized;

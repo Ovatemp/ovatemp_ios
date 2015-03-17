@@ -17,7 +17,7 @@ typedef enum {
 
 @protocol TrackingPregnancyCellDelegate <NSObject>
 
-- (void)didSelectPregnancyWithType:(PregnancyTestSelectionType)type;
+- (void)didSelectPregnancyWithType:(id)type;
 - (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
 
 - (Day *)getSelectedDay;
@@ -38,6 +38,7 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UILabel *pregnancyTypeNegtaiveLabel;
 @property (weak, nonatomic) IBOutlet UIButton *pregnancyTypePositiveImageView;
 @property (weak, nonatomic) IBOutlet UILabel *pregnancyTypePositiveLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 
 - (void)updateCell;
 - (void)setMinimized;

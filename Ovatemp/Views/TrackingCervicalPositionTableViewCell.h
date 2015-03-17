@@ -17,7 +17,7 @@ typedef enum {
 
 @protocol TrackingCervicalPositionCellDelegate <NSObject>
 
-- (void)didSelectCervicalPositionType:(CervicalPositionSelectionType)type;
+- (void)didSelectCervicalPositionType:(id)type;
 - (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
 
 - (Day *)getSelectedDay;
@@ -38,6 +38,7 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UILabel *highLabel;
 @property (weak, nonatomic) IBOutlet UIButton *lowImageView;
 @property (weak, nonatomic) IBOutlet UILabel *lowLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 
 - (void)updateCell;
 - (void)setMinimized;

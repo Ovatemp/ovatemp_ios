@@ -24,7 +24,18 @@
 
 - (void)awakeFromNib
 {
-//    self.selectedDate = [[NSDate alloc] init];
+    self.activityView.hidden = YES;
+    self.activityView.hidesWhenStopped = YES;
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(startActivity)
+                                                 name: @"cf_start_activity"
+                                               object: nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(stopActivity)
+                                                 name: @"cf_stop_activity"
+                                               object: nil];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -32,23 +43,41 @@
     [super setSelected:selected animated:animated];
 }
 
+- (void)startActivity
+{
+    self.activityView.hidden = NO;
+    [self.activityView startAnimating];
+}
+
+- (void)stopActivity
+{
+    [self.activityView stopAnimating];
+}
+
 - (IBAction)didSelectDry:(id)sender
 {
-    if (self.selectedCervicalFluidType == CervicalFluidSelectionDry) { // deselect
+    if (self.selectedCervicalFluidType == CervicalFluidSelectionDry) {
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
-        [self hitBackendWithCervicalFluidType:[NSNull null]];
+        
         [self.dryImageView setSelected:NO];
         self.cfTypeCollapsedLabel.text = @"";
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectCervicalFluidType:)]) {
+            [self.delegate didSelectCervicalFluidType: [NSNull null]];
+        }
+        
     } else {
         self.selectedCervicalFluidType = CervicalFluidSelectionDry;
-        [self hitBackendWithCervicalFluidType:@"dry"];
         
-        // update local labels
         self.cfTypeCollapsedLabel.text = @"Dry";
         self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_dry"];
         
         [self deselectAllButtons];
         [self.dryImageView setSelected:YES];
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectCervicalFluidType:)]) {
+            [self.delegate didSelectCervicalFluidType: @"dry"];
+        }
     }
 }
 
@@ -56,83 +85,87 @@
 {
     if (self.selectedCervicalFluidType == CervicalFluidSelectionSticky) {
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
-        [self hitBackendWithCervicalFluidType:[NSNull null]];
+        
         [self.stickyImageView setSelected:NO];
         self.cfTypeCollapsedLabel.text = @"";
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectCervicalFluidType:)]) {
+            [self.delegate didSelectCervicalFluidType: [NSNull null]];
+        }
+        
     } else {
         self.selectedCervicalFluidType = CervicalFluidSelectionSticky;
-        [self hitBackendWithCervicalFluidType:@"sticky"];
+        
         self.cfTypeCollapsedLabel.text = @"Sticky";
         self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_sticky"];
         
         [self deselectAllButtons];
         [self.stickyImageView setSelected:YES];
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectCervicalFluidType:)]) {
+            [self.delegate didSelectCervicalFluidType: @"sticky"];
+        }
     }
 }
 - (IBAction)didSelectCreamy:(id)sender
 {
     if (self.selectedCervicalFluidType == CervicalFluidSelectionCreamy) {
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
-        [self hitBackendWithCervicalFluidType:[NSNull null]];
+        
         [self.creamyImageView setSelected:NO];
         self.cfTypeCollapsedLabel.text = @"";
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectCervicalFluidType:)]) {
+            [self.delegate didSelectCervicalFluidType: [NSNull null]];
+        }
+        
     } else {
         self.selectedCervicalFluidType = CervicalFluidSelectionCreamy;
-        [self hitBackendWithCervicalFluidType:@"creamy"];
+        
         self.cfTypeCollapsedLabel.text = @"Creamy";
         self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_creamy"];
         
         [self deselectAllButtons];
         [self.creamyImageView setSelected:YES];
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectCervicalFluidType:)]) {
+            [self.delegate didSelectCervicalFluidType: @"creamy"];
+        }
     }
 }
 - (IBAction)didSelectEggwhite:(id)sender
 {
     if (self.selectedCervicalFluidType == CervicalFluidSelectionEggwhite) {
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
-        [self hitBackendWithCervicalFluidType:[NSNull null]];
+        
         [self.eggwhiteImageView setSelected:NO];
         self.cfTypeCollapsedLabel.text = @"";
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectCervicalFluidType:)]) {
+            [self.delegate didSelectCervicalFluidType: [NSNull null]];
+        }
+        
     } else {
         self.selectedCervicalFluidType = CervicalFluidSelectionEggwhite;
-        [self hitBackendWithCervicalFluidType:@"eggwhite"];
+        
         self.cfTypeCollapsedLabel.text = @"Eggwhite";
         self.cfTypeImageView.image = [UIImage imageNamed:@"icn_cf_eggwhite"];
         
         [self deselectAllButtons];
         [self.eggwhiteImageView setSelected:YES];
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectCervicalFluidType:)]) {
+            [self.delegate didSelectCervicalFluidType: @"eggwhite"];
+        }
     }
 }
 
 - (void)deselectAllButtons
 {
-    [self.dryImageView setSelected:NO];
-    [self.stickyImageView setSelected:NO];
-    [self.creamyImageView setSelected:NO];
-    [self.eggwhiteImageView setSelected:NO];
-}
-
-- (void)hitBackendWithCervicalFluidType:(id)cfType
-{
-    NSDate *selectedDate = [self.delegate getSelectedDate];
-    
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
-    
-    [attributes setObject: cfType forKey: @"cervical_fluid"];
-    [attributes setObject: selectedDate forKey: @"date"];
-    
-    [ConnectionManager put:@"/days/"
-                    params:@{
-                             @"day": attributes,
-                             }
-                   success:^(NSDictionary *response) {
-                       [Cycle cycleFromResponse:response];
-                       [Calendar setDate: selectedDate];
-//                       if (onSuccess) onSuccess(response);
-                   }
-                   failure:^(NSError *error) {
-                       [Alert presentError:error];
-                   }];
+    [self.dryImageView setSelected: NO];
+    [self.stickyImageView setSelected: NO];
+    [self.creamyImageView setSelected: NO];
+    [self.eggwhiteImageView setSelected: NO];
 }
 
 - (IBAction)didSelectInfo:(id)sender

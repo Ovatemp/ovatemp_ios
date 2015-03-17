@@ -22,7 +22,34 @@
 
 - (void)awakeFromNib
 {
-//    self.selectedDate = [[NSDate alloc] init];
+    [self setUpActivityView];
+}
+
+- (void)setUpActivityView
+{
+    self.activityView.hidden = YES;
+    self.activityView.hidesWhenStopped = YES;
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(startActivity)
+                                                 name: @"pregnancy_start_activity"
+                                               object: nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(stopActivity)
+                                                 name: @"pregnancy_stop_activity"
+                                               object: nil];
+}
+
+- (void)startActivity
+{
+    self.activityView.hidden = NO;
+    [self.activityView startAnimating];
+}
+
+- (void)stopActivity
+{
+    [self.activityView stopAnimating];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -40,57 +67,55 @@
 {
     if (self.selectedPregnancyTestType == PregnancyTestSelectionNegative) {
         self.selectedPregnancyTestType = PregnancyTestSelectionNone;
-        [self hitBackendWithPregnancyTestType:[NSNull null]];
+
         [self deselectAllButtons];
         self.pregnancyTypeCollapsedLabel.text = @"";
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectPregnancyWithType:)]) {
+            [self.delegate didSelectPregnancyWithType: [NSNull null]];
+        }
+        
     } else {
         self.selectedPregnancyTestType = PregnancyTestSelectionNegative;
-        [self hitBackendWithPregnancyTestType:@"negative"];
+
         self.pregnancyTypeCollapsedLabel.text = @"Negative";
         self.pregnancyTypeImageView.image = [UIImage imageNamed:@"icn_negative"];
         
         [self deselectAllButtons];
         [self.pregnancyTypeNegativeImageView setSelected:YES];
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectPregnancyWithType:)]) {
+            [self.delegate didSelectPregnancyWithType: @"negative"];
+        }
+        
     }
 }
 - (IBAction)didSelectPositive:(id)sender
 {
     if (self.selectedPregnancyTestType == PregnancyTestSelectionPositive) {
         self.selectedPregnancyTestType = PregnancyTestSelectionNone;
-        [self hitBackendWithPregnancyTestType:[NSNull null]];
+
         [self deselectAllButtons];
         self.pregnancyTypeCollapsedLabel.text = @"";
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectPregnancyWithType:)]) {
+            [self.delegate didSelectPregnancyWithType: [NSNull null]];
+        }
+        
     } else {
         self.selectedPregnancyTestType = PregnancyTestSelectionPositive;
-        [self hitBackendWithPregnancyTestType:@"positive"];
+
         self.pregnancyTypeCollapsedLabel.text = @"Positive";
         self.pregnancyTypeImageView.image = [UIImage imageNamed:@"icn_positive"];
         
         [self deselectAllButtons];
         [self.pregnancyTypePositiveImageView setSelected:YES];
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectPregnancyWithType:)]) {
+            [self.delegate didSelectPregnancyWithType: @"positive"];
+        }
+        
     }
-}
-
-- (void)hitBackendWithPregnancyTestType:(id)ptType
-{
-    NSDate *selectedDate = [self.delegate getSelectedDate];
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
-    
-    [attributes setObject: ptType forKey: @"ferning"];
-    [attributes setObject: selectedDate forKey: @"date"];
-    
-    [ConnectionManager put:@"/days/"
-                    params:@{
-                             @"day": attributes,
-                             }
-                   success:^(NSDictionary *response) {
-                       [Cycle cycleFromResponse:response];
-                       [Calendar setDate: selectedDate];
-                       //                       if (onSuccess) onSuccess(response);
-                   }
-                   failure:^(NSError *error) {
-                       [Alert presentError:error];
-                   }];
 }
 
 - (IBAction)didSelectInfoButton:(id)sender

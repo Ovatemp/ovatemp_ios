@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14D87h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14D105g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -31,7 +31,7 @@
                             <constraint firstAttribute="width" constant="118" id="e4o-a4-7yI"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVa-0W-Fzo">
@@ -111,7 +111,7 @@
                             <constraint firstAttribute="width" constant="104" id="mfd-Ya-ZSK"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G9w-VN-bw8">
@@ -132,6 +132,9 @@
                             <constraint firstAttribute="height" constant="68" id="0Nj-ZB-sBN"/>
                         </constraints>
                     </view>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="4Pu-hu-16r">
+                        <rect key="frame" x="124" y="8" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="rzq-dA-f3B" secondAttribute="trailing" id="6BQ-fZ-Jp7"/>
@@ -170,6 +173,7 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="activityView" destination="4Pu-hu-16r" id="nth-ug-N93"/>
                 <outlet property="placeholderLabel" destination="9v3-DA-c6L" id="QaE-1C-awN"/>
                 <outlet property="pregnancyCollapsedLabel" destination="1Td-0W-rUK" id="kUS-eg-7MZ"/>
                 <outlet property="pregnancyTypeCollapsedLabel" destination="Kmu-63-FxL" id="Ibk-C4-4NV"/>

@@ -23,7 +23,34 @@
 
 - (void)awakeFromNib
 {
-//    self.selectedDate = [[NSDate alloc] init];
+    [self setUpActivityView];
+}
+
+- (void)setUpActivityView
+{
+    self.activityView.hidden = YES;
+    self.activityView.hidesWhenStopped = YES;
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(startActivity)
+                                                 name: @"ovulation_start_activity"
+                                               object: nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(stopActivity)
+                                                 name: @"ovulation_stop_activity"
+                                               object: nil];
+}
+
+- (void)startActivity
+{
+    self.activityView.hidden = NO;
+    [self.activityView startAnimating];
+}
+
+- (void)stopActivity
+{
+    [self.activityView stopAnimating];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -41,17 +68,26 @@
 {
     if (self.selectedOvulationTestType == OvulationTestSelectionNegative) {
         self.selectedOvulationTestType = OvulationTestSelectionNone;
-        [self hitBackendWithOvulationTestType:[NSNull null]];
+
         [self deselectAllButtons];
         self.ovulationTypeCollapsedLabel.text = @"";
+        
+        if([self.delegate respondsToSelector: @selector(didSelectOvulationWithType:)]){
+            [self.delegate didSelectOvulationWithType: [NSNull null]];
+        }
+        
     } else {
         self.selectedOvulationTestType = OvulationTestSelectionNegative;
-        [self hitBackendWithOvulationTestType:@"negative"];
+
         self.ovulationTypeCollapsedLabel.text = @"Negative";
         self.ovulationTypeImageView.image = [UIImage imageNamed:@"icn_negative"];
         
         [self deselectAllButtons];
         [self.ovulationTypeNegativeImageView setSelected:YES];
+        
+        if([self.delegate respondsToSelector: @selector(didSelectOvulationWithType:)]){
+            [self.delegate didSelectOvulationWithType: @"negative"];
+        }
     }
 }
 
@@ -59,41 +95,28 @@
 {
     if (self.selectedOvulationTestType == OvulationTestSelectionPositive) {
         self.selectedOvulationTestType = OvulationTestSelectionNone;
-        [self hitBackendWithOvulationTestType:[NSNull null]];
+        
         [self deselectAllButtons];
         self.ovulationTypeCollapsedLabel.text = @"";
+        
+        if([self.delegate respondsToSelector: @selector(didSelectOvulationWithType:)]){
+            [self.delegate didSelectOvulationWithType: [NSNull null]];
+        }
+        
     } else {
         self.selectedOvulationTestType = OvulationTestSelectionPositive;
-        [self hitBackendWithOvulationTestType:@"positive"];
+
         self.ovulationTypeCollapsedLabel.text = @"Positive";
         self.ovulationTypeImageView.image = [UIImage imageNamed:@"icn_positive"];
         
         [self deselectAllButtons];
         [self.ovulationTypePositiveImageView setSelected:YES];
+        
+        if([self.delegate respondsToSelector: @selector(didSelectOvulationWithType:)]){
+            [self.delegate didSelectOvulationWithType: @"positive"];
+        }
+        
     }
-}
-
-- (void)hitBackendWithOvulationTestType:(id)otType
-{
-    NSDate *selectedDate = [self.delegate getSelectedDate];
-    
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
-    
-    [attributes setObject: otType forKey: @"opk"];
-    [attributes setObject: selectedDate forKey: @"date"];
-    
-    [ConnectionManager put:@"/days/"
-                    params:@{
-                             @"day": attributes,
-                             }
-                   success:^(NSDictionary *response) {
-                       [Cycle cycleFromResponse:response];
-                       [Calendar setDate: selectedDate];
-                       //                       if (onSuccess) onSuccess(response);
-                   }
-                   failure:^(NSError *error) {
-                       [Alert presentError:error];
-                   }];
 }
 
 - (IBAction)didSelectInfoButton:(id)sender

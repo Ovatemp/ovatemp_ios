@@ -22,9 +22,34 @@
 
 - (void)awakeFromNib
 {
-    // Initialization code
+    [self setUpActivityView];
+}
+
+- (void)setUpActivityView
+{
+    self.activityView.hidden = YES;
+    self.activityView.hidesWhenStopped = YES;
     
-//    self.selectedDate = [[NSDate alloc] init];
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(startActivity)
+                                                 name: @"cp_start_activity"
+                                               object: nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(stopActivity)
+                                                 name: @"cp_stop_activity"
+                                               object: nil];
+}
+
+- (void)startActivity
+{
+    self.activityView.hidden = NO;
+    [self.activityView startAnimating];
+}
+
+- (void)stopActivity
+{
+    [self.activityView stopAnimating];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -36,34 +61,53 @@
 {
     if (self.selectedCervicalPositionType == CervicalPositionSelectionLow) {
         self.selectedCervicalPositionType = CervicalPositionSelectionNone;
-        [self hitBackendWithCervicalPositionType:[NSNull null]];
+        
         [self deselectAllButtons];
         self.cpTypeCollapsedLabel.text = @"";
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectCervicalPositionType:)]) {
+            [self.delegate didSelectCervicalPositionType: [NSNull null]];
+        }
+        
     } else {
         self.selectedCervicalPositionType = CervicalPositionSelectionLow;
-        [self hitBackendWithCervicalPositionType:@"low/closed/firm"];
+
         self.cpTypeCollapsedLabel.text = @"Low/Closed/Firm";
         self.cpTypeImageView.image = [UIImage imageNamed:@"icn_cp_lowclosedfirm"];
         
         [self deselectAllButtons];
         [self.lowImageView setSelected:YES];
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectCervicalPositionType:)]) {
+            [self.delegate didSelectCervicalPositionType: @"low/closed/firm"];
+        }
     }
 }
 - (IBAction)didSelectHighButton:(id)sender
 {
     if (self.selectedCervicalPositionType == CervicalPositionSelectionHigh) {
         self.selectedCervicalPositionType = CervicalPositionSelectionNone;
-        [self hitBackendWithCervicalPositionType:[NSNull null]];
+        
         [self deselectAllButtons];
         self.cpTypeCollapsedLabel.text = @"";
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectCervicalPositionType:)]) {
+            [self.delegate didSelectCervicalPositionType: [NSNull null]];
+        }
+        
     } else {
         self.selectedCervicalPositionType = CervicalPositionSelectionHigh;
-        [self hitBackendWithCervicalPositionType:@"high/open/soft"];
+
         self.cpTypeCollapsedLabel.text = @"High/Open/Soft";
         self.cpTypeImageView.image = [UIImage imageNamed:@"icn_cp_highopensoft"];
         
         [self deselectAllButtons];
         [self.highImageView setSelected:YES];
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectCervicalPositionType:)]) {
+            [self.delegate didSelectCervicalPositionType: @"high/open/soft"];
+        }
+        
     }
 }
 
@@ -78,28 +122,7 @@
     [self.delegate pushInfoAlertWithTitle:@"Cervical Position" AndMessage:@"The position of your cervix changes throughout your cycle. When you are not fertile your cervix is low, closed and firm. When fertile your cervix moves up and opens up so that the fittest swimmers reach the egg.\n\nTo learn how to track your cervical position, tap Learn More." AndURL:@"http://ovatemp.helpshift.com/a/ovatemp/?s=fertility-faqs&f=learn-more-about-cervical-position"];
 }
 
-- (void)hitBackendWithCervicalPositionType:(id)cpType
-{
-    NSDate *selectedDate = [self.delegate getSelectedDate];
-    
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
-    
-    [attributes setObject: cpType forKey: @"cervical_position"];
-    [attributes setObject: selectedDate forKey: @"date"];
-    
-    [ConnectionManager put:@"/days/"
-                    params:@{
-                             @"day": attributes,
-                             }
-                   success:^(NSDictionary *response) {
-                       [Cycle cycleFromResponse:response];
-                       [Calendar setDate: selectedDate];
-//                       if (onSuccess) onSuccess(response);
-                   }
-                   failure:^(NSError *error) {
-                       [Alert presentError:error];
-                   }];
-}
+
 
 #pragma mark - Appearance
 

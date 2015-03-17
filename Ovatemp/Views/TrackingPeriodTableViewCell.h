@@ -20,7 +20,7 @@ typedef enum {
 
 @protocol TrackingPeriodCellDelegate <NSObject>
 
-- (void)didSelectPeriodWithType:(PeriodSelectionType)type;
+- (void)didSelectPeriodWithType:(id)type;
 - (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
 
 - (Day *)getSelectedDay;
@@ -47,6 +47,7 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UILabel *mediumLabel;
 @property (weak, nonatomic) IBOutlet UIButton *heavyImageView;
 @property (weak, nonatomic) IBOutlet UILabel *heavyLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 
 - (void)updateCell;
 - (void)setMinimized;

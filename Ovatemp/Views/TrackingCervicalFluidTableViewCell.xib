@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14D98g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14D105g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -21,7 +21,7 @@
                             <constraint firstAttribute="width" constant="104" id="sfa-qE-N1S"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" tag="99" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CERVICAL FLUID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4de-Xi-awr">
@@ -71,7 +71,6 @@
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="18" id="gOV-wW-Sgw"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" tag="99" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sticky" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EgS-En-3XG">
@@ -83,7 +82,6 @@
                             <constraint firstAttribute="height" constant="16" id="yaC-mA-NrZ"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" tag="99" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creamy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EqL-JK-jUx">
@@ -95,7 +93,6 @@
                             <constraint firstAttribute="width" constant="36" id="j1f-5C-xbd"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" tag="99" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eggwhite" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpU-PG-2Qu">
@@ -105,7 +102,6 @@
                             <constraint firstAttribute="width" constant="44" id="fJg-jg-PqU"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tmk-5s-c1R">
@@ -167,7 +163,7 @@
                             <constraint firstAttribute="width" constant="108" id="uZJ-4U-BBC"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJX-ks-zkX">
@@ -200,6 +196,9 @@
                             <constraint firstAttribute="height" constant="75" id="CrU-fe-pyh"/>
                         </constraints>
                     </view>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="r6d-72-IPw">
+                        <rect key="frame" x="108" y="5" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="R4d-Hi-tyr" firstAttribute="leading" secondItem="uU9-XH-EmI" secondAttribute="trailing" id="0ef-le-hev"/>
@@ -250,6 +249,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="activityView" destination="r6d-72-IPw" id="TgK-z1-qJv"/>
                 <outlet property="cfCollapsedLabel" destination="4de-Xi-awr" id="c1g-qe-fIR"/>
                 <outlet property="cfTypeCollapsedLabel" destination="WbV-iC-H0I" id="jpc-Ff-d1a"/>
                 <outlet property="cfTypeImageView" destination="tmk-5s-c1R" id="e2y-xz-eh1"/>
@@ -263,7 +263,7 @@
                 <outlet property="stickyImageView" destination="m2g-Oq-9ij" id="mOr-bW-CoL"/>
                 <outlet property="stickyLabel" destination="EgS-En-3XG" id="GpN-cy-LaX"/>
             </connections>
-            <point key="canvasLocation" x="112" y="447"/>
+            <point key="canvasLocation" x="-214" y="443"/>
         </tableViewCell>
     </objects>
     <resources>

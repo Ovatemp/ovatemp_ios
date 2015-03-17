@@ -33,6 +33,8 @@ NSMutableArray *temperatureFractionalPartPickerData;
 {
     // Initialization code
     
+    [self setUpActivityView];
+    
     temperatureIntegerPartPickerData = [[NSMutableArray alloc] init];
     temperatureFractionalPartPickerData = [[NSMutableArray alloc] init];
     
@@ -76,6 +78,33 @@ NSMutableArray *temperatureFractionalPartPickerData;
     
     self.disturbanceSwitch.onTintColor = [UIColor ovatempAquaColor];
     [self.disturbanceSwitch addTarget: self action: @selector(disturbanceSwitchChanged:) forControlEvents: UIControlEventValueChanged];
+}
+
+- (void)setUpActivityView
+{
+    self.activityView.hidden = YES;
+    self.activityView.hidesWhenStopped = YES;
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(startActivity)
+                                                 name: @"temp_start_activity"
+                                               object: nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(stopActivity)
+                                                 name: @"temp_stop_activity"
+                                               object: nil];
+}
+
+- (void)startActivity
+{
+    self.activityView.hidden = NO;
+    [self.activityView startAnimating];
+}
+
+- (void)stopActivity
+{
+    [self.activityView stopAnimating];
 }
 
 - (void)prepareForReuse
@@ -123,7 +152,9 @@ NSMutableArray *temperatureFractionalPartPickerData;
 {
     BOOL disturbance = disturbanceSwitch.on;
     
-    [self postAndSaveDisturbanceWithDisturbance:disturbance];
+    if ([self.delegate respondsToSelector: @selector(didSelectDisturbance:)]) {
+        [self.delegate didSelectDisturbance: disturbance];
+    }
 }
 
 #pragma mark - UIPickerView Data Source
@@ -167,56 +198,6 @@ NSMutableArray *temperatureFractionalPartPickerData;
     
     if ([self.delegate respondsToSelector: @selector(didSelectTemperature:)]) {
         [self.delegate didSelectTemperature: self.selectedTemperature];
-    }
-}
-
-#pragma mark - Network
-
-- (void)postAndSaveDisturbanceWithDisturbance:(BOOL)disturbance
-{
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
-    [attributes setObject: SELECTED_DATE forKey:@"date"];
-    [attributes setObject:[NSNumber numberWithBool:disturbance] forKey:@"disturbance"];
-    
-    [ConnectionManager put:@"/days/"
-                    params:@{
-                             @"day": attributes,
-                             }
-                   success:^(NSDictionary *response) {
-                       [Cycle cycleFromResponse:response];
-                       [Calendar setDate: SELECTED_DATE];
-                       //                       if (onSuccess) onSuccess(response);
-                   }
-                   failure:^(NSError *error) {
-                       [Alert presentError:error];
-                   }];
-}
-
-# pragma mark - HealthKit
-
-- (void)updateHealthKitWithTemperature:(float)temp
-{    
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:HKCONNECTION]) {
-        if(temp) {
-            NSString *identifier = HKQuantityTypeIdentifierBodyTemperature;
-            HKQuantityType *tempType = [HKObjectType quantityTypeForIdentifier:identifier];
-            
-            HKQuantity *myTemp = [HKQuantity quantityWithUnit:[HKUnit degreeFahrenheitUnit]
-                                                  doubleValue: temp];
-            
-            HKQuantitySample *temperatureSample = [HKQuantitySample quantitySampleWithType: tempType
-                                                                                  quantity: myTemp
-                                                                                 startDate: [self.delegate getSelectedDate]
-                                                                                   endDate: [self.delegate getSelectedDate]
-                                                                                  metadata: nil];
-            HKHealthStore *healthStore = [[HKHealthStore alloc] init];
-            [healthStore saveObject: temperatureSample withCompletion:^(BOOL success, NSError *error) {
-                NSLog(@"I saved to healthkit");
-            }];
-        }
-    }
-    else {
-        NSLog(@"Could not save to healthkit. No connection could be made");
     }
 }
 
