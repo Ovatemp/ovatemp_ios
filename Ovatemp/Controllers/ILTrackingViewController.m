@@ -914,7 +914,8 @@
                              @"attribute_key" : @"cervical_fluid",
                              @"attribute_data" : type,
                              @"notification_id" : @"cf",
-                             @"index_path_row" : @2};
+                             @"index_path_row" : @2,
+                             @"skip_reload" : [NSNumber numberWithBool: NO]};
     
     [self uploadWithParameters: params];
 }
@@ -925,7 +926,8 @@
                              @"attribute_key" : @"cervical_position",
                              @"attribute_data" : type,
                              @"notification_id" : @"cp",
-                             @"index_path_row" : @3};
+                             @"index_path_row" : @3,
+                             @"skip_reload" : [NSNumber numberWithBool: NO]};
     
     [self uploadWithParameters: params];
 }
@@ -936,7 +938,8 @@
                              @"attribute_key" : @"period",
                              @"attribute_data" : type,
                              @"notification_id" : @"period",
-                             @"index_path_row" : @4};
+                             @"index_path_row" : @4,
+                             @"skip_reload" : [NSNumber numberWithBool: NO]};
     
     [self uploadWithParameters: params];
 }
@@ -947,12 +950,24 @@
                              @"attribute_key" : @"intercourse",
                              @"attribute_data" : type,
                              @"notification_id" : @"intercourse",
-                             @"index_path_row" : @5};
+                             @"index_path_row" : @5,
+                             @"skip_reload" : [NSNumber numberWithBool: NO]};
     
     [self uploadWithParameters: params];
 }
 
-#pragma mark - TrackingMoodCell Delegate
+- (void)didSelectMoodWithType:(id)type
+{
+    NSDictionary *params = @{@"log_name" : @"MOOD TYPE",
+                             @"attribute_key" : @"mood",
+                             @"attribute_data" : type,
+                             @"notification_id" : @"mood",
+                             @"index_path_row" : @6,
+                             @"skip_reload" : [NSNumber numberWithBool: YES]};
+    
+    [self uploadWithParameters: params];
+}
+
 #pragma mark - TrackingSymptomsCell Delegate
 
 #pragma mark - TrackingOvulationTestCell Delegate
@@ -963,7 +978,8 @@
                              @"attribute_key" : @"opk",
                              @"attribute_data" : type,
                              @"notification_id" : @"ovulation",
-                             @"index_path_row" : @8};
+                             @"index_path_row" : @8,
+                             @"skip_reload" : [NSNumber numberWithBool: NO]};
     
     [self uploadWithParameters: params];
 }
@@ -976,7 +992,8 @@
                              @"attribute_key" : @"ferning",
                              @"attribute_data" : type,
                              @"notification_id" : @"pregnancy",
-                             @"index_path_row" : @9};
+                             @"index_path_row" : @9,
+                             @"skip_reload" : [NSNumber numberWithBool: NO]};
     
     [self uploadWithParameters: params];
 }
@@ -1124,6 +1141,9 @@
     NSString *notificationId = params[@"notification_id"];
     NSNumber *indexPathRow = params[@"index_path_row"];
     
+    NSNumber *skipReloadNum = params[@"skip_reload"];
+    BOOL skipReload = [skipReloadNum boolValue];
+    
     NSLog(@"ILTrackingVC : UPLOADING %@", logName);
     
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
@@ -1143,9 +1163,12 @@
                        [Cycle cycleFromResponse:response];
                        [Calendar setDate: self.selectedDate];
                        
-                       self.selectedTableRowIndex = nil;
-                       [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: [indexPathRow integerValue] inSection: 0]]
-                                             withRowAnimation: UITableViewRowAnimationAutomatic];
+                       if (!skipReload) {
+                           self.selectedTableRowIndex = nil;
+                           [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: [indexPathRow integerValue] inSection: 0]]
+                                                 withRowAnimation: UITableViewRowAnimationAutomatic];
+
+                       }
                        
                        [[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"%@_stop_activity", notificationId] object: self];
                    }

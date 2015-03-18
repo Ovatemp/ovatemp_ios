@@ -12,6 +12,7 @@
 
 @protocol TrackingMoodCellDelegate <NSObject>
 
+- (void)didSelectMoodWithType:(id)type;
 - (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
 
 - (Day *)getSelectedDay;
@@ -19,31 +20,15 @@
 
 @end
 
-@interface TrackingMoodTableViewCell : UITableViewCell <UITableViewDataSource, UITableViewDelegate>
+@interface TrackingMoodTableViewCell : UITableViewCell
 
 @property (weak,nonatomic) id<TrackingMoodCellDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UILabel *moodPlaceholderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *moodCollapsedLabel;
 @property (weak, nonatomic) IBOutlet UILabel *moodTypeLabel;
-@property (weak, nonatomic) IBOutlet UITableView *moodTableView;
-
-@property BOOL angryMoodSelected;
-@property BOOL anxiousMoodSelected;
-@property BOOL calmMoodSelected;
-@property BOOL depressedMoodSelected;
-@property BOOL emotionalModdSelected;
-@property BOOL excitedMoodSelected;
-@property BOOL friskyMoodSelected;
-@property BOOL frustratedMoodSelected;
-@property BOOL happyMoodSelected;
-@property BOOL inLoveMoodSelected;
-@property BOOL motivatedMoodSelected;
-@property BOOL neutralMoodSelected;
-@property BOOL sadMoodSelected;
-@property BOOL worriedMoodSelected;
-
-- (void)resetSelectedMood;
+@property (weak, nonatomic) IBOutlet UIPickerView *moodPickerView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 
 - (void)updateCell;
 - (void)setMinimized;
