@@ -24,9 +24,7 @@ NSIndexPath *selectedIndexPath;
     // Initialization code
     
     [self resetSelectedMood];
-    
-//    self.selectedDate = [[NSDate alloc] init];
-    
+        
     moodDataSource = [[NSArray alloc] initWithObjects:@"Angry", @"Anxious", @"Calm", @"Depressed", @"Emotional", @"Excited", @"Frisky", @"Frustrated", @"Happy", @"In Love", @"Motivated", @"Neutral", @"Sad", @"Worried", nil];
     
     self.moodTableView.delegate = self;

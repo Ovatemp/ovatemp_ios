@@ -114,7 +114,7 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G9w-VN-bw8">
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G9w-VN-bw8">
                         <rect key="frame" x="124" y="63" width="71" height="68"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="68" id="mid-vX-5Mc"/>

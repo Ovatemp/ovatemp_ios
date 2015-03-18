@@ -84,7 +84,7 @@
                 <outlet property="moodTableView" destination="xxe-1n-Jnh" id="ydK-F9-Nte"/>
                 <outlet property="moodTypeLabel" destination="ZwN-yC-EVp" id="4Sl-C3-Rqb"/>
             </connections>
-            <point key="canvasLocation" x="198" y="450"/>
+            <point key="canvasLocation" x="50" y="442"/>
         </tableViewCell>
     </objects>
     <resources>
