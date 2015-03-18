@@ -16,9 +16,7 @@
 
 - (void)awakeFromNib
 {
-    // Initialization code
-    
-//    self.selectedDate = [[NSDate alloc] init];
+    [self setUpActivityView];
     
     self.supplementsTableViewDataSource = [[NSMutableArray alloc] init];
     
@@ -29,17 +27,45 @@
     self.supplementsTableView.dataSource = self;
 }
 
+- (void)setUpActivityView
+{
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(startActivity)
+                                                 name: @"supplements_start_activity"
+                                               object: nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(stopActivity)
+                                                 name: @"supplements_stop_activity"
+                                               object: nil];
+    
+    self.activityView.hidden = YES;
+    self.activityView.hidesWhenStopped = YES;
+}
+
+- (void)startActivity
+{
+    self.activityView.hidden = NO;
+    [self.activityView startAnimating];
+}
+
+- (void)stopActivity
+{
+    [self.activityView stopAnimating];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
 }
+
 - (IBAction)didSelectInfoButton:(id)sender
 {
     [self.delegate pushInfoAlertWithTitle:@"Supplements" AndMessage:@"Keeping track of medication and any kind of supplements you take can help you detect improvement or changes in your cycles and talk to your doctor about it.\nAlways consult your physician before taking any medication." AndURL:@"http://ovatemp.helpshift.com/a/ovatemp/?s=fertility-faqs&f=learn-more-about-supplements"];
 }
+
 - (IBAction)didSelectAddSupplementButton:(id)sender
 {
-    // set up alert
     UIAlertController *alert = [UIAlertController
                                      alertControllerWithTitle:@""
                                      message:@"Add New Supplement"
@@ -65,53 +91,17 @@
     [alert addAction:cancel];
     [alert addAction:ok];
     
-    // TO-DO
-//    [self.delegate presentViewControllerWithViewController:alert];
+    [self.delegate presentViewControllerWithViewController: alert];
 }
 
-//- (void)createWithName:(NSString *)name success:(ConnectionManagerSuccess)onSuccess
-//{
-//    NSString *className = [[self description] lowercaseString];
-//    NSString *classNamePlural = [className stringByAppendingString:@"s"];
-//    
-//    [ConnectionManager post:[@"/" stringByAppendingString:classNamePlural]
-//                     params:@{
-//                              className:
-//                                  @{
-//                                      @"name":name
-//                                      }
-//                              }
-//                    success:^(NSDictionary *response) {
-//                        SharedRelation *newInstance = [self.class withAttributes:response[className]];
-//                        if(onSuccess) {
-//                            onSuccess(newInstance);
-//                        }
-//                    }
-//                    failure:^(NSError *error) {
-//                        [Alert presentError:error];
-//                    }
-//     ];
-//}
-
-//- (void)attributeSelectionChanged:(DayAttribute *)attribute selected:(NSArray *)selection {
-//    DayCellStaticView *staticView = [self staticViewForAttribute:attribute];
-//    staticView.selectedChoices = selection;
-//    
-//    NSString *key = [attribute.name substringWithRange:NSMakeRange(0, attribute.name.length - 1)];
-//    key = [key stringByAppendingString:@"Ids"];
-//    NSArray *selectedIDs = [selection valueForKey:@"id"];
-//    
-//    [self.day updateProperty:key withValue:selectedIDs.copy]; // post
-//    [self trackAttributeChange:attribute]; // analytics
-//}
-
-///
 - (void)postNewSupplementToBackendWithSupplement:(NSString *)supplement
 {
     NSString *className = @"supplement"; // supplement
     NSString *classNamePlural = [className stringByAppendingString:@"s"]; // supplements
     
-    [ConnectionManager post:[@"/" stringByAppendingString:classNamePlural]
+    [self startActivity];
+    
+    [ConnectionManager post:[@"/" stringByAppendingString: classNamePlural]
                      params:@{
                               className: // supplement
                                   @{
@@ -119,27 +109,6 @@
                                       }
                               }
                     success:^(NSDictionary *response) {
-//                        {
-//                            success = "Successfully created Supplement";
-//                            supplement =     {
-//                                "belongs_to_all_users" = 0;
-//                                "created_at" = "2014-11-16T17:23:06.661Z";
-//                                id = 13;
-//                                name = "some tea";
-//                                "updated_at" = "2014-11-16T17:23:06.661Z";
-//                                "user_id" = 66;
-//                            };
-//                        }
-//                        SharedRelation *newInstance = [self.class withAttributes:response[className]];
-//                        if(onSuccess) {
-//                            onSuccess(newInstance);
-                            // shared relation looks like this:
-                            // Supplement (13): some tea [doesn't belong to all users]
-//                        }
-                        
-                        // create new supplement object
-                        // add it to selected array
-                        // push to backend
                         
                         SimpleSupplement *newSupp = [[SimpleSupplement alloc] init];
                         newSupp.belongsToAllUsers = [[[response objectForKey:@"supplement"] objectForKey:@"belongs_to_all_users"] boolValue];
@@ -149,69 +118,42 @@
                         newSupp.updatedAt = [[response objectForKey:@"supplement"] objectForKey:@"updated_at"];
                         newSupp.userID = [[response objectForKey:@"supplement"] objectForKey:@"user_id"];
                         
-                        // todo, check for duplicates so supplement doesn't appear twice
-                        // de-select supplement if we want to uncheck it
+                        // TO-DO: Check for duplicates so supplement doesn't appear twice
+                        // De-select supplement if we want to uncheck it
                         if (self.selectedSupplementIDs == nil) {
                             self.selectedSupplementIDs = [[NSMutableArray alloc] init];
                         }
                         
-                        if ([self.supplementsTableViewDataSource containsObject:newSupp]) {
+                        if ([self.supplementsTableViewDataSource containsObject: newSupp]) {
                             //
                         } else {
-                            [self.supplementsTableViewDataSource addObject:newSupp];
+                            [self.supplementsTableViewDataSource addObject: newSupp];
                         }
                         
-//                        [self.allSupplementIDs addObject:newSupp.idNumber];
-                        [self.selectedSupplementIDs addObject:newSupp.idNumber];
+                        [self.selectedSupplementIDs addObject: newSupp.idNumber];
                         
-                        [self hitBackendWithSupplementType:self.selectedSupplementIDs];
+                        [self reloadSupplements];
+                        
+                        if ([self.delegate respondsToSelector: @selector(didSelectSupplementsWithTypes:)]) {
+                            [self.delegate didSelectSupplementsWithTypes: self.selectedSupplementIDs];
+                        }
+                        
                     }
                     failure:^(NSError *error) {
+                        [self stopActivity];
                         [Alert presentError:error];
                     }
      ];
 }
 
-- (void)hitBackendWithSupplementType:(id)supplementIds
-{ // supplementIds should be an array
-    
-    NSDate *selectedDate = [self.delegate getSelectedDate];
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
-    
-    [attributes setObject: supplementIds forKey: @"supplement_ids"];
-    [attributes setObject: selectedDate forKey: @"date"];
-    
-    [ConnectionManager put:@"/days/"
-                    params:@{
-                             @"day": attributes,
-                             }
-                   success:^(NSDictionary *response) {
-//                       [Cycle cycleFromResponse:response];
-//                       [Calendar setDate:self.selectedDate];
-                       //                       if (onSuccess) onSuccess(response);
-                       // TODO: reload table?
-                       // reload supplements
-                       [self reloadSupplements];
-                       [self.supplementsTableView reloadData];
-                   }
-                   failure:^(NSError *error) {
-                       [Alert presentError:error];
-                   }];
-}
-
 - (void)reloadSupplements
 {
-//    [Supplement resetInstancesWithArray:response[@"supplements"]];
     [ConnectionManager put:@"/sessions/refresh"
                     params:nil
                    success:^(NSDictionary *response) {
-//                       [self stopLoading];
                        [Configuration loggedInWithResponse:response];
-//                       [self launchAppropriateViewController];
                    }
                    failure:^(NSError *error) {
-//                       [self stopLoading];
-//                       [self logOutWithUnauthorized];
                        NSLog(@"Error: %@", [error localizedDescription]);
                    }
      ];
@@ -234,17 +176,16 @@
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
     SimpleSupplement *cellSupp = [[SimpleSupplement alloc] init];
-    cellSupp = [self.supplementsTableViewDataSource objectAtIndex:indexPath.row];
+    cellSupp = [self.supplementsTableViewDataSource objectAtIndex: indexPath.row];
     
     cell.textLabel.text = cellSupp.name;
+    cell.textLabel.textColor = [UIColor darkGrayColor];
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setTintColor: [UIColor ovatempAquaColor]];
     
-    [cell setTintColor:[UIColor blackColor]];
-    
-    // if [supplementsTableViewDataSource objectAtIndex:indexPath.row] is contained in selectedIDs, mark it as checked, otherwise no check mark
-    SimpleSupplement *tempSupp = [self.supplementsTableViewDataSource objectAtIndex:indexPath.row];
-    if ([self.selectedSupplementIDs containsObject:tempSupp.idNumber]) {
+    SimpleSupplement *tempSupp = [self.supplementsTableViewDataSource objectAtIndex: indexPath.row];
+    if ([self.selectedSupplementIDs containsObject: tempSupp.idNumber]) {
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
     } else {
         [cell setAccessoryType:UITableViewCellAccessoryNone];
@@ -257,19 +198,25 @@
 {
     if ([self.supplementsTableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryCheckmark) {
         [self.supplementsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-        // get id of object at selected index
-        // remove it from selected ids array
-        // hit backend
+
         SimpleSupplement *selectedSupp = [[SimpleSupplement alloc] init];
-        selectedSupp = [self.supplementsTableViewDataSource objectAtIndex:indexPath.row];
-        [self.selectedSupplementIDs removeObject:selectedSupp.idNumber];
-        [self hitBackendWithSupplementType:self.selectedSupplementIDs];
+        selectedSupp = [self.supplementsTableViewDataSource objectAtIndex: indexPath.row];
+        [self.selectedSupplementIDs removeObject: selectedSupp.idNumber];
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectSupplementsWithTypes:)]) {
+            [self.delegate didSelectSupplementsWithTypes: self.selectedSupplementIDs];
+        }
+        
     } else {
         [self.supplementsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        
         SimpleSupplement *selectedSupp = [[SimpleSupplement alloc] init];
-        selectedSupp = [self.supplementsTableViewDataSource objectAtIndex:indexPath.row];
-        [self.selectedSupplementIDs addObject:selectedSupp.idNumber];
-        [self hitBackendWithSupplementType:self.selectedSupplementIDs];
+        selectedSupp = [self.supplementsTableViewDataSource objectAtIndex: indexPath.row];
+        [self.selectedSupplementIDs addObject: selectedSupp.idNumber];
+        
+        if ([self.delegate respondsToSelector: @selector(didSelectSupplementsWithTypes:)]) {
+            [self.delegate didSelectSupplementsWithTypes: self.selectedSupplementIDs];
+        }
     }
 }
 
@@ -363,6 +310,8 @@
     
     self.supplementsTypeCollapsedLabel.hidden = YES;
     self.placeholderLabel.hidden = YES;
+    
+    [self.supplementsTableView flashScrollIndicators];
 }
 
 @end

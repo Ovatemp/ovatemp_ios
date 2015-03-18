@@ -82,10 +82,13 @@
                             <action selector="didSelectAddSupplementButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qqc-Kf-8p0"/>
                         </connections>
                     </button>
-                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7ci-EE-ROZ">
-                        <rect key="frame" x="0.0" y="49" width="320" height="150"/>
+                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7ci-EE-ROZ">
+                        <rect key="frame" x="20" y="49" width="280" height="140"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tableView>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ckU-ef-Agv">
+                        <rect key="frame" x="104" y="9" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="lNS-4F-MPM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="7EQ-zc-13m"/>
@@ -93,17 +96,19 @@
                     <constraint firstItem="7ci-EE-ROZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="41" id="D3U-d5-wka"/>
                     <constraint firstItem="SJ5-ZH-c9i" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="KNu-vU-29z"/>
                     <constraint firstItem="LA8-YS-CZn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="MSk-Ir-i83"/>
+                    <constraint firstItem="ckU-ef-Agv" firstAttribute="leading" secondItem="lNS-4F-MPM" secondAttribute="trailing" constant="8" id="NcE-3a-ko2"/>
                     <constraint firstAttribute="trailing" secondItem="SJ5-ZH-c9i" secondAttribute="trailing" constant="13" id="PvL-Fi-khO"/>
                     <constraint firstItem="lNS-4F-MPM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="SRi-W9-wM1"/>
                     <constraint firstItem="SLx-rm-icK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-2" id="V3K-9c-JdB"/>
-                    <constraint firstAttribute="trailing" secondItem="7ci-EE-ROZ" secondAttribute="trailing" id="VU0-lg-hVc"/>
+                    <constraint firstAttribute="trailing" secondItem="7ci-EE-ROZ" secondAttribute="trailing" constant="20" id="VU0-lg-hVc"/>
                     <constraint firstItem="SJ5-ZH-c9i" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="djK-1I-W97"/>
                     <constraint firstItem="SLx-rm-icK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="hrc-vG-ZSy"/>
-                    <constraint firstAttribute="bottom" secondItem="7ci-EE-ROZ" secondAttribute="bottom" id="jQM-Pw-aqv"/>
+                    <constraint firstAttribute="bottom" secondItem="7ci-EE-ROZ" secondAttribute="bottom" constant="10" id="jQM-Pw-aqv"/>
                     <constraint firstItem="Yqr-32-ZpV" firstAttribute="top" secondItem="lNS-4F-MPM" secondAttribute="bottom" id="llu-1u-MFw"/>
+                    <constraint firstItem="ckU-ef-Agv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="1" id="uFY-ud-bfV"/>
                     <constraint firstAttribute="trailing" secondItem="LA8-YS-CZn" secondAttribute="trailing" id="vYa-mS-OAj"/>
                     <constraint firstAttribute="trailing" secondItem="SJ5-ZH-c9i" secondAttribute="trailing" id="xBb-Yi-vfm"/>
-                    <constraint firstItem="7ci-EE-ROZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="z3q-Af-nvk"/>
+                    <constraint firstItem="7ci-EE-ROZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="z3q-Af-nvk"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
@@ -113,6 +118,7 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="activityView" destination="ckU-ef-Agv" id="OCX-nt-wEi"/>
                 <outlet property="addSupplementButton" destination="LA8-YS-CZn" id="Ki0-Lm-9TL"/>
                 <outlet property="infoButton" destination="SJ5-ZH-c9i" id="4U8-fg-ySz"/>
                 <outlet property="placeholderLabel" destination="SLx-rm-icK" id="c31-vK-rRX"/>
@@ -120,7 +126,7 @@
                 <outlet property="supplementsTableView" destination="7ci-EE-ROZ" id="4Dx-Nu-20N"/>
                 <outlet property="supplementsTypeCollapsedLabel" destination="Yqr-32-ZpV" id="mp1-AB-POm"/>
             </connections>
-            <point key="canvasLocation" x="588" y="413"/>
+            <point key="canvasLocation" x="353" y="453"/>
         </tableViewCell>
     </objects>
     <resources>

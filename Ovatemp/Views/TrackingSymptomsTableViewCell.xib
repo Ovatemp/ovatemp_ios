@@ -50,6 +50,9 @@
                     <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="tAZ-dm-EWG">
                         <rect key="frame" x="20" y="58" width="280" height="131"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="131" id="RdA-fG-QfR"/>
+                        </constraints>
                     </tableView>
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Jn7-AH-V1j">
                         <rect key="frame" x="86" y="9" width="20" height="20"/>
@@ -57,7 +60,6 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="pC8-Vg-fNe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="0AQ-d2-luk"/>
-                    <constraint firstItem="tAZ-dm-EWG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="50" id="3aF-Ic-t56"/>
                     <constraint firstItem="dQh-Yb-zd7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="3bF-6d-vQ2"/>
                     <constraint firstItem="dQh-Yb-zd7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="51J-Gm-t3A"/>
                     <constraint firstAttribute="trailing" secondItem="tAZ-dm-EWG" secondAttribute="trailing" constant="20" id="9jG-D5-d8a"/>
@@ -65,10 +67,16 @@
                     <constraint firstItem="tAZ-dm-EWG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="QJi-Jq-Jz3"/>
                     <constraint firstAttribute="bottom" secondItem="tAZ-dm-EWG" secondAttribute="bottom" constant="10" id="ZwZ-Q8-Hzz"/>
                     <constraint firstAttribute="trailing" secondItem="Zzd-u5-R9J" secondAttribute="trailing" constant="13" id="b44-HG-MH8"/>
+                    <constraint firstItem="tAZ-dm-EWG" firstAttribute="top" secondItem="pC8-Vg-fNe" secondAttribute="bottom" constant="17" id="ht6-ZW-vhP"/>
                     <constraint firstItem="pC8-Vg-fNe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-2" id="j1j-3s-QVI"/>
                     <constraint firstItem="Jn7-AH-V1j" firstAttribute="leading" secondItem="dQh-Yb-zd7" secondAttribute="trailing" constant="8" id="q42-fh-2vU"/>
                     <constraint firstItem="Zzd-u5-R9J" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="rgN-Rr-52r"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="ht6-ZW-vhP"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="activityView" destination="Jn7-AH-V1j" id="D4z-ET-rAf"/>

@@ -11,6 +11,8 @@
 
 @protocol TrackingSupplementsCellDelegate <NSObject>
 
+- (void)didSelectSupplementsWithTypes:(NSMutableArray *)types;
+- (void)presentViewControllerWithViewController:(UIViewController *)viewController;
 - (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
 
 - (Day *)getSelectedDay;
@@ -29,6 +31,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *infoButton;
 @property (weak, nonatomic) IBOutlet UIButton *addSupplementButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 
 @property NSMutableArray *supplementsTableViewDataSource;
 @property NSMutableArray *allSupplementIDs;

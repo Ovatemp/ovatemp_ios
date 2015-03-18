@@ -968,7 +968,7 @@
     [self uploadWithParameters: params];
 }
 
-- (void)didSelectSymptomsWithTypes:(id)types
+- (void)didSelectSymptomsWithTypes:(NSMutableArray *)types
 {
     NSDictionary *params = @{@"log_name" : @"SYMPTOMS TYPE",
                              @"attribute_key" : @"symptom_ids",
@@ -979,8 +979,6 @@
     
     [self uploadWithParameters: params];
 }
-
-#pragma mark - TrackingOvulationTestCell Delegate
 
 - (void)didSelectOvulationWithType:(id)type
 {
@@ -994,8 +992,6 @@
     [self uploadWithParameters: params];
 }
 
-#pragma mark - TrackingPregnancyTestCell Delegate
-
 - (void)didSelectPregnancyWithType:(id)type
 {
     NSDictionary *params = @{@"log_name" : @"PREGNANCY TEST",
@@ -1006,6 +1002,23 @@
                              @"skip_reload" : [NSNumber numberWithBool: NO]};
     
     [self uploadWithParameters: params];
+}
+
+- (void)didSelectSupplementsWithTypes:(NSMutableArray *)types
+{
+    NSDictionary *params = @{@"log_name" : @"SUPPLEMENTS TYPE",
+                             @"attribute_key" : @"supplement_ids",
+                             @"attribute_data" : types,
+                             @"notification_id" : @"supplements",
+                             @"index_path_row" : @10,
+                             @"skip_reload" : [NSNumber numberWithBool: YES]};
+    
+    [self uploadWithParameters: params];
+}
+
+- (void)presentViewControllerWithViewController:(UIViewController *)viewController
+{
+    [self presentViewController: viewController animated: YES completion:nil];
 }
 
 #pragma mark - TrackingSupplementsCell Delegate
