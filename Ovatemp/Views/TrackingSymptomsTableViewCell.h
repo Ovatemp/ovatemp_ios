@@ -11,6 +11,7 @@
 
 @protocol TrackingSymptomsCellDelegate <NSObject>
 
+- (void)didSelectSymptomsWithTypes:(NSMutableArray *)types;
 - (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
 
 - (Day *)getSelectedDay;
@@ -25,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *symptomsCollapsedLabel;
 @property (weak, nonatomic) IBOutlet UITableView *symptomsTableView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 
 @property NSMutableArray *selectedSymptoms;
 

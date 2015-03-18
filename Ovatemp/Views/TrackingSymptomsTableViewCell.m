@@ -20,8 +20,7 @@ NSArray *symptomsDataSource;
 - (void)awakeFromNib
 {
     [self resetSelectedSymptoms];
-    
-//    self.selectedDate = [[NSDate alloc] init];
+    [self setUpActivityView];
     
     symptomsDataSource = [NSArray arrayWithObjects:@"Breast tenderness", @"Headaches", @"Nausea", @"Irritability/Mood swings", @"Bloating", @"PMS", @"Stress", @"Travel", @"Fever", nil];
     
@@ -29,6 +28,33 @@ NSArray *symptomsDataSource;
     self.symptomsTableView.dataSource = self;
     
     self.selectedSymptoms = [[NSMutableArray alloc] init];
+}
+
+- (void)setUpActivityView
+{
+    self.activityView.hidden = YES;
+    self.activityView.hidesWhenStopped = YES;
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(startActivity)
+                                                 name: @"symptoms_start_activity"
+                                               object: nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(stopActivity)
+                                                 name: @"symptoms_stop_activity"
+                                               object: nil];
+}
+
+- (void)startActivity
+{
+    self.activityView.hidden = NO;
+    [self.activityView startAnimating];
+}
+
+- (void)stopActivity
+{
+    [self.activityView stopAnimating];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -67,17 +93,15 @@ NSArray *symptomsDataSource;
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
     cell.textLabel.text = [symptomsDataSource objectAtIndex:indexPath.row];
+    cell.textLabel.textColor = [UIColor darkGrayColor];
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    
-    //    symptomsDataSource = [NSArray arrayWithObjects:@"Breast tenderness", @"Headaches", @"Nausea", @"Irritability/Mood swings", @"Bloating", @"PMS", @"Stress", @"Travel", @"Fever", nil];
-    
-    // set accessory
+
     switch (indexPath.row) {
         case 0:
         {
@@ -155,47 +179,29 @@ NSArray *symptomsDataSource;
             break;
     }
     
-    [cell setTintColor:[UIColor blackColor]];
+    [cell setTintColor: [UIColor ovatempAquaColor]];
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
-//    
-//    // check if selectedIndex is included in self.selectedSymptoms
-//    // if it is, remove it, hit backend with contents of array
-//    // if it is not, add it, hit backend
-//    
-//    if ([self.selectedSymptoms containsObject:selectedIndex]) {
-//        [self.selectedSymptoms removeObject:selectedIndex];
-//        [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-//    } else {
-//        // add object
-//        [self.selectedSymptoms addObject:selectedIndex];
-//        [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
-//    }
-//    // Hit backend with changes
-//    [self hitBackendWithSymptomIDs:self.selectedSymptoms];
-    
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     switch (indexPath.row) {
         case 0:
         {
-            if (self.breastTendernessSelected) { // if cell is already selected
-                // deselect
-                [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-//                [self hitBackendWithSymptomIDs:[NSNull null]];
-                NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
-                [self.selectedSymptoms removeObject:selectedIndex];
-                [self hitBackendWithSymptomIDs:self.selectedSymptoms];
+            if (self.breastTendernessSelected) {
                 self.breastTendernessSelected = NO;
+                [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                
+                NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
+                [self.selectedSymptoms removeObject: selectedIndex];
+                
             } else {
                 self.breastTendernessSelected = YES;
                 [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+                
                 NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
-                [self.selectedSymptoms addObject:selectedIndex];
-                [self hitBackendWithSymptomIDs:self.selectedSymptoms];
+                [self.selectedSymptoms addObject: selectedIndex];
             }
             break;
         }
@@ -203,18 +209,18 @@ NSArray *symptomsDataSource;
         case 1:
         {
             if (self.headachesSelected) {
-                [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-//                [self hitBackendWithSymptomIDs:[NSNull null]];
-                NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
-                [self.selectedSymptoms removeObject:selectedIndex];
-                [self hitBackendWithSymptomIDs:self.selectedSymptoms];
                 self.headachesSelected = NO;
+                [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+
+                NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
+                [self.selectedSymptoms removeObject: selectedIndex];
+                
             } else {
                 self.headachesSelected = YES;
                 [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+                
                 NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
-                [self.selectedSymptoms addObject:selectedIndex];
-                [self hitBackendWithSymptomIDs:self.selectedSymptoms];
+                [self.selectedSymptoms addObject: selectedIndex];
             }
             break;
         }
@@ -222,17 +228,18 @@ NSArray *symptomsDataSource;
         case 2:
         {
             if (self.nauseaSeleted) {
-                [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
-                [self.selectedSymptoms removeObject:selectedIndex];
-                [self hitBackendWithSymptomIDs:self.selectedSymptoms];
                 self.nauseaSeleted = NO;
+                [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                
+                NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
+                [self.selectedSymptoms removeObject: selectedIndex];
+                
             } else {
                 self.nauseaSeleted = YES;
                 [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+                
                 NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
-                [self.selectedSymptoms addObject:selectedIndex];
-                [self hitBackendWithSymptomIDs:self.selectedSymptoms];
+                [self.selectedSymptoms addObject: selectedIndex];
             }
             break;
         }
@@ -240,17 +247,18 @@ NSArray *symptomsDataSource;
         case 3:
         {
             if (self.irritabilityMoodSwingsSelected) {
-                [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
-                [self.selectedSymptoms removeObject:selectedIndex];
-                [self hitBackendWithSymptomIDs:self.selectedSymptoms];
                 self.irritabilityMoodSwingsSelected = NO;
+                [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                
+                NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
+                [self.selectedSymptoms removeObject: selectedIndex];
+                
             } else {
                 self.irritabilityMoodSwingsSelected = YES;
                 [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+                
                 NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
-                [self.selectedSymptoms addObject:selectedIndex];
-                [self hitBackendWithSymptomIDs:self.selectedSymptoms];
+                [self.selectedSymptoms addObject: selectedIndex];
             }
             break;
         }
@@ -258,17 +266,18 @@ NSArray *symptomsDataSource;
         case 4:
         {
             if (self.bloatingSelected) {
-                [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
-                [self.selectedSymptoms removeObject:selectedIndex];
-                [self hitBackendWithSymptomIDs:self.selectedSymptoms];
                 self.bloatingSelected = NO;
+                [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                
+                NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
+                [self.selectedSymptoms removeObject: selectedIndex];
+                
             } else {
                 self.bloatingSelected = YES;
                 [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+                
                 NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
-                [self.selectedSymptoms addObject:selectedIndex];
-                [self hitBackendWithSymptomIDs:self.selectedSymptoms];
+                [self.selectedSymptoms addObject: selectedIndex];
             }
             break;
         }
@@ -276,17 +285,18 @@ NSArray *symptomsDataSource;
         case 5:
         {
             if (self.pmsSelected) {
-                [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
-                [self.selectedSymptoms removeObject:selectedIndex];
-                [self hitBackendWithSymptomIDs:self.selectedSymptoms];
                 self.pmsSelected = NO;
+                [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                
+                NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
+                [self.selectedSymptoms removeObject: selectedIndex];
+                
             } else {
                 self.pmsSelected = YES;
                 [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+                
                 NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
-                [self.selectedSymptoms addObject:selectedIndex];
-                [self hitBackendWithSymptomIDs:self.selectedSymptoms];
+                [self.selectedSymptoms addObject: selectedIndex];
             }
             break;
         }
@@ -294,17 +304,18 @@ NSArray *symptomsDataSource;
         case 6:
         {
             if (self.stressSelected) {
-                [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
-                [self.selectedSymptoms removeObject:selectedIndex];
-                [self hitBackendWithSymptomIDs:self.selectedSymptoms];
                 self.stressSelected = NO;
+                [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                
+                NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
+                [self.selectedSymptoms removeObject: selectedIndex];
+                
             } else {
                 self.stressSelected = YES;
                 [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+                
                 NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
-                [self.selectedSymptoms addObject:selectedIndex];
-                [self hitBackendWithSymptomIDs:self.selectedSymptoms];
+                [self.selectedSymptoms addObject: selectedIndex];
             }
             break;
         }
@@ -312,17 +323,18 @@ NSArray *symptomsDataSource;
         case 7:
         {
             if (self.travelSelected) {
-                [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
-                [self.selectedSymptoms removeObject:selectedIndex];
-                [self hitBackendWithSymptomIDs:self.selectedSymptoms];
                 self.travelSelected = NO;
+                [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                
+                NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
+                [self.selectedSymptoms removeObject: selectedIndex];
+                
             } else {
                 self.travelSelected = YES;
                 [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+                
                 NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
-                [self.selectedSymptoms addObject:selectedIndex];
-                [self hitBackendWithSymptomIDs:self.selectedSymptoms];
+                [self.selectedSymptoms addObject: selectedIndex];
             }
             break;
         }
@@ -330,17 +342,18 @@ NSArray *symptomsDataSource;
         case 8:
         {
             if (self.feverSelected) {
-                [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-                NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
-                [self.selectedSymptoms removeObject:selectedIndex];
-                [self hitBackendWithSymptomIDs:self.selectedSymptoms];
                 self.feverSelected = NO;
+                [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                
+                NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
+                [self.selectedSymptoms removeObject: selectedIndex];
+                
             } else {
                 self.feverSelected = YES;
                 [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+                
                 NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
-                [self.selectedSymptoms addObject:selectedIndex];
-                [self hitBackendWithSymptomIDs:self.selectedSymptoms];
+                [self.selectedSymptoms addObject: selectedIndex];
             }
             break;
         }
@@ -348,56 +361,11 @@ NSArray *symptomsDataSource;
         default:
             break;
     }
+    
+    if ([self.delegate respondsToSelector: @selector(didSelectSymptomsWithTypes:)]) {
+        [self.delegate didSelectSymptomsWithTypes: self.selectedSymptoms];
+    }
 }
-
-- (void)hitBackendWithSymptomIDs:(id)symptom_ids
-{
-    NSDate *selectedDate = [self.delegate getSelectedDate];
-    
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
-    
-    [attributes setObject: symptom_ids forKey: @"symptom_ids"];
-    [attributes setObject: selectedDate forKey: @"date"];
-    
-    [ConnectionManager put:@"/days/"
-                    params:@{
-                             @"day": attributes,
-                             }
-                   success:^(NSDictionary *response) {
-                       [Cycle cycleFromResponse:response];
-                       [Calendar setDate: selectedDate];
-                       //                       if (onSuccess) onSuccess(response);
-                   }
-                   failure:^(NSError *error) {
-                       [Alert presentError:error];
-                   }];
-    
-}
-
-//- (int)indexPathToSymptomValueWithIndexPathWithValue:(int)value {
-//    
-//    // @"Breast tenderness", @"Headaches", @"Nausea", @"Irritability/Mood swings", @"Bloating", @"PMS", @"Stress", @"Travel", @"Fever"
-//    
-////    "Breast tenderness",
-////    "Headaches",
-////    "Nausea",
-////    "Irritability/Mood swings",
-////    "Bloating",
-////    "PMS",
-////    "Stress",
-////    "Travel",
-////    "Fever"
-//    
-//    switch (value) {
-//        case 0:
-//            return <#expression#>
-//            break;
-//            
-//        default:
-//            break;
-//    }
-//    
-//}
 
 - (void)setSymptomWithValue:(NSInteger)value
 {
@@ -435,7 +403,7 @@ NSArray *symptomsDataSource;
         for (NSString *symptomID in selectedDay.symptomIds) {
             NSInteger symptomIntVal = [symptomID integerValue];
             
-            [self setSymptomWithValue:symptomIntVal];
+            [self setSymptomWithValue: symptomIntVal];
         }
         
         [self.symptomsTableView reloadData];
@@ -454,6 +422,8 @@ NSArray *symptomsDataSource;
     self.symptomsTableView.hidden = NO;
     self.symptomsCollapsedLabel.hidden = NO;
     self.placeholderLabel.hidden = YES;
+    
+    [self.symptomsTableView flashScrollIndicators];
 }
 
 @end
