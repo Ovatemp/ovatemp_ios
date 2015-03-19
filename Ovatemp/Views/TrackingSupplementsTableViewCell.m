@@ -39,6 +39,11 @@
                                                  name: @"supplements_stop_activity"
                                                object: nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(reloadSupplements)
+                                                 name: @"reload_supplements"
+                                               object: nil];
+    
     self.activityView.hidden = YES;
     self.activityView.hidesWhenStopped = YES;
 }
@@ -131,9 +136,7 @@
                         }
                         
                         [self.selectedSupplementIDs addObject: newSupp.idNumber];
-                        
-                        [self reloadSupplements];
-                        
+                                                
                         if ([self.delegate respondsToSelector: @selector(didSelectSupplementsWithTypes:)]) {
                             [self.delegate didSelectSupplementsWithTypes: self.selectedSupplementIDs];
                         }
@@ -152,6 +155,9 @@
                     params:nil
                    success:^(NSDictionary *response) {
                        [Configuration loggedInWithResponse:response];
+                       
+                       [self.supplementsTableView reloadData];
+                       [self stopActivity];
                    }
                    failure:^(NSError *error) {
                        NSLog(@"Error: %@", [error localizedDescription]);

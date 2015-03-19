@@ -927,7 +927,8 @@
                              @"attribute_data" : type,
                              @"notification_id" : @"cp",
                              @"index_path_row" : @3,
-                             @"skip_reload" : [NSNumber numberWithBool: NO]};
+                             @"skip_reload" : [NSNumber numberWithBool: NO]
+                             };
     
     [self uploadWithParameters: params];
 }
@@ -939,7 +940,8 @@
                              @"attribute_data" : type,
                              @"notification_id" : @"period",
                              @"index_path_row" : @4,
-                             @"skip_reload" : [NSNumber numberWithBool: NO]};
+                             @"skip_reload" : [NSNumber numberWithBool: NO]
+                             };
     
     [self uploadWithParameters: params];
 }
@@ -951,7 +953,8 @@
                              @"attribute_data" : type,
                              @"notification_id" : @"intercourse",
                              @"index_path_row" : @5,
-                             @"skip_reload" : [NSNumber numberWithBool: NO]};
+                             @"skip_reload" : [NSNumber numberWithBool: NO]
+                             };
     
     [self uploadWithParameters: params];
 }
@@ -963,7 +966,8 @@
                              @"attribute_data" : type,
                              @"notification_id" : @"mood",
                              @"index_path_row" : @6,
-                             @"skip_reload" : [NSNumber numberWithBool: YES]};
+                             @"skip_reload" : [NSNumber numberWithBool: YES]
+                             };
     
     [self uploadWithParameters: params];
 }
@@ -975,7 +979,8 @@
                              @"attribute_data" : types,
                              @"notification_id" : @"symptoms",
                              @"index_path_row" : @7,
-                             @"skip_reload" : [NSNumber numberWithBool: YES]};
+                             @"skip_reload" : [NSNumber numberWithBool: YES]
+                             };
     
     [self uploadWithParameters: params];
 }
@@ -987,7 +992,8 @@
                              @"attribute_data" : type,
                              @"notification_id" : @"ovulation",
                              @"index_path_row" : @8,
-                             @"skip_reload" : [NSNumber numberWithBool: NO]};
+                             @"skip_reload" : [NSNumber numberWithBool: NO]
+                             };
     
     [self uploadWithParameters: params];
 }
@@ -999,21 +1005,60 @@
                              @"attribute_data" : type,
                              @"notification_id" : @"pregnancy",
                              @"index_path_row" : @9,
-                             @"skip_reload" : [NSNumber numberWithBool: NO]};
+                             @"skip_reload" : [NSNumber numberWithBool: NO]
+                             };
     
     [self uploadWithParameters: params];
 }
 
 - (void)didSelectSupplementsWithTypes:(NSMutableArray *)types
 {
-    NSDictionary *params = @{@"log_name" : @"SUPPLEMENTS TYPE",
-                             @"attribute_key" : @"supplement_ids",
-                             @"attribute_data" : types,
-                             @"notification_id" : @"supplements",
-                             @"index_path_row" : @10,
-                             @"skip_reload" : [NSNumber numberWithBool: YES]};
+    NSString *logName = @"SUPPLEMENTS TYPE";
+    NSString *attributeKey = @"supplement_ids";
+    NSMutableArray *attributeData = types;
+    NSString *notificationId = @"supplements";
+    NSNumber *indexPathRow = @10;
     
-    [self uploadWithParameters: params];
+    BOOL skipReload = YES; // NO?
+    
+    NSLog(@"ILTrackingVC : UPLOADING %@", logName);
+    
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+    
+    [attributes setObject: attributeData forKey: attributeKey];
+    [attributes setObject: self.selectedDate forKey: @"date"];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"%@_start_activity", notificationId] object: self];
+    
+    [ConnectionManager put:@"/days/"
+                    params:@{
+                             @"day": attributes,
+                             }
+                   success:^(NSDictionary *response) {
+                       
+                       NSLog(@"ILTrackingVC : UPLOADING %@ : SUCCESS", logName);
+                       [Cycle cycleFromResponse:response];
+                       [Calendar setDate: self.selectedDate];
+                       
+                       if (!skipReload) {
+                           self.selectedTableRowIndex = nil;
+                           [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: [indexPathRow integerValue] inSection: 0]]
+                                                 withRowAnimation: UITableViewRowAnimationAutomatic];
+                           
+                       }
+                       
+                       [[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"reload_supplements"] object: self];
+                       //[[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"%@_stop_activity", notificationId] object: self];
+                       
+                   }
+                   failure:^(NSError *error) {
+                       
+                       NSLog(@"ILTrackingVC : UPLOADING %@ : FAILURE", logName);
+                       [Alert presentError:error];
+                       
+                       [[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"%@_stop_activity", notificationId] object: self];
+                   }];
+    
 }
 
 - (void)presentViewControllerWithViewController:(UIViewController *)viewController
@@ -1167,6 +1212,12 @@
     NSNumber *skipReloadNum = params[@"skip_reload"];
     BOOL skipReload = [skipReloadNum boolValue];
     
+    NSNumber *minimizeNum = params[@"minimize"];
+    BOOL minimize = [skipReloadNum boolValue];
+    
+    NSNumber *reloadSupplementsNum = params[@"reload_supplements"];
+    BOOL reloadSupplements = [reloadSupplementsNum boolValue];
+    
     NSLog(@"ILTrackingVC : UPLOADING %@", logName);
     
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
@@ -1194,6 +1245,7 @@
                        }
                        
                        [[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"%@_stop_activity", notificationId] object: self];
+                       
                    }
                    failure:^(NSError *error) {
                        
