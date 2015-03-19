@@ -70,29 +70,35 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ISq-Ry-5DE">
-                        <rect key="frame" x="0.0" y="49" width="320" height="150"/>
+                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ISq-Ry-5DE">
+                        <rect key="frame" x="20" y="49" width="280" height="140.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tableView>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8Ff-bW-AiT">
+                        <rect key="frame" x="83" y="7" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="ISq-Ry-5DE" secondAttribute="bottom" id="45E-ID-Vfh"/>
+                    <constraint firstAttribute="bottom" secondItem="ISq-Ry-5DE" secondAttribute="bottom" constant="10" id="45E-ID-Vfh"/>
                     <constraint firstItem="Wco-3L-Rx5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="K3Z-JX-RuZ"/>
                     <constraint firstItem="fQS-Cr-lAL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="K61-7f-HdA"/>
                     <constraint firstItem="2uK-7F-knP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-2" id="Tyu-77-omP"/>
+                    <constraint firstItem="8Ff-bW-AiT" firstAttribute="leading" secondItem="JkF-NI-dFv" secondAttribute="trailing" constant="8" id="UW2-bV-DRP"/>
                     <constraint firstItem="JkF-NI-dFv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="WZg-ei-c6w"/>
                     <constraint firstItem="ISq-Ry-5DE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="41" id="XcE-lK-Of5"/>
                     <constraint firstItem="JkF-NI-dFv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="ZC1-VK-c24"/>
+                    <constraint firstItem="8Ff-bW-AiT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-1" id="bJN-B6-Ww9"/>
                     <constraint firstItem="fQS-Cr-lAL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-2" id="iRp-rb-fcn"/>
                     <constraint firstItem="dp3-gS-uGd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="k7c-PW-ZXe"/>
                     <constraint firstItem="2uK-7F-knP" firstAttribute="top" secondItem="JkF-NI-dFv" secondAttribute="bottom" constant="3" id="kns-hX-mwZ"/>
                     <constraint firstAttribute="trailing" secondItem="Wco-3L-Rx5" secondAttribute="trailing" id="oFq-1a-noD"/>
-                    <constraint firstAttribute="trailing" secondItem="ISq-Ry-5DE" secondAttribute="trailing" id="p5A-iE-P7T"/>
-                    <constraint firstItem="ISq-Ry-5DE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="pj4-dB-Yqe"/>
+                    <constraint firstAttribute="trailing" secondItem="ISq-Ry-5DE" secondAttribute="trailing" constant="20" id="p5A-iE-P7T"/>
+                    <constraint firstItem="ISq-Ry-5DE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="pj4-dB-Yqe"/>
                     <constraint firstAttribute="trailing" secondItem="dp3-gS-uGd" secondAttribute="trailing" constant="13" id="yNo-dN-aDU"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="activityView" destination="8Ff-bW-AiT" id="KeB-27-adR"/>
                 <outlet property="addMedicinesButton" destination="Wco-3L-Rx5" id="8ax-BU-ExR"/>
                 <outlet property="infoButton" destination="dp3-gS-uGd" id="NDu-p9-Pt4"/>
                 <outlet property="medicinesCollapsedLabel" destination="JkF-NI-dFv" id="Xst-s6-QmR"/>
@@ -100,7 +106,7 @@
                 <outlet property="medicinesTypeCollapsedLabel" destination="2uK-7F-knP" id="cla-Aa-sHs"/>
                 <outlet property="placeholderLabel" destination="fQS-Cr-lAL" id="tG9-55-CKs"/>
             </connections>
-            <point key="canvasLocation" x="298" y="256"/>
+            <point key="canvasLocation" x="108" y="306"/>
         </tableViewCell>
     </objects>
     <resources>

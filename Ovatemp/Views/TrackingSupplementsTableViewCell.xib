@@ -126,7 +126,7 @@
                 <outlet property="supplementsTableView" destination="7ci-EE-ROZ" id="4Dx-Nu-20N"/>
                 <outlet property="supplementsTypeCollapsedLabel" destination="Yqr-32-ZpV" id="mp1-AB-POm"/>
             </connections>
-            <point key="canvasLocation" x="353" y="453"/>
+            <point key="canvasLocation" x="-74" y="-19"/>
         </tableViewCell>
     </objects>
     <resources>

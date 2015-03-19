@@ -14,7 +14,7 @@
 
 - (void)awakeFromNib
 {
-//    self.selectedDate = [[NSDate alloc] init];
+    [self setUpActivityView];
     
     self.medicinesTableViewDataSource = [[NSMutableArray alloc] init];
     
@@ -25,6 +25,38 @@
     self.medicinesTableView.dataSource = self;
 }
 
+- (void)setUpActivityView
+{
+//    [[NSNotificationCenter defaultCenter] addObserver: self
+//                                             selector: @selector(startActivity)
+//                                                 name: @"medicines_start_activity"
+//                                               object: nil];
+//    
+//    [[NSNotificationCenter defaultCenter] addObserver: self
+//                                             selector: @selector(stopActivity)
+//                                                 name: @"medicines_stop_activity"
+//                                               object: nil];
+//    
+//    [[NSNotificationCenter defaultCenter] addObserver: self
+//                                             selector: @selector(reloadSupplements)
+//                                                 name: @"reload_medicines"
+//                                               object: nil];
+    
+    self.activityView.hidden = YES;
+    self.activityView.hidesWhenStopped = YES;
+}
+
+- (void)startActivity
+{
+    self.activityView.hidden = NO;
+    [self.activityView startAnimating];
+}
+
+- (void)stopActivity
+{
+    [self.activityView stopAnimating];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
@@ -32,7 +64,6 @@
 
 - (IBAction)doAddMedicine:(id)sender
 {
-    // set up alert
     UIAlertController *alert = [UIAlertController
                                 alertControllerWithTitle:@""
                                 message:@"Add New Medicine"
@@ -58,9 +89,7 @@
     [alert addAction:cancel];
     [alert addAction:ok];
     
-    // TO DO
-//    [self.delegate presentViewControllerWithViewController:alert];
-    
+    [self.delegate presentViewControllerWithViewController: alert];
 }
 - (IBAction)doShowInfo:(id)sender
 {
@@ -69,15 +98,17 @@
 
 - (void)postNewMedicineToBackendWithMedicine:(NSString *)medicine
 {
-    NSString *className = @"medicine"; // supplement
-    NSString *classNamePlural = [className stringByAppendingString:@"s"]; // supplements
+    NSString *className = @"medicine";
+    NSString *classNamePlural = [className stringByAppendingString: @"s"];
     
-    [ConnectionManager post:[@"/" stringByAppendingString:classNamePlural]
+    [self startActivity];
+    
+    [ConnectionManager post:[@"/" stringByAppendingString: classNamePlural]
                      params:@{
-                              className: // supplement
-                              @{
-                                  @"name":medicine // new supplement
-                                  }
+                              className:
+                                  @{
+                                      @"name":medicine
+                                   }
                               }
                     success:^(NSDictionary *response) {
                         
@@ -89,9 +120,6 @@
                         newMed.updatedAt = [[response objectForKey:@"medicine"] objectForKey:@"updated_at"];
                         newMed.userID = [[response objectForKey:@"medicine"] objectForKey:@"user_id"];
                         
-                        // todo, check for duplicates so supplement doesn't appear twice
-                        // de-select supplement if we want to uncheck it
-                        
                         if (self.selectedMedicineIDs == nil) {
                             self.selectedMedicineIDs = [[NSMutableArray alloc] init];
                         }
@@ -101,13 +129,13 @@
                             [self.medicinesTableViewDataSource addObject:newMed];
                         }
                         
-                        //                        [self.allSupplementIDs addObject:newSupp.idNumber];
-                        [self.selectedMedicineIDs addObject:newMed.idNumber];
+                        [self.selectedMedicineIDs addObject: newMed.idNumber];
+                        [self hitBackendWithMedicineType: self.selectedMedicineIDs];
                         
-                        [self hitBackendWithMedicineType:self.selectedMedicineIDs];
                     }
                     failure:^(NSError *error) {
                         [Alert presentError:error];
+                        [self stopActivity];
                     }
      ];
 }
@@ -121,39 +149,37 @@
     [attributes setObject: medicineIds forKey: @"medicine_ids"];
     [attributes setObject: selectedDate forKey: @"date"];
     
+    [self startActivity];
+    
     [ConnectionManager put:@"/days/"
                     params:@{
                              @"day": attributes,
                              }
                    success:^(NSDictionary *response) {
-                       //                       [Cycle cycleFromResponse:response];
-                       //                       [Calendar setDate:self.selectedDate];
-                       //                       if (onSuccess) onSuccess(response);
-                       // TODO: reload table?
-                       // reload supplements
+//                      [Cycle cycleFromResponse:response];
+//                      [Calendar setDate:self.selectedDate];
+
                        [self reloadMedicines];
                        [self.medicinesTableView reloadData];
                    }
                    failure:^(NSError *error) {
                        [Alert presentError:error];
+                       [self stopActivity];
                    }];
 }
 
 - (void)reloadMedicines
 {
-    //    [Supplement resetInstancesWithArray:response[@"supplements"]];
     [ConnectionManager put:@"/sessions/refresh"
                     params:nil
                    success:^(NSDictionary *response) {
-                       //                       [self stopLoading];
                        [Configuration loggedInWithResponse:response];
                        [self.medicinesTableView reloadData];
-                       //                       [self launchAppropriateViewController];
+                       [self stopActivity];
                    }
                    failure:^(NSError *error) {
-                       //                       [self stopLoading];
-                       //                       [self logOutWithUnauthorized];
                        NSLog(@"Error: %@", [error localizedDescription]);
+                       [self stopActivity];
                    }
      ];
 }
@@ -175,20 +201,19 @@
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     
     SimpleSupplement *cellSupp = [[SimpleSupplement alloc] init];
-    cellSupp = [self.medicinesTableViewDataSource objectAtIndex:indexPath.row];
+    cellSupp = [self.medicinesTableViewDataSource objectAtIndex: indexPath.row];
     
     cell.textLabel.text = cellSupp.name;
+    cell.textLabel.textColor = [UIColor darkGrayColor];
     
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setSelectionStyle: UITableViewCellSelectionStyleNone];
+    [cell setTintColor: [UIColor ovatempAquaColor]];
     
-    [cell setTintColor:[UIColor blackColor]];
-    
-    // if [supplementsTableViewDataSource objectAtIndex:indexPath.row] is contained in selectedIDs, mark it as checked, otherwise no check mark
     SimpleSupplement *tempSupp = [self.medicinesTableViewDataSource objectAtIndex:indexPath.row];
     if ([self.selectedMedicineIDs containsObject:tempSupp.idNumber]) {
-        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+        [cell setAccessoryType: UITableViewCellAccessoryCheckmark];
     } else {
-        [cell setAccessoryType:UITableViewCellAccessoryNone];
+        [cell setAccessoryType: UITableViewCellAccessoryNone];
     }
     
     return cell;
@@ -198,19 +223,21 @@
 {
     if ([self.medicinesTableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryCheckmark) {
         [self.medicinesTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-        // get id of object at selected index
-        // remove it from selected ids array
-        // hit backend
+        
         SimpleSupplement *selectedMed = [[SimpleSupplement alloc] init];
-        selectedMed = [self.medicinesTableViewDataSource objectAtIndex:indexPath.row];
+        selectedMed = [self.medicinesTableViewDataSource objectAtIndex: indexPath.row];
+        
         [self.selectedMedicineIDs removeObject:selectedMed.idNumber];
-        [self hitBackendWithMedicineType:self.selectedMedicineIDs];
+        [self hitBackendWithMedicineType: self.selectedMedicineIDs];
+        
     } else {
         [self.medicinesTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        
         SimpleSupplement *selectedMed = [[SimpleSupplement alloc] init];
-        selectedMed = [self.medicinesTableViewDataSource objectAtIndex:indexPath.row];
-        [self.selectedMedicineIDs addObject:selectedMed.idNumber];
-        [self hitBackendWithMedicineType:self.selectedMedicineIDs];
+        selectedMed = [self.medicinesTableViewDataSource objectAtIndex: indexPath.row];
+        
+        [self.selectedMedicineIDs addObject: selectedMed.idNumber];
+        [self hitBackendWithMedicineType: self.selectedMedicineIDs];
     }
 }
 
@@ -222,6 +249,7 @@
     
     NSMutableArray *medicines = [[NSMutableArray alloc] init];
     NSMutableArray *medicineIDs = [[NSMutableArray alloc] initWithArray: selectedDay.medicineIds];
+    NSMutableString *medicinesString = [[NSMutableString alloc] init];
     
     if ([selectedDay.medicines count] > 0) {
         
@@ -232,13 +260,21 @@
             simpleMed.name = med.name;
             simpleMed.idNumber = med.id;
             
-            if (![medicineIDs containsObject: simpleMed]) {
+            if (![medicineIDs containsObject: simpleMed.idNumber]) {
                 [medicines addObject: simpleMed];
+                [medicinesString appendFormat: @"%@, ", simpleMed.name];
             }
+            
+        }
+        if (medicinesString.length > 2) {
+            [medicinesString replaceCharactersInRange: NSMakeRange(medicinesString.length - 2, 2) withString: @""];
         }
         
         self.medicinesTableViewDataSource = medicines;
         self.selectedMedicineIDs = medicineIDs;
+        self.medicinesTypeCollapsedLabel.text = medicinesString;
+        
+        [self.medicinesTableView reloadData];
         
     } else {
 
@@ -247,7 +283,7 @@
         
         // add medicines to array, just don't mark them as selected
         NSArray *medArray = [[Medicine instances] allValues];
-        for (Supplement *med in medArray) {
+        for (Medicine *med in medArray) {
             
             SimpleSupplement *simpleMed = [[SimpleSupplement alloc] init];
             simpleMed.name = med.name;
@@ -276,11 +312,12 @@
     if ([selectedDay.medicines count] > 0) {
         
         if ([selectedDay.medicineIds count] == 0) {
-            // no selected supplements
+            // Minimized, Without Data
             self.medicinesCollapsedLabel.hidden = YES;
             self.medicinesTypeCollapsedLabel.hidden = YES;
             self.placeholderLabel.hidden = NO;
         } else {
+            // Minimized, With Data
             self.medicinesCollapsedLabel.hidden = NO;
             self.medicinesTypeCollapsedLabel.hidden = NO;
             self.placeholderLabel.hidden = YES;
@@ -295,6 +332,8 @@
 
 - (void)setExpanded
 {
+    [self.medicinesTableView flashScrollIndicators];
+    
     self.medicinesTableView.hidden = NO;
     self.infoButton.hidden = YES;
     self.addMedicinesButton.hidden = NO;

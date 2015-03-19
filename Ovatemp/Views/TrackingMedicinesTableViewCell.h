@@ -12,6 +12,7 @@
 
 @protocol TrackingMedicinesCellDelegate <NSObject>
 
+- (void)presentViewControllerWithViewController:(UIViewController *)viewController;
 - (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
 
 - (Day *)getSelectedDay;
@@ -29,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *medicinesCollapsedLabel;
 @property (weak, nonatomic) IBOutlet UITableView *medicinesTableView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 
 @property NSMutableArray *medicinesTableViewDataSource;
 @property NSMutableArray *allMedicineIDs;
