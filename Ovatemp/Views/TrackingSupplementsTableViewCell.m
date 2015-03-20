@@ -117,7 +117,6 @@
                        }else{
                            [self stopActivity];
                            [self updateCell];
-                           //[self.delegate reloadTrackingView];
                        }
                        
                    }

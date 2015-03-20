@@ -18,6 +18,7 @@
 
 #import "Calendar.h"
 #import "Day.h"
+#import "ONDO.h"
 
 #import "TrackingStatusTableViewCell.h"
 #import "TrackingTemperatureTableViewCell.h"
@@ -36,7 +37,7 @@
 
 @import HealthKit;
 
-@interface ILTrackingViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate,TrackingStatusCellDelegate,TrackingTemperatureCellDelegate,TrackingCervicalFluidCellDelegate,TrackingCervicalPositionCellDelegate,TrackingPeriodCellDelegate,TrackingIntercourseCellDelegate,TrackingMoodCellDelegate,TrackingSymptomsCellDelegate,TrackingOvulationTestCell,TrackingPregnancyCellDelegate,TrackingSupplementsCellDelegate,TrackingMedicinesCellDelegate>
+@interface ILTrackingViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate,TrackingStatusCellDelegate,TrackingTemperatureCellDelegate,TrackingCervicalFluidCellDelegate,TrackingCervicalPositionCellDelegate,TrackingPeriodCellDelegate,TrackingIntercourseCellDelegate,TrackingMoodCellDelegate,TrackingSymptomsCellDelegate,TrackingOvulationTestCell,TrackingPregnancyCellDelegate,TrackingSupplementsCellDelegate,TrackingMedicinesCellDelegate,ONDODelegate>
 
 @property (nonatomic) NSDate *selectedDate;
 @property (nonatomic) NSDate *peakDate;
@@ -74,6 +75,7 @@
     self.lowerDrawer = YES;
     
     [self addOrientationObserver];
+    [self setUpOndo];
     
     [self setTitleView];
     [self customizeAppearance];
@@ -118,6 +120,15 @@
 - (void)dealloc
 {
     [self removeOrientationObserver];
+}
+
+#pragma mark - ONDO
+
+- (void)setUpOndo
+{
+    if ([ONDO sharedInstance].devices.count > 0) {
+        [ONDO startWithDelegate: self];
+    }
 }
 
 #pragma mark - Notifications
@@ -901,6 +912,7 @@
 - (void)didSelectTemperature:(NSNumber *)temperature
 {
     self.selectedTemperature = temperature;
+    self.day.usedOndo = NO;
 }
 
 - (void)didSelectDisturbance:(BOOL)disturbance
@@ -1061,6 +1073,56 @@
     //    [self pushViewController:self.cycleViewController];
 }
 
+#pragma mark - ONDO Delegate
+
+- (void)ONDOsaysBluetoothIsDisabled:(ONDO *)ondo
+{
+    [Alert showAlertWithTitle: @"Bluetooth is Off"
+                      message: @"Bluetooth is off, so we can't detect a thing"];
+}
+
+- (void)ONDOsaysLEBluetoothIsUnavailable:(ONDO *)ondo
+{
+    [Alert showAlertWithTitle: @"LE Bluetooth Unavailable"
+                      message: @"Your device does not support low-energy Bluetooth, so it can't connect to your ONDO"];
+}
+
+- (void)ONDO:(ONDO *)ondo didEncounterError:(NSError *)error
+{
+    [Alert presentError: error];
+}
+
+- (void)ONDO:(ONDO *)ondo didReceiveTemperature:(CGFloat)temperature
+{
+    float tempInCelsius = temperature;
+    temperature = temperature * 9.0f / 5.0f + 32.0f;
+
+    if ((tempInCelsius < 0) || (temperature < 0)) {
+        [Alert showAlertWithTitle: @"Error"
+                          message: @"There was a problem taking your temperature, please try again.\n"];
+        return;
+    }
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL tempPrefFahrenheit = [defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"];
+
+    NSString *temperatureString;
+
+    if (tempPrefFahrenheit) {
+        temperatureString = [NSString stringWithFormat: @"Recorded a temperature of %.2fºF for today", temperature];
+        self.selectedTemperature = [NSNumber numberWithFloat: temperature];
+    } else {
+        temperatureString = [NSString stringWithFormat: @"Recorded a temperature of %.2fºC for today", tempInCelsius];
+        self.selectedTemperature = [NSNumber numberWithFloat: tempInCelsius];
+    }
+    
+    self.day.usedOndo = YES;
+    
+    [self uploadSelectedTemperature];
+    
+    //[Alert showAlertWithTitle: @"Temperature Recorded" message: temperatureString];
+}
+
 #pragma mark - Network
 
 - (void)uploadSelectedTemperature
@@ -1094,6 +1156,7 @@
     NSString *stringDateForBackend = [formatter stringFromDate: self.selectedDate];
     [attributes setObject: stringDateForBackend forKey: @"date"];
     [attributes setObject: [NSNumber numberWithFloat: tempInFahrenheit] forKey: @"temperature"];
+    [attributes setObject: [NSNumber numberWithBool: self.day.usedOndo] forKeyedSubscript: @"used_ondo"];
     
     [[NSNotificationCenter defaultCenter] postNotificationName: @"temp_start_activity" object: self];
     

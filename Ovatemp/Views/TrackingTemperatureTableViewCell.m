@@ -206,17 +206,18 @@ NSMutableArray *temperatureFractionalPartPickerData;
 - (void)updateCell
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    BOOL tempPrefFahrenheit = [defaults boolForKey:@"temperatureUnitPreferenceFahrenheit"];
+    BOOL tempPrefFahrenheit = [defaults boolForKey: @"temperatureUnitPreferenceFahrenheit"];
     Day *selectedDay = [self.delegate getSelectedDay];
+    
+    self.ondoIcon.alpha = 0.0f;
     
     if (selectedDay.temperature){
         
         if (tempPrefFahrenheit){
-            self.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f", [selectedDay.temperature floatValue]];
+            self.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f F", [selectedDay.temperature floatValue]];
         } else {
             float tempInCelsius = (([selectedDay.temperature floatValue] - 32) / 1.8000f);
-            selectedDay.temperature = [NSNumber numberWithFloat:tempInCelsius];
-            self.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f", tempInCelsius];
+            self.temperatureValueLabel.text = [NSString stringWithFormat:@"%.2f C", tempInCelsius];
         }
         
         if (selectedDay.usedOndo) {
@@ -232,9 +233,9 @@ NSMutableArray *temperatureFractionalPartPickerData;
         self.collapsedLabel.alpha = 0.0;
         
         if (tempPrefFahrenheit) {
-            self.temperatureValueLabel.text = @"98.60";
+            self.temperatureValueLabel.text = @"98.60 F";
         } else {
-            self.temperatureValueLabel.text = @"37.00";
+            self.temperatureValueLabel.text = @"37.00 C";
         }
         
     }
@@ -294,25 +295,19 @@ NSMutableArray *temperatureFractionalPartPickerData;
 - (void)setMinimized
 {
     Day *selectedDay = [self.delegate getSelectedDay];
-    
+
     self.infoButton.alpha = 1.0;
     self.disturbanceLabel.alpha = 0.0;
     self.disturbanceSwitch.alpha = 0.0;
     self.temperaturePicker.alpha = 0.0;
-    
-    if (selectedDay.usedOndo) {
-        self.ondoIcon.alpha = 1.0;
-    } else {
-        self.ondoIcon.alpha = 0.0;
-    }
-    
+
     if (selectedDay.temperature) {
         // Minimized Cell, With Data
         self.placeholderLabel.alpha = 0.0;
         self.collapsedLabel.alpha = 1.0;
         self.temperatureValueLabel.alpha = 1.0;
         
-        if ([self.delegate usedOndo]) {
+        if (selectedDay.usedOndo) {
             self.ondoIcon.alpha = 1.0;
         } else {
             self.ondoIcon.alpha = 0.0;
@@ -328,6 +323,14 @@ NSMutableArray *temperatureFractionalPartPickerData;
 
 - (void)setExpanded
 {
+    Day *selectedDay = [self.delegate getSelectedDay];
+    
+    if (selectedDay.usedOndo) {
+        self.ondoIcon.alpha = 1.0;
+    } else {
+        self.ondoIcon.alpha = 0.0;
+    }
+    
     self.infoButton.alpha = 0.0;
     self.disturbanceLabel.alpha = 1.0;
     self.disturbanceSwitch.alpha = 1.0;
@@ -337,7 +340,6 @@ NSMutableArray *temperatureFractionalPartPickerData;
     self.collapsedLabel.alpha = 1.0;
     self.temperatureValueLabel.alpha = 1.0;
     
-    self.ondoIcon.alpha = 0.0;
 }
 
 @end
