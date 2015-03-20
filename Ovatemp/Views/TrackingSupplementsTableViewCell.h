@@ -11,7 +11,7 @@
 
 @protocol TrackingSupplementsCellDelegate <NSObject>
 
-- (void)didSelectSupplementsWithTypes:(NSMutableArray *)types;
+- (void)reloadTrackingView;
 - (void)presentViewControllerWithViewController:(UIViewController *)viewController;
 - (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
 

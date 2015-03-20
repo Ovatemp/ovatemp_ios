@@ -11,6 +11,8 @@
 #import "Alert.h"
 #import "SharedRelation.h"
 #import "SimpleSupplement.h"
+#import "Cycle.h"
+#import "Calendar.h"
 
 @implementation TrackingSupplementsTableViewCell
 
@@ -27,23 +29,15 @@
     self.supplementsTableView.dataSource = self;
 }
 
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+}
+
+#pragma mark - UIActivityIndicatorView
+
 - (void)setUpActivityView
 {
-    [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(startActivity)
-                                                 name: @"supplements_start_activity"
-                                               object: nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(stopActivity)
-                                                 name: @"supplements_stop_activity"
-                                               object: nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(reloadSupplements)
-                                                 name: @"reload_supplements"
-                                               object: nil];
-    
     self.activityView.hidden = YES;
     self.activityView.hidesWhenStopped = YES;
 }
@@ -59,10 +53,7 @@
     [self.activityView stopAnimating];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-}
+#pragma mark - IBAction's
 
 - (IBAction)didSelectInfoButton:(id)sender
 {
@@ -83,7 +74,7 @@
                                                    if ([supplement length] == 0) {
                                                        return;
                                                    }
-                                                   [self postNewSupplementToBackendWithSupplement:supplement];
+                                                   [self postNewSupplementToBackendWithSupplement: supplement];
                                                }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
@@ -99,19 +90,57 @@
     [self.delegate presentViewControllerWithViewController: alert];
 }
 
+#pragma mark - Network
+
+- (void)hitBackendWithSupplementsType:(id)supplementIds reloadSupplements:(BOOL)reload
+{
+    NSDate *selectedDate = [self.delegate getSelectedDate];
+    
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+    
+    [attributes setObject: supplementIds forKey: @"medicine_ids"];
+    [attributes setObject: selectedDate forKey: @"date"];
+    
+    [self startActivity];
+    
+    [ConnectionManager put:@"/days/"
+                    params:@{
+                             @"day": attributes,
+                             }
+                   success:^(NSDictionary *response) {
+                       
+                       [Cycle cycleFromResponse: response];
+                       [Calendar setDate: [self.delegate getSelectedDate]];
+                       
+                       if (reload) {
+                           [self reloadSupplements];
+                       }else{
+                           [self stopActivity];
+                           [self updateCell];
+                           //[self.delegate reloadTrackingView];
+                       }
+                       
+                   }
+                   failure:^(NSError *error) {
+                       [Alert presentError:error];
+                       [self stopActivity];
+                   }];
+    
+}
+
 - (void)postNewSupplementToBackendWithSupplement:(NSString *)supplement
 {
-    NSString *className = @"supplement"; // supplement
-    NSString *classNamePlural = [className stringByAppendingString:@"s"]; // supplements
+    NSString *className = @"supplement";
+    NSString *classNamePlural = [className stringByAppendingString:@"s"];
     
     [self startActivity];
     
     [ConnectionManager post:[@"/" stringByAppendingString: classNamePlural]
                      params:@{
-                              className: // supplement
+                              className:
                                   @{
-                                      @"name":supplement // new supplement
-                                      }
+                                      @"name": supplement
+                                  }
                               }
                     success:^(NSDictionary *response) {
                         
@@ -123,23 +152,14 @@
                         newSupp.updatedAt = [[response objectForKey:@"supplement"] objectForKey:@"updated_at"];
                         newSupp.userID = [[response objectForKey:@"supplement"] objectForKey:@"user_id"];
                         
-                        // TO-DO: Check for duplicates so supplement doesn't appear twice
-                        // De-select supplement if we want to uncheck it
                         if (self.selectedSupplementIDs == nil) {
                             self.selectedSupplementIDs = [[NSMutableArray alloc] init];
                         }
-                        
-                        if ([self.supplementsTableViewDataSource containsObject: newSupp]) {
-                            //
-                        } else {
-                            [self.supplementsTableViewDataSource addObject: newSupp];
-                        }
-                        
+
                         [self.selectedSupplementIDs addObject: newSupp.idNumber];
-                                                
-                        if ([self.delegate respondsToSelector: @selector(didSelectSupplementsWithTypes:)]) {
-                            [self.delegate didSelectSupplementsWithTypes: self.selectedSupplementIDs];
-                        }
+                        [self.supplementsTableViewDataSource addObject: newSupp];
+                        
+                        [self hitBackendWithSupplementsType: self.selectedSupplementIDs reloadSupplements: YES];
                         
                     }
                     failure:^(NSError *error) {
@@ -155,12 +175,12 @@
                     params:nil
                    success:^(NSDictionary *response) {
                        [Configuration loggedInWithResponse:response];
-                       
-                       [self.supplementsTableView reloadData];
+                       [self updateCell];
                        [self stopActivity];
                    }
                    failure:^(NSError *error) {
                        NSLog(@"Error: %@", [error localizedDescription]);
+                       [self stopActivity];
                    }
      ];
 }
@@ -190,8 +210,7 @@
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setTintColor: [UIColor ovatempAquaColor]];
     
-    SimpleSupplement *tempSupp = [self.supplementsTableViewDataSource objectAtIndex: indexPath.row];
-    if ([self.selectedSupplementIDs containsObject: tempSupp.idNumber]) {
+    if ([self.selectedSupplementIDs containsObject: cellSupp.idNumber]) {
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
     } else {
         [cell setAccessoryType:UITableViewCellAccessoryNone];
@@ -203,27 +222,24 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self.supplementsTableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryCheckmark) {
+        NSLog(@"ENTERED REMOVE CHECKMARK");
         [self.supplementsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
 
         SimpleSupplement *selectedSupp = [[SimpleSupplement alloc] init];
         selectedSupp = [self.supplementsTableViewDataSource objectAtIndex: indexPath.row];
         [self.selectedSupplementIDs removeObject: selectedSupp.idNumber];
         
-        if ([self.delegate respondsToSelector: @selector(didSelectSupplementsWithTypes:)]) {
-            [self.delegate didSelectSupplementsWithTypes: self.selectedSupplementIDs];
-        }
-        
     } else {
+        NSLog(@"ENTERED ADD CHECKMARK");
         [self.supplementsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
         
         SimpleSupplement *selectedSupp = [[SimpleSupplement alloc] init];
         selectedSupp = [self.supplementsTableViewDataSource objectAtIndex: indexPath.row];
         [self.selectedSupplementIDs addObject: selectedSupp.idNumber];
         
-        if ([self.delegate respondsToSelector: @selector(didSelectSupplementsWithTypes:)]) {
-            [self.delegate didSelectSupplementsWithTypes: self.selectedSupplementIDs];
-        }
     }
+    
+    [self hitBackendWithSupplementsType: self.selectedSupplementIDs reloadSupplements: NO];
 }
 
 #pragma mark - Appearance
@@ -234,6 +250,10 @@
     
     NSMutableArray *supplements = [[NSMutableArray alloc] init];
     NSMutableArray *supplementIDs = [[NSMutableArray alloc] initWithArray: selectedDay.supplementIds];
+    NSMutableString *supplementsString = [[NSMutableString alloc] init];
+    
+    NSLog(@"UPDATE CELL");
+    NSLog(@"SELECTED SUPPLEMENT IDS: %@", selectedDay.supplementIds);
     
     if ([selectedDay.supplements count] > 0) {
         
@@ -244,35 +264,37 @@
             simpleSupp.name = supp.name;
             simpleSupp.idNumber = supp.id;
             
-            if (![supplementIDs containsObject:simpleSupp]) {
-                [supplements addObject:simpleSupp];
-            }
+            [supplements addObject: simpleSupp];
             
+            if ([supplementIDs containsObject: simpleSupp.idNumber]) {
+                [supplementsString appendFormat: @"%@, ", simpleSupp.name];
+            }
         }
         
-        self.supplementsTableViewDataSource = supplements;
-        self.selectedSupplementIDs = supplementIDs;
+        if (supplementsString.length > 2) {
+            [supplementsString replaceCharactersInRange: NSMakeRange(supplementsString.length - 2, 2) withString: @""];
+        }
+        
+        self.supplementsTypeCollapsedLabel.text = supplementsString;
         
     } else {
 
         [self.supplementsTableViewDataSource removeAllObjects];
         [self.selectedSupplementIDs removeAllObjects];
         
-        // add supplements to array, just don't mark them as selected
         NSArray *suppArray = [[Supplement instances] allValues];
         for (Supplement *supp in suppArray) {
             SimpleSupplement *simpleSupp = [[SimpleSupplement alloc] init];
             simpleSupp.name = supp.name;
             simpleSupp.idNumber = supp.id;
             
-            if (![supplementIDs containsObject: simpleSupp]) {
-                [supplements addObject: simpleSupp];
-            }
+            [supplements addObject: simpleSupp];
         }
         
-        self.supplementsTableViewDataSource = [[NSMutableArray alloc] initWithArray: supplements];
-        self.selectedSupplementIDs = [[NSMutableArray alloc] initWithArray: supplementIDs];
     }
+    
+    self.supplementsTableViewDataSource = [[NSMutableArray alloc] initWithArray: supplements];
+    self.selectedSupplementIDs = [[NSMutableArray alloc] initWithArray: supplementIDs];
     
     [self.supplementsTableView reloadData];
 }
@@ -289,11 +311,12 @@
     if ([selectedDay.supplements count] > 0) {
         
         if ([selectedDay.supplementIds count] == 0) {
-            // no selected supplements
+            // Minimized, Without Data
             self.supplementsCollapsedLabel.hidden = YES;
             self.supplementsTypeCollapsedLabel.hidden = YES;
             self.placeholderLabel.hidden = NO;
         } else {
+            // Minimized, With Data
             self.supplementsCollapsedLabel.hidden = NO;
             self.supplementsTypeCollapsedLabel.hidden = NO;
             self.placeholderLabel.hidden = YES;
@@ -308,6 +331,8 @@
 
 - (void)setExpanded
 {
+    [self.supplementsTableView flashScrollIndicators];
+    
     self.infoButton.hidden = YES;
     self.addSupplementButton.hidden = NO;
     
@@ -317,7 +342,6 @@
     self.supplementsTypeCollapsedLabel.hidden = YES;
     self.placeholderLabel.hidden = YES;
     
-    [self.supplementsTableView flashScrollIndicators];
 }
 
 @end

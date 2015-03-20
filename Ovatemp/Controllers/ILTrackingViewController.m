@@ -1011,56 +1011,6 @@
     [self uploadWithParameters: params];
 }
 
-- (void)didSelectSupplementsWithTypes:(NSMutableArray *)types
-{
-    NSString *logName = @"SUPPLEMENTS TYPE";
-    NSString *attributeKey = @"supplement_ids";
-    NSMutableArray *attributeData = types;
-    NSString *notificationId = @"supplements";
-    NSNumber *indexPathRow = @10;
-    
-    BOOL skipReload = YES; // NO?
-    
-    NSLog(@"ILTrackingVC : UPLOADING %@", logName);
-    
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
-    
-    [attributes setObject: attributeData forKey: attributeKey];
-    [attributes setObject: self.selectedDate forKey: @"date"];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"%@_start_activity", notificationId] object: self];
-    
-    [ConnectionManager put:@"/days/"
-                    params:@{
-                             @"day": attributes,
-                             }
-                   success:^(NSDictionary *response) {
-                       
-                       NSLog(@"ILTrackingVC : UPLOADING %@ : SUCCESS", logName);
-                       [Cycle cycleFromResponse:response];
-                       [Calendar setDate: self.selectedDate];
-                       
-                       if (!skipReload) {
-                           self.selectedTableRowIndex = nil;
-                           [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: [indexPathRow integerValue] inSection: 0]]
-                                                 withRowAnimation: UITableViewRowAnimationAutomatic];
-                           
-                       }
-                       
-                       [[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"reload_supplements"] object: self];
-                       //[[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"%@_stop_activity", notificationId] object: self];
-                       
-                   }
-                   failure:^(NSError *error) {
-                       
-                       NSLog(@"ILTrackingVC : UPLOADING %@ : FAILURE", logName);
-                       [Alert presentError:error];
-                       
-                       [[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"%@_stop_activity", notificationId] object: self];
-                   }];
-    
-}
-
 - (void)presentViewControllerWithViewController:(UIViewController *)viewController
 {
     [self presentViewController: viewController animated: YES completion:nil];
@@ -1211,12 +1161,6 @@
     
     NSNumber *skipReloadNum = params[@"skip_reload"];
     BOOL skipReload = [skipReloadNum boolValue];
-    
-    NSNumber *minimizeNum = params[@"minimize"];
-    BOOL minimize = [skipReloadNum boolValue];
-    
-    NSNumber *reloadSupplementsNum = params[@"reload_supplements"];
-    BOOL reloadSupplements = [reloadSupplementsNum boolValue];
     
     NSLog(@"ILTrackingVC : UPLOADING %@", logName);
     
