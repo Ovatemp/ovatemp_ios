@@ -45,7 +45,8 @@
         [self.notesButton setImage:[UIImage imageNamed:@"icn_notes_empty"] forState:UIControlStateNormal];
     }
     
-    // in fertility window overrides
+    // IN FERTILITY WINDOW
+    // RETURNS OUT OF METHOD IF TRUE
     if (selectedDay.inFertilityWindow) {
         if ([selectedDay.cervicalFluid isEqualToString:@"eggwhite"]) {
             // peak fertiltity
@@ -103,6 +104,7 @@
         }
     }
     
+    // IF DAY = SPOTTING, COULD BE PERIOD OR COULD BE RANDOM
     // get day before selected date
     // if that object is in the datesWithPeriod array and day.cyclePhase is not period, set day.cyclePhase to period
     if ([selectedDay.period isEqualToString:@"spotting"]) {
@@ -123,7 +125,12 @@
         
     }
     
+    // CYCLE PHASES
+    
     if ([selectedDay.cyclePhase isEqualToString:@"period"]) {
+        
+        // CYCLE PHASE = PERIOD
+        
         self.notEnoughInfoLabel.hidden = YES;
         
         // set period, hide others
@@ -142,8 +149,13 @@
         self.enterMoreInfoLabel.hidden = NO;
         
     } else if ([selectedDay.cyclePhase isEqualToString:@"ovulation"]) { // fertile
-        // peak date
+        
+        // CYCLE PHASE = OVULATION
+        // FERTILE
+        
+        // PEAK DATE
         if ([selectedDate isEqual: peakDate]) {
+            
             self.peakLabel.text = @"PEAK";
             self.fertilityLabel.text = @"FERTILITY";
             
@@ -152,7 +164,7 @@
             self.notEnoughInfoLabel.hidden = YES;
             
             if (currentUserProfile.tryingToConceive) {
-                //                self.enterMoreInfoLabel.text = @"Let’s get it on!";
+                // conceive
                 self.enterMoreInfoLabel.text = @"Optimal conditions to make babies!";
                 self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_fertile"];
             } else {
@@ -167,7 +179,8 @@
             
             return;
             
-        } else { // just plain fertile
+        } else {
+            // just plain fertile
             self.periodLabel.text = @"FERTILE";
             self.periodLabel.hidden = NO;
             
@@ -175,6 +188,9 @@
             self.fertilityLabel.hidden = YES;
             self.notEnoughInfoLabel.hidden = YES;
         }
+        
+        // CYCLE PHASE = OVULATION
+        // FERTILE
         
         if (currentUserProfile.tryingToConceive) {
             // green fertility image
@@ -189,6 +205,9 @@
         self.enterMoreInfoLabel.hidden = NO;
         
     } else if ([selectedDay.cyclePhase isEqualToString:@"preovulation"]) { // not fertile
+        
+        // CYCLE PHASE = PRE-OVULATION
+        // NOT FERTILE
         
         if (currentUserProfile.tryingToConceive) {
             self.enterMoreInfoLabel.text = @"Fertile window about to open, check for Cervical Fluid";
@@ -215,6 +234,8 @@
         
         self.enterMoreInfoLabel.hidden = NO;
         
+        // FERTILE
+        
         if ([selectedDay.cervicalFluid isEqualToString:@"sticky"] && !currentUserProfile.tryingToConceive) {
             // reset everything to red fertile
             self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period-1"]; // I know it's not the period phase, my designer named the asset wrong
@@ -228,7 +249,12 @@
             self.enterMoreInfoLabel.text = @"Practice safe sex or avoid intercourse";
             self.enterMoreInfoLabel.hidden = NO;
         }
+        
     } else if ([selectedDay.cyclePhase isEqualToString:@"postovulation"]) { // not fertile
+        
+        // CYCLE PHASE = POST-OVULATION
+        // NOT FERTILE
+        
         self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_notfertile"];
         
         self.notEnoughInfoLabel.hidden = YES;
@@ -249,7 +275,10 @@
         
         self.enterMoreInfoLabel.hidden = NO;
         
-    } else { // not enough info?
+    } else {
+        
+        // NOT ENOUGH INFO
+        
         self.notEnoughInfoLabel.hidden = NO;
         self.periodLabel.hidden = YES;
         self.peakLabel.hidden = YES;

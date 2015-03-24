@@ -250,10 +250,19 @@
                               }
                    success:^(id response) {
                        
-                       [Cycle cycleFromResponse:response];
-                       self.day = [Day forDate:self.selectedDate];
+                       [Cycle cycleFromResponse: response];
+                       self.day = [Day forDate: self.selectedDate];
                        if (!self.day) {
                            self.day = [Day withAttributes:@{@"date": self.selectedDate, @"idate": self.selectedDate.dateId}];
+                       }
+                       
+                       NSDateFormatter* dtFormatter = [[NSDateFormatter alloc] init];
+                       [dtFormatter setLocale:[NSLocale systemLocale]];
+                       [dtFormatter setDateFormat:@"yyyy-MM-dd"];
+                       self.peakDate = [dtFormatter dateFromString:[response objectForKey: @"peak_date"]];
+                       
+                       if (![self.day.cyclePhase isEqualToString:@"period"]) {
+                           [self.datesWithPeriod removeObject: self.day.date];
                        }
                        
                        NSLog(@"REFRESH SUCCESS : RELOADING TABLE");
@@ -327,16 +336,6 @@
 
 - (IBAction)openCalendar:(id)sender
 {
-//    CalendarViewController *calendarViewController = [[CalendarViewController alloc] initWithNibName:@"CalendarViewController" bundle:nil];
-//    calendarViewController.title = @"Calendar";
-//    [Calendar setDate:self.selectedDate];
-    
-//    ILCalendarViewController *calendarVC = [self.storyboard instantiateViewControllerWithIdentifier: @"calendarViewController"];
-    
-//    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: calendarVC];
-//    navVC.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor ovatempDarkGreyTitleColor]};
-//    navVC.navigationBar.translucent = NO;
-    
     UINavigationController *navVC = [self.storyboard instantiateViewControllerWithIdentifier: @"navCalendarViewController"];
     ILCalendarViewController *calendarVC = navVC.childViewControllers[0];
     calendarVC.delegate = self;
@@ -615,9 +614,9 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    DateCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"dateCvCell" forIndexPath:indexPath];
-    
+    DateCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier: @"dateCvCell" forIndexPath:indexPath];
     NSDate *cellDate = [self.drawerDateData objectAtIndex:indexPath.row];
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setDateFormat:@"EEE"];
@@ -628,6 +627,7 @@
     cell.monthLabel.text = dayOfWeek;
     cell.dayLabel.text = day;
 
+    // MAKE CELL LARGER IF IS SELECTED
     if (indexPath.row == self.selectedIndexPath.row) {
         CGRect cellFrame = cell.frame;
         cellFrame.size.height = 54.0f;
@@ -640,10 +640,9 @@
         cell.frame = cellFrame;
     }
     
+    // CELL IS IN THE FUTURE
     if ([cellDate compare:[NSDate date]] == NSOrderedDescending) {
-        // celldate is in the future
         cell.statusImageView.image = [UIImage imageNamed:@"icn_dd_empty state_small"];
-        // change colors
         cell.monthLabel.textColor = [UIColor ovatempGreyColorForDateCollectionViewCells];
         cell.dayLabel.textColor = [UIColor ovatempGreyColorForDateCollectionViewCells];
         
@@ -651,16 +650,15 @@
     }
     
     for (NSDictionary *dayDict in self.daysFromBackend) {
+        
         NSDateFormatter *dtFormatter = [[NSDateFormatter alloc] init];
         [dtFormatter setLocale:[NSLocale systemLocale]];
         [dtFormatter setDateFormat:@"yyyy-MM-dd"];
         NSDate *dateFromBackend = [dtFormatter dateFromString:[dayDict objectForKey:@"date"]];
-        //        NSLog(@"cellDate:%@, dateFromBackend:%@", cellDate, dateFromBackend);
-        //        if ([cellDate compare:dateFromBackend] == NSOrderedSame) { // date of this cell was tracked
+        
         if ([[dtFormatter stringFromDate:cellDate] isEqualToString:[dtFormatter stringFromDate:dateFromBackend]]) {
-            //            NSLog(@"---dates are equal---");
+
             NSString *cyclePhase = [dayDict objectForKey:@"cycle_phase"];
-            
             BOOL useOldCyclePhase = YES;
             NSString *oldCyclePhase = cyclePhase;
             
@@ -712,9 +710,8 @@
                 
                 UserProfile *currentUserProfile = [UserProfile current];
                 
-                // in fertility window overrides
-                //                NSLog(@"%@", [dayDict objectForKey: @"in_fertility_window"]);
                 NSNumber *inFertilityWindowNumber = (NSNumber *)[dayDict objectForKey: @"in_fertility_window"];
+                
                 if ([inFertilityWindowNumber boolValue] == YES) {
                     if (currentUserProfile.tryingToConceive) {
                         // green fertility image
@@ -732,12 +729,15 @@
                 }
                 
                 if ([cyclePhase isEqualToString:@"period"]) { // if it's not null
+                    
                     cell.statusImageView.image = [UIImage imageNamed:@"icn_period"];
                     // change text color
                     cell.monthLabel.textColor = [UIColor whiteColor];
                     cell.dayLabel.textColor = [UIColor whiteColor];
                     return cell;
+                    
                 } else if ([cyclePhase isEqualToString:@"ovulation"]) { // fertile
+                    
                     if (currentUserProfile.tryingToConceive) {
                         // green fertility image
                         cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_fertile_small"];
@@ -748,7 +748,9 @@
                     cell.monthLabel.textColor = [UIColor whiteColor];
                     cell.dayLabel.textColor = [UIColor whiteColor];
                     return cell;
+                    
                 } else if ([cyclePhase isEqualToString:@"preovulation"]) { // not fertile
+                    
                     if (![[dayDict objectForKey:@"cervical_fluid"] isEqual:[NSNull null]]) {
                         if (([[dayDict objectForKey:@"cervical_fluid"] isEqualToString:@"dry"]) && !currentUserProfile.tryingToConceive) {
                             cell.statusImageView.image = [UIImage imageNamed:@"icn_dd_notfertile_small"];
@@ -765,11 +767,14 @@
                     cell.monthLabel.textColor = [UIColor whiteColor];
                     cell.dayLabel.textColor = [UIColor whiteColor];
                     return cell;
+                    
                 } else if ([cyclePhase isEqualToString:@"postovulation"]) { // not fertile
+                    
                     cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_small"];
                     cell.monthLabel.textColor = [UIColor whiteColor];
                     cell.dayLabel.textColor = [UIColor whiteColor];
                     return cell;
+                    
                 }
             }
         }
@@ -779,7 +784,6 @@
     cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_empty"];
     cell.monthLabel.textColor = [UIColor ovatempGreyColorForDateCollectionViewCells];
     cell.dayLabel.textColor = [UIColor ovatempGreyColorForDateCollectionViewCells];
-    
 
     return cell;
 }
@@ -823,9 +827,10 @@
     [self.drawerCollectionView reloadData];
     [self.drawerCollectionView.collectionViewLayout invalidateLayout];
     
-    [[self.drawerCollectionView cellForItemAtIndexPath:indexPath] setNeedsDisplay];
+    [[self.drawerCollectionView cellForItemAtIndexPath: indexPath] setNeedsDisplay];
     
     [self refreshTrackingView];
+    [self setTitleView];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
@@ -1042,26 +1047,37 @@
 
 - (void)didSelectDateInCalendar:(NSDate *)date
 {
-    if ([date compare:[NSDate date]] == NSOrderedDescending) {
-        // today is earlier than selected date, don't allow user to access that date
-        return;
+    [self dismissViewControllerAnimated: YES completion:^{
+        
+        NSIndexPath *indexPath = [self getIndexPathForDate: date];
+        [self collectionView: self.drawerCollectionView didSelectItemAtIndexPath: indexPath];
+        
+    }];
+    
+}
+
+- (NSIndexPath *)getIndexPathForDate:(NSDate *)date
+{
+    for (int i = 0; i < [self.drawerDateData count]; i++) {
+        
+        NSDate *drawerDate = self.drawerDateData[i];
+        
+        unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        
+        NSDateComponents *dateComponents = [calendar components: flags fromDate: date];
+        NSDateComponents *drawerDateComponents = [calendar components: flags fromDate: drawerDate];
+        
+        NSDate *dateOnly = [calendar dateFromComponents: dateComponents];
+        NSDate *drawerDateOnly = [calendar dateFromComponents: drawerDateComponents];
+        
+        
+        if ([drawerDateOnly isEqualToDate: dateOnly]) {
+            return [NSIndexPath indexPathForItem: i inSection: 0];
+        }
     }
     
-    if (self.selectedDate == date) {
-        // do nothing, select date is the date we're already on
-        return;
-    }
-    
-    self.selectedDate = date;
-    
-    //self.selectedIndexPath = indexPath;
-    //[self.drawerCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-    //[self.drawerCollectionView reloadData];
-    //[self.drawerCollectionView.collectionViewLayout invalidateLayout];
-    //[[self.drawerCollectionView cellForItemAtIndexPath:indexPath] setNeedsDisplay];
-    
-    [self refreshTrackingView];
-    [self dismissViewControllerAnimated: YES completion: nil];
+    return nil;
 }
 
 #pragma mark - Orientation/Cycle Chart

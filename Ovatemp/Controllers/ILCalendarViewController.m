@@ -12,6 +12,7 @@
 #import "Calendar.h"
 #import "UIColor+Traits.h"
 #import "ILCalendarCell.h"
+#import "UserProfile.h"
 
 @interface ILCalendarViewController () <TKCalendarDataSource,TKCalendarDelegate>
 
@@ -72,6 +73,8 @@
     self.calendarView.dataSource = self;
     self.calendarView.delegate = self;
     
+    
+    
     self.calendarView.minDate = [TKCalendar dateWithYear: 2014 month: 1 day: 1 withCalendar:nil];
     self.calendarView.maxDate = [NSDate date];
     
@@ -88,30 +91,60 @@
 
 #pragma mark - TKCalendar Data Source
 
-//- (NSArray *)calendar:(TKCalendar *)calendar eventsForDate:(NSDate *)date
-//{
-//    return nil;
-//}
-
 - (void)calendar:(TKCalendar *)calendar updateVisualsForCell:(TKCalendarCell *)cell;
 {
     if ([cell isKindOfClass:[TKCalendarDayCell class]]) {
-        ILCalendarCell *dayCell = (ILCalendarCell *)cell;
         
-        Day *day = [Day forDate: dayCell.date];
-        if(day) {
-            if(day.cervicalFluid) {
-                dayCell.dayType = CalendarDayTypePredictedFertile;
-            } else if(day.period) {
-                dayCell.dayType = CalendarDayTypePeriod;
-            }else{
-                dayCell.dayType = CalendarDayTypeNone;
+        ILCalendarCell *dayCell = (ILCalendarCell *)cell;
+        Day *selectedDay = [Day forDate: dayCell.date];
+        
+        UserProfile *currentUserProfile = [UserProfile current];
+        
+        // IN FERTILITY WINDOW
+        // RETURNS OUT OF METHOD IF TRUE
+        if (selectedDay.inFertilityWindow) {
+            dayCell.dayType = CalendarDayTypeFertile;
+            return;
+        }
+        
+        // CYCLE PHASES
+        if ([selectedDay.cyclePhase isEqualToString:@"period"]) {
+            
+            // CYCLE PHASE = PERIOD
+            dayCell.dayType = CalendarDayTypePeriod;
+            
+        } else if ([selectedDay.cyclePhase isEqualToString:@"ovulation"]) { // fertile
+            
+            // CYCLE PHASE = OVULATION
+            // FERTILE
+            dayCell.dayType = CalendarDayTypeFertile;
+            
+        } else if ([selectedDay.cyclePhase isEqualToString:@"preovulation"]) { // not fertile
+            
+            // CYCLE PHASE = PRE-OVULATION
+            // NOT FERTILE
+            dayCell.dayType = CalendarDayTypeNone;
+            
+            // FERTILE
+            if ([selectedDay.cervicalFluid isEqualToString:@"sticky"] && !currentUserProfile.tryingToConceive) {
+                dayCell.dayType = CalendarDayTypeFertile;
+                
             }
-        }else{
+            
+        } else if ([selectedDay.cyclePhase isEqualToString:@"postovulation"]) { // not fertile
+            
+            // CYCLE PHASE = POST-OVULATION
+            // NOT FERTILE
+            dayCell.dayType = CalendarDayTypeNone;
+            
+        } else {
+            
+            // NOT ENOUGH INFO
             dayCell.dayType = CalendarDayTypeNone;
         }
         
     }
+    
 }
 
 - (TKCalendarCell *)calendar:(TKCalendar *)calendar viewForCellOfKind:(TKCalendarCellType)cellType

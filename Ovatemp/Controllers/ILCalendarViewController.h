@@ -11,6 +11,7 @@
 
 @protocol ILCalendarViewControllerDelegate <NSObject>
 
+- (NSDate *)getPeakDate;
 - (void)didSelectDateInCalendar:(NSDate *)date;
 
 @end
