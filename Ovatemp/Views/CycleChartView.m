@@ -30,7 +30,8 @@
 
 @implementation CycleChartView
 
-- (IBAction)goBack:(id)sender {
+- (IBAction)goBack:(id)sender
+{
     // reset orientation
     [[UIDevice currentDevice] setValue:
      [NSNumber numberWithInteger: UIInterfaceOrientationPortrait]
@@ -38,7 +39,9 @@
     
     [[[[[UIApplication sharedApplication] delegate] window] rootViewController] dismissViewControllerAnimated:YES completion:nil];
 }
-- (IBAction)getInfo:(id)sender {
+
+- (IBAction)getInfo:(id)sender
+{
     UIAlertController *errorAlert = [UIAlertController
                                      alertControllerWithTitle:@""
                                      message:@"This chart displays your basal body temperature, period, cervical fluid, sex, and OPK over the course of your cycle. Your fertile window is shown as a green background on the chart."
@@ -54,13 +57,15 @@
     
 }
 
-- (void)setCycle:(Cycle *)cycle {
+- (void)setCycle:(Cycle *)cycle
+{
     _cycle = cycle;
     
     [self setNeedsDisplay];
 }
 
-- (void)layoutSubviews {
+- (void)layoutSubviews
+{
     [self calculateStyle:self.chartImageView.frame.size];
     
     [super layoutSubviews];
@@ -85,7 +90,8 @@
     self.chartImageView.image = [self drawChart:self.chartImageView.frame.size];
 }
 
-- (UIImageView *)imageViewWithName:(NSString *)name andFrame:(CGRect)frame {
+- (UIImageView *)imageViewWithName:(NSString *)name andFrame:(CGRect)frame
+{
     if(!name) { return nil; }
     
     UIImageView *imageView;
@@ -96,7 +102,8 @@
     return imageView;
 }
 
-- (void)calculateStyle:(CGSize)size {
+- (void)calculateStyle:(CGSize)size
+{
     canvasWidth = size.width;
     canvasHeight = size.height;
     
@@ -135,7 +142,8 @@
 // a) Directly on the Today chart in the temperature cell
 // b) In a modal that gets launched when the device is rotated to landscape on the today screen.
 //    this gets drawn into a UIImageView.
-- (UIImage *)drawChart:(CGSize)size {
+- (UIImage *)drawChart:(CGSize)size
+{
     NSArray *days = self.cycle.days;
     
     CGFloat minValue, maxValue;

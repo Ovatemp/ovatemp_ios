@@ -1356,9 +1356,7 @@
 				0692216D1AC0AF350004B850 /* ILCalendarViewController.m */,
 				0692216F1AC0CD530004B850 /* ILCalendarCell.h */,
 				069221701AC0CD530004B850 /* ILCalendarCell.m */,
-				5F1C9A2819EDE879000F1FC1 /* CalendarViewController.h */,
-				5F1C9A2919EDE879000F1FC1 /* CalendarViewController.m */,
-				5F1C9A2A19EDE879000F1FC1 /* CalendarViewController.xib */,
+				5F1C9A3519EDE879000F1FC1 /* CycleViewController.m */,
 			);
 			name = Tracking;
 			sourceTree = "<group>";
@@ -1366,6 +1364,9 @@
 		06FEA5C91A9D3002002BDFC2 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				5F1C9A2819EDE879000F1FC1 /* CalendarViewController.h */,
+				5F1C9A2919EDE879000F1FC1 /* CalendarViewController.m */,
+				5F1C9A2A19EDE879000F1FC1 /* CalendarViewController.xib */,
 				5F223F3219F03B480003AF64 /* SettingsTableViewController.h */,
 				5F223F3319F03B480003AF64 /* SettingsTableViewController.m */,
 				5F223F3419F03B480003AF64 /* SettingsTableViewController.xib */,
@@ -1375,7 +1376,6 @@
 				5F1C9A2619EDE879000F1FC1 /* BluetoothDeviceTableViewController.h */,
 				5F1C9A2719EDE879000F1FC1 /* BluetoothDeviceTableViewController.m */,
 				5F1C9A3419EDE879000F1FC1 /* CycleViewController.h */,
-				5F1C9A3519EDE879000F1FC1 /* CycleViewController.m */,
 				5F1C9A3E19EDE879000F1FC1 /* MainTabBarViewController.h */,
 				5F1C9A3F19EDE879000F1FC1 /* MainTabBarViewController.m */,
 				5F1C9A4019EDE879000F1FC1 /* MoreViewController.h */,

@@ -145,7 +145,7 @@
         
         self.selectedOvulationTestType = OvulationTestSelectionNegative;
         
-        self.ovulationTypeCollapsedLabel.text = @"Positive";
+        self.ovulationTypeCollapsedLabel.text = @"Negative";
         [self.ovulationTypeNegativeImageView setSelected:YES];
         [self.ovulationTypePositiveImageView setSelected:NO];
         self.ovulationTypeImageView.image = [UIImage imageNamed:@"icn_negative"];

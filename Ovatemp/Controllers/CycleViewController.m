@@ -56,7 +56,8 @@
   [self setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 }
 
-- (UIViewController *)viewControllerWithCycle:(Cycle *)cycle {
+- (UIViewController *)viewControllerWithCycle:(Cycle *)cycle
+{
   CycleChartView *chart = [[[NSBundle mainBundle] loadNibNamed:@"CycleChartView" owner:self options:nil] lastObject];
     chart.delegate = self;
 
