@@ -73,14 +73,11 @@
     self.calendarView.dataSource = self;
     self.calendarView.delegate = self;
     
-    
-    
-    self.calendarView.minDate = [TKCalendar dateWithYear: 2014 month: 1 day: 1 withCalendar:nil];
+    self.calendarView.minDate = [TKCalendar dateWithYear: 2014 month: 1 day: 1 withCalendar: nil];
     self.calendarView.maxDate = [NSDate date];
     
     self.calendarView.viewMode = TKCalendarViewModeMonth;
     self.calendarView.selectionMode = TKCalendarSelectionModeSingle;
-    //self.calendarView.backgroundColor = [UIColor colorWithRed: 245.0/255.0 green: 245.0/255.0 blue: 245.0/255.0 alpha: 1];
 
     TKCalendarMonthPresenter *presenter = (TKCalendarMonthPresenter *)self.calendarView.presenter;
     presenter.transitionMode = TKCalendarTransitionModeScroll;

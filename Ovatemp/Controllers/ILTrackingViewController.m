@@ -1077,7 +1077,7 @@
         }
     }
     
-    return nil;
+    return [NSIndexPath indexPathForItem: 0 inSection: 0];
 }
 
 #pragma mark - Orientation/Cycle Chart
