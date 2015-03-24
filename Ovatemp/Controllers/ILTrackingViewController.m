@@ -10,6 +10,7 @@
 
 #import "CycleViewController.h"
 #import "CalendarViewController.h"
+#import "ILCalendarViewController.h"
 #import "WebViewController.h"
 #import "TrackingNotesViewController.h"
 #import "ConnectionManager.h"
@@ -37,7 +38,7 @@
 
 @import HealthKit;
 
-@interface ILTrackingViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate,TrackingStatusCellDelegate,TrackingTemperatureCellDelegate,TrackingCervicalFluidCellDelegate,TrackingCervicalPositionCellDelegate,TrackingPeriodCellDelegate,TrackingIntercourseCellDelegate,TrackingMoodCellDelegate,TrackingSymptomsCellDelegate,TrackingOvulationTestCell,TrackingPregnancyCellDelegate,TrackingSupplementsCellDelegate,TrackingMedicinesCellDelegate,ONDODelegate>
+@interface ILTrackingViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate,TrackingStatusCellDelegate,TrackingTemperatureCellDelegate,TrackingCervicalFluidCellDelegate,TrackingCervicalPositionCellDelegate,TrackingPeriodCellDelegate,TrackingIntercourseCellDelegate,TrackingMoodCellDelegate,TrackingSymptomsCellDelegate,TrackingOvulationTestCell,TrackingPregnancyCellDelegate,TrackingSupplementsCellDelegate,TrackingMedicinesCellDelegate,ILCalendarViewControllerDelegate,ONDODelegate>
 
 @property (nonatomic) NSDate *selectedDate;
 @property (nonatomic) NSDate *peakDate;
@@ -326,13 +327,19 @@
 
 - (IBAction)openCalendar:(id)sender
 {
-    CalendarViewController *calendarViewController = [[CalendarViewController alloc] initWithNibName:@"CalendarViewController" bundle:nil];
-    calendarViewController.title = @"Calendar";
-    [Calendar setDate:self.selectedDate];
+//    CalendarViewController *calendarViewController = [[CalendarViewController alloc] initWithNibName:@"CalendarViewController" bundle:nil];
+//    calendarViewController.title = @"Calendar";
+//    [Calendar setDate:self.selectedDate];
     
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: calendarViewController];
-    navVC.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor ovatempDarkGreyTitleColor]};
-    navVC.navigationBar.translucent = NO;
+//    ILCalendarViewController *calendarVC = [self.storyboard instantiateViewControllerWithIdentifier: @"calendarViewController"];
+    
+//    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: calendarVC];
+//    navVC.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor ovatempDarkGreyTitleColor]};
+//    navVC.navigationBar.translucent = NO;
+    
+    UINavigationController *navVC = [self.storyboard instantiateViewControllerWithIdentifier: @"navCalendarViewController"];
+    ILCalendarViewController *calendarVC = navVC.childViewControllers[0];
+    calendarVC.delegate = self;
     
     [self presentViewController: navVC animated: YES completion: nil];
 }
@@ -1030,6 +1037,32 @@
 
 #pragma mark - TrackingSupplementsCell Delegate
 #pragma mark - TrackingMedicinesCell Delegate
+
+#pragma mark - ILCalendarView Delegate
+
+- (void)didSelectDateInCalendar:(NSDate *)date
+{
+    if ([date compare:[NSDate date]] == NSOrderedDescending) {
+        // today is earlier than selected date, don't allow user to access that date
+        return;
+    }
+    
+    if (self.selectedDate == date) {
+        // do nothing, select date is the date we're already on
+        return;
+    }
+    
+    self.selectedDate = date;
+    
+    //self.selectedIndexPath = indexPath;
+    //[self.drawerCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    //[self.drawerCollectionView reloadData];
+    //[self.drawerCollectionView.collectionViewLayout invalidateLayout];
+    //[[self.drawerCollectionView cellForItemAtIndexPath:indexPath] setNeedsDisplay];
+    
+    [self refreshTrackingView];
+    [self dismissViewControllerAnimated: YES completion: nil];
+}
 
 #pragma mark - Orientation/Cycle Chart
 

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0619A97F1AA4E32A000F31E6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */; };
+		0692216B1AC0AF160004B850 /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0692216A1AC0AF160004B850 /* TelerikUI.framework */; };
+		0692216E1AC0AF350004B850 /* ILCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0692216D1AC0AF350004B850 /* ILCalendarViewController.m */; };
+		069221711AC0CD530004B850 /* ILCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 069221701AC0CD530004B850 /* ILCalendarCell.m */; };
 		06C55B221AAF4BD600EDE74A /* ILTrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */; };
 		0EC9830B19AB8619009A5730 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC9830A19AB8619009A5730 /* HealthKit.framework */; };
 		5F1A3BF419F17614002FFA28 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F1A3BF319F17614002FFA28 /* Login.storyboard */; };
@@ -243,7 +246,6 @@
 		5F1C9C7219EDE87A000F1FC1 /* DayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C9B5919EDE87A000F1FC1 /* DayCell.m */; };
 		5F1C9C7319EDE87A000F1FC1 /* FertilityStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C9B5B19EDE87A000F1FC1 /* FertilityStatusView.m */; };
 		5F1C9C7419EDE87A000F1FC1 /* LifestyleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C9B5D19EDE87A000F1FC1 /* LifestyleCell.m */; };
-		5F1C9C7519EDE87A000F1FC1 /* MoreStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C9B5E19EDE87A000F1FC1 /* MoreStoryboard.storyboard */; };
 		5F1C9C7719EEE993000F1FC1 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C9C7619EEE993000F1FC1 /* Account.storyboard */; };
 		5F1C9C7A19EEEDF9000F1FC1 /* AccountMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C9C7919EEEDF9000F1FC1 /* AccountMainTableViewController.m */; };
 		5F1C9C7E19EEF344000F1FC1 /* AccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C9C7C19EEF343000F1FC1 /* AccountTableViewCell.m */; };
@@ -429,6 +431,11 @@
 
 /* Begin PBXFileReference section */
 		0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		0692216A1AC0AF160004B850 /* TelerikUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TelerikUI.framework; path = Library/Frameworks/TelerikUI.framework; sourceTree = DEVELOPER_DIR; };
+		0692216C1AC0AF340004B850 /* ILCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCalendarViewController.h; sourceTree = "<group>"; };
+		0692216D1AC0AF350004B850 /* ILCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCalendarViewController.m; sourceTree = "<group>"; };
+		0692216F1AC0CD530004B850 /* ILCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCalendarCell.h; sourceTree = "<group>"; };
+		069221701AC0CD530004B850 /* ILCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCalendarCell.m; sourceTree = "<group>"; };
 		06C55B201AAF4BD600EDE74A /* ILTrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTrackingViewController.h; sourceTree = "<group>"; };
 		06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTrackingViewController.m; sourceTree = "<group>"; };
 		0EC9830A19AB8619009A5730 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -774,7 +781,6 @@
 		5F1C9B5B19EDE87A000F1FC1 /* FertilityStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FertilityStatusView.m; sourceTree = "<group>"; };
 		5F1C9B5C19EDE87A000F1FC1 /* LifestyleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifestyleCell.h; sourceTree = "<group>"; };
 		5F1C9B5D19EDE87A000F1FC1 /* LifestyleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifestyleCell.m; sourceTree = "<group>"; };
-		5F1C9B5E19EDE87A000F1FC1 /* MoreStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MoreStoryboard.storyboard; sourceTree = "<group>"; };
 		5F1C9C7619EEE993000F1FC1 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		5F1C9C7819EEEDF9000F1FC1 /* AccountMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountMainTableViewController.h; sourceTree = "<group>"; };
 		5F1C9C7919EEEDF9000F1FC1 /* AccountMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountMainTableViewController.m; sourceTree = "<group>"; };
@@ -1064,6 +1070,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0692216B1AC0AF160004B850 /* TelerikUI.framework in Frameworks */,
 				C36C5103189028190053A884 /* UIKit.framework in Frameworks */,
 				5F1C9BA319EDE87A000F1FC1 /* libGoogleConversionTracking.a in Frameworks */,
 				C388C73B18FC45B800B622FB /* SystemConfiguration.framework in Frameworks */,
@@ -1283,7 +1290,6 @@
 				5F7AEA621A0122BB0053ABAB /* Tracking.storyboard */,
 				5F1C9C7619EEE993000F1FC1 /* Account.storyboard */,
 				5F1C9B5319EDE87A000F1FC1 /* CoachingStoryboard.storyboard */,
-				5F1C9B5E19EDE87A000F1FC1 /* MoreStoryboard.storyboard */,
 				5F1A3BF319F17614002FFA28 /* Login.storyboard */,
 			);
 			name = Storyboards;
@@ -1346,6 +1352,10 @@
 				06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */,
 				5F4C5B0A1A02C1CE00D0F465 /* TrackingNotesViewController.h */,
 				5F4C5B0B1A02C1CE00D0F465 /* TrackingNotesViewController.m */,
+				0692216C1AC0AF340004B850 /* ILCalendarViewController.h */,
+				0692216D1AC0AF350004B850 /* ILCalendarViewController.m */,
+				0692216F1AC0CD530004B850 /* ILCalendarCell.h */,
+				069221701AC0CD530004B850 /* ILCalendarCell.m */,
 				5F1C9A2819EDE879000F1FC1 /* CalendarViewController.h */,
 				5F1C9A2919EDE879000F1FC1 /* CalendarViewController.m */,
 				5F1C9A2A19EDE879000F1FC1 /* CalendarViewController.xib */,
@@ -2098,6 +2108,7 @@
 		C36C50FD189028190053A884 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0692216A1AC0AF160004B850 /* TelerikUI.framework */,
 				5F1C971A19EDD455000F1FC1 /* Security.framework */,
 				5F1C971819EDD44F000F1FC1 /* QuickLook.framework */,
 				5F1C971619EDD444000F1FC1 /* MobileCoreServices.framework */,
@@ -2301,7 +2312,6 @@
 				5F6561EE19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.xib in Resources */,
 				5F1C9C4F19EDE87A000F1FC1 /* Lube.png in Resources */,
 				5F1C9C2619EDE87A000F1FC1 /* Symptoms@2x.png in Resources */,
-				5F1C9C7519EDE87A000F1FC1 /* MoreStoryboard.storyboard in Resources */,
 				5F1C9C2D19EDE87A000F1FC1 /* Heavy.png in Resources */,
 				5F5160961A0AB46B00F4B74E /* TrackingCervicalFluidTableViewCell.xib in Resources */,
 				5F1C9C0919EDE87A000F1FC1 /* Icon60.png in Resources */,
@@ -2559,6 +2569,7 @@
 				5F428F511A44A62C00D78762 /* MPABTestDesignerTweakRequestMessage.m in Sources */,
 				5F1C9C5F19EDE87A000F1FC1 /* SharedRelation.m in Sources */,
 				5FE12F791A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.m in Sources */,
+				0692216E1AC0AF350004B850 /* ILCalendarViewController.m in Sources */,
 				5F1E1E211A103457001C22B7 /* TrackingOvulationTestTableViewCell.m in Sources */,
 				5F428F871A44A62C00D78762 /* UIImage+MPAverageColor.m in Sources */,
 				5F1C9C6219EDE87A000F1FC1 /* Symptom.m in Sources */,
@@ -2720,6 +2731,7 @@
 				5F428F601A44A62C00D78762 /* MPDesignerTrackMessage.m in Sources */,
 				5F1C9B6219EDE87A000F1FC1 /* NSObject+Analytics.m in Sources */,
 				5F1C9B9119EDE87A000F1FC1 /* Onboard1ViewController.m in Sources */,
+				069221711AC0CD530004B850 /* ILCalendarCell.m in Sources */,
 				5F1C9B9419EDE87A000F1FC1 /* QuizViewController.m in Sources */,
 				5F1C9B6719EDE87A000F1FC1 /* UIViewController+Analytics.m in Sources */,
 				5F428F421A44A62C00D78762 /* _MPTweakBindObserver.m in Sources */,
@@ -2826,7 +2838,10 @@
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/ThirdParty/HockeySDK.embeddedframework";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/ThirdParty/HockeySDK.embeddedframework",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2981,7 +2996,10 @@
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/ThirdParty/HockeySDK.embeddedframework";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/ThirdParty/HockeySDK.embeddedframework",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
@@ -3032,7 +3050,10 @@
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/ThirdParty/HockeySDK.embeddedframework";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/ThirdParty/HockeySDK.embeddedframework",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (

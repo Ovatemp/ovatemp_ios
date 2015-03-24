@@ -145,7 +145,7 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
     return;
     }
 
-    [Calendar setDate:date];
+    [Calendar setDate: date];
 
     // Go to day view controller
     [self.tabBarController setSelectedIndex:0];
