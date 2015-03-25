@@ -1,37 +1,22 @@
 PODS:
   - CCMPopup (1.0.0)
   - Expecta (0.3.2)
-  - GoogleAnalytics-iOS-SDK (3.10):
-    - GoogleAnalytics-iOS-SDK/Core (= 3.10)
-  - GoogleAnalytics-iOS-SDK/Core (3.10)
-  - GoogleConversionTracking (3.2.0)
-  - HockeySDK (3.6.2)
-  - Inflections (1.0.0):
-    - RegexKitLite
   - KIF (2.0.3)
-  - Mixpanel (2.7.2):
-    - Mixpanel/MPCategoryHelpers (= 2.7.2)
-  - Mixpanel/MPCategoryHelpers (2.7.2)
   - Nocilla (0.9.0)
   - OCMock (3.1.2)
   - Reachability (3.2)
-  - RegexKitLite (4.0)
   - Specta (0.3.2)
+  - TAOverlay (2.0.1)
 
 DEPENDENCIES:
   - CCMPopup
   - Expecta
-  - GoogleAnalytics-iOS-SDK
-  - GoogleConversionTracking
-  - HockeySDK
-  - Inflections
   - KIF (from `Podspecs/Kif.podspec`)
-  - Mixpanel
   - Nocilla
   - OCMock
   - Reachability
-  - RegexKitLite
   - Specta
+  - TAOverlay
 
 EXTERNAL SOURCES:
   KIF:
@@ -45,16 +30,11 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   CCMPopup: 698981d75a931ec5b40fe8cc1b85acb7d75c80ba
   Expecta: ee641011fe10aa1855d487b40e4976dac50ec342
-  GoogleAnalytics-iOS-SDK: f422062075d9ccb1ea8d783fc5ba3829461e9502
-  GoogleConversionTracking: 58f0f1a5c776b385862504a7483281d31ce573e7
-  HockeySDK: bfd1f5ac75938b07499c4ac12932244b72a2e70b
-  Inflections: 38689e8c1b1d0064566a865e8a8229f80a4bee87
-  KIF: 93babf4754a98f80ea9e56276ebcbcf26f658a0e
-  Mixpanel: def38b9e600f101686b8d647e05660a72c089c65
+  KIF: 25c0a730008377c6734f68d4fc3e3f462622127d
   Nocilla: 4d713c56e7357fd0cac0363854d4a58021ad3f41
   OCMock: ecdd510b73ef397f2f97274785c1e87fd147c49f
   Reachability: 1ef8adf5c4e3d362f96515d4278f68dad3c26930
-  RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   Specta: 698a58ffa5ec948327d3b92eab50ca58d7f4fbe8
+  TAOverlay: 3bcc6ce26218526b6284e07451935d2d7ff0cd07
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.0
