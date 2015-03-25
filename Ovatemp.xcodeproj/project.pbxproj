@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		060D180C1AC330FA00B7DBA2 /* ILCycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 060D180B1AC330FA00B7DBA2 /* ILCycleViewController.m */; };
 		0619A97F1AA4E32A000F31E6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */; };
 		0692216B1AC0AF160004B850 /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0692216A1AC0AF160004B850 /* TelerikUI.framework */; };
 		0692216E1AC0AF350004B850 /* ILCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0692216D1AC0AF350004B850 /* ILCalendarViewController.m */; };
 		069221711AC0CD530004B850 /* ILCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 069221701AC0CD530004B850 /* ILCalendarCell.m */; };
 		06C55B221AAF4BD600EDE74A /* ILTrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */; };
+		06F8FA4E1AC3619C006EC93F /* CycleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F8FA4D1AC3619C006EC93F /* CycleCollectionViewCell.m */; };
 		0EC9830B19AB8619009A5730 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC9830A19AB8619009A5730 /* HealthKit.framework */; };
 		5F1A3BF419F17614002FFA28 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F1A3BF319F17614002FFA28 /* Login.storyboard */; };
 		5F1C96C419EDD319000F1FC1 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C963519EDD319000F1FC1 /* libAdIdAccess.a */; };
@@ -430,6 +432,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		060D180A1AC330FA00B7DBA2 /* ILCycleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCycleViewController.h; sourceTree = "<group>"; };
+		060D180B1AC330FA00B7DBA2 /* ILCycleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCycleViewController.m; sourceTree = "<group>"; };
 		0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		0692216A1AC0AF160004B850 /* TelerikUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TelerikUI.framework; path = Library/Frameworks/TelerikUI.framework; sourceTree = DEVELOPER_DIR; };
 		0692216C1AC0AF340004B850 /* ILCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCalendarViewController.h; sourceTree = "<group>"; };
@@ -438,6 +442,8 @@
 		069221701AC0CD530004B850 /* ILCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCalendarCell.m; sourceTree = "<group>"; };
 		06C55B201AAF4BD600EDE74A /* ILTrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTrackingViewController.h; sourceTree = "<group>"; };
 		06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTrackingViewController.m; sourceTree = "<group>"; };
+		06F8FA4C1AC3619C006EC93F /* CycleCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleCollectionViewCell.h; sourceTree = "<group>"; };
+		06F8FA4D1AC3619C006EC93F /* CycleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleCollectionViewCell.m; sourceTree = "<group>"; };
 		0EC9830A19AB8619009A5730 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		259EFE437AEE5D2421AD121C /* Pods-OvatempTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F1A3BF319F17614002FFA28 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -1275,6 +1281,15 @@
 			name = Community;
 			sourceTree = "<group>";
 		};
+		06F8FA4B1AC36187006EC93F /* CollectionView Cells */ = {
+			isa = PBXGroup;
+			children = (
+				06F8FA4C1AC3619C006EC93F /* CycleCollectionViewCell.h */,
+				06F8FA4D1AC3619C006EC93F /* CycleCollectionViewCell.m */,
+			);
+			name = "CollectionView Cells";
+			sourceTree = "<group>";
+		};
 		06FEA5C31A9CF928002BDFC2 /* TableView Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1356,6 +1371,9 @@
 				0692216D1AC0AF350004B850 /* ILCalendarViewController.m */,
 				0692216F1AC0CD530004B850 /* ILCalendarCell.h */,
 				069221701AC0CD530004B850 /* ILCalendarCell.m */,
+				060D180A1AC330FA00B7DBA2 /* ILCycleViewController.h */,
+				060D180B1AC330FA00B7DBA2 /* ILCycleViewController.m */,
+				5F1C9A3419EDE879000F1FC1 /* CycleViewController.h */,
 				5F1C9A3519EDE879000F1FC1 /* CycleViewController.m */,
 			);
 			name = Tracking;
@@ -1375,7 +1393,6 @@
 				5F223F2F19F014620003AF64 /* ProfileTableViewController.xib */,
 				5F1C9A2619EDE879000F1FC1 /* BluetoothDeviceTableViewController.h */,
 				5F1C9A2719EDE879000F1FC1 /* BluetoothDeviceTableViewController.m */,
-				5F1C9A3419EDE879000F1FC1 /* CycleViewController.h */,
 				5F1C9A3E19EDE879000F1FC1 /* MainTabBarViewController.h */,
 				5F1C9A3F19EDE879000F1FC1 /* MainTabBarViewController.m */,
 				5F1C9A4019EDE879000F1FC1 /* MoreViewController.h */,
@@ -1943,6 +1960,7 @@
 		5F1C9B4A19EDE87A000F1FC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				06F8FA4B1AC36187006EC93F /* CollectionView Cells */,
 				06FEA5C41A9CFA4C002BDFC2 /* Storyboards */,
 				06FEA5C31A9CF928002BDFC2 /* TableView Cells */,
 				06FEA5CA1A9D302B002BDFC2 /* Other */,
@@ -2628,6 +2646,7 @@
 				5F428F861A44A62C00D78762 /* UIColor+MPColor.m in Sources */,
 				5F1C9B6D19EDE87A000F1FC1 /* Alert.m in Sources */,
 				5F1E1D8F1A0DABFA001C22B7 /* TrackingSymptomsTableViewCell.m in Sources */,
+				060D180C1AC330FA00B7DBA2 /* ILCycleViewController.m in Sources */,
 				5F1C9B6019EDE87A000F1FC1 /* NSDate+CalendarOps.m in Sources */,
 				5F1C9B9D19EDE87A000F1FC1 /* TodayViewController.m in Sources */,
 				5F428F4C1A44A62C00D78762 /* MPABTestDesignerDeviceInfoRequestMessage.m in Sources */,
@@ -2694,6 +2713,7 @@
 				5F428F5B1A44A62C00D78762 /* MPClassDescription.m in Sources */,
 				5FE118441A191C5100AC76A7 /* SimpleSupplement.m in Sources */,
 				5F428F801A44A62C00D78762 /* MPVariant.m in Sources */,
+				06F8FA4E1AC3619C006EC93F /* CycleCollectionViewCell.m in Sources */,
 				5F428F551A44A62C00D78762 /* MPCATransform3DToNSDictionaryValueTransformer.m in Sources */,
 				5F428F831A44A62C00D78762 /* NSInvocation+MPHelpers.m in Sources */,
 				5F428F691A44A62C00D78762 /* MPObjectSelector.m in Sources */,

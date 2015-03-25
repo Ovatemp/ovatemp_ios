@@ -43,10 +43,12 @@
 - (void)orientationChanged:(NSNotification *)notification
 {
   if (!self.cycleViewController) {
-    self.cycleViewController = [[CycleViewController alloc] init];
-    self.cycleViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+      self.cycleViewController = [[CycleViewController alloc] init];
+//      UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Tracking" bundle: nil];
+//      self.cycleViewController = [storyboard instantiateViewControllerWithIdentifier: @"ilcycleNavViewController"];
+      self.cycleViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
   }
-
+    
   BOOL isAnimating = self.cycleViewController.isBeingPresented || self.cycleViewController.isBeingDismissed;
 
   UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;

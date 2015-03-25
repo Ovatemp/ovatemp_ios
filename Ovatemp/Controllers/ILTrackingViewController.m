@@ -9,6 +9,7 @@
 #import "ILTrackingViewController.h"
 
 #import "CycleViewController.h"
+#import "ILCycleViewController.h"
 #import "CalendarViewController.h"
 #import "ILCalendarViewController.h"
 #import "WebViewController.h"
@@ -332,6 +333,10 @@
 {
     // Don't present the chart here, just change device orientation and let the notification for changed orientation take care of presenting the view.
     [[UIDevice currentDevice] setValue: [NSNumber numberWithInteger: UIInterfaceOrientationLandscapeLeft] forKey:@"orientation"];
+    
+//    ILCycleViewController *cycleVC = [self.storyboard instantiateViewControllerWithIdentifier: @"ilcycleNavViewController"];
+//    [self presentViewController: cycleVC animated: YES completion: nil];
+    
 }
 
 - (IBAction)openCalendar:(id)sender
