@@ -17,6 +17,7 @@
 @interface ILCycleViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic) TKChart *chartView;
+@property (nonatomic) NSMutableArray *temperatureData;
 
 @end
 
@@ -27,6 +28,8 @@
     [super viewDidLoad];
 
     [self customizeAppearance];
+    
+    [self setUpChartData];
     [self setUpChart];
 }
 
@@ -72,11 +75,52 @@
 
 - (void)customizeAppearance
 {
-    self.title = @"Cycle Chart View";
+    self.title = self.selectedCycle.rangeString;
     [self.navigationController.navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName : [UIColor darkGrayColor]}];
     
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemDone target: self action: @selector(didSelectDoneButton)];
     self.navigationItem.rightBarButtonItem = doneButton;
+}
+
+- (void)setUpChartData
+{
+    self.temperatureData = [[NSMutableArray alloc] init];
+    
+    NSArray *days = self.selectedCycle.days;
+    
+    // ADD EXISTING DAYS TO TEMP. DATA
+    for (int i = 0; i < [days count]; i++) {
+        
+        Day *day = days[i];
+        CGFloat temperature;
+        
+        if (!day.temperature || [day.temperature floatValue] == 0) {
+            temperature = 0;
+        }
+        
+        if ([[NSUserDefaults standardUserDefaults] boolForKey: @"temperatureUnitPreferenceFahrenheit"]) {
+            temperature = [day.temperature floatValue];
+            
+        } else {
+            temperature = (([day.temperature floatValue] - 32) / 1.8000f);
+        }
+        
+        [self.temperatureData addObject: [[TKChartDataPoint alloc] initWithX: @(i+1) Y: @(temperature)]];
+        
+    }
+    
+    // FILL OUT REMAINDER OF CYCLE
+    if ([days count] < 30) {
+        for (NSInteger i = [days count]; i < 30; i++) {
+            [self.temperatureData addObject:[[TKChartDataPoint alloc] initWithX: @(i+1) Y: @(0)]];
+        }
+    }
+    
+}
+
+- (void)setUpCollectionViewsData
+{
+    
 }
 
 - (void)setUpChart
@@ -84,15 +128,10 @@
     self.chartView = [[TKChart alloc] init];
     self.chartView.translatesAutoresizingMaskIntoConstraints = NO;
 
-    NSMutableArray *randomNumericData = [[NSMutableArray alloc] init];
-    for (int i = 1; i <= 30; i++) {
-        [randomNumericData addObject:[[TKChartDataPoint alloc] initWithX:@(i) Y:@(arc4random()%100)]];
-    }
-    
-    TKChartLineSeries *series = [[TKChartLineSeries alloc] initWithItems: randomNumericData];
+    TKChartLineSeries *series = [[TKChartLineSeries alloc] initWithItems: self.temperatureData];
     series.style.palette = [[TKChartPalette alloc] init];
     TKChartPaletteItem *palleteItem = [[TKChartPaletteItem alloc] init];
-    palleteItem.stroke = [TKStroke strokeWithColor: [UIColor darkGrayColor] width: 1.5];
+    palleteItem.stroke = [TKStroke strokeWithColor: [UIColor darkGrayColor] width: 1];
     [series.style.palette addPaletteItem: palleteItem];
     
     series.style.pointShape = [TKPredefinedShape shapeWithType: TKShapeTypeCircle andSize: CGSizeMake(8, 8)];
@@ -104,8 +143,10 @@
 
     [self.chartView addSeries: series];
     
-    TKStroke *stroke = [TKStroke strokeWithColor:[UIColor purpleColor] width: 3];
-    [self.chartView addAnnotation: [[TKChartGridLineAnnotation alloc] initWithValue: @50 forAxis: self.chartView.yAxis withStroke: stroke]];
+    if (self.selectedCycle.coverline) {
+        TKStroke *stroke = [TKStroke strokeWithColor:[UIColor purpleColor] width: 2];
+        [self.chartView addAnnotation: [[TKChartGridLineAnnotation alloc] initWithValue: self.selectedCycle.coverline forAxis: self.chartView.yAxis withStroke: stroke]];
+    }
     
     self.chartView.title.hidden = YES;
     self.chartView.legend.hidden = YES;
