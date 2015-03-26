@@ -12,7 +12,8 @@
 #import "RootViewController.h"
 #import "SubscriptionHelper.h"
 #import <CoreData/CoreData.h>
-#import "Reachability.h"
+
+#import <Reachability/Reachability.h>
 
 @implementation AppDelegate
 

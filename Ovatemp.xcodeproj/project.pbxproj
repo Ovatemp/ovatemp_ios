@@ -16,10 +16,6 @@
 		06F8FA4E1AC3619C006EC93F /* CycleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F8FA4D1AC3619C006EC93F /* CycleCollectionViewCell.m */; };
 		0EC9830B19AB8619009A5730 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC9830A19AB8619009A5730 /* HealthKit.framework */; };
 		5F1A3BF419F17614002FFA28 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F1A3BF319F17614002FFA28 /* Login.storyboard */; };
-		5F1C970E19EDD31A000F1FC1 /* NSString+Inflections.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C96B919EDD319000F1FC1 /* NSString+Inflections.m */; };
-		5F1C970F19EDD31A000F1FC1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C96BB19EDD319000F1FC1 /* .gitignore */; };
-		5F1C971019EDD31A000F1FC1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C96BD19EDD319000F1FC1 /* Reachability.m */; };
-		5F1C971119EDD31A000F1FC1 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C96BF19EDD319000F1FC1 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5F1C971319EDD42D000F1FC1 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C971219EDD42D000F1FC1 /* AssetsLibrary.framework */; };
 		5F1C971519EDD433000F1FC1 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C971419EDD433000F1FC1 /* CoreText.framework */; };
 		5F1C971719EDD444000F1FC1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C971619EDD444000F1FC1 /* MobileCoreServices.framework */; };
@@ -369,13 +365,6 @@
 		0EC9830A19AB8619009A5730 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		259EFE437AEE5D2421AD121C /* Pods-OvatempTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F1A3BF319F17614002FFA28 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		5F1C96B819EDD319000F1FC1 /* NSString+Inflections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Inflections.h"; sourceTree = "<group>"; };
-		5F1C96B919EDD319000F1FC1 /* NSString+Inflections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Inflections.m"; sourceTree = "<group>"; };
-		5F1C96BB19EDD319000F1FC1 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		5F1C96BC19EDD319000F1FC1 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		5F1C96BD19EDD319000F1FC1 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		5F1C96BE19EDD319000F1FC1 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
-		5F1C96BF19EDD319000F1FC1 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		5F1C971219EDD42D000F1FC1 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		5F1C971419EDD433000F1FC1 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		5F1C971619EDD444000F1FC1 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -1202,23 +1191,8 @@
 		5F1C961219EDD319000F1FC1 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
-				5F1C96B819EDD319000F1FC1 /* NSString+Inflections.h */,
-				5F1C96B919EDD319000F1FC1 /* NSString+Inflections.m */,
-				5F1C96BA19EDD319000F1FC1 /* Reachability */,
-				5F1C96BE19EDD319000F1FC1 /* RegexKitLite.h */,
-				5F1C96BF19EDD319000F1FC1 /* RegexKitLite.m */,
 			);
 			path = ThirdParty;
-			sourceTree = "<group>";
-		};
-		5F1C96BA19EDD319000F1FC1 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				5F1C96BB19EDD319000F1FC1 /* .gitignore */,
-				5F1C96BC19EDD319000F1FC1 /* Reachability.h */,
-				5F1C96BD19EDD319000F1FC1 /* Reachability.m */,
-			);
-			path = Reachability;
 			sourceTree = "<group>";
 		};
 		5F1C99C919EDE775000F1FC1 /* ONDOSDK */ = {
@@ -1976,7 +1950,6 @@
 				5F1C9C7719EEE993000F1FC1 /* Account.storyboard in Resources */,
 				5F1C9C2B19EDE87A000F1FC1 /* OvatempIcon.png in Resources */,
 				5F1C9C2219EDE87A000F1FC1 /* Moody@2x.png in Resources */,
-				5F1C970F19EDD31A000F1FC1 /* .gitignore in Resources */,
 				5F1C9C3019EDE87A000F1FC1 /* Light@2x.png in Resources */,
 				5F1C9C4219EDE87A000F1FC1 /* community_selected@2x.png in Resources */,
 				5F1C9C2A19EDE87A000F1FC1 /* MoreTryingToConceive@2x.png in Resources */,
@@ -2121,7 +2094,6 @@
 				5FE1184C1A1ABFF700AC76A7 /* WelcomeAlarmViewController.m in Sources */,
 				5F1C9B6519EDE87A000F1FC1 /* UIColor+Traits.m in Sources */,
 				5F5160951A0AB46B00F4B74E /* TrackingCervicalFluidTableViewCell.m in Sources */,
-				5F1C970E19EDD31A000F1FC1 /* NSString+Inflections.m in Sources */,
 				5F1C9C8819EF16DB000F1FC1 /* ONDOViewController.m in Sources */,
 				5F6561E819FAD836001FB509 /* EditDateOfBirthTableViewCell.m in Sources */,
 				5F51609A1A0AB48600F4B74E /* TrackingCervicalPositionTableViewCell.m in Sources */,
@@ -2170,7 +2142,6 @@
 				5F8C568E19F184C60024552A /* SelectLogInOrSignUpViewController.m in Sources */,
 				5FDAA3AB19F8020F004E7181 /* CycleLengthTableViewCell.m in Sources */,
 				5F1C9C6D19EDE87A000F1FC1 /* CoachingMenuCell.m in Sources */,
-				5F1C971019EDD31A000F1FC1 /* Reachability.m in Sources */,
 				5F1E1E261A110116001C22B7 /* TrackingPregnancyTestTableViewCell.m in Sources */,
 				5F1C9C6B19EDE87A000F1FC1 /* CheckCell.m in Sources */,
 				5F1C9B7019EDE87A000F1FC1 /* DayCellEditView.m in Sources */,
@@ -2214,7 +2185,6 @@
 				5F1C9B8A19EDE87A000F1FC1 /* DelegatingNavigationViewController.m in Sources */,
 				5F1C9B8919EDE87A000F1FC1 /* CycleViewController.m in Sources */,
 				5F1C9B6319EDE87A000F1FC1 /* NSObject+ClassForProperty.m in Sources */,
-				5F1C971119EDD31A000F1FC1 /* RegexKitLite.m in Sources */,
 				5FCD68B219F942920091C492 /* HeightTableViewCell.m in Sources */,
 				5F1C9C6319EDE87A000F1FC1 /* User.m in Sources */,
 				5F1C9C5E19EDE87A000F1FC1 /* Question.m in Sources */,
@@ -2308,7 +2278,10 @@
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_FRAMEWORKS_DIR)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2326,6 +2299,7 @@
 					"$(PROJECT_DIR)/Ovatemp/Frameworks",
 				);
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-ObjC",
 					"-licucore",
 					"-lsqlite3",
@@ -2457,7 +2431,10 @@
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_FRAMEWORKS_DIR)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
@@ -2467,6 +2444,7 @@
 					"$(PROJECT_DIR)/Ovatemp/Frameworks",
 				);
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-ObjC",
 					"-licucore",
 					"-lsqlite3",
@@ -2505,7 +2483,10 @@
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_FRAMEWORKS_DIR)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2523,6 +2504,7 @@
 					"$(PROJECT_DIR)/Ovatemp/Frameworks",
 				);
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-ObjC",
 					"-licucore",
 					"-lsqlite3",
