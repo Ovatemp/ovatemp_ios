@@ -13,6 +13,7 @@
 //#import "ProfileTableViewController.h"
 #import "UserProfileReadOnlyViewController.h"
 #import "SettingsTableViewController.h"
+#import "Helpshift.h"
 
 @interface AccountMainTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -122,6 +123,7 @@ NSArray *accountMenuItems;
 //            [self.navigationController pushViewController:profileVC animated:YES];
             UserProfileReadOnlyViewController *profileVC = [[UserProfileReadOnlyViewController alloc] init];
             [self.navigationController pushViewController:profileVC animated:YES];
+    
             break;
         }
             
@@ -141,10 +143,13 @@ NSArray *accountMenuItems;
             
         case 3: // Help
         {
-            NSString *url = @"http://ovatemp.helpshift.com/a/ovatemp/";
-            WebViewController *webViewController = [WebViewController withURL:url];
-            webViewController.title = @"Help";
-            [self.navigationController pushViewController:webViewController animated:YES];
+//            NSString *url = @"http://ovatemp.helpshift.com/a/ovatemp/";
+//            WebViewController *webViewController = [WebViewController withURL:url];
+//            webViewController.title = @"Help";
+//            [self.navigationController pushViewController:webViewController animated:YES];
+            
+            [[Helpshift sharedInstance] showFAQs: self withOptions:nil];
+            
             break;
         }
             

@@ -3,6 +3,7 @@ platform :ios, "7.0"
 target :Ovatemp do
   pod "Inflections", inhibit_warnings: true
   pod "Reachability", inhibit_warnings: true
+  pod "Helpshift"
 end
 
 target :OvatempTests, exclusive: true do

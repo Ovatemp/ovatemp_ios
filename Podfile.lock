@@ -1,5 +1,6 @@
 PODS:
   - Expecta (0.3.2)
+  - Helpshift (4.10.2)
   - Inflections (1.0.0):
     - RegexKitLite
   - KIF (2.0.3)
@@ -11,6 +12,7 @@ PODS:
 
 DEPENDENCIES:
   - Expecta
+  - Helpshift
   - Inflections
   - KIF (from `Podspecs/Kif.podspec`)
   - Nocilla
@@ -29,6 +31,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Expecta: ee641011fe10aa1855d487b40e4976dac50ec342
+  Helpshift: 9c84a5e4ffd881c7e7eb395c2afc8d6a46eb2187
   Inflections: 38689e8c1b1d0064566a865e8a8229f80a4bee87
   KIF: 25c0a730008377c6734f68d4fc3e3f462622127d
   Nocilla: 4d713c56e7357fd0cac0363854d4a58021ad3f41

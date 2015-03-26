@@ -12,8 +12,8 @@
 #import "RootViewController.h"
 #import "SubscriptionHelper.h"
 #import <CoreData/CoreData.h>
-
 #import <Reachability/Reachability.h>
+#import "Helpshift.h"
 
 @implementation AppDelegate
 
@@ -33,9 +33,7 @@
     
     [self setupReachability];
     [self setupHealthKit];
-    
-    // Ping the in app purchase helper so we start getting notifications
-    [SubscriptionHelper sharedInstance];
+    [self setUpHelpshift];
     
     // Ping the in app purchase helper so we start getting notifications
     [SubscriptionHelper sharedInstance];
@@ -77,6 +75,15 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [self saveContext];
+}
+
+#pragma mark - Helpshift
+
+- (void)setUpHelpshift
+{
+    [Helpshift installForApiKey: @"c70867a0d520ce013be96501db20b631"
+                        domainName: @"ovatemp.helpshift.com"
+                          appID: @"ovatemp_platform_20130926211159051-f26e2f42401fd8c"];
 }
 
 # pragma mark - HealthKit
