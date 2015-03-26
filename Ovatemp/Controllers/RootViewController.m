@@ -19,11 +19,6 @@
 #import "TrackingViewController.h"
 #import "TrackingNavigationController.h"
 
-#import "GAI.h"
-#import "ACTReporter.h"
-#import <HockeySDK/HockeySDK.h>
-#import "Mixpanel.h"
-
 static CGFloat const kDissolveDuration = 0.2;
 
 @interface RootViewController () {
@@ -44,10 +39,6 @@ static CGFloat const kDissolveDuration = 0.2;
     [self configureTabBarAppearance];
     
     // Setup 3rd party libraries
-    [self configureAnalytics];
-    [self configureHockey];
-    
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(logOutWithUnauthorized)
                                                  name:kUnauthorizedRequestNotification object:nil];
@@ -259,26 +250,5 @@ static CGFloat const kDissolveDuration = 0.2;
 }
 
 # pragma mark - 3rd party librarys
-
-- (void)configureAnalytics {
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
-    [[GAI sharedInstance] trackerWithTrackingId:kGoogleAnalyticsTrackingID];
-    
-    [ACTConversionReporter reportWithConversionID:kGoogleAdwordsConversionID
-                                            label:kGoogleAdwordsConversionLabel
-                                            value:@"0.000000"
-                                     isRepeatable:NO];
-    
-    [Mixpanel sharedInstanceWithToken:kMixpanelToken];
-}
-
-- (void)configureHockey {
-#ifndef DEBUG
-    BITHockeyManager *hockey = [BITHockeyManager sharedHockeyManager];
-    [hockey configureWithIdentifier:kHockeyIdentifier];
-    [hockey startManager];
-    [hockey.authenticator authenticateInstallation];
-#endif
-}
 
 @end

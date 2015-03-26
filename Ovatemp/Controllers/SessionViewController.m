@@ -12,15 +12,12 @@
 #import "WebViewController.h"
 #import "User.h"
 
-#import "Mixpanel.h"
-
 @implementation SessionViewController
 
 # pragma mark - Setup
 
 - (void)viewDidAppear:(BOOL)animated {
   [self addKeyboardObservers];
-  [self trackScreenView:@"Login"];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -48,12 +45,8 @@
 - (void)signedUp:(NSDictionary *)response {
   [self stopLoading];
   NSNumber *userID = response[@"user"][@"id"];
-  Mixpanel *mixpanel = [Mixpanel sharedInstance];
-  [mixpanel createAlias:userID.stringValue forDistinctID:mixpanel.distinctId];
 
   [Configuration loggedInWithResponse:response];
-
-  [self trackEvent:@"Signed Up" action:nil label:nil value:nil];
 
   [self performSegueWithIdentifier:@"SignUpToProfile1" sender:nil];
 }

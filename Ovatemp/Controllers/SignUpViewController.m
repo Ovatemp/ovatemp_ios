@@ -12,8 +12,6 @@
 #import "UserProfile.h"
 #import "UIViewController+UserProfileHelpers.h"
 
-#import "Mixpanel.h"
-
 #define EMAIL_REGEX @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
 
 @interface SignUpViewController () <UITextViewDelegate>
@@ -149,13 +147,9 @@
 - (void)signedUp:(NSDictionary *)response {
     [self stopLoading];
     NSNumber *userID = response[@"user"][@"id"];
-    Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    [mixpanel createAlias:userID.stringValue forDistinctID:mixpanel.distinctId];
     
     [Configuration loggedInWithResponse:response];
-    
-    [self trackEvent:@"Signed Up" action:nil label:nil value:nil];
-    
+        
     // profile has been created successfully, set name
     [UserProfile current].fullName = self.fullNameField.text;
     [[UserProfile current] save];

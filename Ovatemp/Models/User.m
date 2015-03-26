@@ -9,9 +9,6 @@
 #import "User.h"
 #import "UserProfile.h"
 
-#import "GAI.h"
-#import "Mixpanel.h"
-
 static User *_currentUser;
 
 @implementation User
@@ -24,13 +21,7 @@ static User *_currentUser;
   _currentUser = user;
 
   if (user.id && !user.id.isNull) {
-    // Log user id in Google Analytics
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:@"&uid" value:user.id.stringValue];
-
-    Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    [mixpanel identify:user.id.stringValue];
-
+    
     NSMutableDictionary *profileProperties = [NSMutableDictionary dictionaryWithCapacity:5];
     profileProperties[@"User ID"] = user.id.stringValue;
 
@@ -57,9 +48,6 @@ static User *_currentUser;
       profileProperties[@"Age"] = @(age).stringValue;
     }
 
-    if (profileProperties.count) {
-      [mixpanel.people set:profileProperties];
-    }
   }
 }
 

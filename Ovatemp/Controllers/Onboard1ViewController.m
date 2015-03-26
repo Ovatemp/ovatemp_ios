@@ -37,7 +37,6 @@
     [self.firstDay save];
     self.firstDay = nil;
   }
-  [self trackScreenView:@"Signup Screen 1"];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

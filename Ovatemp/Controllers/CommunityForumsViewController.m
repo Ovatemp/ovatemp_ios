@@ -71,7 +71,6 @@ static CGFloat const kDesaturateBy = 0.22;
     //self.navigationController.navigationBar.tintColor = DARK;
     //self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: DARK};
     
-    [self trackScreenView:@"Community"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -120,7 +119,6 @@ static CGFloat const kDesaturateBy = 0.22;
     NSString *url = [API_URL stringByAppendingFormat:@"/community?%@", apiParams];
     CommunityForumViewController *forumViewController = [CommunityForumViewController withURL:url];
     forumViewController.navigationItem.title = _selectedForum[kForumName];
-    [forumViewController trackScreenView];
 
     self.navigationController.navigationBar.barTintColor = [tableView cellForRowAtIndexPath:indexPath].backgroundColor;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];

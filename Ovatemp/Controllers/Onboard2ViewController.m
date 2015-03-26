@@ -33,7 +33,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
   [self addKeyboardObservers];
-  [self trackScreenView:@"Signup Screen 1"];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

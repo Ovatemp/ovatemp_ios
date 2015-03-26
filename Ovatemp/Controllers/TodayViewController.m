@@ -153,7 +153,6 @@
     
     self.day = nil;
     [self dateChanged];
-    [self trackScreenView:@"Today"];
     
     if ([ONDO sharedInstance].devices.count > 0) {
         [ONDO startWithDelegate:self];

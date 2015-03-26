@@ -47,8 +47,6 @@
             self.noButton.hidden = TRUE;
 
             [self loadQuestions];
-            [self trackScreenView: @"Quiz"];
-            [self trackEvent: @"Started Quiz" action: nil label: nil value: nil];
         } else {
             [self updateScreen];
         }
@@ -225,13 +223,11 @@
 - (IBAction)yesTapped:(id)sender
 {
     [self answerQuestion:YES];
-    [self trackEvent:@"ui_action" action:@"tap" label:@"yes_button" value:nil];
 }
 
 - (IBAction)noTapped:(id)sender
 {
     [self answerQuestion:NO];
-    [self trackEvent:@"ui_action" action:@"tap" label:@"no_button" value:nil];
 }
 
 - (BOOL)shouldAutorotate
@@ -243,7 +239,6 @@
 
 - (void)loadFertilityProfile
 {
-    [self trackEvent: @"Finished Quiz" action: nil label: nil value: nil];
     [self startLoading];
     
     [FertilityProfile loadAndThen:^(id response) {

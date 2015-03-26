@@ -60,10 +60,6 @@
   birthDate.datePicker.maximumDate = maximumDate;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-  [self trackScreenView:@"Profile Settings"];
-}
-
 # pragma mark - Closing text inputs
 
 - (BOOL)shouldAutorotate {

@@ -25,7 +25,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
-  [self trackScreenView:@"CoachingIntro"];
 }
 
 - (void)customizeAppearance
@@ -39,8 +38,6 @@
 
 - (IBAction)buyTapped:(id)sender
 {
-    [self trackEvent:@"ui_action" action:@"tap" label:@"buy_button" value: @(29.99)];
-
     if([[SubscriptionHelper sharedInstance] hasActiveSubscription]) {
         [self pushAppropriateController];
     } else {

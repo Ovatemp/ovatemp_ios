@@ -57,8 +57,6 @@
   self.navigationController.navigationBar.barTintColor = LIGHT;
   self.navigationController.navigationBar.tintColor = DARK;
 
-  [self trackScreenView:@"Coaching Menu"];
-
   // TODO: Have FertilityStatusView bind itself to today's value all the time
   [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];
 }
@@ -73,8 +71,6 @@
   } else {
     NSString *url = [Configuration sharedConfiguration].coachingContentUrls[categoryName];
     viewController = [WebViewController withURL:url];
-    [self trackScreenView:[@"Coaching Content: " stringByAppendingString:categoryName]];
-    [self trackEvent:@"Started Coaching Program" action:@"Category" label:categoryName value:nil];
   }
 
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];

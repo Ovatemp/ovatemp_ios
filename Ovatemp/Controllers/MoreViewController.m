@@ -87,10 +87,6 @@
 
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-  [self trackScreenView:@"More"];
-}
-
 - (void)viewWillLayoutSubviews {
   [self updateControls];
 }

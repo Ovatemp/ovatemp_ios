@@ -90,7 +90,6 @@ static NSString * const kCalendarCellIdentifier = @"CalendarCell";
   [self.collectionView reloadData];
   [self scrollToCurrentDay];
   [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];
-  [self trackScreenView:@"Calendar"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
