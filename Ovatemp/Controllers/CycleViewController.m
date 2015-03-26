@@ -65,18 +65,18 @@
 
 - (UIViewController *)viewControllerWithCycle:(Cycle *)cycle
 {
-  CycleChartView *chart = [[[NSBundle mainBundle] loadNibNamed:@"CycleChartView" owner:self options:nil] lastObject];
+    CycleChartView *chart = [[[NSBundle mainBundle] loadNibNamed:@"CycleChartView" owner:self options:nil] lastObject];
     chart.delegate = self;
 
-  chart.cycle = cycle;
-  chart.landscape = TRUE;
+    chart.cycle = cycle;
+    chart.landscape = TRUE;
+    chart.dateRangeLabel.text = cycle.rangeString;
 
-  chart.dateRangeLabel.text = cycle.rangeString;
+    UIViewController *vc = [[UIViewController alloc] init];
+    vc.view = chart;
 
-  UIViewController *vc = [[UIViewController alloc] init];
-  vc.view = chart;
-
-  return vc;
+    
+    return vc;
     
 //    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName: @"Tracking" bundle: nil];
 //    UINavigationController *navVC = [mainStoryboard instantiateViewControllerWithIdentifier: @"ilcycleNavViewController"];

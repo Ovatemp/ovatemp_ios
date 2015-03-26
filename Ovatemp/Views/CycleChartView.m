@@ -32,11 +32,8 @@
 
 - (IBAction)goBack:(id)sender
 {
-    // reset orientation
-    [[UIDevice currentDevice] setValue:
-     [NSNumber numberWithInteger: UIInterfaceOrientationPortrait]
-                                forKey:@"orientation"];
-    
+    // Reset Orientation
+    [[UIDevice currentDevice] setValue: [NSNumber numberWithInteger: UIInterfaceOrientationPortrait]forKey: @"orientation"];
     [[[[[UIApplication sharedApplication] delegate] window] rootViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -52,9 +49,7 @@
     
     [errorAlert addAction:ok];
     
-    //    [self presentViewController:errorAlert animated:YES completion:nil];
-    [self.delegate pushAlertController:errorAlert];
-    
+    [self.delegate pushAlertController: errorAlert];
 }
 
 - (void)setCycle:(Cycle *)cycle
@@ -66,9 +61,11 @@
 
 - (void)layoutSubviews
 {
-    [self calculateStyle:self.chartImageView.frame.size];
-    
     [super layoutSubviews];
+    
+    [self.chartImageView layoutIfNeeded];
+    
+    [self calculateStyle: self.chartImageView.frame.size];
     
     for(UIView *view in @[self.cervicalFluidIconsView, self.periodIconsView, self.opkIconsView, self.sexIconsView]) {
         for(UIView *subview in view.subviews) {
@@ -81,13 +78,14 @@
         NSInteger dayIndex = [day.cycleDay intValue] - 1;
         iconFrame = CGRectMake(dayIndex * pointWidth + (pointWidth * (.25 / 2)), pointWidth / 2, pointWidth * 0.75, pointWidth * 0.75);
         
-        [self.cervicalFluidIconsView addSubview:[self imageViewWithName:[day imageNameForProperty:@"cervicalFluid"] andFrame:iconFrame]];
         [self.periodIconsView addSubview:[self imageViewWithName:[day imageNameForProperty:@"period"] andFrame:iconFrame]];
+        [self.cervicalFluidIconsView addSubview:[self imageViewWithName:[day imageNameForProperty:@"cervicalFluid"] andFrame:iconFrame]];
+        //[self.opkIconsView addSubview:[self imageViewWithName:[day imageNameForProperty:@"cervicalPosition"] andFrame:iconFrame]];
         [self.opkIconsView addSubview:[self imageViewWithName:[day imageNameForProperty:@"opk"] andFrame:iconFrame]];
         [self.sexIconsView addSubview:[self imageViewWithName:[day imageNameForProperty:@"intercourse"] andFrame:iconFrame]];
     }
     
-    self.chartImageView.image = [self drawChart:self.chartImageView.frame.size];
+    self.chartImageView.image = [self drawChart: self.chartImageView.frame.size];
 }
 
 - (UIImageView *)imageViewWithName:(NSString *)name andFrame:(CGRect)frame

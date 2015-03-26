@@ -35,7 +35,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateRangeLabel;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *iconsContainerLeadingSpace;
-@property (weak, nonatomic) IBOutlet UIView *iconsContainerView;
+
 @property (weak, nonatomic) IBOutlet UIView *periodIconsView;
 @property (weak, nonatomic) IBOutlet UIView *opkIconsView;
 @property (weak, nonatomic) IBOutlet UIView *sexIconsView;

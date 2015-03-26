@@ -31,10 +31,11 @@ static const NSInteger kLoadingViewTag = 1337;
   [self startLoadingWithSpinnerColor:LIGHT];
 }
 
-- (void)startLoadingWithBackground:(UIColor *)backgroundColor spinnerColor:(UIColor *)spinnerColor {
+- (void)startLoadingWithBackground:(UIColor *)backgroundColor spinnerColor:(UIColor *)spinnerColor
+{
   UIView *loadingView = self.loadingView;
   if (!loadingView) {
-    loadingView = [[UIView alloc] initWithFrame:self.view.bounds];
+    loadingView = [[UIView alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
     loadingView.backgroundColor = backgroundColor;
     loadingView.tag = kLoadingViewTag;
 
