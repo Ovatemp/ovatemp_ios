@@ -27,6 +27,9 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.webView.delegate = self;
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemDone target: self action: @selector(didSelectDone)];
+    self.navigationItem.rightBarButtonItem = doneButton;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -50,6 +53,11 @@
   [self.webView setMediaPlaybackRequiresUserAction:NO];
   [self stopLoading];
   self.webView.hidden = NO;
+}
+
+- (void)didSelectDone
+{
+    [self dismissViewControllerAnimated: YES completion: nil];
 }
 
 # pragma Web view delegate methods

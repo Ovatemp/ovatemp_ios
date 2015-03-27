@@ -1141,6 +1141,9 @@
 		06FEA5C91A9D3002002BDFC2 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				5F1C9A5A19EDE879000F1FC1 /* WebViewController.h */,
+				5F1C9A5B19EDE879000F1FC1 /* WebViewController.m */,
+				5F1C9A5C19EDE879000F1FC1 /* WebViewController.xib */,
 				5F1C9A2819EDE879000F1FC1 /* CalendarViewController.h */,
 				5F1C9A2919EDE879000F1FC1 /* CalendarViewController.m */,
 				5F1C9A2A19EDE879000F1FC1 /* CalendarViewController.xib */,
@@ -1169,9 +1172,6 @@
 				5F1C9A5719EDE879000F1FC1 /* TodayNavigationController.xib */,
 				5F1C9A5819EDE879000F1FC1 /* TodayViewController.h */,
 				5F1C9A5919EDE879000F1FC1 /* TodayViewController.m */,
-				5F1C9A5A19EDE879000F1FC1 /* WebViewController.h */,
-				5F1C9A5B19EDE879000F1FC1 /* WebViewController.m */,
-				5F1C9A5C19EDE879000F1FC1 /* WebViewController.xib */,
 			);
 			name = Other;
 			sourceTree = "<group>";

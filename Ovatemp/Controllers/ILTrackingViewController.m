@@ -1388,7 +1388,8 @@
                                                           WebViewController *webViewController = [WebViewController withURL:url];
                                                           webViewController.title = title;
                                                           
-                                                          [self presentViewController: webViewController animated: YES completion: nil];
+                                                          UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: webViewController];
+                                                          [self presentViewController: navVC animated: YES completion: nil];
                                                           
                                                       }];
     
