@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		060D180C1AC330FA00B7DBA2 /* ILCycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 060D180B1AC330FA00B7DBA2 /* ILCycleViewController.m */; };
 		0619A97F1AA4E32A000F31E6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */; };
-		0692216B1AC0AF160004B850 /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0692216A1AC0AF160004B850 /* TelerikUI.framework */; };
 		0692216E1AC0AF350004B850 /* ILCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0692216D1AC0AF350004B850 /* ILCalendarViewController.m */; };
 		069221711AC0CD530004B850 /* ILCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 069221701AC0CD530004B850 /* ILCalendarCell.m */; };
+		0697E9651AC5E77300AD8255 /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0697E9641AC5E77300AD8255 /* TelerikUI.framework */; };
 		06C55B221AAF4BD600EDE74A /* ILTrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */; };
 		06F7A4DB1AC4D3F30054CEDF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F7A4D91AC4D3F30054CEDF /* Crashlytics.framework */; };
 		06F7A4DC1AC4D3F30054CEDF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F7A4DA1AC4D3F30054CEDF /* Fabric.framework */; };
@@ -355,11 +355,11 @@
 		060D180A1AC330FA00B7DBA2 /* ILCycleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCycleViewController.h; sourceTree = "<group>"; };
 		060D180B1AC330FA00B7DBA2 /* ILCycleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCycleViewController.m; sourceTree = "<group>"; };
 		0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		0692216A1AC0AF160004B850 /* TelerikUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TelerikUI.framework; path = Library/Frameworks/TelerikUI.framework; sourceTree = DEVELOPER_DIR; };
 		0692216C1AC0AF340004B850 /* ILCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCalendarViewController.h; sourceTree = "<group>"; };
 		0692216D1AC0AF350004B850 /* ILCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCalendarViewController.m; sourceTree = "<group>"; };
 		0692216F1AC0CD530004B850 /* ILCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCalendarCell.h; sourceTree = "<group>"; };
 		069221701AC0CD530004B850 /* ILCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCalendarCell.m; sourceTree = "<group>"; };
+		0697E9641AC5E77300AD8255 /* TelerikUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TelerikUI.framework; sourceTree = "<group>"; };
 		06C55B201AAF4BD600EDE74A /* ILTrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTrackingViewController.h; sourceTree = "<group>"; };
 		06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTrackingViewController.m; sourceTree = "<group>"; };
 		06F7A4D91AC4D3F30054CEDF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
@@ -838,7 +838,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0692216B1AC0AF160004B850 /* TelerikUI.framework in Frameworks */,
 				C36C5103189028190053A884 /* UIKit.framework in Frameworks */,
 				5F1C9BA319EDE87A000F1FC1 /* libGoogleConversionTracking.a in Frameworks */,
 				C388C73B18FC45B800B622FB /* SystemConfiguration.framework in Frameworks */,
@@ -858,6 +857,7 @@
 				C388C73718FC45AA00B622FB /* AdSupport.framework in Frameworks */,
 				5F1C9BA219EDE87A000F1FC1 /* libGoogleAnalyticsServices.a in Frameworks */,
 				0EC9830B19AB8619009A5730 /* HealthKit.framework in Frameworks */,
+				0697E9651AC5E77300AD8255 /* TelerikUI.framework in Frameworks */,
 				CED66676EF49970944AFFC0C /* libPods-Ovatemp.a in Frameworks */,
 				06F7A4DC1AC4D3F30054CEDF /* Fabric.framework in Frameworks */,
 			);
@@ -1195,6 +1195,7 @@
 		5F1C961219EDD319000F1FC1 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				0697E9641AC5E77300AD8255 /* TelerikUI.framework */,
 				06F7A4D91AC4D3F30054CEDF /* Crashlytics.framework */,
 				06F7A4DA1AC4D3F30054CEDF /* Fabric.framework */,
 			);
@@ -1631,7 +1632,6 @@
 		C36C50FD189028190053A884 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0692216A1AC0AF160004B850 /* TelerikUI.framework */,
 				5F1C971A19EDD455000F1FC1 /* Security.framework */,
 				5F1C971819EDD44F000F1FC1 /* QuickLook.framework */,
 				5F1C971619EDD444000F1FC1 /* MobileCoreServices.framework */,
@@ -2305,6 +2305,7 @@
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ThirdParty",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
@@ -2459,6 +2460,7 @@
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ThirdParty",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
@@ -2512,6 +2514,7 @@
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ThirdParty",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
