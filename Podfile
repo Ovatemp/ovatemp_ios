@@ -4,12 +4,12 @@ target :Ovatemp do
   pod "Inflections", inhibit_warnings: true
   pod "Reachability", inhibit_warnings: true
   pod "Helpshift"
- pod 'Localytics',  '~> 3.0'
+  pod 'Localytics',  '~> 3.0'
+  pod "TAOverlay"
 end
 
 target :OvatempTests, exclusive: true do
   pod "Expecta", inhibit_warnings: true
-  # pod "Igor", inhibit_warnings: true, podspec: 'Podspecs/Igor.podspec'
   pod "KIF", inhibit_warnings: true, podspec: 'Podspecs/Kif.podspec'
   pod "OCMock", inhibit_warnings: true
   pod "Nocilla", inhibit_warnings: true

@@ -1,4 +1,4 @@
-//
+
 //  ILCalendarViewController.m
 //  Ovatemp
 //
@@ -13,6 +13,7 @@
 #import "UIColor+Traits.h"
 #import "ILCalendarCell.h"
 #import "UserProfile.h"
+#import "TAOverlay.h"
 
 @interface ILCalendarViewController () <TKCalendarDataSource,TKCalendarDelegate>
 
@@ -36,21 +37,28 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear: animated];
+    
+    [self showInfoPopup];
+}
+
+- (void)showInfoPopup
+{    
+    NSInteger openCalendarCount = [[NSUserDefaults standardUserDefaults] integerForKey: @"openCalendarCount"];
+    if (openCalendarCount < 2) {
+        [TAOverlay showOverlayWithLabel: @"Swipe Left-Right to access other months" Options: TAOverlayOptionOverlayTypeInfo | TAOverlayOptionOverlayDismissTap | TAOverlayOptionOverlayShadow];
+    }
+    [[NSUserDefaults standardUserDefaults] setInteger: openCalendarCount + 1 forKey: @"openCalendarCount"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 #pragma mark - IBAction's
 
 - (void)didSelectDone
 {
     [self dismissViewControllerAnimated: YES completion: nil];
-}
-
-- (IBAction)didSelectBack:(id)sender
-{
-    [self.calendarView navigateBack: YES];
-}
-
-- (IBAction)didSelectForward:(id)sender
-{
-    [self.calendarView navigateForward: YES];
 }
 
 #pragma mark - Appearance

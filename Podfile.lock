@@ -10,6 +10,7 @@ PODS:
   - Reachability (3.2)
   - RegexKitLite (4.0)
   - Specta (0.4.0)
+  - TAOverlay (2.0.1)
 
 DEPENDENCIES:
   - Expecta
@@ -21,6 +22,7 @@ DEPENDENCIES:
   - OCMock
   - Reachability
   - Specta
+  - TAOverlay
 
 EXTERNAL SOURCES:
   KIF:
@@ -42,5 +44,6 @@ SPEC CHECKSUMS:
   Reachability: 1ef8adf5c4e3d362f96515d4278f68dad3c26930
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   Specta: 1df326d6ec48603c77f507a0ab1f89ad2df1c582
+  TAOverlay: 3bcc6ce26218526b6284e07451935d2d7ff0cd07
 
 COCOAPODS: 0.36.0

@@ -493,39 +493,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="Yla-pp-jO4">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="Kgi-Ih-PKV">
-                            <view key="customView" contentMode="scaleToFill" id="jUA-qi-bhT">
-                                <rect key="frame" x="0.0" y="0.0" width="133" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oVe-f4-wwO">
-                                        <rect key="frame" x="2" y="2" width="30" height="30"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                        <state key="normal" title="&lt;">
-                                            <color key="titleColor" red="0.12549019610000001" green="0.42352941179999998" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="didSelectBack:" destination="PDd-UQ-LHw" eventType="touchUpInside" id="RuB-gx-s2y"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXw-b7-8wO">
-                                        <rect key="frame" x="53" y="2" width="30" height="30"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                        <state key="normal" title="&gt;">
-                                            <color key="titleColor" red="0.12549019610000001" green="0.42352941179999998" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="didSelectForward:" destination="PDd-UQ-LHw" eventType="touchUpInside" id="OzB-fb-uyf"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </view>
-                            <color key="tintColor" red="0.12549019610000001" green="0.42352941179999998" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Yla-pp-jO4"/>
                     <connections>
                         <outlet property="infoView" destination="7Jb-tv-2gy" id="9kA-Pq-XxK"/>
                     </connections>
@@ -555,7 +523,7 @@
                                     <constraint firstAttribute="height" constant="21" id="zIN-cT-ULx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -573,7 +541,7 @@
                                     <constraint firstAttribute="width" constant="41" id="wUi-kD-kpV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -591,7 +559,7 @@
                                     <constraint firstAttribute="width" constant="19" id="r9l-sx-kpZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -609,7 +577,7 @@
                                     <constraint firstAttribute="height" constant="21" id="zyZ-O5-VCv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
