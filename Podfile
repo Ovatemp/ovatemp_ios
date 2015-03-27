@@ -4,6 +4,7 @@ target :Ovatemp do
   pod "Inflections", inhibit_warnings: true
   pod "Reachability", inhibit_warnings: true
   pod "Helpshift"
+ pod 'Localytics',  '~> 3.0'
 end
 
 target :OvatempTests, exclusive: true do

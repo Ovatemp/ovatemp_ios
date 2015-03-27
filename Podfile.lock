@@ -4,6 +4,7 @@ PODS:
   - Inflections (1.0.0):
     - RegexKitLite
   - KIF (2.0.3)
+  - Localytics (3.1.0)
   - Nocilla (0.9.0)
   - OCMock (3.1.2)
   - Reachability (3.2)
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - Helpshift
   - Inflections
   - KIF (from `Podspecs/Kif.podspec`)
+  - Localytics (~> 3.0)
   - Nocilla
   - OCMock
   - Reachability
@@ -34,6 +36,7 @@ SPEC CHECKSUMS:
   Helpshift: 9c84a5e4ffd881c7e7eb395c2afc8d6a46eb2187
   Inflections: 38689e8c1b1d0064566a865e8a8229f80a4bee87
   KIF: 25c0a730008377c6734f68d4fc3e3f462622127d
+  Localytics: 588e9ed57f86baadb740f4f165c22f8305c5907a
   Nocilla: 4d713c56e7357fd0cac0363854d4a58021ad3f41
   OCMock: ecdd510b73ef397f2f97274785c1e87fd147c49f
   Reachability: 1ef8adf5c4e3d362f96515d4278f68dad3c26930
