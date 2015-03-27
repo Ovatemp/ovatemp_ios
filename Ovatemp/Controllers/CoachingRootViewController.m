@@ -38,12 +38,14 @@
 
 - (IBAction)buyTapped:(id)sender
 {
-    if([[SubscriptionHelper sharedInstance] hasActiveSubscription]) {
-        [self pushAppropriateController];
-    } else {
-        UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SubscriptionSelectionViewController"];
-        [self.navigationController pushViewController: controller animated: YES];
-    }
+    [self pushAppropriateController];
+    
+//    if([[SubscriptionHelper sharedInstance] hasActiveSubscription]) {
+//        [self pushAppropriateController];
+//    } else {
+//        UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SubscriptionSelectionViewController"];
+//        [self.navigationController pushViewController: controller animated: YES];
+//    }
 }
 
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
@@ -53,15 +55,20 @@
   if(viewController != self) {
     return;
   }
-
-  [self pushAppropriateController];
+    
+    if (self.showFirstScreen) {
+        self.showFirstScreen = NO;
+    }else{
+        [self pushAppropriateController];
+    }
 }
 
-- (void)pushAppropriateController {
+- (void)pushAppropriateController
+{
 
-  if(![[SubscriptionHelper sharedInstance] hasActiveSubscription]) {
-    return;
-  }
+//  if(![[SubscriptionHelper sharedInstance] hasActiveSubscription]) {
+//    return;
+//  }
   
   BOOL hasFertilityProfile = [User current].fertilityProfileName != nil;
   BOOL hasSeenIntro = [[Configuration sharedConfiguration].hasSeenProfileIntroScreen boolValue];

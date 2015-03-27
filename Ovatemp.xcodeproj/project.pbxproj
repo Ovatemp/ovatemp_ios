@@ -1152,8 +1152,6 @@
 				5F223F2F19F014620003AF64 /* ProfileTableViewController.xib */,
 				5F1C9A2619EDE879000F1FC1 /* BluetoothDeviceTableViewController.h */,
 				5F1C9A2719EDE879000F1FC1 /* BluetoothDeviceTableViewController.m */,
-				5F1C9A3E19EDE879000F1FC1 /* MainTabBarViewController.h */,
-				5F1C9A3F19EDE879000F1FC1 /* MainTabBarViewController.m */,
 				5F1C9A4019EDE879000F1FC1 /* MoreViewController.h */,
 				5F1C9A4119EDE879000F1FC1 /* MoreViewController.m */,
 				5F1C9A4419EDE879000F1FC1 /* Onboard1ViewController.h */,
@@ -1337,6 +1335,8 @@
 				5F1C9A4C19EDE879000F1FC1 /* RootViewController.h */,
 				5F1C9A4D19EDE879000F1FC1 /* RootViewController.m */,
 				5F1C9A4E19EDE879000F1FC1 /* RootViewController.xib */,
+				5F1C9A3E19EDE879000F1FC1 /* MainTabBarViewController.h */,
+				5F1C9A3F19EDE879000F1FC1 /* MainTabBarViewController.m */,
 				06FEA5C61A9D2DE9002BDFC2 /* Log In */,
 				06FEA5C81A9D2FAC002BDFC2 /* Tracking */,
 				06FEA5C71A9D2EC5002BDFC2 /* Coaching */,
@@ -1597,8 +1597,8 @@
 		5F1C9B4A19EDE87A000F1FC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				06F8FA4B1AC36187006EC93F /* CollectionView Cells */,
 				06FEA5C41A9CFA4C002BDFC2 /* Storyboards */,
+				06F8FA4B1AC36187006EC93F /* CollectionView Cells */,
 				06FEA5C31A9CF928002BDFC2 /* TableView Cells */,
 				06FEA5CA1A9D302B002BDFC2 /* Other */,
 				0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */,

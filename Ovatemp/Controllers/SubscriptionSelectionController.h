@@ -25,10 +25,6 @@
 - (IBAction)centerDiscountButtonPressed:(GradientButton *)sender;
 - (IBAction)rightDiscountButtonPressed:(GradientButton *)sender;
 
-
-
-
-
 -(IBAction)restoreButtonTapped:(id)sender;
 
 @end

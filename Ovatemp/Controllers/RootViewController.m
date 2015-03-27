@@ -18,6 +18,7 @@
 #import "SelectLogInOrSignUpViewController.h"
 #import "TrackingViewController.h"
 #import "TrackingNavigationController.h"
+#import "CoachingRootViewController.h"
 
 static CGFloat const kDissolveDuration = 0.2;
 
@@ -95,6 +96,9 @@ static CGFloat const kDissolveDuration = 0.2;
     
 //    UIViewController *calendarController = [[CalendarViewController alloc] initWithNibName:@"CalendarViewController" bundle:nil];
     UIViewController *coachingController = [[UIStoryboard storyboardWithName:@"CoachingStoryboard" bundle:nil] instantiateInitialViewController];
+    CoachingRootViewController *coachingVC = coachingController.childViewControllers[0];
+    coachingVC.showFirstScreen = YES;
+    
 //    UIViewController *communityController = [[UIStoryboard storyboardWithName:@"CommunityStoryboard" bundle:nil] instantiateInitialViewController];
     //  UIViewController *moreViewController = [[UIStoryboard storyboardWithName:@"MoreStoryboard" bundle:nil] instantiateInitialViewController];
     

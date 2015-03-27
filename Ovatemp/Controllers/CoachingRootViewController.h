@@ -10,7 +10,8 @@
 
 @interface CoachingRootViewController : UIViewController <UINavigationControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIButton *buyButton;
+@property (nonatomic) BOOL showFirstScreen;
 
+@property (weak, nonatomic) IBOutlet UIButton *buyButton;
 
 @end
