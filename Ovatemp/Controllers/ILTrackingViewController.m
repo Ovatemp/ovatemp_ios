@@ -8,6 +8,8 @@
 
 #import "ILTrackingViewController.h"
 
+#import "TAOverlay.h"
+
 #import "CycleViewController.h"
 #import "ILCycleViewController.h"
 #import "CalendarViewController.h"
@@ -1146,6 +1148,16 @@
     [Alert presentError: error];
 }
 
+- (void)ONDO:(ONDO *)ondo didAddDevice:(ONDODevice *)device
+{
+    
+}
+
+- (void)ONDO:(ONDO *)ondo didConnectToDevice:(ONDODevice *)device
+{
+    [TAOverlay showOverlayWithLabel: @"Connected to ONDO" Options: TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayDismissTap];
+}
+
 - (void)ONDO:(ONDO *)ondo didReceiveTemperature:(CGFloat)temperature
 {
     float tempInCelsius = temperature;
@@ -1174,7 +1186,7 @@
     
     [self uploadSelectedTemperature];
     
-    //[Alert showAlertWithTitle: @"Temperature Recorded" message: temperatureString];
+    [TAOverlay showOverlayWithLabel: temperatureString Options: TAOverlayOptionAutoHide | TAOverlayOptionOverlayTypeSuccess | TAOverlayOptionOverlaySizeRoundedRect];
 }
 
 #pragma mark - Network

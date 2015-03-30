@@ -3,3 +3,4 @@
 *.xcworkspace
 Pods/
 xcuserdata
+Crashlytics.framework

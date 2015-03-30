@@ -17,6 +17,7 @@
 
 - (void)ONDOsaysBluetoothIsDisabled:(ONDO *)ondo;
 - (void)ONDOsaysLEBluetoothIsUnavailable:(ONDO *)ondo;
+
 - (void)ONDO:(ONDO *)ondo didAddDevice:(ONDODevice *)device;
 - (void)ONDO:(ONDO *)ondo didConnectToDevice:(ONDODevice *)device;
 - (void)ONDO:(ONDO *)ondo didEncounterError:(NSError *)error;

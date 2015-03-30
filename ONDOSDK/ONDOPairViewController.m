@@ -27,7 +27,8 @@ static CGFloat const kStandardSpacing = 20.0f;
 
 @implementation ONDOPairViewController
 
-- (id)init {
+- (id)init
+{
   self = [super init];
   if (self) {
     // Set up the main view
@@ -38,11 +39,12 @@ static CGFloat const kStandardSpacing = 20.0f;
   return self;
 }
 
-- (UINavigationController *)buildNavigationController {
+- (UINavigationController *)buildNavigationController
+{
   if (!self.navigationController) {
     // Set up the title bar
     self.title = @"Pair ONDO";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(close:)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemCancel target: self action: @selector(close:)];
 
     return [[UINavigationController alloc] initWithRootViewController:self];
   }
@@ -50,11 +52,13 @@ static CGFloat const kStandardSpacing = 20.0f;
 }
 
 
-- (IBAction)close:(id)sender {
+- (IBAction)close:(id)sender
+{
   [self.navigationController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
   self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor ovatempDarkGreyTitleColor] forKey:NSForegroundColorAttributeName];
     
   if (!self.statusLabel.superview) {
@@ -111,16 +115,19 @@ static CGFloat const kStandardSpacing = 20.0f;
   }
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
   [ONDO pairDeviceWithDelegate:self];
   [self startAnimating];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated
+{
   [self stopAnimating];
 }
 
-- (void)hideWithText:(NSString *)text {
+- (void)hideWithText:(NSString *)text
+{
   self.statusLabel.text = text;
   self.instructionsLabel.hidden = YES;
   self.pairingImageView.hidden = YES;
@@ -128,7 +135,8 @@ static CGFloat const kStandardSpacing = 20.0f;
 
 # pragma mark - Handling animation
 
-- (void)startAnimating {
+- (void)startAnimating
+{
   if (self.pairingImageView.image == _pairing1) {
     self.pairingImageView.image = _pairing2;
   } else if (self.pairingImageView.image == _pairing2) {
@@ -139,27 +147,31 @@ static CGFloat const kStandardSpacing = 20.0f;
   [self performSelector:@selector(startAnimating) withObject:nil afterDelay:0.5];
 }
 
-- (void)stopAnimating {
+- (void)stopAnimating
+{
   [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(startAnimating) object:nil];
 }
 
 # pragma mark - Handling delegate methods
 
-- (void)ONDOsaysBluetoothIsDisabled:(ONDO *)ondo {
+- (void)ONDOsaysBluetoothIsDisabled:(ONDO *)ondo
+{
   if ([self.delegate respondsToSelector:@selector(ONDOsaysBluetoothIsDisabled:)]) {
     [self.delegate ONDOsaysBluetoothIsDisabled:ondo];
   }
   [self hideWithText:@"Bluetooth is not enabled"];
 }
 
-- (void)ONDOsaysLEBluetoothIsUnavailable:(ONDO *)ondo {
+- (void)ONDOsaysLEBluetoothIsUnavailable:(ONDO *)ondo
+{
   if ([self.delegate respondsToSelector:@selector(ONDOsaysLEBluetoothIsUnavailable:)]) {
     [self.delegate ONDOsaysLEBluetoothIsUnavailable:ondo];
   }
   [self hideWithText:@"Device does not support Bluetooth LE"];
 }
 
-- (void)ONDO:(ONDO *)ondo didAddDevice:(ONDODevice *)device {
+- (void)ONDO:(ONDO *)ondo didAddDevice:(ONDODevice *)device
+{
   if ([self.delegate respondsToSelector:@selector(ONDO:didAddDevice:)]) {
     [self.delegate ONDO:ondo didAddDevice:device];
   } else {
@@ -171,7 +183,8 @@ static CGFloat const kStandardSpacing = 20.0f;
   }
 }
 
-- (void)ONDO:(ONDO *)ondo didConnectToDevice:(ONDODevice *)device {
+- (void)ONDO:(ONDO *)ondo didConnectToDevice:(ONDODevice *)device
+{
   [self hideWithText:@"Paired!"];
   self.navigationItem.leftBarButtonItem.enabled = NO;
 
@@ -192,7 +205,8 @@ static CGFloat const kStandardSpacing = 20.0f;
 
 # pragma mark - Handling alerts
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
   if (_device) {
     if (buttonIndex == 1) {
       NSString *name = [[alertView textFieldAtIndex:0].text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];

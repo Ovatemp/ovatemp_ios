@@ -6,8 +6,9 @@
 //  Copyright (c) 2014 Back Forty. All rights reserved.
 //
 
-#import "ONDODevice.h"
 #import <CoreBluetooth/CBUUID.h>
+
+#import "ONDODevice.h"
 
 static NSManagedObjectContext *kONDOManagedObjectContext;
 static NSManagedObjectModel *kONDOManagedObjectModel;
@@ -31,13 +32,14 @@ static NSPersistentStoreCoordinator *kONDOPersistentStoreCoordinator;
 
 # pragma mark - Find and create
 
-+ (NSArray *)all {
-  NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:self.description];
-  NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:NO];
++ (NSArray *)all
+{
+  NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName: self.description];
+  NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey: @"createdAt" ascending: NO];
   request.sortDescriptors = @[sort];
 
   NSError *error = nil;
-  NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
+  NSArray *results = [self.managedObjectContext executeFetchRequest: request error: &error];
 
   if (error) {
     NSLog(@"Couldn't fetch results: %@", error);
@@ -47,18 +49,20 @@ static NSPersistentStoreCoordinator *kONDOPersistentStoreCoordinator;
   return results;
 }
 
-+ (ONDODevice *)findOrCreate:(NSString *)uuidString {
-  ONDODevice *device = [self find:uuidString];
++ (ONDODevice *)findOrCreate:(NSString *)uuidString
+{
+  ONDODevice *device = [self find: uuidString];
   if (!device) {
-    device = [self create:uuidString];
+    device = [self create: uuidString];
   }
   return device;
 }
 
-+ (ONDODevice *)create:(NSString *)uuidString {
++ (ONDODevice *)create:(NSString *)uuidString
+{
   NSManagedObjectContext *context = [self managedObjectContext];
-  ONDODevice *device = [NSEntityDescription insertNewObjectForEntityForName:self.description
-                                                     inManagedObjectContext:self.managedObjectContext];
+  ONDODevice *device = [NSEntityDescription insertNewObjectForEntityForName: self.description
+                                                     inManagedObjectContext: self.managedObjectContext];
 
   device.uuidString = uuidString;
   device.createdAt = [NSDate date];
@@ -72,7 +76,8 @@ static NSPersistentStoreCoordinator *kONDOPersistentStoreCoordinator;
   return device;
 }
 
-+ (ONDODevice *)find:(NSString *)uuidString {
++ (ONDODevice *)find:(NSString *)uuidString
+{
   NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:self.description];
   request.fetchLimit = 1;
   NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuidString == %@", uuidString];
@@ -80,33 +85,37 @@ static NSPersistentStoreCoordinator *kONDOPersistentStoreCoordinator;
   NSManagedObjectContext *context = self.managedObjectContext;
   NSError *error = nil;
   NSArray *results = [context executeFetchRequest:request error:&error];
+    
   if (error) {
     NSLog(@"Cound't find a thing");
     return nil;
   } else {
     return results.firstObject;
   }
-//  request.entity = resultEntity;
+    
+  //  request.entity = resultEntity;
   //  request.
-
   //  NSArray *quizResults = [managedObjectContext executeFetchRequest:allQuizResultsRequest error:&error];
-  return nil;
+  //return nil;
 }
 
 # pragma mark - Properties
 
-- (CBUUID *)uuid {
+- (CBUUID *)uuid
+{
   return [CBUUID UUIDWithString:self.uuidString];
 }
 
 # pragma mark - Core data
 
 // Returns the URL to the application's Documents directory.
-+ (NSURL *)applicationDocumentsDirectory {
++ (NSURL *)applicationDocumentsDirectory
+{
   return [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].lastObject;
 }
 
-+ (NSManagedObjectContext *)managedObjectContext {
++ (NSManagedObjectContext *)managedObjectContext
+{
   if (!kONDOManagedObjectContext) {
     NSPersistentStoreCoordinator *coordinator = self.persistentStoreCoordinator;
     if (coordinator != nil) {
@@ -117,7 +126,8 @@ static NSPersistentStoreCoordinator *kONDOPersistentStoreCoordinator;
   return kONDOManagedObjectContext;
 }
 
-+ (NSManagedObjectModel *)managedObjectModel {
++ (NSManagedObjectModel *)managedObjectModel
+{
   if (!kONDOManagedObjectModel) {
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"ONDO" withExtension:@"momd"];
     kONDOManagedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
@@ -127,7 +137,8 @@ static NSPersistentStoreCoordinator *kONDOPersistentStoreCoordinator;
 
 // Returns the persistent store coordinator for the application.
 // If the coordinator doesn't already exist, it is created and the application's store added to it.
-+ (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
++ (NSPersistentStoreCoordinator *)persistentStoreCoordinator
+{
   if (kONDOPersistentStoreCoordinator != nil) {
     return kONDOPersistentStoreCoordinator;
   }
@@ -171,7 +182,8 @@ static NSPersistentStoreCoordinator *kONDOPersistentStoreCoordinator;
   return kONDOPersistentStoreCoordinator;
 }
 
-- (void)delete {
+- (void)delete
+{
   NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
   if (managedObjectContext) {
     [managedObjectContext deleteObject:self];
@@ -179,7 +191,8 @@ static NSPersistentStoreCoordinator *kONDOPersistentStoreCoordinator;
   }
 }
 
-- (void)save {
+- (void)save
+{
   NSError *error = nil;
   NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
   if (managedObjectContext != nil) {
@@ -192,7 +205,8 @@ static NSPersistentStoreCoordinator *kONDOPersistentStoreCoordinator;
   }
 }
 
-- (NSManagedObjectContext *)managedObjectContext {
+- (NSManagedObjectContext *)managedObjectContext
+{
   return [[self class] managedObjectContext];
 }
 
