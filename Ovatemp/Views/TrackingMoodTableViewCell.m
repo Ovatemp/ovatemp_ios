@@ -90,7 +90,7 @@
     cell.textLabel.text = [self.moodDataSource objectAtIndex: indexPath.row];
     cell.textLabel.textColor = [UIColor darkGrayColor];
     
-    if (self.selectedIndexPath.row == indexPath.row) {
+    if (self.selectedIndexPath && self.selectedIndexPath.row == indexPath.row) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }else{
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -103,14 +103,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.selectedIndexPath.row == indexPath.row) {
+    if (self.selectedIndexPath && self.selectedIndexPath.row == indexPath.row) {
         
         if([self.delegate respondsToSelector: @selector(didSelectMoodWithType:)]){
-            [self.delegate didSelectMoodWithType: [NSNull class]];
+            [self.delegate didSelectMoodWithType: [NSNull null]];
         }
         self.moodTypeLabel.text = @"";
         self.selectedIndexPath = nil;
         
+        [self.moodTableView reloadData];
         return;
     }
     
@@ -128,7 +129,6 @@
         }
         case 1:
         {
-            
             if([self.delegate respondsToSelector: @selector(didSelectMoodWithType:)]){
                 [self.delegate didSelectMoodWithType: @"anxious"];
             }
@@ -247,6 +247,8 @@
         default:
             break;
     }
+    
+    [self.moodTableView reloadData];
 }
 
 #pragma mark - Appearance
@@ -256,64 +258,66 @@
     Day *selectedDay = [self.delegate getSelectedDay];
     
     if ([selectedDay.mood isEqualToString:@"angry"]) {
-        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 0 inSection: 0]];
+        self.selectedIndexPath = [NSIndexPath indexPathForRow: 0 inSection: 0];
         self.moodTypeLabel.text = @"Angry";
         
     } else if ([selectedDay.mood isEqualToString:@"anxious"]) {
-        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 1 inSection: 0]];
+        self.selectedIndexPath = [NSIndexPath indexPathForRow: 1 inSection: 0];
         self.moodTypeLabel.text = @"Anxious";
         
     } else if ([selectedDay.mood isEqualToString:@"calm"]) {
-        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 2 inSection: 0]];
+        self.selectedIndexPath = [NSIndexPath indexPathForRow: 2 inSection: 0];
         self.moodTypeLabel.text = @"Calm";
         
     } else if ([selectedDay.mood isEqualToString:@"depressed"]) {
-        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 3 inSection: 0]];
+        self.selectedIndexPath = [NSIndexPath indexPathForRow: 3 inSection: 0];
         self.moodTypeLabel.text = @"Depressed";
         
     } else if ([selectedDay.mood isEqualToString:@"moody"] || [selectedDay.mood isEqual:@"emotional"]) { // emotional
-        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 4 inSection: 0]];
+        self.selectedIndexPath = [NSIndexPath indexPathForRow: 4 inSection: 0];
         self.moodTypeLabel.text = @"Emotional";
         
     } else if ([selectedDay.mood isEqualToString:@"amazing"] || [selectedDay.mood isEqual:@"excited"]) { // excited
-        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 5 inSection: 0]];
+        self.selectedIndexPath = [NSIndexPath indexPathForRow: 5 inSection: 0];
         self.moodTypeLabel.text = @"Excited";
         
     } else if ([selectedDay.mood isEqualToString:@"frisky"]) {
-        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 6 inSection: 0]];
+        self.selectedIndexPath = [NSIndexPath indexPathForRow: 6 inSection: 0];
         self.moodTypeLabel.text = @"Frisky";
         
     } else if ([selectedDay.mood isEqualToString:@"frustrated"]) {
-        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 7 inSection: 0]];
+        self.selectedIndexPath = [NSIndexPath indexPathForRow: 7 inSection: 0];
         self.moodTypeLabel.text = @"Frustrated";
         
     } else if ([selectedDay.mood isEqualToString:@"good"] || [selectedDay.mood isEqual:@"happy"]) { // happy
-        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 8 inSection: 0]];
+        self.selectedIndexPath = [NSIndexPath indexPathForRow: 8 inSection: 0];
         self.moodTypeLabel.text = @"Happy";
         
     } else if ([selectedDay.mood isEqualToString:@"in love"]) {
-        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 9 inSection: 0]];
+        self.selectedIndexPath = [NSIndexPath indexPathForRow: 9 inSection: 0];
         self.moodTypeLabel.text = @"In Love";
         
     } else if ([selectedDay.mood isEqualToString:@"motivated"]) {
-        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 10 inSection: 0]];
+        self.selectedIndexPath = [NSIndexPath indexPathForRow: 10 inSection: 0];
         self.moodTypeLabel.text = @"Motivated";
         
     } else if ([selectedDay.mood isEqualToString:@"neutral"]) {
-        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 11 inSection: 0]];
+        self.selectedIndexPath = [NSIndexPath indexPathForRow: 11 inSection: 0];
         self.moodTypeLabel.text = @"Neutral";
         
     } else if ([selectedDay.mood isEqualToString:@"sad"]) {
-        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 12 inSection: 0]];
+        self.selectedIndexPath = [NSIndexPath indexPathForRow: 12 inSection: 0];
         self.moodTypeLabel.text = @"Sad";
         
     } else if ([selectedDay.mood isEqualToString:@"worried"]) {
-        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 13 inSection: 0]];
+        self.selectedIndexPath = [NSIndexPath indexPathForRow: 13 inSection: 0];
         self.moodTypeLabel.text = @"Worried";
         
-    } else {
-        
+    }else{
+        self.moodTypeLabel.text = @"";
     }
+    
+    [self.moodTableView reloadData];
 }
 
 - (void)setMinimized
