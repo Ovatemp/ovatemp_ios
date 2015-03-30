@@ -13,24 +13,24 @@
 #import "Alert.h"
 #import "TrackingViewController.h"
 
-@interface TrackingMoodTableViewCell () <UIPickerViewDataSource,UIPickerViewDelegate>
+@interface TrackingMoodTableViewCell () <UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic) NSArray *moodDataSource;
+@property (nonatomic) NSIndexPath *selectedIndexPath;
 
 @end
 
 @implementation TrackingMoodTableViewCell
 
-NSArray *moodDataSource;
-NSIndexPath *selectedIndexPath;
-
 - (void)awakeFromNib
 {
     [self setUpActivityView];
     
-    moodDataSource = [[NSArray alloc] initWithObjects: @"None", @"Angry", @"Anxious", @"Calm", @"Depressed", @"Emotional", @"Excited",
+    self.moodDataSource = [[NSArray alloc] initWithObjects: @"Angry", @"Anxious", @"Calm", @"Depressed", @"Emotional", @"Excited",
                       @"Frisky", @"Frustrated", @"Happy", @"In Love", @"Motivated", @"Neutral", @"Sad", @"Worried", nil];
     
-    self.moodPickerView.delegate = self;
-    self.moodPickerView.dataSource = self;
+    self.moodTableView.delegate = self;
+    self.moodTableView.dataSource = self;
 }
 
 - (void)setUpActivityView
@@ -70,36 +70,54 @@ NSIndexPath *selectedIndexPath;
     [self.delegate pushInfoAlertWithTitle:@"Mood" AndMessage:@"Taking note of your mood throughout your cycle can help you identify patterns and understand both your cycles and your mood swings better.\n\nDid you know you feel your best when ovulating?" AndURL:@"http://ovatemp.helpshift.com/a/ovatemp/?s=fertility-faqs&f=learn-more-about-tracking-your-mood"];
 }
 
-#pragma mark - UIPickerView Data Source
+#pragma mark - UITableView Data Source
 
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
 
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent: (NSInteger)component
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [moodDataSource count];
+    return [self.moodDataSource count];
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [moodDataSource objectAtIndex: row];
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+
+    cell.textLabel.text = [self.moodDataSource objectAtIndex: indexPath.row];
+    cell.textLabel.textColor = [UIColor darkGrayColor];
+    
+    if (self.selectedIndexPath.row == indexPath.row) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }else{
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
+    return cell;
 }
 
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+#pragma mark - UITableView Delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (row) {
-        case 0:
-        {
-            if([self.delegate respondsToSelector: @selector(didSelectMoodWithType:)]){
-                [self.delegate didSelectMoodWithType: [NSNull null]];
-            }
-            self.moodTypeLabel.text = @"";
-            
-            break;
+    if (self.selectedIndexPath.row == indexPath.row) {
+        
+        if([self.delegate respondsToSelector: @selector(didSelectMoodWithType:)]){
+            [self.delegate didSelectMoodWithType: [NSNull class]];
         }
-        case 1:
+        self.moodTypeLabel.text = @"";
+        self.selectedIndexPath = nil;
+        
+        return;
+    }
+    
+    self.selectedIndexPath = indexPath;
+    
+    switch (indexPath.row) {
+        case 0:
         {
             if([self.delegate respondsToSelector: @selector(didSelectMoodWithType:)]){
                 [self.delegate didSelectMoodWithType: @"angry"];
@@ -108,8 +126,9 @@ NSIndexPath *selectedIndexPath;
             
             break;
         }
-        case 2:
+        case 1:
         {
+            
             if([self.delegate respondsToSelector: @selector(didSelectMoodWithType:)]){
                 [self.delegate didSelectMoodWithType: @"anxious"];
             }
@@ -117,7 +136,7 @@ NSIndexPath *selectedIndexPath;
             
             break;
         }
-        case 3:
+        case 2:
         {
             if([self.delegate respondsToSelector: @selector(didSelectMoodWithType:)]){
                 [self.delegate didSelectMoodWithType: @"calm"];
@@ -126,7 +145,7 @@ NSIndexPath *selectedIndexPath;
             
             break;
         }
-        case 4:
+        case 3:
         {
             if([self.delegate respondsToSelector: @selector(didSelectMoodWithType:)]){
                 [self.delegate didSelectMoodWithType: @"depressed"];
@@ -135,7 +154,7 @@ NSIndexPath *selectedIndexPath;
             
             break;
         }
-        case 5:
+        case 4:
         {
             if([self.delegate respondsToSelector: @selector(didSelectMoodWithType:)]){
                 [self.delegate didSelectMoodWithType: @"moody"];
@@ -144,7 +163,7 @@ NSIndexPath *selectedIndexPath;
             
             break;
         }
-        case 6:
+        case 5:
         {
             if([self.delegate respondsToSelector: @selector(didSelectMoodWithType:)]){
                 [self.delegate didSelectMoodWithType: @"amazing"];
@@ -153,7 +172,7 @@ NSIndexPath *selectedIndexPath;
             
             break;
         }
-        case 7:
+        case 6:
         {
             if([self.delegate respondsToSelector: @selector(didSelectMoodWithType:)]){
                 [self.delegate didSelectMoodWithType: @"frisky"];
@@ -162,7 +181,7 @@ NSIndexPath *selectedIndexPath;
             
             break;
         }
-        case 8:
+        case 7:
         {
             if([self.delegate respondsToSelector: @selector(didSelectMoodWithType:)]){
                 [self.delegate didSelectMoodWithType: @"frustrated"];
@@ -171,7 +190,7 @@ NSIndexPath *selectedIndexPath;
             
             break;
         }
-        case 9:
+        case 8:
         {
             if([self.delegate respondsToSelector: @selector(didSelectMoodWithType:)]){
                 [self.delegate didSelectMoodWithType: @"good"];
@@ -180,7 +199,7 @@ NSIndexPath *selectedIndexPath;
             
             break;
         }
-        case 10:
+        case 9:
         {
             if([self.delegate respondsToSelector: @selector(didSelectMoodWithType:)]){
                 [self.delegate didSelectMoodWithType: @"in love"];
@@ -189,7 +208,7 @@ NSIndexPath *selectedIndexPath;
             
             break;
         }
-        case 11:
+        case 10:
         {
             if([self.delegate respondsToSelector: @selector(didSelectMoodWithType:)]){
                 [self.delegate didSelectMoodWithType: @"motivated"];
@@ -198,7 +217,7 @@ NSIndexPath *selectedIndexPath;
             
             break;
         }
-        case 12:
+        case 11:
         {
             if([self.delegate respondsToSelector: @selector(didSelectMoodWithType:)]){
                 [self.delegate didSelectMoodWithType: @"neutral"];
@@ -207,7 +226,7 @@ NSIndexPath *selectedIndexPath;
             
             break;
         }
-        case 13:
+        case 12:
         {
             if([self.delegate respondsToSelector: @selector(didSelectMoodWithType:)]){
                 [self.delegate didSelectMoodWithType: @"sad"];
@@ -216,7 +235,7 @@ NSIndexPath *selectedIndexPath;
             
             break;
         }
-        case 14:
+        case 13:
         {
             if([self.delegate respondsToSelector: @selector(didSelectMoodWithType:)]){
                 [self.delegate didSelectMoodWithType: @"worried"];
@@ -237,64 +256,62 @@ NSIndexPath *selectedIndexPath;
     Day *selectedDay = [self.delegate getSelectedDay];
     
     if ([selectedDay.mood isEqualToString:@"angry"]) {
-        [self.moodPickerView selectRow: 1 inComponent: 0 animated: NO];
+        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 0 inSection: 0]];
         self.moodTypeLabel.text = @"Angry";
         
     } else if ([selectedDay.mood isEqualToString:@"anxious"]) {
-        [self.moodPickerView selectRow: 2 inComponent: 0 animated: NO];
+        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 1 inSection: 0]];
         self.moodTypeLabel.text = @"Anxious";
         
     } else if ([selectedDay.mood isEqualToString:@"calm"]) {
-        [self.moodPickerView selectRow: 3 inComponent: 0 animated: NO];
+        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 2 inSection: 0]];
         self.moodTypeLabel.text = @"Calm";
         
     } else if ([selectedDay.mood isEqualToString:@"depressed"]) {
-        [self.moodPickerView selectRow: 4 inComponent: 0 animated: NO];
+        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 3 inSection: 0]];
         self.moodTypeLabel.text = @"Depressed";
         
     } else if ([selectedDay.mood isEqualToString:@"moody"] || [selectedDay.mood isEqual:@"emotional"]) { // emotional
-        [self.moodPickerView selectRow: 5 inComponent: 0 animated: NO];
+        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 4 inSection: 0]];
         self.moodTypeLabel.text = @"Emotional";
         
     } else if ([selectedDay.mood isEqualToString:@"amazing"] || [selectedDay.mood isEqual:@"excited"]) { // excited
-        [self.moodPickerView selectRow: 6 inComponent: 0 animated: NO];
+        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 5 inSection: 0]];
         self.moodTypeLabel.text = @"Excited";
         
     } else if ([selectedDay.mood isEqualToString:@"frisky"]) {
-        [self.moodPickerView selectRow: 7 inComponent: 0 animated: NO];
+        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 6 inSection: 0]];
         self.moodTypeLabel.text = @"Frisky";
         
     } else if ([selectedDay.mood isEqualToString:@"frustrated"]) {
-        [self.moodPickerView selectRow: 8 inComponent: 0 animated: NO];
+        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 7 inSection: 0]];
         self.moodTypeLabel.text = @"Frustrated";
         
     } else if ([selectedDay.mood isEqualToString:@"good"] || [selectedDay.mood isEqual:@"happy"]) { // happy
-        [self.moodPickerView selectRow: 9 inComponent: 0 animated: NO];
+        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 8 inSection: 0]];
         self.moodTypeLabel.text = @"Happy";
         
     } else if ([selectedDay.mood isEqualToString:@"in love"]) {
-        [self.moodPickerView selectRow: 10 inComponent: 0 animated: NO];
+        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 9 inSection: 0]];
         self.moodTypeLabel.text = @"In Love";
         
     } else if ([selectedDay.mood isEqualToString:@"motivated"]) {
-        [self.moodPickerView selectRow: 11 inComponent: 0 animated: NO];
+        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 10 inSection: 0]];
         self.moodTypeLabel.text = @"Motivated";
         
     } else if ([selectedDay.mood isEqualToString:@"neutral"]) {
-        [self.moodPickerView selectRow: 12 inComponent: 0 animated: NO];
+        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 11 inSection: 0]];
         self.moodTypeLabel.text = @"Neutral";
         
     } else if ([selectedDay.mood isEqualToString:@"sad"]) {
-        [self.moodPickerView selectRow: 13 inComponent: 0 animated: NO];
+        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 12 inSection: 0]];
         self.moodTypeLabel.text = @"Sad";
         
     } else if ([selectedDay.mood isEqualToString:@"worried"]) {
-        [self.moodPickerView selectRow: 14 inComponent: 0 animated: NO];
+        [self tableView: self.moodTableView didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 13 inSection: 0]];
         self.moodTypeLabel.text = @"Worried";
         
     } else {
-        [self.moodPickerView selectRow: 0 inComponent: 0 animated: NO];
-        self.moodTypeLabel.text = @"";
         
     }
 }
@@ -303,7 +320,7 @@ NSIndexPath *selectedIndexPath;
 {
     Day *selectedDay = [self.delegate getSelectedDay];
     
-    self.moodPickerView.hidden = YES;
+    self.moodTableView.hidden = YES;
     
     if (selectedDay.mood.length > 0) {
         // Minimized Cell, With Data
@@ -321,7 +338,7 @@ NSIndexPath *selectedIndexPath;
 
 - (void)setExpanded
 {
-    self.moodPickerView.hidden = NO;
+    self.moodTableView.hidden = NO;
     
     self.moodPlaceholderLabel.hidden = YES;
     self.moodCollapsedLabel.hidden = NO;

@@ -27,7 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *moodPlaceholderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *moodCollapsedLabel;
 @property (weak, nonatomic) IBOutlet UILabel *moodTypeLabel;
-@property (weak, nonatomic) IBOutlet UIPickerView *moodPickerView;
+@property (weak, nonatomic) IBOutlet UITableView *moodTableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 
 - (void)updateCell;
