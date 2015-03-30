@@ -57,13 +57,25 @@
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Jn7-AH-V1j">
                         <rect key="frame" x="86" y="9" width="20" height="20"/>
                     </activityIndicatorView>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42w-vf-KyK">
+                        <rect key="frame" x="6" y="29" width="262" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="262" id="GbC-Cd-Euu"/>
+                            <constraint firstAttribute="height" constant="21" id="q4E-or-5Iu"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="pC8-Vg-fNe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="0AQ-d2-luk"/>
+                    <constraint firstItem="42w-vf-KyK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-2" id="1RK-WR-hvp"/>
                     <constraint firstItem="dQh-Yb-zd7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="3bF-6d-vQ2"/>
                     <constraint firstItem="dQh-Yb-zd7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="51J-Gm-t3A"/>
                     <constraint firstAttribute="trailing" secondItem="tAZ-dm-EWG" secondAttribute="trailing" constant="20" id="9jG-D5-d8a"/>
                     <constraint firstItem="Jn7-AH-V1j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="1" id="APm-Gl-SPd"/>
+                    <constraint firstItem="42w-vf-KyK" firstAttribute="top" secondItem="pC8-Vg-fNe" secondAttribute="bottom" constant="-12" id="DN7-EX-nfI"/>
                     <constraint firstItem="tAZ-dm-EWG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="QJi-Jq-Jz3"/>
                     <constraint firstAttribute="bottom" secondItem="tAZ-dm-EWG" secondAttribute="bottom" constant="10" id="ZwZ-Q8-Hzz"/>
                     <constraint firstAttribute="trailing" secondItem="Zzd-u5-R9J" secondAttribute="trailing" constant="13" id="b44-HG-MH8"/>
@@ -83,6 +95,7 @@
                 <outlet property="placeholderLabel" destination="pC8-Vg-fNe" id="7FO-NB-9Ye"/>
                 <outlet property="symptomsCollapsedLabel" destination="dQh-Yb-zd7" id="DrU-2L-Vxr"/>
                 <outlet property="symptomsTableView" destination="tAZ-dm-EWG" id="VcY-Uv-V4x"/>
+                <outlet property="typeCollapsedLabel" destination="42w-vf-KyK" id="Bs6-Fk-K9s"/>
             </connections>
             <point key="canvasLocation" x="104" y="170"/>
         </tableViewCell>

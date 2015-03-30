@@ -25,6 +25,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *symptomsCollapsedLabel;
+@property (weak, nonatomic) IBOutlet UILabel *typeCollapsedLabel;
 @property (weak, nonatomic) IBOutlet UITableView *symptomsTableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 

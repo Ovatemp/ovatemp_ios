@@ -392,6 +392,31 @@ NSArray *symptomsDataSource;
     }
 }
 
+- (NSString *)stringForSymptomId:(NSInteger)value
+{
+    value--;
+    
+    if (value == 0) {
+        return @"Breast Tenderness";
+    } else if (value == 1) {
+        return @"Headaches";
+    } else if (value == 2) {
+        return @"Nausea";
+    } else if (value == 3) {
+        return @"Irritability";
+    } else if (value == 4) {
+        return @"Bloating";
+    } else if (value == 5) {
+        return @"PMS";
+    } else if (value == 6) {
+        return @"Stress";
+    } else if (value == 7) {
+        return @"Travel";
+    } else {
+        return @"Fever";
+    }
+}
+
 #pragma mark - Appearance
 
 - (void)updateCell
@@ -400,11 +425,21 @@ NSArray *symptomsDataSource;
     
     if (selectedDay.symptomIds) {
         
+        NSMutableString *symptomsString = [[NSMutableString alloc] init];
+        
         for (NSString *symptomID in selectedDay.symptomIds) {
-            NSInteger symptomIntVal = [symptomID integerValue];
             
+            NSInteger symptomIntVal = [symptomID integerValue];
             [self setSymptomWithValue: symptomIntVal];
+            
+            [symptomsString appendFormat: @"%@, ", [self stringForSymptomId: symptomIntVal]];
         }
+        
+        if (symptomsString.length > 2) {
+            [symptomsString replaceCharactersInRange: NSMakeRange(symptomsString.length - 2, 2) withString: @""];
+        }
+        
+        self.typeCollapsedLabel.text = symptomsString;
         
         [self.symptomsTableView reloadData];
     } else {
@@ -414,14 +449,31 @@ NSArray *symptomsDataSource;
 
 - (void)setMinimized
 {
+    Day *selectedDay = [self.delegate getSelectedDay];
+    
+    if ([selectedDay.symptomIds count] > 0) {
+        // Minimized Cell, With Data
+        self.placeholderLabel.hidden = YES;
+        self.typeCollapsedLabel.hidden = NO;
+        self.symptomsCollapsedLabel.hidden = NO;
+        
+    }else{
+        // Minimized Cell, Without Data
+        self.placeholderLabel.hidden = NO;
+        self.typeCollapsedLabel.hidden = YES;
+        self.symptomsCollapsedLabel.hidden = YES;
+        
+    }
     self.symptomsTableView.hidden = YES;
 }
 
 - (void)setExpanded
 {
     self.symptomsTableView.hidden = NO;
-    self.symptomsCollapsedLabel.hidden = NO;
+    
     self.placeholderLabel.hidden = YES;
+    self.symptomsCollapsedLabel.hidden = NO;
+    self.typeCollapsedLabel.hidden = YES;
     
     [self.symptomsTableView flashScrollIndicators];
 }
