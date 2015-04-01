@@ -19,7 +19,8 @@
 
 @property (nonatomic) TKChart *chartView;
 @property (nonatomic) TKChartLineSeries *chartSeries;
-@property (nonatomic) TKChartGridLineAnnotation *chartAnnotation;
+@property (nonatomic) TKChartGridLineAnnotation *chartLineAnnotation;
+@property (nonatomic) TKChartBandAnnotation *chartBandAnnotation;
 
 @property (nonatomic) NSMutableArray *temperatureData;
 
@@ -33,11 +34,6 @@
 
     [self customizeAppearance];
     [self setUpChart];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear: animated];
     
     [self loadAssets];
 }
@@ -87,6 +83,7 @@
 {
     if ([Cycle fullyLoaded]) {
         [self loadCycle];
+        
     } else {
         
         [TAOverlay showOverlayWithLabel: @"Loading Cycles..." Options: TAOverlayOptionOverlaySizeRoundedRect];
@@ -119,6 +116,10 @@
 {
     self.title = self.selectedCycle.rangeString;
     
+    [UIView animateWithDuration: 1 animations:^{
+        [self showLabels];
+    }];
+    
     [self reloadChart];
     [self reloadCollectionViews];
 }
@@ -129,6 +130,24 @@
     
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemDone target: self action: @selector(didSelectDoneButton)];
     self.navigationItem.rightBarButtonItem = doneButton;
+    
+    [self hideLabels];
+}
+
+- (void)hideLabels
+{
+    self.periodLabel.alpha = 0.0f;
+    self.cpLabel.alpha = 0.0f;
+    self.cfLabel.alpha = 0.0f;
+    self.sexLabel.alpha = 0.0f;
+}
+
+- (void)showLabels
+{
+    self.periodLabel.alpha = 1.0f;
+    self.cpLabel.alpha = 1.0f;
+    self.cfLabel.alpha = 1.0f;
+    self.sexLabel.alpha = 1.0f;
 }
 
 - (void)setUpChart
@@ -138,7 +157,7 @@
     
     self.chartView.title.hidden = YES;
     self.chartView.legend.hidden = YES;
-    self.chartView.allowAnimations = NO;
+    self.chartView.allowAnimations = YES;
     
     [self.view addSubview: self.chartView];
 }
@@ -150,8 +169,10 @@
 
 - (void)reloadChart
 {
-    [self.chartView removeSeries: self.chartSeries];
-    [self.chartView removeAnnotation: self.chartAnnotation];
+    //[self.chartView removeSeries: self.chartSeries];
+    //[self.chartView removeAnnotation: self.chartLineAnnotation];
+    [self.chartView removeAllData];
+    [self.chartView removeAllAnnotations];
     
     self.temperatureData = [[NSMutableArray alloc] init];
     
@@ -185,6 +206,14 @@
         }
     }
     
+    self.chartView.selectionMode = TKChartSelectionModeSingle;
+    self.chartView.xAxis.allowPan = YES;
+    self.chartView.yAxis.allowPan = YES;
+    self.chartView.xAxis.allowZoom = YES;
+    self.chartView.yAxis.allowZoom = YES;
+    
+    // TEMPERATURE(LINE) SERIES
+    
     self.chartSeries = [[TKChartLineSeries alloc] initWithItems: self.temperatureData];
     self.chartSeries.style.palette = [[TKChartPalette alloc] init];
     TKChartPaletteItem *palleteItem = [[TKChartPaletteItem alloc] init];
@@ -198,13 +227,51 @@
     [palette addPaletteItem:paletteItem];
     self.chartSeries.style.shapePalette = palette;
     
+    self.chartSeries.selectionMode = TKChartSeriesSelectionModeDataPoint;
+
     [self.chartView addSeries: self.chartSeries];
+    
+    // COVER LINE ANNOTATION
     
     if (self.selectedCycle.coverline) {
         TKStroke *stroke = [TKStroke strokeWithColor:[UIColor purpleColor] width: 2];
-        self.chartAnnotation = [[TKChartGridLineAnnotation alloc] initWithValue: self.selectedCycle.coverline forAxis: self.chartView.yAxis withStroke: stroke];
-        [self.chartView addAnnotation: self.chartAnnotation];
+        self.chartLineAnnotation = [[TKChartGridLineAnnotation alloc] initWithValue: self.selectedCycle.coverline forAxis: self.chartView.yAxis withStroke: stroke];
+        [self.chartView addAnnotation: self.chartLineAnnotation];
     }
+    
+    // FERTILITY WINDOW PLOT BAND
+    
+    NSInteger min = 0;
+    NSInteger max = 0;
+    
+    for (int i = 0; i < [days count]; i++) {
+        
+        Day *day = days[i];
+        
+        //NSLog(@"DAY %d : %@", i, day.inFertilityWindow ? @"YES" : @"NO");
+        
+        if (min == 0 && day.inFertilityWindow) {
+            min = i;
+            
+        }else if (max == 0 && min != 0 && !day.inFertilityWindow) {
+            max = i;
+        }
+    }
+    
+    if (min != 0 && max == 0) {
+        max = [days count];
+    }
+    
+    if (min != 0 && max != 0) {
+     
+        TKRange *range = [[TKRange alloc] initWithMinimum: [NSNumber numberWithInteger: min] andMaximum: [NSNumber numberWithInteger: max]];
+        UIColor *color = [UIColor colorWithRed:(32.0f/255.0) green:(108.0f/255.0) blue:(114.0f/255.0) alpha:0.1];
+        TKFill *fill = [TKSolidFill solidFillWithColor: color];
+        [self.chartView addAnnotation: [[TKChartBandAnnotation alloc] initWithRange: range forAxis: self.chartView.xAxis withFill: fill withStroke: nil]];
+        
+    }
+    
+    
     
 }
 
@@ -214,6 +281,13 @@
     [self.cfCollectionView reloadData];
     [self.cpCollectionView reloadData];
     [self.sexCollectionView reloadData];
+}
+
+#pragma mark - TKChart Delegate
+
+- (void)chart:(TKChart *)chart didSelectPoint:(id<TKChartData>)point inSeries:(TKChartSeries *)series atIndex:(NSInteger)index
+{
+    NSLog(@"SELECTED POINT: %@", point);
 }
 
 #pragma mark - IBAction's
@@ -231,6 +305,7 @@
     
     if (previosCycle) {
         self.selectedCycle = previosCycle;
+        [self hideLabels];
         [self updateScreen];
     }
 }
@@ -242,6 +317,7 @@
     
     if (nextCycle) {
         self.selectedCycle = nextCycle;
+        [self hideLabels];
         [self updateScreen];
     }
 }

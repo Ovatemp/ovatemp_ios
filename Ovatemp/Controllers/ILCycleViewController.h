@@ -19,6 +19,11 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *cpCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *sexCollectionView;
 
+@property (weak, nonatomic) IBOutlet UILabel *periodLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cfLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cpLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sexLabel;
+
 - (IBAction)didSelectPreviousCycle:(id)sender;
 - (IBAction)didSelectNextCycle:(id)sender;
 
