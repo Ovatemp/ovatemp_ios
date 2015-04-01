@@ -139,7 +139,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eDl-ej-vyi">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eDl-ej-vyi">
                                 <rect key="frame" x="0.0" y="90" width="600" height="461"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -603,11 +603,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="icn_p_light" translatesAutoresizingMaskIntoConstraints="NO" id="r0u-Kz-Z3f">
-                                                    <rect key="frame" x="3.5" y="0.0" width="17" height="25"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="icn_p_heavy" translatesAutoresizingMaskIntoConstraints="NO" id="r0u-Kz-Z3f">
+                                                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="r0u-Kz-Z3f" secondAttribute="height" multiplier="2:3" id="uxf-Om-D1E"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="uxf-Om-D1E"/>
+                                                        </mask>
+                                                    </variation>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -618,6 +623,10 @@
                                             <constraint firstItem="r0u-Kz-Z3f" firstAttribute="leading" secondItem="aTa-Z9-2pw" secondAttribute="leading" constant="4" id="7vj-H0-wa8"/>
                                             <constraint firstItem="r0u-Kz-Z3f" firstAttribute="top" secondItem="aTa-Z9-2pw" secondAttribute="top" id="7xL-pa-k1V"/>
                                             <constraint firstAttribute="bottom" secondItem="r0u-Kz-Z3f" secondAttribute="bottom" constant="1" id="BRD-fZ-YjJ"/>
+                                            <constraint firstItem="r0u-Kz-Z3f" firstAttribute="top" secondItem="aTa-Z9-2pw" secondAttribute="top" id="Cdf-hV-lZK"/>
+                                            <constraint firstItem="r0u-Kz-Z3f" firstAttribute="leading" secondItem="aTa-Z9-2pw" secondAttribute="leading" id="aJ6-oU-8cJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="r0u-Kz-Z3f" secondAttribute="trailing" id="eJk-PS-4SY"/>
+                                            <constraint firstAttribute="bottom" secondItem="r0u-Kz-Z3f" secondAttribute="bottom" id="gTw-Fq-2tG"/>
                                             <constraint firstAttribute="centerY" secondItem="r0u-Kz-Z3f" secondAttribute="centerY" id="pWJ-Kf-RBS"/>
                                             <constraint firstAttribute="bottom" secondItem="r0u-Kz-Z3f" secondAttribute="bottom" id="tae-uv-iBX"/>
                                             <constraint firstItem="r0u-Kz-Z3f" firstAttribute="top" secondItem="aTa-Z9-2pw" secondAttribute="top" id="v7F-MF-w8S"/>
@@ -628,7 +637,9 @@
                                             <mask key="constraints">
                                                 <exclude reference="6YY-mW-rb7"/>
                                                 <exclude reference="7vj-H0-wa8"/>
+                                                <exclude reference="7xL-pa-k1V"/>
                                                 <exclude reference="BRD-fZ-YjJ"/>
+                                                <exclude reference="tae-uv-iBX"/>
                                                 <exclude reference="v7F-MF-w8S"/>
                                             </mask>
                                         </variation>
@@ -719,7 +730,34 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="Wrn-Ls-b4x"/>
+                    <navigationItem key="navigationItem" id="Wrn-Ls-b4x">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="vCI-Fk-9gT">
+                            <view key="customView" contentMode="scaleToFill" id="LgA-ld-pUD">
+                                <rect key="frame" x="0.0" y="0.0" width="133" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bT7-1g-sOr">
+                                        <rect key="frame" x="94" y="2" width="30" height="30"/>
+                                        <state key="normal" title="&gt;">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didSelectNextCycle:" destination="gwh-Id-obW" eventType="touchUpInside" id="zGf-r2-2Tl"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhA-zv-hEE">
+                                        <rect key="frame" x="10" y="2" width="30" height="30"/>
+                                        <state key="normal" title="&lt;">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didSelectPreviousCycle:" destination="gwh-Id-obW" eventType="touchUpInside" id="qdQ-CT-TaY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </view>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="cfCollectionView" destination="Mj6-4s-UfP" id="OMF-Cx-Dzi"/>
                         <outlet property="cpCollectionView" destination="EAx-7r-RLM" id="Uh4-8u-ZHw"/>
@@ -751,7 +789,7 @@
     <resources>
         <image name="icn_calendar" width="22" height="22"/>
         <image name="icn_graph" width="24" height="22"/>
-        <image name="icn_p_light" width="25" height="38"/>
+        <image name="icn_p_heavy" width="33" height="38"/>
         <image name="icn_period" width="33" height="33"/>
         <image name="icn_pulldown_fertile_large" width="46" height="52"/>
         <image name="icn_pulldown_fertilie_empty" width="34" height="38"/>

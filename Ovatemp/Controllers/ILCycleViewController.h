@@ -19,4 +19,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *cpCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *sexCollectionView;
 
+- (IBAction)didSelectPreviousCycle:(id)sender;
+- (IBAction)didSelectNextCycle:(id)sender;
+
 @end
