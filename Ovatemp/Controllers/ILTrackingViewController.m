@@ -731,7 +731,7 @@
                     cell.dayLabel.textColor = [UIColor whiteColor];
                     return cell;
                 }
-            }
+            } 
             
             if ([cyclePhase isKindOfClass:[NSString class]]) {
                 
