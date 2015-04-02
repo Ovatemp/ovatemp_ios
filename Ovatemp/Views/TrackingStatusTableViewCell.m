@@ -45,14 +45,15 @@
         [self.notesButton setImage:[UIImage imageNamed:@"icn_notes_empty"] forState:UIControlStateNormal];
     }
     
-    // IN FERTILITY WINDOW
-    // RETURNS OUT OF METHOD IF TRUE
+    // FERTILITY STATUS CALCULATIONS
+    
+    // FIRST CHECKS FOR FERTILITY WINDOW BOOL, FROM BACKEND, IF TRUE IT RETURNS/EXITS OUT OF METHOD
     if (selectedDay.inFertilityWindow) {
+        // IN FERTILITY WINDOW
         if ([selectedDay.cervicalFluid isEqualToString:@"eggwhite"]) {
-            // peak fertiltity
-            // trying to avoid - red fertile
-            // conceive - green fertile
+            // PEAK FERTILITY
             if (currentUserProfile.tryingToConceive) {
+                // TTC
                 self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_fertile"];
                 self.peakLabel.text = @"PEAK";
                 self.fertilityLabel.text = @"FERTILITY";
@@ -64,7 +65,8 @@
                 self.enterMoreInfoLabel.text = @"Optimal conditions to make babies!";
                 self.enterMoreInfoLabel.hidden = NO;
                 return;
-            } else { // avoid
+            } else {
+                // TTA
                 self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period-1"]; // I know it's not the period phase, my designer named the asset wrong
                 self.peakLabel.text = @"PEAK";
                 self.fertilityLabel.text = @"FERTILITY";
@@ -77,8 +79,10 @@
                 self.enterMoreInfoLabel.hidden = NO;
                 return;
             }
-        } else { // just plain fertile
+        } else {
+            // REGULAR FERTILITY
             if (currentUserProfile.tryingToConceive) {
+                // TTC
                 self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_fertile"];
                 self.periodLabel.text = @"FERTILE";
                 self.periodLabel.hidden = NO;
@@ -89,7 +93,8 @@
                 self.enterMoreInfoLabel.text = @"Let’s get it on!";
                 self.enterMoreInfoLabel.hidden = NO;
                 return;
-            } else { // avoid
+            } else {
+                // TTA
                 self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period-1"]; // I know it's not the period phase, my designer named the asset wrong
                 self.periodLabel.text = @"FERTILE";
                 self.periodLabel.hidden = NO;
@@ -125,11 +130,13 @@
         
     }
     
-    // CYCLE PHASES
+    // FERTILITY WINDOW WAS FALSE
+    // NOW CHECKS FOR CYCLE PHASE PARAMETER, FROM BACKEND
     
-    if ([selectedDay.cyclePhase isEqualToString:@"period"]) {
+    if ([selectedDay.cyclePhase isEqualToString: @"period"]) {
         
         // CYCLE PHASE = PERIOD
+        // NOT FERTILE
         
         self.notEnoughInfoLabel.hidden = YES;
         
@@ -141,21 +148,21 @@
         
         self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period"];
         if (currentUserProfile.tryingToConceive) {
+            // TTC
             self.enterMoreInfoLabel.text = @"Try to get some rest";
         } else {
-            // avoid
+            // TTA
             self.enterMoreInfoLabel.text = @"The first five days of your cycle are safe";
         }
         self.enterMoreInfoLabel.hidden = NO;
         
-    } else if ([selectedDay.cyclePhase isEqualToString:@"ovulation"]) { // fertile
+    } else if ([selectedDay.cyclePhase isEqualToString:@"ovulation"]) {
         
         // CYCLE PHASE = OVULATION
         // FERTILE
         
-        // PEAK DATE
         if ([selectedDate isEqual: peakDate]) {
-            
+            // PEAK FERTILITY
             self.peakLabel.text = @"PEAK";
             self.fertilityLabel.text = @"FERTILITY";
             
@@ -164,59 +171,55 @@
             self.notEnoughInfoLabel.hidden = YES;
             
             if (currentUserProfile.tryingToConceive) {
-                // conceive
+                // TTC
                 self.enterMoreInfoLabel.text = @"Optimal conditions to make babies!";
                 self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_fertile"];
             } else {
-                // avoid
+                // TTA
                 self.enterMoreInfoLabel.text = @"Practice safe sex or avoid intercourse";
                 self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period-1"]; // I know it's not the period phase, my designer named the asset wrong
             }
             
             self.enterMoreInfoLabel.hidden = NO;
-            
             self.periodLabel.hidden = YES;
             
-            return;
-            
         } else {
-            // just plain fertile
+            // REGULAR FERTILITY
             self.periodLabel.text = @"FERTILE";
             self.periodLabel.hidden = NO;
             
             self.peakLabel.hidden = YES;
             self.fertilityLabel.hidden = YES;
             self.notEnoughInfoLabel.hidden = YES;
+            
+            if (currentUserProfile.tryingToConceive) {
+                // green fertility image
+                self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_fertile"];
+                self.enterMoreInfoLabel.text = @"Let’s get it on!";
+            } else {
+                // trying to avoid, red fertility image
+                self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period-1"]; // I know it's not the period phase, my designer named the asset wrong
+                self.enterMoreInfoLabel.text = @"Practice safe sex or avoid intercourse";
+            }
+            
+            self.enterMoreInfoLabel.hidden = NO;
         }
         
-        // CYCLE PHASE = OVULATION
-        // FERTILE
-        
-        if (currentUserProfile.tryingToConceive) {
-            // green fertility image
-            self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_fertile"];
-            self.enterMoreInfoLabel.text = @"Let’s get it on!";
-        } else {
-            // trying to avoid, red fertility image
-            self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period-1"]; // I know it's not the period phase, my designer named the asset wrong
-            self.enterMoreInfoLabel.text = @"Practice safe sex or avoid intercourse";
-        }
-        
-        self.enterMoreInfoLabel.hidden = NO;
-        
-    } else if ([selectedDay.cyclePhase isEqualToString:@"preovulation"]) { // not fertile
+    } else if ([selectedDay.cyclePhase isEqualToString:@"preovulation"]) {
         
         // CYCLE PHASE = PRE-OVULATION
         // NOT FERTILE
         
         if (currentUserProfile.tryingToConceive) {
+            // TTC
             self.enterMoreInfoLabel.text = @"Fertile window about to open, check for Cervical Fluid";
         } else {
+            // TTA
             self.enterMoreInfoLabel.text = @"You are safe on the evening of a dry day";
         }
         
         if ([selectedDay.cervicalFluid isEqualToString:@"dry"] && !currentUserProfile.tryingToConceive) {
-            // yellow caution image
+            // YELLOW CAUTION IMAGE
             self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_notfertile-1"];
         } else {
             self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_notfertile"];
@@ -234,10 +237,9 @@
         
         self.enterMoreInfoLabel.hidden = NO;
         
-        // FERTILE
-        
         if ([selectedDay.cervicalFluid isEqualToString:@"sticky"] && !currentUserProfile.tryingToConceive) {
-            // reset everything to red fertile
+            // FERTILE
+            // RESET EVERYTHING TO RED
             self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period-1"]; // I know it's not the period phase, my designer named the asset wrong
             
             self.periodLabel.text = @"FERTILE";
@@ -250,7 +252,7 @@
             self.enterMoreInfoLabel.hidden = NO;
         }
         
-    } else if ([selectedDay.cyclePhase isEqualToString:@"postovulation"]) { // not fertile
+    } else if ([selectedDay.cyclePhase isEqualToString: @"postovulation"]) {
         
         // CYCLE PHASE = POST-OVULATION
         // NOT FERTILE
@@ -268,8 +270,10 @@
         self.periodLabel.hidden = YES;
         
         if (currentUserProfile.tryingToConceive) {
+            // TTC
             self.enterMoreInfoLabel.text = @"Crossing our fingers for you!";
-        } else { // avoid
+        } else {
+            // TTA
             self.enterMoreInfoLabel.text = @"You’re safe to have unprotected sex until your next period";
         }
         
