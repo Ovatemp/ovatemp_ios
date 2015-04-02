@@ -271,11 +271,13 @@
                        NSLog(@"REFRESH SUCCESS : RELOADING TABLE");
                        
                        [self reloadTableWithAnimation];
+                       [TAOverlay hideOverlay];
                        
                    }
                    failure:^(NSError *error) {
                        
                        NSLog(@"ERROR: %@", error.localizedDescription);
+                       [TAOverlay hideOverlay];
                        
                    }];
     
@@ -284,6 +286,8 @@
 - (void)refreshDrawerCollectionViewData
 {
     NSLog(@"REFRESH DAYS COLLECTION VIEW");
+    
+    [TAOverlay showOverlayWithLabel: @"Loading..." Options: TAOverlayOptionOverlaySizeRoundedRect];
     
     [ConnectionManager get:@"/days"
                     params:@{
@@ -326,6 +330,7 @@
                    }
                    failure:^(NSError *error) {
                        NSLog(@"error: %@", error);
+                       [TAOverlay hideOverlay];
                    }];
 }
 
@@ -335,10 +340,6 @@
 {
     // Don't present the chart here, just change device orientation and let the notification for changed orientation take care of presenting the view.
     [[UIDevice currentDevice] setValue: [NSNumber numberWithInteger: UIInterfaceOrientationLandscapeLeft] forKey:@"orientation"];
-    
-//    ILCycleViewController *cycleVC = [self.storyboard instantiateViewControllerWithIdentifier: @"ilcycleNavViewController"];
-//    [self presentViewController: cycleVC animated: YES completion: nil];
-    
 }
 
 - (IBAction)openCalendar:(id)sender
@@ -374,7 +375,7 @@
     } completion:^(BOOL finished) {
         if (!self.lowerDrawer) {
             // refresh drawer when closed
-            [self refreshDrawerCollectionViewData];
+            //[self refreshDrawerCollectionViewData];
         }
     }];
 }
@@ -713,27 +714,26 @@
                 
             }
             
-            if ([cyclePhase isKindOfClass:[NSString class]]) {
-                
-                UserProfile *currentUserProfile = [UserProfile current];
-                
-                NSNumber *inFertilityWindowNumber = (NSNumber *)[dayDict objectForKey: @"in_fertility_window"];
-                
-                if ([inFertilityWindowNumber boolValue] == YES) {
-                    if (currentUserProfile.tryingToConceive) {
-                        // green fertility image
-                        cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_fertile_small"];
-                        cell.monthLabel.textColor = [UIColor whiteColor];
-                        cell.dayLabel.textColor = [UIColor whiteColor];
-                        return cell;
-                    } else { // avoid
-                        // red fertility image
-                        cell.statusImageView.image = [UIImage imageNamed:@"icn_dd_fertile_small"];
-                        cell.monthLabel.textColor = [UIColor whiteColor];
-                        cell.dayLabel.textColor = [UIColor whiteColor];
-                        return cell;
-                    }
+            UserProfile *currentUserProfile = [UserProfile current];
+            NSNumber *inFertilityWindowNumber = (NSNumber *)[dayDict objectForKey: @"in_fertility_window"];
+            
+            if ([inFertilityWindowNumber boolValue] == YES) {
+                if (currentUserProfile.tryingToConceive) {
+                    // green fertility image
+                    cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_fertile_small"];
+                    cell.monthLabel.textColor = [UIColor whiteColor];
+                    cell.dayLabel.textColor = [UIColor whiteColor];
+                    return cell;
+                } else { // avoid
+                    // red fertility image
+                    cell.statusImageView.image = [UIImage imageNamed:@"icn_dd_fertile_small"];
+                    cell.monthLabel.textColor = [UIColor whiteColor];
+                    cell.dayLabel.textColor = [UIColor whiteColor];
+                    return cell;
                 }
+            }
+            
+            if ([cyclePhase isKindOfClass:[NSString class]]) {
                 
                 if ([cyclePhase isEqualToString:@"period"]) { // if it's not null
                     
@@ -1239,7 +1239,7 @@
                        
                        self.selectedTemperature = nil;
                        
-                       [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: 1 inSection: 0]] withRowAnimation: UITableViewRowAnimationNone];
+                       [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: 0 inSection: 0],[NSIndexPath indexPathForRow: 1 inSection: 0]] withRowAnimation: UITableViewRowAnimationNone];
                        
                        [[NSNotificationCenter defaultCenter] postNotificationName: @"temp_stop_activity" object: self];
                    }
@@ -1312,8 +1312,8 @@
                        
                        if (!skipReload) {
                            self.selectedTableRowIndex = nil;
-                           [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: [indexPathRow integerValue] inSection: 0]]
-                                                 withRowAnimation: UITableViewRowAnimationAutomatic];
+                           [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: 0 inSection: 0],
+                                                                     [NSIndexPath indexPathForRow: [indexPathRow integerValue] inSection: 0]] withRowAnimation: UITableViewRowAnimationAutomatic];
 
                        }
                        

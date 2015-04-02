@@ -119,8 +119,10 @@
         [self showLabels];
     }];
     
-    [self reloadChart];
-    [self reloadCollectionViews];
+    if ([self.selectedCycle.days count] > 0) {
+        [self reloadChart];
+        [self reloadCollectionViews];
+    }
 }
 
 - (void)customizeAppearance
@@ -212,10 +214,10 @@
     self.chartSeries = [[TKChartLineSeries alloc] initWithItems: self.temperatureData];
     self.chartSeries.style.palette = [[TKChartPalette alloc] init];
     TKChartPaletteItem *palleteItem = [[TKChartPaletteItem alloc] init];
-    palleteItem.stroke = [TKStroke strokeWithColor: [UIColor darkGrayColor] width: 1];
+    palleteItem.stroke = [TKStroke strokeWithColor: [UIColor darkGrayColor] width: 2];
     [self.chartSeries.style.palette addPaletteItem: palleteItem];
     
-    self.chartSeries.style.pointShape = [TKPredefinedShape shapeWithType: TKShapeTypeCircle andSize: CGSizeMake(8, 8)];
+    self.chartSeries.style.pointShape = [TKPredefinedShape shapeWithType: TKShapeTypeCircle andSize: CGSizeMake(12, 12)];
     TKChartPaletteItem *paletteItem = [[TKChartPaletteItem alloc] init];
     paletteItem.fill = [TKSolidFill solidFillWithColor: [UIColor purpleColor]];
     TKChartPalette *palette = [[TKChartPalette alloc] init];
@@ -227,21 +229,45 @@
     [self.chartView addSeries: self.chartSeries];
     
     // AXIS CUSTOMIZATION
+
+//    Day *firstDay = [self.selectedCycle.days firstObject];
+//    
+//    CGFloat minTemp = [firstDay.temperature floatValue];
+//    CGFloat maxTemp = [firstDay.temperature floatValue];
+//    
+//    for (int i = 0; i < [self.selectedCycle.days count]; i++) {
+//        Day *day = self.selectedCycle.days[i];
+//        CGFloat dayTemp = [day.temperature floatValue];
+//        
+//        if (dayTemp < minTemp) {
+//            minTemp = dayTemp;
+//        }else if (dayTemp > maxTemp) {
+//            maxTemp = dayTemp;
+//        }
+//    }
+//    
+//    NSString *minTempString = [NSString stringWithFormat: @"%.1f", minTemp];
+//    NSString *maxTempString = [NSString stringWithFormat: @"%.1f", maxTemp];
+//    NSNumber *minTempRounded = [NSNumber numberWithFloat: [minTempString floatValue]];
+//    NSNumber *maxTempRounded = [NSNumber numberWithFloat: [maxTempString floatValue]];
+//
     
-    TKChartNumericAxis *yAxis = [[TKChartNumericAxis alloc] init];
+    TKChartNumericAxis *yAxis = [[TKChartNumericAxis alloc] initWithMinimum: @90 andMaximum: @106];
     yAxis.style.labelStyle.textOffset = UIOffsetMake(2, 0);
     yAxis.style.labelStyle.textColor = [UIColor darkGrayColor];
-    yAxis.minorTickInterval = @10;
-    yAxis.style.minorTickStyle.ticksHidden = NO;
+//    yAxis.minorTickInterval = @10;
+//    yAxis.style.minorTickStyle.ticksHidden = NO;
+//    yAxis.majorTickInterval = @1;
     yAxis.title = @"Temp.";
+    yAxis.style.titleStyle.textColor = [UIColor darkGrayColor];
     self.chartView.yAxis = yAxis;
     
-//    TKChartNumericAxis *xAxis = [[TKChartNumericAxis alloc] init];
-//    xAxis.style.labelStyle.textColor = [UIColor darkGrayColor];
-//    xAxis.style.labelStyle.font = [UIFont boldSystemFontOfSize: 8];
-//    xAxis.majorTickInterval = @1;
-//    xAxis.style.majorTickStyle.ticksHidden = NO;
-//    self.chartView.xAxis = xAxis;
+    NSNumber *maxDays = [NSNumber numberWithInteger: [self.selectedCycle.days count]];
+    TKChartNumericAxis *xAxis = [[TKChartNumericAxis alloc] initWithMinimum: @1 andMaximum: maxDays];
+    xAxis.style.labelStyle.textColor = [UIColor darkGrayColor];
+    xAxis.style.labelStyle.font = [UIFont boldSystemFontOfSize: 10];
+    xAxis.majorTickInterval = @1;
+    self.chartView.xAxis = xAxis;
     
     // COVER LINE ANNOTATION
     
@@ -295,6 +321,10 @@
 - (void)chart:(TKChart *)chart didSelectPoint:(id<TKChartData>)point inSeries:(TKChartSeries *)series atIndex:(NSInteger)index
 {
     NSLog(@"SELECTED POINT: %@", point);
+    TKChartDataPoint *chartPoint = (TKChartDataPoint *)point;
+    
+    NSString *message = [NSString stringWithFormat: @"Temperature: %.2f", [chartPoint.dataYValue floatValue]];
+    [TAOverlay showOverlayWithLabel: message Options: TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayDismissTap | TAOverlayOptionOverlayTypeInfo];
 }
 
 #pragma mark - IBAction's
@@ -345,34 +375,24 @@
 {
     CycleCollectionViewCell *cell = [self.periodCollectionView  dequeueReusableCellWithReuseIdentifier: @"cycleCollectionViewCell" forIndexPath: indexPath];
     
-//    NSInteger numDay = [self.selectedCycle.days count];
-
-//    if (indexPath.row < numDay) {
+    Day *selectedDay = self.selectedCycle.days[indexPath.row];
+    UIImage *selectedImage;
     
-        Day *selectedDay = self.selectedCycle.days[indexPath.row];
-        UIImage *selectedImage;
+    if (collectionView == self.periodCollectionView) {
+        selectedImage = [self periodImageForDay: selectedDay];
         
-        if (collectionView == self.periodCollectionView) {
-            selectedImage = [self periodImageForDay: selectedDay];
-            
-        }else if(collectionView == self.cfCollectionView){
-            selectedImage = [self cfImageForDay: selectedDay];
-            
-        }else if(collectionView == self.cpCollectionView){
-            selectedImage = [self cpImageForDay: selectedDay];
-            
-        }else if(collectionView == self.sexCollectionView){
-            selectedImage = [self sexImageForDay: selectedDay];
-            
-        }
+    }else if(collectionView == self.cfCollectionView){
+        selectedImage = [self cfImageForDay: selectedDay];
         
-        cell.iconImageView.image = selectedImage;
+    }else if(collectionView == self.cpCollectionView){
+        selectedImage = [self cpImageForDay: selectedDay];
         
-//    }else{
-//        
-//        cell.iconImageView.image = nil;
-//        
-//    }
+    }else if(collectionView == self.sexCollectionView){
+        selectedImage = [self sexImageForDay: selectedDay];
+        
+    }
+    
+    cell.iconImageView.image = selectedImage;
     
 //    cell.layer.borderWidth = 1.0f;
 //    cell.layer.borderColor = [UIColor darkGrayColor].CGColor;
@@ -452,10 +472,22 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat width = collectionView.frame.size.width / [self.selectedCycle.days count] + 1;
-    CGFloat height = collectionView.frame.size.height;
-    CGSize size = CGSizeMake(width, height);
+    NSInteger numDays = [self.selectedCycle.days count];
+    NSInteger numParts = numDays - 1;
     
+    if (numDays == 1) {
+        return CGSizeMake(self.periodCollectionView.frame.size.width, self.periodCollectionView.frame.size.height);
+    }
+    
+    CGFloat width = self.periodCollectionView.frame.size.width / numParts;
+    CGFloat height = self.periodCollectionView.frame.size.height;
+    
+    if (indexPath.row == numDays - 2 || indexPath.row == numDays - 1) {
+        // Last 2 cells
+        width = width / 2;
+    }
+    
+    CGSize size = CGSizeMake(width, height);
     return size;
 }
 
