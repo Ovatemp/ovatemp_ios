@@ -15,7 +15,7 @@
 #import "Calendar.h"
 #import "CycleCollectionViewCell.h"
 
-@interface ILCycleViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface ILCycleViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,TKChartDelegate>
 
 @property (nonatomic) TKChart *chartView;
 @property (nonatomic) TKChartLineSeries *chartSeries;
@@ -61,12 +61,12 @@
     NSDictionary *viewsDictionary = @{@"chartView" : self.chartView,
                                       @"periodView" : self.periodCollectionView};
     
-    NSArray *chartHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat: @"H:|-44-[chartView]-6-|"
+    NSArray *chartHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat: @"H:|-0-[chartView]-0-|"
                                                                                   options: 0
                                                                                   metrics: nil
                                                                                     views: viewsDictionary];
     
-    NSArray *chartVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat: @"V:|-0-[chartView]-5-[periodView]"
+    NSArray *chartVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat: @"V:|-0-[chartView]-0-[periodView]"
                                                                                 options: 0
                                                                                 metrics: nil
                                                                                   views: viewsDictionary];
@@ -85,7 +85,6 @@
         [self loadCycle];
         
     } else {
-        
         [TAOverlay showOverlayWithLabel: @"Loading Cycles..." Options: TAOverlayOptionOverlaySizeRoundedRect];
         
         [Cycle loadAllAnd:^(id response) {
@@ -126,12 +125,13 @@
 
 - (void)customizeAppearance
 {
+    [self hideLabels];
+    
     [self.navigationController.navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName : [UIColor darkGrayColor]}];
     
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemDone target: self action: @selector(didSelectDoneButton)];
     self.navigationItem.rightBarButtonItem = doneButton;
     
-    [self hideLabels];
 }
 
 - (void)hideLabels
@@ -153,6 +153,7 @@
 - (void)setUpChart
 {
     self.chartView = [[TKChart alloc] init];
+    self.chartView.delegate = self;
     self.chartView.translatesAutoresizingMaskIntoConstraints = NO;
     
     self.chartView.title.hidden = YES;
@@ -169,8 +170,6 @@
 
 - (void)reloadChart
 {
-    //[self.chartView removeSeries: self.chartSeries];
-    //[self.chartView removeAnnotation: self.chartLineAnnotation];
     [self.chartView removeAllData];
     [self.chartView removeAllAnnotations];
     
@@ -200,17 +199,13 @@
     }
     
     // FILL OUT REMAINDER OF CYCLE
-    if ([days count] < 30) {
-        for (NSInteger i = [days count]; i < 30; i++) {
-            [self.temperatureData addObject:[[TKChartDataPoint alloc] initWithX: @(i+1) Y: @(0)]];
-        }
-    }
+//    if ([days count] < 30) {
+//        for (NSInteger i = [days count]; i < 30; i++) {
+//            [self.temperatureData addObject:[[TKChartDataPoint alloc] initWithX: @(i+1) Y: @(0)]];
+//        }
+//    }
     
     self.chartView.selectionMode = TKChartSelectionModeSingle;
-    self.chartView.xAxis.allowPan = YES;
-    self.chartView.yAxis.allowPan = YES;
-    self.chartView.xAxis.allowZoom = YES;
-    self.chartView.yAxis.allowZoom = YES;
     
     // TEMPERATURE(LINE) SERIES
     
@@ -228,8 +223,25 @@
     self.chartSeries.style.shapePalette = palette;
     
     self.chartSeries.selectionMode = TKChartSeriesSelectionModeDataPoint;
-
+    
     [self.chartView addSeries: self.chartSeries];
+    
+    // AXIS CUSTOMIZATION
+    
+    TKChartNumericAxis *yAxis = [[TKChartNumericAxis alloc] init];
+    yAxis.style.labelStyle.textOffset = UIOffsetMake(2, 0);
+    yAxis.style.labelStyle.textColor = [UIColor darkGrayColor];
+    yAxis.minorTickInterval = @10;
+    yAxis.style.minorTickStyle.ticksHidden = NO;
+    yAxis.title = @"Temp.";
+    self.chartView.yAxis = yAxis;
+    
+//    TKChartNumericAxis *xAxis = [[TKChartNumericAxis alloc] init];
+//    xAxis.style.labelStyle.textColor = [UIColor darkGrayColor];
+//    xAxis.style.labelStyle.font = [UIFont boldSystemFontOfSize: 8];
+//    xAxis.majorTickInterval = @1;
+//    xAxis.style.majorTickStyle.ticksHidden = NO;
+//    self.chartView.xAxis = xAxis;
     
     // COVER LINE ANNOTATION
     
@@ -245,10 +257,7 @@
     NSInteger max = 0;
     
     for (int i = 0; i < [days count]; i++) {
-        
         Day *day = days[i];
-        
-        //NSLog(@"DAY %d : %@", i, day.inFertilityWindow ? @"YES" : @"NO");
         
         if (min == 0 && day.inFertilityWindow) {
             min = i;
@@ -270,8 +279,6 @@
         [self.chartView addAnnotation: [[TKChartBandAnnotation alloc] initWithRange: range forAxis: self.chartView.xAxis withFill: fill withStroke: nil]];
         
     }
-    
-    
     
 }
 
@@ -331,17 +338,17 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 30;
+    return [self.selectedCycle.days count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CycleCollectionViewCell *cell = [self.periodCollectionView  dequeueReusableCellWithReuseIdentifier: @"cycleCollectionViewCell" forIndexPath: indexPath];
     
-    NSInteger numDay = [self.selectedCycle.days count];
+//    NSInteger numDay = [self.selectedCycle.days count];
 
-    if (indexPath.row < numDay) {
-        
+//    if (indexPath.row < numDay) {
+    
         Day *selectedDay = self.selectedCycle.days[indexPath.row];
         UIImage *selectedImage;
         
@@ -361,11 +368,15 @@
         
         cell.iconImageView.image = selectedImage;
         
-    }else{
-        
-        cell.iconImageView.image = nil;
-        
-    }
+//    }else{
+//        
+//        cell.iconImageView.image = nil;
+//        
+//    }
+    
+//    cell.layer.borderWidth = 1.0f;
+//    cell.layer.borderColor = [UIColor darkGrayColor].CGColor;
+//    cell.backgroundColor = [UIColor yellowColor];
     
     return cell;
 }
@@ -441,7 +452,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat width = collectionView.frame.size.width / 30;
+    CGFloat width = collectionView.frame.size.width / [self.selectedCycle.days count] + 1;
     CGFloat height = collectionView.frame.size.height;
     CGSize size = CGSizeMake(width, height);
     

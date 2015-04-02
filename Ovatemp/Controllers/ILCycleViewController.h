@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *cpLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sexLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *tempLabel;
+
 - (IBAction)didSelectPreviousCycle:(id)sender;
 - (IBAction)didSelectNextCycle:(id)sender;
 
