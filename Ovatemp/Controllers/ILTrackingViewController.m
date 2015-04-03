@@ -208,7 +208,7 @@
 
 #pragma mark - Network
 
-- (void)refreshTrackingView
+- (void)refreshTrackingViewWithAnimation:(BOOL)animationFlag
 {
     NSLog(@"REFRESH TRACKING VIEW");
     
@@ -235,7 +235,12 @@
                        
                        NSLog(@"REFRESH SUCCESS : RELOADING TABLE");
                        
-                       [self reloadTableWithAnimation];
+                       if (animationFlag) {
+                           [self reloadTableWithAnimation];
+                       }else{
+                           [self.tableView reloadData];
+                       }
+                       
                        [TAOverlay hideOverlay];
                        
                    }
@@ -291,7 +296,7 @@
                        NSLog(@"REFRESH DAYS COLLECTION VIEW  : SUCCESS");
                        
                        [self.drawerCollectionView reloadData];
-                       [self refreshTrackingView];
+                       [self refreshTrackingViewWithAnimation: YES];
                    }
                    failure:^(NSError *error) {
                        NSLog(@"error: %@", error);
@@ -801,7 +806,7 @@
     
     [[self.drawerCollectionView cellForItemAtIndexPath: indexPath] setNeedsDisplay];
     
-    [self refreshTrackingView];
+    [self refreshTrackingViewWithAnimation: YES];
     [self setTitleView];
 }
 
@@ -889,6 +894,11 @@
 - (BOOL)usedOndo
 {
     return NO;
+}
+
+- (void)reloadTrackingView
+{
+    [self refreshTrackingViewWithAnimation: NO];
 }
 
 #pragma mark - Cell Delegate's

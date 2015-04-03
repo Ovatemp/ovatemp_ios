@@ -91,72 +91,15 @@
 
 #pragma mark - Network
 
-- (void)hitBackendWithMedicineType:(id)medicineIds reloadMedicines:(BOOL)reload
-{
-    NSDate *selectedDate = [self.delegate getSelectedDate];
-    
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
-    
-    [attributes setObject: medicineIds forKey: @"medicine_ids"];
-    [attributes setObject: selectedDate forKey: @"date"];
-    
-    [self startActivity];
-    
-    [ConnectionManager put:@"/days/"
-                    params:@{
-                             @"day": attributes,
-                             }
-                   success:^(NSDictionary *response) {
-                       
-                       [Cycle cycleFromResponse: response];
-                       [Calendar setDate: [self.delegate getSelectedDate]];
-                       
-                       if (reload) {
-                           [self reloadMedicines];
-                       }else{
-                           [self stopActivity];
-                           [self updateCell];
-                       }
-                       
-                   }
-                   failure:^(NSError *error) {
-                       [Alert presentError:error];
-                       [self stopActivity];
-                   }];
-}
-
 - (void)postNewMedicineToBackendWithMedicine:(NSString *)medicine
 {
-    NSString *className = @"medicine";
-    NSString *classNamePlural = [className stringByAppendingString: @"s"];
-    
     [self startActivity];
     
-    [ConnectionManager post:[@"/" stringByAppendingString: classNamePlural]
-                     params:@{
-                              className:
-                                  @{
-                                      @"name" : medicine
-                                   }
-                              }
+    [ConnectionManager post: @"/medicines"
+                     params: @{@"medicine" : @{@"name" : medicine}}
                     success:^(NSDictionary *response) {
                         
-                        SimpleSupplement *newMed = [[SimpleSupplement alloc] init];
-                        newMed.idNumber = [NSNumber numberWithInt:[[[response objectForKey:@"medicine"] objectForKey:@"id"] intValue]];
-                        newMed.belongsToAllUsers = [[[response objectForKey:@"medicine"] objectForKey:@"belongs_to_all_users"] boolValue];
-                        newMed.createdAt = [[response objectForKey:@"medicine"] objectForKey:@"created_at"];
-                        newMed.name = [[response objectForKey:@"medicine"] objectForKey:@"name"];
-                        newMed.updatedAt = [[response objectForKey:@"medicine"] objectForKey:@"updated_at"];
-                        newMed.userID = [[response objectForKey:@"medicine"] objectForKey:@"user_id"];
-                        
-                        if (self.selectedMedicineIDs == nil) {
-                            self.selectedMedicineIDs = [[NSMutableArray alloc] init];
-                        }
-                        
-                        [self.selectedMedicineIDs addObject: newMed.idNumber];
-                        [self.medicinesTableViewDataSource addObject: newMed];
-                        
-                        [self hitBackendWithMedicineType: self.selectedMedicineIDs reloadMedicines: YES];
+                        [self reloadMedicines];
                         
                     }
                     failure:^(NSError *error) {
@@ -172,18 +115,47 @@
                     params:nil
                    success:^(NSDictionary *response) {
                        
-                       [Configuration loggedInWithResponse:response];
-                       //[self hitBackendWithMedicineType: self.selectedMedicineIDs reloadMedicines: NO];
+                        [Configuration loggedInWithResponse:response];
+                        [self.delegate reloadTrackingView];
+                        [self stopActivity];
                        
-                       [self updateCell];
-                       [self stopActivity];
                    }
                    failure:^(NSError *error) {
-                       NSLog(@"Error: %@", [error localizedDescription]);
+                       [Alert presentError:error];
                        [self stopActivity];
                    }
      ];
 }
+
+- (void)hitBackendWithMedicineType:(id)medicineIds reloadMedicines:(BOOL)reload
+{
+    NSDate *selectedDate = [self.delegate getSelectedDate];
+    
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+    
+    [attributes setObject: medicineIds forKey: @"medicine_ids"];
+    [attributes setObject: selectedDate forKey: @"date"];
+    
+    [self startActivity];
+    
+    [ConnectionManager put: @"/days/"
+                    params: @{@"day": attributes}
+                   success:^(NSDictionary *response) {
+                       
+                       [Cycle cycleFromResponse: response];
+                       [Calendar setDate: selectedDate];
+                       
+                       [self updateCell];
+                       [self stopActivity];
+                       
+                   }
+                   failure:^(NSError *error) {
+                       [Alert presentError:error];
+                       [self stopActivity];
+                   }];
+}
+
+
 
 #pragma mark - UITableView Data Source
 
@@ -244,10 +216,7 @@
     NSMutableArray *medicines = [[NSMutableArray alloc] init];
     NSMutableArray *medicineIDs = [[NSMutableArray alloc] initWithArray: selectedDay.medicineIds];
     NSMutableString *medicinesString = [[NSMutableString alloc] init];
-    
-    NSLog(@"UPDATE CELL");
-    NSLog(@"SELECTED MEDICINE IDS: %@", selectedDay.medicineIds);
-    
+        
     if ([selectedDay.medicines count] > 0) {
         
         NSArray *medArray = [[Medicine instances] allValues];

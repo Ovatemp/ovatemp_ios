@@ -92,7 +92,43 @@
 
 #pragma mark - Network
 
-- (void)hitBackendWithSupplementsType:(id)supplementIds reloadSupplements:(BOOL)reload
+- (void)postNewSupplementToBackendWithSupplement:(NSString *)supplement
+{
+    [self startActivity];
+    
+    [ConnectionManager post: @"/supplements"
+                     params: @{@"supplement" : @{@"name" : supplement}}
+                    success: ^(NSDictionary *response) {
+                        
+                        [self reloadSupplements];
+                        
+                    }
+                    failure:^(NSError *error) {
+                        [Alert presentError:error];
+                        [self stopActivity];
+                    }
+     ];
+}
+
+- (void)reloadSupplements
+{
+    [ConnectionManager put:@"/sessions/refresh"
+                    params:nil
+                   success:^(NSDictionary *response) {
+                       
+                       [Configuration loggedInWithResponse:response];
+                       [self.delegate reloadTrackingView];
+                       [self stopActivity];
+                       
+                   }
+                   failure:^(NSError *error) {
+                       [Alert presentError:error];
+                       [self stopActivity];
+                   }
+     ];
+}
+
+- (void)hitBackendWithSupplementType:(id)supplementIds
 {
     NSDate *selectedDate = [self.delegate getSelectedDate];
     
@@ -104,84 +140,19 @@
     [self startActivity];
     
     [ConnectionManager put:@"/days/"
-                    params:@{
-                             @"day": attributes,
-                             }
+                    params:@{@"day": attributes,}
                    success:^(NSDictionary *response) {
-                       
+                      
                        [Cycle cycleFromResponse: response];
-                       [Calendar setDate: [self.delegate getSelectedDate]];
+                       [Calendar setDate: selectedDate];
                        
-                       if (reload) {
-                           [self reloadSupplements];
-                       }else{
-                           [self stopActivity];
-                           [self updateCell];
-                       }
-                       
+                       [self updateCell];
+                       [self stopActivity];
                    }
                    failure:^(NSError *error) {
                        [Alert presentError:error];
                        [self stopActivity];
                    }];
-    
-}
-
-- (void)postNewSupplementToBackendWithSupplement:(NSString *)supplement
-{
-    NSString *className = @"supplement";
-    NSString *classNamePlural = [className stringByAppendingString:@"s"];
-    
-    [self startActivity];
-    
-    [ConnectionManager post:[@"/" stringByAppendingString: classNamePlural]
-                     params:@{
-                              className:
-                                  @{
-                                      @"name": supplement
-                                  }
-                              }
-                    success:^(NSDictionary *response) {
-                        
-                        SimpleSupplement *newSupp = [[SimpleSupplement alloc] init];
-                        newSupp.belongsToAllUsers = [[[response objectForKey:@"supplement"] objectForKey:@"belongs_to_all_users"] boolValue];
-                        newSupp.createdAt = [[response objectForKey:@"supplement"] objectForKey:@"created_at"];
-                        newSupp.idNumber = [NSNumber numberWithInt:[[[response objectForKey:@"supplement"] objectForKey:@"id"] intValue]];
-                        newSupp.name = [[response objectForKey:@"supplement"] objectForKey:@"name"];
-                        newSupp.updatedAt = [[response objectForKey:@"supplement"] objectForKey:@"updated_at"];
-                        newSupp.userID = [[response objectForKey:@"supplement"] objectForKey:@"user_id"];
-                        
-                        if (self.selectedSupplementIDs == nil) {
-                            self.selectedSupplementIDs = [[NSMutableArray alloc] init];
-                        }
-
-                        [self.selectedSupplementIDs addObject: newSupp.idNumber];
-                        [self.supplementsTableViewDataSource addObject: newSupp];
-                        
-                        [self hitBackendWithSupplementsType: self.selectedSupplementIDs reloadSupplements: YES];
-                        
-                    }
-                    failure:^(NSError *error) {
-                        [self stopActivity];
-                        [Alert presentError:error];
-                    }
-     ];
-}
-
-- (void)reloadSupplements
-{
-    [ConnectionManager put:@"/sessions/refresh"
-                    params:nil
-                   success:^(NSDictionary *response) {
-                       [Configuration loggedInWithResponse:response];
-                       [self updateCell];
-                       [self stopActivity];
-                   }
-                   failure:^(NSError *error) {
-                       NSLog(@"Error: %@", [error localizedDescription]);
-                       [self stopActivity];
-                   }
-     ];
 }
 
 #pragma mark - UITableView Data Source
@@ -221,7 +192,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self.supplementsTableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryCheckmark) {
-        NSLog(@"ENTERED REMOVE CHECKMARK");
         [self.supplementsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
 
         SimpleSupplement *selectedSupp = [[SimpleSupplement alloc] init];
@@ -229,7 +199,6 @@
         [self.selectedSupplementIDs removeObject: selectedSupp.idNumber];
         
     } else {
-        NSLog(@"ENTERED ADD CHECKMARK");
         [self.supplementsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
         
         SimpleSupplement *selectedSupp = [[SimpleSupplement alloc] init];
@@ -238,7 +207,7 @@
         
     }
     
-    [self hitBackendWithSupplementsType: self.selectedSupplementIDs reloadSupplements: NO];
+    [self hitBackendWithSupplementType: self.selectedSupplementIDs];
 }
 
 #pragma mark - Appearance
@@ -250,9 +219,6 @@
     NSMutableArray *supplements = [[NSMutableArray alloc] init];
     NSMutableArray *supplementIDs = [[NSMutableArray alloc] initWithArray: selectedDay.supplementIds];
     NSMutableString *supplementsString = [[NSMutableString alloc] init];
-    
-    NSLog(@"UPDATE CELL");
-    NSLog(@"SELECTED SUPPLEMENT IDS: %@", selectedDay.supplementIds);
     
     if ([selectedDay.supplements count] > 0) {
         

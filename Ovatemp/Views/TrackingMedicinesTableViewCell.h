@@ -12,6 +12,7 @@
 
 @protocol TrackingMedicinesCellDelegate <NSObject>
 
+- (void)reloadTrackingView;
 - (void)presentViewControllerWithViewController:(UIViewController *)viewController;
 - (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
 

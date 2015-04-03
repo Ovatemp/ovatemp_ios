@@ -34,16 +34,16 @@ CHECKOUT OPTIONS:
     :git: https://github.com/BackForty/KIF.git
 
 SPEC CHECKSUMS:
-  Expecta: ee641011fe10aa1855d487b40e4976dac50ec342
+  Expecta: 8c507baf13211207b1e9d0a741480600e6b4ed15
   Helpshift: 9c84a5e4ffd881c7e7eb395c2afc8d6a46eb2187
-  Inflections: 38689e8c1b1d0064566a865e8a8229f80a4bee87
+  Inflections: ec16ea4356ec1e0771ca6ae6b0adc62b09ce0973
   KIF: 25c0a730008377c6734f68d4fc3e3f462622127d
-  Localytics: 588e9ed57f86baadb740f4f165c22f8305c5907a
-  Nocilla: 4d713c56e7357fd0cac0363854d4a58021ad3f41
-  OCMock: ecdd510b73ef397f2f97274785c1e87fd147c49f
-  Reachability: 1ef8adf5c4e3d362f96515d4278f68dad3c26930
+  Localytics: 87268a820c285f6f5ed3fa505a176c049ed07462
+  Nocilla: d7d96e8a11e363f0d7c976d48b320c43d61fb471
+  OCMock: a10ea9f0a6e921651f96f78b6faee95ebc813b92
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
-  Specta: 1df326d6ec48603c77f507a0ab1f89ad2df1c582
-  TAOverlay: 3bcc6ce26218526b6284e07451935d2d7ff0cd07
+  Specta: a353759f073ffcc0a365b782fe4aaeac064c03c6
+  TAOverlay: 940e37fdb45fbc9acfc73bf1089668367e3b1be6
 
 COCOAPODS: 0.36.0
