@@ -78,9 +78,8 @@
     self.selectedDate = [NSDate date];
     self.lowerDrawer = YES;
     
-    //[self addOrientationObserver];
     [self setUpOndo];
-    
+
     [self setTitleView];
     [self customizeAppearance];
     [self setTitleViewGestureRecognizer];
@@ -121,11 +120,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)dealloc
-{
-    [self removeOrientationObserver];
-}
-
 #pragma mark - ONDO
 
 - (void)setUpOndo
@@ -135,40 +129,11 @@
     }
 }
 
-#pragma mark - Notifications
-
-- (void)addOrientationObserver
-{
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(orientationChanged:)
-                                                 name:UIDeviceOrientationDidChangeNotification
-                                               object:nil];
-
-}
-
-- (void)removeOrientationObserver
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIDeviceOrientationDidChangeNotification
-                                                  object:nil];
-}
-
 #pragma mark - Appearance
 
 - (void)customizeAppearance
 {
 
-}
-
-- (void)startActivity
-{
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: YES];
-}
-
-- (void)stopActivity
-{
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: NO];
 }
 
 - (void)setTitleView
@@ -1087,48 +1052,6 @@
     return [NSIndexPath indexPathForItem: 0 inSection: 0];
 }
 
-#pragma mark - Orientation/Cycle Chart
-
-- (void)orientationChanged:(NSNotification *)notification
-{
-    BOOL isAnimating = self.cycleViewController.isBeingPresented || self.cycleViewController.isBeingDismissed;
-    
-    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
-    if (UIDeviceOrientationIsLandscape(deviceOrientation)) {
-        
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShouldRotate"]) {
-            self.inLandscape = YES;
-            if (!isAnimating) {
-                [self showCycleViewController];
-            }
-        }
-    } else {
-        self.inLandscape = NO;
-        if (!isAnimating) {
-            [self hideCycleViewController];
-        }
-    }
-}
-
-- (void)hideCycleViewController
-{
-    [self dismissViewControllerAnimated:YES completion:^{
-        if (self.inLandscape) {
-            [self showCycleViewController];
-        }
-    }];
-}
-
-- (void)showCycleViewController
-{
-    [self performSelector: @selector(presentChart) withObject:nil afterDelay:1.0];
-}
-
-- (void)presentChart
-{
-    //    [self pushViewController:self.cycleViewController];
-}
-
 #pragma mark - ONDO Delegate
 
 - (void)ONDOsaysBluetoothIsDisabled:(ONDO *)ondo
@@ -1246,7 +1169,6 @@
                    failure:^(NSError *error) {
                        NSLog(@"ILTrackingVC : UPLOADING SELECTED TEMPERATURE FAILURE");
                        [Alert presentError:error];
-                       [self stopActivity];
                        [[NSNotificationCenter defaultCenter] postNotificationName: @"temp_stop_activity" object: self];
                    }];
 }
@@ -1259,7 +1181,7 @@
     [attributes setObject: self.selectedDate forKey: @"date"];
     [attributes setObject: [NSNumber numberWithBool: disturbance] forKey: @"disturbance"];
     
-    [self startActivity];
+    [[NSNotificationCenter defaultCenter] postNotificationName: @"temp_start_activity" object: self];
     
     [ConnectionManager put:@"/days/"
                     params:@{
@@ -1270,13 +1192,14 @@
                        
                        [Cycle cycleFromResponse:response];
                        [Calendar setDate: self.selectedDate];
+                       [[NSNotificationCenter defaultCenter] postNotificationName: @"temp_stop_activity" object: self];
+
                        
-                       [self stopActivity];
                    }
                    failure:^(NSError *error) {
                        NSLog(@"ILTrackingVC : UPLOADING DISTURBANCE FAILURE");
                        [Alert presentError:error];
-                       [self stopActivity];
+                       [[NSNotificationCenter defaultCenter] postNotificationName: @"temp_stop_activity" object: self];
                    }];
 }
 
