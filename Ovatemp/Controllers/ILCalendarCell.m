@@ -8,10 +8,13 @@
 
 #import "ILCalendarCell.h"
 
+#import "UserProfile.h"
+
 @interface ILCalendarCell ()
 
 @property (nonatomic) UIColor *periodColor;
-@property (nonatomic) UIColor *fertilityColor;
+@property (nonatomic) UIColor *fertilityColorConceive;
+@property (nonatomic) UIColor *fertilityColorAvoid;
 
 @end
 
@@ -23,7 +26,8 @@
     if (self) {
         
         self.periodColor = [UIColor colorWithRed: 251.0/255.0 green: 95.0/255.0 blue: 98.0/255.0 alpha: 1];
-        self.fertilityColor = [UIColor colorWithRed: 56.0/255.0 green: 192.0/255.0 blue: 191.0/255.0 alpha: 1];
+        self.fertilityColorConceive = [UIColor colorWithRed: 56.0/255.0 green: 192.0/255.0 blue: 191.0/255.0 alpha: 1];
+        self.fertilityColorAvoid = self.periodColor;
         
     }
     return self;
@@ -70,8 +74,15 @@
         
         CGRect frame = rect;
         
-        strokeColor = self.fertilityColor;
-        fillColor = self.fertilityColor;
+        UserProfile *currentUserProfile = [UserProfile current];
+        
+        if (currentUserProfile.tryingToConceive) {
+            strokeColor = self.fertilityColorConceive;
+            fillColor = self.fertilityColorConceive;
+        }else{
+            strokeColor = self.fertilityColorAvoid;
+            fillColor = self.fertilityColorAvoid;
+        }
         
         UIBezierPath* bezierPath = UIBezierPath.bezierPath;
         [bezierPath moveToPoint: CGPointMake(CGRectGetMinX(frame) + 0.80000 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.46396 * CGRectGetHeight(frame))];
