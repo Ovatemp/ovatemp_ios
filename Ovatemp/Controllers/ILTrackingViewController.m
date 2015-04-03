@@ -78,7 +78,7 @@
     self.selectedDate = [NSDate date];
     self.lowerDrawer = YES;
     
-    [self addOrientationObserver];
+    //[self addOrientationObserver];
     [self setUpOndo];
     
     [self setTitleView];
@@ -180,7 +180,7 @@
     NSString *dateString = [df stringFromDate: self.selectedDate];
     self.titleLabel.text = dateString;
     
-    if (self.day.cycleDay) {
+    if ([self.day.cycleDay intValue] != 0) {
         self.subtitleLabel.text = [NSString stringWithFormat:@"Cycle Day #%@", self.day.cycleDay];
     } else {
         self.subtitleLabel.text = [NSString stringWithFormat:@"Enter Cycle Info"];
@@ -295,26 +295,26 @@
                              @"end_date": [self.drawerDateData lastObject]
                              }
                    success:^(NSDictionary *response) {
-                       //                       NSArray *orphanDays = response[@"days"];
-                       NSArray *cycles = response[@"cycles"]; // array of dictionaries
-                       // [cycles[0] objectForKey:@"days"] <- array of days
-                       // [[[cycles[0] objectForKey:@"days"] objectAtIndex:0] objectForKey:@"date"]
+
+                       NSArray *cycles = response[@"cycles"];
+
                        for (NSDictionary *days in cycles) {
                            NSArray *daysArray = [days objectForKey:@"days"];
                            for (NSDictionary *day in daysArray) {
-                               //                               NSLog(@"%@", [day objectForKey:@"date"]);
-                               //                               [daysFromBackend addObject:[day objectForKey:@"date"]]; <- this will give you the date, we need the whole day dictionary
+                               
+                               // Add days to daysFromBackend array
                                [self.daysFromBackend addObject:day];
                                
+                               // If day has any kind of period, add to datesWithPeriod array
                                if ((![[day objectForKey:@"period"] isEqual:[NSNull null]])) {
                                    if ([[day objectForKey:@"period"] isEqualToString:@"spotting"] || [[day objectForKey:@"period"] isEqualToString:@"light"] || [[day objectForKey:@"period"] isEqualToString:@"medium"] || [[day objectForKey:@"period"] isEqualToString:@"heavy"]) {
+                                       
                                        NSDateFormatter* dtFormatter = [[NSDateFormatter alloc] init];
                                        [dtFormatter setLocale:[NSLocale systemLocale]];
                                        [dtFormatter setDateFormat:@"yyyy-MM-dd"];
                                        NSDate *tempDate = [dtFormatter dateFromString:[day objectForKey:@"date"]];
+                                       
                                        if (![self.datesWithPeriod containsObject:tempDate]) {
-                                           // add date to dates with period array
-                                           // if we have a spotting day right after a period day, it still counts as the period cycle phase
                                            [self.datesWithPeriod addObject:tempDate];
                                        }
                                    }

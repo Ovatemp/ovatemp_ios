@@ -8,19 +8,20 @@
 
 #import "MainTabBarViewController.h"
 
-#import "CycleViewController.h"
+#import "ILCycleViewController.h"
 
 @interface MainTabBarViewController () {
   BOOL inLandscape;
 }
 
-@property CycleViewController *cycleViewController;
+@property (nonatomic) ILCycleViewController *cycleViewController;
 
 @end
 
 @implementation MainTabBarViewController
 
-- (id)init {
+- (id)init
+{
   self = [super init];
   if (self) {
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
@@ -32,7 +33,8 @@
   return self;
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
   [[NSNotificationCenter defaultCenter] removeObserver:self
                                                   name:UIDeviceOrientationDidChangeNotification
                                                 object:nil];
@@ -42,51 +44,57 @@
 
 - (void)orientationChanged:(NSNotification *)notification
 {
-  if (!self.cycleViewController) {
-      //self.cycleViewController = [[CycleViewController alloc] init];
-      UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Tracking" bundle: nil];
-      self.cycleViewController = [storyboard instantiateViewControllerWithIdentifier: @"ilcycleNavViewController"];
-      
-      self.cycleViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-  }
-    
-  BOOL isAnimating = self.cycleViewController.isBeingPresented || self.cycleViewController.isBeingDismissed;
+    BOOL isAnimating = self.cycleViewController.isBeingPresented || self.cycleViewController.isBeingDismissed;
 
-  UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
-  if (UIDeviceOrientationIsLandscape(deviceOrientation)) {
-
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShouldRotate"]) {
-          inLandscape = YES;
-      if (!isAnimating) {
-        [self showCycleViewController];
-      }
+    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+    if (UIDeviceOrientationIsLandscape(deviceOrientation)) {
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShouldRotate"]) {
+            inLandscape = YES;
+            if (!isAnimating) {
+                [self showCycleViewController];
+            }
+        }
+    } else {
+        inLandscape = NO;
+        if (!isAnimating) {
+            [self hideCycleViewController];
+        }
     }
-  } else {
-    inLandscape = NO;
-    if (!isAnimating) {
-      [self hideCycleViewController];
-    }
-  }
 }
 
-- (void)hideCycleViewController {
-  [self dismissViewControllerAnimated:YES completion:^{
-    if (inLandscape) {
-      [self showCycleViewController];
-    }
-  }];
+- (void)hideCycleViewController
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+//        if (inLandscape) {
+//            [self showCycleViewController];
+//        }
+    }];
 }
 
-- (void)showCycleViewController {
-  [self presentViewController:self.cycleViewController animated:YES completion:^{
-    if (!inLandscape) {
-      [self hideCycleViewController];
-    }
-  }];
+- (void)showCycleViewController
+{
+    [self presentViewController:self.cycleViewController animated:YES completion:^{
+//        if (!inLandscape) {
+//            [self hideCycleViewController];
+//        }
+    }];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
   return self.selectedViewController.preferredStatusBarStyle;
+}
+
+#pragma mark - Set/Get
+
+- (ILCycleViewController *)cycleViewController
+{
+    if (!_cycleViewController) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Tracking" bundle: nil];
+        _cycleViewController = [storyboard instantiateViewControllerWithIdentifier: @"ilcycleNavViewController"];
+        _cycleViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    }
+    
+    return _cycleViewController;
 }
 
 @end
