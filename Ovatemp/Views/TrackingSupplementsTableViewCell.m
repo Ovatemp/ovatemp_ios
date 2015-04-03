@@ -98,7 +98,7 @@
     
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     
-    [attributes setObject: supplementIds forKey: @"medicine_ids"];
+    [attributes setObject: supplementIds forKey: @"supplement_ids"];
     [attributes setObject: selectedDate forKey: @"date"];
     
     [self startActivity];
