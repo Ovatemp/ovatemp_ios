@@ -13,6 +13,8 @@
 #import "WeightTableViewCell.h"
 #import "User.h"
 
+#import "Localytics.h"
+
 typedef enum {
     TableStateAllClosed,
     TableStateLastPeriodExpanded,
@@ -166,6 +168,8 @@ BOOL weightHasData;
         
 //        [defaults setInteger:self.cycleLength forKey:@"cycleLength"];
         currentUserProfile.cycleLength = [NSNumber numberWithInteger:self.cycleLength];
+        
+        [Localytics setValue: currentUserProfile.cycleLength forProfileAttribute: @"Cycle Length"];
     }
     
     if ([self.heightCell.heightValueLabel.text length] > 0) {
@@ -174,6 +178,8 @@ BOOL weightHasData;
 //        [defaults setInteger:self.userHeightFeetComponent forKey:@"userHeightFeetComponent"];
 //        [defaults setInteger:self.userHeightInchesComponent forKey:@"userHeightInchesComponent"];
         currentUserProfile.heightInInches = [NSNumber numberWithInteger:((self.userHeightFeetComponent * 12) + self.userHeightInchesComponent)];
+        
+        [Localytics setValue: currentUserProfile.heightInInches forProfileAttribute: @"Height In Inches"];
     }
     
     if ([self.weightCell.weightValueLabel.text length] > 0) {
@@ -181,6 +187,8 @@ BOOL weightHasData;
         
 //        [defaults setInteger:self.userWeight forKey:@"userWeight"];
         currentUserProfile.weightInPounds = [NSNumber numberWithInteger:self.userWeight];
+        
+        [Localytics setValue: currentUserProfile.weightInPounds forProfileAttribute: @"Weight In Pounds"];
     }
     
 //    [defaults synchronize];

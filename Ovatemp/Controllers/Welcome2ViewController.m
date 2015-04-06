@@ -8,6 +8,8 @@
 
 #import "Welcome2ViewController.h"
 
+#import "Localytics.h"
+
 #import "User.h"
 
 @interface Welcome2ViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
@@ -144,6 +146,8 @@ NSDate *startedTryingDate;
     UserProfile *currentUserProfile = [UserProfile current];
     currentUserProfile.startedTryingOn = startedTryingDate;
     [currentUserProfile save];
+    
+    [Localytics setValue: startedTryingDate forProfileAttribute: @"Started Trying To Conceive On Date"];
     
     [self performSegueWithIdentifier:@"welcome2ToWelcome3" sender:self];
 }
