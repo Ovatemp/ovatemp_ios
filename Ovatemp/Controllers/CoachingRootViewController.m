@@ -11,6 +11,8 @@
 #import "SubscriptionHelper.h"
 #import "SubscriptionSelectionController.h"
 
+#import "Localytics.h"
+
 @implementation CoachingRootViewController
 
 - (void)viewDidLoad
@@ -25,6 +27,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
+    
+    [Localytics tagScreen: @"Coaching"];
 }
 
 - (void)customizeAppearance

@@ -11,6 +11,7 @@
 #import "WebViewController.h"
 
 #import <sys/utsname.h> // for device name
+#import "Localytics.h"
 
 @interface WelcomeONDOViewController () <ONDODelegate>
 
@@ -48,16 +49,20 @@
     self.navigationController.navigationBar.tintColor = [UIColor ovatempAquaColor];
 }
 
-- (IBAction)doONDOPairing:(id)sender {
+- (IBAction)doONDOPairing:(id)sender
+{
 //    ONDOViewController *ondoVC = [[ONDOViewController alloc] init];
 //    [self.navigationController pushViewController:ondoVC animated:YES];
     __weak WelcomeONDOViewController *controller = self;
     [ONDO showPairingWizardWithDelegate:controller];
 //    [self backOutToRootViewController];
+    
+    [Localytics tagEvent: @"User Did Pair ONDO on Sign Up"];
     [self performSegueWithIdentifier:@"toAlarm" sender:self];
 }
 
-- (IBAction)doNoPairing:(id)sender {
+- (IBAction)doNoPairing:(id)sender
+{
     [self performSegueWithIdentifier:@"toAlarm" sender:self];
 //    [self backOutToRootViewController];
 }

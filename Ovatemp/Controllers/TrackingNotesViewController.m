@@ -10,6 +10,8 @@
 #import "ConnectionManager.h"
 #import "Alert.h"
 
+#import "Localytics.h"
+
 @interface TrackingNotesViewController () <UITextViewDelegate>
 
 @end
@@ -87,6 +89,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [Localytics tagScreen: @"Tracking/Notes"];
     
     if ([self.notesTextView.text length] == 0) {
         [self.notesTextView becomeFirstResponder];

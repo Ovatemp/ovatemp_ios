@@ -9,6 +9,7 @@
 #import "ILTrackingViewController.h"
 
 #import "TAOverlay.h"
+#import "Localytics.h"
 
 #import "CycleViewController.h"
 #import "ILCycleViewController.h"
@@ -101,6 +102,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear: animated];
+    
+    [Localytics tagScreen: @"Tracking"];
     
     self.selectedIndexPath = [NSIndexPath indexPathForRow: 86 inSection:0];
     [self.drawerCollectionView scrollToItemAtIndexPath: self.selectedIndexPath atScrollPosition: UICollectionViewScrollPositionCenteredHorizontally animated: YES];
@@ -916,6 +919,10 @@
 
 - (void)didSelectCervicalFluidType:(id)type
 {
+    NSDictionary *attributes = @{@"Type" : type,
+                                 @"Date" : self.selectedDate};
+    [Localytics tagEvent: @"User Did Select Cervical Fluid" attributes: attributes];
+    
     NSDictionary *params = @{@"log_name" : @"CERVICAL FLUID TYPE",
                              @"attribute_key" : @"cervical_fluid",
                              @"attribute_data" : type,
@@ -928,6 +935,10 @@
 
 - (void)didSelectCervicalPositionType:(id)type
 {
+    NSDictionary *attributes = @{@"Type" : type,
+                                 @"Date" : self.selectedDate};
+    [Localytics tagEvent: @"User Did Select Cervical Position" attributes: attributes];
+    
     NSDictionary *params = @{@"log_name" : @"CERVICAL POSITION TYPE",
                              @"attribute_key" : @"cervical_position",
                              @"attribute_data" : type,
@@ -941,6 +952,10 @@
 
 - (void)didSelectPeriodWithType:(id)type
 {
+    NSDictionary *attributes = @{@"Type" : type,
+                                 @"Date" : self.selectedDate};
+    [Localytics tagEvent: @"User Did Select Period" attributes: attributes];
+    
     NSDictionary *params = @{@"log_name" : @"PERIOD TYPE",
                              @"attribute_key" : @"period",
                              @"attribute_data" : type,
@@ -954,6 +969,10 @@
 
 - (void)didSelectIntercourseWithType:(id)type
 {
+    NSDictionary *attributes = @{@"Type" : type,
+                                 @"Date" : self.selectedDate};
+    [Localytics tagEvent: @"User Did Select Intercourse" attributes: attributes];
+    
     NSDictionary *params = @{@"log_name" : @"INTERCOURSE TYPE",
                              @"attribute_key" : @"intercourse",
                              @"attribute_data" : type,
@@ -967,6 +986,10 @@
 
 - (void)didSelectMoodWithType:(id)type
 {
+    NSDictionary *attributes = @{@"Type" : type,
+                                 @"Date" : self.selectedDate};
+    [Localytics tagEvent: @"User Did Select Moods" attributes: attributes];
+    
     NSDictionary *params = @{@"log_name" : @"MOOD TYPE",
                              @"attribute_key" : @"mood",
                              @"attribute_data" : type,
@@ -980,6 +1003,10 @@
 
 - (void)didSelectSymptomsWithTypes:(NSMutableArray *)types
 {
+    NSDictionary *attributes = @{@"Type" : types,
+                                 @"Date" : self.selectedDate};
+    [Localytics tagEvent: @"User Did Select Symptoms" attributes: attributes];
+    
     NSDictionary *params = @{@"log_name" : @"SYMPTOMS TYPE",
                              @"attribute_key" : @"symptom_ids",
                              @"attribute_data" : types,
@@ -993,6 +1020,10 @@
 
 - (void)didSelectOvulationWithType:(id)type
 {
+    NSDictionary *attributes = @{@"Type" : type,
+                                 @"Date" : self.selectedDate};
+    [Localytics tagEvent: @"User Did Select Ovulation Test" attributes: attributes];
+    
     NSDictionary *params = @{@"log_name" : @"OVULATION TEST",
                              @"attribute_key" : @"opk",
                              @"attribute_data" : type,
@@ -1006,6 +1037,10 @@
 
 - (void)didSelectPregnancyWithType:(id)type
 {
+    NSDictionary *attributes = @{@"Type" : type,
+                                 @"Date" : self.selectedDate};
+    [Localytics tagEvent: @"User Did Select Pregnancy Test" attributes: attributes];
+    
     NSDictionary *params = @{@"log_name" : @"PREGNANCY TEST",
                              @"attribute_key" : @"ferning",
                              @"attribute_data" : type,
@@ -1146,6 +1181,10 @@
         tempInFahrenheit = [self.selectedTemperature floatValue];
     }
     
+    NSDictionary *localyticsAttributes = @{@"FahrenheitTemp" : @(tempInFahrenheit),
+                                           @"Date" : self.selectedDate};
+    [Localytics tagEvent: @"User Did Select Temperature" attributes: localyticsAttributes];
+
     [self updateHealthKitWithTemp: tempInFahrenheit];
     
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
@@ -1186,6 +1225,9 @@
 - (void)uploadDisturbance:(BOOL)disturbance
 {
     NSLog(@"ILTrackingVC : UPLOADING DISTURBANCE");
+    
+    NSDictionary *localyticsAttributes = @{@"Date" : self.selectedDate};
+    [Localytics tagEvent: @"User Did Select Disturbance" attributes: localyticsAttributes];
     
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     [attributes setObject: self.selectedDate forKey: @"date"];

@@ -9,6 +9,7 @@
 #import "ILCycleViewController.h"
 
 #import <TelerikUI/TelerikUI.h>
+#import "Localytics.h"
 #import "TAOverlay.h"
 
 #import "Cycle.h"
@@ -38,6 +39,13 @@
     [self setUpChart];
     
     [self loadAssets];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear: animated];
+    
+    [Localytics tagScreen: @"Tracking/Chart"];
 }
 
 - (void)didReceiveMemoryWarning

@@ -17,6 +17,8 @@
 #import "User.h"
 #import "WebViewController.h"
 
+#import "Localytics.h"
+
 @interface CoachingMenuViewController ()
 
 @property (nonatomic, strong) NSArray *rowNames;
@@ -59,6 +61,13 @@
 
   // TODO: Have FertilityStatusView bind itself to today's value all the time
   [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear: animated];
+    
+    [Localytics tagScreen: @"Coaching/FertilityProfile"];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

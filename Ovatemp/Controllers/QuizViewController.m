@@ -8,6 +8,8 @@
 
 #import "QuizViewController.h"
 
+#import "Localytics.h"
+
 #import "Alert.h"
 #import "BorderedGradientButton.h"
 #import "FertilityProfile.h"
@@ -75,6 +77,7 @@
     NSLog(@"CURRENT QUESTION = %ld : , TOTAL QUESTIONS = %lu", (long)self.currentQuestion, (unsigned long)self.questions.count);
     
     if (self.currentQuestion >= self.questions.count) {
+        [Localytics tagEvent: @"User Completed Coaching Quiz"];
         [self loadFertilityProfile];
         return;
     } else if (self.currentQuestion < 0) {

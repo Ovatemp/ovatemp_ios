@@ -32,28 +32,32 @@
     self.window.rootViewController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
     [self.window makeKeyAndVisible];
     
+    // Third Party
     [Fabric with: @[CrashlyticsKit]];
-    [Localytics autoIntegrate: @"17f522ff1be70d82cefe212-339d99c4-3dbc-11e4-255f-004a77f8b47f" launchOptions: launchOptions];
     [self setUpHelpshift];
     [self setupReachability];
     [self setupHealthKit];
         
-    // Ping the in app purchase helper so we start getting notifications
-    [SubscriptionHelper sharedInstance];
+    // In App Purchases : Ping the in app purchase helper so we start getting notifications
+    //[SubscriptionHelper sharedInstance];
     
+    // Set default temperature units: Fahrenheit
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults objectForKey:@"temperatureUnitPreferenceFahrenheit"]) {
         [defaults setBool:YES forKey:@"temperatureUnitPreferenceFahrenheit"];
     }
     
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor ovatempAquaColor]} forState:UIControlStateNormal];
-    
+    // Push Notifications
     if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
         [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
     }
     
+    // Appearance
     [[UINavigationBar appearance] setBarTintColor: [UIColor colorWithRed: 249.0/255.0 green: 249.0/255.0 blue: 249.0/255.0 alpha: 1]];
-        
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor ovatempAquaColor]} forState:UIControlStateNormal];
+    
+    [Localytics autoIntegrate: @"17f522ff1be70d82cefe212-339d99c4-3dbc-11e4-255f-004a77f8b47f" launchOptions: launchOptions];
+
     return YES;
 }
 

@@ -13,6 +13,8 @@
 #import "UIColor+Traits.h"
 #import "ILCalendarCell.h"
 #import "UserProfile.h"
+
+#import "Localytics.h"
 #import "TAOverlay.h"
 
 @interface ILCalendarViewController () <TKCalendarDataSource,TKCalendarDelegate>
@@ -40,6 +42,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear: animated];
+    
+    [Localytics tagScreen: @"Tracking/Calendar"];
     
     [self showInfoPopup];
 }

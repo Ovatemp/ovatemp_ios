@@ -10,6 +10,8 @@
 #import "UserProfile.h"
 #import "UIViewController+UserProfileHelpers.h"
 
+#import "Localytics.h"
+
 @interface Welcome1ViewController ()
 
 @end
@@ -28,15 +30,20 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)didSelectTryingToConceive:(id)sender {
+- (IBAction)didSelectTryingToConceive:(id)sender
+{
     [UserProfile current].tryingToConceive = YES;
     [[UserProfile current] save];
+    
+    [Localytics tagEvent: @"User Is Trying To Conceive"];
     [self performSegueWithIdentifier:@"tryingToConceive" sender:self];
 }
 
 - (IBAction)didSelectTryingToAvoid:(id)sender {
     [UserProfile current].tryingToConceive = NO;
     [[UserProfile current] save];
+    
+    [Localytics tagEvent: @"User Is Trying To Avoid"];
     [self performSegueWithIdentifier:@"tryingToAvoid" sender:self];
 }
 

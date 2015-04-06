@@ -12,6 +12,8 @@
 #import "UserProfile.h"
 #import "UIViewController+UserProfileHelpers.h"
 
+#import "Localytics.h"
+
 #define EMAIL_REGEX @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
 
 @interface SignUpViewController () <UITextViewDelegate>
@@ -144,9 +146,15 @@
                     failure:@selector(signupFailed:)];
 }
 
-- (void)signedUp:(NSDictionary *)response {
+- (void)signedUp:(NSDictionary *)response
+{
     [self stopLoading];
+    
     NSNumber *userID = response[@"user"][@"id"];
+    NSString *email = response[@"user"][@"email"];
+    
+    [Localytics setCustomerId: [userID stringValue]];
+    [Localytics setValue: email forIdentifier: @"email"];
     
     [Configuration loggedInWithResponse:response];
         
@@ -157,7 +165,8 @@
     [self performSegueWithIdentifier:@"signUpToWelcome1" sender:self];
 }
 
-- (void)signupFailed:(NSError *)error {
+- (void)signupFailed:(NSError *)error
+{
     [self stopLoading];
     [Alert presentError:error];
 }
