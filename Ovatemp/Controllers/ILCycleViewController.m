@@ -13,6 +13,7 @@
 
 #import "Cycle.h"
 #import "Calendar.h"
+#import "UserProfile.h"
 #import "CycleCollectionViewCell.h"
 
 @interface ILCycleViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,TKChartDelegate>
@@ -23,6 +24,7 @@
 @property (nonatomic) TKChartBandAnnotation *chartBandAnnotation;
 
 @property (nonatomic) NSMutableArray *temperatureData;
+@property (nonatomic) NSInteger cycleLength;
 
 @end
 
@@ -178,7 +180,7 @@
     self.temperatureData = [[NSMutableArray alloc] init];
     
     NSArray *days = self.selectedCycle.days;
-    
+        
     // ADD EXISTING DAYS TO TEMP. DATA
     for (int i = 0; i < [days count]; i++) {
         
@@ -201,11 +203,11 @@
     }
     
     // FILL OUT REMAINDER OF CYCLE
-//    if ([days count] < 30) {
-//        for (NSInteger i = [days count]; i < 30; i++) {
-//            [self.temperatureData addObject:[[TKChartDataPoint alloc] initWithX: @(i+1) Y: @(0)]];
-//        }
-//    }
+    if ([days count] < self.cycleLength) {
+        for (NSInteger i = [days count]; i < self.cycleLength; i++) {
+            [self.temperatureData addObject:[[TKChartDataPoint alloc] initWithX: @(i+1) Y: @(0)]];
+        }
+    }
     
     self.chartView.selectionMode = TKChartSelectionModeSingle;
     
@@ -262,8 +264,7 @@
     yAxis.style.titleStyle.textColor = [UIColor darkGrayColor];
     self.chartView.yAxis = yAxis;
     
-    NSNumber *maxDays = [NSNumber numberWithInteger: [self.selectedCycle.days count]];
-    TKChartNumericAxis *xAxis = [[TKChartNumericAxis alloc] initWithMinimum: @1 andMaximum: maxDays];
+    TKChartNumericAxis *xAxis = [[TKChartNumericAxis alloc] initWithMinimum: @1 andMaximum: @(self.cycleLength)];
     xAxis.style.labelStyle.textColor = [UIColor darkGrayColor];
     xAxis.style.labelStyle.font = [UIFont boldSystemFontOfSize: 10];
     xAxis.majorTickInterval = @1;
@@ -320,7 +321,6 @@
 
 - (void)chart:(TKChart *)chart didSelectPoint:(id<TKChartData>)point inSeries:(TKChartSeries *)series atIndex:(NSInteger)index
 {
-    NSLog(@"SELECTED POINT: %@", point);
     TKChartDataPoint *chartPoint = (TKChartDataPoint *)point;
     
     NSString *message = [NSString stringWithFormat: @"Temperature: %.2f", [chartPoint.dataYValue floatValue]];
@@ -368,31 +368,38 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.selectedCycle.days count];
+    return self.cycleLength;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CycleCollectionViewCell *cell = [self.periodCollectionView  dequeueReusableCellWithReuseIdentifier: @"cycleCollectionViewCell" forIndexPath: indexPath];
     
-    Day *selectedDay = self.selectedCycle.days[indexPath.row];
-    UIImage *selectedImage;
-    
-    if (collectionView == self.periodCollectionView) {
-        selectedImage = [self periodImageForDay: selectedDay];
+    if (indexPath.row < [self.selectedCycle.days count]) {
         
-    }else if(collectionView == self.cfCollectionView){
-        selectedImage = [self cfImageForDay: selectedDay];
+        Day *selectedDay = self.selectedCycle.days[indexPath.row];
+        UIImage *selectedImage;
         
-    }else if(collectionView == self.cpCollectionView){
-        selectedImage = [self cpImageForDay: selectedDay];
+        if (collectionView == self.periodCollectionView) {
+            selectedImage = [self periodImageForDay: selectedDay];
+            
+        }else if(collectionView == self.cfCollectionView){
+            selectedImage = [self cfImageForDay: selectedDay];
+            
+        }else if(collectionView == self.cpCollectionView){
+            selectedImage = [self cpImageForDay: selectedDay];
+            
+        }else if(collectionView == self.sexCollectionView){
+            selectedImage = [self sexImageForDay: selectedDay];
+            
+        }
         
-    }else if(collectionView == self.sexCollectionView){
-        selectedImage = [self sexImageForDay: selectedDay];
+        cell.iconImageView.image = selectedImage;
         
+    }else{
+        
+        cell.iconImageView.image = nil;
     }
-    
-    cell.iconImageView.image = selectedImage;
     
 //    cell.layer.borderWidth = 1.0f;
 //    cell.layer.borderColor = [UIColor darkGrayColor].CGColor;
@@ -472,7 +479,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger numDays = [self.selectedCycle.days count];
+    NSInteger numDays = self.cycleLength;
     NSInteger numParts = numDays - 1;
     
     if (numDays == 1) {
@@ -493,9 +500,14 @@
 
 #pragma mark - Set/Get
 
-- (void)setSelectedCycle:(Cycle *)selectedCycle
+- (NSInteger)cycleLength
 {
-    _selectedCycle = selectedCycle;
+    if (!_cycleLength) {
+        NSInteger profileCycleLength = [[UserProfile current].cycleLength integerValue];
+        _cycleLength = profileCycleLength != 0 ? profileCycleLength : 30;
+    }
+    
+    return _cycleLength;
 }
 
 @end

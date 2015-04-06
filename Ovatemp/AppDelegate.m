@@ -28,20 +28,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Build the main window
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
-    
-    // Display the app!
     [self.window makeKeyAndVisible];
     
     [Fabric with: @[CrashlyticsKit]];
     [Localytics autoIntegrate: @"17f522ff1be70d82cefe212-339d99c4-3dbc-11e4-255f-004a77f8b47f" launchOptions: launchOptions];
-    [self setupReachability];
     [self setUpHelpshift];
+    [self setupReachability];
     [self setupHealthKit];
-    
+        
     // Ping the in app purchase helper so we start getting notifications
     [SubscriptionHelper sharedInstance];
     
