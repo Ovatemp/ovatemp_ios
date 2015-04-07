@@ -117,28 +117,28 @@ static NSString * const kONDOIdentifier = @"1809";
 {
     switch (central.state) {
         case CBCentralManagerStatePoweredOff:
-            NSLog(@"CENTRAL MANAGER STATE: POWERED OFF");
+            DDLogWarn(@"CENTRAL MANAGER STATE: POWERED OFF");
             break;
         case CBCentralManagerStateResetting:
-            NSLog(@"CENTRAL MANAGER STATE: RESETTING");
+            DDLogWarn(@"CENTRAL MANAGER STATE: RESETTING");
             if ([self.delegate respondsToSelector:@selector(ONDOsaysBluetoothIsDisabled:)]) {
                 [self.delegate ONDOsaysBluetoothIsDisabled:self];
             }
             break;
         case CBCentralManagerStateUnauthorized:
-            NSLog(@"CENTRAL MANAGER STATE: UNAUTHORIZED");
+            DDLogWarn(@"CENTRAL MANAGER STATE: UNAUTHORIZED");
             break;
         case CBCentralManagerStateUnknown:
-            NSLog(@"CENTRAL MANAGER STATE: UNKNOWN");
+            DDLogWarn(@"CENTRAL MANAGER STATE: UNKNOWN");
             break;
         case CBCentralManagerStateUnsupported:
-            NSLog(@"CENTRAL MANAGER STATE: UNSUPPORTED");
+            DDLogWarn(@"CENTRAL MANAGER STATE: UNSUPPORTED");
             if ([self.delegate respondsToSelector:@selector(ONDOsaysLEBluetoothIsUnavailable:)]) {
                 [self.delegate ONDOsaysLEBluetoothIsUnavailable:self];
             }
             break;
         case CBCentralManagerStatePoweredOn:
-            NSLog(@"CENTRAL MANAGER STATE: POWERED ON!");
+            DDLogInfo(@"CENTRAL MANAGER STATE: POWERED ON!");
             if (!kONDOUUID) {
                 kONDOUUID = [CBUUID UUIDWithString:kONDOIdentifier];
             }
@@ -149,7 +149,7 @@ static NSString * const kONDOIdentifier = @"1809";
 
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
-    NSLog(@"CENTRAL MANAGER : DID DISCOVER PERIPHERAL: %@", peripheral);
+    DDLogInfo(@"CENTRAL MANAGER : DID DISCOVER PERIPHERAL: %@", peripheral);
 
     // Connect to the peripheral advertising Ovatemp's temperature
     peripheral.delegate = self;
@@ -165,17 +165,17 @@ static NSString * const kONDOIdentifier = @"1809";
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
-    NSLog(@"CENTRAL MANAGER : DID CONNECT PERIPHERAL: %@", peripheral);
+    DDLogInfo(@"CENTRAL MANAGER : DID CONNECT PERIPHERAL: %@", peripheral);
     
     NSString *uuid = peripheral.identifier.UUIDString;
     ONDODevice *device = [ONDODevice find:uuid];
 
     if (self.isReading) {
-        NSLog(@"ONDO : IS READING");
+        DDLogInfo(@"ONDO : IS READING");
         // Start negotiations to finally read a temperature
         [peripheral discoverServices:@[kONDOUUID]];
     } else {
-        NSLog(@"ONDO : IS PAIRING");
+        DDLogInfo(@"ONDO : IS PAIRING");
         // Make sure we store a record for this device
         if (!device) {
             device = [ONDODevice create:uuid];
@@ -195,7 +195,7 @@ static NSString * const kONDOIdentifier = @"1809";
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
-    NSLog(@"CENTRAL MANAGER : DID DISCONNECT PERIPHERAL: %@", peripheral);
+    DDLogInfo(@"CENTRAL MANAGER : DID DISCONNECT PERIPHERAL: %@", peripheral);
     
     if (!kONDOUUID) {
         kONDOUUID = [CBUUID UUIDWithString:kONDOIdentifier];
@@ -213,10 +213,10 @@ static NSString * const kONDOIdentifier = @"1809";
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
 {
     if (error) {
-        NSLog(@"CENTRAL MANAGER : ERROR DISCOVERING SERVICES: %@", error);
+        DDLogError(@"CENTRAL MANAGER : ERROR DISCOVERING SERVICES: %@", error);
         [self notifyOnError:error];
     } else {
-        NSLog(@"CENTRAL MANAGER : DID DISCOVER SERVICES: %@", peripheral);
+        DDLogInfo(@"CENTRAL MANAGER : DID DISCOVER SERVICES: %@", peripheral);
         CBUUID *temperatureCharacterisicUUID = [CBUUID UUIDWithString:@"2A1C"];
         CBService *temperatureService = peripheral.services.firstObject;
         [peripheral discoverCharacteristics:@[temperatureCharacterisicUUID]
@@ -227,25 +227,35 @@ static NSString * const kONDOIdentifier = @"1809";
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
 {
     if (error) {
-        NSLog(@"CENTRAL MANAGER : ERROR DISCOVERING CHARACTERISTICS %@", error);
+        DDLogError(@"CENTRAL MANAGER : ERROR DISCOVERING CHARACTERISTICS %@", error);
         [self notifyOnError:error];
     } else {
-        NSLog(@"CENTRAL MANAGER : DID DISCOVER CHARACTERISTICS: %@", service.characteristics);
-        NSLog(@"CENTRAL MANAGER : FOR SERVICE: %@", service);
+        DDLogInfo(@"CENTRAL MANAGER : DID DISCOVER CHARACTERISTICS: %@", service.characteristics);
+        DDLogInfo(@"CENTRAL MANAGER : FOR SERVICE: %@", service);
         CBCharacteristic *temperatureCharacteristic = service.characteristics.firstObject;
         [peripheral setNotifyValue:YES forCharacteristic:temperatureCharacteristic];
-        NSLog(@"CENTRAL MANAGER : SET NOTIFY VALUE = YES : FOR CHARACTERISTIC : %@", temperatureCharacteristic);
+        DDLogInfo(@"CENTRAL MANAGER : SET NOTIFY VALUE = YES : FOR CHARACTERISTIC : %@", temperatureCharacteristic);
+    }
+}
+
+- (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
+{
+    if (error) {
+        DDLogError(@"CENTRAL MANAGER : ERROR UPDATING NOTIFICATION STATE FOR CHARACTERISTIC: %@", characteristic);
+        DDLogError(@"ERROR: %@", error);
+    }else{
+        DDLogInfo(@"CENTRAL MANAGER : DID UPDATE NOTIFICATION STATE FOR CHARACTERISTIC: %@", characteristic);
     }
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
     if (error) {
-        NSLog(@"CENTRAL MANAGER : ERROR UPDATING VALUE FOR CHARACTERISTIC: %@", error);
+        DDLogError(@"CENTRAL MANAGER : ERROR UPDATING VALUE FOR CHARACTERISTIC: %@", error);
         [self notifyOnError:error];
     } else {
-        NSLog(@"CENTRAL MANAGER : DID UPDATE VALUE FOR CHARACTERISTIC");
-        NSLog(@"READ CHARACTERISTIC: %@", characteristic);
+        DDLogInfo(@"CENTRAL MANAGER : DID UPDATE VALUE FOR CHARACTERISTIC");
+        DDLogInfo(@"READ CHARACTERISTIC: %@", characteristic);
         CGFloat temperature = [self dataToFloat:characteristic.value];
         if (temperature > 0) {
             if ([self.delegate respondsToSelector:@selector(ONDO:didReceiveTemperature:)]) {

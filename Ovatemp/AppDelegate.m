@@ -16,9 +16,9 @@
 #import <Reachability/Reachability.h>
 #import <Localytics/Localytics.h>
 #import <Helpshift/Helpshift.h>
-
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import <CocoaLumberjack/CocoaLumberjack.h>
 
 @implementation AppDelegate
 
@@ -37,7 +37,8 @@
     [self setUpHelpshift];
     [self setupReachability];
     [self setupHealthKit];
-        
+    [self setUpLumberjack];
+    
     // In App Purchases : Ping the in app purchase helper so we start getting notifications
     //[SubscriptionHelper sharedInstance];
     
@@ -150,6 +151,21 @@
     if (reach.currentReachabilityStatus == NotReachable) {
         [[NSNotificationCenter defaultCenter] postNotificationName: kReachabilityChangedNotification object: reach userInfo: nil];
     }
+}
+
+#pragma mark - CocoaLumberjack
+
+- (void)setUpLumberjack
+{
+    setenv("XcodeColors", "YES", 0);
+
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    
+    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
+
+    [[DDTTYLogger sharedInstance] setForegroundColor: [UIColor blueColor] backgroundColor: nil forFlag: DDLogFlagInfo];
+    [[DDTTYLogger sharedInstance] setForegroundColor: [UIColor blackColor] backgroundColor: nil forFlag: DDLogFlagVerbose];
 }
 
 # pragma mark - Core data

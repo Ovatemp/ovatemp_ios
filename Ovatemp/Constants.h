@@ -10,10 +10,12 @@
 
 #import "Configuration.h"
 
+#import <CocoaLumberjack/CocoaLumberjack.h>
+
 // Set this if you want your build to use the staging server
 //#define BETA 1
 
-// Color definitions; arguments are: red, green, blue
+// COLORS
 #define DARK Color(56, 62, 62)
 #define LIGHT Color(255, 255, 255)
 
@@ -37,7 +39,16 @@
 
 #define FERTILITY_WINDOW_COLOR ColorA(56, 192, 191, 0.16)
 
-// API configuration
+// LUMBERJACK
+
+#ifdef DEBUG
+    static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
+#else
+    static const DDLogLevel ddLogLevel = DDLogLevelWarn;
+#endif
+
+// API
+
 //#ifdef TARGET_IPHONE_SIMULATOR
 //  #define ROOT_URL @"http://localhost:3000"
 //  #define DEVICE_ID @"DUMMYDEVICE"
