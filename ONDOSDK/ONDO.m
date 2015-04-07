@@ -171,11 +171,11 @@ static NSString * const kONDOIdentifier = @"1809";
     ONDODevice *device = [ONDODevice find:uuid];
 
     if (self.isReading) {
-        NSLog(@"IS READING");
+        NSLog(@"ONDO : IS READING");
         // Start negotiations to finally read a temperature
         [peripheral discoverServices:@[kONDOUUID]];
     } else {
-        NSLog(@"IS NOT READING");
+        NSLog(@"ONDO : IS PAIRING");
         // Make sure we store a record for this device
         if (!device) {
             device = [ONDODevice create:uuid];
@@ -230,10 +230,11 @@ static NSString * const kONDOIdentifier = @"1809";
         NSLog(@"CENTRAL MANAGER : ERROR DISCOVERING CHARACTERISTICS %@", error);
         [self notifyOnError:error];
     } else {
-        NSLog(@"CENTRAL MANAGER : DID DISCOVER CHARACTERISTICS FOR SERVICE: %@", service);
+        NSLog(@"CENTRAL MANAGER : DID DISCOVER CHARACTERISTICS: %@", service.characteristics);
+        NSLog(@"CENTRAL MANAGER : FOR SERVICE: %@", service);
         CBCharacteristic *temperatureCharacteristic = service.characteristics.firstObject;
-        NSLog(@"READING CHARACTERISTIC %@", temperatureCharacteristic);
         [peripheral setNotifyValue:YES forCharacteristic:temperatureCharacteristic];
+        NSLog(@"CENTRAL MANAGER : SET NOTIFY VALUE = YES : FOR CHARACTERISTIC : %@", temperatureCharacteristic);
     }
 }
 

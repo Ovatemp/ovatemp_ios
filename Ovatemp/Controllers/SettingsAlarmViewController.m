@@ -20,8 +20,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]){
         self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     
     [self.alarmSwitch addTarget:self action:@selector(switchDidChange:) forControlEvents:UIControlEventValueChanged];
     self.alarmSwitch.onTintColor = [UIColor ovatempAquaColor];
@@ -68,7 +69,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)alarmTimeValueChanged:(UIDatePicker *)sender {
+- (void)alarmTimeValueChanged:(UIDatePicker *)sender
+{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"h:mm a"];
     NSString *time = [formatter stringFromDate:self.alarmDatePicker.date];
@@ -76,7 +78,8 @@
     [self.alarmTimeValueLabel setText:time];
 }
 
-- (void)switchDidChange:(UISwitch *)alarmSwitch {
+- (void)switchDidChange:(UISwitch *)alarmSwitch
+{
     if (alarmSwitch.isOn) {
         self.onLabel.text = @"ON";
         [self showDatePicker];
@@ -116,7 +119,8 @@
     self.hideDatePickerView.backgroundColor = [UIColor colorWithRed: 249.0/255.0 green: 249.0/255.0 blue: 249.0/255.0 alpha: 1];
 }
 
-- (void)doDone:(id)sender {
+- (void)doDone:(id)sender
+{
     // save and go back?
     // either way, we're deleting the notification
     [self cancelAlarmNotification];
@@ -135,7 +139,8 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)cancelAlarmNotification {
+- (void)cancelAlarmNotification
+{
     NSArray *arrayOfLocalNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
     for (UILocalNotification *localNotification in arrayOfLocalNotifications) {
         
@@ -146,7 +151,9 @@
         }
     }
 }
-- (IBAction)doShowInfo:(id)sender {
+
+- (IBAction)doShowInfo:(id)sender
+{
     UIAlertController *infoAlert = [UIAlertController
                                     alertControllerWithTitle:@"BBT Reminder"
                                     message:@"Measuring BBT should be the first thing you do upon waking, even before taking a sip of water."
@@ -180,18 +187,9 @@
     [self presentViewController:infoAlert animated:YES completion:nil];
 }
 
-- (void)goBackFromWebView {
+- (void)goBackFromWebView
+{
     [self.navigationController popViewControllerAnimated:YES];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

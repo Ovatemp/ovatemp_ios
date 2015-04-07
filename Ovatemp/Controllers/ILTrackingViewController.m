@@ -128,6 +128,7 @@
 - (void)setUpOndo
 {
     if ([ONDO sharedInstance].devices.count > 0) {
+        NSLog(@"ONDO : STARTING : DEVICE COUNT = %d", [ONDO sharedInstance].devices.count);
         [ONDO startWithDelegate: self];
     }
 }

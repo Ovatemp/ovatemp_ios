@@ -34,64 +34,64 @@ static NSPersistentStoreCoordinator *kONDOPersistentStoreCoordinator;
 
 + (NSArray *)all
 {
-  NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName: self.description];
-  NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey: @"createdAt" ascending: NO];
-  request.sortDescriptors = @[sort];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName: self.description];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey: @"createdAt" ascending: NO];
+    request.sortDescriptors = @[sort];
 
-  NSError *error = nil;
-  NSArray *results = [self.managedObjectContext executeFetchRequest: request error: &error];
+    NSError *error = nil;
+    NSArray *results = [self.managedObjectContext executeFetchRequest: request error: &error];
 
-  if (error) {
-    NSLog(@"Couldn't fetch results: %@", error);
-    return @[];
-  }
+    if (error) {
+        NSLog(@"Couldn't fetch results: %@", error);
+        return @[];
+    }
 
-  return results;
+    return results;
 }
 
 + (ONDODevice *)findOrCreate:(NSString *)uuidString
 {
-  ONDODevice *device = [self find: uuidString];
-  if (!device) {
-    device = [self create: uuidString];
-  }
-  return device;
+    ONDODevice *device = [self find: uuidString];
+    if (!device) {
+        device = [self create: uuidString];
+    }
+    return device;
 }
 
 + (ONDODevice *)create:(NSString *)uuidString
 {
   NSManagedObjectContext *context = [self managedObjectContext];
-  ONDODevice *device = [NSEntityDescription insertNewObjectForEntityForName: self.description
+    ONDODevice *device = [NSEntityDescription insertNewObjectForEntityForName: self.description
                                                      inManagedObjectContext: self.managedObjectContext];
 
-  device.uuidString = uuidString;
-  device.createdAt = [NSDate date];
+    device.uuidString = uuidString;
+    device.createdAt = [NSDate date];
 
-  NSError *error;
-  if (![context save:&error]) {
-    NSLog(@"Couldn't save: %@", error);
-    return nil;
-  }
+    NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Couldn't save: %@", error);
+        return nil;
+    }
 
-  return device;
+    return device;
 }
 
 + (ONDODevice *)find:(NSString *)uuidString
 {
-  NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:self.description];
-  request.fetchLimit = 1;
-  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuidString == %@", uuidString];
-  request.predicate = predicate;
-  NSManagedObjectContext *context = self.managedObjectContext;
-  NSError *error = nil;
-  NSArray *results = [context executeFetchRequest:request error:&error];
-    
-  if (error) {
-    NSLog(@"Cound't find a thing");
-    return nil;
-  } else {
-    return results.firstObject;
-  }
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:self.description];
+    request.fetchLimit = 1;
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuidString == %@", uuidString];
+    request.predicate = predicate;
+    NSManagedObjectContext *context = self.managedObjectContext;
+    NSError *error = nil;
+    NSArray *results = [context executeFetchRequest:request error:&error];
+
+    if (error) {
+        NSLog(@"Cound't find a thing");
+        return nil;
+    } else {
+        return results.firstObject;
+    }
     
   //  request.entity = resultEntity;
   //  request.
