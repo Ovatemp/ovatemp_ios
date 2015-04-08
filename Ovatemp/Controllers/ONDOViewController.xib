@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14D130a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ONDOViewController">
@@ -12,56 +14,104 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="64" width="600" height="487"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ari-P5-BJd">
-                    <rect key="frame" x="59" y="190" width="202" height="84"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="84" id="ar8-pS-yQC"/>
-                    </constraints>
-                    <string key="text">ONDO sends your daily Basal Body temperature (BBT) straight to your smartphone eliminating the need to record your BBT manually.</string>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                    <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OWk-Tk-5BQ">
-                    <rect key="frame" x="0.0" y="290" width="320" height="219"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gFN-UU-TqT">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="ari-P5-BJd">
+                            <rect key="frame" x="0.0" y="179.5" width="600" height="63.5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="84" id="ar8-pS-yQC"/>
+                                <constraint firstAttribute="height" constant="43.5" id="oAa-pa-9k4"/>
+                            </constraints>
+                            <string key="text">ONDO sends your daily Basal Body temperature (BBT) straight to your smartphone eliminating the need to record your BBT manually.</string>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="100"/>
+                            <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="ar8-pS-yQC"/>
+                                    <exclude reference="oAa-pa-9k4"/>
+                                </mask>
+                            </variation>
+                        </label>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OWk-Tk-5BQ">
+                            <rect key="frame" x="0.0" y="243.5" width="600" height="243.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="219" id="9QP-ws-vNO"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="9QP-ws-vNO"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="xFA-J2-5gn"/>
+                                <outlet property="delegate" destination="-1" id="PBM-nh-CAD"/>
+                            </connections>
+                        </tableView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_ondo_render" translatesAutoresizingMaskIntoConstraints="NO" id="ELq-eY-TJc">
+                            <rect key="frame" x="165.5" y="10" width="269" height="170.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="ELq-eY-TJc" secondAttribute="height" multiplier="269:186" id="Psc-55-FcW"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="Psc-55-FcW"/>
+                                </mask>
+                            </variation>
+                        </imageView>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="219" id="9QP-ws-vNO"/>
+                        <constraint firstItem="ELq-eY-TJc" firstAttribute="width" relation="lessThanOrEqual" secondItem="gFN-UU-TqT" secondAttribute="width" multiplier="0.8" id="2AQ-pj-34N"/>
+                        <constraint firstItem="ELq-eY-TJc" firstAttribute="top" secondItem="gFN-UU-TqT" secondAttribute="top" constant="15" id="7rN-Im-rCT"/>
+                        <constraint firstItem="ari-P5-BJd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ELq-eY-TJc" secondAttribute="bottom" constant="10" id="9F9-um-ngM"/>
+                        <constraint firstItem="ari-P5-BJd" firstAttribute="height" secondItem="gFN-UU-TqT" secondAttribute="height" multiplier="0.13" id="Brp-xB-bbA"/>
+                        <constraint firstItem="ari-P5-BJd" firstAttribute="top" secondItem="ELq-eY-TJc" secondAttribute="bottom" constant="5" id="Imh-UU-Zef"/>
+                        <constraint firstItem="ELq-eY-TJc" firstAttribute="width" secondItem="gFN-UU-TqT" secondAttribute="width" multiplier="0.5" id="K4u-gX-PxB"/>
+                        <constraint firstAttribute="trailing" secondItem="ari-P5-BJd" secondAttribute="trailing" id="KKy-fP-5pP"/>
+                        <constraint firstItem="ELq-eY-TJc" firstAttribute="top" secondItem="gFN-UU-TqT" secondAttribute="top" constant="10" id="LRk-xR-ged"/>
+                        <constraint firstItem="OWk-Tk-5BQ" firstAttribute="top" secondItem="ari-P5-BJd" secondAttribute="bottom" id="N32-wX-Ghd"/>
+                        <constraint firstItem="ELq-eY-TJc" firstAttribute="height" secondItem="gFN-UU-TqT" secondAttribute="height" multiplier="0.35" id="Nbe-RE-wbR"/>
+                        <constraint firstItem="OWk-Tk-5BQ" firstAttribute="top" secondItem="ari-P5-BJd" secondAttribute="bottom" id="QDh-ow-Ooy"/>
+                        <constraint firstItem="ari-P5-BJd" firstAttribute="top" secondItem="ELq-eY-TJc" secondAttribute="bottom" constant="15" id="R5Z-aO-w9i"/>
+                        <constraint firstAttribute="bottom" secondItem="OWk-Tk-5BQ" secondAttribute="bottom" id="YoI-NB-Mz6"/>
+                        <constraint firstItem="ari-P5-BJd" firstAttribute="leading" secondItem="gFN-UU-TqT" secondAttribute="leading" id="aF3-lB-raL"/>
+                        <constraint firstAttribute="centerX" secondItem="ari-P5-BJd" secondAttribute="centerX" id="anu-m0-LWr"/>
+                        <constraint firstItem="OWk-Tk-5BQ" firstAttribute="leading" secondItem="gFN-UU-TqT" secondAttribute="leading" id="dIw-Rm-Lfc"/>
+                        <constraint firstAttribute="centerX" secondItem="ELq-eY-TJc" secondAttribute="centerX" id="iiM-sg-XYz"/>
+                        <constraint firstAttribute="trailing" secondItem="OWk-Tk-5BQ" secondAttribute="trailing" id="jnL-2R-Ymj"/>
+                        <constraint firstItem="OWk-Tk-5BQ" firstAttribute="height" secondItem="gFN-UU-TqT" secondAttribute="height" multiplier="0.5" id="nnL-Ya-fKy"/>
                     </constraints>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="xFA-J2-5gn"/>
-                        <outlet property="delegate" destination="-1" id="PBM-nh-CAD"/>
-                    </connections>
-                </tableView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_thermometer" translatesAutoresizingMaskIntoConstraints="NO" id="ELq-eY-TJc">
-                    <rect key="frame" x="100" y="70" width="120" height="120"/>
-                </imageView>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="7rN-Im-rCT"/>
+                            <exclude reference="K4u-gX-PxB"/>
+                            <exclude reference="9F9-um-ngM"/>
+                            <exclude reference="Imh-UU-Zef"/>
+                            <exclude reference="R5Z-aO-w9i"/>
+                            <exclude reference="N32-wX-Ghd"/>
+                        </mask>
+                    </variation>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="ari-P5-BJd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="59" id="6JJ-BX-N5Z"/>
-                <constraint firstItem="OWk-Tk-5BQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Cyg-6a-kwr"/>
-                <constraint firstItem="ari-P5-BJd" firstAttribute="top" secondItem="ELq-eY-TJc" secondAttribute="bottom" id="DA2-Mp-lF9"/>
-                <constraint firstItem="ELq-eY-TJc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="100" id="XLr-EP-rZb"/>
-                <constraint firstAttribute="trailing" secondItem="OWk-Tk-5BQ" secondAttribute="trailing" id="Yo2-WU-wgK"/>
-                <constraint firstItem="ari-P5-BJd" firstAttribute="centerX" secondItem="OWk-Tk-5BQ" secondAttribute="centerX" id="b3G-M0-8Mh"/>
-                <constraint firstItem="OWk-Tk-5BQ" firstAttribute="top" secondItem="ari-P5-BJd" secondAttribute="bottom" constant="16" id="hKk-sv-hAF"/>
-                <constraint firstAttribute="bottom" secondItem="OWk-Tk-5BQ" secondAttribute="bottom" constant="59" id="m8h-e2-uSk"/>
-                <constraint firstItem="ari-P5-BJd" firstAttribute="centerX" secondItem="ELq-eY-TJc" secondAttribute="centerX" id="qXL-Qs-lcX"/>
-                <constraint firstItem="ELq-eY-TJc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="zu3-8c-ggs"/>
+                <constraint firstItem="gFN-UU-TqT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5Tb-z0-04e"/>
+                <constraint firstAttribute="trailing" secondItem="gFN-UU-TqT" secondAttribute="trailing" id="7Mh-4a-PX6"/>
+                <constraint firstItem="gFN-UU-TqT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="B96-wY-iVs"/>
+                <constraint firstAttribute="bottom" secondItem="gFN-UU-TqT" secondAttribute="bottom" id="x6M-NB-fOw"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="154"/>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+            <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+            <point key="canvasLocation" x="267" y="162"/>
         </view>
     </objects>
     <resources>
-        <image name="img_thermometer" width="95" height="95"/>
+        <image name="img_ondo_render" width="269" height="186"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

@@ -91,14 +91,16 @@
 
 - (void)loadAssets
 {
-    if ([Cycle fullyLoaded]) {
-        [self loadCycle];
-        
-    } else {
+//    if ([Cycle fullyLoaded]) {
+//        [self loadCycle];
+//        
+//    } else {
         [TAOverlay showOverlayWithLabel: @"Loading Cycles..." Options: TAOverlayOptionOverlaySizeRoundedRect];
         
         [Cycle loadAllAnd:^(id response) {
             
+            DDLogWarn(@"Loading all cycles.");
+    
             [self loadCycle];
             [TAOverlay hideOverlay];
             
@@ -107,7 +109,7 @@
             [TAOverlay hideOverlay];
             
         }];
-    }
+//    }
 }
 
 #pragma mark - Appearance
@@ -407,6 +409,7 @@
     }else{
         
         cell.iconImageView.image = nil;
+        
     }
     
 //    cell.layer.borderWidth = 1.0f;

@@ -26,8 +26,8 @@ NSArray *ondoMenuItems;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     self.title = @"ONDO";
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     // table view line separator
     self.tableView.layoutMargins = UIEdgeInsetsZero;

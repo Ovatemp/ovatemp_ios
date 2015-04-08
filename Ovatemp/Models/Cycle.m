@@ -105,7 +105,8 @@ static NSInteger kTotalDays;
   return kFullyLoaded;
 }
 
-+ (void)loadAllAnd:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure {
++ (void)loadAllAnd:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure
+{
   [ConnectionManager get:@"/days"
                   params:@{
                            @"start_date": [kFirstDate dateId],
@@ -133,7 +134,8 @@ static NSInteger kTotalDays;
                  failure:onFailure];
 }
 
-+ (void)loadDate:(NSDate *)date success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure {
++ (void)loadDate:(NSDate *)date success:(ConnectionManagerSuccess)onSuccess failure:(ConnectionManagerFailure)onFailure
+{
   [ConnectionManager get:@"/cycles"
                   params:@{
                            @"date": [date dateId],
@@ -152,7 +154,8 @@ static NSInteger kTotalDays;
                  }];
 }
 
-+ (Cycle *)cycleFromResponse:(NSDictionary *)cycleResponse {
++ (Cycle *)cycleFromResponse:(NSDictionary *)cycleResponse
+{
   NSArray *daysResponse = cycleResponse[@"days"];
   if (!daysResponse) {
     daysResponse = @[cycleResponse[@"day"]];

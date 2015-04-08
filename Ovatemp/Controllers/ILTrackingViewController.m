@@ -128,7 +128,7 @@
 - (void)setUpOndo
 {
     if ([ONDO sharedInstance].devices.count > 0) {
-        NSLog(@"ONDO : STARTING : DEVICE COUNT = %d", [ONDO sharedInstance].devices.count);
+        NSLog(@"ONDO : STARTING : DEVICE COUNT = %lu", (unsigned long)[ONDO sharedInstance].devices.count);
         [ONDO startWithDelegate: self];
     }
 }
@@ -149,7 +149,7 @@
     NSString *dateString = [df stringFromDate: self.selectedDate];
     self.titleLabel.text = dateString;
     
-    if ([self.day.cycleDay intValue] != 0) {
+    if (self.day.cycleDay) {
         self.subtitleLabel.text = [NSString stringWithFormat:@"Cycle Day #%@", self.day.cycleDay];
     } else {
         self.subtitleLabel.text = [NSString stringWithFormat:@"Enter Cycle Info"];
