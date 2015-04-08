@@ -35,7 +35,7 @@ static NSDictionary *propertyOptions;
   self.ignoredAttributes = [NSSet setWithArray:@[@"createdAt", @"updatedAt", @"cycleId", @"userId", @"temperatureTakenAt"]];
 
   self->dirtyAttributes = [NSMutableSet set];
-
+    
   return self;
 }
 

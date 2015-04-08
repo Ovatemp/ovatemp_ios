@@ -58,9 +58,6 @@
   self.navigationController.navigationBarHidden = NO;
   self.navigationController.navigationBar.barTintColor = LIGHT;
   self.navigationController.navigationBar.tintColor = DARK;
-
-  // TODO: Have FertilityStatusView bind itself to today's value all the time
-  [self.fertilityStatusView updateWithDay:[Day forDate:[NSDate date]]];
 }
 
 - (void)viewDidAppear:(BOOL)animated

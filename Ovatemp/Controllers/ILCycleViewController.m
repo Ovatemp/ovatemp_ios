@@ -16,6 +16,7 @@
 #import "Calendar.h"
 #import "UserProfile.h"
 #import "CycleCollectionViewCell.h"
+#import "TransparentSwipeView.h"
 
 @interface ILCycleViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,TKChartDelegate>
 
@@ -26,6 +27,9 @@
 
 @property (nonatomic) NSMutableArray *temperatureData;
 @property (nonatomic) NSInteger cycleLength;
+
+@property (nonatomic) UISwipeGestureRecognizer *swipeLeft;
+@property (nonatomic) UISwipeGestureRecognizer *swipeRight;
 
 @end
 
@@ -44,6 +48,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear: animated];
+    
+    [self addGestureRecognizers];
     
     [Localytics tagScreen: @"Tracking/Chart"];
 }
@@ -85,6 +91,65 @@
     
     [self.view addConstraints: chartHorizontalConstraints];
     [self.view addConstraints: chartVerticalConstraints];
+}
+
+#pragma mark - Gesture Recognizers
+
+- (void)addGestureRecognizers
+{
+    TransparentSwipeView *transparentView = [[TransparentSwipeView alloc] initWithFrame: self.view.bounds];
+    
+    self.swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget: self action: @selector(didSwipe:)];
+    self.swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    
+    self.swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget: self action: @selector(didSwipe:)];
+    self.swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    [transparentView addGestureRecognizer: self.swipeLeft];
+    [transparentView addGestureRecognizer: self.swipeRight];
+    
+    [self.view addSubview: transparentView];
+}
+
+#pragma mark - IBAction's
+
+- (void)didSwipe:(UISwipeGestureRecognizer *)recognizer
+{
+    if (recognizer.direction == UISwipeGestureRecognizerDirectionLeft) {
+        DDLogInfo(@"Swiped Left");
+    }else if (recognizer.direction == UISwipeGestureRecognizerDirectionRight){
+        DDLogInfo(@"Swiped Right");
+    }
+}
+
+- (void)didSelectDoneButton
+{
+    [[UIDevice currentDevice] setValue: [NSNumber numberWithInteger: UIInterfaceOrientationPortrait] forKey: @"orientation"];
+    [self dismissViewControllerAnimated: YES completion: nil];
+}
+
+- (IBAction)didSelectPreviousCycle:(id)sender
+{
+    Cycle *currentCycle = self.selectedCycle;
+    Cycle *previosCycle = currentCycle.previousCycle;
+    
+    if (previosCycle) {
+        self.selectedCycle = previosCycle;
+        [self hideLabels];
+        [self updateScreen];
+    }
+}
+
+- (IBAction)didSelectNextCycle:(id)sender
+{
+    Cycle *currentCycle = self.selectedCycle;
+    Cycle *nextCycle = currentCycle.nextCycle;
+    
+    if (nextCycle) {
+        self.selectedCycle = nextCycle;
+        [self hideLabels];
+        [self updateScreen];
+    }
 }
 
 #pragma mark - Network
@@ -335,38 +400,6 @@
     
     NSString *message = [NSString stringWithFormat: @"Temperature: %.2f", [chartPoint.dataYValue floatValue]];
     [TAOverlay showOverlayWithLabel: message Options: TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayDismissTap | TAOverlayOptionOverlayTypeInfo];
-}
-
-#pragma mark - IBAction's
-
-- (void)didSelectDoneButton
-{
-    [[UIDevice currentDevice] setValue: [NSNumber numberWithInteger: UIInterfaceOrientationPortrait] forKey: @"orientation"];
-    [self dismissViewControllerAnimated: YES completion: nil];
-}
-
-- (IBAction)didSelectPreviousCycle:(id)sender
-{
-    Cycle *currentCycle = self.selectedCycle;
-    Cycle *previosCycle = currentCycle.previousCycle;
-    
-    if (previosCycle) {
-        self.selectedCycle = previosCycle;
-        [self hideLabels];
-        [self updateScreen];
-    }
-}
-
-- (IBAction)didSelectNextCycle:(id)sender
-{
-    Cycle *currentCycle = self.selectedCycle;
-    Cycle *nextCycle = currentCycle.nextCycle;
-    
-    if (nextCycle) {
-        self.selectedCycle = nextCycle;
-        [self hideLabels];
-        [self updateScreen];
-    }
 }
 
 #pragma mark - UICollectionView Data Source

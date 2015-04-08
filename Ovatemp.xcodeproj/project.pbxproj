@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		060D180C1AC330FA00B7DBA2 /* ILCycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 060D180B1AC330FA00B7DBA2 /* ILCycleViewController.m */; };
 		0619A97F1AA4E32A000F31E6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */; };
+		067BCE0E1AD5C9D100F0BDE6 /* TransparentSwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 067BCE0D1AD5C9D100F0BDE6 /* TransparentSwipeView.m */; };
 		0692216E1AC0AF350004B850 /* ILCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0692216D1AC0AF350004B850 /* ILCalendarViewController.m */; };
 		069221711AC0CD530004B850 /* ILCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 069221701AC0CD530004B850 /* ILCalendarCell.m */; };
 		0697E9651AC5E77300AD8255 /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0697E9641AC5E77300AD8255 /* TelerikUI.framework */; };
@@ -353,6 +354,8 @@
 		060D180A1AC330FA00B7DBA2 /* ILCycleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCycleViewController.h; sourceTree = "<group>"; };
 		060D180B1AC330FA00B7DBA2 /* ILCycleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCycleViewController.m; sourceTree = "<group>"; };
 		0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		067BCE0C1AD5C9D100F0BDE6 /* TransparentSwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentSwipeView.h; sourceTree = "<group>"; };
+		067BCE0D1AD5C9D100F0BDE6 /* TransparentSwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransparentSwipeView.m; sourceTree = "<group>"; };
 		0692216C1AC0AF340004B850 /* ILCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCalendarViewController.h; sourceTree = "<group>"; };
 		0692216D1AC0AF350004B850 /* ILCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCalendarViewController.m; sourceTree = "<group>"; };
 		0692216F1AC0CD530004B850 /* ILCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCalendarCell.h; sourceTree = "<group>"; };
@@ -1599,6 +1602,8 @@
 				06FEA5C31A9CF928002BDFC2 /* TableView Cells */,
 				06FEA5CA1A9D302B002BDFC2 /* Other */,
 				0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */,
+				067BCE0C1AD5C9D100F0BDE6 /* TransparentSwipeView.h */,
+				067BCE0D1AD5C9D100F0BDE6 /* TransparentSwipeView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2117,6 +2122,7 @@
 				5F6561E819FAD836001FB509 /* EditDateOfBirthTableViewCell.m in Sources */,
 				5F51609A1A0AB48600F4B74E /* TrackingCervicalPositionTableViewCell.m in Sources */,
 				5F6561E319FAD74C001FB509 /* EditWeightTableViewCell.m in Sources */,
+				067BCE0E1AD5C9D100F0BDE6 /* TransparentSwipeView.m in Sources */,
 				5F1C9B7F19EDE87A000F1FC1 /* TemperatureCellStaticView.m in Sources */,
 				5F1C9B8F19EDE87A000F1FC1 /* MoreViewController.m in Sources */,
 				06C55B221AAF4BD600EDE74A /* ILTrackingViewController.m in Sources */,
