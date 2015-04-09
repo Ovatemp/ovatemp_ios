@@ -7,10 +7,14 @@
 //
 
 #import "ONDOViewController.h"
+
+#import <CCMPopup/CCMPopupTransitioning.h>
+
 #import "AccountTableViewCell.h"
 #import "ONDO.h"
 #import "BluetoothDeviceTableViewController.h"
 #import "WebViewController.h"
+#import "ONDOSettingViewController.h"
 
 @interface ONDOViewController () <UITableViewDelegate, UITableViewDataSource, ONDODelegate>
 
@@ -33,7 +37,7 @@ NSArray *ondoMenuItems;
     self.tableView.layoutMargins = UIEdgeInsetsZero;
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     
-    ondoMenuItems = [NSArray arrayWithObjects:@"Buy ONDO", @"Pair ONDO", @"Manage ONDO", @"About ONDO", @"Instruction Manual", nil];
+    ondoMenuItems = [NSArray arrayWithObjects:@"Buy ONDO", @"Pair ONDO", @"About ONDO", @"Instruction Manual", nil];
         
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -83,13 +87,13 @@ NSArray *ondoMenuItems;
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return 58;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     switch (indexPath.row) {
         case 0:  // Buy
         {
@@ -102,20 +106,28 @@ NSArray *ondoMenuItems;
             
         case 1: // Pair
         {
-            __weak ONDOViewController *controller = self;
-            [ONDO showPairingWizardWithDelegate:controller];
+            //__weak ONDOViewController *controller = self;
+            //[ONDO showPairingWizardWithDelegate:controller];
+            
+            ONDOSettingViewController *ondoSettingVC = [[ONDOSettingViewController alloc] init];
+            
+            CCMPopupTransitioning *popup = [CCMPopupTransitioning sharedInstance];
+            popup.destinationBounds = CGRectMake(0, 0, 200, 200);
+            popup.presentedController = ondoSettingVC;
+            popup.presentingController = self;
+            popup.dismissableByTouchingBackground = YES;
+            popup.backgroundViewColor = [UIColor blackColor];
+            popup.backgroundViewAlpha = 0.5f;
+            popup.backgroundBlurRadius = 0;
+            
+            ondoSettingVC.view.layer.cornerRadius = 5;
+            
+            [self presentViewController: ondoSettingVC animated: YES completion: nil];
+            
             break;
         }
             
-        case 2: // Manage
-        {
-            BluetoothDeviceTableViewController *bluetoothController = [BluetoothDeviceTableViewController new];
-            bluetoothController.title = @"Manage ONDO";
-            [self.navigationController pushViewController:bluetoothController animated:YES];
-            break;
-        }
-            
-        case 3: // About
+        case 2: // About
         {
             NSString *url = @"http://ovatemp.com/pages/ondo";
             WebViewController *webViewController = [WebViewController withURL:url];
@@ -124,7 +136,7 @@ NSArray *ondoMenuItems;
             break;
         }
             
-        case 4: // Instructions
+        case 3: // Instructions
         {
             NSString *url = @"https://s3.amazonaws.com/ovatemp/UserManual_2014.02.26.pdf";
             WebViewController *webViewController = [WebViewController withURL:url];
@@ -139,49 +151,5 @@ NSArray *ondoMenuItems;
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

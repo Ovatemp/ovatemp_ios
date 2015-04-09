@@ -54,7 +54,7 @@
 //    ONDOViewController *ondoVC = [[ONDOViewController alloc] init];
 //    [self.navigationController pushViewController:ondoVC animated:YES];
     __weak WelcomeONDOViewController *controller = self;
-    [ONDO showPairingWizardWithDelegate:controller];
+    //[ONDO showPairingWizardWithDelegate:controller];
 //    [self backOutToRootViewController];
     
     [Localytics tagEvent: @"User Did Pair ONDO on Sign Up"];

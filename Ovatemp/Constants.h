@@ -39,12 +39,12 @@
 
 #define FERTILITY_WINDOW_COLOR ColorA(56, 192, 191, 0.16)
 
-// LUMBERJACK
+// COCOALUMBERJACK
 
 #ifdef DEBUG
     static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 #else
-    static const DDLogLevel ddLogLevel = DDLogLevelWarn;
+    static const DDLogLevel ddLogLevel = DDLogLevelWarning;
 #endif
 
 // API
@@ -65,12 +65,12 @@
 //#endif
 
 #ifdef TARGET_IPHONE_SIMULATOR
-    #define ROOT_URL @"http://api.ovatemp.com"
+    #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
     #define DEVICE_ID @"DUMMYDEVICE"
 #endif
 
 #ifdef DEBUG
-    #define ROOT_URL @"http://api.ovatemp.com"
+    #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
     #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
 #endif
 

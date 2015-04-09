@@ -58,7 +58,7 @@
   __weak MoreViewController *controller = self;
 
   [self.form addLabel:@"Pair" withImage:nil andAccessoryType:UITableViewCellAccessoryNone toSection:@"ONDO™" whenTapped:^(FormRow *row) {
-    [ONDO showPairingWizardWithDelegate:controller];
+    //[ONDO showPairingWizardWithDelegate:controller];
   }];
 
   [self.form addLabel:@"Manage thermometers" withImage:nil toSection:@"ONDO™" whenTapped:^(FormRow *row) {

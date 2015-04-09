@@ -117,7 +117,7 @@ static CGFloat const kStandardSpacing = 20.0f;
 
 - (void)viewDidAppear:(BOOL)animated
 {
-  [ONDO pairDeviceWithDelegate:self];
+  //[ONDO pairDeviceWithDelegate:self];
   [self startAnimating];
 }
 
@@ -173,7 +173,7 @@ static CGFloat const kStandardSpacing = 20.0f;
 - (void)ONDO:(ONDO *)ondo didAddDevice:(ONDODevice *)device
 {
   if ([self.delegate respondsToSelector:@selector(ONDO:didAddDevice:)]) {
-    [self.delegate ONDO:ondo didAddDevice:device];
+    //[self.delegate ONDO:ondo didAddDevice:device];
   } else {
     _device = device;
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"New ONDO found!" message:@"You can personalize your ONDO thermometer if you'd like, by giving it a unique name" delegate:self cancelButtonTitle:@"No Thanks" otherButtonTitles:@"Save", nil];
@@ -190,7 +190,7 @@ static CGFloat const kStandardSpacing = 20.0f;
 
   if (!_device) {
     if ([self.delegate respondsToSelector:@selector(ONDO:didConnectToDevice:)]) {
-      [self.delegate ONDO:ondo didConnectToDevice:device];
+      //[self.delegate ONDO:ondo didConnectToDevice:device];
     }
 
     NSString *message = [NSString stringWithFormat:@"Ovatemp is already paired with %@", device.name];
@@ -217,7 +217,7 @@ static CGFloat const kStandardSpacing = 20.0f;
     }
 
     if ([self.delegate respondsToSelector:@selector(ONDO:didConnectToDevice:)]) {
-      [self.delegate ONDO:[ONDO sharedInstance] didConnectToDevice:_device];
+      //[self.delegate ONDO:[ONDO sharedInstance] didConnectToDevice:_device];
     }
   }
 

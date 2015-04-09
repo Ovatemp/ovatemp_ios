@@ -127,10 +127,17 @@
 
 - (void)setUpOndo
 {
-    if ([ONDO sharedInstance].devices.count > 0) {
-        NSLog(@"ONDO : STARTING : DEVICE COUNT = %lu", (unsigned long)[ONDO sharedInstance].devices.count);
-        [ONDO startWithDelegate: self];
+    ONDO *ondo = [ONDO sharedInstanceWithDelegate: self];
+    
+    if([self shouldScanForOndo]){
+        [ondo startScan];
     }
+}
+
+- (BOOL)shouldScanForOndo
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults boolForKey: @"ShouldScanForOndo"];
 }
 
 #pragma mark - Appearance

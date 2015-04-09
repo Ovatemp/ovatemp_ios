@@ -164,8 +164,8 @@
     
     [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
 
-    [[DDTTYLogger sharedInstance] setForegroundColor: [UIColor blueColor] backgroundColor: nil forFlag: DDLogFlagInfo];
-    [[DDTTYLogger sharedInstance] setForegroundColor: [UIColor blackColor] backgroundColor: nil forFlag: DDLogFlagVerbose];
+    [[DDTTYLogger sharedInstance] setForegroundColor: [UIColor purpleColor] backgroundColor: nil forFlag: DDLogFlagInfo];
+    [[DDTTYLogger sharedInstance] setForegroundColor: [UIColor darkGrayColor] backgroundColor: nil forFlag: DDLogFlagVerbose];
 }
 
 # pragma mark - Core data

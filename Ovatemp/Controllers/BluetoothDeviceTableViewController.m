@@ -21,7 +21,7 @@
 }
 
 - (IBAction)addDevice:(id)sender {
-  [ONDO showPairingWizardWithDelegate:self];
+  //[ONDO showPairingWizardWithDelegate:self];
 }
 
 # pragma mark - Table view data source methods
@@ -40,15 +40,15 @@
   if (!cell) {
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
   }
-  ONDODevice *device = [[ONDO sharedInstance].devices objectAtIndex:indexPath.row];
-  cell.textLabel.text = device.name;
+  //ONDODevice *device = [[ONDO sharedInstance].devices objectAtIndex:indexPath.row];
+  //cell.textLabel.text = device.name;
   return cell;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
   if (editingStyle == UITableViewCellEditingStyleDelete) {
-    ONDODevice *device = [[ONDO sharedInstance].devices objectAtIndex:indexPath.row];
-    [device delete];
+    //ONDODevice *device = [[ONDO sharedInstance].devices objectAtIndex:indexPath.row];
+    //[device delete];
   }
   [tableView reloadData];
 }
@@ -58,7 +58,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return [ONDO sharedInstance].devices.count;
+  //return [ONDO sharedInstance].devices.count;
+    return 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

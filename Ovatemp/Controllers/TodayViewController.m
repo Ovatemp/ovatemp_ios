@@ -154,9 +154,9 @@
     self.day = nil;
     [self dateChanged];
     
-    if ([ONDO sharedInstance].devices.count > 0) {
-        [ONDO startWithDelegate:self];
-    }
+//    if ([ONDO sharedInstance].devices.count > 0) {
+//        [ONDO startWithDelegate:self];
+//    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

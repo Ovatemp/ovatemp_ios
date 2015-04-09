@@ -7,6 +7,7 @@ target :Ovatemp do
   pod 'Localytics',  '~> 3.0'
   pod "TAOverlay"
   pod "CocoaLumberjack"
+  pod "CCMPopup"
 end
 
 target :OvatempTests, exclusive: true do

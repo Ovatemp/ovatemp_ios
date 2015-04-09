@@ -11,78 +11,59 @@
 #import "ONDO.h"
 #import "ONDOPairViewController.h"
 
-static ONDO *kONDOInstance;
 static CBUUID *kONDOUUID;
-static NSString * const kONDOIdentifier = @"1809";
+static NSString *const kONDOIdentifier = @"1809";
 
 @interface ONDO () <CBCentralManagerDelegate, CBPeripheralDelegate>
 
 @property (nonatomic) CBCentralManager *bluetoothManager;
-@property (nonatomic) CBPeripheral *ondoPeripheral;
-
-@property BOOL isReading;
+@property (nonatomic) CBPeripheral *peripheral;
 
 @end
 
 @implementation ONDO
 
-+ (void)pairDeviceWithDelegate:(id<ONDODelegate>)delegate
-{
-    self.sharedInstance.delegate = delegate;
-    [self.sharedInstance pair];
-}
-
 + (ONDO *)sharedInstance
 {
-    if (!kONDOInstance) {
-        kONDOInstance = [self new];
+    static ONDO *__instance;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        __instance = [[ONDO alloc] init];
+        __instance.bluetoothManager = [[CBCentralManager alloc] initWithDelegate: __instance queue: nil];
+    });
+    
+    return __instance;
+}
+
++ (ONDO *)sharedInstanceWithDelegate:(id<ONDODelegate>)delegate
+{
+    ONDO *instance = [ONDO sharedInstance];
+    instance.delegate = delegate;
+    
+    return instance;
+}
+
+# pragma mark - Start/Stop Scan
+
+- (void)startScan
+{
+    DDLogInfo(@"ONDO : STARTING SCAN FOR ONDO");
+    
+    if (!kONDOUUID) {
+        kONDOUUID = [CBUUID UUIDWithString: kONDOIdentifier];
     }
-    return kONDOInstance;
+    
+    [self.bluetoothManager scanForPeripheralsWithServices: @[kONDOUUID] options: nil];
+    self.isScanning = YES;
 }
 
-+ (void)showPairingWizardWithDelegate:(id<ONDODelegate>)delegate
+- (void)stopScan
 {
-    UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
-    if (rootViewController.presentedViewController) {
-        rootViewController = rootViewController.presentedViewController;
-    }
-
-    ONDOPairViewController *ondoController = [ONDOPairViewController new];
-    ondoController.delegate = delegate;
-    self.sharedInstance.delegate = ondoController;
-    [rootViewController presentViewController:[ondoController buildNavigationController] animated:YES completion:nil];
-}
-
-+ (void)startWithDelegate:(id<ONDODelegate>)delegate
-{
-    self.sharedInstance.delegate = delegate;
-    [self.sharedInstance connect];
-}
-
-- (void)connect
-{
-    self.isReading = YES;
-    [self start];
-}
-
-- (NSArray *)devices
-{
-    return [ONDODevice all];
-}
-
-- (void)pair
-{
-    self.isReading = NO;
-    [self start];
-}
-
-- (void)start
-{
-    if (self.bluetoothManager) {
-        [self.bluetoothManager stopScan];
-        self.bluetoothManager = nil;
-    }
-    self.bluetoothManager = [[CBCentralManager alloc] initWithDelegate: self queue: nil];
+    DDLogInfo(@"ONDO : STOPPING SCAN FOR ONDO");
+    
+    [self.bluetoothManager stopScan];
+    self.isScanning = NO;
 }
 
 # pragma mark - Helpers
@@ -96,7 +77,7 @@ static NSString * const kONDOIdentifier = @"1809";
     dataPointer += 4;
 
     if (tempData == 0x007FFFFF) {
-    return 0.0f;
+        return 0.0f;
     }
 
     int8_t exponent = (int8_t)(tempData >> 24);
@@ -106,8 +87,8 @@ static NSString * const kONDOIdentifier = @"1809";
 
 - (void)notifyOnError:(NSError *)error
 {
-    if (error && [self.delegate respondsToSelector:@selector(ONDO:didEncounterError:)]) {
-        [self.delegate ONDO:self didEncounterError:error];
+    if (error && [self.delegate respondsToSelector: @selector(ONDO:didEncounterError:)]) {
+        [self.delegate ONDO: self didEncounterError: error];
     }
 }
 
@@ -139,10 +120,9 @@ static NSString * const kONDOIdentifier = @"1809";
             break;
         case CBCentralManagerStatePoweredOn:
             DDLogInfo(@"CENTRAL MANAGER STATE: POWERED ON!");
-            if (!kONDOUUID) {
-                kONDOUUID = [CBUUID UUIDWithString:kONDOIdentifier];
+            if (self.isScanning) {
+                [self startScan];
             }
-            [central scanForPeripheralsWithServices:@[kONDOUUID] options:nil];
             break;
     }
 }
@@ -151,45 +131,24 @@ static NSString * const kONDOIdentifier = @"1809";
 {
     DDLogInfo(@"CENTRAL MANAGER : DID DISCOVER PERIPHERAL: %@", peripheral);
 
-    // Connect to the peripheral advertising Ovatemp's temperature
-    peripheral.delegate = self;
-    NSDictionary *options = @{CBConnectPeripheralOptionNotifyOnConnectionKey: @YES,
-                            CBConnectPeripheralOptionNotifyOnDisconnectionKey: @YES,
-                            CBConnectPeripheralOptionNotifyOnNotificationKey: @YES};
-    [central connectPeripheral: peripheral options: options];
-
-    // Stash the device we're connecting
-    self.ondoPeripheral = peripheral;
-    //[central stopScan];
+    self.peripheral = peripheral;
+    self.peripheral.delegate = self;
+    
+//    NSDictionary *options = @{CBConnectPeripheralOptionNotifyOnConnectionKey: @NO,
+//                            CBConnectPeripheralOptionNotifyOnDisconnectionKey: @NO,
+//                            CBConnectPeripheralOptionNotifyOnNotificationKey: @NO};
+    
+    [self.bluetoothManager connectPeripheral: self.peripheral options: nil];
 }
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
     DDLogInfo(@"CENTRAL MANAGER : DID CONNECT PERIPHERAL: %@", peripheral);
     
-    NSString *uuid = peripheral.identifier.UUIDString;
-    ONDODevice *device = [ONDODevice find:uuid];
-
-    if (self.isReading) {
-        DDLogInfo(@"ONDO : IS READING");
-        // Start negotiations to finally read a temperature
-        [peripheral discoverServices:@[kONDOUUID]];
-    } else {
-        DDLogInfo(@"ONDO : IS PAIRING");
-        // Make sure we store a record for this device
-        if (!device) {
-            device = [ONDODevice create:uuid];
-            device.name = [NSString stringWithFormat:@"ONDO #%i", (int)self.devices.count];
-            [device save];
-            if ([self.delegate respondsToSelector:@selector(ONDO:didAddDevice:)]) {
-                [self.delegate ONDO:self didAddDevice:device];
-            }
-        }
-        [central cancelPeripheralConnection:peripheral];
-    }
+    [self.peripheral discoverServices:@[kONDOUUID]];
     
-    if (device && [self.delegate respondsToSelector:@selector(ONDO:didConnectToDevice:)]) {
-        [self.delegate ONDO:self didConnectToDevice:device];
+    if ([self.delegate respondsToSelector:@selector(ONDOdidConnect:)]) {
+        [self.delegate ONDOdidConnect: self];
     }
 }
 
@@ -197,12 +156,8 @@ static NSString * const kONDOIdentifier = @"1809";
 {
     DDLogInfo(@"CENTRAL MANAGER : DID DISCONNECT PERIPHERAL: %@", peripheral);
     
-    if (!kONDOUUID) {
-        kONDOUUID = [CBUUID UUIDWithString:kONDOIdentifier];
-    }
-    [central scanForPeripheralsWithServices:@[kONDOUUID] options:nil];
+    [self startScan];
 
-    // If error code is anything other than 7 - CBErrorPeripheralDisconnected return the error
     if (error && error.code != CBErrorPeripheralDisconnected) {
         [self notifyOnError:error];
     }
@@ -219,8 +174,8 @@ static NSString * const kONDOIdentifier = @"1809";
         DDLogInfo(@"CENTRAL MANAGER : DID DISCOVER SERVICES: %@", peripheral);
         CBUUID *temperatureCharacterisicUUID = [CBUUID UUIDWithString:@"2A1C"];
         CBService *temperatureService = peripheral.services.firstObject;
-        [peripheral discoverCharacteristics:@[temperatureCharacterisicUUID]
-                                 forService:temperatureService];
+        [self.peripheral discoverCharacteristics:@[temperatureCharacterisicUUID]
+                                      forService:temperatureService];
     }
 }
 
@@ -230,11 +185,9 @@ static NSString * const kONDOIdentifier = @"1809";
         DDLogError(@"CENTRAL MANAGER : ERROR DISCOVERING CHARACTERISTICS %@", error);
         [self notifyOnError:error];
     } else {
-        DDLogInfo(@"CENTRAL MANAGER : DID DISCOVER CHARACTERISTICS: %@", service.characteristics);
-        DDLogInfo(@"CENTRAL MANAGER : FOR SERVICE: %@", service);
+        DDLogInfo(@"CENTRAL MANAGER : DID DISCOVER CHARACTERISTICS: %@ ; FOR SERVICE: %@", service.characteristics, service);
         CBCharacteristic *temperatureCharacteristic = service.characteristics.firstObject;
-        [peripheral setNotifyValue:YES forCharacteristic:temperatureCharacteristic];
-        DDLogInfo(@"CENTRAL MANAGER : SET NOTIFY VALUE = YES : FOR CHARACTERISTIC : %@", temperatureCharacteristic);
+        [self.peripheral setNotifyValue: YES forCharacteristic: temperatureCharacteristic];
     }
 }
 
@@ -256,17 +209,19 @@ static NSString * const kONDOIdentifier = @"1809";
     } else {
         DDLogInfo(@"CENTRAL MANAGER : DID UPDATE VALUE FOR CHARACTERISTIC");
         DDLogInfo(@"READ CHARACTERISTIC: %@", characteristic);
-        CGFloat temperature = [self dataToFloat:characteristic.value];
+        CGFloat temperature = [self dataToFloat: characteristic.value];
+        DDLogVerbose(@"TEMPERATURE: %f", temperature);
         if (temperature > 0) {
-            if ([self.delegate respondsToSelector:@selector(ONDO:didReceiveTemperature:)]) {
-                [self.delegate ONDO:self didReceiveTemperature:temperature];
+            if ([self.delegate respondsToSelector: @selector(ONDO:didReceiveTemperature:)]) {
+                [self.delegate ONDO: self didReceiveTemperature: temperature];
             }
         } else {
+            DDLogError(@"CENTRAL MANAGER : TEMPERATURE NOT VALID");
             NSError *error = [NSError errorWithDomain: @"Ovatemp" code: 500 userInfo: @{@"error": @"Could not read ONDO data. Is your battery charged?"}];
             [self notifyOnError: error];
         }
     }
-    [peripheral setNotifyValue:NO forCharacteristic:characteristic];
+    [self.peripheral setNotifyValue: NO forCharacteristic: characteristic];
 }
 
 @end

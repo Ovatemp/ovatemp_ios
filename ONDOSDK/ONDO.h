@@ -18,8 +18,7 @@
 - (void)ONDOsaysBluetoothIsDisabled:(ONDO *)ondo;
 - (void)ONDOsaysLEBluetoothIsUnavailable:(ONDO *)ondo;
 
-- (void)ONDO:(ONDO *)ondo didAddDevice:(ONDODevice *)device;
-- (void)ONDO:(ONDO *)ondo didConnectToDevice:(ONDODevice *)device;
+- (void)ONDOdidConnect:(ONDO *)ondo;
 - (void)ONDO:(ONDO *)ondo didEncounterError:(NSError *)error;
 - (void)ONDO:(ONDO *)ondo didReceiveTemperature:(CGFloat)temperature;
 
@@ -27,12 +26,14 @@
 
 @interface ONDO : NSObject
 
-+ (void)pairDeviceWithDelegate:(id<ONDODelegate>)delegate;
 + (ONDO *)sharedInstance;
-+ (void)showPairingWizardWithDelegate:(id<ONDODelegate>)delegate;
-+ (void)startWithDelegate:(id<ONDODelegate>)delegate;
++ (ONDO *)sharedInstanceWithDelegate:(id<ONDODelegate>)delegate;
+
+- (void)startScan;
+- (void)stopScan;
+
+@property (nonatomic) BOOL isScanning;
 
 @property id <ONDODelegate> delegate;
-@property (readonly) NSArray *devices;
 
 @end
