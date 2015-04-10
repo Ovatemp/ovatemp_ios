@@ -152,7 +152,7 @@
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateStyle:NSDateFormatterMediumStyle];
     [df setTimeStyle:NSDateFormatterNoStyle];
-    
+
     NSString *dateString = [df stringFromDate: self.selectedDate];
     self.titleLabel.text = dateString;
     
@@ -163,7 +163,6 @@
     }
     
     if (!self.lowerDrawer) {
-        // flip arrow if the drawer is already open
         self.arrowButton.transform = CGAffineTransformMakeRotation(M_PI);
     }
 }
@@ -252,6 +251,7 @@
                            [self.tableView reloadData];
                        }
                        
+                       [self setTitleView];
                        [TAOverlay hideOverlay];
                        
                    }
@@ -818,7 +818,6 @@
     [[self.drawerCollectionView cellForItemAtIndexPath: indexPath] setNeedsDisplay];
     
     [self refreshTrackingViewWithAnimation: YES];
-    [self setTitleView];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
