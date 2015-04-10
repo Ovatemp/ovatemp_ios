@@ -32,7 +32,6 @@ NSMutableArray *heightPickerInchesData;
     
     self.heightPicker.delegate = self;
     
-    // done bar
     UIToolbar *doneToolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];
     [doneToolbar sizeToFit];
     UIBarButtonItem *flexArea = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
@@ -40,29 +39,22 @@ NSMutableArray *heightPickerInchesData;
     doneToolbar.items = @[flexArea, doneButton];
     self.heightField.inputAccessoryView = doneToolbar;
     
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    // default value
     UserProfile *currentUserProfile = [UserProfile current];
     
-    if (currentUserProfile.heightInInches) {
-        int feetComponent = [currentUserProfile.heightInInches intValue] / 12;
-        int inchesComponent = [currentUserProfile.heightInInches intValue] % 12;
-        
-        [self.heightPicker selectRow:(feetComponent - 3) inComponent:0 animated:NO]; // -3
-        [self.heightPicker selectRow:inchesComponent inComponent:1 animated:NO];
-    } else {
-        [self.heightPicker selectRow:2 inComponent:0 animated:NO]; // 5
-        [self.heightPicker selectRow:5 inComponent:1 animated:NO];
+    int feetComponent = [currentUserProfile.heightInInches intValue] / 12;
+    int inchesComponent = [currentUserProfile.heightInInches intValue] % 12;
+
+    if ((feetComponent >= 3 && feetComponent < 7) && (inchesComponent >= 0 && inchesComponent < 12)) {
+        [self.heightPicker selectRow: (feetComponent - 3) inComponent:0 animated:NO];
+        [self.heightPicker selectRow: inchesComponent inComponent:1 animated:NO];
     }
     
     self.heightField.inputView = self.heightPicker;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 #pragma mark - UIPickerViewDelegate methods
