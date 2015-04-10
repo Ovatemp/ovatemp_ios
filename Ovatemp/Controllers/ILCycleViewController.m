@@ -49,7 +49,7 @@
 {
     [super viewDidAppear: animated];
     
-    [self addGestureRecognizers];
+    //[self addGestureRecognizers];
     
     [Localytics tagScreen: @"Tracking/Chart"];
 }
@@ -156,16 +156,14 @@
 
 - (void)loadAssets
 {
-//    if ([Cycle fullyLoaded]) {
-//        [self loadCycle];
-//        
-//    } else {
+    if ([Cycle fullyLoaded]) {
+        [self loadCycle];
+        
+    } else {
         [TAOverlay showOverlayWithLabel: @"Loading Cycles..." Options: TAOverlayOptionOverlaySizeRoundedRect];
         
         [Cycle loadAllAnd:^(id response) {
             
-            DDLogWarn(@"Loading all cycles.");
-    
             [self loadCycle];
             [TAOverlay hideOverlay];
             
@@ -174,7 +172,7 @@
             [TAOverlay hideOverlay];
             
         }];
-//    }
+    }
 }
 
 #pragma mark - Appearance
@@ -229,6 +227,8 @@
     self.sexLabel.alpha = 1.0f;
 }
 
+#pragma mark - Chart Construction
+
 - (void)setUpChart
 {
     self.chartView = [[TKChart alloc] init];
@@ -239,12 +239,9 @@
     self.chartView.legend.hidden = YES;
     self.chartView.allowAnimations = YES;
     
-    [self.view addSubview: self.chartView];
-}
-
-- (void)setUpCollectionViewsData
-{
+    self.chartView.selectionMode = TKChartSelectionModeSingle;
     
+    [self.view addSubview: self.chartView];
 }
 
 - (void)reloadChart
@@ -252,17 +249,25 @@
     [self.chartView removeAllData];
     [self.chartView removeAllAnnotations];
     
+    [self buildTemperatureDataArray];
+    [self addSeriesToChart];
+    [self customizeChartAxis];
+    [self addCoverLineToChart];
+    [self addFertilityWindowToChart];
+}
+
+- (void)buildTemperatureDataArray
+{
     self.temperatureData = [[NSMutableArray alloc] init];
-    
     NSArray *days = self.selectedCycle.days;
-        
+    
     // ADD EXISTING DAYS TO TEMP. DATA
     for (int i = 0; i < [days count]; i++) {
         
         Day *day = days[i];
         CGFloat temperature;
         
-        if (!day.temperature || [day.temperature floatValue] == 0) {
+        if (!day.temperature) {
             temperature = 0;
         }
         
@@ -270,7 +275,9 @@
             temperature = [day.temperature floatValue];
             
         } else {
-            temperature = (([day.temperature floatValue] - 32) / 1.8000f);
+            if ([day.temperature floatValue] != 0) {
+                temperature = (([day.temperature floatValue] - 32) / 1.8000f);
+            }
         }
         
         [self.temperatureData addObject: [[TKChartDataPoint alloc] initWithX: @(i+1) Y: @(temperature)]];
@@ -284,57 +291,88 @@
         }
     }
     
-    self.chartView.selectionMode = TKChartSelectionModeSingle;
-    
-    // TEMPERATURE(LINE) SERIES
-    
+    //NSLog(@"DAYS: %@", self.selectedCycle.days);
+    //NSLog(@"TEMPERATURE DATA: %@", self.temperatureData);
+}
+
+- (void)addSeriesToChart
+{
     self.chartSeries = [[TKChartLineSeries alloc] initWithItems: self.temperatureData];
-    self.chartSeries.style.palette = [[TKChartPalette alloc] init];
-    TKChartPaletteItem *palleteItem = [[TKChartPaletteItem alloc] init];
-    palleteItem.stroke = [TKStroke strokeWithColor: [UIColor darkGrayColor] width: 2];
-    [self.chartSeries.style.palette addPaletteItem: palleteItem];
     
-    self.chartSeries.style.pointShape = [TKPredefinedShape shapeWithType: TKShapeTypeCircle andSize: CGSizeMake(12, 12)];
-    TKChartPaletteItem *paletteItem = [[TKChartPaletteItem alloc] init];
-    paletteItem.fill = [TKSolidFill solidFillWithColor: [UIColor purpleColor]];
+    // POINT SHAPE
+    self.chartSeries.style.pointShape = [TKPredefinedShape shapeWithType: TKShapeTypeCircle andSize: CGSizeMake(10, 10)];
+    
+    // STROKE
+    TKChartPaletteItem *palleteItemStroke = [[TKChartPaletteItem alloc] init];
+    palleteItemStroke.stroke = [TKStroke strokeWithColor: [UIColor darkGrayColor] width: 2];
+    
+    self.chartSeries.style.palette = [[TKChartPalette alloc] init];
+    [self.chartSeries.style.palette addPaletteItem: palleteItemStroke];
+    
+    // POINT FILL(COLOR)
+    TKChartPaletteItem *paletteItemFill = [[TKChartPaletteItem alloc] init];
+    paletteItemFill.fill = [TKSolidFill solidFillWithColor: [UIColor purpleColor]];
+    
     TKChartPalette *palette = [[TKChartPalette alloc] init];
-    [palette addPaletteItem:paletteItem];
+    [palette addPaletteItem: paletteItemFill];
     self.chartSeries.style.shapePalette = palette;
     
     self.chartSeries.selectionMode = TKChartSeriesSelectionModeDataPoint;
     
     [self.chartView addSeries: self.chartSeries];
-    
-    // AXIS CUSTOMIZATION
+}
 
-//    Day *firstDay = [self.selectedCycle.days firstObject];
-//    
-//    CGFloat minTemp = [firstDay.temperature floatValue];
-//    CGFloat maxTemp = [firstDay.temperature floatValue];
-//    
-//    for (int i = 0; i < [self.selectedCycle.days count]; i++) {
-//        Day *day = self.selectedCycle.days[i];
-//        CGFloat dayTemp = [day.temperature floatValue];
-//        
-//        if (dayTemp < minTemp) {
-//            minTemp = dayTemp;
-//        }else if (dayTemp > maxTemp) {
-//            maxTemp = dayTemp;
-//        }
-//    }
-//    
-//    NSString *minTempString = [NSString stringWithFormat: @"%.1f", minTemp];
-//    NSString *maxTempString = [NSString stringWithFormat: @"%.1f", maxTemp];
-//    NSNumber *minTempRounded = [NSNumber numberWithFloat: [minTempString floatValue]];
-//    NSNumber *maxTempRounded = [NSNumber numberWithFloat: [maxTempString floatValue]];
-//
+- (void)customizeChartAxis
+{
+    NSArray *days = self.selectedCycle.days;
     
-    TKChartNumericAxis *yAxis = [[TKChartNumericAxis alloc] initWithMinimum: @90 andMaximum: @106];
+    CGFloat minTemp;
+    CGFloat maxTemp;
+    
+    for (int i = 0; i < [days count]; i++) {
+        Day *day = days[i];
+        CGFloat dayTemp = [day.temperature floatValue];
+
+        if (dayTemp != 0) {
+            minTemp = dayTemp;
+            maxTemp = dayTemp;
+            break;
+        }
+    }
+    
+    for (int i = 0; i < [days count]; i++) {
+        Day *day = days[i];
+        CGFloat dayTemp = [day.temperature floatValue];
+        
+        if (dayTemp == 0) {
+            continue;
+        }
+        
+        if (dayTemp < minTemp) {
+            minTemp = dayTemp;
+        }else if (dayTemp > maxTemp) {
+            maxTemp = dayTemp;
+        }
+    }
+    
+    if (minTemp == 0 || maxTemp == 0) {
+        minTemp = 0;
+        maxTemp = 0;
+    }
+    
+    NSString *minTempString = [NSString stringWithFormat: @"%.1f", minTemp];
+    NSString *maxTempString = [NSString stringWithFormat: @"%.1f", maxTemp];
+    NSNumber *minTempRounded = [NSNumber numberWithFloat: [minTempString floatValue]];
+    NSNumber *maxTempRounded = [NSNumber numberWithFloat: [maxTempString floatValue]];
+    
+    NSLog(@"MIN TEMP: %@ ... MAX TEMP: %@", minTempRounded, maxTempRounded);
+    
+    TKChartNumericAxis *yAxis = [[TKChartNumericAxis alloc] initWithMinimum: minTempRounded andMaximum: maxTempRounded];
     yAxis.style.labelStyle.textOffset = UIOffsetMake(2, 0);
     yAxis.style.labelStyle.textColor = [UIColor darkGrayColor];
-//    yAxis.minorTickInterval = @10;
-//    yAxis.style.minorTickStyle.ticksHidden = NO;
-//    yAxis.majorTickInterval = @1;
+    //    yAxis.minorTickInterval = @10;
+    //    yAxis.style.minorTickStyle.ticksHidden = NO;
+    //    yAxis.majorTickInterval = @1;
     yAxis.title = @"Temp.";
     yAxis.style.titleStyle.textColor = [UIColor darkGrayColor];
     self.chartView.yAxis = yAxis;
@@ -344,19 +382,23 @@
     xAxis.style.labelStyle.font = [UIFont boldSystemFontOfSize: 10];
     xAxis.majorTickInterval = @1;
     self.chartView.xAxis = xAxis;
-    
-    // COVER LINE ANNOTATION
-    
+}
+
+- (void)addCoverLineToChart
+{
     if (self.selectedCycle.coverline) {
         TKStroke *stroke = [TKStroke strokeWithColor:[UIColor purpleColor] width: 2];
         self.chartLineAnnotation = [[TKChartGridLineAnnotation alloc] initWithValue: self.selectedCycle.coverline forAxis: self.chartView.yAxis withStroke: stroke];
         [self.chartView addAnnotation: self.chartLineAnnotation];
     }
-    
-    // FERTILITY WINDOW PLOT BAND
-    
+}
+
+- (void)addFertilityWindowToChart
+{
     NSInteger min = 0;
     NSInteger max = 0;
+    
+    NSArray *days = self.selectedCycle.days;
     
     for (int i = 0; i < [days count]; i++) {
         Day *day = days[i];
@@ -374,14 +416,13 @@
     }
     
     if (min != 0 && max != 0) {
-     
+        
         TKRange *range = [[TKRange alloc] initWithMinimum: [NSNumber numberWithInteger: min] andMaximum: [NSNumber numberWithInteger: max]];
         UIColor *color = [UIColor colorWithRed:(32.0f/255.0) green:(108.0f/255.0) blue:(114.0f/255.0) alpha:0.1];
         TKFill *fill = [TKSolidFill solidFillWithColor: color];
         [self.chartView addAnnotation: [[TKChartBandAnnotation alloc] initWithRange: range forAxis: self.chartView.xAxis withFill: fill withStroke: nil]];
         
     }
-    
 }
 
 - (void)reloadCollectionViews

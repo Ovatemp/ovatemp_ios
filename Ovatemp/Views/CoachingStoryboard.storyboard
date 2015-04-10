@@ -206,7 +206,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you know your fertility profile?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="8" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Sej-ci-I4N">
-                                <rect key="frame" x="16" y="5" width="568" height="53.5"/>
+                                <rect key="frame" x="16" y="5" width="568" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="215" id="0OD-ez-h97"/>
                                     <constraint firstAttribute="height" constant="60" id="1l1-Op-RDg"/>
@@ -383,7 +383,7 @@
                                         </variation>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ventilate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1u-sn-zQ6">
-                                        <rect key="frame" x="261" y="67" width="69" height="20.5"/>
+                                        <rect key="frame" x="261" y="67" width="69" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="13N-la-fng"/>
                                             <constraint firstAttribute="width" constant="62" id="Dzh-98-51w"/>
@@ -549,7 +549,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get a plan that works for you, and you alone." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="8" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="NJw-EB-X9r">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Get a plan that works for you, and you alone." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="8" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="NJw-EB-X9r">
                                 <rect key="frame" x="16" y="79" width="568" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="IXU-Rx-mkK"/>
@@ -597,7 +597,7 @@
                                     <action selector="buyTapped:" destination="J8G-HP-4NW" eventType="touchUpInside" id="5bN-TR-MwB"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJm-3f-BjG">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YJm-3f-BjG">
                                 <rect key="frame" x="193" y="58" width="215" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="215" id="rSk-mI-rEX"/>
@@ -615,8 +615,8 @@
                                     <constraint firstAttribute="width" constant="261" id="y6f-mA-fUh"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lam-HE-td1">
-                                <rect key="frame" x="170" y="122" width="261" height="20.5"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lam-HE-td1">
+                                <rect key="frame" x="170" y="122" width="261" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="261" id="Sg5-2D-90F"/>
                                 </constraints>
@@ -814,7 +814,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I get achy joints. I get majorly achy joints." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="20" preferredMaxLayoutWidth="240" translatesAutoresizingMaskIntoConstraints="NO" id="Us1-70-gQ9">
-                                <rect key="frame" x="16" y="118.5" width="568" height="130"/>
+                                <rect key="frame" x="16" y="119" width="568" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="QOH-Xu-fkE"/>
                                 </constraints>
@@ -823,7 +823,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRZ-Hw-O8f" customClass="BorderedGradientButton">
-                                <rect key="frame" x="199" y="278.5" width="71" height="71"/>
+                                <rect key="frame" x="199" y="279" width="71" height="71"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="71" id="NOc-MU-wc8"/>
                                     <constraint firstAttribute="width" constant="71" id="siM-MQ-T2c"/>
@@ -837,7 +837,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNA-hy-6Tg" customClass="BorderedGradientButton">
-                                <rect key="frame" x="326" y="278.5" width="71" height="71"/>
+                                <rect key="frame" x="326" y="279" width="71" height="71"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="71" id="ESh-Jz-6eY"/>
                                     <constraint firstAttribute="width" constant="71" id="Los-L4-DUE"/>
@@ -1093,7 +1093,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Diet.png" translatesAutoresizingMaskIntoConstraints="NO" id="VaJ-cL-XqH">
-                                            <rect key="frame" x="33" y="26.5" width="94" height="125"/>
+                                            <rect key="frame" x="33" y="27" width="94" height="125"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="125" id="mr7-jU-Q1z"/>
                                                 <constraint firstAttribute="width" constant="94" id="xsr-0D-NKT"/>
@@ -1196,14 +1196,14 @@ daily tips and exercises like:</string>
                                 </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YinOva_HiRes.png" translatesAutoresizingMaskIntoConstraints="NO" id="qkg-Tt-QbT">
-                                <rect key="frame" x="310" y="298.5" width="78" height="35"/>
+                                <rect key="frame" x="310" y="299" width="78" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="78" id="f3A-DN-HbS"/>
                                     <constraint firstAttribute="height" constant="35" id="hcl-va-BBy"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered By:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txh-aH-Xmz">
-                                <rect key="frame" x="271" y="298.5" width="59" height="21"/>
+                                <rect key="frame" x="271" y="299" width="59" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="59" id="ZiJ-bw-E4D"/>
                                     <constraint firstAttribute="height" constant="21" id="f2M-X6-Odk"/>
@@ -1278,8 +1278,8 @@ daily tips and exercises like:</string>
                                     <action selector="centerDiscountButtonPressed:" destination="X2L-vO-0O8" eventType="touchUpInside" id="dLb-sW-faR"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Categories.png" translatesAutoresizingMaskIntoConstraints="NO" id="nv4-wF-NGV">
-                                <rect key="frame" x="232" y="127.5" width="134" height="146"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Categories.png" translatesAutoresizingMaskIntoConstraints="NO" id="nv4-wF-NGV">
+                                <rect key="frame" x="232" y="128" width="134" height="146"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="157" id="4ST-Xm-0Aq"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="250" id="8Pc-JS-jYv"/>
@@ -1336,8 +1336,8 @@ daily tips and exercises like:</string>
                                     <constraint firstAttribute="height" constant="30" id="Reh-VK-FRH"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="346-0j-OQY">
-                                <rect key="frame" x="250" y="102" width="100" height="25.5"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="346-0j-OQY">
+                                <rect key="frame" x="250" y="102" width="100" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="1" constant="15" id="L85-8O-zxl"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="gRs-Ql-D1O"/>
@@ -1350,8 +1350,8 @@ daily tips and exercises like:</string>
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xmh-U8-zeA">
-                                <rect key="frame" x="250" y="273.5" width="100" height="25"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xmh-U8-zeA">
+                                <rect key="frame" x="250" y="274" width="100" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="AUn-gR-MdO"/>
                                     <constraint firstAttribute="width" constant="100" id="eic-zB-QEU"/>
@@ -1362,8 +1362,8 @@ daily tips and exercises like:</string>
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLx-j0-alh">
-                                <rect key="frame" x="250" y="333.5" width="100" height="25.5"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mLx-j0-alh">
+                                <rect key="frame" x="250" y="334" width="100" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="1Py-Ax-bMJ"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="1" constant="15" id="6PP-FB-W9i"/>

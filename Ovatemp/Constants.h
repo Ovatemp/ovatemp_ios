@@ -40,7 +40,6 @@
 #define FERTILITY_WINDOW_COLOR ColorA(56, 192, 191, 0.16)
 
 // COCOALUMBERJACK
-
 #ifdef DEBUG
     static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 #else
@@ -48,38 +47,16 @@
 #endif
 
 // API
-
-//#ifdef TARGET_IPHONE_SIMULATOR
-//  #define ROOT_URL @"http://localhost:3000"
-//  #define DEVICE_ID @"DUMMYDEVICE"
-//#else
-//  #ifdef RELEASE_AUTOMATION
-//    #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
-//  #elif DEBUG
-//        #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
-//  #else
-//    #define ROOT_URL @"http://api.ovatemp.com"
-//  #endif
-//
-//  #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
-//#endif
-
 #ifdef TARGET_IPHONE_SIMULATOR
     #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
     #define DEVICE_ID @"DUMMYDEVICE"
-#endif
-
-#ifdef DEBUG
+#elif DEBUG
     #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
     #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
-#endif
-
-#ifdef RELEASE
+#elif RELEASE
     #define ROOT_URL @"http://api.ovatemp.com"
     #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
-#endif
-
-#ifdef RELEASE_AUTOMATION
+#elif RELEASE_AUTOMATION
     #define ROOT_URL @"http://api.ovatemp.com"
     #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
 #endif
@@ -90,8 +67,6 @@ static NSInteger const kUnauthorizedRequestCode = 401;
 static NSString * const kUnauthorizedRequestNotification = @"401UnauthorizedRequestEncountered";
 
 // UI configuration
-// The are Apple's standard spacing defaults. Don't change
-// these unless the defaults change!
 static const CGFloat SIBLING_SPACING = 8.0f;
 static const CGFloat SUPERVIEW_SPACING = 20.0f;
 
@@ -101,12 +76,4 @@ UIColor * ColorA(int red, int green, int blue, CGFloat alpha);
 #define STATUS_BAR_HEIGHT 20
 
 // In app purchase config
-
 #define IAP_SHARED_SECRET @"e5a5438524c64f7db49fb672bd5ab9a7"
-
-// 3rd party API keys
-static NSString * const kGoogleAnalyticsTrackingID = @"UA-32219902-2";
-static NSString * const kGoogleAdwordsConversionID = @"1009399358";
-static NSString * const kGoogleAdwordsConversionLabel = @"Xn3pCKKe1gcQvuyo4QM";
-static NSString * const kHockeyIdentifier = @"6e19f3154c79a220e01f3820bf0f0f06";
-static NSString * const kMixpanelToken = @"fc5f08cf07825041f4741d2c20860f54";
