@@ -106,9 +106,6 @@ NSArray *ondoMenuItems;
             
         case 1: // Pair
         {
-            //__weak ONDOViewController *controller = self;
-            //[ONDO showPairingWizardWithDelegate:controller];
-            
             ONDOSettingViewController *ondoSettingVC = [[ONDOSettingViewController alloc] init];
             
             CCMPopupTransitioning *popup = [CCMPopupTransitioning sharedInstance];

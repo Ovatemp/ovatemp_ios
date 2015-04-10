@@ -9,9 +9,11 @@
 #import "WelcomeONDOViewController.h"
 #import "ONDO.h"
 #import "WebViewController.h"
+#import "ONDOSettingViewController.h"
 
 #import <sys/utsname.h> // for device name
 #import "Localytics.h"
+#import <CCMPopup/CCMPopupTransitioning.h>
 
 @interface WelcomeONDOViewController () <ONDODelegate>
 
@@ -51,11 +53,20 @@
 
 - (IBAction)doONDOPairing:(id)sender
 {
-//    ONDOViewController *ondoVC = [[ONDOViewController alloc] init];
-//    [self.navigationController pushViewController:ondoVC animated:YES];
-    __weak WelcomeONDOViewController *controller = self;
-    //[ONDO showPairingWizardWithDelegate:controller];
-//    [self backOutToRootViewController];
+    ONDOSettingViewController *ondoSettingVC = [[ONDOSettingViewController alloc] init];
+    
+    CCMPopupTransitioning *popup = [CCMPopupTransitioning sharedInstance];
+    popup.destinationBounds = CGRectMake(0, 0, 200, 200);
+    popup.presentedController = ondoSettingVC;
+    popup.presentingController = self;
+    popup.dismissableByTouchingBackground = YES;
+    popup.backgroundViewColor = [UIColor blackColor];
+    popup.backgroundViewAlpha = 0.5f;
+    popup.backgroundBlurRadius = 0;
+    
+    ondoSettingVC.view.layer.cornerRadius = 5;
+    
+    [self presentViewController: ondoSettingVC animated: YES completion: nil];
     
     [Localytics tagEvent: @"User Did Pair ONDO on Sign Up"];
     [self performSegueWithIdentifier:@"toAlarm" sender:self];
