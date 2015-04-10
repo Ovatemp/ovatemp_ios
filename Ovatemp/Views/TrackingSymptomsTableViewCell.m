@@ -22,7 +22,7 @@ NSArray *symptomsDataSource;
     [self resetSelectedSymptoms];
     [self setUpActivityView];
     
-    symptomsDataSource = [NSArray arrayWithObjects:@"Breast tenderness", @"Headaches", @"Nausea", @"Irritability/Mood swings", @"Bloating", @"PMS", @"Stress", @"Travel", @"Fever", nil];
+    symptomsDataSource = [NSArray arrayWithObjects:@"Breast tenderness", @"Headaches", @"Nausea", @"Irritability/Mood swings", @"Bloating", @"PMS", @"Stress", @"Travel", @"Fever", @"Cramps", nil];
     
     self.symptomsTableView.delegate = self;
     self.symptomsTableView.dataSource = self;
@@ -73,6 +73,7 @@ NSArray *symptomsDataSource;
     self.stressSelected = NO;
     self.travelSelected = NO;
     self.feverSelected = NO;
+    self.crampsSelected = NO;
 }
 
 - (IBAction)didSelectInfoButton:(id)sender
@@ -170,6 +171,14 @@ NSArray *symptomsDataSource;
         case 8:
         {
             if (self.feverSelected) {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+            break;
+        }
+            
+        case 9:
+        {
+            if (self.crampsSelected) {
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
             }
             break;
@@ -358,6 +367,25 @@ NSArray *symptomsDataSource;
             break;
         }
             
+        case 9:
+        {
+            if (self.crampsSelected) {
+                self.crampsSelected = NO;
+                [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                
+                NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
+                [self.selectedSymptoms removeObject: selectedIndex];
+                
+            } else {
+                self.crampsSelected = YES;
+                [self.symptomsTableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+                
+                NSNumber *selectedIndex = [[NSNumber alloc] initWithInteger:(indexPath.row + 1)]; // +1 to match backend list
+                [self.selectedSymptoms addObject: selectedIndex];
+            }
+            break;
+        }
+            
         default:
             break;
     }
@@ -387,8 +415,10 @@ NSArray *symptomsDataSource;
         self.stressSelected = YES;
     } else if (value == 7) {
         self.travelSelected = YES;
-    } else { // fever
+    } else if (value == 8) {
         self.feverSelected = YES;
+    }else{
+        self.crampsSelected = YES;
     }
 }
 
@@ -412,8 +442,10 @@ NSArray *symptomsDataSource;
         return @"Stress";
     } else if (value == 7) {
         return @"Travel";
-    } else {
+    } else if (value == 8){
         return @"Fever";
+    }else{
+        return @"Cramps";
     }
 }
 

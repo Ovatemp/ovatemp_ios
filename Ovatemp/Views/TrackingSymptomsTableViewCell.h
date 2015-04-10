@@ -40,6 +40,7 @@
 @property BOOL stressSelected;
 @property BOOL travelSelected;
 @property BOOL feverSelected;
+@property BOOL crampsSelected;
 
 - (void)updateCell;
 - (void)setMinimized;
