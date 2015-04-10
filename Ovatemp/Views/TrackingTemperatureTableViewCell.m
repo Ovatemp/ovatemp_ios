@@ -62,7 +62,7 @@ NSMutableArray *temperatureFractionalPartPickerData;
             [temperatureIntegerPartPickerData addObject:[NSString stringWithFormat:@"%d", i]];
         }
         
-        for (int i = 0; i < 100; i++) {
+        for (int i = 10; i < 100; i++) {
             [temperatureFractionalPartPickerData addObject:[NSString stringWithFormat:@"%d", i]];
         }
         
@@ -187,7 +187,15 @@ NSMutableArray *temperatureFractionalPartPickerData;
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     NSString *tempInteger = [temperatureIntegerPartPickerData objectAtIndex: [pickerView selectedRowInComponent: 0]];
-    NSString *tempFractional = [temperatureFractionalPartPickerData objectAtIndex: [pickerView selectedRowInComponent: 1]];
+    NSString *tempFractional;
+    
+    if ([tempFractional floatValue] >= 0 && [tempFractional floatValue] < 10) {
+        NSString *temp = [temperatureFractionalPartPickerData objectAtIndex: [pickerView selectedRowInComponent: 1]];
+        tempFractional = [NSString stringWithFormat: @"0%@", temp];
+    }else{
+        tempFractional = [temperatureFractionalPartPickerData objectAtIndex: [pickerView selectedRowInComponent: 1]];
+    }
+    
     NSString *temperatureString = [NSString stringWithFormat: @"%@.%@", tempInteger, tempFractional];
     
     self.temperatureValueLabel.text = temperatureString;

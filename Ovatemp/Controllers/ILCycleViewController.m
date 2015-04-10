@@ -291,7 +291,7 @@
         }
     }
     
-    //NSLog(@"DAYS: %@", self.selectedCycle.days);
+    NSLog(@"DAYS: %@", self.selectedCycle.days);
     //NSLog(@"TEMPERATURE DATA: %@", self.temperatureData);
 }
 
