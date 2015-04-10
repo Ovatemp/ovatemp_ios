@@ -41,8 +41,6 @@
 
     [self customizeAppearance];
     [self setUpChart];
-    
-    [self loadAssets];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -50,6 +48,7 @@
     [super viewDidAppear: animated];
     
     [self addGestureRecognizers];
+    [self loadAssets];
     
     [Localytics tagScreen: @"Tracking/Chart"];
 }
@@ -154,23 +153,28 @@
 
 - (void)loadAssets
 {
-    if ([Cycle fullyLoaded]) {
-        [self loadCycle];
-        
-    } else {
+//    if ([Cycle fullyLoaded]) {
+//        DDLogInfo(@"ILCycleViewController : Cycle already loaded.");
+//        NSLog(@"FULLY LOADED");
+//        [self loadCycle];
+//        
+//    } else {
+        DDLogInfo(@"ILCycleViewController : Loading Cycle.");
         [TAOverlay showOverlayWithLabel: @"Loading Cycles..." Options: TAOverlayOptionOverlaySizeRoundedRect];
         
         [Cycle loadAllAnd:^(id response) {
             
+            DDLogInfo(@"ILCycleViewConteroller : Loading Cycles : Success");
             [self loadCycle];
             [TAOverlay hideOverlay];
             
         } failure:^(NSError *error) {
             
+            DDLogError(@"ILCycleViewConteroller : Loading Cycles : Error: %@", error);
             [TAOverlay hideOverlay];
             
         }];
-    }
+//    }
 }
 
 #pragma mark - Appearance
