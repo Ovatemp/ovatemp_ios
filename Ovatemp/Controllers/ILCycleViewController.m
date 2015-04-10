@@ -324,14 +324,12 @@
 
 - (void)customizeChartAxis
 {
-    NSArray *days = self.selectedCycle.days;
-    
     CGFloat minTemp;
     CGFloat maxTemp;
     
-    for (int i = 0; i < [days count]; i++) {
-        Day *day = days[i];
-        CGFloat dayTemp = [day.temperature floatValue];
+    for (int i = 0; i < [self.temperatureData count]; i++) {
+        TKChartDataPoint *point = self.temperatureData[i];
+        CGFloat dayTemp = [point.dataYValue floatValue];
 
         if (dayTemp != 0) {
             minTemp = dayTemp;
@@ -340,9 +338,9 @@
         }
     }
     
-    for (int i = 0; i < [days count]; i++) {
-        Day *day = days[i];
-        CGFloat dayTemp = [day.temperature floatValue];
+    for (int i = 0; i < [self.temperatureData count]; i++) {
+        TKChartDataPoint *point = self.temperatureData[i];
+        CGFloat dayTemp = [point.dataYValue floatValue];
         
         if (dayTemp == 0) {
             continue;
