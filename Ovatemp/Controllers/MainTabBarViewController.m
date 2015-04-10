@@ -9,12 +9,14 @@
 #import "MainTabBarViewController.h"
 
 #import "ILCycleViewController.h"
+#import "CycleViewController.h"
 
 @interface MainTabBarViewController () {
   BOOL inLandscape;
 }
 
 @property (nonatomic) ILCycleViewController *cycleViewController;
+@property (nonatomic) CycleViewController *oldCycleViewController;
 
 @end
 
@@ -85,6 +87,16 @@
 }
 
 #pragma mark - Set/Get
+
+- (CycleViewController *)oldCycleViewController
+{
+    if (!_oldCycleViewController) {
+        _oldCycleViewController = [[CycleViewController alloc] init];
+        _oldCycleViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    }
+    
+    return _oldCycleViewController;
+}
 
 - (ILCycleViewController *)cycleViewController
 {

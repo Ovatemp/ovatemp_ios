@@ -49,7 +49,7 @@
 {
     [super viewDidAppear: animated];
     
-    //[self addGestureRecognizers];
+    [self addGestureRecognizers];
     
     [Localytics tagScreen: @"Tracking/Chart"];
 }
@@ -97,18 +97,14 @@
 
 - (void)addGestureRecognizers
 {
-    TransparentSwipeView *transparentView = [[TransparentSwipeView alloc] initWithFrame: self.view.bounds];
-    
     self.swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget: self action: @selector(didSwipe:)];
     self.swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
     
     self.swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget: self action: @selector(didSwipe:)];
     self.swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
     
-    [transparentView addGestureRecognizer: self.swipeLeft];
-    [transparentView addGestureRecognizer: self.swipeRight];
-    
-    [self.view addSubview: transparentView];
+    [self.transparentView addGestureRecognizer: self.swipeLeft];
+    [self.transparentView addGestureRecognizer: self.swipeRight];
 }
 
 #pragma mark - IBAction's
@@ -116,9 +112,9 @@
 - (void)didSwipe:(UISwipeGestureRecognizer *)recognizer
 {
     if (recognizer.direction == UISwipeGestureRecognizerDirectionLeft) {
-        DDLogInfo(@"Swiped Left");
+        [self didSelectNextCycle: self];
     }else if (recognizer.direction == UISwipeGestureRecognizerDirectionRight){
-        DDLogInfo(@"Swiped Right");
+        [self didSelectPreviousCycle: self];
     }
 }
 
@@ -134,6 +130,7 @@
     Cycle *previosCycle = currentCycle.previousCycle;
     
     if (previosCycle) {
+        DDLogInfo(@"ILCycleViewController : Going to previous cycle.");
         self.selectedCycle = previosCycle;
         [self hideLabels];
         [self updateScreen];
@@ -146,6 +143,7 @@
     Cycle *nextCycle = currentCycle.nextCycle;
     
     if (nextCycle) {
+        DDLogInfo(@"ILCycleViewController : Going to next cycle.");
         self.selectedCycle = nextCycle;
         [self hideLabels];
         [self updateScreen];
@@ -291,7 +289,7 @@
         }
     }
     
-    NSLog(@"DAYS: %@", self.selectedCycle.days);
+    //NSLog(@"DAYS: %@", self.selectedCycle.days);
     //NSLog(@"TEMPERATURE DATA: %@", self.temperatureData);
 }
 
@@ -363,7 +361,7 @@
     NSNumber *minTempRounded = [NSNumber numberWithFloat: [minTempString floatValue]];
     NSNumber *maxTempRounded = [NSNumber numberWithFloat: [maxTempString floatValue]];
     
-    NSLog(@"MIN TEMP: %@ ... MAX TEMP: %@", minTempRounded, maxTempRounded);
+    //NSLog(@"MIN TEMP: %@ ... MAX TEMP: %@", minTempRounded, maxTempRounded);
     
     TKChartNumericAxis *yAxis = [[TKChartNumericAxis alloc] initWithMinimum: minTempRounded andMaximum: maxTempRounded];
     yAxis.style.labelStyle.textOffset = UIOffsetMake(2, 0);

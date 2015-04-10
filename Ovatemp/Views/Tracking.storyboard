@@ -715,10 +715,16 @@
                                     <outlet property="delegate" destination="gwh-Id-obW" id="QhO-b6-5cC"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nxh-qb-mCO" userLabel="TransparentView">
+                                <rect key="frame" x="0.0" y="364" width="600" height="172"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="K04-77-Bac" firstAttribute="top" secondItem="EAx-7r-RLM" secondAttribute="bottom" constant="-23" id="2dY-7A-xcw"/>
+                            <constraint firstItem="Nxh-qb-mCO" firstAttribute="height" secondItem="eVr-V6-vVh" secondAttribute="height" multiplier="0.32" id="3jB-Dh-S2s"/>
+                            <constraint firstItem="q4v-Vv-Kgq" firstAttribute="top" secondItem="Nxh-qb-mCO" secondAttribute="bottom" id="62x-Ah-NDg"/>
+                            <constraint firstAttribute="trailing" secondItem="Nxh-qb-mCO" secondAttribute="trailing" id="87T-Zk-ehB"/>
                             <constraint firstItem="EAx-7r-RLM" firstAttribute="top" secondItem="K04-77-Bac" secondAttribute="top" id="901-cG-rZh"/>
                             <constraint firstItem="UK9-Pu-ULr" firstAttribute="top" secondItem="EAx-7r-RLM" secondAttribute="bottom" constant="2" id="BZd-XU-yvf"/>
                             <constraint firstItem="Mj6-4s-UfP" firstAttribute="top" secondItem="UhU-Yj-AZV" secondAttribute="top" id="CRG-Bj-Gn0"/>
@@ -749,6 +755,7 @@
                             <constraint firstItem="Cyv-cS-C4n" firstAttribute="top" secondItem="UK9-Pu-ULr" secondAttribute="top" id="hYw-DN-b4f"/>
                             <constraint firstItem="Cyv-cS-C4n" firstAttribute="top" secondItem="UK9-Pu-ULr" secondAttribute="bottom" constant="-18" id="kFv-zY-lVp"/>
                             <constraint firstAttribute="trailing" secondItem="pfL-n0-1bM" secondAttribute="trailing" constant="8" id="nTC-Cl-xwe"/>
+                            <constraint firstItem="Nxh-qb-mCO" firstAttribute="leading" secondItem="eVr-V6-vVh" secondAttribute="leading" id="q5R-sF-Xna"/>
                             <constraint firstItem="pfL-n0-1bM" firstAttribute="top" secondItem="P9R-lf-rMs" secondAttribute="top" id="sD0-Zu-fgI"/>
                             <constraint firstItem="Mj6-4s-UfP" firstAttribute="top" secondItem="UhU-Yj-AZV" secondAttribute="bottom" constant="-25" id="tGr-nn-bgm"/>
                             <constraint firstAttribute="trailing" secondItem="EAx-7r-RLM" secondAttribute="trailing" constant="8" id="v6I-qk-GDY"/>
@@ -819,6 +826,7 @@
                         <outlet property="periodLabel" destination="P9R-lf-rMs" id="K0i-fu-vHb"/>
                         <outlet property="sexCollectionView" destination="UK9-Pu-ULr" id="6e1-fC-YNT"/>
                         <outlet property="sexLabel" destination="Cyv-cS-C4n" id="rvm-bA-r3k"/>
+                        <outlet property="transparentView" destination="Nxh-qb-mCO" id="1Tl-36-uti"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hIR-VJ-xE3" userLabel="First Responder" sceneMemberID="firstResponder"/>

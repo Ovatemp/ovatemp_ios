@@ -14,6 +14,8 @@
 
 @interface CycleViewController () <CycleViewDelegate>
 
+@property (nonatomic) UINavigationController *cycleNavVC;
+
 @end
 
 @implementation CycleViewController
@@ -24,6 +26,9 @@
   if (self) {
     self.delegate = self;
     self.dataSource = self;
+
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName: @"Tracking" bundle: nil];
+    self.cycleNavVC = [mainStoryboard instantiateViewControllerWithIdentifier: @"ilcycleNavViewController"];
   }
   return self;
 }
@@ -65,25 +70,22 @@
 
 - (UIViewController *)viewControllerWithCycle:(Cycle *)cycle
 {
-    CycleChartView *chart = [[[NSBundle mainBundle] loadNibNamed:@"CycleChartView" owner:self options:nil] lastObject];
-    chart.delegate = self;
-
-    chart.cycle = cycle;
-    chart.landscape = TRUE;
-    chart.dateRangeLabel.text = cycle.rangeString;
-
-    UIViewController *vc = [[UIViewController alloc] init];
-    vc.view = chart;
-
+//    CycleChartView *chart = [[[NSBundle mainBundle] loadNibNamed:@"CycleChartView" owner:self options:nil] lastObject];
+//    chart.delegate = self;
+//
+//    chart.cycle = cycle;
+//    chart.landscape = TRUE;
+//    chart.dateRangeLabel.text = cycle.rangeString;
+//
+//    UIViewController *vc = [[UIViewController alloc] init];
+//    vc.view = chart;
+//
+//    return vc;
     
-    return vc;
-    
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName: @"Tracking" bundle: nil];
-//    UINavigationController *navVC = [mainStoryboard instantiateViewControllerWithIdentifier: @"ilcycleNavViewController"];
-//    ILCycleViewController *cycleVC = navVC.childViewControllers[0];
-//    cycleVC.selectedCycle = cycle;
-//    
-//    return navVC;
+    ILCycleViewController *cycleVC = self.cycleNavVC.childViewControllers[0];
+    cycleVC.selectedCycle = cycle;
+
+    return self.cycleNavVC;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
@@ -93,13 +95,13 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-  CycleChartView *otherChart = (CycleChartView *)viewController.view;
-  Cycle *cycle = [otherChart.cycle nextCycle];
+//  CycleChartView *otherChart = (CycleChartView *)viewController.view;
+//  Cycle *cycle = [otherChart.cycle nextCycle];
     
-//    UINavigationController *navVC = (UINavigationController *)viewController;
-//    ILCycleViewController *otherChart = (ILCycleViewController *)navVC.childViewControllers[0];
-//    Cycle *cycle = [otherChart.selectedCycle nextCycle];
-
+    UINavigationController *cycleNavVC = (UINavigationController *)viewController;
+    ILCycleViewController *cycleVC = cycleNavVC.childViewControllers[0];
+    Cycle *cycle = [cycleVC.selectedCycle nextCycle];
+    
   if (cycle) {
     return [self viewControllerWithCycle:cycle];
   }
@@ -108,13 +110,13 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-  CycleChartView *otherChart = (CycleChartView *)viewController.view;
-  Cycle *cycle = [otherChart.cycle previousCycle];
+//  CycleChartView *otherChart = (CycleChartView *)viewController.view;
+//  Cycle *cycle = [otherChart.cycle previousCycle];
     
-//    UINavigationController *navVC = (UINavigationController *)viewController;
-//    ILCycleViewController *otherChart = (ILCycleViewController *)navVC.childViewControllers[0];
-//    Cycle *cycle = [otherChart.selectedCycle previousCycle];
-  
+    UINavigationController *cycleNavVC = (UINavigationController *)viewController;
+    ILCycleViewController *cycleVC = cycleNavVC.childViewControllers[0];
+    Cycle *cycle = [cycleVC.selectedCycle previousCycle];
+    
   if (cycle) {
     return [self viewControllerWithCycle:cycle];
   }
