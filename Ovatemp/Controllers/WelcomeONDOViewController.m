@@ -53,20 +53,7 @@
 
 - (IBAction)doONDOPairing:(id)sender
 {
-    ONDOSettingViewController *ondoSettingVC = [[ONDOSettingViewController alloc] init];
-    
-    CCMPopupTransitioning *popup = [CCMPopupTransitioning sharedInstance];
-    popup.destinationBounds = CGRectMake(0, 0, 200, 200);
-    popup.presentedController = ondoSettingVC;
-    popup.presentingController = self;
-    popup.dismissableByTouchingBackground = YES;
-    popup.backgroundViewColor = [UIColor blackColor];
-    popup.backgroundViewAlpha = 0.5f;
-    popup.backgroundBlurRadius = 0;
-    
-    ondoSettingVC.view.layer.cornerRadius = 5;
-    
-    [self presentViewController: ondoSettingVC animated: YES completion: nil];
+    [self ondoStartScan];
     
     [Localytics tagEvent: @"User Did Pair ONDO on Sign Up"];
     [self performSegueWithIdentifier:@"toAlarm" sender:self];
@@ -74,6 +61,8 @@
 
 - (IBAction)doNoPairing:(id)sender
 {
+    [self ondoStopScan];
+    
     [self performSegueWithIdentifier:@"toAlarm" sender:self];
 //    [self backOutToRootViewController];
 }
@@ -93,14 +82,36 @@ NSString* machineName() {
                               encoding:NSUTF8StringEncoding];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - ONDO
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)ondoStartScan
+{
+    ONDO *ondo = [ONDO sharedInstance];
+    
+    if (ondo.isScanning) {
+        return;
+    }
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool: YES forKey: @"ShouldScanForOndo"];
+    [userDefaults synchronize];
+    
+    [ondo startScan];
 }
-*/
+
+- (void)ondoStopScan
+{
+    ONDO *ondo = [ONDO sharedInstance];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool: NO forKey: @"ShouldScanForOndo"];
+    [userDefaults synchronize];
+    
+    if (!ondo.isScanning) {
+        return;
+    }
+    
+    [ondo stopScan];
+}
 
 @end
