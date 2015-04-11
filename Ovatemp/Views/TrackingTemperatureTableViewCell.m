@@ -187,7 +187,7 @@ NSMutableArray *temperatureFractionalPartPickerData;
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     NSString *tempInteger = [temperatureIntegerPartPickerData objectAtIndex: [pickerView selectedRowInComponent: 0]];
-    NSString *tempFractional;
+    NSString *tempFractional = [temperatureFractionalPartPickerData objectAtIndex: [pickerView selectedRowInComponent: 1]];
     
     if ([tempFractional floatValue] >= 0 && [tempFractional floatValue] < 10) {
         NSString *temp = [temperatureFractionalPartPickerData objectAtIndex: [pickerView selectedRowInComponent: 1]];

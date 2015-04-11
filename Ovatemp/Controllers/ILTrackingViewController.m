@@ -1108,19 +1108,19 @@
 
 - (void)ONDOsaysBluetoothIsDisabled:(ONDO *)ondo
 {
-    [Alert showAlertWithTitle: @"Bluetooth is Off"
-                      message: @"Bluetooth is off, so we can't detect a thing"];
+//    [Alert showAlertWithTitle: @"Bluetooth is Off"
+//                      message: @"Bluetooth is off, so we can't detect a thing"];
 }
 
 - (void)ONDOsaysLEBluetoothIsUnavailable:(ONDO *)ondo
 {
-    [Alert showAlertWithTitle: @"LE Bluetooth Unavailable"
-                      message: @"Your device does not support low-energy Bluetooth, so it can't connect to your ONDO"];
+//    [Alert showAlertWithTitle: @"LE Bluetooth Unavailable"
+//                      message: @"Your device does not support low-energy Bluetooth, so it can't connect to your ONDO"];
 }
 
 - (void)ONDO:(ONDO *)ondo didEncounterError:(NSError *)error
 {
-    [Alert presentError: error];
+//    [Alert presentError: error];
 }
 
 - (void)ONDO:(ONDO *)ondo didAddDevice:(ONDODevice *)device

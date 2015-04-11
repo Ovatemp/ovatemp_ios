@@ -101,7 +101,7 @@
 #pragma mark - TKCalendar Data Source
 
 - (void)calendar:(TKCalendar *)calendar updateVisualsForCell:(TKCalendarCell *)cell;
-{
+{    
     if ([cell isKindOfClass:[TKCalendarDayCell class]]) {
         
         ILCalendarCell *dayCell = (ILCalendarCell *)cell;
