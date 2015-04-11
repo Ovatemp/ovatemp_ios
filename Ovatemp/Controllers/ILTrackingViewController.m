@@ -57,7 +57,6 @@
 
 @property (nonatomic) Day *day;
 @property (nonatomic) CycleViewController *cycleViewController;
-@property (nonatomic) NSString *notes;
 
 @property (nonatomic) NSNumber *selectedTemperature;
 
@@ -870,7 +869,7 @@
 {
     TrackingNotesViewController *trackingVC = [self.storyboard instantiateViewControllerWithIdentifier: @"trackingNotesViewController"];
     trackingVC.selectedDate = self.selectedDate;
-    trackingVC.notesText = self.notes;
+    trackingVC.notesText = self.day.notes;
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: trackingVC];
     
     [self presentViewController: navVC animated: YES completion: nil];
@@ -898,7 +897,7 @@
 
 - (NSString *)getNotes
 {
-    return self.notes;
+    return self.day.notes;
 }
 
 - (BOOL)usedOndo

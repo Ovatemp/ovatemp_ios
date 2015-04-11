@@ -83,6 +83,7 @@
 //    if ([defaults objectForKey:keyString]) {
 //        self.notesTextView.text = [defaults objectForKey:keyString];
 //    }
+    
     self.notesTextView.text = self.notesText;
 }
 
