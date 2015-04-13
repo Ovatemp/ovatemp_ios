@@ -73,15 +73,19 @@
 
 # define API_URL [ROOT_URL stringByAppendingString:@"/api"]
 
-static NSInteger const kUnauthorizedRequestCode = 401;
-static NSString * const kUnauthorizedRequestNotification = @"401UnauthorizedRequestEncountered";
+// NSUserDefaults Key's
+
+static NSString *const kOndoOverlayCountKey = @"OndoOverlayCountKey";
+
+static const NSInteger kUnauthorizedRequestCode = 401;
+static NSString *const kUnauthorizedRequestNotification = @"401UnauthorizedRequestEncountered";
 
 // UI configuration
 static const CGFloat SIBLING_SPACING = 8.0f;
 static const CGFloat SUPERVIEW_SPACING = 20.0f;
 
-UIColor * Color(int red, int green, int blue);
-UIColor * ColorA(int red, int green, int blue, CGFloat alpha);
+UIColor *Color(int red, int green, int blue);
+UIColor *ColorA(int red, int green, int blue, CGFloat alpha);
 
 #define STATUS_BAR_HEIGHT 20
 

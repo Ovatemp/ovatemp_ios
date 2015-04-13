@@ -1129,7 +1129,7 @@
 
 - (void)ONDO:(ONDO *)ondo didConnectToDevice:(ONDODevice *)device
 {
-    [TAOverlay showOverlayWithLabel: @"Connected to ONDO" Options: TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayDismissTap];
+    [TAOverlay showOverlayWithLabel: @"Connected to ONDO" Options: TAOverlayOptionOverlayDismissTap | TAOverlayOptionOverlaySizeRoundedRect];
 }
 
 - (void)ONDO:(ONDO *)ondo didReceiveTemperature:(CGFloat)temperature
@@ -1160,7 +1160,8 @@
     
     [self uploadSelectedTemperature];
     
-    [TAOverlay showOverlayWithLabel: temperatureString Options: TAOverlayOptionAutoHide | TAOverlayOptionOverlayTypeSuccess | TAOverlayOptionOverlaySizeRoundedRect];
+    [TAOverlay showOverlayWithLabel: temperatureString Options: TAOverlayOptionOverlayDismissTap | TAOverlayOptionOverlayTypeSuccess | TAOverlayOptionOverlaySizeRoundedRect];
+    
 }
 
 #pragma mark - Network
