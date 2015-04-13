@@ -287,20 +287,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Jb-tv-2gy" userLabel="InfoView">
                                 <rect key="frame" x="0.0" y="471" width="600" height="65"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Fertile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOY-Ku-f2k">
-                                        <rect key="frame" x="93" y="45" width="32" height="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fertile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOY-Ku-f2k">
+                                        <rect key="frame" x="93" y="46" width="32" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Period" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ej-Xv-dzB">
-                                        <rect key="frame" x="217" y="45" width="34" height="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Period" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ej-Xv-dzB">
+                                        <rect key="frame" x="219" y="46" width="34" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Predicted" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5F-Vu-WBj">
-                                        <rect key="frame" x="462" y="45" width="50" height="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Predicted" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5F-Vu-WBj">
+                                        <rect key="frame" x="463" y="46" width="50" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="6pm-Wg-Dat"/>
                                             <constraint firstAttribute="height" constant="14" id="dYj-B2-noB"/>
@@ -317,71 +317,71 @@
                                             </mask>
                                         </variation>
                                     </label>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" image="icn_period" translatesAutoresizingMaskIntoConstraints="NO" id="H1l-0A-o2b">
-                                        <rect key="frame" x="217" y="10" width="33" height="33"/>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="icn_period" translatesAutoresizingMaskIntoConstraints="NO" id="H1l-0A-o2b">
+                                        <rect key="frame" x="219" y="11" width="33" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="33" id="1wY-aK-iPh"/>
                                             <constraint firstAttribute="height" constant="33" id="Dop-Wi-uRA"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" image="icn_pulldown_fertile_large" translatesAutoresizingMaskIntoConstraints="NO" id="Pak-9t-6GQ">
-                                        <rect key="frame" x="94" y="10" width="30" height="33"/>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="icn_pulldown_fertile_large" translatesAutoresizingMaskIntoConstraints="NO" id="Pak-9t-6GQ">
+                                        <rect key="frame" x="94" y="11" width="30" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="7SX-6I-noP"/>
                                             <constraint firstAttribute="width" constant="30" id="CYB-gP-ZpY"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" image="icn_pulldown_period" translatesAutoresizingMaskIntoConstraints="NO" id="o1d-mi-tWj">
-                                        <rect key="frame" x="470" y="9" width="35" height="36"/>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="icn_pulldown_period" translatesAutoresizingMaskIntoConstraints="NO" id="o1d-mi-tWj">
+                                        <rect key="frame" x="471" y="10" width="35" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="YhA-Hv-fXf"/>
                                             <constraint firstAttribute="width" constant="35" id="p6Y-nH-OBV"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" image="icn_pulldown_fertilie_empty" translatesAutoresizingMaskIntoConstraints="NO" id="dTj-BY-uM7">
-                                        <rect key="frame" x="346" y="10" width="30" height="33"/>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="icn_pulldown_fertilie_empty" translatesAutoresizingMaskIntoConstraints="NO" id="dTj-BY-uM7">
+                                        <rect key="frame" x="346" y="11" width="30" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="qFX-QP-M1y"/>
                                             <constraint firstAttribute="height" constant="33" id="vEf-rv-K8l"/>
                                         </constraints>
                                     </imageView>
-                                    <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ddT-x8-zxv">
-                                        <rect key="frame" x="0.0" y="-3" width="95" height="45"/>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddT-x8-zxv">
+                                        <rect key="frame" x="0.0" y="-3" width="94" height="45"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="oTH-ck-HeL"/>
                                         </constraints>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kQA-hB-TSI">
-                                        <rect key="frame" x="124" y="-3" width="94" height="45"/>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kQA-hB-TSI">
+                                        <rect key="frame" x="124" y="-3" width="95" height="45"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="zRI-8h-NKh"/>
                                         </constraints>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tj7-xQ-6p6">
-                                        <rect key="frame" x="250" y="-4" width="95" height="45"/>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tj7-xQ-6p6">
+                                        <rect key="frame" x="252" y="-4" width="94" height="45"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="xzt-MI-NhA"/>
                                         </constraints>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fqz-D6-JoV">
-                                        <rect key="frame" x="375" y="-3" width="94" height="45"/>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fqz-D6-JoV">
+                                        <rect key="frame" x="376" y="-3" width="95" height="45"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="ia7-PF-CmA"/>
                                         </constraints>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WAZ-k9-PnE">
-                                        <rect key="frame" x="504" y="-4" width="95" height="45"/>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAZ-k9-PnE">
+                                        <rect key="frame" x="506" y="-4" width="94" height="45"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="Bua-TD-d3R"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Predicted" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gm7-5l-Rn9">
-                                        <rect key="frame" x="336" y="45" width="50" height="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Predicted" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gm7-5l-Rn9">
+                                        <rect key="frame" x="336" y="46" width="50" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="3Jv-A2-g8C"/>
                                             <constraint firstAttribute="height" constant="14" id="DU1-uw-U3a"/>
@@ -500,7 +500,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f3l-rh-P33" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-203" y="962.5"/>
+            <point key="canvasLocation" x="-203" y="962"/>
         </scene>
         <!--Cycle View Controller-->
         <scene sceneID="vOn-sZ-prb">

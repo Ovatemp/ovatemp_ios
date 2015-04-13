@@ -22,7 +22,4 @@
 
 @property (weak, nonatomic) IBOutlet UIView *infoView;
 
-- (IBAction)didSelectBack:(id)sender;
-- (IBAction)didSelectForward:(id)sender;
-
 @end

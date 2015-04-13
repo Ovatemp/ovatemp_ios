@@ -44,7 +44,7 @@
 
 - (void)signedUp:(NSDictionary *)response {
   [self stopLoading];
-  NSNumber *userID = response[@"user"][@"id"];
+  //NSNumber *userID = response[@"user"][@"id"];
 
   [Configuration loggedInWithResponse:response];
 

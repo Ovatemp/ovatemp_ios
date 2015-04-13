@@ -51,31 +51,24 @@
 
 // API
 
-#ifdef TARGET_IPHONE_SIMULATOR
-
+#ifdef STAGING_DEBUG
     #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
-    #define DEVICE_ID @"DUMMYDEVICE"
-
-#elif STAGING_DEBUG
-
-    #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
-    #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
 
 #elif STAGING_RELEASE
-
     #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
-    #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
 
 #elif PRODUCTION_DEBUG
-
     #define ROOT_URL @"http://api.ovatemp.com"
-    #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
 
 #elif PRODUCTION_RELEASE
-
     #define ROOT_URL @"http://api.ovatemp.com"
-    #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
 
+#endif
+
+#ifdef TARGET_IPHONE_SIMULATOR
+    #define DEVICE_ID @"DUMMYDEVICE"
+#else
+    #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
 #endif
 
 # define API_URL [ROOT_URL stringByAppendingString:@"/api"]
