@@ -374,6 +374,8 @@
 		06F8FA4D1AC3619C006EC93F /* CycleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleCollectionViewCell.m; sourceTree = "<group>"; };
 		0EC9830A19AB8619009A5730 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		259EFE437AEE5D2421AD121C /* Pods-OvatempTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.debug.xcconfig"; sourceTree = "<group>"; };
+		532EB1F55E89DB95F393F231 /* Pods-OvatempTests.staging_debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.staging_debug.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.staging_debug.xcconfig"; sourceTree = "<group>"; };
+		5558EE802994D1A7C737D9BF /* Pods-Ovatemp.staging_release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.staging_release.xcconfig"; path = "Pods/Target Support Files/Pods-Ovatemp/Pods-Ovatemp.staging_release.xcconfig"; sourceTree = "<group>"; };
 		5F1A3BF319F17614002FFA28 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		5F1C971219EDD42D000F1FC1 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		5F1C971419EDD433000F1FC1 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -803,12 +805,17 @@
 		5FE12F761A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingPeriodTableViewCell.h; sourceTree = "<group>"; };
 		5FE12F771A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingPeriodTableViewCell.m; sourceTree = "<group>"; };
 		5FE12F781A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackingPeriodTableViewCell.xib; sourceTree = "<group>"; };
+		6DB0DD975671D942825AAE14 /* Pods-OvatempTests.production_debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.production_debug.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.production_debug.xcconfig"; sourceTree = "<group>"; };
+		77D03740A05074FF695667DB /* Pods-Ovatemp.production_debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.production_debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ovatemp/Pods-Ovatemp.production_debug.xcconfig"; sourceTree = "<group>"; };
 		8315E49D18C521A800DA935A /* SessionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionSpec.m; sourceTree = "<group>"; };
 		83548FF118BD24450016B53A /* TodaySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodaySpec.m; sourceTree = "<group>"; };
 		83C4D21A18D9F1CF008C523C /* KIFUITestActor+OTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFUITestActor+OTAdditions.h"; sourceTree = "<group>"; };
 		83C4D21B18D9F1CF008C523C /* KIFUITestActor+OTAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFUITestActor+OTAdditions.m"; sourceTree = "<group>"; };
 		83EB3F3918AEAD2600EA91AC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		87252F24C5BE824C8E625766 /* Pods-OvatempTests.production_release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.production_release.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.production_release.xcconfig"; sourceTree = "<group>"; };
 		8BECB898CAD31A22C0512519 /* Pods-OvatempTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.release.xcconfig"; sourceTree = "<group>"; };
+		8C27198765A2F4A98B7F1EA1 /* Pods-Ovatemp.staging_debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.staging_debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ovatemp/Pods-Ovatemp.staging_debug.xcconfig"; sourceTree = "<group>"; };
+		98B37DE25C5757D0462E9525 /* Pods-OvatempTests.staging_release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.staging_release.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.staging_release.xcconfig"; sourceTree = "<group>"; };
 		A4580E814E861443FA3E0BBB /* Pods-Ovatemp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ovatemp/Pods-Ovatemp.debug.xcconfig"; sourceTree = "<group>"; };
 		A6DE6B0878F241D501B88C63 /* Pods-Ovatemp.release automation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.release automation.xcconfig"; path = "Pods/Target Support Files/Pods-Ovatemp/Pods-Ovatemp.release automation.xcconfig"; sourceTree = "<group>"; };
 		C34AE14218FC4C64003209B2 /* libGoogleConversionTracking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleConversionTracking.a; path = Ovatemp/Frameworks/libGoogleConversionTracking.a; sourceTree = "<group>"; };
@@ -834,6 +841,7 @@
 		C3D8912019084CB800E21627 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C3D8912219084D9F00E21627 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		DB1EDD0C2055CDA999D65790 /* Pods-Ovatemp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ovatemp/Pods-Ovatemp.release.xcconfig"; sourceTree = "<group>"; };
+		DDD045337C0E855A9AA3AF62 /* Pods-Ovatemp.production_release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.production_release.xcconfig"; path = "Pods/Target Support Files/Pods-Ovatemp/Pods-Ovatemp.production_release.xcconfig"; sourceTree = "<group>"; };
 		F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ovatemp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F672532872A0CE7B8BCFF273 /* Pods-OvatempTests.release automation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.release automation.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.release automation.xcconfig"; sourceTree = "<group>"; };
 		FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OvatempTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1727,6 +1735,14 @@
 				259EFE437AEE5D2421AD121C /* Pods-OvatempTests.debug.xcconfig */,
 				8BECB898CAD31A22C0512519 /* Pods-OvatempTests.release.xcconfig */,
 				F672532872A0CE7B8BCFF273 /* Pods-OvatempTests.release automation.xcconfig */,
+				8C27198765A2F4A98B7F1EA1 /* Pods-Ovatemp.staging_debug.xcconfig */,
+				77D03740A05074FF695667DB /* Pods-Ovatemp.production_debug.xcconfig */,
+				5558EE802994D1A7C737D9BF /* Pods-Ovatemp.staging_release.xcconfig */,
+				DDD045337C0E855A9AA3AF62 /* Pods-Ovatemp.production_release.xcconfig */,
+				532EB1F55E89DB95F393F231 /* Pods-OvatempTests.staging_debug.xcconfig */,
+				6DB0DD975671D942825AAE14 /* Pods-OvatempTests.production_debug.xcconfig */,
+				98B37DE25C5757D0462E9525 /* Pods-OvatempTests.staging_release.xcconfig */,
+				87252F24C5BE824C8E625766 /* Pods-OvatempTests.production_release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -2275,123 +2291,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		5F586A2919ED837E00D2B58E /* Release Automation */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE_AUTOMATION=1";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = "Release Automation";
-		};
-		5F586A2A19ED837E00D2B58E /* Release Automation */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6DE6B0878F241D501B88C63 /* Pods-Ovatemp.release automation.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/ThirdParty",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"COCOAPODS=1",
-					"$(inherited)",
-					"BITHOCKEY_VERSION=\"@\\\"3.5.1\\\"\"",
-					"BITHOCKEY_BUILD=\"@\\\"24\\\"\"",
-					"RELEASE_AUTOMATION=1",
-				);
-				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Ovatemp/Frameworks",
-				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-licucore",
-					"-lsqlite3",
-					"-lz",
-					"-framework",
-					CoreData,
-					"-framework",
-					CoreGraphics,
-					"-framework",
-					CoreTelephony,
-					"-framework",
-					CoreText,
-					"-framework",
-					Foundation,
-					"-framework",
-					QuartzCore,
-					"-framework",
-					Security,
-					"-framework",
-					SystemConfiguration,
-					"-framework",
-					UIKit,
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "52cc3447-96ed-4965-88e7-0a78829dca84";
-				TARGETED_DEVICE_FAMILY = 1;
-				WRAPPER_EXTENSION = app;
-			};
-			name = "Release Automation";
-		};
-		5F586A2B19ED837E00D2B58E /* Release Automation */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F672532872A0CE7B8BCFF273 /* Pods-OvatempTests.release automation.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Ovatemp.app/Ovatemp";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "OvatempTests/OvatempTests-Prefix.pch";
-				INFOPLIST_FILE = "OvatempTests/OvatempTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = "Release Automation";
-		};
-		C36C5125189028190053A884 /* Debug */ = {
+		063D86DD1ADC1E0400A824A0 /* Production_Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -2413,7 +2313,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
+					"PRODUCTION_DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -2428,46 +2328,11 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Debug;
+			name = Production_Debug;
 		};
-		C36C5126189028190053A884 /* Release */ = {
+		063D86DE1ADC1E0400A824A0 /* Production_Debug */ = {
 			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Ovatemp, LLC (MC934XNWAV)";
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				PROVISIONING_PROFILE = "52cc3447-96ed-4965-88e7-0a78829dca84";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		C36C5128189028190053A884 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A4580E814E861443FA3E0BBB /* Pods-Ovatemp.debug.xcconfig */;
+			baseConfigurationReference = 77D03740A05074FF695667DB /* Pods-Ovatemp.production_debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
@@ -2483,10 +2348,7 @@
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Ovatemp/Frameworks",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2517,15 +2379,74 @@
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
-			name = Debug;
+			name = Production_Debug;
 		};
-		C36C5129189028190053A884 /* Release */ = {
+		063D86DF1ADC1E0400A824A0 /* Production_Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DB1EDD0C2055CDA999D65790 /* Pods-Ovatemp.release.xcconfig */;
+			baseConfigurationReference = 6DB0DD975671D942825AAE14 /* Pods-OvatempTests.production_debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Ovatemp.app/Ovatemp";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OvatempTests/OvatempTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "OvatempTests/OvatempTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Production_Debug;
+		};
+		063D86E01ADC1E3100A824A0 /* Production_Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Ovatemp, LLC (MC934XNWAV)";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "PRODUCTION_RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				PROVISIONING_PROFILE = "52cc3447-96ed-4965-88e7-0a78829dca84";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Production_Release;
+		};
+		063D86E11ADC1E3100A824A0 /* Production_Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDD045337C0E855A9AA3AF62 /* Pods-Ovatemp.production_release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2535,20 +2456,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"COCOAPODS=1",
-					"$(inherited)",
-					"BITHOCKEY_VERSION=\"@\\\"3.5.1\\\"\"",
-					"BITHOCKEY_BUILD=\"@\\\"24\\\"\"",
-					"RELEASE=1",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Ovatemp/Frameworks",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2579,11 +2490,208 @@
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
-			name = Release;
+			name = Production_Release;
 		};
-		C3BF8FCE1898409C00572F43 /* Debug */ = {
+		063D86E21ADC1E3100A824A0 /* Production_Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 259EFE437AEE5D2421AD121C /* Pods-OvatempTests.debug.xcconfig */;
+			baseConfigurationReference = 87252F24C5BE824C8E625766 /* Pods-OvatempTests.production_release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Ovatemp.app/Ovatemp";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OvatempTests/OvatempTests-Prefix.pch";
+				INFOPLIST_FILE = "OvatempTests/OvatempTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Production_Release;
+		};
+		C36C5125189028190053A884 /* Staging_Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"STAGING_DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Staging_Debug;
+		};
+		C36C5126189028190053A884 /* Staging_Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Ovatemp, LLC (MC934XNWAV)";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "STAGING_RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				PROVISIONING_PROFILE = "52cc3447-96ed-4965-88e7-0a78829dca84";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Staging_Release;
+		};
+		C36C5128189028190053A884 /* Staging_Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C27198765A2F4A98B7F1EA1 /* Pods-Ovatemp.staging_debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ThirdParty",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
+				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-licucore",
+					"-lsqlite3",
+					"-lz",
+					"-framework",
+					CoreData,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					CoreTelephony,
+					"-framework",
+					CoreText,
+					"-framework",
+					Foundation,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					Security,
+					"-framework",
+					SystemConfiguration,
+					"-framework",
+					UIKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Staging_Debug;
+		};
+		C36C5129189028190053A884 /* Staging_Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5558EE802994D1A7C737D9BF /* Pods-Ovatemp.staging_release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ThirdParty",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-licucore",
+					"-lsqlite3",
+					"-lz",
+					"-framework",
+					CoreData,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					CoreTelephony,
+					"-framework",
+					CoreText,
+					"-framework",
+					Foundation,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					Security,
+					"-framework",
+					SystemConfiguration,
+					"-framework",
+					UIKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "52cc3447-96ed-4965-88e7-0a78829dca84";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Staging_Release;
+		};
+		C3BF8FCE1898409C00572F43 /* Staging_Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 532EB1F55E89DB95F393F231 /* Pods-OvatempTests.staging_debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Ovatemp.app/Ovatemp";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2603,11 +2711,11 @@
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
-			name = Debug;
+			name = Staging_Debug;
 		};
-		C3BF8FCF1898409C00572F43 /* Release */ = {
+		C3BF8FCF1898409C00572F43 /* Staging_Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BECB898CAD31A22C0512519 /* Pods-OvatempTests.release.xcconfig */;
+			baseConfigurationReference = 98B37DE25C5757D0462E9525 /* Pods-OvatempTests.staging_release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Ovatemp.app/Ovatemp";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2623,7 +2731,7 @@
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
-			name = Release;
+			name = Staging_Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -2631,32 +2739,35 @@
 		C36C50F6189028190053A884 /* Build configuration list for PBXProject "Ovatemp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C36C5125189028190053A884 /* Debug */,
-				C36C5126189028190053A884 /* Release */,
-				5F586A2919ED837E00D2B58E /* Release Automation */,
+				C36C5125189028190053A884 /* Staging_Debug */,
+				063D86DD1ADC1E0400A824A0 /* Production_Debug */,
+				C36C5126189028190053A884 /* Staging_Release */,
+				063D86E01ADC1E3100A824A0 /* Production_Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Staging_Release;
 		};
 		C36C5127189028190053A884 /* Build configuration list for PBXNativeTarget "Ovatemp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C36C5128189028190053A884 /* Debug */,
-				C36C5129189028190053A884 /* Release */,
-				5F586A2A19ED837E00D2B58E /* Release Automation */,
+				C36C5128189028190053A884 /* Staging_Debug */,
+				063D86DE1ADC1E0400A824A0 /* Production_Debug */,
+				C36C5129189028190053A884 /* Staging_Release */,
+				063D86E11ADC1E3100A824A0 /* Production_Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Staging_Release;
 		};
 		C3BF8FCD1898409C00572F43 /* Build configuration list for PBXNativeTarget "OvatempTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C3BF8FCE1898409C00572F43 /* Debug */,
-				C3BF8FCF1898409C00572F43 /* Release */,
-				5F586A2B19ED837E00D2B58E /* Release Automation */,
+				C3BF8FCE1898409C00572F43 /* Staging_Debug */,
+				063D86DF1ADC1E0400A824A0 /* Production_Debug */,
+				C3BF8FCF1898409C00572F43 /* Staging_Release */,
+				063D86E21ADC1E3100A824A0 /* Production_Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Staging_Release;
 		};
 /* End XCConfigurationList section */
 

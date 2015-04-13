@@ -39,26 +39,43 @@
 
 #define FERTILITY_WINDOW_COLOR ColorA(56, 192, 191, 0.16)
 
-// COCOALUMBERJACK
-#ifdef DEBUG
-    static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
+// COCOALUMBERJACK (Logging)
+
+#ifdef STAGING_DEBUG
+    static const DDLogLevel ddLogLeve = DDLogLevelAll;
+#elif PRODUCTION_DEBUG
+    static const DDLogLevel ddLogLeve = DDLogLevelAll;
 #else
-    static const DDLogLevel ddLogLevel = DDLogLevelWarning;
+    static const DDLogLevel ddLogLevel = DDLogLevelError;
 #endif
 
 // API
+
 #ifdef TARGET_IPHONE_SIMULATOR
+
     #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
     #define DEVICE_ID @"DUMMYDEVICE"
-#elif DEBUG
+
+#elif STAGING_DEBUG
+
     #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
     #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
-#elif RELEASE
+
+#elif STAGING_RELEASE
+
+    #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
+    #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
+
+#elif PRODUCTION_DEBUG
+
     #define ROOT_URL @"http://api.ovatemp.com"
     #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
-#elif RELEASE_AUTOMATION
+
+#elif PRODUCTION_RELEASE
+
     #define ROOT_URL @"http://api.ovatemp.com"
     #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
+
 #endif
 
 # define API_URL [ROOT_URL stringByAppendingString:@"/api"]
