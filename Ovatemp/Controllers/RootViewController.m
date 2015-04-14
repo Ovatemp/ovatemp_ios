@@ -264,7 +264,10 @@ static CGFloat const kDissolveDuration = 0.2;
 {
     if (token.length > 0) {
         NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName: kAppGroupName];
+        
         [sharedDefaults setObject: token forKey: kSharedTokenKey];
+        [sharedDefaults setObject: DEVICE_ID forKey: kSharedDeviceIdKey];
+        
         [sharedDefaults synchronize];
     }
 }

@@ -75,6 +75,8 @@
 
 static NSString *const kAppGroupName = @"group.com.ovatemp.ovatemp";
 static NSString *const kSharedTokenKey = @"CurrentUserToken";
+static NSString *const kSharedDeviceIdKey = @"CurrentUserDeviceId";
+
 static NSString *const kOndoOverlayCountKey = @"OndoOverlayCountKey";
 
 static const NSInteger kUnauthorizedRequestCode = 401;

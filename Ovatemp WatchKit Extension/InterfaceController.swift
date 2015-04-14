@@ -17,6 +17,7 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet weak var fertilityStatusInfoLabel: WKInterfaceLabel!
     
     let connectionManager = ConnectionManager()
+    let sharedDefaults = NSUserDefaults(suiteName: "group.com.ovatemp.ovatemp")
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -24,59 +25,100 @@ class InterfaceController: WKInterfaceController {
     }
 
     override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
+
         super.willActivate()
         
-        if let userToken = retrieveUserTokenFromDefaults() {
+        if let userToken = retrieveUserTokenFromDefaults(), userDeviceId = retrieveDeviceIdFromDefaults() {
+            // User is logged in to Ovatemp
+            print("APPLE WATCH : USER IS LOGGED IN TO OVATEMP")
+            connectionManager.userToken = userToken
+            connectionManager.deviceId = userDeviceId
             
-            print("APPLE WATCH : USER TOKEN = \(userToken)")
-            
-        }
-        
-        connectionManager.requestFertilityStatus { (status, error) -> () in
-            
-            switch status.fertilityStatus {
+            connectionManager.requestFertilityStatus { (fertility, error) -> () in
+                if let error = error {
+                    print("ERROR: \(error)")
+                }else{
+                    self.updateScreenForFertility(fertility)
+                }
                 
-                case FertilityStatus.peakFertility:
-                    self.fertilityStatusLabel.setAttributedText(self.attributedString("PEAK FERTILITY"))
-                    self.fertilityStatusInfoLabel.setText("Optimal conditions for conception")
-                    self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - fertile")
-                case FertilityStatus.fertile:
-                    self.fertilityStatusLabel.setAttributedText(self.attributedString("FERTILE"))
-                    self.fertilityStatusInfoLabel.setText("Let's get it on!")
-                    self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - fertile")
-                case FertilityStatus.notFertile:
-                    self.fertilityStatusLabel.setAttributedText(self.attributedString("NOT FERTILE"))
-                    if(status.fertilityCycle == FertilityCycle.preovulation) {
-                        self.fertilityStatusInfoLabel.setText("Please check for Cervical Fluid.")
-                    } else {
-                        self.fertilityStatusInfoLabel.setText("Crossing our fingers for you!")
-                    }
-                    self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - not fertile")
-                case FertilityStatus.period:
-                    self.fertilityStatusLabel.setAttributedText(self.attributedString("PERIOD"))
-                    self.fertilityStatusInfoLabel.setText("Try to get some rest.")
-                    self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - period")
-                case FertilityStatus.empty:
-                    self.fertilityStatusLabel.setText("")
-                    self.fertilityStatusInfoLabel.setText("Please enter your Basal Body Temperature and other daily data for fertility status.")
-                    self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - no data")
-                default:
-                    self.fertilityStatusLabel.setText("")
-                    self.fertilityStatusInfoLabel.setText("Please enter your Basal Body Temperature and other daily data for fertility status.")
-                    self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - no data")
             }
+            
+        }else{
+            // User is not logged in to Ovatemp
+            print("APPLE WATCH : NOT LOGGED IN TO OVATEMP")
+            updateScreenForNotLoggedIn()
             
         }
         
     }
     
-    func retrieveUserTokenFromDefaults() -> String?{
+    override func didDeactivate() {
+        // This method is called when watch view controller is no longer visible
+        super.didDeactivate()
+    }
+    
+    // MARK: Appearance
+    
+    func updateScreenForNotLoggedIn (){
         
-        let sharedDefaults = NSUserDefaults(suiteName: "group.com.ovatemp.ovatemp")
+        // Please log in, etc...
+        
+    }
+    
+    func updateScreenForFertility (fertility : Fertility ) {
+        
+        switch fertility.fertilityStatus {
+            
+            case FertilityStatus.peakFertility:
+                self.fertilityStatusLabel.setAttributedText(self.attributedString("PEAK FERTILITY"))
+                self.fertilityStatusInfoLabel.setText("Optimal conditions for conception")
+                self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - fertile")
+            
+            case FertilityStatus.fertile:
+                self.fertilityStatusLabel.setAttributedText(self.attributedString("FERTILE"))
+                self.fertilityStatusInfoLabel.setText("Let's get it on!")
+                self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - fertile")
+            
+            case FertilityStatus.notFertile:
+                self.fertilityStatusLabel.setAttributedText(self.attributedString("NOT FERTILE"))
+                if(fertility.fertilityCycle == FertilityCycle.preovulation) {
+                    self.fertilityStatusInfoLabel.setText("Please check for Cervical Fluid.")
+                } else {
+                    self.fertilityStatusInfoLabel.setText("Crossing our fingers for you!")
+                }
+                self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - not fertile")
+            
+            case FertilityStatus.period:
+                self.fertilityStatusLabel.setAttributedText(self.attributedString("PERIOD"))
+                self.fertilityStatusInfoLabel.setText("Try to get some rest.")
+                self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - period")
+            
+            case FertilityStatus.empty:
+                self.fertilityStatusLabel.setText("")
+                self.fertilityStatusInfoLabel.setText("Please enter your Basal Body Temperature and other daily data for fertility status.")
+                self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - no data")
+            
+            default:
+                self.fertilityStatusLabel.setText("")
+                self.fertilityStatusInfoLabel.setText("Please enter your Basal Body Temperature and other daily data for fertility status.")
+                self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - no data")
+                
+        }
+        
+    }
+    
+    // MARK: Helpers
+    
+    func retrieveUserTokenFromDefaults() -> String? {
+        
         let userToken = sharedDefaults?.objectForKey("CurrentUserToken") as? String
-        
         return userToken
+    }
+    
+    func retrieveDeviceIdFromDefaults() -> String? {
+        
+        let deviceId = sharedDefaults?.objectForKey("CurrentUserDeviceId") as? String
+        return deviceId
     }
     
     func attributedString(statusInfo: String) -> NSAttributedString {
@@ -92,8 +134,4 @@ class InterfaceController: WKInterfaceController {
         return attrString
     }
 
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
-    }
 }

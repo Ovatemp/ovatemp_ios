@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias StatusRequestCompletionBlock = (status: Fertility, error: NSError?) -> ()
+public typealias StatusRequestCompletionBlock = (fertility: Fertility, error: NSError?) -> ()
 public typealias PeriodStateRequestCompletionBlock = (status: PeriodState, error: NSError?) -> ()
 public typealias FluidStateRequestCompletionBlock = (status: FluidState, error: NSError?) -> ()
 public typealias PositionStateRequestCompletionBlock = (status: PositionState, error: NSError?) -> ()
@@ -51,113 +51,129 @@ public class ConnectionManager {
     
     let session: NSURLSession
     
+    var userToken: String?
+    var deviceId: String?
+    
+    let baseUrl = "http://ovatemp-api-staging.herokuapp.com/api"
+    
     public init() {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        configuration.HTTPAdditionalHeaders = ["Accept" : "application/json; version=2"]
         session = NSURLSession(configuration: configuration);
     }
     
-    public func requestFertilityStatus(completion: StatusRequestCompletionBlock) {
+    func createDateFormatter () -> NSDateFormatter{
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.locale = NSLocale.systemLocale()
         dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        return dateFormatter
+    }
+    
+    func fertilityFoyResponse (day : NSDictionary, peakDate : NSDate) -> Fertility{
+        
+        let dateInfo = day["date"] as? String
+        let dateFormatter = createDateFormatter()
         let todayDate = dateFormatter.stringFromDate(NSDate())
         
-        // Check if is valid
-        let URL: NSURL = NSURL(string: "http://ovatemp-api-staging.herokuapp.com/api/cycles?date=\(todayDate))&token=c41c23ddec4ea1a53bbab4c8d92e2b53&&device_id=DUMMYDEVICE")!
+        if(dateInfo == todayDate) {
+            
+            println("day data: \(day)") // printing log for testing
+            
+            if(day["cycle_phase"] as? String == "period") {
+                // IF cycle_phase = period
+                // result is PERIOD
+                return Fertility(status: FertilityStatus.period, cycle: FertilityCycle.period)
+                
+            } else if(day["cycle_phase"] as? String == "ovulation") {
+                
+                if(day["date"] as? String == dateFormatter.stringFromDate(peakDate)) {
+                    // IF cycle_phase = ovulation AND peak_date = selected date
+                    // result is PEAK FERTILITY
+                    return Fertility(status: FertilityStatus.peakFertility, cycle: FertilityCycle.ovulation)
+
+                } else {
+                    // IF cycle_phase = ovulation
+                    // result is FERTILE
+                    return Fertility(status: FertilityStatus.fertile, cycle: FertilityCycle.ovulation)
+
+                }
+                
+            } else if(day["cycle_phase"] as? String == "preovulation") {
+                // IF cycle_phase = preovulation
+                // result is NOT FERTILE
+                return Fertility(status: FertilityStatus.notFertile, cycle: FertilityCycle.preovulation)
+
+            } else if(day["cycle_phase"] as? String == "postovulation") {
+                // IF cycle_phase = postovulation
+                // result is NOT FERTILE
+                return Fertility(status: FertilityStatus.notFertile, cycle: FertilityCycle.postovulation)
+                
+            } else {
+                // result is NO DATA
+                return Fertility(status: FertilityStatus.empty, cycle: FertilityCycle.empty)
+                
+            }
+            
+        }
         
-        let request = NSMutableURLRequest(URL:URL)
-        request.addValue("application/json; version=2", forHTTPHeaderField:"Accept")
+        return Fertility(status: FertilityStatus.empty, cycle: FertilityCycle.empty)
         
-        let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
-            print(response)
-            if (error == nil) {
-                var JSONError: NSError?
-                let responseDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as! NSDictionary
-                if (JSONError == nil) {
-                    
-                    let peakDate = dateFormatter.dateFromString(responseDict["peak_date"] as! String)
-                    let dayArray = responseDict["days"] as! NSArray
-                    
-                    for day in dayArray {
+    }
+    
+    public func requestFertilityStatus(completion: StatusRequestCompletionBlock) {
+        
+        let dateFormatter = createDateFormatter()
+        let todayDate = dateFormatter.stringFromDate(NSDate())
+        
+        if let userToken = self.userToken, deviceId = self.deviceId {
+            
+            let urlString = "\(baseUrl)/cycles?date=\(todayDate)&&token=\(userToken)&&device_id=\(deviceId)"
+            let URL: NSURL = NSURL(string: urlString)!
+            let request = NSMutableURLRequest(URL: URL)
+            
+            let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+                print(response)
+                if (error == nil) {
+                    var JSONError: NSError?
+                    let responseDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as! NSDictionary
+                    if (JSONError == nil) {
                         
-                        let dateInfo = day["date"] as? String
+                        let dayArray = responseDict["days"] as! NSArray
+                        let peakDate = dateFormatter.dateFromString(responseDict["peak_date"] as! String)
                         
-                        if(dateInfo == todayDate) {
+                        for day in dayArray {
                             
-                            println("day data: \(day)") // printing log for testing
+                            ////////
                             
-                            if(day["cycle_phase"] as? String == "period") {
-                                
-                                // IF cycle_phase = period
-                                // result is PERIOD
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    completion(status: Fertility(status: FertilityStatus.period, cycle: FertilityCycle.period), error: nil)
-                                })
-                                
-                            } else if(day["cycle_phase"] as? String == "ovulation") {
-                                
-                                if(day["date"] as? String == dateFormatter.stringFromDate(peakDate!)) {
-                                    
-                                    // IF cycle_phase = ovulation AND peak_date = selected date
-                                    // result is PEAK FERTILITY
-                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                        completion(status: Fertility(status: FertilityStatus.peakFertility, cycle: FertilityCycle.ovulation), error: nil)
-                                    })
-                                } else {
-                                    
-                                    // IF cycle_phase = ovulation
-                                    // result is FERTILE
-                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                        completion(status: Fertility(status: FertilityStatus.fertile, cycle: FertilityCycle.ovulation), error: nil)
-                                    })
-                                }
-                                
-                            } else if(day["cycle_phase"] as? String == "preovulation") {
-                                
-                                // IF cycle_phase = preovulation
-                                // result is NOT FERTILE
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    completion(status: Fertility(status: FertilityStatus.notFertile, cycle: FertilityCycle.preovulation), error: nil)
-                                })
-                                
-                            } else if(day["cycle_phase"] as? String == "postovulation") {
-                                
-                                // IF cycle_phase = postovulation
-                                // result is NOT FERTILE
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    completion(status: Fertility(status: FertilityStatus.notFertile, cycle: FertilityCycle.postovulation), error: nil)
-                                })
-                                
-                            } else {
-                                
-                                // result is NO DATA
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    completion(status: Fertility(status: FertilityStatus.empty, cycle: FertilityCycle.empty), error: nil)
-                                })
-                                
-                            }
-                            
-                            return
+                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                completion(fertility: Fertility(status: FertilityStatus.period, cycle: FertilityCycle.period), error: nil)
+                            })
                         }
+                        
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            completion(fertility: Fertility(status: FertilityStatus.empty, cycle: FertilityCycle.empty), error: nil)
+                        })
+                        
+                    } else {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            completion(fertility: Fertility(status: FertilityStatus.empty, cycle: FertilityCycle.empty), error: nil)
+                        })
                     }
-                    
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        completion(status: Fertility(status: FertilityStatus.empty, cycle: FertilityCycle.empty), error: nil)
-                    })
-                    
                 } else {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        completion(status: Fertility(status: FertilityStatus.empty, cycle: FertilityCycle.empty), error: nil)
+                        completion(fertility: Fertility(status: FertilityStatus.empty, cycle: FertilityCycle.empty), error: nil)
                     })
                 }
-            } else {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completion(status: Fertility(status: FertilityStatus.empty, cycle: FertilityCycle.empty), error: nil)
-                })
-            }
-        })
-        task.resume()
+            })
+            
+            task.resume()
+            
+        }else{
+            print("APPLE WATCH : CONNECTION MANAGER : USER IS NOT LOGGED IN")
+        }
+        
     }
     
     public func requestPeriodStatus(completion: PeriodStateRequestCompletionBlock) {
