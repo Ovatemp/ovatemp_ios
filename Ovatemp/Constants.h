@@ -73,8 +73,8 @@
 
 # define API_URL [ROOT_URL stringByAppendingString:@"/api"]
 
-// NSUserDefaults Key's
-
+static NSString *const kAppGroupName = @"group.com.ovatemp.ovatemp";
+static NSString *const kSharedTokenKey = @"CurrentUserToken";
 static NSString *const kOndoOverlayCountKey = @"OndoOverlayCountKey";
 
 static const NSInteger kUnauthorizedRequestCode = 401;

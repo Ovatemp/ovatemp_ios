@@ -11,6 +11,23 @@
 		0619A97F1AA4E32A000F31E6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */; };
 		063942331AD71B8B00BE7605 /* ONDOSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 063942311AD71B8B00BE7605 /* ONDOSettingViewController.m */; };
 		063942341AD71B8B00BE7605 /* ONDOSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 063942321AD71B8B00BE7605 /* ONDOSettingViewController.xib */; };
+		06712E9E1ADC6064007CEEF3 /* Ovatemp WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 06712E9D1ADC6064007CEEF3 /* Ovatemp WatchKit App.app */; };
+		06712EAB1ADC6064007CEEF3 /* Ovatemp WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 06712E8E1ADC6064007CEEF3 /* Ovatemp WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		06712EBC1ADC655B007CEEF3 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06712EB81ADC655B007CEEF3 /* Interface.storyboard */; };
+		06712EBD1ADC655B007CEEF3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06712EBA1ADC655B007CEEF3 /* Images.xcassets */; };
+		06712EBE1ADC655B007CEEF3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06712EBB1ADC655B007CEEF3 /* Info.plist */; };
+		06712ECB1ADC65CA007CEEF3 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06712EC01ADC65CA007CEEF3 /* ConnectionManager.swift */; };
+		06712ECC1ADC65CA007CEEF3 /* FluidPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06712EC11ADC65CA007CEEF3 /* FluidPageViewController.swift */; };
+		06712ECD1ADC65CA007CEEF3 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06712EC21ADC65CA007CEEF3 /* GlanceController.swift */; };
+		06712ECE1ADC65CB007CEEF3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06712EC31ADC65CA007CEEF3 /* Images.xcassets */; };
+		06712ECF1ADC65CB007CEEF3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06712EC41ADC65CA007CEEF3 /* Info.plist */; };
+		06712ED01ADC65CB007CEEF3 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06712EC51ADC65CA007CEEF3 /* InterfaceController.swift */; };
+		06712ED11ADC65CB007CEEF3 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06712EC61ADC65CA007CEEF3 /* NotificationController.swift */; };
+		06712ED21ADC65CB007CEEF3 /* Ovatemp WatchKit Extension.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 06712EC71ADC65CA007CEEF3 /* Ovatemp WatchKit Extension.entitlements */; };
+		06712ED31ADC65CB007CEEF3 /* PeriodPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06712EC81ADC65CA007CEEF3 /* PeriodPageViewController.swift */; };
+		06712ED41ADC65CB007CEEF3 /* PositionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06712EC91ADC65CA007CEEF3 /* PositionPageViewController.swift */; };
+		06712ED51ADC65CB007CEEF3 /* PushNotificationPayload.apns in Resources */ = {isa = PBXBuildFile; fileRef = 06712ECA1ADC65CA007CEEF3 /* PushNotificationPayload.apns */; };
+		06712ED71ADD8475007CEEF3 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06712ED61ADD8475007CEEF3 /* GameKit.framework */; };
 		067BCE0E1AD5C9D100F0BDE6 /* TransparentSwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 067BCE0D1AD5C9D100F0BDE6 /* TransparentSwipeView.m */; };
 		0692216E1AC0AF350004B850 /* ILCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0692216D1AC0AF350004B850 /* ILCalendarViewController.m */; };
 		069221711AC0CD530004B850 /* ILCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 069221701AC0CD530004B850 /* ILCalendarCell.m */; };
@@ -338,11 +355,24 @@
 		C3BF8FD91898421700572F43 /* XCTestCase+KIF.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FD81898421700572F43 /* XCTestCase+KIF.m */; };
 		C3BF8FDD1898449D00572F43 /* OvatempTestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FDC1898449D00572F43 /* OvatempTestHelpers.m */; };
 		C3D8912119084CB800E21627 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D8912019084CB800E21627 /* StoreKit.framework */; };
-		C3D8912319084D9F00E21627 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D8912219084D9F00E21627 /* GameKit.framework */; };
 		CED66676EF49970944AFFC0C /* libPods-Ovatemp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		06712E9F1ADC6064007CEEF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C36C50F3189028190053A884 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 06712E9C1ADC6064007CEEF3;
+			remoteInfo = "Ovatemp WatchKit App";
+		};
+		06712EA91ADC6064007CEEF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C36C50F3189028190053A884 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 06712E8D1ADC6064007CEEF3;
+			remoteInfo = "Ovatemp WatchKit Extension";
+		};
 		C3BF8FCB1898409C00572F43 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C36C50F3189028190053A884 /* Project object */;
@@ -352,6 +382,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		06712EB61ADC6064007CEEF3 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				06712EAB1ADC6064007CEEF3 /* Ovatemp WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		060D180A1AC330FA00B7DBA2 /* ILCycleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCycleViewController.h; sourceTree = "<group>"; };
 		060D180B1AC330FA00B7DBA2 /* ILCycleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCycleViewController.m; sourceTree = "<group>"; };
@@ -359,6 +403,23 @@
 		063942301AD71B8B00BE7605 /* ONDOSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONDOSettingViewController.h; sourceTree = "<group>"; };
 		063942311AD71B8B00BE7605 /* ONDOSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONDOSettingViewController.m; sourceTree = "<group>"; };
 		063942321AD71B8B00BE7605 /* ONDOSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONDOSettingViewController.xib; sourceTree = "<group>"; };
+		06712E8E1ADC6064007CEEF3 /* Ovatemp WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Ovatemp WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		06712E9D1ADC6064007CEEF3 /* Ovatemp WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ovatemp WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		06712EB91ADC655B007CEEF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		06712EBA1ADC655B007CEEF3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		06712EBB1ADC655B007CEEF3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06712EC01ADC65CA007CEEF3 /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
+		06712EC11ADC65CA007CEEF3 /* FluidPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluidPageViewController.swift; sourceTree = "<group>"; };
+		06712EC21ADC65CA007CEEF3 /* GlanceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
+		06712EC31ADC65CA007CEEF3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		06712EC41ADC65CA007CEEF3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06712EC51ADC65CA007CEEF3 /* InterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		06712EC61ADC65CA007CEEF3 /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		06712EC71ADC65CA007CEEF3 /* Ovatemp WatchKit Extension.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Ovatemp WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		06712EC81ADC65CA007CEEF3 /* PeriodPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodPageViewController.swift; sourceTree = "<group>"; };
+		06712EC91ADC65CA007CEEF3 /* PositionPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionPageViewController.swift; sourceTree = "<group>"; };
+		06712ECA1ADC65CA007CEEF3 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		06712ED61ADD8475007CEEF3 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		067BCE0C1AD5C9D100F0BDE6 /* TransparentSwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentSwipeView.h; sourceTree = "<group>"; };
 		067BCE0D1AD5C9D100F0BDE6 /* TransparentSwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransparentSwipeView.m; sourceTree = "<group>"; };
 		0692216C1AC0AF340004B850 /* ILCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCalendarViewController.h; sourceTree = "<group>"; };
@@ -373,7 +434,6 @@
 		06F8FA4C1AC3619C006EC93F /* CycleCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleCollectionViewCell.h; sourceTree = "<group>"; };
 		06F8FA4D1AC3619C006EC93F /* CycleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleCollectionViewCell.m; sourceTree = "<group>"; };
 		0EC9830A19AB8619009A5730 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		259EFE437AEE5D2421AD121C /* Pods-OvatempTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.debug.xcconfig"; sourceTree = "<group>"; };
 		532EB1F55E89DB95F393F231 /* Pods-OvatempTests.staging_debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.staging_debug.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.staging_debug.xcconfig"; sourceTree = "<group>"; };
 		5558EE802994D1A7C737D9BF /* Pods-Ovatemp.staging_release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.staging_release.xcconfig"; path = "Pods/Target Support Files/Pods-Ovatemp/Pods-Ovatemp.staging_release.xcconfig"; sourceTree = "<group>"; };
 		5F1A3BF319F17614002FFA28 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -813,11 +873,8 @@
 		83C4D21B18D9F1CF008C523C /* KIFUITestActor+OTAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFUITestActor+OTAdditions.m"; sourceTree = "<group>"; };
 		83EB3F3918AEAD2600EA91AC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		87252F24C5BE824C8E625766 /* Pods-OvatempTests.production_release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.production_release.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.production_release.xcconfig"; sourceTree = "<group>"; };
-		8BECB898CAD31A22C0512519 /* Pods-OvatempTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.release.xcconfig"; sourceTree = "<group>"; };
 		8C27198765A2F4A98B7F1EA1 /* Pods-Ovatemp.staging_debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.staging_debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ovatemp/Pods-Ovatemp.staging_debug.xcconfig"; sourceTree = "<group>"; };
 		98B37DE25C5757D0462E9525 /* Pods-OvatempTests.staging_release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.staging_release.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.staging_release.xcconfig"; sourceTree = "<group>"; };
-		A4580E814E861443FA3E0BBB /* Pods-Ovatemp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ovatemp/Pods-Ovatemp.debug.xcconfig"; sourceTree = "<group>"; };
-		A6DE6B0878F241D501B88C63 /* Pods-Ovatemp.release automation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.release automation.xcconfig"; path = "Pods/Target Support Files/Pods-Ovatemp/Pods-Ovatemp.release automation.xcconfig"; sourceTree = "<group>"; };
 		C34AE14218FC4C64003209B2 /* libGoogleConversionTracking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleConversionTracking.a; path = Ovatemp/Frameworks/libGoogleConversionTracking.a; sourceTree = "<group>"; };
 		C36C50FB189028190053A884 /* Ovatemp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ovatemp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C36C50FE189028190053A884 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -839,15 +896,19 @@
 		C3BF8FDB1898449D00572F43 /* OvatempTestHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OvatempTestHelpers.h; sourceTree = "<group>"; };
 		C3BF8FDC1898449D00572F43 /* OvatempTestHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OvatempTestHelpers.m; sourceTree = "<group>"; };
 		C3D8912019084CB800E21627 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		C3D8912219084D9F00E21627 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		DB1EDD0C2055CDA999D65790 /* Pods-Ovatemp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ovatemp/Pods-Ovatemp.release.xcconfig"; sourceTree = "<group>"; };
 		DDD045337C0E855A9AA3AF62 /* Pods-Ovatemp.production_release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.production_release.xcconfig"; path = "Pods/Target Support Files/Pods-Ovatemp/Pods-Ovatemp.production_release.xcconfig"; sourceTree = "<group>"; };
 		F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ovatemp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F672532872A0CE7B8BCFF273 /* Pods-OvatempTests.release automation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.release automation.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.release automation.xcconfig"; sourceTree = "<group>"; };
 		FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OvatempTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		06712E8B1ADC6064007CEEF3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C36C50F8189028190053A884 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -865,13 +926,13 @@
 				C388C73D18FC45BD00B622FB /* libz.dylib in Frameworks */,
 				06F7A4DB1AC4D3F30054CEDF /* Crashlytics.framework in Frameworks */,
 				C3D8912119084CB800E21627 /* StoreKit.framework in Frameworks */,
-				C3D8912319084D9F00E21627 /* GameKit.framework in Frameworks */,
 				C388C73918FC45B100B622FB /* CoreData.framework in Frameworks */,
 				C388C73718FC45AA00B622FB /* AdSupport.framework in Frameworks */,
 				0EC9830B19AB8619009A5730 /* HealthKit.framework in Frameworks */,
 				0697E9651AC5E77300AD8255 /* TelerikUI.framework in Frameworks */,
 				CED66676EF49970944AFFC0C /* libPods-Ovatemp.a in Frameworks */,
 				06F7A4DC1AC4D3F30054CEDF /* Fabric.framework in Frameworks */,
+				06712ED71ADD8475007CEEF3 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -985,6 +1046,34 @@
 				5F1C9B5D19EDE87A000F1FC1 /* LifestyleCell.m */,
 			);
 			name = Other;
+			sourceTree = "<group>";
+		};
+		06712EB71ADC655A007CEEF3 /* Ovatemp WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				06712EB81ADC655B007CEEF3 /* Interface.storyboard */,
+				06712EBA1ADC655B007CEEF3 /* Images.xcassets */,
+				06712EBB1ADC655B007CEEF3 /* Info.plist */,
+			);
+			path = "Ovatemp WatchKit App";
+			sourceTree = "<group>";
+		};
+		06712EBF1ADC65CA007CEEF3 /* Ovatemp WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				06712EC71ADC65CA007CEEF3 /* Ovatemp WatchKit Extension.entitlements */,
+				06712EC51ADC65CA007CEEF3 /* InterfaceController.swift */,
+				06712EC81ADC65CA007CEEF3 /* PeriodPageViewController.swift */,
+				06712EC11ADC65CA007CEEF3 /* FluidPageViewController.swift */,
+				06712EC91ADC65CA007CEEF3 /* PositionPageViewController.swift */,
+				06712EC21ADC65CA007CEEF3 /* GlanceController.swift */,
+				06712EC61ADC65CA007CEEF3 /* NotificationController.swift */,
+				06712EC01ADC65CA007CEEF3 /* ConnectionManager.swift */,
+				06712EC31ADC65CA007CEEF3 /* Images.xcassets */,
+				06712EC41ADC65CA007CEEF3 /* Info.plist */,
+				06712ECA1ADC65CA007CEEF3 /* PushNotificationPayload.apns */,
+			);
+			path = "Ovatemp WatchKit Extension";
 			sourceTree = "<group>";
 		};
 		0687D3191AA63DD8009A12DC /* Other */ = {
@@ -1634,6 +1723,8 @@
 				C36C50FD189028190053A884 /* Frameworks */,
 				C36C50FC189028190053A884 /* Products */,
 				FF782319FA8747953FB4BED8 /* Pods */,
+				06712EBF1ADC65CA007CEEF3 /* Ovatemp WatchKit Extension */,
+				06712EB71ADC655A007CEEF3 /* Ovatemp WatchKit App */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1642,6 +1733,8 @@
 			children = (
 				C36C50FB189028190053A884 /* Ovatemp.app */,
 				C3BF8FBD1898409C00572F43 /* OvatempTests.xctest */,
+				06712E8E1ADC6064007CEEF3 /* Ovatemp WatchKit Extension.appex */,
+				06712E9D1ADC6064007CEEF3 /* Ovatemp WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1649,6 +1742,7 @@
 		C36C50FD189028190053A884 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06712ED61ADD8475007CEEF3 /* GameKit.framework */,
 				5F1C971A19EDD455000F1FC1 /* Security.framework */,
 				5F1C971819EDD44F000F1FC1 /* QuickLook.framework */,
 				5F1C971619EDD444000F1FC1 /* MobileCoreServices.framework */,
@@ -1656,7 +1750,6 @@
 				5F1C971219EDD42D000F1FC1 /* AssetsLibrary.framework */,
 				5F586A2C19ED89DA00D2B58E /* libPods-OvatempTests-KIF.a */,
 				0EC9830A19AB8619009A5730 /* HealthKit.framework */,
-				C3D8912219084D9F00E21627 /* GameKit.framework */,
 				C3D8912019084CB800E21627 /* StoreKit.framework */,
 				C34AE14218FC4C64003209B2 /* libGoogleConversionTracking.a */,
 				C388C73C18FC45BD00B622FB /* libz.dylib */,
@@ -1729,12 +1822,6 @@
 		FF782319FA8747953FB4BED8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A4580E814E861443FA3E0BBB /* Pods-Ovatemp.debug.xcconfig */,
-				DB1EDD0C2055CDA999D65790 /* Pods-Ovatemp.release.xcconfig */,
-				A6DE6B0878F241D501B88C63 /* Pods-Ovatemp.release automation.xcconfig */,
-				259EFE437AEE5D2421AD121C /* Pods-OvatempTests.debug.xcconfig */,
-				8BECB898CAD31A22C0512519 /* Pods-OvatempTests.release.xcconfig */,
-				F672532872A0CE7B8BCFF273 /* Pods-OvatempTests.release automation.xcconfig */,
 				8C27198765A2F4A98B7F1EA1 /* Pods-Ovatemp.staging_debug.xcconfig */,
 				77D03740A05074FF695667DB /* Pods-Ovatemp.production_debug.xcconfig */,
 				5558EE802994D1A7C737D9BF /* Pods-Ovatemp.staging_release.xcconfig */,
@@ -1750,6 +1837,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		06712E8D1ADC6064007CEEF3 /* Ovatemp WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06712EB51ADC6064007CEEF3 /* Build configuration list for PBXNativeTarget "Ovatemp WatchKit Extension" */;
+			buildPhases = (
+				06712E8A1ADC6064007CEEF3 /* Sources */,
+				06712E8B1ADC6064007CEEF3 /* Frameworks */,
+				06712E8C1ADC6064007CEEF3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				06712EA01ADC6064007CEEF3 /* PBXTargetDependency */,
+			);
+			name = "Ovatemp WatchKit Extension";
+			productName = "Ovatemp WatchKit Extension";
+			productReference = 06712E8E1ADC6064007CEEF3 /* Ovatemp WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		06712E9C1ADC6064007CEEF3 /* Ovatemp WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06712EB41ADC6064007CEEF3 /* Build configuration list for PBXNativeTarget "Ovatemp WatchKit App" */;
+			buildPhases = (
+				06712E9B1ADC6064007CEEF3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Ovatemp WatchKit App";
+			productName = "Ovatemp WatchKit App";
+			productReference = 06712E9D1ADC6064007CEEF3 /* Ovatemp WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp";
+		};
 		C36C50FA189028190053A884 /* Ovatemp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C36C5127189028190053A884 /* Build configuration list for PBXNativeTarget "Ovatemp" */;
@@ -1760,10 +1880,12 @@
 				C36C50F9189028190053A884 /* Resources */,
 				E8576B49FDB26B62A0CC5666 /* Copy Pods Resources */,
 				06F7A4D81AC4D3B00054CEDF /* Fabric Run Script */,
+				06712EB61ADC6064007CEEF3 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				06712EAA1ADC6064007CEEF3 /* PBXTargetDependency */,
 			);
 			name = Ovatemp;
 			productName = Ovatemp;
@@ -1799,9 +1921,25 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Back Forty";
 				TargetAttributes = {
+					06712E8D1ADC6064007CEEF3 = {
+						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = MC934XNWAV;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					06712E9C1ADC6064007CEEF3 = {
+						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = MC934XNWAV;
+					};
 					C36C50FA189028190053A884 = {
 						DevelopmentTeam = MC934XNWAV;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
@@ -1831,6 +1969,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = C36C50F2189028190053A884;
 			productRefGroup = C36C50FC189028190053A884 /* Products */;
@@ -1839,11 +1978,35 @@
 			targets = (
 				C36C50FA189028190053A884 /* Ovatemp */,
 				C3BF8FBC1898409C00572F43 /* OvatempTests */,
+				06712E8D1ADC6064007CEEF3 /* Ovatemp WatchKit Extension */,
+				06712E9C1ADC6064007CEEF3 /* Ovatemp WatchKit App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		06712E8C1ADC6064007CEEF3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06712E9E1ADC6064007CEEF3 /* Ovatemp WatchKit App.app in Resources */,
+				06712ED21ADC65CB007CEEF3 /* Ovatemp WatchKit Extension.entitlements in Resources */,
+				06712ECE1ADC65CB007CEEF3 /* Images.xcassets in Resources */,
+				06712ECF1ADC65CB007CEEF3 /* Info.plist in Resources */,
+				06712ED51ADC65CB007CEEF3 /* PushNotificationPayload.apns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06712E9B1ADC6064007CEEF3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06712EBC1ADC655B007CEEF3 /* Interface.storyboard in Resources */,
+				06712EBD1ADC655B007CEEF3 /* Images.xcassets in Resources */,
+				06712EBE1ADC655B007CEEF3 /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C36C50F9189028190053A884 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2108,6 +2271,20 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		06712E8A1ADC6064007CEEF3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06712ED11ADC65CB007CEEF3 /* NotificationController.swift in Sources */,
+				06712ECC1ADC65CA007CEEF3 /* FluidPageViewController.swift in Sources */,
+				06712ED41ADC65CB007CEEF3 /* PositionPageViewController.swift in Sources */,
+				06712ED01ADC65CB007CEEF3 /* InterfaceController.swift in Sources */,
+				06712ECB1ADC65CA007CEEF3 /* ConnectionManager.swift in Sources */,
+				06712ED31ADC65CB007CEEF3 /* PeriodPageViewController.swift in Sources */,
+				06712ECD1ADC65CA007CEEF3 /* GlanceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C36C50F7189028190053A884 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2264,6 +2441,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		06712EA01ADC6064007CEEF3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 06712E9C1ADC6064007CEEF3 /* Ovatemp WatchKit App */;
+			targetProxy = 06712E9F1ADC6064007CEEF3 /* PBXContainerItemProxy */;
+		};
+		06712EAA1ADC6064007CEEF3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 06712E8D1ADC6064007CEEF3 /* Ovatemp WatchKit Extension */;
+			targetProxy = 06712EA91ADC6064007CEEF3 /* PBXContainerItemProxy */;
+		};
 		C3BF8FCC1898409C00572F43 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C36C50FA189028190053A884 /* Ovatemp */;
@@ -2272,6 +2459,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		06712EB81ADC655B007CEEF3 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				06712EB91ADC655B007CEEF3 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		5F1C9A5D19EDE879000F1FC1 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2338,6 +2533,7 @@
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -2448,6 +2644,7 @@
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -2509,6 +2706,379 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
+			};
+			name = Production_Release;
+		};
+		06712EAC1ADC6064007CEEF3 /* Staging_Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "Ovatemp WatchKit Extension/Ovatemp WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Ovatemp WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Staging_Debug;
+		};
+		06712EAD1ADC6064007CEEF3 /* Production_Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "Ovatemp WatchKit Extension/Ovatemp WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Ovatemp WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Production_Debug;
+		};
+		06712EAE1ADC6064007CEEF3 /* Staging_Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "Ovatemp WatchKit Extension/Ovatemp WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Ovatemp WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Staging_Release;
+		};
+		06712EAF1ADC6064007CEEF3 /* Production_Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "Ovatemp WatchKit Extension/Ovatemp WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Ovatemp WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Production_Release;
+		};
+		06712EB01ADC6064007CEEF3 /* Staging_Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IBSC_MODULE = Ovatemp_WatchKit_Extension;
+				INFOPLIST_FILE = "Ovatemp WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Staging_Debug;
+		};
+		06712EB11ADC6064007CEEF3 /* Production_Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IBSC_MODULE = Ovatemp_WatchKit_Extension;
+				INFOPLIST_FILE = "Ovatemp WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Production_Debug;
+		};
+		06712EB21ADC6064007CEEF3 /* Staging_Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IBSC_MODULE = Ovatemp_WatchKit_Extension;
+				INFOPLIST_FILE = "Ovatemp WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Staging_Release;
+		};
+		06712EB31ADC6064007CEEF3 /* Production_Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IBSC_MODULE = Ovatemp_WatchKit_Extension;
+				INFOPLIST_FILE = "Ovatemp WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Production_Release;
 		};
@@ -2594,6 +3164,7 @@
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -2645,6 +3216,7 @@
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -2736,6 +3308,26 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		06712EB41ADC6064007CEEF3 /* Build configuration list for PBXNativeTarget "Ovatemp WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06712EB01ADC6064007CEEF3 /* Staging_Debug */,
+				06712EB11ADC6064007CEEF3 /* Production_Debug */,
+				06712EB21ADC6064007CEEF3 /* Staging_Release */,
+				06712EB31ADC6064007CEEF3 /* Production_Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		06712EB51ADC6064007CEEF3 /* Build configuration list for PBXNativeTarget "Ovatemp WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06712EAC1ADC6064007CEEF3 /* Staging_Debug */,
+				06712EAD1ADC6064007CEEF3 /* Production_Debug */,
+				06712EAE1ADC6064007CEEF3 /* Staging_Release */,
+				06712EAF1ADC6064007CEEF3 /* Production_Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C36C50F6189028190053A884 /* Build configuration list for PBXProject "Ovatemp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

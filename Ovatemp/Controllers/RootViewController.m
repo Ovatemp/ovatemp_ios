@@ -33,7 +33,8 @@ static CGFloat const kDissolveDuration = 0.2;
 
 @implementation RootViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     // Configure standard UI appearance
@@ -45,7 +46,8 @@ static CGFloat const kDissolveDuration = 0.2;
                                                  name:kUnauthorizedRequestNotification object:nil];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     if (!loaded) {
         loaded = YES;
         if ([Configuration loggedIn]) {
@@ -165,13 +167,16 @@ static CGFloat const kDissolveDuration = 0.2;
     return selectVC;
 }
 
-- (void)refreshToken {
+- (void)refreshToken
+{
     [ConnectionManager put:@"/sessions/refresh"
                     params:nil
                    success:^(NSDictionary *response) {
                        [self stopLoading];
                        [Configuration loggedInWithResponse:response];
                        [self launchAppropriateViewController];
+                       
+                       [self addUserTokenToSharedUserDefaults: response[@"token"]];
                    }
                    failure:^(NSError *error) {
                        [self stopLoading];
@@ -253,6 +258,15 @@ static CGFloat const kDissolveDuration = 0.2;
     return NO;
 }
 
-# pragma mark - 3rd party librarys
+#pragma mark - Helper's
+
+- (void)addUserTokenToSharedUserDefaults:(NSString *)token
+{
+    if (token.length > 0) {
+        NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName: kAppGroupName];
+        [sharedDefaults setObject: token forKey: kSharedTokenKey];
+        [sharedDefaults synchronize];
+    }
+}
 
 @end

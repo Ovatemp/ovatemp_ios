@@ -45,7 +45,8 @@ static Configuration *_sharedConfiguration;
 
 # pragma mark - Session management
 
-+ (void)loggedInWithResponse:(NSDictionary *)response {
++ (void)loggedInWithResponse:(NSDictionary *)response
+{
   NSDictionary *userDict = response[@"user"];
   User *user = [User withAttributes:userDict];
   [User setCurrent:user];
