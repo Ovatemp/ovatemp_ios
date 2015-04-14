@@ -37,7 +37,6 @@ class PeriodPageViewController: WKInterfaceController {
     @IBOutlet weak var periodSelectHeavyButton: WKInterfaceButton!
     @IBOutlet weak var periodSelectHeavyGroup: WKInterfaceGroup!
     
-    
     var periodSelectedState = PeriodState.noData
     
     let connectionManager = ConnectionManager()

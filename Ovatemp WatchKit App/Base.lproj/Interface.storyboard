@@ -43,9 +43,6 @@
             <objects>
                 <controller identifier="periodPageView" title="Period" id="UyJ-mT-fSB" customClass="PeriodPageViewController" customModule="Ovatemp_WatchKit_Extension">
                     <items>
-                        <label height="22" alignment="center" text="Select" id="Oge-90-VKO">
-                            <fontDescription key="font" type="boldSystem" pointSize="15"/>
-                        </label>
                         <group width="146" height="60" alignment="center" verticalAlignment="center" id="Z8Z-9x-cIJ">
                             <items>
                                 <group alignment="left" verticalAlignment="center" backgroundImage="Comp 1_0" id="ON3-k0-Fli">
@@ -113,7 +110,6 @@
                         <outlet property="periodSelectNoneGroup" destination="ON3-k0-Fli" id="Kum-2K-5Bq"/>
                         <outlet property="periodSelectSpottingButton" destination="k2U-Rd-gYQ" id="5Tc-dV-d2e"/>
                         <outlet property="periodSelectSpottingGroup" destination="QL4-Ek-6Ka" id="zJ7-hi-Dth"/>
-                        <outlet property="periodSelectionLabel" destination="Oge-90-VKO" id="oZB-kM-0Hh"/>
                         <segue destination="9NZ-qY-wrT" kind="relationship" relationship="nextPage" id="nac-3o-tjg"/>
                     </connections>
                 </controller>
@@ -171,9 +167,6 @@
                             </items>
                             <variation key="device=watch38mm" height="50" width="100"/>
                         </group>
-                        <label height="22" alignment="center" text="Select" id="log-57-uHU">
-                            <fontDescription key="font" type="boldSystem" pointSize="15"/>
-                        </label>
                     </items>
                     <connections>
                         <outlet property="fluidSelectCreamyButton" destination="3LM-Ak-S7p" id="dea-Vf-uCG"/>
@@ -184,7 +177,6 @@
                         <outlet property="fluidSelectEggwhiteGroup" destination="rOc-fr-JgT" id="44K-rW-cNq"/>
                         <outlet property="fluidSelectStickyButton" destination="xHx-Y2-dIs" id="8ww-Fw-uzv"/>
                         <outlet property="fluidSelectStickyGroup" destination="eFC-p5-RoZ" id="wXC-YJ-85K"/>
-                        <outlet property="fluidSelectionLabel" destination="log-57-uHU" id="Ncn-jI-7US"/>
                         <segue destination="h42-zn-QXN" kind="relationship" relationship="nextPage" id="UDM-vB-Bsf"/>
                     </connections>
                 </controller>
@@ -219,16 +211,12 @@
                             </items>
                             <variation key="device=watch38mm" width="100"/>
                         </group>
-                        <label alignment="center" text="Select" id="uYy-U7-W9D">
-                            <fontDescription key="font" type="boldSystem" pointSize="16"/>
-                        </label>
                     </items>
                     <connections>
                         <outlet property="positionSelectHighOpenSoftButton" destination="XsU-hF-1AE" id="m7l-v3-TZl"/>
                         <outlet property="positionSelectHighOpenSoftGroup" destination="dRA-Uf-Esi" id="OEo-JN-wdh"/>
                         <outlet property="positionSelectLowClosedFirmButton" destination="LZF-V1-vU6" id="HPw-MV-2en"/>
                         <outlet property="positionSelectLowClosedFirmGroup" destination="6Up-fO-O3Y" id="99f-A9-fd2"/>
-                        <outlet property="positionSelectionLabel" destination="uYy-U7-W9D" id="moV-Xy-GDy"/>
                     </connections>
                 </controller>
             </objects>

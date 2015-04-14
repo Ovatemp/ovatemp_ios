@@ -30,7 +30,7 @@ class InterfaceController: WKInterfaceController {
         
         if let userToken = retrieveUserTokenFromDefaults(), userDeviceId = retrieveDeviceIdFromDefaults() {
             // User is logged in to Ovatemp
-            print("APPLE WATCH : USER IS LOGGED IN TO OVATEMP")
+            println("APPLE WATCH : USER IS LOGGED IN TO OVATEMP")
             connectionManager.userToken = userToken
             connectionManager.deviceId = userDeviceId
             
@@ -45,7 +45,7 @@ class InterfaceController: WKInterfaceController {
             
         }else{
             // User is not logged in to Ovatemp
-            print("APPLE WATCH : NOT LOGGED IN TO OVATEMP")
+            println("APPLE WATCH : NOT LOGGED IN TO OVATEMP")
             updateScreenForNotLoggedIn()
             
         }

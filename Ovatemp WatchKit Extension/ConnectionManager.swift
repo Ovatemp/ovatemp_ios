@@ -62,94 +62,43 @@ public class ConnectionManager {
         session = NSURLSession(configuration: configuration);
     }
     
-    func createDateFormatter () -> NSDateFormatter{
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale.systemLocale()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        return dateFormatter
-    }
-    
-    func fertilityFoyResponse (day : NSDictionary, peakDate : NSDate) -> Fertility{
-        
-        let dateInfo = day["date"] as? String
-        let dateFormatter = createDateFormatter()
-        let todayDate = dateFormatter.stringFromDate(NSDate())
-        
-        if(dateInfo == todayDate) {
-            
-            println("day data: \(day)") // printing log for testing
-            
-            if(day["cycle_phase"] as? String == "period") {
-                // IF cycle_phase = period
-                // result is PERIOD
-                return Fertility(status: FertilityStatus.period, cycle: FertilityCycle.period)
-                
-            } else if(day["cycle_phase"] as? String == "ovulation") {
-                
-                if(day["date"] as? String == dateFormatter.stringFromDate(peakDate)) {
-                    // IF cycle_phase = ovulation AND peak_date = selected date
-                    // result is PEAK FERTILITY
-                    return Fertility(status: FertilityStatus.peakFertility, cycle: FertilityCycle.ovulation)
-
-                } else {
-                    // IF cycle_phase = ovulation
-                    // result is FERTILE
-                    return Fertility(status: FertilityStatus.fertile, cycle: FertilityCycle.ovulation)
-
-                }
-                
-            } else if(day["cycle_phase"] as? String == "preovulation") {
-                // IF cycle_phase = preovulation
-                // result is NOT FERTILE
-                return Fertility(status: FertilityStatus.notFertile, cycle: FertilityCycle.preovulation)
-
-            } else if(day["cycle_phase"] as? String == "postovulation") {
-                // IF cycle_phase = postovulation
-                // result is NOT FERTILE
-                return Fertility(status: FertilityStatus.notFertile, cycle: FertilityCycle.postovulation)
-                
-            } else {
-                // result is NO DATA
-                return Fertility(status: FertilityStatus.empty, cycle: FertilityCycle.empty)
-                
-            }
-            
-        }
-        
-        return Fertility(status: FertilityStatus.empty, cycle: FertilityCycle.empty)
-        
-    }
-    
     public func requestFertilityStatus(completion: StatusRequestCompletionBlock) {
         
-        let dateFormatter = createDateFormatter()
-        let todayDate = dateFormatter.stringFromDate(NSDate())
-        
         if let userToken = self.userToken, deviceId = self.deviceId {
+        
+            let dateFormatter = createDateFormatter()
+            let todayDate = todayDateString()
             
             let urlString = "\(baseUrl)/cycles?date=\(todayDate)&&token=\(userToken)&&device_id=\(deviceId)"
             let URL: NSURL = NSURL(string: urlString)!
             let request = NSMutableURLRequest(URL: URL)
             
             let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
-                print(response)
+                
                 if (error == nil) {
+
                     var JSONError: NSError?
                     let responseDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as! NSDictionary
+                    
                     if (JSONError == nil) {
                         
+                        println("CONNECTION MANAGER : SUCCESS : REQUEST FERTILITY STATUS")
+                        
+                        let dateFormatter = self.createDateFormatter()
+                        let todayDate = dateFormatter.stringFromDate(NSDate())
                         let dayArray = responseDict["days"] as! NSArray
-                        let peakDate = dateFormatter.dateFromString(responseDict["peak_date"] as! String)
                         
                         for day in dayArray {
                             
-                            ////////
+                            let dateInfo = day["date"] as? String
+                            let peakDate = dateFormatter.dateFromString(responseDict["peak_date"] as! String)
                             
-                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                completion(fertility: Fertility(status: FertilityStatus.period, cycle: FertilityCycle.period), error: nil)
-                            })
+                            if(dateInfo == todayDate) {
+                                let fertility : Fertility = self.fertilityForDay(day as! NSDictionary, peakDate: peakDate!)
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    completion(fertility: fertility, error: nil)
+                                })
+                            }
                         }
                         
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -171,286 +120,337 @@ public class ConnectionManager {
             task.resume()
             
         }else{
-            print("APPLE WATCH : CONNECTION MANAGER : USER IS NOT LOGGED IN")
+            println("APPLE WATCH : CONNECTION MANAGER : USER IS NOT LOGGED IN")
         }
         
     }
     
     public func requestPeriodStatus(completion: PeriodStateRequestCompletionBlock) {
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale.systemLocale()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let todayDate = dateFormatter.stringFromDate(NSDate())
-        
-        let URL: NSURL = NSURL(string: "http://ovatemp-api-staging.herokuapp.com/api/cycles?date=\(todayDate))&token=c41c23ddec4ea1a53bbab4c8d92e2b53&&device_id=DUMMYDEVICE")!
-        
-        let request = NSMutableURLRequest(URL:URL)
-        request.addValue("application/json; version=2", forHTTPHeaderField:"Accept")
-        
-        let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
-            if (error == nil) {
-                var JSONError: NSError?
-                let responseDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as! NSDictionary
-                if (JSONError == nil) {
+        if let userToken = self.userToken, deviceId = self.deviceId {
+            
+            let dateFormatter = createDateFormatter()
+            let todayDate = todayDateString()
+            
+            let urlString = "\(baseUrl)/cycles?date=\(todayDate)&&token=\(userToken)&&device_id=\(deviceId)"
+            let URL: NSURL = NSURL(string: urlString)!
+            let request = NSMutableURLRequest(URL: URL)
+            
+            let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+                if (error == nil) {
                     
-                    let dayArray = responseDict["days"] as! NSArray
+                    var JSONError: NSError?
+                    let responseDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as! NSDictionary
                     
-                    for day in dayArray {
+                    if (JSONError == nil) {
                         
-                        let dateInfo = day["date"] as? String
+                        println("CONNECTION MANAGER : SUCCESS : REQUEST PERIOD STATUS")
                         
-                        if(dateInfo == todayDate) {
+                        let dayArray = responseDict["days"] as! NSArray
+                        for day in dayArray {
                             
-                            println("day period data: \(day)") // printing log for testing
-                            
-                            let periodStatus = day["period"] as? String
-                            
-                            var periodState = PeriodState.noData
-                            
-                            if(periodStatus == "none") {
+                            let dateInfo = day["date"] as? String
+                            if(dateInfo == todayDate) {
+                                
+                                let periodStatus = day["period"] as? String
                                 
                                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    completion(status: PeriodState.none, error: nil)
-                                })
-                                
-                            } else if(periodStatus == "spotting") {
-                                
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    completion(status: PeriodState.spotting, error: nil)
-                                })
-                                
-                            } else if(periodStatus == "light") {
-                                
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    completion(status: PeriodState.light, error: nil)
-                                })
-                                
-                            } else if(periodStatus == "medium") {
-                                
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    completion(status: PeriodState.medium, error: nil)
-                                })
-                                
-                            } else if(periodStatus == "heavy") {
-                                
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    completion(status: PeriodState.heavy, error: nil)
-                                })
-                                
-                            }  else {
-                                
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    completion(status: PeriodState.noData, error: nil)
+                                    completion(status: self.periodStateForString(periodStatus!), error: nil)
                                 })
                                 
                             }
-                            
-                            return
                         }
+                        
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            completion(status: PeriodState.noData, error: nil)
+                        })
+                        
+                    } else {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            completion(status: PeriodState.noData, error: nil)
+                        })
+                        
                     }
-                    
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        completion(status: PeriodState.noData, error: nil)
-                    })
                 } else {
-                    
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         completion(status: PeriodState.noData, error: nil)
                     })
+                    
                 }
-            } else {
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completion(status: PeriodState.noData, error: nil)
-                })
-            }
-        })
-        task.resume()
+            })
+            
+            task.resume()
+            
+        }else{
+            println("CONNECTION MANAGER : USER IS NOT LOGGED IN")
+        }
+        
     }
     
     public func requestFluidStatus(completion: FluidStateRequestCompletionBlock) {
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale.systemLocale()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let todayDate = dateFormatter.stringFromDate(NSDate())
-        
-        let URL: NSURL = NSURL(string: "http://ovatemp-api-staging.herokuapp.com/api/cycles?date=\(todayDate))&token=c41c23ddec4ea1a53bbab4c8d92e2b53&&device_id=DUMMYDEVICE")!
-        
-        let request = NSMutableURLRequest(URL:URL)
-        request.addValue("application/json; version=2", forHTTPHeaderField:"Accept")
-        
-        let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
-            if (error == nil) {
-                var JSONError: NSError?
-                let responseDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as! NSDictionary
-                if (JSONError == nil) {
+        if let userToken = self.userToken, deviceId = self.deviceId{
+            
+            let dateFormatter = createDateFormatter()
+            let todayDate = todayDateString()
+            
+            let urlString = "\(baseUrl)/cycles?date=\(todayDate)&&token=\(userToken)&&device_id=\(deviceId)"
+            let URL: NSURL = NSURL(string: urlString)!
+            let request = NSMutableURLRequest(URL: URL)
+            
+            let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+                if (error == nil) {
                     
-                    let dayArray = responseDict["days"] as! NSArray
+                    var JSONError: NSError?
+                    let responseDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as! NSDictionary
                     
-                    for day in dayArray {
+                    if (JSONError == nil) {
                         
-                        let dateInfo = day["date"] as? String
+                        println("CONNECTION MANAGER : SUCCESS : REQUEST FLUID STATUS")
                         
-                        if(dateInfo == todayDate) {
+                        let dayArray = responseDict["days"] as! NSArray
+                        for day in dayArray {
                             
-                            println("day fluid data: \(day)") // printing log for testing
-                            
-                            let fluidStatus = day["cervical_fluid"] as? String
-                            
-                            var fluidState = FluidState.noData
-                            
-                            if(fluidStatus == "dry") {
+                            let dateInfo = day["date"] as? String
+                            if(dateInfo == todayDate) {
+                                
+                                let fluidStatus = day["cervical_fluid"] as? String
                                 
                                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    completion(status: FluidState.dry, error: nil)
-                                })
-                                
-                            } else if(fluidStatus == "sticky") {
-                                
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    completion(status: FluidState.sticky, error: nil)
-                                })
-                                
-                            } else if(fluidStatus == "creamy") {
-                                
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    completion(status: FluidState.creamy, error: nil)
-                                })
-                                
-                            } else if(fluidStatus == "eggwhite") {
-                                
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    completion(status: FluidState.eggwhite, error: nil)
-                                })
-                                
-                            } else {
-                                
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    completion(status: FluidState.noData, error: nil)
+                                    completion(status: self.fluidStateForString(fluidStatus!), error: nil)
                                 })
                                 
                             }
-                            
-                            return
                         }
+                        
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            completion(status: FluidState.noData, error: nil)
+                        })
+                        
+                    } else {
+                        
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            completion(status: FluidState.noData, error: nil)
+                        })
+                        
                     }
-                    
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        completion(status: FluidState.noData, error: nil)
-                    })
                 } else {
                     
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         completion(status: FluidState.noData, error: nil)
                     })
+                    
                 }
-            } else {
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completion(status: FluidState.noData, error: nil)
-                })
-            }
-        })
-        task.resume()
+            })
+            
+            task.resume()
+            
+        }else{
+            println("CONNECTION MANAGER : USER IS NOT LOGGED IN")
+        }
+        
     }
     
     public func requestPositionStatus(completion: PositionStateRequestCompletionBlock) {
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale.systemLocale()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let todayDate = dateFormatter.stringFromDate(NSDate())
-        
-        let URL: NSURL = NSURL(string: "http://ovatemp-api-staging.herokuapp.com/api/cycles?date=\(todayDate))&token=c41c23ddec4ea1a53bbab4c8d92e2b53&&device_id=DUMMYDEVICE")!
-        
-        let request = NSMutableURLRequest(URL:URL)
-        request.addValue("application/json; version=2", forHTTPHeaderField:"Accept")
-        
-        let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
-            if (error == nil) {
-                var JSONError: NSError?
-                let responseDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as! NSDictionary
-                if (JSONError == nil) {
+        if let userToken = self.userToken, deviceId = self.deviceId{
+            
+            let dateFormatter = createDateFormatter()
+            let todayDate = todayDateString()
+            
+            let urlString = "\(baseUrl)/cycles?date=\(todayDate)&&token=\(userToken)&&device_id=\(deviceId)"
+            let URL: NSURL = NSURL(string: urlString)!
+            let request = NSMutableURLRequest(URL: URL)
+            
+            let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+                if (error == nil) {
                     
-                    let dayArray = responseDict["days"] as! NSArray
+                    var JSONError: NSError?
+                    let responseDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &JSONError) as! NSDictionary
                     
-                    for day in dayArray {
+                    if (JSONError == nil) {
                         
-                        let dateInfo = day["date"] as? String
+                        println("CONNECTION MANAGER : SUCCESS : REQUEST POSITION STATUS")
                         
-                        if(dateInfo == todayDate) {
+                        let dayArray = responseDict["days"] as! NSArray
+                        for day in dayArray {
                             
-                            println("day position data: \(day)") // printing log for testing
-                            
-                            let positionStatus = day["cervical_position"] as? String
-                            
-                            var positionState = PositionState.noData
-                            
-                            if(positionStatus == "low/closed/firm") {
+                            let dateInfo = day["date"] as? String
+                            if(dateInfo == todayDate) {
+                                
+                                let positionStatus = day["cervical_position"] as? String
                                 
                                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    completion(status: PositionState.lowClosedFirm, error: nil)
+                                    completion(status: self.positionStateForString(positionStatus!), error: nil)
                                 })
-                                
-                            } else if(positionStatus == "high/open/soft") {
-                                
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    completion(status: PositionState.highOpenSoft, error: nil)
-                                })
-                                
-                            } else {
-                                
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    completion(status: PositionState.noData, error: nil)
-                                })
-                                
+
                             }
-                            
-                            return
                         }
+                        
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            completion(status: PositionState.noData, error: nil)
+                        })
+                        
+                    } else {
+                        
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            completion(status: PositionState.noData, error: nil)
+                        })
+                        
                     }
-                    
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        completion(status: PositionState.noData, error: nil)
-                    })
                 } else {
                     
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         completion(status: PositionState.noData, error: nil)
                     })
+                    
                 }
-            } else {
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completion(status: PositionState.noData, error: nil)
-                })
-            }
-        })
-        task.resume()
+            })
+            
+            task.resume()
+            
+        }else{
+            println("CONNECTION MANAGER : USER IS NOT LOGGED IN")
+        }
+        
     }
     
     public func updateFertilityData(data: String, completion: UpdateCompletionBlock) {
         
         let todayDate = NSDate()
         
-        let URL: NSURL = NSURL(string: "http://ovatemp-api-staging.herokuapp.com/api/days/")!
+        let urlString = "\(baseUrl)/days/"
+        let URL: NSURL = NSURL(string: urlString)!
         
-        let request = NSMutableURLRequest(URL:URL)
+        let request = NSMutableURLRequest(URL: URL)
         request.HTTPMethod = "PUT"
         
         var putData = data+"&token=09dfc3dd91409fc838d8180b777cf2ea&&device_id=58504179-52EC-4298-B276-E20053D7393C"
         request.HTTPBody = putData.dataUsingEncoding(NSUTF8StringEncoding)
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField:"Content-Type")
-        request.addValue("application/json; version=2", forHTTPHeaderField:"Accept")
         
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 completion(success: true, error: error)
             })
+            
         })
+        
         task.resume()
+        
     }
+    
+    // MARK: Helpers
+    
+    func createDateFormatter () -> NSDateFormatter{
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale.systemLocale()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        return dateFormatter
+    }
+    
+    func todayDateString () -> NSString {
+        return createDateFormatter().stringFromDate(NSDate())
+    }
+    
+    func fertilityForDay (day : NSDictionary, peakDate : NSDate) -> Fertility {
+        
+        let dateFormatter = createDateFormatter()
+        
+        if(day["cycle_phase"] as? String == "period") {
+            // IF cycle_phase = period
+            // result is PERIOD
+            return Fertility(status: FertilityStatus.period, cycle: FertilityCycle.period)
+            
+        } else if(day["cycle_phase"] as? String == "ovulation") {
+            
+            if(day["date"] as? String == dateFormatter.stringFromDate(peakDate)) {
+                // IF cycle_phase = ovulation AND peak_date = selected date
+                // result is PEAK FERTILITY
+                return Fertility(status: FertilityStatus.peakFertility, cycle: FertilityCycle.ovulation)
+                
+            } else {
+                // IF cycle_phase = ovulation
+                // result is FERTILE
+                return Fertility(status: FertilityStatus.fertile, cycle: FertilityCycle.ovulation)
+            }
+            
+        } else if(day["cycle_phase"] as? String == "preovulation") {
+            // IF cycle_phase = preovulation
+            // result is NOT FERTILE
+            return Fertility(status: FertilityStatus.notFertile, cycle: FertilityCycle.preovulation)
+            
+        } else if(day["cycle_phase"] as? String == "postovulation") {
+            // IF cycle_phase = postovulation
+            // result is NOT FERTILE
+            return Fertility(status: FertilityStatus.notFertile, cycle: FertilityCycle.postovulation)
+            
+        } else {
+            // result is NO DATA
+            return Fertility(status: FertilityStatus.empty, cycle: FertilityCycle.empty)
+            
+        }
+        
+    }
+    
+    func periodStateForString (statusString : String) -> PeriodState {
+        
+        if(statusString == "none") {
+            return PeriodState.none
+            
+        } else if(statusString == "spotting") {
+            return PeriodState.spotting
+            
+        } else if(statusString == "light") {
+            return PeriodState.light
+            
+        } else if(statusString == "medium") {
+            return PeriodState.medium
+            
+        } else if(statusString == "heavy") {
+            return PeriodState.heavy
+            
+        }  else {
+            return PeriodState.noData
+        }
+        
+    }
+    
+    func fluidStateForString (statusString : String) -> FluidState {
+        
+        if(statusString == "dry") {
+            return FluidState.dry
+            
+        } else if(statusString == "sticky") {
+            return FluidState.sticky
+
+        } else if(statusString == "creamy") {
+            return FluidState.creamy
+            
+        } else if(statusString == "eggwhite") {
+            return FluidState.eggwhite
+            
+        } else {
+            return FluidState.noData
+        }
+        
+    }
+    
+    func positionStateForString (positionString : String) -> PositionState {
+        
+        if (positionString == "low/closed/firm") {
+            return PositionState.lowClosedFirm
+            
+        }else if(positionString == "high/open/soft") {
+            return PositionState.highOpenSoft
+            
+        }else{
+            return PositionState.noData
+        }
+        
+    }
+    
 }
