@@ -63,11 +63,19 @@ class PeriodPageViewController: WKInterfaceController {
         
     }
     
+    override func didDeactivate() {
+        super.didDeactivate()
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     override func handleUserActivity(context: [NSObject : AnyObject]!) {
         if(context != nil) {
             super.becomeCurrentPage()
         }
     }
+    
+    // Mark: Network
     
     func updatePeriodData(periodSelection: String, changeSelection: PeriodState) {
         
@@ -75,7 +83,7 @@ class PeriodPageViewController: WKInterfaceController {
         
         connectionManager.updateFertilityData (periodSelectionString, completion: { (success, error) -> () in
             
-            if(error === nil) {
+            if(error == nil) {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.updateScreen()
                 })
@@ -84,7 +92,14 @@ class PeriodPageViewController: WKInterfaceController {
         })
     }
     
+    // Mark: Appearance
+    
     func updateScreenForNotLoggedIn () {
+        
+        self.periodSelectionLabel.setText("Please, log in.")
+        self.periodSelectionLabel.setTextColor(UIColor.lightGrayColor())
+        
+        self.periodSelectedState = PeriodState.noData
         
     }
     
@@ -100,50 +115,50 @@ class PeriodPageViewController: WKInterfaceController {
             
             case self.periodSelectedState:
                 
+                self.periodSelectedState = PeriodState.noData
                 self.periodSelectionLabel.setText("Select")
                 self.periodSelectionLabel.setTextColor(UIColor.lightGrayColor())
-                self.periodSelectedState = PeriodState.noData
-                
+            
             case PeriodState.none:
                 
+                self.periodSelectedState = PeriodState.none
                 self.periodSelectionLabel.setText("None")
                 self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
-                self.periodSelectedState = PeriodState.none
                 self.animateGroupSelection(self.periodSelectNoneGroup)
                 
             case PeriodState.spotting:
                 
+                self.periodSelectedState = PeriodState.spotting
                 self.periodSelectionLabel.setText("Spotting")
                 self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
-                self.periodSelectedState = PeriodState.spotting
                 self.animateGroupSelection(self.periodSelectSpottingGroup)
                 
             case PeriodState.light:
-                
+            
+                self.periodSelectedState = PeriodState.light
                 self.periodSelectionLabel.setText("Light")
                 self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
-                self.periodSelectedState = PeriodState.light
                 self.animateGroupSelection(self.periodSelectLightGroup)
                 
             case PeriodState.medium:
                 
+                self.periodSelectedState = PeriodState.medium
                 self.periodSelectionLabel.setText("Medium")
                 self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
-                self.periodSelectedState = PeriodState.medium
                 self.animateGroupSelection(self.periodSelectMediumGroup)
                 
             case PeriodState.heavy:
                 
+                self.periodSelectedState = PeriodState.heavy
                 self.periodSelectionLabel.setText("Heavy")
                 self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
-                self.periodSelectedState = PeriodState.heavy
                 self.animateGroupSelection(self.periodSelectHeavyGroup)
                 
             default:
                 
+                self.periodSelectedState = PeriodState.noData
                 self.periodSelectionLabel.setText("Select")
                 self.periodSelectionLabel.setTextColor(UIColor.lightGrayColor())
-                self.periodSelectedState = PeriodState.noData
         }
         
     }
@@ -162,6 +177,8 @@ class PeriodPageViewController: WKInterfaceController {
         buttonGroup.setBackgroundImageNamed("Comp 1_")
         buttonGroup.startAnimatingWithImagesInRange(NSRange(location: 0, length: 29), duration: 1, repeatCount: 1)
     }
+    
+    // Mark: IBAction's
 
     @IBAction func didSelectPeriodNone() {
         

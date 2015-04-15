@@ -60,6 +60,14 @@ class FluidPageViewController: WKInterfaceController {
         
     }
     
+    override func didDeactivate() {
+        super.didDeactivate()
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    // Mark: Network
+    
     func updateFluidData(fluidSelection: String, changeSelection: FluidState) {
         
         let fluidSelectionString = "day[date]=\(todayDate)&day[cervical_fluid]="+fluidSelection
@@ -70,6 +78,8 @@ class FluidPageViewController: WKInterfaceController {
             }
         })
     }
+    
+    // Mark: Appearance
     
     func updateScreenForNotLoggedIn() {
         
@@ -134,6 +144,8 @@ class FluidPageViewController: WKInterfaceController {
         buttonGroup.setBackgroundImageNamed("Comp 1_")
         buttonGroup.startAnimatingWithImagesInRange(NSRange(location: 0, length: 29), duration: 1, repeatCount: 1)
     }
+    
+    // Mark: IBAction's
     
     @IBAction func didSelectFluidDry() {
         

@@ -49,6 +49,14 @@ class PositionPageViewController: WKInterfaceController {
         
     }
     
+    override func didDeactivate() {
+        super.didDeactivate()
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    // Mark: Network
+    
     func updatePositionData(positionSelection: String, changeSelection: PositionState) {
         
         let positionSelectionString = "day[date]=\(todayDate)&day[cervical_position]="+positionSelection
@@ -60,6 +68,8 @@ class PositionPageViewController: WKInterfaceController {
             }
         })
     }
+    
+    // Mark: Appearance
     
     func updateScreenForNotLoggedIn () {
         
@@ -109,6 +119,8 @@ class PositionPageViewController: WKInterfaceController {
         buttonGroup.setBackgroundImageNamed("Comp 1_")
         buttonGroup.startAnimatingWithImagesInRange(NSRange(location: 0, length: 29), duration: 1, repeatCount: 1)
     }
+    
+    // Mark: IBAction's
     
     @IBAction func didSelectPositionLowClosedFirm() {
         

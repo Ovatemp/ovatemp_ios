@@ -44,22 +44,23 @@ class InterfaceController: WKInterfaceController {
     }
 
     override func willActivate() {
-
         super.willActivate()
-        
         
     }
     
     override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     // MARK: Appearance
     
     func updateScreenForNotLoggedIn (){
         
-        // Please log in, etc...
+        self.fertilityStatusLabel.setAttributedText(self.attributedString("Please log in."))
+        self.fertilityStatusInfoLabel.setText(nil)
+        self.fertilityStatusGroup.setBackgroundImage(nil)
         
     }
     

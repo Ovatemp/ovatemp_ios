@@ -381,27 +381,31 @@ public class ConnectionManager {
     
     public func updateFertilityData(data: String, completion: UpdateCompletionBlock) {
         
-        let todayDate = NSDate()
-        
-        let urlString = "\(baseUrl)/days/"
-        let URL: NSURL = NSURL(string: urlString)!
-        
-        let request = NSMutableURLRequest(URL: URL)
-        request.HTTPMethod = "PUT"
-        
-        var putData = data+"&token=09dfc3dd91409fc838d8180b777cf2ea&&device_id=58504179-52EC-4298-B276-E20053D7393C"
-        request.HTTPBody = putData.dataUsingEncoding(NSUTF8StringEncoding)
-        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField:"Content-Type")
-        
-        let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+        if let userToken = Session.retrieveUserTokenFromDefaults(), deviceId = Session.retrieveDeviceIdFromDefaults() {
             
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                completion(success: true, error: error)
+            let todayDate = NSDate()
+            
+            let urlString = "\(baseUrl)/days/"
+            let URL: NSURL = NSURL(string: urlString)!
+            
+            let request = NSMutableURLRequest(URL: URL)
+            request.HTTPMethod = "PUT"
+            
+            var putData = "\(data)&token=\(userToken)&device_id=\(deviceId)"
+            request.HTTPBody = putData.dataUsingEncoding(NSUTF8StringEncoding)
+            request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField:"Content-Type")
+            
+            let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completion(success: true, error: error)
+                })
+                
             })
             
-        })
-        
-        task.resume()
+            task.resume()
+            
+        }
         
     }
     
