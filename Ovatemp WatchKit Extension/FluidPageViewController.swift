@@ -36,7 +36,7 @@ class FluidPageViewController: WKInterfaceController {
     
     var fluidSelectedState = FluidState.noData
     
-    let connectionManager = ConnectionManager()
+    let connectionManager = ConnectionManager.sharedInstance
     
     var selectedDay : Day {
         return connectionManager.selectedDay

@@ -16,7 +16,7 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet weak var fertilityStatusLabel: WKInterfaceLabel!
     @IBOutlet weak var fertilityStatusInfoLabel: WKInterfaceLabel!
 
-    let connectionManager = ConnectionManager()
+    let connectionManager = ConnectionManager.sharedInstance
 
     var selectedDay : Day {
         return connectionManager.selectedDay

@@ -25,7 +25,7 @@ class PositionPageViewController: WKInterfaceController {
     
     var positionSelectedState = PositionState.noData
     
-    let connectionManager = ConnectionManager()
+    let connectionManager = ConnectionManager.sharedInstance
     
     var selectedDay : Day {
         return connectionManager.selectedDay

@@ -29,7 +29,7 @@ public class Day {
     init(response : Dictionary<String, AnyObject>?, peakDate : NSDate?) {
         
         if let tempResponse = response {
-            
+                        
             date = tempResponse["date"] as? String
             
             cyclePhase = tempResponse["cycle_phase"] as? String
