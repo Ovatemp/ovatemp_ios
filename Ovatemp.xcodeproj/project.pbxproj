@@ -29,6 +29,8 @@
 		06712ED51ADC65CB007CEEF3 /* PushNotificationPayload.apns in Resources */ = {isa = PBXBuildFile; fileRef = 06712ECA1ADC65CA007CEEF3 /* PushNotificationPayload.apns */; };
 		06712ED71ADD8475007CEEF3 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06712ED61ADD8475007CEEF3 /* GameKit.framework */; };
 		067BCE0E1AD5C9D100F0BDE6 /* TransparentSwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 067BCE0D1AD5C9D100F0BDE6 /* TransparentSwipeView.m */; };
+		068FD21E1ADEC7BA00E080C6 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068FD21D1ADEC7BA00E080C6 /* Session.swift */; };
+		068FD2201ADED46E00E080C6 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068FD21F1ADED46E00E080C6 /* Day.swift */; };
 		0692216E1AC0AF350004B850 /* ILCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0692216D1AC0AF350004B850 /* ILCalendarViewController.m */; };
 		069221711AC0CD530004B850 /* ILCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 069221701AC0CD530004B850 /* ILCalendarCell.m */; };
 		0697E9651AC5E77300AD8255 /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0697E9641AC5E77300AD8255 /* TelerikUI.framework */; };
@@ -422,6 +424,8 @@
 		06712ED61ADD8475007CEEF3 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		067BCE0C1AD5C9D100F0BDE6 /* TransparentSwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentSwipeView.h; sourceTree = "<group>"; };
 		067BCE0D1AD5C9D100F0BDE6 /* TransparentSwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransparentSwipeView.m; sourceTree = "<group>"; };
+		068FD21D1ADEC7BA00E080C6 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		068FD21F1ADED46E00E080C6 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		0692216C1AC0AF340004B850 /* ILCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCalendarViewController.h; sourceTree = "<group>"; };
 		0692216D1AC0AF350004B850 /* ILCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCalendarViewController.m; sourceTree = "<group>"; };
 		0692216F1AC0CD530004B850 /* ILCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCalendarCell.h; sourceTree = "<group>"; };
@@ -1069,6 +1073,8 @@
 				06712EC21ADC65CA007CEEF3 /* GlanceController.swift */,
 				06712EC61ADC65CA007CEEF3 /* NotificationController.swift */,
 				06712EC01ADC65CA007CEEF3 /* ConnectionManager.swift */,
+				068FD21D1ADEC7BA00E080C6 /* Session.swift */,
+				068FD21F1ADED46E00E080C6 /* Day.swift */,
 				06712EC31ADC65CA007CEEF3 /* Images.xcassets */,
 				06712EC41ADC65CA007CEEF3 /* Info.plist */,
 				06712ECA1ADC65CA007CEEF3 /* PushNotificationPayload.apns */,
@@ -2279,6 +2285,8 @@
 				06712ECC1ADC65CA007CEEF3 /* FluidPageViewController.swift in Sources */,
 				06712ED41ADC65CB007CEEF3 /* PositionPageViewController.swift in Sources */,
 				06712ED01ADC65CB007CEEF3 /* InterfaceController.swift in Sources */,
+				068FD21E1ADEC7BA00E080C6 /* Session.swift in Sources */,
+				068FD2201ADED46E00E080C6 /* Day.swift in Sources */,
 				06712ECB1ADC65CA007CEEF3 /* ConnectionManager.swift in Sources */,
 				06712ED31ADC65CB007CEEF3 /* PeriodPageViewController.swift in Sources */,
 				06712ECD1ADC65CA007CEEF3 /* GlanceController.swift in Sources */,
@@ -3317,6 +3325,7 @@
 				06712EB31ADC6064007CEEF3 /* Production_Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Staging_Release;
 		};
 		06712EB51ADC6064007CEEF3 /* Build configuration list for PBXNativeTarget "Ovatemp WatchKit Extension" */ = {
 			isa = XCConfigurationList;
@@ -3327,6 +3336,7 @@
 				06712EAF1ADC6064007CEEF3 /* Production_Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Staging_Release;
 		};
 		C36C50F6189028190053A884 /* Build configuration list for PBXProject "Ovatemp" */ = {
 			isa = XCConfigurationList;

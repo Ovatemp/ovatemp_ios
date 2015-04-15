@@ -10,15 +10,11 @@
             <objects>
                 <controller title="Ovatemp" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Ovatemp_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <group width="1" alignment="left" verticalAlignment="bottom" id="Lmp-Zu-6Ob">
+                        <group width="0.90000000000000002" height="143" alignment="center" verticalAlignment="center" contentMode="center" layout="vertical" id="qkq-AY-5UZ">
                             <items>
-                                <label width="1" alignment="center" verticalAlignment="center" text="Enter your daily info" textAlignment="center" id="APn-ef-dOv">
-                                    <fontDescription key="font" type="system" pointSize="11"/>
+                                <label width="136" height="11" alignment="center" verticalAlignment="center" text="12/12/12" textAlignment="center" id="SM3-op-eU7">
+                                    <fontDescription key="font" type="system" weight="light" pointSize="12"/>
                                 </label>
-                            </items>
-                        </group>
-                        <group width="0.90000000000000002" height="0.90000000000000002" alignment="center" verticalAlignment="center" contentMode="center" layout="vertical" id="qkq-AY-5UZ">
-                            <items>
                                 <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="2" id="Tr6-gr-rLy">
                                     <fontDescription key="font" type="boldSystem" pointSize="22"/>
                                 </label>
@@ -27,8 +23,16 @@
                                 </label>
                             </items>
                         </group>
+                        <group width="1" alignment="left" verticalAlignment="bottom" id="Lmp-Zu-6Ob">
+                            <items>
+                                <label width="1" alignment="center" verticalAlignment="center" text="Enter your daily info" textAlignment="center" id="APn-ef-dOv">
+                                    <fontDescription key="font" type="system" pointSize="11"/>
+                                </label>
+                            </items>
+                        </group>
                     </items>
                     <connections>
+                        <outlet property="dateLabel" destination="SM3-op-eU7" id="WWg-eK-hv3"/>
                         <outlet property="fertilityStatusGroup" destination="qkq-AY-5UZ" id="nUi-T1-7K1"/>
                         <outlet property="fertilityStatusInfoLabel" destination="hPG-OA-qgE" id="QQt-IM-HWj"/>
                         <outlet property="fertilityStatusLabel" destination="Tr6-gr-rLy" id="MeZ-BD-frt"/>
@@ -36,14 +40,17 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="235" y="347"/>
+            <point key="canvasLocation" x="235" y="354"/>
         </scene>
         <!--Period-->
         <scene sceneID="JcD-pM-Ld5">
             <objects>
                 <controller identifier="periodPageView" title="Period" id="UyJ-mT-fSB" customClass="PeriodPageViewController" customModule="Ovatemp_WatchKit_Extension">
                     <items>
-                        <group width="146" height="60" alignment="center" verticalAlignment="center" id="Z8Z-9x-cIJ">
+                        <label height="22" alignment="center" text="Select" id="Oge-90-VKO">
+                            <fontDescription key="font" type="boldSystem" pointSize="15"/>
+                        </label>
+                        <group width="146" height="70" alignment="center" id="Z8Z-9x-cIJ">
                             <items>
                                 <group alignment="left" verticalAlignment="center" backgroundImage="Comp 1_0" id="ON3-k0-Fli">
                                     <items>
@@ -75,7 +82,7 @@
                             </items>
                             <variation key="device=watch38mm" height="50" width="126"/>
                         </group>
-                        <group width="94" alignment="center" verticalAlignment="center" id="y0G-bq-RPo">
+                        <group width="110" alignment="center" id="y0G-bq-RPo">
                             <items>
                                 <group alignment="left" verticalAlignment="center" backgroundImage="Comp 1_0" id="VPC-73-smX">
                                     <items>
@@ -96,7 +103,7 @@
                                     </items>
                                 </group>
                             </items>
-                            <variation key="device=watch38mm" width="82"/>
+                            <variation key="device=watch38mm" width="100"/>
                         </group>
                     </items>
                     <connections>
@@ -110,18 +117,22 @@
                         <outlet property="periodSelectNoneGroup" destination="ON3-k0-Fli" id="Kum-2K-5Bq"/>
                         <outlet property="periodSelectSpottingButton" destination="k2U-Rd-gYQ" id="5Tc-dV-d2e"/>
                         <outlet property="periodSelectSpottingGroup" destination="QL4-Ek-6Ka" id="zJ7-hi-Dth"/>
+                        <outlet property="periodSelectionLabel" destination="Oge-90-VKO" id="oZB-kM-0Hh"/>
                         <segue destination="9NZ-qY-wrT" kind="relationship" relationship="nextPage" id="nac-3o-tjg"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="469" y="348"/>
+            <point key="canvasLocation" x="469" y="349"/>
         </scene>
         <!--Cerv. Fluid-->
         <scene sceneID="DAS-h6-YV7">
             <objects>
                 <controller identifier="fluidPageView" title="Cerv. Fluid" id="9NZ-qY-wrT" customClass="FluidPageViewController" customModule="Ovatemp_WatchKit_Extension">
                     <items>
-                        <group width="110" height="70" alignment="center" verticalAlignment="center" id="z0Q-Ex-WLT">
+                        <label height="22" alignment="center" text="Select" id="log-57-uHU">
+                            <fontDescription key="font" type="boldSystem" pointSize="15"/>
+                        </label>
+                        <group width="110" height="70" alignment="center" id="z0Q-Ex-WLT">
                             <items>
                                 <group alignment="left" verticalAlignment="center" backgroundImage="Comp 1_0" id="IkI-t5-6JS">
                                     <items>
@@ -144,7 +155,7 @@
                             </items>
                             <variation key="device=watch38mm" height="50" width="100"/>
                         </group>
-                        <group width="110" height="70" alignment="center" verticalAlignment="center" id="tUa-IV-KGv">
+                        <group width="110" alignment="center" id="tUa-IV-KGv">
                             <items>
                                 <group alignment="left" verticalAlignment="center" backgroundImage="Comp 1_0" id="eKp-LX-bbJ">
                                     <items>
@@ -165,7 +176,7 @@
                                     </items>
                                 </group>
                             </items>
-                            <variation key="device=watch38mm" height="50" width="100"/>
+                            <variation key="device=watch38mm" width="100"/>
                         </group>
                     </items>
                     <connections>
@@ -177,17 +188,21 @@
                         <outlet property="fluidSelectEggwhiteGroup" destination="rOc-fr-JgT" id="44K-rW-cNq"/>
                         <outlet property="fluidSelectStickyButton" destination="xHx-Y2-dIs" id="8ww-Fw-uzv"/>
                         <outlet property="fluidSelectStickyGroup" destination="eFC-p5-RoZ" id="wXC-YJ-85K"/>
+                        <outlet property="fluidSelectionLabel" destination="log-57-uHU" id="Ncn-jI-7US"/>
                         <segue destination="h42-zn-QXN" kind="relationship" relationship="nextPage" id="UDM-vB-Bsf"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="704" y="347"/>
+            <point key="canvasLocation" x="704" y="349"/>
         </scene>
         <!--Cerv. Position-->
         <scene sceneID="otn-Th-S2f">
             <objects>
                 <controller identifier="positionPageController" title="Cerv. Position" id="h42-zn-QXN" customClass="PositionPageViewController" customModule="Ovatemp_WatchKit_Extension">
                     <items>
+                        <label alignment="center" text="Select" id="uYy-U7-W9D">
+                            <fontDescription key="font" type="boldSystem" pointSize="16"/>
+                        </label>
                         <group width="110" alignment="center" verticalAlignment="center" id="5kC-Qe-051">
                             <items>
                                 <group alignment="left" verticalAlignment="center" backgroundImage="Comp 1_0" id="6Up-fO-O3Y">
@@ -217,10 +232,11 @@
                         <outlet property="positionSelectHighOpenSoftGroup" destination="dRA-Uf-Esi" id="OEo-JN-wdh"/>
                         <outlet property="positionSelectLowClosedFirmButton" destination="LZF-V1-vU6" id="HPw-MV-2en"/>
                         <outlet property="positionSelectLowClosedFirmGroup" destination="6Up-fO-O3Y" id="99f-A9-fd2"/>
+                        <outlet property="positionSelectionLabel" destination="uYy-U7-W9D" id="moV-Xy-GDy"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="953" y="347"/>
+            <point key="canvasLocation" x="950" y="349"/>
         </scene>
         <!--Glance Interface Controller-->
         <scene sceneID="BOz-TT-tkC">
@@ -244,7 +260,7 @@
                     </connections>
                 </glanceController>
             </objects>
-            <point key="canvasLocation" x="235" y="672"/>
+            <point key="canvasLocation" x="235" y="753"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

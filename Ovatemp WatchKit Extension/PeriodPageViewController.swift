@@ -41,30 +41,111 @@ class PeriodPageViewController: WKInterfaceController {
     
     let connectionManager = ConnectionManager()
     
+    var selectedDay : Day {
+        return connectionManager.selectedDay
+    }
+    
     var todayDate : String = ""
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale.systemLocale()
-        dateFormatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ssZZZ"
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateScreen", name: "SelectedDayUpdate", object: nil)
+    }
+    
+    override func willActivate() {
         
-        self.todayDate = dateFormatter.stringFromDate(NSDate())
-        
-        // Configure interface objects here.
-        connectionManager.requestPeriodStatus { (status, error) -> () in
-            
-            self.updatePeriodButtons(status)
+        if Session.isCurrentUserLoggedIn(){
+            updateScreen()
+        }else{
+            updateScreenForNotLoggedIn()
         }
+        
     }
     
     override func handleUserActivity(context: [NSObject : AnyObject]!) {
-        
         if(context != nil) {
-            
             super.becomeCurrentPage()
         }
+    }
+    
+    func updatePeriodData(periodSelection: String, changeSelection: PeriodState) {
+        
+        let periodSelectionString = "day[date]=\(todayDate)&day[period]="+periodSelection
+        
+        connectionManager.updateFertilityData (periodSelectionString, completion: { (success, error) -> () in
+            
+            if(error === nil) {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.updateScreen()
+                })
+            }
+            
+        })
+    }
+    
+    func updateScreenForNotLoggedIn () {
+        
+    }
+    
+    func updateScreen() {
+        
+        println("PERIOD CONTROLLER : UPDATE SCREEN")
+        
+        var changeSelection = selectedDay.periodStateForDay()
+        
+        self.resetButtonImages()
+        
+        switch changeSelection {
+            
+            case self.periodSelectedState:
+                
+                self.periodSelectionLabel.setText("Select")
+                self.periodSelectionLabel.setTextColor(UIColor.lightGrayColor())
+                self.periodSelectedState = PeriodState.noData
+                
+            case PeriodState.none:
+                
+                self.periodSelectionLabel.setText("None")
+                self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
+                self.periodSelectedState = PeriodState.none
+                self.animateGroupSelection(self.periodSelectNoneGroup)
+                
+            case PeriodState.spotting:
+                
+                self.periodSelectionLabel.setText("Spotting")
+                self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
+                self.periodSelectedState = PeriodState.spotting
+                self.animateGroupSelection(self.periodSelectSpottingGroup)
+                
+            case PeriodState.light:
+                
+                self.periodSelectionLabel.setText("Light")
+                self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
+                self.periodSelectedState = PeriodState.light
+                self.animateGroupSelection(self.periodSelectLightGroup)
+                
+            case PeriodState.medium:
+                
+                self.periodSelectionLabel.setText("Medium")
+                self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
+                self.periodSelectedState = PeriodState.medium
+                self.animateGroupSelection(self.periodSelectMediumGroup)
+                
+            case PeriodState.heavy:
+                
+                self.periodSelectionLabel.setText("Heavy")
+                self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
+                self.periodSelectedState = PeriodState.heavy
+                self.animateGroupSelection(self.periodSelectHeavyGroup)
+                
+            default:
+                
+                self.periodSelectionLabel.setText("Select")
+                self.periodSelectionLabel.setTextColor(UIColor.lightGrayColor())
+                self.periodSelectedState = PeriodState.noData
+        }
+        
     }
     
     func resetButtonImages() {
@@ -77,10 +158,8 @@ class PeriodPageViewController: WKInterfaceController {
         
     }
     
-    func anitmateGroupSelection (buttonGroup: WKInterfaceGroup) {
-        
+    func animateGroupSelection (buttonGroup: WKInterfaceGroup) {
         buttonGroup.setBackgroundImageNamed("Comp 1_")
-        
         buttonGroup.startAnimatingWithImagesInRange(NSRange(location: 0, length: 29), duration: 1, repeatCount: 1)
     }
 
@@ -134,69 +213,6 @@ class PeriodPageViewController: WKInterfaceController {
             
             self.updatePeriodData("heavy", changeSelection: PeriodState.heavy)
         }
-    }
-    
-    func updatePeriodData(periodSelection: String, changeSelection: PeriodState) {
-        
-        let periodSelectionString = "day[date]=\(todayDate)&day[period]="+periodSelection
-        
-        connectionManager.updateFertilityData (periodSelectionString, completion: { (success, error) -> () in
-            
-            if(error === nil) {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.updatePeriodButtons(changeSelection)
-                })
-            }
-            
-        })
-    }
-    
-    func updatePeriodButtons(changeSelection: PeriodState) {
-        
-        self.resetButtonImages()
-        
-        switch changeSelection {
-            case self.periodSelectedState:
-                self.periodSelectionLabel.setText("Select")
-                self.periodSelectionLabel.setTextColor(UIColor.lightGrayColor())
-                self.periodSelectedState = PeriodState.noData
-                
-            case PeriodState.none:
-                self.periodSelectionLabel.setText("None")
-                self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
-                self.periodSelectedState = PeriodState.none
-                self.anitmateGroupSelection(self.periodSelectNoneGroup)
-                
-            case PeriodState.spotting:
-                self.periodSelectionLabel.setText("Spotting")
-                self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
-                self.periodSelectedState = PeriodState.spotting
-                self.anitmateGroupSelection(self.periodSelectSpottingGroup)
-                
-            case PeriodState.light:
-                self.periodSelectionLabel.setText("Light")
-                self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
-                self.periodSelectedState = PeriodState.light
-                self.anitmateGroupSelection(self.periodSelectLightGroup)
-                
-            case PeriodState.medium:
-                self.periodSelectionLabel.setText("Medium")
-                self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
-                self.periodSelectedState = PeriodState.medium
-                self.anitmateGroupSelection(self.periodSelectMediumGroup)
-                
-            case PeriodState.heavy:
-                self.periodSelectionLabel.setText("Heavy")
-                self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
-                self.periodSelectedState = PeriodState.heavy
-                self.anitmateGroupSelection(self.periodSelectHeavyGroup)
-                
-            default:
-                self.periodSelectionLabel.setText("Select")
-                self.periodSelectionLabel.setTextColor(UIColor.lightGrayColor())
-                self.periodSelectedState = PeriodState.noData
-        }
-        
     }
     
 }

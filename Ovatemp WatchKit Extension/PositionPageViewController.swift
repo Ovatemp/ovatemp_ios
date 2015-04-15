@@ -27,35 +27,86 @@ class PositionPageViewController: WKInterfaceController {
     
     let connectionManager = ConnectionManager()
     
+    var selectedDay : Day {
+        return connectionManager.selectedDay
+    }
+    
     var todayDate : String = ""
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale.systemLocale()
-        dateFormatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ssZZZ"
-        
-        self.todayDate = dateFormatter.stringFromDate(NSDate())
-        
-        // Configure interface objects here.
-        connectionManager.requestPositionStatus { (status, error) -> () in
-            
-            self.updatePositionButtons(status)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateScreen", name: "SelectedDayUpdate", object: nil)
+    }
+    
+    override func willActivate() {
+
+        if Session.isCurrentUserLoggedIn(){
+            updateScreen()
+        }else{
+            updateScreenForNotLoggedIn()
         }
         
     }
     
-    func resetButtonImages() {
+    func updatePositionData(positionSelection: String, changeSelection: PositionState) {
         
+        let positionSelectionString = "day[date]=\(todayDate)&day[cervical_position]="+positionSelection
+        
+        connectionManager.updateFertilityData (positionSelectionString, completion: { (success, error) -> () in
+            
+            if(error == nil) {
+                self.updateScreen()
+            }
+        })
+    }
+    
+    func updateScreenForNotLoggedIn () {
+        
+    }
+    
+    func updateScreen() {
+        
+        println("POSITION CONTROLLER : UPDATE SCREEN")
+        
+        let positionState = selectedDay.positionStateForDay()
+        
+        self.resetButtonImages()
+        
+        switch positionState {
+            
+            case self.positionSelectedState:
+                self.positionSelectionLabel.setText("Select")
+                self.positionSelectionLabel.setTextColor(UIColor.lightGrayColor())
+                self.positionSelectedState = PositionState.noData
+                
+            case PositionState.lowClosedFirm:
+                self.positionSelectionLabel.setText("Low/Closed/Firm")
+                self.positionSelectionLabel.setTextColor(UIColor.whiteColor())
+                self.animateGroupSelection(self.positionSelectLowClosedFirmGroup)
+                self.positionSelectedState = PositionState.lowClosedFirm
+                
+            case PositionState.highOpenSoft:
+                self.positionSelectionLabel.setText("High/Open/Soft")
+                self.positionSelectionLabel.setTextColor(UIColor.whiteColor())
+                self.animateGroupSelection(self.positionSelectHighOpenSoftGroup)
+                self.positionSelectedState = PositionState.highOpenSoft
+                
+            default:
+                self.positionSelectionLabel.setText("Select")
+                self.positionSelectionLabel.setTextColor(UIColor.lightGrayColor())
+                self.positionSelectedState = PositionState.noData
+            
+        }
+    }
+    
+    func resetButtonImages() {
         self.positionSelectLowClosedFirmGroup.setBackgroundImageNamed("Comp 1_0")
         self.positionSelectHighOpenSoftGroup.setBackgroundImageNamed("Comp 1_0")
     }
     
-    func anitmateGroupSelection (buttonGroup: WKInterfaceGroup) {
-        
+    func animateGroupSelection (buttonGroup: WKInterfaceGroup) {
         buttonGroup.setBackgroundImageNamed("Comp 1_")
-        
         buttonGroup.startAnimatingWithImagesInRange(NSRange(location: 0, length: 29), duration: 1, repeatCount: 1)
     }
     
@@ -80,48 +131,5 @@ class PositionPageViewController: WKInterfaceController {
             self.updatePositionData("high/open/soft", changeSelection: PositionState.highOpenSoft)
         }
     }
-    
-    
-    func updatePositionData(positionSelection: String, changeSelection: PositionState) {
-        
-        let positionSelectionString = "day[date]=\(todayDate)&day[cervical_position]="+positionSelection
-        
-        connectionManager.updateFertilityData (positionSelectionString, completion: { (success, error) -> () in
-            
-            if(error == nil) {
-                
-                self.updatePositionButtons(changeSelection)
-            }
-        })
-    }
-    
-    func updatePositionButtons(changeSelection: PositionState) {
-        
-        self.resetButtonImages()
-        
-        switch changeSelection {
-            
-        case self.positionSelectedState:
-            self.positionSelectionLabel.setText("Select")
-            self.positionSelectionLabel.setTextColor(UIColor.lightGrayColor())
-            self.positionSelectedState = PositionState.noData
-            
-        case PositionState.lowClosedFirm:
-            self.positionSelectionLabel.setText("Low/Closed/Firm")
-            self.positionSelectionLabel.setTextColor(UIColor.whiteColor())
-            self.anitmateGroupSelection(self.positionSelectLowClosedFirmGroup)
-            self.positionSelectedState = PositionState.lowClosedFirm
-            
-        case PositionState.highOpenSoft:
-            self.positionSelectionLabel.setText("High/Open/Soft")
-            self.positionSelectionLabel.setTextColor(UIColor.whiteColor())
-            self.anitmateGroupSelection(self.positionSelectHighOpenSoftGroup)
-            self.positionSelectedState = PositionState.highOpenSoft
-            
-        default:
-            self.positionSelectionLabel.setText("Select")
-            self.positionSelectionLabel.setTextColor(UIColor.lightGrayColor())
-            self.positionSelectedState = PositionState.noData
-        }
-    }
+
 }

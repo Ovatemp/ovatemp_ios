@@ -38,21 +38,86 @@ class FluidPageViewController: WKInterfaceController {
     
     let connectionManager = ConnectionManager()
     
+    var selectedDay : Day {
+        return connectionManager.selectedDay
+    }
+    
     var todayDate : String = ""
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale.systemLocale()
-        dateFormatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ssZZZ"
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateScreen", name: "SelectedDayUpdate", object: nil)
+    }
+    
+    override func willActivate() {
         
-        self.todayDate = dateFormatter.stringFromDate(NSDate())
+        if Session.isCurrentUserLoggedIn(){
+            updateScreen()
+        }else{
+            updateScreenForNotLoggedIn()
+        }
         
-        // Configure interface objects here.
-        connectionManager.requestFluidStatus { (status, error) -> () in
-            
-            self.updateFluidButtons(status)
+    }
+    
+    func updateFluidData(fluidSelection: String, changeSelection: FluidState) {
+        
+        let fluidSelectionString = "day[date]=\(todayDate)&day[cervical_fluid]="+fluidSelection
+        
+        connectionManager.updateFertilityData (fluidSelectionString, completion: { (success, error) -> () in
+            if(error == nil) {
+                self.updateScreen()
+            }
+        })
+    }
+    
+    func updateScreenForNotLoggedIn() {
+        
+    }
+    
+    func updateScreen() {
+        
+        println("FLUID CONTROLLER : UPDATE SCREEN")
+        
+        let fluidState = selectedDay.fluidStateForDay()
+        
+        self.resetButtonImages()
+        
+        switch fluidState {
+
+            case self.fluidSelectedState:
+                self.fluidSelectionLabel.setText("Select")
+                self.fluidSelectionLabel.setTextColor(UIColor.lightGrayColor())
+                self.fluidSelectedState = FluidState.noData
+                
+            case FluidState.dry:
+                self.fluidSelectionLabel.setText("Dry")
+                self.fluidSelectionLabel.setTextColor(UIColor.whiteColor())
+                self.anitmateGroupSelection(self.fluidSelectDryGroup)
+                self.fluidSelectedState = FluidState.dry
+                
+            case FluidState.sticky:
+                self.fluidSelectionLabel.setText("Sticky")
+                self.fluidSelectionLabel.setTextColor(UIColor.whiteColor())
+                self.anitmateGroupSelection(self.fluidSelectStickyGroup)
+                self.fluidSelectedState = FluidState.sticky
+                
+            case FluidState.creamy:
+                self.fluidSelectionLabel.setText("Creamy")
+                self.fluidSelectionLabel.setTextColor(UIColor.whiteColor())
+                self.anitmateGroupSelection(self.fluidSelectCreamyGroup)
+                self.fluidSelectedState = FluidState.creamy
+                
+            case FluidState.eggwhite:
+                self.fluidSelectionLabel.setText("Eggwhite")
+                self.fluidSelectionLabel.setTextColor(UIColor.whiteColor())
+                self.anitmateGroupSelection(self.fluidSelectEggwhiteGroup)
+                self.fluidSelectedState = FluidState.eggwhite
+                
+            default:
+                self.fluidSelectionLabel.setText("Select")
+                self.fluidSelectionLabel.setTextColor(UIColor.lightGrayColor())
+                self.fluidSelectedState = FluidState.noData
         }
     }
     
@@ -62,12 +127,11 @@ class FluidPageViewController: WKInterfaceController {
         self.fluidSelectStickyGroup.setBackgroundImageNamed("Comp 1_0")
         self.fluidSelectCreamyGroup.setBackgroundImageNamed("Comp 1_0")
         self.fluidSelectEggwhiteGroup.setBackgroundImageNamed("Comp 1_0")
+        
     }
     
     func anitmateGroupSelection (buttonGroup: WKInterfaceGroup) {
-        
         buttonGroup.setBackgroundImageNamed("Comp 1_")
-        
         buttonGroup.startAnimatingWithImagesInRange(NSRange(location: 0, length: 29), duration: 1, repeatCount: 1)
     }
     
@@ -115,58 +179,4 @@ class FluidPageViewController: WKInterfaceController {
         }
     }
     
-    func updateFluidData(fluidSelection: String, changeSelection: FluidState) {
-        
-        let fluidSelectionString = "day[date]=\(todayDate)&day[cervical_fluid]="+fluidSelection
-        
-        connectionManager.updateFertilityData (fluidSelectionString, completion: { (success, error) -> () in
-            
-            if(error == nil) {
-                
-                self.updateFluidButtons(changeSelection)
-            }
-        })
-    }
-    
-    func updateFluidButtons(changeSelection: FluidState) {
-        
-        self.resetButtonImages()
-        
-        switch changeSelection {
-            
-        case self.fluidSelectedState:
-            self.fluidSelectionLabel.setText("Select")
-            self.fluidSelectionLabel.setTextColor(UIColor.lightGrayColor())
-            self.fluidSelectedState = FluidState.noData
-            
-        case FluidState.dry:
-            self.fluidSelectionLabel.setText("Dry")
-            self.fluidSelectionLabel.setTextColor(UIColor.whiteColor())
-            self.anitmateGroupSelection(self.fluidSelectDryGroup)
-            self.fluidSelectedState = FluidState.dry
-            
-        case FluidState.sticky:
-            self.fluidSelectionLabel.setText("Sticky")
-            self.fluidSelectionLabel.setTextColor(UIColor.whiteColor())
-            self.anitmateGroupSelection(self.fluidSelectStickyGroup)
-            self.fluidSelectedState = FluidState.sticky
-            
-        case FluidState.creamy:
-            self.fluidSelectionLabel.setText("Creamy")
-            self.fluidSelectionLabel.setTextColor(UIColor.whiteColor())
-            self.anitmateGroupSelection(self.fluidSelectCreamyGroup)
-            self.fluidSelectedState = FluidState.creamy
-            
-        case FluidState.eggwhite:
-            self.fluidSelectionLabel.setText("Eggwhite")
-            self.fluidSelectionLabel.setTextColor(UIColor.whiteColor())
-            self.anitmateGroupSelection(self.fluidSelectEggwhiteGroup)
-            self.fluidSelectedState = FluidState.eggwhite
-            
-        default:
-            self.fluidSelectionLabel.setText("Select")
-            self.fluidSelectionLabel.setTextColor(UIColor.lightGrayColor())
-            self.fluidSelectedState = FluidState.noData
-        }
-    }
 }
