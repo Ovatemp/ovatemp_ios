@@ -11,6 +11,7 @@
 		0619A97F1AA4E32A000F31E6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */; };
 		063942331AD71B8B00BE7605 /* ONDOSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 063942311AD71B8B00BE7605 /* ONDOSettingViewController.m */; };
 		063942341AD71B8B00BE7605 /* ONDOSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 063942321AD71B8B00BE7605 /* ONDOSettingViewController.xib */; };
+		063CB2631AE1C131005F2D3A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063CB2621AE1C131005F2D3A /* Constants.swift */; };
 		06712E9E1ADC6064007CEEF3 /* Ovatemp WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 06712E9D1ADC6064007CEEF3 /* Ovatemp WatchKit App.app */; };
 		06712EAB1ADC6064007CEEF3 /* Ovatemp WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 06712E8E1ADC6064007CEEF3 /* Ovatemp WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		06712EBC1ADC655B007CEEF3 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06712EB81ADC655B007CEEF3 /* Interface.storyboard */; };
@@ -405,6 +406,7 @@
 		063942301AD71B8B00BE7605 /* ONDOSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONDOSettingViewController.h; sourceTree = "<group>"; };
 		063942311AD71B8B00BE7605 /* ONDOSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONDOSettingViewController.m; sourceTree = "<group>"; };
 		063942321AD71B8B00BE7605 /* ONDOSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONDOSettingViewController.xib; sourceTree = "<group>"; };
+		063CB2621AE1C131005F2D3A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		06712E8E1ADC6064007CEEF3 /* Ovatemp WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Ovatemp WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06712E9D1ADC6064007CEEF3 /* Ovatemp WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ovatemp WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06712EB91ADC655B007CEEF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -1075,6 +1077,7 @@
 				06712EC01ADC65CA007CEEF3 /* ConnectionManager.swift */,
 				068FD21D1ADEC7BA00E080C6 /* Session.swift */,
 				068FD21F1ADED46E00E080C6 /* Day.swift */,
+				063CB2621AE1C131005F2D3A /* Constants.swift */,
 				06712EC31ADC65CA007CEEF3 /* Images.xcassets */,
 				06712EC41ADC65CA007CEEF3 /* Info.plist */,
 				06712ECA1ADC65CA007CEEF3 /* PushNotificationPayload.apns */,
@@ -2286,6 +2289,7 @@
 				06712ED41ADC65CB007CEEF3 /* PositionPageViewController.swift in Sources */,
 				06712ED01ADC65CB007CEEF3 /* InterfaceController.swift in Sources */,
 				068FD21E1ADEC7BA00E080C6 /* Session.swift in Sources */,
+				063CB2631AE1C131005F2D3A /* Constants.swift in Sources */,
 				068FD2201ADED46E00E080C6 /* Day.swift in Sources */,
 				06712ECB1ADC65CA007CEEF3 /* ConnectionManager.swift in Sources */,
 				06712ED31ADC65CB007CEEF3 /* PeriodPageViewController.swift in Sources */,
@@ -2528,6 +2532,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DProduction";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2638,6 +2643,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				OTHER_SWIFT_FLAGS = "-DProduction";
 				PROVISIONING_PROFILE = "52cc3447-96ed-4965-88e7-0a78829dca84";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3125,6 +3131,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DStaging";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3158,6 +3165,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				OTHER_SWIFT_FLAGS = "-DStaging";
 				PROVISIONING_PROFILE = "52cc3447-96ed-4965-88e7-0a78829dca84";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

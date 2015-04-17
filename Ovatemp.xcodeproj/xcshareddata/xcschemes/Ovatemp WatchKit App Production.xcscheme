@@ -54,7 +54,7 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Staging_Debug">
+      buildConfiguration = "Production_Debug">
       <Testables>
       </Testables>
       <MacroExpansion>
@@ -72,7 +72,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Staging_Debug"
+      buildConfiguration = "Production_Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES"
@@ -105,8 +105,9 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Staging_Release"
-      debugDocumentVersioning = "YES">
+      buildConfiguration = "Production_Release"
+      debugDocumentVersioning = "YES"
+      notificationPayloadFile = "Ovatemp WatchKit Extension/PushNotificationPayload.apns">
       <RemoteRunnable
          runnableDebuggingMode = "2"
          BundleIdentifier = "com.apple.springboard"
@@ -130,10 +131,10 @@
       </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Staging_Release">
+      buildConfiguration = "Production_Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Staging_Release"
+      buildConfiguration = "Production_Release"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

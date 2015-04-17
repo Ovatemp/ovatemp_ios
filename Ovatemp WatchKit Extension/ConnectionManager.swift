@@ -8,11 +8,6 @@
 
 import Foundation
 
-//public typealias StatusRequestCompletionBlock = (fertility: Fertility, error: NSError?) -> ()
-//public typealias PeriodStateRequestCompletionBlock = (status: PeriodState, error: NSError?) -> ()
-//public typealias FluidStateRequestCompletionBlock = (status: FluidState, error: NSError?) -> ()
-//public typealias PositionStateRequestCompletionBlock = (status: PositionState, error: NSError?) -> ()
-
 public typealias UpdateCompletionBlock = (success: Bool, error: NSError?) -> ()
 
 public enum FertilityStatus {
@@ -53,7 +48,6 @@ private let _ConnectionManagerSharedInstance = ConnectionManager()
 public class ConnectionManager {
     
     let session: NSURLSession
-    let baseUrl = "http://ovatemp-api-staging.herokuapp.com/api"
     
     var selectedDay : Day = Day(response: nil, peakDate: nil)
     var peakDate : NSDate?
@@ -77,7 +71,7 @@ public class ConnectionManager {
             let dateFormatter = createDateFormatter()
             let todayDate = todayDateString()
             
-            let urlString = "\(baseUrl)/cycles?date=\(todayDate)&&token=\(userToken)&&device_id=\(deviceId)"
+            let urlString = "\(gBaseUrl)/cycles?date=\(todayDate)&&token=\(userToken)&&device_id=\(deviceId)"
             let URL: NSURL = NSURL(string: urlString)!
             let request = NSMutableURLRequest(URL: URL)
             
@@ -93,7 +87,7 @@ public class ConnectionManager {
         
         if let userToken = Session.retrieveUserTokenFromDefaults(), deviceId = Session.retrieveDeviceIdFromDefaults() {
                         
-            let urlString = "\(baseUrl)/days/"
+            let urlString = "\(gBaseUrl)/days/"
             let URL: NSURL = NSURL(string: urlString)!
             
             let request = NSMutableURLRequest(URL: URL)
