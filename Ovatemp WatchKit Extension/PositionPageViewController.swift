@@ -23,15 +23,17 @@ class PositionPageViewController: WKInterfaceController {
     @IBOutlet weak var positionSelectHighOpenSoftButton: WKInterfaceButton!
     @IBOutlet weak var positionSelectHighOpenSoftGroup: WKInterfaceGroup!
     
-    var positionSelectedState = PositionState.noData
-    
     let connectionManager = ConnectionManager.sharedInstance
     
     var selectedDay : Day {
         return connectionManager.selectedDay
     }
     
-    var todayDate : String = ""
+    var todayDate : String? {
+        return selectedDay.date
+    }
+    
+    var selectedPositionState = PositionState.noData
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -42,7 +44,10 @@ class PositionPageViewController: WKInterfaceController {
     override func willActivate() {
 
         if Session.isCurrentUserLoggedIn(){
+            
+            selectedPositionState = selectedDay.positionStateForDay()
             updateScreen()
+            
         }else{
             updateScreenForNotLoggedIn()
         }
@@ -59,13 +64,15 @@ class PositionPageViewController: WKInterfaceController {
     
     func updatePositionData(positionSelection: String, changeSelection: PositionState) {
         
-        let positionSelectionString = "day[date]=\(todayDate)&day[cervical_position]="+positionSelection
+        let positionSelectionString = "day[date]=\(todayDate!)&day[cervical_position]="+positionSelection
         
         connectionManager.updateFertilityData (positionSelectionString, completion: { (success, error) -> () in
             
             if(error == nil) {
+                self.selectedPositionState = self.selectedDay.positionStateForDay()
                 self.updateScreen()
             }
+            
         })
     }
     
@@ -73,39 +80,37 @@ class PositionPageViewController: WKInterfaceController {
     
     func updateScreenForNotLoggedIn () {
         
+        resetButtonImages()
+        
+        positionSelectionLabel.setText("Please, log in.")
+        positionSelectionLabel.setTextColor(UIColor.lightGrayColor())
+        
     }
     
     func updateScreen() {
         
         println("POSITION CONTROLLER : UPDATE SCREEN")
         
-        let positionState = selectedDay.positionStateForDay()
-        
         self.resetButtonImages()
         
-        switch positionState {
+        switch selectedPositionState {
             
-            case self.positionSelectedState:
-                self.positionSelectionLabel.setText("Select")
-                self.positionSelectionLabel.setTextColor(UIColor.lightGrayColor())
-                self.positionSelectedState = PositionState.noData
-                
             case PositionState.lowClosedFirm:
+                
                 self.positionSelectionLabel.setText("Low/Closed/Firm")
                 self.positionSelectionLabel.setTextColor(UIColor.whiteColor())
                 self.animateGroupSelection(self.positionSelectLowClosedFirmGroup)
-                self.positionSelectedState = PositionState.lowClosedFirm
-                
+            
             case PositionState.highOpenSoft:
+                
                 self.positionSelectionLabel.setText("High/Open/Soft")
                 self.positionSelectionLabel.setTextColor(UIColor.whiteColor())
                 self.animateGroupSelection(self.positionSelectHighOpenSoftGroup)
-                self.positionSelectedState = PositionState.highOpenSoft
-                
+            
             default:
+                
                 self.positionSelectionLabel.setText("Select")
                 self.positionSelectionLabel.setTextColor(UIColor.lightGrayColor())
-                self.positionSelectedState = PositionState.noData
             
         }
     }
@@ -124,22 +129,20 @@ class PositionPageViewController: WKInterfaceController {
     
     @IBAction func didSelectPositionLowClosedFirm() {
         
-        if(positionSelectedState == PositionState.lowClosedFirm) {
-            
+        if(selectedPositionState == PositionState.lowClosedFirm) {
             self.updatePositionData("", changeSelection: PositionState.lowClosedFirm)
-        } else {
             
+        } else {
             self.updatePositionData("low/closed/firm", changeSelection: PositionState.lowClosedFirm)
         }
     }
     
     @IBAction func didSelectPositionHighOpenSoft() {
         
-        if(positionSelectedState == PositionState.highOpenSoft) {
-            
+        if(selectedPositionState == PositionState.highOpenSoft) {
             self.updatePositionData("", changeSelection: PositionState.highOpenSoft)
-        } else {
             
+        } else {
             self.updatePositionData("high/open/soft", changeSelection: PositionState.highOpenSoft)
         }
     }
