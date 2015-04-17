@@ -74,7 +74,7 @@ class FluidPageViewController: WKInterfaceController {
     
     func updateFluidData(fluidSelection: String, changeSelection: FluidState) {
         
-        let fluidSelectionString = "day[date]=\(todayDate)&day[cervical_fluid]="+fluidSelection
+        let fluidSelectionString = "day[date]=\(todayDate!)&day[cervical_fluid]="+fluidSelection
         
         connectionManager.updateFertilityData (fluidSelectionString, completion: { (success, error) -> () in
             
