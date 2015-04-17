@@ -12,8 +12,8 @@
                     <items>
                         <group width="0.90000000000000002" height="143" alignment="center" verticalAlignment="center" contentMode="center" layout="vertical" id="qkq-AY-5UZ">
                             <items>
-                                <label width="136" height="11" alignment="center" verticalAlignment="center" text="12/12/12" textAlignment="center" id="SM3-op-eU7">
-                                    <fontDescription key="font" type="system" weight="light" pointSize="12"/>
+                                <label width="136" height="11" alignment="center" verticalAlignment="center" textAlignment="center" id="SM3-op-eU7">
+                                    <fontDescription key="font" type="system" weight="light" pointSize="10"/>
                                 </label>
                                 <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="2" id="Tr6-gr-rLy">
                                     <fontDescription key="font" type="boldSystem" pointSize="22"/>
@@ -260,7 +260,7 @@
                     </connections>
                 </glanceController>
             </objects>
-            <point key="canvasLocation" x="235" y="753"/>
+            <point key="canvasLocation" x="235" y="711"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -283,7 +283,7 @@
             <objects>
                 <controller id="gdX-wl-uQE" customClass="NotificationController" customModule="Ovatemp_WatchKit_App" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="553" y="1001"/>
+            <point key="canvasLocation" x="469" y="1001"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.41960784313725491" green="0.83137254901960778" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>

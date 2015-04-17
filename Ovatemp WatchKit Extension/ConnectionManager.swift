@@ -92,9 +92,7 @@ public class ConnectionManager {
     public func updateFertilityData(data: String, completion: UpdateCompletionBlock) {
         
         if let userToken = Session.retrieveUserTokenFromDefaults(), deviceId = Session.retrieveDeviceIdFromDefaults() {
-            
-            let todayDate = NSDate()
-            
+                        
             let urlString = "\(baseUrl)/days/"
             let URL: NSURL = NSURL(string: urlString)!
             
@@ -128,23 +126,32 @@ public class ConnectionManager {
                     
                     let dateFormatter = self.createDateFormatter()
                     let todayDate = dateFormatter.stringFromDate(NSDate())
-                    let dayArray = responseDict["days"] as! NSArray
                     
-                    for day in dayArray {
+                    if let dayArray = responseDict["days"] as? [[String : AnyObject]] {
                         
-                        let dateInfo = day["date"] as? String
-                        let peakDate = dateFormatter.dateFromString(responseDict["peak_date"] as! String)
-                        
-                        if(dateInfo == todayDate) {
-                            self.selectedDay = Day(response: day as? Dictionary<String, AnyObject>, peakDate: peakDate)
-                            completion(success: true, error: nil)
+                        for day in dayArray {
+                            
+                            let dateInfo = day["date"] as? String
+                            let peakDate = dateFormatter.dateFromString(responseDict["peak_date"] as! String)
+                            
+                            if(dateInfo == todayDate) {
+                                self.selectedDay = Day(response: day, peakDate: peakDate)
+                                completion(success: true, error: nil)
+                                
+                                NSNotificationCenter.defaultCenter().postNotificationName("SelectedDayUpdate", object: self)
+                            }
                         }
+                        
+                    }else{
+                        println("CONNECTION MANAGER : RESPONSE ERROR : DAYS KEY MISSING")
+                        completion(success: false, error: nil)
                     }
                     
                 }else{
                     println("CONNECTION MANAGER : ERROR PARSING JSON: \(JSONError)")
                     completion(success: false, error: JSONError)
                 }
+                
             }else{
                 println("CONNECTION MANAGER : ERROR WITH REQUEST : \(error)")
                 completion(success: false, error: error)

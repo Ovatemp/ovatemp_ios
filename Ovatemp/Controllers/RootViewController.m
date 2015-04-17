@@ -219,16 +219,15 @@ static CGFloat const kDissolveDuration = 0.2;
 
 # pragma mark - Tab Controller Delegate Methods
 
-- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-    // When user presses Today tab, set date to today
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
     if(tabBarController.selectedIndex == 0) {
         [Calendar setDate:[NSDate date]];
     }
 }
 
-- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
     UIViewController* selected = [tabBarController selectedViewController];
-    if (viewController == selected) {
+    if (viewController == selected){
         // Don't reset to the root of the Coaching view's navigation controller
         if(tabBarController.selectedIndex == 2) {
             return NO;

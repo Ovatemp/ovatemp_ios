@@ -47,7 +47,7 @@ class PeriodPageViewController: WKInterfaceController {
         return selectedDay.date
     }
     
-    var periodSelectedState : PeriodState?
+    var selectedPeriodState : PeriodState = PeriodState.noData
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -58,8 +58,10 @@ class PeriodPageViewController: WKInterfaceController {
     override func willActivate() {
         
         if Session.isCurrentUserLoggedIn(){
-            periodSelectedState = selectedDay.periodStateForDay()
+            
+            selectedPeriodState = selectedDay.periodStateForDay()
             updateScreen()
+            
         }else{
             updateScreenForNotLoggedIn()
         }
@@ -87,6 +89,7 @@ class PeriodPageViewController: WKInterfaceController {
         connectionManager.updateFertilityData (periodSelectionString, completion: { (success, error) -> () in
             
             if(success) {
+                self.selectedPeriodState = self.selectedDay.periodStateForDay()
                 self.updateScreen()
             }
             
@@ -97,10 +100,10 @@ class PeriodPageViewController: WKInterfaceController {
     
     func updateScreenForNotLoggedIn () {
         
-        self.periodSelectionLabel.setText("Please, log in.")
-        self.periodSelectionLabel.setTextColor(UIColor.lightGrayColor())
-        
-        self.periodSelectedState = PeriodState.noData
+        resetButtonImages()
+
+        periodSelectionLabel.setText("Please, log in.")
+        periodSelectionLabel.setTextColor(UIColor.lightGrayColor())
         
     }
     
@@ -108,20 +111,14 @@ class PeriodPageViewController: WKInterfaceController {
         
         println("PERIOD CONTROLLER : UPDATE SCREEN")
         
-        var periodState : PeriodState = selectedDay.periodStateForDay()
-        
-        println("SELECTED DAY : PERIOD STATE : \(periodState.rawValue)")
-        println("VIEW CONTROLLER : PERIOD STATE : \(self.periodSelectedState!.rawValue)")
-        
         self.resetButtonImages()
         
-        switch periodState {
+        switch selectedPeriodState {
             
             case PeriodState.none:
                 
                 println("SWITCH : NONE")
                 
-                self.periodSelectedState = PeriodState.none
                 self.periodSelectionLabel.setText("None")
                 self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
                 self.animateGroupSelection(self.periodSelectNoneGroup)
@@ -130,7 +127,6 @@ class PeriodPageViewController: WKInterfaceController {
                 
                 println("SWITCH : SPOTTING")
                 
-                self.periodSelectedState = PeriodState.spotting
                 self.periodSelectionLabel.setText("Spotting")
                 self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
                 self.animateGroupSelection(self.periodSelectSpottingGroup)
@@ -139,7 +135,6 @@ class PeriodPageViewController: WKInterfaceController {
             
                 println("SWITCH : LIGHT")
 
-                self.periodSelectedState = PeriodState.light
                 self.periodSelectionLabel.setText("Light")
                 self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
                 self.animateGroupSelection(self.periodSelectLightGroup)
@@ -148,7 +143,6 @@ class PeriodPageViewController: WKInterfaceController {
                 
                 println("SWITCH : MEDIUM")
 
-                self.periodSelectedState = PeriodState.medium
                 self.periodSelectionLabel.setText("Medium")
                 self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
                 self.animateGroupSelection(self.periodSelectMediumGroup)
@@ -157,20 +151,16 @@ class PeriodPageViewController: WKInterfaceController {
                 
                 println("SWITCH : HEAVY")
                 
-                self.periodSelectedState = PeriodState.heavy
                 self.periodSelectionLabel.setText("Heavy")
                 self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
                 self.animateGroupSelection(self.periodSelectHeavyGroup)
                 
             default:
                 
-                println("SWITCH : DEFAULT")
+                println("SWITCH : DEFAULT : NO DATA")
 
-                self.periodSelectedState = PeriodState.noData
                 self.periodSelectionLabel.setText("Select")
                 self.periodSelectionLabel.setTextColor(UIColor.lightGrayColor())
-            
-                resetButtonImages()
             
         }
         
@@ -197,62 +187,57 @@ class PeriodPageViewController: WKInterfaceController {
 
     @IBAction func didSelectPeriodNone() {
         
-        resetButtonImages()
+        if(selectedPeriodState == PeriodState.none) {
+            self.updatePeriodData("")
+            
+        }else{
+            self.updatePeriodData("none")
+        }
         
-//        if(periodSelectedState == PeriodState.none) {
-//            self.updatePeriodData("")
-//            
-//        }else{
-//            self.updatePeriodData("none")
-//        }
     }
     
     @IBAction func didSelectPeriodSpotting() {
         
-        resetButtonImages()
-        
-        if(periodSelectedState == PeriodState.spotting) {
+        if(selectedPeriodState == PeriodState.spotting) {
             self.updatePeriodData("")
             
         }else{
             self.updatePeriodData("spotting")
         }
+        
     }
     
     @IBAction func didSelectPeriodLight() {
         
-        resetButtonImages()
-
-        if(periodSelectedState == PeriodState.light) {
+        if(selectedPeriodState == PeriodState.light) {
             self.updatePeriodData("")
             
         }else{
             self.updatePeriodData("light")
         }
+        
     }
     
     @IBAction func didSelectPeriodMedium() {
         
-        resetButtonImages()
-
-        if(periodSelectedState == PeriodState.medium) {
+        if(selectedPeriodState == PeriodState.medium) {
             self.updatePeriodData("")
             
         }else{
             self.updatePeriodData("medium")
         }
+        
     }
     
     @IBAction func didSelectPeriodHeavy() {
         
-        resetButtonImages()
-
-        if(periodSelectedState == PeriodState.heavy) {
+        if(selectedPeriodState == PeriodState.heavy) {
             self.updatePeriodData("")
             
         }else{
             self.updatePeriodData("heavy")
         }
+        
     }
     
 }

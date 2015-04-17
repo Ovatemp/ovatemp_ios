@@ -37,6 +37,8 @@ class InterfaceController: WKInterfaceController {
                 }
             })
             
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateScreen", name: "SelectedDayUpdate", object: nil)
+
         }else{
             println("APPLE WATCH : NOT LOGGED IN TO OVATEMP")
             updateScreenForNotLoggedIn()
