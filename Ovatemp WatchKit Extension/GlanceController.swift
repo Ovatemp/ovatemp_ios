@@ -67,50 +67,50 @@ class GlanceController: WKInterfaceController {
         //dateLabel.setText(selectedDay.date)
         
         let fertility = selectedDay.fertilityForDay()
-        
+                
         switch fertility.fertilityStatus {
             
-        case FertilityStatus.peakFertility:
-            
-            self.fertilityStatusLabel.setAttributedText(self.attributedString("PEAK FERTILITY"))
-            self.fertilityStatusInfoLabel.setText("Optimal conditions for conception")
-            self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - fertile")
-            
-        case FertilityStatus.fertile:
-            
-            self.fertilityStatusLabel.setAttributedText(self.attributedString("FERTILE"))
-            self.fertilityStatusInfoLabel.setText("Let's get it on!")
-            self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - fertile")
-            
-        case FertilityStatus.notFertile:
-            
-            self.fertilityStatusLabel.setAttributedText(self.attributedString("NOT FERTILE"))
-            if(fertility.fertilityCycle == FertilityCycle.preovulation) {
-                self.fertilityStatusInfoLabel.setText("Please check for Cervical Fluid.")
-            } else {
-                self.fertilityStatusInfoLabel.setText("Crossing our fingers for you!")
+            case FertilityStatus.peakFertility:
+                
+                self.fertilityStatusLabel.setAttributedText(self.attributedString("PEAK FERTILITY"))
+                self.fertilityStatusInfoLabel.setText("Optimal conditions for conception")
+                self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - fertile")
+                
+            case FertilityStatus.fertile:
+                
+                self.fertilityStatusLabel.setAttributedText(self.attributedString("FERTILE"))
+                self.fertilityStatusInfoLabel.setText("Let's get it on!")
+                self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - fertile")
+                
+            case FertilityStatus.notFertile:
+                
+                self.fertilityStatusLabel.setAttributedText(self.attributedString("NOT FERTILE"))
+                if(fertility.fertilityCycle == FertilityCycle.preovulation) {
+                    self.fertilityStatusInfoLabel.setText("Please check for Cervical Fluid.")
+                } else {
+                    self.fertilityStatusInfoLabel.setText("Crossing our fingers for you!")
+                }
+                self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - not fertile")
+                
+            case FertilityStatus.period:
+                
+                self.fertilityStatusLabel.setAttributedText(self.attributedString("PERIOD"))
+                self.fertilityStatusInfoLabel.setText("Try to get some rest.")
+                self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - period")
+                
+            case FertilityStatus.empty:
+                
+                self.fertilityStatusLabel.setText("")
+                self.fertilityStatusInfoLabel.setText("Please enter your Basal Body Temperature and other daily data for fertility status.")
+                self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - no data")
+                
+            default:
+                
+                self.fertilityStatusLabel.setText("")
+                self.fertilityStatusInfoLabel.setText("Please enter your Basal Body Temperature and other daily data for fertility status.")
+                self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - no data")
+                
             }
-            self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - not fertile")
-            
-        case FertilityStatus.period:
-            
-            self.fertilityStatusLabel.setAttributedText(self.attributedString("PERIOD"))
-            self.fertilityStatusInfoLabel.setText("Try to get some rest.")
-            self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - period")
-            
-        case FertilityStatus.empty:
-            
-            self.fertilityStatusLabel.setText("")
-            self.fertilityStatusInfoLabel.setText("Please enter your Basal Body Temperature and other daily data for fertility status.")
-            self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - no data")
-            
-        default:
-            
-            self.fertilityStatusLabel.setText("")
-            self.fertilityStatusInfoLabel.setText("Please enter your Basal Body Temperature and other daily data for fertility status.")
-            self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - no data")
-            
-        }
         
     }
     

@@ -25,6 +25,24 @@ class InterfaceController: WKInterfaceController {
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
+    }
+
+    override func willActivate() {
+        super.willActivate()
+        
+        self.loadAssets()
+    }
+    
+    override func didDeactivate() {
+        super.didDeactivate()
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    // MARK: Network
+    
+    func loadAssets () {
+        
         if Session.isCurrentUserLoggedIn() {
             
             println("APPLE WATCH : USER IS LOGGED IN TO OVATEMP")
@@ -38,22 +56,12 @@ class InterfaceController: WKInterfaceController {
             })
             
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateScreen", name: "SelectedDayUpdate", object: nil)
-
+            
         }else{
             println("APPLE WATCH : NOT LOGGED IN TO OVATEMP")
             updateScreenForNotLoggedIn()
         }
-    }
-
-    override func willActivate() {
-        super.willActivate()
         
-    }
-    
-    override func didDeactivate() {
-        super.didDeactivate()
-        
-        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     // MARK: Appearance
