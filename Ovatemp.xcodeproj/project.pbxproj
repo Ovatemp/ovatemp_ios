@@ -23,7 +23,6 @@
 		06712ECE1ADC65CB007CEEF3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06712EC31ADC65CA007CEEF3 /* Images.xcassets */; };
 		06712ECF1ADC65CB007CEEF3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06712EC41ADC65CA007CEEF3 /* Info.plist */; };
 		06712ED01ADC65CB007CEEF3 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06712EC51ADC65CA007CEEF3 /* InterfaceController.swift */; };
-		06712ED11ADC65CB007CEEF3 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06712EC61ADC65CA007CEEF3 /* NotificationController.swift */; };
 		06712ED21ADC65CB007CEEF3 /* Ovatemp WatchKit Extension.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 06712EC71ADC65CA007CEEF3 /* Ovatemp WatchKit Extension.entitlements */; };
 		06712ED31ADC65CB007CEEF3 /* PeriodPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06712EC81ADC65CA007CEEF3 /* PeriodPageViewController.swift */; };
 		06712ED41ADC65CB007CEEF3 /* PositionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06712EC91ADC65CA007CEEF3 /* PositionPageViewController.swift */; };
@@ -418,7 +417,6 @@
 		06712EC31ADC65CA007CEEF3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		06712EC41ADC65CA007CEEF3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06712EC51ADC65CA007CEEF3 /* InterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		06712EC61ADC65CA007CEEF3 /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		06712EC71ADC65CA007CEEF3 /* Ovatemp WatchKit Extension.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Ovatemp WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		06712EC81ADC65CA007CEEF3 /* PeriodPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodPageViewController.swift; sourceTree = "<group>"; };
 		06712EC91ADC65CA007CEEF3 /* PositionPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionPageViewController.swift; sourceTree = "<group>"; };
@@ -1073,7 +1071,6 @@
 				06712EC11ADC65CA007CEEF3 /* FluidPageViewController.swift */,
 				06712EC91ADC65CA007CEEF3 /* PositionPageViewController.swift */,
 				06712EC21ADC65CA007CEEF3 /* GlanceController.swift */,
-				06712EC61ADC65CA007CEEF3 /* NotificationController.swift */,
 				06712EC01ADC65CA007CEEF3 /* ConnectionManager.swift */,
 				068FD21D1ADEC7BA00E080C6 /* Session.swift */,
 				068FD21F1ADED46E00E080C6 /* Day.swift */,
@@ -2284,7 +2281,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06712ED11ADC65CB007CEEF3 /* NotificationController.swift in Sources */,
 				06712ECC1ADC65CA007CEEF3 /* FluidPageViewController.swift in Sources */,
 				06712ED41ADC65CB007CEEF3 /* PositionPageViewController.swift in Sources */,
 				06712ED01ADC65CB007CEEF3 /* InterfaceController.swift in Sources */,
