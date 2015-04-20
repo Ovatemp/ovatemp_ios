@@ -84,16 +84,25 @@ class PeriodPageViewController: WKInterfaceController {
     
     func updatePeriodData(periodSelection: String) {
         
-        let periodSelectionString = "day[date]=\(todayDate!)&day[period]=\(periodSelection)"
+        if let todayDate = todayDate {
+            
+            let periodSelectionString = "day[date]=\(todayDate)&day[period]=\(periodSelection)"
+            
+            connectionManager.updateFertilityData (periodSelectionString, completion: { (success, error) -> () in
+                
+                if(success) {
+                    self.selectedPeriodState = self.selectedDay.periodStateForDay()
+                    self.updateScreen()
+                }else{
+                    println("ERROR UPDATING PERIOD DATA: \(error)")
+                }
+                
+            })
+            
+        }else{
+            println("ERROR : TODAY DATE IS NIL")
+        }
         
-        connectionManager.updateFertilityData (periodSelectionString, completion: { (success, error) -> () in
-            
-            if(success) {
-                self.selectedPeriodState = self.selectedDay.periodStateForDay()
-                self.updateScreen()
-            }
-            
-        })
     }
     
     // Mark: Appearance
