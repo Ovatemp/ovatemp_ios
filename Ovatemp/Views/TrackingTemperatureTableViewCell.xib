@@ -109,9 +109,11 @@
                     <constraint firstItem="UOc-hD-NjA" firstAttribute="leading" secondItem="brF-Dn-gLz" secondAttribute="trailing" constant="-97" id="V57-Ve-0Cj"/>
                     <constraint firstItem="6uw-4c-XJ5" firstAttribute="top" secondItem="brF-Dn-gLz" secondAttribute="bottom" constant="-20" id="VIP-fZ-NC5"/>
                     <constraint firstAttribute="bottom" secondItem="lQA-8c-cPq" secondAttribute="bottom" id="WAC-zD-DQI"/>
+                    <constraint firstItem="UOc-hD-NjA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-2" id="YON-x2-CYl"/>
                     <constraint firstItem="hca-T7-h3B" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="afl-ud-eEg"/>
                     <constraint firstItem="brF-Dn-gLz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="13" id="bvV-kr-tfI"/>
                     <constraint firstAttribute="trailing" secondItem="lQA-8c-cPq" secondAttribute="trailing" id="ciF-RB-nTd"/>
+                    <constraint firstItem="hca-T7-h3B" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-2" id="h9C-PD-zpg"/>
                     <constraint firstAttribute="trailing" secondItem="mVJ-cb-zil" secondAttribute="trailing" constant="13" id="nVg-b7-wTC"/>
                     <constraint firstItem="hca-T7-h3B" firstAttribute="top" secondItem="nNl-qV-hu4" secondAttribute="bottom" constant="-17" id="p0K-Pu-wbn"/>
                     <constraint firstItem="lQA-8c-cPq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rBg-xJ-rcR"/>
@@ -120,6 +122,8 @@
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
+                        <exclude reference="afl-ud-eEg"/>
+                        <exclude reference="78k-my-EJP"/>
                         <exclude reference="WAC-zD-DQI"/>
                         <exclude reference="zgR-Ga-pQu"/>
                         <exclude reference="Jip-ul-V7M"/>

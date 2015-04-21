@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14D105g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -203,6 +203,7 @@
                 <constraints>
                     <constraint firstItem="R4d-Hi-tyr" firstAttribute="leading" secondItem="uU9-XH-EmI" secondAttribute="trailing" id="0ef-le-hev"/>
                     <constraint firstItem="tmk-5s-c1R" firstAttribute="top" secondItem="4de-Xi-awr" secondAttribute="bottom" constant="4" id="1qx-Od-gRt"/>
+                    <constraint firstItem="4de-Xi-awr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-2" id="2Pr-Ra-hUR"/>
                     <constraint firstAttribute="centerY" secondItem="fOX-s7-Xuy" secondAttribute="centerY" id="2cV-0G-3Wc"/>
                     <constraint firstItem="0t1-Te-daR" firstAttribute="leading" secondItem="9RT-4f-cby" secondAttribute="trailing" id="2qL-CY-CDl"/>
                     <constraint firstItem="vJX-ks-zkX" firstAttribute="leading" secondItem="m2g-Oq-9ij" secondAttribute="trailing" id="38j-U1-fKi"/>
@@ -220,6 +221,7 @@
                     <constraint firstItem="EqL-JK-jUx" firstAttribute="top" secondItem="fOX-s7-Xuy" secondAttribute="bottom" constant="-2" id="Pu0-b9-Jt3"/>
                     <constraint firstItem="VBs-id-rXA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="Pub-0i-fYQ"/>
                     <constraint firstItem="8iA-7F-ITu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="QSc-I9-2lJ"/>
+                    <constraint firstItem="VBs-id-rXA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-2" id="Rmp-t1-UVz"/>
                     <constraint firstItem="tmk-5s-c1R" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="SKQ-rw-DvQ"/>
                     <constraint firstItem="fOX-s7-Xuy" firstAttribute="leading" secondItem="vJX-ks-zkX" secondAttribute="trailing" id="Ss6-sK-pog"/>
                     <constraint firstItem="4de-Xi-awr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="VK6-bn-JdJ"/>
@@ -247,6 +249,12 @@
                     <constraint firstItem="TRI-CV-ifE" firstAttribute="bottom" secondItem="vJX-ks-zkX" secondAttribute="bottom" id="yTu-8p-5b2"/>
                     <constraint firstAttribute="centerY" secondItem="R4d-Hi-tyr" secondAttribute="centerY" id="zfE-4x-YQb"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="kGl-2B-H1C"/>
+                        <exclude reference="8cD-5y-3IT"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="activityView" destination="r6d-72-IPw" id="TgK-z1-qJv"/>
