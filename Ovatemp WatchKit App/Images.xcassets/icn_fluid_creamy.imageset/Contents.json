@@ -7,13 +7,13 @@
     {
       "idiom" : "watch",
       "screenWidth" : "{130,145}",
-      "filename" : "Icon Creamy@2x.png",
+      "filename" : "CreamySmall.png",
       "scale" : "2x"
     },
     {
       "idiom" : "watch",
       "screenWidth" : "{146,165}",
-      "filename" : "Icon Creamy@2x-1.png",
+      "filename" : "CreamyBig.png",
       "scale" : "2x"
     }
   ],
