@@ -38,7 +38,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lQA-8c-cPq">
-                        <rect key="frame" x="0.0" y="37.5" width="320" height="162"/>
+                        <rect key="frame" x="0.0" y="38" width="320" height="162"/>
                     </pickerView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Basal Body Temperature" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOc-hD-NjA">
                         <rect key="frame" x="6" y="20" width="188" height="21"/>
@@ -51,7 +51,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="90.00 ºF" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brF-Dn-gLz">
-                        <rect key="frame" x="13" y="29" width="90" height="21"/>
+                        <rect key="frame" x="6" y="29" width="90" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="V0y-n0-ktB"/>
                             <constraint firstAttribute="width" constant="90" id="t8k-1b-95p"/>
@@ -81,7 +81,7 @@
                         <rect key="frame" x="174" y="4" width="20" height="20"/>
                     </activityIndicatorView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_ondo_small" translatesAutoresizingMaskIntoConstraints="NO" id="6uw-4c-XJ5">
-                        <rect key="frame" x="103" y="30" width="20" height="20"/>
+                        <rect key="frame" x="96" y="30" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="K04-vT-pJ4"/>
                             <constraint firstAttribute="height" constant="20" id="qyF-9I-l8M"/>
@@ -96,6 +96,7 @@
                     <constraint firstItem="nNl-qV-hu4" firstAttribute="leading" secondItem="hca-T7-h3B" secondAttribute="trailing" constant="3" id="4O5-lM-mmY"/>
                     <constraint firstItem="UOc-hD-NjA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="78k-my-EJP"/>
                     <constraint firstItem="UOc-hD-NjA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="BJ6-d5-hXy"/>
+                    <constraint firstItem="brF-Dn-gLz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-2" id="FbV-ol-7PW"/>
                     <constraint firstAttribute="trailing" secondItem="Hot-Az-XGF" secondAttribute="trailing" constant="8" id="Frb-Mu-S3W"/>
                     <constraint firstAttribute="trailing" secondItem="HI2-gT-RI8" secondAttribute="trailing" constant="13" id="HLU-gV-duf"/>
                     <constraint firstItem="6uw-4c-XJ5" firstAttribute="top" secondItem="hca-T7-h3B" secondAttribute="bottom" constant="4" id="Jip-ul-V7M"/>
@@ -124,6 +125,8 @@
                     <mask key="constraints">
                         <exclude reference="afl-ud-eEg"/>
                         <exclude reference="78k-my-EJP"/>
+                        <exclude reference="V57-Ve-0Cj"/>
+                        <exclude reference="bvV-kr-tfI"/>
                         <exclude reference="WAC-zD-DQI"/>
                         <exclude reference="zgR-Ga-pQu"/>
                         <exclude reference="Jip-ul-V7M"/>
