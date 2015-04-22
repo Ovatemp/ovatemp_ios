@@ -29,6 +29,9 @@
 		06712ED51ADC65CB007CEEF3 /* PushNotificationPayload.apns in Resources */ = {isa = PBXBuildFile; fileRef = 06712ECA1ADC65CA007CEEF3 /* PushNotificationPayload.apns */; };
 		06712ED71ADD8475007CEEF3 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06712ED61ADD8475007CEEF3 /* GameKit.framework */; };
 		067BCE0E1AD5C9D100F0BDE6 /* TransparentSwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 067BCE0D1AD5C9D100F0BDE6 /* TransparentSwipeView.m */; };
+		068206981AE83D7A000B006F /* TutorialContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068206971AE83D7A000B006F /* TutorialContentViewController.m */; };
+		0682069A1AE84258000B006F /* Tutorials.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 068206991AE84258000B006F /* Tutorials.storyboard */; };
+		0682069D1AE842F3000B006F /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0682069C1AE842F3000B006F /* TutorialViewController.m */; };
 		068FD21E1ADEC7BA00E080C6 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068FD21D1ADEC7BA00E080C6 /* Session.swift */; };
 		068FD2201ADED46E00E080C6 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068FD21F1ADED46E00E080C6 /* Day.swift */; };
 		0692216E1AC0AF350004B850 /* ILCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0692216D1AC0AF350004B850 /* ILCalendarViewController.m */; };
@@ -309,7 +312,6 @@
 		5F6561F319FADEFD001FB509 /* UserProfileReadOnlyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F6561F119FADEFD001FB509 /* UserProfileReadOnlyViewController.xib */; };
 		5F7AEA631A0122BB0053ABAB /* Tracking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F7AEA621A0122BB0053ABAB /* Tracking.storyboard */; };
 		5F7AEA6C1A0137080053ABAB /* TrackingNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7AEA6B1A0137080053ABAB /* TrackingNavigationBar.m */; };
-		5F7AEA6F1A01373C0053ABAB /* TrackingNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7AEA6E1A01373C0053ABAB /* TrackingNavigationController.m */; };
 		5F846E0719F560D300CED980 /* Welcome1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0619F560D300CED980 /* Welcome1ViewController.m */; };
 		5F846E0A19F57D4D00CED980 /* Welcome2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0919F57D4D00CED980 /* Welcome2ViewController.m */; };
 		5F846E0D19F5A96000CED980 /* Welcome3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F846E0C19F5A96000CED980 /* Welcome3ViewController.m */; };
@@ -424,6 +426,11 @@
 		06712ED61ADD8475007CEEF3 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		067BCE0C1AD5C9D100F0BDE6 /* TransparentSwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentSwipeView.h; sourceTree = "<group>"; };
 		067BCE0D1AD5C9D100F0BDE6 /* TransparentSwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransparentSwipeView.m; sourceTree = "<group>"; };
+		068206961AE83D7A000B006F /* TutorialContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialContentViewController.h; sourceTree = "<group>"; };
+		068206971AE83D7A000B006F /* TutorialContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialContentViewController.m; sourceTree = "<group>"; };
+		068206991AE84258000B006F /* Tutorials.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorials.storyboard; sourceTree = "<group>"; };
+		0682069B1AE842F3000B006F /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
+		0682069C1AE842F3000B006F /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
 		068FD21D1ADEC7BA00E080C6 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		068FD21F1ADED46E00E080C6 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		0692216C1AC0AF340004B850 /* ILCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCalendarViewController.h; sourceTree = "<group>"; };
@@ -820,8 +827,6 @@
 		5F7AEA621A0122BB0053ABAB /* Tracking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tracking.storyboard; sourceTree = "<group>"; };
 		5F7AEA6A1A0137080053ABAB /* TrackingNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingNavigationBar.h; sourceTree = "<group>"; };
 		5F7AEA6B1A0137080053ABAB /* TrackingNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingNavigationBar.m; sourceTree = "<group>"; };
-		5F7AEA6D1A01373C0053ABAB /* TrackingNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingNavigationController.h; sourceTree = "<group>"; };
-		5F7AEA6E1A01373C0053ABAB /* TrackingNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingNavigationController.m; sourceTree = "<group>"; };
 		5F7AEA701A013C580053ABAB /* TrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingViewController.h; sourceTree = "<group>"; };
 		5F7AEA711A013C580053ABAB /* TrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingViewController.m; sourceTree = "<group>"; };
 		5F846E0519F560D300CED980 /* Welcome1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Welcome1ViewController.h; sourceTree = "<group>"; };
@@ -954,6 +959,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		061C72791AE835060051C868 /* Tutorials */ = {
+			isa = PBXGroup;
+			children = (
+				0682069B1AE842F3000B006F /* TutorialViewController.h */,
+				0682069C1AE842F3000B006F /* TutorialViewController.m */,
+				068206961AE83D7A000B006F /* TutorialContentViewController.h */,
+				068206971AE83D7A000B006F /* TutorialContentViewController.m */,
+			);
+			name = Tutorials;
+			sourceTree = "<group>";
+		};
 		062FD9AA1AA8FF87009116E3 /* Tracking */ = {
 			isa = PBXGroup;
 			children = (
@@ -1178,6 +1194,7 @@
 				5F1C9C7619EEE993000F1FC1 /* Account.storyboard */,
 				5F1C9B5319EDE87A000F1FC1 /* CoachingStoryboard.storyboard */,
 				5F1A3BF319F17614002FFA28 /* Login.storyboard */,
+				068206991AE84258000B006F /* Tutorials.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -1231,10 +1248,6 @@
 		06FEA5C81A9D2FAC002BDFC2 /* Tracking */ = {
 			isa = PBXGroup;
 			children = (
-				5F7AEA6D1A01373C0053ABAB /* TrackingNavigationController.h */,
-				5F7AEA6E1A01373C0053ABAB /* TrackingNavigationController.m */,
-				5F7AEA701A013C580053ABAB /* TrackingViewController.h */,
-				5F7AEA711A013C580053ABAB /* TrackingViewController.m */,
 				06C55B201AAF4BD600EDE74A /* ILTrackingViewController.h */,
 				06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */,
 				5F4C5B0A1A02C1CE00D0F465 /* TrackingNotesViewController.h */,
@@ -1245,6 +1258,8 @@
 				069221701AC0CD530004B850 /* ILCalendarCell.m */,
 				060D180A1AC330FA00B7DBA2 /* ILCycleViewController.h */,
 				060D180B1AC330FA00B7DBA2 /* ILCycleViewController.m */,
+				5F7AEA701A013C580053ABAB /* TrackingViewController.h */,
+				5F7AEA711A013C580053ABAB /* TrackingViewController.m */,
 				5F1C9A3419EDE879000F1FC1 /* CycleViewController.h */,
 				5F1C9A3519EDE879000F1FC1 /* CycleViewController.m */,
 			);
@@ -1453,6 +1468,7 @@
 				06FEA5C71A9D2EC5002BDFC2 /* Coaching */,
 				06F2051F1A9E80A200BC8C7B /* Community */,
 				06F2051E1A9E805000BC8C7B /* Account */,
+				061C72791AE835060051C868 /* Tutorials */,
 				06FEA5C91A9D3002002BDFC2 /* Other */,
 			);
 			path = Controllers;
@@ -2113,6 +2129,7 @@
 				5F1E1E271A110116001C22B7 /* TrackingPregnancyTestTableViewCell.xib in Resources */,
 				5F1C9BC819EDE87A000F1FC1 /* Habits@2x.png in Resources */,
 				5F1C9C5619EDE87A000F1FC1 /* .gitkeep in Resources */,
+				0682069A1AE84258000B006F /* Tutorials.storyboard in Resources */,
 				5F1C9C1919EDE87A000F1FC1 /* Amazing.png in Resources */,
 				5F1C9BE019EDE87A000F1FC1 /* TryingToAvoid.png in Resources */,
 				5F1E1D951A0DAEE4001C22B7 /* TrackingMoodTableViewCell.xib in Resources */,
@@ -2380,6 +2397,7 @@
 				5F8C568E19F184C60024552A /* SelectLogInOrSignUpViewController.m in Sources */,
 				5FDAA3AB19F8020F004E7181 /* CycleLengthTableViewCell.m in Sources */,
 				5F1C9C6D19EDE87A000F1FC1 /* CoachingMenuCell.m in Sources */,
+				068206981AE83D7A000B006F /* TutorialContentViewController.m in Sources */,
 				5F1E1E261A110116001C22B7 /* TrackingPregnancyTestTableViewCell.m in Sources */,
 				5F1C9C6B19EDE87A000F1FC1 /* CheckCell.m in Sources */,
 				5F1C9B7019EDE87A000F1FC1 /* DayCellEditView.m in Sources */,
@@ -2408,9 +2426,9 @@
 				5FE118481A1A907000AC76A7 /* TrackingMedicinesTableViewCell.m in Sources */,
 				5F1C9B8E19EDE87A000F1FC1 /* MainTabBarViewController.m in Sources */,
 				063942331AD71B8B00BE7605 /* ONDOSettingViewController.m in Sources */,
-				5F7AEA6F1A01373C0053ABAB /* TrackingNavigationController.m in Sources */,
 				5F1C9C7A19EEEDF9000F1FC1 /* AccountMainTableViewController.m in Sources */,
 				5F846E0719F560D300CED980 /* Welcome1ViewController.m in Sources */,
+				0682069D1AE842F3000B006F /* TutorialViewController.m in Sources */,
 				5F1C9B6F19EDE87A000F1FC1 /* DayAttribute.m in Sources */,
 				5F1C9B7719EDE87A000F1FC1 /* GradientLabel.m in Sources */,
 				5F1C9B6419EDE87A000F1FC1 /* NSObject+IsNull.m in Sources */,

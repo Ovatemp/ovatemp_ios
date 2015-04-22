@@ -17,7 +17,6 @@
 #import "TodayViewController.h"
 #import "SelectLogInOrSignUpViewController.h"
 #import "TrackingViewController.h"
-#import "TrackingNavigationController.h"
 #import "CoachingRootViewController.h"
 
 static CGFloat const kDissolveDuration = 0.2;

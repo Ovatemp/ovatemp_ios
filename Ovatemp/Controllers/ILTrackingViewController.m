@@ -40,6 +40,8 @@
 
 #import "DateCollectionViewCell.h"
 
+#import "TutorialViewController.h"
+
 @import HealthKit;
 
 @interface ILTrackingViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate,TrackingStatusCellDelegate,TrackingTemperatureCellDelegate,TrackingCervicalFluidCellDelegate,TrackingCervicalPositionCellDelegate,TrackingPeriodCellDelegate,TrackingIntercourseCellDelegate,TrackingMoodCellDelegate,TrackingSymptomsCellDelegate,TrackingOvulationTestCell,TrackingPregnancyCellDelegate,TrackingSupplementsCellDelegate,TrackingMedicinesCellDelegate,ILCalendarViewControllerDelegate,ONDODelegate>
@@ -104,6 +106,16 @@
     
     [Localytics tagScreen: @"Tracking"];
     
+    
+    NSArray *tutorialImages = @[[UIImage imageNamed: @"OndoTutorial1"],[UIImage imageNamed: @"OndoTutorial2"],[UIImage imageNamed: @"OndoTutorial3"],
+                                [UIImage imageNamed: @"OndoTutorial4"],[UIImage imageNamed: @"OndoTutorial5"]];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Tutorials" bundle: nil];
+    TutorialViewController *tutorialVC = [storyboard instantiateInitialViewController];
+    tutorialVC.images = tutorialImages;
+    [self presentViewController: tutorialVC animated: YES completion: nil];
+    
+    
     self.selectedIndexPath = [NSIndexPath indexPathForRow: 86 inSection:0];
     [self.drawerCollectionView scrollToItemAtIndexPath: self.selectedIndexPath atScrollPosition: UICollectionViewScrollPositionCenteredHorizontally animated: YES];
 }
@@ -113,7 +125,7 @@
     [super viewWillDisappear: animated];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:NO forKey:@"ShouldRotate"];
+    [defaults setBool: NO forKey: @"ShouldRotate"];
     [defaults synchronize];
 }
 
