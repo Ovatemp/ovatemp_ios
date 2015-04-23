@@ -78,6 +78,9 @@ static NSString *const kSharedTokenKey = @"CurrentUserToken";
 static NSString *const kSharedDeviceIdKey = @"CurrentUserDeviceId";
 
 static NSString *const kOndoOverlayCountKey = @"OndoOverlayCountKey";
+static NSString *const kAppTutorialCountKey = @"AppTutorialCountKey";
+static NSString *const kAppWalkthroughCountKey = @"AppWalkthroughCountKey";
+static NSString *const kOndoTutorialCountKey = @"OndoTutorialCountKey";
 
 static const NSInteger kUnauthorizedRequestCode = 401;
 static NSString *const kUnauthorizedRequestNotification = @"401UnauthorizedRequestEncountered";

@@ -58,7 +58,7 @@
                 <pageViewController storyboardIdentifier="pageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Vrw-nc-zNT" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLO-Nt-NxR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="553" y="888"/>
+            <point key="canvasLocation" x="553" y="889"/>
         </scene>
         <!--Tutorial Content View Controller-->
         <scene sceneID="Vgs-ON-en0">

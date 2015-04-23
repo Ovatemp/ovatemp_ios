@@ -37,10 +37,9 @@
 #import "TrackingPregnancyTestTableViewCell.h"
 #import "TrackingSupplementsTableViewCell.h"
 #import "TrackingMedicinesTableViewCell.h"
-
 #import "DateCollectionViewCell.h"
 
-#import "TutorialViewController.h"
+#import "TutorialHelper.h"
 
 @import HealthKit;
 
@@ -106,18 +105,10 @@
     
     [Localytics tagScreen: @"Tracking"];
     
-    
-    NSArray *tutorialImages = @[[UIImage imageNamed: @"OndoTutorial1"],[UIImage imageNamed: @"OndoTutorial2"],[UIImage imageNamed: @"OndoTutorial3"],
-                                [UIImage imageNamed: @"OndoTutorial4"],[UIImage imageNamed: @"OndoTutorial5"]];
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Tutorials" bundle: nil];
-    TutorialViewController *tutorialVC = [storyboard instantiateInitialViewController];
-    tutorialVC.images = tutorialImages;
-    [self presentViewController: tutorialVC animated: YES completion: nil];
-    
-    
     self.selectedIndexPath = [NSIndexPath indexPathForRow: 86 inSection:0];
     [self.drawerCollectionView scrollToItemAtIndexPath: self.selectedIndexPath atScrollPosition: UICollectionViewScrollPositionCenteredHorizontally animated: YES];
+    
+    [self showTutorial];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -132,6 +123,15 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark - Tutorial
+
+- (void)showTutorial
+{
+    if ([TutorialHelper shouldShowAppTutorial]) {
+        [TutorialHelper showAppTutorialInController: self];
+    }
 }
 
 #pragma mark - ONDO

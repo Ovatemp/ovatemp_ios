@@ -104,7 +104,9 @@
 - (void)pageViewController:(UIPageViewController *)viewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers
        transitionCompleted:(BOOL)completed
 {
-    if (!completed){return;}
+    if (!completed){
+        return;
+    }
     
     TutorialContentViewController *currentVC = (TutorialContentViewController *)[self.pageViewController.viewControllers lastObject];
     NSUInteger indexOfCurrentPage = currentVC.index;

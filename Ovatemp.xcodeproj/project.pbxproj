@@ -12,6 +12,7 @@
 		063942331AD71B8B00BE7605 /* ONDOSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 063942311AD71B8B00BE7605 /* ONDOSettingViewController.m */; };
 		063942341AD71B8B00BE7605 /* ONDOSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 063942321AD71B8B00BE7605 /* ONDOSettingViewController.xib */; };
 		063CB2631AE1C131005F2D3A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063CB2621AE1C131005F2D3A /* Constants.swift */; };
+		0644CE551AE952E1006B4E24 /* TutorialHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0644CE541AE952E1006B4E24 /* TutorialHelper.m */; };
 		06712E9E1ADC6064007CEEF3 /* Ovatemp WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 06712E9D1ADC6064007CEEF3 /* Ovatemp WatchKit App.app */; };
 		06712EAB1ADC6064007CEEF3 /* Ovatemp WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 06712E8E1ADC6064007CEEF3 /* Ovatemp WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		06712EBC1ADC655B007CEEF3 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06712EB81ADC655B007CEEF3 /* Interface.storyboard */; };
@@ -408,6 +409,8 @@
 		063942311AD71B8B00BE7605 /* ONDOSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONDOSettingViewController.m; sourceTree = "<group>"; };
 		063942321AD71B8B00BE7605 /* ONDOSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONDOSettingViewController.xib; sourceTree = "<group>"; };
 		063CB2621AE1C131005F2D3A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0644CE531AE952E1006B4E24 /* TutorialHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialHelper.h; sourceTree = "<group>"; };
+		0644CE541AE952E1006B4E24 /* TutorialHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialHelper.m; sourceTree = "<group>"; };
 		06712E8E1ADC6064007CEEF3 /* Ovatemp WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Ovatemp WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06712E9D1ADC6064007CEEF3 /* Ovatemp WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ovatemp WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06712EB91ADC655B007CEEF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -962,6 +965,8 @@
 		061C72791AE835060051C868 /* Tutorials */ = {
 			isa = PBXGroup;
 			children = (
+				0644CE531AE952E1006B4E24 /* TutorialHelper.h */,
+				0644CE541AE952E1006B4E24 /* TutorialHelper.m */,
 				0682069B1AE842F3000B006F /* TutorialViewController.h */,
 				0682069C1AE842F3000B006F /* TutorialViewController.m */,
 				068206961AE83D7A000B006F /* TutorialContentViewController.h */,
@@ -1190,10 +1195,10 @@
 		06FEA5C41A9CFA4C002BDFC2 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				5F7AEA621A0122BB0053ABAB /* Tracking.storyboard */,
-				5F1C9C7619EEE993000F1FC1 /* Account.storyboard */,
-				5F1C9B5319EDE87A000F1FC1 /* CoachingStoryboard.storyboard */,
 				5F1A3BF319F17614002FFA28 /* Login.storyboard */,
+				5F7AEA621A0122BB0053ABAB /* Tracking.storyboard */,
+				5F1C9B5319EDE87A000F1FC1 /* CoachingStoryboard.storyboard */,
+				5F1C9C7619EEE993000F1FC1 /* Account.storyboard */,
 				068206991AE84258000B006F /* Tutorials.storyboard */,
 			);
 			name = Storyboards;
@@ -2414,6 +2419,7 @@
 				5F1C9B7D19EDE87A000F1FC1 /* SubscriptionMenuTableViewCell.m in Sources */,
 				5FE118441A191C5100AC76A7 /* SimpleSupplement.m in Sources */,
 				06F8FA4E1AC3619C006EC93F /* CycleCollectionViewCell.m in Sources */,
+				0644CE551AE952E1006B4E24 /* TutorialHelper.m in Sources */,
 				5F1C9B9219EDE87A000F1FC1 /* Onboard2ViewController.m in Sources */,
 				5F1C9B7819EDE87A000F1FC1 /* GradientSegmentedControl.m in Sources */,
 				5F1C9B5F19EDE87A000F1FC1 /* AppDelegate.m in Sources */,

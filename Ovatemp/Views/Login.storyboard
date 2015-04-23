@@ -926,7 +926,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_launchingscreen" translatesAutoresizingMaskIntoConstraints="NO" id="ex7-sR-0MO">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="img_launchingscreen" translatesAutoresizingMaskIntoConstraints="NO" id="ex7-sR-0MO">
                                 <rect key="frame" x="0.0" y="-265" width="600" height="1065"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ex7-sR-0MO" secondAttribute="height" multiplier="40:71" id="PsD-Th-9h6"/>

@@ -9,6 +9,7 @@
 #import "ONDOSettingViewController.h"
 
 #import "ONDO.h"
+#import "TutorialHelper.h"
 
 @interface ONDOSettingViewController ()
 
@@ -67,6 +68,8 @@
     [userDefaults synchronize];
     
     [ondo startScan];
+    
+    [TutorialHelper showTutorialForOndoInController: self];
 }
 
 - (void)ondoStopScan
