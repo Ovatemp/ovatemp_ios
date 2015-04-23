@@ -110,7 +110,7 @@ NSArray *ondoMenuItems;
     switch (indexPath.row) {
         case 0:  // Buy
         {
-            NSString *url = @"http://ovatemp.com/products/ondo";
+            NSString *url = @"http://ovatemp.com/";
             WebViewController *webViewController = [WebViewController withURL:url];
             webViewController.title = @"Buy ONDO";
             [self.navigationController pushViewController:webViewController animated:YES];

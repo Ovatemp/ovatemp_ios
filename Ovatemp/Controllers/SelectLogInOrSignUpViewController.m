@@ -69,7 +69,7 @@
 
 - (IBAction)doPresentTerms:(id)sender
 {
-    NSString *url = [ROOT_URL stringByAppendingString:@"/terms"];
+    NSString *url = @"http://ovatemp.com/terms-of-service";
     WebViewController *webViewController = [WebViewController withURL:url];
     webViewController.title = @"Terms and Conditions";
     [self.navigationController pushViewController:webViewController animated:YES];

@@ -143,13 +143,7 @@ NSArray *accountMenuItems;
             
         case 3: // Help
         {
-//            NSString *url = @"http://ovatemp.helpshift.com/a/ovatemp/";
-//            WebViewController *webViewController = [WebViewController withURL:url];
-//            webViewController.title = @"Help";
-//            [self.navigationController pushViewController:webViewController animated:YES];
-            
             [[Helpshift sharedInstance] showFAQs: self withOptions:nil];
-            
             break;
         }
             
@@ -195,7 +189,7 @@ NSArray *accountMenuItems;
             
         case 7: // TOS
         {
-            NSString *url = [ROOT_URL stringByAppendingString:@"/terms"];
+            NSString *url = @"http://ovatemp.com/terms-of-service";
             WebViewController *webViewController = [WebViewController withURL:url];
             webViewController.title = @"Terms of Service";
             [self.navigationController pushViewController:webViewController animated:YES];
