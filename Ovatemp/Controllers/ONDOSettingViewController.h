@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ONDOSettingsViewControllerDelegate <NSObject>
+
+- (void)ondoSwitchedToState:(BOOL)state;
+
+@end
+
 @interface ONDOSettingViewController : UIViewController
+
+@property (weak, nonatomic) id<ONDOSettingsViewControllerDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UISwitch *ondoSwitch;
 

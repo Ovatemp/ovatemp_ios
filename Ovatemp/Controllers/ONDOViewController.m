@@ -15,11 +15,14 @@
 #import "BluetoothDeviceTableViewController.h"
 #import "WebViewController.h"
 #import "ONDOSettingViewController.h"
+#import "TutorialHelper.h"
 
-@interface ONDOViewController () <UITableViewDelegate, UITableViewDataSource, ONDODelegate>
+@interface ONDOViewController () <UITableViewDelegate, UITableViewDataSource, ONDODelegate, ONDOSettingsViewControllerDelegate>
 
 @property AccountTableViewCell *accountTableViewCell;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic) BOOL ondoSwitchedState;
 
 @end
 
@@ -59,6 +62,16 @@ NSArray *ondoMenuItems;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear: animated];
+    
+    if (self.ondoSwitchedState) {
+        self.ondoSwitchedState = NO;
+        [TutorialHelper showTutorialForOndoInController: self];
+    }
 }
 
 #pragma mark - Table view data source
@@ -107,6 +120,7 @@ NSArray *ondoMenuItems;
         case 1: // Pair
         {
             ONDOSettingViewController *ondoSettingVC = [[ONDOSettingViewController alloc] init];
+            ondoSettingVC.delegate = self;
             
             CCMPopupTransitioning *popup = [CCMPopupTransitioning sharedInstance];
             popup.destinationBounds = CGRectMake(0, 0, 200, 200);
@@ -147,6 +161,13 @@ NSArray *ondoMenuItems;
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - ONDOSettingsViewController Delegate
+
+- (void)ondoSwitchedToState:(BOOL)state
+{
+    self.ondoSwitchedState = state;
 }
 
 @end

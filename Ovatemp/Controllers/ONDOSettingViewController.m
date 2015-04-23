@@ -9,7 +9,6 @@
 #import "ONDOSettingViewController.h"
 
 #import "ONDO.h"
-#import "TutorialHelper.h"
 
 @interface ONDOSettingViewController ()
 
@@ -63,13 +62,16 @@
         return;
     }
     
+    if ([self.delegate respondsToSelector: @selector(ondoSwitchedToState:)]) {
+        [self.delegate ondoSwitchedToState: YES];
+    }
+    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool: YES forKey: @"ShouldScanForOndo"];
     [userDefaults synchronize];
     
     [ondo startScan];
     
-    [TutorialHelper showTutorialForOndoInController: self];
 }
 
 - (void)ondoStopScan
@@ -78,6 +80,10 @@
     
     if (!ondo.isScanning) {
         return;
+    }
+    
+    if ([self.delegate respondsToSelector: @selector(ondoSwitchedToState:)]) {
+        [self.delegate ondoSwitchedToState: NO];
     }
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
