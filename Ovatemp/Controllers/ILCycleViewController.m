@@ -153,28 +153,21 @@
 
 - (void)loadAssets
 {
-//    if ([Cycle fullyLoaded]) {
-//        DDLogInfo(@"ILCycleViewController : Cycle already loaded.");
-//        NSLog(@"FULLY LOADED");
-//        [self loadCycle];
-//        
-//    } else {
-        DDLogInfo(@"ILCycleViewController : Loading Cycle.");
-        [TAOverlay showOverlayWithLabel: @"Loading Cycles..." Options: TAOverlayOptionOverlaySizeRoundedRect];
+    DDLogInfo(@"ILCycleViewController : Loading Cycle.");
+    [TAOverlay showOverlayWithLabel: @"Loading Cycles..." Options: TAOverlayOptionOverlaySizeRoundedRect];
+    
+    [Cycle loadAllAnd:^(id response) {
         
-        [Cycle loadAllAnd:^(id response) {
-            
-            DDLogInfo(@"ILCycleViewConteroller : Loading Cycles : Success");
-            [self loadCycle];
-            [TAOverlay hideOverlay];
-            
-        } failure:^(NSError *error) {
-            
-            DDLogError(@"ILCycleViewConteroller : Loading Cycles : Error: %@", error);
-            [TAOverlay hideOverlay];
-            
-        }];
-//    }
+        DDLogInfo(@"ILCycleViewConteroller : Loading Cycles : Success");
+        [self loadCycle];
+        [TAOverlay hideOverlay];
+        
+    } failure:^(NSError *error) {
+        
+        DDLogError(@"ILCycleViewConteroller : Loading Cycles : Error: %@", error);
+        [TAOverlay hideOverlay];
+        
+    }];
 }
 
 #pragma mark - Appearance
@@ -326,6 +319,8 @@
 
 - (void)customizeChartAxis
 {
+    // CALCULATE MIN AND MAX TEMPERATURES FOR Y AXIS
+    
     CGFloat minTemp;
     CGFloat maxTemp;
     
@@ -443,6 +438,23 @@
     [TAOverlay showOverlayWithLabel: message Options: TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayDismissTap | TAOverlayOptionOverlayTypeInfo];
 }
 
+- (TKChartPaletteItem *)chart:(TKChart *)chart paletteItemForPoint:(NSUInteger)index inSeries:(TKChartSeries *)series
+{
+    UIColor *colorForDay;
+    
+    if (index < [self.selectedCycle.days count]) {
+        Day *day = self.selectedCycle.days[index];
+        colorForDay = [self colorForCyclePhase: day.cyclePhase];
+        
+    }else{
+        colorForDay = [UIColor purpleColor];
+    }
+    
+    TKChartPaletteItem *item = [[TKChartPaletteItem alloc] initWithFill: [TKSolidFill solidFillWithColor: colorForDay]];
+    
+    return item;
+}
+
 #pragma mark - UICollectionView Data Source
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -491,6 +503,54 @@
 //    cell.backgroundColor = [UIColor yellowColor];
     
     return cell;
+}
+
+#pragma mark - UICollectionView Delegate
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger numDays = self.cycleLength;
+    NSInteger numParts = numDays - 1;
+    
+    if (numDays == 1) {
+        return CGSizeMake(self.periodCollectionView.frame.size.width, self.periodCollectionView.frame.size.height);
+    }
+    
+    CGFloat width = self.periodCollectionView.frame.size.width / numParts;
+    CGFloat height = self.periodCollectionView.frame.size.height;
+    
+    if (indexPath.row == numDays - 2 || indexPath.row == numDays - 1) {
+        // Last 2 cells
+        width = width / 2;
+    }
+    
+    CGSize size = CGSizeMake(width, height);
+    return size;
+}
+
+#pragma mark - Helper's
+
+- (UIColor *)colorForCyclePhase:(NSString *)cyclePhase
+{
+    UIColor *periodColor = PERIOD_COLOR;
+    UIColor *notFertileColor = [UIColor purpleColor];
+    UIColor *fertileColor = [UIColor ovatempAquaColor];
+    
+    if ([cyclePhase isEqualToString: @"period"]) {
+        return periodColor;
+        
+    }else if([cyclePhase isEqualToString: @"ovulation"]){
+        return fertileColor;
+        
+    }else if([cyclePhase isEqualToString: @"preovulation"]){
+        return notFertileColor;
+        
+    }else if([cyclePhase isEqualToString: @"postovulation"]){
+        return notFertileColor;
+        
+    }else{
+        return notFertileColor;
+    }
 }
 
 - (UIImage *)periodImageForDay:(Day *)day
@@ -558,29 +618,6 @@
     }else{
         return nil;
     }
-}
-
-#pragma mark - UICollectionView Delegate
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSInteger numDays = self.cycleLength;
-    NSInteger numParts = numDays - 1;
-    
-    if (numDays == 1) {
-        return CGSizeMake(self.periodCollectionView.frame.size.width, self.periodCollectionView.frame.size.height);
-    }
-    
-    CGFloat width = self.periodCollectionView.frame.size.width / numParts;
-    CGFloat height = self.periodCollectionView.frame.size.height;
-    
-    if (indexPath.row == numDays - 2 || indexPath.row == numDays - 1) {
-        // Last 2 cells
-        width = width / 2;
-    }
-    
-    CGSize size = CGSizeMake(width, height);
-    return size;
 }
 
 #pragma mark - Set/Get

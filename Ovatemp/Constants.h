@@ -39,6 +39,8 @@
 
 #define FERTILITY_WINDOW_COLOR ColorA(56, 192, 191, 0.16)
 
+#define PERIOD_COLOR Color(253,84,84)
+
 // COCOALUMBERJACK (Logging)
 
 #ifdef STAGING_DEBUG
