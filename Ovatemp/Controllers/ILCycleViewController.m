@@ -362,6 +362,7 @@
     NSNumber *minTempRounded = [NSNumber numberWithFloat: [minTempString floatValue]];
     NSNumber *maxTempRounded = [NSNumber numberWithFloat: [maxTempString floatValue]];
     
+    // This is to fix bug where points appear offscreen
     NSInteger minTempRoundedMinusOne = [minTempRounded integerValue] - 1;
     NSInteger maxTempRoundedMinusOne = [maxTempRounded integerValue] + 1;
     
