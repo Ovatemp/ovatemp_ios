@@ -80,18 +80,15 @@ class PositionPageViewController: WKInterfaceController {
     
     func updateScreenForNotLoggedIn () {
         
-        resetButtonImages()
-        
         positionSelectionLabel.setText("Please, log in.")
         positionSelectionLabel.setTextColor(UIColor.lightGrayColor())
+        
+        self.positionSelectLowClosedFirmGroup.setBackgroundImageNamed("Comp 1_0")
+        self.positionSelectHighOpenSoftGroup.setBackgroundImageNamed("Comp 1_0")
         
     }
     
     func updateScreen() {
-        
-        println("POSITION CONTROLLER : UPDATE SCREEN")
-        
-        self.resetButtonImages()
         
         switch selectedPositionState {
             
@@ -99,12 +96,16 @@ class PositionPageViewController: WKInterfaceController {
                 
                 self.positionSelectionLabel.setText("Low/Closed/Firm")
                 self.positionSelectionLabel.setTextColor(UIColor.whiteColor())
+                
+                self.positionSelectHighOpenSoftGroup.setBackgroundImageNamed("Comp 1_0")
                 self.animateGroupSelection(self.positionSelectLowClosedFirmGroup)
             
             case PositionState.highOpenSoft:
                 
                 self.positionSelectionLabel.setText("High/Open/Soft")
                 self.positionSelectionLabel.setTextColor(UIColor.whiteColor())
+                
+                self.positionSelectLowClosedFirmGroup.setBackgroundImageNamed("Comp 1_0")
                 self.animateGroupSelection(self.positionSelectHighOpenSoftGroup)
             
             default:
@@ -112,12 +113,10 @@ class PositionPageViewController: WKInterfaceController {
                 self.positionSelectionLabel.setText("Select")
                 self.positionSelectionLabel.setTextColor(UIColor.lightGrayColor())
             
+                self.positionSelectLowClosedFirmGroup.setBackgroundImageNamed("Comp 1_0")
+                self.positionSelectHighOpenSoftGroup.setBackgroundImageNamed("Comp 1_0")
+            
         }
-    }
-    
-    func resetButtonImages() {
-        self.positionSelectLowClosedFirmGroup.setBackgroundImageNamed("Comp 1_0")
-        self.positionSelectHighOpenSoftGroup.setBackgroundImageNamed("Comp 1_0")
     }
     
     func animateGroupSelection (buttonGroup: WKInterfaceGroup) {

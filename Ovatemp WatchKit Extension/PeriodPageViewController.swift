@@ -52,7 +52,7 @@ class PeriodPageViewController: WKInterfaceController {
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateScreen", name: "SelectedDayUpdate", object: nil)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateScreen", name: "SelectedDayUpdate", object: nil)
     }
     
     override func willActivate() {
@@ -109,18 +109,20 @@ class PeriodPageViewController: WKInterfaceController {
     
     func updateScreenForNotLoggedIn () {
         
-        resetButtonImages()
-
         periodSelectionLabel.setText("Please, log in.")
         periodSelectionLabel.setTextColor(UIColor.lightGrayColor())
+        
+        self.periodSelectNoneGroup.setBackgroundImageNamed("Comp 1_0")
+        self.periodSelectSpottingGroup.setBackgroundImageNamed("Comp 1_0")
+        self.periodSelectLightGroup.setBackgroundImageNamed("Comp 1_0")
+        self.periodSelectMediumGroup.setBackgroundImageNamed("Comp 1_0")
+        self.periodSelectHeavyGroup.setBackgroundImageNamed("Comp 1_0")
         
     }
     
     func updateScreen() {
         
         println("PERIOD CONTROLLER : UPDATE SCREEN")
-        
-        self.resetButtonImages()
         
         switch selectedPeriodState {
             
@@ -130,6 +132,11 @@ class PeriodPageViewController: WKInterfaceController {
                 
                 self.periodSelectionLabel.setText("None")
                 self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
+                
+                self.periodSelectSpottingGroup.setBackgroundImageNamed("Comp 1_0")
+                self.periodSelectLightGroup.setBackgroundImageNamed("Comp 1_0")
+                self.periodSelectMediumGroup.setBackgroundImageNamed("Comp 1_0")
+                self.periodSelectHeavyGroup.setBackgroundImageNamed("Comp 1_0")
                 self.animateGroupSelection(self.periodSelectNoneGroup)
                 
             case PeriodState.spotting:
@@ -138,6 +145,11 @@ class PeriodPageViewController: WKInterfaceController {
                 
                 self.periodSelectionLabel.setText("Spotting")
                 self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
+                
+                self.periodSelectNoneGroup.setBackgroundImageNamed("Comp 1_0")
+                self.periodSelectLightGroup.setBackgroundImageNamed("Comp 1_0")
+                self.periodSelectMediumGroup.setBackgroundImageNamed("Comp 1_0")
+                self.periodSelectHeavyGroup.setBackgroundImageNamed("Comp 1_0")
                 self.animateGroupSelection(self.periodSelectSpottingGroup)
                 
             case PeriodState.light:
@@ -146,6 +158,11 @@ class PeriodPageViewController: WKInterfaceController {
 
                 self.periodSelectionLabel.setText("Light")
                 self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
+                
+                self.periodSelectNoneGroup.setBackgroundImageNamed("Comp 1_0")
+                self.periodSelectSpottingGroup.setBackgroundImageNamed("Comp 1_0")
+                self.periodSelectMediumGroup.setBackgroundImageNamed("Comp 1_0")
+                self.periodSelectHeavyGroup.setBackgroundImageNamed("Comp 1_0")
                 self.animateGroupSelection(self.periodSelectLightGroup)
                 
             case PeriodState.medium:
@@ -154,6 +171,11 @@ class PeriodPageViewController: WKInterfaceController {
 
                 self.periodSelectionLabel.setText("Medium")
                 self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
+                
+                self.periodSelectNoneGroup.setBackgroundImageNamed("Comp 1_0")
+                self.periodSelectSpottingGroup.setBackgroundImageNamed("Comp 1_0")
+                self.periodSelectLightGroup.setBackgroundImageNamed("Comp 1_0")
+                self.periodSelectHeavyGroup.setBackgroundImageNamed("Comp 1_0")
                 self.animateGroupSelection(self.periodSelectMediumGroup)
                 
             case PeriodState.heavy:
@@ -162,6 +184,11 @@ class PeriodPageViewController: WKInterfaceController {
                 
                 self.periodSelectionLabel.setText("Heavy")
                 self.periodSelectionLabel.setTextColor(UIColor.whiteColor())
+                
+                self.periodSelectNoneGroup.setBackgroundImageNamed("Comp 1_0")
+                self.periodSelectSpottingGroup.setBackgroundImageNamed("Comp 1_0")
+                self.periodSelectLightGroup.setBackgroundImageNamed("Comp 1_0")
+                self.periodSelectMediumGroup.setBackgroundImageNamed("Comp 1_0")
                 self.animateGroupSelection(self.periodSelectHeavyGroup)
                 
             default:
@@ -171,19 +198,13 @@ class PeriodPageViewController: WKInterfaceController {
                 self.periodSelectionLabel.setText("Select")
                 self.periodSelectionLabel.setTextColor(UIColor.lightGrayColor())
             
+                self.periodSelectNoneGroup.setBackgroundImageNamed("Comp 1_0")
+                self.periodSelectSpottingGroup.setBackgroundImageNamed("Comp 1_0")
+                self.periodSelectLightGroup.setBackgroundImageNamed("Comp 1_0")
+                self.periodSelectMediumGroup.setBackgroundImageNamed("Comp 1_0")
+                self.periodSelectHeavyGroup.setBackgroundImageNamed("Comp 1_0")
+            
         }
-        
-    }
-    
-    func resetButtonImages() {
-        
-        println("RESET BUTTON IMAGES")
-        
-        self.periodSelectNoneGroup.setBackgroundImageNamed("Comp 1_0")
-        self.periodSelectSpottingGroup.setBackgroundImageNamed("Comp 1_0")
-        self.periodSelectLightGroup.setBackgroundImageNamed("Comp 1_0")
-        self.periodSelectMediumGroup.setBackgroundImageNamed("Comp 1_0")
-        self.periodSelectHeavyGroup.setBackgroundImageNamed("Comp 1_0")
         
     }
     

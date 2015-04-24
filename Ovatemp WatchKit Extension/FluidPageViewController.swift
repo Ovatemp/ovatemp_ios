@@ -90,18 +90,17 @@ class FluidPageViewController: WKInterfaceController {
     
     func updateScreenForNotLoggedIn() {
         
-        resetButtonImages()
-        
         fluidSelectionLabel.setText("Please, log in.")
         fluidSelectionLabel.setTextColor(UIColor.lightGrayColor())
+        
+        self.fluidSelectDryGroup.setBackgroundImageNamed("Comp 1_0")
+        self.fluidSelectStickyGroup.setBackgroundImageNamed("Comp 1_0")
+        self.fluidSelectCreamyGroup.setBackgroundImageNamed("Comp 1_0")
+        self.fluidSelectEggwhiteGroup.setBackgroundImageNamed("Comp 1_0")
         
     }
     
     func updateScreen() {
-        
-        println("FLUID CONTROLLER : UPDATE SCREEN")
-        
-        self.resetButtonImages()
         
         switch selectedFluidState {
 
@@ -109,24 +108,40 @@ class FluidPageViewController: WKInterfaceController {
                 
                 self.fluidSelectionLabel.setText("Dry")
                 self.fluidSelectionLabel.setTextColor(UIColor.whiteColor())
+                
+                self.fluidSelectStickyGroup.setBackgroundImageNamed("Comp 1_0")
+                self.fluidSelectCreamyGroup.setBackgroundImageNamed("Comp 1_0")
+                self.fluidSelectEggwhiteGroup.setBackgroundImageNamed("Comp 1_0")
                 self.anitmateGroupSelection(self.fluidSelectDryGroup)
             
             case FluidState.sticky:
                 
                 self.fluidSelectionLabel.setText("Sticky")
                 self.fluidSelectionLabel.setTextColor(UIColor.whiteColor())
+                
+                self.fluidSelectDryGroup.setBackgroundImageNamed("Comp 1_0")
+                self.fluidSelectCreamyGroup.setBackgroundImageNamed("Comp 1_0")
+                self.fluidSelectEggwhiteGroup.setBackgroundImageNamed("Comp 1_0")
                 self.anitmateGroupSelection(self.fluidSelectStickyGroup)
             
             case FluidState.creamy:
                 
                 self.fluidSelectionLabel.setText("Creamy")
                 self.fluidSelectionLabel.setTextColor(UIColor.whiteColor())
+                
+                self.fluidSelectDryGroup.setBackgroundImageNamed("Comp 1_0")
+                self.fluidSelectStickyGroup.setBackgroundImageNamed("Comp 1_0")
+                self.fluidSelectEggwhiteGroup.setBackgroundImageNamed("Comp 1_0")
                 self.anitmateGroupSelection(self.fluidSelectCreamyGroup)
             
             case FluidState.eggwhite:
                 
                 self.fluidSelectionLabel.setText("Eggwhite")
                 self.fluidSelectionLabel.setTextColor(UIColor.whiteColor())
+                
+                self.fluidSelectDryGroup.setBackgroundImageNamed("Comp 1_0")
+                self.fluidSelectStickyGroup.setBackgroundImageNamed("Comp 1_0")
+                self.fluidSelectCreamyGroup.setBackgroundImageNamed("Comp 1_0")
                 self.anitmateGroupSelection(self.fluidSelectEggwhiteGroup)
             
             default:
@@ -134,18 +149,12 @@ class FluidPageViewController: WKInterfaceController {
                 self.fluidSelectionLabel.setText("Select")
                 self.fluidSelectionLabel.setTextColor(UIColor.lightGrayColor())
             
+                self.fluidSelectDryGroup.setBackgroundImageNamed("Comp 1_0")
+                self.fluidSelectStickyGroup.setBackgroundImageNamed("Comp 1_0")
+                self.fluidSelectCreamyGroup.setBackgroundImageNamed("Comp 1_0")
+                self.fluidSelectEggwhiteGroup.setBackgroundImageNamed("Comp 1_0")
+            
         }
-    }
-    
-    func resetButtonImages() {
-        
-        println("FLUID CONTROLLER : RESET BUTTON IMAGES")
-        
-        self.fluidSelectDryGroup.setBackgroundImageNamed("Comp 1_0")
-        self.fluidSelectStickyGroup.setBackgroundImageNamed("Comp 1_0")
-        self.fluidSelectCreamyGroup.setBackgroundImageNamed("Comp 1_0")
-        self.fluidSelectEggwhiteGroup.setBackgroundImageNamed("Comp 1_0")
-        
     }
     
     func anitmateGroupSelection (buttonGroup: WKInterfaceGroup) {
