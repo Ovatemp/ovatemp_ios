@@ -294,6 +294,8 @@
 {
     self.chartSeries = [[TKChartLineSeries alloc] initWithItems: self.temperatureData];
     
+    self.chartSeries.style.shapeMode = TKChartSeriesStyleShapeModeAlwaysShow;
+    
     // POINT SHAPE
     self.chartSeries.style.pointShape = [TKPredefinedShape shapeWithType: TKShapeTypeCircle andSize: CGSizeMake(10, 10)];
     
@@ -360,9 +362,10 @@
     NSNumber *minTempRounded = [NSNumber numberWithFloat: [minTempString floatValue]];
     NSNumber *maxTempRounded = [NSNumber numberWithFloat: [maxTempString floatValue]];
     
-    //NSLog(@"MIN TEMP: %@ ... MAX TEMP: %@", minTempRounded, maxTempRounded);
+    NSInteger minTempRoundedMinusOne = [minTempRounded integerValue] - 1;
+    NSInteger maxTempRoundedMinusOne = [maxTempRounded integerValue] + 1;
     
-    TKChartNumericAxis *yAxis = [[TKChartNumericAxis alloc] initWithMinimum: minTempRounded andMaximum: maxTempRounded];
+    TKChartNumericAxis *yAxis = [[TKChartNumericAxis alloc] initWithMinimum: @(minTempRoundedMinusOne) andMaximum: @(maxTempRoundedMinusOne)];
     yAxis.style.labelStyle.textOffset = UIOffsetMake(2, 0);
     yAxis.style.labelStyle.textColor = [UIColor darkGrayColor];
     //    yAxis.minorTickInterval = @10;
@@ -372,7 +375,7 @@
     yAxis.style.titleStyle.textColor = [UIColor darkGrayColor];
     self.chartView.yAxis = yAxis;
     
-    TKChartNumericAxis *xAxis = [[TKChartNumericAxis alloc] initWithMinimum: @1 andMaximum: @(self.cycleLength)];
+    TKChartNumericAxis *xAxis = [[TKChartNumericAxis alloc] initWithMinimum: @0 andMaximum: @(self.cycleLength)];
     xAxis.style.labelStyle.textColor = [UIColor darkGrayColor];
     xAxis.style.labelStyle.font = [UIFont boldSystemFontOfSize: 10];
     xAxis.majorTickInterval = @1;
@@ -519,10 +522,10 @@
     CGFloat width = self.periodCollectionView.frame.size.width / numParts;
     CGFloat height = self.periodCollectionView.frame.size.height;
     
-    if (indexPath.row == numDays - 2 || indexPath.row == numDays - 1) {
-        // Last 2 cells
-        width = width / 2;
-    }
+//    if (indexPath.row == numDays - 2 || indexPath.row == numDays - 1) {
+//        // Last 2 cells
+//        width = width / 2;
+//    }
     
     CGSize size = CGSizeMake(width, height);
     return size;
