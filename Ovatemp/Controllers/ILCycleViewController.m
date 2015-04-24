@@ -367,7 +367,9 @@
     NSInteger maxTempRoundedMinusOne = [maxTempRounded integerValue] + 1;
     
     TKChartNumericAxis *yAxis = [[TKChartNumericAxis alloc] initWithMinimum: @(minTempRoundedMinusOne) andMaximum: @(maxTempRoundedMinusOne)];
-    yAxis.style.labelStyle.textOffset = UIOffsetMake(2, 0);
+    //yAxis.style.labelStyle.textOffset = UIOffsetMake(2, 0);
+    //yAxis.style.labelStyle.firstLabelTextOffset = UIOffsetMake(2, 0);
+    yAxis.style.labelStyle.firstLabelTextAlignment = TKChartAxisLabelAlignmentLeft;
     yAxis.style.labelStyle.textColor = [UIColor darkGrayColor];
     //    yAxis.minorTickInterval = @10;
     //    yAxis.style.minorTickStyle.ticksHidden = NO;
