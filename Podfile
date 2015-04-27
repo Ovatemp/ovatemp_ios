@@ -8,6 +8,7 @@ target :Ovatemp do
   pod "TAOverlay"
   pod "CocoaLumberjack"
   pod "CCMPopup"
+  pod "AFNetworking"
 end
 
 target :OvatempTests, exclusive: true do

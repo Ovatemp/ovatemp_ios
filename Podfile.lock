@@ -1,4 +1,25 @@
 PODS:
+  - AFNetworking (2.5.3):
+    - AFNetworking/NSURLConnection (= 2.5.3)
+    - AFNetworking/NSURLSession (= 2.5.3)
+    - AFNetworking/Reachability (= 2.5.3)
+    - AFNetworking/Security (= 2.5.3)
+    - AFNetworking/Serialization (= 2.5.3)
+    - AFNetworking/UIKit (= 2.5.3)
+  - AFNetworking/NSURLConnection (2.5.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.5.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.5.3)
+  - AFNetworking/Security (2.5.3)
+  - AFNetworking/Serialization (2.5.3)
+  - AFNetworking/UIKit (2.5.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
   - CCMPopup (1.1.0)
   - CocoaLumberjack (2.0.0):
     - CocoaLumberjack/Default (= 2.0.0)
@@ -8,20 +29,21 @@ PODS:
     - CocoaLumberjack/Core
   - CocoaLumberjack/Extensions (2.0.0):
     - CocoaLumberjack/Default
-  - Expecta (0.3.2)
+  - Expecta (0.4.2)
   - Helpshift (4.10.2)
   - Inflections (1.0.0):
     - RegexKitLite
   - KIF (2.0.3)
-  - Localytics (3.1.0)
+  - Localytics (3.1.1)
   - Nocilla (0.9.0)
   - OCMock (3.1.2)
   - Reachability (3.2)
   - RegexKitLite (4.0)
-  - Specta (0.4.0)
+  - Specta (0.5.0)
   - TAOverlay (2.0.1)
 
 DEPENDENCIES:
+  - AFNetworking
   - CCMPopup
   - CocoaLumberjack
   - Expecta
@@ -45,18 +67,19 @@ CHECKOUT OPTIONS:
     :git: https://github.com/BackForty/KIF.git
 
 SPEC CHECKSUMS:
+  AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
   CCMPopup: e41fad5b8a0823c9cddea8eab6d431670c9dabe5
   CocoaLumberjack: a6f77d987d65dc7ba86b0f84db7d0b9084f77bcb
-  Expecta: 8c507baf13211207b1e9d0a741480600e6b4ed15
+  Expecta: 78b4e8b0c8291fa4524d7f74016b6065c2e391ec
   Helpshift: 9c84a5e4ffd881c7e7eb395c2afc8d6a46eb2187
   Inflections: ec16ea4356ec1e0771ca6ae6b0adc62b09ce0973
   KIF: 25c0a730008377c6734f68d4fc3e3f462622127d
-  Localytics: 87268a820c285f6f5ed3fa505a176c049ed07462
+  Localytics: 697d477c286e346c9ff0cbb5e8f646117a8c87bd
   Nocilla: d7d96e8a11e363f0d7c976d48b320c43d61fb471
   OCMock: a10ea9f0a6e921651f96f78b6faee95ebc813b92
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
-  Specta: a353759f073ffcc0a365b782fe4aaeac064c03c6
+  Specta: eb90708ed77569bbda089f8ead10bb99b8e9489e
   TAOverlay: 940e37fdb45fbc9acfc73bf1089668367e3b1be6
 
 COCOAPODS: 0.36.0
