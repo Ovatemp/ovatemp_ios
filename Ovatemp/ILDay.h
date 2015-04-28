@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ILFertility.h"
+
 @interface ILDay : NSObject
 
 @property (nonatomic) NSNumber *day_id;
@@ -35,6 +37,8 @@
 @property (nonatomic) NSArray *supplementIds;
 @property (nonatomic) NSArray *medicineIds;
 @property (nonatomic) NSArray *symptomIds;
+
+@property (nonatomic) ILFertility *fertility;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 

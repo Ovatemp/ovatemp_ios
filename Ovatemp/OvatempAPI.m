@@ -25,7 +25,8 @@
     dispatch_once(&onceToken, ^{
         
         NSURLSessionConfiguration *urlSessionConfiguration = [self sessionConfiguration];
-        NSURL *baseUrl = [NSURL URLWithString: ROOT_URL];
+        NSString *baseUrlString = [NSString stringWithFormat: @"%@/api", ROOT_URL];
+        NSURL *baseUrl = [NSURL URLWithString: baseUrlString];
         _instance = [[OvatempAPI alloc] initWithBaseURL: baseUrl sessionConfiguration: urlSessionConfiguration];
         [_instance.requestSerializer setValue: @"application/vnd.ovatemp.v3" forHTTPHeaderField: @"Accept"];
         [_instance.requestSerializer setValue: [self accessToken] forHTTPHeaderField: @"Authorization"];

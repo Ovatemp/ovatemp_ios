@@ -18,6 +18,7 @@
 		06615E0E1AEED4EE000696D1 /* NSArray+ArrayMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 06615E0D1AEED4EE000696D1 /* NSArray+ArrayMap.m */; };
 		06615E111AEED7B9000696D1 /* ILCycle.m in Sources */ = {isa = PBXBuildFile; fileRef = 06615E101AEED7B9000696D1 /* ILCycle.m */; };
 		06615E141AEEDBAD000696D1 /* ILPaginationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 06615E131AEEDBAD000696D1 /* ILPaginationInfo.m */; };
+		06615E1D1AF01E22000696D1 /* ILFertility.m in Sources */ = {isa = PBXBuildFile; fileRef = 06615E1C1AF01E22000696D1 /* ILFertility.m */; };
 		06712E9E1ADC6064007CEEF3 /* Ovatemp WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 06712E9D1ADC6064007CEEF3 /* Ovatemp WatchKit App.app */; };
 		06712EAB1ADC6064007CEEF3 /* Ovatemp WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 06712E8E1ADC6064007CEEF3 /* Ovatemp WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		06712EBC1ADC655B007CEEF3 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06712EB81ADC655B007CEEF3 /* Interface.storyboard */; };
@@ -426,6 +427,8 @@
 		06615E101AEED7B9000696D1 /* ILCycle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCycle.m; sourceTree = "<group>"; };
 		06615E121AEEDBAD000696D1 /* ILPaginationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPaginationInfo.h; sourceTree = "<group>"; };
 		06615E131AEEDBAD000696D1 /* ILPaginationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPaginationInfo.m; sourceTree = "<group>"; };
+		06615E1B1AF01E22000696D1 /* ILFertility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILFertility.h; sourceTree = "<group>"; };
+		06615E1C1AF01E22000696D1 /* ILFertility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILFertility.m; sourceTree = "<group>"; };
 		06712E8E1ADC6064007CEEF3 /* Ovatemp WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Ovatemp WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06712E9D1ADC6064007CEEF3 /* Ovatemp WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ovatemp WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06712EB91ADC655B007CEEF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -1106,6 +1109,8 @@
 				06615E091AEED396000696D1 /* ILDay.m */,
 				06615E0F1AEED7B9000696D1 /* ILCycle.h */,
 				06615E101AEED7B9000696D1 /* ILCycle.m */,
+				06615E1B1AF01E22000696D1 /* ILFertility.h */,
+				06615E1C1AF01E22000696D1 /* ILFertility.m */,
 				06615E121AEEDBAD000696D1 /* ILPaginationInfo.h */,
 				06615E131AEEDBAD000696D1 /* ILPaginationInfo.m */,
 			);
@@ -2392,6 +2397,7 @@
 				5F1C9C7219EDE87A000F1FC1 /* DayCell.m in Sources */,
 				5F1C9B7619EDE87A000F1FC1 /* GradientButton.m in Sources */,
 				5F223F3019F014620003AF64 /* ProfileTableViewController.m in Sources */,
+				06615E1D1AF01E22000696D1 /* ILFertility.m in Sources */,
 				06615E141AEEDBAD000696D1 /* ILPaginationInfo.m in Sources */,
 				5F1C9B8219EDE87A000F1FC1 /* CalendarViewController.m in Sources */,
 				5F1C9B8B19EDE87A000F1FC1 /* FAMSettingsViewController.m in Sources */,

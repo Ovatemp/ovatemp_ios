@@ -48,7 +48,15 @@
     self.medicineIds = dictionary[@"medicine_ids"];
     self.symptomIds = dictionary[@"symptom_ids"];
     
+    self.fertility = [[ILFertility alloc] initWithDictionary: dictionary[@"fertility"]];
+    
     return self;
+}
+
+- (NSString *)description
+{
+    NSString *description = [NSString stringWithFormat: @"ID: %@ \n DATE: %@ \n TEMPERATURE: %@ \n FERTILITY: %@", self.day_id, self.date, self.temperature, self.fertility];
+    return description;
 }
 
 - (NSDateFormatter *)dateFormatter

@@ -39,6 +39,8 @@
 #import "TrackingMedicinesTableViewCell.h"
 #import "DateCollectionViewCell.h"
 
+#import "OvatempAPI.h"
+
 #import "TutorialHelper.h"
 
 @import HealthKit;
@@ -231,99 +233,112 @@
 
 - (void)refreshTrackingViewWithAnimation:(BOOL)animationFlag
 {
-    NSLog(@"REFRESH TRACKING VIEW");
     
-    [ConnectionManager get: @"/cycles"
-                    params: @{
-                              @"date": [self.selectedDate dateId],
-                              }
-                   success:^(id response) {
-                       
-                       [Cycle cycleFromResponse: response];
-                       self.day = [Day forDate: self.selectedDate];
-                       if (!self.day) {
-                           self.day = [Day withAttributes:@{@"date": self.selectedDate, @"idate": self.selectedDate.dateId}];
-                       }
-                       
-                       NSDateFormatter* dtFormatter = [[NSDateFormatter alloc] init];
-                       [dtFormatter setLocale:[NSLocale systemLocale]];
-                       [dtFormatter setDateFormat:@"yyyy-MM-dd"];
-                       self.peakDate = [dtFormatter dateFromString:[response objectForKey: @"peak_date"]];
-                       
-                       if (![self.day.cyclePhase isEqualToString:@"period"]) {
-                           [self.datesWithPeriod removeObject: self.day.date];
-                       }
-                       
-                       NSLog(@"REFRESH SUCCESS : RELOADING TABLE");
-                       
-                       if (animationFlag) {
-                           [self reloadTableWithAnimation];
-                       }else{
-                           [self.tableView reloadData];
-                       }
-                       
-                       [self setTitleView];
-                       [TAOverlay hideOverlay];
-                       
-                   }
-                   failure:^(NSError *error) {
-                       
-                       NSLog(@"ERROR: %@", error.localizedDescription);
-                       [TAOverlay hideOverlay];
-                       
-                   }];
+    
+    
+//    NSLog(@"REFRESH TRACKING VIEW");
+//    
+//    [ConnectionManager get: @"/cycles"
+//                    params: @{
+//                              @"date": [self.selectedDate dateId],
+//                              }
+//                   success:^(id response) {
+//                       
+//                       [Cycle cycleFromResponse: response];
+//                       self.day = [Day forDate: self.selectedDate];
+//                       if (!self.day) {
+//                           self.day = [Day withAttributes:@{@"date": self.selectedDate, @"idate": self.selectedDate.dateId}];
+//                       }
+//                       
+//                       NSDateFormatter* dtFormatter = [[NSDateFormatter alloc] init];
+//                       [dtFormatter setLocale:[NSLocale systemLocale]];
+//                       [dtFormatter setDateFormat:@"yyyy-MM-dd"];
+//                       self.peakDate = [dtFormatter dateFromString:[response objectForKey: @"peak_date"]];
+//                       
+//                       if (![self.day.cyclePhase isEqualToString:@"period"]) {
+//                           [self.datesWithPeriod removeObject: self.day.date];
+//                       }
+//                       
+//                       NSLog(@"REFRESH SUCCESS : RELOADING TABLE");
+//                       
+//                       if (animationFlag) {
+//                           [self reloadTableWithAnimation];
+//                       }else{
+//                           [self.tableView reloadData];
+//                       }
+//                       
+//                       [self setTitleView];
+//                       [TAOverlay hideOverlay];
+//                       
+//                   }
+//                   failure:^(NSError *error) {
+//                       
+//                       NSLog(@"ERROR: %@", error.localizedDescription);
+//                       [TAOverlay hideOverlay];
+//                       
+//                   }];
     
 }
 
 - (void)refreshDrawerCollectionViewData
 {
-    NSLog(@"REFRESH DAYS COLLECTION VIEW");
+    [[OvatempAPI sharedSession] getDaysOnPage: 1 completion:^(NSArray *days, ILPaginationInfo *pagination, NSError *error) {
+        
+        if (days) {
+            NSLog(@"DAYS: %@", days);
+        }else{
+            NSLog(@"ERROR: %@", error);
+        }
+        
+    }];
     
-    [TAOverlay showOverlayWithLabel: @"Loading..." Options: TAOverlayOptionOverlaySizeRoundedRect];
-    
-    [ConnectionManager get:@"/days"
-                    params:@{
-                             @"start_date": [self.drawerDateData firstObject],
-                             @"end_date": [self.drawerDateData lastObject]
-                             }
-                   success:^(NSDictionary *response) {
-
-                       NSArray *cycles = response[@"cycles"];
-
-                       for (NSDictionary *days in cycles) {
-                           NSArray *daysArray = [days objectForKey:@"days"];
-                           for (NSDictionary *day in daysArray) {
-                               
-                               // Add days to daysFromBackend array
-                               [self.daysFromBackend addObject:day];
-                               
-                               // If day has any kind of period, add to datesWithPeriod array
-                               if ((![[day objectForKey:@"period"] isEqual:[NSNull null]])) {
-                                   if ([[day objectForKey:@"period"] isEqualToString:@"spotting"] || [[day objectForKey:@"period"] isEqualToString:@"light"] || [[day objectForKey:@"period"] isEqualToString:@"medium"] || [[day objectForKey:@"period"] isEqualToString:@"heavy"]) {
-                                       
-                                       NSDateFormatter* dtFormatter = [[NSDateFormatter alloc] init];
-                                       [dtFormatter setLocale:[NSLocale systemLocale]];
-                                       [dtFormatter setDateFormat:@"yyyy-MM-dd"];
-                                       NSDate *tempDate = [dtFormatter dateFromString:[day objectForKey:@"date"]];
-                                       
-                                       if (![self.datesWithPeriod containsObject:tempDate]) {
-                                           [self.datesWithPeriod addObject:tempDate];
-                                       }
-                                   }
-                               }
-                               
-                           }
-                       }
-                       
-                       NSLog(@"REFRESH DAYS COLLECTION VIEW  : SUCCESS");
-                       
-                       [self.drawerCollectionView reloadData];
-                       [self refreshTrackingViewWithAnimation: YES];
-                   }
-                   failure:^(NSError *error) {
-                       NSLog(@"error: %@", error);
-                       [TAOverlay hideOverlay];
-                   }];
+//    NSLog(@"REFRESH DAYS COLLECTION VIEW");
+//    
+//    [TAOverlay showOverlayWithLabel: @"Loading..." Options: TAOverlayOptionOverlaySizeRoundedRect];
+//    
+//    [ConnectionManager get:@"/days"
+//                    params:@{
+//                             @"start_date": [self.drawerDateData firstObject],
+//                             @"end_date": [self.drawerDateData lastObject]
+//                             }
+//                   success:^(NSDictionary *response) {
+//
+//                       NSArray *cycles = response[@"cycles"];
+//
+//                       for (NSDictionary *days in cycles) {
+//                           NSArray *daysArray = [days objectForKey:@"days"];
+//                           for (NSDictionary *day in daysArray) {
+//                               
+//                               // Add days to daysFromBackend array
+//                               [self.daysFromBackend addObject:day];
+//                               
+//                               // If day has any kind of period, add to datesWithPeriod array
+//                               if ((![[day objectForKey:@"period"] isEqual:[NSNull null]])) {
+//                                   if ([[day objectForKey:@"period"] isEqualToString:@"spotting"] || [[day objectForKey:@"period"] isEqualToString:@"light"] || [[day objectForKey:@"period"] isEqualToString:@"medium"] || [[day objectForKey:@"period"] isEqualToString:@"heavy"]) {
+//                                       
+//                                       NSDateFormatter* dtFormatter = [[NSDateFormatter alloc] init];
+//                                       [dtFormatter setLocale:[NSLocale systemLocale]];
+//                                       [dtFormatter setDateFormat:@"yyyy-MM-dd"];
+//                                       NSDate *tempDate = [dtFormatter dateFromString:[day objectForKey:@"date"]];
+//                                       
+//                                       if (![self.datesWithPeriod containsObject:tempDate]) {
+//                                           [self.datesWithPeriod addObject:tempDate];
+//                                       }
+//                                   }
+//                               }
+//                               
+//                           }
+//                       }
+//                       
+//                       NSLog(@"REFRESH DAYS COLLECTION VIEW  : SUCCESS");
+//                       
+//                       [self.drawerCollectionView reloadData];
+//                       [self refreshTrackingViewWithAnimation: YES];
+//                   }
+//                   failure:^(NSError *error) {
+//                       NSLog(@"error: %@", error);
+//                       [TAOverlay hideOverlay];
+//                   }];
 }
 
 #pragma mark - IBAction's

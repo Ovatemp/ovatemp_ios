@@ -8,6 +8,8 @@
 
 #import "AFHTTPSessionManager.h"
 
+#import "ILDay.h"
+#import "ILCycle.h"
 #import "ILPaginationInfo.h"
 
 typedef void (^CompletionBlock)(id object, NSError *error);
