@@ -13,6 +13,11 @@
 		063942341AD71B8B00BE7605 /* ONDOSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 063942321AD71B8B00BE7605 /* ONDOSettingViewController.xib */; };
 		063CB2631AE1C131005F2D3A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063CB2621AE1C131005F2D3A /* Constants.swift */; };
 		0644CE551AE952E1006B4E24 /* TutorialHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0644CE541AE952E1006B4E24 /* TutorialHelper.m */; };
+		06615E071AEEA6E0000696D1 /* OvatempAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 06615E061AEEA6E0000696D1 /* OvatempAPI.m */; };
+		06615E0A1AEED396000696D1 /* ILDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 06615E091AEED396000696D1 /* ILDay.m */; };
+		06615E0E1AEED4EE000696D1 /* NSArray+ArrayMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 06615E0D1AEED4EE000696D1 /* NSArray+ArrayMap.m */; };
+		06615E111AEED7B9000696D1 /* ILCycle.m in Sources */ = {isa = PBXBuildFile; fileRef = 06615E101AEED7B9000696D1 /* ILCycle.m */; };
+		06615E141AEEDBAD000696D1 /* ILPaginationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 06615E131AEEDBAD000696D1 /* ILPaginationInfo.m */; };
 		06712E9E1ADC6064007CEEF3 /* Ovatemp WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 06712E9D1ADC6064007CEEF3 /* Ovatemp WatchKit App.app */; };
 		06712EAB1ADC6064007CEEF3 /* Ovatemp WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 06712E8E1ADC6064007CEEF3 /* Ovatemp WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		06712EBC1ADC655B007CEEF3 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06712EB81ADC655B007CEEF3 /* Interface.storyboard */; };
@@ -411,6 +416,16 @@
 		063CB2621AE1C131005F2D3A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0644CE531AE952E1006B4E24 /* TutorialHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialHelper.h; sourceTree = "<group>"; };
 		0644CE541AE952E1006B4E24 /* TutorialHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialHelper.m; sourceTree = "<group>"; };
+		06615E051AEEA6E0000696D1 /* OvatempAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OvatempAPI.h; sourceTree = "<group>"; };
+		06615E061AEEA6E0000696D1 /* OvatempAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OvatempAPI.m; sourceTree = "<group>"; };
+		06615E081AEED396000696D1 /* ILDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILDay.h; sourceTree = "<group>"; };
+		06615E091AEED396000696D1 /* ILDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILDay.m; sourceTree = "<group>"; };
+		06615E0C1AEED4EE000696D1 /* NSArray+ArrayMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ArrayMap.h"; sourceTree = "<group>"; };
+		06615E0D1AEED4EE000696D1 /* NSArray+ArrayMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ArrayMap.m"; sourceTree = "<group>"; };
+		06615E0F1AEED7B9000696D1 /* ILCycle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCycle.h; sourceTree = "<group>"; };
+		06615E101AEED7B9000696D1 /* ILCycle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCycle.m; sourceTree = "<group>"; };
+		06615E121AEEDBAD000696D1 /* ILPaginationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPaginationInfo.h; sourceTree = "<group>"; };
+		06615E131AEEDBAD000696D1 /* ILPaginationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILPaginationInfo.m; sourceTree = "<group>"; };
 		06712E8E1ADC6064007CEEF3 /* Ovatemp WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Ovatemp WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06712E9D1ADC6064007CEEF3 /* Ovatemp WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ovatemp WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06712EB91ADC655B007CEEF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -1073,6 +1088,39 @@
 			name = Other;
 			sourceTree = "<group>";
 		};
+		06615E031AEEA517000696D1 /* OvatempAPIV3 SDK */ = {
+			isa = PBXGroup;
+			children = (
+				06615E051AEEA6E0000696D1 /* OvatempAPI.h */,
+				06615E061AEEA6E0000696D1 /* OvatempAPI.m */,
+				06615E041AEEA5F4000696D1 /* Models */,
+				06615E0B1AEED470000696D1 /* Helpers */,
+			);
+			name = "OvatempAPIV3 SDK";
+			sourceTree = "<group>";
+		};
+		06615E041AEEA5F4000696D1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				06615E081AEED396000696D1 /* ILDay.h */,
+				06615E091AEED396000696D1 /* ILDay.m */,
+				06615E0F1AEED7B9000696D1 /* ILCycle.h */,
+				06615E101AEED7B9000696D1 /* ILCycle.m */,
+				06615E121AEEDBAD000696D1 /* ILPaginationInfo.h */,
+				06615E131AEEDBAD000696D1 /* ILPaginationInfo.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		06615E0B1AEED470000696D1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				06615E0C1AEED4EE000696D1 /* NSArray+ArrayMap.h */,
+				06615E0D1AEED4EE000696D1 /* NSArray+ArrayMap.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		06712EB71ADC655A007CEEF3 /* Ovatemp WatchKit App */ = {
 			isa = PBXGroup;
 			children = (
@@ -1361,6 +1409,7 @@
 		5F1C99DE19EDE879000F1FC1 /* Ovatemp */ = {
 			isa = PBXGroup;
 			children = (
+				06615E031AEEA517000696D1 /* OvatempAPIV3 SDK */,
 				5F1C9B2419EDE87A000F1FC1 /* Models */,
 				5F1C9A2519EDE879000F1FC1 /* Controllers */,
 				5F1C9B4A19EDE87A000F1FC1 /* Views */,
@@ -2343,11 +2392,14 @@
 				5F1C9C7219EDE87A000F1FC1 /* DayCell.m in Sources */,
 				5F1C9B7619EDE87A000F1FC1 /* GradientButton.m in Sources */,
 				5F223F3019F014620003AF64 /* ProfileTableViewController.m in Sources */,
+				06615E141AEEDBAD000696D1 /* ILPaginationInfo.m in Sources */,
 				5F1C9B8219EDE87A000F1FC1 /* CalendarViewController.m in Sources */,
 				5F1C9B8B19EDE87A000F1FC1 /* FAMSettingsViewController.m in Sources */,
 				5F2B1DE81A097F0A0078A11D /* TrackingTemperatureTableViewCell.m in Sources */,
+				06615E0A1AEED396000696D1 /* ILDay.m in Sources */,
 				5F1C9B8C19EDE87A000F1FC1 /* FertilityProfileIntroViewController.m in Sources */,
 				5F1C9B6E19EDE87A000F1FC1 /* BorderedGradientButton.m in Sources */,
+				06615E071AEEA6E0000696D1 /* OvatempAPI.m in Sources */,
 				5F1C9C6119EDE87A000F1FC1 /* Supplement.m in Sources */,
 				5F1C9B8419EDE87A000F1FC1 /* CoachingMenuViewController.m in Sources */,
 				5FE1184C1A1ABFF700AC76A7 /* WelcomeAlarmViewController.m in Sources */,
@@ -2386,6 +2438,7 @@
 				5F223F3519F03B480003AF64 /* SettingsTableViewController.m in Sources */,
 				5F1C9C5A19EDE87A000F1FC1 /* Cycle.m in Sources */,
 				5F1C9C5719EDE87A000F1FC1 /* BaseModel.m in Sources */,
+				06615E111AEED7B9000696D1 /* ILCycle.m in Sources */,
 				5FCD68B719F942A10091C492 /* WeightTableViewCell.m in Sources */,
 				5F1E1D941A0DAEE4001C22B7 /* TrackingMoodTableViewCell.m in Sources */,
 				5F6561ED19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.m in Sources */,
@@ -2402,6 +2455,7 @@
 				5F8C568E19F184C60024552A /* SelectLogInOrSignUpViewController.m in Sources */,
 				5FDAA3AB19F8020F004E7181 /* CycleLengthTableViewCell.m in Sources */,
 				5F1C9C6D19EDE87A000F1FC1 /* CoachingMenuCell.m in Sources */,
+				06615E0E1AEED4EE000696D1 /* NSArray+ArrayMap.m in Sources */,
 				068206981AE83D7A000B006F /* TutorialContentViewController.m in Sources */,
 				5F1E1E261A110116001C22B7 /* TrackingPregnancyTestTableViewCell.m in Sources */,
 				5F1C9C6B19EDE87A000F1FC1 /* CheckCell.m in Sources */,
