@@ -105,52 +105,83 @@
     if ([cell isKindOfClass:[TKCalendarDayCell class]]) {
         
         ILCalendarCell *dayCell = (ILCalendarCell *)cell;
-        Day *selectedDay = [Day forDate: dayCell.date];
+        //Day *selectedDay = [Day forDate: dayCell.date];
+        ILDay *selectedDay = [self.dayStore dayForDate: dayCell.date];
         
         UserProfile *currentUserProfile = [UserProfile current];
         
-        // IN FERTILITY WINDOW
-        // RETURNS OUT OF METHOD IF TRUE
-        if (selectedDay.inFertilityWindow) {
-            dayCell.dayType = CalendarDayTypeFertile;
-            return;
-        }
-        
-        // CYCLE PHASES
-        if ([selectedDay.cyclePhase isEqualToString:@"period"]) {
+        if (selectedDay.fertility.status == ILFertilityStatusTypePeriod) {
             
             // CYCLE PHASE = PERIOD
             dayCell.dayType = CalendarDayTypePeriod;
             
-        } else if ([selectedDay.cyclePhase isEqualToString:@"ovulation"]) { // fertile
+        }else if (selectedDay.fertility.status == ILFertilityStatusTypePeakFertility || selectedDay.fertility.status == ILFertilityStatusTypeFertile) {
             
-            // CYCLE PHASE = OVULATION
-            // FERTILE
-            dayCell.dayType = CalendarDayTypeFertile;
-            
-        } else if ([selectedDay.cyclePhase isEqualToString:@"preovulation"]) { // not fertile
-            
-            // CYCLE PHASE = PRE-OVULATION
-            // NOT FERTILE
-            dayCell.dayType = CalendarDayTypeNone;
-            
-            // FERTILE
-            if ([selectedDay.cervicalFluid isEqualToString:@"sticky"] && !currentUserProfile.tryingToConceive) {
+            if (currentUserProfile.tryingToConceive) {
+                // green fertility image
+                // FERTILE
                 dayCell.dayType = CalendarDayTypeFertile;
                 
+            } else {
+                // red fertility image TO DO
+                // FERTILE
+                dayCell.dayType = CalendarDayTypeFertile;
             }
             
-        } else if ([selectedDay.cyclePhase isEqualToString:@"postovulation"]) { // not fertile
+        }else if (selectedDay.fertility.status == ILFertilityStatusTypeNotFertile) {
             
-            // CYCLE PHASE = POST-OVULATION
             // NOT FERTILE
             dayCell.dayType = CalendarDayTypeNone;
             
-        } else {
+        }else {
             
             // NOT ENOUGH INFO
             dayCell.dayType = CalendarDayTypeNone;
+            
         }
+//        
+//        // IN FERTILITY WINDOW
+//        // RETURNS OUT OF METHOD IF TRUE
+//        if (selectedDay.inFertilityWindow) {
+//            dayCell.dayType = CalendarDayTypeFertile;
+//            return;
+//        }
+//        
+//        // CYCLE PHASES
+//        if ([selectedDay.cyclePhase isEqualToString:@"period"]) {
+//            
+//            // CYCLE PHASE = PERIOD
+//            dayCell.dayType = CalendarDayTypePeriod;
+//            
+//        } else if ([selectedDay.cyclePhase isEqualToString:@"ovulation"]) { // fertile
+//            
+//            // CYCLE PHASE = OVULATION
+//            // FERTILE
+//            dayCell.dayType = CalendarDayTypeFertile;
+//            
+//        } else if ([selectedDay.cyclePhase isEqualToString:@"preovulation"]) { // not fertile
+//            
+//            // CYCLE PHASE = PRE-OVULATION
+//            // NOT FERTILE
+//            dayCell.dayType = CalendarDayTypeNone;
+//            
+//            // FERTILE
+//            if ([selectedDay.cervicalFluid isEqualToString:@"sticky"] && !currentUserProfile.tryingToConceive) {
+//                dayCell.dayType = CalendarDayTypeFertile;
+//                
+//            }
+//            
+//        } else if ([selectedDay.cyclePhase isEqualToString:@"postovulation"]) { // not fertile
+//            
+//            // CYCLE PHASE = POST-OVULATION
+//            // NOT FERTILE
+//            dayCell.dayType = CalendarDayTypeNone;
+//            
+//        } else {
+//            
+//            // NOT ENOUGH INFO
+//            dayCell.dayType = CalendarDayTypeNone;
+//        }
         
     }
     

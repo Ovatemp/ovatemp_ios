@@ -360,6 +360,7 @@
 {
     UINavigationController *navVC = [self.storyboard instantiateViewControllerWithIdentifier: @"navCalendarViewController"];
     ILCalendarViewController *calendarVC = navVC.childViewControllers[0];
+    calendarVC.dayStore = self.dayStore;
     calendarVC.delegate = self;
     
     [self presentViewController: navVC animated: YES completion: nil];
@@ -1013,25 +1014,24 @@
 
 - (NSIndexPath *)getIndexPathForDate:(NSDate *)date
 {
-//    for (int i = 0; i < [self.drawerDateData count]; i++) {
-//        
-//        NSDate *drawerDate = self.drawerDateData[i];
-//        
-//        unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
-//        NSCalendar *calendar = [NSCalendar currentCalendar];
-//        
-//        NSDateComponents *dateComponents = [calendar components: flags fromDate: date];
-//        NSDateComponents *drawerDateComponents = [calendar components: flags fromDate: drawerDate];
-//        
-//        NSDate *dateOnly = [calendar dateFromComponents: dateComponents];
-//        NSDate *drawerDateOnly = [calendar dateFromComponents: drawerDateComponents];
-//        
-//        
-//        if ([drawerDateOnly isEqualToDate: dateOnly]) {
-//            return [NSIndexPath indexPathForItem: i inSection: 0];
-//        }
-//    }
-//    
+    for (int i = 0; i < [self.selectedDates count]; i++) {
+        
+        NSDate *drawerDate = self.selectedDates[i];
+        
+        unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        
+        NSDateComponents *dateComponents = [calendar components: flags fromDate: date];
+        NSDateComponents *drawerDateComponents = [calendar components: flags fromDate: drawerDate];
+        
+        NSDate *dateOnly = [calendar dateFromComponents: dateComponents];
+        NSDate *drawerDateOnly = [calendar dateFromComponents: drawerDateComponents];
+        
+        if ([drawerDateOnly isEqualToDate: dateOnly]) {
+            return [NSIndexPath indexPathForItem: i inSection: 0];
+        }
+    }
+    
     return [NSIndexPath indexPathForItem: 0 inSection: 0];
 }
 

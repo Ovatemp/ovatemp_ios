@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <TelerikUI/TelerikUI.h>
 
+#import "ILDayStore.h"
+
 @protocol ILCalendarViewControllerDelegate <NSObject>
 
 - (NSDate *)getPeakDate;
@@ -19,6 +21,8 @@
 @interface ILCalendarViewController : UIViewController
 
 @property (weak, nonatomic) id<ILCalendarViewControllerDelegate> delegate;
+
+@property (nonatomic) ILDayStore *dayStore;
 
 @property (weak, nonatomic) IBOutlet UIView *infoView;
 
