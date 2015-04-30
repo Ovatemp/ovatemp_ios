@@ -9,6 +9,7 @@
 #import "ONDOSettingViewController.h"
 
 #import "ONDO.h"
+#import "TAOverlay.h"
 
 @interface ONDOSettingViewController ()
 
@@ -71,7 +72,14 @@
     [userDefaults synchronize];
     
     [ondo startScan];
-    
+
+    [TAOverlay showOverlayWithLabel: @"Pairing with ONDO..." Options: TAOverlayOptionOverlayDismissTap | TAOverlayOptionOverlaySizeRoundedRect];
+    [self performSelector: @selector(showSuccessfull) withObject: self afterDelay: 1];
+}
+
+- (void)showSuccessfull
+{
+    [TAOverlay showOverlayWithLabel: @"Pairing successful!" Options: TAOverlayOptionAutoHide | TAOverlayOptionOverlayTypeSuccess | TAOverlayOptionOverlaySizeRoundedRect];
 }
 
 - (void)ondoStopScan
