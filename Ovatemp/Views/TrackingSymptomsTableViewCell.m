@@ -453,7 +453,7 @@ NSArray *symptomsDataSource;
 
 - (void)updateCell
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     if (selectedDay.symptomIds) {
         
@@ -481,7 +481,7 @@ NSArray *symptomsDataSource;
 
 - (void)setMinimized
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     if ([selectedDay.symptomIds count] > 0) {
         // Minimized Cell, With Data

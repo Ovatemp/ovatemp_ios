@@ -13,6 +13,7 @@
 #import "SubscriptionHelper.h"
 #import <CoreData/CoreData.h>
 
+#import "AFNetworkActivityIndicatorManager.h"
 #import <Reachability/Reachability.h>
 #import <Localytics/Localytics.h>
 #import <Helpshift/Helpshift.h>
@@ -38,6 +39,8 @@
     [self setupReachability];
     [self setupHealthKit];
     [self setUpLumberjack];
+    
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     // In App Purchases : Ping the in app purchase helper so we start getting notifications
     //[SubscriptionHelper sharedInstance];

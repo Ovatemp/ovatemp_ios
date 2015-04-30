@@ -128,7 +128,7 @@
 
 - (void)updateCell
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
 //    self.ovulationTypeCollapsedLabel.text = selectedDay.opk;
     
@@ -164,7 +164,7 @@
 
 - (void)setMinimized
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     self.ovulationTypeNegativeImageView.hidden = YES;
     self.ovulationTypeNegativeLabel.hidden = YES;

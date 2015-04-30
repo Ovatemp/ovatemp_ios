@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "ConnectionManager.h"
-#import "Day.h"
+#import "ILDay.h"
 
 @protocol TrackingTemperatureCellDelegate <NSObject>
 
@@ -19,9 +19,7 @@
 - (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
 - (void)presentViewControllerWithViewController:(UIViewController *)viewController;
 
-- (BOOL)usedOndo;
-- (NSDate *)getSelectedDate;
-- (Day *)getSelectedDay;
+- (ILDay *)getSelectedDay;
 
 @end
 

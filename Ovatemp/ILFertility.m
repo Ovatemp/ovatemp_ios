@@ -8,6 +8,8 @@
 
 #import "ILFertility.h"
 
+#import "NSDictionary+WithoutNSNull.h"
+
 @implementation ILFertility
 
 - (id)initWithDictionary:(NSDictionary *)dictionary
@@ -15,7 +17,7 @@
     self = [super init]; if(!self) return nil;
     
     self.status = [self typeForString: dictionary[@"status"]];
-    self.message = dictionary[@"message"];
+    self.message = [dictionary dl_objectForKeyWithNil: @"message"];
     
     return self;
 }

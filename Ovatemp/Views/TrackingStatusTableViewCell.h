@@ -8,16 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-#import "Day.h"
+#import "ILDay.h"
 
 @protocol TrackingStatusCellDelegate <NSObject>
 
 - (void)pressedNotes;
 
-- (NSMutableArray *)getDatesWithPeriod;
-- (NSDate *)getPeakDate;
-- (NSDate *)getSelectedDate;
-- (Day *)getSelectedDay;
+- (ILDay *)getSelectedDay;
 - (NSString *)getNotes;
 
 @end

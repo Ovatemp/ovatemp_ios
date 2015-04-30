@@ -255,7 +255,7 @@
 
 - (void)updateCell
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     if ([selectedDay.mood isEqualToString:@"angry"]) {
         self.selectedIndexPath = [NSIndexPath indexPathForRow: 0 inSection: 0];
@@ -322,7 +322,7 @@
 
 - (void)setMinimized
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     self.moodTableView.hidden = YES;
     

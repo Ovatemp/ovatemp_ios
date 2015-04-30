@@ -121,7 +121,7 @@
 
 - (void)updateCell
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     if ([selectedDay.intercourse isEqualToString:@"protected"]) {
         
@@ -166,7 +166,7 @@
 
 - (void)setMinimized
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     self.protectedImageView.hidden = YES;
     self.protectedLabel.hidden = YES;

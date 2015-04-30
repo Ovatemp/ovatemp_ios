@@ -256,6 +256,8 @@
     self.temperatureData = [[NSMutableArray alloc] init];
     NSArray *days = self.selectedCycle.days;
     
+    DDLogInfo(@"DAYS : %@", self.selectedCycle.days);
+    
     // ADD EXISTING DAYS TO TEMP. DATA
     for (int i = 0; i < [days count]; i++) {
         

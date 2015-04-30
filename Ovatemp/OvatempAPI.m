@@ -30,6 +30,7 @@
         _instance = [[OvatempAPI alloc] initWithBaseURL: baseUrl sessionConfiguration: urlSessionConfiguration];
         [_instance.requestSerializer setValue: @"application/vnd.ovatemp.v3" forHTTPHeaderField: @"Accept"];
         [_instance.requestSerializer setValue: [self accessToken] forHTTPHeaderField: @"Authorization"];
+        _instance.responseSerializer = [AFJSONResponseSerializer serializer];
         
     });
     
@@ -51,9 +52,9 @@
 #pragma mark - REST Methods
 #pragma mark - Days
 
-- (void)getDayWithId:(NSUInteger)dayId completion:(CompletionBlock)completion
+- (void)getDayWithId:(NSNumber *)dayId completion:(CompletionBlock)completion
 {
-    NSString *url = [NSString stringWithFormat: @"days/%lu", (unsigned long)dayId];
+    NSString *url = [NSString stringWithFormat: @"days/%@", dayId];
     
     [self GET: url parameters: nil success:^(NSURLSessionDataTask *task, id responseObject) {
         ILDay *day = [[ILDay alloc] initWithDictionary: responseObject[@"day"]];
@@ -63,6 +64,19 @@
         completion(nil, error);
     }];
     
+}
+
+- (void)updateDay:(ILDay *)day withParameters:(NSDictionary *)parameters completion:(CompletionBlock)completion
+{
+    NSDictionary *params = @{@"day" : parameters};
+    
+    [self PUT: @"days" parameters: params success:^(NSURLSessionDataTask *task, id responseObject) {
+        ILDay *day = [[ILDay alloc] initWithDictionary: responseObject[@"day"]];
+        completion(day, nil);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completion(nil, error);
+    }];
 }
 
 - (void)getDaysOnPage:(NSUInteger)page completion:(PaginatedCompletionBlock)completion

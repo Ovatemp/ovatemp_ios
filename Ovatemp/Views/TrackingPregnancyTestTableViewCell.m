@@ -127,7 +127,7 @@
 
 - (void)updateCell
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     if ([selectedDay.ferning isEqualToString:@"positive"]) {
         
@@ -162,7 +162,7 @@
 
 - (void)setMinimized
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     self.pregnancyTypeNegativeImageView.hidden = YES;
     self.pregnancyTypeNegtaiveLabel.hidden = YES;

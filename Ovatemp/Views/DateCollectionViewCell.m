@@ -12,9 +12,15 @@
 
 // These methods are required to force the colletion view cells to refresh
 
-- (void)setFrame:(CGRect)frame {
-    [super setFrame:frame];
+- (void)setFrame:(CGRect)frame
+{
+    [super setFrame: frame];
     [self setNeedsDisplay]; // force drawRect:
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
 }
 
 - (void)prepareForReuse {

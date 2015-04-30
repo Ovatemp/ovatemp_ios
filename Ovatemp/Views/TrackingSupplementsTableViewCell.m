@@ -130,7 +130,8 @@
 
 - (void)hitBackendWithSupplementType:(id)supplementIds
 {
-    NSDate *selectedDate = [self.delegate getSelectedDate];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
+    NSDate *selectedDate = selectedDay.date;
     
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     
@@ -214,7 +215,7 @@
 
 - (void)updateCell
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     NSMutableArray *supplements = [[NSMutableArray alloc] init];
     NSMutableArray *supplementIDs = [[NSMutableArray alloc] initWithArray: selectedDay.supplementIds];
@@ -266,7 +267,7 @@
 
 - (void)setMinimized
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     self.supplementsTableView.hidden = YES;
     

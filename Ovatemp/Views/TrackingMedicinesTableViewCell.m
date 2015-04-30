@@ -129,7 +129,8 @@
 
 - (void)hitBackendWithMedicineType:(id)medicineIds reloadMedicines:(BOOL)reload
 {
-    NSDate *selectedDate = [self.delegate getSelectedDate];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
+    NSDate *selectedDate = selectedDay.date;
     
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     
@@ -211,7 +212,7 @@
 
 - (void)updateCell
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     NSMutableArray *medicines = [[NSMutableArray alloc] init];
     NSMutableArray *medicineIDs = [[NSMutableArray alloc] initWithArray: selectedDay.medicineIds];
@@ -263,7 +264,7 @@
 
 - (void)setMinimized
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     self.medicinesTableView.hidden = YES;
     self.infoButton.hidden = NO;

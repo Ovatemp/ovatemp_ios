@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Day.h"
+
+#import "ILDay.h"
 
 typedef enum {
     PregnancyTestSelectionNone,
@@ -20,8 +21,7 @@ typedef enum {
 - (void)didSelectPregnancyWithType:(id)type;
 - (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
 
-- (Day *)getSelectedDay;
-- (NSDate *)getSelectedDate;
+- (ILDay *)getSelectedDay;
 
 @end
 

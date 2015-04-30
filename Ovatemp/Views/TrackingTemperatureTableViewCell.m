@@ -215,7 +215,7 @@ NSMutableArray *temperatureFractionalPartPickerData;
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     BOOL tempPrefFahrenheit = [defaults boolForKey: @"temperatureUnitPreferenceFahrenheit"];
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     self.ondoIcon.alpha = 0.0f;
     
@@ -302,7 +302,7 @@ NSMutableArray *temperatureFractionalPartPickerData;
 
 - (void)setMinimized
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
 
     self.infoButton.alpha = 1.0;
     self.disturbanceLabel.alpha = 0.0;
@@ -331,7 +331,7 @@ NSMutableArray *temperatureFractionalPartPickerData;
 
 - (void)setExpanded
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     if (selectedDay.usedOndo) {
         self.ondoIcon.alpha = 1.0;

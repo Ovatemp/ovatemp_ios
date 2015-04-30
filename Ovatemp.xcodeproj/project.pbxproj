@@ -44,6 +44,8 @@
 		0692216E1AC0AF350004B850 /* ILCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0692216D1AC0AF350004B850 /* ILCalendarViewController.m */; };
 		069221711AC0CD530004B850 /* ILCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 069221701AC0CD530004B850 /* ILCalendarCell.m */; };
 		0697E9651AC5E77300AD8255 /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0697E9641AC5E77300AD8255 /* TelerikUI.framework */; };
+		06B858BE1AF16625006A58FB /* NSDictionary+WithoutNSNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */; };
+		06BD94F41AF1443A00345CFA /* NSArray+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BD94F31AF1443A00345CFA /* NSArray+Reverse.m */; };
 		06C55B221AAF4BD600EDE74A /* ILTrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */; };
 		06F7A4DB1AC4D3F30054CEDF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F7A4D91AC4D3F30054CEDF /* Crashlytics.framework */; };
 		06F7A4DC1AC4D3F30054CEDF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F7A4DA1AC4D3F30054CEDF /* Fabric.framework */; };
@@ -459,6 +461,10 @@
 		0692216F1AC0CD530004B850 /* ILCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCalendarCell.h; sourceTree = "<group>"; };
 		069221701AC0CD530004B850 /* ILCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCalendarCell.m; sourceTree = "<group>"; };
 		0697E9641AC5E77300AD8255 /* TelerikUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TelerikUI.framework; sourceTree = "<group>"; };
+		06B858BC1AF16625006A58FB /* NSDictionary+WithoutNSNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+WithoutNSNull.h"; sourceTree = "<group>"; };
+		06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+WithoutNSNull.m"; sourceTree = "<group>"; };
+		06BD94F21AF1443A00345CFA /* NSArray+Reverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Reverse.h"; sourceTree = "<group>"; };
+		06BD94F31AF1443A00345CFA /* NSArray+Reverse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Reverse.m"; sourceTree = "<group>"; };
 		06C55B201AAF4BD600EDE74A /* ILTrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTrackingViewController.h; sourceTree = "<group>"; };
 		06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTrackingViewController.m; sourceTree = "<group>"; };
 		06F7A4D91AC4D3F30054CEDF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
@@ -996,6 +1002,9 @@
 		062FD9AA1AA8FF87009116E3 /* Tracking */ = {
 			isa = PBXGroup;
 			children = (
+				5FCCECD81A07E8D500E653B1 /* DateCollectionViewCell.h */,
+				5FCCECD91A07E8D500E653B1 /* DateCollectionViewCell.m */,
+				5F4C5B031A02986600D0F465 /* DateCollectionViewCell.xib */,
 				5F4C5B051A02B09600D0F465 /* TrackingStatusTableViewCell.h */,
 				5F4C5B061A02B09600D0F465 /* TrackingStatusTableViewCell.m */,
 				5F4C5B071A02B09600D0F465 /* TrackingStatusTableViewCell.xib */,
@@ -1080,9 +1089,6 @@
 				5F1C9B5019EDE87A000F1FC1 /* CheckCell.xib */,
 				5F1C9B5119EDE87A000F1FC1 /* CoachingMenuCell.h */,
 				5F1C9B5219EDE87A000F1FC1 /* CoachingMenuCell.m */,
-				5F4C5B031A02986600D0F465 /* DateCollectionViewCell.xib */,
-				5FCCECD81A07E8D500E653B1 /* DateCollectionViewCell.h */,
-				5FCCECD91A07E8D500E653B1 /* DateCollectionViewCell.m */,
 				5F1C9B5819EDE87A000F1FC1 /* DayCell.h */,
 				5F1C9B5919EDE87A000F1FC1 /* DayCell.m */,
 				5F1C9B5C19EDE87A000F1FC1 /* LifestyleCell.h */,
@@ -1122,6 +1128,10 @@
 			children = (
 				06615E0C1AEED4EE000696D1 /* NSArray+ArrayMap.h */,
 				06615E0D1AEED4EE000696D1 /* NSArray+ArrayMap.m */,
+				06BD94F21AF1443A00345CFA /* NSArray+Reverse.h */,
+				06BD94F31AF1443A00345CFA /* NSArray+Reverse.m */,
+				06B858BC1AF16625006A58FB /* NSDictionary+WithoutNSNull.h */,
+				06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1784,8 +1794,8 @@
 			isa = PBXGroup;
 			children = (
 				06FEA5C41A9CFA4C002BDFC2 /* Storyboards */,
-				06F8FA4B1AC36187006EC93F /* CollectionView Cells */,
 				06FEA5C31A9CF928002BDFC2 /* TableView Cells */,
+				06F8FA4B1AC36187006EC93F /* CollectionView Cells */,
 				06FEA5CA1A9D302B002BDFC2 /* Other */,
 				0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */,
 				067BCE0C1AD5C9D100F0BDE6 /* TransparentSwipeView.h */,
@@ -2388,6 +2398,7 @@
 				5F1C9B7E19EDE87A000F1FC1 /* TemperatureCellEditView.m in Sources */,
 				5F1E1D8A1A0DA579001C22B7 /* TrackingIntercourseTableViewCell.m in Sources */,
 				5F1C9C5C19EDE87A000F1FC1 /* FertilityProfile.m in Sources */,
+				06BD94F41AF1443A00345CFA /* NSArray+Reverse.m in Sources */,
 				5F1C9C5819EDE87A000F1FC1 /* Configuration.m in Sources */,
 				5F1C9B8719EDE87A000F1FC1 /* CommunityForumViewController.m in Sources */,
 				5F6561DE19FAD63B001FB509 /* EditHeightTableViewCell.m in Sources */,
@@ -2457,6 +2468,7 @@
 				5F1C9B9E19EDE87A000F1FC1 /* WebViewController.m in Sources */,
 				5FE118501A1ADEFC00AC76A7 /* SettingsAlarmViewController.m in Sources */,
 				5F1C9BA419EDE87A000F1FC1 /* SubscriptionHelper.m in Sources */,
+				06B858BE1AF16625006A58FB /* NSDictionary+WithoutNSNull.m in Sources */,
 				5F1C9C7019EDE87A000F1FC1 /* CycleChartView.m in Sources */,
 				5F8C568E19F184C60024552A /* SelectLogInOrSignUpViewController.m in Sources */,
 				5FDAA3AB19F8020F004E7181 /* CycleLengthTableViewCell.m in Sources */,

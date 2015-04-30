@@ -42,4 +42,8 @@
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
+- (NSArray *)medicines;
+- (NSArray *)supplements;
+- (NSArray *)symptoms;
+
 @end

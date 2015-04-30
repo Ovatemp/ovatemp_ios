@@ -213,7 +213,7 @@
 
 - (void)updateCell
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     if ([selectedDay.period isEqualToString: @"none"]) {
         
@@ -306,7 +306,7 @@
 
 - (void)setMinimized
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     self.noneImageView.hidden = YES;
     self.noneLabel.hidden = YES;

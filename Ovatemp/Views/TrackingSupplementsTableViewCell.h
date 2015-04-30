@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Day.h"
+
+#import "ILDay.h"
 
 @protocol TrackingSupplementsCellDelegate <NSObject>
 
@@ -15,8 +16,7 @@
 - (void)presentViewControllerWithViewController:(UIViewController *)viewController;
 - (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
 
-- (Day *)getSelectedDay;
-- (NSDate *)getSelectedDate;
+- (ILDay *)getSelectedDay;
 
 @end
 

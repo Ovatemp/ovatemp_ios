@@ -8,15 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-#import "Day.h"
+#import "ILDay.h"
 
 @protocol TrackingMoodCellDelegate <NSObject>
 
 - (void)didSelectMoodWithType:(id)type;
 - (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
 
-- (Day *)getSelectedDay;
-- (NSDate *)getSelectedDate;
+- (ILDay *)getSelectedDay;
 
 @end
 

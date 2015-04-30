@@ -177,7 +177,7 @@
 
 - (void)updateCell
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     if ([selectedDay.cervicalFluid isEqual: @"dry"]) {
         
@@ -259,7 +259,7 @@
 
 - (void)setMinimized
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     self.dryImageView.alpha = 0.0;
     self.dryLabel.alpha = 0.0;

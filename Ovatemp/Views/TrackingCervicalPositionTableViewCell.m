@@ -128,7 +128,7 @@
 
 - (void)updateCell
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     if (selectedDay.cervicalPosition.length > 0) {
         self.cpTypeCollapsedLabel.text = selectedDay.cervicalPosition;
@@ -176,7 +176,7 @@
 
 - (void)setMinimized
 {
-    Day *selectedDay = [self.delegate getSelectedDay];
+    ILDay *selectedDay = [self.delegate getSelectedDay];
     
     self.highImageView.hidden = YES;
     self.highLabel.hidden = YES;
