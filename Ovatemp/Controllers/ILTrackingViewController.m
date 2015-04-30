@@ -41,6 +41,7 @@
 
 #import "OvatempAPI.h"
 #import "NSArray+Reverse.h"
+#import "ILDayStore.h"
 
 #import "TutorialHelper.h"
 
@@ -49,7 +50,8 @@
 @interface ILTrackingViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate,TrackingStatusCellDelegate,TrackingTemperatureCellDelegate,TrackingCervicalFluidCellDelegate,TrackingCervicalPositionCellDelegate,TrackingPeriodCellDelegate,TrackingIntercourseCellDelegate,TrackingMoodCellDelegate,TrackingSymptomsCellDelegate,TrackingOvulationTestCell,TrackingPregnancyCellDelegate,TrackingSupplementsCellDelegate,TrackingMedicinesCellDelegate,ILCalendarViewControllerDelegate,ONDODelegate>
 
 @property (nonatomic) ILDay *selectedDay;
-@property (nonatomic) NSMutableArray *selectedDays;
+@property (nonatomic) NSMutableArray *selectedDates;
+@property (nonatomic) ILDayStore *dayStore;
 
 @property (nonatomic) ILPaginationInfo *paginationInfo;
 @property (nonatomic) BOOL isPaginatorLoading;
@@ -88,7 +90,7 @@
     [self setUpDrawerCollectionView];
     [self registerTableNibs];
     
-    [self loadAssetsOnPage: 1];
+    [self loadFirstPage];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -212,9 +214,9 @@
 
 - (void)selectLastDay
 {
-    NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem: [self.selectedDays count] - 1 inSection: 0];
+    NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem: [self.selectedDates count] - 1 inSection: 0];
     
-    self.selectedDay = self.selectedDays[lastIndexPath.row];
+    self.selectedDay = [self.dayStore dayForDate: self.selectedDates[lastIndexPath.row]];
     self.selectedIndexPath = lastIndexPath;
     
     [self.drawerCollectionView scrollToItemAtIndexPath: self.selectedIndexPath atScrollPosition: UICollectionViewScrollPositionCenteredHorizontally animated: YES];
@@ -241,7 +243,7 @@
 
 - (void)loadNextPage
 {
-    NSInteger nextPage = self.currentPage ++;
+    NSInteger nextPage = self.currentPage + 1;
     
     if (nextPage <= [self.paginationInfo.totalPages integerValue]) {
         
@@ -267,17 +269,34 @@
         [TAOverlay hideOverlay];
         
         if (days) {
-            DDLogInfo(@"DAYS: %@", days);
             
             if (self.currentPage == 1) {
-                [self.selectedDays removeAllObjects];
+                [self.selectedDates removeAllObjects];
+                [self.dayStore reset];
             }
             
-            self.selectedDays = [[days dl_reverse] mutableCopy];
+            NSArray *dates = [self getDatesForPage: page];
+            [self.selectedDates replaceObjectsInRange: NSMakeRange(0, 0) withObjectsFromArray: dates];
+            [self.dayStore addDays: days];
+            
             self.paginationInfo = pagination;
             
-            [self.drawerCollectionView reloadData];
-            [self selectLastDay];
+            if (self.currentPage == 1) {
+                
+                [self.drawerCollectionView reloadData];
+                [self selectLastDay];
+                
+            }else{
+                
+                NSInteger index = [dates count];
+                NSIndexPath *indexPath = [NSIndexPath indexPathForItem: index inSection: 0];
+                
+                [self.drawerCollectionView reloadData];
+                [self.drawerCollectionView scrollToItemAtIndexPath: indexPath atScrollPosition: UICollectionViewScrollPositionLeft animated: NO];
+                
+            }
+            
+            self.isPaginatorLoading = NO;
             
         }else{
             DDLogError(@"ERROR: %@", error);
@@ -289,20 +308,44 @@
 - (void)loadSelectedDay
 {
     // Need to load FULL day model, bc '/days' endpoint returns filtered day model, only with fertility info.
+    
+    if (self.selectedDay.day_id){
         
-    [[OvatempAPI sharedSession] getDayWithId: self.selectedDay.day_id completion:^(ILDay *day, NSError *error) {
-        
-        if (day) {
-            DDLogInfo(@"DAY: %@", day);
+        [[OvatempAPI sharedSession] getDayWithId: self.selectedDay.day_id completion:^(ILDay *day, NSError *error) {
             
-            self.selectedDay = day;
-            [self updateScreen];
+            if (day) {
+                
+                self.selectedDay = day;
+                [self updateScreen];
+                
+            }else{
+                DDLogError(@"ERROR: %@", error);
+            }
             
-        }else{
-            DDLogError(@"ERROR: %@", error);
-        }
+        }];
         
-    }];
+    }else{
+        [self updateScreen];
+    }
+    
+}
+
+#pragma mark - NSDate Generation
+
+- (NSArray *)getDatesForPage:(NSInteger)page
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSMutableArray *dates = [[NSMutableArray alloc] init];
+    
+    NSInteger perPage = 60;
+    NSInteger offset = perPage * (page - 1);
+    
+    for (NSInteger i = offset + perPage; i >= offset; i--) {
+        NSDate *date = [calendar dateByAddingUnit: NSCalendarUnitDay value: -i toDate: [NSDate date] options: 0];
+        [dates addObject: date];
+    }
+    
+    return [NSArray arrayWithArray: dates];
 }
 
 #pragma mark - IBAction's
@@ -588,14 +631,14 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.selectedDays count];
+    return [self.selectedDates count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     DateCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier: @"dateCvCell" forIndexPath: indexPath];
     UserProfile *currentUserProfile = [UserProfile current];
-    ILDay *dayAtIndexPath = self.selectedDays[indexPath.row];
+    ILDay *dayAtIndexPath = [self.dayStore dayForDate: self.selectedDates[indexPath.row]];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
@@ -619,7 +662,7 @@
         cellFrame.size.width = 44.0f;
         cell.frame = cellFrame;
     }
-//
+
 //    // CELL IS IN THE FUTURE
 //    if ([cellDate compare:[NSDate date]] == NSOrderedDescending) {
 //        cell.statusImageView.image = [UIImage imageNamed:@"icn_dd_empty state_small"];
@@ -685,7 +728,7 @@
     }
     
     self.selectedIndexPath = indexPath;
-    self.selectedDay = self.selectedDays[indexPath.row];
+    self.selectedDay = [self.dayStore dayForDate: self.selectedDates[indexPath.row]];
     
 //    if ([dateAtIndex compare:[NSDate date]] == NSOrderedDescending) {
 //        // today is earlier than selected date, don't allow user to access that date
@@ -1098,6 +1141,8 @@
         
         if (day) {
             self.selectedDay = day;
+            [self.dayStore addDay: day];
+            
             self.selectedTemperature = nil;
 
             [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: 0 inSection: 0],[NSIndexPath indexPathForRow: 1 inSection: 0]]
@@ -1154,6 +1199,7 @@
         
         if (day) {
             self.selectedDay = day;
+            [self.dayStore addDay: day];
             [[NSNotificationCenter defaultCenter] postNotificationName: @"temp_stop_activity" object: self];
             
         }else{
@@ -1208,6 +1254,7 @@
         if (day) {
             
             self.selectedDay = day;
+            [self.dayStore addDay: day];
             
             if (!skipReload) {
                 self.selectedTableRowIndex = nil;
@@ -1252,6 +1299,20 @@
 //                       
 //                       [[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"%@_stop_activity", notificationId] object: self];
 //                   }];
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    //NSLog(@"CONTENT OFFSET: %f ... CONTENT WIDTH: %f", scrollView.contentOffset.x, scrollView.contentSize.width);
+    
+    if (scrollView.contentOffset.x == 0) {
+        [self loadNextPage];
+    }
+//    else if (scrollView.contentOffset.x == (scrollView.contentSize.width - scrollView.frame.size.width)){
+//        [self loadFirstPage];
+//    }
 }
 
 # pragma mark - HealthKit
@@ -1331,6 +1392,22 @@
 }
 
 #pragma mark - Set/Get
+
+- (ILDayStore *)dayStore
+{
+    if (!_dayStore) {
+        _dayStore = [[ILDayStore alloc] init];
+    }
+    return _dayStore;
+}
+
+- (NSMutableArray *)selectedDates
+{
+    if (!_selectedDates) {
+        _selectedDates = [[NSMutableArray alloc] init];
+    }
+    return _selectedDates;
+}
 
 - (NSArray *)trackingTableDataArray
 {

@@ -40,6 +40,7 @@
 
 @property (nonatomic) ILFertility *fertility;
 
+- (id)initWithDate:(NSDate *)date;
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
 - (NSArray *)medicines;

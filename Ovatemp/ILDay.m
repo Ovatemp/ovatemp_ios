@@ -23,13 +23,27 @@
 
 @implementation ILDay
 
+- (id)initWithDate:(NSDate *)date
+{
+    self = [super init]; if(!self)return nil;
+    
+    self.date = date;
+    
+    return self;
+}
+
 - (id)initWithDictionary:(NSDictionary *)dictionary
 {
     self = [super init]; if(!self)return nil;
     
     self.day_id = [dictionary dl_objectForKeyWithNil: @"id"];
     self.temperature = [dictionary dl_objectForKeyWithNil: @"temperature"];
-    self.date = ![dictionary[@"date"] isKindOfClass: [NSNull class]] ? [self.dateFormatter dateFromString: dictionary[@"date"]] : nil;
+    
+//    if ([dictionary[@"date"] isKindOfClass: [NSDate class]]) {
+//        self.date = dictionary[@"date"];
+//    }else{
+        self.date = ![dictionary[@"date"] isKindOfClass: [NSNull class]] ? [self.dateFormatter dateFromString: dictionary[@"date"]] : nil;
+//    }
     
     self.disturbance = [dictionary dl_objectForKeyWithNil: @"disturbance"];
     
