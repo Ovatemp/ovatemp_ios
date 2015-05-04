@@ -40,7 +40,7 @@ NSArray *ondoMenuItems;
     self.tableView.layoutMargins = UIEdgeInsetsZero;
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     
-    ondoMenuItems = [NSArray arrayWithObjects:@"Buy ONDO", @"Pair ONDO", @"About ONDO", @"Instruction Manual", nil];
+    ondoMenuItems = [NSArray arrayWithObjects:@"Buy ONDO", @"Setup ONDO", @"About ONDO", @"Instruction Manual", nil];
         
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

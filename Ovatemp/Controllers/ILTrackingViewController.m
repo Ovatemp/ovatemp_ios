@@ -342,7 +342,7 @@
 {
     NSMutableArray *dates = [[NSMutableArray alloc] init];
     
-    NSInteger perPage = 60;
+    NSInteger perPage = 90;
     NSInteger offset = perPage * (page - 1);
     
     for (NSInteger i = offset + perPage; i >= offset; i--) {

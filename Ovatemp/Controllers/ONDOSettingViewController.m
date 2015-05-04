@@ -37,6 +37,17 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear: animated];
+    
+    ONDO *ondo = [ONDO sharedInstance];
+    
+    if (ondo.isScanning) {
+        [TAOverlay showOverlayWithLabel: @"ONDO is already paired!" Options: TAOverlayOptionAutoHide | TAOverlayOptionOverlayTypeSuccess | TAOverlayOptionOverlaySizeFullScreen];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -73,13 +84,13 @@
     
     [ondo startScan];
 
-    [TAOverlay showOverlayWithLabel: @"Pairing with ONDO..." Options: TAOverlayOptionOverlayDismissTap | TAOverlayOptionOverlaySizeRoundedRect];
+    [TAOverlay showOverlayWithLabel: @"Pairing with ONDO..." Options: TAOverlayOptionOverlayDismissTap];
     [self performSelector: @selector(showSuccessfull) withObject: self afterDelay: 1];
 }
 
 - (void)showSuccessfull
 {
-    [TAOverlay showOverlayWithLabel: @"Pairing successful!" Options: TAOverlayOptionAutoHide | TAOverlayOptionOverlayTypeSuccess | TAOverlayOptionOverlaySizeRoundedRect];
+    [TAOverlay showOverlayWithLabel: @"Pairing successful!" Options: TAOverlayOptionAutoHide | TAOverlayOptionOverlayTypeSuccess];
 }
 
 - (void)ondoStopScan

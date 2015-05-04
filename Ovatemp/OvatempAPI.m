@@ -101,7 +101,7 @@
 {
     NSString *url = @"days";
     NSDictionary *params = @{@"page" : @(page),
-                             @"per_page" : @(60)};
+                             @"per_page" : @(90)};
     
     [self GET: url parameters: params success:^(NSURLSessionDataTask *task, id responseObject) {
         
