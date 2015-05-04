@@ -155,6 +155,7 @@
 - (void)updateScreen
 {
     [self setTitleView];
+    [self reloadCalendarDay];
     [self reloadTableWithAnimation];
 }
 
@@ -183,6 +184,11 @@
     for (int i = 0; i <= 11; i++) {
         [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: i inSection: 0]] withRowAnimation: UITableViewRowAnimationAutomatic];
     }
+}
+
+- (void)reloadCalendarDay
+{
+    [self.drawerCollectionView reloadItemsAtIndexPaths: @[self.selectedIndexPath]];
 }
 
 - (void)setTitleViewGestureRecognizer
@@ -214,7 +220,7 @@
 
 - (void)selectLastDay
 {
-    NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem: [self.selectedDates count] - 1 inSection: 0];
+    NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem: [self.selectedDates count] - 4 inSection: 0];
     
     self.selectedDay = [self.dayStore dayForDate: self.selectedDates[lastIndexPath.row]];
     self.selectedIndexPath = lastIndexPath;
@@ -334,18 +340,35 @@
 
 - (NSArray *)getDatesForPage:(NSInteger)page
 {
-    NSCalendar *calendar = [NSCalendar currentCalendar];
     NSMutableArray *dates = [[NSMutableArray alloc] init];
     
     NSInteger perPage = 60;
     NSInteger offset = perPage * (page - 1);
     
     for (NSInteger i = offset + perPage; i >= offset; i--) {
-        NSDate *date = [calendar dateByAddingUnit: NSCalendarUnitDay value: -i toDate: [NSDate date] options: 0];
+        NSDate *date = [self dateWithOffsetFromToday: -i];
         [dates addObject: date];
     }
     
+    if (page == 1) {
+        // First Page
+        for (NSInteger i = 1; i <= 3; i++) {
+            NSDate *date = [self dateWithOffsetFromToday: i];
+            [dates addObject: date];
+        }
+        
+    }else if(page == [self.paginationInfo.totalPages integerValue]){
+        // Last Page
+        
+    }
+    
     return [NSArray arrayWithArray: dates];
+}
+
+- (NSDate *)dateWithOffsetFromToday:(NSInteger)offset
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    return [calendar dateByAddingUnit: NSCalendarUnitDay value: offset toDate: [NSDate date] options: 0];
 }
 
 #pragma mark - IBAction's
@@ -639,7 +662,9 @@
 {
     DateCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier: @"dateCvCell" forIndexPath: indexPath];
     UserProfile *currentUserProfile = [UserProfile current];
-    ILDay *dayAtIndexPath = [self.dayStore dayForDate: self.selectedDates[indexPath.row]];
+    
+    NSDate *dateAtIndex = self.selectedDates[indexPath.row];
+    ILDay *dayAtIndexPath = [self.dayStore dayForDate: dateAtIndex];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
@@ -651,6 +676,15 @@
     cell.monthLabel.text = dayOfWeek;
     cell.dayLabel.text = day;
 
+    // CELL IS IN THE FUTURE
+    if ([dateAtIndex compare:[NSDate date]] == NSOrderedDescending) {
+        cell.statusImageView.image = [UIImage imageNamed:@"icn_dd_empty state_small"];
+        cell.monthLabel.textColor = [UIColor ovatempGreyColorForDateCollectionViewCells];
+        cell.dayLabel.textColor = [UIColor ovatempGreyColorForDateCollectionViewCells];
+        
+        return cell;
+    }
+    
     // MAKE CELL LARGER IF IS SELECTED
     if (indexPath.row == self.selectedIndexPath.row) {
         CGRect cellFrame = cell.frame;
@@ -663,15 +697,6 @@
         cellFrame.size.width = 44.0f;
         cell.frame = cellFrame;
     }
-
-//    // CELL IS IN THE FUTURE
-//    if ([cellDate compare:[NSDate date]] == NSOrderedDescending) {
-//        cell.statusImageView.image = [UIImage imageNamed:@"icn_dd_empty state_small"];
-//        cell.monthLabel.textColor = [UIColor ovatempGreyColorForDateCollectionViewCells];
-//        cell.dayLabel.textColor = [UIColor ovatempGreyColorForDateCollectionViewCells];
-//        
-//        return cell;
-//    }
     
     if (dayAtIndexPath.fertility.status == ILFertilityStatusTypePeriod) {
         
@@ -724,17 +749,19 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDate *dateAtIndex = self.selectedDates[indexPath.row];
+
     if (indexPath.row == self.selectedIndexPath.row) {
         return;
     }
     
-    self.selectedIndexPath = indexPath;
-    self.selectedDay = [self.dayStore dayForDate: self.selectedDates[indexPath.row]];
+    if ([dateAtIndex compare: [NSDate date]] == NSOrderedDescending) {
+        // today is earlier than selected date, don't allow user to access that date
+        return;
+    }
     
-//    if ([dateAtIndex compare:[NSDate date]] == NSOrderedDescending) {
-//        // today is earlier than selected date, don't allow user to access that date
-//        return;
-//    }
+    self.selectedIndexPath = indexPath;
+    self.selectedDay = [self.dayStore dayForDate: dateAtIndex];
     
     [self.drawerCollectionView scrollToItemAtIndexPath: indexPath atScrollPosition: UICollectionViewScrollPositionCenteredHorizontally animated: YES];
     [self setFrameForCellAtIndexPath: indexPath];
@@ -842,7 +869,7 @@
 
 - (void)reloadTrackingView
 {
-    [self loadAssetsOnPage: 1];
+    [self loadFirstPage];
     //[self refreshTrackingViewWithAnimation: NO];
 }
 
@@ -1144,7 +1171,8 @@
             [self.dayStore addDay: day];
             
             self.selectedTemperature = nil;
-
+            
+            [self reloadCalendarDay];
             [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: 0 inSection: 0],[NSIndexPath indexPathForRow: 1 inSection: 0]]
                                   withRowAnimation: UITableViewRowAnimationNone];
 
@@ -1258,6 +1286,7 @@
             
             if (!skipReload) {
                 self.selectedTableRowIndex = nil;
+                [self reloadCalendarDay];
                 [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: 0 inSection: 0],
                                                           [NSIndexPath indexPathForRow: [indexPathRow integerValue] inSection: 0]] withRowAnimation: UITableViewRowAnimationAutomatic];
                 
@@ -1305,14 +1334,11 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    //NSLog(@"CONTENT OFFSET: %f ... CONTENT WIDTH: %f", scrollView.contentOffset.x, scrollView.contentSize.width);
+    //NSLog(@"CONTENT OFFSET X: %f ... CONTENT WIDTH: %f", scrollView.contentOffset.x, scrollView.contentSize.width);
     
-    if (scrollView.contentOffset.x == 0) {
+    if (scrollView == self.drawerCollectionView && scrollView.contentOffset.x == 0) {
         [self loadNextPage];
     }
-//    else if (scrollView.contentOffset.x == (scrollView.contentSize.width - scrollView.frame.size.width)){
-//        [self loadFirstPage];
-//    }
 }
 
 # pragma mark - HealthKit
