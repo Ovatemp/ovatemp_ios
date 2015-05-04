@@ -22,6 +22,7 @@
     self = [super init];
     if (self) {
         [self addDays: days];
+        
     }
     return self;
 }
