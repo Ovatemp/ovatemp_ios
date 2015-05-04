@@ -10,9 +10,8 @@
 
 typedef enum {
     CalendarDayTypePeriod,
-    CalendarDayTypePredictedPeriod,
     CalendarDayTypeFertile,
-    CalendarDayTypePredictedFertile,
+    CalendarDayTypeNotFertile,
     CalendarDayTypeNone
 } CalendarDayType;
 

@@ -15,6 +15,7 @@
 @property (nonatomic) UIColor *periodColor;
 @property (nonatomic) UIColor *fertilityColorConceive;
 @property (nonatomic) UIColor *fertilityColorAvoid;
+@property (nonatomic) UIColor *notFertileColor;
 
 @end
 
@@ -28,6 +29,7 @@
         self.periodColor = [UIColor colorWithRed: 251.0/255.0 green: 95.0/255.0 blue: 98.0/255.0 alpha: 1];
         self.fertilityColorConceive = [UIColor colorWithRed: 56.0/255.0 green: 192.0/255.0 blue: 191.0/255.0 alpha: 1];
         self.fertilityColorAvoid = self.periodColor;
+        self.notFertileColor = [UIColor colorWithRed: 143.0/255.0 green: 130.0/255.0 blue: 157.0/255.0 alpha: 1];
         
     }
     return self;
@@ -37,11 +39,8 @@
 {
     [super updateVisuals];
     
-    if (self.dayType == CalendarDayTypePeriod || self.dayType == CalendarDayTypeFertile) {
+    if (self.dayType == CalendarDayTypePeriod || self.dayType == CalendarDayTypeFertile || self.dayType == CalendarDayTypeNotFertile) {
         self.label.textColor = [UIColor whiteColor];
-        
-    }else if(self.dayType == CalendarDayTypePredictedFertile || self.dayType == CalendarDayTypePredictedPeriod){
-        self.label.textColor = [UIColor darkGrayColor];
         
     }else{
         self.label.textColor = [UIColor darkGrayColor];
@@ -54,7 +53,7 @@
     UIColor *strokeColor;
     UIColor *fillColor;
     
-    if (self.dayType == CalendarDayTypePeriod || self.dayType == CalendarDayTypePredictedPeriod) {
+    if (self.dayType == CalendarDayTypePeriod) {
         
         strokeColor = self.periodColor;
         fillColor = self.periodColor;
@@ -70,18 +69,26 @@
         ovalPath.lineWidth = 2;
         [ovalPath stroke];
         
-    }else if(self.dayType == CalendarDayTypeFertile || self.dayType == CalendarDayTypePredictedFertile){
+    }else if(self.dayType == CalendarDayTypeFertile || self.dayType == CalendarDayTypeNotFertile){
         
         CGRect frame = rect;
         
         UserProfile *currentUserProfile = [UserProfile current];
         
-        if (currentUserProfile.tryingToConceive) {
-            strokeColor = self.fertilityColorConceive;
-            fillColor = self.fertilityColorConceive;
+        if (self.dayType == CalendarDayTypeFertile) {
+            
+            if (currentUserProfile.tryingToConceive) {
+                strokeColor = self.fertilityColorConceive;
+                fillColor = self.fertilityColorConceive;
+            }else{
+                strokeColor = self.fertilityColorAvoid;
+                fillColor = self.fertilityColorAvoid;
+            }
+            
         }else{
-            strokeColor = self.fertilityColorAvoid;
-            fillColor = self.fertilityColorAvoid;
+            // Not Fertile
+            strokeColor = self.notFertileColor;
+            fillColor = self.notFertileColor;
         }
         
         UIBezierPath* bezierPath = UIBezierPath.bezierPath;
@@ -95,10 +102,8 @@
         [bezierPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 0.80000 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.46396 * CGRectGetHeight(frame)) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 0.66976 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.25000 * CGRectGetHeight(frame)) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 0.80000 * CGRectGetWidth(frame), CGRectGetMinY(frame) + 0.34579 * CGRectGetHeight(frame))];
         [bezierPath closePath];
         
-        if (self.dayType == CalendarDayTypeFertile) {
-            [fillColor setFill];
-            [bezierPath fill];
-        }
+        [fillColor setFill];
+        [bezierPath fill];
         
         [strokeColor setStroke];
         bezierPath.lineWidth = 2;

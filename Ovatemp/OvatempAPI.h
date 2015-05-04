@@ -19,7 +19,9 @@ typedef void (^PaginatedCompletionBlock)(id object, ILPaginationInfo *pagination
 
 + (id)sharedSession;
 
+- (void)getAllDaysWithCompletion:(CompletionBlock)completion;
 - (void)getDaysOnPage:(NSUInteger)page completion:(PaginatedCompletionBlock)completion;
+
 - (void)getDayWithId:(NSNumber *)dayId completion:(CompletionBlock)completion;
 - (void)updateDay:(ILDay *)day withParameters:(NSDictionary *)parameters completion:(CompletionBlock)completion;
 

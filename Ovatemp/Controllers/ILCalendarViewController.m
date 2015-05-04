@@ -13,6 +13,7 @@
 #import "UIColor+Traits.h"
 #import "ILCalendarCell.h"
 #import "UserProfile.h"
+#import "OvatempAPI.h"
 
 #import "Localytics.h"
 #import "TAOverlay.h"
@@ -21,6 +22,8 @@
 
 @property (nonatomic) TKCalendar *calendarView;
 @property (nonatomic) NSMutableArray *events;
+
+@property (nonatomic) ILDayStore *dayStore;
 
 @end
 
@@ -32,6 +35,8 @@
     
     [self customizeAppearance];
     [self setUpCalendar];
+    
+    [self loadAssets];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,6 +51,25 @@
     [Localytics tagScreen: @"Tracking/Calendar"];
     
     [self showInfoPopup];
+}
+
+#pragma mark - Network
+
+- (void)loadAssets
+{
+    [TAOverlay showOverlayWithLabel: @"Loading Calendar..." Options: TAOverlayOptionOverlaySizeRoundedRect];
+    
+    [[OvatempAPI sharedSession] getAllDaysWithCompletion:^(NSArray *days, NSError *error) {
+        
+        [TAOverlay hideOverlay];
+        
+        if (days) {
+            [self.dayStore addDays: days];
+            [self.calendarView reloadData];
+        }
+        
+    }];
+    
 }
 
 - (void)showInfoPopup
@@ -105,7 +129,6 @@
     if ([cell isKindOfClass:[TKCalendarDayCell class]]) {
         
         ILCalendarCell *dayCell = (ILCalendarCell *)cell;
-        //Day *selectedDay = [Day forDate: dayCell.date];
         ILDay *selectedDay = [self.dayStore dayForDate: dayCell.date];
         
         UserProfile *currentUserProfile = [UserProfile current];
@@ -131,7 +154,7 @@
         }else if (selectedDay.fertility.status == ILFertilityStatusTypeNotFertile) {
             
             // NOT FERTILE
-            dayCell.dayType = CalendarDayTypeNone;
+            dayCell.dayType = CalendarDayTypeNotFertile;
             
         }else {
             
@@ -208,6 +231,16 @@
     if ([self.delegate respondsToSelector: @selector(didSelectDateInCalendar:)]) {
         [self.delegate didSelectDateInCalendar: date];
     }
+}
+
+#pragma mark - Set/Get
+
+- (ILDayStore *)dayStore
+{
+    if (!_dayStore) {
+        _dayStore = [[ILDayStore alloc] init];
+    }
+    return _dayStore;
 }
 
 #pragma mark - Helper's

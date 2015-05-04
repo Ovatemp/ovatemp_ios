@@ -383,7 +383,7 @@
 {
     UINavigationController *navVC = [self.storyboard instantiateViewControllerWithIdentifier: @"navCalendarViewController"];
     ILCalendarViewController *calendarVC = navVC.childViewControllers[0];
-    calendarVC.dayStore = self.dayStore;
+    //calendarVC.dayStore = self.dayStore;
     calendarVC.delegate = self;
     
     [self presentViewController: navVC animated: YES completion: nil];
