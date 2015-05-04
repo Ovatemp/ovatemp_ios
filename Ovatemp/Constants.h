@@ -56,9 +56,6 @@
 #elif RELEASE
     #define ROOT_URL @"http://api.ovatemp.com"
     #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
-#elif RELEASE_AUTOMATION
-    #define ROOT_URL @"http://api.ovatemp.com"
-    #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
 #endif
 
 # define API_URL [ROOT_URL stringByAppendingString:@"/api"]
