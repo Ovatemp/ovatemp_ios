@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.5.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - ApplePayStubs (0.2)
   - CCMPopup (1.1.0)
   - CocoaLumberjack (2.0.0):
     - CocoaLumberjack/Default (= 2.0.0)
@@ -29,7 +30,7 @@ PODS:
     - CocoaLumberjack/Core
   - CocoaLumberjack/Extensions (2.0.0):
     - CocoaLumberjack/Default
-  - Expecta (0.4.2)
+  - Expecta (1.0.0)
   - Helpshift (4.10.2)
   - Inflections (1.0.0):
     - RegexKitLite
@@ -39,11 +40,17 @@ PODS:
   - OCMock (3.1.2)
   - Reachability (3.2)
   - RegexKitLite (4.0)
-  - Specta (0.5.0)
+  - Specta (1.0.0)
+  - Stripe (3.1.0):
+    - Stripe/Core (= 3.1.0)
+  - Stripe/ApplePay (3.1.0):
+    - Stripe/Core
+  - Stripe/Core (3.1.0)
   - TAOverlay (2.0.1)
 
 DEPENDENCIES:
   - AFNetworking
+  - ApplePayStubs
   - CCMPopup
   - CocoaLumberjack
   - Expecta
@@ -55,6 +62,8 @@ DEPENDENCIES:
   - OCMock
   - Reachability
   - Specta
+  - Stripe
+  - Stripe/ApplePay
   - TAOverlay
 
 EXTERNAL SOURCES:
@@ -68,9 +77,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
+  ApplePayStubs: 5dd63c36527d1117b2045939fb5b6581b4815433
   CCMPopup: e41fad5b8a0823c9cddea8eab6d431670c9dabe5
   CocoaLumberjack: a6f77d987d65dc7ba86b0f84db7d0b9084f77bcb
-  Expecta: 78b4e8b0c8291fa4524d7f74016b6065c2e391ec
+  Expecta: 32604574add2c46a36f8d2f716b6c5736eb75024
   Helpshift: 9c84a5e4ffd881c7e7eb395c2afc8d6a46eb2187
   Inflections: ec16ea4356ec1e0771ca6ae6b0adc62b09ce0973
   KIF: 25c0a730008377c6734f68d4fc3e3f462622127d
@@ -79,7 +89,8 @@ SPEC CHECKSUMS:
   OCMock: a10ea9f0a6e921651f96f78b6faee95ebc813b92
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
-  Specta: eb90708ed77569bbda089f8ead10bb99b8e9489e
+  Specta: 96fe05fe5c7348b5223f85e862904f6e832abb14
+  Stripe: 8a456332f4db97bd0b8457fc8cce1e1a69ac0cd1
   TAOverlay: 940e37fdb45fbc9acfc73bf1089668367e3b1be6
 
 COCOAPODS: 0.36.0

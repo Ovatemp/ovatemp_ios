@@ -12,6 +12,8 @@
 		063942331AD71B8B00BE7605 /* ONDOSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 063942311AD71B8B00BE7605 /* ONDOSettingViewController.m */; };
 		063942341AD71B8B00BE7605 /* ONDOSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 063942321AD71B8B00BE7605 /* ONDOSettingViewController.xib */; };
 		063CB2631AE1C131005F2D3A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063CB2621AE1C131005F2D3A /* Constants.swift */; };
+		063D14721AF93AB200B23C69 /* BuyONDOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 063D14701AF93AB200B23C69 /* BuyONDOViewController.m */; };
+		063D14731AF93AB200B23C69 /* BuyONDOViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 063D14711AF93AB200B23C69 /* BuyONDOViewController.xib */; };
 		0644CE551AE952E1006B4E24 /* TutorialHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0644CE541AE952E1006B4E24 /* TutorialHelper.m */; };
 		06615E071AEEA6E0000696D1 /* OvatempAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 06615E061AEEA6E0000696D1 /* OvatempAPI.m */; };
 		06615E0A1AEED396000696D1 /* ILDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 06615E091AEED396000696D1 /* ILDay.m */; };
@@ -418,6 +420,9 @@
 		063942311AD71B8B00BE7605 /* ONDOSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONDOSettingViewController.m; sourceTree = "<group>"; };
 		063942321AD71B8B00BE7605 /* ONDOSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONDOSettingViewController.xib; sourceTree = "<group>"; };
 		063CB2621AE1C131005F2D3A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		063D146F1AF93AB200B23C69 /* BuyONDOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyONDOViewController.h; sourceTree = "<group>"; };
+		063D14701AF93AB200B23C69 /* BuyONDOViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyONDOViewController.m; sourceTree = "<group>"; };
+		063D14711AF93AB200B23C69 /* BuyONDOViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyONDOViewController.xib; sourceTree = "<group>"; };
 		0644CE531AE952E1006B4E24 /* TutorialHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialHelper.h; sourceTree = "<group>"; };
 		0644CE541AE952E1006B4E24 /* TutorialHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialHelper.m; sourceTree = "<group>"; };
 		06615E051AEEA6E0000696D1 /* OvatempAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OvatempAPI.h; sourceTree = "<group>"; };
@@ -1100,6 +1105,22 @@
 			name = Other;
 			sourceTree = "<group>";
 		};
+		063D146E1AF93A7500B23C69 /* ONDO */ = {
+			isa = PBXGroup;
+			children = (
+				5F1C9C8519EF16DB000F1FC1 /* ONDOViewController.h */,
+				5F1C9C8619EF16DB000F1FC1 /* ONDOViewController.m */,
+				5F1C9C8719EF16DB000F1FC1 /* ONDOViewController.xib */,
+				063942301AD71B8B00BE7605 /* ONDOSettingViewController.h */,
+				063942311AD71B8B00BE7605 /* ONDOSettingViewController.m */,
+				063942321AD71B8B00BE7605 /* ONDOSettingViewController.xib */,
+				063D146F1AF93AB200B23C69 /* BuyONDOViewController.h */,
+				063D14701AF93AB200B23C69 /* BuyONDOViewController.m */,
+				063D14711AF93AB200B23C69 /* BuyONDOViewController.xib */,
+			);
+			name = ONDO;
+			sourceTree = "<group>";
+		};
 		06615E031AEEA517000696D1 /* OvatempAPIV3 SDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -1220,12 +1241,7 @@
 				5FE1184D1A1ADEFC00AC76A7 /* SettingsAlarmViewController.h */,
 				5FE1184E1A1ADEFC00AC76A7 /* SettingsAlarmViewController.m */,
 				5FE1184F1A1ADEFC00AC76A7 /* SettingsAlarmViewController.xib */,
-				5F1C9C8519EF16DB000F1FC1 /* ONDOViewController.h */,
-				5F1C9C8619EF16DB000F1FC1 /* ONDOViewController.m */,
-				5F1C9C8719EF16DB000F1FC1 /* ONDOViewController.xib */,
-				063942301AD71B8B00BE7605 /* ONDOSettingViewController.h */,
-				063942311AD71B8B00BE7605 /* ONDOSettingViewController.m */,
-				063942321AD71B8B00BE7605 /* ONDOSettingViewController.xib */,
+				063D146E1AF93A7500B23C69 /* ONDO */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -2051,6 +2067,9 @@
 							com.apple.InterAppAudio = {
 								enabled = 0;
 							};
+							com.apple.OMC = {
+								enabled = 1;
+							};
 						};
 					};
 					C3BF8FBC1898409C00572F43 = {
@@ -2238,6 +2257,7 @@
 				5F1C9B9C19EDE87A000F1FC1 /* TodayNavigationController.xib in Resources */,
 				5F1C9C4D19EDE87A000F1FC1 /* Dry.png in Resources */,
 				5F1C9C0A19EDE87A000F1FC1 /* Icon60@2x.png in Resources */,
+				063D14731AF93AB200B23C69 /* BuyONDOViewController.xib in Resources */,
 				5FE118511A1ADEFC00AC76A7 /* SettingsAlarmViewController.xib in Resources */,
 				5FE12F7A1A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.xib in Resources */,
 				5F1C9BDD19EDE87A000F1FC1 /* OvatempSupport@2x.png in Resources */,
@@ -2441,6 +2461,7 @@
 				5F7AEA6C1A0137080053ABAB /* TrackingNavigationBar.m in Sources */,
 				5F8C569419F1BD950024552A /* SignUpViewController.m in Sources */,
 				5F1C9B7519EDE87A000F1FC1 /* FormRow.m in Sources */,
+				063D14721AF93AB200B23C69 /* BuyONDOViewController.m in Sources */,
 				5F1C99DB19EDE775000F1FC1 /* ONDO.m in Sources */,
 				5F1C9B6A19EDE87A000F1FC1 /* UIViewController+Session.m in Sources */,
 				5F1C9B6D19EDE87A000F1FC1 /* Alert.m in Sources */,
@@ -2619,6 +2640,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"PRODUCTION_DEBUG=1",
+					"STRIPE_ENABLE_APPLEPAY=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -2643,8 +2665,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Lozano (A7DGWHM2XL)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Lozano (A7DGWHM2XL)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2684,7 +2706,7 @@
 					UIKit,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "36055605-e9dc-41a3-a0bb-49ef6d419a1b";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2734,7 +2756,11 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "PRODUCTION_RELEASE=1";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PRODUCTION_RELEASE=1",
+					"STRIPE_ENABLE_APPLEPAY=1",
+					"$(inherited)",
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -2756,8 +2782,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Ovatemp, LLC (MC934XNWAV)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ovatemp, LLC (MC934XNWAV)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2797,7 +2823,7 @@
 					UIKit,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a9244e11-f5a2-4e0a-b9cb-d26c0fb6400f";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3219,6 +3245,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"STAGING_DEBUG=1",
+					"STRIPE_ENABLE_APPLEPAY=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -3257,7 +3284,11 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "STAGING_RELEASE=1";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"STAGING_RELEASE=1",
+					"STRIPE_ENABLE_APPLEPAY=1",
+					"$(inherited)",
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -3279,8 +3310,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Lozano (A7DGWHM2XL)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Lozano (A7DGWHM2XL)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3319,7 +3350,7 @@
 					UIKit,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "36055605-e9dc-41a3-a0bb-49ef6d419a1b";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3331,8 +3362,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Ovatemp, LLC (MC934XNWAV)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ovatemp, LLC (MC934XNWAV)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3372,7 +3403,7 @@
 					UIKit,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c1aedb8b-0a28-4aad-bbb5-a9a29d5f66dd";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

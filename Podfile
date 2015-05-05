@@ -9,6 +9,9 @@ target :Ovatemp do
   pod "CocoaLumberjack"
   pod "CCMPopup"
   pod "AFNetworking"
+  pod "Stripe"
+  pod "Stripe/ApplePay"
+  pod "ApplePayStubs"
 end
 
 target :OvatempTests, exclusive: true do

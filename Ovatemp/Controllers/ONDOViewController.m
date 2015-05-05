@@ -16,6 +16,7 @@
 #import "WebViewController.h"
 #import "ONDOSettingViewController.h"
 #import "TutorialHelper.h"
+#import "BuyONDOViewController.h"
 
 @interface ONDOViewController () <UITableViewDelegate, UITableViewDataSource, ONDODelegate, ONDOSettingsViewControllerDelegate>
 
@@ -110,10 +111,15 @@ NSArray *ondoMenuItems;
     switch (indexPath.row) {
         case 0:  // Buy
         {
-            NSString *url = @"http://ovatemp.com/";
-            WebViewController *webViewController = [WebViewController withURL:url];
-            webViewController.title = @"Buy ONDO";
-            [self.navigationController pushViewController:webViewController animated:YES];
+//            NSString *url = @"http://ovatemp.com/";
+//            WebViewController *webViewController = [WebViewController withURL:url];
+//            webViewController.title = @"Buy ONDO";
+//            [self.navigationController pushViewController: navVC animated:YES];
+            
+            BuyONDOViewController *vc = [[BuyONDOViewController alloc] init];
+            UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: vc];
+            [self presentViewController: navVC animated: YES completion: nil];
+            
             break;
         }
             

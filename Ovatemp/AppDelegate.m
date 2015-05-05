@@ -11,9 +11,10 @@
 #import "AppDelegate.h"
 #import "RootViewController.h"
 #import "SubscriptionHelper.h"
-#import <CoreData/CoreData.h>
 
+#import "Stripe.h"
 #import "AFNetworkActivityIndicatorManager.h"
+#import <CoreData/CoreData.h>
 #import <Reachability/Reachability.h>
 #import <Localytics/Localytics.h>
 #import <Helpshift/Helpshift.h>
@@ -33,34 +34,26 @@
     self.window.rootViewController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
     [self.window makeKeyAndVisible];
     
+    [self customizeAppearance];
+    
     // Third Party
-    [Fabric with: @[CrashlyticsKit]];
-    [self setUpHelpshift];
+    [Fabric with: @[CrashlyticsKit]]; // Crash reporting
+    [self setUpHelpshift]; // User Help
+    [self setUpLumberjack]; // Logging
+    [self setUpStripe]; // Payments, Apple Pay
+    
     [self setupReachability];
     [self setupHealthKit];
-    [self setUpLumberjack];
+    
+    [self setDefaultTemperatureUnit];
+    [self setUpPushNotifications: application];
     
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     // In App Purchases : Ping the in app purchase helper so we start getting notifications
     //[SubscriptionHelper sharedInstance];
     
-    // Set default temperature units: Fahrenheit
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (![defaults objectForKey:@"temperatureUnitPreferenceFahrenheit"]) {
-        [defaults setBool:YES forKey:@"temperatureUnitPreferenceFahrenheit"];
-    }
-    
-    // Push Notifications
-    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
-        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
-    }
-    
-    // Appearance
-    [[UINavigationBar appearance] setBarTintColor: [UIColor colorWithRed: 249.0/255.0 green: 249.0/255.0 blue: 249.0/255.0 alpha: 1]];
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor ovatempAquaColor]} forState:UIControlStateNormal];
-    
-    [Localytics autoIntegrate: @"17f522ff1be70d82cefe212-339d99c4-3dbc-11e4-255f-004a77f8b47f" launchOptions: launchOptions];
+    [Localytics autoIntegrate: @"17f522ff1be70d82cefe212-339d99c4-3dbc-11e4-255f-004a77f8b47f" launchOptions: launchOptions]; // Analyticcs
 
     return YES;
 }
@@ -88,7 +81,37 @@
     [self saveContext];
 }
 
-#pragma mark - Helpshift
+#pragma mark - Helpers
+
+- (void)setDefaultTemperatureUnit
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults objectForKey:@"temperatureUnitPreferenceFahrenheit"]) {
+        [defaults setBool:YES forKey:@"temperatureUnitPreferenceFahrenheit"];
+    }
+}
+
+- (void)setUpPushNotifications:(UIApplication *)application
+{
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+    }
+}
+
+#pragma mark - Appearance
+
+- (void)customizeAppearance
+{
+    [[UINavigationBar appearance] setBarTintColor: [UIColor colorWithRed: 249.0/255.0 green: 249.0/255.0 blue: 249.0/255.0 alpha: 1]];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor ovatempAquaColor]} forState:UIControlStateNormal];
+}
+
+#pragma mark - Third Party
+
+- (void)setUpStripe
+{
+    [Stripe setDefaultPublishableKey: StripePublishableKey];
+}
 
 - (void)setUpHelpshift
 {
@@ -97,7 +120,18 @@
                           appID: @"ovatemp_platform_20130926211159051-f26e2f42401fd8c"];
 }
 
-# pragma mark - HealthKit
+- (void)setUpLumberjack
+{
+    setenv("XcodeColors", "YES", 0);
+    
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    
+    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
+    
+    [[DDTTYLogger sharedInstance] setForegroundColor: [UIColor purpleColor] backgroundColor: nil forFlag: DDLogFlagInfo];
+    [[DDTTYLogger sharedInstance] setForegroundColor: [UIColor darkGrayColor] backgroundColor: nil forFlag: DDLogFlagVerbose];
+}
 
 - (void) setupHealthKit
 {
@@ -156,22 +190,7 @@
     }
 }
 
-#pragma mark - CocoaLumberjack
-
-- (void)setUpLumberjack
-{
-    setenv("XcodeColors", "YES", 0);
-
-    [DDLog addLogger:[DDASLLogger sharedInstance]];
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    
-    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
-
-    [[DDTTYLogger sharedInstance] setForegroundColor: [UIColor purpleColor] backgroundColor: nil forFlag: DDLogFlagInfo];
-    [[DDTTYLogger sharedInstance] setForegroundColor: [UIColor darkGrayColor] backgroundColor: nil forFlag: DDLogFlagVerbose];
-}
-
-# pragma mark - Core data
+# pragma mark - Core Data
 
 - (void)saveContext
 {
