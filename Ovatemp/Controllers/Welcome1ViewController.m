@@ -18,11 +18,21 @@
 
 @implementation Welcome1ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+
+    [self setUserDefaultsCount];
     
     [self.navigationItem setHidesBackButton:YES];
     [self customizeAppearance];
+}
+
+- (void)setUserDefaultsCount
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setInteger: 1 forKey: @"OnboardingCompletionCount"];
+    [userDefaults synchronize];
 }
 
 - (void)didReceiveMemoryWarning {

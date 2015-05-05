@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		060167C11AF82D1D00D29456 /* OnboardingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 060167C01AF82D1D00D29456 /* OnboardingHelper.m */; };
 		060D180C1AC330FA00B7DBA2 /* ILCycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 060D180B1AC330FA00B7DBA2 /* ILCycleViewController.m */; };
 		0619A97F1AA4E32A000F31E6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */; };
 		063942331AD71B8B00BE7605 /* ONDOSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 063942311AD71B8B00BE7605 /* ONDOSettingViewController.m */; };
@@ -353,6 +354,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		060167BF1AF82D1D00D29456 /* OnboardingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnboardingHelper.h; sourceTree = "<group>"; };
+		060167C01AF82D1D00D29456 /* OnboardingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnboardingHelper.m; sourceTree = "<group>"; };
 		060D180A1AC330FA00B7DBA2 /* ILCycleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCycleViewController.h; sourceTree = "<group>"; };
 		060D180B1AC330FA00B7DBA2 /* ILCycleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCycleViewController.m; sourceTree = "<group>"; };
 		0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
@@ -1082,6 +1085,8 @@
 		06FEA5C61A9D2DE9002BDFC2 /* Log In */ = {
 			isa = PBXGroup;
 			children = (
+				060167BF1AF82D1D00D29456 /* OnboardingHelper.h */,
+				060167C01AF82D1D00D29456 /* OnboardingHelper.m */,
 				5F8C568C19F184C60024552A /* SelectLogInOrSignUpViewController.h */,
 				5F8C568D19F184C60024552A /* SelectLogInOrSignUpViewController.m */,
 				5F8C568F19F186C90024552A /* LoginViewController.h */,
@@ -2112,6 +2117,7 @@
 				5F1E1D8A1A0DA579001C22B7 /* TrackingIntercourseTableViewCell.m in Sources */,
 				5F1C9C5C19EDE87A000F1FC1 /* FertilityProfile.m in Sources */,
 				5F1C9C5819EDE87A000F1FC1 /* Configuration.m in Sources */,
+				060167C11AF82D1D00D29456 /* OnboardingHelper.m in Sources */,
 				5F1C9B8719EDE87A000F1FC1 /* CommunityForumViewController.m in Sources */,
 				5F6561DE19FAD63B001FB509 /* EditHeightTableViewCell.m in Sources */,
 				5F1C9B6C19EDE87A000F1FC1 /* UIViewController+UserProfileHelpers.m in Sources */,

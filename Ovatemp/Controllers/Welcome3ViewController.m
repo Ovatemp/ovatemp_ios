@@ -67,6 +67,7 @@ BOOL weightHasData;
 {
     [super viewDidLoad];
     [self customizeAppearance];
+    [self setUserDefaultsCount];
     // Do any additional setup after loading the view.
     
     expandLastPeriodCell = NO;
@@ -99,6 +100,13 @@ BOOL weightHasData;
     [[self tableView] registerNib:[UINib nibWithNibName:@"WeightTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"weightCell"];
     
     self.tableView.bounces = NO;
+}
+
+- (void)setUserDefaultsCount
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setInteger: 3 forKey: @"OnboardingCompletionCount"];
+    [userDefaults synchronize];
 }
 
 - (void)viewDidAppear:(BOOL)animated

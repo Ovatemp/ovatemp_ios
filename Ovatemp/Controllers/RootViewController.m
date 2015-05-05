@@ -27,7 +27,6 @@ static CGFloat const kDissolveDuration = 0.2;
     NSDate *lastForcedLogout;
     BOOL loggedIn;
     BOOL loaded;
-    BOOL cambio;
 }
 
 @end
