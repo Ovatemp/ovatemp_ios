@@ -270,45 +270,45 @@
 {
     [TAOverlay showOverlayWithLabel: @"Loading Calendar..." Options: TAOverlayOptionOverlaySizeRoundedRect];
 
-    [[OvatempAPI sharedSession] getDaysOnPage: page completion:^(NSArray *days, ILPaginationInfo *pagination, NSError *error) {
+    [[OvatempAPI sharedSession]getDaysOnPage: page perPage: 365 completion:^(NSArray *days, ILPaginationInfo *pagination, NSError *error) {
         
         [TAOverlay hideOverlay];
-        
+
         if (days) {
-            
+
             if (self.currentPage == 1) {
                 [self.selectedDates removeAllObjects];
                 [self.dayStore reset];
             }
-            
+
             NSArray *dates = [self getDatesForPage: page];
             [self.selectedDates replaceObjectsInRange: NSMakeRange(0, 0) withObjectsFromArray: dates];
             [self.dayStore addDays: days];
-            
+
             self.paginationInfo = pagination;
-            
+
             if (self.currentPage == 1) {
-                
+
                 [self.drawerCollectionView reloadData];
                 [self selectLastDay];
-                
+
             }else{
-                
+
                 NSInteger index = [dates count];
                 NSIndexPath *indexPath = [NSIndexPath indexPathForItem: index inSection: 0];
-                
+
                 [self.drawerCollectionView reloadData];
                 [self.drawerCollectionView scrollToItemAtIndexPath: indexPath atScrollPosition: UICollectionViewScrollPositionLeft animated: NO];
-                
+
             }
-            
+
             self.isPaginatorLoading = NO;
-            
+
         }else{
             DDLogError(@"ERROR: %@", error);
         }
-        
     }];
+    
 }
 
 - (void)loadSelectedDay
@@ -342,7 +342,7 @@
 {
     NSMutableArray *dates = [[NSMutableArray alloc] init];
     
-    NSInteger perPage = 90;
+    NSInteger perPage = 365;
     NSInteger offset = perPage * (page - 1);
     
     for (NSInteger i = offset + perPage; i >= offset; i--) {
@@ -383,7 +383,7 @@
 {
     UINavigationController *navVC = [self.storyboard instantiateViewControllerWithIdentifier: @"navCalendarViewController"];
     ILCalendarViewController *calendarVC = navVC.childViewControllers[0];
-    //calendarVC.dayStore = self.dayStore;
+    calendarVC.dayStore = self.dayStore;
     calendarVC.delegate = self;
     
     [self presentViewController: navVC animated: YES completion: nil];

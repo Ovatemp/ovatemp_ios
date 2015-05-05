@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5RQ-0I-Qml">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5RQ-0I-Qml">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -35,8 +35,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="img_launchingscreen" translatesAutoresizingMaskIntoConstraints="NO" id="8Qf-fN-4FS">
-                                <rect key="frame" x="0.0" y="-264.5" width="600" height="1065"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_launchingscreen" translatesAutoresizingMaskIntoConstraints="NO" id="8Qf-fN-4FS">
+                                <rect key="frame" x="0.0" y="-265" width="600" height="1065"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8Qf-fN-4FS" secondAttribute="height" multiplier="40:71" id="8nX-ta-27W"/>
                                 </constraints>
@@ -148,7 +148,7 @@
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kKd-rp-hTR">
-                                <rect key="frame" x="16" y="91.5" width="568" height="49"/>
+                                <rect key="frame" x="16" y="92" width="568" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="a0b-wC-6PX"/>
                                     <constraint firstAttribute="width" constant="288" id="zW7-Vj-MKB"/>
@@ -167,7 +167,7 @@
                                 </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="btc-gh-dKG">
-                                <rect key="frame" x="16" y="172.5" width="568" height="49"/>
+                                <rect key="frame" x="16" y="173" width="568" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="1P8-Va-VNA"/>
                                     <constraint firstAttribute="width" constant="288" id="on1-GA-WNO"/>
@@ -186,7 +186,7 @@
                                 </variation>
                             </textField>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jYi-Sk-xWl">
-                                <rect key="frame" x="16" y="394.5" width="568" height="49"/>
+                                <rect key="frame" x="16" y="395" width="568" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="Gf8-6r-WTY"/>
                                     <constraint firstAttribute="width" constant="288" id="fuw-em-8kL"/>
@@ -207,7 +207,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GRm-08-aBC">
-                                <rect key="frame" x="16" y="253.5" width="568" height="49"/>
+                                <rect key="frame" x="16" y="254" width="568" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="Gqo-uB-MtE"/>
                                     <constraint firstAttribute="width" constant="288" id="ffw-n0-5wu"/>
@@ -232,13 +232,13 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQK-bu-OIt">
-                                <rect key="frame" x="151" y="302.5" width="299" height="92"/>
+                                <rect key="frame" x="151" y="303" width="299" height="92"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="299" id="ohh-rO-B1f"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQe-ey-lUR">
-                                <rect key="frame" x="150" y="443.5" width="299" height="92"/>
+                                <rect key="frame" x="150" y="444" width="299" height="92"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="299" id="AfC-jW-YJn"/>
                                 </constraints>
@@ -311,7 +311,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFJ-DU-cFn">
-                                <rect key="frame" x="59.5" y="153" width="481" height="90"/>
+                                <rect key="frame" x="60" y="153" width="481" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="cyi-Hs-2Uy"/>
                                 </constraints>
@@ -326,7 +326,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ge9-eD-1Ly">
-                                <rect key="frame" x="59.5" y="293" width="481" height="90"/>
+                                <rect key="frame" x="60" y="293" width="481" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="1iO-nn-3GE"/>
                                     <constraint firstAttribute="width" constant="288" id="bHW-UW-oc8"/>
@@ -347,7 +347,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your fertility goal?" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3GX-42-HW9">
-                                <rect key="frame" x="16" y="10" width="568" height="54.5"/>
+                                <rect key="frame" x="16" y="10" width="568" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54.5" id="ef4-Mf-GUy"/>
                                 </constraints>
@@ -409,7 +409,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I’m trying to conceive" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="5UH-MO-hod">
-                                <rect key="frame" x="16" y="10" width="568" height="68.5"/>
+                                <rect key="frame" x="16" y="10" width="568" height="69"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="68.5" id="8eC-ze-RX9"/>
                                 </constraints>
@@ -499,7 +499,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Getting to know you" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kOW-al-JBH">
-                                <rect key="frame" x="16" y="0.0" width="568" height="67.5"/>
+                                <rect key="frame" x="16" y="0.0" width="568" height="68"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="67.5" id="nBF-aG-y0Y"/>
                                 </constraints>
@@ -508,14 +508,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="seX-3l-BiP">
-                                <rect key="frame" x="0.0" y="147.5" width="600" height="388"/>
+                                <rect key="frame" x="0.0" y="148" width="600" height="388"/>
                                 <connections>
                                     <outlet property="dataSource" destination="gRw-wx-L5R" id="joA-9z-Dnb"/>
                                     <outlet property="delegate" destination="gRw-wx-L5R" id="x8M-7c-Pet"/>
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YbR-Xo-d1e">
-                                <rect key="frame" x="16" y="67.5" width="568" height="80"/>
+                                <rect key="frame" x="16" y="68" width="568" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="113" id="bl8-Re-vEq"/>
                                     <constraint firstAttribute="width" constant="288" id="iCg-84-IuH"/>
@@ -791,7 +791,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rkE-iw-YUX">
-                                <rect key="frame" x="16" y="195.5" width="568" height="199"/>
+                                <rect key="frame" x="16" y="196" width="568" height="199"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSV-N1-cdp">
                                         <rect key="frame" x="8" y="8" width="45" height="21"/>
@@ -865,13 +865,13 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ww-b7-ce1">
-                                <rect key="frame" x="129" y="120" width="342" height="75.5"/>
+                                <rect key="frame" x="129" y="120" width="342" height="76"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="342" id="Zkp-Bl-ElF"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qkb-xH-Pjr">
-                                <rect key="frame" x="129" y="394.5" width="342" height="75.5"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qkb-xH-Pjr">
+                                <rect key="frame" x="129" y="395" width="342" height="76"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="342" id="3ZN-4T-ZPB"/>
                                 </constraints>
@@ -926,7 +926,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="img_launchingscreen" translatesAutoresizingMaskIntoConstraints="NO" id="ex7-sR-0MO">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_launchingscreen" translatesAutoresizingMaskIntoConstraints="NO" id="ex7-sR-0MO">
                                 <rect key="frame" x="0.0" y="-265" width="600" height="1065"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ex7-sR-0MO" secondAttribute="height" multiplier="40:71" id="PsD-Th-9h6"/>

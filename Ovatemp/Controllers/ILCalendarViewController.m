@@ -23,8 +23,6 @@
 @property (nonatomic) TKCalendar *calendarView;
 @property (nonatomic) NSMutableArray *events;
 
-@property (nonatomic) ILDayStore *dayStore;
-
 @end
 
 @implementation ILCalendarViewController
@@ -36,7 +34,7 @@
     [self customizeAppearance];
     [self setUpCalendar];
     
-    [self loadAssets];
+    //[self loadAssets];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,22 +53,22 @@
 
 #pragma mark - Network
 
-- (void)loadAssets
-{
-    [TAOverlay showOverlayWithLabel: @"Loading Calendar..." Options: TAOverlayOptionOverlaySizeRoundedRect];
-    
-    [[OvatempAPI sharedSession] getAllDaysWithCompletion:^(NSArray *days, NSError *error) {
-        
-        [TAOverlay hideOverlay];
-        
-        if (days) {
-            [self.dayStore addDays: days];
-            [self.calendarView reloadData];
-        }
-        
-    }];
-    
-}
+//- (void)loadAssets
+//{
+//    [TAOverlay showOverlayWithLabel: @"Loading Calendar..." Options: TAOverlayOptionOverlaySizeRoundedRect];
+//    
+//    [[OvatempAPI sharedSession] getAllDaysWithCompletion:^(NSArray *days, NSError *error) {
+//        
+//        [TAOverlay hideOverlay];
+//        
+//        if (days) {
+//            [self.dayStore addDays: days];
+//            [self.calendarView reloadData];
+//        }
+//        
+//    }];
+//    
+//}
 
 - (void)showInfoPopup
 {    
@@ -235,13 +233,13 @@
 
 #pragma mark - Set/Get
 
-- (ILDayStore *)dayStore
-{
-    if (!_dayStore) {
-        _dayStore = [[ILDayStore alloc] init];
-    }
-    return _dayStore;
-}
+//- (ILDayStore *)dayStore
+//{
+//    if (!_dayStore) {
+//        _dayStore = [[ILDayStore alloc] init];
+//    }
+//    return _dayStore;
+//}
 
 #pragma mark - Helper's
 

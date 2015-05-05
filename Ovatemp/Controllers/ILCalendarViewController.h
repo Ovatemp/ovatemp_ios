@@ -22,6 +22,8 @@
 
 @property (weak, nonatomic) id<ILCalendarViewControllerDelegate> delegate;
 
+@property (nonatomic) ILDayStore *dayStore;
+
 @property (weak, nonatomic) IBOutlet UIView *infoView;
 
 @end

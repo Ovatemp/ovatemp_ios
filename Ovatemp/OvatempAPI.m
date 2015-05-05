@@ -79,29 +79,12 @@
     }];
 }
 
-- (void)getAllDaysWithCompletion:(CompletionBlock)completion
-{
-    NSDictionary *params = @{@"page" : @1,
-                             @"per_page" : @1000};
-    
-    [self GET: @"days" parameters: params success:^(NSURLSessionDataTask *task, id responseObject) {
-        
-        NSArray *days = [responseObject[@"days"] dl_map:^ ILDay *(NSDictionary *day) {
-            return [[ILDay alloc] initWithDictionary: day];
-        }];
-        
-        completion(days, nil);
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        completion(nil, error);
-    }];
-}
-
-- (void)getDaysOnPage:(NSUInteger)page completion:(PaginatedCompletionBlock)completion
+- (void)getDaysOnPage:(NSUInteger)page perPage:(NSInteger)perPage completion:(PaginatedCompletionBlock)completion;
 {
     NSString *url = @"days";
+    NSInteger perPageDefault = (perPage != 0) ? perPage : 365;
     NSDictionary *params = @{@"page" : @(page),
-                             @"per_page" : @(90)};
+                             @"per_page" : @(perPageDefault)};
     
     [self GET: url parameters: params success:^(NSURLSessionDataTask *task, id responseObject) {
         
