@@ -12,11 +12,14 @@
 #import "Stripe.h"
 #import "Stripe+ApplePay.h"
 
+#import "OvatempAPI.h"
+
 #import "BuyONDOViewController.h"
 
 @interface BuyONDOViewController () <PKPaymentAuthorizationViewControllerDelegate>
 
 @property (nonatomic) PKPaymentButton *payButton;
+@property (nonatomic) NSDecimalNumber *totalAmount;
 
 @end
 
@@ -105,9 +108,9 @@
     paymentRequest.requiredBillingAddressFields = PKAddressFieldAll;
     paymentRequest.requiredShippingAddressFields = PKAddressFieldAll;
     
-    NSString *label = @"ONDO Thermometer";
-    NSDecimalNumber *amount = [NSDecimalNumber decimalNumberWithString: @"75.00"];
-    paymentRequest.paymentSummaryItems = @[[PKPaymentSummaryItem summaryItemWithLabel: label amount: amount]];
+    NSArray *shippingMethods = [self shippingMethods];
+    paymentRequest.shippingMethods = shippingMethods;
+    paymentRequest.paymentSummaryItems = [self paymentSummaryItemsForShippingMethod: shippingMethods[0]];
     
     if ([Stripe canSubmitPaymentRequest: paymentRequest]) {
         
@@ -137,6 +140,32 @@
     }
 }
 
+- (NSArray *)shippingMethods
+{
+    PKShippingMethod *freeShipping = [PKShippingMethod summaryItemWithLabel: @"Free Shipping" amount: [NSDecimalNumber decimalNumberWithString: @"0"]];
+    freeShipping.identifier = @"freeShipping";
+    freeShipping.detail = @"Arrives in 6-8 weeks.";
+    
+    PKShippingMethod *expressShipping = [PKShippingMethod summaryItemWithLabel: @"Express Shipping" amount: [NSDecimalNumber decimalNumberWithString: @"10"]];
+    expressShipping.identifier = @"expressShipping";
+    expressShipping.detail = @"Arrives in 2-3 days";
+    
+    return @[freeShipping, expressShipping];
+}
+
+- (NSArray *)paymentSummaryItemsForShippingMethod:(PKShippingMethod *)shipping
+{
+    NSDecimalNumber *amount = [NSDecimalNumber decimalNumberWithString: @"75.00"];
+    PKPaymentSummaryItem *ONDOitem = [PKPaymentSummaryItem summaryItemWithLabel: @"ONDO Thermometer" amount: amount];
+    
+    NSDecimalNumber *totalAmount = [ONDOitem.amount decimalNumberByAdding: shipping.amount];
+    PKPaymentSummaryItem *total = [PKPaymentSummaryItem summaryItemWithLabel: @"Ovatemp" amount: totalAmount];
+    
+    self.totalAmount = totalAmount;
+    
+    return @[ONDOitem, shipping, total];
+}
+
 - (void)handlePaymentAuthorizationWithPayment:(PKPayment *)payment completion:(void (^)(PKPaymentAuthorizationStatus))completion
 {
     [[STPAPIClient sharedClient] createTokenWithPayment:payment
@@ -145,55 +174,39 @@
                                                      completion(PKPaymentAuthorizationStatusFailure);
                                                      return;
                                                  }
-                                                 /*
-                                                  We'll implement this below in "Sending the token to your server".
-                                                  Notice that we're passing the completion block through.
-                                                  See the above comment in didAuthorizePayment to learn why.
-                                                  */
                                                  [self createBackendChargeWithToken: token completion: completion];
                                              }];
 }
 
 - (void)createBackendChargeWithToken:(STPToken *)token completion:(void (^)(PKPaymentAuthorizationStatus))completion
 {
-    NSURL *url = [NSURL URLWithString:@"https://example.com/token"];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    request.HTTPMethod = @"POST";
-    NSString *body     = [NSString stringWithFormat:@"stripeToken=%@", token.tokenId];
-    request.HTTPBody   = [body dataUsingEncoding:NSUTF8StringEncoding];
+    [[OvatempAPI sharedSession] createBackendChargeWithToken: token amount: self.totalAmount completion:^(id object, NSError *error) {
+        if (error) {
+            completion(PKPaymentAuthorizationStatusFailure);
+            return;
+        }
+        completion(PKPaymentAuthorizationStatusSuccess);
+    }];
     
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response,
-                                               NSData *data,
-                                               NSError *error) {
-                               if (error) {
-                                   completion(PKPaymentAuthorizationStatusFailure);
-                               } else {
-                                   completion(PKPaymentAuthorizationStatusSuccess);
-                               }
-                           }];
 }
 
 #pragma mark - PKPaymentAuthorizationViewController Delegate
 
+- (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)controller didSelectShippingMethod:(PKShippingMethod *)shippingMethod
+                                completion:(void (^)(PKPaymentAuthorizationStatus, NSArray *))completion
+{
+    completion(PKPaymentAuthorizationStatusSuccess, [self paymentSummaryItemsForShippingMethod: shippingMethod]);
+}
+
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)controller didAuthorizePayment:(PKPayment *)payment
                                 completion:(void (^)(PKPaymentAuthorizationStatus))completion
 {
-    /*
-     We'll implement this method below in 'Creating a single-use token'.
-     Note that we've also been given a block that takes a
-     PKPaymentAuthorizationStatus. We'll call this function with either
-     PKPaymentAuthorizationStatusSuccess or PKPaymentAuthorizationStatusFailure
-     after all of our asynchronous code is finished executing. This is how the
-     PKPaymentAuthorizationViewController knows when and how to update its UI.
-     */
-    [self handlePaymentAuthorizationWithPayment:payment completion:completion];
+    [self handlePaymentAuthorizationWithPayment: payment completion: completion];
 }
 
 - (void)paymentAuthorizationViewControllerDidFinish:(PKPaymentAuthorizationViewController *)controller
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated: YES completion: nil];
 }
 
 @end

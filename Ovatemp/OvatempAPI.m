@@ -122,4 +122,22 @@
     }];
 }
 
+#pragma mark - Apple Pay
+
+- (void)createBackendChargeWithToken:(STPToken *)token amount:(NSDecimalNumber *)amount completion:(CompletionBlock)completion
+{
+    NSString *url = @"transactions";
+    
+    NSDecimalNumber *amountInCents = [amount decimalNumberByMultiplyingBy: [NSDecimalNumber decimalNumberWithString: @"1000"]];
+    NSDictionary *params = @{@"stripeToken" : token.tokenId,
+                             @"amount" : amountInCents};
+    
+    [self POST: url parameters: params success:^(NSURLSessionDataTask *task, id responseObject) {
+        completion(responseObject, nil);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completion(nil, error);
+    }];
+    
+}
+
 @end

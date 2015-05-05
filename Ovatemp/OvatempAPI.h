@@ -8,6 +8,8 @@
 
 #import "AFHTTPSessionManager.h"
 
+#import "Stripe.h"
+
 #import "ILDay.h"
 #import "ILCycle.h"
 #import "ILPaginationInfo.h"
@@ -25,5 +27,7 @@ typedef void (^PaginatedCompletionBlock)(id object, ILPaginationInfo *pagination
 - (void)updateDay:(ILDay *)day withParameters:(NSDictionary *)parameters completion:(CompletionBlock)completion;
 
 - (void)getCyclesOnPage:(NSUInteger)page completion:(PaginatedCompletionBlock)completion;
+
+- (void)createBackendChargeWithToken:(STPToken *)token amount:(NSDecimalNumber *)amount completion:(CompletionBlock)completion;
 
 @end
