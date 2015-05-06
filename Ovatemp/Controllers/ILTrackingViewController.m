@@ -71,6 +71,8 @@
 @property (nonatomic) BOOL lowerDrawer;
 @property (nonatomic) BOOL inLandscape;
 
+@property (nonatomic) UIRefreshControl *refreshControl;
+
 @end
 
 @implementation ILTrackingViewController
@@ -151,6 +153,12 @@
 }
 
 #pragma mark - Appearance
+
+- (void)customizeAppearance
+{
+//    self.refreshControl = [[UIRefreshControl alloc] init];
+//    self.tableView.ref
+}
 
 - (void)updateScreen
 {

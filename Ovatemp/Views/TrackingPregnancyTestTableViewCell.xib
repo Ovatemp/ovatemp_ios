@@ -114,8 +114,8 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G9w-VN-bw8">
-                        <rect key="frame" x="124" y="63" width="71" height="68"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G9w-VN-bw8">
+                        <rect key="frame" x="124" y="63" width="72" height="68"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="68" id="mid-vX-5Mc"/>
                         </constraints>
@@ -133,7 +133,7 @@
                         </constraints>
                     </view>
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="4Pu-hu-16r">
-                        <rect key="frame" x="124" y="9" width="20" height="20"/>
+                        <rect key="frame" x="123" y="9" width="20" height="20"/>
                     </activityIndicatorView>
                 </subviews>
                 <constraints>
@@ -153,7 +153,7 @@
                     <constraint firstItem="9v3-DA-c6L" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-2" id="TIr-d7-r3y"/>
                     <constraint firstItem="c1t-PB-aM1" firstAttribute="leading" secondItem="V5C-su-dNA" secondAttribute="trailing" constant="-49" id="Vxe-BW-nYk"/>
                     <constraint firstItem="1Td-0W-rUK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="bsD-Jq-Ab3"/>
-                    <constraint firstItem="4Pu-hu-16r" firstAttribute="leading" secondItem="1Td-0W-rUK" secondAttribute="trailing" constant="6" id="gQg-gx-39D"/>
+                    <constraint firstItem="4Pu-hu-16r" firstAttribute="leading" secondItem="1Td-0W-rUK" secondAttribute="trailing" constant="5" id="gQg-gx-39D"/>
                     <constraint firstItem="c1t-PB-aM1" firstAttribute="top" secondItem="V5C-su-dNA" secondAttribute="bottom" constant="-6" id="hh3-eD-Chh"/>
                     <constraint firstAttribute="centerY" secondItem="ib8-bW-xzo" secondAttribute="centerY" constant="-22" id="m39-g2-CQh"/>
                     <constraint firstItem="G9w-VN-bw8" firstAttribute="width" secondItem="rzq-dA-f3B" secondAttribute="width" id="oQl-mn-1wV"/>
