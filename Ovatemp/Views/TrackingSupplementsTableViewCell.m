@@ -8,11 +8,19 @@
 
 #import "TrackingSupplementsTableViewCell.h"
 
+#import "OvatempAPI.h"
+
 #import "Alert.h"
 #import "SharedRelation.h"
 #import "SimpleSupplement.h"
 #import "Cycle.h"
 #import "Calendar.h"
+
+@interface TrackingSupplementsTableViewCell ()
+
+@property (nonatomic) NSDateFormatter *dateFormatter;
+
+@end
 
 @implementation TrackingSupplementsTableViewCell
 
@@ -136,24 +144,39 @@
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     
     [attributes setObject: supplementIds forKey: @"supplement_ids"];
-    [attributes setObject: selectedDate forKey: @"date"];
+    [attributes setObject: [self.dateFormatter stringFromDate: selectedDate] forKey: @"date"];
     
     [self startActivity];
     
-    [ConnectionManager put:@"/days/"
-                    params:@{@"day": attributes,}
-                   success:^(NSDictionary *response) {
-                      
-                       [Cycle cycleFromResponse: response];
-                       [Calendar setDate: selectedDate];
-                       
-                       [self updateCell];
-                       [self stopActivity];
-                   }
-                   failure:^(NSError *error) {
-                       [Alert presentError:error];
-                       [self stopActivity];
-                   }];
+    [[OvatempAPI sharedSession] updateDay: selectedDay
+                           withParameters: attributes
+                               completion:^(ILDay *day, NSError *error) {
+                                   
+                                   if (day) {
+                                       [self.delegate updateSelectedDay: day];
+                                       [self updateCell];
+                                       [self stopActivity];
+                                   }else{
+                                       [Alert presentError:error];
+                                       [self stopActivity];
+                                   }
+                                   
+                               }];
+    
+//    [ConnectionManager put:@"/days/"
+//                    params:@{@"day": attributes,}
+//                   success:^(NSDictionary *response) {
+//                      
+//                       [Cycle cycleFromResponse: response];
+//                       [Calendar setDate: selectedDate];
+//                       
+//                       [self updateCell];
+//                       [self stopActivity];
+//                   }
+//                   failure:^(NSError *error) {
+//                       [Alert presentError:error];
+//                       [self stopActivity];
+//                   }];
 }
 
 #pragma mark - UITableView Data Source
@@ -308,6 +331,17 @@
     self.supplementsTypeCollapsedLabel.hidden = YES;
     self.placeholderLabel.hidden = YES;
     
+}
+
+#pragma mark - Set/Get
+
+- (NSDateFormatter *)dateFormatter
+{
+    if (!_dateFormatter) {
+        _dateFormatter = [[NSDateFormatter alloc] init];
+        _dateFormatter.dateFormat = @"yyyy-MM-dd";
+    }
+    return _dateFormatter;
 }
 
 @end

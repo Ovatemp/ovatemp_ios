@@ -64,6 +64,8 @@ NSArray *symptomsDataSource;
 
 - (void)resetSelectedSymptoms
 {
+    [self.selectedSymptoms removeAllObjects];
+    
     self.breastTendernessSelected = NO;
     self.headachesSelected = NO;
     self.nauseaSeleted = NO;
@@ -397,6 +399,8 @@ NSArray *symptomsDataSource;
 
 - (void)setSymptomWithValue:(NSInteger)value
 {
+    [self.selectedSymptoms addObject: @(value)];
+
     value--;
     
     if (value == 0) {
@@ -455,13 +459,15 @@ NSArray *symptomsDataSource;
 {
     ILDay *selectedDay = [self.delegate getSelectedDay];
     
+    [self resetSelectedSymptoms];
+    
     DDLogWarn(@"SYMPTOM IDS: %@", selectedDay.symptomIds);
     
-    if (selectedDay.symptomIds) {
+    if ([selectedDay.symptomIds count] > 0) {
         
         NSMutableString *symptomsString = [[NSMutableString alloc] init];
         
-        for (NSString *symptomID in selectedDay.symptomIds) {
+        for (NSNumber *symptomID in selectedDay.symptomIds) {
             
             NSInteger symptomIntVal = [symptomID integerValue];
             [self setSymptomWithValue: symptomIntVal];
@@ -479,7 +485,7 @@ NSArray *symptomsDataSource;
         
         [self.symptomsTableView reloadData];
     } else {
-        // TODO: No data
+        [self.symptomsTableView reloadData];
     }
 }
 

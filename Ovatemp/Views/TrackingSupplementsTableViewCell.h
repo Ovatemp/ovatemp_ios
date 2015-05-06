@@ -17,6 +17,7 @@
 - (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
 
 - (ILDay *)getSelectedDay;
+- (void)updateSelectedDay:(ILDay *)day;
 
 @end
 

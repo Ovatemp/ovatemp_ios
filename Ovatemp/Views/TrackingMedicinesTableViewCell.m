@@ -8,10 +8,17 @@
 
 #import "TrackingMedicinesTableViewCell.h"
 
+#import "OvatempAPI.h"
 #import "Cycle.h"
 #import "Calendar.h"
 #import "SimpleSupplement.h"
 #import "Alert.h"
+
+@interface TrackingMedicinesTableViewCell ()
+
+@property (nonatomic) NSDateFormatter *dateFormatter;
+
+@end
 
 @implementation TrackingMedicinesTableViewCell
 
@@ -135,25 +142,40 @@
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     
     [attributes setObject: medicineIds forKey: @"medicine_ids"];
-    [attributes setObject: selectedDate forKey: @"date"];
+    [attributes setObject: [self.dateFormatter stringFromDate: selectedDate] forKey: @"date"];
     
     [self startActivity];
     
-    [ConnectionManager put: @"/days/"
-                    params: @{@"day": attributes}
-                   success:^(NSDictionary *response) {
-                       
-                       [Cycle cycleFromResponse: response];
-                       [Calendar setDate: selectedDate];
-                       
-                       [self updateCell];
-                       [self stopActivity];
-                       
-                   }
-                   failure:^(NSError *error) {
-                       [Alert presentError:error];
-                       [self stopActivity];
-                   }];
+    [[OvatempAPI sharedSession] updateDay: selectedDay
+                           withParameters: attributes
+                               completion:^(ILDay *day, NSError *error) {
+                                   
+                                   if (day) {
+                                       [self.delegate updateSelectedDay: day];
+                                       [self updateCell];
+                                       [self stopActivity];
+                                   }else{
+                                       [Alert presentError:error];
+                                       [self stopActivity];
+                                   }
+                                   
+                               }];
+    
+//    [ConnectionManager put: @"/days/"
+//                    params: @{@"day": attributes}
+//                   success:^(NSDictionary *response) {
+//                       
+//                       [Cycle cycleFromResponse: response];
+//                       [Calendar setDate: selectedDate];
+//                       
+//                       [self updateCell];
+//                       [self stopActivity];
+//                       
+//                   }
+//                   failure:^(NSError *error) {
+//                       [Alert presentError:error];
+//                       [self stopActivity];
+//                   }];
 }
 
 
@@ -303,6 +325,17 @@
     
     self.medicinesTypeCollapsedLabel.hidden = YES;
     self.placeholderLabel.hidden = YES;
+}
+
+#pragma mark - Set/Get
+
+- (NSDateFormatter *)dateFormatter
+{
+    if (!_dateFormatter) {
+        _dateFormatter = [[NSDateFormatter alloc] init];
+        _dateFormatter.dateFormat = @"yyyy-MM-dd";
+    }
+    return _dateFormatter;
 }
 
 @end

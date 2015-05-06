@@ -28,7 +28,7 @@
         NSString *baseUrlString = [NSString stringWithFormat: @"%@/api", ROOT_URL];
         NSURL *baseUrl = [NSURL URLWithString: baseUrlString];
         _instance = [[OvatempAPI alloc] initWithBaseURL: baseUrl sessionConfiguration: urlSessionConfiguration];
-        //_instance.requestSerializer = [AFJSONRequestSerializer serializer];
+        _instance.requestSerializer = [AFJSONRequestSerializer serializer];
         [_instance.requestSerializer setValue: @"application/vnd.ovatemp.v3" forHTTPHeaderField: @"Accept"];
         [_instance.requestSerializer setValue: [self accessToken] forHTTPHeaderField: @"Authorization"];
         _instance.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -70,6 +70,23 @@
 - (void)updateDay:(ILDay *)day withParameters:(NSDictionary *)parameters completion:(CompletionBlock)completion
 {
     NSDictionary *params = @{@"day" : parameters};
+    
+    if (parameters[@"symptom_ids"]) {
+        NSMutableArray *symptomIds = parameters[@"symptom_ids"];
+        if ([symptomIds count] == 0) {
+            [symptomIds addObject: @(0)];
+        }
+    }else if (parameters[@"medicine_ids"]) {
+        NSMutableArray *medicineIds = parameters[@"medicine_ids"];
+        if ([medicineIds count] == 0) {
+            [medicineIds addObject: @(0)];
+        }
+    }else if (parameters[@"supplement_ids"]) {
+        NSMutableArray *supplementIds = parameters[@"supplement_ids"];
+        if ([supplementIds count] == 0) {
+            [supplementIds addObject: @(0)];
+        }
+    }
     
     [self PUT: @"days" parameters: params success:^(NSURLSessionDataTask *task, id responseObject) {
         ILDay *day = [[ILDay alloc] initWithDictionary: responseObject[@"day"]];

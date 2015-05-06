@@ -71,7 +71,7 @@
 @property (nonatomic) BOOL lowerDrawer;
 @property (nonatomic) BOOL inLandscape;
 
-@property (nonatomic) UIRefreshControl *refreshControl;
+@property (nonatomic) NSDateFormatter *dateFormatter;
 
 @end
 
@@ -853,6 +853,11 @@
     return self.selectedDay;
 }
 
+- (void)updateSelectedDay:(ILDay *)day
+{
+    self.selectedDay = day;
+}
+
 - (NSDate *)getPeakDate
 {
     return self.peakDate;
@@ -982,6 +987,8 @@
                                  @"Date" : self.selectedDay.date};
     
     [Localytics tagEvent: @"User Did Select Symptoms" attributes: attributes];
+    
+    DDLogWarn(@"UPLADING SYMPTOMS: %@", types);
     
     NSDictionary *params = @{@"log_name" : @"SYMPTOMS TYPE",
                              @"attribute_key" : @"symptom_ids",
@@ -1175,11 +1182,7 @@
     [self updateHealthKitWithTemp: tempInFahrenheit];
     
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat: @"yyyy-MM-dd"];
-    
-    NSString *stringDateForBackend = [formatter stringFromDate: self.selectedDay.date];
-    [attributes setObject: stringDateForBackend forKey: @"date"];
+    [attributes setObject: [self.dateFormatter stringFromDate: self.selectedDay.date]  forKey: @"date"];
     [attributes setObject: [NSNumber numberWithFloat: tempInFahrenheit] forKey: @"temperature"];
     [attributes setObject: [NSNumber numberWithBool: self.selectedDay.usedOndo] forKeyedSubscript: @"used_ondo"];
     
@@ -1239,7 +1242,7 @@
     [Localytics tagEvent: @"User Did Select Disturbance" attributes: localyticsAttributes];
     
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
-    [attributes setObject: self.selectedDay.date forKey: @"date"];
+    [attributes setObject: [self.dateFormatter stringFromDate: self.selectedDay.date]  forKey: @"date"];
     [attributes setObject: [NSNumber numberWithBool: disturbance] forKey: @"disturbance"];
     
     [[NSNotificationCenter defaultCenter] postNotificationName: @"temp_start_activity" object: self];
@@ -1294,7 +1297,7 @@
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     
     [attributes setObject: attributeData forKey: attributeKey];
-    [attributes setObject: self.selectedDay.date forKey: @"date"];
+    [attributes setObject: [self.dateFormatter stringFromDate: self.selectedDay.date]  forKey: @"date"];
     
     if (notificationId.length > 0) {
         [[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"%@_start_activity", notificationId] object: self];
@@ -1473,6 +1476,15 @@
     }
     
     return _trackingTableDataArray;
+}
+
+- (NSDateFormatter *)dateFormatter
+{
+    if (!_dateFormatter) {
+        _dateFormatter = [[NSDateFormatter alloc] init];
+        _dateFormatter.dateFormat = @"yyyy-MM-dd";
+    }
+    return _dateFormatter;
 }
 
 - (CycleViewController *)cycleViewController
