@@ -39,13 +39,9 @@
     self.day_id = [dictionary dl_objectForKeyWithNil: @"id"];
     self.temperature = [dictionary dl_objectForKeyWithNil: @"temperature"];
     
-//    if ([dictionary[@"date"] isKindOfClass: [NSDate class]]) {
-//        self.date = dictionary[@"date"];
-//    }else{
-        self.date = ![dictionary[@"date"] isKindOfClass: [NSNull class]] ? [self.dateFormatter dateFromString: dictionary[@"date"]] : nil;
-//    }
+    self.date = ![dictionary[@"date"] isKindOfClass: [NSNull class]] ? [self.dateFormatter dateFromString: dictionary[@"date"]] : nil;
     
-    self.disturbance = [dictionary dl_objectForKeyWithNil: @"disturbance"];
+    self.disturbance = [[dictionary dl_objectForKeyWithNil: @"disturbance"] boolValue];
     
     self.cervicalFluid = [dictionary dl_objectForKeyWithNil: @"cervical_fluid"];
     self.cervicalPosition = [dictionary dl_objectForKeyWithNil: @"cervical_position"];

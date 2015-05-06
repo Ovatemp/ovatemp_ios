@@ -247,7 +247,7 @@ NSMutableArray *temperatureFractionalPartPickerData;
         }
         
     }
-    
+        
     if (selectedDay.disturbance) {
         [self.disturbanceSwitch setOn: YES];
     } else {
