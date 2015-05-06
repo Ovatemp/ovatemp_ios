@@ -749,6 +749,8 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    DDLogInfo(@"DID SELECT ITEM AT INDEX PATH");
+    
     NSDate *dateAtIndex = self.selectedDates[indexPath.row];
 
     if (indexPath.row == self.selectedIndexPath.row) {
@@ -784,7 +786,6 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     if (scrollView == self.drawerCollectionView && decelerate == NO) {
-        NSLog(@"Centering Cell");
         [self centerCell];
     }
 }
@@ -792,36 +793,35 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     if (scrollView == self.drawerCollectionView) {
-        NSLog(@"Centering Cell");
         [self centerCell];
     }
 }
 
 - (void)centerCell
 {
-    NSIndexPath *pathForCenterCell = [self.drawerCollectionView indexPathForItemAtPoint:CGPointMake(CGRectGetMidX(self.drawerCollectionView.bounds), CGRectGetMidY(self.drawerCollectionView.bounds))];
+    DDLogInfo(@"CENTERING CELL");
+    
+    NSIndexPath *pathForCenterCell = [self.drawerCollectionView indexPathForItemAtPoint:CGPointMake(CGRectGetMidX(self.drawerCollectionView.bounds),
+                                                                                                    CGRectGetMidY(self.drawerCollectionView.bounds))];
     
     // we need +/- 10 as an offset here in case the user scrolls in between two cells, the indexPath will never be nil we will always snap to a cell
     
     if (!pathForCenterCell) {
-        pathForCenterCell = [self.drawerCollectionView indexPathForItemAtPoint:CGPointMake(CGRectGetMidX(self.drawerCollectionView.bounds) - 10, CGRectGetMidY(self.drawerCollectionView.bounds))];
+        pathForCenterCell = [self.drawerCollectionView indexPathForItemAtPoint:CGPointMake(CGRectGetMidX(self.drawerCollectionView.bounds) - 10,
+                                                                                           CGRectGetMidY(self.drawerCollectionView.bounds))];
     }
     
     if (!pathForCenterCell) {
-        pathForCenterCell = [self.drawerCollectionView indexPathForItemAtPoint:CGPointMake(CGRectGetMidX(self.drawerCollectionView.bounds) + 10, CGRectGetMidY(self.drawerCollectionView.bounds))];
+        pathForCenterCell = [self.drawerCollectionView indexPathForItemAtPoint:CGPointMake(CGRectGetMidX(self.drawerCollectionView.bounds) + 10,
+                                                                                           CGRectGetMidY(self.drawerCollectionView.bounds))];
     }
     
-    if (!pathForCenterCell) { // still nil
-        // I tried
-        NSLog(@"You're Tearing Me Apart, Lisa!");
-        return; // Oh Hi Mark
+    if (!pathForCenterCell) {
+        DDLogWarn(@"COULD NOT CENTER CELL");
+        return;
     }
     
-    [self.drawerCollectionView scrollToItemAtIndexPath:pathForCenterCell atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-    
-    self.selectedIndexPath = pathForCenterCell;
-    [self.drawerCollectionView reloadData];
-    
+    [self.drawerCollectionView scrollToItemAtIndexPath: pathForCenterCell atScrollPosition: UICollectionViewScrollPositionCenteredHorizontally animated: YES];
     [self collectionView: self.drawerCollectionView didSelectItemAtIndexPath: pathForCenterCell];
 }
 

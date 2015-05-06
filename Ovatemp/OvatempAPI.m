@@ -128,9 +128,8 @@
 {
     NSString *url = @"transactions";
     
-    NSDecimalNumber *amountInCents = [amount decimalNumberByMultiplyingBy: [NSDecimalNumber decimalNumberWithString: @"1000"]];
-    NSDictionary *params = @{@"stripeToken" : token.tokenId,
-                             @"amount" : amountInCents};
+    NSDecimalNumber *amountInCents = [amount decimalNumberByMultiplyingBy: [NSDecimalNumber decimalNumberWithString: @"100"]];
+    NSDictionary *params = @{@"transaction" : @{@"stripeToken" : token.tokenId, @"amount" : amountInCents}};
     
     [self POST: url parameters: params success:^(NSURLSessionDataTask *task, id responseObject) {
         completion(responseObject, nil);
