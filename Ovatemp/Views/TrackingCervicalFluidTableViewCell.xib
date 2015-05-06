@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -196,8 +196,8 @@
                             <constraint firstAttribute="height" constant="75" id="CrU-fe-pyh"/>
                         </constraints>
                     </view>
-                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="r6d-72-IPw">
-                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="r6d-72-IPw">
+                        <rect key="frame" x="109" y="5" width="20" height="20"/>
                     </activityIndicatorView>
                 </subviews>
                 <constraints>
@@ -229,9 +229,11 @@
                     <constraint firstItem="70c-eP-phG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="VjN-fq-aoO"/>
                     <constraint firstItem="TRI-CV-ifE" firstAttribute="bottom" secondItem="70c-eP-phG" secondAttribute="bottom" id="WgR-LE-yOM"/>
                     <constraint firstItem="xpU-PG-2Qu" firstAttribute="top" secondItem="uU9-XH-EmI" secondAttribute="bottom" constant="-3" id="Wtf-H3-4bF"/>
+                    <constraint firstItem="r6d-72-IPw" firstAttribute="leading" secondItem="4de-Xi-awr" secondAttribute="trailing" constant="5" id="Xew-7k-nWH"/>
                     <constraint firstItem="WbV-iC-H0I" firstAttribute="leading" secondItem="tmk-5s-c1R" secondAttribute="trailing" constant="9" id="Yac-zO-nBA"/>
                     <constraint firstAttribute="centerY" secondItem="0t1-Te-daR" secondAttribute="centerY" id="ZEl-lL-cCL"/>
                     <constraint firstAttribute="trailing" secondItem="R4d-Hi-tyr" secondAttribute="trailing" id="cUS-Ga-3df"/>
+                    <constraint firstItem="r6d-72-IPw" firstAttribute="top" secondItem="4de-Xi-awr" secondAttribute="bottom" constant="-17" id="d69-4m-1Jh"/>
                     <constraint firstAttribute="centerY" secondItem="vJX-ks-zkX" secondAttribute="centerY" id="fe6-mz-e7l"/>
                     <constraint firstItem="uU9-XH-EmI" firstAttribute="leading" secondItem="xpU-PG-2Qu" secondAttribute="trailing" constant="-48" id="gDI-7H-V54"/>
                     <constraint firstItem="9RT-4f-cby" firstAttribute="leading" secondItem="70c-eP-phG" secondAttribute="trailing" id="hxW-Ej-Zhh"/>
@@ -273,7 +275,7 @@
                 <outlet property="stickyImageView" destination="m2g-Oq-9ij" id="mOr-bW-CoL"/>
                 <outlet property="stickyLabel" destination="EgS-En-3XG" id="GpN-cy-LaX"/>
             </connections>
-            <point key="canvasLocation" x="-214" y="443"/>
+            <point key="canvasLocation" x="-406" y="429"/>
         </tableViewCell>
     </objects>
     <resources>

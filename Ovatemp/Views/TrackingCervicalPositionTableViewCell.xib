@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -130,19 +130,21 @@
                             <constraint firstAttribute="height" constant="75" id="oBG-Es-Xj1"/>
                         </constraints>
                     </view>
-                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="vEI-i5-Aqx">
-                        <rect key="frame" x="135" y="5" width="20" height="20"/>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="vEI-i5-Aqx">
+                        <rect key="frame" x="132" y="5" width="20" height="20"/>
                     </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="qUg-yf-Sye" firstAttribute="leading" secondItem="hVc-cw-sOg" secondAttribute="trailing" id="1X5-Ah-dpA"/>
                     <constraint firstAttribute="centerY" secondItem="qUg-yf-Sye" secondAttribute="centerY" constant="-11.75" id="57y-Bk-k9I"/>
+                    <constraint firstItem="vEI-i5-Aqx" firstAttribute="leading" secondItem="d4v-er-OXG" secondAttribute="trailing" constant="5" id="5pl-0r-KrZ"/>
                     <constraint firstItem="6dg-k4-bMr" firstAttribute="top" secondItem="d4v-er-OXG" secondAttribute="bottom" constant="3" id="8t0-Co-JoD"/>
                     <constraint firstAttribute="trailing" secondItem="HsT-Zw-jcO" secondAttribute="trailing" constant="13" id="9ka-Ce-QaS"/>
                     <constraint firstItem="59Z-Fk-KwZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="A2f-KJ-B1z"/>
                     <constraint firstItem="ezS-se-Pff" firstAttribute="top" secondItem="d4v-er-OXG" secondAttribute="bottom" constant="3" id="E6u-ee-h5d"/>
                     <constraint firstItem="AbP-7B-QWB" firstAttribute="leading" secondItem="qUg-yf-Sye" secondAttribute="trailing" id="EE3-hA-GmT"/>
                     <constraint firstItem="HpS-08-vRI" firstAttribute="leading" secondItem="59Z-Fk-KwZ" secondAttribute="trailing" id="Ed5-8b-jcC"/>
+                    <constraint firstItem="vEI-i5-Aqx" firstAttribute="top" secondItem="d4v-er-OXG" secondAttribute="bottom" constant="-17" id="Fgk-iX-0uB"/>
                     <constraint firstItem="AbP-7B-QWB" firstAttribute="width" secondItem="hVc-cw-sOg" secondAttribute="width" id="FoV-rQ-XW3"/>
                     <constraint firstItem="hVc-cw-sOg" firstAttribute="leading" secondItem="D6J-Dl-KVQ" secondAttribute="trailing" id="GBh-eL-VYd"/>
                     <constraint firstItem="AbP-7B-QWB" firstAttribute="leading" secondItem="gga-f3-PnG" secondAttribute="trailing" id="INl-ck-3YB"/>
