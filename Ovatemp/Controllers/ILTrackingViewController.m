@@ -47,7 +47,7 @@
 
 @import HealthKit;
 
-@interface ILTrackingViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate,TrackingStatusCellDelegate,TrackingTemperatureCellDelegate,TrackingCervicalFluidCellDelegate,TrackingCervicalPositionCellDelegate,TrackingPeriodCellDelegate,TrackingIntercourseCellDelegate,TrackingMoodCellDelegate,TrackingSymptomsCellDelegate,TrackingOvulationTestCell,TrackingPregnancyCellDelegate,TrackingSupplementsCellDelegate,TrackingMedicinesCellDelegate,ILCalendarViewControllerDelegate,ONDODelegate>
+@interface ILTrackingViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate,TrackingStatusCellDelegate,TrackingTemperatureCellDelegate,TrackingCervicalFluidCellDelegate,TrackingCervicalPositionCellDelegate,TrackingPeriodCellDelegate,TrackingIntercourseCellDelegate,TrackingMoodCellDelegate,TrackingSymptomsCellDelegate,TrackingOvulationTestCell,TrackingPregnancyCellDelegate,TrackingSupplementsCellDelegate,TrackingMedicinesCellDelegate,ILCalendarViewControllerDelegate,ONDODelegate,TrackingNotesViewControllerDelegate>
 
 @property (nonatomic) ILDay *selectedDay;
 @property (nonatomic) NSMutableArray *selectedDates;
@@ -220,7 +220,7 @@
 
 - (void)selectLastDay
 {
-    NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem: [self.selectedDates count] - 4 inSection: 0];
+    NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem: [self.selectedDates count] - 5 inSection: 0];
     
     self.selectedDay = [self.dayStore dayForDate: self.selectedDates[lastIndexPath.row]];
     self.selectedIndexPath = lastIndexPath;
@@ -352,7 +352,7 @@
     
     if (page == 1) {
         // First Page
-        for (NSInteger i = 1; i <= 3; i++) {
+        for (NSInteger i = 1; i <= 4; i++) {
             NSDate *date = [self dateWithOffsetFromToday: i];
             [dates addObject: date];
         }
@@ -698,32 +698,26 @@
         cell.frame = cellFrame;
     }
     
+    cell.monthLabel.textColor = [UIColor whiteColor];
+    cell.dayLabel.textColor = [UIColor whiteColor];
+    
     if (dayAtIndexPath.fertility.status == ILFertilityStatusTypePeriod) {
         
         cell.statusImageView.image = [UIImage imageNamed:@"icn_period"];
-        cell.monthLabel.textColor = [UIColor whiteColor];
-        cell.dayLabel.textColor = [UIColor whiteColor];
-
+        
     }else if (dayAtIndexPath.fertility.status == ILFertilityStatusTypePeakFertility || dayAtIndexPath.fertility.status == ILFertilityStatusTypeFertile) {
         
         if (currentUserProfile.tryingToConceive) {
             // green fertility image
             cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_fertile_small"];
-            cell.monthLabel.textColor = [UIColor whiteColor];
-            cell.dayLabel.textColor = [UIColor whiteColor];
-
         } else {
             // red fertility image
             cell.statusImageView.image = [UIImage imageNamed:@"icn_dd_fertile_small"];
-            cell.monthLabel.textColor = [UIColor whiteColor];
-            cell.dayLabel.textColor = [UIColor whiteColor];
         }
         
     }else if (dayAtIndexPath.fertility.status == ILFertilityStatusTypeNotFertile) {
         
         cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_small"];
-        cell.monthLabel.textColor = [UIColor whiteColor];
-        cell.dayLabel.textColor = [UIColor whiteColor];
         
     }else {
         
@@ -749,8 +743,6 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    DDLogInfo(@"DID SELECT ITEM AT INDEX PATH");
-    
     NSDate *dateAtIndex = self.selectedDates[indexPath.row];
 
     if (indexPath.row == self.selectedIndexPath.row) {
@@ -832,6 +824,7 @@
     TrackingNotesViewController *trackingVC = [self.storyboard instantiateViewControllerWithIdentifier: @"trackingNotesViewController"];
     trackingVC.selectedDate = self.selectedDay.date;
     trackingVC.notesText = self.selectedDay.notes;
+    trackingVC.delegate = self;
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: trackingVC];
     
     [self presentViewController: navVC animated: YES completion: nil];
@@ -890,6 +883,7 @@
 {
     NSDictionary *attributes = @{@"Type" : type,
                                  @"Date" : self.selectedDay.date};
+    
     [Localytics tagEvent: @"User Did Select Cervical Fluid" attributes: attributes];
     
     NSDictionary *params = @{@"log_name" : @"CERVICAL FLUID TYPE",
@@ -906,6 +900,7 @@
 {
     NSDictionary *attributes = @{@"Type" : type,
                                  @"Date" : self.selectedDay.date};
+
     [Localytics tagEvent: @"User Did Select Cervical Position" attributes: attributes];
     
     NSDictionary *params = @{@"log_name" : @"CERVICAL POSITION TYPE",
@@ -923,6 +918,7 @@
 {
     NSDictionary *attributes = @{@"Type" : type,
                                  @"Date" : self.selectedDay.date};
+    
     [Localytics tagEvent: @"User Did Select Period" attributes: attributes];
     
     NSDictionary *params = @{@"log_name" : @"PERIOD TYPE",
@@ -940,6 +936,7 @@
 {
     NSDictionary *attributes = @{@"Type" : type,
                                  @"Date" : self.selectedDay.date};
+    
     [Localytics tagEvent: @"User Did Select Intercourse" attributes: attributes];
     
     NSDictionary *params = @{@"log_name" : @"INTERCOURSE TYPE",
@@ -957,6 +954,7 @@
 {
     NSDictionary *attributes = @{@"Type" : type,
                                  @"Date" : self.selectedDay.date};
+    
     [Localytics tagEvent: @"User Did Select Moods" attributes: attributes];
     
     NSDictionary *params = @{@"log_name" : @"MOOD TYPE",
@@ -974,6 +972,7 @@
 {
     NSDictionary *attributes = @{@"Type" : types,
                                  @"Date" : self.selectedDay.date};
+    
     [Localytics tagEvent: @"User Did Select Symptoms" attributes: attributes];
     
     NSDictionary *params = @{@"log_name" : @"SYMPTOMS TYPE",
@@ -991,6 +990,7 @@
 {
     NSDictionary *attributes = @{@"Type" : type,
                                  @"Date" : self.selectedDay.date};
+    
     [Localytics tagEvent: @"User Did Select Ovulation Test" attributes: attributes];
     
     NSDictionary *params = @{@"log_name" : @"OVULATION TEST",
@@ -1008,6 +1008,7 @@
 {
     NSDictionary *attributes = @{@"Type" : type,
                                  @"Date" : self.selectedDay.date};
+    
     [Localytics tagEvent: @"User Did Select Pregnancy Test" attributes: attributes];
     
     NSDictionary *params = @{@"log_name" : @"PREGNANCY TEST",
@@ -1019,6 +1020,18 @@
                              };
     
     [self uploadWithParameters: params];
+}
+
+- (void)didAddNotes:(NSString *)notes
+{
+    NSDictionary *params = @{@"log_name" : @"NOTES",
+                             @"attribute_key" : @"notes",
+                             @"attribute_data" : notes,
+                             @"skip_reload" : [NSNumber numberWithBool: NO]
+                             };
+    
+    [self uploadWithParameters: params];
+    [self dismissViewControllerAnimated: YES completion: nil];
 }
 
 - (void)presentViewControllerWithViewController:(UIViewController *)viewController
@@ -1262,8 +1275,8 @@
     NSString *logName = params[@"log_name"];
     NSString *attributeKey = params[@"attribute_key"];
     NSString *attributeData = params[@"attribute_data"];
-    NSString *notificationId = params[@"notification_id"];
-    NSNumber *indexPathRow = params[@"index_path_row"];
+    NSString *notificationId = params[@"notification_id"] ?: nil;
+    NSNumber *indexPathRow = params[@"index_path_row"] ?: nil;
     
     NSNumber *skipReloadNum = params[@"skip_reload"];
     BOOL skipReload = [skipReloadNum boolValue];
@@ -1275,7 +1288,9 @@
     [attributes setObject: attributeData forKey: attributeKey];
     [attributes setObject: self.selectedDay.date forKey: @"date"];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"%@_start_activity", notificationId] object: self];
+    if (notificationId.length > 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"%@_start_activity", notificationId] object: self];
+    }
     
     [[OvatempAPI sharedSession] updateDay: self.selectedDay withParameters: attributes completion:^(ILDay *day, NSError *error) {
         
@@ -1287,16 +1302,23 @@
             if (!skipReload) {
                 self.selectedTableRowIndex = nil;
                 [self reloadCalendarDay];
-                [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: 0 inSection: 0],
-                                                          [NSIndexPath indexPathForRow: [indexPathRow integerValue] inSection: 0]] withRowAnimation: UITableViewRowAnimationAutomatic];
+                
+                [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: 0 inSection: 0]] withRowAnimation: UITableViewRowAnimationAutomatic];
+                if (indexPathRow) {
+                    [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: [indexPathRow integerValue] inSection: 0]]
+                                          withRowAnimation: UITableViewRowAnimationAutomatic];
+                }
                 
             }
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"%@_stop_activity", notificationId] object: self];
+            if (notificationId.length > 0) {
+                [[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"%@_stop_activity", notificationId] object: self];
+            }
             
         }else{
             DDLogError(@"ERROR: %@", error.localizedDescription);
-            [[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"%@_stop_activity", notificationId] object: self];
+            if (notificationId.length > 0){
+                [[NSNotificationCenter defaultCenter] postNotificationName: [NSString stringWithFormat: @"%@_stop_activity", notificationId] object: self];
+            }
         }
         
     }];

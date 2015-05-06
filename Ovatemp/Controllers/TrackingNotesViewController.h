@@ -8,14 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol TrackingNotesViewControllerDelegate <NSObject>
+
+- (void)didAddNotes:(NSString *)notes;
+
+@end
+
 @interface TrackingNotesViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UITextView *notesTextView;
+@property (weak, nonatomic) id<TrackingNotesViewControllerDelegate> delegate;
 
+@property (weak, nonatomic) IBOutlet UITextView *notesTextView;
 @property (weak, nonatomic) IBOutlet UIView *titleView;
 
 @property NSDate *selectedDate;
-
 @property NSString *notesText;
 
 @end

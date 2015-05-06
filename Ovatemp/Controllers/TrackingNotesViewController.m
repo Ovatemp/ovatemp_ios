@@ -21,17 +21,48 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+    [self customizeAppearance];
+    [self setUpTitleView];
     
+    self.notesTextView.delegate = self;
+    self.notesTextView.text = self.notesText;
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [Localytics tagScreen: @"Tracking/Notes"];
+    
+    if ([self.notesTextView.text length] == 0) {
+        [self.notesTextView becomeFirstResponder];
+    }
+    
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+#pragma mark - Appearance
+
+- (void)customizeAppearance
+{
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain
                                                                               target:self action:@selector(cancelSaveAndGoBack)]];
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone
                                                                                target:self action:@selector(saveNoteAndGoBack)]];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self.notesTextView setTintColor:[UIColor ovatempAquaColor]];
-    [self.notesTextView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-    
-    // title
+    //[self.notesTextView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+}
+
+- (void)setUpTitleView
+{
     CGRect headerTitleSubtitleFrame = CGRectMake(0, -15, 200, 44);
     UIView *_headerTitleSubtitleView = [[UILabel alloc] initWithFrame:headerTitleSubtitleFrame];
     _headerTitleSubtitleView.backgroundColor = [UIColor clearColor];
@@ -54,7 +85,6 @@
     subtitleView.font = [UIFont boldSystemFontOfSize:13];
     subtitleView.textAlignment = NSTextAlignmentCenter;
     
-//    NSDate *date = [NSDate date];
     NSDate *date = self.selectedDate;
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateStyle:NSDateFormatterMediumStyle];
@@ -69,71 +99,27 @@
     [_headerTitleSubtitleView addSubview:subtitleView];
     
     self.navigationItem.titleView = _headerTitleSubtitleView;
-    
-    self.notesTextView.delegate = self;
-    
-    // set text
-//    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-//    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-//    NSString *dateKeyString = [dateFormatter stringFromDate:self.selectedDate];
-//    NSString *keyString = [NSString stringWithFormat:@"note_%@", dateKeyString];
-//    
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    
-//    if ([defaults objectForKey:keyString]) {
-//        self.notesTextView.text = [defaults objectForKey:keyString];
-//    }
-    
-    self.notesTextView.text = self.notesText;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [Localytics tagScreen: @"Tracking/Notes"];
-    
-    if ([self.notesTextView.text length] == 0) {
-        [self.notesTextView becomeFirstResponder];
-    }
-    
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - IBAction's
 
 - (void)saveNoteAndGoBack
 {
-    [self postNoteToBackend];
-    [self dismissViewControllerAnimated: YES completion: nil];
-}
-
-- (void)postNoteToBackend
-{
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
-    
-    [attributes setObject:self.notesTextView.text forKey:@"notes"];
-    [attributes setObject:self.selectedDate forKey:@"date"];
-    
-    [ConnectionManager put:@"/days/"
-                    params:@{
-                             @"day": attributes,
-                             }
-                   success:^(NSDictionary *response) {
-                       NSLog(@"Posted note sucessfully");
-                   }
-                   failure:^(NSError *error) {
-                       [Alert presentError:error];
-                   }];
+    if ([self.delegate respondsToSelector: @selector(didAddNotes:)]) {
+        [self.delegate didAddNotes: self.notesTextView.text];
+    }
 }
 
 - (void)cancelSaveAndGoBack
 {
     [self dismissViewControllerAnimated: YES completion: nil];
 }
+
+#pragma mark - Network
+
+
+
+#pragma mark - UITextView Delegate
 
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView
 {
