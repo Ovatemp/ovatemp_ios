@@ -875,7 +875,8 @@
 
 - (void)reloadTrackingView
 {
-    [self loadFirstPage];
+    [self loadSelectedDay];
+    //[self loadFirstPage];
     //[self refreshTrackingViewWithAnimation: NO];
 }
 
