@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/BackForty/KIF.git" }
   s.platform     = :ios, '4.3'
   s.source_files = 'Classes', 'Additions'
-	s.requires_arc = false
+  s.requires_arc = false
   s.public_header_files = 'Classes/**/*.h', 'Additions/**/*-KIFAdditions.h'
   s.frameworks  = 'SenTestingKit', 'CoreGraphics'
   s.prefix_header_contents = '#import <CoreGraphics/CoreGraphics.h>'
