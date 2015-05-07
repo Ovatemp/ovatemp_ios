@@ -41,11 +41,14 @@ PODS:
   - Reachability (3.2)
   - RegexKitLite (4.0)
   - Specta (1.0.0)
-  - Stripe (3.1.0):
-    - Stripe/Core (= 3.1.0)
-  - Stripe/ApplePay (3.1.0):
+  - Stripe (4.0.2):
+    - Stripe/Checkout (= 4.0.2)
+    - Stripe/Core (= 4.0.2)
+  - Stripe/ApplePay (4.0.2):
     - Stripe/Core
-  - Stripe/Core (3.1.0)
+  - Stripe/Checkout (4.0.2):
+    - Stripe/Core
+  - Stripe/Core (4.0.2)
   - TAOverlay (2.0.1)
 
 DEPENDENCIES:
@@ -90,7 +93,7 @@ SPEC CHECKSUMS:
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   Specta: 96fe05fe5c7348b5223f85e862904f6e832abb14
-  Stripe: 8a456332f4db97bd0b8457fc8cce1e1a69ac0cd1
+  Stripe: 22906b47782784f5610190563f066468b441f403
   TAOverlay: 940e37fdb45fbc9acfc73bf1089668367e3b1be6
 
-COCOAPODS: 0.36.0
+COCOAPODS: 0.37.1

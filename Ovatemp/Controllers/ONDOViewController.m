@@ -85,7 +85,7 @@ NSArray *ondoMenuItems;
                                                                                    metrics: nil
                                                                                      views: viewsDictionary];
     
-    NSArray *buttonVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat: @"V:[label]-0-[payButton]-0-[tableView]"
+    NSArray *buttonVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat: @"V:[label]-10-[payButton(==45)]-10-[tableView]"
                                                                                  options: 0
                                                                                  metrics: nil
                                                                                    views: viewsDictionary];
@@ -265,7 +265,7 @@ NSArray *ondoMenuItems;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 45;
+    return 55;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
