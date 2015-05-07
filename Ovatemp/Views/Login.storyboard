@@ -586,7 +586,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Will you be using an ONDO Thermometer?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="692-Hb-sqX">
-                                <rect key="frame" x="16" y="10" width="568" height="54"/>
+                                <rect key="frame" x="16" y="0.0" width="568" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="mVp-6z-l9u"/>
                                 </constraints>
@@ -595,7 +595,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="rCg-9y-xiW">
-                                <rect key="frame" x="16" y="72" width="568" height="72"/>
+                                <rect key="frame" x="16" y="54" width="568" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="114" id="5NI-gV-MaN"/>
                                 </constraints>
@@ -611,8 +611,9 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeZ-3h-R1R">
-                                <rect key="frame" x="16" y="390" width="568" height="46"/>
+                                <rect key="frame" x="16" y="402" width="568" height="40"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="FWL-UO-jjz"/>
                                     <constraint firstAttribute="height" constant="45" id="ldG-mJ-Q93"/>
                                 </constraints>
                                 <state key="normal" title="Yes" backgroundImage="btn_signup_login">
@@ -631,8 +632,9 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="om6-3N-P0D">
-                                <rect key="frame" x="16" y="444" width="568" height="46"/>
+                                <rect key="frame" x="16" y="450" width="568" height="40"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="poK-yK-hlV"/>
                                     <constraint firstAttribute="height" constant="45" id="uRm-WR-N9f"/>
                                 </constraints>
                                 <state key="normal" title="No" backgroundImage="btn_signup_login">
@@ -672,10 +674,11 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_ondo_render" translatesAutoresizingMaskIntoConstraints="NO" id="Iwf-Pw-SxN">
-                                <rect key="frame" x="166" y="174" width="269" height="186"/>
+                                <rect key="frame" x="199" y="194" width="203" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Iwf-Pw-SxN" secondAttribute="height" multiplier="269:186" id="BlK-LM-urD"/>
                                     <constraint firstAttribute="width" constant="95" id="WZg-Pt-f7Y"/>
+                                    <constraint firstAttribute="height" constant="140" id="YeU-yP-8UI"/>
                                     <constraint firstAttribute="width" secondItem="Iwf-Pw-SxN" secondAttribute="height" multiplier="1:1" id="ufj-NU-fKb"/>
                                 </constraints>
                                 <variation key="default">
@@ -686,16 +689,16 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                                 </variation>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCn-OL-n6Q">
-                                <rect key="frame" x="170" y="144" width="261" height="30"/>
+                                <rect key="frame" x="170" y="126" width="261" height="68"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="261" id="7je-Qb-k0Q"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="h1e-b3-WvE"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="10" id="h1e-b3-WvE"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCE-iD-rrO">
-                                <rect key="frame" x="170" y="360" width="261" height="30"/>
+                                <rect key="frame" x="170" y="334" width="261" height="68"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="2Ij-jv-4bG"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="10" id="2Ij-jv-4bG"/>
                                     <constraint firstAttribute="width" constant="261" id="KTA-eD-i7x"/>
                                 </constraints>
                             </view>
@@ -713,7 +716,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                             <constraint firstItem="Iwf-Pw-SxN" firstAttribute="top" secondItem="LCn-OL-n6Q" secondAttribute="bottom" id="HvP-Do-AGN"/>
                             <constraint firstItem="qeZ-3h-R1R" firstAttribute="top" secondItem="LCE-iD-rrO" secondAttribute="bottom" id="IRu-To-wty"/>
                             <constraint firstItem="LnZ-ph-IIC" firstAttribute="leading" secondItem="Vqc-O1-7Fd" secondAttribute="leadingMargin" constant="59" id="JCV-nY-ZXI"/>
-                            <constraint firstItem="692-Hb-sqX" firstAttribute="top" secondItem="UcP-IU-CON" secondAttribute="bottom" constant="10" id="JLG-36-w3j"/>
+                            <constraint firstItem="692-Hb-sqX" firstAttribute="top" secondItem="UcP-IU-CON" secondAttribute="bottom" id="JLG-36-w3j"/>
                             <constraint firstItem="om6-3N-P0D" firstAttribute="top" secondItem="qeZ-3h-R1R" secondAttribute="bottom" constant="8" id="L2h-9c-AfN"/>
                             <constraint firstItem="LnZ-ph-IIC" firstAttribute="top" secondItem="om6-3N-P0D" secondAttribute="bottom" constant="8" id="N97-EG-jJ7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="om6-3N-P0D" secondAttribute="trailing" id="NAC-Oe-lBn"/>
@@ -722,7 +725,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                             <constraint firstAttribute="centerX" secondItem="om6-3N-P0D" secondAttribute="centerX" constant="-0.5" id="Pow-XO-zcK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rCg-9y-xiW" secondAttribute="trailing" id="REK-Fk-3xp"/>
                             <constraint firstAttribute="centerX" secondItem="LCE-iD-rrO" secondAttribute="centerX" constant="-0.5" id="RPF-Bx-559"/>
-                            <constraint firstItem="rCg-9y-xiW" firstAttribute="top" secondItem="692-Hb-sqX" secondAttribute="bottom" constant="8" id="SEh-SD-dAH"/>
+                            <constraint firstItem="rCg-9y-xiW" firstAttribute="top" secondItem="692-Hb-sqX" secondAttribute="bottom" id="SEh-SD-dAH"/>
                             <constraint firstAttribute="bottom" secondItem="LnZ-ph-IIC" secondAttribute="bottom" constant="20" symbolic="YES" id="TFV-fX-1Ng"/>
                             <constraint firstItem="om6-3N-P0D" firstAttribute="trailing" secondItem="qeZ-3h-R1R" secondAttribute="trailing" id="TdF-ef-Rqb"/>
                             <constraint firstItem="LCE-iD-rrO" firstAttribute="top" secondItem="Iwf-Pw-SxN" secondAttribute="bottom" id="U7f-La-Ymj"/>
