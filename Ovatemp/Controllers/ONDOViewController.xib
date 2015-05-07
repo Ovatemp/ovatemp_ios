@@ -8,7 +8,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ONDOViewController">
             <connections>
-                <outlet property="tableView" destination="OWk-Tk-5BQ" id="F2Q-8B-j8W"/>
+                <outlet property="ondoLabel" destination="ari-P5-BJd" id="itc-BZ-xU8"/>
+                <outlet property="tableView" destination="OWk-Tk-5BQ" id="dBV-n7-1Uc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,8 +21,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gFN-UU-TqT">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="ari-P5-BJd">
-                            <rect key="frame" x="0.0" y="180" width="600" height="63"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="ari-P5-BJd">
+                            <rect key="frame" x="0.0" y="151" width="600" height="49"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="84" id="ar8-pS-yQC"/>
                                 <constraint firstAttribute="height" constant="43.5" id="oAa-pa-9k4"/>
@@ -38,7 +39,7 @@
                             </variation>
                         </label>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OWk-Tk-5BQ">
-                            <rect key="frame" x="0.0" y="244" width="600" height="243"/>
+                            <rect key="frame" x="0.0" y="292" width="600" height="195"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="219" id="9QP-ws-vNO"/>
@@ -54,7 +55,7 @@
                             </connections>
                         </tableView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_ondo_render" translatesAutoresizingMaskIntoConstraints="NO" id="ELq-eY-TJc">
-                            <rect key="frame" x="166" y="10" width="269" height="171"/>
+                            <rect key="frame" x="166" y="5" width="269" height="146"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="ELq-eY-TJc" secondAttribute="height" multiplier="269:186" id="Psc-55-FcW"/>
                             </constraints>
@@ -70,22 +71,23 @@
                         <constraint firstItem="ELq-eY-TJc" firstAttribute="width" relation="lessThanOrEqual" secondItem="gFN-UU-TqT" secondAttribute="width" multiplier="0.8" id="2AQ-pj-34N"/>
                         <constraint firstItem="ELq-eY-TJc" firstAttribute="top" secondItem="gFN-UU-TqT" secondAttribute="top" constant="15" id="7rN-Im-rCT"/>
                         <constraint firstItem="ari-P5-BJd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ELq-eY-TJc" secondAttribute="bottom" constant="10" id="9F9-um-ngM"/>
-                        <constraint firstItem="ari-P5-BJd" firstAttribute="height" secondItem="gFN-UU-TqT" secondAttribute="height" multiplier="0.13" id="Brp-xB-bbA"/>
+                        <constraint firstItem="ari-P5-BJd" firstAttribute="height" secondItem="gFN-UU-TqT" secondAttribute="height" multiplier="0.1" id="Brp-xB-bbA"/>
                         <constraint firstItem="ari-P5-BJd" firstAttribute="top" secondItem="ELq-eY-TJc" secondAttribute="bottom" constant="5" id="Imh-UU-Zef"/>
                         <constraint firstItem="ELq-eY-TJc" firstAttribute="width" secondItem="gFN-UU-TqT" secondAttribute="width" multiplier="0.5" id="K4u-gX-PxB"/>
                         <constraint firstAttribute="trailing" secondItem="ari-P5-BJd" secondAttribute="trailing" id="KKy-fP-5pP"/>
-                        <constraint firstItem="ELq-eY-TJc" firstAttribute="top" secondItem="gFN-UU-TqT" secondAttribute="top" constant="10" id="LRk-xR-ged"/>
+                        <constraint firstItem="ELq-eY-TJc" firstAttribute="top" secondItem="gFN-UU-TqT" secondAttribute="top" constant="5" id="LRk-xR-ged"/>
                         <constraint firstItem="OWk-Tk-5BQ" firstAttribute="top" secondItem="ari-P5-BJd" secondAttribute="bottom" id="N32-wX-Ghd"/>
-                        <constraint firstItem="ELq-eY-TJc" firstAttribute="height" secondItem="gFN-UU-TqT" secondAttribute="height" multiplier="0.35" id="Nbe-RE-wbR"/>
+                        <constraint firstItem="ELq-eY-TJc" firstAttribute="height" secondItem="gFN-UU-TqT" secondAttribute="height" multiplier="0.3" id="Nbe-RE-wbR"/>
                         <constraint firstItem="OWk-Tk-5BQ" firstAttribute="top" secondItem="ari-P5-BJd" secondAttribute="bottom" id="QDh-ow-Ooy"/>
                         <constraint firstItem="ari-P5-BJd" firstAttribute="top" secondItem="ELq-eY-TJc" secondAttribute="bottom" constant="15" id="R5Z-aO-w9i"/>
                         <constraint firstAttribute="bottom" secondItem="OWk-Tk-5BQ" secondAttribute="bottom" id="YoI-NB-Mz6"/>
                         <constraint firstItem="ari-P5-BJd" firstAttribute="leading" secondItem="gFN-UU-TqT" secondAttribute="leading" id="aF3-lB-raL"/>
                         <constraint firstAttribute="centerX" secondItem="ari-P5-BJd" secondAttribute="centerX" id="anu-m0-LWr"/>
                         <constraint firstItem="OWk-Tk-5BQ" firstAttribute="leading" secondItem="gFN-UU-TqT" secondAttribute="leading" id="dIw-Rm-Lfc"/>
+                        <constraint firstItem="ari-P5-BJd" firstAttribute="top" secondItem="ELq-eY-TJc" secondAttribute="bottom" id="heb-Jh-Her"/>
                         <constraint firstAttribute="centerX" secondItem="ELq-eY-TJc" secondAttribute="centerX" id="iiM-sg-XYz"/>
                         <constraint firstAttribute="trailing" secondItem="OWk-Tk-5BQ" secondAttribute="trailing" id="jnL-2R-Ymj"/>
-                        <constraint firstItem="OWk-Tk-5BQ" firstAttribute="height" secondItem="gFN-UU-TqT" secondAttribute="height" multiplier="0.5" id="nnL-Ya-fKy"/>
+                        <constraint firstItem="OWk-Tk-5BQ" firstAttribute="height" secondItem="gFN-UU-TqT" secondAttribute="height" multiplier="0.4" id="nnL-Ya-fKy"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
@@ -95,6 +97,7 @@
                             <exclude reference="Imh-UU-Zef"/>
                             <exclude reference="R5Z-aO-w9i"/>
                             <exclude reference="N32-wX-Ghd"/>
+                            <exclude reference="QDh-ow-Ooy"/>
                         </mask>
                     </variation>
                 </view>
@@ -108,7 +111,7 @@
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-            <point key="canvasLocation" x="267" y="162"/>
+            <point key="canvasLocation" x="194" y="170"/>
         </view>
     </objects>
     <resources>
