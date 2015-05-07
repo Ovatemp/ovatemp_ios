@@ -988,9 +988,7 @@
                                  @"Date" : self.selectedDay.date};
     
     [Localytics tagEvent: @"User Did Select Symptoms" attributes: attributes];
-    
-    DDLogWarn(@"UPLADING SYMPTOMS: %@", types);
-    
+        
     NSDictionary *params = @{@"log_name" : @"SYMPTOMS TYPE",
                              @"attribute_key" : @"symptom_ids",
                              @"attribute_data" : types,

@@ -460,9 +460,7 @@ NSArray *symptomsDataSource;
     ILDay *selectedDay = [self.delegate getSelectedDay];
     
     [self resetSelectedSymptoms];
-    
-    DDLogWarn(@"SYMPTOM IDS: %@", selectedDay.symptomIds);
-    
+        
     if ([selectedDay.symptomIds count] > 0) {
         
         NSMutableString *symptomsString = [[NSMutableString alloc] init];
@@ -478,8 +476,6 @@ NSArray *symptomsDataSource;
         if (symptomsString.length > 2) {
             [symptomsString replaceCharactersInRange: NSMakeRange(symptomsString.length - 2, 2) withString: @""];
         }
-        
-        NSLog(@"SYMPTOMS STRING: %@", symptomsString);
         
         self.typeCollapsedLabel.text = symptomsString;
         
