@@ -147,7 +147,15 @@
     NSString *url = @"transactions";
     
     NSDecimalNumber *amountInCents = [amount decimalNumberByMultiplyingBy: [NSDecimalNumber decimalNumberWithString: @"100"]];
-    NSDictionary *params = @{@"transaction" : @{@"stripeToken" : token.tokenId, @"amount" : amountInCents}};
+    
+    NSDictionary *params = @{@"transaction" : @{@"stripeToken" : token.tokenId,
+                                                @"amount" : amountInCents,
+                                                @"shipping_method" : @"Express Shipping",
+                                                @"shipping_address" : @"120 Oakwell Farms PKWY San Antonio, TX. USA.",
+                                                @"shipping_contact" : @{@"email" : @"danlozano@gmail.com",
+                                                                        @"phone" : @"2109127189",
+                                                                        @"name" : @"Daniel Lozano"}
+                                                }};
     
     [self POST: url parameters: params success:^(NSURLSessionDataTask *task, id responseObject) {
         completion(responseObject, nil);

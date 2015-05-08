@@ -49,6 +49,7 @@
 		0697E9651AC5E77300AD8255 /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0697E9641AC5E77300AD8255 /* TelerikUI.framework */; };
 		06B858BE1AF16625006A58FB /* NSDictionary+WithoutNSNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */; };
 		06BD94F41AF1443A00345CFA /* NSArray+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BD94F31AF1443A00345CFA /* NSArray+Reverse.m */; };
+		06C489F91AFD604100DE0E57 /* libPods-Ovatemp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C489F81AFD604100DE0E57 /* libPods-Ovatemp.a */; };
 		06C55B221AAF4BD600EDE74A /* ILTrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */; };
 		06F7A4DB1AC4D3F30054CEDF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F7A4D91AC4D3F30054CEDF /* Crashlytics.framework */; };
 		06F7A4DC1AC4D3F30054CEDF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F7A4DA1AC4D3F30054CEDF /* Fabric.framework */; };
@@ -370,8 +371,6 @@
 		C3BF8FD31898415E00572F43 /* FirstLaunchSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FD21898415E00572F43 /* FirstLaunchSpec.m */; };
 		C3BF8FD91898421700572F43 /* XCTestCase+KIF.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FD81898421700572F43 /* XCTestCase+KIF.m */; };
 		C3BF8FDD1898449D00572F43 /* OvatempTestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FDC1898449D00572F43 /* OvatempTestHelpers.m */; };
-		C3D8912119084CB800E21627 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D8912019084CB800E21627 /* StoreKit.framework */; };
-		CED66676EF49970944AFFC0C /* libPods-Ovatemp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -473,6 +472,7 @@
 		06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+WithoutNSNull.m"; sourceTree = "<group>"; };
 		06BD94F21AF1443A00345CFA /* NSArray+Reverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Reverse.h"; sourceTree = "<group>"; };
 		06BD94F31AF1443A00345CFA /* NSArray+Reverse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Reverse.m"; sourceTree = "<group>"; };
+		06C489F81AFD604100DE0E57 /* libPods-Ovatemp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Ovatemp.a"; path = "Pods/../build/Debug-iphoneos/libPods-Ovatemp.a"; sourceTree = "<group>"; };
 		06C55B201AAF4BD600EDE74A /* ILTrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTrackingViewController.h; sourceTree = "<group>"; };
 		06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTrackingViewController.m; sourceTree = "<group>"; };
 		06F7A4D91AC4D3F30054CEDF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
@@ -939,7 +939,6 @@
 		C3BF8FD81898421700572F43 /* XCTestCase+KIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCTestCase+KIF.m"; sourceTree = "<group>"; };
 		C3BF8FDB1898449D00572F43 /* OvatempTestHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OvatempTestHelpers.h; sourceTree = "<group>"; };
 		C3BF8FDC1898449D00572F43 /* OvatempTestHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OvatempTestHelpers.m; sourceTree = "<group>"; };
-		C3D8912019084CB800E21627 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		DDD045337C0E855A9AA3AF62 /* Pods-Ovatemp.production_release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.production_release.xcconfig"; path = "Pods/Target Support Files/Pods-Ovatemp/Pods-Ovatemp.production_release.xcconfig"; sourceTree = "<group>"; };
 		F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Ovatemp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OvatempTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -957,6 +956,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06C489F91AFD604100DE0E57 /* libPods-Ovatemp.a in Frameworks */,
 				C36C5103189028190053A884 /* UIKit.framework in Frameworks */,
 				C388C73B18FC45B800B622FB /* SystemConfiguration.framework in Frameworks */,
 				5F1C971B19EDD455000F1FC1 /* Security.framework in Frameworks */,
@@ -969,12 +969,10 @@
 				5F1C971319EDD42D000F1FC1 /* AssetsLibrary.framework in Frameworks */,
 				C388C73D18FC45BD00B622FB /* libz.dylib in Frameworks */,
 				06F7A4DB1AC4D3F30054CEDF /* Crashlytics.framework in Frameworks */,
-				C3D8912119084CB800E21627 /* StoreKit.framework in Frameworks */,
 				C388C73918FC45B100B622FB /* CoreData.framework in Frameworks */,
 				C388C73718FC45AA00B622FB /* AdSupport.framework in Frameworks */,
 				0EC9830B19AB8619009A5730 /* HealthKit.framework in Frameworks */,
 				0697E9651AC5E77300AD8255 /* TelerikUI.framework in Frameworks */,
-				CED66676EF49970944AFFC0C /* libPods-Ovatemp.a in Frameworks */,
 				06F7A4DC1AC4D3F30054CEDF /* Fabric.framework in Frameworks */,
 				06712ED71ADD8475007CEEF3 /* GameKit.framework in Frameworks */,
 			);
@@ -1854,6 +1852,7 @@
 		C36C50FD189028190053A884 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06C489F81AFD604100DE0E57 /* libPods-Ovatemp.a */,
 				06712ED61ADD8475007CEEF3 /* GameKit.framework */,
 				5F1C971A19EDD455000F1FC1 /* Security.framework */,
 				5F1C971819EDD44F000F1FC1 /* QuickLook.framework */,
@@ -1862,7 +1861,6 @@
 				5F1C971219EDD42D000F1FC1 /* AssetsLibrary.framework */,
 				5F586A2C19ED89DA00D2B58E /* libPods-OvatempTests-KIF.a */,
 				0EC9830A19AB8619009A5730 /* HealthKit.framework */,
-				C3D8912019084CB800E21627 /* StoreKit.framework */,
 				C34AE14218FC4C64003209B2 /* libGoogleConversionTracking.a */,
 				C388C73C18FC45BD00B622FB /* libz.dylib */,
 				C388C73A18FC45B800B622FB /* SystemConfiguration.framework */,
@@ -2062,7 +2060,7 @@
 								enabled = 1;
 							};
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.InterAppAudio = {
 								enabled = 0;
@@ -2665,8 +2663,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Lozano (A7DGWHM2XL)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Lozano (A7DGWHM2XL)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2678,7 +2676,10 @@
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -2706,7 +2707,7 @@
 					UIKit,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "36055605-e9dc-41a3-a0bb-49ef6d419a1b";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2782,8 +2783,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Ovatemp, LLC (MC934XNWAV)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ovatemp, LLC (MC934XNWAV)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2796,7 +2797,10 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2823,7 +2827,7 @@
 					UIKit,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a9244e11-f5a2-4e0a-b9cb-d26c0fb6400f";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3310,8 +3314,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Lozano (A7DGWHM2XL)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Lozano (A7DGWHM2XL)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3323,7 +3327,10 @@
 				GCC_PREFIX_HEADER = "Ovatemp/Ovatemp-Prefix.pch";
 				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -3350,7 +3357,7 @@
 					UIKit,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "36055605-e9dc-41a3-a0bb-49ef6d419a1b";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3362,8 +3369,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Ovatemp, LLC (MC934XNWAV)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ovatemp, LLC (MC934XNWAV)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3376,7 +3383,10 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "Ovatemp/Ovatemp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -3403,7 +3413,7 @@
 					UIKit,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c1aedb8b-0a28-4aad-bbb5-a9a29d5f66dd";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
