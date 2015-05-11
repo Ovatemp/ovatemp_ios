@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Ovatemp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C3BF8FBC1898409C00572F43"
+               BuildableName = "OvatempTests.xctest"
+               BlueprintName = "OvatempTests"
+               ReferencedContainer = "container:Ovatemp.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -28,6 +42,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Staging_Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C3BF8FBC1898409C00572F43"
+               BuildableName = "OvatempTests.xctest"
+               BlueprintName = "OvatempTests"
+               ReferencedContainer = "container:Ovatemp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

@@ -18,13 +18,15 @@
 
 # pragma mark - Setup
 
-+ (id)withURL:(NSString *)url {
++ (id)withURL:(NSString *)url
+{
   id controller = [[self alloc] initWithNibName:@"WebViewController" bundle:nil];
   [(WebViewController *)controller setURL:url];
   return controller;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
   [super viewDidLoad];
   self.webView.delegate = self;
     
@@ -32,19 +34,22 @@
     self.navigationItem.rightBarButtonItem = doneButton;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
   [super viewWillAppear:animated];
   [self startLoading];
   self.tabBarController.tabBar.hidden = YES;
   self.webView.hidden = YES;
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated
+{
   [super viewWillDisappear:animated];
   self.tabBarController.tabBar.hidden = NO;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
   [super viewDidAppear:animated];
   
   NSURL *url = [NSURL URLWithString:self.URL];
@@ -57,7 +62,12 @@
 
 - (void)didSelectDone
 {
-    [self dismissViewControllerAnimated: YES completion: nil];
+    // Differentiate the dismiss when presented modally vs in a navigation stack
+    if ([self.navigationController.viewControllers count] > 1) {
+        [self.navigationController popViewControllerAnimated: YES];
+    }else{
+        [self dismissViewControllerAnimated: YES completion: nil];
+    }
 }
 
 # pragma Web view delegate methods
