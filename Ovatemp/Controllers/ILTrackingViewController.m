@@ -89,11 +89,11 @@
     
     [self setUpOndo];
 
+    [self customizeAppearance];
     [self setTitleView];
     [self setTitleViewGestureRecognizer];
     [self setUpDrawerCollectionView];
     [self registerTableNibs];
-    [self setUpRefreshControl];
     
     [self loadFirstPage];
 }
@@ -129,13 +129,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)setUpRefreshControl
-{
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget: self action: @selector(loadFirstPage) forControlEvents: UIControlEventValueChanged];
-    [self.tableView addSubview: self.refreshControl];
-}
-
 #pragma mark - Tutorial
 
 - (void)showTutorial
@@ -166,8 +159,9 @@
 
 - (void)customizeAppearance
 {
-//    self.refreshControl = [[UIRefreshControl alloc] init];
-//    self.tableView.ref
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget: self action: @selector(loadFirstPage) forControlEvents: UIControlEventValueChanged];
+    [self.tableView addSubview: self.refreshControl];
 }
 
 - (void)updateScreen
@@ -292,7 +286,7 @@
         
         [TAOverlay hideOverlay];
         [self.refreshControl endRefreshing];
-
+        
         if (days) {
 
             if (self.currentPage == 1) {
@@ -325,6 +319,7 @@
 
         }else{
             DDLogError(@"ERROR: %@", error);
+            [TAOverlay showOverlayWithLabel: @"Problem loading calendar. Please, try again." Options: TAOverlayOptionOverlayDismissTap | TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayTypeError];
         }
     }];
     
@@ -345,6 +340,7 @@
                 
             }else{
                 DDLogError(@"ERROR: %@", error);
+                [TAOverlay showOverlayWithLabel: @"Problem loading day. Please, try again." Options: TAOverlayOptionOverlayDismissTap | TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayTypeError];
             }
             
         }];
@@ -906,6 +902,10 @@
 
 - (void)didSelectCervicalFluidType:(id)type
 {
+    if (!self.selectedDay) {
+        return;
+    }
+    
     NSDictionary *attributes = @{@"Type" : type,
                                  @"Date" : self.selectedDay.date};
     
@@ -923,6 +923,10 @@
 
 - (void)didSelectCervicalPositionType:(id)type
 {
+    if (!self.selectedDay) {
+        return;
+    }
+    
     NSDictionary *attributes = @{@"Type" : type,
                                  @"Date" : self.selectedDay.date};
 
@@ -941,6 +945,10 @@
 
 - (void)didSelectPeriodWithType:(id)type
 {
+    if (!self.selectedDay) {
+        return;
+    }
+    
     NSDictionary *attributes = @{@"Type" : type,
                                  @"Date" : self.selectedDay.date};
     
@@ -959,6 +967,10 @@
 
 - (void)didSelectIntercourseWithType:(id)type
 {
+    if (!self.selectedDay) {
+        return;
+    }
+    
     NSDictionary *attributes = @{@"Type" : type,
                                  @"Date" : self.selectedDay.date};
     
@@ -977,6 +989,10 @@
 
 - (void)didSelectMoodWithType:(id)type
 {
+    if (!self.selectedDay) {
+        return;
+    }
+    
     NSDictionary *attributes = @{@"Type" : type,
                                  @"Date" : self.selectedDay.date};
     
@@ -995,6 +1011,10 @@
 
 - (void)didSelectSymptomsWithTypes:(NSMutableArray *)types
 {
+    if (!self.selectedDay) {
+        return;
+    }
+    
     NSDictionary *attributes = @{@"Type" : types,
                                  @"Date" : self.selectedDay.date};
     
@@ -1013,6 +1033,10 @@
 
 - (void)didSelectOvulationWithType:(id)type
 {
+    if (!self.selectedDay) {
+        return;
+    }
+    
     NSDictionary *attributes = @{@"Type" : type,
                                  @"Date" : self.selectedDay.date};
     
@@ -1031,6 +1055,10 @@
 
 - (void)didSelectPregnancyWithType:(id)type
 {
+    if (!self.selectedDay) {
+        return;
+    }
+    
     NSDictionary *attributes = @{@"Type" : type,
                                  @"Date" : self.selectedDay.date};
     
@@ -1167,6 +1195,10 @@
 {
     // Check if there has been a change in the selected temperature, if yes, post to backend.
     
+    if (!self.selectedDay) {
+        return;
+    }
+    
     if (!self.selectedTemperature) {
         return;
     }
@@ -1246,6 +1278,10 @@
 
 - (void)uploadDisturbance:(BOOL)disturbance
 {
+    if (!self.selectedDay) {
+        return;
+    }
+    
     NSLog(@"ILTrackingVC : UPLOADING DISTURBANCE");
     
     NSDictionary *localyticsAttributes = @{@"Date" : self.selectedDay.date};
@@ -1293,6 +1329,10 @@
 
 - (void)uploadWithParameters:(NSDictionary *)params
 {
+    if (!self.selectedDay) {
+        return;
+    }
+    
     NSString *logName = params[@"log_name"];
     NSString *attributeKey = params[@"attribute_key"];
     NSString *attributeData = params[@"attribute_data"];
@@ -1377,20 +1417,6 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    //NSLog(@"CONTENT OFFSET X: %f ... CONTENT WIDTH: %f", scrollView.contentOffset.x, scrollView.contentSize.width);
-    
-//    CGPoint offset = scrollView.contentOffset;
-//    CGRect bounds = scrollView.bounds;
-//    CGSize size = scrollView.contentSize;
-//    UIEdgeInsets inset = scrollView.contentInset;
-//    float y = offset.x + bounds.size.width - inset.right;
-//    float h = size.width;
-//    
-//    float reload_distance = 75;
-//    if(scrollView == self.drawerCollectionView && (y > h + reload_distance)) {
-//        [self loadFirstPage];
-//    }
-    
     if (scrollView == self.drawerCollectionView && scrollView.contentOffset.x == 0) {
         [self loadNextPage];
     }
