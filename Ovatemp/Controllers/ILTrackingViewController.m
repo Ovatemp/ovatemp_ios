@@ -883,8 +883,21 @@
 - (void)reloadTrackingView
 {
     [self loadSelectedDay];
-    //[self loadFirstPage];
-    //[self refreshTrackingViewWithAnimation: NO];
+}
+
+- (void)showAlertForType:(NSString *)type
+{
+    NSString *message;
+    
+    if ([type isEqualToString: @"period"]) {
+        message = @"Can't add Period info when there is cervical fluid. Remove it first.";
+    }else if ([type isEqualToString: @"cervicalFluid"]){
+        message = @"Can't add Cervical Fluid info when there is period. Remove it first.";
+    }else{
+        return;
+    }
+    
+    [TAOverlay showOverlayWithLabel: message Options: TAOverlayOptionOverlayDismissTap | TAOverlayOptionOverlaySizeRoundedRect |TAOverlayOptionOverlayTypeWarning];
 }
 
 #pragma mark - Cell Delegate's

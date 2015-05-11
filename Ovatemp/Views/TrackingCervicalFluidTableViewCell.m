@@ -54,8 +54,20 @@
     [self.activityView stopAnimating];
 }
 
+- (BOOL)hasPeriod
+{
+    ILDay *selectedDay = [self.delegate getSelectedDay];
+
+    return selectedDay.period.length != 0;
+}
+
 - (IBAction)didSelectDry:(id)sender
 {
+    if ([self hasPeriod]) {
+        [self.delegate showAlertForType: @"cervicalFluid"];
+        return;
+    }
+    
     if (self.selectedCervicalFluidType == CervicalFluidSelectionDry) {
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
         
@@ -83,6 +95,11 @@
 
 - (IBAction)didSelectSticky:(id)sender
 {
+    if ([self hasPeriod]) {
+        [self.delegate showAlertForType: @"cervicalFluid"];
+        return;
+    }
+    
     if (self.selectedCervicalFluidType == CervicalFluidSelectionSticky) {
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
         
@@ -109,6 +126,11 @@
 }
 - (IBAction)didSelectCreamy:(id)sender
 {
+    if ([self hasPeriod]) {
+        [self.delegate showAlertForType: @"cervicalFluid"];
+        return;
+    }
+    
     if (self.selectedCervicalFluidType == CervicalFluidSelectionCreamy) {
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
         
@@ -135,6 +157,11 @@
 }
 - (IBAction)didSelectEggwhite:(id)sender
 {
+    if ([self hasPeriod]) {
+        [self.delegate showAlertForType: @"cervicalFluid"];
+        return;
+    }
+    
     if (self.selectedCervicalFluidType == CervicalFluidSelectionEggwhite) {
         self.selectedCervicalFluidType = CervicalFluidSelectionNone;
         

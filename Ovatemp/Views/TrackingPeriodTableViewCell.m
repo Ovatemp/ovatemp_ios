@@ -59,8 +59,20 @@
     [super setSelected:selected animated:animated];
 }
 
+- (BOOL)hasCervicalFluid
+{
+    ILDay *selectedDay = [self.delegate getSelectedDay];
+    
+    return selectedDay.cervicalFluid.length != 0;
+}
+
 - (IBAction)didSelectNone:(id)sender
 {
+    if ([self hasCervicalFluid]) {
+        [self.delegate showAlertForType: @"period"];
+        return;
+    }
+    
     if (self.selectedPeriodType == PeriodSelectionNone) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
         
@@ -89,6 +101,11 @@
 
 - (IBAction)didSelectSpotting:(id)sender
 {
+    if ([self hasCervicalFluid]) {
+        [self.delegate showAlertForType: @"period"];
+        return;
+    }
+    
     if (self.selectedPeriodType == PeriodSelectionSpotting) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
         
@@ -116,6 +133,11 @@
 
 - (IBAction)didSelectLight:(id)sender
 {
+    if ([self hasCervicalFluid]) {
+        [self.delegate showAlertForType: @"period"];
+        return;
+    }
+    
     if (self.selectedPeriodType == PeriodSelectionLight) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
 
@@ -143,6 +165,11 @@
 
 - (IBAction)didSelectMedium:(id)sender
 {
+    if ([self hasCervicalFluid]) {
+        [self.delegate showAlertForType: @"period"];
+        return;
+    }
+    
     if (self.selectedPeriodType == PeriodSelectionMedium) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
 
@@ -170,6 +197,11 @@
 
 - (IBAction)didSelectHeavy:(id)sender
 {
+    if ([self hasCervicalFluid]) {
+        [self.delegate showAlertForType: @"period"];
+        return;
+    }
+    
     if (self.selectedPeriodType == PeriodSelectionHeavy) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
 

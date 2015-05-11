@@ -22,6 +22,7 @@ typedef enum {
 
 - (void)didSelectCervicalFluidType:(id)type;
 - (void)pushInfoAlertWithTitle:(NSString *)title AndMessage:(NSString *)message AndURL:(NSString *)url;
+- (void)showAlertForType:(NSString *)type;
 
 - (ILDay *)getSelectedDay;
 
