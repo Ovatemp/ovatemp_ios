@@ -73,6 +73,8 @@
 
 @property (nonatomic) NSDateFormatter *dateFormatter;
 
+@property (nonatomic) UIRefreshControl *refreshControl;
+
 @end
 
 @implementation ILTrackingViewController
@@ -91,6 +93,7 @@
     [self setTitleViewGestureRecognizer];
     [self setUpDrawerCollectionView];
     [self registerTableNibs];
+    [self setUpRefreshControl];
     
     [self loadFirstPage];
 }
@@ -124,6 +127,13 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)setUpRefreshControl
+{
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget: self action: @selector(loadFirstPage) forControlEvents: UIControlEventValueChanged];
+    [self.tableView addSubview: self.refreshControl];
 }
 
 #pragma mark - Tutorial
@@ -281,6 +291,7 @@
     [[OvatempAPI sharedSession]getDaysOnPage: page perPage: 365 completion:^(NSArray *days, ILPaginationInfo *pagination, NSError *error) {
         
         [TAOverlay hideOverlay];
+        [self.refreshControl endRefreshing];
 
         if (days) {
 
