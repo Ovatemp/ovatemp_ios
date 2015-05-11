@@ -54,6 +54,7 @@
 		06F7A4DC1AC4D3F30054CEDF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F7A4DA1AC4D3F30054CEDF /* Fabric.framework */; };
 		06F8FA4E1AC3619C006EC93F /* CycleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F8FA4D1AC3619C006EC93F /* CycleCollectionViewCell.m */; };
 		0EC9830B19AB8619009A5730 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC9830A19AB8619009A5730 /* HealthKit.framework */; };
+		37DCD3D7DAEFC5755E789A8E /* libPods-Ovatemp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */; };
 		5F1A3BF419F17614002FFA28 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F1A3BF319F17614002FFA28 /* Login.storyboard */; };
 		5F1C971319EDD42D000F1FC1 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C971219EDD42D000F1FC1 /* AssetsLibrary.framework */; };
 		5F1C971519EDD433000F1FC1 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C971419EDD433000F1FC1 /* CoreText.framework */; };
@@ -371,7 +372,6 @@
 		C3BF8FD91898421700572F43 /* XCTestCase+KIF.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FD81898421700572F43 /* XCTestCase+KIF.m */; };
 		C3BF8FDD1898449D00572F43 /* OvatempTestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BF8FDC1898449D00572F43 /* OvatempTestHelpers.m */; };
 		C3D8912119084CB800E21627 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D8912019084CB800E21627 /* StoreKit.framework */; };
-		CED66676EF49970944AFFC0C /* libPods-Ovatemp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -974,9 +974,9 @@
 				C388C73718FC45AA00B622FB /* AdSupport.framework in Frameworks */,
 				0EC9830B19AB8619009A5730 /* HealthKit.framework in Frameworks */,
 				0697E9651AC5E77300AD8255 /* TelerikUI.framework in Frameworks */,
-				CED66676EF49970944AFFC0C /* libPods-Ovatemp.a in Frameworks */,
 				06F7A4DC1AC4D3F30054CEDF /* Fabric.framework in Frameworks */,
 				06712ED71ADD8475007CEEF3 /* GameKit.framework in Frameworks */,
+				37DCD3D7DAEFC5755E789A8E /* libPods-Ovatemp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

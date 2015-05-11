@@ -47,7 +47,7 @@
             self.questionLabel.text = @"Loading...";
             self.yesButton.hidden = TRUE;
             self.noButton.hidden = TRUE;
-
+            self.progressView.hidden = TRUE;
             [self loadQuestions];
         } else {
             [self updateScreen];
@@ -87,9 +87,14 @@
     self.countLabel.text = [NSString stringWithFormat:@"%i of %i",
                             (int)self.currentQuestion + 1,
                             (int)self.questions.count];
+    CGFloat progress = (float)self.currentQuestion / self.questions.count;
+    NSLog(@"progress: %f",progress);
+    [self.progressView setProgress:progress animated:NO];
     
     self.yesButton.hidden = FALSE;
     self.noButton.hidden = FALSE;
+    self.progressView.hidden = FALSE;
+    
     
     self.question = self.questions[self.currentQuestion];
     
