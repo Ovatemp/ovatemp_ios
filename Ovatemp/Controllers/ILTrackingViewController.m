@@ -1368,6 +1368,18 @@
 {
     //NSLog(@"CONTENT OFFSET X: %f ... CONTENT WIDTH: %f", scrollView.contentOffset.x, scrollView.contentSize.width);
     
+//    CGPoint offset = scrollView.contentOffset;
+//    CGRect bounds = scrollView.bounds;
+//    CGSize size = scrollView.contentSize;
+//    UIEdgeInsets inset = scrollView.contentInset;
+//    float y = offset.x + bounds.size.width - inset.right;
+//    float h = size.width;
+//    
+//    float reload_distance = 75;
+//    if(scrollView == self.drawerCollectionView && (y > h + reload_distance)) {
+//        [self loadFirstPage];
+//    }
+    
     if (scrollView == self.drawerCollectionView && scrollView.contentOffset.x == 0) {
         [self loadNextPage];
     }

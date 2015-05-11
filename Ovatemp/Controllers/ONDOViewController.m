@@ -144,28 +144,18 @@ NSArray *ondoMenuItems;
     
     if ([Stripe canSubmitPaymentRequest: paymentRequest]) {
         
-        DDLogInfo(@"STRIPE CAN SUBMIT");
-        
         UIViewController *paymentController;
         
-        //        #ifdef STAGING_DEBUG
-        //            paymentController = [[STPTestPaymentAuthorizationViewController alloc] initWithPaymentRequest:paymentRequest];
-        //            ((STPTestPaymentAuthorizationViewController *)paymentController).delegate = self;
-        //        #elif STAGING_RELEASE
-        //            paymentController = [[STPTestPaymentAuthorizationViewController alloc] initWithPaymentRequest:paymentRequest];
-        //            ((STPTestPaymentAuthorizationViewController *)paymentController).delegate = self;
-        //        #elif PRODUCTION_DEBUG
-        //            paymentController = [[PKPaymentAuthorizationViewController alloc] initWithPaymentRequest:paymentRequest];
-        //            ((PKPaymentAuthorizationViewController *)paymentController).delegate = self;
-        //        #elif PRODUCTION_RELEASE
+//        paymentController = [[STPTestPaymentAuthorizationViewController alloc] initWithPaymentRequest:paymentRequest];
+//        ((STPTestPaymentAuthorizationViewController *)paymentController).delegate = self;
+        
         paymentController = [[PKPaymentAuthorizationViewController alloc] initWithPaymentRequest: paymentRequest];
         ((PKPaymentAuthorizationViewController *)paymentController).delegate = self;
-        //        #endif
         
         [self presentViewController: paymentController animated: YES completion: nil];
         
     } else {
-        DDLogError(@"STRIPE CAN NOT SUBMIT");
+        DDLogWarn(@"APPLE PAY NOT SUPPORTED.");
         // Show the user your own credit card form (see options 2 or 3)
     }
 }
@@ -204,19 +194,24 @@ NSArray *ondoMenuItems;
                                                      completion(PKPaymentAuthorizationStatusFailure);
                                                      return;
                                                  }
-                                                 [self createBackendChargeWithToken: token completion: completion];
+                                                 [self createBackendChargeWithToken: token payment: payment completion: completion];
                                              }];
 }
 
-- (void)createBackendChargeWithToken:(STPToken *)token completion:(void (^)(PKPaymentAuthorizationStatus))completion
+- (void)createBackendChargeWithToken:(STPToken *)token payment:(PKPayment *)payment completion:(void (^)(PKPaymentAuthorizationStatus))completion
 {
-    [[OvatempAPI sharedSession] createBackendChargeWithToken: token amount: self.totalAmount completion:^(id object, NSError *error) {
-        if (error) {
-            completion(PKPaymentAuthorizationStatusFailure);
-            return;
-        }
-        completion(PKPaymentAuthorizationStatusSuccess);
-    }];
+    [[OvatempAPI sharedSession] createBackendChargeWithToken: token
+                                                     payment: payment
+                                                      amount: self.totalAmount
+                                                  completion:^(id object, NSError *error) {
+                                                      
+                                                      if (error) {
+                                                          completion(PKPaymentAuthorizationStatusFailure);
+                                                          return;
+                                                      }
+                                                      completion(PKPaymentAuthorizationStatusSuccess);
+                                                      
+                                                  }];
     
 }
 

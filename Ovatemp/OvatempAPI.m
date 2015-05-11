@@ -9,6 +9,7 @@
 #import "OvatempAPI.h"
 
 #import "NSArray+ArrayMap.h"
+#import <AddressBook/AddressBook.h>
 
 #import "ILDay.h"
 #import "ILCycle.h"
@@ -142,19 +143,29 @@
 
 #pragma mark - Apple Pay
 
-- (void)createBackendChargeWithToken:(STPToken *)token amount:(NSDecimalNumber *)amount completion:(CompletionBlock)completion
+- (void)createBackendChargeWithToken:(STPToken *)token payment:(PKPayment *)payment amount:(NSDecimalNumber *)amount completion:(CompletionBlock)completion
 {
     NSString *url = @"transactions";
+
+    ABMultiValueRef addressMultiValue = ABRecordCopyValue(payment.shippingAddress, kABPersonAddressProperty);
+    ABMultiValueRef emailValue = ABRecordCopyValue(payment.shippingAddress, kABPersonEmailProperty);
+    ABMultiValueRef phoneValue = ABRecordCopyValue(payment.shippingAddress, kABPersonPhoneProperty);
+    
+    NSDictionary *addressDict = (__bridge_transfer NSDictionary *) ABMultiValueCopyValueAtIndex(addressMultiValue, 0);
+    NSDictionary *email = (__bridge_transfer NSDictionary *) ABMultiValueCopyValueAtIndex(emailValue, 0);
+    NSDictionary *phone = (__bridge_transfer NSDictionary *) ABMultiValueCopyValueAtIndex(phoneValue, 0);
+    
+    NSString *addressString = [NSString stringWithFormat: @"%@. %@, %@, %@. %@", addressDict[@"Street"], addressDict[@"City"],addressDict[@"Country"],addressDict[@"State"], addressDict[@"ZIP"]];
     
     NSDecimalNumber *amountInCents = [amount decimalNumberByMultiplyingBy: [NSDecimalNumber decimalNumberWithString: @"100"]];
     
     NSDictionary *params = @{@"transaction" : @{@"stripeToken" : token.tokenId,
                                                 @"amount" : amountInCents,
-                                                @"shipping_method" : @"Express Shipping",
-                                                @"shipping_address" : @"120 Oakwell Farms PKWY San Antonio, TX. USA.",
-                                                @"shipping_contact" : @{@"email" : @"danlozano@gmail.com",
-                                                                        @"phone" : @"2109127189",
-                                                                        @"name" : @"Daniel Lozano"}
+                                                @"shipping_method" : payment.shippingMethod.label,
+                                                @"shipping_address" : addressString,
+                                                @"shipping_contact" : @{@"email" : email,
+                                                                        @"phone" : phone,
+                                                                        @"name" : @""}
                                                 }};
     
     [self POST: url parameters: params success:^(NSURLSessionDataTask *task, id responseObject) {

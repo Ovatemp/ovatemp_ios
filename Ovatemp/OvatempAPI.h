@@ -28,6 +28,6 @@ typedef void (^PaginatedCompletionBlock)(id object, ILPaginationInfo *pagination
 
 - (void)getCyclesOnPage:(NSUInteger)page completion:(PaginatedCompletionBlock)completion;
 
-- (void)createBackendChargeWithToken:(STPToken *)token amount:(NSDecimalNumber *)amount completion:(CompletionBlock)completion;
+- (void)createBackendChargeWithToken:(STPToken *)token payment:(PKPayment *)payment amount:(NSDecimalNumber *)amount completion:(CompletionBlock)completion;
 
 @end
