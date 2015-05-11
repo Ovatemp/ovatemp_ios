@@ -51,7 +51,7 @@
 		06BD94F41AF1443A00345CFA /* NSArray+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BD94F31AF1443A00345CFA /* NSArray+Reverse.m */; };
 		06C489F91AFD604100DE0E57 /* libPods-Ovatemp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C489F81AFD604100DE0E57 /* libPods-Ovatemp.a */; };
 		06C55B221AAF4BD600EDE74A /* ILTrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */; };
-		06F7A4DB1AC4D3F30054CEDF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F7A4D91AC4D3F30054CEDF /* Crashlytics.framework */; };
+		06EE0F721B0042F50040235D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06EE0F711B0042F50040235D /* Crashlytics.framework */; };
 		06F7A4DC1AC4D3F30054CEDF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F7A4DA1AC4D3F30054CEDF /* Fabric.framework */; };
 		06F8FA4E1AC3619C006EC93F /* CycleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F8FA4D1AC3619C006EC93F /* CycleCollectionViewCell.m */; };
 		0EC9830B19AB8619009A5730 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC9830A19AB8619009A5730 /* HealthKit.framework */; };
@@ -475,7 +475,7 @@
 		06C489F81AFD604100DE0E57 /* libPods-Ovatemp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Ovatemp.a"; path = "Pods/../build/Debug-iphoneos/libPods-Ovatemp.a"; sourceTree = "<group>"; };
 		06C55B201AAF4BD600EDE74A /* ILTrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTrackingViewController.h; sourceTree = "<group>"; };
 		06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTrackingViewController.m; sourceTree = "<group>"; };
-		06F7A4D91AC4D3F30054CEDF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		06EE0F711B0042F50040235D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		06F7A4DA1AC4D3F30054CEDF /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		06F8FA4C1AC3619C006EC93F /* CycleCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleCollectionViewCell.h; sourceTree = "<group>"; };
 		06F8FA4D1AC3619C006EC93F /* CycleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleCollectionViewCell.m; sourceTree = "<group>"; };
@@ -958,6 +958,7 @@
 			files = (
 				06C489F91AFD604100DE0E57 /* libPods-Ovatemp.a in Frameworks */,
 				C36C5103189028190053A884 /* UIKit.framework in Frameworks */,
+				06EE0F721B0042F50040235D /* Crashlytics.framework in Frameworks */,
 				C388C73B18FC45B800B622FB /* SystemConfiguration.framework in Frameworks */,
 				5F1C971B19EDD455000F1FC1 /* Security.framework in Frameworks */,
 				5F1C971919EDD44F000F1FC1 /* QuickLook.framework in Frameworks */,
@@ -968,7 +969,6 @@
 				5F1C971519EDD433000F1FC1 /* CoreText.framework in Frameworks */,
 				5F1C971319EDD42D000F1FC1 /* AssetsLibrary.framework in Frameworks */,
 				C388C73D18FC45BD00B622FB /* libz.dylib in Frameworks */,
-				06F7A4DB1AC4D3F30054CEDF /* Crashlytics.framework in Frameworks */,
 				C388C73918FC45B100B622FB /* CoreData.framework in Frameworks */,
 				C388C73718FC45AA00B622FB /* AdSupport.framework in Frameworks */,
 				0EC9830B19AB8619009A5730 /* HealthKit.framework in Frameworks */,
@@ -1407,8 +1407,8 @@
 		5F1C961219EDD319000F1FC1 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				06EE0F711B0042F50040235D /* Crashlytics.framework */,
 				0697E9641AC5E77300AD8255 /* TelerikUI.framework */,
-				06F7A4D91AC4D3F30054CEDF /* Crashlytics.framework */,
 				06F7A4DA1AC4D3F30054CEDF /* Fabric.framework */,
 			);
 			path = ThirdParty;
@@ -2663,8 +2663,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Lozano (A7DGWHM2XL)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Lozano (A7DGWHM2XL)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2707,7 +2707,7 @@
 					UIKit,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "36055605-e9dc-41a3-a0bb-49ef6d419a1b";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2783,8 +2783,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Ovatemp, LLC (MC934XNWAV)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ovatemp, LLC (MC934XNWAV)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2827,7 +2827,7 @@
 					UIKit,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a9244e11-f5a2-4e0a-b9cb-d26c0fb6400f";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3314,8 +3314,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Lozano (A7DGWHM2XL)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Lozano (A7DGWHM2XL)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3357,7 +3357,7 @@
 					UIKit,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "36055605-e9dc-41a3-a0bb-49ef6d419a1b";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3369,8 +3369,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Ovatemp/Ovatemp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Ovatemp, LLC (MC934XNWAV)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ovatemp, LLC (MC934XNWAV)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3413,7 +3413,7 @@
 					UIKit,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "c1aedb8b-0a28-4aad-bbb5-a9a29d5f66dd";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
