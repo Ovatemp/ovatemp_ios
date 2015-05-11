@@ -21,6 +21,7 @@
 #import "WebViewController.h"
 #import "ONDOSettingViewController.h"
 #import "TutorialHelper.h"
+#import "PaymentHelper.h"
 
 @interface ONDOViewController () <UITableViewDelegate, UITableViewDataSource,PKPaymentAuthorizationViewControllerDelegate, ONDODelegate, ONDOSettingsViewControllerDelegate>
 
@@ -226,12 +227,41 @@ NSArray *ondoMenuItems;
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)controller didAuthorizePayment:(PKPayment *)payment
                                 completion:(void (^)(PKPaymentAuthorizationStatus))completion
 {
-    [self handlePaymentAuthorizationWithPayment: payment completion: completion];
+    if ([self validateInformation: payment withCompletion: completion]) {
+        [self handlePaymentAuthorizationWithPayment: payment completion: completion];
+    }
 }
 
 - (void)paymentAuthorizationViewControllerDidFinish:(PKPaymentAuthorizationViewController *)controller
 {
     [self dismissViewControllerAnimated: YES completion: nil];
+}
+
+#pragma mark - Helper's
+
+- (BOOL)validateInformation:(PKPayment *)payment withCompletion:(void (^)(PKPaymentAuthorizationStatus))completion
+{
+    if (![PaymentHelper validEmailForPayment: payment]) {
+        completion(PKPaymentAuthorizationStatusInvalidShippingContact);
+        return NO;
+    }
+    
+    if (![PaymentHelper validPhoneForPayment: payment]) {
+        completion(PKPaymentAuthorizationStatusInvalidShippingContact);
+        return NO;
+    }
+    
+    if (![PaymentHelper validFullNameForpayment: payment]) {
+        completion(PKPaymentAuthorizationStatusInvalidShippingPostalAddress);
+        return NO;
+    }
+    
+    if (![PaymentHelper validShippingAddressForPayment: payment]) {
+        completion(PKPaymentAuthorizationStatusInvalidShippingPostalAddress);
+        return NO;
+    }
+        
+    return YES;
 }
 
 #pragma mark - Table view data source

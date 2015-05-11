@@ -9,7 +9,7 @@
 #import "OvatempAPI.h"
 
 #import "NSArray+ArrayMap.h"
-#import <AddressBook/AddressBook.h>
+#import "PaymentHelper.h"
 
 #import "ILDay.h"
 #import "ILCycle.h"
@@ -147,13 +147,10 @@
 {
     NSString *url = @"transactions";
 
-    ABMultiValueRef emailValue = ABRecordCopyValue(payment.shippingAddress, kABPersonEmailProperty);
-    ABMultiValueRef phoneValue = ABRecordCopyValue(payment.shippingAddress, kABPersonPhoneProperty);
-    NSDictionary *email = (__bridge_transfer NSDictionary *) ABMultiValueCopyValueAtIndex(emailValue, 0);
-    NSDictionary *phone = (__bridge_transfer NSDictionary *) ABMultiValueCopyValueAtIndex(phoneValue, 0);
-    
     NSString *fullName = [self fullNameForPayment: payment];
     NSString *shippingAddress = [self shippingAddressForPayment: payment];
+    NSString *email = [self emailForPayment: payment];
+    NSString *phone = [self phoneForPayment: payment];
     
     NSDecimalNumber *amountInCents = [amount decimalNumberByMultiplyingBy: [NSDecimalNumber decimalNumberWithString: @"100"]];
     
@@ -178,21 +175,24 @@
 
 #pragma mark - Helper's
 
+- (NSString *)emailForPayment:(PKPayment *)payment
+{
+    return [PaymentHelper emailForPayment: payment];
+}
+
+- (NSString *)phoneForPayment:(PKPayment *)payment
+{
+    return [PaymentHelper phoneForPayment: payment];
+}
+
 - (NSString *)fullNameForPayment:(PKPayment *)payment
 {
-    ABMultiValueRef firstNameValue = ABRecordCopyValue(payment.shippingAddress, kABPersonFirstNameProperty);
-    ABMultiValueRef lastNameValue = ABRecordCopyValue(payment.shippingAddress, kABPersonLastNameProperty);
-
-    return [NSString stringWithFormat: @"%@ %@", firstNameValue, lastNameValue];
+    return [PaymentHelper fullNameForPayment: payment];
 }
 
 - (NSString *)shippingAddressForPayment:(PKPayment *)payment
 {
-    ABMultiValueRef addressMultiValue = ABRecordCopyValue(payment.shippingAddress, kABPersonAddressProperty);
-    NSDictionary *addressDict = (__bridge_transfer NSDictionary *) ABMultiValueCopyValueAtIndex(addressMultiValue, 0);
-    
-    return [NSString stringWithFormat: @"%@. %@, %@, %@. %@", addressDict[@"Street"], addressDict[@"City"],addressDict[@"Country"],addressDict[@"State"], addressDict[@"ZIP"]];
-
+    return [PaymentHelper shippingAddressForPayment: payment];
 }
 
 @end
