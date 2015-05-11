@@ -147,26 +147,26 @@
 {
     NSString *url = @"transactions";
 
-    ABMultiValueRef addressMultiValue = ABRecordCopyValue(payment.shippingAddress, kABPersonAddressProperty);
     ABMultiValueRef emailValue = ABRecordCopyValue(payment.shippingAddress, kABPersonEmailProperty);
     ABMultiValueRef phoneValue = ABRecordCopyValue(payment.shippingAddress, kABPersonPhoneProperty);
-    
-    NSDictionary *addressDict = (__bridge_transfer NSDictionary *) ABMultiValueCopyValueAtIndex(addressMultiValue, 0);
     NSDictionary *email = (__bridge_transfer NSDictionary *) ABMultiValueCopyValueAtIndex(emailValue, 0);
     NSDictionary *phone = (__bridge_transfer NSDictionary *) ABMultiValueCopyValueAtIndex(phoneValue, 0);
     
-    NSString *addressString = [NSString stringWithFormat: @"%@. %@, %@, %@. %@", addressDict[@"Street"], addressDict[@"City"],addressDict[@"Country"],addressDict[@"State"], addressDict[@"ZIP"]];
+    NSString *fullName = [self fullNameForPayment: payment];
+    NSString *shippingAddress = [self shippingAddressForPayment: payment];
     
     NSDecimalNumber *amountInCents = [amount decimalNumberByMultiplyingBy: [NSDecimalNumber decimalNumberWithString: @"100"]];
     
     NSDictionary *params = @{@"transaction" : @{@"stripeToken" : token.tokenId,
                                                 @"amount" : amountInCents,
                                                 @"shipping_method" : payment.shippingMethod.label,
-                                                @"shipping_address" : addressString,
+                                                @"shipping_address" : shippingAddress,
                                                 @"shipping_contact" : @{@"email" : email,
                                                                         @"phone" : phone,
-                                                                        @"name" : @""}
+                                                                        @"name" : fullName}
                                                 }};
+    
+    DDLogInfo(@"PARAMS: %@", params);
 
     [self POST: url parameters: params success:^(NSURLSessionDataTask *task, id responseObject) {
         completion(responseObject, nil);
@@ -174,6 +174,25 @@
         completion(nil, error);
     }];
     
+}
+
+#pragma mark - Helper's
+
+- (NSString *)fullNameForPayment:(PKPayment *)payment
+{
+    ABMultiValueRef firstNameValue = ABRecordCopyValue(payment.shippingAddress, kABPersonFirstNameProperty);
+    ABMultiValueRef lastNameValue = ABRecordCopyValue(payment.shippingAddress, kABPersonLastNameProperty);
+
+    return [NSString stringWithFormat: @"%@ %@", firstNameValue, lastNameValue];
+}
+
+- (NSString *)shippingAddressForPayment:(PKPayment *)payment
+{
+    ABMultiValueRef addressMultiValue = ABRecordCopyValue(payment.shippingAddress, kABPersonAddressProperty);
+    NSDictionary *addressDict = (__bridge_transfer NSDictionary *) ABMultiValueCopyValueAtIndex(addressMultiValue, 0);
+    
+    return [NSString stringWithFormat: @"%@. %@, %@, %@. %@", addressDict[@"Street"], addressDict[@"City"],addressDict[@"Country"],addressDict[@"State"], addressDict[@"ZIP"]];
+
 }
 
 @end
