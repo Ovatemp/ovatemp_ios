@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
     </dependencies>
     <scenes>
@@ -10,11 +10,8 @@
             <objects>
                 <controller title="Ovatemp" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Ovatemp_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <group width="0.90000000000000002" height="143" alignment="center" verticalAlignment="center" contentMode="center" layout="vertical" id="qkq-AY-5UZ">
+                        <group width="0.90000000000000002" height="143" alignment="center" verticalAlignment="center" contentMode="scaleAspectFit" layout="vertical" id="qkq-AY-5UZ">
                             <items>
-                                <label width="136" height="11" alignment="center" verticalAlignment="center" textAlignment="center" id="SM3-op-eU7">
-                                    <fontDescription key="font" type="system" weight="light" pointSize="10"/>
-                                </label>
                                 <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="2" id="Tr6-gr-rLy">
                                     <fontDescription key="font" type="boldSystem" pointSize="22"/>
                                 </label>
@@ -32,7 +29,6 @@
                         </group>
                     </items>
                     <connections>
-                        <outlet property="dateLabel" destination="SM3-op-eU7" id="WWg-eK-hv3"/>
                         <outlet property="fertilityStatusGroup" destination="qkq-AY-5UZ" id="nUi-T1-7K1"/>
                         <outlet property="fertilityStatusInfoLabel" destination="hPG-OA-qgE" id="QQt-IM-HWj"/>
                         <outlet property="fertilityStatusLabel" destination="Tr6-gr-rLy" id="MeZ-BD-frt"/>

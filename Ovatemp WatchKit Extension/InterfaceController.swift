@@ -11,7 +11,6 @@ import Foundation
 
 class InterfaceController: WKInterfaceController {
 
-    @IBOutlet weak var dateLabel: WKInterfaceLabel!
     @IBOutlet weak var fertilityStatusGroup: WKInterfaceGroup!
     @IBOutlet weak var fertilityStatusLabel: WKInterfaceLabel!
     @IBOutlet weak var fertilityStatusInfoLabel: WKInterfaceLabel!
@@ -78,8 +77,6 @@ class InterfaceController: WKInterfaceController {
         
         println("INTERFACE CONTROLLER : UPDATE SCREEN")
         
-        dateLabel.setText(selectedDay.date)
-        
         let fertility = selectedDay.fertilityForDay()
         let userType = Session.retrieveUserTypeFromDefaults()
         
@@ -87,57 +84,35 @@ class InterfaceController: WKInterfaceController {
             
             case FertilityStatus.peakFertility:
                 
-                self.fertilityStatusLabel.setAttributedText(self.attributedString("PEAK FERTILITY"))
-                self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - fertile")
-                
                 if userType == "TTC"{
-                    self.fertilityStatusInfoLabel.setText("Optimal conditions for conception")
+                    self.fertilityStatusGroup.setBackgroundImageNamed("fertile_conceive")
                 }else{
-                    self.fertilityStatusInfoLabel.setText("Practice safe sex or avoid intercourse")
+                    self.fertilityStatusGroup.setBackgroundImageNamed("fertile_avoid")
                 }
             
             case FertilityStatus.fertile:
                 
-                self.fertilityStatusLabel.setAttributedText(self.attributedString("FERTILE"))
-                self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - fertile")
-
                 if userType == "TTC"{
-                    self.fertilityStatusInfoLabel.setText("Let's get it on!")
-                    
+                    self.fertilityStatusGroup.setBackgroundImageNamed("fertile_conceive")
                 }else{
-                    self.fertilityStatusInfoLabel.setText("Practice safe sex or avoid intercourse")
+                    self.fertilityStatusGroup.setBackgroundImageNamed("fertile_avoid")
                 }
                 
             
             case FertilityStatus.notFertile:
                 
-                self.fertilityStatusLabel.setAttributedText(self.attributedString("NOT FERTILE"))
-                self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - not fertile")
-                
-                if fertility.fertilityCycle == FertilityCycle.preovulation{
-                    if userType == "TTC"{
-                        self.fertilityStatusInfoLabel.setText("Fertile window about to open, check for cervical fluid.")
-                    }else{
-                        self.fertilityStatusInfoLabel.setText("You are safe on the evening of a dry day.")
-                    }
-                    
+                if userType == "TTC"{
+                    self.fertilityStatusGroup.setBackgroundImageNamed("fertile_conceive")
                 }else{
-                    if userType == "TTC"{
-                        self.fertilityStatusInfoLabel.setText("Crossing our fingers for you.")
-                    }else{
-                        self.fertilityStatusInfoLabel.setText("You're safe to have unprotected sex until your next period.")
-                    }
+                    self.fertilityStatusGroup.setBackgroundImageNamed("not_fertile_conceive")
                 }
             
             case FertilityStatus.period:
                 
-                self.fertilityStatusLabel.setAttributedText(self.attributedString("PERIOD"))
-                self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - period")
-                
                 if userType == "TTC"{
-                    self.fertilityStatusInfoLabel.setText("Try to get some rest.")
+                    self.fertilityStatusGroup.setBackgroundImageNamed("period")
                 }else{
-                    self.fertilityStatusInfoLabel.setText("The first five days of your cycle are safe.")
+                    self.fertilityStatusGroup.setBackgroundImageNamed("period")
                 }
             
             case FertilityStatus.empty:
@@ -145,7 +120,7 @@ class InterfaceController: WKInterfaceController {
                 self.fertilityStatusLabel.setText("")
                 self.fertilityStatusInfoLabel.setText("Please enter your Basal Body Temperature and other daily data for fertility status.")
                 self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - no data")
-            
+
             default:
                 
                 self.fertilityStatusLabel.setText("")
