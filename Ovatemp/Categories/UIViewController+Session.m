@@ -24,7 +24,7 @@
 
 - (void)logout {
   [Configuration logOut];
-    [[NSNotificationCenter defaultCenter] postNotificationName: @"UserDidLogout" object: self];
+    [[NSNotificationCenter defaultCenter] postNotificationName: kUserDidLogoutNotification object: self];
   [self backOutToRootViewController];
 }
 

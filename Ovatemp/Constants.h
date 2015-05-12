@@ -87,6 +87,8 @@ static NSString *const kAppTutorialCountKey = @"AppTutorialCountKey";
 static NSString *const kAppWalkthroughCountKey = @"AppWalkthroughCountKey";
 static NSString *const kOndoTutorialCountKey = @"OndoTutorialCountKey";
 
+static NSString *const kUserDidLogoutNotification = @"UserDidLogoutNotification";
+
 static const NSInteger kUnauthorizedRequestCode = 401;
 static NSString *const kUnauthorizedRequestNotification = @"401UnauthorizedRequestEncountered";
 

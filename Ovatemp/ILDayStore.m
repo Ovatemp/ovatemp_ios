@@ -17,15 +17,33 @@
 
 @implementation ILDayStore
 
+- (id)init
+{
+    self = [self initWithDays: nil];
+    return self;
+}
+
 - (id)initWithDays:(NSArray *)days
 {
     self = [super init];
     if (self) {
+        
         [self addDays: days];
+        
+        NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+        [defaultCenter addObserver: self selector: @selector(didLogout:) name: kUserDidLogoutNotification object: nil];
         
     }
     return self;
 }
+
+- (void)dealloc
+{
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter removeObserver: self];
+}
+
+#pragma mark - Days
 
 - (void)addDays:(NSArray *)days
 {
@@ -49,7 +67,16 @@
 
 - (void)reset
 {
+    DDLogInfo(@"ILDAYSTORE : RESET");
     [self.days removeAllObjects];
+}
+
+#pragma mark - Notifications
+
+- (void)didLogout:(NSNotification *)notification
+{
+    DDLogInfo(@"ILDAYSTORE : USER DID LOGOUT");
+    [self reset];
 }
 
 #pragma mark - Set/Get

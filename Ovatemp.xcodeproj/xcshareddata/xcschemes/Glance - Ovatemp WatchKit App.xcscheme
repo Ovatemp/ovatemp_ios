@@ -130,7 +130,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Staging_Release"
+      buildConfiguration = "Production_Release"
       debugDocumentVersioning = "YES"
       launchAutomaticallySubstyle = "4"
       notificationPayloadFile = "Ovatemp WatchKit Extension/PushNotificationPayload.apns">
@@ -160,7 +160,7 @@
       buildConfiguration = "Staging_Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Staging_Release"
+      buildConfiguration = "Production_Release"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
