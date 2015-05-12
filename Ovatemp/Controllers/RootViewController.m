@@ -176,8 +176,8 @@ static CGFloat const kDissolveDuration = 0.2;
                        [self stopLoading];
                        [Configuration loggedInWithResponse:response];
                        [self launchAppropriateViewController];
-                    
-                       [self addInfoToSharedDefaultsWithToken: response[@"token"] userType: [self getUserType]];
+                       
+                       [self addInfoToSharedDefaultsWithToken: response[@"token"]];
                        
                    }
                    failure:^(NSError *error) {
@@ -272,14 +272,14 @@ static CGFloat const kDissolveDuration = 0.2;
     }
 }
 
-- (void)addInfoToSharedDefaultsWithToken:(NSString *)token userType:(NSString *)userType
+- (void)addInfoToSharedDefaultsWithToken:(NSString *)token
 {
     if (token.length > 0) {
         NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName: kAppGroupName];
         
         [sharedDefaults setObject: token forKey: kSharedTokenKey];
         [sharedDefaults setObject: DEVICE_ID forKey: kSharedDeviceIdKey];
-        [sharedDefaults setObject: userType forKey: kSharedUserTypeKey];
+        [sharedDefaults setObject: [self getUserType] forKey: kSharedUserTypeKey];
         
         [sharedDefaults synchronize];
     }
