@@ -10,9 +10,10 @@ import UIKit
 
 public class Day {
    
-    var dayId : String?
-    
+    var dayId : Int?
     var date : String?
+
+    var inFertilityWindow : Bool?
     var cyclePeakDate : NSDate?
     
     var cyclePhase : String?
@@ -29,8 +30,11 @@ public class Day {
     init(response : Dictionary<String, AnyObject>?, peakDate : NSDate?) {
         
         if let tempResponse = response {
-                        
+            
+            dayId = tempResponse["id"] as? Int
             date = tempResponse["date"] as? String
+            
+            inFertilityWindow = tempResponse["in_fertility_window"] as? Bool
             
             cyclePhase = tempResponse["cycle_phase"] as? String
             period = tempResponse["period"] as? String
@@ -44,6 +48,22 @@ public class Day {
     }
     
     func fertilityForDay () -> Fertility {
+        
+        // Check Fertility Window
+        
+        if inFertilityWindow!{
+            if cervicalFluid == "eggwhite"{
+                // Peak fertility
+                //return Fertility(status: FertilityStatus.peakFertility, cycle: FertilityCycle.empty)
+                return Fertility(status: FertilityStatus.fertile, cycle: FertilityCycle.empty)
+                
+            }else{
+                // Regular fertility
+                return Fertility(status: FertilityStatus.fertile, cycle: FertilityCycle.empty)
+            }
+        }
+        
+        // Check Cycle Phases
         
         if(cyclePhase == "period") {
             // result is PERIOD
@@ -61,8 +81,19 @@ public class Day {
             }
             
         } else if(cyclePhase == "preovulation") {
-            // result is NOT FERTILE
-            return Fertility(status: FertilityStatus.notFertile, cycle: FertilityCycle.preovulation)
+            // result is (generally) NOT FERTILE
+            
+            let userType = Session.retrieveUserTypeFromDefaults()
+            
+            if cervicalFluid == "sticky" && userType == "TTA"{
+                // FERTILE
+                return Fertility(status: FertilityStatus.fertile, cycle: FertilityCycle.preovulation)
+                
+            }else{
+                // NOT FERTILE
+                return Fertility(status: FertilityStatus.notFertile, cycle: FertilityCycle.preovulation)
+            }
+            
             
         } else if(cyclePhase == "postovulation") {
             // result is NOT FERTILE

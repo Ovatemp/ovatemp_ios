@@ -18,6 +18,7 @@
 #import "SelectLogInOrSignUpViewController.h"
 #import "TrackingViewController.h"
 #import "CoachingRootViewController.h"
+#import "UserProfile.h"
 
 static CGFloat const kDissolveDuration = 0.2;
 
@@ -171,11 +172,13 @@ static CGFloat const kDissolveDuration = 0.2;
     [ConnectionManager put:@"/sessions/refresh"
                     params:nil
                    success:^(NSDictionary *response) {
+                       
                        [self stopLoading];
                        [Configuration loggedInWithResponse:response];
                        [self launchAppropriateViewController];
+                    
+                       [self addInfoToSharedDefaultsWithToken: response[@"token"] userType: [self getUserType]];
                        
-                       [self addUserTokenToSharedUserDefaults: response[@"token"]];
                    }
                    failure:^(NSError *error) {
                        [self stopLoading];
@@ -258,13 +261,25 @@ static CGFloat const kDissolveDuration = 0.2;
 
 #pragma mark - Helper's
 
-- (void)addUserTokenToSharedUserDefaults:(NSString *)token
+- (NSString *)getUserType
+{
+    BOOL tryingToConceive = [UserProfile current].tryingToConceive;
+    
+    if (tryingToConceive) {
+        return @"TTC";
+    }else{
+        return @"TTA";
+    }
+}
+
+- (void)addInfoToSharedDefaultsWithToken:(NSString *)token userType:(NSString *)userType
 {
     if (token.length > 0) {
         NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName: kAppGroupName];
         
         [sharedDefaults setObject: token forKey: kSharedTokenKey];
         [sharedDefaults setObject: DEVICE_ID forKey: kSharedDeviceIdKey];
+        [sharedDefaults setObject: userType forKey: kSharedUserTypeKey];
         
         [sharedDefaults synchronize];
     }

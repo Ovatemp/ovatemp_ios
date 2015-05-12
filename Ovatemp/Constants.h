@@ -80,6 +80,7 @@ static NSString *const StripePublishableKey = @"pk_test_SwHYnn0ZQhj7ysaLmRJ5mmxM
 static NSString *const kAppGroupName = @"group.com.ovatemp.ovatemp";
 static NSString *const kSharedTokenKey = @"CurrentUserToken";
 static NSString *const kSharedDeviceIdKey = @"CurrentUserDeviceId";
+static NSString *const kSharedUserTypeKey = @"SharedUserTypeKey";
 
 static NSString *const kOndoOverlayCountKey = @"OndoOverlayCountKey";
 static NSString *const kAppTutorialCountKey = @"AppTutorialCountKey";

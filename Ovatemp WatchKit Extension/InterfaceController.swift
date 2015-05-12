@@ -81,36 +81,64 @@ class InterfaceController: WKInterfaceController {
         dateLabel.setText(selectedDay.date)
         
         let fertility = selectedDay.fertilityForDay()
+        let userType = Session.retrieveUserTypeFromDefaults()
         
         switch fertility.fertilityStatus {
             
             case FertilityStatus.peakFertility:
                 
                 self.fertilityStatusLabel.setAttributedText(self.attributedString("PEAK FERTILITY"))
-                self.fertilityStatusInfoLabel.setText("Optimal conditions for conception")
                 self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - fertile")
+                
+                if userType == "TTC"{
+                    self.fertilityStatusInfoLabel.setText("Optimal conditions for conception")
+                }else{
+                    self.fertilityStatusInfoLabel.setText("Practice safe sex or avoid intercourse")
+                }
             
             case FertilityStatus.fertile:
                 
                 self.fertilityStatusLabel.setAttributedText(self.attributedString("FERTILE"))
-                self.fertilityStatusInfoLabel.setText("Let's get it on!")
                 self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - fertile")
+
+                if userType == "TTC"{
+                    self.fertilityStatusInfoLabel.setText("Let's get it on!")
+                    
+                }else{
+                    self.fertilityStatusInfoLabel.setText("Practice safe sex or avoid intercourse")
+                }
+                
             
             case FertilityStatus.notFertile:
                 
                 self.fertilityStatusLabel.setAttributedText(self.attributedString("NOT FERTILE"))
-                if(fertility.fertilityCycle == FertilityCycle.preovulation) {
-                    self.fertilityStatusInfoLabel.setText("Please check for Cervical Fluid.")
-                } else {
-                    self.fertilityStatusInfoLabel.setText("Crossing our fingers for you!")
-                }
                 self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - not fertile")
+                
+                if fertility.fertilityCycle == FertilityCycle.preovulation{
+                    if userType == "TTC"{
+                        self.fertilityStatusInfoLabel.setText("Fertile window about to open, check for cervical fluid.")
+                    }else{
+                        self.fertilityStatusInfoLabel.setText("You are safe on the evening of a dry day.")
+                    }
+                    
+                }else{
+                    if userType == "TTC"{
+                        self.fertilityStatusInfoLabel.setText("Crossing our fingers for you.")
+                    }else{
+                        self.fertilityStatusInfoLabel.setText("You're safe to have unprotected sex until your next period.")
+                    }
+                }
             
             case FertilityStatus.period:
                 
                 self.fertilityStatusLabel.setAttributedText(self.attributedString("PERIOD"))
-                self.fertilityStatusInfoLabel.setText("Try to get some rest.")
                 self.fertilityStatusGroup.setBackgroundImageNamed("Fertility Status - period")
+                
+                if userType == "TTC"{
+                    self.fertilityStatusInfoLabel.setText("Try to get some rest.")
+                }else{
+                    self.fertilityStatusInfoLabel.setText("The first five days of your cycle are safe.")
+                }
             
             case FertilityStatus.empty:
                 

@@ -29,4 +29,11 @@ class Session {
         return deviceId
     }
     
+    class func retrieveUserTypeFromDefaults() -> String? {
+        let sharedDefaults = NSUserDefaults(suiteName: "group.com.ovatemp.ovatemp")
+        let userType = sharedDefaults?.objectForKey("SharedUserTypeKey") as? String
+        print("USER TYPE \(userType)")
+        return userType
+    }
+    
 }
