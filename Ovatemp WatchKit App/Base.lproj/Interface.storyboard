@@ -237,9 +237,10 @@
         <!--Glance Interface Controller-->
         <scene sceneID="BOz-TT-tkC">
             <objects>
-                <glanceController spacing="0.0" topTemplateType="body3" id="0uZ-2p-rRc" customClass="GlanceController" customModule="Ovatemp_WatchKit_App" customModuleProvider="target">
+                <glanceController spacing="0.0" topTemplateType="groupBody2" id="0uZ-2p-rRc" customClass="GlanceController" customModule="Ovatemp_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label alignment="left" minimumScaleFactor="0.50000000000000011" id="RPB-Pr-XcW"/>
+                        <group alignment="left" id="6Sg-2K-8hR"/>
+                        <label alignment="left" text="Label∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙" minimumScaleFactor="0.50000000000000011" id="RPB-Pr-XcW"/>
                         <group alignment="left" contentMode="scaleAspectFit" layout="vertical" id="uCw-4Q-Ouw">
                             <items>
                                 <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="6" id="g2m-eg-NaA">
@@ -250,6 +251,7 @@
                     </items>
                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
                     <connections>
+                        <outlet property="appIconGroup" destination="6Sg-2K-8hR" id="uRa-EU-KTl"/>
                         <outlet property="fertilityStatusGroup" destination="uCw-4Q-Ouw" id="36O-7J-2yR"/>
                         <outlet property="fertilityStatusInfoLabel" destination="RPB-Pr-XcW" id="mg0-cG-J1W"/>
                         <outlet property="fertilityStatusLabel" destination="g2m-eg-NaA" id="wZ3-wd-MAv"/>
