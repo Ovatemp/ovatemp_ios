@@ -1286,6 +1286,8 @@
 		06FEA5C61A9D2DE9002BDFC2 /* Log In */ = {
 			isa = PBXGroup;
 			children = (
+				060167BF1AF82D1D00D29456 /* OnboardingHelper.h */,
+				060167C01AF82D1D00D29456 /* OnboardingHelper.m */,
 				5F8C568C19F184C60024552A /* SelectLogInOrSignUpViewController.h */,
 				5F8C568D19F184C60024552A /* SelectLogInOrSignUpViewController.m */,
 				5F8C568F19F186C90024552A /* LoginViewController.h */,
@@ -2419,6 +2421,7 @@
 				5F1C9C5C19EDE87A000F1FC1 /* FertilityProfile.m in Sources */,
 				06BD94F41AF1443A00345CFA /* NSArray+Reverse.m in Sources */,
 				5F1C9C5819EDE87A000F1FC1 /* Configuration.m in Sources */,
+				060167C11AF82D1D00D29456 /* OnboardingHelper.m in Sources */,
 				5F1C9B8719EDE87A000F1FC1 /* CommunityForumViewController.m in Sources */,
 				5F6561DE19FAD63B001FB509 /* EditHeightTableViewCell.m in Sources */,
 				5F1C9B6C19EDE87A000F1FC1 /* UIViewController+UserProfileHelpers.m in Sources */,

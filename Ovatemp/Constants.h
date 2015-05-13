@@ -71,7 +71,7 @@
     #define DEVICE_ID @"DUMMYDEVICE"
 #else
     #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
-#endif
+//#endif
 
 # define API_URL [ROOT_URL stringByAppendingString:@"/api"]
 

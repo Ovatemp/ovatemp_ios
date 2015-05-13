@@ -24,7 +24,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self customizeAppearance];
+    [self setUserDefaultsCount];
+    
     // Do any additional setup after loading the view.
     NSLog(@"%@", machineName());
     NSString *deviceName = machineName();
@@ -38,6 +41,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setUserDefaultsCount
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setInteger: 4 forKey: @"OnboardingCompletionCount"];
+    [userDefaults synchronize];
 }
 
 #pragma mark - Appearance

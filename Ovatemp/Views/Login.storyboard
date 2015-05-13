@@ -301,7 +301,7 @@
         <!--Welcome-->
         <scene sceneID="TaR-0a-eaV">
             <objects>
-                <viewController storyboardIdentifier="welcome1VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6kd-1c-wF8" customClass="Welcome1ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcome1VC" id="6kd-1c-wF8" customClass="Welcome1ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wDL-Ie-jem"/>
                         <viewControllerLayoutGuide type="bottom" id="Uuh-Xl-bAv"/>
@@ -396,7 +396,7 @@
         <!--Welcome-->
         <scene sceneID="dJN-e6-otk">
             <objects>
-                <viewController id="kFR-fO-zr5" customClass="Welcome2ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcome2VC" id="kFR-fO-zr5" customClass="Welcome2ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TIG-AM-bS6"/>
                         <viewControllerLayoutGuide type="bottom" id="PyD-JX-VES"/>
@@ -489,7 +489,7 @@
         <!--Welcome-->
         <scene sceneID="ktx-ut-5E4">
             <objects>
-                <viewController id="gRw-wx-L5R" customClass="Welcome3ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcome3VC" id="gRw-wx-L5R" customClass="Welcome3ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Lbg-UC-4w9"/>
                         <viewControllerLayoutGuide type="bottom" id="jNJ-08-VNz"/>
@@ -576,7 +576,7 @@
         <!--Welcome-->
         <scene sceneID="pYH-qy-DeN">
             <objects>
-                <viewController id="4wG-ur-4Q6" customClass="WelcomeONDOViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcomeONDOVC" id="4wG-ur-4Q6" customClass="WelcomeONDOViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UcP-IU-CON"/>
                         <viewControllerLayoutGuide type="bottom" id="qBJ-Xg-cJn"/>
@@ -613,6 +613,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeZ-3h-R1R">
                                 <rect key="frame" x="16" y="402" width="568" height="40"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="FWL-UO-jjz"/>
                                     <constraint firstAttribute="height" constant="45" id="ldG-mJ-Q93"/>
                                     <constraint firstAttribute="height" constant="40" id="tGK-f5-ulf"/>
                                 </constraints>
@@ -704,7 +705,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCE-iD-rrO">
                                 <rect key="frame" x="170" y="342" width="261" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="2Ij-jv-4bG"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="10" id="2Ij-jv-4bG"/>
                                     <constraint firstAttribute="width" constant="261" id="KTA-eD-i7x"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="10" id="roq-hp-fOa"/>
                                 </constraints>
@@ -728,7 +729,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
                             <constraint firstItem="Iwf-Pw-SxN" firstAttribute="top" secondItem="LCn-OL-n6Q" secondAttribute="bottom" id="HvP-Do-AGN"/>
                             <constraint firstItem="qeZ-3h-R1R" firstAttribute="top" secondItem="LCE-iD-rrO" secondAttribute="bottom" id="IRu-To-wty"/>
                             <constraint firstItem="LnZ-ph-IIC" firstAttribute="leading" secondItem="Vqc-O1-7Fd" secondAttribute="leadingMargin" constant="59" id="JCV-nY-ZXI"/>
-                            <constraint firstItem="692-Hb-sqX" firstAttribute="top" secondItem="UcP-IU-CON" secondAttribute="bottom" constant="10" id="JLG-36-w3j"/>
+                            <constraint firstItem="692-Hb-sqX" firstAttribute="top" secondItem="UcP-IU-CON" secondAttribute="bottom" id="JLG-36-w3j"/>
                             <constraint firstItem="om6-3N-P0D" firstAttribute="top" secondItem="qeZ-3h-R1R" secondAttribute="bottom" constant="8" id="L2h-9c-AfN"/>
                             <constraint firstItem="LnZ-ph-IIC" firstAttribute="top" secondItem="om6-3N-P0D" secondAttribute="bottom" constant="8" id="N97-EG-jJ7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="om6-3N-P0D" secondAttribute="trailing" id="NAC-Oe-lBn"/>
@@ -796,7 +797,7 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
         <!--BBT Reminder-->
         <scene sceneID="g1U-ff-tRm">
             <objects>
-                <viewController id="fzS-P8-vEj" customClass="WelcomeAlarmViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcomeALARMVC" id="fzS-P8-vEj" customClass="WelcomeAlarmViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mmS-Wo-d4x"/>
                         <viewControllerLayoutGuide type="bottom" id="h1L-mr-dBe"/>
@@ -1078,6 +1079,6 @@ If you will be using an ONDO Thermometer, you will need to pair it with your dev
         <image name="img_ondo_render" width="269" height="186"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="inY-NG-Hzw"/>
+        <segue reference="7Dh-Ua-Vdw"/>
     </inferredMetricsTieBreakers>
 </document>

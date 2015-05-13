@@ -24,6 +24,7 @@
 #import "Calendar.h"
 #import "Day.h"
 #import "ONDO.h"
+#import "OnboardingHelper.h"
 
 #import "TrackingStatusTableViewCell.h"
 #import "TrackingTemperatureTableViewCell.h"
@@ -110,6 +111,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear: animated];
+    
+    [OnboardingHelper showOnboardingInController: self];
     
     [Localytics tagScreen: @"Tracking"];
     [self showTutorial];

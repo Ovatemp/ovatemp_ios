@@ -30,7 +30,9 @@ NSDate *startedTryingDate;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self customizeAppearance];
+    [self setUserDefaultsCount];
     
     self.tryingToConceivePicker.delegate = self;
     
@@ -48,9 +50,17 @@ NSDate *startedTryingDate;
     [self.tryingToConceivePicker selectRow:5 inComponent:0 animated:NO];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setUserDefaultsCount
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setInteger: 2 forKey: @"OnboardingCompletionCount"];
+    [userDefaults synchronize];
 }
 
 #pragma mark - Appearance

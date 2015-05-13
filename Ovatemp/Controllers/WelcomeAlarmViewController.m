@@ -17,7 +17,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self customizeAppearance];
+    [self setUserDefaultsCount: 5];
+    
     // Do any additional setup after loading the view.
     
     [self.alarmTimePicker addTarget:self action:@selector(alarmTimeValueChanged:) forControlEvents:UIControlEventValueChanged];
@@ -26,6 +29,19 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setUserDefaultsCount:(NSInteger)count
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setInteger: count forKey: @"OnboardingCompletionCount"];
+    [userDefaults synchronize];
+}
+
+- (BOOL)wasPresentedModally
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults boolForKey: @"OnboardingWasPresented"];
 }
 
 #pragma mark - Appearance
@@ -47,8 +63,21 @@
     [self.alarmTimeValueLabel setText:time];
 }
 
-- (IBAction)doSkip:(id)sender {
-    [self backOutToRootViewController];
+- (IBAction)doSkip:(id)sender
+{
+    [self setUserDefaultsCount: 6];
+    
+    if ([self wasPresentedModally]) {
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setBool: NO forKey: @"OnboardingWasPresented"];
+        [userDefaults synchronize];
+
+        [self dismissViewControllerAnimated: YES completion: nil];
+        
+    }else{
+        [self backOutToRootViewController];
+    }
 }
 - (IBAction)doSetAlarm:(id)sender {
     // set date for notification
@@ -60,7 +89,19 @@
     alarm.alertAction = @"View";
     alarm.soundName = UILocalNotificationDefaultSoundName;
     [[UIApplication sharedApplication] scheduleLocalNotification:alarm];
-    [self backOutToRootViewController];
+    
+    [self setUserDefaultsCount: 6];
+    
+    if ([self wasPresentedModally]) {
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setBool: NO forKey: @"OnboardingWasPresented"];
+        [userDefaults synchronize];
+        
+        [self dismissViewControllerAnimated: YES completion: nil];
+    }else{
+        [self backOutToRootViewController];
+    }
     
     // code for deleting this notification
 //    NSArray *arrayOfLocalNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
