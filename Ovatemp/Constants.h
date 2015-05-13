@@ -53,29 +53,32 @@
 
 // API
 
-#ifdef STAGING_DEBUG
-    #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
+#define ROOT_URL @"http://api.ovatemp.com"
+#define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
 
-#elif STAGING_RELEASE
-    #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
-
-#elif PRODUCTION_DEBUG
-    #define ROOT_URL @"http://api.ovatemp.com"
-
-#elif PRODUCTION_RELEASE
-    #define ROOT_URL @"http://api.ovatemp.com"
-
-#endif
-
-#ifdef TARGET_IPHONE_SIMULATOR
-    #define DEVICE_ID @"DUMMYDEVICE"
-#else
-    #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
+//#ifdef STAGING_DEBUG
+//    #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
+//
+//#elif STAGING_RELEASE
+//    #define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
+//
+//#elif PRODUCTION_DEBUG
+//    #define ROOT_URL @"http://api.ovatemp.com"
+//
+//#elif PRODUCTION_RELEASE
+//    #define ROOT_URL @"http://api.ovatemp.com"
+//
+//#endif
+//
+//#ifdef TARGET_IPHONE_SIMULATOR
+//    #define DEVICE_ID @"DUMMYDEVICE"
+//#else
+//    #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
 //#endif
 
 # define API_URL [ROOT_URL stringByAppendingString:@"/api"]
 
-static NSString *const StripePublishableKey = @"pk_test_SwHYnn0ZQhj7ysaLmRJ5mmxM";
+static NSString *const kStripePublishableKey = @"pk_live_h36Hwh93e0s4kbukCJkC3ZKW"; // Live || Test
 
 static NSString *const kAppGroupName = @"group.com.ovatemp.ovatemp";
 static NSString *const kSharedTokenKey = @"CurrentUserToken";

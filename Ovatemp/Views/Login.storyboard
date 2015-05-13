@@ -396,7 +396,7 @@
         <!--Welcome-->
         <scene sceneID="dJN-e6-otk">
             <objects>
-                <viewController storyboardIdentifier="welcome2VC" id="kFR-fO-zr5" customClass="Welcome2ViewController" sceneMemberID="viewController">
+                <viewController id="kFR-fO-zr5" customClass="Welcome2ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TIG-AM-bS6"/>
                         <viewControllerLayoutGuide type="bottom" id="PyD-JX-VES"/>

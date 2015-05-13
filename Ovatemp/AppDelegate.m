@@ -29,7 +29,7 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+{    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
     [self.window makeKeyAndVisible];
@@ -110,7 +110,7 @@
 
 - (void)setUpStripe
 {
-    [Stripe setDefaultPublishableKey: StripePublishableKey];
+    [Stripe setDefaultPublishableKey: kStripePublishableKey];
 }
 
 - (void)setUpHelpshift

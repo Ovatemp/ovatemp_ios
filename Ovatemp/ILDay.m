@@ -54,7 +54,7 @@
     
     self.cyclePhase = [dictionary dl_objectForKeyWithNil: @"cycle_phase"];
     self.cycleDay = [dictionary dl_objectForKeyWithNil: @"cycle_day"];
-    self.inFertilityWindow = [dictionary dl_objectForKeyWithNil: @"in_fertility_window"];
+    self.inFertilityWindow = [[dictionary dl_objectForKeyWithNil: @"in_fertility_window"] boolValue];
     
     self.notes = [dictionary dl_objectForKeyWithNil: @"notes"];
     self.usedOndo = [[dictionary dl_objectForKeyWithNil: @"used_ondo"] boolValue];

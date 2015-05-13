@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0607F3A41B0101A50004C297 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0607F3A31B0101A50004C297 /* Crashlytics.framework */; };
+		0608C0B01B03B90F00D0C2B8 /* OnboardingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0608C0AF1B03B90F00D0C2B8 /* OnboardingHelper.m */; };
+		0608C0B21B03B9B500D0C2B8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0608C0B11B03B9B500D0C2B8 /* Crashlytics.framework */; };
 		060D180C1AC330FA00B7DBA2 /* ILCycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 060D180B1AC330FA00B7DBA2 /* ILCycleViewController.m */; };
 		060EFC441B015C4D00C0B6C0 /* PaymentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 060EFC431B015C4D00C0B6C0 /* PaymentHelper.m */; };
 		0619A97F1AA4E32A000F31E6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */; };
@@ -30,7 +31,6 @@
 		06712ECC1ADC65CA007CEEF3 /* FluidPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06712EC11ADC65CA007CEEF3 /* FluidPageViewController.swift */; };
 		06712ECD1ADC65CA007CEEF3 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06712EC21ADC65CA007CEEF3 /* GlanceController.swift */; };
 		06712ECE1ADC65CB007CEEF3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06712EC31ADC65CA007CEEF3 /* Images.xcassets */; };
-		06712ECF1ADC65CB007CEEF3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06712EC41ADC65CA007CEEF3 /* Info.plist */; };
 		06712ED01ADC65CB007CEEF3 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06712EC51ADC65CA007CEEF3 /* InterfaceController.swift */; };
 		06712ED21ADC65CB007CEEF3 /* Ovatemp WatchKit Extension.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 06712EC71ADC65CA007CEEF3 /* Ovatemp WatchKit Extension.entitlements */; };
 		06712ED31ADC65CB007CEEF3 /* PeriodPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06712EC81ADC65CA007CEEF3 /* PeriodPageViewController.swift */; };
@@ -411,7 +411,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0607F3A31B0101A50004C297 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		0608C0AE1B03B90F00D0C2B8 /* OnboardingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnboardingHelper.h; sourceTree = "<group>"; };
+		0608C0AF1B03B90F00D0C2B8 /* OnboardingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnboardingHelper.m; sourceTree = "<group>"; };
+		0608C0B11B03B9B500D0C2B8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		060D180A1AC330FA00B7DBA2 /* ILCycleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCycleViewController.h; sourceTree = "<group>"; };
 		060D180B1AC330FA00B7DBA2 /* ILCycleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCycleViewController.m; sourceTree = "<group>"; };
 		060EFC421B015C4D00C0B6C0 /* PaymentHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentHelper.h; sourceTree = "<group>"; };
@@ -956,7 +958,7 @@
 			files = (
 				06C489F91AFD604100DE0E57 /* libPods-Ovatemp.a in Frameworks */,
 				C36C5103189028190053A884 /* UIKit.framework in Frameworks */,
-				0607F3A41B0101A50004C297 /* Crashlytics.framework in Frameworks */,
+				0608C0B21B03B9B500D0C2B8 /* Crashlytics.framework in Frameworks */,
 				C388C73B18FC45B800B622FB /* SystemConfiguration.framework in Frameworks */,
 				5F1C971B19EDD455000F1FC1 /* Security.framework in Frameworks */,
 				5F1C971919EDD44F000F1FC1 /* QuickLook.framework in Frameworks */,
@@ -1286,8 +1288,8 @@
 		06FEA5C61A9D2DE9002BDFC2 /* Log In */ = {
 			isa = PBXGroup;
 			children = (
-				060167BF1AF82D1D00D29456 /* OnboardingHelper.h */,
-				060167C01AF82D1D00D29456 /* OnboardingHelper.m */,
+				0608C0AE1B03B90F00D0C2B8 /* OnboardingHelper.h */,
+				0608C0AF1B03B90F00D0C2B8 /* OnboardingHelper.m */,
 				5F8C568C19F184C60024552A /* SelectLogInOrSignUpViewController.h */,
 				5F8C568D19F184C60024552A /* SelectLogInOrSignUpViewController.m */,
 				5F8C568F19F186C90024552A /* LoginViewController.h */,
@@ -1406,7 +1408,7 @@
 		5F1C961219EDD319000F1FC1 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
-				0607F3A31B0101A50004C297 /* Crashlytics.framework */,
+				0608C0B11B03B9B500D0C2B8 /* Crashlytics.framework */,
 				0697E9641AC5E77300AD8255 /* TelerikUI.framework */,
 				06F7A4DA1AC4D3F30054CEDF /* Fabric.framework */,
 			);
@@ -2104,7 +2106,6 @@
 				06712E9E1ADC6064007CEEF3 /* Ovatemp WatchKit App.app in Resources */,
 				06712ED21ADC65CB007CEEF3 /* Ovatemp WatchKit Extension.entitlements in Resources */,
 				06712ECE1ADC65CB007CEEF3 /* Images.xcassets in Resources */,
-				06712ECF1ADC65CB007CEEF3 /* Info.plist in Resources */,
 				06712ED51ADC65CB007CEEF3 /* PushNotificationPayload.apns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2421,7 +2422,6 @@
 				5F1C9C5C19EDE87A000F1FC1 /* FertilityProfile.m in Sources */,
 				06BD94F41AF1443A00345CFA /* NSArray+Reverse.m in Sources */,
 				5F1C9C5819EDE87A000F1FC1 /* Configuration.m in Sources */,
-				060167C11AF82D1D00D29456 /* OnboardingHelper.m in Sources */,
 				5F1C9B8719EDE87A000F1FC1 /* CommunityForumViewController.m in Sources */,
 				5F6561DE19FAD63B001FB509 /* EditHeightTableViewCell.m in Sources */,
 				5F1C9B6C19EDE87A000F1FC1 /* UIViewController+UserProfileHelpers.m in Sources */,
@@ -2513,6 +2513,7 @@
 				5F1C9C7E19EEF344000F1FC1 /* AccountTableViewCell.m in Sources */,
 				5F846E0D19F5A96000CED980 /* Welcome3ViewController.m in Sources */,
 				5F1C9B7D19EDE87A000F1FC1 /* SubscriptionMenuTableViewCell.m in Sources */,
+				0608C0B01B03B90F00D0C2B8 /* OnboardingHelper.m in Sources */,
 				5FE118441A191C5100AC76A7 /* SimpleSupplement.m in Sources */,
 				06F8FA4E1AC3619C006EC93F /* CycleCollectionViewCell.m in Sources */,
 				0644CE551AE952E1006B4E24 /* TutorialHelper.m in Sources */,
