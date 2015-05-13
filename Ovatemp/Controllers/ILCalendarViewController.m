@@ -46,9 +46,32 @@
 {
     [super viewDidAppear: animated];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool: YES forKey: @"UserInCalendar"];
+    [defaults synchronize];
+    
     [Localytics tagScreen: @"Tracking/Calendar"];
     
     [self showInfoPopup];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear: animated];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool: NO forKey: @"UserInCalendar"];
+    [defaults synchronize];
+}
+
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 #pragma mark - Network

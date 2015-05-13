@@ -57,9 +57,11 @@
             }
         }
     } else {
-        inLandscape = NO;
-        if (!isAnimating) {
-            [self hideCycleViewController];
+        if (![[NSUserDefaults standardUserDefaults] boolForKey: @"UserInCalendar"]){
+            inLandscape = NO;
+            if (!isAnimating) {
+                [self hideCycleViewController];
+            }
         }
     }
 }

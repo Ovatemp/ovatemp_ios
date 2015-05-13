@@ -47,6 +47,7 @@
 		0692216E1AC0AF350004B850 /* ILCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0692216D1AC0AF350004B850 /* ILCalendarViewController.m */; };
 		069221711AC0CD530004B850 /* ILCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 069221701AC0CD530004B850 /* ILCalendarCell.m */; };
 		0697E9651AC5E77300AD8255 /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0697E9641AC5E77300AD8255 /* TelerikUI.framework */; };
+		06A4D6771B03D1F100F1108C /* UINavigationController+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A4D6761B03D1F100F1108C /* UINavigationController+Orientation.m */; };
 		06B858BE1AF16625006A58FB /* NSDictionary+WithoutNSNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */; };
 		06BD94F41AF1443A00345CFA /* NSArray+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BD94F31AF1443A00345CFA /* NSArray+Reverse.m */; };
 		06C489F91AFD604100DE0E57 /* libPods-Ovatemp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C489F81AFD604100DE0E57 /* libPods-Ovatemp.a */; };
@@ -469,6 +470,8 @@
 		0692216F1AC0CD530004B850 /* ILCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCalendarCell.h; sourceTree = "<group>"; };
 		069221701AC0CD530004B850 /* ILCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCalendarCell.m; sourceTree = "<group>"; };
 		0697E9641AC5E77300AD8255 /* TelerikUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TelerikUI.framework; sourceTree = "<group>"; };
+		06A4D6751B03D1F100F1108C /* UINavigationController+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Orientation.h"; sourceTree = "<group>"; };
+		06A4D6761B03D1F100F1108C /* UINavigationController+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Orientation.m"; sourceTree = "<group>"; };
 		06B858BC1AF16625006A58FB /* NSDictionary+WithoutNSNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+WithoutNSNull.h"; sourceTree = "<group>"; };
 		06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+WithoutNSNull.m"; sourceTree = "<group>"; };
 		06BD94F21AF1443A00345CFA /* NSArray+Reverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Reverse.h"; sourceTree = "<group>"; };
@@ -1547,6 +1550,8 @@
 		5F1C9A2519EDE879000F1FC1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				06A4D6751B03D1F100F1108C /* UINavigationController+Orientation.h */,
+				06A4D6761B03D1F100F1108C /* UINavigationController+Orientation.m */,
 				5F1C9A4C19EDE879000F1FC1 /* RootViewController.h */,
 				5F1C9A4D19EDE879000F1FC1 /* RootViewController.m */,
 				5F1C9A4E19EDE879000F1FC1 /* RootViewController.xib */,
@@ -2493,6 +2498,7 @@
 				5F1C9BA419EDE87A000F1FC1 /* SubscriptionHelper.m in Sources */,
 				06B858BE1AF16625006A58FB /* NSDictionary+WithoutNSNull.m in Sources */,
 				5F1C9C7019EDE87A000F1FC1 /* CycleChartView.m in Sources */,
+				06A4D6771B03D1F100F1108C /* UINavigationController+Orientation.m in Sources */,
 				067AFC371AF2C595000040F2 /* ILDayStore.m in Sources */,
 				5F8C568E19F184C60024552A /* SelectLogInOrSignUpViewController.m in Sources */,
 				5FDAA3AB19F8020F004E7181 /* CycleLengthTableViewCell.m in Sources */,
