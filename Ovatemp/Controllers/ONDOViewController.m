@@ -165,9 +165,9 @@ NSArray *ondoMenuItems;
 {
     PKShippingMethod *freeShipping = [PKShippingMethod summaryItemWithLabel: @"Free Shipping" amount: [NSDecimalNumber decimalNumberWithString: @"0"]];
     freeShipping.identifier = @"freeShipping";
-    freeShipping.detail = @"Arrives in 6-8 weeks.";
+    freeShipping.detail = @"Arrives in 1 week.";
     
-    PKShippingMethod *expressShipping = [PKShippingMethod summaryItemWithLabel: @"Express Shipping" amount: [NSDecimalNumber decimalNumberWithString: @"10"]];
+    PKShippingMethod *expressShipping = [PKShippingMethod summaryItemWithLabel: @"Express Shipping" amount: [NSDecimalNumber decimalNumberWithString: @"15"]];
     expressShipping.identifier = @"expressShipping";
     expressShipping.detail = @"Arrives in 2-3 days";
     
