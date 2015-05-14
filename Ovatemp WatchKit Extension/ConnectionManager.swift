@@ -126,7 +126,11 @@ public class ConnectionManager {
                         for day in dayArray {
                             
                             let dateInfo = day["date"] as? String
-                            let peakDate = dateFormatter.dateFromString(responseDict["peak_date"] as! String)
+                            
+                            var peakDate : NSDate?
+                            if let peakDateString = responseDict["peak_date"] as? String {
+                                peakDate = dateFormatter.dateFromString(peakDateString)
+                            }
                             
                             if(dateInfo == todayDate) {
                                 self.selectedDay = Day(response: day, peakDate: peakDate)

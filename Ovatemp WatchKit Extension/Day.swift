@@ -51,21 +51,19 @@ public class Day {
         
         // Check Fertility Window
         
-        if inFertilityWindow!{
-            print("IN FERTILITY WINDOW")
-        }else{
-            print("NOT IN FERTILITY WINDOW")
-        }
-        
-        if inFertilityWindow!{
-            if cervicalFluid == "eggwhite"{
-                // Peak fertility
-                return Fertility(status: FertilityStatus.peakFertility, cycle: FertilityCycle.empty)
-                
-            }else{
-                // Regular fertility
-                return Fertility(status: FertilityStatus.fertile, cycle: FertilityCycle.empty)
+        if let inFertilityWindow = inFertilityWindow {
+            
+            if inFertilityWindow{
+                if cervicalFluid == "eggwhite"{
+                    // Peak fertility
+                    return Fertility(status: FertilityStatus.peakFertility, cycle: FertilityCycle.empty)
+                    
+                }else{
+                    // Regular fertility
+                    return Fertility(status: FertilityStatus.fertile, cycle: FertilityCycle.empty)
+                }
             }
+            
         }
         
         // Check Cycle Phases
