@@ -163,7 +163,7 @@
                                                                         @"name" : fullName}
                                                 }};
     
-    DDLogInfo(@"PARAMS: %@", params);
+    //DDLogInfo(@"PARAMS: %@", params);
 
     [self POST: url parameters: params success:^(NSURLSessionDataTask *task, id responseObject) {
         completion(responseObject, nil);

@@ -13,5 +13,4 @@
 @property (weak, nonatomic) IBOutlet UILabel *ondoLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-
 @end

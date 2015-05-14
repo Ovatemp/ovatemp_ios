@@ -10,12 +10,18 @@
 #import "ONDO.h"
 #import "WebViewController.h"
 #import "ONDOSettingViewController.h"
+#import "ApplePayHelper.h"
+
+@import PassKit;
 
 #import <sys/utsname.h> // for device name
 #import "Localytics.h"
 #import <CCMPopup/CCMPopupTransitioning.h>
 
 @interface WelcomeONDOViewController () <ONDODelegate>
+
+@property (nonatomic) ApplePayHelper *applePayHelper;
+@property (nonatomic) PKPaymentButton *payButton;
 
 @end
 
@@ -25,17 +31,14 @@
 {
     [super viewDidLoad];
     
+    ApplePayHelper *applePayhelper = [[ApplePayHelper alloc] initWithViewController: self];
+    applePayhelper.paymentButtonStyle = PKPaymentButtonStyleWhiteOutline;
+    self.applePayHelper = applePayhelper;
+    
+    [self addApplePayButton];
     [self customizeAppearance];
     [self setUserDefaultsCount];
     
-    // Do any additional setup after loading the view.
-    NSLog(@"%@", machineName());
-    NSString *deviceName = machineName();
-    
-    if ([deviceName isEqualToString:@"iPhone4,1"]) {
-        // hide squished ondo image
-        self.ondoImageView.hidden = YES;
-    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,6 +53,37 @@
     [userDefaults synchronize];
 }
 
+- (void)updateViewConstraints
+{
+    [super updateViewConstraints];
+    
+    NSDictionary *viewsDictionary = @{@"yesButton" : self.yesButton,
+                                      @"whiteSpace" : self.whiteSpace,
+                                      @"payButton" : self.payButton};
+    
+    NSArray *buttonHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat: @"H:|-20-[payButton]-20-|"
+                                                                                   options: 0
+                                                                                   metrics: nil
+                                                                                     views: viewsDictionary];
+    
+    NSArray *buttonVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat: @"V:[whiteSpace]-10-[payButton(==40)]-10-[yesButton]"
+                                                                                 options: 0
+                                                                                 metrics: nil
+                                                                                   views: viewsDictionary];
+    
+    NSLayoutConstraint *buttonCenterConstraint =   [NSLayoutConstraint constraintWithItem: self.payButton
+                                                                                attribute: NSLayoutAttributeCenterX
+                                                                                relatedBy: NSLayoutRelationEqual
+                                                                                   toItem: self.view
+                                                                                attribute: NSLayoutAttributeCenterX
+                                                                               multiplier: 1
+                                                                                 constant: 0];
+    
+    [self.view addConstraints: buttonHorizontalConstraints];
+    [self.view addConstraints: buttonVerticalConstraints];
+    [self.view addConstraint: buttonCenterConstraint];
+}
+
 #pragma mark - Appearance
 
 - (void)customizeAppearance
@@ -59,6 +93,12 @@
     
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(247/255.0) green:(247/255.0) blue:(247/255.0) alpha:1];
     self.navigationController.navigationBar.tintColor = [UIColor ovatempAquaColor];
+}
+
+- (void)addApplePayButton
+{
+    self.payButton = [self.applePayHelper paymentButton];
+    [self.view addSubview: self.payButton];
 }
 
 - (IBAction)doONDOPairing:(id)sender

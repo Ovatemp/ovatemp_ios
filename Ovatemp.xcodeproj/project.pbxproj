@@ -48,6 +48,7 @@
 		069221711AC0CD530004B850 /* ILCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 069221701AC0CD530004B850 /* ILCalendarCell.m */; };
 		0697E9651AC5E77300AD8255 /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0697E9641AC5E77300AD8255 /* TelerikUI.framework */; };
 		06A4D6771B03D1F100F1108C /* UINavigationController+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A4D6761B03D1F100F1108C /* UINavigationController+Orientation.m */; };
+		06AB70DA1B0548ED00AEC467 /* ApplePayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AB70D91B0548ED00AEC467 /* ApplePayHelper.m */; };
 		06B858BE1AF16625006A58FB /* NSDictionary+WithoutNSNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */; };
 		06BD94F41AF1443A00345CFA /* NSArray+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BD94F31AF1443A00345CFA /* NSArray+Reverse.m */; };
 		06C489F91AFD604100DE0E57 /* libPods-Ovatemp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C489F81AFD604100DE0E57 /* libPods-Ovatemp.a */; };
@@ -472,6 +473,8 @@
 		0697E9641AC5E77300AD8255 /* TelerikUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TelerikUI.framework; sourceTree = "<group>"; };
 		06A4D6751B03D1F100F1108C /* UINavigationController+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Orientation.h"; sourceTree = "<group>"; };
 		06A4D6761B03D1F100F1108C /* UINavigationController+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Orientation.m"; sourceTree = "<group>"; };
+		06AB70D81B0548ED00AEC467 /* ApplePayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplePayHelper.h; sourceTree = "<group>"; };
+		06AB70D91B0548ED00AEC467 /* ApplePayHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplePayHelper.m; sourceTree = "<group>"; };
 		06B858BC1AF16625006A58FB /* NSDictionary+WithoutNSNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+WithoutNSNull.h"; sourceTree = "<group>"; };
 		06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+WithoutNSNull.m"; sourceTree = "<group>"; };
 		06BD94F21AF1443A00345CFA /* NSArray+Reverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Reverse.h"; sourceTree = "<group>"; };
@@ -1109,6 +1112,8 @@
 		063D146E1AF93A7500B23C69 /* ONDO */ = {
 			isa = PBXGroup;
 			children = (
+				06AB70D81B0548ED00AEC467 /* ApplePayHelper.h */,
+				06AB70D91B0548ED00AEC467 /* ApplePayHelper.m */,
 				5F1C9C8519EF16DB000F1FC1 /* ONDOViewController.h */,
 				5F1C9C8619EF16DB000F1FC1 /* ONDOViewController.m */,
 				5F1C9C8719EF16DB000F1FC1 /* ONDOViewController.xib */,
@@ -2433,6 +2438,7 @@
 				5F1C9C6919EDE87A000F1FC1 /* CalendarCell.m in Sources */,
 				5F1C9B6B19EDE87A000F1FC1 /* UIViewController+Status.m in Sources */,
 				5F1C9C7219EDE87A000F1FC1 /* DayCell.m in Sources */,
+				06AB70DA1B0548ED00AEC467 /* ApplePayHelper.m in Sources */,
 				5F1C9B7619EDE87A000F1FC1 /* GradientButton.m in Sources */,
 				5F223F3019F014620003AF64 /* ProfileTableViewController.m in Sources */,
 				06615E1D1AF01E22000696D1 /* ILFertility.m in Sources */,

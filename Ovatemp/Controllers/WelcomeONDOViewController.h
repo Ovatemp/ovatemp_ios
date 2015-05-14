@@ -12,4 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *ondoImageView;
 
+@property (weak, nonatomic) IBOutlet UIView *whiteSpace;
+@property (weak, nonatomic) IBOutlet UIButton *yesButton;
+
 @end
