@@ -54,16 +54,25 @@
     [self.activityView stopAnimating];
 }
 
-- (BOOL)hasPeriod
+- (BOOL)canSelectCervicalFluid
 {
     ILDay *selectedDay = [self.delegate getSelectedDay];
-
-    return selectedDay.period.length != 0;
+    
+    if ([selectedDay.period isEqualToString: @"light"] ||
+        [selectedDay.period isEqualToString: @"medium"] ||
+        [selectedDay.period isEqualToString: @"heavy"]) {
+        
+        return NO;
+        
+    }else{
+        // No Data, None, or Spotting
+        return YES;
+    }
 }
 
 - (IBAction)didSelectDry:(id)sender
 {
-    if ([self hasPeriod]) {
+    if (![self canSelectCervicalFluid]) {
         [self.delegate showAlertForType: @"cervicalFluid"];
         return;
     }
@@ -95,7 +104,7 @@
 
 - (IBAction)didSelectSticky:(id)sender
 {
-    if ([self hasPeriod]) {
+    if (![self canSelectCervicalFluid]) {
         [self.delegate showAlertForType: @"cervicalFluid"];
         return;
     }
@@ -126,7 +135,7 @@
 }
 - (IBAction)didSelectCreamy:(id)sender
 {
-    if ([self hasPeriod]) {
+    if (![self canSelectCervicalFluid]) {
         [self.delegate showAlertForType: @"cervicalFluid"];
         return;
     }
@@ -157,7 +166,7 @@
 }
 - (IBAction)didSelectEggwhite:(id)sender
 {
-    if ([self hasPeriod]) {
+    if (![self canSelectCervicalFluid]) {
         [self.delegate showAlertForType: @"cervicalFluid"];
         return;
     }

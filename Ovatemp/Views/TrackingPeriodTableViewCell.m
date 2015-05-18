@@ -68,11 +68,6 @@
 
 - (IBAction)didSelectNone:(id)sender
 {
-    if ([self hasCervicalFluid]) {
-        [self.delegate showAlertForType: @"period"];
-        return;
-    }
-    
     if (self.selectedPeriodType == PeriodSelectionNone) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
         
@@ -101,11 +96,6 @@
 
 - (IBAction)didSelectSpotting:(id)sender
 {
-    if ([self hasCervicalFluid]) {
-        [self.delegate showAlertForType: @"period"];
-        return;
-    }
-    
     if (self.selectedPeriodType == PeriodSelectionSpotting) {
         self.selectedPeriodType = PeriodSelectionNoSelection;
         

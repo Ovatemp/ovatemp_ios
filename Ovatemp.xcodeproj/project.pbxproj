@@ -51,7 +51,6 @@
 		06AB70DA1B0548ED00AEC467 /* ApplePayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AB70D91B0548ED00AEC467 /* ApplePayHelper.m */; };
 		06B858BE1AF16625006A58FB /* NSDictionary+WithoutNSNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */; };
 		06BD94F41AF1443A00345CFA /* NSArray+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BD94F31AF1443A00345CFA /* NSArray+Reverse.m */; };
-		06C489F91AFD604100DE0E57 /* libPods-Ovatemp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C489F81AFD604100DE0E57 /* libPods-Ovatemp.a */; };
 		06C55B221AAF4BD600EDE74A /* ILTrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */; };
 		06F7A4DC1AC4D3F30054CEDF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F7A4DA1AC4D3F30054CEDF /* Fabric.framework */; };
 		06F8FA4E1AC3619C006EC93F /* CycleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F8FA4D1AC3619C006EC93F /* CycleCollectionViewCell.m */; };
@@ -365,7 +364,6 @@
 		C388C73918FC45B100B622FB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C388C73818FC45B100B622FB /* CoreData.framework */; };
 		C388C73B18FC45B800B622FB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C388C73A18FC45B800B622FB /* SystemConfiguration.framework */; };
 		C388C73D18FC45BD00B622FB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C388C73C18FC45BD00B622FB /* libz.dylib */; };
-		C3BF8FBF1898409C00572F43 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BF8FBE1898409C00572F43 /* XCTest.framework */; };
 		C3BF8FC01898409C00572F43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C50FE189028190053A884 /* Foundation.framework */; };
 		C3BF8FC11898409C00572F43 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36C5102189028190053A884 /* UIKit.framework */; };
 		C3BF8FC71898409C00572F43 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3BF8FC51898409C00572F43 /* InfoPlist.strings */; };
@@ -479,7 +477,6 @@
 		06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+WithoutNSNull.m"; path = "../NSDictionary+WithoutNSNull.m"; sourceTree = "<group>"; };
 		06BD94F21AF1443A00345CFA /* NSArray+Reverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+Reverse.h"; path = "../NSArray+Reverse.h"; sourceTree = "<group>"; };
 		06BD94F31AF1443A00345CFA /* NSArray+Reverse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Reverse.m"; path = "../NSArray+Reverse.m"; sourceTree = "<group>"; };
-		06C489F81AFD604100DE0E57 /* libPods-Ovatemp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Ovatemp.a"; path = "Pods/../build/Debug-iphoneos/libPods-Ovatemp.a"; sourceTree = "<group>"; };
 		06C55B201AAF4BD600EDE74A /* ILTrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTrackingViewController.h; sourceTree = "<group>"; };
 		06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTrackingViewController.m; sourceTree = "<group>"; };
 		06F7A4DA1AC4D3F30054CEDF /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
@@ -626,8 +623,6 @@
 		5F1C9A5C19EDE879000F1FC1 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		5F1C9A5E19EDE879000F1FC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5F1C9A5F19EDE879000F1FC1 /* example.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = example.html; sourceTree = "<group>"; };
-		5F1C9A6119EDE879000F1FC1 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
-		5F1C9A6219EDE879000F1FC1 /* libGoogleConversionTracking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleConversionTracking.a; sourceTree = "<group>"; };
 		5F1C9A6419EDE879000F1FC1 /* SubscriptionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscriptionHelper.h; sourceTree = "<group>"; };
 		5F1C9A6519EDE879000F1FC1 /* SubscriptionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscriptionHelper.m; sourceTree = "<group>"; };
 		5F1C9A6919EDE879000F1FC1 /* BackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BackArrow.png; path = ../BackArrow.png; sourceTree = "<group>"; };
@@ -846,7 +841,6 @@
 		5F58677519ED802400D2B58E /* NegativeBig@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NegativeBig@2x.png"; path = "../../../NegativeBig@2x.png"; sourceTree = "<group>"; };
 		5F58690419ED802400D2B58E /* PositiveBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PositiveBig.png; path = ../../../PositiveBig.png; sourceTree = "<group>"; };
 		5F58690519ED802400D2B58E /* PositiveBig@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PositiveBig@2x.png"; path = "../../../PositiveBig@2x.png"; sourceTree = "<group>"; };
-		5F586A2C19ED89DA00D2B58E /* libPods-OvatempTests-KIF.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-OvatempTests-KIF.a"; path = "Pods/build/Release-iphoneos/libPods-OvatempTests-KIF.a"; sourceTree = "<group>"; };
 		5F6561D619FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TryingToConceiveOrAvoidTableViewCell.h; sourceTree = "<group>"; };
 		5F6561D719FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TryingToConceiveOrAvoidTableViewCell.m; sourceTree = "<group>"; };
 		5F6561D819FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TryingToConceiveOrAvoidTableViewCell.xib; sourceTree = "<group>"; };
@@ -925,18 +919,15 @@
 		87252F24C5BE824C8E625766 /* Pods-OvatempTests.production_release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.production_release.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.production_release.xcconfig"; sourceTree = "<group>"; };
 		8C27198765A2F4A98B7F1EA1 /* Pods-Ovatemp.staging_debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ovatemp.staging_debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ovatemp/Pods-Ovatemp.staging_debug.xcconfig"; sourceTree = "<group>"; };
 		98B37DE25C5757D0462E9525 /* Pods-OvatempTests.staging_release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OvatempTests.staging_release.xcconfig"; path = "Pods/Target Support Files/Pods-OvatempTests/Pods-OvatempTests.staging_release.xcconfig"; sourceTree = "<group>"; };
-		C34AE14218FC4C64003209B2 /* libGoogleConversionTracking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleConversionTracking.a; path = Ovatemp/Frameworks/libGoogleConversionTracking.a; sourceTree = "<group>"; };
 		C36C50FB189028190053A884 /* Ovatemp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ovatemp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C36C50FE189028190053A884 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C36C5100189028190053A884 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C36C5102189028190053A884 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		C388C73418FC459B00B622FB /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = Ovatemp/Frameworks/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		C388C73618FC45AA00B622FB /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		C388C73818FC45B100B622FB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C388C73A18FC45B800B622FB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C388C73C18FC45BD00B622FB /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C3BF8FBD1898409C00572F43 /* OvatempTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OvatempTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3BF8FBE1898409C00572F43 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C3BF8FC41898409C00572F43 /* OvatempTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OvatempTests-Info.plist"; sourceTree = "<group>"; };
 		C3BF8FC61898409C00572F43 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C3BF8FCA1898409C00572F43 /* OvatempTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OvatempTests-Prefix.pch"; sourceTree = "<group>"; };
@@ -962,7 +953,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06C489F91AFD604100DE0E57 /* libPods-Ovatemp.a in Frameworks */,
 				C36C5103189028190053A884 /* UIKit.framework in Frameworks */,
 				0608C0B21B03B9B500D0C2B8 /* Crashlytics.framework in Frameworks */,
 				C388C73B18FC45B800B622FB /* SystemConfiguration.framework in Frameworks */,
@@ -988,7 +978,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3BF8FBF1898409C00572F43 /* XCTest.framework in Frameworks */,
 				C3BF8FC11898409C00572F43 /* UIKit.framework in Frameworks */,
 				C3BF8FC01898409C00572F43 /* Foundation.framework in Frameworks */,
 				9C4D13D86AB546AD9A46ADE4 /* libPods-OvatempTests.a in Frameworks */,
@@ -1459,7 +1448,6 @@
 				5F1C9B4419EDE87A000F1FC1 /* Ovatemp-Info.plist */,
 				5F1C9B4519EDE87A000F1FC1 /* Ovatemp-Prefix.pch */,
 				5F1C9B4619EDE87A000F1FC1 /* Ovatemp.entitlements */,
-				5F1C9A6019EDE879000F1FC1 /* Frameworks */,
 			);
 			path = Ovatemp;
 			sourceTree = "<group>";
@@ -1555,15 +1543,6 @@
 				06FEA5C91A9D3002002BDFC2 /* Other */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		5F1C9A6019EDE879000F1FC1 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5F1C9A6119EDE879000F1FC1 /* libGoogleAnalyticsServices.a */,
-				5F1C9A6219EDE879000F1FC1 /* libGoogleConversionTracking.a */,
-			);
-			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		5F1C9A6319EDE879000F1FC1 /* Helpers */ = {
@@ -1863,28 +1842,23 @@
 		C36C50FD189028190053A884 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				06C489F81AFD604100DE0E57 /* libPods-Ovatemp.a */,
 				06712ED61ADD8475007CEEF3 /* GameKit.framework */,
 				5F1C971A19EDD455000F1FC1 /* Security.framework */,
 				5F1C971819EDD44F000F1FC1 /* QuickLook.framework */,
 				5F1C971619EDD444000F1FC1 /* MobileCoreServices.framework */,
 				5F1C971419EDD433000F1FC1 /* CoreText.framework */,
 				5F1C971219EDD42D000F1FC1 /* AssetsLibrary.framework */,
-				5F586A2C19ED89DA00D2B58E /* libPods-OvatempTests-KIF.a */,
 				0EC9830A19AB8619009A5730 /* HealthKit.framework */,
-				C34AE14218FC4C64003209B2 /* libGoogleConversionTracking.a */,
 				C388C73C18FC45BD00B622FB /* libz.dylib */,
 				C388C73A18FC45B800B622FB /* SystemConfiguration.framework */,
 				C388C73818FC45B100B622FB /* CoreData.framework */,
 				C388C73618FC45AA00B622FB /* AdSupport.framework */,
-				C388C73418FC459B00B622FB /* libGoogleAnalyticsServices.a */,
 				83EB3F3918AEAD2600EA91AC /* QuartzCore.framework */,
 				C36C50FE189028190053A884 /* Foundation.framework */,
 				C36C5100189028190053A884 /* CoreGraphics.framework */,
 				C36C5102189028190053A884 /* UIKit.framework */,
 				F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */,
 				FAA41CA4FF684F1FADD9F160 /* libPods-OvatempTests.a */,
-				C3BF8FBE1898409C00572F43 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
