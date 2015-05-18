@@ -413,26 +413,26 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0608C0AE1B03B90F00D0C2B8 /* OnboardingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnboardingHelper.h; sourceTree = "<group>"; };
-		0608C0AF1B03B90F00D0C2B8 /* OnboardingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnboardingHelper.m; sourceTree = "<group>"; };
+		0608C0AE1B03B90F00D0C2B8 /* OnboardingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OnboardingHelper.h; path = ../Controllers/OnboardingHelper.h; sourceTree = "<group>"; };
+		0608C0AF1B03B90F00D0C2B8 /* OnboardingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OnboardingHelper.m; path = ../Controllers/OnboardingHelper.m; sourceTree = "<group>"; };
 		0608C0B11B03B9B500D0C2B8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		060D180A1AC330FA00B7DBA2 /* ILCycleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCycleViewController.h; sourceTree = "<group>"; };
 		060D180B1AC330FA00B7DBA2 /* ILCycleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCycleViewController.m; sourceTree = "<group>"; };
-		060EFC421B015C4D00C0B6C0 /* PaymentHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentHelper.h; sourceTree = "<group>"; };
-		060EFC431B015C4D00C0B6C0 /* PaymentHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentHelper.m; sourceTree = "<group>"; };
+		060EFC421B015C4D00C0B6C0 /* PaymentHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentHelper.h; path = ../PaymentHelper.h; sourceTree = "<group>"; };
+		060EFC431B015C4D00C0B6C0 /* PaymentHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentHelper.m; path = ../PaymentHelper.m; sourceTree = "<group>"; };
 		0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		063942301AD71B8B00BE7605 /* ONDOSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONDOSettingViewController.h; sourceTree = "<group>"; };
 		063942311AD71B8B00BE7605 /* ONDOSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONDOSettingViewController.m; sourceTree = "<group>"; };
 		063942321AD71B8B00BE7605 /* ONDOSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ONDOSettingViewController.xib; sourceTree = "<group>"; };
 		063CB2621AE1C131005F2D3A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		0644CE531AE952E1006B4E24 /* TutorialHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialHelper.h; sourceTree = "<group>"; };
-		0644CE541AE952E1006B4E24 /* TutorialHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialHelper.m; sourceTree = "<group>"; };
+		0644CE531AE952E1006B4E24 /* TutorialHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TutorialHelper.h; path = ../Controllers/TutorialHelper.h; sourceTree = "<group>"; };
+		0644CE541AE952E1006B4E24 /* TutorialHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TutorialHelper.m; path = ../Controllers/TutorialHelper.m; sourceTree = "<group>"; };
 		06615E051AEEA6E0000696D1 /* OvatempAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OvatempAPI.h; sourceTree = "<group>"; };
 		06615E061AEEA6E0000696D1 /* OvatempAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OvatempAPI.m; sourceTree = "<group>"; };
 		06615E081AEED396000696D1 /* ILDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILDay.h; sourceTree = "<group>"; };
 		06615E091AEED396000696D1 /* ILDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILDay.m; sourceTree = "<group>"; };
-		06615E0C1AEED4EE000696D1 /* NSArray+ArrayMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ArrayMap.h"; sourceTree = "<group>"; };
-		06615E0D1AEED4EE000696D1 /* NSArray+ArrayMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ArrayMap.m"; sourceTree = "<group>"; };
+		06615E0C1AEED4EE000696D1 /* NSArray+ArrayMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+ArrayMap.h"; path = "../NSArray+ArrayMap.h"; sourceTree = "<group>"; };
+		06615E0D1AEED4EE000696D1 /* NSArray+ArrayMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+ArrayMap.m"; path = "../NSArray+ArrayMap.m"; sourceTree = "<group>"; };
 		06615E0F1AEED7B9000696D1 /* ILCycle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCycle.h; sourceTree = "<group>"; };
 		06615E101AEED7B9000696D1 /* ILCycle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCycle.m; sourceTree = "<group>"; };
 		06615E121AEEDBAD000696D1 /* ILPaginationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILPaginationInfo.h; sourceTree = "<group>"; };
@@ -473,12 +473,12 @@
 		0697E9641AC5E77300AD8255 /* TelerikUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TelerikUI.framework; sourceTree = "<group>"; };
 		06A4D6751B03D1F100F1108C /* UINavigationController+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Orientation.h"; sourceTree = "<group>"; };
 		06A4D6761B03D1F100F1108C /* UINavigationController+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Orientation.m"; sourceTree = "<group>"; };
-		06AB70D81B0548ED00AEC467 /* ApplePayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplePayHelper.h; sourceTree = "<group>"; };
-		06AB70D91B0548ED00AEC467 /* ApplePayHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplePayHelper.m; sourceTree = "<group>"; };
-		06B858BC1AF16625006A58FB /* NSDictionary+WithoutNSNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+WithoutNSNull.h"; sourceTree = "<group>"; };
-		06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+WithoutNSNull.m"; sourceTree = "<group>"; };
-		06BD94F21AF1443A00345CFA /* NSArray+Reverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Reverse.h"; sourceTree = "<group>"; };
-		06BD94F31AF1443A00345CFA /* NSArray+Reverse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Reverse.m"; sourceTree = "<group>"; };
+		06AB70D81B0548ED00AEC467 /* ApplePayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplePayHelper.h; path = ../Controllers/ApplePayHelper.h; sourceTree = "<group>"; };
+		06AB70D91B0548ED00AEC467 /* ApplePayHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplePayHelper.m; path = ../Controllers/ApplePayHelper.m; sourceTree = "<group>"; };
+		06B858BC1AF16625006A58FB /* NSDictionary+WithoutNSNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+WithoutNSNull.h"; path = "../NSDictionary+WithoutNSNull.h"; sourceTree = "<group>"; };
+		06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+WithoutNSNull.m"; path = "../NSDictionary+WithoutNSNull.m"; sourceTree = "<group>"; };
+		06BD94F21AF1443A00345CFA /* NSArray+Reverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+Reverse.h"; path = "../NSArray+Reverse.h"; sourceTree = "<group>"; };
+		06BD94F31AF1443A00345CFA /* NSArray+Reverse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Reverse.m"; path = "../NSArray+Reverse.m"; sourceTree = "<group>"; };
 		06C489F81AFD604100DE0E57 /* libPods-Ovatemp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Ovatemp.a"; path = "Pods/../build/Debug-iphoneos/libPods-Ovatemp.a"; sourceTree = "<group>"; };
 		06C55B201AAF4BD600EDE74A /* ILTrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTrackingViewController.h; sourceTree = "<group>"; };
 		06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTrackingViewController.m; sourceTree = "<group>"; };
@@ -1001,8 +1001,6 @@
 		061C72791AE835060051C868 /* Tutorials */ = {
 			isa = PBXGroup;
 			children = (
-				0644CE531AE952E1006B4E24 /* TutorialHelper.h */,
-				0644CE541AE952E1006B4E24 /* TutorialHelper.m */,
 				0682069B1AE842F3000B006F /* TutorialViewController.h */,
 				0682069C1AE842F3000B006F /* TutorialViewController.m */,
 				068206961AE83D7A000B006F /* TutorialContentViewController.h */,
@@ -1112,8 +1110,6 @@
 		063D146E1AF93A7500B23C69 /* ONDO */ = {
 			isa = PBXGroup;
 			children = (
-				06AB70D81B0548ED00AEC467 /* ApplePayHelper.h */,
-				06AB70D91B0548ED00AEC467 /* ApplePayHelper.m */,
 				5F1C9C8519EF16DB000F1FC1 /* ONDOViewController.h */,
 				5F1C9C8619EF16DB000F1FC1 /* ONDOViewController.m */,
 				5F1C9C8719EF16DB000F1FC1 /* ONDOViewController.xib */,
@@ -1155,14 +1151,6 @@
 		06615E0B1AEED470000696D1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				06615E0C1AEED4EE000696D1 /* NSArray+ArrayMap.h */,
-				06615E0D1AEED4EE000696D1 /* NSArray+ArrayMap.m */,
-				06BD94F21AF1443A00345CFA /* NSArray+Reverse.h */,
-				06BD94F31AF1443A00345CFA /* NSArray+Reverse.m */,
-				06B858BC1AF16625006A58FB /* NSDictionary+WithoutNSNull.h */,
-				06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */,
-				060EFC421B015C4D00C0B6C0 /* PaymentHelper.h */,
-				060EFC431B015C4D00C0B6C0 /* PaymentHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1296,8 +1284,6 @@
 		06FEA5C61A9D2DE9002BDFC2 /* Log In */ = {
 			isa = PBXGroup;
 			children = (
-				0608C0AE1B03B90F00D0C2B8 /* OnboardingHelper.h */,
-				0608C0AF1B03B90F00D0C2B8 /* OnboardingHelper.m */,
 				5F8C568C19F184C60024552A /* SelectLogInOrSignUpViewController.h */,
 				5F8C568D19F184C60024552A /* SelectLogInOrSignUpViewController.m */,
 				5F8C568F19F186C90024552A /* LoginViewController.h */,
@@ -1585,8 +1571,22 @@
 		5F1C9A6319EDE879000F1FC1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0644CE531AE952E1006B4E24 /* TutorialHelper.h */,
+				0644CE541AE952E1006B4E24 /* TutorialHelper.m */,
+				0608C0AE1B03B90F00D0C2B8 /* OnboardingHelper.h */,
+				0608C0AF1B03B90F00D0C2B8 /* OnboardingHelper.m */,
+				060EFC421B015C4D00C0B6C0 /* PaymentHelper.h */,
+				060EFC431B015C4D00C0B6C0 /* PaymentHelper.m */,
+				06AB70D81B0548ED00AEC467 /* ApplePayHelper.h */,
+				06AB70D91B0548ED00AEC467 /* ApplePayHelper.m */,
 				5F1C9A6419EDE879000F1FC1 /* SubscriptionHelper.h */,
 				5F1C9A6519EDE879000F1FC1 /* SubscriptionHelper.m */,
+				06615E0C1AEED4EE000696D1 /* NSArray+ArrayMap.h */,
+				06615E0D1AEED4EE000696D1 /* NSArray+ArrayMap.m */,
+				06BD94F21AF1443A00345CFA /* NSArray+Reverse.h */,
+				06BD94F31AF1443A00345CFA /* NSArray+Reverse.m */,
+				06B858BC1AF16625006A58FB /* NSDictionary+WithoutNSNull.h */,
+				06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";

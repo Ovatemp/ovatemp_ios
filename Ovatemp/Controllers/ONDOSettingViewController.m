@@ -84,13 +84,7 @@
     
     [ondo startScan];
 
-    [TAOverlay showOverlayWithLabel: @"Pairing with ONDO..." Options: TAOverlayOptionOverlayDismissTap];
-    [self performSelector: @selector(showSuccessfull) withObject: self afterDelay: 1];
-}
-
-- (void)showSuccessfull
-{
-    [TAOverlay showOverlayWithLabel: @"Pairing successful!" Options: TAOverlayOptionAutoHide | TAOverlayOptionOverlayTypeSuccess];
+    [self showFakePairing];
 }
 
 - (void)ondoStopScan
@@ -110,6 +104,19 @@
     [userDefaults synchronize];
     
     [ondo stopScan];
+}
+
+#pragma mark - Pairing
+
+- (void)showFakePairing
+{
+    [TAOverlay showOverlayWithLabel: @"Pairing with ONDO..." Options: TAOverlayOptionOverlayDismissTap];
+    [self performSelector: @selector(showSuccessfull) withObject: self afterDelay: 1];
+}
+
+- (void)showSuccessfull
+{
+    [TAOverlay showOverlayWithLabel: @"Pairing successful!" Options: TAOverlayOptionAutoHide | TAOverlayOptionOverlayTypeSuccess];
 }
 
 @end

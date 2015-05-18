@@ -14,7 +14,7 @@
 
 @import PassKit;
 
-#import <sys/utsname.h> // for device name
+#import "TAOverlay.h"
 #import "Localytics.h"
 #import <CCMPopup/CCMPopupTransitioning.h>
 
@@ -38,12 +38,11 @@
     [self addApplePayButton];
     [self customizeAppearance];
     [self setUserDefaultsCount];
-    
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)setUserDefaultsCount
@@ -106,7 +105,6 @@
     [self ondoStartScan];
     
     [Localytics tagEvent: @"User Did Pair ONDO on Sign Up"];
-    [self performSegueWithIdentifier:@"toAlarm" sender:self];
 }
 
 - (IBAction)doNoPairing:(id)sender
@@ -124,19 +122,13 @@
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 
-NSString* machineName() {
-    struct utsname systemInfo;
-    uname(&systemInfo);
-    
-    return [NSString stringWithCString:systemInfo.machine
-                              encoding:NSUTF8StringEncoding];
-}
-
 #pragma mark - ONDO
 
 - (void)ondoStartScan
 {
     ONDO *ondo = [ONDO sharedInstance];
+    
+    [self showFakePairing];
     
     if (ondo.isScanning) {
         return;
@@ -162,6 +154,21 @@ NSString* machineName() {
     }
     
     [ondo stopScan];
+}
+
+#pragma mark - Pairing
+
+- (void)showFakePairing
+{
+    [TAOverlay showOverlayWithLabel: @"Pairing with ONDO..." Options: TAOverlayOptionOverlayDismissTap];
+    [self performSelector: @selector(showSuccessfull) withObject: self afterDelay: 1];
+}
+
+- (void)showSuccessfull
+{
+    [TAOverlay showOverlayWithLabel: @"Pairing successful!" Options: TAOverlayOptionAutoHide | TAOverlayOptionOverlayTypeSuccess];
+    
+    [self performSegueWithIdentifier:@"toAlarm" sender:self];
 }
 
 @end
