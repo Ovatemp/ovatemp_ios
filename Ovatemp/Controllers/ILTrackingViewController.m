@@ -85,7 +85,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+        
     self.lowerDrawer = YES;
     
     [self setUpOndo];
@@ -1460,8 +1460,7 @@
                 NSLog(@"I saved to healthkit");
             }];
         }
-    }
-    else {
+    }else {
         NSLog(@"Could not save to healthkit. No connection could be made");
     }
 }

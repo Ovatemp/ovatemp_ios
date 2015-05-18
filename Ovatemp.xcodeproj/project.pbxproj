@@ -49,6 +49,8 @@
 		0697E9651AC5E77300AD8255 /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0697E9641AC5E77300AD8255 /* TelerikUI.framework */; };
 		06A4D6771B03D1F100F1108C /* UINavigationController+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A4D6761B03D1F100F1108C /* UINavigationController+Orientation.m */; };
 		06AB70DA1B0548ED00AEC467 /* ApplePayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AB70D91B0548ED00AEC467 /* ApplePayHelper.m */; };
+		06ABBEA31B0A805F00EFA959 /* HealthKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ABBEA21B0A805F00EFA959 /* HealthKitHelper.m */; };
+		06ABBEA61B0A8D5600EFA959 /* HKHealthStore+AAPLExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ABBEA51B0A8D5600EFA959 /* HKHealthStore+AAPLExtensions.m */; };
 		06B858BE1AF16625006A58FB /* NSDictionary+WithoutNSNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */; };
 		06BD94F41AF1443A00345CFA /* NSArray+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BD94F31AF1443A00345CFA /* NSArray+Reverse.m */; };
 		06C55B221AAF4BD600EDE74A /* ILTrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */; };
@@ -473,6 +475,10 @@
 		06A4D6761B03D1F100F1108C /* UINavigationController+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+Orientation.m"; path = "../Controllers/UINavigationController+Orientation.m"; sourceTree = "<group>"; };
 		06AB70D81B0548ED00AEC467 /* ApplePayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplePayHelper.h; path = ../Controllers/ApplePayHelper.h; sourceTree = "<group>"; };
 		06AB70D91B0548ED00AEC467 /* ApplePayHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplePayHelper.m; path = ../Controllers/ApplePayHelper.m; sourceTree = "<group>"; };
+		06ABBEA11B0A805F00EFA959 /* HealthKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthKitHelper.h; sourceTree = "<group>"; };
+		06ABBEA21B0A805F00EFA959 /* HealthKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthKitHelper.m; sourceTree = "<group>"; };
+		06ABBEA41B0A8D5600EFA959 /* HKHealthStore+AAPLExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HKHealthStore+AAPLExtensions.h"; sourceTree = "<group>"; };
+		06ABBEA51B0A8D5600EFA959 /* HKHealthStore+AAPLExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HKHealthStore+AAPLExtensions.m"; sourceTree = "<group>"; };
 		06B858BC1AF16625006A58FB /* NSDictionary+WithoutNSNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+WithoutNSNull.h"; path = "../NSDictionary+WithoutNSNull.h"; sourceTree = "<group>"; };
 		06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+WithoutNSNull.m"; path = "../NSDictionary+WithoutNSNull.m"; sourceTree = "<group>"; };
 		06BD94F21AF1443A00345CFA /* NSArray+Reverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+Reverse.h"; path = "../NSArray+Reverse.h"; sourceTree = "<group>"; };
@@ -1548,6 +1554,10 @@
 		5F1C9A6319EDE879000F1FC1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				06ABBEA11B0A805F00EFA959 /* HealthKitHelper.h */,
+				06ABBEA21B0A805F00EFA959 /* HealthKitHelper.m */,
+				06ABBEA41B0A8D5600EFA959 /* HKHealthStore+AAPLExtensions.h */,
+				06ABBEA51B0A8D5600EFA959 /* HKHealthStore+AAPLExtensions.m */,
 				0644CE531AE952E1006B4E24 /* TutorialHelper.h */,
 				0644CE541AE952E1006B4E24 /* TutorialHelper.m */,
 				0608C0AE1B03B90F00D0C2B8 /* OnboardingHelper.h */,
@@ -2399,6 +2409,7 @@
 				5F1C9C5F19EDE87A000F1FC1 /* SharedRelation.m in Sources */,
 				5FE12F791A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.m in Sources */,
 				0692216E1AC0AF350004B850 /* ILCalendarViewController.m in Sources */,
+				06ABBEA61B0A8D5600EFA959 /* HKHealthStore+AAPLExtensions.m in Sources */,
 				5F1E1E211A103457001C22B7 /* TrackingOvulationTestTableViewCell.m in Sources */,
 				5F1C9C6219EDE87A000F1FC1 /* Symptom.m in Sources */,
 				5F1C9B7E19EDE87A000F1FC1 /* TemperatureCellEditView.m in Sources */,
@@ -2461,6 +2472,7 @@
 				5F1C9B7419EDE87A000F1FC1 /* Form.m in Sources */,
 				5F1C99DC19EDE775000F1FC1 /* ONDODevice.m in Sources */,
 				5F223F3519F03B480003AF64 /* SettingsTableViewController.m in Sources */,
+				06ABBEA31B0A805F00EFA959 /* HealthKitHelper.m in Sources */,
 				5F1C9C5A19EDE87A000F1FC1 /* Cycle.m in Sources */,
 				5F1C9C5719EDE87A000F1FC1 /* BaseModel.m in Sources */,
 				06615E111AEED7B9000696D1 /* ILCycle.m in Sources */,
