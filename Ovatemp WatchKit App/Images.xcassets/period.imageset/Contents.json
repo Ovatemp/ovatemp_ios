@@ -7,13 +7,13 @@
     {
       "idiom" : "watch",
       "screenWidth" : "{130,145}",
-      "filename" : "period38.png",
+      "filename" : "PeriodIcon38.png",
       "scale" : "2x"
     },
     {
       "idiom" : "watch",
       "screenWidth" : "{146,165}",
-      "filename" : "period42.png",
+      "filename" : "PeriodIcon42.png",
       "scale" : "2x"
     }
   ],
