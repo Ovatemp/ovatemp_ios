@@ -8,9 +8,28 @@
 
 #import <Foundation/Foundation.h>
 
+@import HealthKit;
+
 typedef void (^CompletionBlock)(id object, NSError *error);
 
+@protocol HealthKitHelperDelegate <NSObject>
+
+@optional
+
+- (HKUnit *)unitForQuantityType:(HKQuantityType *)quantityType;
+
+@end
+
 @interface HealthKitHelper : NSObject
+
+@property (weak, nonatomic) id<HealthKitHelperDelegate> delegate;
+
+/**
+ *  Client supplied dictionary which mapps HKQuantityTypes to HKUnit's.
+ *  This is optional. Client can also implement the unitForQuantityType: delegate method.
+ *  If nothing is supplied, HealthKitHelper will fall back to default units.
+ */
+@property (nonatomic) NSDictionary *unitsForQuantityTypes;
 
 /**
  *  This method creates a singleton object and initializes it.

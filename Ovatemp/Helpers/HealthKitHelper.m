@@ -8,14 +8,12 @@
 
 #import "HealthKitHelper.h"
 
-@import HealthKit;
-
 #import "HKHealthStore+AAPLExtensions.h"
 
 @interface HealthKitHelper ()
 
 @property (nonatomic) HKHealthStore *healthStore;
-@property (nonatomic) NSMutableDictionary *unitForType;
+@property (nonatomic) NSMutableDictionary *units;
 
 @end
 
@@ -89,7 +87,7 @@
             });
             
         }else{
-            HKUnit *unit = self.unitForType[type];
+            HKUnit *unit = [self unitForType: type];
             double value = [mostRecentQuantity doubleValueForUnit: unit];
             
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -108,7 +106,7 @@
     }
     
     HKQuantityType *temperatureType = [HKObjectType quantityTypeForIdentifier: HKQuantityTypeIdentifierBodyTemperature];
-    HKQuantity *temperatureQuantity = [HKQuantity quantityWithUnit: self.unitForType[temperatureType] doubleValue: temp];
+    HKQuantity *temperatureQuantity = [HKQuantity quantityWithUnit: [self unitForType: temperatureType] doubleValue: temp];
     
     HKQuantitySample *temperatureSample = [HKQuantitySample quantitySampleWithType: temperatureType
                                                                           quantity: temperatureQuantity
@@ -158,17 +156,51 @@
     return error;
 }
 
+#pragma mark - Units
+
+- (HKUnit *)unitForType:(HKQuantityType *)quantityType
+{
+    HKUnit *unit;
+    
+    // Get unit from user supplied dictionary.
+    if (self.unitsForQuantityTypes) {
+        unit = self.unitsForQuantityTypes[quantityType];
+        if (unit) {
+            return unit;
+        }
+    }
+    
+    // Get unit from delegate
+    if ([self.delegate respondsToSelector: @selector(unitForQuantityType:)]){
+        unit = [self.delegate unitForQuantityType: quantityType];
+        if (unit) {
+            return unit;
+        }
+    }
+    
+    // If nothing is supplied, fall back to defaults.
+    unit = self.units[quantityType];
+    
+    return unit;
+}
+
 #pragma mark - Set/Get
 
-- (NSMutableDictionary *)unitForType
+- (NSMutableDictionary *)units
 {
-    if (!_unitForType) {
-        _unitForType = [[NSMutableDictionary alloc] init];
-        [_unitForType setObject: [HKUnit inchUnit] forKey: HKQuantityTypeIdentifierHeight];
-        [_unitForType setObject: [HKUnit poundUnit] forKey: HKQuantityTypeIdentifierBodyMass];
-        [_unitForType setObject: [HKUnit degreeFahrenheitUnit] forKey: HKQuantityTypeIdentifierBodyTemperature];
+    if (!_units) {
+        _units = [[NSMutableDictionary alloc] initWithDictionary: [self unitDefaults]];
     }
-    return _unitForType;
+    return _units;
+}
+
+#pragma mark - Defaults
+
+- (NSDictionary *)unitDefaults
+{
+    return @{HKQuantityTypeIdentifierHeight : [HKUnit inchUnit],
+             HKQuantityTypeIdentifierBodyMass : [HKUnit poundUnit],
+             HKQuantityTypeIdentifierBodyTemperature : [HKUnit degreeFahrenheitUnit]};
 }
 
 @end
