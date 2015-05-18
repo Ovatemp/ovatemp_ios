@@ -471,8 +471,8 @@
 		0692216F1AC0CD530004B850 /* ILCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCalendarCell.h; sourceTree = "<group>"; };
 		069221701AC0CD530004B850 /* ILCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCalendarCell.m; sourceTree = "<group>"; };
 		0697E9641AC5E77300AD8255 /* TelerikUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TelerikUI.framework; sourceTree = "<group>"; };
-		06A4D6751B03D1F100F1108C /* UINavigationController+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Orientation.h"; sourceTree = "<group>"; };
-		06A4D6761B03D1F100F1108C /* UINavigationController+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Orientation.m"; sourceTree = "<group>"; };
+		06A4D6751B03D1F100F1108C /* UINavigationController+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+Orientation.h"; path = "../Controllers/UINavigationController+Orientation.h"; sourceTree = "<group>"; };
+		06A4D6761B03D1F100F1108C /* UINavigationController+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+Orientation.m"; path = "../Controllers/UINavigationController+Orientation.m"; sourceTree = "<group>"; };
 		06AB70D81B0548ED00AEC467 /* ApplePayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplePayHelper.h; path = ../Controllers/ApplePayHelper.h; sourceTree = "<group>"; };
 		06AB70D91B0548ED00AEC467 /* ApplePayHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplePayHelper.m; path = ../Controllers/ApplePayHelper.m; sourceTree = "<group>"; };
 		06B858BC1AF16625006A58FB /* NSDictionary+WithoutNSNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+WithoutNSNull.h"; path = "../NSDictionary+WithoutNSNull.h"; sourceTree = "<group>"; };
@@ -1541,8 +1541,6 @@
 		5F1C9A2519EDE879000F1FC1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				06A4D6751B03D1F100F1108C /* UINavigationController+Orientation.h */,
-				06A4D6761B03D1F100F1108C /* UINavigationController+Orientation.m */,
 				5F1C9A4C19EDE879000F1FC1 /* RootViewController.h */,
 				5F1C9A4D19EDE879000F1FC1 /* RootViewController.m */,
 				5F1C9A4E19EDE879000F1FC1 /* RootViewController.xib */,
@@ -1587,6 +1585,8 @@
 				06BD94F31AF1443A00345CFA /* NSArray+Reverse.m */,
 				06B858BC1AF16625006A58FB /* NSDictionary+WithoutNSNull.h */,
 				06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */,
+				06A4D6751B03D1F100F1108C /* UINavigationController+Orientation.h */,
+				06A4D6761B03D1F100F1108C /* UINavigationController+Orientation.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";

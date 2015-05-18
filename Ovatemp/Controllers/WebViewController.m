@@ -20,54 +20,58 @@
 
 + (id)withURL:(NSString *)url
 {
-  id controller = [[self alloc] initWithNibName:@"WebViewController" bundle:nil];
-  [(WebViewController *)controller setURL:url];
-  return controller;
+    id controller = [[self alloc] initWithNibName:@"WebViewController" bundle:nil];
+    [(WebViewController *)controller setURL:url];
+    return controller;
 }
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
-  self.webView.delegate = self;
+    [super viewDidLoad];
     
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemDone target: self action: @selector(didSelectDone)];
-    self.navigationItem.rightBarButtonItem = doneButton;
+    self.webView.delegate = self;
+    
+    if ([self.navigationController.viewControllers count] == 1) {
+        // Presented modally
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemDone target: self action: @selector(didSelectDone)];
+        self.navigationItem.rightBarButtonItem = doneButton;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-  [super viewWillAppear:animated];
-  [self startLoading];
-  self.tabBarController.tabBar.hidden = YES;
-  self.webView.hidden = YES;
+    [super viewWillAppear:animated];
+
+    [self startLoading];
+
+    self.tabBarController.tabBar.hidden = YES;
+    self.webView.hidden = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-  [super viewWillDisappear:animated];
-  self.tabBarController.tabBar.hidden = NO;
+    [super viewWillDisappear:animated];
+
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-  [super viewDidAppear:animated];
-  
-  NSURL *url = [NSURL URLWithString:self.URL];
-  NSURLRequest *request = [NSURLRequest requestWithURL:url];
-  [self.webView loadRequest:request];
-  [self.webView setMediaPlaybackRequiresUserAction:NO];
-  [self stopLoading];
-  self.webView.hidden = NO;
+    [super viewDidAppear:animated];
+
+    NSURL *url = [NSURL URLWithString:self.URL];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    [self.webView loadRequest:request];
+    [self.webView setMediaPlaybackRequiresUserAction:NO];
+    [self stopLoading];
+    
+    self.webView.hidden = NO;
 }
 
 - (void)didSelectDone
 {
-    // Differentiate the dismiss when presented modally vs in a navigation stack
-    if ([self.navigationController.viewControllers count] > 1) {
-        [self.navigationController popViewControllerAnimated: YES];
-    }else{
-        [self dismissViewControllerAnimated: YES completion: nil];
-    }
+    [self dismissViewControllerAnimated: YES completion: nil];
 }
 
 # pragma Web view delegate methods

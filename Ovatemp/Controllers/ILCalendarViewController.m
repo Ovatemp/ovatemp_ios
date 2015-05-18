@@ -33,13 +33,11 @@
     
     [self customizeAppearance];
     [self setUpCalendar];
-    
-    //[self loadAssets];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -74,24 +72,38 @@
     return UIInterfaceOrientationMaskPortrait;
 }
 
-#pragma mark - Network
+- (void)updateViewConstraints
+{
+    [super updateViewConstraints];
+    
+    NSDictionary *viewsDictionary = @{@"calendarView" : self.calendarView,
+                                      @"infoView" : self.infoView};
+    
+    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat: @"V:|-0-[calendarView]-0-[infoView]"
+                                                                           options: 0
+                                                                           metrics: nil
+                                                                             views: viewsDictionary];
+    
+    NSArray *calendarConstraintsHorizontal = [NSLayoutConstraint constraintsWithVisualFormat: @"H:|-0-[calendarView]-0-|"
+                                                                                     options: 0
+                                                                                     metrics: nil
+                                                                                       views: viewsDictionary];
+    
+    NSLayoutConstraint *calendarHeightConstraint = [NSLayoutConstraint constraintWithItem: self.calendarView
+                                                                                attribute: NSLayoutAttributeHeight
+                                                                                relatedBy: NSLayoutRelationEqual
+                                                                                   toItem: self.view
+                                                                                attribute: NSLayoutAttributeHeight
+                                                                               multiplier: .88
+                                                                                 constant: 0];
+    
+    
+    [self.view addConstraints: verticalConstraints];
+    [self.view addConstraints: calendarConstraintsHorizontal];
+    [self.view addConstraints: @[calendarHeightConstraint]];
+}
 
-//- (void)loadAssets
-//{
-//    [TAOverlay showOverlayWithLabel: @"Loading Calendar..." Options: TAOverlayOptionOverlaySizeRoundedRect];
-//    
-//    [[OvatempAPI sharedSession] getAllDaysWithCompletion:^(NSArray *days, NSError *error) {
-//        
-//        [TAOverlay hideOverlay];
-//        
-//        if (days) {
-//            [self.dayStore addDays: days];
-//            [self.calendarView reloadData];
-//        }
-//        
-//    }];
-//    
-//}
+#pragma mark - Network
 
 - (void)showInfoPopup
 {    
@@ -114,17 +126,12 @@
 
 - (void)customizeAppearance
 {
-    //self.title = @"Calendar";
-    //[self.navigationController.navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName : [UIColor darkGrayColor]}];
-    
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemDone target: self action: @selector(didSelectDone)];
     self.navigationItem.rightBarButtonItem = doneButton;
 }
 
 - (void)setUpCalendar
 {
-    // Create Calendar View
-    
     self.calendarView = [[TKCalendar alloc] init];
     self.calendarView.translatesAutoresizingMaskIntoConstraints = NO;
     self.calendarView.dataSource = self;
@@ -140,7 +147,6 @@
     presenter.transitionMode = TKCalendarTransitionModeScroll;
     
     [self.view addSubview: self.calendarView];
-    [self addConstraintsToView];
 }
 
 #pragma mark - TKCalendar Data Source
@@ -183,49 +189,6 @@
             dayCell.dayType = CalendarDayTypeNone;
             
         }
-//        
-//        // IN FERTILITY WINDOW
-//        // RETURNS OUT OF METHOD IF TRUE
-//        if (selectedDay.inFertilityWindow) {
-//            dayCell.dayType = CalendarDayTypeFertile;
-//            return;
-//        }
-//        
-//        // CYCLE PHASES
-//        if ([selectedDay.cyclePhase isEqualToString:@"period"]) {
-//            
-//            // CYCLE PHASE = PERIOD
-//            dayCell.dayType = CalendarDayTypePeriod;
-//            
-//        } else if ([selectedDay.cyclePhase isEqualToString:@"ovulation"]) { // fertile
-//            
-//            // CYCLE PHASE = OVULATION
-//            // FERTILE
-//            dayCell.dayType = CalendarDayTypeFertile;
-//            
-//        } else if ([selectedDay.cyclePhase isEqualToString:@"preovulation"]) { // not fertile
-//            
-//            // CYCLE PHASE = PRE-OVULATION
-//            // NOT FERTILE
-//            dayCell.dayType = CalendarDayTypeNone;
-//            
-//            // FERTILE
-//            if ([selectedDay.cervicalFluid isEqualToString:@"sticky"] && !currentUserProfile.tryingToConceive) {
-//                dayCell.dayType = CalendarDayTypeFertile;
-//                
-//            }
-//            
-//        } else if ([selectedDay.cyclePhase isEqualToString:@"postovulation"]) { // not fertile
-//            
-//            // CYCLE PHASE = POST-OVULATION
-//            // NOT FERTILE
-//            dayCell.dayType = CalendarDayTypeNone;
-//            
-//        } else {
-//            
-//            // NOT ENOUGH INFO
-//            dayCell.dayType = CalendarDayTypeNone;
-//        }
         
     }
     
@@ -252,47 +215,6 @@
     if ([self.delegate respondsToSelector: @selector(didSelectDateInCalendar:)]) {
         [self.delegate didSelectDateInCalendar: date];
     }
-}
-
-#pragma mark - Set/Get
-
-//- (ILDayStore *)dayStore
-//{
-//    if (!_dayStore) {
-//        _dayStore = [[ILDayStore alloc] init];
-//    }
-//    return _dayStore;
-//}
-
-#pragma mark - Helper's
-
-- (void)addConstraintsToView
-{
-    NSDictionary *viewsDictionary = @{@"calendarView" : self.calendarView,
-                                      @"infoView" : self.infoView};
-    
-    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat: @"V:|-0-[calendarView]-0-[infoView]"
-                                                                           options: 0
-                                                                           metrics: nil
-                                                                             views: viewsDictionary];
-    
-    NSArray *calendarConstraintsHorizontal = [NSLayoutConstraint constraintsWithVisualFormat: @"H:|-0-[calendarView]-0-|"
-                                                                                     options: 0
-                                                                                     metrics: nil
-                                                                                       views: viewsDictionary];
-    
-    NSLayoutConstraint *calendarHeightConstraint = [NSLayoutConstraint constraintWithItem: self.calendarView
-                                                                                attribute: NSLayoutAttributeHeight
-                                                                                relatedBy: NSLayoutRelationEqual
-                                                                                   toItem: self.view
-                                                                                attribute: NSLayoutAttributeHeight
-                                                                               multiplier: .88
-                                                                                 constant: 0];
-    
-    
-    [self.view addConstraints: verticalConstraints];
-    [self.view addConstraints: calendarConstraintsHorizontal];
-    [self.view addConstraints: @[calendarHeightConstraint]];
 }
 
 @end
