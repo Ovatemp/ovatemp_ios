@@ -35,7 +35,7 @@
 {
     self = [super init]; if (!self) return nil;
     
-    [self setUpHealthKit];
+    //[self setUpHealthKit];
     
     return self;
 }
@@ -101,12 +101,18 @@
 
 - (void)updateTemperature:(float)temp forDate:(NSDate *)date
 {
+    [self updateTemperature: temp forDate: date withCompletion: nil];
+}
+
+- (void)updateTemperature:(float)temp forDate:(NSDate *)date withCompletion:(EmptyCompletionBlock)completion
+{
     if (!date) {
         return;
     }
     
     HKQuantityType *temperatureType = [HKObjectType quantityTypeForIdentifier: HKQuantityTypeIdentifierBodyTemperature];
-    HKQuantity *temperatureQuantity = [HKQuantity quantityWithUnit: [self unitForType: temperatureType] doubleValue: temp];
+    HKUnit *unit = [self unitForType: temperatureType];
+    HKQuantity *temperatureQuantity = [HKQuantity quantityWithUnit: unit doubleValue: temp];
     
     HKQuantitySample *temperatureSample = [HKQuantitySample quantitySampleWithType: temperatureType
                                                                           quantity: temperatureQuantity
@@ -118,8 +124,10 @@
     [healthStore saveObject: temperatureSample withCompletion:^(BOOL success, NSError *error) {
         if (success) {
             DDLogInfo(@"%s : SUCCESFULLY SAVED TEMPERATURE TO HEALTHKIT", __PRETTY_FUNCTION__);
+            if (completion) completion(success, nil);
         }else{
             DDLogError(@"%s : ERROR = %@", __PRETTY_FUNCTION__, error.localizedDescription);
+            if (completion) completion(nil, error);
         }
     }];
 
@@ -164,22 +172,22 @@
     
     // Get unit from user supplied dictionary.
     if (self.unitsForQuantityTypes) {
-        unit = self.unitsForQuantityTypes[quantityType];
+        unit = self.unitsForQuantityTypes[quantityType.identifier];
         if (unit) {
             return unit;
         }
     }
     
-    // Get unit from delegate
-    if ([self.delegate respondsToSelector: @selector(unitForQuantityType:)]){
-        unit = [self.delegate unitForQuantityType: quantityType];
+    // If none found, get unit from delegate
+    if ([self.delegate respondsToSelector: @selector(unitForQuantityTypeIdentifier:)]){
+        unit = [self.delegate unitForQuantityTypeIdentifier: quantityType.identifier];
         if (unit) {
             return unit;
         }
     }
-    
-    // If nothing is supplied, fall back to defaults.
-    unit = self.units[quantityType];
+        
+    // Fall back to defaults.
+    unit = self.units[quantityType.identifier];
     
     return unit;
 }

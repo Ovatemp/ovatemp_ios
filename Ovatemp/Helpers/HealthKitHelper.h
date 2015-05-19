@@ -11,12 +11,13 @@
 @import HealthKit;
 
 typedef void (^CompletionBlock)(id object, NSError *error);
+typedef void (^EmptyCompletionBlock)(BOOL success, NSError *error);
 
 @protocol HealthKitHelperDelegate <NSObject>
 
 @optional
 
-- (HKUnit *)unitForQuantityType:(HKQuantityType *)quantityType;
+- (HKUnit *)unitForQuantityTypeIdentifier:(NSString *)identifier;
 
 @end
 
@@ -31,12 +32,23 @@ typedef void (^CompletionBlock)(id object, NSError *error);
  */
 @property (nonatomic) NSDictionary *unitsForQuantityTypes;
 
+///----------------
+/// @name Initialization
+///----------------
+
 /**
  *  This method creates a singleton object and initializes it.
  *
  *  @return Singleton HealthKitHelper instance.
  */
 + (id)sharedSession;
+
+/**
+ *  Sets up HKHealthStore.
+ *  Need to call this method before accessing HealhKit.
+ *  When this method is called the permissions ViewController will be presented.
+ */
+- (void)setUpHealthKit;
 
 ///-----------------
 /// @name Retrieving values from HealthKit
@@ -67,5 +79,14 @@ typedef void (^CompletionBlock)(id object, NSError *error);
  *  @param date The date that is going to be used to update the temperature on.
  */
 - (void)updateTemperature:(float)temp forDate:(NSDate *)date;
+
+/**
+ *  Updates the user's temperature for the given date.
+ *
+ *  @param temp The temperature (float) value for the given date.
+ *  @param date The date that is going to be used to update the temperature on.
+ *  @param completion Block that is called when finished. Includes a success BOOL, and an error if any.
+ */
+- (void)updateTemperature:(float)temp forDate:(NSDate *)date withCompletion:(EmptyCompletionBlock)completion;
 
 @end

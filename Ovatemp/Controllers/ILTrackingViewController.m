@@ -45,8 +45,7 @@
 #import "ILDayStore.h"
 
 #import "TutorialHelper.h"
-
-@import HealthKit;
+#import "HealthKitHelper.h"
 
 @interface ILTrackingViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDataSource,UITableViewDelegate,TrackingStatusCellDelegate,TrackingTemperatureCellDelegate,TrackingCervicalFluidCellDelegate,TrackingCervicalPositionCellDelegate,TrackingPeriodCellDelegate,TrackingIntercourseCellDelegate,TrackingMoodCellDelegate,TrackingSymptomsCellDelegate,TrackingOvulationTestCell,TrackingPregnancyCellDelegate,TrackingSupplementsCellDelegate,TrackingMedicinesCellDelegate,ILCalendarViewControllerDelegate,ONDODelegate,TrackingNotesViewControllerDelegate>
 
@@ -1442,27 +1441,8 @@
 
 - (void)updateHealthKitWithTemp:(float)temp
 {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey: HKCONNECTION]) {
-        if(temp) {
-            NSString *identifier = HKQuantityTypeIdentifierBodyTemperature;
-            HKQuantityType *tempType = [HKObjectType quantityTypeForIdentifier:identifier];
-            
-            HKQuantity *myTemp = [HKQuantity quantityWithUnit:[HKUnit degreeFahrenheitUnit]
-                                                  doubleValue: temp];
-            
-            HKQuantitySample *temperatureSample = [HKQuantitySample quantitySampleWithType: tempType
-                                                                                  quantity: myTemp
-                                                                                 startDate: self.selectedDay.date
-                                                                                   endDate: self.selectedDay.date
-                                                                                  metadata: nil];
-            HKHealthStore *healthStore = [[HKHealthStore alloc] init];
-            [healthStore saveObject: temperatureSample withCompletion:^(BOOL success, NSError *error) {
-                NSLog(@"I saved to healthkit");
-            }];
-        }
-    }else {
-        NSLog(@"Could not save to healthkit. No connection could be made");
-    }
+    HealthKitHelper *healthKit = [HealthKitHelper sharedSession];
+    [healthKit updateTemperature: temp forDate: self.selectedDay.date];
 }
 
 #pragma mark - Helper's

@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "RootViewController.h"
 #import "SubscriptionHelper.h"
+#import "HealthKitHelper.h"
 
 #import "Stripe.h"
 #import "AFNetworkActivityIndicatorManager.h"
@@ -135,22 +136,8 @@
 
 - (void) setupHealthKit
 {
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:HKCONNECTION];
-    
-    if([HKHealthStore isHealthDataAvailable]) {
-        self.healthStore = [[HKHealthStore alloc] init];
-        HKQuantityType *tempQuantityType = [HKQuantityType quantityTypeForIdentifier: HKQuantityTypeIdentifierBodyTemperature];
-        NSSet *writeDataTypes = [[NSSet alloc] initWithObjects: tempQuantityType, nil];
-        NSSet *readDataTypes = [[NSSet alloc] init];
-        
-        [self.healthStore requestAuthorizationToShareTypes: writeDataTypes readTypes: readDataTypes completion:^(BOOL success, NSError *error) {
-            NSLog(@"Linked to healthkit");
-            if (success) {
-                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:HKCONNECTION];
-            }
-        }];
-    }
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    HealthKitHelper *healthKit = [HealthKitHelper sharedSession];
+    [healthKit setUpHealthKit];
 }
 
 # pragma mark - Reachability
