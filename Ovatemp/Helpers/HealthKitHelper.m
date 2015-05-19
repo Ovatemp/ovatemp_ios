@@ -31,16 +31,7 @@
     return _instance;
 }
 
-- (id)init
-{
-    self = [super init]; if (!self) return nil;
-    
-    //[self setUpHealthKit];
-    
-    return self;
-}
-
-- (void)setUpHealthKit
+- (void)setUpHealthKitWithCompletion:(EmptyCompletionBlock)completion
 {
     if([HKHealthStore isHealthDataAvailable]) {
         self.healthStore = [[HKHealthStore alloc] init];
@@ -53,7 +44,12 @@
                                                     }else{
                                                         DDLogError(@"%s : ERROR CONNECTING TO HEALTHKIT", __PRETTY_FUNCTION__);
                                                     }
+                                                    completion(success, error);
         }];
+    }else{
+        NSError *error = [NSError errorWithDomain: @"com.ovatemp.ovatemp" code: 99
+                                         userInfo: @{NSLocalizedDescriptionKey : @"HealthKit not available."}];
+        completion(nil, error);
     }
 
 }
@@ -124,11 +120,10 @@
     [healthStore saveObject: temperatureSample withCompletion:^(BOOL success, NSError *error) {
         if (success) {
             DDLogInfo(@"%s : SUCCESFULLY SAVED TEMPERATURE TO HEALTHKIT", __PRETTY_FUNCTION__);
-            if (completion) completion(success, nil);
         }else{
             DDLogError(@"%s : ERROR = %@", __PRETTY_FUNCTION__, error.localizedDescription);
-            if (completion) completion(nil, error);
         }
+        if (completion) completion(success, error);
     }];
 
 }
@@ -155,10 +150,10 @@
     NSError *error;
     
     if ([quantityType.identifier isEqualToString: HKQuantityTypeIdentifierBodyMass]) {
-        error = [NSError errorWithDomain: @"com.ovatemp.ovatemp" code: 1 userInfo: @{NSLocalizedDescriptionKey : @"Error getting weight."}];
+        error = [NSError errorWithDomain: @"com.ovatemp.ovatemp" code: 10 userInfo: @{NSLocalizedDescriptionKey : @"Error getting weight."}];
         
     }else if([quantityType.identifier isEqualToString: HKQuantityTypeIdentifierHeight]){
-        error = [NSError errorWithDomain: @"com.ovatemp.ovatemp" code: 2 userInfo: @{NSLocalizedDescriptionKey : @"Error getting height."}];
+        error = [NSError errorWithDomain: @"com.ovatemp.ovatemp" code: 11 userInfo: @{NSLocalizedDescriptionKey : @"Error getting height."}];
     }
     
     return error;

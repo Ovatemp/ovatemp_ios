@@ -17,6 +17,13 @@ typedef void (^EmptyCompletionBlock)(BOOL success, NSError *error);
 
 @optional
 
+/**
+ *  Optional delegate method for getting an HKUnit for the specified HKQUantityTypeIdentifier
+ *
+ *  @param identifier HKQuantityTypeIdentifer that represents an HKQuantityType
+ *
+ *  @return HKUnit for the specified identifier.
+ */
 - (HKUnit *)unitForQuantityTypeIdentifier:(NSString *)identifier;
 
 @end
@@ -47,8 +54,10 @@ typedef void (^EmptyCompletionBlock)(BOOL success, NSError *error);
  *  Sets up HKHealthStore.
  *  Need to call this method before accessing HealhKit.
  *  When this method is called the permissions ViewController will be presented.
+ *
+ *  @param completion Block that is called when finished. Includes a success BOOL, and an error if any.
  */
-- (void)setUpHealthKit;
+- (void)setUpHealthKitWithCompletion:(EmptyCompletionBlock)completion;
 
 ///-----------------
 /// @name Retrieving values from HealthKit

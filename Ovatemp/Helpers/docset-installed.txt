@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/danlozano/Library/Developer/Shared/Documentation/DocSets/com.dlsoftware.healthkit.HealthKit.docset
+Time: 2015-05-19 20:46:19 +0000
