@@ -156,8 +156,8 @@
     if ([cell isKindOfClass:[TKCalendarDayCell class]]) {
         
         ILCalendarCell *dayCell = (ILCalendarCell *)cell;
+        dayCell.hidden = !(dayCell.state & TKCalendarDayStateCurrentMonth);
         ILDay *selectedDay = [self.dayStore dayForDate: dayCell.date];
-        
         UserProfile *currentUserProfile = [UserProfile current];
         
         if (selectedDay.fertility.status == ILFertilityStatusTypePeriod) {
