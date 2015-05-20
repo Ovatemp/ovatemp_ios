@@ -106,7 +106,6 @@ NSMutableArray *heightPickerInchesData;
 {
     HealthKitHelper *healthKit = [HealthKitHelper sharedSession];
     [healthKit getHeightWithCompletion:^(NSNumber *height, NSError *error) {
-        
         if (height) {
             NSInteger feetComponent = [height integerValue] / 12;
             NSInteger inchesComponent = [height integerValue] % 12;
