@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,25 +13,43 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DuZ-hg-c93">
-                        <rect key="frame" x="16" y="18" width="78" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gcy-yN-rkk">
-                        <rect key="frame" x="142" y="19" width="170" height="30"/>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gcy-yN-rkk">
+                        <rect key="frame" x="102" y="14" width="202" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="210" id="naS-hR-Uis"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="naS-hR-Uis"/>
+                            </mask>
+                        </variation>
                     </textField>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DuZ-hg-c93">
+                        <rect key="frame" x="16" y="18" width="78" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="78" id="Tfn-f6-FvN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="DuZ-hg-c93" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="2sV-hK-2vy"/>
+                    <constraint firstItem="gcy-yN-rkk" firstAttribute="leading" secondItem="DuZ-hg-c93" secondAttribute="trailing" constant="8" id="Bns-8L-twD"/>
+                    <constraint firstAttribute="centerY" secondItem="DuZ-hg-c93" secondAttribute="centerY" id="YMz-bM-VaX"/>
+                    <constraint firstAttribute="trailing" secondItem="gcy-yN-rkk" secondAttribute="trailing" constant="16" id="aXf-f1-bmU"/>
+                    <constraint firstAttribute="centerY" secondItem="gcy-yN-rkk" secondAttribute="centerY" constant="-0.5" id="kIt-NW-xRd"/>
+                </constraints>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="textField" destination="gcy-yN-rkk" id="rBc-Nz-6wk"/>
                 <outlet property="titleLabel" destination="DuZ-hg-c93" id="POl-Gq-Hv8"/>
             </connections>
-            <point key="canvasLocation" x="139" y="160"/>
+            <point key="canvasLocation" x="296" y="230"/>
         </tableViewCell>
     </objects>
 </document>

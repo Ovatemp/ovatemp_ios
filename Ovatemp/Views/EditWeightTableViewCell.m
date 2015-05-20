@@ -7,7 +7,11 @@
 //
 
 #import "EditWeightTableViewCell.h"
+
+#import "TAOverlay.h"
+
 #import "UserProfile.h"
+#import "HealthKitHelper.h"
 
 @implementation EditWeightTableViewCell
 
@@ -56,9 +60,14 @@ NSMutableArray *weightPickerData;
 
 #pragma mark - UIPickerViewDelegate methods
 
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    self.weightField.alpha = 0.0;
     self.weightField.text = [NSString stringWithFormat:@"%@", [weightPickerData objectAtIndex:[self.weightPicker selectedRowInComponent:0]]];
+
+    [UIView animateWithDuration: 0.5 animations:^{
+        self.weightField.alpha = 1.0;
+    }];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -74,6 +83,25 @@ NSMutableArray *weightPickerData;
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     return [weightPickerData objectAtIndex:row];
+}
+
+#pragma mark - IBAction's
+
+- (IBAction)didSelectHealthKit:(id)sender
+{
+    HealthKitHelper *healthKit = [HealthKitHelper sharedSession];
+    [healthKit getWeightWithCompletion:^(NSNumber *weight, NSError *error) {
+        if (weight) {
+            NSInteger row = [weight integerValue] - 100;
+            [self.weightPicker selectRow: row inComponent: 0 animated: NO];
+            [self pickerView: self.weightPicker didSelectRow: row inComponent: 0];
+            [TAOverlay showOverlayWithLabel: @"Success!" Options: TAOverlayOptionAutoHide | TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayTypeSuccess];
+        }else{
+            DDLogError(@"ERROR: %@", error);
+            [TAOverlay showOverlayWithLabel: error.localizedDescription Options: TAOverlayOptionAutoHide | TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayTypeError];
+        }
+    }];
+    
 }
 
 @end

@@ -8,13 +8,17 @@
 
 #import "EditHeightTableViewCell.h"
 #import "UserProfile.h"
+#import "TAOverlay.h"
+
+#import "HealthKitHelper.h"
 
 @implementation EditHeightTableViewCell
 
 NSMutableArray *heightPickerFeetData;
 NSMutableArray *heightPickerInchesData;
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     // Initialization code
     
     heightPickerFeetData = [[NSMutableArray alloc] init];
@@ -59,9 +63,14 @@ NSMutableArray *heightPickerInchesData;
 
 #pragma mark - UIPickerViewDelegate methods
 
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    self.heightField.alpha = 0.0;
     self.heightField.text = [NSString stringWithFormat:@"%@ %@", [heightPickerFeetData objectAtIndex:[self.heightPicker selectedRowInComponent:0]], [heightPickerInchesData objectAtIndex:[self.heightPicker selectedRowInComponent:1]]];
+    
+    [UIView animateWithDuration: 0.5 animations:^{
+        self.heightField.alpha = 1.0;
+    }];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -89,6 +98,35 @@ NSMutableArray *heightPickerInchesData;
     {
         return [heightPickerInchesData objectAtIndex:row];
     }
+}
+
+#pragma mark - IBAction's
+
+- (IBAction)didSelectHealthKit:(id)sender
+{
+    HealthKitHelper *healthKit = [HealthKitHelper sharedSession];
+    [healthKit getHeightWithCompletion:^(NSNumber *height, NSError *error) {
+        if (height) {
+            NSInteger feetComponent = [height integerValue] / 12;
+            NSInteger inchesComponent = [height integerValue] % 12;
+            
+            if ((feetComponent >= 3 && feetComponent < 7) && (inchesComponent >= 0 && inchesComponent < 12)) {
+                [self.heightPicker selectRow: (feetComponent - 3) inComponent: 0 animated: NO];
+                [self pickerView: self.heightPicker didSelectRow: (feetComponent - 3) inComponent: 0];
+                
+                [self.heightPicker selectRow: inchesComponent inComponent: 1 animated: NO];
+                [self pickerView: self.heightPicker didSelectRow: inchesComponent inComponent: 1];
+                
+                [TAOverlay showOverlayWithLabel: @"Success!" Options: TAOverlayOptionAutoHide | TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayTypeSuccess];
+            }
+            
+        }else{
+            DDLogError(@"ERROR: %@", error);
+            [TAOverlay showOverlayWithLabel: error.localizedDescription Options: TAOverlayOptionAutoHide | TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayTypeError];
+
+        }
+    }];
+    
 }
 
 @end

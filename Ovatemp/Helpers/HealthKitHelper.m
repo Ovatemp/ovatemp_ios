@@ -31,6 +31,11 @@
     return _instance;
 }
 
+- (void)setUpHealthKit
+{
+    [self setUpHealthKitWithCompletion: nil];
+}
+
 - (void)setUpHealthKitWithCompletion:(EmptyCompletionBlock)completion
 {
     if([HKHealthStore isHealthDataAvailable]) {
@@ -44,12 +49,19 @@
                                                     }else{
                                                         DDLogError(@"%s : ERROR CONNECTING TO HEALTHKIT", __PRETTY_FUNCTION__);
                                                     }
-                                                    completion(success, error);
+                                                    if (completion) {
+                                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                                            completion(success, error);
+                                                        });
+                                                    }
         }];
     }else{
-        NSError *error = [NSError errorWithDomain: @"com.ovatemp.ovatemp" code: 99
-                                         userInfo: @{NSLocalizedDescriptionKey : @"HealthKit not available."}];
-        completion(nil, error);
+        if (completion) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSError *error = [self errorForHealthKitNotAvailable];
+                completion(nil, error);
+            });
+        }
     }
 
 }
@@ -77,7 +89,11 @@
     [self.healthStore aapl_mostRecentQuantitySampleOfType: type predicate: nil completion: ^(HKQuantity *mostRecentQuantity, NSError *error) {
         if (!mostRecentQuantity) {
             
-            NSError *error = [self errorForType: type];
+            if (!error) {
+                error = [self errorForType: type];
+            }
+            DDLogError(@"%s : ERROR = %@", __PRETTY_FUNCTION__, error.localizedDescription);
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion(nil, error);
             });
@@ -85,7 +101,8 @@
         }else{
             HKUnit *unit = [self unitForType: type];
             double value = [mostRecentQuantity doubleValueForUnit: unit];
-            
+            DDLogInfo(@"%s : SUCCESS GETTING VALUE", __PRETTY_FUNCTION__);
+
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion(@(value), nil);
             });
@@ -123,7 +140,11 @@
         }else{
             DDLogError(@"%s : ERROR = %@", __PRETTY_FUNCTION__, error.localizedDescription);
         }
-        if (completion) completion(success, error);
+        if (completion) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(success, error);
+            });
+        }
     }];
 
 }
@@ -150,13 +171,18 @@
     NSError *error;
     
     if ([quantityType.identifier isEqualToString: HKQuantityTypeIdentifierBodyMass]) {
-        error = [NSError errorWithDomain: @"com.ovatemp.ovatemp" code: 10 userInfo: @{NSLocalizedDescriptionKey : @"Error getting weight."}];
+        error = [NSError errorWithDomain: @"com.ovatemp.ovatemp" code: 10 userInfo: @{NSLocalizedDescriptionKey : @"No weight found in HealthKit."}];
         
     }else if([quantityType.identifier isEqualToString: HKQuantityTypeIdentifierHeight]){
-        error = [NSError errorWithDomain: @"com.ovatemp.ovatemp" code: 11 userInfo: @{NSLocalizedDescriptionKey : @"Error getting height."}];
+        error = [NSError errorWithDomain: @"com.ovatemp.ovatemp" code: 11 userInfo: @{NSLocalizedDescriptionKey : @"No height found in HealthKit."}];
     }
     
     return error;
+}
+
+- (NSError *)errorForHealthKitNotAvailable
+{
+    return [NSError errorWithDomain: @"com.ovatemp.ovatemp" code: 99 userInfo: @{NSLocalizedDescriptionKey : @"HealthKit not available."}];
 }
 
 #pragma mark - Units

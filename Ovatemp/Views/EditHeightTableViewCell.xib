@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,25 +14,73 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Height" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ts6-NN-6pv">
-                        <rect key="frame" x="16" y="18" width="62" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ts6-NN-6pv">
+                        <rect key="frame" x="16" y="18" width="51" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="51" id="9zN-lV-1uL"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nhP-7z-PwC">
-                        <rect key="frame" x="142" y="19" width="170" height="30"/>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nhP-7z-PwC">
+                        <rect key="frame" x="177" y="14" width="127" height="30"/>
                         <accessibility key="accessibilityConfiguration" label="heightField"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="95" id="VmI-nb-Tum"/>
+                            <constraint firstAttribute="height" constant="30" id="csG-Y0-iuU"/>
+                            <constraint firstAttribute="width" constant="137" id="e1y-GF-zeS"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="VmI-nb-Tum"/>
+                                <exclude reference="csG-Y0-iuU"/>
+                                <exclude reference="e1y-GF-zeS"/>
+                            </mask>
+                        </variation>
                     </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGw-Gx-QB9">
+                        <rect key="frame" x="75" y="14" width="94" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="94" id="Wq2-Cb-452"/>
+                        </constraints>
+                        <state key="normal" title="Use HealthKit">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="didSelectHealthKit:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wIB-Dj-Jfi"/>
+                        </connections>
+                    </button>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="nhP-7z-PwC" secondAttribute="trailing" constant="16" id="1dc-4M-wBn"/>
+                    <constraint firstAttribute="centerY" secondItem="MGw-Gx-QB9" secondAttribute="centerY" constant="-0.5" id="5k0-2V-Lhg"/>
+                    <constraint firstItem="nhP-7z-PwC" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="7oS-zs-O6s"/>
+                    <constraint firstAttribute="centerY" secondItem="nhP-7z-PwC" secondAttribute="centerY" constant="-0.5" id="Cnx-ed-nNc"/>
+                    <constraint firstItem="nhP-7z-PwC" firstAttribute="leading" secondItem="MGw-Gx-QB9" secondAttribute="trailing" constant="8" id="Io2-bc-wlb"/>
+                    <constraint firstAttribute="centerY" secondItem="ts6-NN-6pv" secondAttribute="centerY" id="WK3-im-bwt"/>
+                    <constraint firstItem="ts6-NN-6pv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="XOP-Nm-3Jx"/>
+                    <constraint firstItem="ts6-NN-6pv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Xey-Kx-Wyy"/>
+                    <constraint firstItem="MGw-Gx-QB9" firstAttribute="leading" secondItem="ts6-NN-6pv" secondAttribute="trailing" constant="8" id="k8J-0i-EP4"/>
+                    <constraint firstAttribute="centerX" secondItem="MGw-Gx-QB9" secondAttribute="centerX" constant="-3" id="qOe-Ak-l3P"/>
+                    <constraint firstItem="MGw-Gx-QB9" firstAttribute="leading" secondItem="ts6-NN-6pv" secondAttribute="trailing" constant="8" id="uUF-8O-tAr"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="XOP-Nm-3Jx"/>
+                        <exclude reference="qOe-Ak-l3P"/>
+                        <exclude reference="uUF-8O-tAr"/>
+                        <exclude reference="7oS-zs-O6s"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="heightField" destination="nhP-7z-PwC" id="afn-wc-G6n"/>
             </connections>
-            <point key="canvasLocation" x="139" y="157"/>
+            <point key="canvasLocation" x="-7" y="289"/>
         </tableViewCell>
     </objects>
 </document>

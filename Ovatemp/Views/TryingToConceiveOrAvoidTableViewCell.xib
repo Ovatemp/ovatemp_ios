@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,26 +13,38 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icn_sperms" translatesAutoresizingMaskIntoConstraints="NO" id="gkz-L9-lOQ">
-                        <rect key="frame" x="8" y="10" width="37" height="37"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_sperms" translatesAutoresizingMaskIntoConstraints="NO" id="gkz-L9-lOQ">
+                        <rect key="frame" x="16" y="10" width="37" height="37"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="37" id="CWQ-td-N6M"/>
+                            <constraint firstAttribute="height" constant="37" id="V3Z-p7-1LM"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trying to Conceive" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fct-Yo-U7k">
-                        <rect key="frame" x="53" y="18" width="143" height="21"/>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EI4-sU-Pl8">
+                        <rect key="frame" x="255" y="13" width="51" height="31"/>
+                    </switch>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trying to Conceive" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fct-Yo-U7k">
+                        <rect key="frame" x="61" y="18" width="143" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EI4-sU-Pl8">
-                        <rect key="frame" x="263" y="13" width="51" height="31"/>
-                    </switch>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="centerY" secondItem="gkz-L9-lOQ" secondAttribute="centerY" id="4fD-Iw-doy"/>
+                    <constraint firstItem="Fct-Yo-U7k" firstAttribute="leading" secondItem="gkz-L9-lOQ" secondAttribute="trailing" constant="8" id="Ehu-oj-x8G"/>
+                    <constraint firstAttribute="centerY" secondItem="EI4-sU-Pl8" secondAttribute="centerY" id="FfV-zd-pye"/>
+                    <constraint firstItem="gkz-L9-lOQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="VzG-Al-g4a"/>
+                    <constraint firstAttribute="trailing" secondItem="EI4-sU-Pl8" secondAttribute="trailing" constant="16" id="dII-US-Igq"/>
+                    <constraint firstAttribute="centerY" secondItem="Fct-Yo-U7k" secondAttribute="centerY" id="dqo-fL-j3t"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="tryingToImage" destination="gkz-L9-lOQ" id="53V-xH-UFs"/>
                 <outlet property="tryingToLabel" destination="Fct-Yo-U7k" id="VYq-6k-MKg"/>
                 <outlet property="tryingToSwitch" destination="EI4-sU-Pl8" id="oNK-K4-Gcy"/>
             </connections>
-            <point key="canvasLocation" x="139" y="158"/>
+            <point key="canvasLocation" x="325" y="180"/>
         </tableViewCell>
     </objects>
     <resources>

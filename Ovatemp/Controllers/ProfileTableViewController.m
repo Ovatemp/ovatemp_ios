@@ -16,6 +16,8 @@
 #import "EditHeightTableViewCell.h"
 #import "EditWeightTableViewCell.h"
 
+#import "HealthKitHelper.h"
+
 @interface ProfileTableViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property TryingToConceiveOrAvoidTableViewCell *tryingToConceiveCell;

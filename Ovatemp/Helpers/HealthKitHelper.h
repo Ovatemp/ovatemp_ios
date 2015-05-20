@@ -54,6 +54,13 @@ typedef void (^EmptyCompletionBlock)(BOOL success, NSError *error);
  *  Sets up HKHealthStore.
  *  Need to call this method before accessing HealhKit.
  *  When this method is called the permissions ViewController will be presented.
+ */
+- (void)setUpHealthKit;
+
+/**
+ *  Sets up HKHealthStore.
+ *  Need to call this method before accessing HealhKit.
+ *  When this method is called the permissions ViewController will be presented.
  *
  *  @param completion Block that is called when finished. Includes a success BOOL, and an error if any.
  */

@@ -14,4 +14,6 @@
 
 @property UIPickerView *weightPicker;
 
+- (IBAction)didSelectHealthKit:(id)sender;
+
 @end
