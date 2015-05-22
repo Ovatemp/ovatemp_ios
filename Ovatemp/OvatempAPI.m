@@ -26,14 +26,14 @@
     dispatch_once(&onceToken, ^{
         
         NSURLSessionConfiguration *urlSessionConfiguration = [self sessionConfiguration];
-        NSString *baseUrlString = [NSString stringWithFormat: @"%@/api", ROOT_URL];
-        NSURL *baseUrl = [NSURL URLWithString: baseUrlString];
-        _instance = [[OvatempAPI alloc] initWithBaseURL: baseUrl sessionConfiguration: urlSessionConfiguration];
-        _instance.requestSerializer = [AFJSONRequestSerializer serializer];
+        NSString *baseUrlString                            = [NSString stringWithFormat: @"%@/api", ROOT_URL];
+        NSURL *baseUrl                                     = [NSURL URLWithString: baseUrlString];
+        _instance                                          = [[OvatempAPI alloc] initWithBaseURL: baseUrl sessionConfiguration: urlSessionConfiguration];
+        _instance.requestSerializer                        = [AFJSONRequestSerializer serializer];
         [_instance.requestSerializer setValue: @"application/vnd.ovatemp.v3" forHTTPHeaderField: @"Accept"];
         [_instance.requestSerializer setValue: [self accessToken] forHTTPHeaderField: @"Authorization"];
-        _instance.responseSerializer = [AFJSONResponseSerializer serializer];
-        
+        _instance.responseSerializer                       = [AFJSONResponseSerializer serializer];
+                
     });
     
     return _instance;
@@ -147,10 +147,10 @@
 {
     NSString *url = @"transactions";
 
-    NSString *fullName = [self fullNameForPayment: payment];
+    NSString *fullName        = [self fullNameForPayment: payment];
     NSString *shippingAddress = [self shippingAddressForPayment: payment];
-    NSString *email = [self emailForPayment: payment];
-    NSString *phone = [self phoneForPayment: payment];
+    NSString *email           = [self emailForPayment: payment];
+    NSString *phone           = [self phoneForPayment: payment];
     
     NSDecimalNumber *amountInCents = [amount decimalNumberByMultiplyingBy: [NSDecimalNumber decimalNumberWithString: @"100"]];
     

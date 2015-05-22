@@ -12,31 +12,31 @@
 
 @interface ILDay : NSObject
 
-@property (nonatomic) NSNumber *day_id;
-@property (nonatomic) NSNumber *temperature; // float
-@property (nonatomic) NSDate *date;
+@property (nonatomic) NSNumber    *day_id;
+@property (nonatomic) NSNumber    *temperature;// float
+@property (nonatomic) NSDate      *date;
 
-@property (nonatomic) BOOL disturbance;
+@property (nonatomic) BOOL        disturbance;
 
-@property (nonatomic) NSString *cervicalFluid;
-@property (nonatomic) NSString *cervicalPosition;
-@property (nonatomic) NSString *vaginalSensation;
-@property (nonatomic) NSString *period;
-@property (nonatomic) NSString *intercourse;
-@property (nonatomic) NSString *ferning;
-@property (nonatomic) NSString *opk;
-@property (nonatomic) NSString *mood;
+@property (nonatomic) NSString    *cervicalFluid;
+@property (nonatomic) NSString    *cervicalPosition;
+@property (nonatomic) NSString    *vaginalSensation;
+@property (nonatomic) NSString    *period;
+@property (nonatomic) NSString    *intercourse;
+@property (nonatomic) NSString    *ferning;
+@property (nonatomic) NSString    *opk;
+@property (nonatomic) NSString    *mood;
 
-@property (nonatomic) NSString *cyclePhase;
-@property (nonatomic) NSNumber *cycleDay; // int
-@property (nonatomic) BOOL inFertilityWindow;
+@property (nonatomic) NSString    *cyclePhase;
+@property (nonatomic) NSNumber    *cycleDay;// int
+@property (nonatomic) BOOL        inFertilityWindow;
 
-@property (nonatomic) NSString *notes;
-@property (nonatomic) BOOL usedOndo;
+@property (nonatomic) NSString    *notes;
+@property (nonatomic) BOOL        usedOndo;
 
-@property (nonatomic) NSArray *supplementIds;
-@property (nonatomic) NSArray *medicineIds;
-@property (nonatomic) NSArray *symptomIds;
+@property (nonatomic) NSArray     *supplementIds;
+@property (nonatomic) NSArray     *medicineIds;
+@property (nonatomic) NSArray     *symptomIds;
 
 @property (nonatomic) ILFertility *fertility;
 

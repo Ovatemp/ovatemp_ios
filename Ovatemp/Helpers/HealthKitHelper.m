@@ -12,7 +12,7 @@
 
 @interface HealthKitHelper ()
 
-@property (nonatomic) HKHealthStore *healthStore;
+@property (nonatomic) HKHealthStore       *healthStore;
 @property (nonatomic) NSMutableDictionary *units;
 
 @end

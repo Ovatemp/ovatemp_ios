@@ -57,6 +57,7 @@
 		06F7A4DC1AC4D3F30054CEDF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F7A4DA1AC4D3F30054CEDF /* Fabric.framework */; };
 		06F8FA4E1AC3619C006EC93F /* CycleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F8FA4D1AC3619C006EC93F /* CycleCollectionViewCell.m */; };
 		0EC9830B19AB8619009A5730 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC9830A19AB8619009A5730 /* HealthKit.framework */; };
+		20AC37FD7A6748731E5D3C3C /* libPods-Ovatemp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F43F1F4F22DB4267A95469D4 /* libPods-Ovatemp.a */; };
 		5F1A3BF419F17614002FFA28 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F1A3BF319F17614002FFA28 /* Login.storyboard */; };
 		5F1C971319EDD42D000F1FC1 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C971219EDD42D000F1FC1 /* AssetsLibrary.framework */; };
 		5F1C971519EDD433000F1FC1 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C971419EDD433000F1FC1 /* CoreText.framework */; };
@@ -977,6 +978,7 @@
 				0697E9651AC5E77300AD8255 /* TelerikUI.framework in Frameworks */,
 				06F7A4DC1AC4D3F30054CEDF /* Fabric.framework in Frameworks */,
 				06712ED71ADD8475007CEEF3 /* GameKit.framework in Frameworks */,
+				20AC37FD7A6748731E5D3C3C /* libPods-Ovatemp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1128,7 +1130,6 @@
 				06615E051AEEA6E0000696D1 /* OvatempAPI.h */,
 				06615E061AEEA6E0000696D1 /* OvatempAPI.m */,
 				06615E041AEEA5F4000696D1 /* Models */,
-				06615E0B1AEED470000696D1 /* Helpers */,
 			);
 			name = "OvatempAPIV3 SDK";
 			sourceTree = "<group>";
@@ -1148,13 +1149,6 @@
 				06615E131AEEDBAD000696D1 /* ILPaginationInfo.m */,
 			);
 			name = Models;
-			sourceTree = "<group>";
-		};
-		06615E0B1AEED470000696D1 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Helpers;
 			sourceTree = "<group>";
 		};
 		06712EB71ADC655A007CEEF3 /* Ovatemp WatchKit App */ = {
