@@ -187,10 +187,7 @@ NSArray *ondoMenuItems;
             
         case 1: // About
         {
-            NSString *url = @"http://ovatemp.com/pages/ondo";
-            WebViewController *webViewController = [WebViewController withURL:url];
-            webViewController.title = @"About ONDO";
-            [self.navigationController pushViewController:webViewController animated:YES];
+            [TutorialHelper showTutorialForOndoInController: self];
             break;
         }
             

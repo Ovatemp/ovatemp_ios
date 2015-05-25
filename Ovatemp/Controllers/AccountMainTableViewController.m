@@ -15,6 +15,8 @@
 #import "SettingsTableViewController.h"
 #import "Helpshift.h"
 
+#import "TutorialHelper.h"
+
 @interface AccountMainTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property AccountTableViewCell *accountTableViewCell;
