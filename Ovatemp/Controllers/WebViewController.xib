@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14D105g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D2134" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebViewController">
@@ -28,18 +28,21 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <items>
                         <barButtonItem image="BackArrowSmall.png" id="EZY-Q1-nzS">
+                            <color key="tintColor" red="0.12549019607843137" green="0.42352941176470588" blue="0.44705882352941179" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="goBack" destination="8e5-ze-yb0" id="99a-pX-84p"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="leO-P6-Qkh"/>
                         <barButtonItem systemItem="refresh" id="Bz9-fK-8If">
+                            <color key="tintColor" red="0.12549019610000001" green="0.42352941179999998" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="reload" destination="8e5-ze-yb0" id="VVS-fj-oxR"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="j4I-sM-SWs"/>
                         <barButtonItem image="ForwardArrowSmall.png" id="utI-BP-aIl">
+                            <color key="tintColor" red="0.12549019610000001" green="0.42352941179999998" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="goForward" destination="8e5-ze-yb0" id="Aww-lh-iMu"/>
                             </connections>
@@ -59,7 +62,7 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="575" y="525.5"/>
+            <point key="canvasLocation" x="475" y="416.5"/>
         </view>
     </objects>
     <resources>

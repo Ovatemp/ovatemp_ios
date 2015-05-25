@@ -76,7 +76,8 @@
 
 # pragma Web view delegate methods
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
   [Alert presentError:error];
 }
 
