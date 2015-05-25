@@ -52,6 +52,16 @@
     [userDefaults synchronize];
 }
 
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 - (void)updateViewConstraints
 {
     [super updateViewConstraints];

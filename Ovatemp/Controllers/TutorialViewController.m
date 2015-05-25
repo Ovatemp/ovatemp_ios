@@ -43,6 +43,16 @@
     [super didReceiveMemoryWarning];
 }
 
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 #pragma mark - IBAction's
 
 - (IBAction)didSelectSkipTutorial:(id)sender

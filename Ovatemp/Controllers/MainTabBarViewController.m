@@ -27,19 +27,19 @@
   self = [super init];
   if (self) {
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(orientationChanged:)
-                                                 name:UIDeviceOrientationDidChangeNotification
-                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(orientationChanged:)
+                                                 name: UIDeviceOrientationDidChangeNotification
+                                               object: nil];
   }
   return self;
 }
 
 - (void)dealloc
 {
-  [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                  name:UIDeviceOrientationDidChangeNotification
-                                                object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver: self
+                                                  name: UIDeviceOrientationDidChangeNotification
+                                                object: nil];
 }
 
 # pragma mark - Autorotation
@@ -47,17 +47,18 @@
 - (void)orientationChanged:(NSNotification *)notification
 {
     BOOL isAnimating = self.cycleViewController.isBeingPresented || self.cycleViewController.isBeingDismissed;
-
+    BOOL shouldRotate = [[NSUserDefaults standardUserDefaults] boolForKey: @"ShouldRotate"];
+    
     UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
     if (UIDeviceOrientationIsLandscape(deviceOrientation)) {
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShouldRotate"]) {
+        if (shouldRotate) {
             inLandscape = YES;
             if (!isAnimating) {
                 [self showCycleViewController];
             }
         }
     } else {
-        if (![[NSUserDefaults standardUserDefaults] boolForKey: @"UserInCalendar"]){
+        if (shouldRotate){
             inLandscape = NO;
             if (!isAnimating) {
                 [self hideCycleViewController];
@@ -68,7 +69,7 @@
 
 - (void)hideCycleViewController
 {
-    [self dismissViewControllerAnimated:YES completion:^{
+    [self dismissViewControllerAnimated: YES completion:^{
 //        if (inLandscape) {
 //            [self showCycleViewController];
 //        }
@@ -77,7 +78,7 @@
 
 - (void)showCycleViewController
 {
-    [self presentViewController:self.cycleViewController animated:YES completion:^{
+    [self presentViewController: self.cycleViewController animated:YES completion:^{
 //        if (!inLandscape) {
 //            [self hideCycleViewController];
 //        }

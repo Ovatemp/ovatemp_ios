@@ -109,6 +109,16 @@ BOOL weightHasData;
     [userDefaults synchronize];
 }
 
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     expandLastPeriodCell = NO;

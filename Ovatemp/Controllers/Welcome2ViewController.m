@@ -50,6 +50,16 @@ NSDate *startedTryingDate;
     [self.tryingToConceivePicker selectRow:5 inComponent:0 animated:NO];
 }
 
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

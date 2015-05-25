@@ -50,6 +50,10 @@
     [self addGestureRecognizers];
     [self loadAssets];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool: YES forKey: @"ShouldRotate"];
+    [defaults synchronize];
+    
     [Localytics tagScreen: @"Tracking/Chart"];
 }
 
