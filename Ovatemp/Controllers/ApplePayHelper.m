@@ -58,7 +58,6 @@
     paymentRequest.paymentSummaryItems = [self paymentSummaryItemsForShippingMethod: shippingMethods[0]];
     
     if ([Stripe canSubmitPaymentRequest: paymentRequest]) {
-        
         PKPaymentAuthorizationViewController *paymentController = [[PKPaymentAuthorizationViewController alloc] initWithPaymentRequest: paymentRequest];
         paymentController.delegate = self;
         
@@ -85,7 +84,7 @@
 
 - (NSArray *)paymentSummaryItemsForShippingMethod:(PKShippingMethod *)shipping
 {
-    NSDecimalNumber *amount = [NSDecimalNumber decimalNumberWithString: @"99.00"];
+    NSDecimalNumber *amount = [NSDecimalNumber decimalNumberWithString: @"75"];
     PKPaymentSummaryItem *ONDOitem = [PKPaymentSummaryItem summaryItemWithLabel: @"ONDO Thermometer" amount: amount];
     
     NSDecimalNumber *totalAmount = [ONDOitem.amount decimalNumberByAdding: shipping.amount];
