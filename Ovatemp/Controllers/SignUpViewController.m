@@ -11,6 +11,7 @@
 #import "User.h"
 #import "UserProfile.h"
 #import "UIViewController+UserProfileHelpers.h"
+#import "WebViewController.h"
 
 #import "Localytics.h"
 
@@ -106,6 +107,10 @@
 
 - (IBAction)sessionRegister:(id)sender
 {
+    // Terms & Conditions
+    if (![self.termsSwitch isOn]) {
+        [self alertUserWithTitle: @"Error" andMessage: @"Please accept the terms and conditions."];
+    }
     
     // Text Field Checks
     if ([self.fullNameField.text length] == 0) {
@@ -232,5 +237,13 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)didSelectTerms:(id)sender
+{
+    NSString *url = @"http://ovatemp.com/terms-of-service";
+    WebViewController *webViewController = [WebViewController withURL:url];
+    webViewController.title = @"Terms and Conditions";
+    [self.navigationController pushViewController:webViewController animated:YES];
+}
 
 @end

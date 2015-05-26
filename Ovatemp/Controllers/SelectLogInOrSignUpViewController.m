@@ -65,16 +65,6 @@
     [self.navigationController.navigationBar setTintColor:[UIColor ovatempAquaColor]];
 }
 
-#pragma mark - IBAction's
-
-- (IBAction)doPresentTerms:(id)sender
-{
-    NSString *url = @"http://ovatemp.com/terms-of-service";
-    WebViewController *webViewController = [WebViewController withURL:url];
-    webViewController.title = @"Terms and Conditions";
-    [self.navigationController pushViewController:webViewController animated:YES];
-}
-
 #pragma mark - Tutorial
 
 - (void)showWalkthrough

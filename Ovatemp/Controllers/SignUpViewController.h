@@ -18,4 +18,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *signUpButton;
 
+@property (weak, nonatomic) IBOutlet UISwitch *termsSwitch;
+
+- (IBAction)didSelectTerms:(id)sender;
+
 @end
