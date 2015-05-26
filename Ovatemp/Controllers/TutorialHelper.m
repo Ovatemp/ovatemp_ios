@@ -30,8 +30,7 @@
 
 + (void)showTutorialForOndoInController:(UIViewController *)controller
 {
-    NSArray *ondoTutorialImages = @[[UIImage imageNamed: @"OndoTutorial1"],[UIImage imageNamed: @"OndoTutorial2"],[UIImage imageNamed: @"OndoTutorial3"],
-                                [UIImage imageNamed: @"OndoTutorial4"],[UIImage imageNamed: @"OndoTutorial5"]];
+    NSArray *ondoTutorialImages = @[[UIImage imageNamed: @"OndoTutorial1"],[UIImage imageNamed: @"OndoTutorial2"],[UIImage imageNamed: @"OndoTutorial3"],[UIImage imageNamed: @"OndoTutorial4"],[UIImage imageNamed: @"OndoTutorial5"],[UIImage imageNamed: @"OndoTutorial6"]];
     
     [self showTutorialWithImages: ondoTutorialImages onViewController: controller];
     [self incrementOndoTutorialCount];
