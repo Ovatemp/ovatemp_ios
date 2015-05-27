@@ -104,9 +104,12 @@ NSMutableArray *heightPickerInchesData;
 
 - (IBAction)didSelectHealthKit:(id)sender
 {
+    [TAOverlay showOverlayWithLabel: @"Loading..." Options: TAOverlayOptionOverlaySizeRoundedRect];
+
     HealthKitHelper *healthKit = [HealthKitHelper sharedSession];
     [healthKit getHeightWithCompletion:^(NSNumber *height, NSError *error) {
         if (height) {
+            
             NSInteger feetComponent = [height integerValue] / 12;
             NSInteger inchesComponent = [height integerValue] % 12;
             
@@ -118,7 +121,11 @@ NSMutableArray *heightPickerInchesData;
                 [self pickerView: self.heightPicker didSelectRow: inchesComponent inComponent: 1];
                 
                 [TAOverlay showOverlayWithLabel: @"Success!" Options: TAOverlayOptionAutoHide | TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayTypeSuccess];
+                
+            }else{
+                [TAOverlay showOverlayWithLabel: @"Error. Check HealthKit measurements." Options: TAOverlayOptionAutoHide | TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayTypeError];
             }
+            
             
         }else{
             DDLogError(@"ERROR: %@", error);

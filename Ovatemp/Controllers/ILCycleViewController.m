@@ -561,7 +561,7 @@
         return notFertileColor;
         
     }else{
-        return notFertileColor;
+        return [UIColor darkGrayColor];
     }
 }
 

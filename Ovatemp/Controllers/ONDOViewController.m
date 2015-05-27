@@ -43,10 +43,8 @@ NSArray *ondoMenuItems;
 {
     [super viewDidLoad];
 
-    self.applePayHelper = [[ApplePayHelper alloc] initWithViewController: self];
-    
+    [self.view addSubview: self.payButton];
     [self customizeAppearance];
-    [self addApplePayButton];
     
     ondoMenuItems = @[@"Setup ONDO", @"About ONDO", @"Instruction Manual"];
 }
@@ -122,12 +120,6 @@ NSArray *ondoMenuItems;
     self.tableView.dataSource = self;
     
     [[self tableView] registerNib:[UINib nibWithNibName:@"AccountTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"accountCell"];
-}
-
-- (void)addApplePayButton
-{
-    self.payButton = [self.applePayHelper paymentButton];
-    [self.view addSubview: self.payButton];
 }
 
 #pragma mark - Table view data source
@@ -211,6 +203,24 @@ NSArray *ondoMenuItems;
 - (void)ondoSwitchedToState:(BOOL)state
 {
     self.ondoSwitchedState = state;
+}
+
+#pragma mark - Set/Get
+
+- (PKPaymentButton *)payButton
+{
+    if (!_payButton){
+        _payButton = [self.applePayHelper paymentButton];
+    }
+    return _payButton;
+}
+
+- (ApplePayHelper *)applePayHelper
+{
+    if (!_applePayHelper) {
+        _applePayHelper = [[ApplePayHelper alloc] initWithViewController: self];
+    }
+    return _applePayHelper;
 }
 
 @end
