@@ -110,6 +110,7 @@
     // Terms & Conditions
     if (![self.termsSwitch isOn]) {
         [self alertUserWithTitle: @"Error" andMessage: @"Please accept the terms and conditions."];
+        return;
     }
     
     // Text Field Checks
