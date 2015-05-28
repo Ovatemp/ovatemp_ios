@@ -268,32 +268,52 @@
         Day *day = days[i];
         CGFloat temperature;
         
-        if (!day.temperature) {
-            temperature = 0;
-        }
-        
-        if ([[NSUserDefaults standardUserDefaults] boolForKey: @"temperatureUnitPreferenceFahrenheit"]) {
-            temperature = [day.temperature floatValue];
-            
-        } else {
-            if ([day.temperature floatValue] != 0) {
-                temperature = (([day.temperature floatValue] - 32) / 1.8000f);
-            }
+        // If there is no temperature for day, get previous non zero temperature
+        if (!day.temperature || [day.temperature floatValue] == 0) {
+            CGFloat previousTemp = [self getPreviousNonZeroTemperatureFromIndex: i];
+            temperature = [self correctTempWithUnit: previousTemp];
+        }else{
+            temperature = [self correctTempWithUnit: [day.temperature floatValue]];
         }
         
         [self.temperatureData addObject: [[TKChartDataPoint alloc] initWithX: @(i+1) Y: @(temperature)]];
-        
     }
     
     // FILL OUT REMAINDER OF CYCLE
     if ([days count] < self.cycleLength) {
+        CGFloat previousTemp = [self getPreviousNonZeroTemperatureFromIndex: [days count]];
         for (NSInteger i = [days count]; i < self.cycleLength; i++) {
-            [self.temperatureData addObject:[[TKChartDataPoint alloc] initWithX: @(i+1) Y: @(0)]];
+            [self.temperatureData addObject:[[TKChartDataPoint alloc] initWithX: @(i+1) Y: @(previousTemp)]];
         }
     }
     
     //NSLog(@"DAYS: %@", self.selectedCycle.days);
     //NSLog(@"TEMPERATURE DATA: %@", self.temperatureData);
+}
+
+- (CGFloat)getPreviousNonZeroTemperatureFromIndex:(NSInteger)index
+{
+    for (NSInteger i = index - 1; i >=0 ; i--) {
+        Day *day = self.selectedCycle.days[i];
+        CGFloat temperature = [day.temperature floatValue];
+        if (temperature != 0) {
+            return temperature;
+        }
+    }
+    return 0;
+}
+
+- (CGFloat)correctTempWithUnit:(CGFloat)fahrenheitTemperature
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey: @"temperatureUnitPreferenceFahrenheit"]) {
+        return fahrenheitTemperature;
+        
+    } else {
+        if (fahrenheitTemperature != 0) {
+            return ((fahrenheitTemperature - 32) / 1.8000f);
+        }
+    }
+    return 0;
 }
 
 - (void)addSeriesToChart
@@ -456,10 +476,15 @@
     
     if (index < [self.selectedCycle.days count]) {
         Day *day = self.selectedCycle.days[index];
-        colorForDay = [self colorForCyclePhase: day.cyclePhase];
+        
+        if ([day.temperature floatValue] == 0) {
+            colorForDay = [UIColor clearColor];
+        }else{
+            colorForDay = [self colorForCyclePhase: day.cyclePhase];
+        }
         
     }else{
-        colorForDay = [UIColor purpleColor];
+        colorForDay = [UIColor clearColor];
     }
     
     TKChartPaletteItem *item = [[TKChartPaletteItem alloc] initWithFill: [TKSolidFill solidFillWithColor: colorForDay]];
