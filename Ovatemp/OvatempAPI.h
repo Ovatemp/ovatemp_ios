@@ -21,6 +21,8 @@ typedef void (^PaginatedCompletionBlock)(id object, ILPaginationInfo *pagination
 
 + (id)sharedSession;
 
+- (void)resetAccessToken;
+
 - (void)getDaysOnPage:(NSUInteger)page perPage:(NSInteger)perPage completion:(PaginatedCompletionBlock)completion;
 
 - (void)getDayWithId:(NSNumber *)dayId completion:(CompletionBlock)completion;

@@ -11,6 +11,8 @@
 #import "User.h"
 #import "Alert.h"
 
+#import "OvatempAPI.h"
+
 #define EMAIL_REGEX @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
 
 @interface LoginViewController () <UITextFieldDelegate>
@@ -120,9 +122,14 @@
      ];
 }
 
-- (void)loggedIn:(NSDictionary *)response {
+- (void)loggedIn:(NSDictionary *)response
+{
     [self stopLoading];
     [Configuration loggedInWithResponse:response];
+    
+    // Make sure access token from previous session (if any) is changed to new one (current one)
+    [[OvatempAPI sharedSession] resetAccessToken];
+    
     [self backOutToRootViewController];
 }
 

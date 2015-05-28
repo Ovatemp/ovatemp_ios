@@ -28,12 +28,13 @@
         NSURLSessionConfiguration *urlSessionConfiguration = [self sessionConfiguration];
         NSString *baseUrlString                            = [NSString stringWithFormat: @"%@/api", ROOT_URL];
         NSURL *baseUrl                                     = [NSURL URLWithString: baseUrlString];
+        
         _instance                                          = [[OvatempAPI alloc] initWithBaseURL: baseUrl sessionConfiguration: urlSessionConfiguration];
         _instance.requestSerializer                        = [AFJSONRequestSerializer serializer];
         [_instance.requestSerializer setValue: @"application/vnd.ovatemp.v3" forHTTPHeaderField: @"Accept"];
         [_instance.requestSerializer setValue: [self accessToken] forHTTPHeaderField: @"Authorization"];
         _instance.responseSerializer                       = [AFJSONResponseSerializer serializer];
-                
+        
     });
     
     return _instance;
@@ -49,6 +50,16 @@
 + (NSString *)accessToken
 {
     return [Configuration sharedConfiguration].token;
+}
+
+- (NSString *)accessToken
+{
+    return [Configuration sharedConfiguration].token;
+}
+
+- (void)resetAccessToken
+{
+    [self.requestSerializer setValue: [self accessToken] forHTTPHeaderField: @"Authorization"];
 }
 
 #pragma mark - REST Methods

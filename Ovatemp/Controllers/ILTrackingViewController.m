@@ -284,7 +284,7 @@
 {
     [TAOverlay showOverlayWithLabel: @"Loading Calendar..." Options: TAOverlayOptionOverlaySizeRoundedRect];
 
-    [[OvatempAPI sharedSession]getDaysOnPage: page perPage: 365 completion:^(NSArray *days, ILPaginationInfo *pagination, NSError *error) {
+    [[OvatempAPI sharedSession] getDaysOnPage: page perPage: 365 completion:^(NSArray *days, ILPaginationInfo *pagination, NSError *error) {
         
         [TAOverlay hideOverlay];
         [self.refreshControl endRefreshing];
