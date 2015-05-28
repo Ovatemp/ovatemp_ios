@@ -39,7 +39,7 @@
  *
  *  @return PKPaymentButton instance. Needs to be added as a subview to activate the payment proccess.
  */
-- (PKPaymentButton *)paymentButton;
+- (UIButton *)paymentButton;
 
 /**
  *  Starts the payment proccess by presenting the PKPaymentAuthorizationViewController.

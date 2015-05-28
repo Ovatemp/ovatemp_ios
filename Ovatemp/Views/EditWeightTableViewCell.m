@@ -89,7 +89,7 @@ NSMutableArray *weightPickerData;
 
 - (IBAction)didSelectHealthKit:(id)sender
 {
-    [TAOverlay showOverlayWithLabel: @"Loading..." Options: TAOverlayOptionOverlaySizeRoundedRect];
+    [TAOverlay showOverlayWithLabel: @"Loadingc..." Options: TAOverlayOptionOverlaySizeRoundedRect];
     
     HealthKitHelper *healthKit = [HealthKitHelper sharedSession];
     [healthKit getWeightWithCompletion:^(NSNumber *weight, NSError *error) {

@@ -21,7 +21,7 @@
 @interface WelcomeONDOViewController () <ONDODelegate>
 
 @property (nonatomic) ApplePayHelper *applePayHelper;
-@property (nonatomic) PKPaymentButton *payButton;
+@property (nonatomic) UIButton *payButton;
 
 @end
 
@@ -31,11 +31,8 @@
 {
     [super viewDidLoad];
     
-    ApplePayHelper *applePayhelper = [[ApplePayHelper alloc] initWithViewController: self];
-    applePayhelper.paymentButtonStyle = PKPaymentButtonStyleWhiteOutline;
-    self.applePayHelper = applePayhelper;
+    [self.view addSubview: self.payButton];
     
-    [self addApplePayButton];
     [self customizeAppearance];
     [self setUserDefaultsCount];
 }
@@ -102,12 +99,6 @@
     
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(247/255.0) green:(247/255.0) blue:(247/255.0) alpha:1];
     self.navigationController.navigationBar.tintColor = [UIColor ovatempAquaColor];
-}
-
-- (void)addApplePayButton
-{
-    self.payButton = [self.applePayHelper paymentButton];
-    [self.view addSubview: self.payButton];
 }
 
 - (IBAction)doONDOPairing:(id)sender
@@ -179,6 +170,25 @@
     [TAOverlay showOverlayWithLabel: @"Pairing successful!" Options: TAOverlayOptionAutoHide | TAOverlayOptionOverlayTypeSuccess];
     
     [self performSegueWithIdentifier:@"toAlarm" sender:self];
+}
+
+#pragma mark - Set/Get
+
+- (ApplePayHelper *)applePayHelper
+{
+    if (!_applePayHelper) {
+        _applePayHelper = [[ApplePayHelper alloc] initWithViewController: self];
+        _applePayHelper.paymentButtonStyle = PKPaymentButtonStyleWhiteOutline;
+    }
+    return _applePayHelper;
+}
+
+- (UIButton *)payButton
+{
+    if (!_payButton) {
+        _payButton = [self.applePayHelper paymentButton];
+    }
+    return _payButton;
 }
 
 @end

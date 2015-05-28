@@ -30,7 +30,7 @@
 
 @property (nonatomic) ApplePayHelper *applePayHelper;
 
-@property (nonatomic) PKPaymentButton *payButton;
+@property (nonatomic) UIButton *payButton;
 @property (nonatomic) NSDecimalNumber *totalAmount;
 
 @end
@@ -207,7 +207,7 @@ NSArray *ondoMenuItems;
 
 #pragma mark - Set/Get
 
-- (PKPaymentButton *)payButton
+- (UIButton *)payButton
 {
     if (!_payButton){
         _payButton = [self.applePayHelper paymentButton];

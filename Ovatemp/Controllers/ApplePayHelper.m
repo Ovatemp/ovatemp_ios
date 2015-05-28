@@ -36,9 +36,17 @@
 
 #pragma mark - Apple Pay / Stripe
 
-- (PKPaymentButton *)paymentButton
+- (UIButton *)paymentButton
 {
-    PKPaymentButton *paymentButton = [PKPaymentButton buttonWithType: PKPaymentButtonTypeBuy style: self.paymentButtonStyle];
+    UIButton *paymentButton;
+    
+    if ([PKPaymentButton class]) {
+        paymentButton = [PKPaymentButton buttonWithType: PKPaymentButtonTypeBuy style: self.paymentButtonStyle];
+    }else{
+        paymentButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+        paymentButton.tintColor = [UIColor ovatempAquaColor];
+        [paymentButton setTitle: @"Buy with Apple Pay" forState: UIControlStateNormal];
+    }
     paymentButton.frame = CGRectMake(0, 0, 0, 0);
     paymentButton.translatesAutoresizingMaskIntoConstraints = NO;
     
