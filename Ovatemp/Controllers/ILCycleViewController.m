@@ -389,8 +389,8 @@
     NSNumber *maxTempRounded = [NSNumber numberWithFloat: [maxTempString floatValue]];
     
     // This is to fix bug where points appear offscreen
-    NSInteger minTempRoundedMinusOne = [minTempRounded integerValue] - 1;
-    NSInteger maxTempRoundedMinusOne = [maxTempRounded integerValue] + 1;
+    CGFloat minTempRoundedMinusOne = [minTempRounded integerValue];
+    CGFloat maxTempRoundedMinusOne = [maxTempRounded integerValue] + 1;
     
     TKChartNumericAxis *yAxis = [[TKChartNumericAxis alloc] initWithMinimum: @(minTempRoundedMinusOne) andMaximum: @(maxTempRoundedMinusOne)];
     //yAxis.style.labelStyle.textOffset = UIOffsetMake(2, 0);
