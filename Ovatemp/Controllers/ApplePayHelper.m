@@ -19,6 +19,8 @@
 @property (nonatomic) NSDecimalNumber *totalAmount;
 @property (nonatomic) UIViewController *viewController;
 
+@property (nonatomic) PKPaymentRequest *paymentRequest;
+
 @end
 
 @implementation ApplePayHelper
@@ -36,17 +38,37 @@
 
 #pragma mark - Apple Pay / Stripe
 
-- (UIButton *)paymentButton
+- (BOOL)canUseApplePay
 {
+    return [Stripe canSubmitPaymentRequest: self.paymentRequest];
+}
+
+- (UIView *)paymentButtonSmallSize:(BOOL)smallSize
+{
+    if (![self canUseApplePay]) {
+        UIView *blankView = [[UIView alloc] init];
+        blankView.frame = CGRectMake(0, 0, 0, 0);
+        blankView.translatesAutoresizingMaskIntoConstraints = NO;
+        return blankView;
+    }
+    
     UIButton *paymentButton;
     
     if ([PKPaymentButton class]) {
         paymentButton = [PKPaymentButton buttonWithType: PKPaymentButtonTypeBuy style: self.paymentButtonStyle];
     }else{
-        paymentButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-        paymentButton.tintColor = [UIColor ovatempAquaColor];
-        [paymentButton setTitle: @"Buy with Apple Pay" forState: UIControlStateNormal];
+        paymentButton = [UIButton buttonWithType: UIButtonTypeCustom];
+        
+        NSString *imageName;
+        if (smallSize) {
+            imageName = (self.paymentButtonStyle == PKPaymentButtonStyleBlack)? @"ApplePayButtonBlack40" : @"ApplePayButtonWhite40";
+        }else{
+            imageName = (self.paymentButtonStyle == PKPaymentButtonStyleBlack)? @"ApplePayButtonBlack45" : @"ApplePayButtonWhite45";
+        }
+        
+        [paymentButton setBackgroundImage: [UIImage imageNamed: imageName] forState: UIControlStateNormal];
     }
+    
     paymentButton.frame = CGRectMake(0, 0, 0, 0);
     paymentButton.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -57,16 +79,9 @@
 
 - (void)proccessPayment
 {
-    PKPaymentRequest *paymentRequest = [Stripe paymentRequestWithMerchantIdentifier: @"merchant.com.ovatemp"];
-    paymentRequest.requiredBillingAddressFields = PKAddressFieldAll;
-    paymentRequest.requiredShippingAddressFields = PKAddressFieldAll;
-    
-    NSArray *shippingMethods = [self shippingMethods];
-    paymentRequest.shippingMethods = shippingMethods;
-    paymentRequest.paymentSummaryItems = [self paymentSummaryItemsForShippingMethod: shippingMethods[0]];
-    
-    if ([Stripe canSubmitPaymentRequest: paymentRequest]) {
-        PKPaymentAuthorizationViewController *paymentController = [[PKPaymentAuthorizationViewController alloc] initWithPaymentRequest: paymentRequest];
+    if ([self canUseApplePay]) {
+        PKPaymentAuthorizationViewController *paymentController = [[PKPaymentAuthorizationViewController alloc]
+                                                                   initWithPaymentRequest: self.paymentRequest];
         paymentController.delegate = self;
         
         [self.viewController presentViewController: paymentController animated: YES completion: nil];
@@ -185,6 +200,20 @@
 }
 
 #pragma mark - Set/Get
+
+- (PKPaymentRequest *)paymentRequest
+{
+    if (!_paymentRequest) {
+        _paymentRequest = [Stripe paymentRequestWithMerchantIdentifier: @"merchant.com.ovatemp"];
+        _paymentRequest.requiredBillingAddressFields = PKAddressFieldAll;
+        _paymentRequest.requiredShippingAddressFields = PKAddressFieldAll;
+        
+        NSArray *shippingMethods = [self shippingMethods];
+        _paymentRequest.shippingMethods = shippingMethods;
+        _paymentRequest.paymentSummaryItems = [self paymentSummaryItemsForShippingMethod: shippingMethods[0]];
+    }
+    return _paymentRequest;
+}
 
 - (PKPaymentButtonStyle)paymentButtonStyle
 {

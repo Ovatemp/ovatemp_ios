@@ -67,7 +67,7 @@
                                       @"whiteSpace" : self.whiteSpace,
                                       @"payButton" : self.payButton};
     
-    NSArray *buttonHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat: @"H:|-20-[payButton]-20-|"
+    NSArray *buttonHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat: @"H:[payButton(==140)]"
                                                                                    options: 0
                                                                                    metrics: nil
                                                                                      views: viewsDictionary];
@@ -186,7 +186,7 @@
 - (UIButton *)payButton
 {
     if (!_payButton) {
-        _payButton = [self.applePayHelper paymentButton];
+        _payButton = [self.applePayHelper paymentButtonSmallSize: YES];
     }
     return _payButton;
 }

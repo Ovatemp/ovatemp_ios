@@ -83,12 +83,12 @@ NSArray *ondoMenuItems;
                                       @"tableView" : self.tableView,
                                       @"payButton" : self.payButton};
     
-    NSArray *buttonHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat: @"H:|-10-[payButton]-10-|"
+    NSArray *buttonHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat: @"H:[payButton(==195)]"
                                                                                    options: 0
                                                                                    metrics: nil
                                                                                      views: viewsDictionary];
     
-    NSArray *buttonVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat: @"V:[label]-10-[payButton(==45)]-10-[tableView]"
+    NSArray *buttonVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat: @"V:[label]-10-[payButton(==40)]-10-[tableView]"
                                                                                  options: 0
                                                                                  metrics: nil
                                                                                    views: viewsDictionary];
@@ -210,7 +210,7 @@ NSArray *ondoMenuItems;
 - (UIButton *)payButton
 {
     if (!_payButton){
-        _payButton = [self.applePayHelper paymentButton];
+        _payButton = [self.applePayHelper paymentButtonSmallSize: NO];
     }
     return _payButton;
 }

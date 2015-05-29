@@ -39,7 +39,14 @@
  *
  *  @return PKPaymentButton instance. Needs to be added as a subview to activate the payment proccess.
  */
-- (UIButton *)paymentButton;
+- (UIView *)paymentButtonSmallSize:(BOOL)smallSize;
+
+/**
+ *  Checks if user has the ability to use ApplePay
+ *
+ *  @return A boolean indicating the user's ability to use ApplePay
+ */
+- (BOOL)hasApplePay;
 
 /**
  *  Starts the payment proccess by presenting the PKPaymentAuthorizationViewController.
