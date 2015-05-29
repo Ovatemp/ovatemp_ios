@@ -225,7 +225,7 @@
                     <navigationItem key="navigationItem" id="uy2-dY-u5z">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="BIc-Hr-GxE">
-                            <rect key="frame" x="236" y="6" width="128" height="33"/>
+                            <rect key="frame" x="236" y="5.5" width="128" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
@@ -515,7 +515,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cerv. Fluid" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="UhU-Yj-AZV">
-                                <rect key="frame" x="8" y="413" width="74" height="12"/>
+                                <rect key="frame" x="8" y="413" width="70" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="1at-et-I6v"/>
                                     <constraint firstAttribute="width" constant="42" id="STn-Lu-kgn"/>
@@ -536,7 +536,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cerv. Position" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="K04-77-Bac">
-                                <rect key="frame" x="8" y="453" width="72" height="12"/>
+                                <rect key="frame" x="8" y="453" width="68" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="2Fe-7S-loT"/>
                                     <constraint firstAttribute="height" constant="12" id="BDK-GK-pUr"/>
@@ -559,7 +559,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sex" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Cyv-cS-C4n">
-                                <rect key="frame" x="8" y="493" width="72" height="11"/>
+                                <rect key="frame" x="8" y="493" width="68" height="11"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="4dG-T4-LW0"/>
                                     <constraint firstAttribute="width" constant="42" id="9wK-LA-rAO"/>
@@ -580,7 +580,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Period" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="P9R-lf-rMs">
-                                <rect key="frame" x="8" y="373" width="72" height="11"/>
+                                <rect key="frame" x="8" y="373" width="68" height="11"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="11" id="1wM-6G-VOE"/>
                                     <constraint firstAttribute="width" constant="31" id="iQu-Rh-zxa"/>
@@ -601,7 +601,7 @@
                                 </variation>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pfL-n0-1bM" userLabel="Period Collection View">
-                                <rect key="frame" x="88" y="373" width="512" height="38"/>
+                                <rect key="frame" x="84" y="373" width="516" height="38"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="u6u-Cs-Nbv">
                                     <size key="itemSize" width="50" height="50"/>
@@ -674,7 +674,7 @@
                                 </connections>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mj6-4s-UfP" userLabel="CF Collection View">
-                                <rect key="frame" x="88" y="413" width="512" height="38"/>
+                                <rect key="frame" x="84" y="413" width="516" height="38"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="bXW-nP-hLY">
                                     <size key="itemSize" width="50" height="50"/>
@@ -688,7 +688,7 @@
                                 </connections>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EAx-7r-RLM" userLabel="CP Collection View">
-                                <rect key="frame" x="88" y="453" width="512" height="38"/>
+                                <rect key="frame" x="84" y="453" width="516" height="38"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="cNy-KW-6hz">
                                     <size key="itemSize" width="50" height="50"/>
@@ -702,7 +702,7 @@
                                 </connections>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UK9-Pu-ULr" userLabel="Sex Collection View">
-                                <rect key="frame" x="88" y="493" width="512" height="38"/>
+                                <rect key="frame" x="84" y="493" width="516" height="38"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="GHB-Zd-kQd">
                                     <size key="itemSize" width="50" height="50"/>
@@ -732,16 +732,16 @@
                             <constraint firstItem="Mj6-4s-UfP" firstAttribute="top" secondItem="pfL-n0-1bM" secondAttribute="bottom" constant="2" id="EIO-pz-PJW"/>
                             <constraint firstItem="pfL-n0-1bM" firstAttribute="height" secondItem="eVr-V6-vVh" secondAttribute="height" multiplier="0.07" id="Fm0-qD-OnK"/>
                             <constraint firstAttribute="trailing" secondItem="UK9-Pu-ULr" secondAttribute="trailing" id="Ios-id-gbk"/>
-                            <constraint firstItem="EAx-7r-RLM" firstAttribute="leading" secondItem="eVr-V6-vVh" secondAttribute="leading" constant="88" id="KJb-aF-aCt"/>
+                            <constraint firstItem="EAx-7r-RLM" firstAttribute="leading" secondItem="eVr-V6-vVh" secondAttribute="leading" constant="84" id="KJb-aF-aCt"/>
                             <constraint firstItem="EAx-7r-RLM" firstAttribute="leading" secondItem="K04-77-Bac" secondAttribute="trailing" constant="18" id="KiF-I6-g3m"/>
                             <constraint firstItem="K04-77-Bac" firstAttribute="leading" secondItem="eVr-V6-vVh" secondAttribute="leading" constant="8" id="Lx9-fE-FSK"/>
                             <constraint firstAttribute="bottom" secondItem="UK9-Pu-ULr" secondAttribute="bottom" constant="5" id="Nxt-uE-6XH"/>
                             <constraint firstItem="UhU-Yj-AZV" firstAttribute="top" secondItem="Mj6-4s-UfP" secondAttribute="bottom" constant="-23" id="OG2-MW-SGj"/>
-                            <constraint firstItem="UK9-Pu-ULr" firstAttribute="leading" secondItem="eVr-V6-vVh" secondAttribute="leading" constant="88" id="QY6-wg-aN5"/>
+                            <constraint firstItem="UK9-Pu-ULr" firstAttribute="leading" secondItem="eVr-V6-vVh" secondAttribute="leading" constant="84" id="QY6-wg-aN5"/>
                             <constraint firstItem="UK9-Pu-ULr" firstAttribute="leading" secondItem="Cyv-cS-C4n" secondAttribute="trailing" constant="8" id="SsY-lC-utY"/>
                             <constraint firstItem="pfL-n0-1bM" firstAttribute="leading" secondItem="P9R-lf-rMs" secondAttribute="trailing" constant="8" id="TFj-qr-Bjs"/>
                             <constraint firstItem="EAx-7r-RLM" firstAttribute="leading" secondItem="K04-77-Bac" secondAttribute="trailing" constant="8" id="Unm-as-nw5"/>
-                            <constraint firstItem="Mj6-4s-UfP" firstAttribute="leading" secondItem="eVr-V6-vVh" secondAttribute="leading" constant="88" id="VKR-En-Avm"/>
+                            <constraint firstItem="Mj6-4s-UfP" firstAttribute="leading" secondItem="eVr-V6-vVh" secondAttribute="leading" constant="84" id="VKR-En-Avm"/>
                             <constraint firstItem="P9R-lf-rMs" firstAttribute="top" secondItem="pfL-n0-1bM" secondAttribute="bottom" constant="-18" id="XMg-Mq-Bsb"/>
                             <constraint firstItem="Mj6-4s-UfP" firstAttribute="leading" secondItem="UhU-Yj-AZV" secondAttribute="trailing" constant="18" id="XcI-hN-EKK"/>
                             <constraint firstItem="Mj6-4s-UfP" firstAttribute="height" secondItem="eVr-V6-vVh" secondAttribute="height" multiplier="0.07" id="Zde-wG-cUR"/>
@@ -765,7 +765,7 @@
                             <constraint firstItem="UK9-Pu-ULr" firstAttribute="height" secondItem="eVr-V6-vVh" secondAttribute="height" multiplier="0.07" id="xjI-0k-NB8"/>
                             <constraint firstItem="pfL-n0-1bM" firstAttribute="top" secondItem="P9R-lf-rMs" secondAttribute="bottom" constant="-24" id="yc0-CK-qYW"/>
                             <constraint firstItem="EAx-7r-RLM" firstAttribute="height" secondItem="eVr-V6-vVh" secondAttribute="height" multiplier="0.07" id="zVW-ZU-2LJ"/>
-                            <constraint firstItem="pfL-n0-1bM" firstAttribute="leading" secondItem="eVr-V6-vVh" secondAttribute="leading" constant="88" id="zdu-nV-Kf0"/>
+                            <constraint firstItem="pfL-n0-1bM" firstAttribute="leading" secondItem="eVr-V6-vVh" secondAttribute="leading" constant="84" id="zdu-nV-Kf0"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
