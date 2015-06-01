@@ -201,6 +201,8 @@ static NSInteger kTotalDays;
     cycle.coverline = cycleResponse[@"coverline"];
   }
 
+    cycle.cycleId = cycleResponse[@"id"];
+    
   return cycle;
 }
 

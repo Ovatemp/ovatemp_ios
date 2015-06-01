@@ -26,11 +26,13 @@ typedef void (^CycleDateLoadFailure) (NSError *error);
 - (Cycle *)nextCycle;
 - (NSString *)rangeString;
 
+@property (nonatomic) NSNumber *cycleId;
 @property (readonly) NSDate *endDate;
 @property (readonly) NSDate *startDate;
 @property (nonatomic, strong) NSArray *days;
 @property (nonatomic, strong) NSNumber *coverline;
 @property (nonatomic, strong) NSString *fertilityWindow;
+
 + (Cycle *)cycleFromResponse:(NSDictionary *)cycleResponse;
 
 @end

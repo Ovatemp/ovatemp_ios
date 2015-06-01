@@ -182,7 +182,30 @@
     Day *day = [Calendar day];
     self.selectedCycle = day.cycle;
     
+    if (self.selectedCycleId) {
+        BOOL found = NO;
+        while (self.selectedCycle.previousCycle) {
+            Cycle *currentCycle = self.selectedCycle;
+            if ([self.selectedCycleId integerValue] == [currentCycle.cycleId integerValue]) {
+                found = YES;
+                break;
+            }else{
+                [self didSelectPreviousCycle: nil];
+            }
+        }
+        if (!found) {
+            [self goToNewestCycle];
+        }
+    }
+    
     [self updateScreen];
+}
+
+- (void)goToNewestCycle
+{
+    while (self.selectedCycle.nextCycle) {
+        [self didSelectNextCycle: nil];
+    }
 }
 
 - (void)updateScreen

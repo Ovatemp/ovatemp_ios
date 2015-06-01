@@ -13,6 +13,7 @@
 @interface ILDay : NSObject
 
 @property (nonatomic) NSNumber    *day_id;
+@property (nonatomic) NSNumber    *cycleId;
 @property (nonatomic) NSNumber    *temperature;// float
 @property (nonatomic) NSDate      *date;
 
@@ -28,7 +29,7 @@
 @property (nonatomic) NSString    *mood;
 
 @property (nonatomic) NSString    *cyclePhase;
-@property (nonatomic) NSNumber    *cycleDay;// int
+@property (nonatomic) NSNumber    *cycleDay;
 @property (nonatomic) BOOL        inFertilityWindow;
 
 @property (nonatomic) NSString    *notes;

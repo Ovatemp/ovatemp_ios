@@ -15,8 +15,10 @@
   BOOL inLandscape;
 }
 
-@property (nonatomic) ILCycleViewController *cycleViewController;
+@property (nonatomic) UINavigationController *cycleViewController;
 @property (nonatomic) CycleViewController *oldCycleViewController;
+
+@property (nonatomic) NSNumber *currentCycleId;
 
 @end
 
@@ -27,19 +29,36 @@
   self = [super init];
   if (self) {
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+      
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(orientationChanged:)
                                                  name: UIDeviceOrientationDidChangeNotification
                                                object: nil];
+      
+      [[NSNotificationCenter defaultCenter] addObserver: self
+                                               selector: @selector(currentCycleId:)
+                                                   name: @"IsAtCurrentCycleId"
+                                                 object: nil];
   }
   return self;
 }
 
 - (void)dealloc
 {
-  [[NSNotificationCenter defaultCenter] removeObserver: self
-                                                  name: UIDeviceOrientationDidChangeNotification
-                                                object: nil];
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
+//  [[NSNotificationCenter defaultCenter] removeObserver: self
+//                                                  name: UIDeviceOrientationDidChangeNotification
+//                                                object: nil];
+}
+
+- (void)currentCycleId:(NSNotification *)notification
+{
+    NSDictionary *userInfo = notification.userInfo;
+    NSNumber *cycleId = userInfo[@"cycleId"];
+    DDLogInfo(@"MAIN TAB BAR CONTROLLER : RECEIVED NOTIFICATION : CYCLE ID = %@", cycleId);
+    if (cycleId) {
+        self.currentCycleId = cycleId;
+    }
 }
 
 # pragma mark - Autorotation
@@ -54,7 +73,12 @@
         if (shouldRotate) {
             inLandscape = YES;
             if (!isAnimating) {
+                if (self.currentCycleId) {
+                    ILCycleViewController *cycleVC = self.cycleViewController.childViewControllers[0];
+                    cycleVC.selectedCycleId = self.currentCycleId;
+                }
                 [self showCycleViewController];
+                self.currentCycleId = nil;
             }
         }
     } else {
@@ -101,7 +125,7 @@
     return _oldCycleViewController;
 }
 
-- (ILCycleViewController *)cycleViewController
+- (UINavigationController *)cycleViewController
 {
     if (!_cycleViewController) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Tracking" bundle: nil];

@@ -13,6 +13,7 @@
 @interface ILCycleViewController : UIViewController
 
 @property (nonatomic) Cycle *selectedCycle;
+@property (nonatomic) NSNumber *selectedCycleId;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *periodCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *cfCollectionView;

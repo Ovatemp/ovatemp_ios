@@ -392,8 +392,15 @@
 
 - (IBAction)openGraph:(id)sender
 {
+    // Post a notification with the current cycle id so that cycle view controller knows which cycle to present
+    if (self.selectedDay.cycleId) {
+        NSDictionary *userInfo = @{@"cycleId" : self.selectedDay.cycleId};
+        NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+        [notificationCenter postNotificationName: @"IsAtCurrentCycleId" object: self userInfo: userInfo];
+    }
+    
     // Don't present the chart here, just change device orientation and let the notification for changed orientation take care of presenting the view.
-    [[UIDevice currentDevice] setValue: [NSNumber numberWithInteger: UIInterfaceOrientationLandscapeLeft] forKey:@"orientation"];
+    [[UIDevice currentDevice] setValue: [NSNumber numberWithInteger: UIInterfaceOrientationLandscapeLeft] forKey: @"orientation"];
 }
 
 - (IBAction)openCalendar:(id)sender
