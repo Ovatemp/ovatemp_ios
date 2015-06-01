@@ -33,6 +33,7 @@
     
     self.medicinesTableView.delegate = self;
     self.medicinesTableView.dataSource = self;
+    self.medicinesTableView.allowsMultipleSelectionDuringEditing = NO;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -114,6 +115,17 @@
                         [self stopActivity];
                     }
      ];
+}
+
+- (void)deleteMedicineWithId:(NSNumber *)medicineId
+{
+    [self startActivity];
+    
+    [[OvatempAPI sharedSession] deleteMedicineWithId: medicineId completion:^(NSError *error) {
+        if (!error) {
+            [self reloadMedicines];
+        }
+    }];
 }
 
 - (void)reloadMedicines
@@ -211,6 +223,21 @@
     }
     
     return cell;
+}
+
+#pragma mark - UITableView Delegate
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        SimpleSupplement *selectedMed = self.medicinesTableViewDataSource[indexPath.row];
+        [self deleteMedicineWithId: selectedMed.idNumber];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

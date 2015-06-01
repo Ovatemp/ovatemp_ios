@@ -152,6 +152,39 @@
     }];
 }
 
+#pragma mark - Supplements/Medicines
+
+- (void)createSupplement:(NSString *)supplementName completion:(CompletionBlock)completion
+{
+    
+}
+
+- (void)deleteSupplementWithId:(NSNumber *)supplementId completion:(ErrorCompletionBlock)completion
+{
+    [self deleteObjectWithId: supplementId atURL: @"supplements" completion: completion];
+}
+
+- (void)createMedicine:(NSString *)medicineName completion:(CompletionBlock)completion
+{
+    
+}
+
+- (void)deleteMedicineWithId:(NSNumber *)medicineId completion:(ErrorCompletionBlock)completion
+{
+    [self deleteObjectWithId: medicineId atURL: @"medicines" completion: completion];
+}
+
+- (void)deleteObjectWithId:(NSNumber *)objectId atURL:(NSString *)deleteURL completion:(ErrorCompletionBlock)completion
+{
+    NSString *url = [NSString stringWithFormat: @"%@/%@", deleteURL, objectId];
+    
+    [self DELETE: url parameters: nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        completion(nil);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completion(error);
+    }];
+}
+
 #pragma mark - Apple Pay
 
 - (void)createBackendChargeWithToken:(STPToken *)token payment:(PKPayment *)payment amount:(NSDecimalNumber *)amount completion:(CompletionBlock)completion

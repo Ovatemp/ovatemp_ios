@@ -35,6 +35,7 @@
     
     self.supplementsTableView.delegate = self;
     self.supplementsTableView.dataSource = self;
+    self.supplementsTableView.allowsMultipleSelectionDuringEditing = NO;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -116,6 +117,17 @@
                         [self stopActivity];
                     }
      ];
+}
+
+- (void)deleteSupplementWithId:(NSNumber *)supplementId
+{
+    [self startActivity];
+    
+    [[OvatempAPI sharedSession] deleteSupplementWithId: supplementId completion:^(NSError *error) {
+        if (!error) {
+            [self reloadSupplements];
+        }
+    }];
 }
 
 - (void)reloadSupplements
@@ -211,6 +223,21 @@
     }
     
     return cell;
+}
+
+#pragma mark - UITableView Delegate
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        SimpleSupplement *supplement = self.supplementsTableViewDataSource[indexPath.row];
+        [self deleteSupplementWithId: supplement.idNumber];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
