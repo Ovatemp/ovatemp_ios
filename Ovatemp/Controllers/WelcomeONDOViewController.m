@@ -21,7 +21,7 @@
 @interface WelcomeONDOViewController () <ONDODelegate>
 
 @property (nonatomic) ApplePayHelper *applePayHelper;
-@property (nonatomic) UIButton *payButton;
+@property (nonatomic) UIView *payButton;
 
 @end
 
@@ -183,7 +183,7 @@
     return _applePayHelper;
 }
 
-- (UIButton *)payButton
+- (UIView *)payButton
 {
     if (!_payButton) {
         _payButton = [self.applePayHelper paymentButtonSmallSize: YES];
