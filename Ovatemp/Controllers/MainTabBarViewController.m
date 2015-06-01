@@ -73,12 +73,7 @@
         if (shouldRotate) {
             inLandscape = YES;
             if (!isAnimating) {
-                if (self.currentCycleId) {
-                    ILCycleViewController *cycleVC = self.cycleViewController.childViewControllers[0];
-                    cycleVC.selectedCycleId = self.currentCycleId;
-                }
                 [self showCycleViewController];
-                self.currentCycleId = nil;
             }
         }
     } else {
@@ -93,20 +88,20 @@
 
 - (void)hideCycleViewController
 {
-    [self dismissViewControllerAnimated: YES completion:^{
-//        if (inLandscape) {
-//            [self showCycleViewController];
-//        }
-    }];
+    [self dismissViewControllerAnimated: YES completion: nil];
 }
 
 - (void)showCycleViewController
 {
-    [self presentViewController: self.cycleViewController animated:YES completion:^{
-//        if (!inLandscape) {
-//            [self hideCycleViewController];
-//        }
-    }];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Tracking" bundle: nil];
+    UINavigationController *navVC = [storyboard instantiateViewControllerWithIdentifier: @"ilcycleNavViewController"];
+    navVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
+    ILCycleViewController *cycleVC = navVC.childViewControllers[0];
+    cycleVC.selectedCycleId = self.currentCycleId;
+    self.currentCycleId = nil;
+    
+    [self presentViewController: navVC animated: YES completion: nil];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
