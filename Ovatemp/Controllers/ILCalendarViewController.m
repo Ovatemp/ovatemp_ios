@@ -126,6 +126,10 @@
 
 - (void)customizeAppearance
 {
+    self.title = @"Calendar";
+    
+    [self.navigationController.navigationBar setTitleTextAttributes: @{NSForegroundColorAttributeName : [UIColor darkGrayColor]}];
+    
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemDone target: self action: @selector(didSelectDone)];
     self.navigationItem.rightBarButtonItem = doneButton;
 }
