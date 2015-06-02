@@ -183,6 +183,7 @@
     self.selectedCycle = day.cycle;
     
     if (self.selectedCycleId) {
+        
         BOOL found = NO;
         while (self.selectedCycle.previousCycle) {
             Cycle *currentCycle = self.selectedCycle;
@@ -193,6 +194,12 @@
                 [self didSelectPreviousCycle: nil];
             }
         }
+        
+        Cycle *lastCycle = self.selectedCycle;
+        if ([self.selectedCycleId integerValue] == [lastCycle.cycleId integerValue]) {
+            found = YES;
+        }
+        
         if (!found) {
             [self goToNewestCycle];
         }
@@ -283,7 +290,7 @@
     self.temperatureData = [[NSMutableArray alloc] init];
     NSArray *days = self.selectedCycle.days;
     
-    DDLogInfo(@"DAYS : %@", self.selectedCycle.days);
+    //DDLogInfo(@"DAYS : %@", self.selectedCycle.days);
     
     // ADD EXISTING DAYS TO TEMP. DATA
     for (int i = 0; i < [days count]; i++) {
