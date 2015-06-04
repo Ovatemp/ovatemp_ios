@@ -97,9 +97,11 @@ static CGFloat const kDissolveDuration = 0.2;
     todayController = [[TodayNavigationController alloc] initWithContentViewController:todayController];
     
 //    UIViewController *calendarController = [[CalendarViewController alloc] initWithNibName:@"CalendarViewController" bundle:nil];
+    
     UIViewController *coachingController = [[UIStoryboard storyboardWithName:@"CoachingStoryboard" bundle:nil] instantiateInitialViewController];
-    CoachingRootViewController *coachingVC = coachingController.childViewControllers[0];
-    coachingVC.showFirstScreen = YES;
+//    CoachingRootViewController *coachingVC = coachingController.childViewControllers[0];
+//    coachingVC.showFirstScreen = YES;
+    
     
 //    UIViewController *communityController = [[UIStoryboard storyboardWithName:@"CommunityStoryboard" bundle:nil] instantiateInitialViewController];
     //  UIViewController *moreViewController = [[UIStoryboard storyboardWithName:@"MoreStoryboard" bundle:nil] instantiateInitialViewController];

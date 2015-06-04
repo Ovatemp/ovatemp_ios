@@ -15,17 +15,17 @@
 #import "FertilityProfile.h"
 #import "Question.h"
 #import "User.h"
+#import "ILCoachingBreakViewController.h"
 
 @interface QuizViewController ()
-{
-  BOOL appeared;
-}
 
 @property NSInteger currentQuestion;
+
 @property (nonatomic, strong) Question *question;
 @property (nonatomic, strong) NSMutableArray *questions;
 
-@property BOOL loadedOnce;
+@property (nonatomic) BOOL loadedOnce;
+@property (nonatomic) BOOL appeared;
 
 @end
 
@@ -40,8 +40,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    if (!appeared) {
-        appeared = YES;
+    if (!self.appeared) {
+        self.appeared = YES;
 
         if (self.questions.count < 1) {
             self.questionLabel.text = @"Loading...";
@@ -80,9 +80,12 @@
         [Localytics tagEvent: @"User Completed Coaching Quiz"];
         [self loadFertilityProfile];
         return;
+        
     } else if (self.currentQuestion < 0) {
         self.currentQuestion = 0;
     }
+    
+    [self showBreak];
     
     self.countLabel.text = [NSString stringWithFormat:@"%i of %i",
                             (int)self.currentQuestion + 1,
@@ -110,11 +113,26 @@
     self.skipButton.hidden = !self.question.answered;
 }
 
+- (void)showBreak
+{
+    if (self.currentQuestion == 20 ||
+        self.currentQuestion == 40 ||
+        self.currentQuestion == 60 ||
+        self.currentQuestion == 80 ||
+        self.currentQuestion == 100) {
+        
+        ILCoachingBreakViewController *breakVC = [self.storyboard instantiateViewControllerWithIdentifier: @"ILCoachingBreakViewController"];
+        breakVC.currentQuestion = self.currentQuestion;
+        breakVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [self presentViewController: breakVC animated: YES completion: nil];
+    }
+}
+
 # pragma mark - Load questions
 
 - (void)cancelLoadQuestions:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated: YES];
 }
 
 - (void)loadQuestions:(id)sender
@@ -258,7 +276,9 @@
     [self stopLoading];
 
     if ([User current].fertilityProfileName) {
-        [self.navigationController popViewControllerAnimated:NO];
+        //[self.navigationController popViewControllerAnimated: NO];
+        UIViewController *coachingSummaryVC = [self.storyboard instantiateViewControllerWithIdentifier: @"ILCoachingSummaryViewController"];
+        [self.navigationController pushViewController: coachingSummaryVC animated: YES];
     } else {
         [self loadQuestions];
     }

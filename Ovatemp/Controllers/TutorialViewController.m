@@ -26,6 +26,14 @@
     
     [self.view bringSubviewToFront: self.skipButton];
     [self.view bringSubviewToFront: self.pageControl];
+    
+    if (self.darkMode) {
+        self.pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+        self.pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+        [self.skipButton setTitleColor: [UIColor darkGrayColor] forState: UIControlStateNormal];
+        UIColor *almostWhiteColor = [UIColor colorWithRed: 249.0/255.0 green: 249.0/255.0 blue: 249.0/255.0 alpha: 1];
+        self.view.backgroundColor = almostWhiteColor;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -135,6 +143,10 @@
     TutorialContentViewController *contentVC = [[self storyboardForTutorial] instantiateViewControllerWithIdentifier: @"tutorialContentViewController"];
     contentVC.index = index;
     contentVC.image = self.images[index];
+    
+    UIColor *almostWhiteColor = [UIColor colorWithRed: 249.0/255.0 green: 249.0/255.0 blue: 249.0/255.0 alpha: 1];
+    UIColor *blueGrayColor = [UIColor colorWithRed: 118.0/255.0 green: 121.0/255.0 blue: 137.0/255.0 alpha: 1];
+    contentVC.view.backgroundColor = self.darkMode ? almostWhiteColor : blueGrayColor;
     
     return contentVC;
 }

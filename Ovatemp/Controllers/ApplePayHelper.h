@@ -46,7 +46,7 @@
  *
  *  @return A boolean indicating the user's ability to use ApplePay
  */
-- (BOOL)hasApplePay;
+- (BOOL)canUseApplePay;
 
 /**
  *  Starts the payment proccess by presenting the PKPaymentAuthorizationViewController.

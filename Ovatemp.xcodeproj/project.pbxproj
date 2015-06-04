@@ -53,6 +53,12 @@
 		06AFB8C81B13834C00DEC464 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AFB8C71B13834C00DEC464 /* Crashlytics.framework */; };
 		06B858BE1AF16625006A58FB /* NSDictionary+WithoutNSNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */; };
 		06BD94F41AF1443A00345CFA /* NSArray+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BD94F31AF1443A00345CFA /* NSArray+Reverse.m */; };
+		06C315681B1F9E8E003FABD8 /* ILCoachingIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C315671B1F9E8E003FABD8 /* ILCoachingIntroViewController.m */; };
+		06C3156B1B1F9EB1003FABD8 /* ILCoachingBreakViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C3156A1B1F9EB1003FABD8 /* ILCoachingBreakViewController.m */; };
+		06C3156E1B1F9ECF003FABD8 /* ILCoachingSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C3156D1B1F9ECF003FABD8 /* ILCoachingSummaryViewController.m */; };
+		06C315711B1F9EF7003FABD8 /* ILCoachingRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C315701B1F9EF7003FABD8 /* ILCoachingRecipeViewController.m */; };
+		06C315741B1F9F04003FABD8 /* ILSummaryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C315731B1F9F04003FABD8 /* ILSummaryDetailViewController.m */; };
+		06C315771B1FA10E003FABD8 /* ILButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C315761B1FA10E003FABD8 /* ILButton.m */; };
 		06C55B221AAF4BD600EDE74A /* ILTrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */; };
 		06F7A4DC1AC4D3F30054CEDF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F7A4DA1AC4D3F30054CEDF /* Fabric.framework */; };
 		06F8FA4E1AC3619C006EC93F /* CycleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F8FA4D1AC3619C006EC93F /* CycleCollectionViewCell.m */; };
@@ -484,6 +490,18 @@
 		06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+WithoutNSNull.m"; path = "../NSDictionary+WithoutNSNull.m"; sourceTree = "<group>"; };
 		06BD94F21AF1443A00345CFA /* NSArray+Reverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+Reverse.h"; path = "../NSArray+Reverse.h"; sourceTree = "<group>"; };
 		06BD94F31AF1443A00345CFA /* NSArray+Reverse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Reverse.m"; path = "../NSArray+Reverse.m"; sourceTree = "<group>"; };
+		06C315661B1F9E8E003FABD8 /* ILCoachingIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCoachingIntroViewController.h; sourceTree = "<group>"; };
+		06C315671B1F9E8E003FABD8 /* ILCoachingIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCoachingIntroViewController.m; sourceTree = "<group>"; };
+		06C315691B1F9EB1003FABD8 /* ILCoachingBreakViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCoachingBreakViewController.h; sourceTree = "<group>"; };
+		06C3156A1B1F9EB1003FABD8 /* ILCoachingBreakViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCoachingBreakViewController.m; sourceTree = "<group>"; };
+		06C3156C1B1F9ECF003FABD8 /* ILCoachingSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCoachingSummaryViewController.h; sourceTree = "<group>"; };
+		06C3156D1B1F9ECF003FABD8 /* ILCoachingSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCoachingSummaryViewController.m; sourceTree = "<group>"; };
+		06C3156F1B1F9EF7003FABD8 /* ILCoachingRecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCoachingRecipeViewController.h; sourceTree = "<group>"; };
+		06C315701B1F9EF7003FABD8 /* ILCoachingRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCoachingRecipeViewController.m; sourceTree = "<group>"; };
+		06C315721B1F9F04003FABD8 /* ILSummaryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILSummaryDetailViewController.h; sourceTree = "<group>"; };
+		06C315731B1F9F04003FABD8 /* ILSummaryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILSummaryDetailViewController.m; sourceTree = "<group>"; };
+		06C315751B1FA10E003FABD8 /* ILButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILButton.h; sourceTree = "<group>"; };
+		06C315761B1FA10E003FABD8 /* ILButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILButton.m; sourceTree = "<group>"; };
 		06C55B201AAF4BD600EDE74A /* ILTrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTrackingViewController.h; sourceTree = "<group>"; };
 		06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTrackingViewController.m; sourceTree = "<group>"; };
 		06F7A4DA1AC4D3F30054CEDF /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
@@ -1214,6 +1232,25 @@
 			name = Icons;
 			sourceTree = "<group>";
 		};
+		06C315651B1F9C62003FABD8 /* ILCoaching */ = {
+			isa = PBXGroup;
+			children = (
+				06C315751B1FA10E003FABD8 /* ILButton.h */,
+				06C315761B1FA10E003FABD8 /* ILButton.m */,
+				06C315661B1F9E8E003FABD8 /* ILCoachingIntroViewController.h */,
+				06C315671B1F9E8E003FABD8 /* ILCoachingIntroViewController.m */,
+				06C315691B1F9EB1003FABD8 /* ILCoachingBreakViewController.h */,
+				06C3156A1B1F9EB1003FABD8 /* ILCoachingBreakViewController.m */,
+				06C3156C1B1F9ECF003FABD8 /* ILCoachingSummaryViewController.h */,
+				06C3156D1B1F9ECF003FABD8 /* ILCoachingSummaryViewController.m */,
+				06C315721B1F9F04003FABD8 /* ILSummaryDetailViewController.h */,
+				06C315731B1F9F04003FABD8 /* ILSummaryDetailViewController.m */,
+				06C3156F1B1F9EF7003FABD8 /* ILCoachingRecipeViewController.h */,
+				06C315701B1F9EF7003FABD8 /* ILCoachingRecipeViewController.m */,
+			);
+			name = ILCoaching;
+			sourceTree = "<group>";
+		};
 		06F2051E1A9E805000BC8C7B /* Account */ = {
 			isa = PBXGroup;
 			children = (
@@ -1304,6 +1341,7 @@
 		06FEA5C71A9D2EC5002BDFC2 /* Coaching */ = {
 			isa = PBXGroup;
 			children = (
+				06C315651B1F9C62003FABD8 /* ILCoaching */,
 				5F1C9A3619EDE879000F1FC1 /* DelegatingNavigationViewController.h */,
 				5F1C9A3719EDE879000F1FC1 /* DelegatingNavigationViewController.m */,
 				5F1C9A2D19EDE879000F1FC1 /* CoachingRootViewController.h */,
@@ -2436,6 +2474,7 @@
 				5F2B1DE81A097F0A0078A11D /* TrackingTemperatureTableViewCell.m in Sources */,
 				06615E0A1AEED396000696D1 /* ILDay.m in Sources */,
 				5F1C9B8C19EDE87A000F1FC1 /* FertilityProfileIntroViewController.m in Sources */,
+				06C315741B1F9F04003FABD8 /* ILSummaryDetailViewController.m in Sources */,
 				5F1C9B6E19EDE87A000F1FC1 /* BorderedGradientButton.m in Sources */,
 				06615E071AEEA6E0000696D1 /* OvatempAPI.m in Sources */,
 				5F1C9C6119EDE87A000F1FC1 /* Supplement.m in Sources */,
@@ -2455,6 +2494,7 @@
 				5F1C9C6419EDE87A000F1FC1 /* UserProfile.m in Sources */,
 				5F1C9B9319EDE87A000F1FC1 /* ProfileSettingsViewController.m in Sources */,
 				5F7AEA6C1A0137080053ABAB /* TrackingNavigationBar.m in Sources */,
+				06C315681B1F9E8E003FABD8 /* ILCoachingIntroViewController.m in Sources */,
 				5F8C569419F1BD950024552A /* SignUpViewController.m in Sources */,
 				5F1C9B7519EDE87A000F1FC1 /* FormRow.m in Sources */,
 				5F1C99DB19EDE775000F1FC1 /* ONDO.m in Sources */,
@@ -2473,11 +2513,13 @@
 				5F846E0A19F57D4D00CED980 /* Welcome2ViewController.m in Sources */,
 				5F1C9B7419EDE87A000F1FC1 /* Form.m in Sources */,
 				5F1C99DC19EDE775000F1FC1 /* ONDODevice.m in Sources */,
+				06C315771B1FA10E003FABD8 /* ILButton.m in Sources */,
 				5F223F3519F03B480003AF64 /* SettingsTableViewController.m in Sources */,
 				06ABBEA31B0A805F00EFA959 /* HealthKitHelper.m in Sources */,
 				5F1C9C5A19EDE87A000F1FC1 /* Cycle.m in Sources */,
 				5F1C9C5719EDE87A000F1FC1 /* BaseModel.m in Sources */,
 				06615E111AEED7B9000696D1 /* ILCycle.m in Sources */,
+				06C315711B1F9EF7003FABD8 /* ILCoachingRecipeViewController.m in Sources */,
 				5FCD68B719F942A10091C492 /* WeightTableViewCell.m in Sources */,
 				5F1E1D941A0DAEE4001C22B7 /* TrackingMoodTableViewCell.m in Sources */,
 				5F6561ED19FAD9D4001FB509 /* EditNameAndEmailTableViewCell.m in Sources */,
@@ -2495,6 +2537,7 @@
 				06A4D6771B03D1F100F1108C /* UINavigationController+Orientation.m in Sources */,
 				067AFC371AF2C595000040F2 /* ILDayStore.m in Sources */,
 				5F8C568E19F184C60024552A /* SelectLogInOrSignUpViewController.m in Sources */,
+				06C3156B1B1F9EB1003FABD8 /* ILCoachingBreakViewController.m in Sources */,
 				5FDAA3AB19F8020F004E7181 /* CycleLengthTableViewCell.m in Sources */,
 				5F1C9C6D19EDE87A000F1FC1 /* CoachingMenuCell.m in Sources */,
 				06615E0E1AEED4EE000696D1 /* NSArray+ArrayMap.m in Sources */,
@@ -2520,6 +2563,7 @@
 				5F1C9B9219EDE87A000F1FC1 /* Onboard2ViewController.m in Sources */,
 				5F1C9B7819EDE87A000F1FC1 /* GradientSegmentedControl.m in Sources */,
 				5F1C9B5F19EDE87A000F1FC1 /* AppDelegate.m in Sources */,
+				06C3156E1B1F9ECF003FABD8 /* ILCoachingSummaryViewController.m in Sources */,
 				5F1C9C6519EDE87A000F1FC1 /* ONDO.xcdatamodeld in Sources */,
 				5FE118401A18FF9B00AC76A7 /* TrackingSupplementsTableViewCell.m in Sources */,
 				5F6561D919FAB7F4001FB509 /* TryingToConceiveOrAvoidTableViewCell.m in Sources */,

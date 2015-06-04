@@ -11,6 +11,7 @@
 @interface TutorialViewController : UIViewController
 
 @property (nonatomic) NSArray *images;
+@property (nonatomic) BOOL darkMode;
 
 @property (weak, nonatomic) IBOutlet UIButton *skipButton;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;

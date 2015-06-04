@@ -13,9 +13,11 @@
 + (void)showAppWalkthroughInController:(UIViewController *)controller;
 + (void)showAppTutorialInController:(UIViewController *)controller;
 + (void)showTutorialForOndoInController:(UIViewController *)controller;
++ (void)showCoachingIntroInController:(UIViewController *)controller;
 
 + (BOOL)shouldShowAppWalkthrough;
 + (BOOL)shouldShowAppTutorial;
 + (BOOL)shouldShowOndoTutorial;
++ (BOOL)shouldShowCoachingIntro;
 
 @end

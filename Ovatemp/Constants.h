@@ -90,6 +90,7 @@ static NSString *const kOndoOverlayCountKey = @"OndoOverlayCountKey";
 static NSString *const kAppTutorialCountKey = @"AppTutorialCountKey";
 static NSString *const kAppWalkthroughCountKey = @"AppWalkthroughCountKey";
 static NSString *const kOndoTutorialCountKey = @"OndoTutorialCountKey";
+static NSString *const kCoachingIntroCountKey = @"CoachingIntroCountKey";
 
 static NSString *const kUserDidLogoutNotification = @"UserDidLogoutNotification";
 

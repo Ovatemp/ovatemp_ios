@@ -16,7 +16,7 @@
 {
     NSArray *ondoTutorialImages = @[[UIImage imageNamed: @"Walkthru1"],[UIImage imageNamed: @"Walkthru2"],[UIImage imageNamed: @"Walkthru3"],[UIImage imageNamed: @"Walkthru4"]];
     
-    [self showTutorialWithImages: ondoTutorialImages onViewController: controller];
+    [self showTutorialWithImages: ondoTutorialImages onViewController: controller darkMode: NO];
     [self incrementWalkthroughCount];
 }
 
@@ -24,7 +24,7 @@
 {
     NSArray *ondoTutorialImages = @[[UIImage imageNamed: @"Tutorial1"],[UIImage imageNamed: @"Tutorial2"],[UIImage imageNamed: @"Tutorial3"],[UIImage imageNamed: @"Tutorial4"]];
     
-    [self showTutorialWithImages: ondoTutorialImages onViewController: controller];
+    [self showTutorialWithImages: ondoTutorialImages onViewController: controller darkMode: NO];
     [self incrementAppTutorialCount];
 }
 
@@ -32,8 +32,16 @@
 {
     NSArray *ondoTutorialImages = @[[UIImage imageNamed: @"OndoTutorial1"],[UIImage imageNamed: @"OndoTutorial2"],[UIImage imageNamed: @"OndoTutorial3"],[UIImage imageNamed: @"OndoTutorial4"],[UIImage imageNamed: @"OndoTutorial5"],[UIImage imageNamed: @"OndoTutorial6"]];
     
-    [self showTutorialWithImages: ondoTutorialImages onViewController: controller];
+    [self showTutorialWithImages: ondoTutorialImages onViewController: controller darkMode: NO];
     [self incrementOndoTutorialCount];
+}
+
++ (void)showCoachingIntroInController:(UIViewController *)controller
+{
+    NSArray *ondoTutorialImages = @[[UIImage imageNamed: @"Coaching1"],[UIImage imageNamed: @"Coaching2"],[UIImage imageNamed: @"Coaching3"],[UIImage imageNamed: @"Coaching4"]];
+    
+    [self showTutorialWithImages: ondoTutorialImages onViewController: controller darkMode: YES];
+    [self incrementCoachingIntroCount];
 }
 
 + (BOOL)shouldShowAppWalkthrough
@@ -69,6 +77,17 @@
     return YES;
 }
 
++ (BOOL)shouldShowCoachingIntro
+{
+    NSUInteger count = [self countForKey: kCoachingIntroCountKey];
+    
+    if (count >= 1) {
+        return NO;
+    }
+    
+    return YES;
+}
+
 #pragma mark - Private
 
 + (void)incrementWalkthroughCount
@@ -86,6 +105,11 @@
     [self incrementCountWithKey: kOndoTutorialCountKey];
 }
 
++ (void)incrementCoachingIntroCount
+{
+    [self incrementCountWithKey: kCoachingIntroCountKey];
+}
+
 + (void)incrementCountWithKey:(NSString *)key
 {
     NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
@@ -101,11 +125,12 @@
     return count;
 }
 
-+ (void)showTutorialWithImages:(NSArray *)images onViewController:(UIViewController *)controller
++ (void)showTutorialWithImages:(NSArray *)images onViewController:(UIViewController *)controller darkMode:(BOOL)darkMode
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Tutorials" bundle: nil];
     TutorialViewController *tutorialVC = [storyboard instantiateInitialViewController];
     tutorialVC.images = images;
+    tutorialVC.darkMode = darkMode;
     
     [controller presentViewController: tutorialVC animated: YES completion: nil];
 }
