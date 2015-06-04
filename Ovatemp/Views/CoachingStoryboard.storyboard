@@ -845,6 +845,7 @@
                             <constraint firstAttribute="centerY" secondItem="KEu-yP-naj" secondAttribute="centerY" constant="-164" id="CC9-4Q-aIE"/>
                             <constraint firstAttribute="trailing" secondItem="Y35-fQ-Qv2" secondAttribute="trailing" constant="40" id="ORo-P2-QyB"/>
                             <constraint firstItem="bS3-h3-AxF" firstAttribute="leading" secondItem="5an-Bh-FaI" secondAttribute="leading" constant="20" id="OUE-aw-RhG"/>
+                            <constraint firstItem="Zi5-7G-ZUN" firstAttribute="top" secondItem="5an-Bh-FaI" secondAttribute="top" constant="20" id="QSH-3r-5gT"/>
                             <constraint firstAttribute="trailing" secondItem="3IP-9k-JUU" secondAttribute="trailing" constant="20" id="Y8A-uV-rAl"/>
                             <constraint firstItem="KEu-yP-naj" firstAttribute="top" secondItem="bS3-h3-AxF" secondAttribute="bottom" constant="7.5" id="Z23-Lz-VRH"/>
                             <constraint firstItem="Y35-fQ-Qv2" firstAttribute="leading" secondItem="5an-Bh-FaI" secondAttribute="leading" constant="40" id="aib-8D-b8K"/>
@@ -856,10 +857,12 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="3PC-is-s6d"/>
                                 <exclude reference="CC9-4Q-aIE"/>
                             </mask>
                         </variation>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="headingLabel" destination="3IP-9k-JUU" id="g1S-4P-qK8"/>

@@ -74,7 +74,7 @@
 
 - (void)updateScreen
 {
-    NSLog(@"CURRENT QUESTION = %ld : , TOTAL QUESTIONS = %lu", (long)self.currentQuestion, (unsigned long)self.questions.count);
+    //NSLog(@"CURRENT QUESTION = %ld : , TOTAL QUESTIONS = %lu", (long)self.currentQuestion, (unsigned long)self.questions.count);
     
     if (self.currentQuestion >= self.questions.count) {
         [Localytics tagEvent: @"User Completed Coaching Quiz"];
