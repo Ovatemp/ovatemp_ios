@@ -50,6 +50,7 @@
 		06AB70DA1B0548ED00AEC467 /* ApplePayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AB70D91B0548ED00AEC467 /* ApplePayHelper.m */; };
 		06ABBEA31B0A805F00EFA959 /* HealthKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ABBEA21B0A805F00EFA959 /* HealthKitHelper.m */; };
 		06ABBEA61B0A8D5600EFA959 /* HKHealthStore+AAPLExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ABBEA51B0A8D5600EFA959 /* HKHealthStore+AAPLExtensions.m */; };
+		06AECA001B20E83F00D1C309 /* CoachingDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AEC9FF1B20E83F00D1C309 /* CoachingDataStore.m */; };
 		06AFB8C81B13834C00DEC464 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AFB8C71B13834C00DEC464 /* Crashlytics.framework */; };
 		06B858BE1AF16625006A58FB /* NSDictionary+WithoutNSNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */; };
 		06BD94F41AF1443A00345CFA /* NSArray+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BD94F31AF1443A00345CFA /* NSArray+Reverse.m */; };
@@ -485,6 +486,8 @@
 		06ABBEA21B0A805F00EFA959 /* HealthKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthKitHelper.m; sourceTree = "<group>"; };
 		06ABBEA41B0A8D5600EFA959 /* HKHealthStore+AAPLExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HKHealthStore+AAPLExtensions.h"; sourceTree = "<group>"; };
 		06ABBEA51B0A8D5600EFA959 /* HKHealthStore+AAPLExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HKHealthStore+AAPLExtensions.m"; sourceTree = "<group>"; };
+		06AEC9FE1B20E83F00D1C309 /* CoachingDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoachingDataStore.h; sourceTree = "<group>"; };
+		06AEC9FF1B20E83F00D1C309 /* CoachingDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoachingDataStore.m; sourceTree = "<group>"; };
 		06AFB8C71B13834C00DEC464 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		06B858BC1AF16625006A58FB /* NSDictionary+WithoutNSNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+WithoutNSNull.h"; path = "../NSDictionary+WithoutNSNull.h"; sourceTree = "<group>"; };
 		06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+WithoutNSNull.m"; path = "../NSDictionary+WithoutNSNull.m"; sourceTree = "<group>"; };
@@ -1594,6 +1597,8 @@
 		5F1C9A6319EDE879000F1FC1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				06AEC9FE1B20E83F00D1C309 /* CoachingDataStore.h */,
+				06AEC9FF1B20E83F00D1C309 /* CoachingDataStore.m */,
 				06ABBEA11B0A805F00EFA959 /* HealthKitHelper.h */,
 				06ABBEA21B0A805F00EFA959 /* HealthKitHelper.m */,
 				06ABBEA41B0A8D5600EFA959 /* HKHealthStore+AAPLExtensions.h */,
@@ -2540,6 +2545,7 @@
 				06C3156B1B1F9EB1003FABD8 /* ILCoachingBreakViewController.m in Sources */,
 				5FDAA3AB19F8020F004E7181 /* CycleLengthTableViewCell.m in Sources */,
 				5F1C9C6D19EDE87A000F1FC1 /* CoachingMenuCell.m in Sources */,
+				06AECA001B20E83F00D1C309 /* CoachingDataStore.m in Sources */,
 				06615E0E1AEED4EE000696D1 /* NSArray+ArrayMap.m in Sources */,
 				068206981AE83D7A000B006F /* TutorialContentViewController.m in Sources */,
 				5F1E1E261A110116001C22B7 /* TrackingPregnancyTestTableViewCell.m in Sources */,
