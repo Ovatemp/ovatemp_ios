@@ -185,12 +185,33 @@
     if (self.selectedDay.cycleDay) {
         self.subtitleLabel.text = [NSString stringWithFormat:@"Cycle Day #%@", self.selectedDay.cycleDay];
     } else {
-        self.subtitleLabel.text = [NSString stringWithFormat:@"Enter Cycle Info"];
+        NSInteger cycleDay = [self getCycleDay];
+        self.subtitleLabel.text = (cycleDay == 0) ?
+        [NSString stringWithFormat: @"Enter Cycle Info"] : [NSString stringWithFormat:@"Cycle Day #%ld", (long)cycleDay];
     }
     
     if (!self.lowerDrawer) {
         self.arrowButton.transform = CGAffineTransformMakeRotation(M_PI);
     }
+}
+
+- (NSInteger)getCycleDay
+{
+    if ([self.selectedDates count] == 0) {
+        return 0;
+    }
+    
+    NSInteger current = self.selectedIndexPath.row;
+    for (NSInteger i = current; i >= 0; i--) {
+        NSDate *date = self.selectedDates[i];
+        ILDay *day = [self.dayStore dayForDate: date];
+        if (day.cycleDay) {
+            NSInteger distance = current - i;
+            NSInteger newCycleDay = [day.cycleDay integerValue] + distance;
+            return newCycleDay;
+        }
+    }
+    return 0;
 }
 
 - (void)reloadTableWithAnimation
