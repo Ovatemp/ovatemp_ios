@@ -1239,9 +1239,11 @@
         tempInFahrenheit = [self.selectedTemperature floatValue];
     }
     
+    NSString *localyticsEvent = self.selectedDay.usedOndo?
+    @"User Did Use ONDO For Selecting Temperature" : @"User Did Select Temperature Manually";
     NSDictionary *localyticsAttributes = @{@"FahrenheitTemp" : @(tempInFahrenheit),
                                            @"Date" : self.selectedDay.date};
-    [Localytics tagEvent: @"User Did Select Temperature" attributes: localyticsAttributes];
+    [Localytics tagEvent: localyticsEvent attributes: localyticsAttributes];
 
     [self updateHealthKitWithTemp: tempInFahrenheit];
     
