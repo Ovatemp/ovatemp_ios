@@ -43,9 +43,9 @@
 
 - (void)showIntro
 {
-    if ([TutorialHelper shouldShowCoachingIntro]) {
+    //if ([TutorialHelper shouldShowCoachingIntro]) {
         [TutorialHelper showCoachingIntroInController: self];
-    }
+    //}
 }
 
 #pragma mark - Appearance / Set-Up
