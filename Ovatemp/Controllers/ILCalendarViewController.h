@@ -25,5 +25,8 @@
 @property (nonatomic) ILDayStore *dayStore;
 
 @property (weak, nonatomic) IBOutlet UIView *infoView;
+@property (weak, nonatomic) IBOutlet UIImageView *fertileImage;
+@property (weak, nonatomic) IBOutlet UIImageView *notFertileImage;
+@property (weak, nonatomic) IBOutlet UIImageView *periodImage;
 
 @end

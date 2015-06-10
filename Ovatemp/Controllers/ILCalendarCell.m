@@ -9,6 +9,7 @@
 #import "ILCalendarCell.h"
 
 #import "UserProfile.h"
+#import "UIColor+Traits.h"
 
 @interface ILCalendarCell ()
 
@@ -26,10 +27,10 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.periodColor = [UIColor colorWithRed: 251.0/255.0 green: 95.0/255.0 blue: 98.0/255.0 alpha: 1];
-        self.fertilityColorConceive = [UIColor colorWithRed: 56.0/255.0 green: 192.0/255.0 blue: 191.0/255.0 alpha: 1];
-        self.fertilityColorAvoid = self.periodColor;
-        self.notFertileColor = [UIColor colorWithRed: 143.0/255.0 green: 130.0/255.0 blue: 157.0/255.0 alpha: 1];
+//        self.periodColor = [UIColor colorWithRed: 251.0/255.0 green: 95.0/255.0 blue: 98.0/255.0 alpha: 1];
+//        self.fertilityColorConceive = [UIColor colorWithRed: 56.0/255.0 green: 192.0/255.0 blue: 191.0/255.0 alpha: 1];
+//        self.fertilityColorAvoid = self.periodColor;
+//        self.notFertileColor = [UIColor colorWithRed: 143.0/255.0 green: 130.0/255.0 blue: 157.0/255.0 alpha: 1];
         
     }
     return self;
@@ -55,8 +56,8 @@
     
     if (self.dayType == CalendarDayTypePeriod) {
         
-        strokeColor = self.periodColor;
-        fillColor = self.periodColor;
+        strokeColor = [UIColor il_lightRedColor];
+        fillColor = [UIColor il_darkRedColor];
         
         CGFloat size = rect.size.width * .6;
         CGFloat centerX = rect.size.width / 2 - (size / 2);
@@ -76,19 +77,36 @@
         UserProfile *currentUserProfile = [UserProfile current];
         
         if (self.dayType == CalendarDayTypeFertile) {
-            
+            // Fertile
             if (currentUserProfile.tryingToConceive) {
-                strokeColor = self.fertilityColorConceive;
-                fillColor = self.fertilityColorConceive;
+                // TTC
+                strokeColor = [UIColor il_greenColor];
+                fillColor = [UIColor il_greenColor];
             }else{
-                strokeColor = self.fertilityColorAvoid;
-                fillColor = self.fertilityColorAvoid;
+                // TTA
+                strokeColor = [UIColor il_lightRedColor];
+                fillColor = [UIColor il_lightRedColor];
             }
             
         }else{
             // Not Fertile
-            strokeColor = self.notFertileColor;
-            fillColor = self.notFertileColor;
+            if (currentUserProfile.tryingToConceive) {
+                // TTC
+                strokeColor = [UIColor il_purple];
+                fillColor = [UIColor il_purple];
+            }else{
+                // TTA
+                if ([self.cyclePhase isEqualToString: @"preovulation"]) {
+                    // Pre Ovulation - Yellow Icon
+                    strokeColor = [UIColor il_yellowColor];
+                    fillColor = [UIColor il_yellowColor];
+                }else{
+                    // Post Ovulation - Green Icon
+                    strokeColor = [UIColor il_greenColor];
+                    fillColor = [UIColor il_greenColor];
+                }
+            }
+            
         }
         
         UIBezierPath* bezierPath = UIBezierPath.bezierPath;

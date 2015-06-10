@@ -33,6 +33,18 @@
     
     [self customizeAppearance];
     [self setUpCalendar];
+    [self setAppropiateImages];
+}
+
+- (void)setAppropiateImages
+{
+    UserProfile *currentUserProfile = [UserProfile current];
+    if (!currentUserProfile.tryingToConceive) {
+        // Trying to Avoid
+        self.fertileImage.image = [UIImage imageNamed: @"icn_dd_fertile_small"];
+        self.notFertileImage.image = [UIImage imageNamed: @"icn_pulldown_fertile_large"];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning

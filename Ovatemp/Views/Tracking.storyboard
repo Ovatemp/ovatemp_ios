@@ -314,7 +314,7 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="icn_tracking_notfertile" translatesAutoresizingMaskIntoConstraints="NO" id="Rwy-zr-tPt">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="icn_pulldown_notfertile_small" translatesAutoresizingMaskIntoConstraints="NO" id="Rwy-zr-tPt">
                                         <rect key="frame" x="283.5" y="11" width="30" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="hwE-3q-Xei"/>
@@ -415,6 +415,7 @@
                                     <constraint firstItem="8ej-Xv-dzB" firstAttribute="leading" secondItem="H1l-0A-o2b" secondAttribute="trailing" constant="-33" id="rLj-qk-vBd"/>
                                     <constraint firstItem="Rwy-zr-tPt" firstAttribute="leading" secondItem="kQA-hB-TSI" secondAttribute="trailing" id="uiR-AY-hZw"/>
                                     <constraint firstAttribute="centerY" secondItem="Rwy-zr-tPt" secondAttribute="centerY" constant="5" id="y5J-iy-hfm"/>
+                                    <constraint firstItem="Pak-9t-6GQ" firstAttribute="top" secondItem="Rwy-zr-tPt" secondAttribute="top" id="yJ8-4D-IH6"/>
                                     <constraint firstItem="tj7-xQ-6p6" firstAttribute="width" secondItem="kQA-hB-TSI" secondAttribute="width" id="zee-bq-Gfn"/>
                                 </constraints>
                                 <variation key="default">
@@ -430,6 +431,7 @@
                                         <exclude reference="BDI-91-GZ8"/>
                                         <exclude reference="c9d-Qa-fTH"/>
                                         <exclude reference="jK5-6O-XZu"/>
+                                        <exclude reference="y5J-iy-hfm"/>
                                         <exclude reference="cSu-LV-feX"/>
                                         <exclude reference="78E-G4-q5x"/>
                                         <exclude reference="JjF-aq-eh1"/>
@@ -458,7 +460,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="Yla-pp-jO4"/>
                     <connections>
+                        <outlet property="fertileImage" destination="Pak-9t-6GQ" id="Mf9-1F-GVX"/>
                         <outlet property="infoView" destination="7Jb-tv-2gy" id="9kA-Pq-XxK"/>
+                        <outlet property="notFertileImage" destination="Rwy-zr-tPt" id="RSw-YF-iYF"/>
+                        <outlet property="periodImage" destination="H1l-0A-o2b" id="5sm-f6-bYb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f3l-rh-P33" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -817,9 +822,9 @@
         <image name="icn_calendar" width="22" height="22"/>
         <image name="icn_graph" width="24" height="22"/>
         <image name="icn_p_heavy" width="33" height="38"/>
-        <image name="icn_period" width="33" height="33"/>
+        <image name="icn_period" width="34" height="34"/>
         <image name="icn_pulldown_fertile_large" width="46" height="52"/>
-        <image name="icn_tracking_notfertile" width="140" height="145"/>
+        <image name="icn_pulldown_notfertile_small" width="35" height="36"/>
         <image name="pulldown_arrow" width="24" height="8"/>
     </resources>
 </document>

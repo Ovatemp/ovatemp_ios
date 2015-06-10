@@ -18,5 +18,6 @@ typedef enum {
 @interface ILCalendarCell : TKCalendarDayCell
 
 @property (nonatomic) CalendarDayType dayType;
+@property (nonatomic) NSString *cyclePhase;
 
 @end
