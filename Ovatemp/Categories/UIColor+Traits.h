@@ -27,6 +27,10 @@
 + (UIColor *)ovatempAlmostWhiteColor;
 + (UIColor *)ovatempGreyColorForDateCollectionViewCells;
 
-
++ (UIColor *)il_greenColor;
++ (UIColor *)il_lightRedColor;
++ (UIColor *)il_darkRedColor;
++ (UIColor *)il_purple;
++ (UIColor *)il_yellowColor;
 
 @end

@@ -49,85 +49,69 @@
         self.periodLabel.hidden = NO;
         self.peakLabel.hidden = YES;
         self.fertilityLabel.hidden = YES;
-    
         self.enterMoreInfoLabel.text = selectedDay.fertility.message;
         self.enterMoreInfoLabel.hidden = NO;
         
     }else if (selectedDay.fertility.status == ILFertilityStatusTypePeakFertility) {
         
-        if (currentUserProfile.tryingToConceive) {
-            
-            self.peakLabel.text = @"PEAK";
-            self.fertilityLabel.text = @"FERTILITY";
-            self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_fertile"];
-            
-            self.peakLabel.hidden = NO;
-            self.fertilityLabel.hidden = NO;
-            self.notEnoughInfoLabel.hidden = YES;
-            self.periodLabel.hidden = YES;
-            
-            self.enterMoreInfoLabel.text = selectedDay.fertility.message;
-            self.enterMoreInfoLabel.hidden = NO;
-            
-        }else{
+        self.peakLabel.text = @"PEAK";
+        self.fertilityLabel.text = @"FERTILITY";
 
-            self.peakLabel.text = @"PEAK";
-            self.fertilityLabel.text = @"FERTILITY";
-            self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period-1"]; // I know it's not the period phase, my designer named the asset wrong
-            
-            self.peakLabel.hidden = NO;
-            self.fertilityLabel.hidden = NO;
-            self.notEnoughInfoLabel.hidden = YES;
-            self.periodLabel.hidden = YES;
-            
-            self.enterMoreInfoLabel.text = selectedDay.fertility.message;
-            self.enterMoreInfoLabel.hidden = NO;
-            
+        self.peakLabel.hidden = NO;
+        self.fertilityLabel.hidden = NO;
+        self.notEnoughInfoLabel.hidden = YES;
+        self.periodLabel.hidden = YES;
+        self.enterMoreInfoLabel.text = selectedDay.fertility.message;
+        self.enterMoreInfoLabel.hidden = NO;
+        
+        if (currentUserProfile.tryingToConceive) {
+            self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_ttc_fertile"];
+        }else{
+            self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_tta_fertile"];
         }
         
     }else if (selectedDay.fertility.status == ILFertilityStatusTypeFertile){
      
-        if (currentUserProfile.tryingToConceive) {
-            
-            self.periodLabel.text = @"FERTILE";
-            self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_fertile"];
+        self.periodLabel.text = @"FERTILE";
+        self.enterMoreInfoLabel.text = selectedDay.fertility.message;
 
-            self.periodLabel.hidden = NO;
-            self.peakLabel.hidden = YES;
-            self.fertilityLabel.hidden = YES;
-            self.notEnoughInfoLabel.hidden = YES;
-            
-            self.enterMoreInfoLabel.text = selectedDay.fertility.message;
-            self.enterMoreInfoLabel.hidden = NO;
-            
+        self.periodLabel.hidden = NO;
+        self.peakLabel.hidden = YES;
+        self.fertilityLabel.hidden = YES;
+        self.notEnoughInfoLabel.hidden = YES;
+        self.enterMoreInfoLabel.hidden = NO;
+
+        if (currentUserProfile.tryingToConceive) {
+            self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_ttc_fertile"];
         }else{
-            
-            self.periodLabel.text = @"FERTILE";
-            self.periodLabel.hidden = NO;
-            self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_period-1"]; // I know it's not the period phase, my designer named the asset wrong
-            
-            self.peakLabel.hidden = YES;
-            self.fertilityLabel.hidden = YES;
-            self.notEnoughInfoLabel.hidden = YES;
-            
-            self.enterMoreInfoLabel.text = selectedDay.fertility.message;
-            self.enterMoreInfoLabel.hidden = NO;
-            
+            self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_tta_fertile"];
         }
         
     }else if (selectedDay.fertility.status == ILFertilityStatusTypeNotFertile) {
         
         self.peakLabel.text = @"NOT";
         self.fertilityLabel.text = @"FERTILE";
-        self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_notfertile"];
+        self.enterMoreInfoLabel.text = selectedDay.fertility.message;
         
         self.peakLabel.hidden = NO;
         self.fertilityLabel.hidden = NO;
         self.notEnoughInfoLabel.hidden = YES;
         self.periodLabel.hidden = YES;
-
-        self.enterMoreInfoLabel.text = selectedDay.fertility.message;
         self.enterMoreInfoLabel.hidden = NO;
+        
+        if (currentUserProfile.tryingToConceive) {
+            // Trying to Conceive
+            self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_ttc_notfertile"];
+        }else{
+            // Trying to Avoid
+            if ([selectedDay.cyclePhase isEqualToString: @"preovulation"]) {
+                // Pre-Ovulation
+                self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_tta_notfertile_pre"];
+            }else{
+                // Post-Ovulation
+                self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_ttc_fertile"]; // Green indicator
+            }
+        }
         
     }else {
         

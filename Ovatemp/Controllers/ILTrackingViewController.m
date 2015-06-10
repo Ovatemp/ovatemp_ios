@@ -762,7 +762,21 @@
         
     }else if (dayAtIndexPath.fertility.status == ILFertilityStatusTypeNotFertile) {
         
-        cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_small"];
+        if (currentUserProfile.tryingToConceive) {
+            // TTC - Purple Icon
+            cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_small"];
+            
+        }else{
+            // TTA
+            if ([dayAtIndexPath.cyclePhase isEqualToString: @"preovulation"]) {
+                // Pre Ovulation - Yellow Icon
+                cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_notfertile_pre"];
+                
+            }else{
+                // Post Ovulation - Green Icon
+                cell.statusImageView.image = [UIImage imageNamed:@"icn_pulldown_fertile_small"];
+            }
+        }
         
     }else {
         

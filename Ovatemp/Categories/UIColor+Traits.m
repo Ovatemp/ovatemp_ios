@@ -116,11 +116,7 @@ static NSMutableDictionary *__cachedGradients;
     return [UIColor colorWithRed:(204.0f/255.0) green:(204.0f/255.0) blue:(204.0f/255.0) alpha:1.0];
 }
 
-#pragma mark - Public Fertility Colors
-
-
-
-#pragma mark - Private Fertility Colors
+#pragma mark - Fertility Colors
 
 + (UIColor *)il_greenColor
 {
