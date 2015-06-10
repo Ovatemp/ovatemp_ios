@@ -17,6 +17,7 @@
 #import "UserProfile.h"
 #import "CycleCollectionViewCell.h"
 #import "TransparentSwipeView.h"
+#import "UIColor+Traits.h"
 
 @interface ILCycleViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,TKChartDelegate>
 
@@ -599,21 +600,22 @@
 
 - (UIColor *)colorForCyclePhase:(NSString *)cyclePhase
 {
-    UIColor *periodColor = PERIOD_COLOR;
-    UIColor *notFertileColor = [UIColor purpleColor];
-    UIColor *fertileColor = [UIColor ovatempAquaColor];
+    UserProfile *currentUserProfile = [UserProfile current];
     
     if ([cyclePhase isEqualToString: @"period"]) {
-        return periodColor;
+        return [UIColor il_darkRedColor];
         
     }else if([cyclePhase isEqualToString: @"ovulation"]){
-        return fertileColor;
+        // Fertile
+        return (currentUserProfile.tryingToConceive)? [UIColor il_greenColor] : [UIColor il_lightRedColor];
         
     }else if([cyclePhase isEqualToString: @"preovulation"]){
-        return notFertileColor;
+        // Not Fertile ... Warning
+        return (currentUserProfile.tryingToConceive)? [UIColor il_purple] : [UIColor il_yellowColor];
         
     }else if([cyclePhase isEqualToString: @"postovulation"]){
-        return notFertileColor;
+        // Not Fertile
+        return (currentUserProfile.tryingToConceive)? [UIColor il_purple] : [UIColor il_greenColor];
         
     }else{
         return [UIColor darkGrayColor];
