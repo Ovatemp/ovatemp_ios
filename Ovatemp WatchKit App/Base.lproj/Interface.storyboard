@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7706" systemVersion="14D2134" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--Ovatemp-->
@@ -240,7 +240,7 @@
                 <glanceController spacing="0.0" topTemplateType="groupBody2" id="0uZ-2p-rRc" customClass="GlanceController" customModule="Ovatemp_WatchKit_App" customModuleProvider="target">
                     <items>
                         <group alignment="left" id="6Sg-2K-8hR"/>
-                        <label alignment="left" text="Label∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙" minimumScaleFactor="0.50000000000000011" id="RPB-Pr-XcW"/>
+                        <label alignment="left" minimumScaleFactor="0.50000000000000011" id="RPB-Pr-XcW"/>
                         <group alignment="left" contentMode="scaleAspectFit" layout="vertical" id="uCw-4Q-Ouw">
                             <items>
                                 <label width="100" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="6" id="g2m-eg-NaA">

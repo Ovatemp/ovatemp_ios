@@ -69,9 +69,7 @@ class GlanceController: WKInterfaceController {
         
         let fertility = selectedDay.fertilityForDay()
         let userType = Session.retrieveUserTypeFromDefaults()
-        
-        self.fertilityStatusInfoLabel.setText("")
-        
+                
         switch fertility.fertilityStatus {
             
         case FertilityStatus.peakFertility:
