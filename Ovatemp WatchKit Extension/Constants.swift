@@ -8,10 +8,10 @@
 
 import UIKit
 
-//let gBaseUrl = "http://api.ovatemp.com/api"
+let gBaseUrl = "http://api.ovatemp.com/api"
 
-#if Staging
-    let gBaseUrl = "http://ovatemp-api-staging.herokuapp.com/api"
-#else
-    let gBaseUrl = "http://api.ovatemp.com/api"
-#endif
+//#if Staging
+//    let gBaseUrl = "http://ovatemp-api-staging.herokuapp.com/api"
+//#else
+//    let gBaseUrl = "http://api.ovatemp.com/api"
+//#endif

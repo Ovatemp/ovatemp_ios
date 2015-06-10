@@ -51,6 +51,11 @@ public class Day {
         
         // Check Fertility Window
         
+        if(cyclePhase == "period") {
+            // result is PERIOD
+            return Fertility(status: FertilityStatus.period, cycle: FertilityCycle.period)
+        }
+        
         if let inFertilityWindow = inFertilityWindow {
             
             if inFertilityWindow{
@@ -68,11 +73,7 @@ public class Day {
         
         // Check Cycle Phases
         
-        if(cyclePhase == "period") {
-            // result is PERIOD
-            return Fertility(status: FertilityStatus.period, cycle: FertilityCycle.period)
-            
-        } else if(cyclePhase == "ovulation") {
+        if(cyclePhase == "ovulation") {
             
             if(date == dateFormatter.stringFromDate(cyclePeakDate!)) {
                 // result is PEAK FERTILITY
