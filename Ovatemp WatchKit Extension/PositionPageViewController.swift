@@ -64,16 +64,23 @@ class PositionPageViewController: WKInterfaceController {
     
     func updatePositionData(positionSelection: String, changeSelection: PositionState) {
         
-        let positionSelectionString = "day[date]=\(todayDate!)&day[cervical_position]="+positionSelection
+        if let todayDate = todayDate {
+            
+            let positionSelectionString = "day[date]=\(todayDate)&day[cervical_position]="+positionSelection
+            
+            connectionManager.updateFertilityData (positionSelectionString, completion: { (success, error) -> () in
+                
+                if(error == nil) {
+                    self.selectedPositionState = self.selectedDay.positionStateForDay()
+                    self.updateScreen()
+                }
+                
+            })
+            
+        }else{
+            println("ERROR : TODAY DATE IS NIL")
+        }
         
-        connectionManager.updateFertilityData (positionSelectionString, completion: { (success, error) -> () in
-            
-            if(error == nil) {
-                self.selectedPositionState = self.selectedDay.positionStateForDay()
-                self.updateScreen()
-            }
-            
-        })
     }
     
     // Mark: Appearance
