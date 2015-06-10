@@ -70,6 +70,8 @@ class GlanceController: WKInterfaceController {
         let fertility = selectedDay.fertilityForDay()
         let userType = Session.retrieveUserTypeFromDefaults()
         
+        self.fertilityStatusInfoLabel.setText("")
+        
         switch fertility.fertilityStatus {
             
         case FertilityStatus.peakFertility:
@@ -91,10 +93,26 @@ class GlanceController: WKInterfaceController {
             
         case FertilityStatus.notFertile:
             
-            if userType == "TTC"{
-                self.fertilityStatusGroup.setBackgroundImageNamed("fertile_conceive")
+            if let cyclePhase = selectedDay.cyclePhase {
+                if cyclePhase == "preovulation"{
+                    if userType == "TTC"{
+                        self.fertilityStatusGroup.setBackgroundImageNamed("not_fertile_conceive")
+                    }else{
+                        self.fertilityStatusGroup.setBackgroundImageNamed("not_fertile_avoid")
+                    }
+                }else{
+                    if userType == "TTC"{
+                        self.fertilityStatusGroup.setBackgroundImageNamed("not_fertile_conceive")
+                    }else{
+                        self.fertilityStatusGroup.setBackgroundImageNamed("fertile_conceive")
+                    }
+                }
             }else{
-                self.fertilityStatusGroup.setBackgroundImageNamed("not_fertile_conceive")
+                if userType == "TTC"{
+                    self.fertilityStatusGroup.setBackgroundImageNamed("not_fertile_conceive")
+                }else{
+                    self.fertilityStatusGroup.setBackgroundImageNamed("not_fertile_avoid")
+                }
             }
             
         case FertilityStatus.period:
