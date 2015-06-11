@@ -8,7 +8,7 @@
 
 #import "ILCoachingSummaryViewController.h"
 
-@interface ILCoachingSummaryViewController ()
+@interface ILCoachingSummaryViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
@@ -33,6 +33,25 @@
     self.title = @"Coaching";
     
     [self.navigationItem setHidesBackButton: YES animated: YES];
+}
+
+#pragma mark - UITableView Data Source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"CoachingSummaryCell" forIndexPath: indexPath];
+    
+    return cell;
 }
 
 @end

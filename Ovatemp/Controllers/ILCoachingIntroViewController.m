@@ -43,9 +43,9 @@
 
 - (void)showIntro
 {
-    //if ([TutorialHelper shouldShowCoachingIntro]) {
+    if ([TutorialHelper shouldShowCoachingIntro]) {
         [TutorialHelper showCoachingIntroInController: self];
-    //}
+    }
 }
 
 #pragma mark - Appearance / Set-Up
@@ -54,7 +54,7 @@
 {
     BOOL hasFertilityProfile = [User current].fertilityProfileName != nil;
 
-    if (!hasFertilityProfile) {
+    if (hasFertilityProfile) {
         UIViewController *coachingVC = [self.storyboard instantiateViewControllerWithIdentifier: @"ILCoachingSummaryViewController"];
         [self.navigationController pushViewController: coachingVC animated: YES];
     }

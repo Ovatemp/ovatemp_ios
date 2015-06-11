@@ -85,7 +85,7 @@
         self.currentQuestion = 0;
     }
     
-    //[self showBreak];
+    [self showBreak];
     
     self.countLabel.text = [NSString stringWithFormat:@"%i of %i",
                             (int)self.currentQuestion + 1,
@@ -113,20 +113,20 @@
     self.skipButton.hidden = !self.question.answered;
 }
 
-//- (void)showBreak
-//{
-//    if (self.currentQuestion == 20 ||
-//        self.currentQuestion == 40 ||
-//        self.currentQuestion == 60 ||
-//        self.currentQuestion == 80 ||
-//        self.currentQuestion == 100) {
-//        
-//        ILCoachingBreakViewController *breakVC = [self.storyboard instantiateViewControllerWithIdentifier: @"ILCoachingBreakViewController"];
-//        breakVC.currentQuestion = self.currentQuestion;
-//        breakVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-//        [self presentViewController: breakVC animated: YES completion: nil];
-//    }
-//}
+- (void)showBreak
+{
+    if (self.currentQuestion == 20 ||
+        self.currentQuestion == 40 ||
+        self.currentQuestion == 60 ||
+        self.currentQuestion == 80 ||
+        self.currentQuestion == 100) {
+        
+        ILCoachingBreakViewController *breakVC = [self.storyboard instantiateViewControllerWithIdentifier: @"ILCoachingBreakViewController"];
+        breakVC.currentQuestion = self.currentQuestion;
+        breakVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [self presentViewController: breakVC animated: YES completion: nil];
+    }
+}
 
 # pragma mark - Load questions
 
@@ -276,9 +276,9 @@
     [self stopLoading];
 
     if ([User current].fertilityProfileName) {
-        [self.navigationController popViewControllerAnimated: NO];
-        //UIViewController *coachingSummaryVC = [self.storyboard instantiateViewControllerWithIdentifier: @"ILCoachingSummaryViewController"];
-        //[self.navigationController pushViewController: coachingSummaryVC animated: YES];
+//        [self.navigationController popViewControllerAnimated: NO];
+        UIViewController *coachingSummaryVC = [self.storyboard instantiateViewControllerWithIdentifier: @"ILCoachingSummaryViewController"];
+        [self.navigationController pushViewController: coachingSummaryVC animated: YES];
     } else {
         [self loadQuestions];
     }
