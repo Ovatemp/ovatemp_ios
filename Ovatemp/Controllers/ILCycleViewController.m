@@ -32,6 +32,10 @@
 @property (nonatomic) UISwipeGestureRecognizer *swipeLeft;
 @property (nonatomic) UISwipeGestureRecognizer *swipeRight;
 
+@property (nonatomic) NSDateFormatter *dateFormatter;
+
+@property (nonatomic) NSArray *days;
+
 @end
 
 @implementation ILCycleViewController
@@ -228,6 +232,7 @@
         [self reloadChart];
         [self reloadCollectionViews];
     }
+    
 }
 
 - (void)customizeAppearance
@@ -286,13 +291,82 @@
     [self addFertilityWindowToChart];
 }
 
+- (NSArray *)addMissingDatesToArray:(NSArray *)days
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSMutableArray *newArray = [[NSMutableArray alloc] init];
+    
+    Day *firstDay = days[0];
+    [newArray addObject: firstDay];
+    
+    for (int i = 1; i < [days count]; i++) {
+        
+        Day *previousDay = days[i - 1];
+        Day *currentDay = days[i];
+        
+        NSInteger daysBetween = [self daysBetweenDate: previousDay.date andDate: currentDay.date];
+        
+        if (daysBetween == 0) {
+            // Duplicate Day, Ignore
+            continue;
+            
+        }else if(daysBetween == 1){
+            // Next day is next day's date. GOOD. Add to new array.
+            [newArray addObject: currentDay];
+            
+        }else {
+            // There is a SPACE between dates. Fill with empty days with the correct dates.
+            
+            Day *firstDay = previousDay;
+            for (int j = 0; j < daysBetween - 1; j++) {
+                
+                NSDate *tomorrowDate = [calendar dateByAddingUnit: NSCalendarUnitDay
+                                                            value: 1
+                                                           toDate: firstDay.date
+                                                          options: kNilOptions];
+                Day *newDay = [[Day alloc] init];
+                newDay.date = tomorrowDate;
+                newDay.idate = [self.dateFormatter stringFromDate: tomorrowDate];
+                [newArray addObject: newDay];
+                firstDay = newDay;
+            }
+            
+            [newArray addObject: currentDay];
+            
+        }
+        
+    }
+    
+    return [NSArray arrayWithArray: newArray];
+}
+
+- (NSInteger)daysBetweenDate:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime
+{
+    NSDate *fromDate;
+    NSDate *toDate;
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    [calendar rangeOfUnit:NSCalendarUnitDay startDate: &fromDate interval: NULL forDate: fromDateTime];
+    [calendar rangeOfUnit:NSCalendarUnitDay startDate: &toDate interval: NULL forDate: toDateTime];
+    
+    NSDateComponents *difference = [calendar components: NSCalendarUnitDay fromDate: fromDate toDate: toDate options: 0];
+    
+    return [difference day];
+}
+
 - (void)buildTemperatureDataArray
 {
     self.temperatureData = [[NSMutableArray alloc] init];
-    NSArray *days = self.selectedCycle.days;
+    NSArray *oldDays = self.selectedCycle.days;
+    NSArray *days = [self addMissingDatesToArray: self.selectedCycle.days];
     
-    //DDLogInfo(@"DAYS : %@", self.selectedCycle.days);
+    DDLogInfo(@"OLD DAYS : %@", oldDays);
+    DDLogError(@"OLD DAYS COUNT : %ld", (long)[oldDays count]);
     
+    DDLogInfo(@"DAYS : %@", days);
+    DDLogError(@"DAYS COUNT : %ld", (long)[days count]);
+
     // ADD EXISTING DAYS TO TEMP. DATA
     for (int i = 0; i < [days count]; i++) {
         
@@ -301,7 +375,7 @@
         
         // If there is no temperature for day, get previous non zero temperature
         if (!day.temperature || [day.temperature floatValue] == 0) {
-            CGFloat previousTemp = [self getPreviousNonZeroTemperatureFromIndex: i];
+            CGFloat previousTemp = [self getPreviousNonZeroTemperatureInArray: days fromIndex: i];
             temperature = [self correctTempWithUnit: previousTemp];
         }else{
             temperature = [self correctTempWithUnit: [day.temperature floatValue]];
@@ -311,8 +385,12 @@
     }
     
     // FILL OUT REMAINDER OF CYCLE
-    if ([days count] < self.cycleLength) {
-        CGFloat previousTemp = [self getPreviousNonZeroTemperatureFromIndex: [days count]];
+    
+    NSInteger selectedCycleLength = [self.selectedCycle.days count];
+    NSInteger cycleLength = (selectedCycleLength >= 30) ? selectedCycleLength : 30;
+    
+    if ([days count] < cycleLength) {
+        CGFloat previousTemp = [self getPreviousNonZeroTemperatureInArray: days fromIndex: [days count]];
         for (NSInteger i = [days count]; i < self.cycleLength; i++) {
             [self.temperatureData addObject:[[TKChartDataPoint alloc] initWithX: @(i+1) Y: @(previousTemp)]];
         }
@@ -322,10 +400,10 @@
     //NSLog(@"TEMPERATURE DATA: %@", self.temperatureData);
 }
 
-- (CGFloat)getPreviousNonZeroTemperatureFromIndex:(NSInteger)index
+- (CGFloat)getPreviousNonZeroTemperatureInArray:(NSArray *)array fromIndex:(NSInteger)index
 {
     for (NSInteger i = index - 1; i >=0 ; i--) {
-        Day *day = self.selectedCycle.days[i];
+        Day *day = array[i];
         CGFloat temperature = [day.temperature floatValue];
         if (temperature != 0) {
             return temperature;
@@ -691,6 +769,16 @@
 
 #pragma mark - Set/Get
 
+- (NSDateFormatter *)dateFormatter
+{
+    if (!_dateFormatter) {
+        _dateFormatter = [[NSDateFormatter alloc] init];
+        _dateFormatter.dateFormat = @"yyyy-MM-dd";
+    }
+    return _dateFormatter;
+}
+
+                                      
 - (NSInteger)cycleLength
 {
     if (!_cycleLength) {
@@ -701,4 +789,5 @@
     return _cycleLength;
 }
 
+                                      
 @end
