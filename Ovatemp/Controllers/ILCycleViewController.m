@@ -27,7 +27,6 @@
 @property (nonatomic) TKChartBandAnnotation *chartBandAnnotation;
 
 @property (nonatomic) NSMutableArray *temperatureData;
-@property (nonatomic) NSInteger cycleLength;
 
 @property (nonatomic) UISwipeGestureRecognizer *swipeLeft;
 @property (nonatomic) UISwipeGestureRecognizer *swipeRight;
@@ -421,9 +420,9 @@
     yAxis.style.titleStyle.textColor = [UIColor darkGrayColor];
     self.chartView.yAxis = yAxis;
     
-    NSInteger fontSize = (self.cycleLength > 30) ? 6 : 10;
+    NSInteger fontSize = ([self cycleLength] > 30) ? 6 : 10;
     
-    TKChartNumericAxis *xAxis = [[TKChartNumericAxis alloc] initWithMinimum: @0 andMaximum: @(self.cycleLength)];
+    TKChartNumericAxis *xAxis = [[TKChartNumericAxis alloc] initWithMinimum: @0 andMaximum: @([self cycleLength])];
     xAxis.style.labelStyle.textColor = [UIColor darkGrayColor];
     xAxis.style.labelStyle.font = [UIFont boldSystemFontOfSize: fontSize];
     xAxis.majorTickInterval = @1;
@@ -788,12 +787,10 @@
 
 - (NSInteger)cycleLength
 {
-    if (!_cycleLength) {
-        NSInteger selectedCycleLength = [self.selectedCycle.days count];
-        _cycleLength = (selectedCycleLength >= 30) ? selectedCycleLength : 30;
-    }
+    NSInteger selectedCycleLength = [self.days count];
+    NSInteger cycleLength = (selectedCycleLength >= 30) ? selectedCycleLength : 30;
     
-    return _cycleLength;
+    return cycleLength;
 }
 
 @end
