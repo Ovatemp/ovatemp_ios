@@ -103,13 +103,14 @@
             // Trying to Conceive
             self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_ttc_notfertile"];
         }else{
+            
             // Trying to Avoid
             if ([selectedDay.cyclePhase isEqualToString: @"preovulation"]) {
                 // Pre-Ovulation
-                self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_tta_notfertile_pre"];
+                self.cycleImageView.image = [UIImage imageNamed: @"icn_tracking_tta_notfertile_pre"];
             }else{
                 // Post-Ovulation
-                self.cycleImageView.image = [UIImage imageNamed:@"icn_tracking_ttc_fertile"]; // Green indicator
+                self.cycleImageView.image = [UIImage imageNamed: @"icn_tracking_ttc_fertile"]; // Green indicator
             }
         }
         

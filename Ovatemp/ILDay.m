@@ -35,7 +35,7 @@
 - (id)initWithDictionary:(NSDictionary *)dictionary
 {
     self = [super init]; if(!self)return nil;
-    
+        
     self.day_id = [dictionary dl_objectForKeyWithNil: @"id"];
     self.cycleId = [dictionary dl_objectForKeyWithNil: @"cycle_id"];
     self.temperature = [dictionary dl_objectForKeyWithNil: @"temperature"];

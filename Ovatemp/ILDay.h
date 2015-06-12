@@ -14,7 +14,7 @@
 
 @property (nonatomic) NSNumber    *day_id;
 @property (nonatomic) NSNumber    *cycleId;
-@property (nonatomic) NSNumber    *temperature;// float
+@property (nonatomic) NSNumber    *temperature; // float
 @property (nonatomic) NSDate      *date;
 
 @property (nonatomic) BOOL        disturbance;

@@ -140,7 +140,7 @@ static NSMutableDictionary *__cachedGradients;
 
 + (UIColor *)il_yellowColor
 {
-    return [UIColor colorWithRed: 56.0/255.0 green: 192.0/255.0 blue: 191.0/255.0 alpha: 1];
+    return [UIColor colorWithRed: 248.0/255.0 green: 231.0/255.0 blue: 28.0/255.0 alpha: 1];
 }
 
 @end

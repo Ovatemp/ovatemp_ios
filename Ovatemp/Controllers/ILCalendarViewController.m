@@ -175,6 +175,8 @@
         dayCell.hidden = !(dayCell.state & TKCalendarDayStateCurrentMonth);
         ILDay *selectedDay = [self.dayStore dayForDate: dayCell.date];
         UserProfile *currentUserProfile = [UserProfile current];
+                
+        dayCell.cyclePhase = selectedDay.cyclePhase;
         
         if (selectedDay.fertility.status == ILFertilityStatusTypePeriod) {
             

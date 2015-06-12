@@ -96,7 +96,10 @@
                 fillColor = [UIColor il_purple];
             }else{
                 // TTA
+                DDLogError(@"CYCLE PHASE : %@", self.cyclePhase);
+                
                 if ([self.cyclePhase isEqualToString: @"preovulation"]) {
+                    DDLogError(@"ENTERED IF");
                     // Pre Ovulation - Yellow Icon
                     strokeColor = [UIColor il_yellowColor];
                     fillColor = [UIColor il_yellowColor];
