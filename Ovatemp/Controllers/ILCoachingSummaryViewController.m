@@ -8,6 +8,8 @@
 
 #import "ILCoachingSummaryViewController.h"
 
+#import "ILSummaryDetailViewController.h"
+
 @interface ILCoachingSummaryViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
@@ -21,7 +23,18 @@
     [self customizeAppearance];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
+    
+    NSIndexPath *selection = [self.tableView indexPathForSelectedRow];
+    if (selection) {
+        [self.tableView deselectRowAtIndexPath:selection animated:YES];
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -44,7 +57,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -52,6 +65,14 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"CoachingSummaryCell" forIndexPath: indexPath];
     
     return cell;
+}
+
+#pragma mark - UITableView Delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier: @"ILSummaryDetailViewController"];
+    [self.navigationController pushViewController: detailVC animated: YES];
 }
 
 @end

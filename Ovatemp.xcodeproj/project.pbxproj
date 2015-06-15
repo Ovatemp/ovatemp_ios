@@ -11,6 +11,7 @@
 		060D180C1AC330FA00B7DBA2 /* ILCycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 060D180B1AC330FA00B7DBA2 /* ILCycleViewController.m */; };
 		060EFC441B015C4D00C0B6C0 /* PaymentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 060EFC431B015C4D00C0B6C0 /* PaymentHelper.m */; };
 		0619A97F1AA4E32A000F31E6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */; };
+		062104EF1B2F41DE0096D23A /* ILCheckmarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 062104EE1B2F41DE0096D23A /* ILCheckmarkView.m */; };
 		0638856D1B2A461700588FB3 /* CoachingSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0638856C1B2A461700588FB3 /* CoachingSummaryTableViewCell.m */; };
 		063942331AD71B8B00BE7605 /* ONDOSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 063942311AD71B8B00BE7605 /* ONDOSettingViewController.m */; };
 		063942341AD71B8B00BE7605 /* ONDOSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 063942321AD71B8B00BE7605 /* ONDOSettingViewController.xib */; };
@@ -429,6 +430,8 @@
 		060EFC421B015C4D00C0B6C0 /* PaymentHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentHelper.h; path = ../PaymentHelper.h; sourceTree = "<group>"; };
 		060EFC431B015C4D00C0B6C0 /* PaymentHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentHelper.m; path = ../PaymentHelper.m; sourceTree = "<group>"; };
 		0619A97E1AA4E32A000F31E6 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		062104ED1B2F41DE0096D23A /* ILCheckmarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCheckmarkView.h; sourceTree = "<group>"; };
+		062104EE1B2F41DE0096D23A /* ILCheckmarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCheckmarkView.m; sourceTree = "<group>"; };
 		0638856B1B2A461700588FB3 /* CoachingSummaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoachingSummaryTableViewCell.h; sourceTree = "<group>"; };
 		0638856C1B2A461700588FB3 /* CoachingSummaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoachingSummaryTableViewCell.m; sourceTree = "<group>"; };
 		063942301AD71B8B00BE7605 /* ONDOSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONDOSettingViewController.h; sourceTree = "<group>"; };
@@ -1241,6 +1244,8 @@
 		06C315651B1F9C62003FABD8 /* ILCoaching */ = {
 			isa = PBXGroup;
 			children = (
+				062104ED1B2F41DE0096D23A /* ILCheckmarkView.h */,
+				062104EE1B2F41DE0096D23A /* ILCheckmarkView.m */,
 				0638856B1B2A461700588FB3 /* CoachingSummaryTableViewCell.h */,
 				0638856C1B2A461700588FB3 /* CoachingSummaryTableViewCell.m */,
 				06C315751B1FA10E003FABD8 /* ILButton.h */,
@@ -2497,6 +2502,7 @@
 				5F51609A1A0AB48600F4B74E /* TrackingCervicalPositionTableViewCell.m in Sources */,
 				5F6561E319FAD74C001FB509 /* EditWeightTableViewCell.m in Sources */,
 				067BCE0E1AD5C9D100F0BDE6 /* TransparentSwipeView.m in Sources */,
+				062104EF1B2F41DE0096D23A /* ILCheckmarkView.m in Sources */,
 				5F1C9B7F19EDE87A000F1FC1 /* TemperatureCellStaticView.m in Sources */,
 				5F1C9B8F19EDE87A000F1FC1 /* MoreViewController.m in Sources */,
 				06C55B221AAF4BD600EDE74A /* ILTrackingViewController.m in Sources */,
