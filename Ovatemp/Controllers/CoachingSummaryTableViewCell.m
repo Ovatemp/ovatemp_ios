@@ -26,10 +26,10 @@
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
     CGContextSetRGBStrokeColor(ctx, 124.0/255.0, 65.0/255.0, 160.0/255.0, 1.0);
-    CGContextSetLineWidth(ctx, 1);
+    CGContextSetLineWidth(ctx, 2);
     
-    CGContextMoveToPoint(ctx, 50, 0);
-    CGContextAddLineToPoint(ctx, 50, self.bounds.size.height);
+    CGContextMoveToPoint(ctx, 64, 0);
+    CGContextAddLineToPoint(ctx, 64, self.bounds.size.height);
     
     CGContextStrokePath(ctx);
     

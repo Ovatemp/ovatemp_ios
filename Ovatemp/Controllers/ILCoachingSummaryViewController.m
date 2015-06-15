@@ -8,9 +8,13 @@
 
 #import "ILCoachingSummaryViewController.h"
 
+#import "CoachingSummaryTableViewCell.h"
 #import "ILSummaryDetailViewController.h"
 
 @interface ILCoachingSummaryViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic) NSArray *rowNames;
+@property (nonatomic) NSArray *timesOfDay;
 
 @end
 
@@ -19,6 +23,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.rowNames = @[@"Acupressure", @"Lifestyle", @"Massage", @"Meditation"];
+    self.timesOfDay = @[@"Morning", @"Afternoon", @"Evening", @"Evening"];
     
     [self customizeAppearance];
 }
@@ -44,8 +51,12 @@
 - (void)customizeAppearance
 {
     self.title = @"Coaching";
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle: @"Back"
+                                                                             style: UIBarButtonItemStyleDone
+                                                                            target: nil action: nil];
     
     [self.navigationItem setHidesBackButton: YES animated: YES];
+    self.navigationController.navigationBar.tintColor = [UIColor ovatempAquaColor];
 }
 
 #pragma mark - UITableView Data Source
@@ -57,12 +68,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return [self.rowNames count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"CoachingSummaryCell" forIndexPath: indexPath];
+    CoachingSummaryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"CoachingSummaryCell" forIndexPath: indexPath];
+    
+    cell.titleLabel.text = self.rowNames[indexPath.row];
+    cell.subtitleLabel.text = self.timesOfDay[indexPath.row];
     
     return cell;
 }

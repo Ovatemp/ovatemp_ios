@@ -881,22 +881,23 @@
                         <viewControllerLayoutGuide type="bottom" id="225-wX-Fde"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Bca-g4-Mnc">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coaching Recipe View Controller" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HR9-sB-HMS">
-                                <rect key="frame" x="174" y="289" width="253" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNp-cV-g9E">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="HR9-sB-HMS" secondAttribute="centerY" constant="0.5" id="aLJ-Of-Cdf"/>
-                            <constraint firstAttribute="centerX" secondItem="HR9-sB-HMS" secondAttribute="centerX" constant="-0.5" id="tib-Je-WdE"/>
+                            <constraint firstAttribute="trailing" secondItem="LNp-cV-g9E" secondAttribute="trailing" id="4Ad-Ur-PDl"/>
+                            <constraint firstItem="LNp-cV-g9E" firstAttribute="leading" secondItem="Bca-g4-Mnc" secondAttribute="leading" id="6Cw-h6-Pac"/>
+                            <constraint firstItem="LNp-cV-g9E" firstAttribute="top" secondItem="iIo-ko-0Jl" secondAttribute="bottom" id="UxK-7e-xwz"/>
+                            <constraint firstItem="225-wX-Fde" firstAttribute="top" secondItem="LNp-cV-g9E" secondAttribute="bottom" id="qiq-Vi-Nha"/>
                         </constraints>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8x5-91-nhY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -951,9 +952,9 @@
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="uPe-24-rX5"/>
-                                                        <exclude reference="B0k-2y-UJk"/>
                                                         <exclude reference="6Wr-ry-hVC"/>
+                                                        <exclude reference="B0k-2y-UJk"/>
+                                                        <exclude reference="uPe-24-rX5"/>
                                                     </mask>
                                                 </variation>
                                             </imageView>
@@ -987,9 +988,9 @@
                                             <mask key="constraints">
                                                 <exclude reference="VY2-eb-cgl"/>
                                                 <exclude reference="fQk-Pm-DH1"/>
-                                                <exclude reference="tY0-iI-gFV"/>
                                                 <exclude reference="9NH-pk-ear"/>
                                                 <exclude reference="ITN-os-loK"/>
+                                                <exclude reference="tY0-iI-gFV"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -1114,55 +1115,131 @@
                                                     <constraint firstAttribute="height" constant="21" id="lfv-F0-dDU"/>
                                                 </constraints>
                                             </view>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YuZ-my-8RC">
-                                                <rect key="frame" x="2" y="54" width="25" height="25"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wtn-K8-hgl" customClass="ILCheckmarkView">
+                                                <rect key="frame" x="4" y="54" width="20" height="20"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="25" id="97Y-Od-a5w"/>
-                                                    <constraint firstAttribute="height" constant="25" id="mOX-St-b0I"/>
+                                                    <constraint firstAttribute="height" constant="20" id="2iJ-qW-hog"/>
+                                                    <constraint firstAttribute="width" constant="20" id="6HH-ro-GBP"/>
                                                 </constraints>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I1M-00-Ig0">
-                                                <rect key="frame" x="58" y="54" width="25" height="25"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDc-0G-VC1" customClass="ILCheckmarkView">
+                                                <rect key="frame" x="60" y="54" width="20" height="20"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="25" id="dcI-Hh-Ve8"/>
-                                                    <constraint firstAttribute="height" constant="25" id="swD-WP-KLa"/>
+                                                    <constraint firstAttribute="width" constant="25" id="Rgx-UN-ErM"/>
+                                                    <constraint firstAttribute="width" constant="20" id="nmD-F0-HOj"/>
+                                                    <constraint firstAttribute="height" constant="20" id="s3A-1m-eH6"/>
+                                                    <constraint firstAttribute="height" constant="25" id="ttX-Ap-opE"/>
                                                 </constraints>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Mu-wr-MCV">
-                                                <rect key="frame" x="114" y="54" width="25" height="25"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="ttX-Ap-opE"/>
+                                                        <exclude reference="Rgx-UN-ErM"/>
+                                                    </mask>
+                                                </variation>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZk-iv-HpD" customClass="ILCheckmarkView">
+                                                <rect key="frame" x="116" y="54" width="20" height="20"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="USR-Sa-5k8"/>
-                                                    <constraint firstAttribute="width" constant="25" id="f8o-Yo-Gsj"/>
+                                                    <constraint firstAttribute="height" constant="25" id="2FZ-bk-Api"/>
+                                                    <constraint firstAttribute="width" constant="25" id="64b-zo-Nya"/>
+                                                    <constraint firstAttribute="height" constant="20" id="iSu-cU-d5E"/>
+                                                    <constraint firstAttribute="width" constant="20" id="ooN-t3-LpQ"/>
                                                 </constraints>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dGP-0x-CmG">
-                                                <rect key="frame" x="170" y="54" width="25" height="25"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="2FZ-bk-Api"/>
+                                                        <exclude reference="64b-zo-Nya"/>
+                                                    </mask>
+                                                </variation>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P59-OX-DYB" customClass="ILCheckmarkView">
+                                                <rect key="frame" x="172" y="54" width="20" height="20"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="25" id="4cC-E2-ESk"/>
-                                                    <constraint firstAttribute="height" constant="25" id="kiw-dA-bVo"/>
+                                                    <constraint firstAttribute="height" constant="25" id="5eN-oj-9gU"/>
+                                                    <constraint firstAttribute="width" constant="25" id="8W8-N9-Rhl"/>
+                                                    <constraint firstAttribute="width" constant="20" id="aD5-Z3-99v"/>
+                                                    <constraint firstAttribute="height" constant="20" id="ccH-5G-Ndm"/>
                                                 </constraints>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LB3-mj-NrH">
-                                                <rect key="frame" x="226" y="54" width="25" height="25"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="5eN-oj-9gU"/>
+                                                        <exclude reference="8W8-N9-Rhl"/>
+                                                    </mask>
+                                                </variation>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R3q-3B-2pV" customClass="ILCheckmarkView">
+                                                <rect key="frame" x="228" y="54" width="20" height="20"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="e12-3F-pJf"/>
-                                                    <constraint firstAttribute="width" constant="25" id="juG-ZX-HZg"/>
+                                                    <constraint firstAttribute="width" constant="20" id="EtR-7d-uuH"/>
+                                                    <constraint firstAttribute="height" constant="25" id="Hbp-9c-Idf"/>
+                                                    <constraint firstAttribute="height" constant="20" id="bOM-PM-BhE"/>
+                                                    <constraint firstAttribute="width" constant="25" id="l3m-dA-CYp"/>
                                                 </constraints>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bOz-y6-YIK">
-                                                <rect key="frame" x="280" y="54" width="25" height="25"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Hbp-9c-Idf"/>
+                                                        <exclude reference="l3m-dA-CYp"/>
+                                                    </mask>
+                                                </variation>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2lK-c1-yrS" customClass="ILCheckmarkView">
+                                                <rect key="frame" x="282" y="54" width="20" height="20"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="1B4-ha-4IY"/>
-                                                    <constraint firstAttribute="width" constant="25" id="tWb-7t-VmK"/>
+                                                    <constraint firstAttribute="height" constant="25" id="6Ct-hM-bcI"/>
+                                                    <constraint firstAttribute="height" constant="20" id="GUy-uf-97C"/>
+                                                    <constraint firstAttribute="width" constant="25" id="RqT-c9-GAP"/>
+                                                    <constraint firstAttribute="width" constant="20" id="Ynt-21-vLL"/>
                                                 </constraints>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wgq-Zw-o4h">
-                                                <rect key="frame" x="334" y="54" width="25" height="25"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="6Ct-hM-bcI"/>
+                                                        <exclude reference="RqT-c9-GAP"/>
+                                                    </mask>
+                                                </variation>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xdb-WZ-p7b" customClass="ILCheckmarkView">
+                                                <rect key="frame" x="336" y="54" width="20" height="20"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="25" id="Ywt-kT-Obg"/>
-                                                    <constraint firstAttribute="height" constant="25" id="z7N-Dn-qRb"/>
+                                                    <constraint firstAttribute="height" constant="20" id="1je-ek-Qic"/>
+                                                    <constraint firstAttribute="width" constant="20" id="91G-YY-cud"/>
+                                                    <constraint firstAttribute="width" constant="25" id="VAt-lx-BIf"/>
+                                                    <constraint firstAttribute="height" constant="25" id="mUd-eM-EWr"/>
                                                 </constraints>
-                                            </imageView>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="VAt-lx-BIf"/>
+                                                        <exclude reference="mUd-eM-EWr"/>
+                                                    </mask>
+                                                </variation>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.4823529412" green="0.42745098040000001" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -1170,63 +1247,63 @@
                                             <constraint firstItem="8MC-x9-aMY" firstAttribute="top" secondItem="GsW-qW-tFs" secondAttribute="top" id="11J-DR-40d"/>
                                             <constraint firstItem="dh6-fj-CAB" firstAttribute="top" secondItem="fDV-8m-U1k" secondAttribute="top" id="1ql-XO-h1z"/>
                                             <constraint firstItem="hHj-mw-Jyq" firstAttribute="top" secondItem="fDV-8m-U1k" secondAttribute="top" id="4GU-pA-sS9"/>
+                                            <constraint firstItem="oZk-iv-HpD" firstAttribute="top" secondItem="hHj-mw-Jyq" secondAttribute="bottom" constant="3" id="5u2-hA-yBD"/>
                                             <constraint firstItem="8MC-x9-aMY" firstAttribute="leading" secondItem="UAk-f9-uwm" secondAttribute="leading" id="758-AT-hJf"/>
                                             <constraint firstItem="GsW-qW-tFs" firstAttribute="leading" secondItem="fDV-8m-U1k" secondAttribute="trailing" id="7hD-xL-0L0"/>
-                                            <constraint firstItem="dGP-0x-CmG" firstAttribute="leading" secondItem="ulj-K2-0x7" secondAttribute="trailing" constant="-20.5" id="7lR-TC-BOE"/>
                                             <constraint firstItem="hHj-mw-Jyq" firstAttribute="top" secondItem="dh6-fj-CAB" secondAttribute="top" id="89j-Zc-DjH"/>
-                                            <constraint firstItem="7Mu-wr-MCV" firstAttribute="top" secondItem="hHj-mw-Jyq" secondAttribute="bottom" constant="3" id="9h0-Lv-wdn"/>
+                                            <constraint firstItem="R3q-3B-2pV" firstAttribute="top" secondItem="fDV-8m-U1k" secondAttribute="bottom" constant="3" id="9qk-aw-HOS"/>
                                             <constraint firstItem="hHj-mw-Jyq" firstAttribute="top" secondItem="8MC-x9-aMY" secondAttribute="top" id="AEW-XN-ovN"/>
                                             <constraint firstItem="dh6-fj-CAB" firstAttribute="top" secondItem="ulj-K2-0x7" secondAttribute="top" id="B6M-fs-qI9"/>
+                                            <constraint firstItem="Xdb-WZ-p7b" firstAttribute="leading" secondItem="12J-ed-Neu" secondAttribute="trailing" constant="-16" id="C6u-NY-0FF"/>
+                                            <constraint firstItem="fDV-8m-U1k" firstAttribute="leading" secondItem="R3q-3B-2pV" secondAttribute="trailing" constant="-15" id="DBF-JV-o9f"/>
                                             <constraint firstItem="dh6-fj-CAB" firstAttribute="leading" secondItem="GsW-qW-tFs" secondAttribute="trailing" id="Ehy-t5-MeK"/>
-                                            <constraint firstItem="bOz-y6-YIK" firstAttribute="leading" secondItem="dh6-fj-CAB" secondAttribute="trailing" constant="-17" id="Frx-xh-ne2"/>
+                                            <constraint firstItem="Wtn-K8-hgl" firstAttribute="top" secondItem="Veb-fX-6Kg" secondAttribute="bottom" constant="3" id="Eyl-xL-ioV"/>
+                                            <constraint firstItem="Wtn-K8-hgl" firstAttribute="leading" secondItem="8MC-x9-aMY" secondAttribute="trailing" constant="-16" id="FxG-dx-xhF"/>
                                             <constraint firstItem="Ygp-xl-TyX" firstAttribute="width" secondItem="TQM-1G-MvS" secondAttribute="width" id="GCq-ct-Yix"/>
                                             <constraint firstItem="Ygp-xl-TyX" firstAttribute="width" secondItem="1eU-T3-Egi" secondAttribute="width" id="Gbq-Bb-8kJ"/>
                                             <constraint firstItem="8MC-x9-aMY" firstAttribute="top" secondItem="TQM-1G-MvS" secondAttribute="top" id="Ihb-64-kcy"/>
+                                            <constraint firstItem="4tP-R6-4lg" firstAttribute="leading" secondItem="dDc-0G-VC1" secondAttribute="trailing" constant="-17" id="MTy-BC-3CC"/>
                                             <constraint firstItem="Ygp-xl-TyX" firstAttribute="width" secondItem="wfo-fj-dN6" secondAttribute="width" id="Mmy-jO-tZ5"/>
                                             <constraint firstItem="12J-ed-Neu" firstAttribute="top" secondItem="UAk-f9-uwm" secondAttribute="bottom" constant="8" id="O7d-fx-bzj"/>
                                             <constraint firstItem="4tP-R6-4lg" firstAttribute="leading" secondItem="Veb-fX-6Kg" secondAttribute="trailing" id="OOY-5u-MbN"/>
                                             <constraint firstItem="8MC-x9-aMY" firstAttribute="top" secondItem="4tP-R6-4lg" secondAttribute="top" id="QAc-2z-jd7"/>
                                             <constraint firstItem="UAk-f9-uwm" firstAttribute="top" secondItem="bXG-SW-QA6" secondAttribute="top" constant="8" id="Qjj-Bm-Tq5"/>
                                             <constraint firstItem="1eU-T3-Egi" firstAttribute="leading" secondItem="4tP-R6-4lg" secondAttribute="trailing" id="Qk5-sy-m5d"/>
-                                            <constraint firstItem="I1M-00-Ig0" firstAttribute="leading" secondItem="4tP-R6-4lg" secondAttribute="trailing" constant="-20" id="QnY-cz-Q9u"/>
                                             <constraint firstItem="TQM-1G-MvS" firstAttribute="leading" secondItem="dh6-fj-CAB" secondAttribute="trailing" id="Qra-Nj-odD"/>
+                                            <constraint firstItem="Xdb-WZ-p7b" firstAttribute="top" secondItem="12J-ed-Neu" secondAttribute="bottom" constant="3" id="SV0-9w-b1K"/>
+                                            <constraint firstItem="dDc-0G-VC1" firstAttribute="top" secondItem="4tP-R6-4lg" secondAttribute="bottom" constant="3" id="T6Z-WR-c3k"/>
                                             <constraint firstItem="Ygp-xl-TyX" firstAttribute="leading" secondItem="hHj-mw-Jyq" secondAttribute="trailing" id="TL1-80-67Y"/>
                                             <constraint firstItem="dh6-fj-CAB" firstAttribute="top" secondItem="12J-ed-Neu" secondAttribute="top" id="TdF-3o-fuc"/>
                                             <constraint firstItem="hHj-mw-Jyq" firstAttribute="leading" secondItem="1eU-T3-Egi" secondAttribute="trailing" id="Ty3-Q2-A3m"/>
-                                            <constraint firstItem="LB3-mj-NrH" firstAttribute="leading" secondItem="fDV-8m-U1k" secondAttribute="trailing" constant="-17.5" id="VjX-6n-eyQ"/>
-                                            <constraint firstItem="YuZ-my-8RC" firstAttribute="top" secondItem="8MC-x9-aMY" secondAttribute="bottom" constant="3" id="XnL-GI-qvY"/>
-                                            <constraint firstItem="dGP-0x-CmG" firstAttribute="top" secondItem="ulj-K2-0x7" secondAttribute="bottom" constant="3" id="XtK-XG-ncr"/>
-                                            <constraint firstItem="LB3-mj-NrH" firstAttribute="top" secondItem="fDV-8m-U1k" secondAttribute="bottom" constant="3" id="Z8U-NQ-lTx"/>
-                                            <constraint firstItem="YuZ-my-8RC" firstAttribute="leading" secondItem="8MC-x9-aMY" secondAttribute="trailing" constant="-18" id="aaT-ut-c7F"/>
+                                            <constraint firstItem="2lK-c1-yrS" firstAttribute="leading" secondItem="dh6-fj-CAB" secondAttribute="trailing" constant="-15" id="VCi-ZN-VT3"/>
+                                            <constraint firstItem="P59-OX-DYB" firstAttribute="top" secondItem="ulj-K2-0x7" secondAttribute="bottom" constant="3" id="XrX-H6-KgQ"/>
                                             <constraint firstItem="hHj-mw-Jyq" firstAttribute="top" secondItem="ulj-K2-0x7" secondAttribute="top" id="bM7-iA-5EE"/>
                                             <constraint firstAttribute="trailing" secondItem="12J-ed-Neu" secondAttribute="trailing" constant="8" id="bRt-zE-e8F"/>
                                             <constraint firstItem="Veb-fX-6Kg" firstAttribute="leading" secondItem="8MC-x9-aMY" secondAttribute="trailing" id="brR-Vc-Lx8"/>
-                                            <constraint firstItem="7Mu-wr-MCV" firstAttribute="leading" secondItem="hHj-mw-Jyq" secondAttribute="trailing" constant="-17.5" id="eVF-XS-riv"/>
                                             <constraint firstItem="UAk-f9-uwm" firstAttribute="leading" secondItem="bXG-SW-QA6" secondAttribute="leading" constant="8" id="etB-aj-Jzp"/>
+                                            <constraint firstItem="P59-OX-DYB" firstAttribute="leading" secondItem="ulj-K2-0x7" secondAttribute="trailing" constant="-18" id="fEU-3W-YY0"/>
                                             <constraint firstItem="8MC-x9-aMY" firstAttribute="top" secondItem="Ygp-xl-TyX" secondAttribute="top" id="fWv-f2-pSr"/>
                                             <constraint firstItem="8MC-x9-aMY" firstAttribute="top" secondItem="hHj-mw-Jyq" secondAttribute="top" id="gBV-4H-MLv"/>
                                             <constraint firstItem="ulj-K2-0x7" firstAttribute="leading" secondItem="Ygp-xl-TyX" secondAttribute="trailing" id="giZ-1P-bIx"/>
-                                            <constraint firstItem="I1M-00-Ig0" firstAttribute="top" secondItem="4tP-R6-4lg" secondAttribute="bottom" constant="3" id="h0j-sg-SEv"/>
                                             <constraint firstItem="wfo-fj-dN6" firstAttribute="leading" secondItem="ulj-K2-0x7" secondAttribute="trailing" id="hBs-wi-vH9"/>
+                                            <constraint firstItem="2lK-c1-yrS" firstAttribute="top" secondItem="dh6-fj-CAB" secondAttribute="bottom" constant="3" id="hx6-Pg-R4q"/>
                                             <constraint firstItem="hHj-mw-Jyq" firstAttribute="top" secondItem="4tP-R6-4lg" secondAttribute="top" id="jiK-8z-L2E"/>
+                                            <constraint firstItem="oZk-iv-HpD" firstAttribute="leading" secondItem="hHj-mw-Jyq" secondAttribute="trailing" constant="-15" id="lbg-mo-gQH"/>
                                             <constraint firstItem="8MC-x9-aMY" firstAttribute="top" secondItem="wfo-fj-dN6" secondAttribute="top" id="mxZ-mu-8z1"/>
                                             <constraint firstItem="Ygp-xl-TyX" firstAttribute="width" secondItem="GsW-qW-tFs" secondAttribute="width" id="n21-5c-RVI"/>
                                             <constraint firstItem="12J-ed-Neu" firstAttribute="leading" secondItem="TQM-1G-MvS" secondAttribute="trailing" id="o8p-Tr-TWL"/>
                                             <constraint firstItem="fDV-8m-U1k" firstAttribute="leading" secondItem="wfo-fj-dN6" secondAttribute="trailing" id="q4J-BV-kvS"/>
-                                            <constraint firstItem="bOz-y6-YIK" firstAttribute="top" secondItem="dh6-fj-CAB" secondAttribute="bottom" constant="3" id="qIh-4r-RsT"/>
-                                            <constraint firstItem="wgq-Zw-o4h" firstAttribute="top" secondItem="12J-ed-Neu" secondAttribute="bottom" constant="3" id="rcF-3g-gAS"/>
                                             <constraint firstItem="8MC-x9-aMY" firstAttribute="top" secondItem="Veb-fX-6Kg" secondAttribute="top" id="skb-yf-tkU"/>
                                             <constraint firstItem="8MC-x9-aMY" firstAttribute="top" secondItem="1eU-T3-Egi" secondAttribute="top" id="tkw-Jz-rrX"/>
                                             <constraint firstItem="Ygp-xl-TyX" firstAttribute="width" secondItem="Veb-fX-6Kg" secondAttribute="width" id="wIi-wb-fnU"/>
-                                            <constraint firstItem="wgq-Zw-o4h" firstAttribute="leading" secondItem="12J-ed-Neu" secondAttribute="trailing" constant="-18" id="xXx-qZ-QQf"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="AEW-XN-ovN"/>
                                                 <exclude reference="4GU-pA-sS9"/>
-                                                <exclude reference="jiK-8z-L2E"/>
-                                                <exclude reference="bM7-iA-5EE"/>
                                                 <exclude reference="89j-Zc-DjH"/>
+                                                <exclude reference="AEW-XN-ovN"/>
+                                                <exclude reference="bM7-iA-5EE"/>
+                                                <exclude reference="jiK-8z-L2E"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -1280,16 +1357,24 @@
                                     <constraint firstItem="P0g-kR-Dj3" firstAttribute="leading" secondItem="FRa-sS-x2w" secondAttribute="trailing" constant="8" id="x7T-Pg-Vy8"/>
                                 </constraints>
                             </view>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tme-pW-dGV">
+                                <rect key="frame" x="0.0" y="180" width="600" height="356"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="J5D-lo-fLW" firstAttribute="top" secondItem="pi4-6B-re4" secondAttribute="top" id="ATl-Zy-dKs"/>
                             <constraint firstAttribute="trailing" secondItem="WWW-ZW-4bf" secondAttribute="trailing" id="DB9-a4-jB3"/>
                             <constraint firstAttribute="trailing" secondItem="J5D-lo-fLW" secondAttribute="trailing" id="NBk-QC-gnf"/>
+                            <constraint firstItem="tme-pW-dGV" firstAttribute="top" secondItem="WWW-ZW-4bf" secondAttribute="bottom" id="OE5-mc-WmJ"/>
                             <constraint firstItem="J5D-lo-fLW" firstAttribute="top" secondItem="H1H-pu-kYS" secondAttribute="bottom" id="OHF-aD-cHq"/>
                             <constraint firstItem="J5D-lo-fLW" firstAttribute="leading" secondItem="pi4-6B-re4" secondAttribute="leading" id="Pct-bW-Rpa"/>
+                            <constraint firstItem="tH7-Bf-WuS" firstAttribute="top" secondItem="tme-pW-dGV" secondAttribute="bottom" id="TRu-Yq-VZr"/>
                             <constraint firstItem="WWW-ZW-4bf" firstAttribute="leading" secondItem="pi4-6B-re4" secondAttribute="leading" id="bDf-Sk-DZS"/>
+                            <constraint firstItem="tme-pW-dGV" firstAttribute="leading" secondItem="pi4-6B-re4" secondAttribute="leading" id="c6H-K2-y7j"/>
                             <constraint firstItem="WWW-ZW-4bf" firstAttribute="top" secondItem="J5D-lo-fLW" secondAttribute="bottom" id="eOF-Yi-Q2e"/>
+                            <constraint firstAttribute="trailing" secondItem="tme-pW-dGV" secondAttribute="trailing" id="rMG-fC-f4f"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -2167,81 +2252,129 @@ daily tips and exercises like:</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCN-xH-Wmi" customClass="ILCheckmarkView">
-                                                <rect key="frame" x="2" y="54" width="25" height="25"/>
+                                                <rect key="frame" x="4" y="54" width="20" height="20"/>
                                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="25" id="6Fm-S2-PgR"/>
-                                                    <constraint firstAttribute="height" constant="25" id="eV7-4d-yuW"/>
+                                                    <constraint firstAttribute="width" constant="20" id="6Fm-S2-PgR"/>
+                                                    <constraint firstAttribute="height" constant="20" id="eV7-4d-yuW"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="we9-Tf-9bD" customClass="ILCheckmarkView">
-                                                <rect key="frame" x="58" y="54" width="25" height="25"/>
+                                                <rect key="frame" x="60" y="54" width="20" height="20"/>
                                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="7Tb-W5-Xf6"/>
+                                                    <constraint firstAttribute="width" constant="20" id="JSD-64-4uW"/>
                                                     <constraint firstAttribute="height" constant="25" id="XQl-jI-prn"/>
                                                     <constraint firstAttribute="width" constant="25" id="wyQ-CT-2yw"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="XQl-jI-prn"/>
+                                                        <exclude reference="wyQ-CT-2yw"/>
+                                                    </mask>
+                                                </variation>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbz-0h-v6s" customClass="ILCheckmarkView">
-                                                <rect key="frame" x="114" y="54" width="25" height="25"/>
+                                                <rect key="frame" x="116" y="54" width="20" height="20"/>
                                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="An1-d3-Ckd"/>
                                                     <constraint firstAttribute="width" constant="25" id="As7-Al-fAN"/>
+                                                    <constraint firstAttribute="height" constant="20" id="M2R-Ef-kZq"/>
+                                                    <constraint firstAttribute="width" constant="20" id="cs0-wx-szE"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="An1-d3-Ckd"/>
+                                                        <exclude reference="As7-Al-fAN"/>
+                                                    </mask>
+                                                </variation>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdx-CP-vEE" customClass="ILCheckmarkView">
-                                                <rect key="frame" x="170" y="54" width="25" height="25"/>
+                                                <rect key="frame" x="172" y="54" width="20" height="20"/>
                                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="7oV-oe-dSN"/>
                                                     <constraint firstAttribute="width" constant="25" id="963-dg-qeK"/>
+                                                    <constraint firstAttribute="width" constant="20" id="Jg5-NW-Xys"/>
+                                                    <constraint firstAttribute="height" constant="20" id="jxb-a9-gyg"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="7oV-oe-dSN"/>
+                                                        <exclude reference="963-dg-qeK"/>
+                                                    </mask>
+                                                </variation>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vp0-mG-eea" customClass="ILCheckmarkView">
-                                                <rect key="frame" x="226" y="54" width="25" height="25"/>
+                                                <rect key="frame" x="228" y="54" width="20" height="20"/>
                                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="AbP-pp-E13"/>
+                                                    <constraint firstAttribute="width" constant="20" id="BHR-NC-Bpj"/>
                                                     <constraint firstAttribute="height" constant="25" id="bFu-vP-5JV"/>
                                                     <constraint firstAttribute="width" constant="25" id="tGq-6y-zDz"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="bFu-vP-5JV"/>
+                                                        <exclude reference="tGq-6y-zDz"/>
+                                                    </mask>
+                                                </variation>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xlb-Jd-GjF" customClass="ILCheckmarkView">
-                                                <rect key="frame" x="280" y="54" width="25" height="25"/>
+                                                <rect key="frame" x="282" y="54" width="20" height="20"/>
                                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="3Vs-EI-Gmg"/>
+                                                    <constraint firstAttribute="width" constant="20" id="8Pn-eA-vNR"/>
                                                     <constraint firstAttribute="height" constant="25" id="Cy3-iC-Cw5"/>
                                                     <constraint firstAttribute="width" constant="25" id="xoC-pd-JMz"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Cy3-iC-Cw5"/>
+                                                        <exclude reference="xoC-pd-JMz"/>
+                                                    </mask>
+                                                </variation>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vlw-47-fmR" customClass="ILCheckmarkView">
-                                                <rect key="frame" x="334" y="54" width="25" height="25"/>
+                                                <rect key="frame" x="336" y="54" width="20" height="20"/>
                                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="0n8-kA-qDb"/>
+                                                    <constraint firstAttribute="height" constant="20" id="JLK-Sf-FUh"/>
                                                     <constraint firstAttribute="width" constant="25" id="Spi-eK-Gcy"/>
                                                     <constraint firstAttribute="height" constant="25" id="agO-iC-Gdk"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Spi-eK-Gcy"/>
+                                                        <exclude reference="agO-iC-Gdk"/>
+                                                    </mask>
+                                                </variation>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.4823529412" green="0.42745098040000001" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
@@ -2267,14 +2400,14 @@ daily tips and exercises like:</string>
                                             <constraint firstItem="Fba-Jv-9Ry" firstAttribute="top" secondItem="dpt-Zw-IeV" secondAttribute="top" id="Nq2-K9-PlC"/>
                                             <constraint firstItem="uC2-vV-tPj" firstAttribute="leading" secondItem="pSC-3o-dKm" secondAttribute="trailing" id="Ohy-5A-APR"/>
                                             <constraint firstItem="pSC-3o-dKm" firstAttribute="top" secondItem="RxI-eg-few" secondAttribute="top" id="Sbg-Gm-ocH"/>
-                                            <constraint firstItem="MCN-xH-Wmi" firstAttribute="leading" secondItem="pSC-3o-dKm" secondAttribute="trailing" constant="-18" id="Tcs-Zy-fV2"/>
+                                            <constraint firstItem="MCN-xH-Wmi" firstAttribute="leading" secondItem="pSC-3o-dKm" secondAttribute="trailing" constant="-16" id="Tcs-Zy-fV2"/>
                                             <constraint firstItem="xkv-6i-deb" firstAttribute="leading" secondItem="pEs-Hp-md3" secondAttribute="trailing" id="UmB-o6-lPf"/>
                                             <constraint firstItem="mdx-CP-vEE" firstAttribute="top" secondItem="dpt-Zw-IeV" secondAttribute="bottom" constant="3" id="XXM-Ir-7qy"/>
                                             <constraint firstItem="pSC-3o-dKm" firstAttribute="leading" secondItem="LZx-qn-PbL" secondAttribute="leading" id="Zq5-2B-TqG"/>
-                                            <constraint firstItem="xlb-Jd-GjF" firstAttribute="leading" secondItem="TbZ-s1-Cag" secondAttribute="trailing" constant="-17" id="a9W-s6-Vhg"/>
+                                            <constraint firstItem="xlb-Jd-GjF" firstAttribute="leading" secondItem="TbZ-s1-Cag" secondAttribute="trailing" constant="-15" id="a9W-s6-Vhg"/>
                                             <constraint firstItem="RxI-eg-few" firstAttribute="width" secondItem="HWr-CV-t58" secondAttribute="width" id="aX3-f1-atJ"/>
                                             <constraint firstItem="Fba-Jv-9Ry" firstAttribute="top" secondItem="TbZ-s1-Cag" secondAttribute="top" id="bdT-sr-x67"/>
-                                            <constraint firstItem="vp0-mG-eea" firstAttribute="leading" secondItem="xkv-6i-deb" secondAttribute="trailing" constant="-17" id="cUy-YO-y6z"/>
+                                            <constraint firstItem="vp0-mG-eea" firstAttribute="leading" secondItem="xkv-6i-deb" secondAttribute="trailing" constant="-15" id="cUy-YO-y6z"/>
                                             <constraint firstItem="pSC-3o-dKm" firstAttribute="top" secondItem="Fba-Jv-9Ry" secondAttribute="top" id="fT0-oY-GW3"/>
                                             <constraint firstItem="TbZ-s1-Cag" firstAttribute="top" secondItem="DI1-ut-a3l" secondAttribute="top" id="gzE-Xi-574"/>
                                             <constraint firstItem="6Vw-SI-TeQ" firstAttribute="leading" secondItem="xkv-6i-deb" secondAttribute="trailing" id="hQt-XW-k93"/>
@@ -2291,12 +2424,12 @@ daily tips and exercises like:</string>
                                             <constraint firstItem="pSC-3o-dKm" firstAttribute="top" secondItem="pEs-Hp-md3" secondAttribute="top" id="pEt-ij-RKu"/>
                                             <constraint firstItem="pSC-3o-dKm" firstAttribute="top" secondItem="LZx-qn-PbL" secondAttribute="bottom" constant="8" id="pZS-98-dQF"/>
                                             <constraint firstItem="we9-Tf-9bD" firstAttribute="top" secondItem="XEx-6o-ZpF" secondAttribute="bottom" constant="3" id="qaa-74-wp5"/>
-                                            <constraint firstItem="dbz-0h-v6s" firstAttribute="leading" secondItem="Fba-Jv-9Ry" secondAttribute="trailing" constant="-17" id="umV-MR-Rq8"/>
+                                            <constraint firstItem="dbz-0h-v6s" firstAttribute="leading" secondItem="Fba-Jv-9Ry" secondAttribute="trailing" constant="-15" id="umV-MR-Rq8"/>
                                             <constraint firstItem="MCN-xH-Wmi" firstAttribute="top" secondItem="pSC-3o-dKm" secondAttribute="bottom" constant="3" id="vj1-Rk-YSl"/>
-                                            <constraint firstItem="we9-Tf-9bD" firstAttribute="leading" secondItem="XEx-6o-ZpF" secondAttribute="trailing" constant="-20" id="xLy-Oq-roy"/>
+                                            <constraint firstItem="we9-Tf-9bD" firstAttribute="leading" secondItem="XEx-6o-ZpF" secondAttribute="trailing" constant="-18" id="xLy-Oq-roy"/>
                                             <constraint firstItem="pSC-3o-dKm" firstAttribute="top" secondItem="zOb-9A-95v" secondAttribute="top" id="xWs-wv-yIv"/>
-                                            <constraint firstItem="mdx-CP-vEE" firstAttribute="leading" secondItem="dpt-Zw-IeV" secondAttribute="trailing" constant="-20" id="y0Y-4N-UgK"/>
-                                            <constraint firstItem="vlw-47-fmR" firstAttribute="leading" secondItem="DI1-ut-a3l" secondAttribute="trailing" constant="-18" id="y2Z-Sd-oOM"/>
+                                            <constraint firstItem="mdx-CP-vEE" firstAttribute="leading" secondItem="dpt-Zw-IeV" secondAttribute="trailing" constant="-18" id="y0Y-4N-UgK"/>
+                                            <constraint firstItem="vlw-47-fmR" firstAttribute="leading" secondItem="DI1-ut-a3l" secondAttribute="trailing" constant="-16" id="y2Z-Sd-oOM"/>
                                             <constraint firstItem="Fba-Jv-9Ry" firstAttribute="leading" secondItem="zOb-9A-95v" secondAttribute="trailing" id="y6U-X8-U7e"/>
                                             <constraint firstItem="RxI-eg-few" firstAttribute="width" secondItem="6Vw-SI-TeQ" secondAttribute="width" id="z6y-k7-h50"/>
                                         </constraints>
@@ -2339,7 +2472,7 @@ daily tips and exercises like:</string>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R3I-hV-7Bq">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LifestyleIcon" translatesAutoresizingMaskIntoConstraints="NO" id="R3I-hV-7Bq">
                                                     <rect key="frame" x="17" y="14" width="91" height="91"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="91" id="PrH-lt-8UJ"/>
@@ -2370,6 +2503,10 @@ daily tips and exercises like:</string>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="subtitleLabel" destination="Hy8-m4-MoB" id="W2w-tK-ljX"/>
+                                            <outlet property="titleLabel" destination="dtm-sp-wQh" id="3z9-Ry-wlJ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -2413,6 +2550,7 @@ daily tips and exercises like:</string>
     <resources>
         <image name="Categories.png" width="405" height="432"/>
         <image name="Diet.png" width="95" height="85"/>
+        <image name="LifestyleIcon" width="92" height="92"/>
         <image name="YinOva_HiRes.png" width="398" height="159"/>
         <image name="activate_big" width="200" height="200"/>
         <image name="activate_small" width="30" height="30"/>
