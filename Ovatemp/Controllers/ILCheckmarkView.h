@@ -13,5 +13,6 @@ IB_DESIGNABLE
 @interface ILCheckmarkView : UIView
 
 @property (nonatomic) IBInspectable BOOL isChecked;
+@property (nonatomic) IBInspectable BOOL largeSize;
 
 @end

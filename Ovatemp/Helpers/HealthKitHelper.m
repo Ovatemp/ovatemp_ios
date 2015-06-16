@@ -93,7 +93,7 @@
                 error = [self errorForType: type];
             }
             DDLogError(@"%s : ERROR = %@", __PRETTY_FUNCTION__, error.localizedDescription);
-            
+        
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion(nil, error);
             });

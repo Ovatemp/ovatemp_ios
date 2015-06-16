@@ -927,8 +927,8 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activate" lineBreakMode="tailTruncation" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="BUg-51-Hv8">
-                                                <rect key="frame" x="66" y="39" width="68" height="21.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" lineBreakMode="tailTruncation" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="BUg-51-Hv8">
+                                                <rect key="frame" x="38" y="46" width="192" height="21.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="68" id="z8R-Oi-0eC"/>
                                                 </constraints>
@@ -941,12 +941,14 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5CH-Hi-ZoW">
-                                                <rect key="frame" x="8" y="25" width="50" height="50"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activate_small" translatesAutoresizingMaskIntoConstraints="NO" id="5CH-Hi-ZoW">
+                                                <rect key="frame" x="8" y="42" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="5CH-Hi-ZoW" secondAttribute="height" multiplier="1:1" id="6Wr-ry-hVC"/>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="B0k-2y-UJk"/>
+                                                    <constraint firstAttribute="width" constant="30" id="LpA-3o-e4y"/>
                                                     <constraint firstAttribute="height" constant="50" id="PDi-rz-9PZ"/>
+                                                    <constraint firstAttribute="height" constant="30" id="WJW-YZ-81D"/>
                                                     <constraint firstAttribute="width" constant="50" id="lgM-dE-SpD"/>
                                                     <constraint firstAttribute="height" constant="50" id="uPe-24-rX5"/>
                                                 </constraints>
@@ -954,6 +956,8 @@
                                                     <mask key="constraints">
                                                         <exclude reference="6Wr-ry-hVC"/>
                                                         <exclude reference="B0k-2y-UJk"/>
+                                                        <exclude reference="PDi-rz-9PZ"/>
+                                                        <exclude reference="lgM-dE-SpD"/>
                                                         <exclude reference="uPe-24-rX5"/>
                                                     </mask>
                                                 </variation>
@@ -968,7 +972,7 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.4823529412" green="0.42745098040000001" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="centerY" secondItem="BUg-51-Hv8" secondAttribute="centerY" id="3fz-gU-lMj"/>
+                                            <constraint firstAttribute="centerY" secondItem="BUg-51-Hv8" secondAttribute="centerY" constant="-7" id="3fz-gU-lMj"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BUg-51-Hv8" secondAttribute="trailing" constant="8" id="9NH-pk-ear"/>
                                             <constraint firstItem="m7e-bC-ww1" firstAttribute="leading" secondItem="IkZ-Wa-utu" secondAttribute="leading" constant="8" id="Fmy-t9-hIb"/>
                                             <constraint firstAttribute="centerY" secondItem="BUg-51-Hv8" secondAttribute="centerY" id="ITN-os-loK"/>
@@ -977,10 +981,10 @@
                                             <constraint firstItem="5CH-Hi-ZoW" firstAttribute="leading" secondItem="IkZ-Wa-utu" secondAttribute="leading" constant="8" id="OcZ-fF-wBE"/>
                                             <constraint firstItem="5CH-Hi-ZoW" firstAttribute="top" secondItem="m7e-bC-ww1" secondAttribute="bottom" constant="5" id="VY2-eb-cgl"/>
                                             <constraint firstAttribute="trailing" secondItem="mMh-zM-2RS" secondAttribute="trailing" constant="2" id="aKb-VK-MpG"/>
-                                            <constraint firstAttribute="centerY" secondItem="5CH-Hi-ZoW" secondAttribute="centerY" id="e1s-DP-H6I"/>
+                                            <constraint firstAttribute="centerY" secondItem="5CH-Hi-ZoW" secondAttribute="centerY" constant="-7" id="e1s-DP-H6I"/>
                                             <constraint firstItem="5CH-Hi-ZoW" firstAttribute="leading" secondItem="m7e-bC-ww1" secondAttribute="leading" id="fQk-Pm-DH1"/>
-                                            <constraint firstItem="BUg-51-Hv8" firstAttribute="leading" secondItem="5CH-Hi-ZoW" secondAttribute="trailing" constant="8" id="fyR-oz-6ih"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BUg-51-Hv8" secondAttribute="trailing" constant="10" id="pvn-Nc-FAS"/>
+                                            <constraint firstItem="BUg-51-Hv8" firstAttribute="leading" secondItem="5CH-Hi-ZoW" secondAttribute="trailing" id="fyR-oz-6ih"/>
+                                            <constraint firstAttribute="trailing" secondItem="BUg-51-Hv8" secondAttribute="trailing" constant="10" id="pvn-Nc-FAS"/>
                                             <constraint firstItem="BUg-51-Hv8" firstAttribute="leading" secondItem="5CH-Hi-ZoW" secondAttribute="trailing" constant="8" id="tY0-iI-gFV"/>
                                             <constraint firstItem="m7e-bC-ww1" firstAttribute="top" secondItem="IkZ-Wa-utu" secondAttribute="top" constant="8" id="z36-9r-AHi"/>
                                         </constraints>
@@ -1122,9 +1126,6 @@
                                                     <constraint firstAttribute="height" constant="20" id="2iJ-qW-hog"/>
                                                     <constraint firstAttribute="width" constant="20" id="6HH-ro-GBP"/>
                                                 </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDc-0G-VC1" customClass="ILCheckmarkView">
                                                 <rect key="frame" x="60" y="54" width="20" height="20"/>
@@ -1154,9 +1155,6 @@
                                                     <constraint firstAttribute="height" constant="20" id="iSu-cU-d5E"/>
                                                     <constraint firstAttribute="width" constant="20" id="ooN-t3-LpQ"/>
                                                 </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="2FZ-bk-Api"/>
@@ -1192,9 +1190,6 @@
                                                     <constraint firstAttribute="height" constant="20" id="bOM-PM-BhE"/>
                                                     <constraint firstAttribute="width" constant="25" id="l3m-dA-CYp"/>
                                                 </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="Hbp-9c-Idf"/>
@@ -1211,9 +1206,6 @@
                                                     <constraint firstAttribute="width" constant="25" id="RqT-c9-GAP"/>
                                                     <constraint firstAttribute="width" constant="20" id="Ynt-21-vLL"/>
                                                 </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="6Ct-hM-bcI"/>
@@ -1324,7 +1316,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WWW-ZW-4bf" userLabel="TopBar">
                                 <rect key="frame" x="0.0" y="100" width="600" height="80"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FRa-sS-x2w">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LifestyleIcon" translatesAutoresizingMaskIntoConstraints="NO" id="FRa-sS-x2w">
                                         <rect key="frame" x="20" y="15" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="JnQ-sA-pNT"/>
@@ -1332,30 +1324,57 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morning" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3Q-5g-L3G">
-                                        <rect key="frame" x="78" y="43" width="514" height="17"/>
+                                        <rect key="frame" x="78" y="43" width="432" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maca Powder Smoothie" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0g-kR-Dj3">
-                                        <rect key="frame" x="78" y="20" width="514" height="24"/>
+                                        <rect key="frame" x="78" y="20" width="432" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="213" id="z9U-be-hdc"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="z9U-be-hdc"/>
+                                            </mask>
+                                        </variation>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X7a-kF-tyL" customClass="ILCheckmarkView">
+                                        <rect key="frame" x="530" y="15" width="50" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="1rv-Cf-pGu"/>
+                                            <constraint firstAttribute="height" constant="50" id="HBV-MK-dMj"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="largeSize" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="y3Q-5g-L3G" firstAttribute="top" secondItem="P0g-kR-Dj3" secondAttribute="bottom" constant="-1" id="8gJ-w1-3su"/>
                                     <constraint firstItem="y3Q-5g-L3G" firstAttribute="leading" secondItem="P0g-kR-Dj3" secondAttribute="leading" id="B6f-ND-jmF"/>
                                     <constraint firstAttribute="height" constant="80" id="L2j-64-2R6"/>
+                                    <constraint firstAttribute="centerY" secondItem="X7a-kF-tyL" secondAttribute="centerY" id="NcK-Lf-Rpy"/>
+                                    <constraint firstAttribute="trailing" secondItem="X7a-kF-tyL" secondAttribute="trailing" constant="20" id="cWO-Ix-7lU"/>
                                     <constraint firstAttribute="trailing" secondItem="P0g-kR-Dj3" secondAttribute="trailing" constant="8" id="cbg-y6-mah"/>
                                     <constraint firstItem="y3Q-5g-L3G" firstAttribute="trailing" secondItem="P0g-kR-Dj3" secondAttribute="trailing" id="gfV-Q7-SGF"/>
+                                    <constraint firstItem="X7a-kF-tyL" firstAttribute="leading" secondItem="P0g-kR-Dj3" secondAttribute="trailing" constant="20" id="j9e-bT-cOU"/>
                                     <constraint firstAttribute="centerY" secondItem="P0g-kR-Dj3" secondAttribute="centerY" constant="8" id="kZ9-YE-1xQ"/>
                                     <constraint firstItem="FRa-sS-x2w" firstAttribute="leading" secondItem="WWW-ZW-4bf" secondAttribute="leading" constant="20" id="nEB-ce-McM"/>
                                     <constraint firstAttribute="centerY" secondItem="FRa-sS-x2w" secondAttribute="centerY" id="wwV-hB-Eap"/>
                                     <constraint firstItem="P0g-kR-Dj3" firstAttribute="leading" secondItem="FRa-sS-x2w" secondAttribute="trailing" constant="8" id="x7T-Pg-Vy8"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="cbg-y6-mah"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tme-pW-dGV">
                                 <rect key="frame" x="0.0" y="180" width="600" height="356"/>
@@ -1383,6 +1402,23 @@
                         </variation>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="activityImageView" destination="FRa-sS-x2w" id="mLf-6w-YKm"/>
+                        <outlet property="activitySubtitleLabel" destination="y3Q-5g-L3G" id="mxj-yk-UUN"/>
+                        <outlet property="activityTitleLabel" destination="P0g-kR-Dj3" id="jsO-6E-5eT"/>
+                        <outlet property="doneCheckmark" destination="X7a-kF-tyL" id="sPi-p8-Ljc"/>
+                        <outlet property="fridayCheckmark" destination="2lK-c1-yrS" id="OWt-j1-T12"/>
+                        <outlet property="monCheckmark" destination="dDc-0G-VC1" id="22x-aA-TUR"/>
+                        <outlet property="profileImageView" destination="5CH-Hi-ZoW" id="UAg-f1-okm"/>
+                        <outlet property="profileLabel" destination="BUg-51-Hv8" id="e6d-Dy-PWf"/>
+                        <outlet property="satCheckmark" destination="Xdb-WZ-p7b" id="QMF-UH-YOi"/>
+                        <outlet property="sunCheckmark" destination="Wtn-K8-hgl" id="3Fd-ip-oQa"/>
+                        <outlet property="thurCheckmark" destination="R3q-3B-2pV" id="ZW0-WE-jm1"/>
+                        <outlet property="topBar" destination="WWW-ZW-4bf" id="MqC-5p-3pa"/>
+                        <outlet property="tuesCheckmark" destination="oZk-iv-HpD" id="54M-7m-gBh"/>
+                        <outlet property="webView" destination="tme-pW-dGV" id="FNY-7t-oBs"/>
+                        <outlet property="wedCheckmark" destination="P59-OX-DYB" id="F8i-pj-jXi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ig-cy-enC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2262,9 +2298,6 @@ daily tips and exercises like:</string>
                                                     <constraint firstAttribute="width" constant="20" id="6Fm-S2-PgR"/>
                                                     <constraint firstAttribute="height" constant="20" id="eV7-4d-yuW"/>
                                                 </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="we9-Tf-9bD" customClass="ILCheckmarkView">
                                                 <rect key="frame" x="60" y="54" width="20" height="20"/>
@@ -2294,9 +2327,6 @@ daily tips and exercises like:</string>
                                                     <constraint firstAttribute="height" constant="20" id="M2R-Ef-kZq"/>
                                                     <constraint firstAttribute="width" constant="20" id="cs0-wx-szE"/>
                                                 </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="An1-d3-Ckd"/>
@@ -2332,9 +2362,6 @@ daily tips and exercises like:</string>
                                                     <constraint firstAttribute="height" constant="25" id="bFu-vP-5JV"/>
                                                     <constraint firstAttribute="width" constant="25" id="tGq-6y-zDz"/>
                                                 </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="bFu-vP-5JV"/>
@@ -2351,9 +2378,6 @@ daily tips and exercises like:</string>
                                                     <constraint firstAttribute="height" constant="25" id="Cy3-iC-Cw5"/>
                                                     <constraint firstAttribute="width" constant="25" id="xoC-pd-JMz"/>
                                                 </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="Cy3-iC-Cw5"/>
@@ -2544,9 +2568,16 @@ daily tips and exercises like:</string>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="fridayCheckmark" destination="xlb-Jd-GjF" id="z8F-md-ATF"/>
+                        <outlet property="monCheckmark" destination="we9-Tf-9bD" id="oTB-Jg-obt"/>
                         <outlet property="profileImage" destination="xlm-yv-rla" id="F37-X4-4LO"/>
                         <outlet property="profileLabel" destination="tlj-K9-GJu" id="Nbx-hF-4Gp"/>
+                        <outlet property="satCheckmark" destination="vlw-47-fmR" id="Vex-bC-9Fh"/>
+                        <outlet property="sunCheckmark" destination="MCN-xH-Wmi" id="Gw8-42-lmy"/>
                         <outlet property="tableView" destination="mfY-1F-DDN" id="9ey-eh-kb1"/>
+                        <outlet property="thurCheckmark" destination="vp0-mG-eea" id="D5c-iS-bA6"/>
+                        <outlet property="tuesCheckmark" destination="dbz-0h-v6s" id="CVD-6b-6XP"/>
+                        <outlet property="wedCheckmark" destination="mdx-CP-vEE" id="cIT-DS-wJD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YyC-Sz-p5u" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -23,43 +23,110 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _instance = [[CoachingDataStore alloc] init];
+        //_instance.dataStore = [[NSMutableDictionary alloc] init];
     });
     return _instance;
 }
 
 #pragma mark - Public Methods
 
-- (BOOL)getStatusForActivityType:(ILActivityType)type forDate:(NSDate *)date withCompletion:(CompletionBlock)completion
+- (void)getStatusForDate:(NSDate *)date withCompletion:(CoachingCompletionBlock)completion;
 {
-    NSString *dateString = [self.dateFormatter stringFromDate: date];
-    NSMutableDictionary *selectedDate = self.dataStore[dateString];
-    if (!selectedDate) {
-        return NO;
-    }
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        NSString *dateString = [self.dateFormatter stringFromDate: date];
+        NSMutableDictionary *selectedDate = self.dataStore[dateString];
+        if (!selectedDate) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(NO);
+            });
+        }
+        
+        for (int i = 0; i < 4; i++) {
+            NSNumber *typeNumber = [NSNumber numberWithInt: i];
+            NSString *typeString = [NSString stringWithFormat: @"%@", typeNumber];
+            NSNumber *boolNumber = selectedDate[typeString];
+            if (!boolNumber) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(NO);
+                });
+                return;
+            }
+            BOOL status = [boolNumber boolValue];
+            if (!status) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(NO);
+                });
+                return;
+            }
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(YES);
+        });
+        
+    });
     
-    NSNumber *typeNumber = [NSNumber numberWithInt: type];
-    NSNumber *boolNumber = selectedDate[typeNumber];
-    if (!boolNumber) {
-        return NO;
-    }
-    
-    BOOL status = [boolNumber boolValue];
-    
-    return status;
 }
 
-- (void)setStatus:(BOOL)status forActivityType:(ILActivityType)type forDate:(NSDate *)date withCompletion:(ErrorCompletionBlock)completion
+- (void)getStatusForActivityType:(ILActivityType)type forDate:(NSDate *)date withCompletion:(CoachingCompletionBlock)completion
 {
-    NSString *dateString = [self.dateFormatter stringFromDate: date];
-    NSMutableDictionary *selectedDate = self.dataStore[dateString];
-    if (!selectedDate) {
-        selectedDate = [[NSMutableDictionary alloc] init];
-    }
+//    DDLogError(@"DATA STORE: %@", self.dataStore);
+//    DDLogWarn(@"GET STATUS FOR ACTIVITY TYPE: %ld", (long)type);
     
-    NSNumber *typeNumber = [NSNumber numberWithInt: type];
-    NSNumber *boolNumber = [NSNumber numberWithBool: status];
- 
-    selectedDate[typeNumber] = boolNumber;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        NSString *dateString = [self.dateFormatter stringFromDate: date];
+        NSMutableDictionary *selectedDate = self.dataStore[dateString];
+        if (!selectedDate) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(NO);
+            });
+        }
+        
+        NSNumber *typeNumber = [NSNumber numberWithInt: type];
+        NSString *typeString = [NSString stringWithFormat: @"%@", typeNumber];
+        NSNumber *boolNumber = selectedDate[typeString];
+        if (!boolNumber) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(NO);
+            });
+        }
+        
+        BOOL status = [boolNumber boolValue];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(status);
+        });
+        
+    });
+    
+}
+
+- (void)setStatus:(BOOL)status forActivityType:(ILActivityType)type forDate:(NSDate *)date withCompletion:(CoachingErrorCompletionBlock)completion
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    
+        NSString *dateString = [self.dateFormatter stringFromDate: date];
+        NSMutableDictionary *selectedDate = self.dataStore[dateString];
+        if (!selectedDate) {
+            selectedDate = [[NSMutableDictionary alloc] init];
+            self.dataStore[dateString] = selectedDate;
+        }
+        
+        NSNumber *typeNumber = [NSNumber numberWithInt: type];
+        NSString *typeString = [NSString stringWithFormat: @"%@", typeNumber];
+        NSNumber *boolNumber = [NSNumber numberWithBool: status];
+        
+        selectedDate[typeString] = boolNumber;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(nil);
+        });
+        
+        [self saveDataStore];
+        
+    });
+    
 }
 
 #pragma mark - Set/Get
@@ -95,8 +162,16 @@
 
 - (NSMutableDictionary *)getDataStoreFromDisk
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource: @"CoachingDataStore" ofType: @"plist"];
+    DDLogInfo(@"COACHING DATA STORE : GETTING DATA FROM DISK");
+
+    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex: 0];
+    NSString *path = [rootPath stringByAppendingPathComponent: @"CoachingDataStore.plist"];
+    
     NSData *plistData = [NSData dataWithContentsOfFile: path];
+    
+    if (!plistData) {
+        return [[NSMutableDictionary alloc] init];
+    }
     
     NSError *error;
     NSPropertyListFormat format;
@@ -116,7 +191,10 @@
 
 - (void)saveDataStoreToDisk:(NSDictionary *)dataStore
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource: @"CoachingDataStore" ofType: @"plist"];
+    DDLogInfo(@"COACHING DATA STORE : SAVING DATA TO DISK");
+    
+    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex: 0];
+    NSString *path = [rootPath stringByAppendingPathComponent: @"CoachingDataStore.plist"];
     
     NSData *xmlData;
     NSError *error;

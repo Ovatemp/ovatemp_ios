@@ -15,9 +15,9 @@ typedef NS_ENUM(NSInteger, ILActivityType){
     ILActivityTypeMeditation
 };
 
-typedef void (^CompletionBlock)(id object, NSError *error);
-typedef void (^ErrorCompletionBlock)(NSError *error);
-typedef void (^EmptyCompletionBlock)();
+typedef void (^CoachingCompletionBlock)(BOOL status);
+typedef void (^CoachingErrorCompletionBlock)(NSError *error);
+typedef void (^CoachingEmptyCompletionBlock)();
 
 @interface CoachingDataStore : NSObject
 
@@ -26,7 +26,8 @@ typedef void (^EmptyCompletionBlock)();
 - (void)reloadDataStore;
 - (void)saveDataStore;
 
-- (BOOL)getStatusForActivityType:(ILActivityType)type forDate:(NSDate *)date withCompletion:(CompletionBlock)completion;
-- (void)setStatus:(BOOL)status forActivityType:(ILActivityType)type forDate:(NSDate *)date withCompletion:(ErrorCompletionBlock)completion;
+- (void)getStatusForDate:(NSDate *)date withCompletion:(CoachingCompletionBlock)completion;
+- (void)getStatusForActivityType:(ILActivityType)type forDate:(NSDate *)date withCompletion:(CoachingCompletionBlock)completion;
+- (void)setStatus:(BOOL)status forActivityType:(ILActivityType)type forDate:(NSDate *)date withCompletion:(CoachingErrorCompletionBlock)completion;
 
 @end
