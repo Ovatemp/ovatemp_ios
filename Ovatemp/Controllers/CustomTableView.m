@@ -1,25 +1,14 @@
 //
-//  CoachingSummaryTableViewCell.m
+//  CustomTableView.m
 //  Ovatemp
 //
-//  Created by Daniel Lozano on 6/11/15.
+//  Created by Daniel Lozano on 6/16/15.
 //  Copyright (c) 2015 Back Forty. All rights reserved.
 //
 
-#import "CoachingSummaryTableViewCell.h"
+#import "CustomTableView.h"
 
-@implementation CoachingSummaryTableViewCell
-
-- (void)awakeFromNib
-{
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
+@implementation CustomTableView
 
 - (void)drawRect:(CGRect)rect
 {

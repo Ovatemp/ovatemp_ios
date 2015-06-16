@@ -38,6 +38,7 @@
 		06712ED41ADC65CB007CEEF3 /* PositionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06712EC91ADC65CA007CEEF3 /* PositionPageViewController.swift */; };
 		06712ED51ADC65CB007CEEF3 /* PushNotificationPayload.apns in Resources */ = {isa = PBXBuildFile; fileRef = 06712ECA1ADC65CA007CEEF3 /* PushNotificationPayload.apns */; };
 		06712ED71ADD8475007CEEF3 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06712ED61ADD8475007CEEF3 /* GameKit.framework */; };
+		067976741B30933C0078611C /* CustomTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 067976731B30933C0078611C /* CustomTableView.m */; };
 		067AFC371AF2C595000040F2 /* ILDayStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 067AFC361AF2C595000040F2 /* ILDayStore.m */; };
 		067BCE0E1AD5C9D100F0BDE6 /* TransparentSwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 067BCE0D1AD5C9D100F0BDE6 /* TransparentSwipeView.m */; };
 		068206981AE83D7A000B006F /* TutorialContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068206971AE83D7A000B006F /* TutorialContentViewController.m */; };
@@ -468,6 +469,8 @@
 		06712EC91ADC65CA007CEEF3 /* PositionPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionPageViewController.swift; sourceTree = "<group>"; };
 		06712ECA1ADC65CA007CEEF3 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		06712ED61ADD8475007CEEF3 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		067976721B30933C0078611C /* CustomTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableView.h; sourceTree = "<group>"; };
+		067976731B30933C0078611C /* CustomTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableView.m; sourceTree = "<group>"; };
 		067AFC351AF2C595000040F2 /* ILDayStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILDayStore.h; sourceTree = "<group>"; };
 		067AFC361AF2C595000040F2 /* ILDayStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILDayStore.m; sourceTree = "<group>"; };
 		067BCE0C1AD5C9D100F0BDE6 /* TransparentSwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentSwipeView.h; sourceTree = "<group>"; };
@@ -1208,6 +1211,21 @@
 			path = "Ovatemp WatchKit Extension";
 			sourceTree = "<group>";
 		};
+		067976751B3094090078611C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				067976721B30933C0078611C /* CustomTableView.h */,
+				067976731B30933C0078611C /* CustomTableView.m */,
+				0638856B1B2A461700588FB3 /* CoachingSummaryTableViewCell.h */,
+				0638856C1B2A461700588FB3 /* CoachingSummaryTableViewCell.m */,
+				062104ED1B2F41DE0096D23A /* ILCheckmarkView.h */,
+				062104EE1B2F41DE0096D23A /* ILCheckmarkView.m */,
+				06C315751B1FA10E003FABD8 /* ILButton.h */,
+				06C315761B1FA10E003FABD8 /* ILButton.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		0687D3191AA63DD8009A12DC /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -1244,12 +1262,7 @@
 		06C315651B1F9C62003FABD8 /* ILCoaching */ = {
 			isa = PBXGroup;
 			children = (
-				062104ED1B2F41DE0096D23A /* ILCheckmarkView.h */,
-				062104EE1B2F41DE0096D23A /* ILCheckmarkView.m */,
-				0638856B1B2A461700588FB3 /* CoachingSummaryTableViewCell.h */,
-				0638856C1B2A461700588FB3 /* CoachingSummaryTableViewCell.m */,
-				06C315751B1FA10E003FABD8 /* ILButton.h */,
-				06C315761B1FA10E003FABD8 /* ILButton.m */,
+				067976751B3094090078611C /* Views */,
 				06C315661B1F9E8E003FABD8 /* ILCoachingIntroViewController.h */,
 				06C315671B1F9E8E003FABD8 /* ILCoachingIntroViewController.m */,
 				06C315691B1F9EB1003FABD8 /* ILCoachingBreakViewController.h */,
@@ -2560,6 +2573,7 @@
 				06615E0E1AEED4EE000696D1 /* NSArray+ArrayMap.m in Sources */,
 				068206981AE83D7A000B006F /* TutorialContentViewController.m in Sources */,
 				5F1E1E261A110116001C22B7 /* TrackingPregnancyTestTableViewCell.m in Sources */,
+				067976741B30933C0078611C /* CustomTableView.m in Sources */,
 				5F1C9C6B19EDE87A000F1FC1 /* CheckCell.m in Sources */,
 				5F1C9B7019EDE87A000F1FC1 /* DayCellEditView.m in Sources */,
 				5F1C9B6119EDE87A000F1FC1 /* NSDate+Formatters.m in Sources */,

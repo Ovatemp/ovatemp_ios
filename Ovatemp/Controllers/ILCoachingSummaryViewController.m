@@ -8,6 +8,7 @@
 
 #import "ILCoachingSummaryViewController.h"
 
+#import "User.h"
 #import "CoachingSummaryTableViewCell.h"
 #import "ILSummaryDetailViewController.h"
 
@@ -15,6 +16,7 @@
 
 @property (nonatomic) NSArray *rowNames;
 @property (nonatomic) NSArray *timesOfDay;
+@property (nonatomic) NSArray *imageNames;
 
 @end
 
@@ -26,6 +28,11 @@
     
     self.rowNames = @[@"Acupressure", @"Lifestyle", @"Massage", @"Meditation"];
     self.timesOfDay = @[@"Morning", @"Afternoon", @"Evening", @"Evening"];
+    self.imageNames = @[@"AccupressureIcon", @"LifestyleIcon", @"MassageIcon", @"MeditationIcon"];
+    
+    NSString *profileName = [User current].fertilityProfileName;
+    self.profileLabel.text = [profileName capitalizedString];
+    self.profileImage.image = [UIImage imageNamed:[profileName stringByAppendingString:@"_small"]];
     
     [self customizeAppearance];
 }
@@ -77,6 +84,7 @@
     
     cell.titleLabel.text = self.rowNames[indexPath.row];
     cell.subtitleLabel.text = self.timesOfDay[indexPath.row];
+    cell.imageView.image = [UIImage imageNamed: self.imageNames[indexPath.row]];
     
     return cell;
 }

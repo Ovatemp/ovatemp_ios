@@ -1140,8 +1140,8 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="ttX-Ap-opE"/>
                                                         <exclude reference="Rgx-UN-ErM"/>
+                                                        <exclude reference="ttX-Ap-opE"/>
                                                     </mask>
                                                 </variation>
                                             </view>
@@ -2063,8 +2063,8 @@ daily tips and exercises like:</string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activate" lineBreakMode="tailTruncation" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="tlj-K9-GJu">
-                                                <rect key="frame" x="66" y="39" width="68" height="21.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" lineBreakMode="tailTruncation" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="tlj-K9-GJu">
+                                                <rect key="frame" x="38" y="46" width="192" height="21.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="68" id="O6I-5l-gcr"/>
                                                 </constraints>
@@ -2077,19 +2077,23 @@ daily tips and exercises like:</string>
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xlm-yv-rla">
-                                                <rect key="frame" x="8" y="25" width="50" height="50"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activate_small" translatesAutoresizingMaskIntoConstraints="NO" id="xlm-yv-rla">
+                                                <rect key="frame" x="8" y="42" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="6hX-VT-Roc"/>
                                                     <constraint firstAttribute="height" constant="50" id="Icf-iR-Gus"/>
+                                                    <constraint firstAttribute="height" constant="30" id="Jts-cv-dTf"/>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="SuV-kh-enC"/>
                                                     <constraint firstAttribute="height" constant="50" id="U4D-3P-T6R"/>
+                                                    <constraint firstAttribute="width" constant="30" id="URJ-Mp-xEK"/>
                                                     <constraint firstAttribute="width" secondItem="xlm-yv-rla" secondAttribute="height" multiplier="1:1" id="uoY-Dc-CYZ"/>
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="constraints">
+                                                        <exclude reference="6hX-VT-Roc"/>
                                                         <exclude reference="Icf-iR-Gus"/>
                                                         <exclude reference="SuV-kh-enC"/>
+                                                        <exclude reference="U4D-3P-T6R"/>
                                                         <exclude reference="uoY-Dc-CYZ"/>
                                                     </mask>
                                                 </variation>
@@ -2105,14 +2109,14 @@ daily tips and exercises like:</string>
                                         <color key="backgroundColor" red="0.4823529412" green="0.42745098040000001" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="HNP-xP-tWA" firstAttribute="top" secondItem="DiS-w4-AAG" secondAttribute="top" constant="8" id="31T-wK-PAZ"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tlj-K9-GJu" secondAttribute="trailing" constant="10" id="4vV-Lg-jdJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="tlj-K9-GJu" secondAttribute="trailing" constant="10" id="4vV-Lg-jdJ"/>
                                             <constraint firstItem="xlm-yv-rla" firstAttribute="leading" secondItem="DiS-w4-AAG" secondAttribute="leading" constant="8" id="PPC-Lg-sOX"/>
-                                            <constraint firstAttribute="centerY" secondItem="xlm-yv-rla" secondAttribute="centerY" id="SzE-3q-pNw"/>
+                                            <constraint firstAttribute="centerY" secondItem="xlm-yv-rla" secondAttribute="centerY" constant="-7" id="SzE-3q-pNw"/>
                                             <constraint firstItem="tlj-K9-GJu" firstAttribute="leading" secondItem="xlm-yv-rla" secondAttribute="trailing" constant="8" id="VMh-RP-bjx"/>
-                                            <constraint firstAttribute="centerY" secondItem="tlj-K9-GJu" secondAttribute="centerY" id="X6d-vH-mi2"/>
+                                            <constraint firstAttribute="centerY" secondItem="tlj-K9-GJu" secondAttribute="centerY" constant="-7" id="X6d-vH-mi2"/>
                                             <constraint firstItem="XJe-Xn-7j2" firstAttribute="leading" secondItem="DiS-w4-AAG" secondAttribute="leading" constant="8" id="XEl-L0-OuU"/>
                                             <constraint firstItem="xlm-yv-rla" firstAttribute="top" secondItem="XJe-Xn-7j2" secondAttribute="bottom" constant="5" id="aJd-7x-ddF"/>
-                                            <constraint firstItem="tlj-K9-GJu" firstAttribute="leading" secondItem="xlm-yv-rla" secondAttribute="trailing" constant="8" id="cYj-D5-k2M"/>
+                                            <constraint firstItem="tlj-K9-GJu" firstAttribute="leading" secondItem="xlm-yv-rla" secondAttribute="trailing" id="cYj-D5-k2M"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tlj-K9-GJu" secondAttribute="trailing" constant="8" id="cpd-3h-iiy"/>
                                             <constraint firstAttribute="centerY" secondItem="tlj-K9-GJu" secondAttribute="centerY" id="dC8-BQ-MHk"/>
                                             <constraint firstItem="XJe-Xn-7j2" firstAttribute="top" secondItem="DiS-w4-AAG" secondAttribute="top" constant="8" id="eB0-JF-ZcV"/>
@@ -2457,7 +2461,7 @@ daily tips and exercises like:</string>
                                     <constraint firstAttribute="trailing" secondItem="dvf-Wb-wus" secondAttribute="trailing" id="gXR-Vc-F3i"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="120" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="mfY-1F-DDN">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="120" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="mfY-1F-DDN" customClass="CustomTableView">
                                 <rect key="frame" x="0.0" y="100" width="600" height="387"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -2504,6 +2508,7 @@ daily tips and exercises like:</string>
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="iconImageView" destination="R3I-hV-7Bq" id="NP9-aB-hAy"/>
                                             <outlet property="subtitleLabel" destination="Hy8-m4-MoB" id="W2w-tK-ljX"/>
                                             <outlet property="titleLabel" destination="dtm-sp-wQh" id="3z9-Ry-wlJ"/>
                                         </connections>
@@ -2539,6 +2544,8 @@ daily tips and exercises like:</string>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="profileImage" destination="xlm-yv-rla" id="F37-X4-4LO"/>
+                        <outlet property="profileLabel" destination="tlj-K9-GJu" id="Nbx-hF-4Gp"/>
                         <outlet property="tableView" destination="mfY-1F-DDN" id="9ey-eh-kb1"/>
                     </connections>
                 </viewController>
