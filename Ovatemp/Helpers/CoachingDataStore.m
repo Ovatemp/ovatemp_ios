@@ -27,6 +27,22 @@
     return _instance;
 }
 
+#pragma mark - Initialization
+
+- (id)init
+{
+    self = [super init]; if (!self) return nil;
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(deleteDataStore) name: kUserDidLogoutNotification object:nil];
+    
+    return self;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
+}
+
 #pragma mark - Public Methods
 
 - (BOOL)getStatusForDate:(NSDate *)date
@@ -192,6 +208,13 @@
 - (void)saveDataStore
 {
     [self saveDataStoreToDisk: self.dataStore];
+}
+
+- (void)deleteDataStore
+{
+    DDLogWarn(@"COACHING DATA STORE : DELETING");
+    self.dataStore = [[NSMutableDictionary alloc] init];
+    [self saveDataStore];
 }
 
 - (NSMutableDictionary *)getDataStoreFromDisk
