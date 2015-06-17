@@ -87,6 +87,9 @@
     
     [self showBreak];
     
+    CGFloat progress = (float)self.currentQuestion / (float)self.questions.count;
+    self.progressView.progress = progress;
+    
     self.countLabel.text = [NSString stringWithFormat:@"%i of %i",
                             (int)self.currentQuestion + 1,
                             (int)self.questions.count];

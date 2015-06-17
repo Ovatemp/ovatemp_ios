@@ -13,6 +13,7 @@
 @property (nonatomic) NSInteger currentQuestion;
 
 @property (weak, nonatomic) IBOutlet UILabel *headingLabel;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 
 - (IBAction)didSelectYes:(id)sender;
 

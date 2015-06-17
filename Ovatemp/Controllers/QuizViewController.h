@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet BorderedGradientButton *noButton;
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @property (weak, nonatomic) IBOutlet UILabel *questionLabel;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 
 @property IBOutlet GradientButton *backButton;
 @property IBOutlet GradientButton *skipButton;

@@ -47,8 +47,10 @@
 {
     self.title = @"Coaching";
     
+    CGFloat percentage = (float)self.currentQuestion / 112;
     CGFloat percentageComplete = (float)self.currentQuestion / 112 * 100;
-    
+
+    self.progressView.progress = percentage;
     self.headingLabel.text = [NSString stringWithFormat: @"Great now your profile is %.f%% complete. The more accurate your profile the more detailed our instructions and tips will get.", percentageComplete];
 }
 
