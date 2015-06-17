@@ -96,10 +96,8 @@
                 fillColor = [UIColor il_purple];
             }else{
                 // TTA
-                DDLogError(@"CYCLE PHASE : %@", self.cyclePhase);
                 
                 if ([self.cyclePhase isEqualToString: @"preovulation"]) {
-                    DDLogError(@"ENTERED IF");
                     // Pre Ovulation - Yellow Icon
                     strokeColor = [UIColor il_yellowColor];
                     fillColor = [UIColor il_yellowColor];
@@ -139,8 +137,62 @@
         [rectanglePath fill];
         
     }
+    
+    if (self.completedActivity) {
+        [self drawCheckmarkInFrame: rect];
+    }
 
     [super drawRect: rect];
+}
+
+- (void)drawCheckmarkInFrame:(CGRect)frame
+{
+    //// General Declarations
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    //// Color Declarations
+    UIColor* color2 = [UIColor colorWithRed: 0.514 green: 0.875 blue: 0.867 alpha: 1];
+    UIColor* color3 = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 1];
+    
+    
+    //// Subframes
+    CGRect group = CGRectMake(CGRectGetMinX(frame) + CGRectGetWidth(frame) - 10.5, CGRectGetMinY(frame) + 2.5, 9.67, 8);
+    
+    
+    //// Group
+    {
+        //// Oval Drawing
+        UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(CGRectGetMinX(group), CGRectGetMinY(group), 8, 8)];
+        [color2 setFill];
+        [ovalPath fill];
+        [color2 setStroke];
+        ovalPath.lineWidth = 1;
+        [ovalPath stroke];
+        
+        
+        //// Rectangle Drawing
+        CGContextSaveGState(context);
+        CGContextTranslateCTM(context, CGRectGetMinX(group) + 2.68, CGRectGetMinY(group) + 5.07);
+        CGContextRotateCTM(context, -36.23 * M_PI / 180);
+        
+        UIBezierPath* rectanglePath = [UIBezierPath bezierPathWithRect: CGRectMake(-0.59, -1.94, 1.18, 3.88)];
+        [color3 setFill];
+        [rectanglePath fill];
+        
+        CGContextRestoreGState(context);
+        
+        
+        //// Rectangle 2 Drawing
+        CGContextSaveGState(context);
+        CGContextTranslateCTM(context, CGRectGetMinX(group) + 6.35, CGRectGetMinY(group) + 3.81);
+        CGContextRotateCTM(context, 51.37 * M_PI / 180);
+        
+        UIBezierPath* rectangle2Path = [UIBezierPath bezierPathWithRect: CGRectMake(-0.64, -3.73, 1.29, 7.45)];
+        [color3 setFill];
+        [rectangle2Path fill];
+        
+        CGContextRestoreGState(context);
+    }
 }
 
 @end

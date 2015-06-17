@@ -20,4 +20,6 @@ typedef enum {
 @property (nonatomic) CalendarDayType dayType;
 @property (nonatomic) NSString *cyclePhase;
 
+@property (nonatomic) BOOL completedActivity;
+
 @end

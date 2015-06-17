@@ -22,8 +22,6 @@
 {
     [super viewDidLoad];
     
-    [self currentWeek];
-    
     [self customizeAppearance];
     [self setUpWebView];
 
@@ -90,7 +88,7 @@
     [[CoachingDataStore sharedSession] setStatus: !previousState
                                  forActivityType: type
                                          forDate: [NSDate date]
-                                  withCompletion:^(NSError *error) {
+                                  withCompletion:^ {
                                       [self updateScreen];
                                   }];
 }
@@ -124,31 +122,33 @@
     NSDate *saturday = [self nextDayFromDate: friday];
 
     [[CoachingDataStore sharedSession] getStatusForDate: sunday withCompletion:^(BOOL status) {
+        
         self.sunCheckmark.isChecked = status;
-    }];
-    
-    [[CoachingDataStore sharedSession] getStatusForDate: monday withCompletion:^(BOOL status) {
-        self.monCheckmark.isChecked = status;
-    }];
-    
-    [[CoachingDataStore sharedSession] getStatusForDate: tuesday withCompletion:^(BOOL status) {
-        self.tuesCheckmark.isChecked = status;
-    }];
-    
-    [[CoachingDataStore sharedSession] getStatusForDate: wednesday withCompletion:^(BOOL status) {
-        self.wedCheckmark.isChecked = status;
-    }];
-    
-    [[CoachingDataStore sharedSession] getStatusForDate: thursday withCompletion:^(BOOL status) {
-        self.thurCheckmark.isChecked = status;
-    }];
-    
-    [[CoachingDataStore sharedSession] getStatusForDate: friday withCompletion:^(BOOL status) {
-        self.fridayCheckmark.isChecked = status;
-    }];
-    
-    [[CoachingDataStore sharedSession] getStatusForDate: saturday withCompletion:^(BOOL status) {
-        self.satCheckmark.isChecked = status;
+        
+        [[CoachingDataStore sharedSession] getStatusForDate: monday withCompletion:^(BOOL status) {
+            self.monCheckmark.isChecked = status;
+        }];
+        
+        [[CoachingDataStore sharedSession] getStatusForDate: tuesday withCompletion:^(BOOL status) {
+            self.tuesCheckmark.isChecked = status;
+        }];
+        
+        [[CoachingDataStore sharedSession] getStatusForDate: wednesday withCompletion:^(BOOL status) {
+            self.wedCheckmark.isChecked = status;
+        }];
+        
+        [[CoachingDataStore sharedSession] getStatusForDate: thursday withCompletion:^(BOOL status) {
+            self.thurCheckmark.isChecked = status;
+        }];
+        
+        [[CoachingDataStore sharedSession] getStatusForDate: friday withCompletion:^(BOOL status) {
+            self.fridayCheckmark.isChecked = status;
+        }];
+        
+        [[CoachingDataStore sharedSession] getStatusForDate: saturday withCompletion:^(BOOL status) {
+            self.satCheckmark.isChecked = status;
+        }];
+        
     }];
     
 }

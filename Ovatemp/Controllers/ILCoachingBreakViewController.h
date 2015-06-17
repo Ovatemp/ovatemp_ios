@@ -15,6 +15,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *headingLabel;
 
 - (IBAction)didSelectYes:(id)sender;
-- (IBAction)didSelectNo:(id)sender;
 
 @end

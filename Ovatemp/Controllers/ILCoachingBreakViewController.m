@@ -57,9 +57,4 @@
     [self dismissViewControllerAnimated: YES completion: nil];
 }
 
-- (IBAction)didSelectNo:(id)sender
-{
-    // Do what? Maybe remove...
-}
-
 @end

@@ -26,6 +26,7 @@ typedef void (^CoachingEmptyCompletionBlock)();
 - (void)reloadDataStore;
 - (void)saveDataStore;
 
+- (BOOL)getStatusForDate:(NSDate *)date;
 - (void)getStatusForDate:(NSDate *)date withCompletion:(CoachingCompletionBlock)completion;
 - (void)getStatusForActivityType:(ILActivityType)type forDate:(NSDate *)date withCompletion:(CoachingCompletionBlock)completion;
 - (void)setStatus:(BOOL)status forActivityType:(ILActivityType)type forDate:(NSDate *)date withCompletion:(CoachingErrorCompletionBlock)completion;

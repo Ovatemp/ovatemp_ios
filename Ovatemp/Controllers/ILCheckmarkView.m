@@ -100,8 +100,8 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     //// Color Declarations
-    UIColor* color2 = [UIColor colorWithRed: 0.514 green: 0.875 blue: 0.867 alpha: 1];
-    UIColor* color3 = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 1];
+    UIColor *color2 = [UIColor colorWithRed: 0.514 green: 0.875 blue: 0.867 alpha: 1];
+    UIColor *color3 = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 1];
     
     //// Group
     {

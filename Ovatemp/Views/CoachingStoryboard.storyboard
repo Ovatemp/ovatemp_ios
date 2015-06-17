@@ -787,24 +787,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KEu-yP-naj" customClass="ILButton">
-                                <rect key="frame" x="20" y="520" width="560" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Q9q-qH-dA6"/>
-                                </constraints>
-                                <state key="normal" title="No, not right now.">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="didSelectNo:" destination="9jk-SV-hVL" eventType="touchUpInside" id="JmQ-vV-TGO"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bS3-h3-AxF" customClass="ILButton">
-                                <rect key="frame" x="20" y="453" width="560" height="60"/>
+                                <rect key="frame" x="20" y="520" width="560" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="eBy-1i-XgY"/>
                                 </constraints>
-                                <state key="normal" title="Yes, let's continue!">
+                                <state key="normal" title="Great, let's continue!">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -817,17 +805,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Would you like to continue answering questions?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y35-fQ-Qv2">
-                                <rect key="frame" x="40" y="399" width="520" height="45.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45.5" id="0eh-Jd-KJc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great now your profile is 10% complete. The more accurate your profile the more detailed our instrucionts and tips will get." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3IP-9k-JUU">
-                                <rect key="frame" x="20" y="60.5" width="560" height="100"/>
+                                <rect key="frame" x="20" y="60" width="560" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="tVq-TB-Huq"/>
                                 </constraints>
@@ -838,27 +817,19 @@
                         </subviews>
                         <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="KEu-yP-naj" secondAttribute="trailing" constant="20" id="21G-k2-1f0"/>
-                            <constraint firstItem="bS3-h3-AxF" firstAttribute="top" secondItem="Y35-fQ-Qv2" secondAttribute="bottom" constant="8" id="3Or-Zs-tYk"/>
                             <constraint firstItem="Zi5-7G-ZUN" firstAttribute="top" secondItem="SPZ-28-wGW" secondAttribute="bottom" id="3PC-is-s6d"/>
                             <constraint firstItem="3IP-9k-JUU" firstAttribute="leading" secondItem="5an-Bh-FaI" secondAttribute="leading" constant="20" id="6Ay-Kg-Y4U"/>
-                            <constraint firstAttribute="centerY" secondItem="KEu-yP-naj" secondAttribute="centerY" constant="-164" id="CC9-4Q-aIE"/>
-                            <constraint firstAttribute="trailing" secondItem="Y35-fQ-Qv2" secondAttribute="trailing" constant="40" id="ORo-P2-QyB"/>
                             <constraint firstItem="bS3-h3-AxF" firstAttribute="leading" secondItem="5an-Bh-FaI" secondAttribute="leading" constant="20" id="OUE-aw-RhG"/>
+                            <constraint firstItem="HFe-JX-bE6" firstAttribute="top" secondItem="bS3-h3-AxF" secondAttribute="bottom" constant="20" id="QI1-xq-BCm"/>
                             <constraint firstItem="Zi5-7G-ZUN" firstAttribute="top" secondItem="5an-Bh-FaI" secondAttribute="top" constant="20" id="QSH-3r-5gT"/>
                             <constraint firstAttribute="trailing" secondItem="3IP-9k-JUU" secondAttribute="trailing" constant="20" id="Y8A-uV-rAl"/>
-                            <constraint firstItem="KEu-yP-naj" firstAttribute="top" secondItem="bS3-h3-AxF" secondAttribute="bottom" constant="7.5" id="Z23-Lz-VRH"/>
-                            <constraint firstItem="Y35-fQ-Qv2" firstAttribute="leading" secondItem="5an-Bh-FaI" secondAttribute="leading" constant="40" id="aib-8D-b8K"/>
-                            <constraint firstItem="HFe-JX-bE6" firstAttribute="top" secondItem="KEu-yP-naj" secondAttribute="bottom" constant="20" id="cH9-8k-yFC"/>
                             <constraint firstItem="3IP-9k-JUU" firstAttribute="top" secondItem="Zi5-7G-ZUN" secondAttribute="bottom" constant="14" id="eDI-Qh-hl6"/>
                             <constraint firstAttribute="centerX" secondItem="Zi5-7G-ZUN" secondAttribute="centerX" constant="-0.5" id="ozZ-d0-FEk"/>
-                            <constraint firstItem="KEu-yP-naj" firstAttribute="leading" secondItem="5an-Bh-FaI" secondAttribute="leading" constant="20" id="qkX-Xg-xLd"/>
                             <constraint firstAttribute="trailing" secondItem="bS3-h3-AxF" secondAttribute="trailing" constant="20" id="wxW-JE-yKn"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="3PC-is-s6d"/>
-                                <exclude reference="CC9-4Q-aIE"/>
                             </mask>
                         </variation>
                     </view>

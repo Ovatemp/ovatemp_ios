@@ -29,16 +29,54 @@
 
 #pragma mark - Public Methods
 
+- (BOOL)getStatusForDate:(NSDate *)date
+{
+    NSMutableDictionary *dataStore = self.dataStore;
+    if (!dataStore) {
+        return NO;
+    }
+    
+    NSString *dateString = [self.dateFormatter stringFromDate: date];
+    NSMutableDictionary *selectedDate = dataStore[dateString];
+    if (!selectedDate) {
+        return NO;
+    }
+    
+    for (int i = 0; i < 4; i++) {
+        NSNumber *typeNumber = [NSNumber numberWithInt: i];
+        NSString *typeString = [NSString stringWithFormat: @"%@", typeNumber];
+        NSNumber *boolNumber = selectedDate[typeString];
+        if (!boolNumber) {
+            return NO;
+        }
+        BOOL status = [boolNumber boolValue];
+        if (!status) {
+            return NO;
+        }
+    }
+    
+    return YES;
+}
+
 - (void)getStatusForDate:(NSDate *)date withCompletion:(CoachingCompletionBlock)completion;
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
+        NSMutableDictionary *dataStore = self.dataStore;
+        if (!dataStore) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(NO);
+            });
+            return;
+        }
+        
         NSString *dateString = [self.dateFormatter stringFromDate: date];
-        NSMutableDictionary *selectedDate = self.dataStore[dateString];
+        NSMutableDictionary *selectedDate = dataStore[dateString];
         if (!selectedDate) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion(NO);
             });
+            return;
         }
         
         for (int i = 0; i < 4; i++) {
@@ -78,6 +116,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion(NO);
             });
+            return;
         }
         
         NSNumber *typeNumber = [NSNumber numberWithInt: type];
@@ -87,6 +126,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion(NO);
             });
+            return;
         }
         
         BOOL status = [boolNumber boolValue];

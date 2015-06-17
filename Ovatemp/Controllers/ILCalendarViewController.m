@@ -14,6 +14,7 @@
 #import "ILCalendarCell.h"
 #import "UserProfile.h"
 #import "OvatempAPI.h"
+#import "CoachingDataStore.h"
 
 #import "Localytics.h"
 #import "TAOverlay.h"
@@ -177,6 +178,7 @@
         UserProfile *currentUserProfile = [UserProfile current];
                 
         dayCell.cyclePhase = selectedDay.cyclePhase;
+        dayCell.completedActivity = [[CoachingDataStore sharedSession] getStatusForDate: dayCell.date];
         
         if (selectedDay.fertility.status == ILFertilityStatusTypePeriod) {
             
