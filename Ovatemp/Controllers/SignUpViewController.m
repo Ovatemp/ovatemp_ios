@@ -12,6 +12,7 @@
 #import "UserProfile.h"
 #import "UIViewController+UserProfileHelpers.h"
 #import "WebViewController.h"
+#import "OvatempAPI.h"
 
 #import "Localytics.h"
 
@@ -167,6 +168,8 @@
     // profile has been created successfully, set name
     [UserProfile current].fullName = self.fullNameField.text;
     [[UserProfile current] save];
+    
+    [[OvatempAPI sharedSession] resetAccessToken];
     
     [self performSegueWithIdentifier:@"signUpToWelcome1" sender:self];
 }
