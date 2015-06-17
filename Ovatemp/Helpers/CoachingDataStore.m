@@ -23,7 +23,6 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _instance = [[CoachingDataStore alloc] init];
-        //_instance.dataStore = [[NSMutableDictionary alloc] init];
     });
     return _instance;
 }
@@ -71,9 +70,6 @@
 
 - (void)getStatusForActivityType:(ILActivityType)type forDate:(NSDate *)date withCompletion:(CoachingCompletionBlock)completion
 {
-//    DDLogError(@"DATA STORE: %@", self.dataStore);
-//    DDLogWarn(@"GET STATUS FOR ACTIVITY TYPE: %ld", (long)type);
-    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         NSString *dateString = [self.dateFormatter stringFromDate: date];
@@ -120,11 +116,9 @@
         selectedDate[typeString] = boolNumber;
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            completion(nil);
+            completion();
         });
-        
-        [self saveDataStore];
-        
+                
     });
     
 }

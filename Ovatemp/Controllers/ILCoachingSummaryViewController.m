@@ -13,12 +13,12 @@
 #import "ILSummaryDetailViewController.h"
 #import "CoachingDataStore.h"
 #import "ILCheckmarkView.h"
+#import "NSArray+ILRandom.h"
 
 @interface ILCoachingSummaryViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) NSArray *rowNames;
 @property (nonatomic) NSArray *timesOfDay;
-@property (nonatomic) NSArray *imageNames;
 
 @end
 
@@ -28,16 +28,14 @@
 {
     [super viewDidLoad];
     
-    self.rowNames = @[@"Acupressure", @"Lifestyle", @"Massage", @"Meditation"];
+    self.rowNames = [self getRowNames];
     self.timesOfDay = @[@"Morning", @"Afternoon", @"Evening", @"Evening"];
-    self.imageNames = @[@"AccupressureIcon", @"LifestyleIcon", @"MassageIcon", @"MeditationIcon"];
     
     NSString *profileName = [User current].fertilityProfileName;
     self.profileLabel.text = [profileName capitalizedString];
     self.profileImage.image = [UIImage imageNamed:[profileName stringByAppendingString:@"_small"]];
     
     [self customizeAppearance];
-    [self updateScreen];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -48,6 +46,8 @@
     if (selection) {
         [self.tableView deselectRowAtIndexPath:selection animated:YES];
     }
+    
+    [self updateScreen];
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,6 +74,64 @@
     [self fillOutWeek];
 }
 
+#pragma mark - Shuffle Row Names
+
+- (NSArray *)getRowNames
+{
+    NSCalendar *calendar = [NSCalendar calendarWithIdentifier: NSCalendarIdentifierGregorian];
+    
+    NSDate *today = [NSDate date];
+    NSDate *lastShuffleDate = [self lastShuffleDate];
+    
+    if (!lastShuffleDate) {
+        return [self shuffleRowNames];
+    }
+    
+    NSComparisonResult result = [calendar compareDate: today toDate: lastShuffleDate toUnitGranularity: NSCalendarUnitDay];
+    if (result == NSOrderedSame) {
+        // Last shuffle date is today
+        return [self lastShuffleOrder];
+    }else{
+        // Last shuffle date is NOT today. Reshuffle array.
+        return [self shuffleRowNames];
+    }
+}
+
+- (NSArray *)shuffleRowNames
+{
+    NSArray *rowNames = @[@"Acupressure", @"Lifestyle", @"Massage", @"Meditation"];
+    NSArray *shuffledNames = [rowNames shuffle];
+    [self setLastShuffleDate: [NSDate date]];
+    [self setLastShuffleOrder: shuffledNames];
+    return shuffledNames;
+}
+
+#pragma mark - User Defaults (Shuffling)
+
+- (NSArray *)lastShuffleOrder
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults objectForKey: @"LastShuffleOrder"];
+}
+
+- (void)setLastShuffleOrder:(NSArray *)shuffleOrder
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject: shuffleOrder forKey: @"LastShuffleOrder"];
+}
+
+- (NSDate *)lastShuffleDate
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults objectForKey: @"LastShuffleDate"];
+}
+
+- (void)setLastShuffleDate:(NSDate *)date
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject: date forKey: @"LastShuffleDate"];
+}
+
 #pragma mark - UITableView Data Source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -92,7 +150,9 @@
     
     cell.titleLabel.text = self.rowNames[indexPath.row];
     cell.subtitleLabel.text = self.timesOfDay[indexPath.row];
-    cell.imageView.image = [UIImage imageNamed: self.imageNames[indexPath.row]];
+    
+    NSString *iconImageName = [NSString stringWithFormat: @"%@Icon", self.rowNames[indexPath.row]];
+    cell.imageView.image = [UIImage imageNamed: iconImageName];
     
     return cell;
 }
@@ -109,7 +169,9 @@
     detailVC.urlString = url;
     detailVC.activityName = self.rowNames[indexPath.row];
     detailVC.timeOfDay = self.timesOfDay[indexPath.row];
-    detailVC.activityImageName = self.imageNames[indexPath.row];
+    
+    NSString *iconImageName = [NSString stringWithFormat: @"%@Icon", self.rowNames[indexPath.row]];
+    detailVC.activityImageName = iconImageName;
     
     [self.navigationController pushViewController: detailVC animated: YES];
 }
@@ -127,31 +189,33 @@
     NSDate *saturday = [self nextDayFromDate: friday];
     
     [[CoachingDataStore sharedSession] getStatusForDate: sunday withCompletion:^(BOOL status) {
+        
         self.sunCheckmark.isChecked = status;
-    }];
-    
-    [[CoachingDataStore sharedSession] getStatusForDate: monday withCompletion:^(BOOL status) {
-        self.monCheckmark.isChecked = status;
-    }];
-    
-    [[CoachingDataStore sharedSession] getStatusForDate: tuesday withCompletion:^(BOOL status) {
-        self.tuesCheckmark.isChecked = status;
-    }];
-    
-    [[CoachingDataStore sharedSession] getStatusForDate: wednesday withCompletion:^(BOOL status) {
-        self.wedCheckmark.isChecked = status;
-    }];
-    
-    [[CoachingDataStore sharedSession] getStatusForDate: thursday withCompletion:^(BOOL status) {
-        self.thurCheckmark.isChecked = status;
-    }];
-    
-    [[CoachingDataStore sharedSession] getStatusForDate: friday withCompletion:^(BOOL status) {
-        self.fridayCheckmark.isChecked = status;
-    }];
-    
-    [[CoachingDataStore sharedSession] getStatusForDate: saturday withCompletion:^(BOOL status) {
-        self.satCheckmark.isChecked = status;
+        
+        [[CoachingDataStore sharedSession] getStatusForDate: monday withCompletion:^(BOOL status) {
+            self.monCheckmark.isChecked = status;
+        }];
+        
+        [[CoachingDataStore sharedSession] getStatusForDate: tuesday withCompletion:^(BOOL status) {
+            self.tuesCheckmark.isChecked = status;
+        }];
+        
+        [[CoachingDataStore sharedSession] getStatusForDate: wednesday withCompletion:^(BOOL status) {
+            self.wedCheckmark.isChecked = status;
+        }];
+        
+        [[CoachingDataStore sharedSession] getStatusForDate: thursday withCompletion:^(BOOL status) {
+            self.thurCheckmark.isChecked = status;
+        }];
+        
+        [[CoachingDataStore sharedSession] getStatusForDate: friday withCompletion:^(BOOL status) {
+            self.fridayCheckmark.isChecked = status;
+        }];
+        
+        [[CoachingDataStore sharedSession] getStatusForDate: saturday withCompletion:^(BOOL status) {
+            self.satCheckmark.isChecked = status;
+        }];
+        
     }];
     
 }

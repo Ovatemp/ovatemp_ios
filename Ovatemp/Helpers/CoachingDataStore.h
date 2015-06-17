@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, ILActivityType){
 };
 
 typedef void (^CoachingCompletionBlock)(BOOL status);
-typedef void (^CoachingErrorCompletionBlock)(NSError *error);
+typedef void (^CoachingErrorCompletionBlock)();
 typedef void (^CoachingEmptyCompletionBlock)();
 
 @interface CoachingDataStore : NSObject
