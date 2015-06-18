@@ -29,6 +29,13 @@
     [self checkManagerStatus];
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear: animated];
+    
+    [ONDO sharedInstance].testDelegate = nil;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -39,12 +46,16 @@
 
 - (void)customizeAppearance
 {
-    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:
-                                 UIBarButtonSystemItemDone target: self action: @selector(didSelectDone)];
-    self.navigationItem.rightBarButtonItem = doneItem;
-    
     self.title = @"ONDO Setup";
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor darkGrayColor]};
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:
+                                              UIBarButtonSystemItemDone target: self action: @selector(didSelectDone)];;
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle: @"Back"
+                                                                             style: UIBarButtonItemStyleDone
+                                                                            target: nil
+                                                                            action: nil];
     
     self.nextButton.alpha = 0.0f;
 }
@@ -170,11 +181,15 @@
 
 - (void)didSelectDone
 {
+    [ONDO sharedInstance].testDelegate = nil;
+
     [self dismissViewControllerAnimated: YES  completion: nil];
 }
 
 - (IBAction)didSelectNext:(id)sender
 {
+    [ONDO sharedInstance].testDelegate = nil;
+
     OndoTutorialImageViewController *tutorialImageVC = [self.storyboard instantiateViewControllerWithIdentifier: @"OndoTutorialImageViewController"];
     tutorialImageVC.index = 3;
     [self.navigationController pushViewController: tutorialImageVC animated: YES];

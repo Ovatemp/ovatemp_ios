@@ -105,11 +105,14 @@ static NSString *const kONDOIdentifier = @"1809";
             break;
         case CBCentralManagerStateResetting:
             DDLogWarn(@"CENTRAL MANAGER STATE: RESETTING");
-            if ([self.delegate respondsToSelector:@selector(ONDOsaysBluetoothIsDisabled:)]) {
-                [self.delegate ONDOsaysBluetoothIsDisabled:self];
-            }
-            if ([self.testDelegate respondsToSelector:@selector(ONDOsaysBluetoothIsDisabled:)]) {
-                [self.testDelegate ONDOsaysBluetoothIsDisabled:self];
+            if (self.testDelegate) {
+                if ([self.testDelegate respondsToSelector:@selector(ONDOsaysBluetoothIsDisabled:)]) {
+                    [self.testDelegate ONDOsaysBluetoothIsDisabled:self];
+                }
+            }else{
+                if ([self.delegate respondsToSelector:@selector(ONDOsaysBluetoothIsDisabled:)]) {
+                    [self.delegate ONDOsaysBluetoothIsDisabled:self];
+                }
             }
             break;
         case CBCentralManagerStateUnauthorized:
@@ -120,11 +123,14 @@ static NSString *const kONDOIdentifier = @"1809";
             break;
         case CBCentralManagerStateUnsupported:
             DDLogWarn(@"CENTRAL MANAGER STATE: UNSUPPORTED");
-            if ([self.delegate respondsToSelector:@selector(ONDOsaysLEBluetoothIsUnavailable:)]) {
-                [self.delegate ONDOsaysLEBluetoothIsUnavailable:self];
-            }
-            if ([self.testDelegate respondsToSelector:@selector(ONDOsaysLEBluetoothIsUnavailable:)]) {
-                [self.testDelegate ONDOsaysLEBluetoothIsUnavailable:self];
+            if (self.testDelegate) {
+                if ([self.testDelegate respondsToSelector:@selector(ONDOsaysLEBluetoothIsUnavailable:)]) {
+                    [self.testDelegate ONDOsaysLEBluetoothIsUnavailable:self];
+                }
+            }else{
+                if ([self.delegate respondsToSelector:@selector(ONDOsaysLEBluetoothIsUnavailable:)]) {
+                    [self.delegate ONDOsaysLEBluetoothIsUnavailable:self];
+                }
             }
             break;
         case CBCentralManagerStatePoweredOn:
@@ -156,11 +162,14 @@ static NSString *const kONDOIdentifier = @"1809";
     
     [self.peripheral discoverServices:@[kONDOUUID]];
     
-    if ([self.delegate respondsToSelector:@selector(ONDOdidConnect:)]) {
-        [self.delegate ONDOdidConnect: self];
-    }
-    if ([self.testDelegate respondsToSelector:@selector(ONDOdidConnect:)]) {
-        [self.testDelegate ONDOdidConnect: self];
+    if (self.testDelegate) {
+        if ([self.testDelegate respondsToSelector:@selector(ONDOdidConnect:)]) {
+            [self.testDelegate ONDOdidConnect: self];
+        }
+    }else{
+        if ([self.delegate respondsToSelector:@selector(ONDOdidConnect:)]) {
+            [self.delegate ONDOdidConnect: self];
+        }
     }
 }
 
@@ -224,11 +233,14 @@ static NSString *const kONDOIdentifier = @"1809";
         CGFloat temperature = [self dataToFloat: characteristic.value];
         DDLogVerbose(@"TEMPERATURE: %f", temperature);
         if (temperature > 0) {
-            if ([self.delegate respondsToSelector: @selector(ONDO:didReceiveTemperature:)]) {
-                [self.delegate ONDO: self didReceiveTemperature: temperature];
-            }
-            if ([self.testDelegate respondsToSelector: @selector(ONDO:didReceiveTemperature:)]) {
-                [self.testDelegate ONDO: self didReceiveTemperature: temperature];
+            if (self.testDelegate) {
+                if ([self.testDelegate respondsToSelector: @selector(ONDO:didReceiveTemperature:)]) {
+                    [self.testDelegate ONDO: self didReceiveTemperature: temperature];
+                }
+            }else{
+                if ([self.delegate respondsToSelector: @selector(ONDO:didReceiveTemperature:)]) {
+                    [self.delegate ONDO: self didReceiveTemperature: temperature];
+                }
             }
         } else {
             DDLogError(@"CENTRAL MANAGER : TEMPERATURE NOT VALID");

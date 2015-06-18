@@ -11,6 +11,7 @@
 @interface OndoTutorialImageViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *ondoImageView;
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
 
 @property (nonatomic) NSUInteger index;
 

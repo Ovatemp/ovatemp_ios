@@ -11,6 +11,7 @@
 #import "WebViewController.h"
 #import "ONDOSettingViewController.h"
 #import "ApplePayHelper.h"
+#import "TutorialHelper.h"
 
 @import PassKit;
 
@@ -103,7 +104,10 @@
 
 - (IBAction)doONDOPairing:(id)sender
 {
-    [self ondoStartScan];
+    //[self ondoStartScan];
+    
+    [TutorialHelper showTutorialForOndoInController: self];
+    [self performSegueWithIdentifier:@"toAlarm" sender:self];
     
     [Localytics tagEvent: @"User Did Pair ONDO on Sign Up"];
 }
@@ -125,22 +129,22 @@
 
 #pragma mark - ONDO
 
-- (void)ondoStartScan
-{
-    ONDO *ondo = [ONDO sharedInstance];
-    
-    [self showFakePairing];
-    
-    if (ondo.isScanning) {
-        return;
-    }
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool: YES forKey: @"ShouldScanForOndo"];
-    [userDefaults synchronize];
-    
-    [ondo startScan];
-}
+//- (void)ondoStartScan
+//{
+//    ONDO *ondo = [ONDO sharedInstance];
+//    
+//    [self showFakePairing];
+//    
+//    if (ondo.isScanning) {
+//        return;
+//    }
+//    
+//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//    [userDefaults setBool: YES forKey: @"ShouldScanForOndo"];
+//    [userDefaults synchronize];
+//    
+//    [ondo startScan];
+//}
 
 - (void)ondoStopScan
 {
@@ -157,20 +161,20 @@
     [ondo stopScan];
 }
 
-#pragma mark - Pairing
-
-- (void)showFakePairing
-{
-    [TAOverlay showOverlayWithLabel: @"Pairing with ONDO..." Options: TAOverlayOptionOverlayDismissTap];
-    [self performSelector: @selector(showSuccessfull) withObject: self afterDelay: 1];
-}
-
-- (void)showSuccessfull
-{
-    [TAOverlay showOverlayWithLabel: @"Pairing successful!" Options: TAOverlayOptionAutoHide | TAOverlayOptionOverlayTypeSuccess];
-    
-    [self performSegueWithIdentifier:@"toAlarm" sender:self];
-}
+//#pragma mark - Pairing
+//
+//- (void)showFakePairing
+//{
+//    [TAOverlay showOverlayWithLabel: @"Pairing with ONDO..." Options: TAOverlayOptionOverlayDismissTap];
+//    [self performSelector: @selector(showSuccessfull) withObject: self afterDelay: 1];
+//}
+//
+//- (void)showSuccessfull
+//{
+//    [TAOverlay showOverlayWithLabel: @"Pairing successful!" Options: TAOverlayOptionAutoHide | TAOverlayOptionOverlayTypeSuccess];
+//    
+//    [self performSegueWithIdentifier:@"toAlarm" sender:self];
+//}
 
 #pragma mark - Set/Get
 
