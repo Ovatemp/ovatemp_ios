@@ -35,6 +35,7 @@
 - (void)stopScan;
 
 - (CBCentralManagerState)centralManagerState;
+- (NSUInteger)batteryLevel;
 
 @property (nonatomic) BOOL isScanning;
 

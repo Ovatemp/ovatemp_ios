@@ -21,6 +21,8 @@
 {
     [super viewDidLoad];
     
+    NSUInteger batteryLevel = [[ONDO sharedInstance] batteryLevel];
+    self.batteryLevelLabel.text = [NSString stringWithFormat: @"Battery Level: %lu%%", (unsigned long)batteryLevel];
     self.ondoSwitch.onTintColor = [UIColor ovatempAquaColor];
 }
 

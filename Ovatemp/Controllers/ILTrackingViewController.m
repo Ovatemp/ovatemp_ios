@@ -1244,6 +1244,16 @@
     
     [TAOverlay showOverlayWithLabel: temperatureString Options: TAOverlayOptionOverlayDismissTap | TAOverlayOptionOverlayTypeSuccess | TAOverlayOptionOverlaySizeRoundedRect];
     
+    [self performSelector: @selector(showBatteryAlert) withObject: nil afterDelay: 1.0];
+}
+
+- (void)showBatteryAlert
+{
+    NSInteger batteryLevel = [ONDO sharedInstance].batteryLevel;
+    
+    if (batteryLevel <= 30) {
+        [TAOverlay showOverlayWithLabel: @"ONDO Battery is low. Please charge soon." Options: TAOverlayOptionOverlayDismissTap | TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayTypeWarning];
+    }
 }
 
 #pragma mark - Network

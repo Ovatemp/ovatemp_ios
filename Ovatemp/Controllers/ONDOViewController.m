@@ -46,17 +46,17 @@ NSArray *ondoMenuItems;
     [self.view addSubview: self.payButton];
     [self customizeAppearance];
     
-    ondoMenuItems = @[@"Setup ONDO", @"About ONDO", @"Instruction Manual"];
+    ondoMenuItems = @[@"ONDO Setup", @"ONDO Settings", @"Instruction Manual"];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear: animated];
     
-    if (self.ondoSwitchedState) {
-        self.ondoSwitchedState = NO;
-        [TutorialHelper showTutorialForOndoInController: self];
-    }
+//    if (self.ondoSwitchedState) {
+//        self.ondoSwitchedState = NO;
+//        [TutorialHelper showTutorialForOndoInController: self];
+//    }
 }
 
 - (void)viewDidLayoutSubviews
@@ -156,13 +156,20 @@ NSArray *ondoMenuItems;
     switch (indexPath.row) {
         case 0:
         {
-            // Pair
+            // Setup
+            [TutorialHelper showTutorialForOndoInController: self];
             
+            break;
+        }
+            
+        case 1:
+        {
+            // Settings
             ONDOSettingViewController *ondoSettingVC = [[ONDOSettingViewController alloc] init];
             ondoSettingVC.delegate = self;
             
             CCMPopupTransitioning *popup = [CCMPopupTransitioning sharedInstance];
-            popup.destinationBounds = CGRectMake(0, 0, 200, 200);
+            popup.destinationBounds = CGRectMake(0, 0, 200, 250);
             popup.presentedController = ondoSettingVC;
             popup.presentingController = self;
             popup.dismissableByTouchingBackground = YES;
@@ -177,14 +184,9 @@ NSArray *ondoMenuItems;
             break;
         }
             
-        case 1: // About
+        case 2:
         {
-            [TutorialHelper showTutorialForOndoInController: self];
-            break;
-        }
-            
-        case 2: // Instructions
-        {
+            // Instructions
             NSString *url = @"https://s3.amazonaws.com/ovatemp/UserManual_2014.02.26.pdf";
             WebViewController *webViewController = [WebViewController withURL:url];
             webViewController.title = @"Instruction Manual";

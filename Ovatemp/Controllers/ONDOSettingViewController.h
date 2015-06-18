@@ -19,6 +19,7 @@
 @property (weak, nonatomic) id<ONDOSettingsViewControllerDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UISwitch *ondoSwitch;
+@property (weak, nonatomic) IBOutlet UILabel *batteryLevelLabel;
 
 - (IBAction)ondoSwitchChanged:(id)sender;
 
