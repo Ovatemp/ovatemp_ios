@@ -17,6 +17,7 @@
 		063942341AD71B8B00BE7605 /* ONDOSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 063942321AD71B8B00BE7605 /* ONDOSettingViewController.xib */; };
 		063CB2631AE1C131005F2D3A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063CB2621AE1C131005F2D3A /* Constants.swift */; };
 		0644CE551AE952E1006B4E24 /* TutorialHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0644CE541AE952E1006B4E24 /* TutorialHelper.m */; };
+		064ACB391B321EBD00BB7AF3 /* OndoTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 064ACB381B321EBD00BB7AF3 /* OndoTutorialViewController.m */; };
 		06615E071AEEA6E0000696D1 /* OvatempAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 06615E061AEEA6E0000696D1 /* OvatempAPI.m */; };
 		06615E0A1AEED396000696D1 /* ILDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 06615E091AEED396000696D1 /* ILDay.m */; };
 		06615E0E1AEED4EE000696D1 /* NSArray+ArrayMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 06615E0D1AEED4EE000696D1 /* NSArray+ArrayMap.m */; };
@@ -66,6 +67,10 @@
 		06C315741B1F9F04003FABD8 /* ILSummaryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C315731B1F9F04003FABD8 /* ILSummaryDetailViewController.m */; };
 		06C315771B1FA10E003FABD8 /* ILButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C315761B1FA10E003FABD8 /* ILButton.m */; };
 		06C55B221AAF4BD600EDE74A /* ILTrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */; };
+		06E4B9491B33352D00ED3D02 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06E4B9461B33352D00ED3D02 /* Lato-Bold.ttf */; };
+		06E4B94A1B33352D00ED3D02 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06E4B9471B33352D00ED3D02 /* Lato-Light.ttf */; };
+		06E4B94B1B33352D00ED3D02 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06E4B9481B33352D00ED3D02 /* Lato-Regular.ttf */; };
+		06E4B94E1B33395800ED3D02 /* OndoTutorialImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E4B94D1B33395800ED3D02 /* OndoTutorialImageViewController.m */; };
 		06F7A4DC1AC4D3F30054CEDF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F7A4DA1AC4D3F30054CEDF /* Fabric.framework */; };
 		06F8FA4E1AC3619C006EC93F /* CycleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F8FA4D1AC3619C006EC93F /* CycleCollectionViewCell.m */; };
 		0EC9830B19AB8619009A5730 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC9830A19AB8619009A5730 /* HealthKit.framework */; };
@@ -443,6 +448,8 @@
 		063CB2621AE1C131005F2D3A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0644CE531AE952E1006B4E24 /* TutorialHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TutorialHelper.h; path = ../Controllers/TutorialHelper.h; sourceTree = "<group>"; };
 		0644CE541AE952E1006B4E24 /* TutorialHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TutorialHelper.m; path = ../Controllers/TutorialHelper.m; sourceTree = "<group>"; };
+		064ACB371B321EBD00BB7AF3 /* OndoTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OndoTutorialViewController.h; sourceTree = "<group>"; };
+		064ACB381B321EBD00BB7AF3 /* OndoTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OndoTutorialViewController.m; sourceTree = "<group>"; };
 		06615E051AEEA6E0000696D1 /* OvatempAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OvatempAPI.h; sourceTree = "<group>"; };
 		06615E061AEEA6E0000696D1 /* OvatempAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OvatempAPI.m; sourceTree = "<group>"; };
 		06615E081AEED396000696D1 /* ILDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILDay.h; sourceTree = "<group>"; };
@@ -522,6 +529,11 @@
 		06C315761B1FA10E003FABD8 /* ILButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILButton.m; sourceTree = "<group>"; };
 		06C55B201AAF4BD600EDE74A /* ILTrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTrackingViewController.h; sourceTree = "<group>"; };
 		06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTrackingViewController.m; sourceTree = "<group>"; };
+		06E4B9461B33352D00ED3D02 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		06E4B9471B33352D00ED3D02 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		06E4B9481B33352D00ED3D02 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		06E4B94C1B33395800ED3D02 /* OndoTutorialImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OndoTutorialImageViewController.h; sourceTree = "<group>"; };
+		06E4B94D1B33395800ED3D02 /* OndoTutorialImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OndoTutorialImageViewController.m; sourceTree = "<group>"; };
 		06F7A4DA1AC4D3F30054CEDF /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		06F8FA4C1AC3619C006EC93F /* CycleCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleCollectionViewCell.h; sourceTree = "<group>"; };
 		06F8FA4D1AC3619C006EC93F /* CycleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleCollectionViewCell.m; sourceTree = "<group>"; };
@@ -1038,6 +1050,10 @@
 				0682069C1AE842F3000B006F /* TutorialViewController.m */,
 				068206961AE83D7A000B006F /* TutorialContentViewController.h */,
 				068206971AE83D7A000B006F /* TutorialContentViewController.m */,
+				064ACB371B321EBD00BB7AF3 /* OndoTutorialViewController.h */,
+				064ACB381B321EBD00BB7AF3 /* OndoTutorialViewController.m */,
+				06E4B94C1B33395800ED3D02 /* OndoTutorialImageViewController.h */,
+				06E4B94D1B33395800ED3D02 /* OndoTutorialImageViewController.m */,
 			);
 			name = Tutorials;
 			sourceTree = "<group>";
@@ -1283,6 +1299,17 @@
 			name = ILCoaching;
 			sourceTree = "<group>";
 		};
+		06E4B9451B3334D900ED3D02 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				06E4B9461B33352D00ED3D02 /* Lato-Bold.ttf */,
+				06E4B9471B33352D00ED3D02 /* Lato-Light.ttf */,
+				06E4B9481B33352D00ED3D02 /* Lato-Regular.ttf */,
+			);
+			name = Fonts;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		06F2051E1A9E805000BC8C7B /* Account */ = {
 			isa = PBXGroup;
 			children = (
@@ -1514,6 +1541,7 @@
 				5F1C9A6319EDE879000F1FC1 /* Helpers */,
 				5F1C9A6619EDE879000F1FC1 /* Images */,
 				5F1C9B4719EDE87A000F1FC1 /* Shared */,
+				06E4B9451B3334D900ED3D02 /* Fonts */,
 				5F1C9B2219EDE87A000F1FC1 /* Images.xcassets */,
 				5F1C9A2319EDE879000F1FC1 /* Constants.h */,
 				5F1C9A2419EDE879000F1FC1 /* Constants.m */,
@@ -2231,6 +2259,7 @@
 				5F1C9B9F19EDE87A000F1FC1 /* WebViewController.xib in Resources */,
 				5F1C9C3119EDE87A000F1FC1 /* Medium.png in Resources */,
 				5F1C9BD419EDE87A000F1FC1 /* MassageSmall@2x.png in Resources */,
+				06E4B94B1B33352D00ED3D02 /* Lato-Regular.ttf in Resources */,
 				5F1C9C0F19EDE87A000F1FC1 /* Unprotected.png in Resources */,
 				5F1C9C2E19EDE87A000F1FC1 /* Heavy@2x.png in Resources */,
 				5F1C9BB819EDE87A000F1FC1 /* CheckBox.png in Resources */,
@@ -2302,6 +2331,7 @@
 				5F1C9C3619EDE87A000F1FC1 /* Negative@2x.png in Resources */,
 				5F4C5B091A02B09600D0F465 /* TrackingStatusTableViewCell.xib in Resources */,
 				5F1C9C2C19EDE87A000F1FC1 /* OvatempIcon@2x.png in Resources */,
+				06E4B9491B33352D00ED3D02 /* Lato-Bold.ttf in Resources */,
 				5F1C9BD919EDE87A000F1FC1 /* MeditationSmall@2x.png in Resources */,
 				5F1C9C5119EDE87A000F1FC1 /* Wet.png in Resources */,
 				5F1C9C1C19EDE87A000F1FC1 /* DaySupplements@2x.png in Resources */,
@@ -2330,6 +2360,7 @@
 				5FE118511A1ADEFC00AC76A7 /* SettingsAlarmViewController.xib in Resources */,
 				5FE12F7A1A0C3CC3008DA1FD /* TrackingPeriodTableViewCell.xib in Resources */,
 				5F1C9BDD19EDE87A000F1FC1 /* OvatempSupport@2x.png in Resources */,
+				06E4B94A1B33352D00ED3D02 /* Lato-Light.ttf in Resources */,
 				5F1C9C4319EDE87A000F1FC1 /* community_unselect.png in Resources */,
 				5FDAA3AC19F8020F004E7181 /* CycleLengthTableViewCell.xib in Resources */,
 				5F1C9C3B19EDE87A000F1FC1 /* cal_unselected.png in Resources */,
@@ -2492,6 +2523,7 @@
 				5F1E1E211A103457001C22B7 /* TrackingOvulationTestTableViewCell.m in Sources */,
 				5F1C9C6219EDE87A000F1FC1 /* Symptom.m in Sources */,
 				5F1C9B7E19EDE87A000F1FC1 /* TemperatureCellEditView.m in Sources */,
+				064ACB391B321EBD00BB7AF3 /* OndoTutorialViewController.m in Sources */,
 				5F1E1D8A1A0DA579001C22B7 /* TrackingIntercourseTableViewCell.m in Sources */,
 				5F1C9C5C19EDE87A000F1FC1 /* FertilityProfile.m in Sources */,
 				06BD94F41AF1443A00345CFA /* NSArray+Reverse.m in Sources */,
@@ -2618,6 +2650,7 @@
 				063942331AD71B8B00BE7605 /* ONDOSettingViewController.m in Sources */,
 				5F1C9C7A19EEEDF9000F1FC1 /* AccountMainTableViewController.m in Sources */,
 				5F846E0719F560D300CED980 /* Welcome1ViewController.m in Sources */,
+				06E4B94E1B33395800ED3D02 /* OndoTutorialImageViewController.m in Sources */,
 				0682069D1AE842F3000B006F /* TutorialViewController.m in Sources */,
 				0638856D1B2A461700588FB3 /* CoachingSummaryTableViewCell.m in Sources */,
 				5F1C9B6F19EDE87A000F1FC1 /* DayAttribute.m in Sources */,

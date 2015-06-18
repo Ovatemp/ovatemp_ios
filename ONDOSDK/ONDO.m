@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Back Forty. All rights reserved.
 //
 
-#import <CoreBluetooth/CoreBluetooth.h>
-
 #import "ONDO.h"
 #import "ONDOPairViewController.h"
 
@@ -92,6 +90,11 @@ static NSString *const kONDOIdentifier = @"1809";
     }
 }
 
+- (CBCentralManagerState)centralManagerState
+{
+    return self.bluetoothManager.state;
+}
+
 # pragma mark - CBCentralManager Delegate
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
@@ -105,6 +108,9 @@ static NSString *const kONDOIdentifier = @"1809";
             if ([self.delegate respondsToSelector:@selector(ONDOsaysBluetoothIsDisabled:)]) {
                 [self.delegate ONDOsaysBluetoothIsDisabled:self];
             }
+            if ([self.testDelegate respondsToSelector:@selector(ONDOsaysBluetoothIsDisabled:)]) {
+                [self.testDelegate ONDOsaysBluetoothIsDisabled:self];
+            }
             break;
         case CBCentralManagerStateUnauthorized:
             DDLogWarn(@"CENTRAL MANAGER STATE: UNAUTHORIZED");
@@ -116,6 +122,9 @@ static NSString *const kONDOIdentifier = @"1809";
             DDLogWarn(@"CENTRAL MANAGER STATE: UNSUPPORTED");
             if ([self.delegate respondsToSelector:@selector(ONDOsaysLEBluetoothIsUnavailable:)]) {
                 [self.delegate ONDOsaysLEBluetoothIsUnavailable:self];
+            }
+            if ([self.testDelegate respondsToSelector:@selector(ONDOsaysLEBluetoothIsUnavailable:)]) {
+                [self.testDelegate ONDOsaysLEBluetoothIsUnavailable:self];
             }
             break;
         case CBCentralManagerStatePoweredOn:
@@ -149,6 +158,9 @@ static NSString *const kONDOIdentifier = @"1809";
     
     if ([self.delegate respondsToSelector:@selector(ONDOdidConnect:)]) {
         [self.delegate ONDOdidConnect: self];
+    }
+    if ([self.testDelegate respondsToSelector:@selector(ONDOdidConnect:)]) {
+        [self.testDelegate ONDOdidConnect: self];
     }
 }
 
@@ -214,6 +226,9 @@ static NSString *const kONDOIdentifier = @"1809";
         if (temperature > 0) {
             if ([self.delegate respondsToSelector: @selector(ONDO:didReceiveTemperature:)]) {
                 [self.delegate ONDO: self didReceiveTemperature: temperature];
+            }
+            if ([self.testDelegate respondsToSelector: @selector(ONDO:didReceiveTemperature:)]) {
+                [self.testDelegate ONDO: self didReceiveTemperature: temperature];
             }
         } else {
             DDLogError(@"CENTRAL MANAGER : TEMPERATURE NOT VALID");

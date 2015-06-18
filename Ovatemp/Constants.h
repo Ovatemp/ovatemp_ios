@@ -53,7 +53,6 @@
 
 // API
 
-//#define ROOT_URL @"http://192.168.15.35:3000"
 #define ROOT_URL @"http://api.ovatemp.com"
 #define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
 

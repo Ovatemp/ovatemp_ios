@@ -10,6 +10,8 @@
 
 #import "TutorialViewController.h"
 
+#import "OndoTutorialImageViewController.h"
+
 @implementation TutorialHelper
 
 + (void)showAppWalkthroughInController:(UIViewController *)controller
@@ -30,10 +32,16 @@
 
 + (void)showTutorialForOndoInController:(UIViewController *)controller
 {
-    NSArray *ondoTutorialImages = @[[UIImage imageNamed: @"OndoTutorial1"],[UIImage imageNamed: @"OndoTutorial2"],[UIImage imageNamed: @"OndoTutorial3"],[UIImage imageNamed: @"OndoTutorial4"],[UIImage imageNamed: @"OndoTutorial5"],[UIImage imageNamed: @"OndoTutorial6"]];
+//    NSArray *ondoTutorialImages = @[[UIImage imageNamed: @"OndoTutorial1"],[UIImage imageNamed: @"OndoTutorial2"],[UIImage imageNamed: @"OndoTutorial3"],[UIImage imageNamed: @"OndoTutorial4"],[UIImage imageNamed: @"OndoTutorial5"],[UIImage imageNamed: @"OndoTutorial6"]];
+//    
+//    [self showTutorialWithImages: ondoTutorialImages onViewController: controller darkMode: NO];
+//    [self incrementOndoTutorialCount];
     
-    [self showTutorialWithImages: ondoTutorialImages onViewController: controller darkMode: NO];
-    [self incrementOndoTutorialCount];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Tutorials" bundle: nil];
+    OndoTutorialImageViewController *tutorialVC = [storyboard instantiateViewControllerWithIdentifier: @"OndoTutorialImageViewController"];
+    tutorialVC.index = 0;
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: tutorialVC];
+    [controller presentViewController: navVC animated: YES completion: nil];
 }
 
 + (void)showCoachingIntroInController:(UIViewController *)controller

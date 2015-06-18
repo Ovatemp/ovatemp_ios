@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreBluetooth/CoreBluetooth.h>
+
 #import "ONDODevice.h"
 
 @class ONDO;
@@ -32,8 +34,11 @@
 - (void)startScan;
 - (void)stopScan;
 
+- (CBCentralManagerState)centralManagerState;
+
 @property (nonatomic) BOOL isScanning;
 
-@property id <ONDODelegate> delegate;
+@property (weak, nonatomic) id<ONDODelegate> delegate;
+@property (weak, nonatomic) id<ONDODelegate> testDelegate;
 
 @end
