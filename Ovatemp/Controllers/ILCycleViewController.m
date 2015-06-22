@@ -497,6 +497,8 @@
         
         if ([day.temperature floatValue] == 0) {
             colorForDay = [UIColor clearColor];
+        }else if(day.disturbance){
+            colorForDay = [UIColor grayColor];
         }else{
             colorForDay = [self colorForCyclePhase: day.cyclePhase];
         }
