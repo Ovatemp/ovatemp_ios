@@ -155,14 +155,13 @@
     UIColor* color3 = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 1];
     
     
-    CGFloat center = CGRectGetWidth(frame) / 2 - 4;
+    CGFloat center = CGRectGetWidth(frame) / 2 + 4;
     
     // 29.5
     // 9.5
     
     //// Subframes
-    CGRect group = CGRectMake(CGRectGetMinX(frame) + CGRectGetWidth(frame) - center, CGRectGetMinY(frame) + CGRectGetHeight(frame) - 12, 9.67, 8);
-    
+    CGRect group = CGRectMake(CGRectGetMinX(frame) + CGRectGetWidth(frame) - center, CGRectGetMinY(frame) + CGRectGetHeight(frame) - 11, 9.67, 8);
     
     //// Group
     {
