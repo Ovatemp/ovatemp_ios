@@ -56,8 +56,8 @@
     
     if (self.dayType == CalendarDayTypePeriod) {
         
-        strokeColor = [UIColor il_lightRedColor];
-        fillColor = [UIColor il_darkRedColor];
+        strokeColor = [UIColor il_darkRedColor];
+        fillColor = [UIColor il_lightRedColor];
         
         CGFloat size = rect.size.width * .6;
         CGFloat centerX = rect.size.width / 2 - (size / 2);
@@ -139,11 +139,67 @@
     }
     
     if (self.completedActivity) {
-        [self drawCheckmarkInFrame: rect];
+        [self drawCanvas3WithFrame: rect];
     }
 
     [super drawRect: rect];
 }
+
+- (void)drawCanvas3WithFrame:(CGRect)frame
+{
+    //// General Declarations
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    //// Color Declarations
+    UIColor* color2 = [UIColor colorWithRed: 0.514 green: 0.875 blue: 0.867 alpha: 1];
+    UIColor* color3 = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 1];
+    
+    
+    CGFloat center = CGRectGetWidth(frame) / 2 - 4;
+    
+    // 29.5
+    // 9.5
+    
+    //// Subframes
+    CGRect group = CGRectMake(CGRectGetMinX(frame) + CGRectGetWidth(frame) - center, CGRectGetMinY(frame) + CGRectGetHeight(frame) - 12, 9.67, 8);
+    
+    
+    //// Group
+    {
+        //// Oval Drawing
+        UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(CGRectGetMinX(group), CGRectGetMinY(group), 8, 8)];
+        [color2 setFill];
+        [ovalPath fill];
+        [color2 setStroke];
+        ovalPath.lineWidth = 1;
+        [ovalPath stroke];
+        
+        
+        //// Rectangle Drawing
+        CGContextSaveGState(context);
+        CGContextTranslateCTM(context, CGRectGetMinX(group) + 2.68, CGRectGetMinY(group) + 5.07);
+        CGContextRotateCTM(context, -36.23 * M_PI / 180);
+        
+        UIBezierPath* rectanglePath = [UIBezierPath bezierPathWithRect: CGRectMake(-0.59, -1.94, 1.18, 3.88)];
+        [color3 setFill];
+        [rectanglePath fill];
+        
+        CGContextRestoreGState(context);
+        
+        
+        //// Rectangle 2 Drawing
+        CGContextSaveGState(context);
+        CGContextTranslateCTM(context, CGRectGetMinX(group) + 6.35, CGRectGetMinY(group) + 3.81);
+        CGContextRotateCTM(context, 51.37 * M_PI / 180);
+        
+        UIBezierPath* rectangle2Path = [UIBezierPath bezierPathWithRect: CGRectMake(-0.64, -3.73, 1.29, 7.45)];
+        [color3 setFill];
+        [rectangle2Path fill];
+        
+        CGContextRestoreGState(context);
+    }
+}
+
 
 - (void)drawCheckmarkInFrame:(CGRect)frame
 {

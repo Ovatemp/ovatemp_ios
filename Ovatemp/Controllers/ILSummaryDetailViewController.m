@@ -12,6 +12,8 @@
 #import "ILCheckmarkView.h"
 #import "CoachingDataStore.h"
 
+#import "TAOverlay.h"
+
 @interface ILSummaryDetailViewController ()
 
 @end
@@ -26,6 +28,8 @@
     [self setUpWebView];
 
     [self updateScreen];
+    
+    [self showInfoPopup];
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,6 +78,23 @@
         NSURLRequest *request = [[NSURLRequest alloc] initWithURL: [NSURL URLWithString: self.urlString]];
         [self.webView loadRequest: request];
     }
+}
+
+- (void)showInfoPopup
+{
+    NSInteger openCalendarCount = [[NSUserDefaults standardUserDefaults] integerForKey: @"openCoachingSummaryCount"];
+    if (openCalendarCount < 2) {
+        NSString *message;
+        if (openCalendarCount == 0) {
+            message = @"Press the title of the activity to mark as completed!";
+        }else{
+            message = @"Remember, press the title of the activity to mark as completed.";
+        }
+        [TAOverlay showOverlayWithLabel: message Options: TAOverlayOptionOverlayTypeInfo | TAOverlayOptionOverlayDismissTap | TAOverlayOptionOverlayShadow];
+        [[NSUserDefaults standardUserDefaults] setInteger: openCalendarCount + 1 forKey: @"openCoachingSummaryCount"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
 }
 
 #pragma mark - IBAction

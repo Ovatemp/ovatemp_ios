@@ -125,22 +125,22 @@ static NSMutableDictionary *__cachedGradients;
 
 + (UIColor *)il_lightRedColor
 {
-    return [UIColor colorWithRed: 251.0/255.0 green: 95.0/255.0 blue: 98.0/255.0 alpha: 1];
+    return [UIColor colorWithRed: 253.0/255.0 green: 90.0/255.0 blue: 95.0/255.0 alpha: 1];
 }
 
 + (UIColor *)il_darkRedColor
 {
-    return [UIColor colorWithRed: 176.0/255.0 green: 72.0/255.0 blue: 66.0/255.0 alpha: 1];
+    return [UIColor colorWithRed: 247.0/255.0 green: 44.0/255.0 blue: 33.0/255.0 alpha: 1];
 }
 
 + (UIColor *)il_purple
 {
-    return [UIColor colorWithRed: 124.0/255.0 green: 65.0/255.0 blue: 160.0/255.0 alpha: 1];
+    return [UIColor colorWithRed: 153.0/255.0 green: 140.0/255.0 blue: 166.0/255.0 alpha: 1];
 }
 
 + (UIColor *)il_yellowColor
 {
-    return [UIColor colorWithRed: 248.0/255.0 green: 231.0/255.0 blue: 28.0/255.0 alpha: 1];
+    return [UIColor colorWithRed: 249.0/255.0 green: 244.0/255.0 blue: 127.0/255.0 alpha: 1];
 }
 
 @end
