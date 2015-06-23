@@ -78,8 +78,8 @@
 
 # define API_URL [ROOT_URL stringByAppendingString:@"/api"]
 
-static NSString *const kStripePublishableKey = @"pk_test_SwHYnn0ZQhj7ysaLmRJ5mmxM"; // Test
-//static NSString *const kStripePublishableKey = @"pk_live_h36Hwh93e0s4kbukCJkC3ZKW"; // Live
+//static NSString *const kStripePublishableKey = @"pk_test_SwHYnn0ZQhj7ysaLmRJ5mmxM"; // Test
+static NSString *const kStripePublishableKey = @"pk_live_h36Hwh93e0s4kbukCJkC3ZKW"; // Live
 
 static NSString *const kAppGroupName = @"group.com.ovatemp.ovatemp";
 static NSString *const kSharedTokenKey = @"CurrentUserToken";

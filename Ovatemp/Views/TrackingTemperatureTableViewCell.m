@@ -38,6 +38,13 @@ NSMutableArray *temperatureFractionalPartPickerData;
     temperatureIntegerPartPickerData = [[NSMutableArray alloc] init];
     temperatureFractionalPartPickerData = [[NSMutableArray alloc] init];
     
+    self.temperaturePicker.delegate = self;
+    self.temperaturePicker.dataSource = self;
+    self.temperaturePicker.showsSelectionIndicator = YES;
+    
+    self.disturbanceSwitch.onTintColor = [UIColor ovatempAquaColor];
+    [self.disturbanceSwitch addTarget: self action: @selector(disturbanceSwitchChanged:) forControlEvents: UIControlEventValueChanged];
+    
     // Set up picker data source
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -66,18 +73,17 @@ NSMutableArray *temperatureFractionalPartPickerData;
             [temperatureFractionalPartPickerData addObject:[NSString stringWithFormat:@"%d", i]];
         }
         
-        [self.temperaturePicker selectRow:8 inComponent:0 animated:YES];
-        [self.temperaturePicker selectRow:60 inComponent:1 animated:YES];
+        [self.temperaturePicker selectRow: 8 inComponent: 0 animated:YES];
+        [self.temperaturePicker selectRow: 60 inComponent: 1 animated:YES];
         
         self.temperatureValueLabel.text = @"98.60";
+        
     }
     
-    self.temperaturePicker.delegate = self;
-    self.temperaturePicker.dataSource = self;
-    self.temperaturePicker.showsSelectionIndicator = YES;
+//    if ([self.delegate respondsToSelector: @selector(didSelectTemperature:)]) {
+//        [self.delegate didSelectTemperature: self.selectedTemperature];
+//    }
     
-    self.disturbanceSwitch.onTintColor = [UIColor ovatempAquaColor];
-    [self.disturbanceSwitch addTarget: self action: @selector(disturbanceSwitchChanged:) forControlEvents: UIControlEventValueChanged];
 }
 
 - (void)setUpActivityView
@@ -348,6 +354,47 @@ NSMutableArray *temperatureFractionalPartPickerData;
     self.collapsedLabel.alpha = 1.0;
     self.temperatureValueLabel.alpha = 1.0;
     
+    //[self selectDefaultTemp];
+    
+    // WORKING / MISSING F/ THAT's HOW I KNEW IT WAS WORKING
+    
+    [self performSelector: @selector(selectDefaultTemp) withObject: nil afterDelay: 1];
+}
+
+#pragma mark - Helper's
+
+- (void)selectDefaultTemp
+{
+    ILDay *selectedDay = [self.delegate getSelectedDay];
+    
+    if ([self hasDefaultTempSelected] && !selectedDay.usedOndo && !selectedDay.temperature) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if ([defaults boolForKey: @"temperatureUnitPreferenceFahrenheit"]) {
+            [self pickerView: self.temperaturePicker didSelectRow: 8 inComponent: 0];
+            [self pickerView: self.temperaturePicker didSelectRow: 60 inComponent: 1];
+        }else{
+            [self pickerView: self.temperaturePicker didSelectRow: 5 inComponent: 0];
+            [self pickerView: self.temperaturePicker didSelectRow: 0 inComponent: 1];
+        }
+    }
+}
+
+- (BOOL)hasDefaultTempSelected
+{
+    BOOL component0;
+    BOOL component1;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults boolForKey: @"temperatureUnitPreferenceFahrenheit"]) {
+        component0 = [self.temperaturePicker selectedRowInComponent: 0] == 8;
+        component1 = [self.temperaturePicker selectedRowInComponent: 1] == 60;
+        
+    }else{
+        component0 = [self.temperaturePicker selectedRowInComponent: 0] == 5;
+        component1 = [self.temperaturePicker selectedRowInComponent: 1] == 0;
+    }
+    
+    return component0 && component1;
 }
 
 @end
