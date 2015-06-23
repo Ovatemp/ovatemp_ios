@@ -51,7 +51,6 @@
 		069221711AC0CD530004B850 /* ILCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 069221701AC0CD530004B850 /* ILCalendarCell.m */; };
 		0697E9651AC5E77300AD8255 /* TelerikUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0697E9641AC5E77300AD8255 /* TelerikUI.framework */; };
 		06A4D6771B03D1F100F1108C /* UINavigationController+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A4D6761B03D1F100F1108C /* UINavigationController+Orientation.m */; };
-		06A8E2421B31DAD40050C798 /* NSMutableArray+Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A8E2411B31DAD40050C798 /* NSMutableArray+Shuffling.m */; };
 		06A8E2451B31DAFD0050C798 /* NSArray+ILRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A8E2441B31DAFD0050C798 /* NSArray+ILRandom.m */; };
 		06AB70DA1B0548ED00AEC467 /* ApplePayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AB70D91B0548ED00AEC467 /* ApplePayHelper.m */; };
 		06ABBEA31B0A805F00EFA959 /* HealthKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 06ABBEA21B0A805F00EFA959 /* HealthKitHelper.m */; };
@@ -498,8 +497,6 @@
 		0697E9641AC5E77300AD8255 /* TelerikUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TelerikUI.framework; sourceTree = "<group>"; };
 		06A4D6751B03D1F100F1108C /* UINavigationController+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+Orientation.h"; path = "../Controllers/UINavigationController+Orientation.h"; sourceTree = "<group>"; };
 		06A4D6761B03D1F100F1108C /* UINavigationController+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+Orientation.m"; path = "../Controllers/UINavigationController+Orientation.m"; sourceTree = "<group>"; };
-		06A8E2401B31DAD40050C798 /* NSMutableArray+Shuffling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Shuffling.h"; sourceTree = "<group>"; };
-		06A8E2411B31DAD40050C798 /* NSMutableArray+Shuffling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Shuffling.m"; sourceTree = "<group>"; };
 		06A8E2431B31DAFD0050C798 /* NSArray+ILRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ILRandom.h"; sourceTree = "<group>"; };
 		06A8E2441B31DAFD0050C798 /* NSArray+ILRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ILRandom.m"; sourceTree = "<group>"; };
 		06AB70D81B0548ED00AEC467 /* ApplePayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplePayHelper.h; path = ../Controllers/ApplePayHelper.h; sourceTree = "<group>"; };
@@ -1678,8 +1675,6 @@
 				06B858BD1AF16625006A58FB /* NSDictionary+WithoutNSNull.m */,
 				06A4D6751B03D1F100F1108C /* UINavigationController+Orientation.h */,
 				06A4D6761B03D1F100F1108C /* UINavigationController+Orientation.m */,
-				06A8E2401B31DAD40050C798 /* NSMutableArray+Shuffling.h */,
-				06A8E2411B31DAD40050C798 /* NSMutableArray+Shuffling.m */,
 				06A8E2431B31DAFD0050C798 /* NSArray+ILRandom.h */,
 				06A8E2441B31DAFD0050C798 /* NSArray+ILRandom.m */,
 			);
@@ -2513,7 +2508,6 @@
 				5F1C9B9919EDE87A000F1FC1 /* SubscriptionSelectionController.m in Sources */,
 				5F1C9B8519EDE87A000F1FC1 /* CoachingRootViewController.m in Sources */,
 				5F1C9C5D19EDE87A000F1FC1 /* Medicine.m in Sources */,
-				06A8E2421B31DAD40050C798 /* NSMutableArray+Shuffling.m in Sources */,
 				5FDAA3A619F7069C004E7181 /* LastPeriodTableViewCell.m in Sources */,
 				5F1C9C6019EDE87A000F1FC1 /* Subscription.m in Sources */,
 				5F1C9C5F19EDE87A000F1FC1 /* SharedRelation.m in Sources */,

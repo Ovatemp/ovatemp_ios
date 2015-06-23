@@ -61,7 +61,7 @@ NSMutableArray *temperatureFractionalPartPickerData;
         [self.temperaturePicker selectRow:5 inComponent:0 animated:YES];
         [self.temperaturePicker selectRow:0 inComponent:1 animated:YES];
         
-        self.temperatureValueLabel.text = @"37.00";
+        self.temperatureValueLabel.text = @"37.00 C";
         
     } else {
         // Fahrenheit
@@ -76,7 +76,7 @@ NSMutableArray *temperatureFractionalPartPickerData;
         [self.temperaturePicker selectRow: 8 inComponent: 0 animated:YES];
         [self.temperaturePicker selectRow: 60 inComponent: 1 animated:YES];
         
-        self.temperatureValueLabel.text = @"98.60";
+        self.temperatureValueLabel.text = @"98.60 F";
         
     }
     
@@ -203,8 +203,13 @@ NSMutableArray *temperatureFractionalPartPickerData;
     }
     
     NSString *temperatureString = [NSString stringWithFormat: @"%@.%@", tempInteger, tempFractional];
-    
-    self.temperatureValueLabel.text = temperatureString;
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults boolForKey: @"temperatureUnitPreferenceFahrenheit"]) {
+        self.temperatureValueLabel.text = [NSString stringWithFormat: @"%@ F", temperatureString];
+    }else{
+        self.temperatureValueLabel.text = [NSString stringWithFormat: @"%@ C", temperatureString];
+    }
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -353,12 +358,8 @@ NSMutableArray *temperatureFractionalPartPickerData;
     self.placeholderLabel.alpha = 0.0;
     self.collapsedLabel.alpha = 1.0;
     self.temperatureValueLabel.alpha = 1.0;
-    
-    //[self selectDefaultTemp];
-    
-    // WORKING / MISSING F/ THAT's HOW I KNEW IT WAS WORKING
-    
-    [self performSelector: @selector(selectDefaultTemp) withObject: nil afterDelay: 1];
+        
+    [self performSelector: @selector(selectDefaultTemp) withObject: nil afterDelay: 0.5];
 }
 
 #pragma mark - Helper's

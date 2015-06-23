@@ -678,6 +678,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self uploadSelectedTemperature];
+
     if (self.selectedTableRowIndex.row == indexPath.row) {
         self.selectedTableRowIndex = nil;
         
@@ -692,7 +694,6 @@
     
     [self.tableView reloadRowsAtIndexPaths: @[indexPath] withRowAnimation: UITableViewRowAnimationAutomatic];
     
-    [self uploadSelectedTemperature];
 }
 
 #pragma mark - UICollectionView Data Source
