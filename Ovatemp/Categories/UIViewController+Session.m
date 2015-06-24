@@ -9,6 +9,7 @@
 #import "UIViewController+Session.h"
 
 #import "RootViewController.h"
+#import "CoachingDataStore.h"
 
 @implementation UIViewController (Session)
 
@@ -24,7 +25,13 @@
 
 - (void)logout {
   [Configuration logOut];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName: kUserDidLogoutNotification object: self];
+    
+    [[CoachingDataStore sharedSession] deleteDataStore];
+    [[NSUserDefaults standardUserDefaults] setInteger: 0 forKey: @"openCoachingSummaryCount"];
+    [[NSUserDefaults standardUserDefaults] setInteger: 0 forKey: @"openCalendarCount"];
+    
   [self backOutToRootViewController];
 }
 
