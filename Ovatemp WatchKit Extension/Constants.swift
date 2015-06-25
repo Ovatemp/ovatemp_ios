@@ -8,6 +8,7 @@
 
 import UIKit
 
+//let gBaseUrl = "http://ovatemp-api-staging.herokuapp.com/api"
 let gBaseUrl = "http://api.ovatemp.com/api"
 
 //#if Staging

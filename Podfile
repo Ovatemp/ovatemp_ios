@@ -12,6 +12,7 @@ target :Ovatemp do
   pod "Stripe"
   pod "Stripe/ApplePay"
   pod "ApplePayStubs"
+  pod "FBSDKCoreKit"
 end
 
 target :OvatempTests, exclusive: true do

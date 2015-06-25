@@ -53,9 +53,6 @@
 
 // API
 
-//#define ROOT_URL @"http://192.168.15.17:5000"
-//#define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
-
 //#define ROOT_URL @"http://ovatemp-api-staging.herokuapp.com"
 //#define DEVICE_ID [UIDevice currentDevice].identifierForVendor.UUIDString
 
@@ -86,6 +83,7 @@
 
 //static NSString *const kStripePublishableKey = @"pk_test_SwHYnn0ZQhj7ysaLmRJ5mmxM"; // Test
 static NSString *const kStripePublishableKey = @"pk_live_h36Hwh93e0s4kbukCJkC3ZKW"; // Live
+static NSString *const kFacebookAppId = @"834647163275850";
 
 static NSString *const kAppGroupName = @"group.com.ovatemp.ovatemp";
 static NSString *const kSharedTokenKey = @"CurrentUserToken";

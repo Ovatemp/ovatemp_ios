@@ -21,6 +21,12 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - ApplePayStubs (0.2)
+  - Bolts (1.2.0):
+    - Bolts/AppLinks (= 1.2.0)
+    - Bolts/Tasks (= 1.2.0)
+  - Bolts/AppLinks (1.2.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.2.0)
   - CCMPopup (1.1.0)
   - CocoaLumberjack (2.0.0):
     - CocoaLumberjack/Default (= 2.0.0)
@@ -31,6 +37,15 @@ PODS:
   - CocoaLumberjack/Extensions (2.0.0):
     - CocoaLumberjack/Default
   - Expecta (1.0.0)
+  - FBSDKCoreKit (4.2.0):
+    - Bolts (~> 1.1)
+    - FBSDKCoreKit/arc (= 4.2.0)
+    - FBSDKCoreKit/no-arc (= 4.2.0)
+  - FBSDKCoreKit/arc (4.2.0):
+    - Bolts (~> 1.1)
+  - FBSDKCoreKit/no-arc (4.2.0):
+    - Bolts (~> 1.1)
+    - FBSDKCoreKit/arc
   - Helpshift (4.10.2)
   - Inflections (1.0.0):
     - RegexKitLite
@@ -57,6 +72,7 @@ DEPENDENCIES:
   - CCMPopup
   - CocoaLumberjack
   - Expecta
+  - FBSDKCoreKit
   - Helpshift
   - Inflections
   - KIF (from `Podspecs/Kif.podspec`)
@@ -81,9 +97,11 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
   ApplePayStubs: 5dd63c36527d1117b2045939fb5b6581b4815433
+  Bolts: d176cb1e0012175589e389a9db49b85e27787576
   CCMPopup: e41fad5b8a0823c9cddea8eab6d431670c9dabe5
   CocoaLumberjack: a6f77d987d65dc7ba86b0f84db7d0b9084f77bcb
   Expecta: 32604574add2c46a36f8d2f716b6c5736eb75024
+  FBSDKCoreKit: 84b3616a361801f190e43a9909caead7bb6087c7
   Helpshift: 9c84a5e4ffd881c7e7eb395c2afc8d6a46eb2187
   Inflections: ec16ea4356ec1e0771ca6ae6b0adc62b09ce0973
   KIF: 25c0a730008377c6734f68d4fc3e3f462622127d
