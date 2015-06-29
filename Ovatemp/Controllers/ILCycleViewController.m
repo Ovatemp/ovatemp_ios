@@ -293,15 +293,8 @@
 - (void)buildTemperatureDataArray
 {
     self.temperatureData = [[NSMutableArray alloc] init];
-//    NSArray *oldDays = self.selectedCycle.days;
     self.days = [self addMissingDatesToArray: self.selectedCycle.days];
     
-//    DDLogInfo(@"OLD DAYS : %@", oldDays);
-//    DDLogError(@"OLD DAYS COUNT : %ld", (long)[oldDays count]);
-//    
-//    DDLogInfo(@"DAYS : %@", self.days);
-//    DDLogError(@"DAYS COUNT : %ld", (long)[self.days count]);
-
     // ADD EXISTING DAYS TO TEMP. DATA
     for (int i = 0; i < [self.days count]; i++) {
         
@@ -324,12 +317,12 @@
     if ([self.days count] < self.cycleLength) {
         CGFloat previousTemp = [self getPreviousNonZeroTemperatureInArray: self.days fromIndex: [self.days count]];
         for (NSInteger i = [self.days count]; i < self.cycleLength; i++) {
-            [self.temperatureData addObject:[[TKChartDataPoint alloc] initWithX: @(i+1) Y: @(previousTemp)]];
+            [self.temperatureData addObject:[[TKChartDataPoint alloc] initWithX: @(i+1) Y: @([self correctTempWithUnit: previousTemp])]];
         }
     }
     
-//    NSLog(@"DAYS: %@", self.selectedCycle.days);
-//    NSLog(@"TEMPERATURE DATA: %@", self.temperatureData);
+    //DDLogWarn(@"DAYS: %@", self.days);
+    //DDLogWarn(@"TEMPERATURE DATA: %@", self.temperatureData);
 }
 
 - (void)addSeriesToChart
