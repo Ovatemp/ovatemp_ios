@@ -133,7 +133,7 @@
         alarm.repeatInterval = NSCalendarUnitDay;
         alarm.alertBody = @"It's time to take your temperature.";
         alarm.alertAction = @"View";
-        alarm.soundName = UILocalNotificationDefaultSoundName;
+        alarm.soundName = @"alarm.caf";
         [[UIApplication sharedApplication] scheduleLocalNotification:alarm];
     }
     [self.navigationController popViewControllerAnimated:YES];

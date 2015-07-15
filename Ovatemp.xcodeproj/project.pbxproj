@@ -66,6 +66,7 @@
 		06C315741B1F9F04003FABD8 /* ILSummaryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C315731B1F9F04003FABD8 /* ILSummaryDetailViewController.m */; };
 		06C315771B1FA10E003FABD8 /* ILButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C315761B1FA10E003FABD8 /* ILButton.m */; };
 		06C55B221AAF4BD600EDE74A /* ILTrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */; };
+		06C60D991B57145F005746C8 /* alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 06C60D981B57145F005746C8 /* alarm.caf */; };
 		06E4B9491B33352D00ED3D02 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06E4B9461B33352D00ED3D02 /* Lato-Bold.ttf */; };
 		06E4B94A1B33352D00ED3D02 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06E4B9471B33352D00ED3D02 /* Lato-Light.ttf */; };
 		06E4B94B1B33352D00ED3D02 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06E4B9481B33352D00ED3D02 /* Lato-Regular.ttf */; };
@@ -526,6 +527,7 @@
 		06C315761B1FA10E003FABD8 /* ILButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILButton.m; sourceTree = "<group>"; };
 		06C55B201AAF4BD600EDE74A /* ILTrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTrackingViewController.h; sourceTree = "<group>"; };
 		06C55B211AAF4BD600EDE74A /* ILTrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTrackingViewController.m; sourceTree = "<group>"; };
+		06C60D981B57145F005746C8 /* alarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm.caf; sourceTree = "<group>"; };
 		06E4B9461B33352D00ED3D02 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		06E4B9471B33352D00ED3D02 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		06E4B9481B33352D00ED3D02 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
@@ -1540,6 +1542,7 @@
 				5F1C9B4719EDE87A000F1FC1 /* Shared */,
 				06E4B9451B3334D900ED3D02 /* Fonts */,
 				5F1C9B2219EDE87A000F1FC1 /* Images.xcassets */,
+				06C60D981B57145F005746C8 /* alarm.caf */,
 				5F1C9A2319EDE879000F1FC1 /* Constants.h */,
 				5F1C9A2419EDE879000F1FC1 /* Constants.m */,
 				5F1C99DF19EDE879000F1FC1 /* AppDelegate.h */,
@@ -2329,6 +2332,7 @@
 				06E4B9491B33352D00ED3D02 /* Lato-Bold.ttf in Resources */,
 				5F1C9BD919EDE87A000F1FC1 /* MeditationSmall@2x.png in Resources */,
 				5F1C9C5119EDE87A000F1FC1 /* Wet.png in Resources */,
+				06C60D991B57145F005746C8 /* alarm.caf in Resources */,
 				5F1C9C1C19EDE87A000F1FC1 /* DaySupplements@2x.png in Resources */,
 				5F1C9C4C19EDE87A000F1FC1 /* today_unselect@2x.png in Resources */,
 				5F1C9C1E19EDE87A000F1FC1 /* Good@2x.png in Resources */,
